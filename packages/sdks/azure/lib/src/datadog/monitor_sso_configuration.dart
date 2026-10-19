@@ -163,7 +163,7 @@ import 'monitor_sso_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -171,14 +171,20 @@ import 'monitor_sso_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-datadog"
 ///   location = "West US 2"
 /// }
 /// resource "azure_datadog_monitor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-monitor"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   datadog_organization = {
 ///     api_key         = "XXXX"
 ///     application_key = "XXXX"
@@ -192,7 +198,10 @@ import 'monitor_sso_configuration_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_datadog_monitorssoconfiguration" "example" {
+/// resource "azure_datadog_monitor_sso_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   datadog_monitor_id        = azure_datadog_monitor.example.id
 ///   single_sign_on            = "Enable"
 ///   enterprise_application_id = "00000000-0000-0000-0000-000000000000"
@@ -330,7 +339,7 @@ class MonitorSsoConfiguration extends pulumi.CustomResource {
           'azure:datadog/monitorSsoConfiguration:MonitorSsoConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     datadogMonitorId = registerOutput<String>('datadogMonitorId');
     enterpriseApplicationId = registerOutput<String>('enterpriseApplicationId');

@@ -296,7 +296,7 @@ import 'managed_instance_active_directory_administrator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -307,29 +307,41 @@ import 'managed_instance_active_directory_administrator_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rg-example"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_mssql_managedinstance" "example" {
+/// resource "azure_mssql_managed_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "managedsqlinstance"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   license_type                 = "BasePrice"
 ///   sku_name                     = "GP_Gen5"
 ///   storage_size_in_gb           = 32
@@ -341,24 +353,36 @@ import 'managed_instance_active_directory_administrator_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azuread_directoryrole" "reader" {
+/// resource "azuread_directory_role" "reader" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Directory Readers"
 /// }
-/// resource "azuread_directoryrolemember" "example" {
-///   role_object_id   = azuread_directoryrole.reader.object_id
-///   member_object_id = azure_mssql_managedinstance.example.identity.principal_id
+/// resource "azuread_directory_role_member" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   role_object_id   = azuread_directory_role.reader.object_id
+///   member_object_id = azure_mssql_managed_instance.example.identity.principal_id
 /// }
 /// resource "azuread_user" "admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_principal_name = "ms.admin@example.com"
 ///   display_name        = "Ms Admin"
 ///   mail_nickname       = "ms.admin"
 ///   password            = "SecretP@sswd99!"
 /// }
-/// resource "azure_mssql_managedinstanceactivedirectoryadministrator" "example" {
-///   managed_instance_id = azure_mssql_managedinstance.example.id
+/// resource "azure_mssql_managed_instance_active_directory_administrator" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   managed_instance_id = azure_mssql_managed_instance.example.id
 ///   login_username      = "msadmin"
 ///   object_id           = azuread_user.admin.object_id
-///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id           = data.azure_core_client_config.current.tenant_id
 /// }
 /// ```
 /// ```java
@@ -573,7 +597,7 @@ class ManagedInstanceActiveDirectoryAdministrator extends pulumi.CustomResource 
           'azure:mssql/managedInstanceActiveDirectoryAdministrator:ManagedInstanceActiveDirectoryAdministrator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     azureadAuthenticationOnly = registerOutput<bool?>('azureadAuthenticationOnly');
     loginUsername = registerOutput<String>('loginUsername');

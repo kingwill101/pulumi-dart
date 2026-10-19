@@ -144,7 +144,7 @@ import 'vmware_replication_policy_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -152,26 +152,38 @@ import 'vmware_replication_policy_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "East US"
 /// }
 /// resource "azure_recoveryservices_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-recovery-vault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_siterecovery_vmwarereplicationpolicy" "example" {
+/// resource "azure_siterecovery_v_m_ware_replication_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                                 = "example-policy"
 ///   recovery_vault_id                                    = azure_recoveryservices_vault.example.id
 ///   recovery_point_retention_in_minutes                  = 1440
 ///   application_consistent_snapshot_frequency_in_minutes = 240
 /// }
-/// resource "azure_siterecovery_vmwarereplicationpolicyassociation" "example" {
+/// resource "azure_siterecovery_vmware_replication_policy_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-association"
 ///   recovery_vault_id = azure_recoveryservices_vault.example.id
-///   policy_id         = azure_siterecovery_vmwarereplicationpolicy.example.id
+///   policy_id         = azure_siterecovery_v_m_ware_replication_policy.example.id
 /// }
 /// ```
 /// ```java
@@ -297,7 +309,7 @@ class VmwareReplicationPolicyAssociation extends pulumi.CustomResource {
           'azure:siterecovery/vmwareReplicationPolicyAssociation:VmwareReplicationPolicyAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     policyId = registerOutput<String>('policyId');

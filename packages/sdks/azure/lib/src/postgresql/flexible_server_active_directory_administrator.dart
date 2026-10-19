@@ -37,7 +37,7 @@ class FlexibleServerActiveDirectoryAdministrator extends pulumi.CustomResource {
           'azure:postgresql/flexibleServerActiveDirectoryAdministrator:FlexibleServerActiveDirectoryAdministrator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     objectId = registerOutput<String>('objectId');
     principalName = registerOutput<String>('principalName');

@@ -161,7 +161,7 @@ import 'dataset_azure_blob_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -169,29 +169,41 @@ import 'dataset_azure_blob_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_storage_getaccount" "example" {
+/// data "azure_storage_account" "example" {
 ///   name                = "storageaccountname"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_datafactory_factory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_datafactory_linkedserviceazureblobstorage" "example" {
+/// resource "azure_datafactory_linked_service_azure_blob_storage" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example"
 ///   data_factory_id   = azure_datafactory_factory.example.id
-///   connection_string = data.azure_storage_getaccount.example.primary_connection_string
+///   connection_string = data.azure_storage_account.example.primary_connection_string
 /// }
-/// resource "azure_datafactory_datasetazureblob" "example" {
+/// resource "azure_datafactory_dataset_azure_blob" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
 ///   data_factory_id     = azure_datafactory_factory.example.id
-///   linked_service_name = azure_datafactory_linkedserviceazureblobstorage.example.name
+///   linked_service_name = azure_datafactory_linked_service_azure_blob_storage.example.name
 ///   path                = "foo"
 ///   filename            = "bar.png"
 /// }
@@ -348,7 +360,7 @@ class DatasetAzureBlob extends pulumi.CustomResource {
           'azure:datafactory/datasetAzureBlob:DatasetAzureBlob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

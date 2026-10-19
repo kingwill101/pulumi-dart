@@ -181,7 +181,7 @@ import 'api_release_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -189,21 +189,30 @@ import 'api_release_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "My Company"
 ///   publisher_email     = "company@terraform.io"
 ///   sku_name            = "Developer_1"
 /// }
 /// resource "azure_apimanagement_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-api"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   api_management_name = azure_apimanagement_service.example.name
 ///   revision            = "1"
 ///   display_name        = "Example API"
@@ -214,7 +223,10 @@ import 'api_release_state.dart';
 ///     content_value  = "https://raw.githubusercontent.com/hashicorp/terraform-provider-azurerm/refs/heads/main/internal/services/apimanagement/testdata/api_management_api_swagger.json"
 ///   }
 /// }
-/// resource "azure_apimanagement_apirelease" "example" {
+/// resource "azure_apimanagement_api_release" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example-Api-Release"
 ///   api_id = azure_apimanagement_api.example.id
 /// }
@@ -358,7 +370,7 @@ class ApiRelease extends pulumi.CustomResource {
           'azure:apimanagement/apiRelease:ApiRelease',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     this.name = registerOutput<String>('name');

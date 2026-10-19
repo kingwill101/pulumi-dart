@@ -97,7 +97,7 @@ class GetFlexibleServerResult {
     return GetFlexibleServerResult(
       administratorLogin: (() { final guardedValue = map['administratorLogin']; if (guardedValue == null) return null; return guardedValue as String; })(),
       autoGrowEnabled: (() { final guardedValue = map['autoGrowEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      backupRetentionDays: (() { final guardedValue = map['backupRetentionDays']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      backupRetentionDays: (() { final guardedValue = map['backupRetentionDays']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       delegatedSubnetId: (() { final guardedValue = map['delegatedSubnetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       highAvailabilities: (() { final guardedValue = map['highAvailabilities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetFlexibleServerHighAvailability>(guardedValue, (value) => GetFlexibleServerHighAvailability.fromMap((value as Map).cast<String, dynamic>())); })(),
@@ -107,7 +107,7 @@ class GetFlexibleServerResult {
       publicNetworkAccessEnabled: (() { final guardedValue = map['publicNetworkAccessEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       skuName: (() { final guardedValue = map['skuName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      storageMb: (() { final guardedValue = map['storageMb']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      storageMb: (() { final guardedValue = map['storageMb']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),

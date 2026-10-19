@@ -266,7 +266,7 @@ import 'sync_server_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -274,27 +274,42 @@ import 'sync_server_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_sync" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-storage-sync"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_storage_syncgroup" "example" {
+/// resource "azure_storage_sync_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example-storage-sync-group"
 ///   storage_sync_id = azure_storage_sync.example.id
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-storage-account"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_share" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-storage-share"
 ///   storage_account_name = azure_storage_account.example.name
 ///   quota                = 1
@@ -305,16 +320,22 @@ import 'sync_server_endpoint_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_storage_synccloudendpoint" "example" {
+/// resource "azure_storage_sync_cloud_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-ss-ce"
-///   storage_sync_group_id = azure_storage_syncgroup.example.id
+///   storage_sync_group_id = azure_storage_sync_group.example.id
 ///   file_share_name       = azure_storage_share.example.name
 ///   storage_account_id    = azure_storage_account.example.id
 /// }
-/// resource "azure_storage_syncserverendpoint" "example" {
-///   depends_on            = [azure_storage_synccloudendpoint.example]
+/// resource "azure_storage_sync_server_endpoint" "example" {
+///   depends_on = [azure_storage_sync_cloud_endpoint.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-storage-sync-server-endpoint"
-///   storage_sync_group_id = azure_storage_syncgroup.example.id
+///   storage_sync_group_id = azure_storage_sync_group.example.id
 ///   registered_server_id  = azure_storage_sync.example.registered_servers[0]
 /// }
 /// ```
@@ -400,7 +421,7 @@ import 'sync_server_endpoint_state.dart';
 ///         var exampleSyncServerEndpoint = new SyncServerEndpoint("exampleSyncServerEndpoint", SyncServerEndpointArgs.builder()
 ///             .name("example-storage-sync-server-endpoint")
 ///             .storageSyncGroupId(exampleSyncGroup.id())
-///             .registeredServerId(exampleSync.registeredServers().applyValue(_registeredServers -> _registeredServers[0]))
+///             .registeredServerId(exampleSync.registeredServers().applyValue(_registeredServers -> _registeredServers.get(0)))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(exampleSyncCloudEndpoint)
 ///                 .build());
@@ -517,7 +538,7 @@ class SyncServerEndpoint extends pulumi.CustomResource {
           'azure:storage/syncServerEndpoint:SyncServerEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     cloudTieringEnabled = registerOutput<bool?>('cloudTieringEnabled');
     initialDownloadPolicy = registerOutput<String?>('initialDownloadPolicy');

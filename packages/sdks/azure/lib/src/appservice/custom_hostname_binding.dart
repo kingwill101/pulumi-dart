@@ -189,7 +189,7 @@ import 'custom_hostname_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -201,34 +201,49 @@ import 'custom_hostname_binding_state.dart';
 /// }
 ///
 /// resource "random_id" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   keepers = {
 ///     "aziId" = 1
 ///   }
 ///   byte_length = 8
 /// }
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "some-resource-group"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "some-app-service-plan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     tier = "Standard"
 ///     size = "S1"
 ///   }
 /// }
-/// resource "azure_appservice_appservice" "example" {
+/// resource "azure_appservice_app_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = random_id.server.hex
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   app_service_plan_id = azure_appservice_plan.example.id
 /// }
-/// resource "azure_appservice_customhostnamebinding" "example" {
+/// resource "azure_appservice_custom_hostname_binding" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hostname            = "www.mywebsite.com"
-///   app_service_name    = azure_appservice_appservice.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   app_service_name    = azure_appservice_app_service.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// ```
 /// ```java
@@ -282,7 +297,7 @@ import 'custom_hostname_binding_state.dart';
 ///             .build());
 ///
 ///         var exampleAppService = new AppService("exampleAppService", AppServiceArgs.builder()
-///             .name(server.hex())
+///             .name(server.get("hex"))
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
 ///             .appServicePlanId(examplePlan.id())
@@ -382,7 +397,7 @@ class CustomHostnameBinding extends pulumi.CustomResource {
           'azure:appservice/customHostnameBinding:CustomHostnameBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     appServiceName = registerOutput<String>('appServiceName');
     hostname = registerOutput<String>('hostname');

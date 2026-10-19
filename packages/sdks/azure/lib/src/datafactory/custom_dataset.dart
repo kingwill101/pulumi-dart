@@ -438,7 +438,7 @@ import 'custom_dataset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -446,51 +446,72 @@ import 'custom_dataset_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_datafactory_factory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_kind             = "BlobStorage"
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_datafactory_linkedcustomservice" "example" {
+/// resource "azure_datafactory_linked_custom_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
 ///   data_factory_id      = azure_datafactory_factory.example.id
 ///   type                 = "AzureBlobStorage"
-///   type_properties_json ="{
+///   type_properties_json = <<JSON
+/// {
 ///   \"connectionString\":\"${azure_storage_account.example.primary_connection_string}\"
 /// }
-/// "
+/// JSON
+///
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "content"
 ///   storage_account_name  = azure_storage_account.example.name
 ///   container_access_type = "private"
 /// }
-/// resource "azure_datafactory_customdataset" "example" {
+/// resource "azure_datafactory_custom_dataset" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   data_factory_id = azure_datafactory_factory.example.id
 ///   type            = "Json"
 ///   linked_service = {
-///     name = azure_datafactory_linkedcustomservice.example.name
+///     name = azure_datafactory_linked_custom_service.example.name
 ///     parameters = {
 ///       "key1" = "value1"
 ///     }
 ///   }
-///   type_properties_json ="{
+///   type_properties_json = <<JSON
+/// {
 ///   \"location\": {
 ///     \"container\":\"${azure_storage_container.example.name}\",
 ///     \"fileName\":\"foo.txt\",
@@ -499,7 +520,8 @@ import 'custom_dataset_state.dart';
 ///   },
 ///   \"encodingName\":\"UTF-8\"
 /// }
-/// "
+/// JSON
+///
 ///   description          = "test description"
 ///   annotations          = ["test1", "test2", "test3"]
 ///   folder               = "testFolder"
@@ -511,7 +533,28 @@ import 'custom_dataset_state.dart';
 ///     "foo" = "test1"
 ///     "bar" = "test2"
 ///   }
-///   schema_json = "{\n  \\\"type\\\": \\\"object\\\",\n  \\\"properties\\\": {\n    \\\"name\\\": {\n      \\\"type\\\": \\\"object\\\",\n      \\\"properties\\\": {\n        \\\"firstName\\\": {\n          \\\"type\\\": \\\"string\\\"\n        },\n        \\\"lastName\\\": {\n          \\\"type\\\": \\\"string\\\"\n        }\n      }\n    },\n    \\\"age\\\": {\n      \\\"type\\\": \\\"integer\\\"\n    }\n  }\n}\n"
+///   schema_json = <<JSON
+/// {
+///   \"type\": \"object\",
+///   \"properties\": {
+///     \"name\": {
+///       \"type\": \"object\",
+///       \"properties\": {
+///         \"firstName\": {
+///           \"type\": \"string\"
+///         },
+///         \"lastName\": {
+///           \"type\": \"string\"
+///         }
+///       }
+///     },
+///     \"age\": {
+///       \"type\": \"integer\"
+///     }
+///   }
+/// }
+/// JSON
+///
 /// }
 /// ```
 /// ```java
@@ -790,7 +833,7 @@ class CustomDataset extends pulumi.CustomResource {
           'azure:datafactory/customDataset:CustomDataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

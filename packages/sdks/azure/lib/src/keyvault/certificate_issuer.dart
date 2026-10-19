@@ -144,7 +144,7 @@ import 'certificate_issuer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -152,25 +152,34 @@ import 'certificate_issuer_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplekeyvault"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
 ///   sku_name                   = "standard"
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 /// }
-/// resource "azure_keyvault_certificateissuer" "example" {
+/// resource "azure_keyvault_certificate_issuer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example-issuer"
 ///   org_id        = "ExampleOrgName"
-///   key_vault_id  = azure_keyvault_keyvault.example.id
+///   key_vault_id  = azure_keyvault_key_vault.example.id
 ///   provider_name = "DigiCert"
 ///   account_id    = "0000"
 ///   password      = "example-password"
@@ -300,7 +309,7 @@ class CertificateIssuer extends pulumi.CustomResource {
           'azure:keyvault/certificateIssuer:CertificateIssuer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     accountId = registerOutput<String?>('accountId');

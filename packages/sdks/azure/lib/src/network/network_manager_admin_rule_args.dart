@@ -83,7 +83,7 @@ class NetworkManagerAdminRuleArgs {
       destinations: (() { final guardedValue = map['destinations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkManagerAdminRuleDestination>(guardedValue, (value) => NetworkManagerAdminRuleDestination.fromMap((value as Map).cast<String, dynamic>()))); })(),
       direction: pulumi.Input.fromValue(map['direction'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       sourcePortRanges: (() { final guardedValue = map['sourcePortRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       sources: (() { final guardedValue = map['sources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NetworkManagerAdminRuleSource>(guardedValue, (value) => NetworkManagerAdminRuleSource.fromMap((value as Map).cast<String, dynamic>()))); })(),

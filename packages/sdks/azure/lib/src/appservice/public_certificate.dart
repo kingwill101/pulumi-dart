@@ -179,7 +179,7 @@ import 'public_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -190,28 +190,40 @@ import 'public_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-app-service-plan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     tier = "Standard"
 ///     size = "S1"
 ///   }
 /// }
-/// resource "azure_appservice_appservice" "example" {
+/// resource "azure_appservice_app_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-app-service"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   app_service_plan_id = azure_appservice_plan.example.id
 /// }
-/// resource "azure_appservice_publiccertificate" "example" {
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   app_service_name     = azure_appservice_appservice.example.name
+/// resource "azure_appservice_public_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name  = azure_core_resource_group.example.name
+///   app_service_name     = azure_appservice_app_service.example.name
 ///   certificate_name     = "example-public-certificate"
 ///   certificate_location = "Unknown"
 ///   blob                 = filebase64("app_service_public_certificate.cer")
@@ -364,7 +376,7 @@ class PublicCertificate extends pulumi.CustomResource {
           'azure:appservice/publicCertificate:PublicCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     appServiceName = registerOutput<String>('appServiceName');
     blob = registerOutput<String>('blob');

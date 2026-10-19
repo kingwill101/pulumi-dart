@@ -92,7 +92,7 @@ import 'get_volume_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -100,13 +100,13 @@ import 'get_volume_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_netapp_getaccount" "example" {
+/// data "azure_netapp_account" "example" {
 ///   resource_group_name = "acctestRG"
 ///   name                = "acctestnetappaccount"
 /// }
 ///
 /// output "netappAccountId" {
-///   value = data.azure_netapp_getaccount.example.id
+///   value = data.azure_netapp_account.example.id
 /// }
 /// ```
 /// ```java
@@ -246,7 +246,7 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -254,12 +254,12 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 ///   }
 /// }
 ///
-/// data "azure_netapp_getaccountencryption" "example" {
+/// data "azure_netapp_account_encryption" "example" {
 ///   netapp_account_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/group1/providers/Microsoft.NetApp/netAppAccounts/account1"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_netapp_getaccountencryption.example.id
+///   value = data.azure_netapp_account_encryption.example.id
 /// }
 /// ```
 /// ```java
@@ -405,7 +405,7 @@ pulumi.Output<GetAccountEncryptionResult> getAccountEncryptionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -413,14 +413,14 @@ pulumi.Output<GetAccountEncryptionResult> getAccountEncryptionOutput(
 ///   }
 /// }
 ///
-/// data "azure_netapp_getbackuppolicy" "example" {
+/// data "azure_netapp_backup_policy" "example" {
 ///   resource_group_name = "example-resource-group"
 ///   account_name        = "example-netappaccount"
 ///   name                = "example-backuppolicy"
 /// }
 ///
 /// output "backupPolicyId" {
-///   value = data.azure_netapp_getbackuppolicy.example.id
+///   value = data.azure_netapp_backup_policy.example.id
 /// }
 /// ```
 /// ```java
@@ -570,7 +570,7 @@ pulumi.Output<GetBackupPolicyResult> getBackupPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -578,14 +578,14 @@ pulumi.Output<GetBackupPolicyResult> getBackupPolicyOutput(
 ///   }
 /// }
 ///
-/// data "azure_netapp_getbackupvault" "example" {
+/// data "azure_netapp_backup_vault" "example" {
 ///   resource_group_name = "example-resource-group"
 ///   account_name        = "example-netappaccount"
 ///   name                = "example-backupvault"
 /// }
 ///
 /// output "backupVaultId" {
-///   value = data.azure_netapp_getbackupvault.example.id
+///   value = data.azure_netapp_backup_vault.example.id
 /// }
 /// ```
 /// ```java
@@ -735,7 +735,7 @@ pulumi.Output<GetBackupVaultResult> getBackupVaultOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -743,14 +743,14 @@ pulumi.Output<GetBackupVaultResult> getBackupVaultOutput(
 ///   }
 /// }
 ///
-/// data "azure_netapp_getpool" "example" {
+/// data "azure_netapp_pool" "example" {
 ///   resource_group_name = "acctestRG"
 ///   account_name        = "acctestnetappaccount"
 ///   name                = "acctestnetapppool"
 /// }
 ///
 /// output "netappPoolId" {
-///   value = data.azure_netapp_getpool.example.id
+///   value = data.azure_netapp_pool.example.id
 /// }
 /// ```
 /// ```java
@@ -908,7 +908,7 @@ pulumi.Output<GetPoolResult> getPoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -916,7 +916,7 @@ pulumi.Output<GetPoolResult> getPoolOutput(
 ///   }
 /// }
 ///
-/// data "azure_netapp_getsnapshot" "test" {
+/// data "azure_netapp_snapshot" "test" {
 ///   resource_group_name = "acctestRG"
 ///   name                = "acctestnetappsnapshot"
 ///   account_name        = "acctestnetappaccount"
@@ -957,7 +957,7 @@ pulumi.Output<GetPoolResult> getPoolOutput(
 ///             .volumeName("acctestnetappvolume")
 ///             .build());
 ///
-///         ctx.export("netappSnapshotId", example.id());
+///         ctx.export("netappSnapshotId", example.get("id"));
 ///     }
 /// }
 /// ```
@@ -1103,7 +1103,7 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1111,32 +1111,32 @@ pulumi.Output<GetSnapshotResult> getSnapshotOutput(
 ///   }
 /// }
 ///
-/// data "azure_netapp_getsnapshotpolicy" "example" {
+/// data "azure_netapp_snapshot_policy" "example" {
 ///   resource_group_name = "acctestRG"
 ///   account_name        = "acctestnetappaccount"
 ///   name                = "example-snapshot-policy"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_netapp_getsnapshotpolicy.example.id
+///   value = data.azure_netapp_snapshot_policy.example.id
 /// }
 /// output "name" {
-///   value = data.azure_netapp_getsnapshotpolicy.example.name
+///   value = data.azure_netapp_snapshot_policy.example.name
 /// }
 /// output "enabled" {
-///   value = data.azure_netapp_getsnapshotpolicy.example.enabled
+///   value = data.azure_netapp_snapshot_policy.example.enabled
 /// }
 /// output "hourlySchedule" {
-///   value = data.azure_netapp_getsnapshotpolicy.example.hourly_schedules
+///   value = data.azure_netapp_snapshot_policy.example.hourly_schedules
 /// }
 /// output "dailySchedule" {
-///   value = data.azure_netapp_getsnapshotpolicy.example.daily_schedules
+///   value = data.azure_netapp_snapshot_policy.example.daily_schedules
 /// }
 /// output "weeklySchedule" {
-///   value = data.azure_netapp_getsnapshotpolicy.example.weekly_schedules
+///   value = data.azure_netapp_snapshot_policy.example.weekly_schedules
 /// }
 /// output "monthlySchedule" {
-///   value = data.azure_netapp_getsnapshotpolicy.example.monthly_schedules
+///   value = data.azure_netapp_snapshot_policy.example.monthly_schedules
 /// }
 /// ```
 /// ```java
@@ -1302,7 +1302,7 @@ pulumi.Output<GetSnapshotPolicyResult> getSnapshotPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1310,7 +1310,7 @@ pulumi.Output<GetSnapshotPolicyResult> getSnapshotPolicyOutput(
 ///   }
 /// }
 ///
-/// data "azure_netapp_getvolume" "example" {
+/// data "azure_netapp_volume" "example" {
 ///   resource_group_name = "acctestRG"
 ///   account_name        = "acctestnetappaccount"
 ///   pool_name           = "acctestnetapppool"
@@ -1318,7 +1318,7 @@ pulumi.Output<GetSnapshotPolicyResult> getSnapshotPolicyOutput(
 /// }
 ///
 /// output "netappVolumeId" {
-///   value = data.azure_netapp_getvolume.example.id
+///   value = data.azure_netapp_volume.example.id
 /// }
 /// ```
 /// ```java
@@ -1470,7 +1470,7 @@ pulumi.Output<GetVolumeResult> getVolumeOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1478,16 +1478,16 @@ pulumi.Output<GetVolumeResult> getVolumeOutput(
 ///   }
 /// }
 ///
-/// data "azure_netapp_getvolumebucket" "example" {
+/// data "azure_netapp_volume_bucket" "example" {
 ///   name             = "example-bucket"
 ///   netapp_volume_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume"
 /// }
 ///
 /// output "bucketStatus" {
-///   value = data.azure_netapp_getvolumebucket.example.status
+///   value = data.azure_netapp_volume_bucket.example.status
 /// }
 /// output "bucketServerIpAddress" {
-///   value = data.azure_netapp_getvolumebucket.example.server_ip_address
+///   value = data.azure_netapp_volume_bucket.example.server_ip_address
 /// }
 /// ```
 /// ```java
@@ -1637,7 +1637,7 @@ pulumi.Output<GetVolumeBucketResult> getVolumeBucketOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1645,16 +1645,16 @@ pulumi.Output<GetVolumeBucketResult> getVolumeBucketOutput(
 ///   }
 /// }
 ///
-/// data "azure_netapp_getvolumebucketwithserver" "example" {
+/// data "azure_netapp_volume_bucket_with_server" "example" {
 ///   name             = "example-bucket"
 ///   netapp_volume_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-resources/providers/Microsoft.NetApp/netAppAccounts/example-anfaccount/capacityPools/example-anfpool/volumes/example-anfvolume"
 /// }
 ///
 /// output "bucketStatus" {
-///   value = data.azure_netapp_getvolumebucketwithserver.example.status
+///   value = data.azure_netapp_volume_bucket_with_server.example.status
 /// }
 /// output "bucketServerIpAddress" {
-///   value = data.azure_netapp_getvolumebucketwithserver.example.server_ip_address
+///   value = data.azure_netapp_volume_bucket_with_server.example.server_ip_address
 /// }
 /// ```
 /// ```java
@@ -1804,7 +1804,7 @@ pulumi.Output<GetVolumeBucketWithServerResult> getVolumeBucketWithServerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1812,14 +1812,14 @@ pulumi.Output<GetVolumeBucketWithServerResult> getVolumeBucketWithServerOutput(
 ///   }
 /// }
 ///
-/// data "azure_netapp_getvolumegrouporacle" "example" {
+/// data "azure_netapp_volume_group_oracle" "example" {
 ///   name                = "existing application volume group name"
 ///   resource_group_name = "resource group name where the account and volume group belong to"
 ///   account_name        = "existing account where the application volume group belong to"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_netapp_getvolumegrouporacle.example.id
+///   value = data.azure_netapp_volume_group_oracle.example.id
 /// }
 /// ```
 /// ```java
@@ -1969,7 +1969,7 @@ pulumi.Output<GetVolumeGroupOracleResult> getVolumeGroupOracleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1977,14 +1977,14 @@ pulumi.Output<GetVolumeGroupOracleResult> getVolumeGroupOracleOutput(
 ///   }
 /// }
 ///
-/// data "azure_netapp_getvolumegroupsaphana" "example" {
+/// data "azure_netapp_volume_group_sap_hana" "example" {
 ///   name                = "existing application volume group name"
 ///   resource_group_name = "resource group name where the account and volume group belong to"
 ///   account_name        = "existing account where the application volume group belong to"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_netapp_getvolumegroupsaphana.example.id
+///   value = data.azure_netapp_volume_group_sap_hana.example.id
 /// }
 /// ```
 /// ```java
@@ -2130,7 +2130,7 @@ pulumi.Output<GetVolumeGroupSapHanaResult> getVolumeGroupSapHanaOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2138,13 +2138,13 @@ pulumi.Output<GetVolumeGroupSapHanaResult> getVolumeGroupSapHanaOutput(
 ///   }
 /// }
 ///
-/// data "azure_netapp_getvolumequotarule" "example" {
+/// data "azure_netapp_volume_quota_rule" "example" {
 ///   name      = "exampleQuotaRule"
 ///   volume_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.NetApp/netAppAccounts/account1/capacityPools/pool1/volumes/vol1"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_netapp_getvolumequotarule.example.id
+///   value = data.azure_netapp_volume_quota_rule.example.id
 /// }
 /// ```
 /// ```java

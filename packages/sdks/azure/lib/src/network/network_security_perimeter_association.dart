@@ -160,7 +160,7 @@ import 'network_security_perimeter_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -168,29 +168,44 @@ import 'network_security_perimeter_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
 ///   location            = "West Europe"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_network_networksecurityperimeter" "example" {
+/// resource "azure_network_network_security_perimeter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   location            = "West Europe"
 /// }
-/// resource "azure_network_networksecurityperimeterprofile" "example" {
+/// resource "azure_network_network_security_perimeter_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "example"
-///   network_security_perimeter_id = azure_network_networksecurityperimeter.example.id
+///   network_security_perimeter_id = azure_network_network_security_perimeter.example.id
 /// }
-/// resource "azure_network_networksecurityperimeterassociation" "example" {
+/// resource "azure_network_network_security_perimeter_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                  = "example"
 ///   access_mode                           = "Enforced"
-///   network_security_perimeter_profile_id = azure_network_networksecurityperimeterprofile.example.id
-///   resource_id                           = azure_operationalinsights_analyticsworkspace.example.id
+///   network_security_perimeter_profile_id = azure_network_network_security_perimeter_profile.example.id
+///   resource_id                           = azure_operationalinsights_analytics_workspace.example.id
 /// }
 /// ```
 /// ```java
@@ -331,7 +346,7 @@ class NetworkSecurityPerimeterAssociation extends pulumi.CustomResource {
           'azure:network/networkSecurityPerimeterAssociation:NetworkSecurityPerimeterAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accessMode = registerOutput<String>('accessMode');
     this.name = registerOutput<String>('name');

@@ -111,7 +111,7 @@ class GetAutonomousDatabaseBackupsAutonomousDatabaseBackup {
       location: pulumi.Input.fromValue(map['location'] as String),
       provisioningState: pulumi.Input.fromValue(map['provisioningState'] as String),
       restorable: pulumi.Input.fromValue(map['restorable'] as bool),
-      retentionPeriodInDays: pulumi.Input.fromValue((map['retentionPeriodInDays'] as num).toInt()),
+      retentionPeriodInDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionPeriodInDays'])),
       timeAvailableTil: pulumi.Input.fromValue(map['timeAvailableTil'] as String),
       timeEnded: pulumi.Input.fromValue(map['timeEnded'] as String),
       timeStarted: pulumi.Input.fromValue(map['timeStarted'] as String),

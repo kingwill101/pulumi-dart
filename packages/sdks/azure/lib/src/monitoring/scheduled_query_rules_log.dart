@@ -189,7 +189,7 @@ import 'scheduled_query_rules_log_state.dart';
 ///                 MetricName = "UsedCapacity",
 ///                 Aggregation = "Average",
 ///                 Operator = "LessThan",
-///                 Threshold = 10,
+///                 Threshold = 10.0,
 ///             },
 ///         },
 ///         Actions = new[]
@@ -337,7 +337,7 @@ import 'scheduled_query_rules_log_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -345,20 +345,29 @@ import 'scheduled_query_rules_log_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "monitoring-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "loganalytics"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 ///   retention_in_days   = 30
 /// }
-/// resource "azure_monitoring_actiongroup" "example" {
+/// resource "azure_monitoring_action_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-actiongroup"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   short_name          = "exampleact"
 ///   webhook_receivers {
 ///     name        = "callmyapi"
@@ -366,10 +375,13 @@ import 'scheduled_query_rules_log_state.dart';
 ///   }
 /// }
 /// # Example: Creates alert using the new Scheduled Query Rules metric
-/// resource "azure_monitoring_metricalert" "example" {
+/// resource "azure_monitoring_metric_alert" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-metricalert"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   scopes              = [azure_operationalinsights_analyticsworkspace.example.id]
+///   resource_group_name = azure_core_resource_group.example.name
+///   scopes              = [azure_operationalinsights_analytics_workspace.example.id]
 ///   description         = "Action will be triggered when Average_% Idle Time metric is less than 10."
 ///   frequency           = "PT1M"
 ///   window_size         = "PT5M"
@@ -381,23 +393,26 @@ import 'scheduled_query_rules_log_state.dart';
 ///     threshold        = 10
 ///   }
 ///   actions {
-///     action_group_id = azure_monitoring_actiongroup.example.id
+///     action_group_id = azure_monitoring_action_group.example.id
 ///   }
 /// }
 /// # Example: LogToMetric Action for the named Computer
-/// resource "azure_monitoring_scheduledqueryruleslog" "example" {
+/// resource "azure_monitoring_scheduled_query_rules_log" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   criteria = {
 ///     metric_name = "Average_% Idle Time"
 ///     dimensions = [{
-///       "name"     = "Computer"
-///       "operator" = "Include"
-///       "values"   = ["targetVM"]
+///       name     = "Computer"
+///       operator = "Include"
+///       values   = ["targetVM"]
 ///     }]
 ///   }
-///   data_source_id = azure_operationalinsights_analyticsworkspace.example.id
+///   data_source_id = azure_operationalinsights_analytics_workspace.example.id
 ///   description    = "Scheduled query rule LogToMetric example"
 ///   enabled        = true
 ///   tags = {
@@ -619,7 +634,7 @@ class ScheduledQueryRulesLog extends pulumi.CustomResource {
           'azure:monitoring/scheduledQueryRulesLog:ScheduledQueryRulesLog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     criteria = registerOutput<ScheduledQueryRulesLogCriteria>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesLogCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -402,7 +402,7 @@ import 'custom_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -413,15 +413,24 @@ import 'custom_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_dns_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "contoso.com"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_dns_txtrecord" "example" {
+/// resource "azure_dns_txt_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "asuid.example"
 ///   resource_group_name = azure_dns_zone.example.resource_group_name
 ///   zone_name           = azure_dns_zone.example.name
@@ -430,36 +439,48 @@ import 'custom_domain_state.dart';
 ///     value = azure_containerapp_app.example.custom_domain_verification_id
 ///   }
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 ///   retention_in_days   = 30
 /// }
 /// resource "azure_containerapp_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "Example-Environment"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
+///   log_analytics_workspace_id = azure_operationalinsights_analytics_workspace.example.id
 /// }
-/// resource "azure_containerapp_environmentcertificate" "example" {
+/// resource "azure_containerapp_environment_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "myfriendlyname"
 ///   container_app_environment_id = azure_containerapp_environment.example.id
 ///   certificate_blob             = filebase64("path/to/certificate_file.pfx")
 ///   certificate_password         = "$3cretSqu1rreL"
 /// }
 /// resource "azure_containerapp_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-app"
 ///   container_app_environment_id = azure_containerapp_environment.example.id
-///   resource_group_name          = azure_core_resourcegroup.example.name
+///   resource_group_name          = azure_core_resource_group.example.name
 ///   revision_mode                = "Single"
 ///   template = {
 ///     containers = [{
-///       "name"   = "examplecontainerapp"
-///       "image"  = "mcr.microsoft.com/k8se/quickstart:latest"
-///       "cpu"    = 0.25
-///       "memory" = "0.5Gi"
+///       name   = "examplecontainerapp"
+///       image  = "mcr.microsoft.com/k8se/quickstart:latest"
+///       cpu    = 0.25
+///       memory = "0.5Gi"
 ///     }]
 ///   }
 ///   ingress = {
@@ -468,15 +489,18 @@ import 'custom_domain_state.dart';
 ///     target_port                = 5000
 ///     transport                  = "http"
 ///     traffic_weights = [{
-///       "latestRevision" = true
-///       "percentage"     = 100
+///       latest_revision = true
+///       percentage      = 100
 ///     }]
 ///   }
 /// }
-/// resource "azure_containerapp_customdomain" "example" {
+/// resource "azure_containerapp_custom_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                     = trimsuffix(trimprefix(api.fqdn, "asuid."), ".")
 ///   container_app_id                         = azure_containerapp_app.example.id
-///   container_app_environment_certificate_id = azure_containerapp_environmentcertificate.example.id
+///   container_app_environment_certificate_id = azure_containerapp_environment_certificate.example.id
 ///   certificate_binding_type                 = "SniEnabled"
 /// }
 /// ```
@@ -596,7 +620,7 @@ import 'custom_domain_state.dart';
 ///         var exampleCustomDomain = new CustomDomain("exampleCustomDomain", CustomDomainArgs.builder()
 ///             .name(StdFunctions.trimsuffix(TrimsuffixArgs.builder()
 ///                 .input(StdFunctions.trimprefix(TrimprefixArgs.builder()
-///                     .input(api.fqdn())
+///                     .input(api.get("fqdn"))
 ///                     .prefix("asuid.")
 ///                     .build()).result())
 ///                 .suffix(".")
@@ -795,7 +819,7 @@ import 'custom_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -806,7 +830,10 @@ import 'custom_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_containerapp_customdomain" "example" {
+/// resource "azure_containerapp_custom_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = trimsuffix(trimprefix(api.fqdn, "asuid."), ".")
 ///   container_app_id = exampleAzurermContainerApp.id
 /// }
@@ -838,12 +865,12 @@ import 'custom_domain_state.dart';
 ///         var example = new CustomDomain("example", CustomDomainArgs.builder()
 ///             .name(StdFunctions.trimsuffix(TrimsuffixArgs.builder()
 ///                 .input(StdFunctions.trimprefix(TrimprefixArgs.builder()
-///                     .input(api.fqdn())
+///                     .input(api.get("fqdn"))
 ///                     .prefix("asuid.")
 ///                     .build()).result())
 ///                 .suffix(".")
 ///                 .build()).result())
-///             .containerAppId(exampleAzurermContainerApp.id())
+///             .containerAppId(exampleAzurermContainerApp.get("id"))
 ///             .build());
 ///
 ///     }
@@ -915,7 +942,7 @@ class CustomDomain extends pulumi.CustomResource {
           'azure:containerapp/customDomain:CustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     certificateBindingType = registerOutput<String?>('certificateBindingType');
     containerAppEnvironmentCertificateId = registerOutput<String?>('containerAppEnvironmentCertificateId');

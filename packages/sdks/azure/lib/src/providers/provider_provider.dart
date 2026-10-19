@@ -60,7 +60,7 @@ class ProviderProvider extends pulumi.ProviderResource {
           'azure',
           name,
           pulumi.Input.mapToInputs((args ?? ProviderArgs()).toMap()),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['clientCertificate', 'clientCertificatePassword', 'clientCertificatePath', 'clientId', 'clientIdFilePath', 'clientSecret', 'clientSecretFilePath', 'oidcRequestToken', 'oidcToken', 'oidcTokenFilePath', 'subscriptionId', 'tenantId'],
         ) {
     adoPipelineServiceConnectionId = registerOutput<String?>('adoPipelineServiceConnectionId');

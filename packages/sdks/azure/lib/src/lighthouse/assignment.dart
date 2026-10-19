@@ -71,7 +71,7 @@ import 'assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -79,11 +79,14 @@ import 'assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "primary" {
+/// data "azure_core_subscription" "primary" {
 /// }
 ///
 /// resource "azure_lighthouse_assignment" "example" {
-///   scope                    = data.azure_core_getsubscription.primary.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                    = data.azure_core_subscription.primary.id
 ///   lighthouse_definition_id = "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.ManagedServices/registrationDefinitions/00000000-0000-0000-0000-000000000000"
 /// }
 /// ```
@@ -170,7 +173,7 @@ class Assignment extends pulumi.CustomResource {
           'azure:lighthouse/assignment:Assignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     lighthouseDefinitionId = registerOutput<String>('lighthouseDefinitionId');
     this.name = registerOutput<String>('name');

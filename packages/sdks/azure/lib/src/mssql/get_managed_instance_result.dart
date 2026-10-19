@@ -147,11 +147,11 @@ class GetManagedInstanceResult {
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       skuName: (() { final guardedValue = map['skuName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      storageSizeInGb: (() { final guardedValue = map['storageSizeInGb']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      storageSizeInGb: (() { final guardedValue = map['storageSizeInGb']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       timezoneId: (() { final guardedValue = map['timezoneId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      vcores: (() { final guardedValue = map['vcores']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      vcores: (() { final guardedValue = map['vcores']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

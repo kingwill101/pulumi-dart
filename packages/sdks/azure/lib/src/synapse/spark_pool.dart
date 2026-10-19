@@ -297,7 +297,7 @@ import 'spark_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -305,35 +305,50 @@ import 'spark_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorageacc"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 ///   account_kind             = "StorageV2"
 ///   is_hns_enabled           = "true"
 /// }
-/// resource "azure_storage_datalakegen2filesystem" "example" {
+/// resource "azure_storage_data_lake_gen2_filesystem" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   storage_account_id = azure_storage_account.example.id
 /// }
 /// resource "azure_synapse_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                 = "example"
-///   resource_group_name                  = azure_core_resourcegroup.example.name
-///   location                             = azure_core_resourcegroup.example.location
-///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   resource_group_name                  = azure_core_resource_group.example.name
+///   location                             = azure_core_resource_group.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_data_lake_gen2_filesystem.example.id
 ///   sql_administrator_login              = "sqladminuser"
 ///   sql_administrator_login_password     = "H@Sh1CoR3!"
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_synapse_sparkpool" "example" {
+/// resource "azure_synapse_spark_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
 ///   synapse_workspace_id = azure_synapse_workspace.example.id
 ///   node_size_family     = "MemoryOptimized"
@@ -347,11 +362,18 @@ import 'spark_pool_state.dart';
 ///     delay_in_minutes = 15
 ///   }
 ///   library_requirement = {
-///     content  = "appnope==0.1.0\nbeautifulsoup4==4.6.3\n"
+///     content  = <<EOF
+/// appnope==0.1.0
+/// beautifulsoup4==4.6.3
+/// EOF
+///
 ///     filename = "requirements.txt"
 ///   }
 ///   spark_config = {
-///     content  = "spark.shuffle.spill                true\n"
+///     content  = <<EOF
+/// spark.shuffle.spill                true
+/// EOF
+///
 ///     filename = "config.txt"
 ///   }
 ///   spark_version = 3.5
@@ -574,7 +596,7 @@ class SparkPool extends pulumi.CustomResource {
           'azure:synapse/sparkPool:SparkPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     autoPause = registerOutput<SparkPoolAutoPause?>('autoPause', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolAutoPause.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoScale = registerOutput<SparkPoolAutoScale?>('autoScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkPoolAutoScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });

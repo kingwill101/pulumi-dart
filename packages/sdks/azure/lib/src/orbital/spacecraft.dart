@@ -92,8 +92,8 @@ import 'spacecraft_state.dart';
 ///         {
 ///             new Azure.Orbital.Inputs.SpacecraftLinkArgs
 ///             {
-///                 BandwidthMhz = 30,
-///                 CenterFrequencyMhz = 2050,
+///                 BandwidthMhz = 30.0,
+///                 CenterFrequencyMhz = 2050.0,
 ///                 Direction = "Uplink",
 ///                 Polarization = "LHCP",
 ///                 Name = "examplename",
@@ -162,7 +162,7 @@ import 'spacecraft_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -170,13 +170,19 @@ import 'spacecraft_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rg-example"
 ///   location = "West Europe"
 /// }
 /// resource "azure_orbital_spacecraft" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-spacecraft"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   location            = "westeurope"
 ///   norad_id            = "12345"
 ///   links {
@@ -318,7 +324,7 @@ class Spacecraft extends pulumi.CustomResource {
           'azure:orbital/spacecraft:Spacecraft',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     links = registerOutput<List<SpacecraftLink>>('links', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SpacecraftLink>(guardedValue, (value) => SpacecraftLink.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');

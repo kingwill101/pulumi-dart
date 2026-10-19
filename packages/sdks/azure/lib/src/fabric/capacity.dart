@@ -135,7 +135,7 @@ import 'capacity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -143,18 +143,24 @@ import 'capacity_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_fabric_capacity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "exampleffc"
-///   resource_group_name    = azure_core_resourcegroup.example.name
+///   resource_group_name    = azure_core_resource_group.example.name
 ///   location               = "West Europe"
-///   administration_members = [data.azure_core_getclientconfig.current.object_id]
+///   administration_members = [data.azure_core_client_config.current.object_id]
 ///   sku = {
 ///     name = "F32"
 ///     tier = "Fabric"
@@ -282,7 +288,7 @@ class Capacity extends pulumi.CustomResource {
           'azure:fabric/capacity:Capacity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     administrationMembers = registerOutput<List<String>?>('administrationMembers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');

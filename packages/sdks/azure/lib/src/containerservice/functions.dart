@@ -90,7 +90,7 @@ import 'get_registry_token_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -98,14 +98,14 @@ import 'get_registry_token_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_containerservice_getclusternodepool" "example" {
+/// data "azure_containerservice_cluster_node_pool" "example" {
 ///   name                    = "existing"
 ///   kubernetes_cluster_name = "existing-cluster"
 ///   resource_group_name     = "existing-resource-group"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_containerservice_getclusternodepool.example.id
+///   value = data.azure_containerservice_cluster_node_pool.example.id
 /// }
 /// ```
 /// ```java
@@ -251,7 +251,7 @@ pulumi.Output<GetClusterNodePoolResult> getClusterNodePoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -259,13 +259,13 @@ pulumi.Output<GetClusterNodePoolResult> getClusterNodePoolOutput(
 ///   }
 /// }
 ///
-/// data "azure_containerservice_getfleetmanager" "example" {
+/// data "azure_containerservice_fleet_manager" "example" {
 ///   name                = "example"
 ///   resource_group_name = "example-resource-group"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_containerservice_getfleetmanager.example.id
+///   value = data.azure_containerservice_fleet_manager.example.id
 /// }
 /// ```
 /// ```java
@@ -417,7 +417,7 @@ pulumi.Output<GetFleetManagerResult> getFleetManagerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -425,19 +425,19 @@ pulumi.Output<GetFleetManagerResult> getFleetManagerOutput(
 ///   }
 /// }
 ///
-/// data "azure_containerservice_getgroup" "example" {
+/// data "azure_containerservice_group" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_containerservice_getgroup.example.id
+///   value = data.azure_containerservice_group.example.id
 /// }
 /// output "ipAddress" {
-///   value = data.azure_containerservice_getgroup.example.ip_address
+///   value = data.azure_containerservice_group.example.ip_address
 /// }
 /// output "fqdn" {
-///   value = data.azure_containerservice_getgroup.example.fqdn
+///   value = data.azure_containerservice_group.example.fqdn
 /// }
 /// ```
 /// ```java
@@ -578,7 +578,7 @@ pulumi.Output<GetGroupResult> getGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -586,7 +586,7 @@ pulumi.Output<GetGroupResult> getGroupOutput(
 ///   }
 /// }
 ///
-/// data "azure_containerservice_getkubernetescluster" "example" {
+/// data "azure_containerservice_kubernetes_cluster" "example" {
 ///   name                = "myakscluster"
 ///   resource_group_name = "my-example-resource-group"
 /// }
@@ -722,7 +722,7 @@ pulumi.Output<GetKubernetesClusterResult> getKubernetesClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -730,7 +730,7 @@ pulumi.Output<GetKubernetesClusterResult> getKubernetesClusterOutput(
 ///   }
 /// }
 ///
-/// data "azure_containerservice_getkubernetesnodepoolsnapshot" "example" {
+/// data "azure_containerservice_kubernetes_node_pool_snapshot" "example" {
 ///   name                = "example"
 ///   resource_group_name = "example-resources"
 /// }
@@ -873,7 +873,7 @@ pulumi.Output<GetKubernetesNodePoolSnapshotResult> getKubernetesNodePoolSnapshot
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -881,15 +881,15 @@ pulumi.Output<GetKubernetesNodePoolSnapshotResult> getKubernetesNodePoolSnapshot
 ///   }
 /// }
 ///
-/// data "azure_containerservice_getkubernetesserviceversions" "current" {
+/// data "azure_containerservice_kubernetes_service_versions" "current" {
 ///   location = "West Europe"
 /// }
 ///
 /// output "versions" {
-///   value = data.azure_containerservice_getkubernetesserviceversions.current.versions
+///   value = data.azure_containerservice_kubernetes_service_versions.current.versions
 /// }
 /// output "latestVersion" {
-///   value = data.azure_containerservice_getkubernetesserviceversions.current.latest_version
+///   value = data.azure_containerservice_kubernetes_service_versions.current.latest_version
 /// }
 /// ```
 /// ```java
@@ -1033,7 +1033,7 @@ pulumi.Output<GetKubernetesServiceVersionsResult> getKubernetesServiceVersionsOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1041,13 +1041,13 @@ pulumi.Output<GetKubernetesServiceVersionsResult> getKubernetesServiceVersionsOu
 ///   }
 /// }
 ///
-/// data "azure_containerservice_getregistry" "example" {
+/// data "azure_containerservice_registry" "example" {
 ///   name                = "testacr"
 ///   resource_group_name = "test"
 /// }
 ///
 /// output "loginServer" {
-///   value = data.azure_containerservice_getregistry.example.login_server
+///   value = data.azure_containerservice_registry.example.login_server
 /// }
 /// ```
 /// ```java
@@ -1131,7 +1131,7 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1139,7 +1139,7 @@ pulumi.Output<GetRegistryResult> getRegistryOutput(
 ///   }
 /// }
 ///
-/// data "azure_containerservice_getregistry" "example" {
+/// data "azure_containerservice_registry" "example" {
 ///   name                  = "testacr"
 ///   container_registry_id = "test"
 /// }
@@ -1263,7 +1263,7 @@ pulumi.Output<GetRegistryCacheRuleResult> getRegistryCacheRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1271,14 +1271,14 @@ pulumi.Output<GetRegistryCacheRuleResult> getRegistryCacheRuleOutput(
 ///   }
 /// }
 ///
-/// data "azure_containerservice_getregistryscopemap" "example" {
+/// data "azure_containerservice_registry_scope_map" "example" {
 ///   name                    = "example-scope-map"
 ///   resource_group_name     = "example-resource-group"
 ///   container_registry_name = "example-registry"
 /// }
 ///
 /// output "actions" {
-///   value = data.azure_containerservice_getregistryscopemap.example.actions
+///   value = data.azure_containerservice_registry_scope_map.example.actions
 /// }
 /// ```
 /// ```java
@@ -1428,7 +1428,7 @@ pulumi.Output<GetRegistryScopeMapResult> getRegistryScopeMapOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1436,14 +1436,14 @@ pulumi.Output<GetRegistryScopeMapResult> getRegistryScopeMapOutput(
 ///   }
 /// }
 ///
-/// data "azure_containerservice_getregistrytoken" "example" {
+/// data "azure_containerservice_registry_token" "example" {
 ///   name                    = "exampletoken"
 ///   resource_group_name     = "example-resource-group"
 ///   container_registry_name = "example-registry"
 /// }
 ///
 /// output "scopeMapId" {
-///   value = data.azure_containerservice_getregistrytoken.example.scope_map_id
+///   value = data.azure_containerservice_registry_token.example.scope_map_id
 /// }
 /// ```
 /// ```java

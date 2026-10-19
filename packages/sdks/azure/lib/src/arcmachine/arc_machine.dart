@@ -118,7 +118,7 @@ import 'arc_machine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -126,14 +126,20 @@ import 'arc_machine_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_arcmachine_arcmachine" "example" {
+/// resource "azure_arcmachine_arc_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-arcmachine"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   kind                = "SCVMM"
 ///   identity = {
 ///     type = "SystemAssigned"
@@ -248,7 +254,7 @@ class ArcMachine extends pulumi.CustomResource {
           'azure:arcmachine/arcMachine:ArcMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     identity = registerOutput<ArcMachineIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ArcMachineIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kind = registerOutput<String>('kind');

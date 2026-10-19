@@ -68,7 +68,7 @@ import 'get_services_account_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_services_account_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_graph_getservicesaccount" "example" {
+/// data "azure_graph_services_account" "example" {
 ///   name                = "example-graph-services-account"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "applicationId" {
-///   value = data.azure_graph_getservicesaccount.example.application_id
+///   value = data.azure_graph_services_account.example.application_id
 /// }
 /// ```
 /// ```java

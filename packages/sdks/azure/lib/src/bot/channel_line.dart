@@ -152,7 +152,7 @@ import 'channel_line_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -160,24 +160,33 @@ import 'channel_line_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_bot_channelsregistration" "example" {
+/// resource "azure_bot_channels_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-bcr"
 ///   location            = "global"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "F0"
-///   microsoft_app_id    = data.azure_core_getclientconfig.current.client_id
+///   microsoft_app_id    = data.azure_core_client_config.current.client_id
 /// }
-/// resource "azure_bot_channelline" "example" {
-///   bot_name            = azure_bot_channelsregistration.example.name
-///   location            = azure_bot_channelsregistration.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+/// resource "azure_bot_channel_line" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bot_name            = azure_bot_channels_registration.example.name
+///   location            = azure_bot_channels_registration.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   line_channels {
 ///     access_token = "asdfdsdfTYUIOIoj1231hkjhk"
 ///     secret       = "aagfdgfd123567"
@@ -302,7 +311,7 @@ class ChannelLine extends pulumi.CustomResource {
           'azure:bot/channelLine:ChannelLine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     botName = registerOutput<String>('botName');
     lineChannels = registerOutput<List<ChannelLineLineChannel>>('lineChannels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ChannelLineLineChannel>(guardedValue, (value) => ChannelLineLineChannel.fromMap((value as Map).cast<String, dynamic>())); });

@@ -388,7 +388,7 @@ import 'event_grid_data_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -396,56 +396,80 @@ import 'event_grid_data_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_kusto_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplekustocluster"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     name     = "Standard_D13_v2"
 ///     capacity = 2
 ///   }
 /// }
 /// resource "azure_kusto_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-kusto-database"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   cluster_name        = azure_kusto_cluster.example.name
 ///   hot_cache_period    = "P7D"
 ///   soft_delete_period  = "P31D"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "storageaccountname"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "GRS"
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "example" {
+/// resource "azure_eventhub_event_hub_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "eventhubnamespace-example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_eventhub_eventhub" "example" {
+/// resource "azure_eventhub_event_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "eventhub-example"
-///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   namespace_id      = azure_eventhub_event_hub_namespace.example.id
 ///   partition_count   = 1
 ///   message_retention = 1
 /// }
-/// resource "azure_eventhub_consumergroup" "example" {
+/// resource "azure_eventhub_consumer_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "consumergroup-example"
-///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
-///   eventhub_name       = azure_eventhub_eventhub.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   namespace_name      = azure_eventhub_event_hub_namespace.example.name
+///   eventhub_name       = azure_eventhub_event_hub.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_eventgrid_eventsubscription" "example" {
+/// resource "azure_eventgrid_event_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "eventgrid-example"
 ///   scope                 = azure_storage_account.example.id
-///   eventhub_endpoint_id  = azure_eventhub_eventhub.example.id
+///   eventhub_endpoint_id  = azure_eventhub_event_hub.example.id
 ///   event_delivery_schema = "EventGridSchema"
 ///   included_event_types  = ["Microsoft.Storage.BlobCreated", "Microsoft.Storage.BlobRenamed"]
 ///   retry_policy = {
@@ -453,16 +477,19 @@ import 'event_grid_data_connection_state.dart';
 ///     max_delivery_attempts = 10
 ///   }
 /// }
-/// resource "azure_kusto_eventgriddataconnection" "example" {
-///   depends_on                   = [azure_eventgrid_eventsubscription.example]
+/// resource "azure_kusto_event_grid_data_connection" "example" {
+///   depends_on = [azure_eventgrid_event_subscription.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "my-kusto-eventgrid-data-connection"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   cluster_name                 = azure_kusto_cluster.example.name
 ///   database_name                = azure_kusto_database.example.name
 ///   storage_account_id           = azure_storage_account.example.id
-///   eventhub_id                  = azure_eventhub_eventhub.example.id
-///   eventhub_consumer_group_name = azure_eventhub_consumergroup.example.name
+///   eventhub_id                  = azure_eventhub_event_hub.example.id
+///   eventhub_consumer_group_name = azure_eventhub_consumer_group.example.name
 ///   table_name                   = "my-table"
 ///   mapping_rule_name            = "my-table-mapping"
 ///   data_format                  = "JSON"
@@ -751,7 +778,7 @@ class EventGridDataConnection extends pulumi.CustomResource {
           'azure:kusto/eventGridDataConnection:EventGridDataConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     blobStorageEventType = registerOutput<String?>('blobStorageEventType');
     clusterName = registerOutput<String>('clusterName');

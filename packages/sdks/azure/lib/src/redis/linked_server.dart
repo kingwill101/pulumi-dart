@@ -237,7 +237,7 @@ import 'linked_server_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -245,14 +245,20 @@ import 'linked_server_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example-primary" {
+/// resource "azure_core_resource_group" "example-primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources-primary"
 ///   location = "East US"
 /// }
 /// resource "azure_redis_cache" "example-primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cache1"
-///   location            = azure_core_resourcegroup.example-primary.location
-///   resource_group_name = azure_core_resourcegroup.example-primary.name
+///   location            = azure_core_resource_group.example-primary.location
+///   resource_group_name = azure_core_resource_group.example-primary.name
 ///   capacity            = 1
 ///   family              = "P"
 ///   sku_name            = "Premium"
@@ -263,14 +269,20 @@ import 'linked_server_state.dart';
 ///     maxmemory_policy   = "allkeys-lru"
 ///   }
 /// }
-/// resource "azure_core_resourcegroup" "example-secondary" {
+/// resource "azure_core_resource_group" "example-secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources-secondary"
 ///   location = "West US"
 /// }
 /// resource "azure_redis_cache" "example-secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cache2"
-///   location            = azure_core_resourcegroup.example-secondary.location
-///   resource_group_name = azure_core_resourcegroup.example-secondary.name
+///   location            = azure_core_resource_group.example-secondary.location
+///   resource_group_name = azure_core_resource_group.example-secondary.name
 ///   capacity            = 1
 ///   family              = "P"
 ///   sku_name            = "Premium"
@@ -281,7 +293,10 @@ import 'linked_server_state.dart';
 ///     maxmemory_policy   = "allkeys-lru"
 ///   }
 /// }
-/// resource "azure_redis_linkedserver" "example-link" {
+/// resource "azure_redis_linked_server" "example-link" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   target_redis_cache_name     = azure_redis_cache.example-primary.name
 ///   resource_group_name         = azure_redis_cache.example-primary.resource_group_name
 ///   linked_redis_cache_id       = azure_redis_cache.example-secondary.id
@@ -461,7 +476,7 @@ class LinkedServer extends pulumi.CustomResource {
           'azure:redis/linkedServer:LinkedServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     geoReplicatedPrimaryHostName = registerOutput<String>('geoReplicatedPrimaryHostName');
     linkedRedisCacheId = registerOutput<String>('linkedRedisCacheId');

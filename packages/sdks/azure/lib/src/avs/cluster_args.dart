@@ -39,7 +39,7 @@ class ClusterArgs {
 
   factory ClusterArgs.fromMap(Map<String, dynamic> map) {
     return ClusterArgs(
-      clusterNodeCount: pulumi.Input.fromValue((map['clusterNodeCount'] as num).toInt()),
+      clusterNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['clusterNodeCount'])),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       skuName: pulumi.Input.fromValue(map['skuName'] as String),
       vmwareCloudId: pulumi.Input.fromValue(map['vmwareCloudId'] as String),

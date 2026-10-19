@@ -215,7 +215,7 @@ import 'network_manager_static_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -223,38 +223,53 @@ import 'network_manager_static_member_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkmanager" "example" {
+/// resource "azure_network_network_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network-manager"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   scope = {
-///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///     subscription_ids = [data.azure_core_subscription.current.id]
 ///   }
 ///   scope_accesses = ["Connectivity", "SecurityAdmin"]
 ///   description    = "example network manager"
 /// }
-/// resource "azure_network_networkmanagernetworkgroup" "example" {
+/// resource "azure_network_network_manager_network_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-group"
-///   network_manager_id = azure_network_networkmanager.example.id
+///   network_manager_id = azure_network_network_manager.example.id
 ///   description        = "example network group"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["192.168.1.0/24"]
-///   location            = azure_core_resourcegroup.example.location
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_network_networkmanagerstaticmember" "example" {
+/// resource "azure_network_network_manager_static_member" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "example-nmsm"
-///   network_group_id          = azure_network_networkmanagernetworkgroup.example.id
-///   target_virtual_network_id = azure_network_virtualnetwork.example.id
+///   network_group_id          = azure_network_network_manager_network_group.example.id
+///   target_virtual_network_id = azure_network_virtual_network.example.id
 /// }
 /// ```
 /// ```java
@@ -422,7 +437,7 @@ class NetworkManagerStaticMember extends pulumi.CustomResource {
           'azure:network/networkManagerStaticMember:NetworkManagerStaticMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     networkGroupId = registerOutput<String>('networkGroupId');

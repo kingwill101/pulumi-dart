@@ -86,19 +86,19 @@ class GetResult {
 
   factory GetResult.fromMap(Map<String, dynamic> map) {
     return GetResult(
-      baseSizeInTib: (() { final guardedValue = map['baseSizeInTib']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      extendedSizeInTib: (() { final guardedValue = map['extendedSizeInTib']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      baseSizeInTib: (() { final guardedValue = map['baseSizeInTib']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      extendedSizeInTib: (() { final guardedValue = map['extendedSizeInTib']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       skus: (() { final guardedValue = map['skus']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSkus>(guardedValue, (value) => GetSkus.fromMap((value as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      totalIops: (() { final guardedValue = map['totalIops']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      totalMbps: (() { final guardedValue = map['totalMbps']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      totalSizeInTib: (() { final guardedValue = map['totalSizeInTib']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      totalVolumeSizeInGib: (() { final guardedValue = map['totalVolumeSizeInGib']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      volumeGroupCount: (() { final guardedValue = map['volumeGroupCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      totalIops: (() { final guardedValue = map['totalIops']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      totalMbps: (() { final guardedValue = map['totalMbps']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      totalSizeInTib: (() { final guardedValue = map['totalSizeInTib']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      totalVolumeSizeInGib: (() { final guardedValue = map['totalVolumeSizeInGib']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      volumeGroupCount: (() { final guardedValue = map['volumeGroupCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }

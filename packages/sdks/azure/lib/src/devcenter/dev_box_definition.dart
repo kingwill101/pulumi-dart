@@ -136,7 +136,7 @@ import 'dev_box_definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -144,23 +144,32 @@ import 'dev_box_definition_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_devcenter_devcenter" "example" {
+/// resource "azure_devcenter_dev_center" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-dc"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_devcenter_devboxdefinition" "example" {
+/// resource "azure_devcenter_dev_box_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-dcet"
-///   location           = azure_core_resourcegroup.example.location
-///   dev_center_id      = azure_devcenter_devcenter.example.id
-///   image_reference_id ="${azure_devcenter_devcenter.example.id}/galleries/default/images/microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win10-m365-gen2"
+///   location           = azure_core_resource_group.example.location
+///   dev_center_id      = azure_devcenter_dev_center.example.id
+///   image_reference_id ="${azure_devcenter_dev_center.example.id}/galleries/default/images/microsoftvisualstudio_visualstudioplustools_vs-2022-ent-general-win10-m365-gen2"
 ///   sku_name           = "general_i_8c32gb256ssd_v2"
 /// }
 /// ```
@@ -287,7 +296,7 @@ class DevBoxDefinition extends pulumi.CustomResource {
           'azure:devcenter/devBoxDefinition:DevBoxDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     devCenterId = registerOutput<String>('devCenterId');
     hibernateSupportEnabled = registerOutput<bool?>('hibernateSupportEnabled');

@@ -103,7 +103,7 @@ import 'managed_hardware_security_module_key_rotation_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -111,15 +111,21 @@ import 'managed_hardware_security_module_key_rotation_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_keyvault_managedhardwaresecuritymodulekey" "example" {
+/// resource "azure_keyvault_managed_hardware_security_module_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example-key"
 ///   managed_hsm_id = exampleAzurermKeyVaultManagedHardwareSecurityModule.id
 ///   key_type       = "EC-HSM"
 ///   curve          = "P-521"
 ///   key_opts       = ["sign"]
 /// }
-/// resource "azure_keyvault_managedhardwaresecuritymodulekeyrotationpolicy" "example" {
-///   managed_hsm_key_id = azure_keyvault_managedhardwaresecuritymodulekey.example.id
+/// resource "azure_keyvault_managed_hardware_security_module_key_rotation_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   managed_hsm_key_id = azure_keyvault_managed_hardware_security_module_key.example.id
 ///   expire_after       = "P60D"
 ///   time_before_expiry = "P30D"
 /// }
@@ -149,7 +155,7 @@ import 'managed_hardware_security_module_key_rotation_policy_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ManagedHardwareSecurityModuleKey("example", ManagedHardwareSecurityModuleKeyArgs.builder()
 ///             .name("example-key")
-///             .managedHsmId(exampleAzurermKeyVaultManagedHardwareSecurityModule.id())
+///             .managedHsmId(exampleAzurermKeyVaultManagedHardwareSecurityModule.get("id"))
 ///             .keyType("EC-HSM")
 ///             .curve("P-521")
 ///             .keyOpts("sign")
@@ -214,7 +220,7 @@ class ManagedHardwareSecurityModuleKeyRotationPolicy extends pulumi.CustomResour
           'azure:keyvault/managedHardwareSecurityModuleKeyRotationPolicy:ManagedHardwareSecurityModuleKeyRotationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     expireAfter = registerOutput<String>('expireAfter');
     managedHsmKeyId = registerOutput<String>('managedHsmKeyId');

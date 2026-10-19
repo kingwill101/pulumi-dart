@@ -222,7 +222,7 @@ import 'security_device_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -230,30 +230,42 @@ import 'security_device_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_iot_iothub" "example" {
+/// resource "azure_iot_io_t_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-IoTHub"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku = {
 ///     name     = "S1"
 ///     capacity = "1"
 ///   }
 /// }
-/// resource "azure_iot_securitysolution" "example" {
+/// resource "azure_iot_security_solution" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-Iot-Security-Solution"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   display_name        = "Iot Security Solution"
-///   iothub_ids          = [azure_iot_iothub.example.id]
+///   iothub_ids          = [azure_iot_io_t_hub.example.id]
 /// }
-/// resource "azure_iot_securitydevicegroup" "example" {
-///   depends_on = [azure_iot_securitysolution.example]
-///   name       = "example-device-security-group"
-///   iothub_id  = azure_iot_iothub.example.id
+/// resource "azure_iot_security_device_group" "example" {
+///   depends_on = [azure_iot_security_solution.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name      = "example-device-security-group"
+///   iothub_id = azure_iot_io_t_hub.example.id
 ///   allow_rule = {
 ///     connection_to_ips_not_alloweds = ["10.0.0.0/24"]
 ///   }
@@ -414,7 +426,7 @@ class SecurityDeviceGroup extends pulumi.CustomResource {
           'azure:iot/securityDeviceGroup:SecurityDeviceGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     allowRule = registerOutput<SecurityDeviceGroupAllowRule?>('allowRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecurityDeviceGroupAllowRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     iothubId = registerOutput<String>('iothubId');

@@ -69,11 +69,11 @@ class GetApplicationGatewayBackend {
       hostName: pulumi.Input.fromValue(map['hostName'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       probeId: pulumi.Input.fromValue(map['probeId'] as String),
       probeName: pulumi.Input.fromValue(map['probeName'] as String),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      timeoutInSeconds: pulumi.Input.fromValue((map['timeoutInSeconds'] as num).toInt()),
+      timeoutInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeoutInSeconds'])),
       trustedRootCertificateNames: pulumi.Input.fromValue((map['trustedRootCertificateNames'] as List).cast<String>()),
     );
   }

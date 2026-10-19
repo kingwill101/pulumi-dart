@@ -115,7 +115,7 @@ import 'managed_disk_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -123,14 +123,20 @@ import 'managed_disk_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_compute_manageddisk" "example" {
+/// resource "azure_compute_managed_disk" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "acctestmd"
-///   location             = azure_core_resourcegroup.example.location
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resource_group.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   storage_account_type = "Standard_LRS"
 ///   create_option        = "Empty"
 ///   disk_size_gb         = "1"
@@ -364,7 +370,7 @@ import 'managed_disk_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -372,14 +378,20 @@ import 'managed_disk_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_compute_manageddisk" "source" {
+/// resource "azure_compute_managed_disk" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "acctestmd1"
-///   location             = azure_core_resourcegroup.example.location
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resource_group.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   storage_account_type = "Standard_LRS"
 ///   create_option        = "Empty"
 ///   disk_size_gb         = "1"
@@ -387,13 +399,16 @@ import 'managed_disk_state.dart';
 ///     "environment" = "staging"
 ///   }
 /// }
-/// resource "azure_compute_manageddisk" "copy" {
+/// resource "azure_compute_managed_disk" "copy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "acctestmd2"
-///   location             = azure_core_resourcegroup.example.location
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resource_group.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   storage_account_type = "Standard_LRS"
 ///   create_option        = "Copy"
-///   source_resource_id   = azure_compute_manageddisk.source.id
+///   source_resource_id   = azure_compute_managed_disk.source.id
 ///   disk_size_gb         = "1"
 ///   tags = {
 ///     "environment" = "staging"
@@ -633,7 +648,7 @@ class ManagedDisk extends pulumi.CustomResource {
           'azure:compute/managedDisk:ManagedDisk',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     createOption = registerOutput<String>('createOption');
     diskAccessId = registerOutput<String?>('diskAccessId');

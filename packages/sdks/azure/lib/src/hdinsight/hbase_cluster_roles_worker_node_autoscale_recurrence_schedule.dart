@@ -31,7 +31,7 @@ class HBaseClusterRolesWorkerNodeAutoscaleRecurrenceSchedule {
   factory HBaseClusterRolesWorkerNodeAutoscaleRecurrenceSchedule.fromMap(Map<String, dynamic> map) {
     return HBaseClusterRolesWorkerNodeAutoscaleRecurrenceSchedule(
       days: pulumi.Input.fromValue((map['days'] as List).cast<String>()),
-      targetInstanceCount: pulumi.Input.fromValue((map['targetInstanceCount'] as num).toInt()),
+      targetInstanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetInstanceCount'])),
       time: pulumi.Input.fromValue(map['time'] as String),
     );
   }

@@ -54,7 +54,7 @@ class VolumeGroupSapHanaVolumeExportPolicyRule {
       nfsv3Enabled: pulumi.Input.fromValue(map['nfsv3Enabled'] as bool),
       nfsv41Enabled: pulumi.Input.fromValue(map['nfsv41Enabled'] as bool),
       rootAccessEnabled: (() { final guardedValue = map['rootAccessEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      ruleIndex: pulumi.Input.fromValue((map['ruleIndex'] as num).toInt()),
+      ruleIndex: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ruleIndex'])),
       unixReadOnly: (() { final guardedValue = map['unixReadOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       unixReadWrite: (() { final guardedValue = map['unixReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

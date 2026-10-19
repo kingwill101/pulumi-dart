@@ -347,7 +347,7 @@ class KubernetesClusterState {
   /// }
   /// ```
   /// ```hcl
-  /// pulumi {
+  /// terraform {
   ///   required_providers {
   ///     azure = {
   ///       source = "pulumi/azure"
@@ -355,29 +355,44 @@ class KubernetesClusterState {
   ///   }
   /// }
   ///
-  /// resource "azure_core_resourcegroup" "example" {
+  /// resource "azure_core_resource_group" "example" {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   ///   name     = "example"
   ///   location = "West Europe"
   /// }
   /// resource "azure_privatedns_zone" "example" {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   ///   name                = "privatelink.eastus2.azmk8s.io"
-  ///   resource_group_name = azure_core_resourcegroup.example.name
+  ///   resource_group_name = azure_core_resource_group.example.name
   /// }
-  /// resource "azure_authorization_userassignedidentity" "example" {
+  /// resource "azure_authorization_user_assigned_identity" "example" {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   ///   name                = "aks-example-identity"
-  ///   resource_group_name = azure_core_resourcegroup.example.name
-  ///   location            = azure_core_resourcegroup.example.location
+  ///   resource_group_name = azure_core_resource_group.example.name
+  ///   location            = azure_core_resource_group.example.location
   /// }
   /// resource "azure_authorization_assignment" "example" {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   ///   scope                = azure_privatedns_zone.example.id
   ///   role_definition_name = "Private DNS Zone Contributor"
-  ///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+  ///   principal_id         = azure_authorization_user_assigned_identity.example.principal_id
   /// }
-  /// resource "azure_containerservice_kubernetescluster" "example" {
-  ///   depends_on              = [azure_authorization_assignment.example]
+  /// resource "azure_containerservice_kubernetes_cluster" "example" {
+  ///   depends_on = [azure_authorization_assignment.example]
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   ///   name                    = "aksexamplewithprivatednszone1"
-  ///   location                = azure_core_resourcegroup.example.location
-  ///   resource_group_name     = azure_core_resourcegroup.example.name
+  ///   location                = azure_core_resource_group.example.location
+  ///   resource_group_name     = azure_core_resource_group.example.name
   ///   dns_prefix              = "aksexamplednsprefix1"
   ///   private_cluster_enabled = true
   ///   private_dns_zone_id     = azure_privatedns_zone.example.id
@@ -776,7 +791,7 @@ class KubernetesClusterState {
       httpProxyConfig: (() { final guardedValue = map['httpProxyConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesClusterHttpProxyConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesClusterIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       imageCleanerEnabled: (() { final guardedValue = map['imageCleanerEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      imageCleanerIntervalHours: (() { final guardedValue = map['imageCleanerIntervalHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      imageCleanerIntervalHours: (() { final guardedValue = map['imageCleanerIntervalHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ingressApplicationGateway: (() { final guardedValue = map['ingressApplicationGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesClusterIngressApplicationGateway.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keyManagementService: (() { final guardedValue = map['keyManagementService']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesClusterKeyManagementService.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       keyVaultSecretsProvider: (() { final guardedValue = map['keyVaultSecretsProvider']; if (guardedValue == null) return null; return pulumi.Input.fromValue(KubernetesClusterKeyVaultSecretsProvider.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

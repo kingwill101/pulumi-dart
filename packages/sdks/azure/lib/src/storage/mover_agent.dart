@@ -119,7 +119,7 @@ import 'mover_agent_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -127,18 +127,27 @@ import 'mover_agent_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "East US"
 /// }
 /// resource "azure_storage_mover" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ssm"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_storage_moveragent" "example" {
+/// resource "azure_storage_mover_agent" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-sa"
 ///   storage_mover_id         = azure_storage_mover.example.id
-///   arc_virtual_machine_id   ="${azure_core_resourcegroup.example.id}/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName"
+///   arc_virtual_machine_id   ="${azure_core_resource_group.example.id}/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName"
 ///   arc_virtual_machine_uuid = "3bb2c024-eba9-4d18-9e7a-1d772fcc5fe9"
 ///   description              = "Example Agent Description"
 /// }
@@ -252,7 +261,7 @@ class MoverAgent extends pulumi.CustomResource {
           'azure:storage/moverAgent:MoverAgent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     arcVirtualMachineId = registerOutput<String>('arcVirtualMachineId');
     arcVirtualMachineUuid = registerOutput<String>('arcVirtualMachineUuid');

@@ -42,7 +42,7 @@ class ConfigurationBackup {
 
   factory ConfigurationBackup.fromMap(Map<String, dynamic> map) {
     return ConfigurationBackup(
-      instantRpRetentionRangeInDays: (() { final guardedValue = map['instantRpRetentionRangeInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      instantRpRetentionRangeInDays: (() { final guardedValue = map['instantRpRetentionRangeInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       policyName: (() { final guardedValue = map['policyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       retentionPolicy: (() { final guardedValue = map['retentionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationBackupRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       schedulePolicy: (() { final guardedValue = map['schedulePolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConfigurationBackupSchedulePolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -76,7 +76,7 @@ import 'get_agreement_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -84,7 +84,7 @@ import 'get_agreement_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_marketplace_getagreement" "barracuda" {
+/// data "azure_marketplace_agreement" "barracuda" {
 ///   publisher = "barracudanetworks"
 ///   offer     = "waf"
 ///   plan      = "hourly"

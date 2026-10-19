@@ -32,7 +32,7 @@ class FlexibleServerCluster {
   factory FlexibleServerCluster.fromMap(Map<String, dynamic> map) {
     return FlexibleServerCluster(
       defaultDatabaseName: (() { final guardedValue = map['defaultDatabaseName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      size: pulumi.Input.fromValue((map['size'] as num).toInt()),
+      size: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['size'])),
     );
   }
 }

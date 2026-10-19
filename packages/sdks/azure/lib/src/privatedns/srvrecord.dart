@@ -184,7 +184,7 @@ import 'srvrecord_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -192,17 +192,26 @@ import 'srvrecord_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_privatedns_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "contoso.com"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_privatedns_srvrecord" "example" {
+/// resource "azure_privatedns_s_r_v_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   zone_name           = azure_privatedns_zone.example.name
 ///   ttl                 = 300
 ///   records {
@@ -359,7 +368,7 @@ class SRVRecord extends pulumi.CustomResource {
           'azure:privatedns/sRVRecord:SRVRecord',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     fqdn = registerOutput<String>('fqdn');
     this.name = registerOutput<String>('name');

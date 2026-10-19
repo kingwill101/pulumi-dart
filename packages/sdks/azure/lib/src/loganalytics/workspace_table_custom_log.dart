@@ -140,7 +140,7 @@ import 'workspace_table_custom_log_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -148,20 +148,29 @@ import 'workspace_table_custom_log_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 ///   retention_in_days   = 30
 /// }
-/// resource "azure_loganalytics_workspacetablecustomlog" "example" {
+/// resource "azure_loganalytics_workspace_table_custom_log" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example_CL"
-///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+///   workspace_id = azure_operationalinsights_analytics_workspace.example.id
 ///   columns {
 ///     name = "TimeGenerated"
 ///     type = "dateTime"
@@ -301,7 +310,7 @@ class WorkspaceTableCustomLog extends pulumi.CustomResource {
           'azure:loganalytics/workspaceTableCustomLog:WorkspaceTableCustomLog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     columns = registerOutput<List<WorkspaceTableCustomLogColumn>>('columns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceTableCustomLogColumn>(guardedValue, (value) => WorkspaceTableCustomLogColumn.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');

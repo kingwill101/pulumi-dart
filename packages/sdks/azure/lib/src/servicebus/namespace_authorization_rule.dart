@@ -136,7 +136,7 @@ import 'namespace_authorization_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -144,20 +144,29 @@ import 'namespace_authorization_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-servicebus"
 ///   location = "West US"
 /// }
 /// resource "azure_servicebus_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-servicebus-namespace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 ///   tags = {
 ///     "source" = "example"
 ///   }
 /// }
-/// resource "azure_servicebus_namespaceauthorizationrule" "example" {
+/// resource "azure_servicebus_namespace_authorization_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "examplerule"
 ///   namespace_id = azure_servicebus_namespace.example.id
 ///   listen       = true
@@ -295,7 +304,7 @@ class NamespaceAuthorizationRule extends pulumi.CustomResource {
           'azure:servicebus/namespaceAuthorizationRule:NamespaceAuthorizationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['primaryConnectionString', 'primaryConnectionStringAlias', 'primaryKey', 'secondaryConnectionString', 'secondaryConnectionStringAlias', 'secondaryKey'],
         ) {
     listen = registerOutput<bool?>('listen');

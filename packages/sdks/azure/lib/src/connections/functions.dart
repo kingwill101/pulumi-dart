@@ -78,7 +78,7 @@ import 'get_managed_api_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -86,19 +86,19 @@ import 'get_managed_api_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_connections_getapiconnection" "example" {
+/// data "azure_connections_api_connection" "example" {
 ///   name                = "example-connection"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "connectionId" {
-///   value = data.azure_connections_getapiconnection.example.id
+///   value = data.azure_connections_api_connection.example.id
 /// }
 /// output "connectionName" {
-///   value = data.azure_connections_getapiconnection.example.name
+///   value = data.azure_connections_api_connection.example.name
 /// }
 /// output "managedApiId" {
-///   value = data.azure_connections_getapiconnection.example.managed_api_id
+///   value = data.azure_connections_api_connection.example.managed_api_id
 /// }
 /// ```
 /// ```java
@@ -246,7 +246,7 @@ pulumi.Output<GetApiConnectionResult> getApiConnectionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -254,13 +254,13 @@ pulumi.Output<GetApiConnectionResult> getApiConnectionOutput(
 ///   }
 /// }
 ///
-/// data "azure_connections_getmanagedapi" "example" {
+/// data "azure_connections_managed_api" "example" {
 ///   name     = "servicebus"
 ///   location = "West Europe"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_connections_getmanagedapi.example.id
+///   value = data.azure_connections_managed_api.example.id
 /// }
 /// ```
 /// ```java

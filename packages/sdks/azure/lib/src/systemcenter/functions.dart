@@ -61,7 +61,7 @@ import 'get_virtual_machine_manager_inventory_items_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -69,7 +69,7 @@ import 'get_virtual_machine_manager_inventory_items_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_systemcenter_getvirtualmachinemanagerinventoryitems" "example" {
+/// data "azure_systemcenter_virtual_machine_manager_inventory_items" "example" {
 ///   inventory_type                                  = "Cloud"
 ///   system_center_virtual_machine_manager_server_id = exampleAzurermSystemCenterVirtualMachineManagerServer.id
 /// }
@@ -97,7 +97,7 @@ import 'get_virtual_machine_manager_inventory_items_result.dart';
 ///     public static void stack(Context ctx) {
 ///         final var example = SystemcenterFunctions.getVirtualMachineManagerInventoryItems(GetVirtualMachineManagerInventoryItemsArgs.builder()
 ///             .inventoryType("Cloud")
-///             .systemCenterVirtualMachineManagerServerId(exampleAzurermSystemCenterVirtualMachineManagerServer.id())
+///             .systemCenterVirtualMachineManagerServerId(exampleAzurermSystemCenterVirtualMachineManagerServer.get("id"))
 ///             .build());
 ///
 ///     }

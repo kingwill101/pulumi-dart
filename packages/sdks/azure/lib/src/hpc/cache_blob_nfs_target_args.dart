@@ -73,8 +73,8 @@ class CacheBlobNfsTargetArgs {
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       storageContainerId: pulumi.Input.fromValue(map['storageContainerId'] as String),
       usageModel: pulumi.Input.fromValue(map['usageModel'] as String),
-      verificationTimerInSeconds: (() { final guardedValue = map['verificationTimerInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      writeBackTimerInSeconds: (() { final guardedValue = map['writeBackTimerInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      verificationTimerInSeconds: (() { final guardedValue = map['verificationTimerInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      writeBackTimerInSeconds: (() { final guardedValue = map['writeBackTimerInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

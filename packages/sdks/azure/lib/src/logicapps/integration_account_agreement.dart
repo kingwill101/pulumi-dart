@@ -274,7 +274,7 @@ import 'integration_account_agreement_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -285,41 +285,56 @@ import 'integration_account_agreement_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_logicapps_integrationaccount" "test" {
+/// resource "azure_logicapps_integration_account" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ia"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Standard"
 /// }
-/// resource "azure_logicapps_integrationaccountpartner" "host" {
+/// resource "azure_logicapps_integration_account_partner" "host" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-hostpartner"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   integration_account_name = azure_logicapps_integrationaccount.test.name
+///   resource_group_name      = azure_core_resource_group.example.name
+///   integration_account_name = azure_logicapps_integration_account.test.name
 ///   business_identities {
 ///     qualifier = "AS2Identity"
 ///     value     = "FabrikamNY"
 ///   }
 /// }
-/// resource "azure_logicapps_integrationaccountpartner" "guest" {
+/// resource "azure_logicapps_integration_account_partner" "guest" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-guestpartner"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   integration_account_name = azure_logicapps_integrationaccount.test.name
+///   resource_group_name      = azure_core_resource_group.example.name
+///   integration_account_name = azure_logicapps_integration_account.test.name
 ///   business_identities {
 ///     qualifier = "AS2Identity"
 ///     value     = "FabrikamDC"
 ///   }
 /// }
-/// resource "azure_logicapps_integrationaccountagreement" "test" {
+/// resource "azure_logicapps_integration_account_agreement" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-agreement"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   integration_account_name = azure_logicapps_integrationaccount.test.name
+///   resource_group_name      = azure_core_resource_group.example.name
+///   integration_account_name = azure_logicapps_integration_account.test.name
 ///   agreement_type           = "AS2"
-///   host_partner_name        = azure_logicapps_integrationaccountpartner.host.name
-///   guest_partner_name       = azure_logicapps_integrationaccountpartner.guest.name
+///   host_partner_name        = azure_logicapps_integration_account_partner.host.name
+///   guest_partner_name       = azure_logicapps_integration_account_partner.guest.name
 ///   content                  = file("testdata/integration_account_agreement_content_as2.json")
 ///   host_identity = {
 ///     qualifier = "AS2Identity"
@@ -523,7 +538,7 @@ class IntegrationAccountAgreement extends pulumi.CustomResource {
           'azure:logicapps/integrationAccountAgreement:IntegrationAccountAgreement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     agreementType = registerOutput<String>('agreementType');
     content = registerOutput<String>('content');

@@ -266,7 +266,7 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -274,20 +274,29 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "EastUs"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acctest-vnet1-mssql"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.0.0.0/16"]
 ///   location            = test.location
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "subnet1-mssql"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.0.0/24"]
 ///   delegations {
 ///     name = "managedinstancedelegation"
@@ -297,10 +306,13 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_mssql_managedinstance" "example" {
+/// resource "azure_mssql_managed_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "mssqlinstance"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   license_type                 = "BasePrice"
 ///   sku_name                     = "GP_Gen5"
 ///   storage_size_in_gb           = 32
@@ -312,8 +324,11 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_mssql_managedinstancetransparentdataencryption" "example" {
-///   managed_instance_id = azure_mssql_managedinstance.example.id
+/// resource "azure_mssql_managed_instance_transparent_data_encryption" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   managed_instance_id = azure_mssql_managed_instance.example.id
 /// }
 /// ```
 /// ```java
@@ -357,7 +372,7 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 ///             .name("acctest-vnet1-mssql")
 ///             .resourceGroupName(example.name())
 ///             .addressSpaces("10.0.0.0/16")
-///             .location(test.location())
+///             .location(test.get("location"))
 ///             .build());
 ///
 ///         var exampleSubnet = new Subnet("exampleSubnet", SubnetArgs.builder()
@@ -943,7 +958,7 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -951,23 +966,32 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "EastUs"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acctest-vnet1-mssql"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.0.0.0/16"]
 ///   location            = test.location
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "subnet1-mssql"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.0.0/24"]
 ///   delegations {
 ///     name = "managedinstancedelegation"
@@ -977,10 +1001,13 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_mssql_managedinstance" "example" {
+/// resource "azure_mssql_managed_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "mssqlinstance"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   license_type                 = "BasePrice"
 ///   sku_name                     = "GP_Gen5"
 ///   storage_size_in_gb           = 32
@@ -993,37 +1020,46 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 ///   }
 /// }
 /// # Create a key vault with policies for the deployer to create a key & SQL Managed Instance to wrap/unwrap/get key
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example"
-///   location                    = azure_core_resourcegroup.example.location
-///   resource_group_name         = azure_core_resourcegroup.example.name
+///   location                    = azure_core_resource_group.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled  = false
 ///   enabled_for_disk_encryption = true
-///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                   = data.azure_core_client_config.current.tenant_id
 ///   soft_delete_retention_days  = 7
 ///   purge_protection_enabled    = false
 ///   sku_name                    = "standard"
 ///   access_policies {
-///     tenant_id       = data.azure_core_getclientconfig.current.tenant_id
-///     object_id       = data.azure_core_getclientconfig.current.object_id
+///     tenant_id       = data.azure_core_client_config.current.tenant_id
+///     object_id       = data.azure_core_client_config.current.object_id
 ///     key_permissions = ["Get", "List", "Create", "Delete", "Update", "Recover", "Purge", "GetRotationPolicy"]
 ///   }
 ///   access_policies {
-///     tenant_id       = azure_mssql_managedinstance.example.identity.tenant_id
-///     object_id       = azure_mssql_managedinstance.example.identity.principal_id
+///     tenant_id       = azure_mssql_managed_instance.example.identity.tenant_id
+///     object_id       = azure_mssql_managed_instance.example.identity.principal_id
 ///     key_permissions = ["Get", "WrapKey", "UnwrapKey"]
 ///   }
 /// }
 /// resource "azure_keyvault_key" "example" {
-///   depends_on   = [azure_keyvault_keyvault.example]
+///   depends_on = [azure_keyvault_key_vault.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "byok"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["unwrapKey", "wrapKey"]
 /// }
-/// resource "azure_mssql_managedinstancetransparentdataencryption" "example" {
-///   managed_instance_id = azure_mssql_managedinstance.example.id
+/// resource "azure_mssql_managed_instance_transparent_data_encryption" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   managed_instance_id = azure_mssql_managed_instance.example.id
 ///   key_vault_key_id    = azure_keyvault_key.example.id
 /// }
 /// ```
@@ -1077,7 +1113,7 @@ import 'managed_instance_transparent_data_encryption_state.dart';
 ///             .name("acctest-vnet1-mssql")
 ///             .resourceGroupName(example.name())
 ///             .addressSpaces("10.0.0.0/16")
-///             .location(test.location())
+///             .location(test.get("location"))
 ///             .build());
 ///
 ///         var exampleSubnet = new Subnet("exampleSubnet", SubnetArgs.builder()
@@ -1320,7 +1356,7 @@ class ManagedInstanceTransparentDataEncryption extends pulumi.CustomResource {
           'azure:mssql/managedInstanceTransparentDataEncryption:ManagedInstanceTransparentDataEncryption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     autoRotationEnabled = registerOutput<bool?>('autoRotationEnabled');
     keyVaultKeyId = registerOutput<String?>('keyVaultKeyId');

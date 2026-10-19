@@ -230,7 +230,7 @@ import 'route_map_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -238,25 +238,37 @@ import 'route_map_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualwan" "example" {
+/// resource "azure_network_virtual_wan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vwan"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_network_virtualhub" "example" {
+/// resource "azure_network_virtual_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vhub"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   virtual_wan_id      = azure_network_virtual_wan.example.id
 ///   address_prefix      = "10.0.1.0/24"
 /// }
-/// resource "azure_network_routemap" "example" {
+/// resource "azure_network_route_map" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example-rm"
-///   virtual_hub_id = azure_network_virtualhub.example.id
+///   virtual_hub_id = azure_network_virtual_hub.example.id
 ///   rules {
 ///     name                 = "rule1"
 ///     next_step_if_matched = "Continue"
@@ -423,7 +435,7 @@ class RouteMap extends pulumi.CustomResource {
           'azure:network/routeMap:RouteMap',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     rules = registerOutput<List<RouteMapRule>?>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RouteMapRule>(guardedValue, (value) => RouteMapRule.fromMap((value as Map).cast<String, dynamic>())); });

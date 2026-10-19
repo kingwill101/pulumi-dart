@@ -153,7 +153,7 @@ import 'endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -161,21 +161,30 @@ import 'endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_cdn_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cdn"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard_Microsoft"
 /// }
 /// resource "azure_cdn_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
 ///   profile_name        = azure_cdn_profile.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   origins {
 ///     name      = "example"
 ///     host_name = "www.contoso.com"
@@ -324,7 +333,7 @@ class Endpoint extends pulumi.CustomResource {
           'azure:cdn/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     contentTypesToCompresses = registerOutput<List<String>?>('contentTypesToCompresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deliveryRules = registerOutput<List<EndpointDeliveryRule>?>('deliveryRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointDeliveryRule>(guardedValue, (value) => EndpointDeliveryRule.fromMap((value as Map).cast<String, dynamic>())); });

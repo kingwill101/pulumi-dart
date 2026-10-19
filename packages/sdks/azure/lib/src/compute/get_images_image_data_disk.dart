@@ -42,9 +42,9 @@ class GetImagesImageDataDisk {
     return GetImagesImageDataDisk(
       blobUri: pulumi.Input.fromValue(map['blobUri'] as String),
       caching: pulumi.Input.fromValue(map['caching'] as String),
-      lun: pulumi.Input.fromValue((map['lun'] as num).toInt()),
+      lun: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lun'])),
       managedDiskId: pulumi.Input.fromValue(map['managedDiskId'] as String),
-      sizeGb: pulumi.Input.fromValue((map['sizeGb'] as num).toInt()),
+      sizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeGb'])),
     );
   }
 }

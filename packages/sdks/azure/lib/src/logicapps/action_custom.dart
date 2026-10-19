@@ -167,7 +167,7 @@ import 'action_custom_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -175,19 +175,44 @@ import 'action_custom_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "workflow-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_logicapps_workflow" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "workflow1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_logicapps_actioncustom" "example" {
+/// resource "azure_logicapps_action_custom" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-action"
 ///   logic_app_id = azure_logicapps_workflow.example.id
-///   body         = "{\n    \\\"description\\\": \\\"A variable to configure the auto expiration age in days. Configured in negative number. Default is -30 (30 days old).\\\",\n    \\\"inputs\\\": {\n        \\\"variables\\\": [\n            {\n                \\\"name\\\": \\\"ExpirationAgeInDays\\\",\n                \\\"type\\\": \\\"Integer\\\",\n                \\\"value\\\": -30\n            }\n        ]\n    },\n    \\\"runAfter\\\": {},\n    \\\"type\\\": \\\"InitializeVariable\\\"\n}\n"
+///   body         = <<BODY
+/// {
+///     \"description\": \"A variable to configure the auto expiration age in days. Configured in negative number. Default is -30 (30 days old).\",
+///     \"inputs\": {
+///         \"variables\": [
+///             {
+///                 \"name\": \"ExpirationAgeInDays\",
+///                 \"type\": \"Integer\",
+///                 \"value\": -30
+///             }
+///         ]
+///     },
+///     \"runAfter\": {},
+///     \"type\": \"InitializeVariable\"
+/// }
+/// BODY
+///
 /// }
 /// ```
 /// ```java
@@ -319,7 +344,7 @@ class ActionCustom extends pulumi.CustomResource {
           'azure:logicapps/actionCustom:ActionCustom',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     body = registerOutput<String>('body');
     logicAppId = registerOutput<String>('logicAppId');

@@ -151,7 +151,7 @@ import 'registry_credential_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -159,17 +159,26 @@ import 'registry_credential_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_containerservice_registry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleContainerRegistry"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "Basic"
 /// }
-/// resource "azure_containerservice_registrycredentialset" "example" {
+/// resource "azure_containerservice_registry_credential_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "exampleCredentialSet"
 ///   container_registry_id = azure_containerservice_registry.example.id
 ///   login_server          = "docker.io"
@@ -596,7 +605,7 @@ import 'registry_credential_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -604,46 +613,64 @@ import 'registry_credential_set_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplekeyvault"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 ///   soft_delete_retention_days = 7
 ///   access_policies {
-///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
-///     object_id               = data.azure_core_getclientconfig.current.object_id
+///     tenant_id               = data.azure_core_client_config.current.tenant_id
+///     object_id               = data.azure_core_client_config.current.object_id
 ///     certificate_permissions = []
 ///     key_permissions         = []
 ///     secret_permissions      = ["Get", "Set", "Delete", "Purge"]
 ///   }
 /// }
 /// resource "azure_keyvault_secret" "example_user" {
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   name         = "example-user-name"
 ///   value        = "name"
 /// }
 /// resource "azure_keyvault_secret" "example_password" {
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   name         = "example-user-password"
 ///   value        = "password"
 /// }
 /// resource "azure_containerservice_registry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleContainerRegistry"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "Basic"
 /// }
-/// resource "azure_containerservice_registrycredentialset" "example" {
+/// resource "azure_containerservice_registry_credential_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "exampleCredentialSet"
 ///   container_registry_id = azure_containerservice_registry.example.id
 ///   login_server          = "docker.io"
@@ -655,10 +682,13 @@ import 'registry_credential_set_state.dart';
 ///     password_secret_id = azure_keyvault_secret.example_password.versionless_id
 ///   }
 /// }
-/// resource "azure_keyvault_accesspolicy" "read_secrets" {
-///   key_vault_id       = azure_keyvault_keyvault.example.id
-///   tenant_id          = azure_containerservice_registrycredentialset.example.identity.tenant_id
-///   object_id          = azure_containerservice_registrycredentialset.example.identity.principal_id
+/// resource "azure_keyvault_access_policy" "read_secrets" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id       = azure_keyvault_key_vault.example.id
+///   tenant_id          = azure_containerservice_registry_credential_set.example.identity.tenant_id
+///   object_id          = azure_containerservice_registry_credential_set.example.identity.principal_id
 ///   secret_permissions = ["Get"]
 /// }
 /// ```
@@ -884,7 +914,7 @@ class RegistryCredentialSet extends pulumi.CustomResource {
           'azure:containerservice/registryCredentialSet:RegistryCredentialSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     authenticationCredentials = registerOutput<RegistryCredentialSetAuthenticationCredentials>('authenticationCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryCredentialSetAuthenticationCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     containerRegistryId = registerOutput<String>('containerRegistryId');

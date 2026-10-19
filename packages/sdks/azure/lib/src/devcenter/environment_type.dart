@@ -133,7 +133,7 @@ import 'environment_type_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -141,21 +141,30 @@ import 'environment_type_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_devcenter_devcenter" "example" {
+/// resource "azure_devcenter_dev_center" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-dc"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_devcenter_environmenttype" "example" {
+/// resource "azure_devcenter_environment_type" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example-dcet"
-///   dev_center_id = azure_devcenter_devcenter.example.id
+///   dev_center_id = azure_devcenter_dev_center.example.id
 ///   tags = {
 ///     "Env" = "Test"
 ///   }
@@ -271,7 +280,7 @@ class EnvironmentType extends pulumi.CustomResource {
           'azure:devcenter/environmentType:EnvironmentType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');

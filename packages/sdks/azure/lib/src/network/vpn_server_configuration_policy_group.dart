@@ -178,7 +178,7 @@ import 'vpn_server_configuration_policy_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -186,26 +186,35 @@ import 'vpn_server_configuration_policy_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_vpnserverconfiguration" "example" {
+/// resource "azure_network_vpn_server_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-VPNSC"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   vpn_authentication_types = ["Radius"]
 ///   radius = {
 ///     servers = [{
-///       "address" = "10.105.1.1"
-///       "secret"  = "vindicators-the-return-of-worldender"
-///       "score"   = 15
+///       address = "10.105.1.1"
+///       secret  = "vindicators-the-return-of-worldender"
+///       score   = 15
 ///     }]
 ///   }
 /// }
-/// resource "azure_network_vpnserverconfigurationpolicygroup" "example" {
+/// resource "azure_network_vpn_server_configuration_policy_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-VPNSCPG"
-///   vpn_server_configuration_id = azure_network_vpnserverconfiguration.example.id
+///   vpn_server_configuration_id = azure_network_vpn_server_configuration.example.id
 ///   policies {
 ///     name  = "policy1"
 ///     type  = "RadiusAzureGroupId"
@@ -345,7 +354,7 @@ class VpnServerConfigurationPolicyGroup extends pulumi.CustomResource {
           'azure:network/vpnServerConfigurationPolicyGroup:VpnServerConfigurationPolicyGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     isDefault = registerOutput<bool?>('isDefault');
     this.name = registerOutput<String>('name');

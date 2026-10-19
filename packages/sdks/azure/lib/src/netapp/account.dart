@@ -184,7 +184,7 @@ import 'account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -192,22 +192,31 @@ import 'account_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "anf-user-assigned-identity"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_netapp_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "netappaccount"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   active_directory = {
 ///     username            = "aduser"
 ///     password            = "aduserpwd"
@@ -218,7 +227,7 @@ import 'account_state.dart';
 ///   }
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 /// }
 /// ```
@@ -367,7 +376,7 @@ class Account extends pulumi.CustomResource {
           'azure:netapp/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     activeDirectory = registerOutput<AccountActiveDirectory?>('activeDirectory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountActiveDirectory.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<AccountIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });

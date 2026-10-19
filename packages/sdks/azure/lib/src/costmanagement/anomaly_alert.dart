@@ -81,7 +81,7 @@ import 'anomaly_alert_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -89,7 +89,10 @@ import 'anomaly_alert_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_costmanagement_anomalyalert" "example" {
+/// resource "azure_costmanagement_anomaly_alert" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "alertname"
 ///   display_name    = "Alert DisplayName"
 ///   subscription_id = "/subscriptions/00000000-0000-0000-0000-000000000000"
@@ -185,7 +188,7 @@ class AnomalyAlert extends pulumi.CustomResource {
           'azure:costmanagement/anomalyAlert:AnomalyAlert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     emailAddresses = registerOutput<List<String>>('emailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -67,7 +67,7 @@ import 'get_shared_access_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -75,7 +75,7 @@ import 'get_shared_access_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_iot_getdps" "example" {
+/// data "azure_iot_dps" "example" {
 ///   name                = "iot_hub_dps_test"
 ///   resource_group_name = "iothub_dps_rg"
 /// }
@@ -215,7 +215,7 @@ pulumi.Output<GetDpsResult> getDpsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -223,7 +223,7 @@ pulumi.Output<GetDpsResult> getDpsOutput(
 ///   }
 /// }
 ///
-/// data "azure_iot_getdpssharedaccesspolicy" "example" {
+/// data "azure_iot_dps_shared_access_policy" "example" {
 ///   name                = "example"
 ///   resource_group_name = exampleAzurermResourceGroup.name
 ///   iothub_dps_name     = exampleAzurermIothubDps.name
@@ -252,8 +252,8 @@ pulumi.Output<GetDpsResult> getDpsOutput(
 ///     public static void stack(Context ctx) {
 ///         final var example = IotFunctions.getDpsSharedAccessPolicy(GetDpsSharedAccessPolicyArgs.builder()
 ///             .name("example")
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
-///             .iothubDpsName(exampleAzurermIothubDps.name())
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
+///             .iothubDpsName(exampleAzurermIothubDps.get("name"))
 ///             .build());
 ///
 ///     }
@@ -369,7 +369,7 @@ pulumi.Output<GetDpsSharedAccessPolicyResult> getDpsSharedAccessPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -377,13 +377,13 @@ pulumi.Output<GetDpsSharedAccessPolicyResult> getDpsSharedAccessPolicyOutput(
 ///   }
 /// }
 ///
-/// data "azure_iot_getiothub" "example" {
+/// data "azure_iot_iot_hub" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_iot_getiothub.example.id
+///   value = data.azure_iot_iot_hub.example.id
 /// }
 /// ```
 /// ```java
@@ -516,7 +516,7 @@ pulumi.Output<GetIotHubResult> getIotHubOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -524,7 +524,7 @@ pulumi.Output<GetIotHubResult> getIotHubOutput(
 ///   }
 /// }
 ///
-/// data "azure_iot_getsharedaccesspolicy" "example" {
+/// data "azure_iot_shared_access_policy" "example" {
 ///   name                = "example"
 ///   resource_group_name = exampleAzurermResourceGroup.name
 ///   iothub_name         = exampleAzurermIothub.name
@@ -553,8 +553,8 @@ pulumi.Output<GetIotHubResult> getIotHubOutput(
 ///     public static void stack(Context ctx) {
 ///         final var example = IotFunctions.getSharedAccessPolicy(GetSharedAccessPolicyArgs.builder()
 ///             .name("example")
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
-///             .iothubName(exampleAzurermIothub.name())
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
+///             .iothubName(exampleAzurermIothub.get("name"))
 ///             .build());
 ///
 ///     }

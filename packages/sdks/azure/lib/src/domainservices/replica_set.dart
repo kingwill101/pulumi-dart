@@ -1078,7 +1078,7 @@ import 'replica_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1089,26 +1089,38 @@ import 'replica_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "primary" {
+/// resource "azure_core_resource_group" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "aadds-primary-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "primary" {
+/// resource "azure_network_virtual_network" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "aadds-primary-vnet"
-///   location            = azure_core_resourcegroup.primary.location
-///   resource_group_name = azure_core_resourcegroup.primary.name
+///   location            = azure_core_resource_group.primary.location
+///   resource_group_name = azure_core_resource_group.primary.name
 ///   address_spaces      = ["10.0.1.0/16"]
 /// }
 /// resource "azure_network_subnet" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "aadds-primary-subnet"
-///   resource_group_name  = azure_core_resourcegroup.primary.name
-///   virtual_network_name = azure_network_virtualnetwork.primary.name
+///   resource_group_name  = azure_core_resource_group.primary.name
+///   virtual_network_name = azure_network_virtual_network.primary.name
 ///   address_prefixes     = ["10.0.1.0/24"]
 /// }
-/// resource "azure_network_networksecuritygroup" "primary" {
+/// resource "azure_network_network_security_group" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "aadds-primary-nsg"
-///   location            = azure_core_resourcegroup.primary.location
-///   resource_group_name = azure_core_resourcegroup.primary.name
+///   location            = azure_core_resource_group.primary.location
+///   resource_group_name = azure_core_resource_group.primary.name
 ///   security_rules {
 ///     name                       = "AllowSyncWithAzureAD"
 ///     priority                   = 101
@@ -1154,40 +1166,61 @@ import 'replica_set_state.dart';
 ///     destination_address_prefix = "*"
 ///   }
 /// }
-/// resource "azure_network_subnetnetworksecuritygroupassociation" "primary" {
+/// resource "azure_network_subnet_network_security_group_association" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id                 = azure_network_subnet.primary.id
-///   network_security_group_id = azure_network_networksecuritygroup.primary.id
+///   network_security_group_id = azure_network_network_security_group.primary.id
 /// }
 /// resource "azuread_group" "dc_admins" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "aad-dc-administrators"
 ///   security_enabled = true
 /// }
 /// resource "azuread_user" "admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_principal_name = "dc-admin@hashicorp-example.net"
 ///   display_name        = "DC Administrator"
 ///   password            = "Pa55w0Rd!!1"
 /// }
-/// resource "azuread_groupmember" "admin" {
+/// resource "azuread_group_member" "admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_object_id  = azuread_group.dc_admins.object_id
 ///   member_object_id = azuread_user.admin.object_id
 /// }
-/// resource "azuread_serviceprincipal" "example" {
+/// resource "azuread_service_principal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 /// }
-/// resource "azure_core_resourcegroup" "aadds" {
+/// resource "azure_core_resource_group" "aadds" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "aadds-rg"
 ///   location = "westeurope"
 /// }
 /// resource "azure_domainservices_service" "example" {
-///   depends_on            = [azuread_serviceprincipal.example, azure_network_subnetnetworksecuritygroupassociation.primary]
+///   depends_on = [azuread_service_principal.example, azure_network_subnet_network_security_group_association.primary]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-aadds"
-///   location              = azure_core_resourcegroup.aadds.location
-///   resource_group_name   = azure_core_resourcegroup.aadds.name
+///   location              = azure_core_resource_group.aadds.location
+///   resource_group_name   = azure_core_resource_group.aadds.name
 ///   domain_name           = "widgetslogin.net"
 ///   sku                   = "Enterprise"
 ///   filtered_sync_enabled = false
 ///   initial_replica_set = {
-///     location  = azure_network_virtualnetwork.primary.location
+///     location  = azure_network_virtual_network.primary.location
 ///     subnet_id = azure_network_subnet.primary.id
 ///   }
 ///   notifications = {
@@ -1204,26 +1237,38 @@ import 'replica_set_state.dart';
 ///     "Environment" = "prod"
 ///   }
 /// }
-/// resource "azure_core_resourcegroup" "replica" {
+/// resource "azure_core_resource_group" "replica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "aadds-replica-rg"
 ///   location = "North Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "replica" {
+/// resource "azure_network_virtual_network" "replica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "aadds-replica-vnet"
-///   location            = azure_core_resourcegroup.replica.location
-///   resource_group_name = azure_core_resourcegroup.replica.name
+///   location            = azure_core_resource_group.replica.location
+///   resource_group_name = azure_core_resource_group.replica.name
 ///   address_spaces      = ["10.20.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "aadds_replica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "aadds-replica-subnet"
-///   resource_group_name  = azure_core_resourcegroup.replica.name
-///   virtual_network_name = azure_network_virtualnetwork.replica.name
+///   resource_group_name  = azure_core_resource_group.replica.name
+///   virtual_network_name = azure_network_virtual_network.replica.name
 ///   address_prefixes     = ["10.20.0.0/24"]
 /// }
-/// resource "azure_network_networksecuritygroup" "aadds_replica" {
+/// resource "azure_network_network_security_group" "aadds_replica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "aadds-replica-nsg"
-///   location            = azure_core_resourcegroup.replica.location
-///   resource_group_name = azure_core_resourcegroup.replica.name
+///   location            = azure_core_resource_group.replica.location
+///   resource_group_name = azure_core_resource_group.replica.name
 ///   security_rules {
 ///     name                       = "AllowSyncWithAzureAD"
 ///     priority                   = 101
@@ -1269,38 +1314,53 @@ import 'replica_set_state.dart';
 ///     destination_address_prefix = "*"
 ///   }
 /// }
-/// resource "azure_network_subnetnetworksecuritygroupassociation" "replica" {
+/// resource "azure_network_subnet_network_security_group_association" "replica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id                 = azure_network_subnet.aadds_replica.id
-///   network_security_group_id = azure_network_networksecuritygroup.aadds_replica.id
+///   network_security_group_id = azure_network_network_security_group.aadds_replica.id
 /// }
-/// resource "azure_network_virtualnetworkpeering" "primary_replica" {
+/// resource "azure_network_virtual_network_peering" "primary_replica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "aadds-primary-replica"
-///   resource_group_name          = azure_network_virtualnetwork.primary.resource_group_name
-///   virtual_network_name         = azure_network_virtualnetwork.primary.name
-///   remote_virtual_network_id    = azure_network_virtualnetwork.replica.id
+///   resource_group_name          = azure_network_virtual_network.primary.resource_group_name
+///   virtual_network_name         = azure_network_virtual_network.primary.name
+///   remote_virtual_network_id    = azure_network_virtual_network.replica.id
 ///   allow_forwarded_traffic      = true
 ///   allow_gateway_transit        = false
 ///   allow_virtual_network_access = true
 ///   use_remote_gateways          = false
 /// }
-/// resource "azure_network_virtualnetworkpeering" "replica_primary" {
+/// resource "azure_network_virtual_network_peering" "replica_primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "aadds-replica-primary"
-///   resource_group_name          = azure_network_virtualnetwork.replica.resource_group_name
-///   virtual_network_name         = azure_network_virtualnetwork.replica.name
-///   remote_virtual_network_id    = azure_network_virtualnetwork.primary.id
+///   resource_group_name          = azure_network_virtual_network.replica.resource_group_name
+///   virtual_network_name         = azure_network_virtual_network.replica.name
+///   remote_virtual_network_id    = azure_network_virtual_network.primary.id
 ///   allow_forwarded_traffic      = true
 ///   allow_gateway_transit        = false
 ///   allow_virtual_network_access = true
 ///   use_remote_gateways          = false
 /// }
-/// resource "azure_network_virtualnetworkdnsservers" "replica" {
-///   virtual_network_id = azure_network_virtualnetwork.replica.id
+/// resource "azure_network_virtual_network_dns_servers" "replica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   virtual_network_id = azure_network_virtual_network.replica.id
 ///   dns_servers        = azure_domainservices_service.example.initial_replica_set.domain_controller_ip_addresses
 /// }
-/// resource "azure_domainservices_replicaset" "replica" {
-///   depends_on        = [azure_network_subnetnetworksecuritygroupassociation.replica, azure_network_virtualnetworkpeering.primary_replica, azure_network_virtualnetworkpeering.replica_primary]
+/// resource "azure_domainservices_replica_set" "replica" {
+///   depends_on = [azure_network_subnet_network_security_group_association.replica, azure_network_virtual_network_peering.primary_replica, azure_network_virtual_network_peering.replica_primary]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_service_id = azure_domainservices_service.example.id
-///   location          = azure_core_resourcegroup.replica.location
+///   location          = azure_core_resource_group.replica.location
 ///   subnet_id         = azure_network_subnet.aadds_replica.id
 /// }
 /// ```
@@ -1889,7 +1949,7 @@ class ReplicaSet extends pulumi.CustomResource {
           'azure:domainservices/replicaSet:ReplicaSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     domainControllerIpAddresses = registerOutput<List<String>>('domainControllerIpAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     domainServiceId = registerOutput<String>('domainServiceId');

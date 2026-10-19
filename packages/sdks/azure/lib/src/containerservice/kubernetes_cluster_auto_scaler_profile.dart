@@ -124,7 +124,7 @@ class KubernetesClusterAutoScalerProfile {
       ignoreDaemonsetsUtilizationEnabled: (() { final guardedValue = map['ignoreDaemonsetsUtilizationEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       maxGracefulTerminationSec: (() { final guardedValue = map['maxGracefulTerminationSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maxNodeProvisioningTime: (() { final guardedValue = map['maxNodeProvisioningTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxUnreadyNodes: (() { final guardedValue = map['maxUnreadyNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxUnreadyNodes: (() { final guardedValue = map['maxUnreadyNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       maxUnreadyPercentage: (() { final guardedValue = map['maxUnreadyPercentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       newPodScaleUpDelay: (() { final guardedValue = map['newPodScaleUpDelay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scaleDownDelayAfterAdd: (() { final guardedValue = map['scaleDownDelayAfterAdd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

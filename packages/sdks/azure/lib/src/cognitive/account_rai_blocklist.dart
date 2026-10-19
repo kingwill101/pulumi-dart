@@ -119,7 +119,7 @@ import 'account_rai_blocklist_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -127,18 +127,27 @@ import 'account_rai_blocklist_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "Brazil South"
 /// }
 /// resource "azure_cognitive_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ca"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   kind                = "OpenAI"
 ///   sku_name            = "S0"
 /// }
-/// resource "azure_cognitive_accountraiblocklist" "example" {
+/// resource "azure_cognitive_account_rai_blocklist" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-crb"
 ///   cognitive_account_id = azure_cognitive_account.example.id
 ///   description          = "Azure OpenAI Rai Blocklist"
@@ -253,7 +262,7 @@ class AccountRaiBlocklist extends pulumi.CustomResource {
           'azure:cognitive/accountRaiBlocklist:AccountRaiBlocklist',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
     description = registerOutput<String?>('description');

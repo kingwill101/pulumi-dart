@@ -140,7 +140,7 @@ import 'failover_group_state.dart';
 ///         ServerId = primary.Id,
 ///         SkuName = "S1",
 ///         Collation = "SQL_Latin1_General_CP1_CI_AS",
-///         MaxSizeGb = 200,
+///         MaxSizeGb = 200.0,
 ///     });
 ///
 ///     var exampleFailoverGroup = new Azure.MSSql.FailoverGroup("example", new()
@@ -250,7 +250,7 @@ import 'failover_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -258,34 +258,49 @@ import 'failover_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "database-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_mssql_server" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "mssqlserver-primary"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   version                      = "12.0"
 ///   administrator_login          = "missadministrator"
 ///   administrator_login_password = "thisIsKat11"
 /// }
 /// resource "azure_mssql_server" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "mssqlserver-secondary"
-///   resource_group_name          = azure_core_resourcegroup.example.name
+///   resource_group_name          = azure_core_resource_group.example.name
 ///   location                     = "North Europe"
 ///   version                      = "12.0"
 ///   administrator_login          = "missadministrator"
 ///   administrator_login_password = "thisIsKat12"
 /// }
 /// resource "azure_mssql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "exampledb"
 ///   server_id   = azure_mssql_server.primary.id
 ///   sku_name    = "S1"
 ///   collation   = "SQL_Latin1_General_CP1_CI_AS"
 ///   max_size_gb = "200"
 /// }
-/// resource "azure_mssql_failovergroup" "example" {
+/// resource "azure_mssql_failover_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example"
 ///   server_id = azure_mssql_server.primary.id
 ///   databases = [azure_mssql_database.example.id]
@@ -477,7 +492,7 @@ class FailoverGroup extends pulumi.CustomResource {
           'azure:mssql/failoverGroup:FailoverGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     databases = registerOutput<List<String>?>('databases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');

@@ -154,7 +154,7 @@ import 'alert_rule_scheduled_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -162,25 +162,43 @@ import 'alert_rule_scheduled_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-workspace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 /// }
-/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
-///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// resource "azure_sentinel_log_analytics_workspace_onboarding" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workspace_id = azure_operationalinsights_analytics_workspace.example.id
 /// }
-/// resource "azure_sentinel_alertrulescheduled" "example" {
+/// resource "azure_sentinel_alert_rule_scheduled" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example"
-///   log_analytics_workspace_id = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+///   log_analytics_workspace_id = azure_sentinel_log_analytics_workspace_onboarding.example.workspace_id
 ///   display_name               = "example"
 ///   severity                   = "High"
-///   query                      = "AzureActivity |\n  where OperationName == \\\"Create or Update Virtual Machine\\\" or OperationName ==\\\"Create Deployment\\\" |\n  where ActivityStatus == \\\"Succeeded\\\" |\n  make-series dcount(ResourceId) default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller\n"
+///   query                      = <<QUERY
+/// AzureActivity |
+///   where OperationName == \"Create or Update Virtual Machine\" or OperationName ==\"Create Deployment\" |
+///   where ActivityStatus == \"Succeeded\" |
+///   make-series dcount(ResourceId) default=0 on EventSubmissionTimestamp in range(ago(7d), now(), 1d) by Caller
+/// QUERY
+///
 /// }
 /// ```
 /// ```java
@@ -358,7 +376,7 @@ class AlertRuleScheduled extends pulumi.CustomResource {
           'azure:sentinel/alertRuleScheduled:AlertRuleScheduled',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     alertDetailsOverrides = registerOutput<List<AlertRuleScheduledAlertDetailsOverride>?>('alertDetailsOverrides', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AlertRuleScheduledAlertDetailsOverride>(guardedValue, (value) => AlertRuleScheduledAlertDetailsOverride.fromMap((value as Map).cast<String, dynamic>())); });
     alertRuleTemplateGuid = registerOutput<String?>('alertRuleTemplateGuid');

@@ -104,7 +104,7 @@ class GetPublicIPResult {
       domainNameLabel: (() { final guardedValue = map['domainNameLabel']; if (guardedValue == null) return null; return guardedValue as String; })(),
       fqdn: (() { final guardedValue = map['fqdn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       ipAddress: (() { final guardedValue = map['ipAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipTags: (() { final guardedValue = map['ipTags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       ipVersion: (() { final guardedValue = map['ipVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),

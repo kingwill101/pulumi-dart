@@ -55,7 +55,7 @@ class VolumeQuotaRuleArgs {
     return VolumeQuotaRuleArgs(
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      quotaSizeInKib: pulumi.Input.fromValue((map['quotaSizeInKib'] as num).toInt()),
+      quotaSizeInKib: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['quotaSizeInKib'])),
       quotaTarget: (() { final guardedValue = map['quotaTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       quotaType: pulumi.Input.fromValue(map['quotaType'] as String),
       volumeId: pulumi.Input.fromValue(map['volumeId'] as String),

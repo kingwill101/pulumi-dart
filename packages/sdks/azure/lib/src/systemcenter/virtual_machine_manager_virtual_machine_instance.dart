@@ -308,7 +308,7 @@ import 'virtual_machine_manager_virtual_machine_instance_storage_disk.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -316,55 +316,73 @@ import 'virtual_machine_manager_virtual_machine_instance_storage_disk.dart';
 ///   }
 /// }
 ///
-/// data "azure_systemcenter_getvirtualmachinemanagerinventoryitems" "example" {
+/// data "azure_systemcenter_virtual_machine_manager_inventory_items" "example" {
 ///   inventory_type                                  = "Cloud"
-///   system_center_virtual_machine_manager_server_id = azure_systemcenter_virtualmachinemanagerserver.example.id
+///   system_center_virtual_machine_manager_server_id = azure_systemcenter_virtual_machine_manager_server.example.id
 /// }
-/// data "azure_systemcenter_getvirtualmachinemanagerinventoryitems" "example2" {
+/// data "azure_systemcenter_virtual_machine_manager_inventory_items" "example2" {
 ///   inventory_type                                  = "VirtualMachineTemplate"
-///   system_center_virtual_machine_manager_server_id = azure_systemcenter_virtualmachinemanagerserver.example.id
+///   system_center_virtual_machine_manager_server_id = azure_systemcenter_virtual_machine_manager_server.example.id
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_arcmachine_arcmachine" "example" {
+/// resource "azure_arcmachine_arc_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-arcmachine"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   kind                = "SCVMM"
 /// }
-/// resource "azure_systemcenter_virtualmachinemanagerserver" "example" {
+/// resource "azure_systemcenter_virtual_machine_manager_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-scvmmms"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   custom_location_id  = "/subscriptions/12345678-1234-9876-4563-123456789012/resourceGroups/resGroup1/providers/Microsoft.ExtendedLocation/customLocations/customLocation1"
 ///   fqdn                = "example.labtest"
 ///   username            = "testUser"
 ///   password            = "H@Sh1CoR3!"
 /// }
-/// resource "azure_systemcenter_virtualmachinemanagercloud" "example" {
+/// resource "azure_systemcenter_virtual_machine_manager_cloud" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                                           = "example-scvmmc"
-///   location                                                       = azure_core_resourcegroup.example.location
-///   resource_group_name                                            = azure_core_resourcegroup.example.name
-///   custom_location_id                                             = azure_systemcenter_virtualmachinemanagerserver.example.custom_location_id
-///   system_center_virtual_machine_manager_server_inventory_item_id = data.azure_systemcenter_getvirtualmachinemanagerinventoryitems.example.inventory_items[0].id
+///   location                                                       = azure_core_resource_group.example.location
+///   resource_group_name                                            = azure_core_resource_group.example.name
+///   custom_location_id                                             = azure_systemcenter_virtual_machine_manager_server.example.custom_location_id
+///   system_center_virtual_machine_manager_server_inventory_item_id = data.azure_systemcenter_virtual_machine_manager_inventory_items.example.inventory_items[0].id
 /// }
-/// resource "azure_systemcenter_virtualmachinemanagervirtualmachinetemplate" "example" {
+/// resource "azure_systemcenter_virtual_machine_manager_virtual_machine_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                                           = "example-scvmmvmt"
-///   location                                                       = azure_core_resourcegroup.example.location
-///   resource_group_name                                            = azure_core_resourcegroup.example.name
-///   custom_location_id                                             = azure_systemcenter_virtualmachinemanagerserver.example.custom_location_id
-///   system_center_virtual_machine_manager_server_inventory_item_id = data.azure_systemcenter_getvirtualmachinemanagerinventoryitems.example2.inventory_items[0].id
+///   location                                                       = azure_core_resource_group.example.location
+///   resource_group_name                                            = azure_core_resource_group.example.name
+///   custom_location_id                                             = azure_systemcenter_virtual_machine_manager_server.example.custom_location_id
+///   system_center_virtual_machine_manager_server_inventory_item_id = data.azure_systemcenter_virtual_machine_manager_inventory_items.example2.inventory_items[0].id
 /// }
-/// resource "azure_systemcenter_virtualmachinemanagervirtualmachineinstance" "example" {
-///   scoped_resource_id = azure_arcmachine_arcmachine.example.id
-///   custom_location_id = azure_systemcenter_virtualmachinemanagerserver.example.custom_location_id
+/// resource "azure_systemcenter_virtual_machine_manager_virtual_machine_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scoped_resource_id = azure_arcmachine_arc_machine.example.id
+///   custom_location_id = azure_systemcenter_virtual_machine_manager_server.example.custom_location_id
 ///   infrastructure = {
-///     system_center_virtual_machine_manager_cloud_id                  = azure_systemcenter_virtualmachinemanagercloud.example.id
-///     system_center_virtual_machine_manager_template_id               = azure_systemcenter_virtualmachinemanagervirtualmachinetemplate.example.id
-///     system_center_virtual_machine_manager_virtual_machine_server_id = azure_systemcenter_virtualmachinemanagerserver.example.id
+///     system_center_virtual_machine_manager_cloud_id                  = azure_systemcenter_virtual_machine_manager_cloud.example.id
+///     system_center_virtual_machine_manager_template_id               = azure_systemcenter_virtual_machine_manager_virtual_machine_template.example.id
+///     system_center_virtual_machine_manager_virtual_machine_server_id = azure_systemcenter_virtual_machine_manager_server.example.id
 ///   }
 ///   operating_system = {
 ///     computer_name = "testComputer"
@@ -443,7 +461,7 @@ import 'virtual_machine_manager_virtual_machine_instance_storage_disk.dart';
 ///             .location(exampleResourceGroup.location())
 ///             .resourceGroupName(exampleResourceGroup.name())
 ///             .customLocationId(exampleVirtualMachineManagerServer.customLocationId())
-///             .systemCenterVirtualMachineManagerServerInventoryItemId(example.applyValue(_example -> _example.inventoryItems()[0].id()))
+///             .systemCenterVirtualMachineManagerServerInventoryItemId(example.applyValue(_example -> _example.inventoryItems().get(0).id()))
 ///             .build());
 ///
 ///         final var example2 = SystemcenterFunctions.getVirtualMachineManagerInventoryItems(GetVirtualMachineManagerInventoryItemsArgs.builder()
@@ -456,7 +474,7 @@ import 'virtual_machine_manager_virtual_machine_instance_storage_disk.dart';
 ///             .location(exampleResourceGroup.location())
 ///             .resourceGroupName(exampleResourceGroup.name())
 ///             .customLocationId(exampleVirtualMachineManagerServer.customLocationId())
-///             .systemCenterVirtualMachineManagerServerInventoryItemId(example2.applyValue(_example2 -> _example2.inventoryItems()[0].id()))
+///             .systemCenterVirtualMachineManagerServerInventoryItemId(example2.applyValue(_example2 -> _example2.inventoryItems().get(0).id()))
 ///             .build());
 ///
 ///         var exampleVirtualMachineManagerVirtualMachineInstance = new VirtualMachineManagerVirtualMachineInstance("exampleVirtualMachineManagerVirtualMachineInstance", VirtualMachineManagerVirtualMachineInstanceArgs.builder()
@@ -605,7 +623,7 @@ class VirtualMachineManagerVirtualMachineInstance extends pulumi.CustomResource 
           'azure:systemcenter/virtualMachineManagerVirtualMachineInstance:VirtualMachineManagerVirtualMachineInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     customLocationId = registerOutput<String>('customLocationId');
     hardware = registerOutput<VirtualMachineManagerVirtualMachineInstanceHardware?>('hardware', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineManagerVirtualMachineInstanceHardware.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -177,7 +177,7 @@ import 'express_route_circuit_connection_state.dart';
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
 ///         ExpressRoutePortId = exampleExpressRoutePort.Id,
-///         BandwidthInGbps = 5,
+///         BandwidthInGbps = 5.0,
 ///         Sku = new Azure.Network.Inputs.ExpressRouteCircuitSkuArgs
 ///         {
 ///             Tier = "Standard",
@@ -201,7 +201,7 @@ import 'express_route_circuit_connection_state.dart';
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
 ///         ExpressRoutePortId = example2.Id,
-///         BandwidthInGbps = 5,
+///         BandwidthInGbps = 5.0,
 ///         Sku = new Azure.Network.Inputs.ExpressRouteCircuitSkuArgs
 ///         {
 ///             Tier = "Standard",
@@ -353,7 +353,7 @@ import 'express_route_circuit_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -361,72 +361,96 @@ import 'express_route_circuit_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_expressrouteport" "example" {
+/// resource "azure_network_express_route_port" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-erport"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   peering_location    = "Equinix-Seattle-SE2"
 ///   bandwidth_in_gbps   = 10
 ///   encapsulation       = "Dot1Q"
 /// }
-/// resource "azure_network_expressroutecircuit" "example" {
+/// resource "azure_network_express_route_circuit" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-ercircuit"
-///   location              = azure_core_resourcegroup.example.location
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   express_route_port_id = azure_network_expressrouteport.example.id
+///   location              = azure_core_resource_group.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   express_route_port_id = azure_network_express_route_port.example.id
 ///   bandwidth_in_gbps     = 5
 ///   sku = {
 ///     tier   = "Standard"
 ///     family = "MeteredData"
 ///   }
 /// }
-/// resource "azure_network_expressrouteport" "example2" {
+/// resource "azure_network_express_route_port" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-erport2"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   peering_location    = "Allied-Toronto-King-West"
 ///   bandwidth_in_gbps   = 10
 ///   encapsulation       = "Dot1Q"
 /// }
-/// resource "azure_network_expressroutecircuit" "example2" {
+/// resource "azure_network_express_route_circuit" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-ercircuit2"
-///   location              = azure_core_resourcegroup.example.location
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   express_route_port_id = azure_network_expressrouteport.example2.id
+///   location              = azure_core_resource_group.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   express_route_port_id = azure_network_express_route_port.example2.id
 ///   bandwidth_in_gbps     = 5
 ///   sku = {
 ///     tier   = "Standard"
 ///     family = "MeteredData"
 ///   }
 /// }
-/// resource "azure_network_expressroutecircuitpeering" "example" {
+/// resource "azure_network_express_route_circuit_peering" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   peering_type                  = "AzurePrivatePeering"
-///   express_route_circuit_name    = azure_network_expressroutecircuit.example.name
-///   resource_group_name           = azure_core_resourcegroup.example.name
+///   express_route_circuit_name    = azure_network_express_route_circuit.example.name
+///   resource_group_name           = azure_core_resource_group.example.name
 ///   shared_key                    = "ItsASecret"
 ///   peer_asn                      = 100
 ///   primary_peer_address_prefix   = "192.168.1.0/30"
 ///   secondary_peer_address_prefix = "192.168.1.0/30"
 ///   vlan_id                       = 100
 /// }
-/// resource "azure_network_expressroutecircuitpeering" "example2" {
+/// resource "azure_network_express_route_circuit_peering" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   peering_type                  = "AzurePrivatePeering"
-///   express_route_circuit_name    = azure_network_expressroutecircuit.example2.name
-///   resource_group_name           = azure_core_resourcegroup.example.name
+///   express_route_circuit_name    = azure_network_express_route_circuit.example2.name
+///   resource_group_name           = azure_core_resource_group.example.name
 ///   shared_key                    = "ItsASecret"
 ///   peer_asn                      = 100
 ///   primary_peer_address_prefix   = "192.168.1.0/30"
 ///   secondary_peer_address_prefix = "192.168.1.0/30"
 ///   vlan_id                       = 100
 /// }
-/// resource "azure_network_expressroutecircuitconnection" "example" {
+/// resource "azure_network_express_route_circuit_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ercircuitconnection"
-///   peering_id          = azure_network_expressroutecircuitpeering.example.id
-///   peer_peering_id     = azure_network_expressroutecircuitpeering.example2.id
+///   peering_id          = azure_network_express_route_circuit_peering.example.id
+///   peer_peering_id     = azure_network_express_route_circuit_peering.example2.id
 ///   address_prefix_ipv4 = "192.169.9.0/29"
 ///   authorization_key   = "846a1918-b7a2-4917-b43c-8c4cdaee006a"
 /// }
@@ -669,7 +693,7 @@ class ExpressRouteCircuitConnection extends pulumi.CustomResource {
           'azure:network/expressRouteCircuitConnection:ExpressRouteCircuitConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['authorizationKey'],
         ) {
     addressPrefixIpv4 = registerOutput<String>('addressPrefixIpv4');

@@ -111,7 +111,7 @@ import 'web_app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -119,21 +119,27 @@ import 'web_app_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_bot_webapp" "example" {
+/// resource "azure_bot_web_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example"
 ///   location                = "global"
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   sku                     = "F0"
-///   microsoft_app_id        = data.azure_core_getclientconfig.current.client_id
+///   microsoft_app_id        = data.azure_core_client_config.current.client_id
 ///   microsoft_app_type      = "SingleTenant"
-///   microsoft_app_tenant_id = data.azure_core_getclientconfig.current.tenant_id
+///   microsoft_app_tenant_id = data.azure_core_client_config.current.tenant_id
 /// }
 /// ```
 /// ```java
@@ -261,7 +267,7 @@ class WebApp extends pulumi.CustomResource {
           'azure:bot/webApp:WebApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['developerAppInsightsApiKey', 'luisKey'],
         ) {
     developerAppInsightsApiKey = registerOutput<String?>('developerAppInsightsApiKey', isSecret: true);

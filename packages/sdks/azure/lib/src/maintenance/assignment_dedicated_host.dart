@@ -176,7 +176,7 @@ import 'assignment_dedicated_host_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -184,33 +184,48 @@ import 'assignment_dedicated_host_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_compute_dedicatedhostgroup" "example" {
+/// resource "azure_compute_dedicated_host_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-host-group"
-///   resource_group_name         = azure_core_resourcegroup.example.name
-///   location                    = azure_core_resourcegroup.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
+///   location                    = azure_core_resource_group.example.location
 ///   platform_fault_domain_count = 2
 /// }
-/// resource "azure_compute_dedicatedhost" "example" {
+/// resource "azure_compute_dedicated_host" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-host"
-///   location                = azure_core_resourcegroup.example.location
-///   dedicated_host_group_id = azure_compute_dedicatedhostgroup.example.id
+///   location                = azure_core_resource_group.example.location
+///   dedicated_host_group_id = azure_compute_dedicated_host_group.example.id
 ///   sku_name                = "DSv3-Type3"
 ///   platform_fault_domain   = 1
 /// }
 /// resource "azure_maintenance_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-mc"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   scope               = "Host"
 /// }
-/// resource "azure_maintenance_assignmentdedicatedhost" "example" {
-///   location                     = azure_core_resourcegroup.example.location
+/// resource "azure_maintenance_assignment_dedicated_host" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location                     = azure_core_resource_group.example.location
 ///   maintenance_configuration_id = azure_maintenance_configuration.example.id
-///   dedicated_host_id            = azure_compute_dedicatedhost.example.id
+///   dedicated_host_id            = azure_compute_dedicated_host.example.id
 /// }
 /// ```
 /// ```java
@@ -354,7 +369,7 @@ class AssignmentDedicatedHost extends pulumi.CustomResource {
           'azure:maintenance/assignmentDedicatedHost:AssignmentDedicatedHost',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     dedicatedHostId = registerOutput<String>('dedicatedHostId');
     location = registerOutput<String>('location');

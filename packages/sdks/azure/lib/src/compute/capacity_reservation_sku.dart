@@ -25,7 +25,7 @@ class CapacityReservationSku {
 
   factory CapacityReservationSku.fromMap(Map<String, dynamic> map) {
     return CapacityReservationSku(
-      capacity: pulumi.Input.fromValue((map['capacity'] as num).toInt()),
+      capacity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['capacity'])),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

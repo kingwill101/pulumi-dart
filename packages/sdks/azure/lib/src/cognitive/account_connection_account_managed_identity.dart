@@ -208,7 +208,7 @@ import 'account_connection_account_managed_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -216,17 +216,23 @@ import 'account_connection_account_managed_identity_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_cognitive_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-aiservices"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   kind                       = "AIServices"
 ///   sku_name                   = "S0"
 ///   project_management_enabled = true
@@ -235,22 +241,28 @@ import 'account_connection_account_managed_identity_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplekeyvaultacct"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   tenant_id           = data.azure_core_client_config.current.tenant_id
 ///   sku_name            = "standard"
 /// }
-/// resource "azure_cognitive_accountconnectionaccountmanagedidentity" "example" {
+/// resource "azure_cognitive_account_connection_account_managed_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-connection"
 ///   cognitive_account_id = azure_cognitive_account.example.id
 ///   category             = "AzureKeyVault"
-///   target               = azure_keyvault_keyvault.example.vault_uri
+///   target               = azure_keyvault_key_vault.example.vault_uri
 ///   metadata = {
 ///     "ApiType"    = "Azure"
-///     "ResourceId" = azure_keyvault_keyvault.example.id
-///     "Location"   = azure_keyvault_keyvault.example.location
+///     "ResourceId" = azure_keyvault_key_vault.example.id
+///     "Location"   = azure_keyvault_key_vault.example.location
 ///   }
 /// }
 /// ```
@@ -421,7 +433,7 @@ class AccountConnectionAccountManagedIdentity extends pulumi.CustomResource {
           'azure:cognitive/accountConnectionAccountManagedIdentity:AccountConnectionAccountManagedIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     category = registerOutput<String>('category');
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');

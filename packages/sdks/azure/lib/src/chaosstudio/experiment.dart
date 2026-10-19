@@ -487,7 +487,7 @@ import 'experiment_step.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -495,46 +495,64 @@ import 'experiment_step.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "westeurope"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "internal"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_network_networkinterface" "example" {
+/// resource "azure_network_network_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ip_configurations {
 ///     name                          = "example"
 ///     subnet_id                     = azure_network_subnet.example.id
 ///     private_ip_address_allocation = "Dynamic"
 ///   }
 /// }
-/// resource "azure_compute_linuxvirtualmachine" "example" {
+/// resource "azure_compute_linux_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
+///   location                        = azure_core_resource_group.example.location
 ///   size                            = "Standard_F2"
 ///   admin_username                  = "adminuser"
 ///   admin_password                  = "example"
 ///   disable_password_authentication = false
-///   network_interface_ids           = [azure_network_networkinterface.example.id]
+///   network_interface_ids           = [azure_network_network_interface.example.id]
 ///   os_disk = {
 ///     caching              = "ReadWrite"
 ///     storage_account_type = "Standard_LRS"
@@ -547,18 +565,27 @@ import 'experiment_step.dart';
 ///   }
 /// }
 /// resource "azure_chaosstudio_target" "example" {
-///   location           = azure_core_resourcegroup.example.location
-///   target_resource_id = azure_compute_linuxvirtualmachine.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location           = azure_core_resource_group.example.location
+///   target_resource_id = azure_compute_linux_virtual_machine.example.id
 ///   target_type        = "Microsoft-VirtualMachine"
 /// }
 /// resource "azure_chaosstudio_capability" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   chaos_studio_target_id = azure_chaosstudio_target.example.id
 ///   capability_type        = "Shutdown-1.0"
 /// }
 /// resource "azure_chaosstudio_experiment" "example" {
-///   location            = azure_core_resourcegroup.example.location
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
@@ -869,7 +896,7 @@ class Experiment extends pulumi.CustomResource {
           'azure:chaosstudio/experiment:Experiment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     identity = registerOutput<ExperimentIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExperimentIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');

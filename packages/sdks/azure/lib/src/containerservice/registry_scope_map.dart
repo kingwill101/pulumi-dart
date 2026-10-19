@@ -171,7 +171,7 @@ import 'registry_scope_map_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -179,14 +179,20 @@ import 'registry_scope_map_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resource-group"
 ///   location = "West Europe"
 /// }
 /// resource "azure_containerservice_registry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleregistry"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "Basic"
 ///   admin_enabled       = false
 ///   georeplications {
@@ -196,10 +202,13 @@ import 'registry_scope_map_state.dart';
 ///     location = "West Europe"
 ///   }
 /// }
-/// resource "azure_containerservice_registryscopemap" "example" {
+/// resource "azure_containerservice_registry_scope_map" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-scope-map"
 ///   container_registry_name = azure_containerservice_registry.example.name
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   actions                 = ["repositories/repo1/content/read", "repositories/repo1/content/write"]
 /// }
 /// ```
@@ -331,7 +340,7 @@ class RegistryScopeMap extends pulumi.CustomResource {
           'azure:containerservice/registryScopeMap:RegistryScopeMap',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     actions = registerOutput<List<String>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     containerRegistryName = registerOutput<String>('containerRegistryName');

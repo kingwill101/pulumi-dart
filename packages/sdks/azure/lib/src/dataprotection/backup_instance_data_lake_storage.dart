@@ -303,7 +303,7 @@ import 'backup_instance_data_lake_storage_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -311,30 +311,45 @@ import 'backup_instance_data_lake_storage_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "storageaccountname"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 ///   is_hns_enabled           = true
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-container"
 ///   storage_account_id = azure_storage_account.example.id
 /// }
 /// resource "azure_storage_container" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-container2"
 ///   storage_account_id = azure_storage_account.example.id
 /// }
-/// resource "azure_dataprotection_backupvault" "example" {
+/// resource "azure_dataprotection_backup_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-backup-vault"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   datastore_type      = "VaultStore"
 ///   redundancy          = "LocallyRedundant"
 ///   identity = {
@@ -342,23 +357,32 @@ import 'backup_instance_data_lake_storage_state.dart';
 ///   }
 /// }
 /// resource "azure_authorization_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   scope                = azure_storage_account.example.id
 ///   role_definition_name = "Storage Account Backup Contributor"
-///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+///   principal_id         = azure_dataprotection_backup_vault.example.identity.principal_id
 /// }
-/// resource "azure_dataprotection_backuppolicydatalakestorage" "example" {
+/// resource "azure_dataprotection_backup_policy_data_lake_storage" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example-backup-policy"
-///   data_protection_backup_vault_id = azure_dataprotection_backupvault.example.id
+///   data_protection_backup_vault_id = azure_dataprotection_backup_vault.example.id
 ///   backup_schedules                = ["R/2021-05-23T02:30:00+00:00/P1W"]
 ///   default_retention_duration      = "P4M"
 /// }
-/// resource "azure_dataprotection_backupinstancedatalakestorage" "example" {
-///   depends_on                         = [azure_authorization_assignment.example]
+/// resource "azure_dataprotection_backup_instance_data_lake_storage" "example" {
+///   depends_on = [azure_authorization_assignment.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                               = "example-data-protection-backup-instance-data-lake-storage"
-///   data_protection_backup_vault_id    = azure_dataprotection_backupvault.example.id
-///   location                           = azure_core_resourcegroup.example.location
+///   data_protection_backup_vault_id    = azure_dataprotection_backup_vault.example.id
+///   location                           = azure_core_resource_group.example.location
 ///   storage_account_id                 = azure_storage_account.example.id
-///   backup_policy_data_lake_storage_id = azure_dataprotection_backuppolicydatalakestorage.example.id
+///   backup_policy_data_lake_storage_id = azure_dataprotection_backup_policy_data_lake_storage.example.id
 ///   storage_container_names            = [azure_storage_container.example.name, azure_storage_container.example2.name]
 /// }
 /// ```
@@ -576,7 +600,7 @@ class BackupInstanceDataLakeStorage extends pulumi.CustomResource {
           'azure:dataprotection/backupInstanceDataLakeStorage:BackupInstanceDataLakeStorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backupPolicyDataLakeStorageId = registerOutput<String>('backupPolicyDataLakeStorageId');
     dataProtectionBackupVaultId = registerOutput<String>('dataProtectionBackupVaultId');

@@ -68,7 +68,7 @@ import 'azurerm_portal_dashboard_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -111,7 +111,7 @@ import 'azurerm_portal_dashboard_result.dart';
 ///             .resourceGroupName("dashboard-rg")
 ///             .build());
 ///
-///         ctx.export("id", exampleAzurermDashboard.id());
+///         ctx.export("id", exampleAzurermDashboard.get("id"));
 ///     }
 /// }
 /// ```

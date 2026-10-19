@@ -119,7 +119,7 @@ import 'registry_agent_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -127,20 +127,29 @@ import 'registry_agent_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europ"
 /// }
 /// resource "azure_containerservice_registry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "Premium"
 /// }
-/// resource "azure_containerservice_registryagentpool" "example" {
+/// resource "azure_containerservice_registry_agent_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example"
-///   resource_group_name     = azure_core_resourcegroup.example.name
-///   location                = azure_core_resourcegroup.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
+///   location                = azure_core_resource_group.example.location
 ///   container_registry_name = azure_containerservice_registry.example.name
 /// }
 /// ```
@@ -261,7 +270,7 @@ class RegistryAgentPool extends pulumi.CustomResource {
           'azure:containerservice/registryAgentPool:RegistryAgentPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     containerRegistryName = registerOutput<String>('containerRegistryName');
     instanceCount = registerOutput<int?>('instanceCount');

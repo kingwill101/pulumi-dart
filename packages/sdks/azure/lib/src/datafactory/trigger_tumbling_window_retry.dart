@@ -25,8 +25,8 @@ class TriggerTumblingWindowRetry {
 
   factory TriggerTumblingWindowRetry.fromMap(Map<String, dynamic> map) {
     return TriggerTumblingWindowRetry(
-      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
-      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
+      interval: (() { final guardedValue = map['interval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

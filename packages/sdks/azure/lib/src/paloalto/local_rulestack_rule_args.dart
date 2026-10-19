@@ -134,7 +134,7 @@ class LocalRulestackRuleArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       negateDestination: (() { final guardedValue = map['negateDestination']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       negateSource: (() { final guardedValue = map['negateSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocolPorts: (() { final guardedValue = map['protocolPorts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       rulestackId: pulumi.Input.fromValue(map['rulestackId'] as String),

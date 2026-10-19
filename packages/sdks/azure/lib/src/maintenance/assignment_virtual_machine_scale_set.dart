@@ -687,7 +687,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -695,50 +695,74 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "internal"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_network_publicip" "example" {
-///   name                = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
 /// }
-/// resource "azure_lb_loadbalancer" "example" {
-///   name                = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+/// resource "azure_lb_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   frontend_ip_configurations {
 ///     name                 = "internal"
-///     public_ip_address_id = azure_network_publicip.example.id
+///     public_ip_address_id = azure_network_public_ip.example.id
 ///   }
 /// }
-/// resource "azure_lb_backendaddresspool" "example" {
+/// resource "azure_lb_backend_address_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
-///   loadbalancer_id = azure_lb_loadbalancer.example.id
+///   loadbalancer_id = azure_lb_load_balancer.example.id
 /// }
 /// resource "azure_lb_probe" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
-///   loadbalancer_id = azure_lb_loadbalancer.example.id
+///   loadbalancer_id = azure_lb_load_balancer.example.id
 ///   port            = 22
 ///   protocol        = "Tcp"
 /// }
 /// resource "azure_lb_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                           = "example"
-///   loadbalancer_id                = azure_lb_loadbalancer.example.id
+///   loadbalancer_id                = azure_lb_load_balancer.example.id
 ///   probe_id                       = azure_lb_probe.example.id
 ///   frontend_ip_configuration_name = "internal"
 ///   protocol                       = "Tcp"
@@ -746,9 +770,12 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 ///   backend_port                   = 22
 /// }
 /// resource "azure_maintenance_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   scope               = "OSImage"
 ///   visibility          = "Custom"
 ///   window = {
@@ -759,32 +786,41 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 ///     recur_every          = "1Days"
 ///   }
 /// }
-/// resource "azure_network_networkinterface" "example" {
+/// resource "azure_network_network_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "sample-nic"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ip_configurations {
 ///     name                          = "testconfiguration1"
 ///     private_ip_address_allocation = "Dynamic"
 ///   }
 /// }
-/// resource "azure_compute_linuxvirtualmachine" "example" {
+/// resource "azure_compute_linux_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-machine"
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   location              = azure_core_resource_group.example.location
 ///   size                  = "Standard_D4_v5"
 ///   admin_username        = "adminuser"
-///   network_interface_ids = [azure_network_networkinterface.example.id]
+///   network_interface_ids = [azure_network_network_interface.example.id]
 ///   os_disk = {
 ///     caching              = "ReadWrite"
 ///     storage_account_type = "Standard_LRS"
 ///   }
 /// }
-/// resource "azure_compute_linuxvirtualmachinescaleset" "example" {
-///   depends_on                      = [azure_lb_rule.example]
+/// resource "azure_compute_linux_virtual_machine_scale_set" "example" {
+///   depends_on = [azure_lb_rule.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
+///   location                        = azure_core_resource_group.example.location
 ///   sku                             = "Standard_D4_v5"
 ///   instances                       = 1
 ///   admin_username                  = "adminuser"
@@ -809,7 +845,7 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 ///       name                                   = "internal"
 ///       primary                                = true
 ///       subnet_id                              = azure_network_subnet.example.id
-///       load_balancer_backend_address_pool_ids = [azure_lb_backendaddresspool.example.id]
+///       load_balancer_backend_address_pool_ids = [azure_lb_backend_address_pool.example.id]
 ///     }
 ///   }
 ///   automatic_os_upgrade_policy = {
@@ -823,10 +859,13 @@ import 'assignment_virtual_machine_scale_set_state.dart';
 ///     pause_time_between_batches              = "PT0S"
 ///   }
 /// }
-/// resource "azure_maintenance_assignmentvirtualmachinescaleset" "example" {
-///   location                     = azure_core_resourcegroup.example.location
+/// resource "azure_maintenance_assignment_virtual_machine_scale_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location                     = azure_core_resource_group.example.location
 ///   maintenance_configuration_id = azure_maintenance_configuration.example.id
-///   virtual_machine_scale_set_id = azure_compute_linuxvirtualmachine.example.id
+///   virtual_machine_scale_set_id = azure_compute_linux_virtual_machine.example.id
 /// }
 /// ```
 /// ```java
@@ -1228,7 +1267,7 @@ class AssignmentVirtualMachineScaleSet extends pulumi.CustomResource {
           'azure:maintenance/assignmentVirtualMachineScaleSet:AssignmentVirtualMachineScaleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     maintenanceConfigurationId = registerOutput<String>('maintenanceConfigurationId');

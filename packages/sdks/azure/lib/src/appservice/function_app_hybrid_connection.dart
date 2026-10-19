@@ -164,7 +164,7 @@ import 'function_app_hybrid_connection_state.dart';
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
 ///         ServicePlanId = exampleServicePlan.Id,
-///         SiteConfig = null,
+///         SiteConfig = new() { },
 ///     });
 ///
 ///     var exampleWindowsFunctionApp = new Azure.AppService.WindowsFunctionApp("example", new()
@@ -175,7 +175,7 @@ import 'function_app_hybrid_connection_state.dart';
 ///         ServicePlanId = exampleServicePlan.Id,
 ///         StorageAccountName = exampleAccount.Name,
 ///         StorageAccountAccessKey = exampleAccount.PrimaryAccessKey,
-///         SiteConfig = null,
+///         SiteConfig = new() { },
 ///     });
 ///
 ///     var exampleFunctionAppHybridConnection = new Azure.AppService.FunctionAppHybridConnection("example", new()
@@ -281,7 +281,7 @@ import 'function_app_hybrid_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -289,54 +289,78 @@ import 'function_app_hybrid_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appservice_serviceplan" "example" {
+/// resource "azure_appservice_service_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-plan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   os_type             = "Windows"
 ///   sku_name            = "S1"
 /// }
 /// resource "azure_relay_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-relay"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Standard"
 /// }
-/// resource "azure_relay_hybridconnection" "example" {
+/// resource "azure_relay_hybrid_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "examplerhc1"
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   relay_namespace_name = azure_relay_namespace.example.name
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "storageaccountname"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "GRS"
 /// }
-/// resource "azure_appservice_windowswebapp" "example" {
+/// resource "azure_appservice_windows_web_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   service_plan_id     = azure_appservice_serviceplan.example.id
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   service_plan_id     = azure_appservice_service_plan.example.id
 ///   site_config         = {}
 /// }
-/// resource "azure_appservice_windowsfunctionapp" "example" {
+/// resource "azure_appservice_windows_function_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-function-app"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   service_plan_id            = azure_appservice_serviceplan.example.id
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
+///   service_plan_id            = azure_appservice_service_plan.example.id
 ///   storage_account_name       = azure_storage_account.example.name
 ///   storage_account_access_key = azure_storage_account.example.primary_access_key
 ///   site_config                = {}
 /// }
-/// resource "azure_appservice_functionapphybridconnection" "example" {
-///   function_app_id = azure_appservice_windowswebapp.example.id
-///   relay_id        = azure_relay_hybridconnection.example.id
+/// resource "azure_appservice_function_app_hybrid_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   function_app_id = azure_appservice_windows_web_app.example.id
+///   relay_id        = azure_relay_hybrid_connection.example.id
 ///   hostname        = "myhostname.example"
 ///   port            = 8081
 /// }
@@ -563,7 +587,7 @@ class FunctionAppHybridConnection extends pulumi.CustomResource {
           'azure:appservice/functionAppHybridConnection:FunctionAppHybridConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['sendKeyValue'],
         ) {
     functionAppId = registerOutput<String>('functionAppId');

@@ -228,7 +228,7 @@ import 'endpoint_servicebus_topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -236,31 +236,46 @@ import 'endpoint_servicebus_topic_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_servicebus_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleNamespace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
 /// resource "azure_servicebus_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "exampleTopic"
 ///   namespace_id = azure_servicebus_namespace.example.id
 /// }
-/// resource "azure_servicebus_topicauthorizationrule" "example" {
+/// resource "azure_servicebus_topic_authorization_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "exampleRule"
 ///   topic_id = azure_servicebus_topic.example.id
 ///   listen   = false
 ///   send     = true
 ///   manage   = false
 /// }
-/// resource "azure_iot_iothub" "example" {
+/// resource "azure_iot_io_t_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleIothub"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku = {
 ///     name     = "B1"
 ///     capacity = "1"
@@ -269,11 +284,14 @@ import 'endpoint_servicebus_topic_state.dart';
 ///     "purpose" = "example"
 ///   }
 /// }
-/// resource "azure_iot_endpointservicebustopic" "example" {
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   iothub_id           = azure_iot_iothub.example.id
+/// resource "azure_iot_endpoint_servicebus_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name = azure_core_resource_group.example.name
+///   iothub_id           = azure_iot_io_t_hub.example.id
 ///   name                = "example"
-///   connection_string   = azure_servicebus_topicauthorizationrule.example.primary_connection_string
+///   connection_string   = azure_servicebus_topic_authorization_rule.example.primary_connection_string
 /// }
 /// ```
 /// ```java
@@ -450,7 +468,7 @@ class EndpointServicebusTopic extends pulumi.CustomResource {
           'azure:iot/endpointServicebusTopic:EndpointServicebusTopic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['connectionString'],
         ) {
     authenticationType = registerOutput<String?>('authenticationType');

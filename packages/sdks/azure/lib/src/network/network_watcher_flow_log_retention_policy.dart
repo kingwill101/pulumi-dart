@@ -25,7 +25,7 @@ class NetworkWatcherFlowLogRetentionPolicy {
 
   factory NetworkWatcherFlowLogRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return NetworkWatcherFlowLogRetentionPolicy(
-      days: pulumi.Input.fromValue((map['days'] as num).toInt()),
+      days: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['days'])),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
     );
   }

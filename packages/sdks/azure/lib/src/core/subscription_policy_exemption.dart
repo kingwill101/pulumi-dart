@@ -135,7 +135,7 @@ import 'subscription_policy_exemption_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -143,25 +143,31 @@ import 'subscription_policy_exemption_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "example" {
+/// data "azure_core_subscription" "example" {
 /// }
-/// data "azure_policy_getpolicysetdefinition" "exampleGetPolicySetDefinition" {
+/// data "azure_policy_policy_set_definition" "exampleGetPolicySetDefinition" {
 ///   display_name = "Audit machines with insecure password security settings"
 /// }
 ///
-/// resource "azure_core_subscriptionpolicyassignment" "example" {
+/// resource "azure_core_subscription_policy_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "exampleAssignment"
-///   subscription_id      = data.azure_core_getsubscription.example.id
-///   policy_definition_id = data.azure_policy_getpolicysetdefinition.exampleGetPolicySetDefinition.id
+///   subscription_id      = data.azure_core_subscription.example.id
+///   policy_definition_id = data.azure_policy_policy_set_definition.exampleGetPolicySetDefinition.id
 ///   location             = "westus"
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_core_subscriptionpolicyexemption" "example" {
+/// resource "azure_core_subscription_policy_exemption" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "exampleExemption"
-///   subscription_id      = data.azure_core_getsubscription.example.id
-///   policy_assignment_id = azure_core_subscriptionpolicyassignment.example.id
+///   subscription_id      = data.azure_core_subscription.example.id
+///   policy_assignment_id = azure_core_subscription_policy_assignment.example.id
 ///   exemption_category   = "Mitigated"
 /// }
 /// ```
@@ -292,7 +298,7 @@ class SubscriptionPolicyExemption extends pulumi.CustomResource {
           'azure:core/subscriptionPolicyExemption:SubscriptionPolicyExemption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

@@ -171,7 +171,7 @@ import 'email_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -179,24 +179,45 @@ import 'email_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "My Company"
 ///   publisher_email     = "company@terraform.io"
 ///   sku_name            = "Developer_1"
 /// }
-/// resource "azure_apimanagement_emailtemplate" "example" {
+/// resource "azure_apimanagement_email_template" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   template_name       = "ConfirmSignUpIdentityDefault"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   api_management_name = azure_apimanagement_service.example.name
 ///   subject             = "Customized confirmation email for your new $OrganizationName API account"
-///   body                = "<!DOCTYPE html >\n<html>\n<head>\n  <meta charset=\\\"UTF-8\\\" />\n  <title>Customized Letter Title</title>\n</head>\n<body>\n  <p style=\\\"font-size:12pt;font-family:'Segoe UI'\\\">Dear $DevFirstName $DevLastName,</p>\n</body>\n</html>\n"
+///   body                = <<EOF
+/// <!DOCTYPE html >
+/// <html>
+/// <head>
+///   <meta charset=\"UTF-8\" />
+///   <title>Customized Letter Title</title>
+/// </head>
+/// <body>
+///   <p style=\"font-size:12pt;font-family:'Segoe UI'\">Dear $DevFirstName $DevLastName,</p>
+/// </body>
+/// </html>
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -343,7 +364,7 @@ class EmailTemplate extends pulumi.CustomResource {
           'azure:apimanagement/emailTemplate:EmailTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     body = registerOutput<String>('body');

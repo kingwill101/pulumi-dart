@@ -115,7 +115,7 @@ import 'definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -123,18 +123,21 @@ import 'definition_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_authorization_getroledefinition" "contributor" {
+/// data "azure_authorization_role_definition" "contributor" {
 ///   role_definition_id = "b24988ac-6180-42a0-ab88-20f7382dd24c"
 /// }
 ///
 /// resource "azure_lighthouse_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "Sample definition"
 ///   description        = "This is a lighthouse definition created IaC"
 ///   managing_tenant_id = "00000000-0000-0000-0000-000000000000"
 ///   scope              = "/subscriptions/00000000-0000-0000-0000-000000000000"
 ///   authorizations {
 ///     principal_id           = "00000000-0000-0000-0000-000000000000"
-///     role_definition_id     = data.azure_authorization_getroledefinition.contributor.role_definition_id
+///     role_definition_id     = data.azure_authorization_role_definition.contributor.role_definition_id
 ///     principal_display_name = "Tier 1 Support"
 ///   }
 /// }
@@ -248,7 +251,7 @@ class Definition extends pulumi.CustomResource {
           'azure:lighthouse/definition:Definition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     authorizations = registerOutput<List<DefinitionAuthorization>>('authorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefinitionAuthorization>(guardedValue, (value) => DefinitionAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');

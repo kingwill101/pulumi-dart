@@ -282,7 +282,7 @@ import 'traffic_manager_nested_endpoint_subnet.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -290,20 +290,29 @@ import 'traffic_manager_nested_endpoint_subnet.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-publicip"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
 ///   domain_name_label   = "example-pip"
 /// }
-/// resource "azure_network_trafficmanagerprofile" "parent" {
+/// resource "azure_network_traffic_manager_profile" "parent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "parent-profile"
-///   resource_group_name    = azure_core_resourcegroup.example.name
+///   resource_group_name    = azure_core_resource_group.example.name
 ///   traffic_routing_method = "Weighted"
 ///   dns_config = {
 ///     relative_name = "parent-profile"
@@ -321,9 +330,12 @@ import 'traffic_manager_nested_endpoint_subnet.dart';
 ///     "environment" = "Production"
 ///   }
 /// }
-/// resource "azure_network_trafficmanagerprofile" "nested" {
+/// resource "azure_network_traffic_manager_profile" "nested" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "nested-profile"
-///   resource_group_name    = azure_core_resourcegroup.example.name
+///   resource_group_name    = azure_core_resource_group.example.name
 ///   traffic_routing_method = "Priority"
 ///   dns_config = {
 ///     relative_name = "nested-profile"
@@ -335,11 +347,14 @@ import 'traffic_manager_nested_endpoint_subnet.dart';
 ///     path     = "/"
 ///   }
 /// }
-/// resource "azure_network_trafficmanagernestedendpoint" "example" {
+/// resource "azure_network_traffic_manager_nested_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-endpoint"
-///   target_resource_id      = azure_network_trafficmanagerprofile.nested.id
+///   target_resource_id      = azure_network_traffic_manager_profile.nested.id
 ///   priority                = 1
-///   profile_id              = azure_network_trafficmanagerprofile.parent.id
+///   profile_id              = azure_network_traffic_manager_profile.parent.id
 ///   minimum_child_endpoints = 9
 ///   weight                  = 5
 /// }
@@ -548,7 +563,7 @@ class TrafficManagerNestedEndpoint extends pulumi.CustomResource {
           'azure:network/trafficManagerNestedEndpoint:TrafficManagerNestedEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     customHeaders = registerOutput<List<TrafficManagerNestedEndpointCustomHeader>?>('customHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficManagerNestedEndpointCustomHeader>(guardedValue, (value) => TrafficManagerNestedEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool?>('enabled');

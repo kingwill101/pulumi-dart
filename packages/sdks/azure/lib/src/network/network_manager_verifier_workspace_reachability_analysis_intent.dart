@@ -441,7 +441,7 @@ import 'network_manager_verifier_workspace_reachability_analysis_intent_state.da
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -449,58 +449,79 @@ import 'network_manager_verifier_workspace_reachability_analysis_intent_state.da
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkmanager" "example" {
+/// resource "azure_network_network_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nm"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   scope = {
-///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///     subscription_ids = [data.azure_core_subscription.current.id]
 ///   }
 ///   scope_accesses = ["Connectivity"]
 /// }
-/// resource "azure_network_networkmanagerverifierworkspace" "example" {
+/// resource "azure_network_network_manager_verifier_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
-///   network_manager_id = azure_network_networkmanager.example.id
-///   location           = azure_core_resourcegroup.example.location
+///   network_manager_id = azure_network_network_manager.example.id
+///   location           = azure_core_resource_group.example.location
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "internal"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_network_networkinterface" "example" {
+/// resource "azure_network_network_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nic"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ip_configurations {
 ///     name                          = "internal"
 ///     subnet_id                     = azure_network_subnet.example.id
 ///     private_ip_address_allocation = "Dynamic"
 ///   }
 /// }
-/// resource "azure_compute_linuxvirtualmachine" "example" {
+/// resource "azure_compute_linux_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example-machine"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
+///   location                        = azure_core_resource_group.example.location
 ///   size                            = "Standard_B1ls"
 ///   admin_username                  = "adminuser"
 ///   admin_password                  = "P@ssw0rd1234!"
 ///   disable_password_authentication = false
-///   network_interface_ids           = [azure_network_networkinterface.example.id]
+///   network_interface_ids           = [azure_network_network_interface.example.id]
 ///   os_disk = {
 ///     caching              = "ReadWrite"
 ///     storage_account_type = "Standard_LRS"
@@ -512,11 +533,14 @@ import 'network_manager_verifier_workspace_reachability_analysis_intent_state.da
 ///     version   = "latest"
 ///   }
 /// }
-/// resource "azure_network_networkmanagerverifierworkspacereachabilityanalysisintent" "example" {
+/// resource "azure_network_network_manager_verifier_workspace_reachability_analysis_intent" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-intent"
-///   verifier_workspace_id   = azure_network_networkmanagerverifierworkspace.example.id
-///   source_resource_id      = azure_compute_linuxvirtualmachine.example.id
-///   destination_resource_id = azure_compute_linuxvirtualmachine.example.id
+///   verifier_workspace_id   = azure_network_network_manager_verifier_workspace.example.id
+///   source_resource_id      = azure_compute_linux_virtual_machine.example.id
+///   destination_resource_id = azure_compute_linux_virtual_machine.example.id
 ///   description             = "example"
 ///   ip_traffic = {
 ///     source_ips        = ["10.0.2.1"]
@@ -801,7 +825,7 @@ class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent extends pulumi.C
           'azure:network/networkManagerVerifierWorkspaceReachabilityAnalysisIntent:NetworkManagerVerifierWorkspaceReachabilityAnalysisIntent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     destinationResourceId = registerOutput<String>('destinationResourceId');

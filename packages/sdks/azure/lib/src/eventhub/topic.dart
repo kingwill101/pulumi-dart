@@ -130,7 +130,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -138,20 +138,29 @@ import 'topic_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-servicebus-topic"
 ///   location = "West Europe"
 /// }
 /// resource "azure_servicebus_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-servicebus-namespace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 ///   tags = {
 ///     "source" = "example"
 ///   }
 /// }
 /// resource "azure_servicebus_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "tfex_servicebus_topic"
 ///   namespace_id         = azure_servicebus_namespace.example.id
 ///   partitioning_enabled = true
@@ -289,7 +298,7 @@ class Topic extends pulumi.CustomResource {
           'azure:eventhub/topic:Topic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     autoDeleteOnIdle = registerOutput<String?>('autoDeleteOnIdle');
     batchedOperationsEnabled = registerOutput<bool?>('batchedOperationsEnabled');

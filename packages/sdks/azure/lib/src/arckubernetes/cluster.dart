@@ -135,7 +135,7 @@ import 'cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -146,13 +146,19 @@ import 'cluster_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_arckubernetes_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-akcc"
-///   resource_group_name          = azure_core_resourcegroup.example.name
+///   resource_group_name          = azure_core_resource_group.example.name
 ///   location                     = "West Europe"
 ///   agent_public_key_certificate = filebase64("testdata/public.cer")
 ///   identity = {
@@ -293,7 +299,7 @@ class Cluster extends pulumi.CustomResource {
           'azure:arckubernetes/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     agentPublicKeyCertificate = registerOutput<String>('agentPublicKeyCertificate');
     agentVersion = registerOutput<String>('agentVersion');

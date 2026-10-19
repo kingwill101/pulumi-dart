@@ -337,7 +337,7 @@ import 'configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -345,14 +345,20 @@ import 'configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-automanage"
 ///   location = "West Europe"
 /// }
 /// resource "azure_automanage_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-acmp"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   antimalware = {
 ///     exclusions = {
 ///       extensions = "exe;dll"
@@ -622,7 +628,7 @@ class Configuration extends pulumi.CustomResource {
           'azure:automanage/configuration:Configuration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     antimalware = registerOutput<ConfigurationAntimalware?>('antimalware', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConfigurationAntimalware.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     automationAccountEnabled = registerOutput<bool?>('automationAccountEnabled');

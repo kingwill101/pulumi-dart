@@ -222,7 +222,7 @@ import 'spring_cloud_app_mysql_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -230,43 +230,61 @@ import 'spring_cloud_app_mysql_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appplatform_springcloudservice" "example" {
+/// resource "azure_appplatform_spring_cloud_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-springcloud"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_appplatform_springcloudapp" "example" {
+/// resource "azure_appplatform_spring_cloud_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-springcloudapp"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   service_name        = azure_appplatform_springcloudservice.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   service_name        = azure_appplatform_spring_cloud_service.example.name
 /// }
-/// resource "azure_mysql_flexibleserver" "example" {
+/// resource "azure_mysql_flexible_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-fsserver"
-///   resource_group_name    = azure_core_resourcegroup.example.name
-///   location               = azure_core_resourcegroup.example.location
+///   resource_group_name    = azure_core_resource_group.example.name
+///   location               = azure_core_resource_group.example.location
 ///   administrator_login    = "adminTerraform"
 ///   administrator_password = "QAZwsx123"
 ///   sku_name               = "B_Standard_B1ms"
 ///   zone                   = "2"
 /// }
-/// resource "azure_mysql_flexibledatabase" "example" {
+/// resource "azure_mysql_flexible_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampledb"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   server_name         = azure_mysql_flexibleserver.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   server_name         = azure_mysql_flexible_server.example.name
 ///   charset             = "utf8"
 ///   collation           = "utf8_unicode_ci"
 /// }
-/// resource "azure_appplatform_springcloudappmysqlassociation" "example" {
+/// resource "azure_appplatform_spring_cloud_app_mysql_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-bind"
-///   spring_cloud_app_id = azure_appplatform_springcloudapp.example.id
-///   mysql_server_id     = azure_mysql_flexibleserver.example.id
-///   database_name       = azure_mysql_flexibledatabase.example.name
-///   username            = azure_mysql_flexibleserver.example.administrator_login
-///   password            = azure_mysql_flexibleserver.example.administratorLoginPassword
+///   spring_cloud_app_id = azure_appplatform_spring_cloud_app.example.id
+///   mysql_server_id     = azure_mysql_flexible_server.example.id
+///   database_name       = azure_mysql_flexible_database.example.name
+///   username            = azure_mysql_flexible_server.example.administrator_login
+///   password            = azure_mysql_flexible_server.example.administratorLoginPassword
 /// }
 /// ```
 /// ```java
@@ -434,7 +452,7 @@ class SpringCloudAppMysqlAssociation extends pulumi.CustomResource {
           'azure:appplatform/springCloudAppMysqlAssociation:SpringCloudAppMysqlAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     databaseName = registerOutput<String>('databaseName');

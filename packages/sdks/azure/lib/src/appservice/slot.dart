@@ -314,7 +314,7 @@ import 'slot_storage_account.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -326,28 +326,40 @@ import 'slot_storage_account.dart';
 /// }
 ///
 /// resource "random_id" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   keepers = {
 ///     "aziId" = 1
 ///   }
 ///   byte_length = 8
 /// }
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "some-resource-group"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "some-app-service-plan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     tier = "Standard"
 ///     size = "S1"
 ///   }
 /// }
-/// resource "azure_appservice_appservice" "example" {
+/// resource "azure_appservice_app_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = random_id.server.hex
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   app_service_plan_id = azure_appservice_plan.example.id
 ///   site_config = {
 ///     dotnet_framework_version = "v4.0"
@@ -362,10 +374,13 @@ import 'slot_storage_account.dart';
 ///   }
 /// }
 /// resource "azure_appservice_slot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = random_id.server.hex
-///   app_service_name    = azure_appservice_appservice.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   app_service_name    = azure_appservice_app_service.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   app_service_plan_id = azure_appservice_plan.example.id
 ///   site_config = {
 ///     dotnet_framework_version = "v4.0"
@@ -435,7 +450,7 @@ import 'slot_storage_account.dart';
 ///             .build());
 ///
 ///         var exampleAppService = new AppService("exampleAppService", AppServiceArgs.builder()
-///             .name(server.hex())
+///             .name(server.get("hex"))
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
 ///             .appServicePlanId(examplePlan.id())
@@ -451,7 +466,7 @@ import 'slot_storage_account.dart';
 ///             .build());
 ///
 ///         var exampleSlot = new Slot("exampleSlot", SlotArgs.builder()
-///             .name(server.hex())
+///             .name(server.get("hex"))
 ///             .appServiceName(exampleAppService.name())
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
@@ -765,7 +780,7 @@ import 'slot_storage_account.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -777,28 +792,40 @@ import 'slot_storage_account.dart';
 /// }
 ///
 /// resource "random_id" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   keepers = {
 ///     "aziId" = 1
 ///   }
 ///   byte_length = 8
 /// }
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "some-resource-group"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "some-app-service-plan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     tier = "Standard"
 ///     size = "S1"
 ///   }
 /// }
-/// resource "azure_appservice_appservice" "example" {
+/// resource "azure_appservice_app_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = random_id.server.hex
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   app_service_plan_id = azure_appservice_plan.example.id
 ///   site_config = {
 ///     java_version           = "1.8"
@@ -807,10 +834,13 @@ import 'slot_storage_account.dart';
 ///   }
 /// }
 /// resource "azure_appservice_slot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = random_id.server.hex
-///   app_service_name    = azure_appservice_appservice.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   app_service_name    = azure_appservice_app_service.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   app_service_plan_id = azure_appservice_plan.example.id
 ///   site_config = {
 ///     java_version           = "1.8"
@@ -872,7 +902,7 @@ import 'slot_storage_account.dart';
 ///             .build());
 ///
 ///         var exampleAppService = new AppService("exampleAppService", AppServiceArgs.builder()
-///             .name(server.hex())
+///             .name(server.get("hex"))
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
 ///             .appServicePlanId(examplePlan.id())
@@ -884,7 +914,7 @@ import 'slot_storage_account.dart';
 ///             .build());
 ///
 ///         var exampleSlot = new Slot("exampleSlot", SlotArgs.builder()
-///             .name(server.hex())
+///             .name(server.get("hex"))
 ///             .appServiceName(exampleAppService.name())
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
@@ -1009,7 +1039,7 @@ class Slot extends pulumi.CustomResource {
           'azure:appservice/slot:Slot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     appServiceName = registerOutput<String>('appServiceName');
     appServicePlanId = registerOutput<String>('appServicePlanId');

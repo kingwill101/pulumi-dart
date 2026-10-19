@@ -170,7 +170,7 @@ import 'workspace_policy_fragment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -181,25 +181,37 @@ import 'workspace_policy_fragment_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "pub1"
 ///   publisher_email     = "pub1@email.com"
 ///   sku_name            = "Premium_1"
 /// }
 /// resource "azure_apimanagement_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-workspace"
 ///   api_management_id = azure_apimanagement_service.example.id
 ///   display_name      = "Example Workspace"
 ///   description       = "Example API Management Workspace"
 /// }
-/// resource "azure_apimanagement_workspacepolicyfragment" "example" {
+/// resource "azure_apimanagement_workspace_policy_fragment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-policy-fragment"
 ///   api_management_workspace_id = azure_apimanagement_workspace.example.id
 ///   xml_format                  = "xml"
@@ -349,7 +361,7 @@ class WorkspacePolicyFragment extends pulumi.CustomResource {
           'azure:apimanagement/workspacePolicyFragment:WorkspacePolicyFragment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiManagementWorkspaceId = registerOutput<String>('apiManagementWorkspaceId');
     description = registerOutput<String?>('description');

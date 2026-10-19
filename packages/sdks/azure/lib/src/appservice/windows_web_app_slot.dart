@@ -97,14 +97,14 @@ import 'windows_web_app_slot_storage_account.dart';
 ///         ResourceGroupName = example.Name,
 ///         Location = exampleServicePlan.Location,
 ///         ServicePlanId = exampleServicePlan.Id,
-///         SiteConfig = null,
+///         SiteConfig = new() { },
 ///     });
 ///
 ///     var exampleWindowsWebAppSlot = new Azure.AppService.WindowsWebAppSlot("example", new()
 ///     {
 ///         Name = "example-slot",
 ///         AppServiceId = exampleWindowsWebApp.Id,
-///         SiteConfig = null,
+///         SiteConfig = new() { },
 ///     });
 ///
 /// });
@@ -160,7 +160,7 @@ import 'windows_web_app_slot_storage_account.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -168,27 +168,39 @@ import 'windows_web_app_slot_storage_account.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appservice_serviceplan" "example" {
+/// resource "azure_appservice_service_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-plan"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   os_type             = "Windows"
 ///   sku_name            = "P1v2"
 /// }
-/// resource "azure_appservice_windowswebapp" "example" {
+/// resource "azure_appservice_windows_web_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-windows-web-app"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_appservice_serviceplan.example.location
-///   service_plan_id     = azure_appservice_serviceplan.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_appservice_service_plan.example.location
+///   service_plan_id     = azure_appservice_service_plan.example.id
 ///   site_config         = {}
 /// }
-/// resource "azure_appservice_windowswebappslot" "example" {
+/// resource "azure_appservice_windows_web_app_slot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example-slot"
-///   app_service_id = azure_appservice_windowswebapp.example.id
+///   app_service_id = azure_appservice_windows_web_app.example.id
 ///   site_config    = {}
 /// }
 /// ```
@@ -404,7 +416,7 @@ class WindowsWebAppSlot extends pulumi.CustomResource {
           'azure:appservice/windowsWebAppSlot:WindowsWebAppSlot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['customDomainVerificationId', 'siteCredentials'],
         ) {
     appServiceId = registerOutput<String>('appServiceId');

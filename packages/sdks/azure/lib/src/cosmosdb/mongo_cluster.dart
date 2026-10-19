@@ -119,7 +119,7 @@ import 'mongo_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -127,14 +127,20 @@ import 'mongo_cluster_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "East US"
 /// }
-/// resource "azure_mongocluster_mongocluster" "example" {
+/// resource "azure_mongocluster_mongo_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-mc"
-///   resource_group_name    = azure_core_resourcegroup.example.name
-///   location               = azure_core_resourcegroup.example.location
+///   resource_group_name    = azure_core_resource_group.example.name
+///   location               = azure_core_resource_group.example.location
 ///   administrator_username = "adminTerraform"
 ///   administrator_password = "QAZwsx123"
 ///   compute_tier           = "Free"
@@ -294,7 +300,7 @@ class MongoCluster extends pulumi.CustomResource {
           'azure:cosmosdb/mongoCluster:MongoCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['administratorPassword', 'connectionStrings'],
         ) {
     administratorPassword = registerOutput<String?>('administratorPassword', isSecret: true);

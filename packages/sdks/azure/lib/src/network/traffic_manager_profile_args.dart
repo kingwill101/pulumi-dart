@@ -75,7 +75,7 @@ class TrafficManagerProfileArgs {
   factory TrafficManagerProfileArgs.fromMap(Map<String, dynamic> map) {
     return TrafficManagerProfileArgs(
       dnsConfig: pulumi.Input.fromValue(TrafficManagerProfileDnsConfig.fromMap((map['dnsConfig']! as Map).cast<String, dynamic>())),
-      maxReturn: (() { final guardedValue = map['maxReturn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxReturn: (() { final guardedValue = map['maxReturn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       monitorConfig: pulumi.Input.fromValue(TrafficManagerProfileMonitorConfig.fromMap((map['monitorConfig']! as Map).cast<String, dynamic>())),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       profileStatus: (() { final guardedValue = map['profileStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

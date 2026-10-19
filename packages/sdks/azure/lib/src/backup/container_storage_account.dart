@@ -149,7 +149,7 @@ import 'container_storage_account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -157,25 +157,37 @@ import 'container_storage_account_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-network-mapping-primary"
 ///   location = "West Europe"
 /// }
 /// resource "azure_recoveryservices_vault" "vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-recovery-vault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
 /// resource "azure_storage_account" "sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resource_group.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_backup_containerstorageaccount" "container" {
-///   resource_group_name = azure_core_resourcegroup.example.name
+/// resource "azure_backup_container_storage_account" "container" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name = azure_core_resource_group.example.name
 ///   recovery_vault_name = azure_recoveryservices_vault.vault.name
 ///   storage_account_id  = azure_storage_account.sa.id
 /// }
@@ -298,7 +310,7 @@ class ContainerStorageAccount extends pulumi.CustomResource {
           'azure:backup/containerStorageAccount:ContainerStorageAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     recoveryVaultName = registerOutput<String>('recoveryVaultName');
     resourceGroupName = registerOutput<String>('resourceGroupName');

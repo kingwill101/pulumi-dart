@@ -107,7 +107,7 @@ import 'network_security_perimeter_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -115,18 +115,27 @@ import 'network_security_perimeter_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networksecurityperimeter" "example" {
+/// resource "azure_network_network_security_perimeter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   location            = "West Europe"
 /// }
-/// resource "azure_network_networksecurityperimeterprofile" "example" {
+/// resource "azure_network_network_security_perimeter_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "example"
-///   network_security_perimeter_id = azure_network_networksecurityperimeter.example.id
+///   network_security_perimeter_id = azure_network_network_security_perimeter.example.id
 /// }
 /// ```
 /// ```java
@@ -228,7 +237,7 @@ class NetworkSecurityPerimeterProfile extends pulumi.CustomResource {
           'azure:network/networkSecurityPerimeterProfile:NetworkSecurityPerimeterProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     networkSecurityPerimeterId = registerOutput<String>('networkSecurityPerimeterId');

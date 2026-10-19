@@ -238,7 +238,7 @@ import 'express_route_circuit_peering_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -246,14 +246,20 @@ import 'express_route_circuit_peering_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "exprtTest"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_expressroutecircuit" "example" {
+/// resource "azure_network_express_route_circuit" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "expressRoute1"
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   location              = azure_core_resource_group.example.location
 ///   service_provider_name = "Equinix"
 ///   peering_location      = "Silicon Valley"
 ///   bandwidth_in_mbps     = 50
@@ -266,10 +272,13 @@ import 'express_route_circuit_peering_state.dart';
 ///     "environment" = "Production"
 ///   }
 /// }
-/// resource "azure_network_expressroutecircuitpeering" "example" {
+/// resource "azure_network_express_route_circuit_peering" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   peering_type                  = "MicrosoftPeering"
-///   express_route_circuit_name    = azure_network_expressroutecircuit.example.name
-///   resource_group_name           = azure_core_resourcegroup.example.name
+///   express_route_circuit_name    = azure_network_express_route_circuit.example.name
+///   resource_group_name           = azure_core_resource_group.example.name
 ///   peer_asn                      = 100
 ///   primary_peer_address_prefix   = "123.0.0.0/30"
 ///   secondary_peer_address_prefix = "123.0.0.4/30"
@@ -605,7 +614,7 @@ import 'express_route_circuit_peering_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -613,14 +622,20 @@ import 'express_route_circuit_peering_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "exprtTest"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_expressroutecircuit" "example" {
+/// resource "azure_network_express_route_circuit" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "expressRoute1"
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   location              = azure_core_resource_group.example.location
 ///   service_provider_name = "Equinix"
 ///   peering_location      = "Silicon Valley"
 ///   bandwidth_in_mbps     = 50
@@ -633,10 +648,13 @@ import 'express_route_circuit_peering_state.dart';
 ///     "environment" = "Production"
 ///   }
 /// }
-/// resource "azure_network_expressroutecircuitpeering" "example" {
+/// resource "azure_network_express_route_circuit_peering" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   peering_type                  = "AzurePrivatePeering"
-///   express_route_circuit_name    = azure_network_expressroutecircuit.example.name
-///   resource_group_name           = azure_core_resourcegroup.example.name
+///   express_route_circuit_name    = azure_network_express_route_circuit.example.name
+///   resource_group_name           = azure_core_resource_group.example.name
 ///   peer_asn                      = 100
 ///   primary_peer_address_prefix   = "123.0.0.0/30"
 ///   secondary_peer_address_prefix = "123.0.0.4/30"
@@ -820,7 +838,7 @@ class ExpressRouteCircuitPeering extends pulumi.CustomResource {
           'azure:network/expressRouteCircuitPeering:ExpressRouteCircuitPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['sharedKey'],
         ) {
     azureAsn = registerOutput<int>('azureAsn');

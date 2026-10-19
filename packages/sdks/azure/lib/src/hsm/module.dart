@@ -440,7 +440,7 @@ import 'module_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -448,26 +448,38 @@ import 'module_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
 ///   address_spaces      = ["10.2.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-compute"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.2.0.0/24"]
 /// }
 /// resource "azure_network_subnet" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-hsmsubnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.2.1.0/24"]
 ///   delegations {
 ///     name = "first"
@@ -478,35 +490,47 @@ import 'module_state.dart';
 ///   }
 /// }
 /// resource "azure_network_subnet" "example3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "gatewaysubnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.2.255.0/26"]
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-pip"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
 /// }
-/// resource "azure_network_virtualnetworkgateway" "example" {
+/// resource "azure_network_virtual_network_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnetgateway"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   type                = "ExpressRoute"
 ///   vpn_type            = "PolicyBased"
 ///   sku                 = "Standard"
 ///   ip_configurations {
-///     public_ip_address_id          = azure_network_publicip.example.id
+///     public_ip_address_id          = azure_network_public_ip.example.id
 ///     private_ip_address_allocation = "Dynamic"
 ///     subnet_id                     = azure_network_subnet.example3.id
 ///   }
 /// }
 /// resource "azure_hsm_module" "example" {
-///   depends_on          = [azure_network_virtualnetworkgateway.example]
+///   depends_on = [azure_network_virtual_network_gateway.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-hsm"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "payShield10K_LMK1_CPS60"
 ///   management_network_profile = {
 ///     network_interface_private_ip_addresses = ["10.2.1.7"]
@@ -787,7 +811,7 @@ class Module extends pulumi.CustomResource {
           'azure:hsm/module:Module',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     managementNetworkProfile = registerOutput<ModuleManagementNetworkProfile?>('managementNetworkProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ModuleManagementNetworkProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });

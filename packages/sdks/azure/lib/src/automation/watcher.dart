@@ -238,7 +238,7 @@ import 'watcher_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -246,25 +246,37 @@ import 'watcher_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_automation_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-account"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Basic"
 /// }
-/// resource "azure_automation_hybridrunbookworkergroup" "example" {
+/// resource "azure_automation_hybrid_runbook_worker_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example"
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   automation_account_name = azure_automation_account.example.name
 /// }
-/// resource "azure_automation_runbook" "example" {
+/// resource "azure_automation_run_book" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "Get-AzureVMTutorial"
-///   location                = azure_core_resourcegroup.example.location
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = azure_core_resource_group.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   automation_account_name = azure_automation_account.example.name
 ///   log_verbose             = "true"
 ///   log_progress            = "true"
@@ -275,11 +287,14 @@ import 'watcher_state.dart';
 ///   }
 /// }
 /// resource "azure_automation_watcher" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                           = "example"
 ///   automation_account_id          = azure_automation_account.example.id
 ///   location                       = "West Europe"
-///   script_name                    = azure_automation_runbook.example.name
-///   script_run_on                  = azure_automation_hybridrunbookworkergroup.example.name
+///   script_name                    = azure_automation_run_book.example.name
+///   script_run_on                  = azure_automation_hybrid_runbook_worker_group.example.name
 ///   description                    = "example-watcher desc"
 ///   execution_frequency_in_seconds = 42
 ///   tags = {
@@ -471,7 +486,7 @@ class Watcher extends pulumi.CustomResource {
           'azure:automation/watcher:Watcher',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     automationAccountId = registerOutput<String>('automationAccountId');
     description = registerOutput<String?>('description');

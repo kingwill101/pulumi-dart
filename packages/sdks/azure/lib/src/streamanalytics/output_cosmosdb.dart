@@ -251,7 +251,7 @@ import 'output_cosmosdb_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -259,19 +259,25 @@ import 'output_cosmosdb_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_streamanalytics_getjob" "example" {
+/// data "azure_streamanalytics_job" "example" {
 ///   name                = "example-job"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rg-example"
 ///   location = "West Europe"
 /// }
 /// resource "azure_cosmosdb_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampledb"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   offer_type          = "Standard"
 ///   kind                = "GlobalDocumentDB"
 ///   consistency_policy = {
@@ -280,29 +286,38 @@ import 'output_cosmosdb_state.dart';
 ///     max_staleness_prefix    = 200
 ///   }
 ///   geo_locations {
-///     location          = azure_core_resourcegroup.example.location
+///     location          = azure_core_resource_group.example.location
 ///     failover_priority = 0
 ///   }
 /// }
-/// resource "azure_cosmosdb_sqldatabase" "example" {
+/// resource "azure_cosmosdb_sql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cosmos-sql-db"
 ///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
 ///   account_name        = azure_cosmosdb_account.example.name
 ///   throughput          = 400
 /// }
-/// resource "azure_cosmosdb_sqlcontainer" "example" {
+/// resource "azure_cosmosdb_sql_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplecontainer"
 ///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
 ///   account_name        = azure_cosmosdb_account.example.name
-///   database_name       = azure_cosmosdb_sqldatabase.example.name
+///   database_name       = azure_cosmosdb_sql_database.example.name
 ///   partition_key_path  = "foo"
 /// }
-/// resource "azure_streamanalytics_outputcosmosdb" "example" {
+/// resource "azure_streamanalytics_output_cosmosdb" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "output-to-cosmosdb"
-///   stream_analytics_job_id  = data.azure_streamanalytics_getjob.example.id
+///   stream_analytics_job_id  = data.azure_streamanalytics_job.example.id
 ///   cosmosdb_account_key     = azure_cosmosdb_account.example.primary_key
-///   cosmosdb_sql_database_id = azure_cosmosdb_sqldatabase.example.id
-///   container_name           = azure_cosmosdb_sqlcontainer.example.name
+///   cosmosdb_sql_database_id = azure_cosmosdb_sql_database.example.id
+///   container_name           = azure_cosmosdb_sql_container.example.name
 ///   document_id              = "exampledocumentid"
 /// }
 /// ```
@@ -498,7 +513,7 @@ class OutputCosmosdb extends pulumi.CustomResource {
           'azure:streamanalytics/outputCosmosdb:OutputCosmosdb',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['cosmosdbAccountKey'],
         ) {
     authenticationMode = registerOutput<String?>('authenticationMode');

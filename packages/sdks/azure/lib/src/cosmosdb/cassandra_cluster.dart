@@ -62,7 +62,7 @@ class CassandraCluster extends pulumi.CustomResource {
           'azure:cosmosdb/cassandraCluster:CassandraCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['defaultAdminPassword'],
         ) {
     authenticationMethod = registerOutput<String?>('authenticationMethod');

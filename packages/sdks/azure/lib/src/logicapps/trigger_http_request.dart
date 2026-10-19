@@ -143,7 +143,7 @@ import 'trigger_http_request_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -151,19 +151,38 @@ import 'trigger_http_request_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "workflow-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_logicapps_workflow" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "workflow1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_logicapps_triggerhttprequest" "example" {
+/// resource "azure_logicapps_trigger_http_request" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "some-http-trigger"
 ///   logic_app_id = azure_logicapps_workflow.example.id
-///   schema       = "{\n    \\\"type\\\": \\\"object\\\",\n    \\\"properties\\\": {\n        \\\"hello\\\": {\n            \\\"type\\\": \\\"string\\\"\n        }\n    }\n}\n"
+///   schema       = <<SCHEMA
+/// {
+///     \"type\": \"object\",
+///     \"properties\": {
+///         \"hello\": {
+///             \"type\": \"string\"
+///         }
+///     }
+/// }
+/// SCHEMA
+///
 /// }
 /// ```
 /// ```java
@@ -291,7 +310,7 @@ class TriggerHttpRequest extends pulumi.CustomResource {
           'azure:logicapps/triggerHttpRequest:TriggerHttpRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     callbackUrl = registerOutput<String>('callbackUrl');
     logicAppId = registerOutput<String>('logicAppId');

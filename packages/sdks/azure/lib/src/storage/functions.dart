@@ -96,7 +96,7 @@ import 'get_table_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -104,13 +104,13 @@ import 'get_table_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_storage_getaccount" "example" {
+/// data "azure_storage_account" "example" {
 ///   name                = "packerimages"
 ///   resource_group_name = "packer-storage"
 /// }
 ///
 /// output "storageAccountTier" {
-///   value = data.azure_storage_getaccount.example.account_tier
+///   value = data.azure_storage_account.example.account_tier
 /// }
 /// ```
 /// ```java
@@ -399,7 +399,7 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -407,7 +407,7 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 ///   }
 /// }
 ///
-/// data "azure_storage_getaccountblobcontainersas" "example" {
+/// data "azure_storage_account_blob_container_s_a_s" "example" {
 ///   connection_string = azure_storage_account.storage.primary_connection_string
 ///   container_name    = azure_storage_container.container.name
 ///   https_only        = true
@@ -429,24 +429,33 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 ///   content_type        = "application/json"
 /// }
 ///
-/// resource "azure_core_resourcegroup" "rg" {
+/// resource "azure_core_resource_group" "rg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "resourceGroupName"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "storage" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "storageaccountname"
-///   resource_group_name      = azure_core_resourcegroup.rg.name
-///   location                 = azure_core_resourcegroup.rg.location
+///   resource_group_name      = azure_core_resource_group.rg.name
+///   location                 = azure_core_resource_group.rg.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_container" "container" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "mycontainer"
 ///   storage_account_name  = azure_storage_account.storage.name
 ///   container_access_type = "private"
 /// }
 /// output "sasUrlQueryString" {
-///   value = data.azure_storage_getaccountblobcontainersas.example.sas
+///   value = data.azure_storage_account_blob_container_s_a_s.example.sas
 /// }
 /// ```
 /// ```java
@@ -836,7 +845,7 @@ pulumi.Output<GetAccountBlobContainerSASResult> getAccountBlobContainerSASOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -844,7 +853,7 @@ pulumi.Output<GetAccountBlobContainerSASResult> getAccountBlobContainerSASOutput
 ///   }
 /// }
 ///
-/// data "azure_storage_getaccountsas" "example" {
+/// data "azure_storage_account_s_a_s" "example" {
 ///   connection_string = azure_storage_account.example.primary_connection_string
 ///   https_only        = true
 ///   signed_version    = "2022-11-02"
@@ -875,14 +884,20 @@ pulumi.Output<GetAccountBlobContainerSASResult> getAccountBlobContainerSASOutput
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "resourceGroupName"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "storageaccountname"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "GRS"
 ///   tags = {
@@ -890,7 +905,7 @@ pulumi.Output<GetAccountBlobContainerSASResult> getAccountBlobContainerSASOutput
 ///   }
 /// }
 /// output "sasUrlQueryString" {
-///   value = data.azure_storage_getaccountsas.example.sas
+///   value = data.azure_storage_account_s_a_s.example.sas
 /// }
 /// ```
 /// ```java
@@ -1107,7 +1122,7 @@ pulumi.Output<GetAccountSASResult> getAccountSASOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1115,7 +1130,7 @@ pulumi.Output<GetAccountSASResult> getAccountSASOutput(
 ///   }
 /// }
 ///
-/// data "azure_storage_getblob" "example" {
+/// data "azure_storage_blob" "example" {
 ///   name                 = "example-blob-name"
 ///   storage_container_id = "example-storage-container-id"
 /// }
@@ -1246,7 +1261,7 @@ pulumi.Output<GetBlobResult> getBlobOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1254,12 +1269,12 @@ pulumi.Output<GetBlobResult> getBlobOutput(
 ///   }
 /// }
 ///
-/// data "azure_storage_getcontainers" "example" {
+/// data "azure_storage_containers" "example" {
 ///   storage_account_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Storage/storageAccounts/sa1"
 /// }
 ///
 /// output "containerId" {
-///   value = data.azure_storage_getcontainers.example.containers[0].resource_manager_id
+///   value = data.azure_storage_containers.example.containers[0].resource_manager_id
 /// }
 /// ```
 /// ```java
@@ -1412,7 +1427,7 @@ pulumi.Output<GetContainersResult> getContainersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1420,17 +1435,17 @@ pulumi.Output<GetContainersResult> getContainersOutput(
 ///   }
 /// }
 ///
-/// data "azure_storage_getaccount" "example" {
+/// data "azure_storage_account" "example" {
 ///   name                = "storageaccountname"
 ///   resource_group_name = "resourcegroupname"
 /// }
-/// data "azure_storage_getencryptionscope" "exampleGetEncryptionScope" {
+/// data "azure_storage_encryption_scope" "exampleGetEncryptionScope" {
 ///   name               = "existingStorageES"
-///   storage_account_id = data.azure_storage_getaccount.example.id
+///   storage_account_id = data.azure_storage_account.example.id
 /// }
 ///
 /// output "id" {
-///   value = data.azure_storage_getencryptionscope.exampleGetEncryptionScope.id
+///   value = data.azure_storage_encryption_scope.exampleGetEncryptionScope.id
 /// }
 /// ```
 /// ```java
@@ -1594,7 +1609,7 @@ pulumi.Output<GetEncryptionScopeResult> getEncryptionScopeOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1602,12 +1617,12 @@ pulumi.Output<GetEncryptionScopeResult> getEncryptionScopeOutput(
 ///   }
 /// }
 ///
-/// data "azure_storage_getaccount" "example" {
+/// data "azure_storage_account" "example" {
 ///   name                = "storageaccountname"
 ///   resource_group_name = "resourcegroupname"
 /// }
-/// data "azure_storage_getpolicy" "exampleGetPolicy" {
-///   storage_account_id = data.azure_storage_getaccount.example.id
+/// data "azure_storage_policy" "exampleGetPolicy" {
+///   storage_account_id = data.azure_storage_account.example.id
 /// }
 /// ```
 /// ```java
@@ -1751,7 +1766,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1759,7 +1774,7 @@ pulumi.Output<GetPolicyResult> getPolicyOutput(
 ///   }
 /// }
 ///
-/// data "azure_storage_getqueue" "example" {
+/// data "azure_storage_queue" "example" {
 ///   name                 = "example-queue-name"
 ///   storage_account_name = "example-storage-account-name"
 /// }
@@ -1916,7 +1931,7 @@ pulumi.Output<GetQueueResult> getQueueOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1924,13 +1939,13 @@ pulumi.Output<GetQueueResult> getQueueOutput(
 ///   }
 /// }
 ///
-/// data "azure_storage_getaccount" "example" {
+/// data "azure_storage_account" "example" {
 ///   name                = "exampleaccount"
 ///   resource_group_name = "examples"
 /// }
-/// data "azure_storage_getshare" "exampleGetShare" {
+/// data "azure_storage_share" "exampleGetShare" {
 ///   name               = "existing"
-///   storage_account_id = data.azure_storage_getaccount.example.id
+///   storage_account_id = data.azure_storage_account.example.id
 /// }
 /// ```
 /// ```java
@@ -2095,7 +2110,7 @@ pulumi.Output<GetShareResult> getShareOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2103,13 +2118,13 @@ pulumi.Output<GetShareResult> getShareOutput(
 ///   }
 /// }
 ///
-/// data "azure_storage_getaccount" "example" {
+/// data "azure_storage_account" "example" {
 ///   name                = "exampleaccount"
 ///   resource_group_name = "examples"
 /// }
-/// data "azure_storage_getstoragecontainer" "exampleGetStorageContainer" {
+/// data "azure_storage_storage_container" "exampleGetStorageContainer" {
 ///   name               = "example-container-name"
-///   storage_account_id = data.azure_storage_getaccount.example.id
+///   storage_account_id = data.azure_storage_account.example.id
 /// }
 /// ```
 /// ```java
@@ -2262,7 +2277,7 @@ pulumi.Output<GetStorageContainerResult> getStorageContainerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2270,13 +2285,13 @@ pulumi.Output<GetStorageContainerResult> getStorageContainerOutput(
 ///   }
 /// }
 ///
-/// data "azure_storage_getsync" "example" {
+/// data "azure_storage_sync" "example" {
 ///   name                = "existingStorageSyncName"
 ///   resource_group_name = "existingResGroup"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_storage_getsync.example.id
+///   value = data.azure_storage_sync.example.id
 /// }
 /// ```
 /// ```java
@@ -2420,7 +2435,7 @@ pulumi.Output<GetSyncResult> getSyncOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2428,13 +2443,13 @@ pulumi.Output<GetSyncResult> getSyncOutput(
 ///   }
 /// }
 ///
-/// data "azure_storage_getsyncgroup" "example" {
+/// data "azure_storage_sync_group" "example" {
 ///   name            = "existing-ss-group"
 ///   storage_sync_id = "existing-ss-id"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_storage_getsyncgroup.example.id
+///   value = data.azure_storage_sync_group.example.id
 /// }
 /// ```
 /// ```java
@@ -2571,7 +2586,7 @@ pulumi.Output<GetSyncGroupResult> getSyncGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2579,7 +2594,7 @@ pulumi.Output<GetSyncGroupResult> getSyncGroupOutput(
 ///   }
 /// }
 ///
-/// data "azure_storage_gettable" "example" {
+/// data "azure_storage_table" "example" {
 ///   name                 = "example-table-name"
 ///   storage_account_name = "example-storage-account-name"
 /// }
@@ -2707,7 +2722,7 @@ pulumi.Output<GetTableResult> getTableOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2715,7 +2730,7 @@ pulumi.Output<GetTableResult> getTableOutput(
 ///   }
 /// }
 ///
-/// data "azure_storage_gettableentities" "example" {
+/// data "azure_storage_table_entities" "example" {
 ///   storage_table_id = exampleAzurermStorageTable.id
 ///   filter           = "PartitionKey eq 'example'"
 /// }
@@ -2742,7 +2757,7 @@ pulumi.Output<GetTableResult> getTableOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = StorageFunctions.getTableEntities(GetTableEntitiesArgs.builder()
-///             .storageTableId(exampleAzurermStorageTable.id())
+///             .storageTableId(exampleAzurermStorageTable.get("id"))
 ///             .filter("PartitionKey eq 'example'")
 ///             .build());
 ///
@@ -2847,7 +2862,7 @@ pulumi.Output<GetTableEntitiesResult> getTableEntitiesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2855,7 +2870,7 @@ pulumi.Output<GetTableEntitiesResult> getTableEntitiesOutput(
 ///   }
 /// }
 ///
-/// data "azure_storage_gettableentity" "example" {
+/// data "azure_storage_table_entity" "example" {
 ///   storage_table_id = exampleAzurermStorageTable.id
 ///   partition_key    = "example-partition-key"
 ///   row_key          = "example-row-key"
@@ -2883,7 +2898,7 @@ pulumi.Output<GetTableEntitiesResult> getTableEntitiesOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = StorageFunctions.getTableEntity(GetTableEntityArgs.builder()
-///             .storageTableId(exampleAzurermStorageTable.id())
+///             .storageTableId(exampleAzurermStorageTable.get("id"))
 ///             .partitionKey("example-partition-key")
 ///             .rowKey("example-row-key")
 ///             .build());

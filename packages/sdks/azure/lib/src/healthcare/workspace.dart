@@ -67,7 +67,7 @@ import 'workspace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,6 +76,9 @@ import 'workspace_state.dart';
 /// }
 ///
 /// resource "azure_healthcare_workspace" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfexworkspace"
 ///   resource_group_name = "tfex-resource_group"
 ///   location            = "east us"
@@ -159,7 +162,7 @@ class Workspace extends pulumi.CustomResource {
           'azure:healthcare/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

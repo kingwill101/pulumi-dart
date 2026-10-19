@@ -244,7 +244,7 @@ import 'resource_policy_remediation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -252,41 +252,59 @@ import 'resource_policy_remediation_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "resourcegroup1"
 ///   location = "West US"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "vnet1"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
 /// resource "azure_policy_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "only-deploy-in-westeurope"
 ///   policy_type  = "Custom"
 ///   mode         = "All"
 ///   display_name = "my-policy-definition"
 /// }
-/// resource "azure_core_resourcepolicyassignment" "example" {
+/// resource "azure_core_resource_policy_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "assignment1"
-///   resource_id          = azure_network_virtualnetwork.example.id
+///   resource_id          = azure_network_virtual_network.example.id
 ///   policy_definition_id = azure_policy_definition.example.id
 ///   parameters = jsonencode({
 ///     "listOfAllowedLocations" = {
-///       "value" = [azure_core_resourcegroup.example.location, "East US"]
+///       "value" = [azure_core_resource_group.example.location, "East US"]
 ///     }
 ///   })
 /// }
-/// resource "azure_core_resourcegrouppolicyassignment" "example" {
+/// resource "azure_core_resource_group_policy_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
-///   resource_group_id    = azure_core_resourcegroup.example.id
+///   resource_group_id    = azure_core_resource_group.example.id
 ///   policy_definition_id = azure_policy_definition.example.id
 /// }
-/// resource "azure_core_resourcepolicyremediation" "example" {
+/// resource "azure_core_resource_policy_remediation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "remediation1"
-///   resource_id          = azure_network_virtualnetwork.example.id
-///   policy_assignment_id = azure_core_resourcegrouppolicyassignment.example.id
+///   resource_id          = azure_network_virtual_network.example.id
+///   policy_assignment_id = azure_core_resource_group_policy_assignment.example.id
 /// }
 /// ```
 /// ```java
@@ -470,7 +488,7 @@ class ResourcePolicyRemediation extends pulumi.CustomResource {
           'azure:core/resourcePolicyRemediation:ResourcePolicyRemediation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     failurePercentage = registerOutput<double?>('failurePercentage');
     locationFilters = registerOutput<List<String>?>('locationFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

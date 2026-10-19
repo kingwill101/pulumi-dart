@@ -61,7 +61,7 @@ import 'get_vault_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -69,7 +69,7 @@ import 'get_vault_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_recoveryservices_getvault" "vault" {
+/// data "azure_recoveryservices_vault" "vault" {
 ///   name                = "tfex-recovery_vault"
 ///   resource_group_name = "tfex-resource_group"
 /// }

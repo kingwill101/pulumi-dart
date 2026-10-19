@@ -189,7 +189,7 @@ import 'frontdoor_custom_domain_tls.dart';
 ///     {
 ///         Name = "example-cdn-frontdoor-origin-group",
 ///         CdnFrontdoorProfileId = exampleFrontdoorProfile.Id,
-///         LoadBalancing = null,
+///         LoadBalancing = new() { },
 ///     });
 ///
 ///     var exampleFrontdoorOrigin = new Azure.Cdn.FrontdoorOrigin("example", new()
@@ -397,7 +397,7 @@ import 'frontdoor_custom_domain_tls.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -405,68 +405,98 @@ import 'frontdoor_custom_domain_tls.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resource-group"
 ///   location = "West Europe"
 /// }
 /// resource "azure_dns_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "fabrikam.com"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_cdn_frontdoorprofile" "example" {
+/// resource "azure_cdn_frontdoor_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cdn-frontdoor-profile"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Standard_AzureFrontDoor"
 /// }
-/// resource "azure_cdn_frontdoorendpoint" "example" {
+/// resource "azure_cdn_frontdoor_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-cdn-frontdoor-endpoint"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 /// }
-/// resource "azure_cdn_frontdoororigingroup" "example" {
+/// resource "azure_cdn_frontdoor_origin_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-cdn-frontdoor-origin-group"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 ///   load_balancing           = {}
 /// }
-/// resource "azure_cdn_frontdoororigin" "example" {
+/// resource "azure_cdn_frontdoor_origin" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                           = "example-cdn-frontdoor-origin"
-///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoororigingroup.example.id
+///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoor_origin_group.example.id
 ///   host_name                      = "contoso.fabrikam.com"
 ///   certificate_name_check_enabled = false
 /// }
-/// resource "azure_cdn_frontdoorcustomdomain" "example" {
+/// resource "azure_cdn_frontdoor_custom_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-cdn-frontdoor-custom-domain"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 ///   dns_zone_id              = azure_dns_zone.example.id
-///   host_name                = azure_cdn_frontdoororigin.example.host_name
+///   host_name                = azure_cdn_frontdoor_origin.example.host_name
 ///   tls = {
 ///     certificate_type = "ManagedCertificate"
 ///     minimum_version  = "TLS12"
 ///   }
 /// }
-/// resource "azure_cdn_frontdoorroute" "example" {
+/// resource "azure_cdn_frontdoor_route" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example-cdn-frontdoor-route"
-///   cdn_frontdoor_endpoint_id       = azure_cdn_frontdoorendpoint.example.id
-///   cdn_frontdoor_origin_group_id   = azure_cdn_frontdoororigingroup.example.id
-///   cdn_frontdoor_origin_ids        = [azure_cdn_frontdoororigin.example.id]
-///   cdn_frontdoor_custom_domain_ids = [azure_cdn_frontdoorcustomdomain.example.id]
+///   cdn_frontdoor_endpoint_id       = azure_cdn_frontdoor_endpoint.example.id
+///   cdn_frontdoor_origin_group_id   = azure_cdn_frontdoor_origin_group.example.id
+///   cdn_frontdoor_origin_ids        = [azure_cdn_frontdoor_origin.example.id]
+///   cdn_frontdoor_custom_domain_ids = [azure_cdn_frontdoor_custom_domain.example.id]
 ///   patterns_to_matches             = ["/*"]
 ///   supported_protocols             = ["Http", "Https"]
 /// }
-/// resource "azure_cdn_frontdoorfirewallpolicy" "example" {
+/// resource "azure_cdn_frontdoor_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplecdnfrontdoorfirewallpolicy"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   sku_name            = azure_cdn_frontdoorprofile.example.sku_name
+///   resource_group_name = azure_core_resource_group.example.name
+///   sku_name            = azure_cdn_frontdoor_profile.example.sku_name
 ///   mode                = "Prevention"
 /// }
-/// resource "azure_cdn_frontdoorsecuritypolicy" "example" {
+/// resource "azure_cdn_frontdoor_security_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-cdn-frontdoor-security-policy"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 ///   security_policies = {
 ///     firewall = {
-///       cdn_frontdoor_firewall_policy_id = azure_cdn_frontdoorfirewallpolicy.example.id
+///       cdn_frontdoor_firewall_policy_id = azure_cdn_frontdoor_firewall_policy.example.id
 ///       association = {
 ///         domains = [{
-///           "cdnFrontdoorDomainId" = azure_cdn_frontdoorcustomdomain.example.id
+///           cdn_frontdoor_domain_id = azure_cdn_frontdoor_custom_domain.example.id
 ///         }]
 ///         patterns_to_match = "/*"
 ///       }
@@ -828,7 +858,7 @@ import 'frontdoor_custom_domain_tls.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -839,7 +869,10 @@ import 'frontdoor_custom_domain_tls.dart';
 ///   }
 /// }
 ///
-/// resource "azure_dns_txtrecord" "example" {
+/// resource "azure_dns_txt_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = join(".", ["_dnsauth", split(".", exampleAzurermCdnFrontdoorCustomDomain.hostName)[0]])
 ///   zone_name           = exampleAzurermDnsZone.name
 ///   resource_group_name = exampleAzurermResourceGroup.name
@@ -881,14 +914,14 @@ import 'frontdoor_custom_domain_tls.dart';
 ///                     "_dnsauth",
 ///                     StdFunctions.split(SplitArgs.builder()
 ///                         .separator(".")
-///                         .text(exampleAzurermCdnFrontdoorCustomDomain.hostName())
+///                         .text(exampleAzurermCdnFrontdoorCustomDomain.get("hostName"))
 ///                         .build()).result()[0])
 ///                 .build()).result())
-///             .zoneName(exampleAzurermDnsZone.name())
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
+///             .zoneName(exampleAzurermDnsZone.get("name"))
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
 ///             .ttl(3600)
 ///             .records(TxtRecordRecordArgs.builder()
-///                 .value(exampleAzurermCdnFrontdoorCustomDomain.validationToken())
+///                 .value(exampleAzurermCdnFrontdoorCustomDomain.get("validationToken"))
 ///                 .build())
 ///             .build());
 ///
@@ -1032,7 +1065,7 @@ import 'frontdoor_custom_domain_tls.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1043,8 +1076,11 @@ import 'frontdoor_custom_domain_tls.dart';
 ///   }
 /// }
 ///
-/// resource "azure_dns_cnamerecord" "example" {
-///   depends_on          = [exampleAzurermCdnFrontdoorRoute, exampleAzurermCdnFrontdoorSecurityPolicy]
+/// resource "azure_dns_c_name_record" "example" {
+///   depends_on = [exampleAzurermCdnFrontdoorRoute, exampleAzurermCdnFrontdoorSecurityPolicy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = split(".", exampleAzurermCdnFrontdoorCustomDomain.hostName)[0]
 ///   zone_name           = exampleAzurermDnsZone.name
 ///   resource_group_name = exampleAzurermResourceGroup.name
@@ -1079,12 +1115,12 @@ import 'frontdoor_custom_domain_tls.dart';
 ///         var example = new CNameRecord("example", CNameRecordArgs.builder()
 ///             .name(StdFunctions.split(SplitArgs.builder()
 ///                 .separator(".")
-///                 .text(exampleAzurermCdnFrontdoorCustomDomain.hostName())
+///                 .text(exampleAzurermCdnFrontdoorCustomDomain.get("hostName"))
 ///                 .build()).result()[0])
-///             .zoneName(exampleAzurermDnsZone.name())
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
+///             .zoneName(exampleAzurermDnsZone.get("name"))
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
 ///             .ttl(3600)
-///             .record(exampleAzurermCdnFrontdoorEndpoint.hostName())
+///             .record(exampleAzurermCdnFrontdoorEndpoint.get("hostName"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
 ///                     exampleAzurermCdnFrontdoorRoute,
@@ -1169,7 +1205,7 @@ class FrontdoorCustomDomain extends pulumi.CustomResource {
           'azure:cdn/frontdoorCustomDomain:FrontdoorCustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     cdnFrontdoorProfileId = registerOutput<String>('cdnFrontdoorProfileId');
     dnsZoneId = registerOutput<String?>('dnsZoneId');

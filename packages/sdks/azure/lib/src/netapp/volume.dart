@@ -115,7 +115,7 @@ class Volume extends pulumi.CustomResource {
           'azure:netapp/volume:Volume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     acceptGrowCapacityPoolForShortTermCloneSplit = registerOutput<String?>('acceptGrowCapacityPoolForShortTermCloneSplit');
     accountName = registerOutput<String>('accountName');

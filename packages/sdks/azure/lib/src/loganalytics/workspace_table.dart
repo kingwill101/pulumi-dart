@@ -126,7 +126,7 @@ import 'workspace_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -134,19 +134,28 @@ import 'workspace_table_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 ///   retention_in_days   = 30
 /// }
-/// resource "azure_loganalytics_workspacetable" "example" {
-///   workspace_id            = azure_operationalinsights_analyticsworkspace.example.id
+/// resource "azure_loganalytics_workspace_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workspace_id            = azure_operationalinsights_analytics_workspace.example.id
 ///   name                    = "AppMetrics"
 ///   retention_in_days       = 60
 ///   total_retention_in_days = 180
@@ -265,7 +274,7 @@ class WorkspaceTable extends pulumi.CustomResource {
           'azure:loganalytics/workspaceTable:WorkspaceTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     plan = registerOutput<String?>('plan');

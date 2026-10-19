@@ -136,7 +136,7 @@ import 'shared_access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -144,23 +144,32 @@ import 'shared_access_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_iot_iothub" "example" {
+/// resource "azure_iot_io_t_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku = {
 ///     name     = "S1"
 ///     capacity = "1"
 ///   }
 /// }
-/// resource "azure_iot_sharedaccesspolicy" "example" {
+/// resource "azure_iot_shared_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   iothub_name         = azure_iot_iothub.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   iothub_name         = azure_iot_io_t_hub.example.name
 ///   registry_read       = true
 ///   registry_write      = true
 /// }
@@ -293,7 +302,7 @@ class SharedAccessPolicy extends pulumi.CustomResource {
           'azure:iot/sharedAccessPolicy:SharedAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['primaryConnectionString', 'primaryKey', 'secondaryConnectionString', 'secondaryKey'],
         ) {
     deviceConnect = registerOutput<bool?>('deviceConnect');

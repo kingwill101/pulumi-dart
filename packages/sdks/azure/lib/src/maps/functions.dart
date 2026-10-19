@@ -68,7 +68,7 @@ import 'get_account_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_account_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_maps_getaccount" "example" {
+/// data "azure_maps_account" "example" {
 ///   name                = "production"
 ///   resource_group_name = "maps"
 /// }
 ///
 /// output "mapsAccountId" {
-///   value = data.azure_maps_getaccount.example.id
+///   value = data.azure_maps_account.example.id
 /// }
 /// ```
 /// ```java

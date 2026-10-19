@@ -25,8 +25,8 @@ class GetCertificateCertificatePolicyLifetimeActionTrigger {
 
   factory GetCertificateCertificatePolicyLifetimeActionTrigger.fromMap(Map<String, dynamic> map) {
     return GetCertificateCertificatePolicyLifetimeActionTrigger(
-      daysBeforeExpiry: pulumi.Input.fromValue((map['daysBeforeExpiry'] as num).toInt()),
-      lifetimePercentage: pulumi.Input.fromValue((map['lifetimePercentage'] as num).toInt()),
+      daysBeforeExpiry: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['daysBeforeExpiry'])),
+      lifetimePercentage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lifetimePercentage'])),
     );
   }
 }

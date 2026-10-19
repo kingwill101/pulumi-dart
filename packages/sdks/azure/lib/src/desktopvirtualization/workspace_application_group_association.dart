@@ -171,7 +171,7 @@ import 'workspace_application_group_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -179,32 +179,47 @@ import 'workspace_application_group_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rg-example-virtualdesktop"
 ///   location = "West Europe"
 /// }
-/// resource "azure_desktopvirtualization_hostpool" "pooledbreadthfirst" {
+/// resource "azure_desktopvirtualization_host_pool" "pooledbreadthfirst" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "pooledbreadthfirst"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   type                = "Pooled"
 ///   load_balancer_type  = "BreadthFirst"
 /// }
-/// resource "azure_desktopvirtualization_applicationgroup" "remoteapp" {
+/// resource "azure_desktopvirtualization_application_group" "remoteapp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "remoteapp"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   type                = "RemoteApp"
-///   host_pool_id        = azure_desktopvirtualization_hostpool.pooledbreadthfirst.id
+///   host_pool_id        = azure_desktopvirtualization_host_pool.pooledbreadthfirst.id
 /// }
 /// resource "azure_desktopvirtualization_workspace" "workspace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "workspace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_desktopvirtualization_workspaceapplicationgroupassociation" "workspaceremoteapp" {
+/// resource "azure_desktopvirtualization_workspace_application_group_association" "workspaceremoteapp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workspace_id         = azure_desktopvirtualization_workspace.workspace.id
-///   application_group_id = azure_desktopvirtualization_applicationgroup.remoteapp.id
+///   application_group_id = azure_desktopvirtualization_application_group.remoteapp.id
 /// }
 /// ```
 /// ```java
@@ -342,7 +357,7 @@ class WorkspaceApplicationGroupAssociation extends pulumi.CustomResource {
           'azure:desktopvirtualization/workspaceApplicationGroupAssociation:WorkspaceApplicationGroupAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applicationGroupId = registerOutput<String>('applicationGroupId');
     workspaceId = registerOutput<String>('workspaceId');

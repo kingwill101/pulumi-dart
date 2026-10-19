@@ -288,7 +288,7 @@ import 'alert_processing_rule_action_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -296,20 +296,29 @@ import 'alert_processing_rule_action_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_monitoring_actiongroup" "example" {
+/// resource "azure_monitoring_action_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-action-group"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   short_name          = "action"
 /// }
-/// resource "azure_monitoring_alertprocessingruleactiongroup" "example" {
+/// resource "azure_monitoring_alert_processing_rule_action_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
 ///   resource_group_name  = "example"
-///   scopes               = [azure_core_resourcegroup.example.id]
-///   add_action_group_ids = [azure_monitoring_actiongroup.example.id]
+///   scopes               = [azure_core_resource_group.example.id]
+///   add_action_group_ids = [azure_monitoring_action_group.example.id]
 ///   condition = {
 ///     target_resource_type = {
 ///       operator = "Equals"
@@ -326,11 +335,11 @@ import 'alert_processing_rule_action_group_state.dart';
 ///     time_zone       = "Pacific Standard Time"
 ///     recurrence = {
 ///       dailies = [{
-///         "startTime" = "17:00:00"
-///         "endTime"   = "09:00:00"
+///         start_time = "17:00:00"
+///         end_time   = "09:00:00"
 ///       }]
 ///       weeklies = [{
-///         "daysOfWeeks" = ["Saturday", "Sunday"]
+///         days_of_weeks = ["Saturday", "Sunday"]
 ///       }]
 ///     }
 ///   }
@@ -520,7 +529,7 @@ class AlertProcessingRuleActionGroup extends pulumi.CustomResource {
           'azure:monitoring/alertProcessingRuleActionGroup:AlertProcessingRuleActionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     addActionGroupIds = registerOutput<List<String>>('addActionGroupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     condition = registerOutput<AlertProcessingRuleActionGroupCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertProcessingRuleActionGroupCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

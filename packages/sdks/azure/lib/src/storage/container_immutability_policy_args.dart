@@ -46,7 +46,7 @@ class ContainerImmutabilityPolicyArgs {
 
   factory ContainerImmutabilityPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ContainerImmutabilityPolicyArgs(
-      immutabilityPeriodInDays: pulumi.Input.fromValue((map['immutabilityPeriodInDays'] as num).toInt()),
+      immutabilityPeriodInDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['immutabilityPeriodInDays'])),
       locked: (() { final guardedValue = map['locked']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       protectedAppendWritesAllEnabled: (() { final guardedValue = map['protectedAppendWritesAllEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       protectedAppendWritesEnabled: (() { final guardedValue = map['protectedAppendWritesEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

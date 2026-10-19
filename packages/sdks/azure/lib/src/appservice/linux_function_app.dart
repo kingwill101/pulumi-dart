@@ -118,7 +118,7 @@ import 'linux_function_app_storage_account.dart';
 ///         StorageAccountName = exampleAccount.Name,
 ///         StorageAccountAccessKey = exampleAccount.PrimaryAccessKey,
 ///         ServicePlanId = exampleServicePlan.Id,
-///         SiteConfig = null,
+///         SiteConfig = new() { },
 ///     });
 ///
 /// });
@@ -179,7 +179,7 @@ import 'linux_function_app_storage_account.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -187,31 +187,43 @@ import 'linux_function_app_storage_account.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "linuxfunctionappsa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_appservice_serviceplan" "example" {
+/// resource "azure_appservice_service_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-app-service-plan"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   os_type             = "Linux"
 ///   sku_name            = "B1"
 /// }
-/// resource "azure_appservice_linuxfunctionapp" "example" {
+/// resource "azure_appservice_linux_function_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-linux-function-app"
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
+///   location                   = azure_core_resource_group.example.location
 ///   storage_account_name       = azure_storage_account.example.name
 ///   storage_account_access_key = azure_storage_account.example.primary_access_key
-///   service_plan_id            = azure_appservice_serviceplan.example.id
+///   service_plan_id            = azure_appservice_service_plan.example.id
 ///   site_config                = {}
 /// }
 /// ```
@@ -463,7 +475,7 @@ class LinuxFunctionApp extends pulumi.CustomResource {
           'azure:appservice/linuxFunctionApp:LinuxFunctionApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['customDomainVerificationId', 'siteCredentials', 'storageAccountAccessKey'],
         ) {
     appSettings = registerOutput<Map<String, String>?>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

@@ -66,7 +66,7 @@ import 'source_code_token_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -74,7 +74,10 @@ import 'source_code_token_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_appservice_sourcecodetoken" "example" {
+/// resource "azure_appservice_source_code_token" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   type  = "GitHub"
 ///   token = "7e57735e77e577e57"
 /// }
@@ -145,7 +148,7 @@ class SourceCodeToken extends pulumi.CustomResource {
           'azure:appservice/sourceCodeToken:SourceCodeToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['token', 'tokenSecret'],
         ) {
     token = registerOutput<String>('token', isSecret: true);

@@ -68,7 +68,7 @@ import 'get_definition_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_definition_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_managedapplication_getdefinition" "example" {
+/// data "azure_managedapplication_definition" "example" {
 ///   name                = "examplemanagedappdef"
 ///   resource_group_name = "exampleresources"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_managedapplication_getdefinition.example.id
+///   value = data.azure_managedapplication_definition.example.id
 /// }
 /// ```
 /// ```java

@@ -85,7 +85,7 @@ import 'get_profile_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -93,7 +93,7 @@ import 'get_profile_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_cdn_getfrontdoorbatchruleset" "example" {
+/// data "azure_cdn_frontdoor_batch_rule_set" "example" {
 ///   name                = "existing"
 ///   profile_name        = "existing-profile"
 ///   resource_group_name = "existing-resources"
@@ -236,7 +236,7 @@ pulumi.Output<GetFrontdoorBatchRuleSetResult> getFrontdoorBatchRuleSetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -244,7 +244,7 @@ pulumi.Output<GetFrontdoorBatchRuleSetResult> getFrontdoorBatchRuleSetOutput(
 ///   }
 /// }
 ///
-/// data "azure_cdn_getfrontdoorcustomdomain" "example" {
+/// data "azure_cdn_frontdoor_custom_domain" "example" {
 ///   name                = "existing-cdn-frontdoor-custom-domain"
 ///   profile_name        = "existing-cdn-frontdoor-profile"
 ///   resource_group_name = "existing-resource-group"
@@ -387,7 +387,7 @@ pulumi.Output<GetFrontdoorCustomDomainResult> getFrontdoorCustomDomainOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -395,7 +395,7 @@ pulumi.Output<GetFrontdoorCustomDomainResult> getFrontdoorCustomDomainOutput(
 ///   }
 /// }
 ///
-/// data "azure_cdn_getfrontdoorendpoint" "example" {
+/// data "azure_cdn_frontdoor_endpoint" "example" {
 ///   name                = "existing-endpoint"
 ///   profile_name        = "existing-cdn-profile"
 ///   resource_group_name = "existing-resources"
@@ -534,7 +534,7 @@ pulumi.Output<GetFrontdoorEndpointResult> getFrontdoorEndpointOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -542,7 +542,7 @@ pulumi.Output<GetFrontdoorEndpointResult> getFrontdoorEndpointOutput(
 ///   }
 /// }
 ///
-/// data "azure_cdn_getfrontdoorfirewallpolicy" "example" {
+/// data "azure_cdn_frontdoor_firewall_policy" "example" {
 ///   name                = "examplecdnfdwafpolicy"
 ///   resource_group_name = exampleAzurermResourceGroup.name
 /// }
@@ -570,7 +570,7 @@ pulumi.Output<GetFrontdoorEndpointResult> getFrontdoorEndpointOutput(
 ///     public static void stack(Context ctx) {
 ///         final var example = CdnFunctions.getFrontdoorFirewallPolicy(GetFrontdoorFirewallPolicyArgs.builder()
 ///             .name("examplecdnfdwafpolicy")
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
 ///             .build());
 ///
 ///     }
@@ -674,7 +674,7 @@ pulumi.Output<GetFrontdoorFirewallPolicyResult> getFrontdoorFirewallPolicyOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -682,7 +682,7 @@ pulumi.Output<GetFrontdoorFirewallPolicyResult> getFrontdoorFirewallPolicyOutput
 ///   }
 /// }
 ///
-/// data "azure_cdn_getfrontdoororigingroup" "example" {
+/// data "azure_cdn_frontdoor_origin_group" "example" {
 ///   name                = "example-origin-group"
 ///   profile_name        = "example-profile"
 ///   resource_group_name = "example-resources"
@@ -824,7 +824,7 @@ pulumi.Output<GetFrontdoorOriginGroupResult> getFrontdoorOriginGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -832,16 +832,16 @@ pulumi.Output<GetFrontdoorOriginGroupResult> getFrontdoorOriginGroupOutput(
 ///   }
 /// }
 ///
-/// data "azure_cdn_getfrontdoorprofile" "example" {
+/// data "azure_cdn_frontdoor_profile" "example" {
 ///   name                = "existing-cdn-profile"
 ///   resource_group_name = "existing-resources"
 /// }
 ///
 /// output "frontDoorId" {
-///   value = data.azure_cdn_getfrontdoorprofile.example.id
+///   value = data.azure_cdn_frontdoor_profile.example.id
 /// }
 /// output "logScrubbingMatchVariable" {
-///   value = data.azure_cdn_getfrontdoorprofile.example.log_scrubbing_rules[0].match_variable
+///   value = data.azure_cdn_frontdoor_profile.example.log_scrubbing_rules[0].match_variable
 /// }
 /// ```
 /// ```java
@@ -986,7 +986,7 @@ pulumi.Output<GetFrontdoorProfileResult> getFrontdoorProfileOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -994,7 +994,7 @@ pulumi.Output<GetFrontdoorProfileResult> getFrontdoorProfileOutput(
 ///   }
 /// }
 ///
-/// data "azure_cdn_getfrontdoorruleset" "example" {
+/// data "azure_cdn_frontdoor_rule_set" "example" {
 ///   name                = "existing-rule-set"
 ///   profile_name        = "existing-profile"
 ///   resource_group_name = "existing-resources"
@@ -1137,7 +1137,7 @@ pulumi.Output<GetFrontdoorRuleSetResult> getFrontdoorRuleSetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1145,7 +1145,7 @@ pulumi.Output<GetFrontdoorRuleSetResult> getFrontdoorRuleSetOutput(
 ///   }
 /// }
 ///
-/// data "azure_cdn_getfrontdoorsecret" "example" {
+/// data "azure_cdn_frontdoor_secret" "example" {
 ///   name                = "example-secret"
 ///   profile_name        = "example-profile"
 ///   resource_group_name = "example-resources"
@@ -1574,7 +1574,7 @@ pulumi.Output<GetFrontdoorSecretResult> getFrontdoorSecretOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1582,25 +1582,34 @@ pulumi.Output<GetFrontdoorSecretResult> getFrontdoorSecretOutput(
 ///   }
 /// }
 ///
-/// data "azure_cdn_getfrontdoorsecuritypolicy" "example" {
-///   name                = azure_cdn_frontdoorsecuritypolicy.example.name
-///   profile_name        = azure_cdn_frontdoorprofile.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+/// data "azure_cdn_frontdoor_security_policy" "example" {
+///   name                = azure_cdn_frontdoor_security_policy.example.name
+///   profile_name        = azure_cdn_frontdoor_profile.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-cdn-frontdoor"
 ///   location = "West Europe"
 /// }
-/// resource "azure_cdn_frontdoorprofile" "example" {
+/// resource "azure_cdn_frontdoor_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-frontdoor-profile"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Standard_AzureFrontDoor"
 /// }
-/// resource "azure_cdn_frontdoorfirewallpolicy" "example" {
+/// resource "azure_cdn_frontdoor_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplecdnfrontdoorfirewallpolicy"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   sku_name            = azure_cdn_frontdoorprofile.example.sku_name
+///   resource_group_name = azure_core_resource_group.example.name
+///   sku_name            = azure_cdn_frontdoor_profile.example.sku_name
 ///   enabled             = true
 ///   mode                = "Prevention"
 ///   redirect_url        = "https://www.example.com"
@@ -1621,12 +1630,18 @@ pulumi.Output<GetFrontdoorSecretResult> getFrontdoorSecretOutput(
 ///   }
 /// }
 /// resource "azure_dns_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-frontdoor.com"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_cdn_frontdoorcustomdomain" "example" {
+/// resource "azure_cdn_frontdoor_custom_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-custom-domain"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 ///   dns_zone_id              = azure_dns_zone.example.id
 ///   host_name                = "www.example-frontdoor.com"
 ///   tls = {
@@ -1634,15 +1649,18 @@ pulumi.Output<GetFrontdoorSecretResult> getFrontdoorSecretOutput(
 ///     minimum_tls_version = "TLS12"
 ///   }
 /// }
-/// resource "azure_cdn_frontdoorsecuritypolicy" "example" {
+/// resource "azure_cdn_frontdoor_security_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-security-policy"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 ///   security_policies = {
 ///     firewall = {
-///       cdn_frontdoor_firewall_policy_id = azure_cdn_frontdoorfirewallpolicy.example.id
+///       cdn_frontdoor_firewall_policy_id = azure_cdn_frontdoor_firewall_policy.example.id
 ///       association = {
 ///         domains = [{
-///           "cdnFrontdoorDomainId" = azure_cdn_frontdoorcustomdomain.example.id
+///           cdn_frontdoor_domain_id = azure_cdn_frontdoor_custom_domain.example.id
 ///         }]
 ///         patterns_to_match = "/*"
 ///       }
@@ -1944,7 +1962,7 @@ pulumi.Output<GetFrontdoorSecurityPolicyResult> getFrontdoorSecurityPolicyOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1952,13 +1970,13 @@ pulumi.Output<GetFrontdoorSecurityPolicyResult> getFrontdoorSecurityPolicyOutput
 ///   }
 /// }
 ///
-/// data "azure_cdn_getprofile" "example" {
+/// data "azure_cdn_profile" "example" {
 ///   name                = "myfirstcdnprofile"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "cdnProfileId" {
-///   value = data.azure_cdn_getprofile.example.id
+///   value = data.azure_cdn_profile.example.id
 /// }
 /// ```
 /// ```java

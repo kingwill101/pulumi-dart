@@ -321,7 +321,7 @@ import 'sql_pool_security_alert_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -329,28 +329,40 @@ import 'sql_pool_security_alert_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorageacc"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 ///   account_kind             = "StorageV2"
 ///   is_hns_enabled           = "true"
 /// }
-/// resource "azure_storage_datalakegen2filesystem" "example" {
+/// resource "azure_storage_data_lake_gen2_filesystem" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   storage_account_id = azure_storage_account.example.id
 /// }
 /// resource "azure_synapse_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                 = "example"
-///   resource_group_name                  = azure_core_resourcegroup.example.name
-///   location                             = azure_core_resourcegroup.example.location
-///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   resource_group_name                  = azure_core_resource_group.example.name
+///   location                             = azure_core_resource_group.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_data_lake_gen2_filesystem.example.id
 ///   sql_administrator_login              = "sqladminuser"
 ///   sql_administrator_login_password     = "H@Sh1CoR3!"
 ///   aad_admin = [{
@@ -365,21 +377,30 @@ import 'sql_pool_security_alert_policy_state.dart';
 ///     "Env" = "production"
 ///   }
 /// }
-/// resource "azure_synapse_sqlpool" "example" {
+/// resource "azure_synapse_sql_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "examplesqlpool"
 ///   synapse_workspace_id = azure_synapse_workspace.example.id
 ///   sku_name             = "DW100c"
 ///   create_mode          = "Default"
 /// }
 /// resource "azure_storage_account" "audit_logs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_synapse_sqlpoolsecurityalertpolicy" "example" {
-///   sql_pool_id                = azure_synapse_sqlpool.example.id
+/// resource "azure_synapse_sql_pool_security_alert_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   sql_pool_id                = azure_synapse_sql_pool.example.id
 ///   policy_state               = "Enabled"
 ///   storage_endpoint           = azure_storage_account.audit_logs.primary_blob_endpoint
 ///   storage_account_access_key = azure_storage_account.audit_logs.primary_access_key
@@ -597,7 +618,7 @@ class SqlPoolSecurityAlertPolicy extends pulumi.CustomResource {
           'azure:synapse/sqlPoolSecurityAlertPolicy:SqlPoolSecurityAlertPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['storageAccountAccessKey'],
         ) {
     disabledAlerts = registerOutput<List<String>?>('disabledAlerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -40,7 +40,7 @@ class ManagedDiskSasTokenState {
   factory ManagedDiskSasTokenState.fromMap(Map<String, dynamic> map) {
     return ManagedDiskSasTokenState(
       accessLevel: (() { final guardedValue = map['accessLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      durationInSeconds: (() { final guardedValue = map['durationInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      durationInSeconds: (() { final guardedValue = map['durationInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       managedDiskId: (() { final guardedValue = map['managedDiskId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sasUrl: (() { final guardedValue = map['sasUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

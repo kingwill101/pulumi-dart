@@ -147,7 +147,7 @@ import 'iot_hub_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -158,23 +158,32 @@ import 'iot_hub_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_iot_iothubdps" "example" {
+/// resource "azure_iot_iot_hub_dps" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku = {
 ///     name     = "S1"
 ///     capacity = "1"
 ///   }
 /// }
-/// resource "azure_iot_iothubcertificate" "example" {
+/// resource "azure_iot_iot_hub_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   iot_dps_name        = azure_iot_iothubdps.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   iot_dps_name        = azure_iot_iot_hub_dps.example.name
 ///   certificate_content = filebase64("example.cer")
 /// }
 /// ```
@@ -304,7 +313,7 @@ class IotHubCertificate extends pulumi.CustomResource {
           'azure:iot/iotHubCertificate:IotHubCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['certificateContent'],
         ) {
     certificateContent = registerOutput<String>('certificateContent', isSecret: true);

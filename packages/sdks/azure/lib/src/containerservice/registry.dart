@@ -150,7 +150,7 @@ import 'registry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -158,14 +158,20 @@ import 'registry_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_containerservice_registry" "acr" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "containerRegistry1"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "Premium"
 ///   admin_enabled       = false
 ///   georeplications {
@@ -430,7 +436,7 @@ import 'registry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -438,32 +444,41 @@ import 'registry_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getkey" "example" {
+/// data "azure_keyvault_key" "example" {
 ///   name         = "super-secret"
 ///   key_vault_id = existing.id
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_containerservice_registry" "acr" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "containerRegistry1"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "Premium"
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 ///   encryption = {
-///     key_vault_key_id   = data.azure_keyvault_getkey.example.id
-///     identity_client_id = azure_authorization_userassignedidentity.example.client_id
+///     key_vault_key_id   = data.azure_keyvault_key.example.id
+///     identity_client_id = azure_authorization_user_assigned_identity.example.client_id
 ///   }
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   name                = "registry-uai"
 /// }
 /// ```
@@ -509,7 +524,7 @@ import 'registry_state.dart';
 ///
 ///         final var example = KeyvaultFunctions.getKey(GetKeyArgs.builder()
 ///             .name("super-secret")
-///             .keyVaultId(existing.id())
+///             .keyVaultId(existing.get("id"))
 ///             .build());
 ///
 ///         var acr = new Registry("acr", RegistryArgs.builder()
@@ -761,7 +776,7 @@ import 'registry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -769,20 +784,29 @@ import 'registry_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_containerservice_registry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "containerRegistry1"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "Premium"
 /// }
-/// resource "azure_containerservice_kubernetescluster" "example" {
+/// resource "azure_containerservice_kubernetes_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-aks1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   dns_prefix          = "exampleaks1"
 ///   default_node_pool = {
 ///     name       = "default"
@@ -797,7 +821,10 @@ import 'registry_state.dart';
 ///   }
 /// }
 /// resource "azure_authorization_assignment" "example" {
-///   principal_id                     = azure_containerservice_kubernetescluster.example.kubelet_identity.object_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   principal_id                     = azure_containerservice_kubernetes_cluster.example.kubelet_identity.object_id
 ///   role_definition_name             = "AcrPull"
 ///   scope                            = azure_containerservice_registry.example.id
 ///   skip_service_principal_aad_check = true
@@ -1000,7 +1027,7 @@ class Registry extends pulumi.CustomResource {
           'azure:containerservice/registry:Registry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['adminPassword'],
         ) {
     adminEnabled = registerOutput<bool?>('adminEnabled');

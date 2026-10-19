@@ -206,7 +206,7 @@ import 'managed_database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -214,26 +214,38 @@ import 'managed_database_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_mssql_managedinstance" "example" {
+/// resource "azure_mssql_managed_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "managedsqlinstance"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   license_type                 = "BasePrice"
 ///   sku_name                     = "GP_Gen5"
 ///   storage_size_in_gb           = 32
@@ -242,9 +254,12 @@ import 'managed_database_state.dart';
 ///   administrator_login          = "msadministrator"
 ///   administrator_login_password = "thisIsDog11"
 /// }
-/// resource "azure_mssql_manageddatabase" "example" {
+/// resource "azure_mssql_managed_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   managed_instance_id = azure_mssql_managedinstance.example.id
+///   managed_instance_id = azure_mssql_managed_instance.example.id
 /// }
 /// ```
 /// ```java
@@ -404,7 +419,7 @@ class ManagedDatabase extends pulumi.CustomResource {
           'azure:mssql/managedDatabase:ManagedDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     longTermRetentionPolicy = registerOutput<ManagedDatabaseLongTermRetentionPolicy>('longTermRetentionPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDatabaseLongTermRetentionPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     managedInstanceId = registerOutput<String>('managedInstanceId');

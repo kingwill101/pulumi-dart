@@ -115,7 +115,7 @@ import 'active_slot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -127,18 +127,36 @@ import 'active_slot_state.dart';
 /// }
 ///
 /// resource "random_id" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "azure_appservice_appservice" "example" {
+/// resource "azure_appservice_app_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// resource "azure_appservice_slot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "azure_appservice_activeslot" "example" {
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   app_service_name      = azure_appservice_appservice.example.name
+/// resource "azure_appservice_active_slot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name   = azure_core_resource_group.example.name
+///   app_service_name      = azure_appservice_app_service.example.name
 ///   app_service_slot_name = azure_appservice_slot.example.name
 /// }
 /// ```
@@ -230,7 +248,7 @@ class ActiveSlot extends pulumi.CustomResource {
           'azure:appservice/activeSlot:ActiveSlot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     appServiceName = registerOutput<String>('appServiceName');
     appServiceSlotName = registerOutput<String>('appServiceSlotName');

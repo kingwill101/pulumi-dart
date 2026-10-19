@@ -189,7 +189,7 @@ import 'firewall_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -201,19 +201,28 @@ import 'firewall_rule_state.dart';
 /// }
 ///
 /// resource "random_id" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   keepers = {
 ///     "aziId" = 1
 ///   }
 ///   byte_length = 8
 /// }
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "redis-resourcegroup"
 ///   location = "West Europe"
 /// }
 /// resource "azure_redis_cache" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="redis${random_id.server.hex}"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   capacity            = 1
 ///   family              = "P"
 ///   sku_name            = "Premium"
@@ -224,10 +233,13 @@ import 'firewall_rule_state.dart';
 ///     maxmemory_policy   = "allkeys-lru"
 ///   }
 /// }
-/// resource "azure_redis_firewallrule" "example" {
+/// resource "azure_redis_firewall_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "someIPrange"
 ///   redis_cache_name    = azure_redis_cache.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   start_ip            = "1.2.3.4"
 ///   end_ip              = "2.3.4.5"
 /// }
@@ -271,7 +283,7 @@ import 'firewall_rule_state.dart';
 ///             .build());
 ///
 ///         var exampleCache = new Cache("exampleCache", CacheArgs.builder()
-///             .name(String.format("redis%s", server.hex()))
+///             .name(String.format("redis%s", server.get("hex")))
 ///             .location(example.location())
 ///             .resourceGroupName(example.name())
 ///             .capacity(1)
@@ -374,7 +386,7 @@ class FirewallRule extends pulumi.CustomResource {
           'azure:redis/firewallRule:FirewallRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     endIp = registerOutput<String>('endIp');
     this.name = registerOutput<String>('name');

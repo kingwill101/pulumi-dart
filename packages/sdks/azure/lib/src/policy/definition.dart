@@ -180,7 +180,7 @@ import 'definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -189,13 +189,34 @@ import 'definition_state.dart';
 /// }
 ///
 /// resource "azure_policy_definition" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "accTestPolicy"
 ///   policy_type  = "Custom"
 ///   mode         = "Indexed"
 ///   display_name = "acceptance test policy definition"
-///   metadata     = "    {\n    \\\"category\\\": \\\"General\\\"\n    }\n\n"
+///   metadata     = <<METADATA
+///     {
+///     \"category\": \"General\"
+///     }
+///
+/// METADATA
+///
 ///   policy_rule  = " {\n    \"if\": {\n      \"not\": {\n        \"field\": \"location\",\n        \"in\": \"[parameters('allowedLocations')]\"\n      }\n    },\n    \"then\": {\n      \"effect\": \"audit\"\n    }\n  }\n"
-///   parameters   = " {\n    \\\"allowedLocations\\\": {\n      \\\"type\\\": \\\"Array\\\",\n      \\\"metadata\\\": {\n        \\\"description\\\": \\\"The list of allowed locations for resources.\\\",\n        \\\"displayName\\\": \\\"Allowed locations\\\",\n        \\\"strongType\\\": \\\"location\\\"\n      }\n    }\n  }\n"
+///   parameters   = <<PARAMETERS
+///  {
+///     \"allowedLocations\": {
+///       \"type\": \"Array\",
+///       \"metadata\": {
+///         \"description\": \"The list of allowed locations for resources.\",
+///         \"displayName\": \"Allowed locations\",
+///         \"strongType\": \"location\"
+///       }
+///     }
+///   }
+/// PARAMETERS
+///
 /// }
 /// ```
 /// ```java
@@ -349,7 +370,7 @@ class Definition extends pulumi.CustomResource {
           'azure:policy/definition:Definition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

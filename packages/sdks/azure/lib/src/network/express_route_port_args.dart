@@ -77,7 +77,7 @@ class ExpressRoutePortArgs {
 
   factory ExpressRoutePortArgs.fromMap(Map<String, dynamic> map) {
     return ExpressRoutePortArgs(
-      bandwidthInGbps: pulumi.Input.fromValue((map['bandwidthInGbps'] as num).toInt()),
+      bandwidthInGbps: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bandwidthInGbps'])),
       billingType: (() { final guardedValue = map['billingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encapsulation: pulumi.Input.fromValue(map['encapsulation'] as String),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ExpressRoutePortIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

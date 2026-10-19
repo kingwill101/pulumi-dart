@@ -48,7 +48,7 @@ class IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence {
     return IntegrationAccountBatchConfigurationReleaseCriteriaRecurrence(
       endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       frequency: pulumi.Input.fromValue(map['frequency'] as String),
-      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
+      interval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interval'])),
       schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceSchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

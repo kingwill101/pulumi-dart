@@ -400,7 +400,7 @@ import 'namespace_customer_managed_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -408,60 +408,84 @@ import 'namespace_customer_managed_key_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_eventhub_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cluster"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku_name            = "Dedicated_1"
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "example" {
+/// resource "azure_eventhub_event_hub_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-namespace"
-///   location             = azure_core_resourcegroup.example.location
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resource_group.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   sku                  = "Standard"
 ///   dedicated_cluster_id = azure_eventhub_cluster.example.id
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplekv"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 ///   purge_protection_enabled   = true
 /// }
-/// resource "azure_keyvault_accesspolicy" "example" {
-///   key_vault_id    = azure_keyvault_keyvault.example.id
-///   tenant_id       = azure_eventhub_eventhubnamespace.example.identity.tenant_id
-///   object_id       = azure_eventhub_eventhubnamespace.example.identity.principal_id
+/// resource "azure_keyvault_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id    = azure_keyvault_key_vault.example.id
+///   tenant_id       = azure_eventhub_event_hub_namespace.example.identity.tenant_id
+///   object_id       = azure_eventhub_event_hub_namespace.example.identity.principal_id
 ///   key_permissions = ["Get", "UnwrapKey", "WrapKey"]
 /// }
-/// resource "azure_keyvault_accesspolicy" "example2" {
-///   key_vault_id    = azure_keyvault_keyvault.example.id
-///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
-///   object_id       = data.azure_core_getclientconfig.current.object_id
+/// resource "azure_keyvault_access_policy" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id    = azure_keyvault_key_vault.example.id
+///   tenant_id       = data.azure_core_client_config.current.tenant_id
+///   object_id       = data.azure_core_client_config.current.object_id
 ///   key_permissions = ["Create", "Delete", "Get", "List", "Purge", "Recover", "GetRotationPolicy"]
 /// }
 /// resource "azure_keyvault_key" "example" {
-///   depends_on   = [azure_keyvault_accesspolicy.example, azure_keyvault_accesspolicy.example2]
+///   depends_on = [azure_keyvault_access_policy.example, azure_keyvault_access_policy.example2]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "examplekvkey"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 /// }
-/// resource "azure_eventhub_namespacecustomermanagedkey" "example" {
-///   eventhub_namespace_id = azure_eventhub_eventhubnamespace.example.id
+/// resource "azure_eventhub_namespace_customer_managed_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   eventhub_namespace_id = azure_eventhub_event_hub_namespace.example.id
 ///   key_vault_key_ids     = [azure_keyvault_key.example.id]
 /// }
 /// ```
@@ -1113,7 +1137,7 @@ import 'namespace_customer_managed_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1121,68 +1145,95 @@ import 'namespace_customer_managed_key_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_eventhub_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cluster"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku_name            = "Dedicated_1"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
-///   location            = azure_core_resourcegroup.example.location
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "example" {
+/// resource "azure_eventhub_event_hub_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-namespace"
-///   location             = azure_core_resourcegroup.example.location
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resource_group.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   sku                  = "Standard"
 ///   dedicated_cluster_id = azure_eventhub_cluster.example.id
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplekv"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 ///   purge_protection_enabled   = true
 /// }
-/// resource "azure_keyvault_accesspolicy" "example" {
-///   key_vault_id    = azure_keyvault_keyvault.example.id
+/// resource "azure_keyvault_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id    = azure_keyvault_key_vault.example.id
 ///   tenant_id       = test.tenantId
 ///   object_id       = test.principalId
 ///   key_permissions = ["Get", "UnwrapKey", "WrapKey"]
 /// }
-/// resource "azure_keyvault_accesspolicy" "example2" {
-///   key_vault_id    = azure_keyvault_keyvault.example.id
-///   tenant_id       = data.azure_core_getclientconfig.current.tenant_id
-///   object_id       = data.azure_core_getclientconfig.current.object_id
+/// resource "azure_keyvault_access_policy" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id    = azure_keyvault_key_vault.example.id
+///   tenant_id       = data.azure_core_client_config.current.tenant_id
+///   object_id       = data.azure_core_client_config.current.object_id
 ///   key_permissions = ["Create", "Delete", "Get", "List", "Purge", "Recover", "GetRotationPolicy"]
 /// }
 /// resource "azure_keyvault_key" "example" {
-///   depends_on   = [azure_keyvault_accesspolicy.example, azure_keyvault_accesspolicy.example2]
+///   depends_on = [azure_keyvault_access_policy.example, azure_keyvault_access_policy.example2]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "examplekvkey"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 /// }
-/// resource "azure_eventhub_namespacecustomermanagedkey" "example" {
-///   eventhub_namespace_id     = azure_eventhub_eventhubnamespace.example.id
+/// resource "azure_eventhub_namespace_customer_managed_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   eventhub_namespace_id     = azure_eventhub_event_hub_namespace.example.id
 ///   key_vault_key_ids         = [azure_keyvault_key.example.id]
-///   user_assigned_identity_id = azure_authorization_userassignedidentity.example.id
+///   user_assigned_identity_id = azure_authorization_user_assigned_identity.example.id
 /// }
 /// ```
 /// ```java
@@ -1267,8 +1318,8 @@ import 'namespace_customer_managed_key_state.dart';
 ///
 ///         var exampleAccessPolicy = new AccessPolicy("exampleAccessPolicy", AccessPolicyArgs.builder()
 ///             .keyVaultId(exampleKeyVault.id())
-///             .tenantId(test.tenantId())
-///             .objectId(test.principalId())
+///             .tenantId(test.get("tenantId"))
+///             .objectId(test.get("principalId"))
 ///             .keyPermissions(
 ///                 "Get",
 ///                 "UnwrapKey",
@@ -1462,7 +1513,7 @@ class NamespaceCustomerManagedKeyEventhub extends pulumi.CustomResource {
           'azure:eventhub/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     eventhubNamespaceId = registerOutput<String>('eventhubNamespaceId');
     infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');

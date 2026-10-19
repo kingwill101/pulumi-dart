@@ -115,7 +115,7 @@ import 'smart_detection_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -123,17 +123,26 @@ import 'smart_detection_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tf-test"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appinsights_insights" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tf-test-appinsights"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_type    = "web"
 /// }
-/// resource "azure_appinsights_smartdetectionrule" "example" {
+/// resource "azure_appinsights_smart_detection_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "Slow server response time"
 ///   application_insights_id = azure_appinsights_insights.example.id
 ///   enabled                 = false
@@ -250,7 +259,7 @@ class SmartDetectionRule extends pulumi.CustomResource {
           'azure:appinsights/smartDetectionRule:SmartDetectionRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     additionalEmailRecipients = registerOutput<List<String>?>('additionalEmailRecipients', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     applicationInsightsId = registerOutput<String>('applicationInsightsId');

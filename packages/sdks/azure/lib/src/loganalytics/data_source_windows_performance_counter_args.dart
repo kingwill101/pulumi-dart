@@ -56,7 +56,7 @@ class DataSourceWindowsPerformanceCounterArgs {
     return DataSourceWindowsPerformanceCounterArgs(
       counterName: pulumi.Input.fromValue(map['counterName'] as String),
       instanceName: pulumi.Input.fromValue(map['instanceName'] as String),
-      intervalSeconds: pulumi.Input.fromValue((map['intervalSeconds'] as num).toInt()),
+      intervalSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['intervalSeconds'])),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       objectName: pulumi.Input.fromValue(map['objectName'] as String),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

@@ -297,7 +297,7 @@ import 'spark_cluster_storage_account_gen2.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -305,26 +305,38 @@ import 'spark_cluster_storage_account_gen2.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "hdinsightstor"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "hdinsight"
 ///   storage_account_name  = azure_storage_account.example.name
 ///   container_access_type = "private"
 /// }
-/// resource "azure_hdinsight_sparkcluster" "example" {
+/// resource "azure_hdinsight_spark_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-hdicluster"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   cluster_version     = "3.6"
 ///   tier                = "Standard"
 ///   component_version = {
@@ -589,7 +601,7 @@ class SparkCluster extends pulumi.CustomResource {
           'azure:hdinsight/sparkCluster:SparkCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     clusterVersion = registerOutput<String>('clusterVersion');
     componentVersion = registerOutput<SparkClusterComponentVersion>('componentVersion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkClusterComponentVersion.fromMap((guardedValue as Map).cast<String, dynamic>()); });

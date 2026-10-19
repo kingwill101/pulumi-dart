@@ -49,8 +49,8 @@ class EventHubCaptureDescription {
       destination: pulumi.Input.fromValue(EventHubCaptureDescriptionDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       encoding: pulumi.Input.fromValue(map['encoding'] as String),
-      intervalInSeconds: (() { final guardedValue = map['intervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      sizeLimitInBytes: (() { final guardedValue = map['sizeLimitInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      intervalInSeconds: (() { final guardedValue = map['intervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      sizeLimitInBytes: (() { final guardedValue = map['sizeLimitInBytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       skipEmptyArchives: (() { final guardedValue = map['skipEmptyArchives']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

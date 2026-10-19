@@ -181,7 +181,7 @@ import 'kubernetes_cluster_node_pool_windows_profile.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -189,14 +189,20 @@ import 'kubernetes_cluster_node_pool_windows_profile.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_containerservice_kubernetescluster" "example" {
+/// resource "azure_containerservice_kubernetes_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-aks1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   dns_prefix          = "exampleaks1"
 ///   default_node_pool = {
 ///     name       = "default"
@@ -208,9 +214,12 @@ import 'kubernetes_cluster_node_pool_windows_profile.dart';
 ///     client_secret = "00000000000000000000000000000000"
 ///   }
 /// }
-/// resource "azure_containerservice_kubernetesclusternodepool" "example" {
+/// resource "azure_containerservice_kubernetes_cluster_node_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "internal"
-///   kubernetes_cluster_id = azure_containerservice_kubernetescluster.example.id
+///   kubernetes_cluster_id = azure_containerservice_kubernetes_cluster.example.id
 ///   vm_size               = "Standard_DS2_v2"
 ///   node_count            = 1
 ///   tags = {
@@ -451,7 +460,7 @@ class KubernetesClusterNodePool extends pulumi.CustomResource {
           'azure:containerservice/kubernetesClusterNodePool:KubernetesClusterNodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     autoScalingEnabled = registerOutput<bool?>('autoScalingEnabled');
     capacityReservationGroupId = registerOutput<String?>('capacityReservationGroupId');

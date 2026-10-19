@@ -96,7 +96,7 @@ import 'certificate_order_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -104,13 +104,19 @@ import 'certificate_order_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appservice_certificateorder" "example" {
+/// resource "azure_appservice_certificate_order" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cert-order"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   location            = "global"
 ///   distinguished_name  = "CN=example.com"
 ///   product_type        = "Standard"
@@ -242,7 +248,7 @@ class CertificateOrder extends pulumi.CustomResource {
           'azure:appservice/certificateOrder:CertificateOrder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     appServiceCertificateNotRenewableReasons = registerOutput<List<String>>('appServiceCertificateNotRenewableReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     autoRenew = registerOutput<bool?>('autoRenew');

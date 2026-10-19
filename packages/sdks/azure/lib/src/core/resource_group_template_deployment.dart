@@ -264,7 +264,7 @@ import 'resource_group_template_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -275,7 +275,10 @@ import 'resource_group_template_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegrouptemplatedeployment" "example" {
+/// resource "azure_core_resource_group_template_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-deploy"
 ///   resource_group_name = "example-group"
 ///   deployment_mode     = "Incremental"
@@ -284,13 +287,49 @@ import 'resource_group_template_deployment_state.dart';
 ///       "value" = local.vnetName
 ///     }
 ///   })
-///   template_content = "{\n    \\\"$schema\\\": \\\"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\\\",\n    \\\"contentVersion\\\": \\\"1.0.0.0\\\",\n    \\\"parameters\\\": {\n        \\\"vnetName\\\": {\n            \\\"type\\\": \\\"string\\\",\n            \\\"metadata\\\": {\n                \\\"description\\\": \\\"Name of the VNET\\\"\n            }\n        }\n    },\n    \\\"variables\\\": {},\n    \\\"resources\\\": [\n        {\n            \\\"type\\\": \\\"Microsoft.Network/virtualNetworks\\\",\n            \\\"apiVersion\\\": \\\"2020-05-01\\\",\n            \\\"name\\\": \\\"[parameters('vnetName')]\\\",\n            \\\"location\\\": \\\"[resourceGroup().location]\\\",\n            \\\"properties\\\": {\n                \\\"addressSpace\\\": {\n                    \\\"addressPrefixes\\\": [\n                        \\\"10.0.0.0/16\\\"\n                    ]\n                }\n            }\n        }\n    ],\n    \\\"outputs\\\": {\n      \\\"exampleOutput\\\": {\n        \\\"type\\\": \\\"string\\\",\n        \\\"value\\\": \\\"someoutput\\\"\n      }\n    }\n}\n"
+///   template_content = <<TEMPLATE
+/// {
+///     \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",
+///     \"contentVersion\": \"1.0.0.0\",
+///     \"parameters\": {
+///         \"vnetName\": {
+///             \"type\": \"string\",
+///             \"metadata\": {
+///                 \"description\": \"Name of the VNET\"
+///             }
+///         }
+///     },
+///     \"variables\": {},
+///     \"resources\": [
+///         {
+///             \"type\": \"Microsoft.Network/virtualNetworks\",
+///             \"apiVersion\": \"2020-05-01\",
+///             \"name\": \"[parameters('vnetName')]\",
+///             \"location\": \"[resourceGroup().location]\",
+///             \"properties\": {
+///                 \"addressSpace\": {
+///                     \"addressPrefixes\": [
+///                         \"10.0.0.0/16\"
+///                     ]
+///                 }
+///             }
+///         }
+///     ],
+///     \"outputs\": {
+///       \"exampleOutput\": {
+///         \"type\": \"string\",
+///         \"value\": \"someoutput\"
+///       }
+///     }
+/// }
+/// TEMPLATE
+///
 /// }
 /// locals {
 ///   vnetName = "example-vnet"
 /// }
 /// output "armExampleOutput" {
-///   value = jsondecode(azure_core_resourcegrouptemplatedeployment.example.output_content).example_output.value
+///   value = jsondecode(azure_core_resource_group_template_deployment.example.output_content).example_output.value
 /// }
 /// ```
 /// ```java
@@ -369,7 +408,7 @@ import 'resource_group_template_deployment_state.dart';
 ///
 ///         ctx.export("armExampleOutput", StdFunctions.jsondecode(JsondecodeArgs.builder()
 ///             .input(example.outputContent())
-///             .build()).applyValue(_invoke -> _invoke.result().exampleOutput().value()));
+///             .build()).applyValue(_invoke -> _invoke.result().get("exampleOutput").get("value")));
 ///     }
 /// }
 /// ```
@@ -519,7 +558,7 @@ import 'resource_group_template_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -527,17 +566,20 @@ import 'resource_group_template_deployment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_gettemplatespecversion" "example" {
+/// data "azure_core_template_spec_version" "example" {
 ///   name                = "myTemplateForResourceGroup"
 ///   resource_group_name = "myResourceGroup"
 ///   version             = "v3.4.0"
 /// }
 ///
-/// resource "azure_core_resourcegrouptemplatedeployment" "example" {
+/// resource "azure_core_resource_group_template_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-deploy"
 ///   resource_group_name      = "example-group"
 ///   deployment_mode          = "Incremental"
-///   template_spec_version_id = data.azure_core_gettemplatespecversion.example.id
+///   template_spec_version_id = data.azure_core_template_spec_version.example.id
 /// }
 /// ```
 /// ```java
@@ -643,7 +685,7 @@ class ResourceGroupTemplateDeployment extends pulumi.CustomResource {
           'azure:core/resourceGroupTemplateDeployment:ResourceGroupTemplateDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     debugLevel = registerOutput<String?>('debugLevel');
     deploymentMode = registerOutput<String>('deploymentMode');

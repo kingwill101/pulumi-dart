@@ -127,7 +127,7 @@ import 'identity_provider_microsoft_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -135,20 +135,29 @@ import 'identity_provider_microsoft_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "My Company"
 ///   publisher_email     = "company@mycompany.io"
 ///   sku_name            = "Developer_1"
 /// }
-/// resource "azure_apimanagement_identityprovidermicrosoft" "example" {
-///   resource_group_name = azure_core_resourcegroup.example.name
+/// resource "azure_apimanagement_identity_provider_microsoft" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name = azure_core_resource_group.example.name
 ///   api_management_name = azure_apimanagement_service.example.name
 ///   client_id           = "00000000-0000-0000-0000-000000000000"
 ///   client_secret       = "00000000000000000000000000000000"
@@ -267,7 +276,7 @@ class IdentityProviderMicrosoft extends pulumi.CustomResource {
           'azure:apimanagement/identityProviderMicrosoft:IdentityProviderMicrosoft',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['clientSecret'],
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');

@@ -228,7 +228,7 @@ import 'scheduled_query_rules_alert_trigger.dart';
 ///         Trigger = new Azure.Monitoring.Inputs.ScheduledQueryRulesAlertTriggerArgs
 ///         {
 ///             Operator = "GreaterThan",
-///             Threshold = 3,
+///             Threshold = 3.0,
 ///         },
 ///         Tags =
 ///         {
@@ -274,7 +274,7 @@ import 'scheduled_query_rules_alert_trigger.dart';
 ///         Trigger = new Azure.Monitoring.Inputs.ScheduledQueryRulesAlertTriggerArgs
 ///         {
 ///             Operator = "GreaterThan",
-///             Threshold = 3,
+///             Threshold = 3.0,
 ///         },
 ///         Tags =
 ///         {
@@ -400,7 +400,7 @@ import 'scheduled_query_rules_alert_trigger.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -412,31 +412,50 @@ import 'scheduled_query_rules_alert_trigger.dart';
 /// }
 ///
 /// data "std_format" "invoke_0" {
-///   input = "let a=requests\n  | where toint(resultCode) >= 500\n  | extend fail=1; let b=app('%s').requests\n  | where toint(resultCode) >= 500 | extend fail=1; a\n  | join b on fail\n"
+///   input = <<-QUERY
+/// let a=requests
+///   | where toint(resultCode) >= 500
+///   | extend fail=1; let b=app('%s').requests
+///   | where toint(resultCode) >= 500 | extend fail=1; a
+///   | join b on fail
+/// QUERY
+///
 ///   args  = [azure_appinsights_insights.example2.id]
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "monitoring-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appinsights_insights" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "appinsights"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_type    = "web"
 /// }
 /// resource "azure_appinsights_insights" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "appinsights2"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_type    = "web"
 /// }
 /// # Example: Alerting Action with result count trigger
-/// resource "azure_monitoring_scheduledqueryrulesalert" "example" {
+/// resource "azure_monitoring_scheduled_query_rules_alert" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   action = {
 ///     action_groups          = []
 ///     email_subject          = "Email Header"
@@ -446,7 +465,12 @@ import 'scheduled_query_rules_alert_trigger.dart';
 ///   description    = "Alert when total results cross threshold"
 ///   enabled        = true
 ///   # Count all requests with server error result code grouped into 5-minute bins
-///   query       = "requests\n  | where tolong(resultCode) >= 500\n  | summarize count() by bin(timestamp, 5m)\n"
+///   query       = <<-QUERY
+/// requests
+///   | where tolong(resultCode) >= 500
+///   | summarize count() by bin(timestamp, 5m)
+/// QUERY
+///
 ///   severity    = 1
 ///   frequency   = 5
 ///   time_window = 30
@@ -459,10 +483,13 @@ import 'scheduled_query_rules_alert_trigger.dart';
 ///   }
 /// }
 /// # Example: Alerting Action Cross-Resource
-/// resource "azure_monitoring_scheduledqueryrulesalert" "example2" {
+/// resource "azure_monitoring_scheduled_query_rules_alert" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example"
-///   location                = azure_core_resourcegroup.example.location
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = azure_core_resource_group.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   authorized_resource_ids = [azure_appinsights_insights.example2.id]
 ///   action = {
 ///     action_groups          = []
@@ -752,7 +779,7 @@ class ScheduledQueryRulesAlert extends pulumi.CustomResource {
           'azure:monitoring/scheduledQueryRulesAlert:ScheduledQueryRulesAlert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     action = registerOutput<ScheduledQueryRulesAlertAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     authorizedResourceIds = registerOutput<List<String>?>('authorizedResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

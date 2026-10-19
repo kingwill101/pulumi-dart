@@ -156,7 +156,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -164,28 +164,40 @@ import 'application_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_batch_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                = "exampleba"
-///   resource_group_name                 = azure_core_resourcegroup.example.name
-///   location                            = azure_core_resourcegroup.example.location
+///   resource_group_name                 = azure_core_resource_group.example.name
+///   location                            = azure_core_resource_group.example.location
 ///   pool_allocation_mode                = "BatchService"
 ///   storage_account_id                  = azure_storage_account.example.id
 ///   storage_account_authentication_mode = "StorageKeys"
 /// }
 /// resource "azure_batch_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-batch-application"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_batch_account.example.name
 /// }
 /// ```
@@ -319,7 +331,7 @@ class Application extends pulumi.CustomResource {
           'azure:batch/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     allowUpdates = registerOutput<bool?>('allowUpdates');

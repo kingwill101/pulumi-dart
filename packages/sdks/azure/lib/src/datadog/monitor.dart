@@ -143,7 +143,7 @@ import 'monitor_user.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -151,14 +151,20 @@ import 'monitor_user.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-datadog"
 ///   location = "West US 2"
 /// }
 /// resource "azure_datadog_monitor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-monitor"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   datadog_organization = {
 ///     api_key         = "XXXX"
 ///     application_key = "XXXX"
@@ -341,7 +347,7 @@ import 'monitor_user.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -349,15 +355,18 @@ import 'monitor_user.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "primary" {
+/// data "azure_core_subscription" "primary" {
 /// }
-/// data "azure_authorization_getroledefinition" "monitoringReader" {
+/// data "azure_authorization_role_definition" "monitoringReader" {
 ///   name = "Monitoring Reader"
 /// }
 ///
 /// resource "azure_authorization_assignment" "example" {
-///   scope              = data.azure_core_getsubscription.primary.id
-///   role_definition_id = data.azure_authorization_getroledefinition.monitoringReader.role_definition_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope              = data.azure_core_subscription.primary.id
+///   role_definition_id = data.azure_authorization_role_definition.monitoringReader.role_definition_id
 ///   principal_id       = exampleAzurermDatadogMonitor.identity[0].principalId
 /// }
 /// ```
@@ -396,7 +405,7 @@ import 'monitor_user.dart';
 ///         var example = new Assignment("example", AssignmentArgs.builder()
 ///             .scope(primary.id())
 ///             .roleDefinitionId(monitoringReader.roleDefinitionId())
-///             .principalId(exampleAzurermDatadogMonitor.identity()[0].principalId())
+///             .principalId(exampleAzurermDatadogMonitor.get("identity")[0].get("principalId"))
 ///             .build());
 ///
 ///     }
@@ -471,7 +480,7 @@ class Monitor extends pulumi.CustomResource {
           'azure:datadog/monitor:Monitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     datadogOrganization = registerOutput<MonitorDatadogOrganization>('datadogOrganization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorDatadogOrganization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     identity = registerOutput<MonitorIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MonitorIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });

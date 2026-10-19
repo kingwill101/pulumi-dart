@@ -249,7 +249,7 @@ import 'group_template_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -257,16 +257,62 @@ import 'group_template_deployment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_management_getgroup" "example" {
+/// data "azure_management_group" "example" {
 ///   name = "00000000-0000-0000-0000-000000000000"
 /// }
 ///
-/// resource "azure_management_grouptemplatedeployment" "example" {
+/// resource "azure_management_group_template_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
 ///   location            = "West Europe"
-///   management_group_id = data.azure_management_getgroup.example.id
-///   template_content    = "{\n  \\\"$schema\\\": \\\"https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#\\\",\n  \\\"contentVersion\\\": \\\"1.0.0.0\\\",\n  \\\"parameters\\\": {\n    \\\"policyAssignmentName\\\": {\n      \\\"type\\\": \\\"string\\\",\n      \\\"defaultValue\\\": \\\"[guid(parameters('policyDefinitionID'), resourceGroup().name)]\\\",\n      \\\"metadata\\\": {\n        \\\"description\\\": \\\"Specifies the name of the policy assignment, can be used defined or an idempotent name as the defaultValue provides.\\\"\n      }\n    },\n    \\\"policyDefinitionID\\\": {\n      \\\"type\\\": \\\"string\\\",\n      \\\"metadata\\\": {\n        \\\"description\\\": \\\"Specifies the ID of the policy definition or policy set definition being assigned.\\\"\n      }\n    }\n  },\n  \\\"resources\\\": [\n    {\n      \\\"type\\\": \\\"Microsoft.Authorization/policyAssignments\\\",\n      \\\"name\\\": \\\"[parameters('policyAssignmentName')]\\\",\n      \\\"apiVersion\\\": \\\"2019-09-01\\\",\n      \\\"properties\\\": {\n        \\\"scope\\\": \\\"[subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)]\\\",\n        \\\"policyDefinitionId\\\": \\\"[parameters('policyDefinitionID')]\\\"\n      }\n    }\n  ]\n}\n"
-///   parameters_content  = "{\n  \\\"$schema\\\": \\\"https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#\\\",\n  \\\"contentVersion\\\": \\\"1.0.0.0\\\",\n  \\\"parameters\\\": {\n    \\\"policyDefinitionID\\\": {\n      \\\"value\\\": \\\"/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a\\\"\n    }\n  }\n}\n"
+///   management_group_id = data.azure_management_group.example.id
+///   template_content    = <<TEMPLATE
+/// {
+///   \"$schema\": \"https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#\",
+///   \"contentVersion\": \"1.0.0.0\",
+///   \"parameters\": {
+///     \"policyAssignmentName\": {
+///       \"type\": \"string\",
+///       \"defaultValue\": \"[guid(parameters('policyDefinitionID'), resourceGroup().name)]\",
+///       \"metadata\": {
+///         \"description\": \"Specifies the name of the policy assignment, can be used defined or an idempotent name as the defaultValue provides.\"
+///       }
+///     },
+///     \"policyDefinitionID\": {
+///       \"type\": \"string\",
+///       \"metadata\": {
+///         \"description\": \"Specifies the ID of the policy definition or policy set definition being assigned.\"
+///       }
+///     }
+///   },
+///   \"resources\": [
+///     {
+///       \"type\": \"Microsoft.Authorization/policyAssignments\",
+///       \"name\": \"[parameters('policyAssignmentName')]\",
+///       \"apiVersion\": \"2019-09-01\",
+///       \"properties\": {
+///         \"scope\": \"[subscriptionResourceId('Microsoft.Resources/resourceGroups', resourceGroup().name)]\",
+///         \"policyDefinitionId\": \"[parameters('policyDefinitionID')]\"
+///       }
+///     }
+///   ]
+/// }
+/// TEMPLATE
+///
+///   parameters_content  = <<PARAMS
+/// {
+///   \"$schema\": \"https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#\",
+///   \"contentVersion\": \"1.0.0.0\",
+///   \"parameters\": {
+///     \"policyDefinitionID\": {
+///       \"value\": \"/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a\"
+///     }
+///   }
+/// }
+/// PARAMS
+///
 /// }
 /// ```
 /// ```java
@@ -516,7 +562,7 @@ import 'group_template_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -527,14 +573,17 @@ import 'group_template_deployment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_management_getgroup" "example" {
+/// data "azure_management_group" "example" {
 ///   name = "00000000-0000-0000-0000-000000000000"
 /// }
 ///
-/// resource "azure_management_grouptemplatedeployment" "example" {
+/// resource "azure_management_group_template_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
 ///   location            = "West Europe"
-///   management_group_id = data.azure_management_getgroup.example.id
+///   management_group_id = data.azure_management_group.example.id
 ///   template_content    = file("templates/example-deploy-template.json")
 ///   parameters_content  = file("templates/example-deploy-params.json")
 /// }
@@ -716,7 +765,7 @@ import 'group_template_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -724,20 +773,23 @@ import 'group_template_deployment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_management_getgroup" "example" {
+/// data "azure_management_group" "example" {
 ///   name = "00000000-0000-0000-0000-000000000000"
 /// }
-/// data "azure_core_gettemplatespecversion" "exampleGetTemplateSpecVersion" {
+/// data "azure_core_template_spec_version" "exampleGetTemplateSpecVersion" {
 ///   name                = "exampleTemplateForManagementGroup"
 ///   resource_group_name = "exampleResourceGroup"
 ///   version             = "v1.0.9"
 /// }
 ///
-/// resource "azure_management_grouptemplatedeployment" "example" {
+/// resource "azure_management_group_template_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
 ///   location                 = "West Europe"
-///   management_group_id      = data.azure_management_getgroup.example.id
-///   template_spec_version_id = data.azure_core_gettemplatespecversion.exampleGetTemplateSpecVersion.id
+///   management_group_id      = data.azure_management_group.example.id
+///   template_spec_version_id = data.azure_core_template_spec_version.exampleGetTemplateSpecVersion.id
 /// }
 /// ```
 /// ```java
@@ -850,7 +902,7 @@ class GroupTemplateDeployment extends pulumi.CustomResource {
           'azure:management/groupTemplateDeployment:GroupTemplateDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     debugLevel = registerOutput<String?>('debugLevel');
     location = registerOutput<String>('location');

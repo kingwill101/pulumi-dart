@@ -177,7 +177,7 @@ import 'account_project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -185,14 +185,20 @@ import 'account_project_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_cognitive_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-account"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   kind                       = "AIServices"
 ///   sku_name                   = "S0"
 ///   project_management_enabled = true
@@ -201,10 +207,13 @@ import 'account_project_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_cognitive_accountproject" "example" {
+/// resource "azure_cognitive_account_project" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-project"
 ///   cognitive_account_id = azure_cognitive_account.example.id
-///   location             = azure_core_resourcegroup.example.location
+///   location             = azure_core_resource_group.example.location
 ///   description          = "Example cognitive services project"
 ///   display_name         = "Example Project"
 ///   identity = {
@@ -357,7 +366,7 @@ class AccountProject extends pulumi.CustomResource {
           'azure:cognitive/accountProject:AccountProject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     cognitiveAccountId = registerOutput<String>('cognitiveAccountId');
     default_ = registerOutput<bool>('default');

@@ -76,7 +76,7 @@ class GetProductResult {
       published: (() { final guardedValue = map['published']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       subscriptionRequired: (() { final guardedValue = map['subscriptionRequired']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      subscriptionsLimit: (() { final guardedValue = map['subscriptionsLimit']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      subscriptionsLimit: (() { final guardedValue = map['subscriptionsLimit']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       terms: (() { final guardedValue = map['terms']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

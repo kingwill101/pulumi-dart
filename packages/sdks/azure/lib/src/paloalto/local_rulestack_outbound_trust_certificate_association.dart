@@ -124,7 +124,7 @@ import 'local_rulestack_outbound_trust_certificate_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -132,22 +132,34 @@ import 'local_rulestack_outbound_trust_certificate_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rg-example"
 ///   location = "West Europe"
 /// }
-/// resource "azure_paloalto_localrulestack" "example" {
+/// resource "azure_paloalto_local_rulestack" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_paloalto_localrulestackcertificate" "example" {
+/// resource "azure_paloalto_local_rulestack_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example"
-///   rulestack_id = azure_paloalto_localrulestack.example.id
+///   rulestack_id = azure_paloalto_local_rulestack.example.id
 ///   self_signed  = true
 /// }
-/// resource "azure_paloalto_localrulestackoutboundtrustcertificateassociation" "example" {
-///   certificate_id = azure_paloalto_localrulestackcertificate.example.id
+/// resource "azure_paloalto_local_rulestack_outbound_trust_certificate_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   certificate_id = azure_paloalto_local_rulestack_certificate.example.id
 /// }
 /// ```
 /// ```java
@@ -252,7 +264,7 @@ class LocalRulestackOutboundTrustCertificateAssociation extends pulumi.CustomRes
           'azure:paloalto/localRulestackOutboundTrustCertificateAssociation:LocalRulestackOutboundTrustCertificateAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     certificateId = registerOutput<String>('certificateId');
   }

@@ -89,7 +89,7 @@ import 'source_control_state.dart';
 ///         ResourceGroupName = example.Name,
 ///         Location = exampleServicePlan.Location,
 ///         ServicePlanId = exampleServicePlan.Id,
-///         SiteConfig = null,
+///         SiteConfig = new() { },
 ///     });
 ///
 ///     var exampleSourceControl = new Azure.AppService.SourceControl("example", new()
@@ -152,7 +152,7 @@ import 'source_control_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -160,26 +160,38 @@ import 'source_control_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appservice_serviceplan" "example" {
+/// resource "azure_appservice_service_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   os_type             = "Linux"
 ///   sku_name            = "P1v2"
 /// }
-/// resource "azure_appservice_linuxwebapp" "example" {
+/// resource "azure_appservice_linux_web_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_appservice_serviceplan.example.location
-///   service_plan_id     = azure_appservice_serviceplan.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_appservice_service_plan.example.location
+///   service_plan_id     = azure_appservice_service_plan.example.id
 ///   site_config         = {}
 /// }
-/// resource "azure_appservice_sourcecontrol" "example" {
-///   app_id   = azure_appservice_linuxwebapp.example.id
+/// resource "azure_appservice_source_control" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   app_id   = azure_appservice_linux_web_app.example.id
 ///   repo_url = "https://github.com/Azure-Samples/python-docs-hello-world"
 ///   branch   = "master"
 /// }
@@ -330,7 +342,7 @@ class SourceControl extends pulumi.CustomResource {
           'azure:appservice/sourceControl:SourceControl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     branch = registerOutput<String>('branch');

@@ -25,8 +25,8 @@ class GetWindowsWebAppLogHttpLogFileSystem {
 
   factory GetWindowsWebAppLogHttpLogFileSystem.fromMap(Map<String, dynamic> map) {
     return GetWindowsWebAppLogHttpLogFileSystem(
-      retentionInDays: pulumi.Input.fromValue((map['retentionInDays'] as num).toInt()),
-      retentionInMb: pulumi.Input.fromValue((map['retentionInMb'] as num).toInt()),
+      retentionInDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionInDays'])),
+      retentionInMb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionInMb'])),
     );
   }
 }

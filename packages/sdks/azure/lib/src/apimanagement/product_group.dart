@@ -135,7 +135,7 @@ import 'product_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -143,26 +143,29 @@ import 'product_group_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getservice" "example" {
+/// data "azure_apimanagement_service" "example" {
 ///   name                = "example-api"
 ///   resource_group_name = "example-resources"
 /// }
-/// data "azure_apimanagement_getproduct" "exampleGetProduct" {
+/// data "azure_apimanagement_product" "exampleGetProduct" {
 ///   product_id          = "my-product"
-///   api_management_name = data.azure_apimanagement_getservice.example.name
-///   resource_group_name = data.azure_apimanagement_getservice.example.resource_group_name
+///   api_management_name = data.azure_apimanagement_service.example.name
+///   resource_group_name = data.azure_apimanagement_service.example.resource_group_name
 /// }
-/// data "azure_apimanagement_getgroup" "exampleGetGroup" {
+/// data "azure_apimanagement_group" "exampleGetGroup" {
 ///   name                = "my-group"
-///   api_management_name = data.azure_apimanagement_getservice.example.name
-///   resource_group_name = data.azure_apimanagement_getservice.example.resource_group_name
+///   api_management_name = data.azure_apimanagement_service.example.name
+///   resource_group_name = data.azure_apimanagement_service.example.resource_group_name
 /// }
 ///
-/// resource "azure_apimanagement_productgroup" "example" {
-///   product_id          = data.azure_apimanagement_getproduct.exampleGetProduct.product_id
-///   group_name          = data.azure_apimanagement_getgroup.exampleGetGroup.name
-///   api_management_name = data.azure_apimanagement_getservice.example.name
-///   resource_group_name = data.azure_apimanagement_getservice.example.resource_group_name
+/// resource "azure_apimanagement_product_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   product_id          = data.azure_apimanagement_product.exampleGetProduct.product_id
+///   group_name          = data.azure_apimanagement_group.exampleGetGroup.name
+///   api_management_name = data.azure_apimanagement_service.example.name
+///   resource_group_name = data.azure_apimanagement_service.example.resource_group_name
 /// }
 /// ```
 /// ```java
@@ -287,7 +290,7 @@ class ProductGroup extends pulumi.CustomResource {
           'azure:apimanagement/productGroup:ProductGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     groupName = registerOutput<String>('groupName');

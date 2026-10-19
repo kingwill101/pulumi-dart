@@ -135,7 +135,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -143,14 +143,20 @@ import 'service_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "terraform-webpubsub"
 ///   location = "east us"
 /// }
 /// resource "azure_webpubsub_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "tfex-webpubsub"
-///   location                      = azure_core_resourcegroup.example.location
-///   resource_group_name           = azure_core_resourcegroup.example.name
+///   location                      = azure_core_resource_group.example.location
+///   resource_group_name           = azure_core_resource_group.example.name
 ///   sku                           = "Standard_S1"
 ///   capacity                      = 1
 ///   public_network_access_enabled = false
@@ -311,7 +317,7 @@ class Service extends pulumi.CustomResource {
           'azure:webpubsub/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['primaryAccessKey', 'primaryConnectionString', 'secondaryAccessKey', 'secondaryConnectionString'],
         ) {
     aadAuthEnabled = registerOutput<bool?>('aadAuthEnabled');

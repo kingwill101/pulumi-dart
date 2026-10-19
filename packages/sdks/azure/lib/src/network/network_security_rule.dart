@@ -147,7 +147,7 @@ import 'network_security_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -155,16 +155,25 @@ import 'network_security_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networksecuritygroup" "example" {
+/// resource "azure_network_network_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acceptanceTestSecurityGroup1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_network_networksecurityrule" "example" {
+/// resource "azure_network_network_security_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "test123"
 ///   priority                    = 100
 ///   direction                   = "Outbound"
@@ -174,8 +183,8 @@ import 'network_security_rule_state.dart';
 ///   destination_port_range      = "*"
 ///   source_address_prefix       = "*"
 ///   destination_address_prefix  = "*"
-///   resource_group_name         = azure_core_resourcegroup.example.name
-///   network_security_group_name = azure_network_networksecuritygroup.example.name
+///   resource_group_name         = azure_core_resource_group.example.name
+///   network_security_group_name = azure_network_network_security_group.example.name
 /// }
 /// ```
 /// ```java
@@ -331,7 +340,7 @@ class NetworkSecurityRule extends pulumi.CustomResource {
           'azure:network/networkSecurityRule:NetworkSecurityRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     access = registerOutput<String>('access');
     description = registerOutput<String?>('description');

@@ -135,7 +135,7 @@ import 'managed_dev_ops_pool_virtual_machine_scale_set_fabric.dart';
 ///                 },
 ///             },
 ///         },
-///         StatelessAgent = null,
+///         StatelessAgent = new() { },
 ///         VirtualMachineScaleSetFabric = new Azure.DevCenter.Inputs.ManagedDevOpsPoolVirtualMachineScaleSetFabricArgs
 ///         {
 ///             SkuName = "Standard_D2ads_v5",
@@ -218,7 +218,7 @@ import 'managed_dev_ops_pool_virtual_machine_scale_set_fabric.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -226,38 +226,50 @@ import 'managed_dev_ops_pool_virtual_machine_scale_set_fabric.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_devcenter_devcenter" "example" {
+/// resource "azure_devcenter_dev_center" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-devcenter"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// resource "azure_devcenter_project" "example" {
-///   dev_center_id       = azure_devcenter_devcenter.example.id
-///   location            = azure_core_resourcegroup.example.location
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   dev_center_id       = azure_devcenter_dev_center.example.id
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_devcenter_manageddevopspool" "example" {
+/// resource "azure_devcenter_managed_dev_ops_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-manageddevopspools"
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   location              = azure_core_resource_group.example.location
 ///   dev_center_project_id = azure_devcenter_project.example.id
 ///   maximum_concurrency   = 1
 ///   azure_devops_organization = {
 ///     organizations = [{
-///       "parallelism" = 1
-///       "url"         = "https://dev.azure.com/example"
+///       parallelism = 1
+///       url         = "https://dev.azure.com/example"
 ///     }]
 ///   }
 ///   stateless_agent = {}
 ///   virtual_machine_scale_set_fabric = {
 ///     sku_name = "Standard_D2ads_v5"
 ///     images = [{
-///       "wellKnownImageName" = "ubuntu-24.04/buffer"
+///       well_known_image_name = "ubuntu-24.04/buffer"
 ///     }]
 ///   }
 /// }
@@ -434,7 +446,7 @@ class ManagedDevOpsPool extends pulumi.CustomResource {
           'azure:devcenter/managedDevOpsPool:ManagedDevOpsPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     azureDevopsOrganization = registerOutput<ManagedDevOpsPoolAzureDevopsOrganization>('azureDevopsOrganization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedDevOpsPoolAzureDevopsOrganization.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     devCenterProjectId = registerOutput<String>('devCenterProjectId');

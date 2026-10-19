@@ -432,7 +432,7 @@ import 'implicit_data_disk_from_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -440,37 +440,52 @@ import 'implicit_data_disk_from_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     ="${var.prefix}-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "main" {
+/// resource "azure_network_virtual_network" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${var.prefix}-network"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "internal" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "internal"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.main.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.main.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_network_networkinterface" "main" {
+/// resource "azure_network_network_interface" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${var.prefix}-nic"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ip_configurations {
 ///     name                          = "internal"
 ///     subnet_id                     = azure_network_subnet.internal.id
 ///     private_ip_address_allocation = "Dynamic"
 ///   }
 /// }
-/// resource "azure_compute_virtualmachine" "example" {
+/// resource "azure_compute_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = local.vmName
-///   location              = azure_core_resourcegroup.example.location
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   network_interface_ids = [azure_network_networkinterface.main.id]
+///   location              = azure_core_resource_group.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   network_interface_ids = [azure_network_network_interface.main.id]
 ///   vm_size               = "Standard_D4_v5"
 ///   storage_image_reference = {
 ///     publisher = "Canonical"
@@ -493,22 +508,31 @@ import 'implicit_data_disk_from_source_state.dart';
 ///     disable_password_authentication = false
 ///   }
 /// }
-/// resource "azure_compute_manageddisk" "example" {
+/// resource "azure_compute_managed_disk" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 ="${local.vmName}-disk1"
-///   location             = azure_core_resourcegroup.example.location
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resource_group.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   storage_account_type = "Standard_LRS"
 ///   create_option        = "Empty"
 ///   disk_size_gb         = 10
 /// }
 /// resource "azure_compute_snapshot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${local.vmName}-snapshot1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   create_option       = "Copy"
-///   source_uri          = azure_compute_manageddisk.example.id
+///   source_uri          = azure_compute_managed_disk.example.id
 /// }
-/// resource "azure_compute_implicitdatadiskfromsource" "example" {
+/// resource "azure_compute_implicit_data_disk_from_source" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               ="${local.vmName}-implicitdisk1"
 ///   virtual_machine_id = testAzurermVirtualMachine.id
 ///   lun                = "0"
@@ -646,12 +670,12 @@ import 'implicit_data_disk_from_source_state.dart';
 ///
 ///         var exampleImplicitDataDiskFromSource = new ImplicitDataDiskFromSource("exampleImplicitDataDiskFromSource", ImplicitDataDiskFromSourceArgs.builder()
 ///             .name(String.format("%s-implicitdisk1", vmName))
-///             .virtualMachineId(testAzurermVirtualMachine.id())
+///             .virtualMachineId(testAzurermVirtualMachine.get("id"))
 ///             .lun(0)
 ///             .caching("None")
 ///             .createOption("Copy")
 ///             .diskSizeGb(20)
-///             .sourceResourceId(test.id())
+///             .sourceResourceId(test.get("id"))
 ///             .build());
 ///
 ///     }
@@ -810,7 +834,7 @@ class ImplicitDataDiskFromSource extends pulumi.CustomResource {
           'azure:compute/implicitDataDiskFromSource:ImplicitDataDiskFromSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     caching = registerOutput<String?>('caching');
     createOption = registerOutput<String>('createOption');

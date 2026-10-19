@@ -127,7 +127,7 @@ import 'postgresql_role_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -135,22 +135,31 @@ import 'postgresql_role_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_cosmosdb_postgresqlcluster" "example" {
+/// resource "azure_cosmosdb_postgresql_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "examplecluster"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
+///   location                        = azure_core_resource_group.example.location
 ///   administrator_login_password    = "H@Sh1CoR3!"
 ///   coordinator_storage_quota_in_mb = 131072
 ///   coordinator_vcore_count         = 2
 ///   node_count                      = 0
 /// }
-/// resource "azure_cosmosdb_postgresqlrole" "example" {
+/// resource "azure_cosmosdb_postgresql_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "examplerole"
-///   cluster_id = azure_cosmosdb_postgresqlcluster.example.id
+///   cluster_id = azure_cosmosdb_postgresql_cluster.example.id
 ///   password   = "H@Sh1CoR3!"
 /// }
 /// ```
@@ -265,7 +274,7 @@ class PostgresqlRole extends pulumi.CustomResource {
           'azure:cosmosdb/postgresqlRole:PostgresqlRole',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     clusterId = registerOutput<String>('clusterId');

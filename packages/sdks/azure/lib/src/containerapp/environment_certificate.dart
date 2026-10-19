@@ -170,7 +170,7 @@ import 'environment_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -181,24 +181,36 @@ import 'environment_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acctest-01"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 ///   retention_in_days   = 30
 /// }
 /// resource "azure_containerapp_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "myEnvironment"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
+///   log_analytics_workspace_id = azure_operationalinsights_analytics_workspace.example.id
 /// }
-/// resource "azure_containerapp_environmentcertificate" "example" {
+/// resource "azure_containerapp_environment_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "myfriendlyname"
 ///   container_app_environment_id = azure_containerapp_environment.example.id
 ///   certificate_blob_base64      = filebase64("path/to/certificate_file.pfx")
@@ -685,7 +697,7 @@ import 'environment_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -696,68 +708,95 @@ import 'environment_certificate_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-workspace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 ///   retention_in_days   = 30
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-identity"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// resource "azure_containerapp_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-environment"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
+///   log_analytics_workspace_id = azure_operationalinsights_analytics_workspace.example.id
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-keyvault"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 ///   rbac_authorization_enabled = true
 /// }
 /// resource "azure_authorization_assignment" "user_keyvault_admin" {
-///   scope                = azure_keyvault_keyvault.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = azure_keyvault_key_vault.example.id
 ///   role_definition_name = "Key Vault Administrator"
-///   principal_id         = data.azure_core_getclientconfig.current.object_id
+///   principal_id         = data.azure_core_client_config.current.object_id
 /// }
 /// resource "azure_authorization_assignment" "example" {
-///   scope                = azure_keyvault_keyvault.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = azure_keyvault_key_vault.example.id
 ///   role_definition_name = "Key Vault Secrets User"
 ///   principal_id         = azure_containerapp_environment.example.identity.principal_id
 /// }
 /// resource "azure_keyvault_certificate" "example" {
-///   depends_on   = [azure_authorization_assignment.user_keyvault_admin, azure_authorization_assignment.example]
+///   depends_on = [azure_authorization_assignment.user_keyvault_admin, azure_authorization_assignment.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-certificate"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   certificate = {
 ///     contents = filebase64("path/to/certificate_file.pfx")
 ///     password = ""
 ///   }
 /// }
-/// resource "azure_containerapp_environmentcertificate" "example" {
-///   depends_on                   = [azure_authorization_assignment.example]
+/// resource "azure_containerapp_environment_certificate" "example" {
+///   depends_on = [azure_authorization_assignment.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-certificate"
 ///   container_app_environment_id = azure_containerapp_environment.example.id
 ///   certificate_key_vault = {
-///     identity            = azure_authorization_userassignedidentity.example.id
+///     identity            = azure_authorization_user_assigned_identity.example.id
 ///     key_vault_secret_id = azure_keyvault_certificate.example.versionless_secret_id
 ///   }
 /// }
@@ -1039,7 +1078,7 @@ class EnvironmentCertificate extends pulumi.CustomResource {
           'azure:containerapp/environmentCertificate:EnvironmentCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['certificatePassword'],
         ) {
     certificateBlobBase64 = registerOutput<String?>('certificateBlobBase64');

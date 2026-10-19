@@ -164,7 +164,7 @@ import 'managed_private_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -172,28 +172,40 @@ import 'managed_private_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorageacc"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 ///   account_kind             = "StorageV2"
 ///   is_hns_enabled           = "true"
 /// }
 /// resource "azure_streamanalytics_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplestreamanalyticscluster"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   streaming_capacity  = 36
 /// }
-/// resource "azure_streamanalytics_managedprivateendpoint" "example" {
+/// resource "azure_streamanalytics_managed_private_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "exampleprivateendpoint"
-///   resource_group_name           = azure_core_resourcegroup.example.name
+///   resource_group_name           = azure_core_resource_group.example.name
 ///   stream_analytics_cluster_name = azure_streamanalytics_cluster.example.name
 ///   target_resource_id            = azure_storage_account.example.id
 ///   subresource_name              = "blob"
@@ -335,7 +347,7 @@ class ManagedPrivateEndpoint extends pulumi.CustomResource {
           'azure:streamanalytics/managedPrivateEndpoint:ManagedPrivateEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     resourceGroupName = registerOutput<String>('resourceGroupName');

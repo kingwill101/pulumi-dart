@@ -37,8 +37,8 @@ class PoolFixedScale {
     return PoolFixedScale(
       nodeDeallocationMethod: (() { final guardedValue = map['nodeDeallocationMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resizeTimeout: (() { final guardedValue = map['resizeTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      targetDedicatedNodes: (() { final guardedValue = map['targetDedicatedNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      targetLowPriorityNodes: (() { final guardedValue = map['targetLowPriorityNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetDedicatedNodes: (() { final guardedValue = map['targetDedicatedNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      targetLowPriorityNodes: (() { final guardedValue = map['targetLowPriorityNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

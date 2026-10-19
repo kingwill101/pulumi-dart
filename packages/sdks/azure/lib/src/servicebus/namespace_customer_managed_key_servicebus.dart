@@ -421,7 +421,7 @@ import 'namespace_customer_managed_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -429,17 +429,23 @@ import 'namespace_customer_managed_key_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resource-group"
 ///   location = "West Europe"
 /// }
 /// resource "azure_servicebus_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-servicebus-namespace"
-///   location                     = azure_core_resourcegroup.example.location
-///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resource_group.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
 ///   sku                          = "Premium"
 ///   premium_messaging_partitions = 1
 ///   capacity                     = 1
@@ -447,19 +453,22 @@ import 'namespace_customer_managed_key_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-key-vault"
-///   location                    = azure_core_resourcegroup.example.location
-///   resource_group_name         = azure_core_resourcegroup.example.name
+///   location                    = azure_core_resource_group.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled  = false
 ///   enabled_for_disk_encryption = true
-///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                   = data.azure_core_client_config.current.tenant_id
 ///   soft_delete_retention_days  = 7
 ///   purge_protection_enabled    = true
 ///   sku_name                    = "standard"
 ///   access_policies {
-///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
-///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     tenant_id          = data.azure_core_client_config.current.tenant_id
+///     object_id          = data.azure_core_client_config.current.object_id
 ///     key_permissions    = ["Create", "Decrypt", "Encrypt", "Delete", "Get", "List", "Purge", "UnwrapKey", "WrapKey", "Verify", "GetRotationPolicy"]
 ///     secret_permissions = ["Set"]
 ///   }
@@ -471,13 +480,19 @@ import 'namespace_customer_managed_key_state.dart';
 ///   }
 /// }
 /// resource "azure_keyvault_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-key-vault-key"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 /// }
-/// resource "azure_servicebus_namespacecustomermanagedkey" "example" {
+/// resource "azure_servicebus_namespace_customer_managed_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_id     = azure_servicebus_namespace.example.id
 ///   key_vault_key_id = azure_keyvault_key.example.id
 /// }
@@ -730,7 +745,7 @@ class NamespaceCustomerManagedKeyServicebus extends pulumi.CustomResource {
           'azure:servicebus/namespaceCustomerManagedKey:NamespaceCustomerManagedKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     infrastructureEncryptionEnabled = registerOutput<bool?>('infrastructureEncryptionEnabled');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');

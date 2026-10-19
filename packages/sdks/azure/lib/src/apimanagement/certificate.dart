@@ -144,7 +144,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -155,22 +155,31 @@ import 'certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "My Company"
 ///   publisher_email     = "company@exmaple.com"
 ///   sku_name            = "Developer_1"
 /// }
 /// resource "azure_apimanagement_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cert"
 ///   api_management_name = azure_apimanagement_service.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   data                = filebase64("example.pfx")
 /// }
 /// ```
@@ -596,7 +605,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -607,17 +616,23 @@ import 'certificate_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "My Company"
 ///   publisher_email     = "company@terraform.io"
 ///   sku_name            = "Developer_1"
@@ -625,24 +640,33 @@ import 'certificate_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplekeyvault"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 /// }
-/// resource "azure_keyvault_accesspolicy" "example" {
-///   key_vault_id            = azure_keyvault_keyvault.example.id
+/// resource "azure_keyvault_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id            = azure_keyvault_key_vault.example.id
 ///   tenant_id               = azure_apimanagement_service.example.identity.tenant_id
 ///   object_id               = azure_apimanagement_service.example.identity.principal_id
 ///   secret_permissions      = ["Get"]
 ///   certificate_permissions = ["Get"]
 /// }
 /// resource "azure_keyvault_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-cert"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   certificate = {
 ///     contents = filebase64("example_cert.pfx")
 ///     password = "terraform"
@@ -663,9 +687,12 @@ import 'certificate_state.dart';
 ///   }
 /// }
 /// resource "azure_apimanagement_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cert"
 ///   api_management_name = azure_apimanagement_service.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   key_vault_secret_id = azure_keyvault_certificate.example.secret_id
 /// }
 /// ```
@@ -910,7 +937,7 @@ class Certificate extends pulumi.CustomResource {
           'azure:apimanagement/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['data', 'password'],
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');

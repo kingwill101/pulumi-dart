@@ -86,7 +86,7 @@ import 'lication_load_balancer_frontend_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -94,14 +94,20 @@ import 'lication_load_balancer_frontend_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_appconfiguration_licationloadbalancer" "example" {
+/// resource "azure_appconfiguration_lication_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
 ///   resource_group_name = "example"
 ///   location            = "West Europe"
 /// }
-/// resource "azure_appconfiguration_licationloadbalancerfrontend" "example" {
+/// resource "azure_appconfiguration_lication_load_balancer_frontend" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example"
-///   application_load_balancer_id = azure_appconfiguration_licationloadbalancer.example.id
+///   application_load_balancer_id = azure_appconfiguration_lication_load_balancer.example.id
 /// }
 /// ```
 /// ```java
@@ -194,7 +200,7 @@ class LicationLoadBalancerFrontend extends pulumi.CustomResource {
           'azure:appconfiguration/licationLoadBalancerFrontend:LicationLoadBalancerFrontend',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
     fullyQualifiedDomainName = registerOutput<String>('fullyQualifiedDomainName');

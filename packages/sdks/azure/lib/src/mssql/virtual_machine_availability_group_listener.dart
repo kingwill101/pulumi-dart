@@ -23,7 +23,7 @@ import 'virtual_machine_availability_group_listener_state.dart';
 ///     name: "example-lb",
 ///     resourceGroupName: "example-resources",
 /// });
-/// const exampleGetVirtualMachine = (new Array(2)).map((_, i) => i).map(__index => (azure.compute.getVirtualMachine({
+/// const exampleGetVirtualMachine = Array.from({length: 2}, (_, i) => i).map(__index => (azure.compute.getVirtualMachine({
 ///     name: "example-vm",
 ///     resourceGroupName: "example-resources",
 /// })));
@@ -150,7 +150,7 @@ import 'virtual_machine_availability_group_listener_state.dart';
 ///     ])
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -158,21 +158,24 @@ import 'virtual_machine_availability_group_listener_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_network_getsubnet" "example" {
+/// data "azure_network_subnet" "example" {
 ///   name                 = "examplesubnet"
 ///   virtual_network_name = "examplevnet"
 ///   resource_group_name  = "example-resources"
 /// }
-/// data "azure_lb_getlb" "exampleGetLB" {
+/// data "azure_lb_l_b" "exampleGetLB" {
 ///   name                = "example-lb"
 ///   resource_group_name = "example-resources"
 /// }
-/// data "azure_compute_getvirtualmachine" "invoke_2" {
+/// data "azure_compute_virtual_machine" "invoke_2" {
 ///   name                = "example-vm"
 ///   resource_group_name = "example-resources"
 /// }
 ///
-/// resource "azure_mssql_virtualmachinegroup" "example" {
+/// resource "azure_mssql_virtual_machine_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplegroup"
 ///   resource_group_name = "example-resources"
 ///   location            = "West Europe"
@@ -183,38 +186,47 @@ import 'virtual_machine_availability_group_listener_state.dart';
 ///     cluster_subnet_type = "SingleSubnet"
 ///   }
 /// }
-/// resource "azure_mssql_virtualmachine" "example" {
-///   count                        = 2
+/// resource "azure_mssql_virtual_machine" "example" {
+///   count = 2
+///   pulumi {
+///     name ="example-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   virtual_machine_id           = local.exampleGetVirtualMachine[count.index].id
 ///   sql_license_type             = "PAYG"
-///   sql_virtual_machine_group_id = azure_mssql_virtualmachinegroup.example.id
+///   sql_virtual_machine_group_id = azure_mssql_virtual_machine_group.example.id
 ///   wsfc_domain_credential = {
 ///     cluster_bootstrap_account_password = "P@ssw0rd1234!"
 ///     cluster_operator_account_password  = "P@ssw0rd1234!"
 ///     sql_service_account_password       = "P@ssw0rd1234!"
 ///   }
 /// }
-/// resource "azure_mssql_virtualmachineavailabilitygrouplistener" "example" {
+/// resource "azure_mssql_virtual_machine_availability_group_listener" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "listener1"
 ///   availability_group_name      = "availabilitygroup1"
 ///   port                         = 1433
-///   sql_virtual_machine_group_id = azure_mssql_virtualmachinegroup.example.id
+///   sql_virtual_machine_group_id = azure_mssql_virtual_machine_group.example.id
 ///   load_balancer_configuration = {
-///     load_balancer_id        = data.azure_lb_getlb.exampleGetLB.id
+///     load_balancer_id        = data.azure_lb_l_b.exampleGetLB.id
 ///     private_ip_address      = "10.0.2.11"
 ///     probe_port              = 51572
-///     subnet_id               = data.azure_network_getsubnet.example.id
-///     sql_virtual_machine_ids = [azure_mssql_virtualmachine.example[0].id, azure_mssql_virtualmachine.example[1].id]
+///     subnet_id               = data.azure_network_subnet.example.id
+///     sql_virtual_machine_ids = [azure_mssql_virtual_machine.example[0].id, azure_mssql_virtual_machine.example[1].id]
 ///   }
 ///   replicas {
-///     sql_virtual_machine_id = azure_mssql_virtualmachine.example[0].id
+///     sql_virtual_machine_id = azure_mssql_virtual_machine.example[0].id
 ///     role                   = "Primary"
 ///     commit                 = "Synchronous_Commit"
 ///     failover               = "Automatic"
 ///     readable_secondary     = "All"
 ///   }
 ///   replicas {
-///     sql_virtual_machine_id = azure_mssql_virtualmachine.example[1].id
+///     sql_virtual_machine_id = azure_mssql_virtual_machine.example[1].id
 ///     role                   = "Secondary"
 ///     commit                 = "Asynchronous_Commit"
 ///     failover               = "Manual"
@@ -222,7 +234,7 @@ import 'virtual_machine_availability_group_listener_state.dart';
 ///   }
 /// }
 /// locals {
-///   exampleGetVirtualMachine = [for __index in range(2) : data.azure_compute_getvirtualmachine.invoke_2]
+///   exampleGetVirtualMachine = [for __index in range(2) : data.azure_compute_virtual_machine.invoke_2]
 /// }
 /// ```
 ///
@@ -271,7 +283,7 @@ class VirtualMachineAvailabilityGroupListener extends pulumi.CustomResource {
           'azure:mssql/virtualMachineAvailabilityGroupListener:VirtualMachineAvailabilityGroupListener',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     availabilityGroupName = registerOutput<String?>('availabilityGroupName');
     loadBalancerConfiguration = registerOutput<VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration?>('loadBalancerConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

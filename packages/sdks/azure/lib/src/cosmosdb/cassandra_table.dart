@@ -264,7 +264,7 @@ import 'cassandra_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -272,14 +272,20 @@ import 'cassandra_table_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tflex-cosmosdb-account-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_cosmosdb_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-cosmosdb-account"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   offer_type          = "Standard"
 ///   capabilities {
 ///     name = "EnableCassandra"
@@ -288,29 +294,35 @@ import 'cassandra_table_state.dart';
 ///     consistency_level = "Strong"
 ///   }
 ///   geo_locations {
-///     location          = azure_core_resourcegroup.example.location
+///     location          = azure_core_resource_group.example.location
 ///     failover_priority = 0
 ///   }
 /// }
-/// resource "azure_cosmosdb_cassandrakeyspace" "example" {
+/// resource "azure_cosmosdb_cassandra_keyspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-cosmos-cassandra-keyspace"
 ///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
 ///   account_name        = azure_cosmosdb_account.example.name
 ///   throughput          = 400
 /// }
-/// resource "azure_cosmosdb_cassandratable" "example" {
+/// resource "azure_cosmosdb_cassandra_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "testtable"
-///   cassandra_keyspace_id = azure_cosmosdb_cassandrakeyspace.example.id
+///   cassandra_keyspace_id = azure_cosmosdb_cassandra_keyspace.example.id
 ///   schema = {
 ///     columns = [{
-///       "name" = "test1"
-///       "type" = "ascii"
+///       name = "test1"
+///       type = "ascii"
 ///       }, {
-///       "name" = "test2"
-///       "type" = "int"
+///       name = "test2"
+///       type = "int"
 ///     }]
 ///     partition_keys = [{
-///       "name" = "test1"
+///       name = "test1"
 ///     }]
 ///   }
 /// }
@@ -492,7 +504,7 @@ class CassandraTable extends pulumi.CustomResource {
           'azure:cosmosdb/cassandraTable:CassandraTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');
     autoscaleSettings = registerOutput<CassandraTableAutoscaleSettings?>('autoscaleSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CassandraTableAutoscaleSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

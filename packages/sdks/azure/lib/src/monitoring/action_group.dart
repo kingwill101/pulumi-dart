@@ -487,7 +487,7 @@ import 'action_group_webhook_receiver.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -495,21 +495,30 @@ import 'action_group_webhook_receiver.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "monitoring-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "workspace-01"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_monitoring_actiongroup" "example" {
+/// resource "azure_monitoring_action_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "CriticalAlertsAction"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   short_name          = "p0action"
 ///   arm_role_receivers {
 ///     name                    = "armroleaction"
@@ -554,7 +563,7 @@ import 'action_group_webhook_receiver.dart';
 ///   }
 ///   itsm_receivers {
 ///     name                 = "createorupdateticket"
-///     workspace_id         ="${data.azure_core_getclientconfig.current.subscription_id}|${azure_operationalinsights_analyticsworkspace.example.workspace_id}"
+///     workspace_id         ="${data.azure_core_client_config.current.subscription_id}|${azure_operationalinsights_analytics_workspace.example.workspace_id}"
 ///     connection_id        = "53de6956-42b4-41ba-be3c-b154cdf17b13"
 ///     ticket_configuration = "{\"PayloadRevision\":0,\"WorkItemType\":\"Incident\",\"UseTemplate\":false,\"WorkItemData\":\"{}\",\"CreateOneWIPerCI\":false}"
 ///     region               = "southcentralus"
@@ -858,7 +867,7 @@ class ActionGroup extends pulumi.CustomResource {
           'azure:monitoring/actionGroup:ActionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     armRoleReceivers = registerOutput<List<ActionGroupArmRoleReceiver>?>('armRoleReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupArmRoleReceiver>(guardedValue, (value) => ActionGroupArmRoleReceiver.fromMap((value as Map).cast<String, dynamic>())); });
     automationRunbookReceivers = registerOutput<List<ActionGroupAutomationRunbookReceiver>?>('automationRunbookReceivers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActionGroupAutomationRunbookReceiver>(guardedValue, (value) => ActionGroupAutomationRunbookReceiver.fromMap((value as Map).cast<String, dynamic>())); });

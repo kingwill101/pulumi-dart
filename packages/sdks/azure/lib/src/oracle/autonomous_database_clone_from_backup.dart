@@ -130,7 +130,7 @@ import 'autonomous_database_clone_from_backup_state.dart';
 ///         AdminPassword = "BEstrO0ng_#11",
 ///         BackupRetentionPeriodInDays = 7,
 ///         CharacterSet = "AL32UTF8",
-///         ComputeCount = 2,
+///         ComputeCount = 2.0,
 ///         ComputeModel = "ECPU",
 ///         DataStorageSizeInTbs = 1,
 ///         DbVersion = "19c",
@@ -141,7 +141,7 @@ import 'autonomous_database_clone_from_backup_state.dart';
 ///         AutoScalingForStorageEnabled = true,
 ///         MtlsConnectionRequired = true,
 ///         NationalCharacterSet = "AL16UTF16",
-///         AllowedIps = new[] {},
+///         AllowedIps = new() {},
 ///     });
 ///
 ///     var exampleAutonomousDatabaseCloneFromBackup = new Azure.Oracle.AutonomousDatabaseCloneFromBackup("example", new()
@@ -155,7 +155,7 @@ import 'autonomous_database_clone_from_backup_state.dart';
 ///         AdminPassword = "BEstrO0ng_#11",
 ///         BackupRetentionPeriodInDays = 7,
 ///         CharacterSet = "AL32UTF8",
-///         ComputeCount = 2,
+///         ComputeCount = 2.0,
 ///         ComputeModel = "ECPU",
 ///         DataStorageSizeInTb = 1,
 ///         DatabaseVersion = "19c",
@@ -166,7 +166,7 @@ import 'autonomous_database_clone_from_backup_state.dart';
 ///         AutoScalingForStorageEnabled = true,
 ///         MtlsConnectionRequired = true,
 ///         NationalCharacterSet = "AL16UTF16",
-///         AllowedIpAddresses = new[] {},
+///         AllowedIpAddresses = new() {},
 ///     });
 ///
 /// });
@@ -243,7 +243,7 @@ import 'autonomous_database_clone_from_backup_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -251,14 +251,20 @@ import 'autonomous_database_clone_from_backup_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "eastus"
 /// }
-/// resource "azure_oracle_autonomousdatabase" "example" {
+/// resource "azure_oracle_autonomous_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                             = "example"
-///   resource_group_name              = azure_core_resourcegroup.example.name
-///   location                         = azure_core_resourcegroup.example.location
+///   resource_group_name              = azure_core_resource_group.example.name
+///   location                         = azure_core_resource_group.example.location
 ///   admin_password                   = "BEstrO0ng_#11"
 ///   backup_retention_period_in_days  = 7
 ///   character_set                    = "AL32UTF8"
@@ -275,11 +281,14 @@ import 'autonomous_database_clone_from_backup_state.dart';
 ///   national_character_set           = "AL16UTF16"
 ///   allowed_ips                      = []
 /// }
-/// resource "azure_oracle_autonomousdatabaseclonefrombackup" "example" {
+/// resource "azure_oracle_autonomous_database_clone_from_backup" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                             = "example"
-///   resource_group_name              = azure_oracle_autonomousdatabase.example.resource_group_name
-///   location                         = azure_oracle_autonomousdatabase.example.location
-///   source_autonomous_database_id    = azure_oracle_autonomousdatabase.example.id
+///   resource_group_name              = azure_oracle_autonomous_database.example.resource_group_name
+///   location                         = azure_oracle_autonomous_database.example.location
+///   source_autonomous_database_id    = azure_oracle_autonomous_database.example.id
 ///   clone_type                       = "Metadata"
 ///   backup_timestamp                 = "2025-09-23T02:22:13.000Z"
 ///   admin_password                   = "BEstrO0ng_#11"
@@ -521,7 +530,7 @@ class AutonomousDatabaseCloneFromBackup extends pulumi.CustomResource {
           'azure:oracle/autonomousDatabaseCloneFromBackup:AutonomousDatabaseCloneFromBackup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['adminPassword'],
         ) {
     adminPassword = registerOutput<String>('adminPassword', isSecret: true);

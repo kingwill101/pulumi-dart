@@ -203,7 +203,7 @@ import 'secret_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -211,32 +211,41 @@ import 'secret_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplekeyvault"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "premium"
 ///   soft_delete_retention_days = 7
 ///   access_policies {
-///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
-///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     tenant_id          = data.azure_core_client_config.current.tenant_id
+///     object_id          = data.azure_core_client_config.current.object_id
 ///     key_permissions    = ["Create", "Get"]
 ///     secret_permissions = ["Set", "Get", "Delete", "Purge", "Recover"]
 ///   }
 /// }
 /// resource "azure_keyvault_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "secret-sauce"
 ///   value        = "szechuan"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 /// }
 /// ```
 /// ```java
@@ -402,7 +411,7 @@ class Secret extends pulumi.CustomResource {
           'azure:keyvault/secret:Secret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['value', 'valueWo'],
         ) {
     contentType = registerOutput<String?>('contentType');

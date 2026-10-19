@@ -368,7 +368,7 @@ import 'service_custom_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -379,14 +379,20 @@ import 'service_custom_certificate_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_signalr_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-signalr"
 ///   location            = testAzurermResourceGroup.location
 ///   resource_group_name = testAzurermResourceGroup.name
@@ -398,36 +404,45 @@ import 'service_custom_certificate_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-keyvault"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "premium"
 ///   access_policies {
-///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
-///     object_id               = data.azure_core_getclientconfig.current.object_id
+///     tenant_id               = data.azure_core_client_config.current.tenant_id
+///     object_id               = data.azure_core_client_config.current.object_id
 ///     certificate_permissions = ["Create", "Get", "List"]
 ///     secret_permissions      = ["Get", "List"]
 ///   }
 ///   access_policies {
-///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
+///     tenant_id               = data.azure_core_client_config.current.tenant_id
 ///     object_id               = testAzurermSignalrService.identity[0].principalId
 ///     certificate_permissions = ["Create", "Get", "List"]
 ///     secret_permissions      = ["Get", "List"]
 ///   }
 /// }
 /// resource "azure_keyvault_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "imported-cert"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   certificate = {
 ///     contents = filebase64("certificate-to-import.pfx")
 ///     password = ""
 ///   }
 /// }
-/// resource "azure_signalr_servicecustomcertificate" "test" {
-///   depends_on            = [exampleAzurermKeyVaultAccessPolicy]
+/// resource "azure_signalr_service_custom_certificate" "test" {
+///   depends_on = [exampleAzurermKeyVaultAccessPolicy]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-cert"
 ///   signalr_service_id    = azure_signalr_service.example.id
 ///   custom_certificate_id = azure_keyvault_certificate.example.id
@@ -479,8 +494,8 @@ import 'service_custom_certificate_state.dart';
 ///
 ///         var exampleService = new Service("exampleService", ServiceArgs.builder()
 ///             .name("example-signalr")
-///             .location(testAzurermResourceGroup.location())
-///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .location(testAzurermResourceGroup.get("location"))
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
 ///             .sku(ServiceSkuArgs.builder()
 ///                 .name("Premium_P1")
 ///                 .capacity(1)
@@ -511,7 +526,7 @@ import 'service_custom_certificate_state.dart';
 ///                     .build(),
 ///                 KeyVaultAccessPolicyArgs.builder()
 ///                     .tenantId(current.tenantId())
-///                     .objectId(testAzurermSignalrService.identity()[0].principalId())
+///                     .objectId(testAzurermSignalrService.get("identity")[0].get("principalId"))
 ///                     .certificatePermissions(
 ///                         "Create",
 ///                         "Get",
@@ -663,7 +678,7 @@ class ServiceCustomCertificate extends pulumi.CustomResource {
           'azure:signalr/serviceCustomCertificate:ServiceCustomCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     certificateVersion = registerOutput<String>('certificateVersion');
     customCertificateId = registerOutput<String>('customCertificateId');

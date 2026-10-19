@@ -156,8 +156,8 @@ import 'sql_pool_workload_group_state.dart';
 ///         Importance = "normal",
 ///         MaxResourcePercent = 100,
 ///         MinResourcePercent = 0,
-///         MaxResourcePercentPerRequest = 3,
-///         MinResourcePercentPerRequest = 3,
+///         MaxResourcePercentPerRequest = 3.0,
+///         MinResourcePercentPerRequest = 3.0,
 ///         QueryExecutionTimeoutInSeconds = 0,
 ///     });
 ///
@@ -241,7 +241,7 @@ import 'sql_pool_workload_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -249,42 +249,60 @@ import 'sql_pool_workload_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "west europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_kind             = "BlobStorage"
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_storage_datalakegen2filesystem" "example" {
+/// resource "azure_storage_data_lake_gen2_filesystem" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   storage_account_id = azure_storage_account.example.id
 /// }
 /// resource "azure_synapse_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                 = "example"
-///   resource_group_name                  = azure_core_resourcegroup.example.name
-///   location                             = azure_core_resourcegroup.example.location
-///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   resource_group_name                  = azure_core_resource_group.example.name
+///   location                             = azure_core_resource_group.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_data_lake_gen2_filesystem.example.id
 ///   sql_administrator_login              = "sqladminuser"
 ///   sql_administrator_login_password     = "H@Sh1CoR3!"
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_synapse_sqlpool" "example" {
+/// resource "azure_synapse_sql_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
 ///   synapse_workspace_id = azure_synapse_workspace.example.id
 ///   sku_name             = "DW100c"
 ///   create_mode          = "Default"
 /// }
-/// resource "azure_synapse_sqlpoolworkloadgroup" "example" {
+/// resource "azure_synapse_sql_pool_workload_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                               = "example"
-///   sql_pool_id                        = azure_synapse_sqlpool.example.id
+///   sql_pool_id                        = azure_synapse_sql_pool.example.id
 ///   importance                         = "normal"
 ///   max_resource_percent               = 100
 ///   min_resource_percent               = 0
@@ -472,7 +490,7 @@ class SqlPoolWorkloadGroup extends pulumi.CustomResource {
           'azure:synapse/sqlPoolWorkloadGroup:SqlPoolWorkloadGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     importance = registerOutput<String?>('importance');
     maxResourcePercent = registerOutput<int>('maxResourcePercent');

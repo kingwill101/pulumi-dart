@@ -117,7 +117,7 @@ import 'application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -125,14 +125,20 @@ import 'application_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resource"
 ///   location = "West Europe"
 /// }
 /// resource "azure_iotcentral_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-iotcentral-app"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sub_domain          = "example-iotcentral-app-subdomain"
 ///   display_name        = "example-iotcentral-app-display-name"
 ///   sku                 = "ST1"
@@ -257,7 +263,7 @@ class Application extends pulumi.CustomResource {
           'azure:iotcentral/application:Application',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     identity = registerOutput<ApplicationIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });

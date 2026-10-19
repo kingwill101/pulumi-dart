@@ -39,7 +39,7 @@ class FirewallPolicyInsights {
       defaultLogAnalyticsWorkspaceId: pulumi.Input.fromValue(map['defaultLogAnalyticsWorkspaceId'] as String),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
       logAnalyticsWorkspaces: (() { final guardedValue = map['logAnalyticsWorkspaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<FirewallPolicyInsightsLogAnalyticsWorkspace>(guardedValue, (value) => FirewallPolicyInsightsLogAnalyticsWorkspace.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      retentionInDays: (() { final guardedValue = map['retentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retentionInDays: (() { final guardedValue = map['retentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

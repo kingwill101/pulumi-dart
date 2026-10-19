@@ -187,7 +187,7 @@ import 'resource_group_cost_management_export_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -195,24 +195,36 @@ import 'resource_group_cost_management_export_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "examplecontainer"
 ///   storage_account_name = azure_storage_account.example.name
 /// }
-/// resource "azure_core_resourcegroupcostmanagementexport" "example" {
+/// resource "azure_core_resource_group_cost_management_export" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example"
-///   resource_group_id            = azure_core_resourcegroup.example.id
+///   resource_group_id            = azure_core_resource_group.example.id
 ///   recurrence_type              = "Monthly"
 ///   recurrence_period_start_date = "2020-08-18T00:00:00Z"
 ///   recurrence_period_end_date   = "2020-09-18T00:00:00Z"
@@ -381,7 +393,7 @@ class ResourceGroupCostManagementExport extends pulumi.CustomResource {
           'azure:core/resourceGroupCostManagementExport:ResourceGroupCostManagementExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     active = registerOutput<bool?>('active');
     exportDataOptions = registerOutput<ResourceGroupCostManagementExportExportDataOptions>('exportDataOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceGroupCostManagementExportExportDataOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -140,7 +140,7 @@ import 'network_security_perimeter_access_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -148,22 +148,34 @@ import 'network_security_perimeter_access_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networksecurityperimeter" "example" {
+/// resource "azure_network_network_security_perimeter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   location            = "West Europe"
 /// }
-/// resource "azure_network_networksecurityperimeterprofile" "example" {
+/// resource "azure_network_network_security_perimeter_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "example"
-///   network_security_perimeter_id = azure_network_networksecurityperimeter.example.id
+///   network_security_perimeter_id = azure_network_network_security_perimeter.example.id
 /// }
-/// resource "azure_network_networksecurityperimeteraccessrule" "example" {
+/// resource "azure_network_network_security_perimeter_access_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                  = "example"
-///   network_security_perimeter_profile_id = azure_network_networksecurityperimeterprofile.example.id
+///   network_security_perimeter_profile_id = azure_network_network_security_perimeter_profile.example.id
 ///   direction                             = "Inbound"
 ///   address_prefixes                      = ["8.8.8.8/32"]
 /// }
@@ -295,7 +307,7 @@ class NetworkSecurityPerimeterAccessRule extends pulumi.CustomResource {
           'azure:network/networkSecurityPerimeterAccessRule:NetworkSecurityPerimeterAccessRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     addressPrefixes = registerOutput<List<String>?>('addressPrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     direction = registerOutput<String>('direction');

@@ -172,7 +172,7 @@ import 'geo_replication_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -180,31 +180,43 @@ import 'geo_replication_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-managedredis"
 ///   location = "West Europe"
 /// }
-/// resource "azure_managedredis_managedredis" "amr1" {
+/// resource "azure_managedredis_managed_redis" "amr1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-managedredis-amr1"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   location            = "West Europe"
 ///   sku_name            = "Balanced_B3"
 ///   default_database = {
 ///     geo_replication_group_name = "example-geo-group"
 ///   }
 /// }
-/// resource "azure_managedredis_managedredis" "amr2" {
+/// resource "azure_managedredis_managed_redis" "amr2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-managedredis-amr2"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   location            = "Central US"
 ///   sku_name            = "Balanced_B3"
 ///   default_database = {
 ///     geo_replication_group_name = "example-geo-group"
 ///   }
 /// }
-/// resource "azure_managedredis_georeplication" "example" {
-///   managed_redis_id         = azure_managedredis_managedredis.amr1.id
-///   linked_managed_redis_ids = [azure_managedredis_managedredis.amr2.id]
+/// resource "azure_managedredis_geo_replication" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   managed_redis_id         = azure_managedredis_managed_redis.amr1.id
+///   linked_managed_redis_ids = [azure_managedredis_managed_redis.amr2.id]
 /// }
 /// ```
 /// ```java
@@ -333,7 +345,7 @@ class GeoReplication extends pulumi.CustomResource {
           'azure:managedredis/geoReplication:GeoReplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     linkedManagedRedisIds = registerOutput<List<String>>('linkedManagedRedisIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     managedRedisId = registerOutput<String>('managedRedisId');

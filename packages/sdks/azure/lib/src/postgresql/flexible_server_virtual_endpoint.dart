@@ -203,7 +203,7 @@ import 'flexible_server_virtual_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -211,14 +211,20 @@ import 'flexible_server_virtual_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "East US"
 /// }
-/// resource "azure_postgresql_flexibleserver" "example" {
+/// resource "azure_postgresql_flexible_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "example"
-///   resource_group_name           = azure_core_resourcegroup.example.name
-///   location                      = azure_core_resourcegroup.example.location
+///   resource_group_name           = azure_core_resource_group.example.name
+///   location                      = azure_core_resource_group.example.location
 ///   version                       = "16"
 ///   public_network_access_enabled = false
 ///   administrator_login           = "psqladmin"
@@ -228,12 +234,15 @@ import 'flexible_server_virtual_endpoint_state.dart';
 ///   storage_tier                  = "P30"
 ///   sku_name                      = "GP_Standard_D2ads_v5"
 /// }
-/// resource "azure_postgresql_flexibleserver" "example_replica" {
+/// resource "azure_postgresql_flexible_server" "example_replica" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "example-replica"
-///   resource_group_name           = azure_postgresql_flexibleserver.example.resource_group_name
-///   location                      = azure_postgresql_flexibleserver.example.location
+///   resource_group_name           = azure_postgresql_flexible_server.example.resource_group_name
+///   location                      = azure_postgresql_flexible_server.example.location
 ///   create_mode                   = "Replica"
-///   source_server_id              = azure_postgresql_flexibleserver.example.id
+///   source_server_id              = azure_postgresql_flexible_server.example.id
 ///   version                       = "16"
 ///   public_network_access_enabled = false
 ///   zone                          = "1"
@@ -241,10 +250,13 @@ import 'flexible_server_virtual_endpoint_state.dart';
 ///   storage_tier                  = "P30"
 ///   sku_name                      = "GP_Standard_D2ads_v5"
 /// }
-/// resource "azure_postgresql_flexibleservervirtualendpoint" "example" {
+/// resource "azure_postgresql_flexible_server_virtual_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-endpoint-1"
-///   source_server_id  = azure_postgresql_flexibleserver.example.id
-///   replica_server_id = azure_postgresql_flexibleserver.example_replica.id
+///   source_server_id  = azure_postgresql_flexible_server.example.id
+///   replica_server_id = azure_postgresql_flexible_server.example_replica.id
 ///   type              = "ReadWrite"
 /// }
 /// ```
@@ -403,7 +415,7 @@ class FlexibleServerVirtualEndpoint extends pulumi.CustomResource {
           'azure:postgresql/flexibleServerVirtualEndpoint:FlexibleServerVirtualEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     replicaServerId = registerOutput<String>('replicaServerId');

@@ -129,7 +129,7 @@ import 'alert_rule_machine_learning_behavior_analytics_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -137,22 +137,34 @@ import 'alert_rule_machine_learning_behavior_analytics_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-workspace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 /// }
-/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
-///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// resource "azure_sentinel_log_analytics_workspace_onboarding" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workspace_id = azure_operationalinsights_analytics_workspace.example.id
 /// }
-/// resource "azure_sentinel_alertrulemachinelearningbehavioranalytics" "example" {
+/// resource "azure_sentinel_alert_rule_machine_learning_behavior_analytics" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-ml-alert-rule"
-///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+///   log_analytics_workspace_id = azure_operationalinsights_analytics_workspace.example.id
 ///   alert_rule_template_guid   = "737a2ce1-70a3-4968-9e90-3e6aca836abf"
 /// }
 /// ```
@@ -274,7 +286,7 @@ class AlertRuleMachineLearningBehaviorAnalytics extends pulumi.CustomResource {
           'azure:sentinel/alertRuleMachineLearningBehaviorAnalytics:AlertRuleMachineLearningBehaviorAnalytics',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
     enabled = registerOutput<bool?>('enabled');

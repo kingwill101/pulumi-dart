@@ -202,7 +202,7 @@ import 'stream_input_blob_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -210,31 +210,43 @@ import 'stream_input_blob_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_streamanalytics_getjob" "example" {
+/// data "azure_streamanalytics_job" "example" {
 ///   name                = "example-job"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestoracc"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example"
 ///   storage_account_name  = azure_storage_account.example.name
 ///   container_access_type = "private"
 /// }
-/// resource "azure_streamanalytics_streaminputblob" "example" {
+/// resource "azure_streamanalytics_stream_input_blob" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "blob-stream-input"
-///   stream_analytics_job_name = data.azure_streamanalytics_getjob.example.name
-///   resource_group_name       = data.azure_streamanalytics_getjob.example.resource_group_name
+///   stream_analytics_job_name = data.azure_streamanalytics_job.example.name
+///   resource_group_name       = data.azure_streamanalytics_job.example.resource_group_name
 ///   storage_account_name      = azure_storage_account.example.name
 ///   storage_account_key       = azure_storage_account.example.primary_access_key
 ///   storage_container_name    = azure_storage_container.example.name
@@ -420,7 +432,7 @@ class StreamInputBlob extends pulumi.CustomResource {
           'azure:streamanalytics/streamInputBlob:StreamInputBlob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['storageAccountKey'],
         ) {
     authenticationMode = registerOutput<String?>('authenticationMode');

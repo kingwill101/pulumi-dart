@@ -417,7 +417,7 @@ import 'firewall_policy_rule_collection_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -425,18 +425,27 @@ import 'firewall_policy_rule_collection_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_firewallpolicy" "example" {
+/// resource "azure_network_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-fwpolicy"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_network_firewallpolicyrulecollectiongroup" "example" {
+/// resource "azure_network_firewall_policy_rule_collection_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-fwpolicy-rcg"
-///   firewall_policy_id = azure_network_firewallpolicy.example.id
+///   firewall_policy_id = azure_network_firewall_policy.example.id
 ///   priority           = 500
 ///   application_rule_collections {
 ///     name     = "app_rule_collection1"
@@ -703,7 +712,7 @@ class FirewallPolicyRuleCollectionGroup extends pulumi.CustomResource {
           'azure:network/firewallPolicyRuleCollectionGroup:FirewallPolicyRuleCollectionGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applicationRuleCollections = registerOutput<List<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>?>('applicationRuleCollections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPolicyRuleCollectionGroupApplicationRuleCollection>(guardedValue, (value) => FirewallPolicyRuleCollectionGroupApplicationRuleCollection.fromMap((value as Map).cast<String, dynamic>())); });
     firewallPolicyId = registerOutput<String>('firewallPolicyId');

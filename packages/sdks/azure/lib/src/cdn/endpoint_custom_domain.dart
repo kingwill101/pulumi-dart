@@ -267,7 +267,7 @@ import 'endpoint_custom_domain_user_managed_https.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -275,49 +275,67 @@ import 'endpoint_custom_domain_user_managed_https.dart';
 ///   }
 /// }
 ///
-/// data "azure_dns_getzone" "example" {
+/// data "azure_dns_zone" "example" {
 ///   name                = "example-domain.com"
 ///   resource_group_name = "domain-rg"
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "west europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "GRS"
 /// }
 /// resource "azure_cdn_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-profile"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard_Microsoft"
 /// }
 /// resource "azure_cdn_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-endpoint"
 ///   profile_name        = azure_cdn_profile.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   origins {
 ///     name      = "example"
 ///     host_name = azure_storage_account.example.primary_blob_host
 ///   }
 /// }
-/// resource "azure_dns_cnamerecord" "example" {
+/// resource "azure_dns_c_name_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   zone_name           = data.azure_dns_getzone.example.name
-///   resource_group_name = data.azure_dns_getzone.example.resource_group_name
+///   zone_name           = data.azure_dns_zone.example.name
+///   resource_group_name = data.azure_dns_zone.example.resource_group_name
 ///   ttl                 = 3600
 ///   target_resource_id  = azure_cdn_endpoint.example.id
 /// }
-/// resource "azure_cdn_endpointcustomdomain" "example" {
+/// resource "azure_cdn_endpoint_custom_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example-domain"
 ///   cdn_endpoint_id = azure_cdn_endpoint.example.id
-///   host_name       ="${azure_dns_cnamerecord.example.name}.${data.azure_dns_getzone.example.name}"
+///   host_name       ="${azure_dns_c_name_record.example.name}.${data.azure_dns_zone.example.name}"
 /// }
 /// ```
 /// ```java
@@ -502,7 +520,7 @@ class EndpointCustomDomain extends pulumi.CustomResource {
           'azure:cdn/endpointCustomDomain:EndpointCustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     cdnEndpointId = registerOutput<String>('cdnEndpointId');
     cdnManagedHttps = registerOutput<EndpointCustomDomainCdnManagedHttps?>('cdnManagedHttps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointCustomDomainCdnManagedHttps.fromMap((guardedValue as Map).cast<String, dynamic>()); });

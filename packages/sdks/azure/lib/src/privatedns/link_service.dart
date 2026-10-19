@@ -340,7 +340,7 @@ import 'link_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -348,47 +348,65 @@ import 'link_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   address_spaces      = ["10.5.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                          = "example-subnet"
-///   resource_group_name                           = azure_core_resourcegroup.example.name
-///   virtual_network_name                          = azure_network_virtualnetwork.example.name
+///   resource_group_name                           = azure_core_resource_group.example.name
+///   virtual_network_name                          = azure_network_virtual_network.example.name
 ///   address_prefixes                              = ["10.5.1.0/24"]
 ///   enforce_private_link_service_network_policies = true
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-api"
 ///   sku                 = "Standard"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
 /// }
-/// resource "azure_lb_loadbalancer" "example" {
+/// resource "azure_lb_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-lb"
 ///   sku                 = "Standard"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   frontend_ip_configurations {
-///     name                 = azure_network_publicip.example.name
-///     public_ip_address_id = azure_network_publicip.example.id
+///     name                 = azure_network_public_ip.example.name
+///     public_ip_address_id = azure_network_public_ip.example.id
 ///   }
 /// }
-/// resource "azure_privatedns_linkservice" "example" {
+/// resource "azure_privatedns_link_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                        = "example-privatelink"
-///   resource_group_name                         = azure_core_resourcegroup.example.name
-///   location                                    = azure_core_resourcegroup.example.location
+///   resource_group_name                         = azure_core_resource_group.example.name
+///   location                                    = azure_core_resource_group.example.location
 ///   auto_approval_subscription_ids              = ["00000000-0000-0000-0000-000000000000"]
 ///   visibility_subscription_ids                 = ["00000000-0000-0000-0000-000000000000"]
-///   load_balancer_frontend_ip_configuration_ids = [azure_lb_loadbalancer.example.frontend_ip_configurations[0].id]
+///   load_balancer_frontend_ip_configuration_ids = [azure_lb_load_balancer.example.frontend_ip_configurations[0].id]
 ///   nat_ip_configurations {
 ///     name                       = "primary"
 ///     private_ip_address         = "10.5.1.17"
@@ -483,7 +501,7 @@ import 'link_service_state.dart';
 ///             .location(example.location())
 ///             .autoApprovalSubscriptionIds("00000000-0000-0000-0000-000000000000")
 ///             .visibilitySubscriptionIds("00000000-0000-0000-0000-000000000000")
-///             .loadBalancerFrontendIpConfigurationIds(exampleLoadBalancer.frontendIpConfigurations().applyValue(_frontendIpConfigurations -> _frontendIpConfigurations[0].id()))
+///             .loadBalancerFrontendIpConfigurationIds(exampleLoadBalancer.frontendIpConfigurations().applyValue(_frontendIpConfigurations -> _frontendIpConfigurations.get(0).id()))
 ///             .natIpConfigurations(
 ///                 LinkServiceNatIpConfigurationArgs.builder()
 ///                     .name("primary")
@@ -632,7 +650,7 @@ class LinkService extends pulumi.CustomResource {
           'azure:privatedns/linkService:LinkService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     alias = registerOutput<String>('alias');
     autoApprovalSubscriptionIds = registerOutput<List<String>?>('autoApprovalSubscriptionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

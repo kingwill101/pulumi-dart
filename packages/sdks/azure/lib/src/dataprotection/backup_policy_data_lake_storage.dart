@@ -263,7 +263,7 @@ import 'backup_policy_data_lake_storage_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -271,23 +271,32 @@ import 'backup_policy_data_lake_storage_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_dataprotection_backupvault" "example" {
+/// resource "azure_dataprotection_backup_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-backup-vault"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   datastore_type      = "VaultStore"
 ///   redundancy          = "LocallyRedundant"
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_dataprotection_backuppolicydatalakestorage" "example" {
+/// resource "azure_dataprotection_backup_policy_data_lake_storage" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example-backup-policy"
-///   data_protection_backup_vault_id = azure_dataprotection_backupvault.example.id
+///   data_protection_backup_vault_id = azure_dataprotection_backup_vault.example.id
 ///   backup_schedules                = ["R/2021-05-23T02:30:00+00:00/P1W"]
 ///   time_zone                       = "India Standard Time"
 ///   default_retention_duration      = "P4M"
@@ -476,7 +485,7 @@ class BackupPolicyDataLakeStorage extends pulumi.CustomResource {
           'azure:dataprotection/backupPolicyDataLakeStorage:BackupPolicyDataLakeStorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backupSchedules = registerOutput<List<String>>('backupSchedules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dataProtectionBackupVaultId = registerOutput<String>('dataProtectionBackupVaultId');

@@ -61,10 +61,10 @@ class VolumeState {
     return VolumeState(
       createSource: (() { final guardedValue = map['createSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeCreateSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sizeInGib: (() { final guardedValue = map['sizeInGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      sizeInGib: (() { final guardedValue = map['sizeInGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetIqn: (() { final guardedValue = map['targetIqn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetPortalHostname: (() { final guardedValue = map['targetPortalHostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      targetPortalPort: (() { final guardedValue = map['targetPortalPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetPortalPort: (() { final guardedValue = map['targetPortalPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       volumeGroupId: (() { final guardedValue = map['volumeGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumeId: (() { final guardedValue = map['volumeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

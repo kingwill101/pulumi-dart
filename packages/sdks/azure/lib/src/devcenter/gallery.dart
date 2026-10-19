@@ -183,7 +183,7 @@ import 'gallery_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -191,32 +191,47 @@ import 'gallery_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_devcenter_devcenter" "test" {
+/// resource "azure_devcenter_dev_center" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-devcenter"
 ///   resource_group_name = testAzurermResourceGroup.name
 ///   location            = testAzurermResourceGroup.location
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.test.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.test.id]
 ///   }
 /// }
-/// resource "azure_authorization_userassignedidentity" "test" {
+/// resource "azure_authorization_user_assigned_identity" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-uai"
 ///   location            = testAzurermResourceGroup.location
 ///   resource_group_name = testAzurermResourceGroup.name
 /// }
-/// resource "azure_compute_sharedimagegallery" "example" {
+/// resource "azure_compute_shared_image_gallery" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-image-gallery"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_devcenter_gallery" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dev_center_id     = exampleAzurermDevCenter.id
-///   shared_gallery_id = azure_compute_sharedimagegallery.example.id
+///   shared_gallery_id = azure_compute_shared_image_gallery.example.id
 ///   name              = "example"
 /// }
 /// ```
@@ -257,14 +272,14 @@ import 'gallery_state.dart';
 ///
 ///         var testUserAssignedIdentity = new UserAssignedIdentity("testUserAssignedIdentity", UserAssignedIdentityArgs.builder()
 ///             .name("example-uai")
-///             .location(testAzurermResourceGroup.location())
-///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .location(testAzurermResourceGroup.get("location"))
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
 ///             .build());
 ///
 ///         var test = new DevCenter("test", DevCenterArgs.builder()
 ///             .name("example-devcenter")
-///             .resourceGroupName(testAzurermResourceGroup.name())
-///             .location(testAzurermResourceGroup.location())
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
+///             .location(testAzurermResourceGroup.get("location"))
 ///             .identity(DevCenterIdentityArgs.builder()
 ///                 .type("UserAssigned")
 ///                 .identityIds(testUserAssignedIdentity.id())
@@ -278,7 +293,7 @@ import 'gallery_state.dart';
 ///             .build());
 ///
 ///         var exampleGallery = new Gallery("exampleGallery", GalleryArgs.builder()
-///             .devCenterId(exampleAzurermDevCenter.id())
+///             .devCenterId(exampleAzurermDevCenter.get("id"))
 ///             .sharedGalleryId(exampleSharedImageGallery.id())
 ///             .name("example")
 ///             .build());
@@ -366,7 +381,7 @@ class Gallery extends pulumi.CustomResource {
           'azure:devcenter/gallery:Gallery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     devCenterId = registerOutput<String>('devCenterId');
     this.name = registerOutput<String>('name');

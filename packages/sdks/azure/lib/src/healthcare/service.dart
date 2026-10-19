@@ -213,7 +213,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -221,10 +221,13 @@ import 'service_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
 /// resource "azure_healthcare_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "uniquefhirname"
 ///   resource_group_name = "sample-resource-group"
 ///   location            = "westus2"
@@ -233,7 +236,7 @@ import 'service_state.dart';
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
-///   access_policy_object_ids                  = data.azure_core_getclientconfig.current.object_id
+///   access_policy_object_ids                  = data.azure_core_client_config.current.object_id
 ///   configuration_export_storage_account_name = "teststorage"
 ///   tags = {
 ///     "environment" = "testenv"
@@ -417,7 +420,7 @@ class Service extends pulumi.CustomResource {
           'azure:healthcare/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accessPolicyObjectIds = registerOutput<List<String>?>('accessPolicyObjectIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authenticationConfiguration = registerOutput<ServiceAuthenticationConfiguration>('authenticationConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAuthenticationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

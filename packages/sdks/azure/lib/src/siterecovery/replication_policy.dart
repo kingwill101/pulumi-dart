@@ -75,8 +75,8 @@ import 'replication_policy_state.dart';
 ///         Name = "policy",
 ///         ResourceGroupName = example.Name,
 ///         RecoveryVaultName = vault.Name,
-///         RecoveryPointRetentionInMinutes = 24 * 60,
-///         ApplicationConsistentSnapshotFrequencyInMinutes = 4 * 60,
+///         RecoveryPointRetentionInMinutes = (int)(24 * 60),
+///         ApplicationConsistentSnapshotFrequencyInMinutes = (int)(4 * 60),
 ///     });
 ///
 /// });
@@ -124,7 +124,7 @@ import 'replication_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -132,19 +132,28 @@ import 'replication_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-network-mapping-secondary"
 ///   location = "East US"
 /// }
 /// resource "azure_recoveryservices_vault" "vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-recovery-vault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_siterecovery_replicationpolicy" "policy" {
+/// resource "azure_siterecovery_replication_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                                 = "policy"
-///   resource_group_name                                  = azure_core_resourcegroup.example.name
+///   resource_group_name                                  = azure_core_resource_group.example.name
 ///   recovery_vault_name                                  = azure_recoveryservices_vault.vault.name
 ///   recovery_point_retention_in_minutes                  = 24 * 60
 ///   application_consistent_snapshot_frequency_in_minutes = 4 * 60
@@ -240,7 +249,7 @@ class ReplicationPolicy extends pulumi.CustomResource {
           'azure:siterecovery/replicationPolicy:ReplicationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applicationConsistentSnapshotFrequencyInMinutes = registerOutput<int>('applicationConsistentSnapshotFrequencyInMinutes');
     this.name = registerOutput<String>('name');

@@ -54,11 +54,11 @@ class GetDnsZoneResult {
   factory GetDnsZoneResult.fromMap(Map<String, dynamic> map) {
     return GetDnsZoneResult(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxNumberOfRecordSets: (() { final guardedValue = map['maxNumberOfRecordSets']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      maxNumberOfVirtualNetworkLinks: (() { final guardedValue = map['maxNumberOfVirtualNetworkLinks']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      maxNumberOfVirtualNetworkLinksWithRegistration: (() { final guardedValue = map['maxNumberOfVirtualNetworkLinksWithRegistration']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxNumberOfRecordSets: (() { final guardedValue = map['maxNumberOfRecordSets']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      maxNumberOfVirtualNetworkLinks: (() { final guardedValue = map['maxNumberOfVirtualNetworkLinks']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      maxNumberOfVirtualNetworkLinksWithRegistration: (() { final guardedValue = map['maxNumberOfVirtualNetworkLinksWithRegistration']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      numberOfRecordSets: (() { final guardedValue = map['numberOfRecordSets']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      numberOfRecordSets: (() { final guardedValue = map['numberOfRecordSets']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );

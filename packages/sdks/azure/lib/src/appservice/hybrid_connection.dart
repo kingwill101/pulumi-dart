@@ -229,7 +229,7 @@ import 'hybrid_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -237,41 +237,59 @@ import 'hybrid_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "exampleResourceGroup1"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleAppServicePlan1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     tier = "Standard"
 ///     size = "S1"
 ///   }
 /// }
-/// resource "azure_appservice_appservice" "example" {
+/// resource "azure_appservice_app_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleAppService1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   app_service_plan_id = azure_appservice_plan.example.id
 /// }
 /// resource "azure_relay_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleRN1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Standard"
 /// }
-/// resource "azure_relay_hybridconnection" "example" {
+/// resource "azure_relay_hybrid_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "exampleRHC1"
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   relay_namespace_name = azure_relay_namespace.example.name
 ///   user_metadata        = "examplemetadata"
 /// }
-/// resource "azure_appservice_hybridconnection" "example" {
-///   app_service_name    = azure_appservice_appservice.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   relay_id            = azure_relay_hybridconnection.example.id
+/// resource "azure_appservice_hybrid_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   app_service_name    = azure_appservice_app_service.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   relay_id            = azure_relay_hybrid_connection.example.id
 ///   hostname            = "testhostname.example"
 ///   port                = 8080
 ///   send_key_name       = "exampleSharedAccessKey"
@@ -456,7 +474,7 @@ class HybridConnection extends pulumi.CustomResource {
           'azure:appservice/hybridConnection:HybridConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['sendKeyValue'],
         ) {
     appServiceName = registerOutput<String>('appServiceName');

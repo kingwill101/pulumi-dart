@@ -135,7 +135,7 @@ import 'server_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -143,14 +143,20 @@ import 'server_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "database-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_mssql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "mssqlserver"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   version                      = "12.0"
 ///   administrator_login          = "missadministrator"
 ///   administrator_login_password = "thisIsKat11"
@@ -631,7 +637,7 @@ import 'server_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -639,63 +645,78 @@ import 'server_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-admin"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_mssql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-resource"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   version                      = "12.0"
 ///   administrator_login          = "Example-Administrator"
 ///   administrator_login_password = "Example_Password!"
 ///   minimum_tls_version          = "1.2"
 ///   azuread_administrator = {
-///     login_username = azure_authorization_userassignedidentity.example.name
-///     object_id      = azure_authorization_userassignedidentity.example.principal_id
+///     login_username = azure_authorization_user_assigned_identity.example.name
+///     object_id      = azure_authorization_user_assigned_identity.example.principal_id
 ///   }
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
-///   primary_user_assigned_identity_id            = azure_authorization_userassignedidentity.example.id
+///   primary_user_assigned_identity_id            = azure_authorization_user_assigned_identity.example.id
 ///   transparent_data_encryption_key_vault_key_id = azure_keyvault_key.example.id
 /// }
 /// # Create a key vault with access policies which allow for the current user to get, list, create, delete, update, recover, purge and getRotationPolicy for the key vault key and also add a key vault access policy for the Microsoft Sql Server instance User Managed Identity to get, wrap, and unwrap key(s)
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "mssqltdeexample"
-///   location                    = azure_core_resourcegroup.example.location
-///   resource_group_name         = azure_core_resourcegroup.example.name
+///   location                    = azure_core_resource_group.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled  = false
 ///   enabled_for_disk_encryption = true
-///   tenant_id                   = azure_authorization_userassignedidentity.example.tenant_id
+///   tenant_id                   = azure_authorization_user_assigned_identity.example.tenant_id
 ///   soft_delete_retention_days  = 7
 ///   purge_protection_enabled    = true
 ///   sku_name                    = "standard"
 ///   access_policies {
-///     tenant_id       = data.azure_core_getclientconfig.current.tenant_id
-///     object_id       = data.azure_core_getclientconfig.current.object_id
+///     tenant_id       = data.azure_core_client_config.current.tenant_id
+///     object_id       = data.azure_core_client_config.current.object_id
 ///     key_permissions = ["Get", "List", "Create", "Delete", "Update", "Recover", "Purge", "GetRotationPolicy"]
 ///   }
 ///   access_policies {
-///     tenant_id       = azure_authorization_userassignedidentity.example.tenant_id
-///     object_id       = azure_authorization_userassignedidentity.example.principal_id
+///     tenant_id       = azure_authorization_user_assigned_identity.example.tenant_id
+///     object_id       = azure_authorization_user_assigned_identity.example.principal_id
 ///     key_permissions = ["Get", "WrapKey", "UnwrapKey"]
 ///   }
 /// }
 /// resource "azure_keyvault_key" "example" {
-///   depends_on   = [azure_keyvault_keyvault.example]
+///   depends_on = [azure_keyvault_key_vault.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-key"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["unwrapKey", "wrapKey"]
@@ -984,7 +1005,7 @@ class Server extends pulumi.CustomResource {
           'azure:mssql/server:Server',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['administratorLoginPassword'],
         ) {
     administratorLogin = registerOutput<String>('administratorLogin');

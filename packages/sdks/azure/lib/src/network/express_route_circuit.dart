@@ -130,7 +130,7 @@ import 'express_route_circuit_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -138,14 +138,20 @@ import 'express_route_circuit_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "exprtTest"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_expressroutecircuit" "example" {
+/// resource "azure_network_express_route_circuit" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "expressRoute1"
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   location              = azure_core_resource_group.example.location
 ///   service_provider_name = "Equinix"
 ///   peering_location      = "Silicon Valley"
 ///   bandwidth_in_mbps     = 50
@@ -293,7 +299,7 @@ class ExpressRouteCircuit extends pulumi.CustomResource {
           'azure:network/expressRouteCircuit:ExpressRouteCircuit',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['authorizationKey', 'serviceKey'],
         ) {
     allowClassicOperations = registerOutput<bool?>('allowClassicOperations');

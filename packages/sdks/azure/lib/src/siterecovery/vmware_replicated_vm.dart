@@ -340,7 +340,7 @@ import 'vmware_replicated_vm_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -348,48 +348,72 @@ import 'vmware_replicated_vm_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West US"
 /// }
 /// resource "azure_recoveryservices_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-recovery-vault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_siterecovery_vmwarereplicationpolicy" "example" {
+/// resource "azure_siterecovery_v_m_ware_replication_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   recovery_vault_id                                    = azure_recoveryservices_vault.example.id
 ///   name                                                 = "example-policy"
 ///   recovery_point_retention_in_minutes                  = 1440
 ///   application_consistent_snapshot_frequency_in_minutes = 240
 /// }
-/// resource "azure_siterecovery_vmwarereplicationpolicyassociation" "test" {
+/// resource "azure_siterecovery_vmware_replication_policy_association" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-association"
 ///   recovery_vault_id = azure_recoveryservices_vault.example.id
-///   policy_id         = azure_siterecovery_vmwarereplicationpolicy.example.id
+///   policy_id         = azure_siterecovery_v_m_ware_replication_policy.example.id
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorageacc"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_kind             = "StorageV2"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-net"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["192.168.2.0/24"]
-///   location            = azure_core_resourcegroup.example.location
+///   location            = azure_core_resource_group.example.location
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["192.168.2.0/24"]
 /// }
-/// resource "azure_siterecovery_vmwarereplicatedvm" "example" {
+/// resource "azure_siterecovery_vmware_replicated_vm" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                       = "example-vmware-vm"
 ///   recovery_vault_id                          = azure_recoveryservices_vault.example.id
 ///   source_vm_name                             = "example-vm"
@@ -399,10 +423,10 @@ import 'vmware_replicated_vm_state.dart';
 ///   license_type                               = "NotSpecified"
 ///   target_boot_diagnostics_storage_account_id = azure_storage_account.example.id
 ///   target_vm_name                             = "example_replicated_vm"
-///   target_resource_group_id                   = azure_core_resourcegroup.example.id
+///   target_resource_group_id                   = azure_core_resource_group.example.id
 ///   default_log_storage_account_id             = azure_storage_account.example.id
 ///   default_recovery_disk_type                 = "Standard_LRS"
-///   target_network_id                          = azure_network_virtualnetwork.example.id
+///   target_network_id                          = azure_network_virtual_network.example.id
 ///   network_interfaces {
 ///     source_mac_address = "00:00:00:00:00:00"
 ///     target_subnet_name = azure_network_subnet.example.name
@@ -499,7 +523,7 @@ import 'vmware_replicated_vm_state.dart';
 ///             .recoveryVaultId(exampleVault.id())
 ///             .sourceVmName("example-vm")
 ///             .applianceName("example-appliance")
-///             .recoveryReplicationPolicyId(exampleAzurermSiteRecoveryVmwareReplicationPolicyAssociation.policyId())
+///             .recoveryReplicationPolicyId(exampleAzurermSiteRecoveryVmwareReplicationPolicyAssociation.get("policyId"))
 ///             .physicalServerCredentialName("example-creds")
 ///             .licenseType("NotSpecified")
 ///             .targetBootDiagnosticsStorageAccountId(exampleAccount.id())
@@ -697,7 +721,7 @@ class VmwareReplicatedVm extends pulumi.CustomResource {
           'azure:siterecovery/vmwareReplicatedVm:VmwareReplicatedVm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applianceName = registerOutput<String>('applianceName');
     defaultLogStorageAccountId = registerOutput<String?>('defaultLogStorageAccountId');

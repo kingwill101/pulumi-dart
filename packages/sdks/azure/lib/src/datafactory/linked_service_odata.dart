@@ -155,7 +155,7 @@ import 'linked_service_odata_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -163,21 +163,33 @@ import 'linked_service_odata_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_datafactory_factory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_datafactory_linkedserviceodata" "anonymous" {
+/// resource "azure_datafactory_linked_service_odata" "anonymous" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "anonymous"
 ///   data_factory_id = azure_datafactory_factory.example.id
 ///   url             = "https://services.odata.org/v4/TripPinServiceRW/People"
 /// }
-/// resource "azure_datafactory_linkedserviceodata" "basic_auth" {
+/// resource "azure_datafactory_linked_service_odata" "basic_auth" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "basic_auth"
 ///   data_factory_id = azure_datafactory_factory.example.id
 ///   url             = "https://services.odata.org/v4/TripPinServiceRW/People"
@@ -315,7 +327,7 @@ class LinkedServiceOdata extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceOdata:LinkedServiceOdata',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

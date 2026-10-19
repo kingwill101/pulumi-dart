@@ -531,7 +531,7 @@ import 'firewall_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -539,13 +539,19 @@ import 'firewall_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_frontdoor_firewallpolicy" "example" {
+/// resource "azure_frontdoor_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                              = "examplefdwafpolicy"
-///   resource_group_name               = azure_core_resourcegroup.example.name
+///   resource_group_name               = azure_core_resource_group.example.name
 ///   enabled                           = true
 ///   mode                              = "Prevention"
 ///   redirect_url                      = "https://www.contoso.com"
@@ -892,7 +898,7 @@ class FirewallPolicy extends pulumi.CustomResource {
           'azure:frontdoor/firewallPolicy:FirewallPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     customBlockResponseBody = registerOutput<String?>('customBlockResponseBody');
     customBlockResponseStatusCode = registerOutput<int?>('customBlockResponseStatusCode');

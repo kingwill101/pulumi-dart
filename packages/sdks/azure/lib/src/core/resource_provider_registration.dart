@@ -62,7 +62,7 @@ import 'resource_provider_registration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -70,7 +70,10 @@ import 'resource_provider_registration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourceproviderregistration" "example" {
+/// resource "azure_core_resource_provider_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "Microsoft.PolicyInsights"
 /// }
 /// ```
@@ -188,7 +191,7 @@ import 'resource_provider_registration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -196,7 +199,10 @@ import 'resource_provider_registration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourceproviderregistration" "example" {
+/// resource "azure_core_resource_provider_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "Microsoft.ContainerService"
 ///   features {
 ///     name       = "AKS-DataPlaneAutoApprove"
@@ -283,7 +289,7 @@ class ResourceProviderRegistration extends pulumi.CustomResource {
           'azure:core/resourceProviderRegistration:ResourceProviderRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     features = registerOutput<List<ResourceProviderRegistrationFeature>?>('features', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ResourceProviderRegistrationFeature>(guardedValue, (value) => ResourceProviderRegistrationFeature.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');

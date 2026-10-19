@@ -111,7 +111,7 @@ import 'ipgroup_cidrstate.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -119,17 +119,26 @@ import 'ipgroup_cidrstate.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_ipgroup" "example" {
+/// resource "azure_network_i_p_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test-ipgroup"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_network_ipgroupcidr" "example" {
-///   ip_group_id = azure_network_ipgroup.example.id
+/// resource "azure_network_i_p_group_c_i_d_r" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ip_group_id = azure_network_i_p_group.example.id
 ///   cidr        = "10.10.10.0/24"
 /// }
 /// ```
@@ -237,7 +246,7 @@ class IPGroupCIDR extends pulumi.CustomResource {
           'azure:network/iPGroupCIDR:IPGroupCIDR',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     cidr = registerOutput<String>('cidr');
     ipGroupId = registerOutput<String>('ipGroupId');

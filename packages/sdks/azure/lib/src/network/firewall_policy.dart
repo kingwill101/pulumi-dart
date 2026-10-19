@@ -94,7 +94,7 @@ import 'firewall_policy_tls_certificate.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -102,14 +102,20 @@ import 'firewall_policy_tls_certificate.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_firewallpolicy" "example" {
+/// resource "azure_network_firewall_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-policy"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// ```
 /// ```java
@@ -234,7 +240,7 @@ class FirewallPolicy extends pulumi.CustomResource {
           'azure:network/firewallPolicy:FirewallPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     autoLearnPrivateRangesEnabled = registerOutput<bool?>('autoLearnPrivateRangesEnabled');
     basePolicyId = registerOutput<String?>('basePolicyId');

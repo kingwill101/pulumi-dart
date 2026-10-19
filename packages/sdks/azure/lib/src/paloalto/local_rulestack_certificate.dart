@@ -111,7 +111,7 @@ import 'local_rulestack_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -119,18 +119,27 @@ import 'local_rulestack_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rg-example"
 ///   location = "West Europe"
 /// }
-/// resource "azure_paloalto_localrulestack" "example" {
+/// resource "azure_paloalto_local_rulestack" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_paloalto_localrulestackcertificate" "example" {
+/// resource "azure_paloalto_local_rulestack_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example"
-///   rulestack_id = azure_paloalto_localrulestack.example.id
+///   rulestack_id = azure_paloalto_local_rulestack.example.id
 ///   self_signed  = true
 /// }
 /// ```
@@ -245,7 +254,7 @@ class LocalRulestackCertificate extends pulumi.CustomResource {
           'azure:paloalto/localRulestackCertificate:LocalRulestackCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     auditComment = registerOutput<String?>('auditComment');
     description = registerOutput<String?>('description');

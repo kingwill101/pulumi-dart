@@ -66,8 +66,8 @@ class ElasticSanArgs {
 
   factory ElasticSanArgs.fromMap(Map<String, dynamic> map) {
     return ElasticSanArgs(
-      baseSizeInTib: pulumi.Input.fromValue((map['baseSizeInTib'] as num).toInt()),
-      extendedSizeInTib: (() { final guardedValue = map['extendedSizeInTib']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      baseSizeInTib: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['baseSizeInTib'])),
+      extendedSizeInTib: (() { final guardedValue = map['extendedSizeInTib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),

@@ -88,7 +88,7 @@ import 'get_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -246,7 +246,7 @@ pulumi.Output<GetResult> getOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -254,13 +254,13 @@ pulumi.Output<GetResult> getOutput(
 ///   }
 /// }
 ///
-/// data "azure_devcenter_getattachednetwork" "example" {
+/// data "azure_devcenter_attached_network" "example" {
 ///   name          = exampleAzurermDevCenterAttachedNetwork.name
 ///   dev_center_id = exampleAzurermDevCenterAttachedNetwork.devCenterId
 /// }
 ///
 /// output "id" {
-///   value = data.azure_devcenter_getattachednetwork.example.id
+///   value = data.azure_devcenter_attached_network.example.id
 /// }
 /// ```
 /// ```java
@@ -285,8 +285,8 @@ pulumi.Output<GetResult> getOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = DevcenterFunctions.getAttachedNetwork(GetAttachedNetworkArgs.builder()
-///             .name(exampleAzurermDevCenterAttachedNetwork.name())
-///             .devCenterId(exampleAzurermDevCenterAttachedNetwork.devCenterId())
+///             .name(exampleAzurermDevCenterAttachedNetwork.get("name"))
+///             .devCenterId(exampleAzurermDevCenterAttachedNetwork.get("devCenterId"))
 ///             .build());
 ///
 ///         ctx.export("id", example.id());
@@ -404,7 +404,7 @@ pulumi.Output<GetAttachedNetworkResult> getAttachedNetworkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -412,13 +412,13 @@ pulumi.Output<GetAttachedNetworkResult> getAttachedNetworkOutput(
 ///   }
 /// }
 ///
-/// data "azure_devcenter_getcatalog" "example" {
+/// data "azure_devcenter_catalog" "example" {
 ///   name          = exampleAzurermDevCenterCatalog.name
 ///   dev_center_id = exampleAzurermDevCenterCatalog.devCenterId
 /// }
 ///
 /// output "id" {
-///   value = data.azure_devcenter_getcatalog.example.id
+///   value = data.azure_devcenter_catalog.example.id
 /// }
 /// ```
 /// ```java
@@ -443,8 +443,8 @@ pulumi.Output<GetAttachedNetworkResult> getAttachedNetworkOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = DevcenterFunctions.getCatalog(GetCatalogArgs.builder()
-///             .name(exampleAzurermDevCenterCatalog.name())
-///             .devCenterId(exampleAzurermDevCenterCatalog.devCenterId())
+///             .name(exampleAzurermDevCenterCatalog.get("name"))
+///             .devCenterId(exampleAzurermDevCenterCatalog.get("devCenterId"))
 ///             .build());
 ///
 ///         ctx.export("id", example.id());
@@ -562,7 +562,7 @@ pulumi.Output<GetCatalogResult> getCatalogOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -570,13 +570,13 @@ pulumi.Output<GetCatalogResult> getCatalogOutput(
 ///   }
 /// }
 ///
-/// data "azure_devcenter_getdevboxdefinition" "example" {
+/// data "azure_devcenter_dev_box_definition" "example" {
 ///   name          = exampleAzurermDevCenterDevBoxDefinition.name
 ///   dev_center_id = exampleAzurermDevCenterDevBoxDefinition.devCenterId
 /// }
 ///
 /// output "id" {
-///   value = data.azure_devcenter_getdevboxdefinition.example.id
+///   value = data.azure_devcenter_dev_box_definition.example.id
 /// }
 /// ```
 /// ```java
@@ -601,8 +601,8 @@ pulumi.Output<GetCatalogResult> getCatalogOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = DevcenterFunctions.getDevBoxDefinition(GetDevBoxDefinitionArgs.builder()
-///             .name(exampleAzurermDevCenterDevBoxDefinition.name())
-///             .devCenterId(exampleAzurermDevCenterDevBoxDefinition.devCenterId())
+///             .name(exampleAzurermDevCenterDevBoxDefinition.get("name"))
+///             .devCenterId(exampleAzurermDevCenterDevBoxDefinition.get("devCenterId"))
 ///             .build());
 ///
 ///         ctx.export("id", example.id());
@@ -720,7 +720,7 @@ pulumi.Output<GetDevBoxDefinitionResult> getDevBoxDefinitionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -728,13 +728,13 @@ pulumi.Output<GetDevBoxDefinitionResult> getDevBoxDefinitionOutput(
 ///   }
 /// }
 ///
-/// data "azure_devcenter_getenvironmenttype" "example" {
+/// data "azure_devcenter_environment_type" "example" {
 ///   name          = exampleAzurermDevCenterEnvironmentType.name
 ///   dev_center_id = exampleAzurermDevCenterEnvironmentType.devCenterId
 /// }
 ///
 /// output "id" {
-///   value = data.azure_devcenter_getenvironmenttype.example.id
+///   value = data.azure_devcenter_environment_type.example.id
 /// }
 /// ```
 /// ```java
@@ -759,8 +759,8 @@ pulumi.Output<GetDevBoxDefinitionResult> getDevBoxDefinitionOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = DevcenterFunctions.getEnvironmentType(GetEnvironmentTypeArgs.builder()
-///             .name(exampleAzurermDevCenterEnvironmentType.name())
-///             .devCenterId(exampleAzurermDevCenterEnvironmentType.devCenterId())
+///             .name(exampleAzurermDevCenterEnvironmentType.get("name"))
+///             .devCenterId(exampleAzurermDevCenterEnvironmentType.get("devCenterId"))
 ///             .build());
 ///
 ///         ctx.export("id", example.id());
@@ -878,7 +878,7 @@ pulumi.Output<GetEnvironmentTypeResult> getEnvironmentTypeOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -886,13 +886,13 @@ pulumi.Output<GetEnvironmentTypeResult> getEnvironmentTypeOutput(
 ///   }
 /// }
 ///
-/// data "azure_devcenter_getgallery" "example" {
+/// data "azure_devcenter_gallery" "example" {
 ///   name          = exampleAzurermDevCenterGallery.name
 ///   dev_center_id = exampleAzurermDevCenterGallery.devCenterId
 /// }
 ///
 /// output "id" {
-///   value = data.azure_devcenter_getgallery.example.id
+///   value = data.azure_devcenter_gallery.example.id
 /// }
 /// ```
 /// ```java
@@ -917,8 +917,8 @@ pulumi.Output<GetEnvironmentTypeResult> getEnvironmentTypeOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = DevcenterFunctions.getGallery(GetGalleryArgs.builder()
-///             .name(exampleAzurermDevCenterGallery.name())
-///             .devCenterId(exampleAzurermDevCenterGallery.devCenterId())
+///             .name(exampleAzurermDevCenterGallery.get("name"))
+///             .devCenterId(exampleAzurermDevCenterGallery.get("devCenterId"))
 ///             .build());
 ///
 ///         ctx.export("id", example.id());
@@ -1036,7 +1036,7 @@ pulumi.Output<GetGalleryResult> getGalleryOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1044,13 +1044,13 @@ pulumi.Output<GetGalleryResult> getGalleryOutput(
 ///   }
 /// }
 ///
-/// data "azure_devcenter_getmanageddevopspool" "example" {
+/// data "azure_devcenter_managed_dev_ops_pool" "example" {
 ///   name                = "example-mdp"
 ///   resource_group_name = "example-rg"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_devcenter_getmanageddevopspool.example.id
+///   value = data.azure_devcenter_managed_dev_ops_pool.example.id
 /// }
 /// ```
 /// ```java
@@ -1194,7 +1194,7 @@ pulumi.Output<GetManagedDevOpsPoolResult> getManagedDevOpsPoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1202,13 +1202,13 @@ pulumi.Output<GetManagedDevOpsPoolResult> getManagedDevOpsPoolOutput(
 ///   }
 /// }
 ///
-/// data "azure_devcenter_getnetworkconnection" "example" {
+/// data "azure_devcenter_network_connection" "example" {
 ///   name                = "example"
 ///   resource_group_name = "example-resource-group"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_devcenter_getnetworkconnection.example.id
+///   value = data.azure_devcenter_network_connection.example.id
 /// }
 /// ```
 /// ```java
@@ -1352,7 +1352,7 @@ pulumi.Output<GetNetworkConnectionResult> getNetworkConnectionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1360,13 +1360,13 @@ pulumi.Output<GetNetworkConnectionResult> getNetworkConnectionOutput(
 ///   }
 /// }
 ///
-/// data "azure_devcenter_getproject" "example" {
+/// data "azure_devcenter_project" "example" {
 ///   name                = "example"
 ///   resource_group_name = "example-resource-group"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_devcenter_getproject.example.id
+///   value = data.azure_devcenter_project.example.id
 /// }
 /// ```
 /// ```java
@@ -1510,7 +1510,7 @@ pulumi.Output<GetProjectResult> getProjectOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1518,13 +1518,13 @@ pulumi.Output<GetProjectResult> getProjectOutput(
 ///   }
 /// }
 ///
-/// data "azure_devcenter_getprojectenvironmenttype" "example" {
+/// data "azure_devcenter_project_environment_type" "example" {
 ///   name                  = exampleAzurermDevCenterProjectEnvironmentType.name
 ///   dev_center_project_id = exampleAzurermDevCenterProjectEnvironmentType.devCenterProjectId
 /// }
 ///
 /// output "id" {
-///   value = data.azure_devcenter_getprojectenvironmenttype.example.id
+///   value = data.azure_devcenter_project_environment_type.example.id
 /// }
 /// ```
 /// ```java
@@ -1549,8 +1549,8 @@ pulumi.Output<GetProjectResult> getProjectOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = DevcenterFunctions.getProjectEnvironmentType(GetProjectEnvironmentTypeArgs.builder()
-///             .name(exampleAzurermDevCenterProjectEnvironmentType.name())
-///             .devCenterProjectId(exampleAzurermDevCenterProjectEnvironmentType.devCenterProjectId())
+///             .name(exampleAzurermDevCenterProjectEnvironmentType.get("name"))
+///             .devCenterProjectId(exampleAzurermDevCenterProjectEnvironmentType.get("devCenterProjectId"))
 ///             .build());
 ///
 ///         ctx.export("id", example.id());
@@ -1668,7 +1668,7 @@ pulumi.Output<GetProjectEnvironmentTypeResult> getProjectEnvironmentTypeOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1676,13 +1676,13 @@ pulumi.Output<GetProjectEnvironmentTypeResult> getProjectEnvironmentTypeOutput(
 ///   }
 /// }
 ///
-/// data "azure_devcenter_getprojectpool" "example" {
+/// data "azure_devcenter_project_pool" "example" {
 ///   name                  = exampleAzurermDevCenterProjectPool.name
 ///   dev_center_project_id = exampleAzurermDevCenterProjectPool.devCenterProjectId
 /// }
 ///
 /// output "id" {
-///   value = data.azure_devcenter_getprojectpool.example.id
+///   value = data.azure_devcenter_project_pool.example.id
 /// }
 /// ```
 /// ```java
@@ -1707,8 +1707,8 @@ pulumi.Output<GetProjectEnvironmentTypeResult> getProjectEnvironmentTypeOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = DevcenterFunctions.getProjectPool(GetProjectPoolArgs.builder()
-///             .name(exampleAzurermDevCenterProjectPool.name())
-///             .devCenterProjectId(exampleAzurermDevCenterProjectPool.devCenterProjectId())
+///             .name(exampleAzurermDevCenterProjectPool.get("name"))
+///             .devCenterProjectId(exampleAzurermDevCenterProjectPool.get("devCenterProjectId"))
 ///             .build());
 ///
 ///         ctx.export("id", example.id());

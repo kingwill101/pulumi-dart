@@ -160,7 +160,7 @@ class ThreatIntelligenceIndicatorState {
 
   factory ThreatIntelligenceIndicatorState.fromMap(Map<String, dynamic> map) {
     return ThreatIntelligenceIndicatorState(
-      confidence: (() { final guardedValue = map['confidence']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      confidence: (() { final guardedValue = map['confidence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       createdBy: (() { final guardedValue = map['createdBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       defanged: (() { final guardedValue = map['defanged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

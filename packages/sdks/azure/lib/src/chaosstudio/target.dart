@@ -91,7 +91,7 @@ import 'target_state.dart';
 ///         DefaultNodePool = new Azure.ContainerService.Inputs.KubernetesClusterDefaultNodePoolArgs
 ///         {
 ///             Name = "example-value",
-///             NodeCount = "example-value",
+///             NodeCount = int.Parse("example-value", System.Globalization.CultureInfo.InvariantCulture),
 ///             VmSize = "example-value",
 ///             UpgradeSettings = new Azure.ContainerService.Inputs.KubernetesClusterDefaultNodePoolUpgradeSettingsArgs
 ///             {
@@ -165,7 +165,7 @@ import 'target_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -173,10 +173,13 @@ import 'target_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_containerservice_kubernetescluster" "example" {
+/// resource "azure_containerservice_kubernetes_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   dns_prefix          = "acctestaksexample"
 ///   default_node_pool = {
 ///     name       = "example-value"
@@ -190,13 +193,19 @@ import 'target_state.dart';
 ///     type = "example-value"
 ///   }
 /// }
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_chaosstudio_target" "example" {
-///   location           = azure_core_resourcegroup.example.location
-///   target_resource_id = azure_containerservice_kubernetescluster.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location           = azure_core_resource_group.example.location
+///   target_resource_id = azure_containerservice_kubernetes_cluster.example.id
 ///   target_type        = "example-value"
 /// }
 /// ```
@@ -323,7 +332,7 @@ class Target extends pulumi.CustomResource {
           'azure:chaosstudio/target:Target',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     targetResourceId = registerOutput<String>('targetResourceId');

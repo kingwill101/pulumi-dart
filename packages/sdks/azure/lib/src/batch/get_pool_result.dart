@@ -173,7 +173,7 @@ class GetPoolResult {
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       interNodeCommunication: (() { final guardedValue = map['interNodeCommunication']; if (guardedValue == null) return null; return guardedValue as String; })(),
       licenseType: (() { final guardedValue = map['licenseType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxTasksPerNode: (() { final guardedValue = map['maxTasksPerNode']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxTasksPerNode: (() { final guardedValue = map['maxTasksPerNode']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       mounts: (() { final guardedValue = map['mounts']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetPoolMount>(guardedValue, (value) => GetPoolMount.fromMap((value as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),

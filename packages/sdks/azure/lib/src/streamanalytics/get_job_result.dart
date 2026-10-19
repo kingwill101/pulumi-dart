@@ -107,8 +107,8 @@ class GetJobResult {
     return GetJobResult(
       compatibilityLevel: (() { final guardedValue = map['compatibilityLevel']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dataLocale: (() { final guardedValue = map['dataLocale']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      eventsLateArrivalMaxDelayInSeconds: (() { final guardedValue = map['eventsLateArrivalMaxDelayInSeconds']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      eventsOutOfOrderMaxDelayInSeconds: (() { final guardedValue = map['eventsOutOfOrderMaxDelayInSeconds']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      eventsLateArrivalMaxDelayInSeconds: (() { final guardedValue = map['eventsLateArrivalMaxDelayInSeconds']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      eventsOutOfOrderMaxDelayInSeconds: (() { final guardedValue = map['eventsOutOfOrderMaxDelayInSeconds']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       eventsOutOfOrderPolicy: (() { final guardedValue = map['eventsOutOfOrderPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       identities: (() { final guardedValue = map['identities']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetJobIdentity>(guardedValue, (value) => GetJobIdentity.fromMap((value as Map).cast<String, dynamic>())); })(),
@@ -121,7 +121,7 @@ class GetJobResult {
       skuName: (() { final guardedValue = map['skuName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       startMode: (() { final guardedValue = map['startMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
       startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      streamingUnits: (() { final guardedValue = map['streamingUnits']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      streamingUnits: (() { final guardedValue = map['streamingUnits']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       transformationQuery: (() { final guardedValue = map['transformationQuery']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }

@@ -199,7 +199,7 @@ import 'registry_token_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -207,14 +207,20 @@ import 'registry_token_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resource-group"
 ///   location = "West Europe"
 /// }
 /// resource "azure_containerservice_registry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "Basic"
 ///   admin_enabled       = false
 ///   georeplications {
@@ -224,17 +230,23 @@ import 'registry_token_state.dart';
 ///     location = "West Europe"
 ///   }
 /// }
-/// resource "azure_containerservice_registryscopemap" "example" {
+/// resource "azure_containerservice_registry_scope_map" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-scope-map"
 ///   container_registry_name = azure_containerservice_registry.example.name
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   actions                 = ["repositories/repo1/content/read", "repositories/repo1/content/write"]
 /// }
-/// resource "azure_containerservice_registrytoken" "example" {
+/// resource "azure_containerservice_registry_token" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "exampletoken"
 ///   container_registry_name = azure_containerservice_registry.example.name
-///   resource_group_name     = azure_core_resourcegroup.example.name
-///   scope_map_id            = azure_containerservice_registryscopemap.example.id
+///   resource_group_name     = azure_core_resource_group.example.name
+///   scope_map_id            = azure_containerservice_registry_scope_map.example.id
 /// }
 /// ```
 /// ```java
@@ -382,7 +394,7 @@ class RegistryToken extends pulumi.CustomResource {
           'azure:containerservice/registryToken:RegistryToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     containerRegistryName = registerOutput<String>('containerRegistryName');
     enabled = registerOutput<bool?>('enabled');

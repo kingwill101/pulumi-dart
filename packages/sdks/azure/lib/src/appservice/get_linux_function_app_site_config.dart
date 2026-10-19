@@ -215,7 +215,7 @@ class GetLinuxFunctionAppSiteConfig {
       apiDefinitionUrl: pulumi.Input.fromValue(map['apiDefinitionUrl'] as String),
       apiManagementApiId: pulumi.Input.fromValue(map['apiManagementApiId'] as String),
       appCommandLine: pulumi.Input.fromValue(map['appCommandLine'] as String),
-      appScaleLimit: pulumi.Input.fromValue((map['appScaleLimit'] as num).toInt()),
+      appScaleLimit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['appScaleLimit'])),
       appServiceLogs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppSiteConfigAppServiceLog>(map['appServiceLogs']!, (value) => GetLinuxFunctionAppSiteConfigAppServiceLog.fromMap((value as Map).cast<String, dynamic>()))),
       applicationInsightsConnectionString: pulumi.Input.fromValue(map['applicationInsightsConnectionString'] as String),
       applicationInsightsKey: pulumi.Input.fromValue(map['applicationInsightsKey'] as String),
@@ -225,9 +225,9 @@ class GetLinuxFunctionAppSiteConfig {
       cors: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLinuxFunctionAppSiteConfigCor>(map['cors']!, (value) => GetLinuxFunctionAppSiteConfigCor.fromMap((value as Map).cast<String, dynamic>()))),
       defaultDocuments: pulumi.Input.fromValue((map['defaultDocuments'] as List).cast<String>()),
       detailedErrorLoggingEnabled: pulumi.Input.fromValue(map['detailedErrorLoggingEnabled'] as bool),
-      elasticInstanceMinimum: pulumi.Input.fromValue((map['elasticInstanceMinimum'] as num).toInt()),
+      elasticInstanceMinimum: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['elasticInstanceMinimum'])),
       ftpsState: pulumi.Input.fromValue(map['ftpsState'] as String),
-      healthCheckEvictionTimeInMin: pulumi.Input.fromValue((map['healthCheckEvictionTimeInMin'] as num).toInt()),
+      healthCheckEvictionTimeInMin: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['healthCheckEvictionTimeInMin'])),
       healthCheckPath: pulumi.Input.fromValue(map['healthCheckPath'] as String),
       http2Enabled: pulumi.Input.fromValue(map['http2Enabled'] as bool),
       ipRestrictionDefaultAction: pulumi.Input.fromValue(map['ipRestrictionDefaultAction'] as String),
@@ -237,7 +237,7 @@ class GetLinuxFunctionAppSiteConfig {
       managedPipelineMode: pulumi.Input.fromValue(map['managedPipelineMode'] as String),
       minimumTlsCipherSuite: pulumi.Input.fromValue(map['minimumTlsCipherSuite'] as String),
       minimumTlsVersion: pulumi.Input.fromValue(map['minimumTlsVersion'] as String),
-      preWarmedInstanceCount: pulumi.Input.fromValue((map['preWarmedInstanceCount'] as num).toInt()),
+      preWarmedInstanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['preWarmedInstanceCount'])),
       remoteDebuggingEnabled: pulumi.Input.fromValue(map['remoteDebuggingEnabled'] as bool),
       remoteDebuggingVersion: pulumi.Input.fromValue(map['remoteDebuggingVersion'] as String),
       runtimeScaleMonitoringEnabled: pulumi.Input.fromValue(map['runtimeScaleMonitoringEnabled'] as bool),
@@ -249,7 +249,7 @@ class GetLinuxFunctionAppSiteConfig {
       use32BitWorker: pulumi.Input.fromValue(map['use32BitWorker'] as bool),
       vnetRouteAllEnabled: pulumi.Input.fromValue(map['vnetRouteAllEnabled'] as bool),
       websocketsEnabled: pulumi.Input.fromValue(map['websocketsEnabled'] as bool),
-      workerCount: pulumi.Input.fromValue((map['workerCount'] as num).toInt()),
+      workerCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['workerCount'])),
     );
   }
 }

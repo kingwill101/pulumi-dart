@@ -78,7 +78,7 @@ import 'directory_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -87,6 +87,9 @@ import 'directory_state.dart';
 /// }
 ///
 /// resource "azure_aadb2c_directory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   country_code            = "US"
 ///   data_residency_location = "United States"
 ///   display_name            = "example-b2c-tenant"
@@ -190,7 +193,7 @@ class Directory extends pulumi.CustomResource {
           'azure:aadb2c/directory:Directory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     billingType = registerOutput<String>('billingType');
     countryCode = registerOutput<String>('countryCode');

@@ -110,7 +110,7 @@ import 'event_hub_namespace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -118,14 +118,20 @@ import 'event_hub_namespace_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "example" {
+/// resource "azure_eventhub_event_hub_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-namespace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 ///   capacity            = 2
 ///   tags = {
@@ -264,7 +270,7 @@ class EventHubNamespace extends pulumi.CustomResource {
           'azure:eventhub/eventHubNamespace:EventHubNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['defaultPrimaryConnectionString', 'defaultPrimaryConnectionStringAlias', 'defaultPrimaryKey', 'defaultSecondaryConnectionString', 'defaultSecondaryConnectionStringAlias', 'defaultSecondaryKey'],
         ) {
     autoInflateEnabled = registerOutput<bool?>('autoInflateEnabled');

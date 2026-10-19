@@ -66,7 +66,7 @@ import 'agreement_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -75,6 +75,9 @@ import 'agreement_state.dart';
 /// }
 ///
 /// resource "azure_marketplace_agreement" "barracuda" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   publisher = "barracudanetworks"
 ///   offer     = "waf"
 ///   plan      = "hourly"
@@ -157,7 +160,7 @@ class Agreement extends pulumi.CustomResource {
           'azure:marketplace/agreement:Agreement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     licenseTextLink = registerOutput<String>('licenseTextLink');
     offer = registerOutput<String>('offer');

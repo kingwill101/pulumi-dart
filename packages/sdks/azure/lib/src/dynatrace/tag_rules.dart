@@ -266,7 +266,7 @@ import 'tag_rules_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -274,13 +274,19 @@ import 'tag_rules_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_dynatrace_monitor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "exmpledynatracemonitor"
-///   resource_group_name             = azure_core_resourcegroup.example.name
+///   resource_group_name             = azure_core_resource_group.example.name
 ///   location                        = test.location
 ///   monitoring_enabled              = true
 ///   marketplace_subscription_status = "Active"
@@ -301,14 +307,17 @@ import 'tag_rules_state.dart';
 ///     effective_date = "2019-08-30T15:14:33Z"
 ///   }
 /// }
-/// resource "azure_dynatrace_tagrules" "example" {
+/// resource "azure_dynatrace_tag_rules" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "default"
 ///   monitor_id = testAzurermDynatraceMonitors.id
 ///   log_rule = {
 ///     filtering_tags = [{
-///       "name"   = "Environment"
-///       "value"  = "Prod"
-///       "action" = "Include"
+///       name   = "Environment"
+///       value  = "Prod"
+///       action = "Include"
 ///     }]
 ///     send_azure_active_directory_logs_enabled = true
 ///     send_activity_logs_enabled               = true
@@ -316,9 +325,9 @@ import 'tag_rules_state.dart';
 ///   }
 ///   metric_rule = {
 ///     filtering_tags = [{
-///       "name"   = "Environment"
-///       "value"  = "Prod"
-///       "action" = "Include"
+///       name   = "Environment"
+///       value  = "Prod"
+///       action = "Include"
 ///     }]
 ///   }
 /// }
@@ -363,7 +372,7 @@ import 'tag_rules_state.dart';
 ///         var exampleMonitor = new Monitor("exampleMonitor", MonitorArgs.builder()
 ///             .name("exmpledynatracemonitor")
 ///             .resourceGroupName(example.name())
-///             .location(test.location())
+///             .location(test.get("location"))
 ///             .monitoringEnabled(true)
 ///             .marketplaceSubscriptionStatus("Active")
 ///             .identity(MonitorIdentityArgs.builder()
@@ -386,7 +395,7 @@ import 'tag_rules_state.dart';
 ///
 ///         var exampleTagRules = new TagRules("exampleTagRules", TagRulesArgs.builder()
 ///             .name("default")
-///             .monitorId(testAzurermDynatraceMonitors.id())
+///             .monitorId(testAzurermDynatraceMonitors.get("id"))
 ///             .logRule(TagRulesLogRuleArgs.builder()
 ///                 .filteringTags(TagRulesLogRuleFilteringTagArgs.builder()
 ///                     .name("Environment")
@@ -496,7 +505,7 @@ class TagRules extends pulumi.CustomResource {
           'azure:dynatrace/tagRules:TagRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     logRule = registerOutput<TagRulesLogRule?>('logRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagRulesLogRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     metricRule = registerOutput<TagRulesMetricRule?>('metricRule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TagRulesMetricRule.fromMap((guardedValue as Map).cast<String, dynamic>()); });

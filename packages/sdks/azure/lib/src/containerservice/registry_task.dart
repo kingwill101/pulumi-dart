@@ -164,7 +164,7 @@ import 'registry_task_timer_trigger.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -172,17 +172,26 @@ import 'registry_task_timer_trigger.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_containerservice_registry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "Basic"
 /// }
-/// resource "azure_containerservice_registrytask" "example" {
+/// resource "azure_containerservice_registry_task" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-task"
 ///   container_registry_id = azure_containerservice_registry.example.id
 ///   platform = {
@@ -350,7 +359,7 @@ class RegistryTask extends pulumi.CustomResource {
           'azure:containerservice/registryTask:RegistryTask',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     agentPoolName = registerOutput<String?>('agentPoolName');
     agentSetting = registerOutput<RegistryTaskAgentSetting?>('agentSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegistryTaskAgentSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });

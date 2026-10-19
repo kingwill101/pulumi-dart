@@ -184,7 +184,7 @@ import 'database_extended_auditing_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -192,30 +192,45 @@ import 'database_extended_auditing_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_mssql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-sqlserver"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   version                      = "12.0"
 ///   administrator_login          = "missadministrator"
 ///   administrator_login_password = "AdminPassword123!"
 /// }
 /// resource "azure_mssql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example-db"
 ///   server_id = azure_mssql_server.example.id
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_mssql_databaseextendedauditingpolicy" "example" {
+/// resource "azure_mssql_database_extended_auditing_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database_id                             = azure_mssql_database.example.id
 ///   storage_endpoint                        = azure_storage_account.example.primary_blob_endpoint
 ///   storage_account_access_key              = azure_storage_account.example.primary_access_key
@@ -381,7 +396,7 @@ class DatabaseExtendedAuditingPolicy extends pulumi.CustomResource {
           'azure:mssql/databaseExtendedAuditingPolicy:DatabaseExtendedAuditingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['storageAccountAccessKey'],
         ) {
     databaseId = registerOutput<String>('databaseId');

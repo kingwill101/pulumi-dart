@@ -156,7 +156,7 @@ import 'shared_private_link_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -164,24 +164,36 @@ import 'shared_private_link_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "test" {
+/// resource "azure_core_resource_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resourceGroup"
 ///   location = "east us"
 /// }
 /// resource "azure_search_service" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-search"
-///   resource_group_name = azure_core_resourcegroup.test.name
-///   location            = azure_core_resourcegroup.test.location
+///   resource_group_name = azure_core_resource_group.test.name
+///   location            = azure_core_resource_group.test.location
 ///   sku                 = "standard"
 /// }
 /// resource "azure_storage_account" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
-///   resource_group_name      = azure_core_resourcegroup.test.name
-///   location                 = azure_core_resourcegroup.test.location
+///   resource_group_name      = azure_core_resource_group.test.name
+///   location                 = azure_core_resource_group.test.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_search_sharedprivatelinkservice" "test" {
+/// resource "azure_search_shared_private_link_service" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-spl"
 ///   search_service_id  = azure_search_service.test.id
 ///   subresource_name   = "blob"
@@ -325,7 +337,7 @@ class SharedPrivateLinkService extends pulumi.CustomResource {
           'azure:search/sharedPrivateLinkService:SharedPrivateLinkService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     requestMessage = registerOutput<String?>('requestMessage');
