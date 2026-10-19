@@ -7,7 +7,7 @@ class GetCustomOriginTrustStoresResult {
   final pulumi.Input<String> certificate;
   /// When the certificate expires.
   final pulumi.Input<String> expiresOn;
-  /// Identifier.
+  /// Certificate identifier tag.
   final pulumi.Input<String> id;
   /// The certificate authority that issued the certificate.
   final pulumi.Input<String> issuer;
@@ -24,7 +24,7 @@ class GetCustomOriginTrustStoresResult {
   /// Creates a new [GetCustomOriginTrustStoresResult].
   /// [certificate] The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported.
   /// [expiresOn] When the certificate expires.
-  /// [id] Identifier.
+  /// [id] Certificate identifier tag.
   /// [issuer] The certificate authority that issued the certificate.
   /// [signature] The type of hash used for the certificate.
   /// [status] Status of the zone's custom SSL.

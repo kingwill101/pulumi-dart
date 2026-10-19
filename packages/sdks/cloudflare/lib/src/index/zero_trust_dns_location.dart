@@ -235,7 +235,7 @@ import 'zero_trust_dns_location_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -243,7 +243,10 @@ import 'zero_trust_dns_location_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdnslocation" "example_zero_trust_dns_location" {
+/// resource "cloudflare_zero_trust_dns_location" "example_zero_trust_dns_location" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id             = "699d98642c564d2e855e9661899b7252"
 ///   name                   = "Austin Office Location"
 ///   client_default         = false
@@ -253,14 +256,14 @@ import 'zero_trust_dns_location_state.dart';
 ///     doh = {
 ///       enabled = true
 ///       networks = [{
-///         "network" = "2001:85a3::/64"
+///         network = "2001:85a3::/64"
 ///       }]
 ///       require_token = true
 ///     }
 ///     dot = {
 ///       enabled = true
 ///       networks = [{
-///         "network" = "2001:85a3::/64"
+///         network = "2001:85a3::/64"
 ///       }]
 ///     }
 ///     ipv4 = {
@@ -269,7 +272,7 @@ import 'zero_trust_dns_location_state.dart';
 ///     ipv6 = {
 ///       enabled = true
 ///       networks = [{
-///         "network" = "2001:85a3::/64"
+///         network = "2001:85a3::/64"
 ///       }]
 ///     }
 ///   }
@@ -396,6 +399,7 @@ import 'zero_trust_dns_location_state.dart';
 /// $ pulumi import cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation example '<account_id>/<location_id>'
 /// ```
 class ZeroTrustDnsLocation extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   /// Indicate whether this location is the default location.
   late final pulumi.Output<bool> clientDefault;
@@ -436,7 +440,7 @@ class ZeroTrustDnsLocation extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDnsLocation:ZeroTrustDnsLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     clientDefault = registerOutput<bool>('clientDefault');

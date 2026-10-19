@@ -78,7 +78,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -87,6 +87,9 @@ import 'user_state.dart';
 /// }
 ///
 /// resource "cloudflare_user" "example_user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   country    = "US"
 ///   first_name = "John"
 ///   last_name  = "Appleseed"
@@ -184,7 +187,7 @@ class User extends pulumi.CustomResource {
           'cloudflare:index/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     betas = registerOutput<List<String>>('betas', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     country = registerOutput<String?>('country');

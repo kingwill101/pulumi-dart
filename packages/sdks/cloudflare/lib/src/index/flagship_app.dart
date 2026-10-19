@@ -65,7 +65,7 @@ import 'flagship_app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -73,7 +73,10 @@ import 'flagship_app_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_flagshipapp" "example_flagship_app" {
+/// resource "cloudflare_flagship_app" "example_flagship_app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "account_id"
 ///   name       = "x"
 /// }
@@ -124,9 +127,10 @@ import 'flagship_app_state.dart';
 /// $ pulumi import cloudflare:index/flagshipApp:FlagshipApp example '<account_id>/<app_id>'
 /// ```
 class FlagshipApp extends pulumi.CustomResource {
-  /// Cloudflare account ID.
+  /// Cloudflare account ID that owns the Flagship app.
   late final pulumi.Output<String> accountId;
   late final pulumi.Output<String> createdAt;
+  /// Name of the Flagship app (1–64 letters, numbers, hyphens, or underscores).
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> updatedAt;
   /// Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.
@@ -144,7 +148,7 @@ class FlagshipApp extends pulumi.CustomResource {
           'cloudflare:index/flagshipApp:FlagshipApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

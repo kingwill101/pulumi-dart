@@ -85,7 +85,7 @@ import 'hostname_tls_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -93,7 +93,10 @@ import 'hostname_tls_setting_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_hostnametlssetting" "example_hostname_tls_setting" {
+/// resource "cloudflare_hostname_tls_setting" "example_hostname_tls_setting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "ciphers"
 ///   hostname   = "app.example.com"
@@ -183,7 +186,7 @@ class HostnameTlsSetting extends pulumi.CustomResource {
           'cloudflare:index/hostnameTlsSetting:HostnameTlsSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     hostname = registerOutput<String>('hostname');

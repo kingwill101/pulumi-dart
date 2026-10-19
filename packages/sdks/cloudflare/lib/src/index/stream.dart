@@ -63,7 +63,7 @@ import 'stream_watermark.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -72,6 +72,9 @@ import 'stream_watermark.dart';
 /// }
 ///
 /// resource "cloudflare_stream" "example_stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -127,6 +130,8 @@ class Stream extends pulumi.CustomResource {
   late final pulumi.Output<String> created;
   /// A user-defined identifier for the media creator.
   late final pulumi.Output<String?> creator;
+  /// Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients.
+  late final pulumi.Output<bool> directUser;
   /// The duration of the video in seconds. A value of `-1` means the duration is unknown. The duration becomes available after the upload and before the video is ready.
   late final pulumi.Output<double> duration;
   /// A Cloudflare-generated unique identifier for a media item.
@@ -183,13 +188,14 @@ class Stream extends pulumi.CustomResource {
           'cloudflare:index/stream:Stream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     allowedOrigins = registerOutput<List<String>?>('allowedOrigins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     clippedFrom = registerOutput<String>('clippedFrom');
     created = registerOutput<String>('created');
     creator = registerOutput<String?>('creator');
+    directUser = registerOutput<bool>('directUser');
     duration = registerOutput<double>('duration');
     identifier = registerOutput<String?>('identifier');
     input = registerOutput<StreamInput>('input', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamInput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -244,6 +250,7 @@ class Stream extends pulumi.CustomResource {
     clippedFrom = registerOutput<String>('clippedFrom');
     created = registerOutput<String>('created');
     creator = registerOutput<String?>('creator');
+    directUser = registerOutput<bool>('directUser');
     duration = registerOutput<double>('duration');
     identifier = registerOutput<String?>('identifier');
     input = registerOutput<StreamInput>('input', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamInput.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -283,6 +290,7 @@ class Stream extends pulumi.CustomResource {
     clippedFrom = registerOutput<String>('clippedFrom');
     created = registerOutput<String>('created');
     creator = registerOutput<String?>('creator');
+    directUser = registerOutput<bool>('directUser');
     duration = registerOutput<double>('duration');
     identifier = registerOutput<String?>('identifier');
     input = registerOutput<StreamInput>('input', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StreamInput.fromMap((guardedValue as Map).cast<String, dynamic>()); });

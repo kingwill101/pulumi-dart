@@ -75,7 +75,7 @@ import 'web_analytics_site_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -83,7 +83,10 @@ import 'web_analytics_site_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_webanalyticssite" "example_web_analytics_site" {
+/// resource "cloudflare_web_analytics_site" "example_web_analytics_site" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   auto_install = true
 ///   host         = "example.com"
@@ -175,7 +178,7 @@ class WebAnalyticsSite extends pulumi.CustomResource {
           'cloudflare:index/webAnalyticsSite:WebAnalyticsSite',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     autoInstall = registerOutput<bool?>('autoInstall');

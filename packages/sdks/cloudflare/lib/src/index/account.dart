@@ -46,6 +46,7 @@ import 'account_unit.dart';
 ///
 /// const exampleAccount = new cloudflare.Account("example_account", {
 ///     name: "name",
+///     standalone: true,
 ///     type: "standard",
 ///     unit: {
 ///         id: "f267e341f3dd4697bd3b9f71dd96247f",
@@ -58,6 +59,7 @@ import 'account_unit.dart';
 ///
 /// example_account = cloudflare.Account("example_account",
 ///     name="name",
+///     standalone=True,
 ///     type="standard",
 ///     unit={
 ///         "id": "f267e341f3dd4697bd3b9f71dd96247f",
@@ -74,6 +76,7 @@ import 'account_unit.dart';
 ///     var exampleAccount = new Cloudflare.Account("example_account", new()
 ///     {
 ///         Name = "name",
+///         Standalone = true,
 ///         Type = "standard",
 ///         Unit = new Cloudflare.Inputs.AccountUnitArgs
 ///         {
@@ -94,8 +97,9 @@ import 'account_unit.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.NewAccount(ctx, "example_account", &cloudflare.AccountArgs{
-/// 			Name: pulumi.String("name"),
-/// 			Type: pulumi.String("standard"),
+/// 			Name:       pulumi.String("name"),
+/// 			Standalone: pulumi.Bool(true),
+/// 			Type:       pulumi.String("standard"),
 /// 			Unit: &cloudflare.AccountUnitArgs{
 /// 				Id: pulumi.String("f267e341f3dd4697bd3b9f71dd96247f"),
 /// 			},
@@ -108,7 +112,7 @@ import 'account_unit.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -117,8 +121,12 @@ import 'account_unit.dart';
 /// }
 ///
 /// resource "cloudflare_account" "example_account" {
-///   name = "name"
-///   type = "standard"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name       = "name"
+///   standalone = true
+///   type       = "standard"
 ///   unit = {
 ///     id = "f267e341f3dd4697bd3b9f71dd96247f"
 ///   }
@@ -148,6 +156,7 @@ import 'account_unit.dart';
 ///     public static void stack(Context ctx) {
 ///         var exampleAccount = new Account("exampleAccount", AccountArgs.builder()
 ///             .name("name")
+///             .standalone(true)
 ///             .type("standard")
 ///             .unit(AccountUnitArgs.builder()
 ///                 .id("f267e341f3dd4697bd3b9f71dd96247f")
@@ -164,6 +173,7 @@ import 'account_unit.dart';
 ///     name: example_account
 ///     properties:
 ///       name: name
+///       standalone: true
 ///       type: standard
 ///       unit:
 ///         id: f267e341f3dd4697bd3b9f71dd96247f
@@ -184,9 +194,11 @@ class Account extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Account settings
   late final pulumi.Output<AccountSettings> settings;
+  /// Set to `true` and omit `unit` to create a standalone Free Account. If provided, this field must be `true`.
+  late final pulumi.Output<bool> standalone;
   /// Available values: "standard", "enterprise".
   late final pulumi.Output<String> type;
-  /// information related to the tenant unit, and optionally, an id of the unit to create the account on. see https://developers.cloudflare.com/tenant/how-to/manage-accounts/
+  /// Information related to the tenant unit. Provide its ID and omit `standalone` to create the Account within an Organization. See https://developers.cloudflare.com/tenant/how-to/manage-accounts/.
   late final pulumi.Output<AccountUnit> unit;
 
   /// Creates a new [Account].
@@ -201,12 +213,13 @@ class Account extends pulumi.CustomResource {
           'cloudflare:index/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     createdOn = registerOutput<String>('createdOn');
     managedBy = registerOutput<AccountManagedBy>('managedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountManagedBy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     settings = registerOutput<AccountSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    standalone = registerOutput<bool>('standalone');
     type = registerOutput<String>('type');
     unit = registerOutput<AccountUnit>('unit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountUnit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -239,6 +252,7 @@ class Account extends pulumi.CustomResource {
     managedBy = registerOutput<AccountManagedBy>('managedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountManagedBy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     settings = registerOutput<AccountSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    standalone = registerOutput<bool>('standalone');
     type = registerOutput<String>('type');
     unit = registerOutput<AccountUnit>('unit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountUnit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
@@ -256,6 +270,7 @@ class Account extends pulumi.CustomResource {
     managedBy = registerOutput<AccountManagedBy>('managedBy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountManagedBy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     settings = registerOutput<AccountSettings>('settings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    standalone = registerOutput<bool>('standalone');
     type = registerOutput<String>('type');
     unit = registerOutput<AccountUnit>('unit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccountUnit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }

@@ -78,7 +78,7 @@ class GetCustomHostnameFilter {
       hostnameStatus: (() { final guardedValue = map['hostnameStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       order: pulumi.Input.fromValue(map['order'] as String),
-      ssl: pulumi.Input.fromValue((map['ssl'] as num).toInt()),
+      ssl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ssl'])),
       sslStatus: (() { final guardedValue = map['sslStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       wildcard: (() { final guardedValue = map['wildcard']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

@@ -90,7 +90,7 @@ import 'cloudforce_one_request_priority_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -98,7 +98,10 @@ import 'cloudforce_one_request_priority_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_cloudforceonerequestpriority" "example_cloudforce_one_request_priority" {
+/// resource "cloudflare_cloudforce_one_request_priority" "example_cloudforce_one_request_priority" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   labels      = ["DoS", "CVE"]
 ///   priority    = 1
@@ -204,7 +207,7 @@ class CloudforceOneRequestPriority extends pulumi.CustomResource {
           'cloudflare:index/cloudforceOneRequestPriority:CloudforceOneRequestPriority',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     completed = registerOutput<String>('completed');

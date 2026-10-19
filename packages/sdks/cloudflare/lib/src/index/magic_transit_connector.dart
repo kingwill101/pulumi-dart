@@ -67,12 +67,12 @@ import 'magic_transit_connector_state.dart';
 ///         {
 ///             "Sunday",
 ///         },
-///         InterruptWindowDurationHours = 1,
+///         InterruptWindowDurationHours = 1.0,
 ///         InterruptWindowEmbargoDates = new[]
 ///         {
 ///             "string",
 ///         },
-///         InterruptWindowHourOfDay = 0,
+///         InterruptWindowHourOfDay = 0.0,
 ///         Notes = "notes",
 ///         Timezone = "timezone",
 ///     });
@@ -116,7 +116,7 @@ import 'magic_transit_connector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -124,7 +124,10 @@ import 'magic_transit_connector_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_magictransitconnector" "example_magic_transit_connector" {
+/// resource "cloudflare_magic_transit_connector" "example_magic_transit_connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   device = {
 ///     id                = "id"
@@ -233,7 +236,7 @@ class MagicTransitConnector extends pulumi.CustomResource {
           'cloudflare:index/magicTransitConnector:MagicTransitConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
           additionalSecretOutputs: const ['licenseKey'],
         ) {
     accountId = registerOutput<String>('accountId');

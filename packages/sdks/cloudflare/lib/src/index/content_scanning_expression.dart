@@ -80,7 +80,7 @@ import 'content_scanning_expression_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -88,7 +88,10 @@ import 'content_scanning_expression_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_contentscanningexpression" "example_content_scanning_expression" {
+/// resource "cloudflare_content_scanning_expression" "example_content_scanning_expression" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bodies {
 ///     payload = "lookup_json_string(http.request.body.raw, \"file\")"
@@ -144,6 +147,8 @@ import 'content_scanning_expression_state.dart';
 /// &gt; This resource does not currently support `pulumi import`.
 class ContentScanningExpression extends pulumi.CustomResource {
   late final pulumi.Output<List<ContentScanningExpressionBody>> bodies;
+  /// Defines the custom content extraction expression used to reach content objects in the request.
+  late final pulumi.Output<String?> payload;
   /// Defines an identifier.
   late final pulumi.Output<String> zoneId;
 
@@ -159,9 +164,10 @@ class ContentScanningExpression extends pulumi.CustomResource {
           'cloudflare:index/contentScanningExpression:ContentScanningExpression',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     bodies = registerOutput<List<ContentScanningExpressionBody>>('bodies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContentScanningExpressionBody>(guardedValue, (value) => ContentScanningExpressionBody.fromMap((value as Map).cast<String, dynamic>())); });
+    payload = registerOutput<String?>('payload');
     zoneId = registerOutput<String>('zoneId');
   }
 
@@ -190,6 +196,7 @@ class ContentScanningExpression extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     bodies = registerOutput<List<ContentScanningExpressionBody>>('bodies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContentScanningExpressionBody>(guardedValue, (value) => ContentScanningExpressionBody.fromMap((value as Map).cast<String, dynamic>())); });
+    payload = registerOutput<String?>('payload');
     zoneId = registerOutput<String>('zoneId');
   }
 
@@ -203,6 +210,7 @@ class ContentScanningExpression extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     bodies = registerOutput<List<ContentScanningExpressionBody>>('bodies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ContentScanningExpressionBody>(guardedValue, (value) => ContentScanningExpressionBody.fromMap((value as Map).cast<String, dynamic>())); });
+    payload = registerOutput<String?>('payload');
     zoneId = registerOutput<String>('zoneId');
   }
 }

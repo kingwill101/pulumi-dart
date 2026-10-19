@@ -3,31 +3,37 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ZoneDnsSettingsNameservers {
-  /// Configured nameserver set to be used for this zone
+  /// Identifier of the account-owned Custom Nameserver Set to use for this zone.
+  final pulumi.Input<String?>? nameserverSetId;
+  /// Configured nameserver set number to use for this zone.
   final pulumi.Input<int?>? nsSet;
-  /// Nameserver type
-  /// Available values: "cloudflare.standard", "custom.account", "custom.tenant", "custom.zone".
-  final pulumi.Input<String?>? type;
+  /// Nameserver type.
+  /// Available values: "cloudflare.standard", "cloudflare.advanced", "custom.account", "custom.tenant", "custom.zone", "custom".
+  final pulumi.Input<String> type;
 
   /// Creates a new [ZoneDnsSettingsNameservers].
-  /// [nsSet] Configured nameserver set to be used for this zone
-  /// [type] Nameserver type
+  /// [nameserverSetId] Identifier of the account-owned Custom Nameserver Set to use for this zone.
+  /// [nsSet] Configured nameserver set number to use for this zone.
+  /// [type] Nameserver type.
   const ZoneDnsSettingsNameservers({
+    this.nameserverSetId,
     this.nsSet,
-    this.type,
+    required this.type,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'nameserverSetId': ?nameserverSetId,
       'nsSet': ?nsSet,
-      'type': ?type,
+      'type': type,
     };
   }
 
   factory ZoneDnsSettingsNameservers.fromMap(Map<String, dynamic> map) {
     return ZoneDnsSettingsNameservers(
-      nsSet: (() { final guardedValue = map['nsSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nameserverSetId: (() { final guardedValue = map['nameserverSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      nsSet: (() { final guardedValue = map['nsSet']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
 }

@@ -14,6 +14,8 @@ class GetQueueResult {
   final String? createdOn;
   /// A Resource identifier.
   final String? id;
+  /// Available values: "eu", "us", "fedramp".
+  final String? jurisdiction;
   final String? modifiedOn;
   final List<GetQueueProducer>? producers;
   final double? producersTotalCount;
@@ -28,6 +30,7 @@ class GetQueueResult {
   /// [consumersTotalCount] Optional.
   /// [createdOn] Optional.
   /// [id] A Resource identifier.
+  /// [jurisdiction] Available values: "eu", "us", "fedramp".
   /// [modifiedOn] Optional.
   /// [producers] Optional.
   /// [producersTotalCount] Optional.
@@ -40,6 +43,7 @@ class GetQueueResult {
     this.consumersTotalCount,
     this.createdOn,
     this.id,
+    this.jurisdiction,
     this.modifiedOn,
     this.producers,
     this.producersTotalCount,
@@ -55,6 +59,7 @@ class GetQueueResult {
       'consumersTotalCount': ?consumersTotalCount,
       'createdOn': ?createdOn,
       'id': ?id,
+      'jurisdiction': ?jurisdiction,
       'modifiedOn': ?modifiedOn,
       'producers': ?(() { final guardedValue = producers; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetQueueProducer, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'producersTotalCount': ?producersTotalCount,
@@ -71,6 +76,7 @@ class GetQueueResult {
       consumersTotalCount: (() { final guardedValue = map['consumersTotalCount']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
       createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      jurisdiction: (() { final guardedValue = map['jurisdiction']; if (guardedValue == null) return null; return guardedValue as String; })(),
       modifiedOn: (() { final guardedValue = map['modifiedOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       producers: (() { final guardedValue = map['producers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetQueueProducer>(guardedValue, (value) => GetQueueProducer.fromMap((value as Map).cast<String, dynamic>())); })(),
       producersTotalCount: (() { final guardedValue = map['producersTotalCount']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),

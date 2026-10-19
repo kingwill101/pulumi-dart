@@ -92,7 +92,7 @@ class GetPageShieldCookiesResult {
       httpOnlyAttribute: (() { final guardedValue = map['httpOnlyAttribute']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       lastSeenAt: (() { final guardedValue = map['lastSeenAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxAgeAttribute: (() { final guardedValue = map['maxAgeAttribute']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxAgeAttribute: (() { final guardedValue = map['maxAgeAttribute']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pageUrls: (() { final guardedValue = map['pageUrls']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       pathAttribute: (() { final guardedValue = map['pathAttribute']; if (guardedValue == null) return null; return guardedValue as String; })(),

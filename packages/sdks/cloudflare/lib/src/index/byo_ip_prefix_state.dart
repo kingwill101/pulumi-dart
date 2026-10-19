@@ -103,7 +103,7 @@ class ByoIpPrefixState {
       advertised: (() { final guardedValue = map['advertised']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       advertisedModifiedAt: (() { final guardedValue = map['advertisedModifiedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       approved: (() { final guardedValue = map['approved']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       cidr: (() { final guardedValue = map['cidr']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       delegateLoaCreation: (() { final guardedValue = map['delegateLoaCreation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

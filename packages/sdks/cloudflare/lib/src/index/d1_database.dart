@@ -24,6 +24,9 @@ import 'd1_database_state.dart';
 ///     name: "my-database",
 ///     jurisdiction: "eu",
 ///     primaryLocationHint: "wnam",
+///     readReplication: {
+///         mode: "auto",
+///     },
 /// });
 /// ```
 /// ```python
@@ -34,7 +37,10 @@ import 'd1_database_state.dart';
 ///     account_id="023e105f4ecef8ad9ca31a8372d0c353",
 ///     name="my-database",
 ///     jurisdiction="eu",
-///     primary_location_hint="wnam")
+///     primary_location_hint="wnam",
+///     read_replication={
+///         "mode": "auto",
+///     })
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -50,6 +56,10 @@ import 'd1_database_state.dart';
 ///         Name = "my-database",
 ///         Jurisdiction = "eu",
 ///         PrimaryLocationHint = "wnam",
+///         ReadReplication = new Cloudflare.Inputs.D1DatabaseReadReplicationArgs
+///         {
+///             Mode = "auto",
+///         },
 ///     });
 ///
 /// });
@@ -69,6 +79,9 @@ import 'd1_database_state.dart';
 /// 			Name:                pulumi.String("my-database"),
 /// 			Jurisdiction:        pulumi.String("eu"),
 /// 			PrimaryLocationHint: pulumi.String("wnam"),
+/// 			ReadReplication: &cloudflare.D1DatabaseReadReplicationArgs{
+/// 				Mode: pulumi.String("auto"),
+/// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -78,7 +91,7 @@ import 'd1_database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -86,11 +99,17 @@ import 'd1_database_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_d1database" "example_d1_database" {
+/// resource "cloudflare_d1_database" "example_d1_database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id            = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name                  = "my-database"
 ///   jurisdiction          = "eu"
 ///   primary_location_hint = "wnam"
+///   read_replication = {
+///     mode = "auto"
+///   }
 /// }
 /// ```
 /// ```java
@@ -101,6 +120,7 @@ import 'd1_database_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.cloudflare.D1Database;
 /// import com.pulumi.cloudflare.D1DatabaseArgs;
+/// import com.pulumi.cloudflare.inputs.D1DatabaseReadReplicationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -119,6 +139,9 @@ import 'd1_database_state.dart';
 ///             .name("my-database")
 ///             .jurisdiction("eu")
 ///             .primaryLocationHint("wnam")
+///             .readReplication(D1DatabaseReadReplicationArgs.builder()
+///                 .mode("auto")
+///                 .build())
 ///             .build());
 ///
 ///     }
@@ -134,6 +157,8 @@ import 'd1_database_state.dart';
 ///       name: my-database
 ///       jurisdiction: eu
 ///       primaryLocationHint: wnam
+///       readReplication:
+///         mode: auto
 /// ```
 ///
 ///
@@ -147,6 +172,9 @@ class D1Database extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   /// Specifies the timestamp the resource was created as an ISO8601 string.
   late final pulumi.Output<String> createdAt;
+  /// Comma-separated list of fields to include in the response. When omitted,
+  /// all fields are returned.
+  late final pulumi.Output<List<String>?> fields;
   /// The D1 database's size, in bytes.
   late final pulumi.Output<double> fileSize;
   /// Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored.
@@ -154,6 +182,7 @@ class D1Database extends pulumi.CustomResource {
   late final pulumi.Output<String?> jurisdiction;
   /// D1 database name.
   late final pulumi.Output<String> name;
+  /// The number of tables in the D1 database. This count is no longer accurate and should not be relied upon.
   late final pulumi.Output<double> numTables;
   /// Specify the region to create the D1 primary, if available. If this option is omitted, the D1 will be created as close as possible to the current user.
   /// Available values: "wnam", "enam", "weur", "eeur", "apac", "oc".
@@ -176,10 +205,11 @@ class D1Database extends pulumi.CustomResource {
           'cloudflare:index/d1Database:D1Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');
+    fields = registerOutput<List<String>?>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     fileSize = registerOutput<double>('fileSize');
     jurisdiction = registerOutput<String?>('jurisdiction');
     this.name = registerOutput<String>('name');
@@ -216,6 +246,7 @@ class D1Database extends pulumi.CustomResource {
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');
+    fields = registerOutput<List<String>?>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     fileSize = registerOutput<double>('fileSize');
     jurisdiction = registerOutput<String?>('jurisdiction');
     this.name = registerOutput<String>('name');
@@ -237,6 +268,7 @@ class D1Database extends pulumi.CustomResource {
       ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');
+    fields = registerOutput<List<String>?>('fields', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     fileSize = registerOutput<double>('fileSize');
     jurisdiction = registerOutput<String?>('jurisdiction');
     this.name = registerOutput<String>('name');

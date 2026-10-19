@@ -78,17 +78,17 @@ class MagicTransitSiteLanArgs {
   factory MagicTransitSiteLanArgs.fromMap(Map<String, dynamic> map) {
     return MagicTransitSiteLanArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      bondId: (() { final guardedValue = map['bondId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bondId: (() { final guardedValue = map['bondId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       haLink: (() { final guardedValue = map['haLink']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isBreakout: (() { final guardedValue = map['isBreakout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isPrioritized: (() { final guardedValue = map['isPrioritized']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nat: (() { final guardedValue = map['nat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MagicTransitSiteLanNat.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      physport: (() { final guardedValue = map['physport']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      physport: (() { final guardedValue = map['physport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       routedSubnets: (() { final guardedValue = map['routedSubnets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MagicTransitSiteLanRoutedSubnet>(guardedValue, (value) => MagicTransitSiteLanRoutedSubnet.fromMap((value as Map).cast<String, dynamic>()))); })(),
       siteId: pulumi.Input.fromValue(map['siteId'] as String),
       staticAddressing: (() { final guardedValue = map['staticAddressing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MagicTransitSiteLanStaticAddressing.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      vlanTag: (() { final guardedValue = map['vlanTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      vlanTag: (() { final guardedValue = map['vlanTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

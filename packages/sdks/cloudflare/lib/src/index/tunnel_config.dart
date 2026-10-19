@@ -287,7 +287,7 @@ import 'tunnel_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -295,35 +295,38 @@ import 'tunnel_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrusttunnelcloudflaredconfig" "example_zero_trust_tunnel_cloudflared_config" {
+/// resource "cloudflare_zero_trust_tunnel_cloudflared_config" "example_zero_trust_tunnel_cloudflared_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   tunnel_id  = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 ///   config = {
 ///     ingresses = [{
-///       "hostname" = "tunnel.example.com"
-///       "service"  = "https://localhost:8001"
-///       "originRequest" = {
-///         "access" = {
-///           "audTag"   = ["string"]
-///           "teamName" = "zero-trust-organization-name"
-///           "required" = false
+///       hostname = "tunnel.example.com"
+///       service  = "https://localhost:8001"
+///       origin_request = {
+///         access = {
+///           aud_tag   = ["string"]
+///           team_name = "zero-trust-organization-name"
+///           required  = false
 ///         }
-///         "caPool"                 = "caPool"
-///         "connectTimeout"         = 10
-///         "disableChunkedEncoding" = true
-///         "http2Origin"            = true
-///         "httpHostHeader"         = "httpHostHeader"
-///         "keepAliveConnections"   = 100
-///         "keepAliveTimeout"       = 90
-///         "matchSnItoHost"         = false
-///         "noHappyEyeballs"        = false
-///         "noTlsVerify"            = false
-///         "originServerName"       = "originServerName"
-///         "proxyType"              = "proxyType"
-///         "tcpKeepAlive"           = 30
-///         "tlsTimeout"             = 10
+///         ca_pool                  = "caPool"
+///         connect_timeout          = 10
+///         disable_chunked_encoding = true
+///         http2_origin             = true
+///         http_host_header         = "httpHostHeader"
+///         keep_alive_connections   = 100
+///         keep_alive_timeout       = 90
+///         match_sn_ito_host        = false
+///         no_happy_eyeballs        = false
+///         no_tls_verify            = false
+///         origin_server_name       = "originServerName"
+///         proxy_type               = "proxyType"
+///         tcp_keep_alive           = 30
+///         tls_timeout              = 10
 ///       }
-///       "path" = "subpath"
+///       path = "subpath"
 ///     }]
 ///     origin_request = {
 ///       access = {
@@ -520,7 +523,7 @@ class TunnelConfig extends pulumi.CustomResource {
           'cloudflare:index/tunnelConfig:TunnelConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     config = registerOutput<TunnelConfigConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TunnelConfigConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

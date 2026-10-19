@@ -85,7 +85,7 @@ import 'zero_trust_device_ip_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -93,7 +93,10 @@ import 'zero_trust_device_ip_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdeviceipprofile" "example_zero_trust_device_ip_profile" {
+/// resource "cloudflare_zero_trust_device_ip_profile" "example_zero_trust_device_ip_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "account_id"
 ///   match       = "identity.email == \"test@cloudflare.com\""
 ///   name        = "IPv4 Cloudflare Source IPs"
@@ -189,7 +192,7 @@ class ZeroTrustDeviceIpProfile extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDeviceIpProfile:ZeroTrustDeviceIpProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

@@ -114,7 +114,7 @@ import 'custom_csr_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -122,7 +122,10 @@ import 'custom_csr_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_customcsr" "example_custom_csr" {
+/// resource "cloudflare_custom_csr" "example_custom_csr" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   common_name         = "example.com"
 ///   country             = "US"
 ///   locality            = "San Francisco"
@@ -248,7 +251,7 @@ class CustomCsr extends pulumi.CustomResource {
           'cloudflare:index/customCsr:CustomCsr',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     accountTag = registerOutput<String>('accountTag');

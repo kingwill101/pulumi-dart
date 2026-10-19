@@ -47,7 +47,7 @@ import 'access_service_token_state.dart';
 ///     {
 ///         Name = "CI/CD token",
 ///         ZoneId = "zone_id",
-///         ClientSecretVersion = 0,
+///         ClientSecretVersion = 0.0,
 ///         Duration = "60m",
 ///         Enabled = true,
 ///         PreviousClientSecretExpiresAt = "2014-01-01T05:20:00.12345Z",
@@ -81,7 +81,7 @@ import 'access_service_token_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -89,7 +89,10 @@ import 'access_service_token_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustaccessservicetoken" "example_zero_trust_access_service_token" {
+/// resource "cloudflare_zero_trust_access_service_token" "example_zero_trust_access_service_token" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                              = "CI/CD token"
 ///   zone_id                           = "zone_id"
 ///   client_secret_version             = 0
@@ -184,7 +187,7 @@ class AccessServiceToken extends pulumi.CustomResource {
           'cloudflare:index/accessServiceToken:AccessServiceToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
           additionalSecretOutputs: const ['clientSecret'],
         ) {
     accountId = registerOutput<String?>('accountId');

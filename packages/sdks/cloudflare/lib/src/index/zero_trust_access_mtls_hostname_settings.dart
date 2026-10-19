@@ -88,7 +88,7 @@ import 'zero_trust_access_mtls_hostname_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -96,7 +96,10 @@ import 'zero_trust_access_mtls_hostname_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustaccessmtlshostnamesettings" "example_zero_trust_access_mtls_hostname_settings" {
+/// resource "cloudflare_zero_trust_access_mtls_hostname_settings" "example_zero_trust_access_mtls_hostname_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   settings {
 ///     china_network                 = false
 ///     client_certificate_forwarding = true
@@ -155,7 +158,9 @@ import 'zero_trust_access_mtls_hostname_settings_state.dart';
 ///
 /// ## Import
 ///
-/// &gt; This resource does not currently support `pulumi import`.
+/// ```sh
+/// $ pulumi import cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings example '<{accounts|zones}/{account_id|zone_id}>'
+/// ```
 class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
   /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
   late final pulumi.Output<String?> accountId;
@@ -181,7 +186,7 @@ class ZeroTrustAccessMtlsHostnameSettings extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessMtlsHostnameSettings:ZeroTrustAccessMtlsHostnameSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     chinaNetwork = registerOutput<bool>('chinaNetwork');

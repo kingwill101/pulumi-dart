@@ -38,7 +38,7 @@ import 'zero_trust_access_key_configuration_state.dart';
 ///     var exampleZeroTrustAccessKeyConfiguration = new Cloudflare.ZeroTrustAccessKeyConfiguration("example_zero_trust_access_key_configuration", new()
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         KeyRotationIntervalDays = 30,
+///         KeyRotationIntervalDays = 30.0,
 ///     });
 ///
 /// });
@@ -65,7 +65,7 @@ import 'zero_trust_access_key_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -73,7 +73,10 @@ import 'zero_trust_access_key_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustaccesskeyconfiguration" "example_zero_trust_access_key_configuration" {
+/// resource "cloudflare_zero_trust_access_key_configuration" "example_zero_trust_access_key_configuration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id                 = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   key_rotation_interval_days = 30
 /// }
@@ -145,7 +148,7 @@ class ZeroTrustAccessKeyConfiguration extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessKeyConfiguration:ZeroTrustAccessKeyConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     daysUntilNextRotation = registerOutput<double>('daysUntilNextRotation');

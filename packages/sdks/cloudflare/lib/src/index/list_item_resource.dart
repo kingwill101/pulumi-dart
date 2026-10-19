@@ -71,7 +71,7 @@ import 'list_item_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -79,7 +79,10 @@ import 'list_item_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_listitem" "example_list_item" {
+/// resource "cloudflare_list_item" "example_list_item" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   list_id    = "2c0fc9fa937b11eaa1b71c4d701ab86e"
 ///   ip         = "10.0.0.1"
@@ -166,7 +169,7 @@ class ListItemResource extends pulumi.CustomResource {
           'cloudflare:index/listItem:ListItem',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     asn = registerOutput<int?>('asn');

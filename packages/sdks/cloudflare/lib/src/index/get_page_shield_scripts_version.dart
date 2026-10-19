@@ -55,14 +55,14 @@ class GetPageShieldScriptsVersion {
 
   factory GetPageShieldScriptsVersion.fromMap(Map<String, dynamic> map) {
     return GetPageShieldScriptsVersion(
-      cryptominingScore: pulumi.Input.fromValue((map['cryptominingScore'] as num).toInt()),
-      dataflowScore: pulumi.Input.fromValue((map['dataflowScore'] as num).toInt()),
+      cryptominingScore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cryptominingScore'])),
+      dataflowScore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dataflowScore'])),
       fetchedAt: pulumi.Input.fromValue(map['fetchedAt'] as String),
       hash: pulumi.Input.fromValue(map['hash'] as String),
-      jsIntegrityScore: pulumi.Input.fromValue((map['jsIntegrityScore'] as num).toInt()),
-      magecartScore: pulumi.Input.fromValue((map['magecartScore'] as num).toInt()),
-      malwareScore: pulumi.Input.fromValue((map['malwareScore'] as num).toInt()),
-      obfuscationScore: pulumi.Input.fromValue((map['obfuscationScore'] as num).toInt()),
+      jsIntegrityScore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['jsIntegrityScore'])),
+      magecartScore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['magecartScore'])),
+      malwareScore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['malwareScore'])),
+      obfuscationScore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['obfuscationScore'])),
     );
   }
 }

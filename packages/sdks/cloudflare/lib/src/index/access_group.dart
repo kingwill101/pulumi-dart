@@ -126,7 +126,7 @@ import 'access_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -134,7 +134,10 @@ import 'access_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustaccessgroup" "example_zero_trust_access_group" {
+/// resource "cloudflare_zero_trust_access_group" "example_zero_trust_access_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   includes {
 ///     certificate = {}
 ///   }
@@ -248,7 +251,7 @@ class AccessGroup extends pulumi.CustomResource {
           'cloudflare:index/accessGroup:AccessGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     excludes = registerOutput<List<AccessGroupExclude>?>('excludes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessGroupExclude>(guardedValue, (value) => AccessGroupExclude.fromMap((value as Map).cast<String, dynamic>())); });

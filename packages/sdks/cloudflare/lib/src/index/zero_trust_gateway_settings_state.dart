@@ -5,6 +5,7 @@ import 'zero_trust_gateway_settings_settings.dart';
 
 /// Input properties used for looking up and filtering ZeroTrustGatewaySettings resources.
 class ZeroTrustGatewaySettingsState {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String?>? accountId;
   final pulumi.Input<String?>? createdAt;
   /// Specify account settings.
@@ -12,7 +13,7 @@ class ZeroTrustGatewaySettingsState {
   final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [ZeroTrustGatewaySettingsState].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [createdAt] Optional.
   /// [settings] Specify account settings.
   /// [updatedAt] Optional.

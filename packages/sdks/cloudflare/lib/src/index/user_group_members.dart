@@ -85,7 +85,7 @@ import 'user_group_members_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -93,7 +93,10 @@ import 'user_group_members_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_usergroupmembers" "example_user_group_members" {
+/// resource "cloudflare_user_group_members" "example_user_group_members" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   user_group_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   members {
@@ -155,7 +158,16 @@ import 'user_group_members_state.dart';
 class UserGroupMembers extends pulumi.CustomResource {
   /// Account identifier tag.
   late final pulumi.Output<String> accountId;
+  /// The sort order of returned user group members by email.
+  /// Available values: "asc", "desc".
+  late final pulumi.Output<String> direction;
+  /// A string used for filtering members by partial email match.
+  late final pulumi.Output<String?> fuzzyEmail;
   late final pulumi.Output<List<UserGroupMembersMember>> members;
+  /// Page number of paginated results.
+  late final pulumi.Output<double> page;
+  /// Maximum number of results per page.
+  late final pulumi.Output<double> perPage;
   /// User Group identifier tag.
   late final pulumi.Output<String> userGroupId;
 
@@ -171,10 +183,14 @@ class UserGroupMembers extends pulumi.CustomResource {
           'cloudflare:index/userGroupMembers:UserGroupMembers',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
+    direction = registerOutput<String>('direction');
+    fuzzyEmail = registerOutput<String?>('fuzzyEmail');
     members = registerOutput<List<UserGroupMembersMember>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserGroupMembersMember>(guardedValue, (value) => UserGroupMembersMember.fromMap((value as Map).cast<String, dynamic>())); });
+    page = registerOutput<double>('page');
+    perPage = registerOutput<double>('perPage');
     userGroupId = registerOutput<String>('userGroupId');
   }
 
@@ -203,7 +219,11 @@ class UserGroupMembers extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     accountId = registerOutput<String>('accountId');
+    direction = registerOutput<String>('direction');
+    fuzzyEmail = registerOutput<String?>('fuzzyEmail');
     members = registerOutput<List<UserGroupMembersMember>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserGroupMembersMember>(guardedValue, (value) => UserGroupMembersMember.fromMap((value as Map).cast<String, dynamic>())); });
+    page = registerOutput<double>('page');
+    perPage = registerOutput<double>('perPage');
     userGroupId = registerOutput<String>('userGroupId');
   }
 
@@ -217,7 +237,11 @@ class UserGroupMembers extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     accountId = registerOutput<String>('accountId');
+    direction = registerOutput<String>('direction');
+    fuzzyEmail = registerOutput<String?>('fuzzyEmail');
     members = registerOutput<List<UserGroupMembersMember>>('members', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UserGroupMembersMember>(guardedValue, (value) => UserGroupMembersMember.fromMap((value as Map).cast<String, dynamic>())); });
+    page = registerOutput<double>('page');
+    perPage = registerOutput<double>('perPage');
     userGroupId = registerOutput<String>('userGroupId');
   }
 }

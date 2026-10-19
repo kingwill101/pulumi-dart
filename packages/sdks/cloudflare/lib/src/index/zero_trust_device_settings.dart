@@ -53,7 +53,7 @@ import 'zero_trust_device_settings_state.dart';
 ///     var exampleZeroTrustDeviceSettings = new Cloudflare.ZeroTrustDeviceSettings("example_zero_trust_device_settings", new()
 ///     {
 ///         AccountId = "699d98642c564d2e855e9661899b7252",
-///         DisableForTime = 0,
+///         DisableForTime = 0.0,
 ///         ExternalEmergencySignalEnabled = true,
 ///         ExternalEmergencySignalFingerprint = "abcd1234567890abcd1234567890abcd1234567890abcd1234567890abcd1234",
 ///         ExternalEmergencySignalInterval = "5m",
@@ -96,7 +96,7 @@ import 'zero_trust_device_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -104,7 +104,10 @@ import 'zero_trust_device_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdevicesettings" "example_zero_trust_device_settings" {
+/// resource "cloudflare_zero_trust_device_settings" "example_zero_trust_device_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id                            = "699d98642c564d2e855e9661899b7252"
 ///   disable_for_time                      = 0
 ///   external_emergency_signal_enabled     = true
@@ -209,7 +212,7 @@ class ZeroTrustDeviceSettings extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDeviceSettings:ZeroTrustDeviceSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     disableForTime = registerOutput<double?>('disableForTime');

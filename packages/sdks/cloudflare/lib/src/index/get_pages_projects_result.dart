@@ -26,7 +26,7 @@ class GetPagesProjectsResult {
   final pulumi.Input<String> id;
   /// Most recent deployment of the project.
   final pulumi.Input<GetPagesProjectsResultLatestDeployment> latestDeployment;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final pulumi.Input<String> name;
   /// Name of the preview script.
   final pulumi.Input<String> previewScriptName;
@@ -51,7 +51,7 @@ class GetPagesProjectsResult {
   /// [frameworkVersion] Version of the framework the project is using.
   /// [id] ID of the project.
   /// [latestDeployment] Most recent deployment of the project.
-  /// [name] Name of the project.
+  /// [name] Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   /// [previewScriptName] Name of the preview script.
   /// [productionBranch] Production branch of the project. Used to identify production deployments.
   /// [productionScriptName] Name of the production script.

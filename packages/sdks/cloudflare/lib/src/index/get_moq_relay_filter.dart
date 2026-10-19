@@ -44,7 +44,7 @@ class GetMoqRelayFilter {
       asc: pulumi.Input.fromValue(map['asc'] as bool),
       createdAfter: (() { final guardedValue = map['createdAfter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createdBefore: (() { final guardedValue = map['createdBefore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      perPage: pulumi.Input.fromValue((map['perPage'] as num).toInt()),
+      perPage: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['perPage'])),
     );
   }
 }

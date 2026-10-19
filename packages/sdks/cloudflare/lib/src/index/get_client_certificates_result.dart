@@ -18,7 +18,7 @@ class GetClientCertificatesResult {
   final pulumi.Input<String> expiresOn;
   /// Unique identifier of the Client Certificate.
   final pulumi.Input<String> fingerprintSha256;
-  /// Identifier.
+  /// Client Certificate Tag
   final pulumi.Input<String> id;
   /// Date that the Client Certificate was issued by the Certificate Authority.
   final pulumi.Input<String> issuedOn;
@@ -50,7 +50,7 @@ class GetClientCertificatesResult {
   /// [csr] The Certificate Signing Request (CSR). Must be newline-encoded.
   /// [expiresOn] Date that the Client Certificate expires.
   /// [fingerprintSha256] Unique identifier of the Client Certificate.
-  /// [id] Identifier.
+  /// [id] Client Certificate Tag
   /// [issuedOn] Date that the Client Certificate was issued by the Certificate Authority.
   /// [location] Location, provided by the CSR.
   /// [organization] Organization, provided by the CSR.
@@ -124,7 +124,7 @@ class GetClientCertificatesResult {
       ski: pulumi.Input.fromValue(map['ski'] as String),
       state: pulumi.Input.fromValue(map['state'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
-      validityDays: pulumi.Input.fromValue((map['validityDays'] as num).toInt()),
+      validityDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['validityDays'])),
     );
   }
 }

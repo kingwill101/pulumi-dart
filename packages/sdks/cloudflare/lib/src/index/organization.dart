@@ -19,7 +19,7 @@ import 'organization_state.dart';
 /// const exampleOrganization = new cloudflare.Organization("example_organization", {
 ///     name: "name",
 ///     parent: {
-///         id: "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///         id: "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 ///     },
 ///     profile: {
 ///         businessAddress: "business_address",
@@ -37,7 +37,7 @@ import 'organization_state.dart';
 /// example_organization = cloudflare.Organization("example_organization",
 ///     name="name",
 ///     parent={
-///         "id": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///         "id": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 ///     },
 ///     profile={
 ///         "business_address": "business_address",
@@ -60,7 +60,7 @@ import 'organization_state.dart';
 ///         Name = "name",
 ///         Parent = new Cloudflare.Inputs.OrganizationParentArgs
 ///         {
-///             Id = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///             Id = "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 ///         },
 ///         Profile = new Cloudflare.Inputs.OrganizationProfileArgs
 ///         {
@@ -87,7 +87,7 @@ import 'organization_state.dart';
 /// 		_, err := cloudflare.NewOrganization(ctx, "example_organization", &cloudflare.OrganizationArgs{
 /// 			Name: pulumi.String("name"),
 /// 			Parent: &cloudflare.OrganizationParentArgs{
-/// 				Id: pulumi.String("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"),
+/// 				Id: pulumi.String("a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8"),
 /// 			},
 /// 			Profile: &cloudflare.OrganizationProfileTypeArgs{
 /// 				BusinessAddress:  pulumi.String("business_address"),
@@ -105,7 +105,7 @@ import 'organization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -114,9 +114,12 @@ import 'organization_state.dart';
 /// }
 ///
 /// resource "cloudflare_organization" "example_organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "name"
 ///   parent = {
-///     id = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"
+///     id = "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8"
 ///   }
 ///   profile = {
 ///     business_address  = "business_address"
@@ -153,7 +156,7 @@ import 'organization_state.dart';
 ///         var exampleOrganization = new Organization("exampleOrganization", OrganizationArgs.builder()
 ///             .name("name")
 ///             .parent(OrganizationParentArgs.builder()
-///                 .id("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+///                 .id("a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8")
 ///                 .build())
 ///             .profile(OrganizationProfileArgs.builder()
 ///                 .businessAddress("business_address")
@@ -175,7 +178,7 @@ import 'organization_state.dart';
 ///     properties:
 ///       name: name
 ///       parent:
-///         id: a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8
+///         id: a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8
 ///       profile:
 ///         businessAddress: business_address
 ///         businessEmail: business_email
@@ -209,7 +212,7 @@ class Organization extends pulumi.CustomResource {
           'cloudflare:index/organization:Organization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     meta = registerOutput<OrganizationMeta>('meta', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationMeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });

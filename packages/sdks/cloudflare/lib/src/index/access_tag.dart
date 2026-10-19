@@ -60,7 +60,7 @@ import 'access_tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -68,7 +68,10 @@ import 'access_tag_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustaccesstag" "example_zero_trust_access_tag" {
+/// resource "cloudflare_zero_trust_access_tag" "example_zero_trust_access_tag" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "engineers"
 /// }
@@ -136,7 +139,7 @@ class AccessTag extends pulumi.CustomResource {
           'cloudflare:index/accessTag:AccessTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     this.name = registerOutput<String>('name');

@@ -77,7 +77,7 @@ import 'zone_dnssec_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -85,7 +85,10 @@ import 'zone_dnssec_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zonednssec" "example_zone_dnssec" {
+/// resource "cloudflare_zone_dnssec" "example_zone_dnssec" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id             = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   dnssec_multi_signer = false
 ///   dnssec_presigned    = true
@@ -203,7 +206,7 @@ class ZoneDnssec extends pulumi.CustomResource {
           'cloudflare:index/zoneDnssec:ZoneDnssec',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     algorithm = registerOutput<String>('algorithm');
     digest = registerOutput<String>('digest');

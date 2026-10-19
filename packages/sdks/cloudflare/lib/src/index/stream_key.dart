@@ -58,7 +58,7 @@ import 'stream_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -66,7 +66,10 @@ import 'stream_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_streamkey" "example_stream_key" {
+/// resource "cloudflare_stream_key" "example_stream_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -137,7 +140,7 @@ class StreamKey extends pulumi.CustomResource {
           'cloudflare:index/streamKey:StreamKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
           additionalSecretOutputs: const ['jwk', 'pem'],
         ) {
     accountId = registerOutput<String>('accountId');

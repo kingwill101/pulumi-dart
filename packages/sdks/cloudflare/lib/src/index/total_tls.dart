@@ -69,7 +69,7 @@ import 'total_tls_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -77,7 +77,10 @@ import 'total_tls_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_totaltls" "example_total_tls" {
+/// resource "cloudflare_total_tls" "example_total_tls" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id               = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   enabled               = true
 ///   certificate_authority = "google"
@@ -154,7 +157,7 @@ class TotalTls extends pulumi.CustomResource {
           'cloudflare:index/totalTls:TotalTls',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     certificateAuthority = registerOutput<String?>('certificateAuthority');
     enabled = registerOutput<bool>('enabled');

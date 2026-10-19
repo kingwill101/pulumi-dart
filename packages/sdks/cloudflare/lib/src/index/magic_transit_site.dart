@@ -101,7 +101,7 @@ import 'magic_transit_site_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -109,7 +109,10 @@ import 'magic_transit_site_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_magictransitsite" "example_magic_transit_site" {
+/// resource "cloudflare_magic_transit_site" "example_magic_transit_site" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name         = "site_1"
 ///   connector_id = "ac60d3d0435248289d446cedd870bcf4"
@@ -210,7 +213,7 @@ class MagicTransitSite extends pulumi.CustomResource {
           'cloudflare:index/magicTransitSite:MagicTransitSite',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     connectorId = registerOutput<String?>('connectorId');

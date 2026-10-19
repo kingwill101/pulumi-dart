@@ -50,9 +50,9 @@ class GetMagicWanGreTunnelGreTunnelBgpStatus {
     return GetMagicWanGreTunnelGreTunnelBgpStatus(
       bgpState: pulumi.Input.fromValue(map['bgpState'] as String),
       cfSpeakerIp: pulumi.Input.fromValue(map['cfSpeakerIp'] as String),
-      cfSpeakerPort: pulumi.Input.fromValue((map['cfSpeakerPort'] as num).toInt()),
+      cfSpeakerPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cfSpeakerPort'])),
       customerSpeakerIp: pulumi.Input.fromValue(map['customerSpeakerIp'] as String),
-      customerSpeakerPort: pulumi.Input.fromValue((map['customerSpeakerPort'] as num).toInt()),
+      customerSpeakerPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['customerSpeakerPort'])),
       state: pulumi.Input.fromValue(map['state'] as String),
       tcpEstablished: pulumi.Input.fromValue(map['tcpEstablished'] as bool),
       updatedAt: pulumi.Input.fromValue(map['updatedAt'] as String),

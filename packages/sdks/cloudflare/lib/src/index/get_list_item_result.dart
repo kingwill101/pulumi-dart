@@ -73,7 +73,7 @@ class GetListItemResult {
   factory GetListItemResult.fromMap(Map<String, dynamic> map) {
     return GetListItemResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      asn: (() { final guardedValue = map['asn']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createdOn: (() { final guardedValue = map['createdOn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return GetListItemHostname.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),

@@ -99,7 +99,7 @@ import 'filter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -108,6 +108,9 @@ import 'filter_state.dart';
 /// }
 ///
 /// resource "cloudflare_filter" "example_filter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bodies {
 ///     description = "Restrict access from these browsers on this address range."
@@ -197,7 +200,7 @@ class Filter extends pulumi.CustomResource {
           'cloudflare:index/filter:Filter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     bodies = registerOutput<List<FilterBody>>('bodies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FilterBody>(guardedValue, (value) => FilterBody.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');

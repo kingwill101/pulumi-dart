@@ -38,8 +38,10 @@ import 'spectrum_application_state.dart';
 ///         type: "",
 ///     },
 ///     originPort: 22,
+///     originWorkerId: "277b7815c871434b960b60729659000a",
 ///     proxyProtocol: "off",
 ///     tls: "off",
+///     virtualNetworkId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 /// });
 /// ```
 /// ```python
@@ -67,8 +69,10 @@ import 'spectrum_application_state.dart';
 ///         "type": "",
 ///     },
 ///     origin_port=22,
+///     origin_worker_id="277b7815c871434b960b60729659000a",
 ///     proxy_protocol="off",
-///     tls="off")
+///     tls="off",
+///     virtual_network_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -106,8 +110,10 @@ import 'spectrum_application_state.dart';
 ///             Type = "",
 ///         },
 ///         OriginPort = 22,
+///         OriginWorkerId = "277b7815c871434b960b60729659000a",
 ///         ProxyProtocol = "off",
 ///         Tls = "off",
+///         VirtualNetworkId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 ///     });
 ///
 /// });
@@ -144,9 +150,11 @@ import 'spectrum_application_state.dart';
 /// 				Ttl:  pulumi.Int(600),
 /// 				Type: pulumi.String(""),
 /// 			},
-/// 			OriginPort:    pulumi.Any(22),
-/// 			ProxyProtocol: pulumi.String("off"),
-/// 			Tls:           pulumi.String("off"),
+/// 			OriginPort:       pulumi.Any(22),
+/// 			OriginWorkerId:   pulumi.String("277b7815c871434b960b60729659000a"),
+/// 			ProxyProtocol:    pulumi.String("off"),
+/// 			Tls:              pulumi.String("off"),
+/// 			VirtualNetworkId: pulumi.String("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -156,7 +164,7 @@ import 'spectrum_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -164,7 +172,10 @@ import 'spectrum_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_spectrumapplication" "example_spectrum_application" {
+/// resource "cloudflare_spectrum_application" "example_spectrum_application" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   dns = {
 ///     name = "ssh.example.com"
@@ -184,9 +195,11 @@ import 'spectrum_application_state.dart';
 ///     ttl  = 600
 ///     type = ""
 ///   }
-///   origin_port    = 22
-///   proxy_protocol = "off"
-///   tls            = "off"
+///   origin_port        = 22
+///   origin_worker_id   = "277b7815c871434b960b60729659000a"
+///   proxy_protocol     = "off"
+///   tls                = "off"
+///   virtual_network_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
 /// ```
 /// ```java
@@ -234,8 +247,10 @@ import 'spectrum_application_state.dart';
 ///                 .type("")
 ///                 .build())
 ///             .originPort(22)
+///             .originWorkerId("277b7815c871434b960b60729659000a")
 ///             .proxyProtocol("off")
 ///             .tls("off")
+///             .virtualNetworkId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 ///             .build());
 ///
 ///     }
@@ -265,8 +280,10 @@ import 'spectrum_application_state.dart';
 ///         ttl: 600
 ///         type: ""
 ///       originPort: 22
+///       originWorkerId: 277b7815c871434b960b60729659000a
 ///       proxyProtocol: off
 ///       tls: off
+///       virtualNetworkId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e
 /// ```
 ///
 ///
@@ -277,7 +294,7 @@ import 'spectrum_application_state.dart';
 /// ```
 class SpectrumApplication extends pulumi.CustomResource {
   /// Enables Argo Smart Routing for this application.
-  /// Notes: Only available for TCP applications with trafficType set to "direct".
+  /// Notes: Only available for TCP or UDP applications with trafficType set to "direct".
   late final pulumi.Output<bool> argoSmartRouting;
   /// When the Application was created.
   late final pulumi.Output<String> createdOn;
@@ -297,6 +314,8 @@ class SpectrumApplication extends pulumi.CustomResource {
   /// The destination port at the origin. Only specified in conjunction with origin_dns. May use an integer to specify a single origin port, for example `1000`, or a string to specify a range of origin ports, for example `"1000-2000"`.
   /// Notes: If specifying a port range, the number of ports in the range must match the number of ports specified in the "protocol" field.
   late final pulumi.Output<dynamic> originPort;
+  /// Optional Worker script tag (worker ID) to use as the application's origin. Only supported for TCP applications with traffic*type "worker"; mutually exclusive with origin*direct, origin*dns, origin*port, proxy*protocol, and argo*smart_routing. tls may only be "off" or "flexible".
+  late final pulumi.Output<String?> originWorkerId;
   /// The port configuration at Cloudflare's edge. May specify a single port, for example `"tcp/1000"`, or a range of ports, for example `"tcp/1000-2000"`.
   late final pulumi.Output<String> protocol;
   /// Enables Proxy Protocol to the origin. Refer to [Enable Proxy protocol](https://developers.cloudflare.com/spectrum/getting-started/proxy-protocol/) for implementation details on PROXY Protocol V1, PROXY Protocol V2, and Simple Proxy Protocol.
@@ -305,8 +324,8 @@ class SpectrumApplication extends pulumi.CustomResource {
   /// The type of TLS termination associated with the application.
   /// Available values: "off", "flexible", "full", "strict".
   late final pulumi.Output<String> tls;
-  /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly.
-  /// Available values: "direct", "http", "https".
+  /// Determines how data travels from the edge to your origin. When set to "direct", Spectrum will send traffic directly to your origin, and the application's type is derived from the `protocol`. When set to "http" or "https", Spectrum will apply Cloudflare's HTTP/HTTPS features as it sends traffic to your origin, and the application type matches this property exactly. When set to "worker", traffic is sent to the Worker specified by `originWorkerId`.
+  /// Available values: "direct", "http", "https", "worker".
   late final pulumi.Output<String> trafficType;
   /// Optional UUID of a virtual network for routing origin traffic through tunnel virtual networks.
   late final pulumi.Output<String?> virtualNetworkId;
@@ -325,7 +344,7 @@ class SpectrumApplication extends pulumi.CustomResource {
           'cloudflare:index/spectrumApplication:SpectrumApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     argoSmartRouting = registerOutput<bool>('argoSmartRouting');
     createdOn = registerOutput<String>('createdOn');
@@ -336,6 +355,7 @@ class SpectrumApplication extends pulumi.CustomResource {
     originDirects = registerOutput<List<String>?>('originDirects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     originDns = registerOutput<SpectrumApplicationOriginDns?>('originDns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpectrumApplicationOriginDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     originPort = registerOutput<dynamic>('originPort');
+    originWorkerId = registerOutput<String?>('originWorkerId');
     protocol = registerOutput<String>('protocol');
     proxyProtocol = registerOutput<String>('proxyProtocol');
     tls = registerOutput<String>('tls');
@@ -377,6 +397,7 @@ class SpectrumApplication extends pulumi.CustomResource {
     originDirects = registerOutput<List<String>?>('originDirects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     originDns = registerOutput<SpectrumApplicationOriginDns?>('originDns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpectrumApplicationOriginDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     originPort = registerOutput<dynamic>('originPort');
+    originWorkerId = registerOutput<String?>('originWorkerId');
     protocol = registerOutput<String>('protocol');
     proxyProtocol = registerOutput<String>('proxyProtocol');
     tls = registerOutput<String>('tls');
@@ -403,6 +424,7 @@ class SpectrumApplication extends pulumi.CustomResource {
     originDirects = registerOutput<List<String>?>('originDirects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     originDns = registerOutput<SpectrumApplicationOriginDns?>('originDns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpectrumApplicationOriginDns.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     originPort = registerOutput<dynamic>('originPort');
+    originWorkerId = registerOutput<String?>('originWorkerId');
     protocol = registerOutput<String>('protocol');
     proxyProtocol = registerOutput<String>('proxyProtocol');
     tls = registerOutput<String>('tls');

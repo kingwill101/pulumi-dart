@@ -88,7 +88,7 @@ import 'risk_behavior_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -96,7 +96,10 @@ import 'risk_behavior_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustriskbehavior" "example_zero_trust_risk_behavior" {
+/// resource "cloudflare_zero_trust_risk_behavior" "example_zero_trust_risk_behavior" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "account_id"
 ///   behaviors = {
 ///     "foo" = {
@@ -172,7 +175,7 @@ class RiskBehavior extends pulumi.CustomResource {
           'cloudflare:index/riskBehavior:RiskBehavior',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     behaviors = registerOutput<Map<String, RiskBehaviorBehaviors>>('behaviors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeMapValues<RiskBehaviorBehaviors>(guardedValue, (value) => RiskBehaviorBehaviors.fromMap((value as Map).cast<String, dynamic>())); });

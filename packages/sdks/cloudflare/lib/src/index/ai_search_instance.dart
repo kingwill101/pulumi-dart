@@ -11,13 +11,15 @@ import 'ai_search_instance_state.dart';
 
 /// ## Import
 ///
-/// &gt; This resource does not currently support `pulumi import`.
+/// ```sh
+/// $ pulumi import cloudflare:index/aiSearchInstance:AiSearchInstance example '<account_id>/<id>'
+/// ```
 class AiSearchInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> accountId;
   late final pulumi.Output<String> aiGatewayId;
   /// AI Search instance ID. Lowercase alphanumeric, hyphens, and underscores.
   late final pulumi.Output<String> aiSearchInstanceId;
-  /// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+  /// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
   late final pulumi.Output<String> aisearchModel;
   late final pulumi.Output<bool> cache;
   /// Available values: "super*strict*match", "close*enough", "flexible*friend", "anythingGoes".
@@ -31,15 +33,14 @@ class AiSearchInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> createdAt;
   late final pulumi.Output<String> createdBy;
   late final pulumi.Output<List<AiSearchInstanceCustomMetadata>?> customMetadatas;
-  /// Available values: "@cf/qwen/qwen3-embedding-0.6b", "@cf/baai/bge-m3", "@cf/baai/bge-large-en-v1.5", "@cf/google/embeddinggemma-300m", "google-ai-studio/gemini-embedding-001", "google-ai-studio/gemini-embedding-2-preview", "google-ai-studio/gemini-embedding-2", "openai/text-embedding-3-small", "openai/text-embedding-3-large", "".
   late final pulumi.Output<String> embeddingModel;
   late final pulumi.Output<bool> enable;
   late final pulumi.Output<double> engineVersion;
   /// Available values: "max", "rrf".
   late final pulumi.Output<String> fusionMethod;
-  /// Deprecated — use indexMethod instead.
+  /// Deprecated — use indexMethod instead. Defaults to true for new instances; set false to create a vector-only instance.
   late final pulumi.Output<bool> hybridSearchEnabled;
-  /// Controls which storage backends are used during indexing. Defaults to vector-only.
+  /// Controls which storage backends are used during indexing. Defaults to vector and keyword indexing for new instances.
   late final pulumi.Output<AiSearchInstanceIndexMethod> indexMethod;
   late final pulumi.Output<AiSearchInstanceIndexingOptions> indexingOptions;
   late final pulumi.Output<String> lastActivity;
@@ -52,10 +53,9 @@ class AiSearchInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> publicEndpointId;
   late final pulumi.Output<AiSearchInstancePublicEndpointParams> publicEndpointParams;
   late final pulumi.Output<bool> reranking;
-  /// Available values: "@cf/baai/bge-reranker-base", "".
   late final pulumi.Output<String> rerankingModel;
   late final pulumi.Output<AiSearchInstanceRetrievalOptions?> retrievalOptions;
-  /// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
+  /// A Workers AI model ID or an AI Gateway model ID compatible with the OpenAI Chat Completions API. An empty string uses the configured or default model.
   late final pulumi.Output<String> rewriteModel;
   late final pulumi.Output<bool> rewriteQuery;
   late final pulumi.Output<double> scoreThreshold;
@@ -63,7 +63,6 @@ class AiSearchInstance extends pulumi.CustomResource {
   late final pulumi.Output<AiSearchInstanceSourceParams> sourceParams;
   late final pulumi.Output<String> status;
   late final pulumi.Output<bool> summarization;
-  /// Available values: "@cf/meta/llama-3.3-70b-instruct-fp8-fast", "@cf/zai-org/glm-4.7-flash", "@cf/meta/llama-3.1-8b-instruct-fast", "@cf/meta/llama-3.1-8b-instruct-fp8", "@cf/meta/llama-4-scout-17b-16e-instruct", "@cf/qwen/qwen3-30b-a3b-fp8", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b", "@cf/moonshotai/kimi-k2-instruct", "@cf/google/gemma-3-12b-it", "@cf/google/gemma-4-26b-a4b-it", "@cf/moonshotai/kimi-k2.5", "anthropic/claude-3-7-sonnet", "anthropic/claude-sonnet-4", "anthropic/claude-opus-4", "anthropic/claude-3-5-haiku", "cerebras/qwen-3-235b-a22b-instruct", "cerebras/qwen-3-235b-a22b-thinking", "cerebras/llama-3.3-70b", "cerebras/llama-4-maverick-17b-128e-instruct", "cerebras/llama-4-scout-17b-16e-instruct", "cerebras/gpt-oss-120b", "google-ai-studio/gemini-2.5-flash", "google-ai-studio/gemini-2.5-pro", "grok/grok-4", "groq/llama-3.3-70b-versatile", "groq/llama-3.1-8b-instant", "openai/gpt-5", "openai/gpt-5-mini", "openai/gpt-5-nano", "".
   late final pulumi.Output<String?> summarizationModel;
   /// Interval between automatic syncs, in seconds. Allowed values: 900 (15min), 1800 (30min), 3600 (1h), 7200 (2h), 14400 (4h), 21600 (6h), 43200 (12h), 86400 (24h).
   /// Available values: 900, 1800, 3600, 7200, 14400, 21600, 43200, 86400.
@@ -72,9 +71,9 @@ class AiSearchInstance extends pulumi.CustomResource {
   late final pulumi.Output<String?> systemPromptIndexSummarization;
   late final pulumi.Output<String?> systemPromptRewriteQuery;
   late final pulumi.Output<String?> tokenId;
+  /// Source type. When omitted or null with a non-blank source, HTTP(S) URLs infer web-crawler and existing R2 bucket names infer r2. A missing or blank source without a type uses managed upload-only storage.
   /// Available values: "r2", "web-crawler".
   late final pulumi.Output<String?> type;
-  late final pulumi.Output<String> vectorizeName;
 
   /// Creates a new [AiSearchInstance].
   /// [name] The Pulumi resource name.
@@ -88,7 +87,7 @@ class AiSearchInstance extends pulumi.CustomResource {
           'cloudflare:index/aiSearchInstance:AiSearchInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     aiGatewayId = registerOutput<String>('aiGatewayId');
@@ -136,7 +135,6 @@ class AiSearchInstance extends pulumi.CustomResource {
     systemPromptRewriteQuery = registerOutput<String?>('systemPromptRewriteQuery');
     tokenId = registerOutput<String?>('tokenId');
     type = registerOutput<String?>('type');
-    vectorizeName = registerOutput<String>('vectorizeName');
   }
 
   /// Gets an existing [AiSearchInstance] resource's state with the given [name] and [id].
@@ -209,7 +207,6 @@ class AiSearchInstance extends pulumi.CustomResource {
     systemPromptRewriteQuery = registerOutput<String?>('systemPromptRewriteQuery');
     tokenId = registerOutput<String?>('tokenId');
     type = registerOutput<String?>('type');
-    vectorizeName = registerOutput<String>('vectorizeName');
   }
 
   /// Creates a typed reference to an existing [AiSearchInstance] resource.
@@ -267,6 +264,5 @@ class AiSearchInstance extends pulumi.CustomResource {
     systemPromptRewriteQuery = registerOutput<String?>('systemPromptRewriteQuery');
     tokenId = registerOutput<String?>('tokenId');
     type = registerOutput<String?>('type');
-    vectorizeName = registerOutput<String>('vectorizeName');
   }
 }

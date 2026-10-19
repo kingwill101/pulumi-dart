@@ -30,7 +30,10 @@ import 'hyperdrive_config_state.dart';
 ///     },
 ///     caching: {
 ///         disabled: true,
+///         maxAge: 0,
+///         staleWhileRevalidate: 0,
 ///     },
+///     integration: JSON.stringify({}),
 ///     mtls: {
 ///         caCertificateId: "00000000-0000-0000-0000-0000000000",
 ///         mtlsCertificateId: "00000000-0000-0000-0000-0000000000",
@@ -41,6 +44,7 @@ import 'hyperdrive_config_state.dart';
 /// ```
 /// ```python
 /// import pulumi
+/// import json
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_hyperdrive_config = cloudflare.HyperdriveConfig("example_hyperdrive_config",
@@ -56,7 +60,10 @@ import 'hyperdrive_config_state.dart';
 ///     },
 ///     caching={
 ///         "disabled": True,
+///         "max_age": 0,
+///         "stale_while_revalidate": 0,
 ///     },
+///     integration=json.dumps({}),
 ///     mtls={
 ///         "ca_certificate_id": "00000000-0000-0000-0000-0000000000",
 ///         "mtls_certificate_id": "00000000-0000-0000-0000-0000000000",
@@ -67,6 +74,7 @@ import 'hyperdrive_config_state.dart';
 /// ```csharp
 /// using System.Collections.Generic;
 /// using System.Linq;
+/// using System.Text.Json;
 /// using Pulumi;
 /// using Cloudflare = Pulumi.Cloudflare;
 ///
@@ -88,7 +96,12 @@ import 'hyperdrive_config_state.dart';
 ///         Caching = new Cloudflare.Inputs.HyperdriveConfigCachingArgs
 ///         {
 ///             Disabled = true,
+///             MaxAge = 0,
+///             StaleWhileRevalidate = 0,
 ///         },
+///         Integration = JsonSerializer.Serialize(new Dictionary<string, object?>
+///         {
+///         }),
 ///         Mtls = new Cloudflare.Inputs.HyperdriveConfigMtlsArgs
 ///         {
 ///             CaCertificateId = "00000000-0000-0000-0000-0000000000",
@@ -104,13 +117,20 @@ import 'hyperdrive_config_state.dart';
 /// package main
 ///
 /// import (
+/// 	"encoding/json"
+///
 /// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := cloudflare.NewHyperdriveConfig(ctx, "example_hyperdrive_config", &cloudflare.HyperdriveConfigArgs{
+/// 		tmpJSON0, err := json.Marshal(map[string]interface{}{})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		json0 := string(tmpJSON0)
+/// 		_, err = cloudflare.NewHyperdriveConfig(ctx, "example_hyperdrive_config", &cloudflare.HyperdriveConfigArgs{
 /// 			AccountId: pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 			Name:      pulumi.String("example-hyperdrive"),
 /// 			Origin: &cloudflare.HyperdriveConfigOriginArgs{
@@ -122,8 +142,11 @@ import 'hyperdrive_config_state.dart';
 /// 				User:     pulumi.String("postgres"),
 /// 			},
 /// 			Caching: &cloudflare.HyperdriveConfigCachingArgs{
-/// 				Disabled: pulumi.Bool(true),
+/// 				Disabled:             pulumi.Bool(true),
+/// 				MaxAge:               pulumi.Int(0),
+/// 				StaleWhileRevalidate: pulumi.Int(0),
 /// 			},
+/// 			Integration: pulumi.String(json0),
 /// 			Mtls: &cloudflare.HyperdriveConfigMtlsArgs{
 /// 				CaCertificateId:   pulumi.String("00000000-0000-0000-0000-0000000000"),
 /// 				MtlsCertificateId: pulumi.String("00000000-0000-0000-0000-0000000000"),
@@ -139,7 +162,7 @@ import 'hyperdrive_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -147,7 +170,10 @@ import 'hyperdrive_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_hyperdriveconfig" "example_hyperdrive_config" {
+/// resource "cloudflare_hyperdrive_config" "example_hyperdrive_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "example-hyperdrive"
 ///   origin = {
@@ -159,8 +185,11 @@ import 'hyperdrive_config_state.dart';
 ///     user     = "postgres"
 ///   }
 ///   caching = {
-///     disabled = true
+///     disabled               = true
+///     max_age                = 0
+///     stale_while_revalidate = 0
 ///   }
+///   integration = jsonencode({})
 ///   mtls = {
 ///     ca_certificate_id   = "00000000-0000-0000-0000-0000000000"
 ///     mtls_certificate_id = "00000000-0000-0000-0000-0000000000"
@@ -180,6 +209,7 @@ import 'hyperdrive_config_state.dart';
 /// import com.pulumi.cloudflare.inputs.HyperdriveConfigOriginArgs;
 /// import com.pulumi.cloudflare.inputs.HyperdriveConfigCachingArgs;
 /// import com.pulumi.cloudflare.inputs.HyperdriveConfigMtlsArgs;
+/// import static com.pulumi.codegen.internal.Serialization.*;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -206,7 +236,13 @@ import 'hyperdrive_config_state.dart';
 ///                 .build())
 ///             .caching(HyperdriveConfigCachingArgs.builder()
 ///                 .disabled(true)
+///                 .maxAge(0)
+///                 .staleWhileRevalidate(0)
 ///                 .build())
+///             .integration(serializeJson(
+///                 jsonObject(
+///
+///                 )))
 ///             .mtls(HyperdriveConfigMtlsArgs.builder()
 ///                 .caCertificateId("00000000-0000-0000-0000-0000000000")
 ///                 .mtlsCertificateId("00000000-0000-0000-0000-0000000000")
@@ -235,6 +271,10 @@ import 'hyperdrive_config_state.dart';
 ///         user: postgres
 ///       caching:
 ///         disabled: true
+///         maxAge: 0
+///         staleWhileRevalidate: 0
+///       integration:
+///         fn::toJSON: {}
 ///       mtls:
 ///         caCertificateId: 00000000-0000-0000-0000-0000000000
 ///         mtlsCertificateId: 00000000-0000-0000-0000-0000000000
@@ -254,13 +294,15 @@ class HyperdriveConfig extends pulumi.CustomResource {
   late final pulumi.Output<HyperdriveConfigCaching?> caching;
   /// Defines the creation time of the Hyperdrive configuration.
   late final pulumi.Output<String> createdOn;
+  late final pulumi.Output<String?> integration;
   /// Defines the last modified time of the Hyperdrive configuration.
   late final pulumi.Output<String> modifiedOn;
   /// mTLS configuration for the origin connection. Cannot be used with VPC Service origins; TLS must be managed on the VPC Service.
   late final pulumi.Output<HyperdriveConfigMtls?> mtls;
   /// The name of the Hyperdrive configuration. Used to identify the configuration in the Cloudflare dashboard and API.
   late final pulumi.Output<String> name;
-  late final pulumi.Output<HyperdriveConfigOrigin> origin;
+  /// Combines database connection fields with exactly one supported network location.
+  late final pulumi.Output<HyperdriveConfigOrigin?> origin;
   /// The (soft) maximum number of connections the Hyperdrive is allowed to make to the origin database.
   late final pulumi.Output<int?> originConnectionLimit;
   /// Defines the last time the Hyperdrive connection pool was explicitly restarted via the restart endpoint. Omitted if the pool has never been explicitly restarted.
@@ -278,15 +320,16 @@ class HyperdriveConfig extends pulumi.CustomResource {
           'cloudflare:index/hyperdriveConfig:HyperdriveConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     caching = registerOutput<HyperdriveConfigCaching?>('caching', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperdriveConfigCaching.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdOn = registerOutput<String>('createdOn');
+    integration = registerOutput<String?>('integration');
     modifiedOn = registerOutput<String>('modifiedOn');
     mtls = registerOutput<HyperdriveConfigMtls?>('mtls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperdriveConfigMtls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    origin = registerOutput<HyperdriveConfigOrigin>('origin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperdriveConfigOrigin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    origin = registerOutput<HyperdriveConfigOrigin?>('origin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperdriveConfigOrigin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     originConnectionLimit = registerOutput<int?>('originConnectionLimit');
     restartedOn = registerOutput<String>('restartedOn');
   }
@@ -318,10 +361,11 @@ class HyperdriveConfig extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     caching = registerOutput<HyperdriveConfigCaching?>('caching', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperdriveConfigCaching.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdOn = registerOutput<String>('createdOn');
+    integration = registerOutput<String?>('integration');
     modifiedOn = registerOutput<String>('modifiedOn');
     mtls = registerOutput<HyperdriveConfigMtls?>('mtls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperdriveConfigMtls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    origin = registerOutput<HyperdriveConfigOrigin>('origin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperdriveConfigOrigin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    origin = registerOutput<HyperdriveConfigOrigin?>('origin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperdriveConfigOrigin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     originConnectionLimit = registerOutput<int?>('originConnectionLimit');
     restartedOn = registerOutput<String>('restartedOn');
   }
@@ -338,10 +382,11 @@ class HyperdriveConfig extends pulumi.CustomResource {
     accountId = registerOutput<String>('accountId');
     caching = registerOutput<HyperdriveConfigCaching?>('caching', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperdriveConfigCaching.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdOn = registerOutput<String>('createdOn');
+    integration = registerOutput<String?>('integration');
     modifiedOn = registerOutput<String>('modifiedOn');
     mtls = registerOutput<HyperdriveConfigMtls?>('mtls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperdriveConfigMtls.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    origin = registerOutput<HyperdriveConfigOrigin>('origin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperdriveConfigOrigin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    origin = registerOutput<HyperdriveConfigOrigin?>('origin', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HyperdriveConfigOrigin.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     originConnectionLimit = registerOutput<int?>('originConnectionLimit');
     restartedOn = registerOutput<String>('restartedOn');
   }

@@ -42,12 +42,6 @@ import 'pipeline_stream_worker_binding.dart';
 ///             required: true,
 ///             sqlName: "sql_name",
 ///         }],
-///         format: {
-///             type: "json",
-///             decimalEncoding: "number",
-///             timestampFormat: "rfc3339",
-///             unstructured: true,
-///         },
 ///         inferred: true,
 ///     },
 ///     workerBinding: {
@@ -83,12 +77,6 @@ import 'pipeline_stream_worker_binding.dart';
 ///             "required": True,
 ///             "sql_name": "sql_name",
 ///         }],
-///         "format": {
-///             "type": "json",
-///             "decimal_encoding": "number",
-///             "timestamp_format": "rfc3339",
-///             "unstructured": True,
-///         },
 ///         "inferred": True,
 ///     },
 ///     worker_binding={
@@ -139,13 +127,6 @@ import 'pipeline_stream_worker_binding.dart';
 ///                     SqlName = "sql_name",
 ///                 },
 ///             },
-///             Format = new Cloudflare.Inputs.PipelineStreamSchemaFormatArgs
-///             {
-///                 Type = "json",
-///                 DecimalEncoding = "number",
-///                 TimestampFormat = "rfc3339",
-///                 Unstructured = true,
-///             },
 ///             Inferred = true,
 ///         },
 ///         WorkerBinding = new Cloudflare.Inputs.PipelineStreamWorkerBindingArgs
@@ -194,12 +175,6 @@ import 'pipeline_stream_worker_binding.dart';
 /// 						SqlName:     pulumi.String("sql_name"),
 /// 					},
 /// 				},
-/// 				Format: &cloudflare.PipelineStreamSchemaFormatArgs{
-/// 					Type:            pulumi.String("json"),
-/// 					DecimalEncoding: pulumi.String("number"),
-/// 					TimestampFormat: pulumi.String("rfc3339"),
-/// 					Unstructured:    pulumi.Bool(true),
-/// 				},
 /// 				Inferred: pulumi.Bool(true),
 /// 			},
 /// 			WorkerBinding: &cloudflare.PipelineStreamWorkerBindingArgs{
@@ -214,7 +189,7 @@ import 'pipeline_stream_worker_binding.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -222,7 +197,10 @@ import 'pipeline_stream_worker_binding.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_pipelinestream" "example_pipeline_stream" {
+/// resource "cloudflare_pipeline_stream" "example_pipeline_stream" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "0123105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "my_stream"
 ///   format = {
@@ -240,18 +218,12 @@ import 'pipeline_stream_worker_binding.dart';
 ///   }
 ///   schema = {
 ///     fields = [{
-///       "type"        = "int32"
-///       "metadataKey" = "metadata_key"
-///       "name"        = "name"
-///       "required"    = true
-///       "sqlName"     = "sql_name"
+///       type         = "int32"
+///       metadata_key = "metadata_key"
+///       name         = "name"
+///       required     = true
+///       sql_name     = "sql_name"
 ///     }]
-///     format = {
-///       type             = "json"
-///       decimal_encoding = "number"
-///       timestamp_format = "rfc3339"
-///       unstructured     = true
-///     }
 ///     inferred = true
 ///   }
 ///   worker_binding = {
@@ -272,7 +244,6 @@ import 'pipeline_stream_worker_binding.dart';
 /// import com.pulumi.cloudflare.inputs.PipelineStreamHttpCorsArgs;
 /// import com.pulumi.cloudflare.inputs.PipelineStreamSchemaArgs;
 /// import com.pulumi.cloudflare.inputs.PipelineStreamSchemaFieldArgs;
-/// import com.pulumi.cloudflare.inputs.PipelineStreamSchemaFormatArgs;
 /// import com.pulumi.cloudflare.inputs.PipelineStreamWorkerBindingArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -311,12 +282,6 @@ import 'pipeline_stream_worker_binding.dart';
 ///                     .required(true)
 ///                     .sqlName("sql_name")
 ///                     .build())
-///                 .format(PipelineStreamSchemaFormatArgs.builder()
-///                     .type("json")
-///                     .decimalEncoding("number")
-///                     .timestampFormat("rfc3339")
-///                     .unstructured(true)
-///                     .build())
 ///                 .inferred(true)
 ///                 .build())
 ///             .workerBinding(PipelineStreamWorkerBindingArgs.builder()
@@ -353,11 +318,6 @@ import 'pipeline_stream_worker_binding.dart';
 ///             name: name
 ///             required: true
 ///             sqlName: sql_name
-///         format:
-///           type: json
-///           decimalEncoding: number
-///           timestampFormat: rfc3339
-///           unstructured: true
 ///         inferred: true
 ///       workerBinding:
 ///         enabled: true
@@ -375,11 +335,13 @@ class PipelineStream extends pulumi.CustomResource {
   late final pulumi.Output<String> createdAt;
   /// Indicates the endpoint URL of this stream.
   late final pulumi.Output<String> endpoint;
+  /// Defines the data format of the events.
   late final pulumi.Output<PipelineStreamFormat?> format;
   late final pulumi.Output<PipelineStreamHttp> http;
   late final pulumi.Output<String> modifiedAt;
   /// Specifies the name of the Stream.
   late final pulumi.Output<String> name;
+  /// Defines the schema of the events in the data stream.
   late final pulumi.Output<PipelineStreamSchema?> schema;
   /// Indicates the current version of this stream.
   late final pulumi.Output<int> version;
@@ -397,7 +359,7 @@ class PipelineStream extends pulumi.CustomResource {
           'cloudflare:index/pipelineStream:PipelineStream',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

@@ -70,7 +70,7 @@ import 'zero_trust_dlp_data_tag_category_tag.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -78,7 +78,10 @@ import 'zero_trust_dlp_data_tag_category_tag.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdlpdatatagcategory" "example_zero_trust_dlp_data_tag_category" {
+/// resource "cloudflare_zero_trust_dlp_data_tag_category" "example_zero_trust_dlp_data_tag_category" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "account_id"
 ///   name        = "name"
 ///   description = "description"
@@ -152,7 +155,7 @@ class ZeroTrustDlpDataTagCategory extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDlpDataTagCategory:ZeroTrustDlpDataTagCategory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

@@ -10,14 +10,14 @@ class WorkersScriptSubdomainState {
   final pulumi.Input<bool?>? enabled;
   /// Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
   final pulumi.Input<bool?>? previewsEnabled;
-  /// Name of the script, used in URLs and route configuration.
+  /// Name of the script.
   final pulumi.Input<String?>? scriptName;
 
   /// Creates a new [WorkersScriptSubdomainState].
   /// [accountId] Identifier.
   /// [enabled] Whether the Worker should be available on the workers.dev subdomain.
   /// [previewsEnabled] Whether the Worker's Preview URLs should be available on the workers.dev subdomain.
-  /// [scriptName] Name of the script, used in URLs and route configuration.
+  /// [scriptName] Name of the script.
   const WorkersScriptSubdomainState({
     this.accountId,
     this.enabled,

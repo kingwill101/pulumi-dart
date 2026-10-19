@@ -64,7 +64,7 @@ import 'zero_trust_gateway_proxy_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -72,7 +72,10 @@ import 'zero_trust_gateway_proxy_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustgatewayproxyendpoint" "example_zero_trust_gateway_proxy_endpoint" {
+/// resource "cloudflare_zero_trust_gateway_proxy_endpoint" "example_zero_trust_gateway_proxy_endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   name       = "Devops team"
 ///   kind       = "ip"
@@ -126,6 +129,7 @@ import 'zero_trust_gateway_proxy_endpoint_state.dart';
 /// $ pulumi import cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint example '<account_id>/<proxy_endpoint_id>'
 /// ```
 class ZeroTrustGatewayProxyEndpoint extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   late final pulumi.Output<String> createdAt;
   /// Specify the list of CIDRs to restrict ingress connections.
@@ -151,7 +155,7 @@ class ZeroTrustGatewayProxyEndpoint extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustGatewayProxyEndpoint:ZeroTrustGatewayProxyEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

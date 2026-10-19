@@ -7,11 +7,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_zero_trust_gateway_pacfile_get_zero_trust_gateway_pacfile_args_doc}
 class GetZeroTrustGatewayPacfileArgs {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String?>? accountId;
   final pulumi.Input<String> pacfileId;
 
   /// Creates a new [GetZeroTrustGatewayPacfileArgs].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [pacfileId] Required.
   const GetZeroTrustGatewayPacfileArgs({
     this.accountId,

@@ -65,7 +65,7 @@ import 'calls_sfu_app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -73,7 +73,10 @@ import 'calls_sfu_app_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_callssfuapp" "example_calls_sfu_app" {
+/// resource "cloudflare_calls_sfu_app" "example_calls_sfu_app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "production-realtime-app"
 /// }
@@ -130,7 +133,7 @@ class CallsSfuApp extends pulumi.CustomResource {
   late final pulumi.Output<String> created;
   /// The date and time the item was last modified.
   late final pulumi.Output<String> modified;
-  /// A short description of Calls app, not shown to end users.
+  /// A short description of a Realtime SFU app, not shown to end users.
   late final pulumi.Output<String> name;
   /// Bearer token
   late final pulumi.Output<String> secret;
@@ -149,7 +152,7 @@ class CallsSfuApp extends pulumi.CustomResource {
           'cloudflare:index/callsSfuApp:CallsSfuApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
           additionalSecretOutputs: const ['secret'],
         ) {
     accountId = registerOutput<String>('accountId');

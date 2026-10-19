@@ -71,7 +71,7 @@ import 'schema_validation_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -79,7 +79,10 @@ import 'schema_validation_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_schemavalidationsettings" "example_schema_validation_settings" {
+/// resource "cloudflare_schema_validation_settings" "example_schema_validation_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id                               = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   validation_default_mitigation_action  = "block"
 ///   validation_override_mitigation_action = "none"
@@ -160,7 +163,7 @@ class SchemaValidationSettings extends pulumi.CustomResource {
           'cloudflare:index/schemaValidationSettings:SchemaValidationSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     validationDefaultMitigationAction = registerOutput<String>('validationDefaultMitigationAction');
     validationOverrideMitigationAction = registerOutput<String?>('validationOverrideMitigationAction');

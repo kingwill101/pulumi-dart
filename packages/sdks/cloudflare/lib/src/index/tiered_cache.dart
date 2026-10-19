@@ -67,7 +67,7 @@ import 'tiered_cache_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -75,7 +75,10 @@ import 'tiered_cache_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_tieredcache" "example_tiered_cache" {
+/// resource "cloudflare_tiered_cache" "example_tiered_cache" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   value   = "on"
 /// }
@@ -148,7 +151,7 @@ class TieredCache extends pulumi.CustomResource {
           'cloudflare:index/tieredCache:TieredCache',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     editable = registerOutput<bool>('editable');
     modifiedOn = registerOutput<String>('modifiedOn');

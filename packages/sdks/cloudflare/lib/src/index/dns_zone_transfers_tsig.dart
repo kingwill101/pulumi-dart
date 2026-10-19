@@ -73,7 +73,7 @@ import 'dns_zone_transfers_tsig_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -81,7 +81,10 @@ import 'dns_zone_transfers_tsig_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_dnszonetransferstsig" "example_dns_zone_transfers_tsig" {
+/// resource "cloudflare_dns_zone_transfers_tsig" "example_dns_zone_transfers_tsig" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "01a7362d577a6c3019a474fd6f485823"
 ///   algo       = "hmac-sha512."
 ///   name       = "tsig.customer.cf."
@@ -158,7 +161,7 @@ class DnsZoneTransfersTsig extends pulumi.CustomResource {
           'cloudflare:index/dnsZoneTransfersTsig:DnsZoneTransfersTsig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
           additionalSecretOutputs: const ['secret'],
         ) {
     accountId = registerOutput<String>('accountId');

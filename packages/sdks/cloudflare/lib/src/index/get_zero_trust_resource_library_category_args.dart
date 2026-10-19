@@ -8,12 +8,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_zero_trust_resource_library_category_get_zero_trust_resource_library_category_args_doc}
 class GetZeroTrustResourceLibraryCategoryArgs {
   final pulumi.Input<String> accountId;
-  /// The ID of this resource.
+  /// Returns the category ID.
   final pulumi.Input<int> id;
 
   /// Creates a new [GetZeroTrustResourceLibraryCategoryArgs].
   /// [accountId] Required.
-  /// [id] The ID of this resource.
+  /// [id] Returns the category ID.
   const GetZeroTrustResourceLibraryCategoryArgs({
     required this.accountId,
     required this.id,
@@ -29,7 +29,7 @@ class GetZeroTrustResourceLibraryCategoryArgs {
   factory GetZeroTrustResourceLibraryCategoryArgs.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustResourceLibraryCategoryArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
-      id: pulumi.Input.fromValue((map['id'] as num).toInt()),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
     );
   }
 }

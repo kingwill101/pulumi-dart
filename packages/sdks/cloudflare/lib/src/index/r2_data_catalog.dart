@@ -66,7 +66,7 @@ import 'r2_data_catalog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -74,7 +74,10 @@ import 'r2_data_catalog_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_r2datacatalog" "example_r2_data_catalog" {
+/// resource "cloudflare_r2_data_catalog" "example_r2_data_catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "0123456789abcdef0123456789abcdef"
 ///   bucket_name = "my-data-bucket"
 /// }
@@ -154,7 +157,7 @@ class R2DataCatalog extends pulumi.CustomResource {
           'cloudflare:index/r2DataCatalog:R2DataCatalog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     bucket = registerOutput<String>('bucket');

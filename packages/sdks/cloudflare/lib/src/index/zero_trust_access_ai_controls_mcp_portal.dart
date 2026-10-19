@@ -176,7 +176,7 @@ import 'zero_trust_access_ai_controls_mcp_portal_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -184,7 +184,10 @@ import 'zero_trust_access_ai_controls_mcp_portal_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustaccessaicontrolsmcpportal" "example_zero_trust_access_ai_controls_mcp_portal" {
+/// resource "cloudflare_zero_trust_access_ai_controls_mcp_portal" "example_zero_trust_access_ai_controls_mcp_portal" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id                                  = "a86a8f5c339544d7bdc89926de14fb8c"
 ///   zero_trust_access_ai_controls_mcp_portal_id = "my-mcp-portal"
 ///   hostname                                    = "example.com"
@@ -339,7 +342,7 @@ class ZeroTrustAccessAiControlsMcpPortal extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessAiControlsMcpPortal:ZeroTrustAccessAiControlsMcpPortal',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     allowCodeMode = registerOutput<bool>('allowCodeMode');

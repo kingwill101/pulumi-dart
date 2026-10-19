@@ -210,17 +210,25 @@ import 'get_email_routing_addresses_invoke_result.dart';
 import 'get_email_routing_catch_all_args.dart';
 import 'get_email_routing_catch_all_result.dart';
 import 'get_email_routing_dns_args.dart';
-import 'get_email_routing_dns_invoke_result.dart';
+import 'get_email_routing_dns_result.dart';
 import 'get_email_routing_rule_args.dart';
 import 'get_email_routing_rule_result.dart';
 import 'get_email_routing_rules_args.dart';
 import 'get_email_routing_rules_invoke_result.dart';
 import 'get_email_routing_settings_args.dart';
 import 'get_email_routing_settings_result.dart';
+import 'get_email_security_allow_policies_args.dart';
+import 'get_email_security_allow_policies_invoke_result.dart';
+import 'get_email_security_allow_policy_args.dart';
+import 'get_email_security_allow_policy_result.dart';
 import 'get_email_security_block_sender_args.dart';
 import 'get_email_security_block_sender_result.dart';
 import 'get_email_security_block_senders_args.dart';
 import 'get_email_security_block_senders_invoke_result.dart';
+import 'get_email_security_domain_args.dart';
+import 'get_email_security_domain_result.dart';
+import 'get_email_security_domains_args.dart';
+import 'get_email_security_domains_invoke_result.dart';
 import 'get_email_security_impersonation_registries_args.dart';
 import 'get_email_security_impersonation_registries_invoke_result.dart';
 import 'get_email_security_impersonation_registry_args.dart';
@@ -229,6 +237,12 @@ import 'get_email_security_trusted_domains_args.dart';
 import 'get_email_security_trusted_domains_list_args.dart';
 import 'get_email_security_trusted_domains_list_invoke_result.dart';
 import 'get_email_security_trusted_domains_result.dart';
+import 'get_email_sending_subdomain_args.dart';
+import 'get_email_sending_subdomain_result.dart';
+import 'get_email_sending_subdomains_args.dart';
+import 'get_email_sending_subdomains_invoke_result.dart';
+import 'get_field_extractor_args.dart';
+import 'get_field_extractor_result.dart';
 import 'get_filter_args.dart';
 import 'get_filter_result.dart';
 import 'get_filters_args.dart';
@@ -341,6 +355,10 @@ import 'get_magic_transit_site_wans_args.dart';
 import 'get_magic_transit_site_wans_invoke_result.dart';
 import 'get_magic_transit_sites_args.dart';
 import 'get_magic_transit_sites_invoke_result.dart';
+import 'get_magic_wan_bgp_filter_profile_args.dart';
+import 'get_magic_wan_bgp_filter_profile_result.dart';
+import 'get_magic_wan_bgp_filter_profiles_args.dart';
+import 'get_magic_wan_bgp_filter_profiles_invoke_result.dart';
 import 'get_magic_wan_gre_tunnel_args.dart';
 import 'get_magic_wan_gre_tunnel_result.dart';
 import 'get_magic_wan_ipsec_tunnel_args.dart';
@@ -359,6 +377,8 @@ import 'get_mtls_certificate_associations_result.dart';
 import 'get_mtls_certificate_result.dart';
 import 'get_mtls_certificates_args.dart';
 import 'get_mtls_certificates_invoke_result.dart';
+import 'get_nel_setting_args.dart';
+import 'get_nel_setting_result.dart';
 import 'get_notification_policies_args.dart';
 import 'get_notification_policies_invoke_result.dart';
 import 'get_notification_policy_args.dart';
@@ -455,8 +475,6 @@ import 'get_r2_data_catalog_args.dart';
 import 'get_r2_data_catalog_result.dart';
 import 'get_rate_limit_args.dart';
 import 'get_rate_limit_result.dart';
-import 'get_rate_limits_args.dart';
-import 'get_rate_limits_invoke_result.dart';
 import 'get_regional_hostname_args.dart';
 import 'get_regional_hostname_result.dart';
 import 'get_regional_hostnames_args.dart';
@@ -521,6 +539,8 @@ import 'get_spectrum_application_args.dart';
 import 'get_spectrum_application_result.dart';
 import 'get_spectrum_applications_args.dart';
 import 'get_spectrum_applications_invoke_result.dart';
+import 'get_spectrum_protocols_args.dart';
+import 'get_spectrum_protocols_invoke_result.dart';
 import 'get_sso_connector_args.dart';
 import 'get_sso_connector_result.dart';
 import 'get_sso_connectors_args.dart';
@@ -623,6 +643,8 @@ import 'get_workers_custom_domains_args.dart';
 import 'get_workers_custom_domains_invoke_result.dart';
 import 'get_workers_deployment_args.dart';
 import 'get_workers_deployment_result.dart';
+import 'get_workers_deployments_args.dart';
+import 'get_workers_deployments_invoke_result.dart';
 import 'get_workers_for_platforms_dispatch_namespace_args.dart';
 import 'get_workers_for_platforms_dispatch_namespace_result.dart';
 import 'get_workers_for_platforms_dispatch_namespaces_args.dart';
@@ -700,6 +722,20 @@ import 'get_zero_trust_access_tag_args.dart';
 import 'get_zero_trust_access_tag_result.dart';
 import 'get_zero_trust_access_tags_args.dart';
 import 'get_zero_trust_access_tags_invoke_result.dart';
+import 'get_zero_trust_casb_integration_args.dart';
+import 'get_zero_trust_casb_integration_result.dart';
+import 'get_zero_trust_casb_integrations_args.dart';
+import 'get_zero_trust_casb_integrations_invoke_result.dart';
+import 'get_zero_trust_casb_policies_args.dart';
+import 'get_zero_trust_casb_policies_invoke_result.dart';
+import 'get_zero_trust_casb_policy_args.dart';
+import 'get_zero_trust_casb_policy_result.dart';
+import 'get_zero_trust_casb_webhook_args.dart';
+import 'get_zero_trust_casb_webhook_result.dart';
+import 'get_zero_trust_casb_webhooks_args.dart';
+import 'get_zero_trust_casb_webhooks_invoke_result.dart';
+import 'get_zero_trust_connectivity_settings_args.dart';
+import 'get_zero_trust_connectivity_settings_result.dart';
 import 'get_zero_trust_device_custom_profile_args.dart';
 import 'get_zero_trust_device_custom_profile_local_domain_fallback_args.dart';
 import 'get_zero_trust_device_custom_profile_local_domain_fallback_result.dart';
@@ -894,6 +930,10 @@ import 'get_zone_setting_args.dart';
 import 'get_zone_setting_result.dart';
 import 'get_zone_subscription_args.dart';
 import 'get_zone_subscription_result.dart';
+import 'get_zone_tracing_args.dart';
+import 'get_zone_tracing_result.dart';
+import 'get_zone_tracing_rules_args.dart';
+import 'get_zone_tracing_rules_result.dart';
 import 'get_zones_args.dart';
 import 'get_zones_invoke_result.dart';
 
@@ -963,7 +1003,7 @@ import 'get_zones_invoke_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -971,7 +1011,7 @@ import 'get_zones_invoke_result.dart';
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccessrule" "exampleAccessRule" {
+/// data "cloudflare_access_rule" "exampleAccessRule" {
 ///   rule_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
@@ -1138,7 +1178,7 @@ pulumi.Output<GetAccessRuleResult> getAccessRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -1146,7 +1186,7 @@ pulumi.Output<GetAccessRuleResult> getAccessRuleOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccessrules" "exampleAccessRules" {
+/// data "cloudflare_access_rules" "exampleAccessRules" {
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
 ///   configuration = {
@@ -1324,7 +1364,7 @@ pulumi.Output<GetAccessRulesInvokeResult> getAccessRulesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -1332,7 +1372,7 @@ pulumi.Output<GetAccessRulesInvokeResult> getAccessRulesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccount" "exampleAccount" {
+/// data "cloudflare_account" "exampleAccount" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -1464,7 +1504,7 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -1472,7 +1512,7 @@ pulumi.Output<GetAccountResult> getAccountOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccountapitokenpermissiongroups" "exampleAccountApiTokenPermissionGroups" {
+/// data "cloudflare_account_api_token_permission_groups" "exampleAccountApiTokenPermissionGroups" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "Account%20Settings%20Write"
 ///   scope      = "com.cloudflare.api.account.zone"
@@ -1610,7 +1650,7 @@ pulumi.Output<GetAccountApiTokenPermissionGroupsResult> getAccountApiTokenPermis
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -1618,7 +1658,7 @@ pulumi.Output<GetAccountApiTokenPermissionGroupsResult> getAccountApiTokenPermis
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccountapitokenpermissiongroupslist" "exampleAccountApiTokenPermissionGroupsList" {
+/// data "cloudflare_account_api_token_permission_groups_list" "exampleAccountApiTokenPermissionGroupsList" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "Account%20Settings%20Write"
 ///   scope      = "com.cloudflare.api.account.zone"
@@ -1748,7 +1788,7 @@ pulumi.Output<GetAccountApiTokenPermissionGroupsListInvokeResult> getAccountApiT
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -1756,7 +1796,7 @@ pulumi.Output<GetAccountApiTokenPermissionGroupsListInvokeResult> getAccountApiT
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccountdnssettings" "exampleAccountDnsSettings" {
+/// data "cloudflare_account_dns_settings" "exampleAccountDnsSettings" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -1884,7 +1924,7 @@ pulumi.Output<GetAccountDnsSettingsResult> getAccountDnsSettingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -1892,7 +1932,7 @@ pulumi.Output<GetAccountDnsSettingsResult> getAccountDnsSettingsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccountdnssettingsinternalview" "exampleAccountDnsSettingsInternalView" {
+/// data "cloudflare_account_dns_settings_internal_view" "exampleAccountDnsSettingsInternalView" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   view_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -2056,7 +2096,7 @@ pulumi.Output<GetAccountDnsSettingsInternalViewResult> getAccountDnsSettingsInte
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -2064,7 +2104,7 @@ pulumi.Output<GetAccountDnsSettingsInternalViewResult> getAccountDnsSettingsInte
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccountdnssettingsinternalviews" "exampleAccountDnsSettingsInternalViews" {
+/// data "cloudflare_account_dns_settings_internal_views" "exampleAccountDnsSettingsInternalViews" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name = {
 ///     contains   = "view"
@@ -2220,7 +2260,7 @@ pulumi.Output<GetAccountDnsSettingsInternalViewsInvokeResult> getAccountDnsSetti
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -2228,7 +2268,7 @@ pulumi.Output<GetAccountDnsSettingsInternalViewsInvokeResult> getAccountDnsSetti
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccountmember" "exampleAccountMember" {
+/// data "cloudflare_account_member" "exampleAccountMember" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   member_id  = "4536bcfad5faccb111b47003c79917fa"
 /// }
@@ -2368,7 +2408,7 @@ pulumi.Output<GetAccountMemberResult> getAccountMemberOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -2376,7 +2416,7 @@ pulumi.Output<GetAccountMemberResult> getAccountMemberOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccountmembers" "exampleAccountMembers" {
+/// data "cloudflare_account_members" "exampleAccountMembers" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   direction  = "desc"
 ///   order      = "status"
@@ -2540,7 +2580,7 @@ pulumi.Output<GetAccountMembersInvokeResult> getAccountMembersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -2548,7 +2588,7 @@ pulumi.Output<GetAccountMembersInvokeResult> getAccountMembersOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccountpermissiongroup" "exampleAccountPermissionGroup" {
+/// data "cloudflare_account_permission_group" "exampleAccountPermissionGroup" {
 ///   account_id          = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   permission_group_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -2714,7 +2754,7 @@ pulumi.Output<GetAccountPermissionGroupResult> getAccountPermissionGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -2722,7 +2762,7 @@ pulumi.Output<GetAccountPermissionGroupResult> getAccountPermissionGroupOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccountpermissiongroups" "exampleAccountPermissionGroups" {
+/// data "cloudflare_account_permission_groups" "exampleAccountPermissionGroups" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   id         = "6d7f2f5f5b1d4a0e9081fdc98d432fd1"
 ///   label      = "labelOfThePermissionGroup"
@@ -2860,7 +2900,7 @@ pulumi.Output<GetAccountPermissionGroupsInvokeResult> getAccountPermissionGroups
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -2868,7 +2908,7 @@ pulumi.Output<GetAccountPermissionGroupsInvokeResult> getAccountPermissionGroups
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccountrole" "exampleAccountRole" {
+/// data "cloudflare_account_role" "exampleAccountRole" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   role_id    = "3536bcfad5faccb999b47003c79917fb"
 /// }
@@ -2996,7 +3036,7 @@ pulumi.Output<GetAccountRoleResult> getAccountRoleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -3004,7 +3044,7 @@ pulumi.Output<GetAccountRoleResult> getAccountRoleOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccountroles" "exampleAccountRoles" {
+/// data "cloudflare_account_roles" "exampleAccountRoles" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -3132,7 +3172,7 @@ pulumi.Output<GetAccountRolesInvokeResult> getAccountRolesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -3140,7 +3180,7 @@ pulumi.Output<GetAccountRolesInvokeResult> getAccountRolesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccountsubscription" "exampleAccountSubscription" {
+/// data "cloudflare_account_subscription" "exampleAccountSubscription" {
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
 /// }
@@ -3271,7 +3311,7 @@ pulumi.Output<GetAccountSubscriptionResult> getAccountSubscriptionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -3279,7 +3319,7 @@ pulumi.Output<GetAccountSubscriptionResult> getAccountSubscriptionOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccounttoken" "exampleAccountToken" {
+/// data "cloudflare_account_token" "exampleAccountToken" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   token_id   = "ed17574386854bf78a67040be0a770b0"
 /// }
@@ -3410,7 +3450,7 @@ pulumi.Output<GetAccountTokenResult> getAccountTokenOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -3418,7 +3458,7 @@ pulumi.Output<GetAccountTokenResult> getAccountTokenOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccounttokens" "exampleAccountTokens" {
+/// data "cloudflare_account_tokens" "exampleAccountTokens" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   direction  = "desc"
 /// }
@@ -3544,7 +3584,7 @@ pulumi.Output<GetAccountTokensInvokeResult> getAccountTokensOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -3552,7 +3592,7 @@ pulumi.Output<GetAccountTokensInvokeResult> getAccountTokensOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaccounts" "exampleAccounts" {
+/// data "cloudflare_accounts" "exampleAccounts" {
 ///   direction = "desc"
 ///   name      = "example.com"
 /// }
@@ -3683,7 +3723,7 @@ pulumi.Output<GetAccountsInvokeResult> getAccountsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -3691,7 +3731,7 @@ pulumi.Output<GetAccountsInvokeResult> getAccountsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaddressmap" "exampleAddressMap" {
+/// data "cloudflare_address_map" "exampleAddressMap" {
 ///   account_id     = "258def64c72dae45f3e4c8516e2111f2"
 ///   address_map_id = "055817b111884e0227e1be16a0be6ee0"
 /// }
@@ -3818,7 +3858,7 @@ pulumi.Output<GetAddressMapResult> getAddressMapOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -3826,7 +3866,7 @@ pulumi.Output<GetAddressMapResult> getAddressMapOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaddressmaps" "exampleAddressMaps" {
+/// data "cloudflare_address_maps" "exampleAddressMaps" {
 ///   account_id = "258def64c72dae45f3e4c8516e2111f2"
 /// }
 /// ```
@@ -3954,7 +3994,7 @@ pulumi.Output<GetAddressMapsInvokeResult> getAddressMapsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -3962,7 +4002,7 @@ pulumi.Output<GetAddressMapsInvokeResult> getAddressMapsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaigateway" "exampleAiGateway" {
+/// data "cloudflare_ai_gateway" "exampleAiGateway" {
 ///   account_id = "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 ///   id         = "my-gateway"
 /// }
@@ -4097,7 +4137,7 @@ pulumi.Output<GetAiGatewayResult> getAiGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -4105,7 +4145,7 @@ pulumi.Output<GetAiGatewayResult> getAiGatewayOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getaigatewaydynamicrouting" "exampleAiGatewayDynamicRouting" {
+/// data "cloudflare_ai_gateway_dynamic_routing" "exampleAiGatewayDynamicRouting" {
 ///   account_id = "0d37909e38d3e99c29fa2cd343ac421a"
 ///   gateway_id = "54442216"
 ///   id         = "54442216"
@@ -4239,7 +4279,7 @@ pulumi.Output<GetAiGatewayDynamicRoutingResult> getAiGatewayDynamicRoutingOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -4247,7 +4287,7 @@ pulumi.Output<GetAiGatewayDynamicRoutingResult> getAiGatewayDynamicRoutingOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getaigateways" "exampleAiGateways" {
+/// data "cloudflare_ai_gateways" "exampleAiGateways" {
 ///   account_id = "3ebbcb006d4d46d7bb6a8c7f14676cb0"
 ///   search     = "search"
 /// }
@@ -4536,7 +4576,7 @@ pulumi.Output<GetAiSearchTokensInvokeResult> getAiSearchTokensOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -4544,7 +4584,7 @@ pulumi.Output<GetAiSearchTokensInvokeResult> getAiSearchTokensOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getapishield" "exampleApiShield" {
+/// data "cloudflare_api_shield" "exampleApiShield" {
 ///   zone_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   normalize = true
 /// }
@@ -4715,7 +4755,7 @@ pulumi.Output<GetApiShieldResult> getApiShieldOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -4723,7 +4763,7 @@ pulumi.Output<GetApiShieldResult> getApiShieldOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getapishielddiscoveryoperations" "exampleApiShieldDiscoveryOperations" {
+/// data "cloudflare_api_shield_discovery_operations" "exampleApiShieldDiscoveryOperations" {
 ///   zone_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   diff      = true
 ///   direction = "desc"
@@ -4826,7 +4866,7 @@ pulumi.Output<GetApiShieldDiscoveryOperationsInvokeResult> getApiShieldDiscovery
 ///
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -4834,10 +4874,11 @@ pulumi.Output<GetApiShieldDiscoveryOperationsInvokeResult> getApiShieldDiscovery
 ///   }
 /// }
 ///
-/// data "cloudflare_getapishieldoperation" "exampleApiShieldOperation" {
+/// data "cloudflare_api_shield_operation" "exampleApiShieldOperation" {
 ///   zone_id      = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   operation_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   features     = ["thresholds"]
+///   with_schemas = true
 /// }
 /// ```
 /// ```yaml
@@ -4850,6 +4891,7 @@ pulumi.Output<GetApiShieldDiscoveryOperationsInvokeResult> getApiShieldDiscovery
 ///         operationId: f174e90a-fafe-4643-bbbc-4a0ed4fc8415
 ///         features:
 ///           - thresholds
+///         withSchemas: true
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_api_shield_operation_get_api_shield_operation_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4941,7 +4983,7 @@ pulumi.Output<GetApiShieldOperationResult> getApiShieldOperationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -4949,7 +4991,7 @@ pulumi.Output<GetApiShieldOperationResult> getApiShieldOperationOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getapishieldoperationschemavalidationsettings" "exampleApiShieldOperationSchemaValidationSettings" {
+/// data "cloudflare_api_shield_operation_schema_validation_settings" "exampleApiShieldOperationSchemaValidationSettings" {
 ///   zone_id      = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   operation_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -5117,7 +5159,7 @@ pulumi.Output<GetApiShieldOperationSchemaValidationSettingsResult> getApiShieldO
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -5125,7 +5167,7 @@ pulumi.Output<GetApiShieldOperationSchemaValidationSettingsResult> getApiShieldO
 ///   }
 /// }
 ///
-/// data "cloudflare_getapishieldoperations" "exampleApiShieldOperations" {
+/// data "cloudflare_api_shield_operations" "exampleApiShieldOperations" {
 ///   zone_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   direction = "desc"
 ///   endpoint  = "/api/v1"
@@ -5280,7 +5322,7 @@ pulumi.Output<GetApiShieldOperationsInvokeResult> getApiShieldOperationsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -5288,7 +5330,7 @@ pulumi.Output<GetApiShieldOperationsInvokeResult> getApiShieldOperationsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getapishieldschema" "exampleApiShieldSchema" {
+/// data "cloudflare_api_shield_schema" "exampleApiShieldSchema" {
 ///   zone_id     = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   schema_id   = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   omit_source = true
@@ -5420,7 +5462,7 @@ pulumi.Output<GetApiShieldSchemaResult> getApiShieldSchemaOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -5428,7 +5470,7 @@ pulumi.Output<GetApiShieldSchemaResult> getApiShieldSchemaOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getapishieldschemavalidationsettings" "exampleApiShieldSchemaValidationSettings" {
+/// data "cloudflare_api_shield_schema_validation_settings" "exampleApiShieldSchemaValidationSettings" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -5558,7 +5600,7 @@ pulumi.Output<GetApiShieldSchemaValidationSettingsResult> getApiShieldSchemaVali
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -5566,7 +5608,7 @@ pulumi.Output<GetApiShieldSchemaValidationSettingsResult> getApiShieldSchemaVali
 ///   }
 /// }
 ///
-/// data "cloudflare_getapishieldschemas" "exampleApiShieldSchemas" {
+/// data "cloudflare_api_shield_schemas" "exampleApiShieldSchemas" {
 ///   zone_id            = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   validation_enabled = true
 /// }
@@ -5693,7 +5735,7 @@ pulumi.Output<GetApiShieldSchemasInvokeResult> getApiShieldSchemasOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -5701,7 +5743,7 @@ pulumi.Output<GetApiShieldSchemasInvokeResult> getApiShieldSchemasOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getapitoken" "exampleApiToken" {
+/// data "cloudflare_api_token" "exampleApiToken" {
 ///   token_id = "ed17574386854bf78a67040be0a770b0"
 /// }
 /// ```
@@ -5829,7 +5871,7 @@ pulumi.Output<GetApiTokenResult> getApiTokenOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -5837,7 +5879,7 @@ pulumi.Output<GetApiTokenResult> getApiTokenOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getapitokenpermissiongroupslist" "exampleApiTokenPermissionGroupsList" {
+/// data "cloudflare_api_token_permission_groups_list" "exampleApiTokenPermissionGroupsList" {
 ///   name  = "Account%20Settings%20Write"
 ///   scope = "com.cloudflare.api.account.zone"
 /// }
@@ -5964,7 +6006,7 @@ pulumi.Output<GetApiTokenPermissionGroupsListInvokeResult> getApiTokenPermission
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -5972,7 +6014,7 @@ pulumi.Output<GetApiTokenPermissionGroupsListInvokeResult> getApiTokenPermission
 ///   }
 /// }
 ///
-/// data "cloudflare_getapitokens" "exampleApiTokens" {
+/// data "cloudflare_api_tokens" "exampleApiTokens" {
 ///   direction = "desc"
 /// }
 /// ```
@@ -6096,7 +6138,7 @@ pulumi.Output<GetApiTokensInvokeResult> getApiTokensOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -6104,7 +6146,7 @@ pulumi.Output<GetApiTokensInvokeResult> getApiTokensOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getargosmartrouting" "exampleArgoSmartRouting" {
+/// data "cloudflare_argo_smart_routing" "exampleArgoSmartRouting" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -6223,7 +6265,7 @@ pulumi.Output<GetArgoSmartRoutingResult> getArgoSmartRoutingOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -6231,7 +6273,7 @@ pulumi.Output<GetArgoSmartRoutingResult> getArgoSmartRoutingOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getargotieredcaching" "exampleArgoTieredCaching" {
+/// data "cloudflare_argo_tiered_caching" "exampleArgoTieredCaching" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -6354,7 +6396,7 @@ pulumi.Output<GetArgoTieredCachingResult> getArgoTieredCachingOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -6362,7 +6404,7 @@ pulumi.Output<GetArgoTieredCachingResult> getArgoTieredCachingOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getauthenticatedoriginpulls" "exampleAuthenticatedOriginPulls" {
+/// data "cloudflare_authenticated_origin_pulls" "exampleAuthenticatedOriginPulls" {
 ///   zone_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   hostname = "app.example.com"
 /// }
@@ -6488,7 +6530,7 @@ pulumi.Output<GetAuthenticatedOriginPullsResult> getAuthenticatedOriginPullsOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -6496,7 +6538,7 @@ pulumi.Output<GetAuthenticatedOriginPullsResult> getAuthenticatedOriginPullsOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getauthenticatedoriginpullscertificate" "exampleAuthenticatedOriginPullsCertificate" {
+/// data "cloudflare_authenticated_origin_pulls_certificate" "exampleAuthenticatedOriginPullsCertificate" {
 ///   zone_id        = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   certificate_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -6618,7 +6660,7 @@ pulumi.Output<GetAuthenticatedOriginPullsCertificateResult> getAuthenticatedOrig
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -6626,7 +6668,7 @@ pulumi.Output<GetAuthenticatedOriginPullsCertificateResult> getAuthenticatedOrig
 ///   }
 /// }
 ///
-/// data "cloudflare_getauthenticatedoriginpullscertificates" "exampleAuthenticatedOriginPullsCertificates" {
+/// data "cloudflare_authenticated_origin_pulls_certificates" "exampleAuthenticatedOriginPullsCertificates" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -6749,7 +6791,7 @@ pulumi.Output<GetAuthenticatedOriginPullsCertificatesInvokeResult> getAuthentica
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -6757,7 +6799,7 @@ pulumi.Output<GetAuthenticatedOriginPullsCertificatesInvokeResult> getAuthentica
 ///   }
 /// }
 ///
-/// data "cloudflare_getauthenticatedoriginpullshostnamecertificate" "exampleAuthenticatedOriginPullsHostnameCertificate" {
+/// data "cloudflare_authenticated_origin_pulls_hostname_certificate" "exampleAuthenticatedOriginPullsHostnameCertificate" {
 ///   zone_id        = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   certificate_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -6879,7 +6921,7 @@ pulumi.Output<GetAuthenticatedOriginPullsHostnameCertificateResult> getAuthentic
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -6887,7 +6929,7 @@ pulumi.Output<GetAuthenticatedOriginPullsHostnameCertificateResult> getAuthentic
 ///   }
 /// }
 ///
-/// data "cloudflare_getauthenticatedoriginpullshostnamecertificates" "exampleAuthenticatedOriginPullsHostnameCertificates" {
+/// data "cloudflare_authenticated_origin_pulls_hostname_certificates" "exampleAuthenticatedOriginPullsHostnameCertificates" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -7011,7 +7053,7 @@ pulumi.Output<GetAuthenticatedOriginPullsHostnameCertificatesInvokeResult> getAu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -7019,7 +7061,7 @@ pulumi.Output<GetAuthenticatedOriginPullsHostnameCertificatesInvokeResult> getAu
 ///   }
 /// }
 ///
-/// data "cloudflare_getauthenticatedoriginpullssettings" "exampleAuthenticatedOriginPullsSettings" {
+/// data "cloudflare_authenticated_origin_pulls_settings" "exampleAuthenticatedOriginPullsSettings" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -7143,7 +7185,7 @@ pulumi.Output<GetAuthenticatedOriginPullsSettingsResult> getAuthenticatedOriginP
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -7151,7 +7193,7 @@ pulumi.Output<GetAuthenticatedOriginPullsSettingsResult> getAuthenticatedOriginP
 ///   }
 /// }
 ///
-/// data "cloudflare_getbotmanagement" "exampleBotManagement" {
+/// data "cloudflare_bot_management" "exampleBotManagement" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -7275,7 +7317,7 @@ pulumi.Output<GetBotManagementResult> getBotManagementOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -7283,7 +7325,7 @@ pulumi.Output<GetBotManagementResult> getBotManagementOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getbotnetfeedconfigasn" "exampleBotnetFeedConfigAsn" {
+/// data "cloudflare_botnet_feed_config_asn" "exampleBotnetFeedConfigAsn" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -7415,7 +7457,7 @@ pulumi.Output<GetBotnetFeedConfigAsnResult> getBotnetFeedConfigAsnOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -7423,7 +7465,7 @@ pulumi.Output<GetBotnetFeedConfigAsnResult> getBotnetFeedConfigAsnOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getbyoipprefix" "exampleByoIpPrefix" {
+/// data "cloudflare_byo_ip_prefix" "exampleByoIpPrefix" {
 ///   account_id = "258def64c72dae45f3e4c8516e2111f2"
 ///   prefix_id  = "2af39739cc4e3b5910c918468bb89828"
 /// }
@@ -7554,7 +7596,7 @@ pulumi.Output<GetByoIpPrefixResult> getByoIpPrefixOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -7562,7 +7604,7 @@ pulumi.Output<GetByoIpPrefixResult> getByoIpPrefixOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getbyoipprefixes" "exampleByoIpPrefixes" {
+/// data "cloudflare_byo_ip_prefixes" "exampleByoIpPrefixes" {
 ///   account_id = "258def64c72dae45f3e4c8516e2111f2"
 /// }
 /// ```
@@ -7690,7 +7732,7 @@ pulumi.Output<GetByoIpPrefixesInvokeResult> getByoIpPrefixesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -7698,7 +7740,7 @@ pulumi.Output<GetByoIpPrefixesInvokeResult> getByoIpPrefixesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcallssfuapp" "exampleCallsSfuApp" {
+/// data "cloudflare_calls_sfu_app" "exampleCallsSfuApp" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   app_id     = "2a95132c15732412d22c1476fa83f27a"
 /// }
@@ -7825,7 +7867,7 @@ pulumi.Output<GetCallsSfuAppResult> getCallsSfuAppOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -7833,7 +7875,7 @@ pulumi.Output<GetCallsSfuAppResult> getCallsSfuAppOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcallssfuapps" "exampleCallsSfuApps" {
+/// data "cloudflare_calls_sfu_apps" "exampleCallsSfuApps" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -7961,7 +8003,7 @@ pulumi.Output<GetCallsSfuAppsInvokeResult> getCallsSfuAppsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -7969,7 +8011,7 @@ pulumi.Output<GetCallsSfuAppsInvokeResult> getCallsSfuAppsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcallsturnapp" "exampleCallsTurnApp" {
+/// data "cloudflare_calls_turn_app" "exampleCallsTurnApp" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   key_id     = "2a95132c15732412d22c1476fa83f27a"
 /// }
@@ -8096,7 +8138,7 @@ pulumi.Output<GetCallsTurnAppResult> getCallsTurnAppOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -8104,7 +8146,7 @@ pulumi.Output<GetCallsTurnAppResult> getCallsTurnAppOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcallsturnapps" "exampleCallsTurnApps" {
+/// data "cloudflare_calls_turn_apps" "exampleCallsTurnApps" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -8232,7 +8274,7 @@ pulumi.Output<GetCallsTurnAppsInvokeResult> getCallsTurnAppsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -8240,7 +8282,7 @@ pulumi.Output<GetCallsTurnAppsInvokeResult> getCallsTurnAppsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcertificateauthoritieshostnameassociations" "exampleCertificateAuthoritiesHostnameAssociations" {
+/// data "cloudflare_certificate_authorities_hostname_associations" "exampleCertificateAuthoritiesHostnameAssociations" {
 ///   zone_id             = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   mtls_certificate_id = "b2134436-2555-4acf-be5b-26c48136575e"
 /// }
@@ -8323,7 +8365,7 @@ pulumi.Output<GetCertificateAuthoritiesHostnameAssociationsResult> getCertificat
 ///
 /// const exampleCertificatePack = cloudflare.getCertificatePack({
 ///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     certificatePackId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     certificatePackId: "3822ff90-ea29-44df-9e55-21300bb9419b",
 /// });
 /// ```
 /// ```python
@@ -8331,7 +8373,7 @@ pulumi.Output<GetCertificateAuthoritiesHostnameAssociationsResult> getCertificat
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_certificate_pack = cloudflare.get_certificate_pack(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     certificate_pack_id="023e105f4ecef8ad9ca31a8372d0c353")
+///     certificate_pack_id="3822ff90-ea29-44df-9e55-21300bb9419b")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -8344,7 +8386,7 @@ pulumi.Output<GetCertificateAuthoritiesHostnameAssociationsResult> getCertificat
 ///     var exampleCertificatePack = Cloudflare.GetCertificatePack.Invoke(new()
 ///     {
 ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         CertificatePackId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         CertificatePackId = "3822ff90-ea29-44df-9e55-21300bb9419b",
 ///     });
 ///
 /// });
@@ -8361,7 +8403,7 @@ pulumi.Output<GetCertificateAuthoritiesHostnameAssociationsResult> getCertificat
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetCertificatePack(ctx, &cloudflare.LookupCertificatePackArgs{
 /// 			ZoneId:            pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			CertificatePackId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			CertificatePackId: pulumi.StringRef("3822ff90-ea29-44df-9e55-21300bb9419b"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -8371,7 +8413,7 @@ pulumi.Output<GetCertificateAuthoritiesHostnameAssociationsResult> getCertificat
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -8379,9 +8421,9 @@ pulumi.Output<GetCertificateAuthoritiesHostnameAssociationsResult> getCertificat
 ///   }
 /// }
 ///
-/// data "cloudflare_getcertificatepack" "exampleCertificatePack" {
+/// data "cloudflare_certificate_pack" "exampleCertificatePack" {
 ///   zone_id             = "023e105f4ecef8ad9ca31a8372d0c353"
-///   certificate_pack_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   certificate_pack_id = "3822ff90-ea29-44df-9e55-21300bb9419b"
 /// }
 /// ```
 /// ```java
@@ -8407,7 +8449,7 @@ pulumi.Output<GetCertificateAuthoritiesHostnameAssociationsResult> getCertificat
 ///     public static void stack(Context ctx) {
 ///         final var exampleCertificatePack = CloudflareFunctions.getCertificatePack(GetCertificatePackArgs.builder()
 ///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .certificatePackId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .certificatePackId("3822ff90-ea29-44df-9e55-21300bb9419b")
 ///             .build());
 ///
 ///     }
@@ -8420,7 +8462,7 @@ pulumi.Output<GetCertificateAuthoritiesHostnameAssociationsResult> getCertificat
 ///       function: cloudflare:getCertificatePack
 ///       arguments:
 ///         zoneId: 023e105f4ecef8ad9ca31a8372d0c353
-///         certificatePackId: 023e105f4ecef8ad9ca31a8372d0c353
+///         certificatePackId: 3822ff90-ea29-44df-9e55-21300bb9419b
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_certificate_pack_get_certificate_pack_args_doc}
 /// [options] Invoke options controlling this call.
@@ -8514,7 +8556,7 @@ pulumi.Output<GetCertificatePackResult> getCertificatePackOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -8522,7 +8564,7 @@ pulumi.Output<GetCertificatePackResult> getCertificatePackOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcertificatepacks" "exampleCertificatePacks" {
+/// data "cloudflare_certificate_packs" "exampleCertificatePacks" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   deploy  = "staging"
 ///   status  = "all"
@@ -8608,7 +8650,7 @@ pulumi.Output<GetCertificatePacksInvokeResult> getCertificatePacksOutput(
 ///
 /// const exampleClientCertificate = cloudflare.getClientCertificate({
 ///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     clientCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     clientCertificateId: "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
 /// });
 /// ```
 /// ```python
@@ -8616,7 +8658,7 @@ pulumi.Output<GetCertificatePacksInvokeResult> getCertificatePacksOutput(
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_client_certificate = cloudflare.get_client_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     client_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
+///     client_certificate_id="0d89c70d-ad9f-4843-b99f-6cc0252067e9")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -8629,7 +8671,7 @@ pulumi.Output<GetCertificatePacksInvokeResult> getCertificatePacksOutput(
 ///     var exampleClientCertificate = Cloudflare.GetClientCertificate.Invoke(new()
 ///     {
 ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         ClientCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         ClientCertificateId = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
 ///     });
 ///
 /// });
@@ -8646,7 +8688,7 @@ pulumi.Output<GetCertificatePacksInvokeResult> getCertificatePacksOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetClientCertificate(ctx, &cloudflare.LookupClientCertificateArgs{
 /// 			ZoneId:              pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			ClientCertificateId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			ClientCertificateId: pulumi.StringRef("0d89c70d-ad9f-4843-b99f-6cc0252067e9"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -8656,7 +8698,7 @@ pulumi.Output<GetCertificatePacksInvokeResult> getCertificatePacksOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -8664,9 +8706,9 @@ pulumi.Output<GetCertificatePacksInvokeResult> getCertificatePacksOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getclientcertificate" "exampleClientCertificate" {
+/// data "cloudflare_client_certificate" "exampleClientCertificate" {
 ///   zone_id               = "023e105f4ecef8ad9ca31a8372d0c353"
-///   client_certificate_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   client_certificate_id = "0d89c70d-ad9f-4843-b99f-6cc0252067e9"
 /// }
 /// ```
 /// ```java
@@ -8692,7 +8734,7 @@ pulumi.Output<GetCertificatePacksInvokeResult> getCertificatePacksOutput(
 ///     public static void stack(Context ctx) {
 ///         final var exampleClientCertificate = CloudflareFunctions.getClientCertificate(GetClientCertificateArgs.builder()
 ///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .clientCertificateId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .clientCertificateId("0d89c70d-ad9f-4843-b99f-6cc0252067e9")
 ///             .build());
 ///
 ///     }
@@ -8705,7 +8747,7 @@ pulumi.Output<GetCertificatePacksInvokeResult> getCertificatePacksOutput(
 ///       function: cloudflare:getClientCertificate
 ///       arguments:
 ///         zoneId: 023e105f4ecef8ad9ca31a8372d0c353
-///         clientCertificateId: 023e105f4ecef8ad9ca31a8372d0c353
+///         clientCertificateId: 0d89c70d-ad9f-4843-b99f-6cc0252067e9
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_client_certificate_get_client_certificate_args_doc}
 /// [options] Invoke options controlling this call.
@@ -8803,7 +8845,7 @@ pulumi.Output<GetClientCertificateResult> getClientCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -8811,7 +8853,7 @@ pulumi.Output<GetClientCertificateResult> getClientCertificateOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getclientcertificates" "exampleClientCertificates" {
+/// data "cloudflare_client_certificates" "exampleClientCertificates" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   limit   = 10
 ///   offset  = 10
@@ -8934,7 +8976,7 @@ pulumi.Output<GetClientCertificatesInvokeResult> getClientCertificatesOutput(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetCloudConnectorRules(ctx, &cloudflare.LookupCloudConnectorRulesArgs{
-/// 			ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -8944,7 +8986,7 @@ pulumi.Output<GetClientCertificatesInvokeResult> getClientCertificatesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -8952,7 +8994,7 @@ pulumi.Output<GetClientCertificatesInvokeResult> getClientCertificatesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcloudconnectorrules" "exampleCloudConnectorRules" {
+/// data "cloudflare_cloud_connector_rules" "exampleCloudConnectorRules" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -9080,7 +9122,7 @@ pulumi.Output<GetCloudConnectorRulesResult> getCloudConnectorRulesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -9088,7 +9130,7 @@ pulumi.Output<GetCloudConnectorRulesResult> getCloudConnectorRulesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcloudforceonerequest" "exampleCloudforceOneRequest" {
+/// data "cloudflare_cloudforce_one_request" "exampleCloudforceOneRequest" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   request_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -9223,7 +9265,7 @@ pulumi.Output<GetCloudforceOneRequestResult> getCloudforceOneRequestOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -9231,7 +9273,7 @@ pulumi.Output<GetCloudforceOneRequestResult> getCloudforceOneRequestOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcloudforceonerequestasset" "exampleCloudforceOneRequestAsset" {
+/// data "cloudflare_cloudforce_one_request_asset" "exampleCloudforceOneRequestAsset" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   request_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   asset_id   = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
@@ -9388,7 +9430,7 @@ pulumi.Output<GetCloudforceOneRequestAssetResult> getCloudforceOneRequestAssetOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -9396,7 +9438,7 @@ pulumi.Output<GetCloudforceOneRequestAssetResult> getCloudforceOneRequestAssetOu
 ///   }
 /// }
 ///
-/// data "cloudflare_getcloudforceonerequestmessage" "exampleCloudforceOneRequestMessage" {
+/// data "cloudflare_cloudforce_one_request_message" "exampleCloudforceOneRequestMessage" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   request_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   page       = 0
@@ -9545,7 +9587,7 @@ pulumi.Output<GetCloudforceOneRequestMessageResult> getCloudforceOneRequestMessa
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -9553,7 +9595,7 @@ pulumi.Output<GetCloudforceOneRequestMessageResult> getCloudforceOneRequestMessa
 ///   }
 /// }
 ///
-/// data "cloudflare_getcloudforceonerequestpriority" "exampleCloudforceOneRequestPriority" {
+/// data "cloudflare_cloudforce_one_request_priority" "exampleCloudforceOneRequestPriority" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   priority_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -9719,7 +9761,7 @@ pulumi.Output<GetCloudforceOneRequestPriorityResult> getCloudforceOneRequestPrio
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -9727,7 +9769,7 @@ pulumi.Output<GetCloudforceOneRequestPriorityResult> getCloudforceOneRequestPrio
 ///   }
 /// }
 ///
-/// data "cloudflare_getcloudforceonerequests" "exampleCloudforceOneRequests" {
+/// data "cloudflare_cloudforce_one_requests" "exampleCloudforceOneRequests" {
 ///   account_id       = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   page             = 0
 ///   per_page         = 10
@@ -9880,7 +9922,7 @@ pulumi.Output<GetCloudforceOneRequestsInvokeResult> getCloudforceOneRequestsOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -9888,7 +9930,7 @@ pulumi.Output<GetCloudforceOneRequestsInvokeResult> getCloudforceOneRequestsOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getconnectivitydirectoryservice" "exampleConnectivityDirectoryService" {
+/// data "cloudflare_connectivity_directory_service" "exampleConnectivityDirectoryService" {
 ///   account_id = "account_id"
 ///   service_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -10014,7 +10056,7 @@ pulumi.Output<GetConnectivityDirectoryServiceResult> getConnectivityDirectorySer
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -10022,7 +10064,7 @@ pulumi.Output<GetConnectivityDirectoryServiceResult> getConnectivityDirectorySer
 ///   }
 /// }
 ///
-/// data "cloudflare_getconnectivitydirectoryservices" "exampleConnectivityDirectoryServices" {
+/// data "cloudflare_connectivity_directory_services" "exampleConnectivityDirectoryServices" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   type       = "tcp"
 /// }
@@ -10151,7 +10193,7 @@ pulumi.Output<GetConnectivityDirectoryServicesInvokeResult> getConnectivityDirec
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -10159,7 +10201,7 @@ pulumi.Output<GetConnectivityDirectoryServicesInvokeResult> getConnectivityDirec
 ///   }
 /// }
 ///
-/// data "cloudflare_getcontentscanning" "exampleContentScanning" {
+/// data "cloudflare_content_scanning" "exampleContentScanning" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -10285,7 +10327,7 @@ pulumi.Output<GetContentScanningResult> getContentScanningOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -10293,7 +10335,7 @@ pulumi.Output<GetContentScanningResult> getContentScanningOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcontentscanningexpressions" "exampleContentScanningExpressions" {
+/// data "cloudflare_content_scanning_expressions" "exampleContentScanningExpressions" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -10417,7 +10459,7 @@ pulumi.Output<GetContentScanningExpressionsInvokeResult> getContentScanningExpre
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -10425,7 +10467,7 @@ pulumi.Output<GetContentScanningExpressionsInvokeResult> getContentScanningExpre
 ///   }
 /// }
 ///
-/// data "cloudflare_getctalerting" "exampleCtAlerting" {
+/// data "cloudflare_ct_alerting" "exampleCtAlerting" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -10557,7 +10599,7 @@ pulumi.Output<GetCtAlertingResult> getCtAlertingOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -10565,7 +10607,7 @@ pulumi.Output<GetCtAlertingResult> getCtAlertingOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcustomcsr" "exampleCustomCsr" {
+/// data "cloudflare_custom_csr" "exampleCustomCsr" {
 ///   custom_csr_id = "7b163417-1d2b-4c84-a38a-2fb7a0cd7752"
 ///   account_id    = "account_id"
 ///   zone_id       = "zone_id"
@@ -10699,7 +10741,7 @@ pulumi.Output<GetCustomCsrResult> getCustomCsrOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -10707,7 +10749,7 @@ pulumi.Output<GetCustomCsrResult> getCustomCsrOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcustomcsrs" "exampleCustomCsrs" {
+/// data "cloudflare_custom_csrs" "exampleCustomCsrs" {
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
 /// }
@@ -10790,7 +10832,7 @@ pulumi.Output<GetCustomCsrsInvokeResult> getCustomCsrsOutput(
 ///
 /// const exampleCustomHostname = cloudflare.getCustomHostname({
 ///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     customHostnameId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     customHostnameId: "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
 /// });
 /// ```
 /// ```python
@@ -10798,7 +10840,7 @@ pulumi.Output<GetCustomCsrsInvokeResult> getCustomCsrsOutput(
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_custom_hostname = cloudflare.get_custom_hostname(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     custom_hostname_id="023e105f4ecef8ad9ca31a8372d0c353")
+///     custom_hostname_id="0d89c70d-ad9f-4843-b99f-6cc0252067e9")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -10811,7 +10853,7 @@ pulumi.Output<GetCustomCsrsInvokeResult> getCustomCsrsOutput(
 ///     var exampleCustomHostname = Cloudflare.GetCustomHostname.Invoke(new()
 ///     {
 ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         CustomHostnameId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         CustomHostnameId = "0d89c70d-ad9f-4843-b99f-6cc0252067e9",
 ///     });
 ///
 /// });
@@ -10828,7 +10870,7 @@ pulumi.Output<GetCustomCsrsInvokeResult> getCustomCsrsOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetCustomHostname(ctx, &cloudflare.LookupCustomHostnameArgs{
 /// 			ZoneId:           pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			CustomHostnameId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			CustomHostnameId: pulumi.StringRef("0d89c70d-ad9f-4843-b99f-6cc0252067e9"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -10838,7 +10880,7 @@ pulumi.Output<GetCustomCsrsInvokeResult> getCustomCsrsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -10846,9 +10888,9 @@ pulumi.Output<GetCustomCsrsInvokeResult> getCustomCsrsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcustomhostname" "exampleCustomHostname" {
+/// data "cloudflare_custom_hostname" "exampleCustomHostname" {
 ///   zone_id            = "023e105f4ecef8ad9ca31a8372d0c353"
-///   custom_hostname_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   custom_hostname_id = "0d89c70d-ad9f-4843-b99f-6cc0252067e9"
 /// }
 /// ```
 /// ```java
@@ -10874,7 +10916,7 @@ pulumi.Output<GetCustomCsrsInvokeResult> getCustomCsrsOutput(
 ///     public static void stack(Context ctx) {
 ///         final var exampleCustomHostname = CloudflareFunctions.getCustomHostname(GetCustomHostnameArgs.builder()
 ///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .customHostnameId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .customHostnameId("0d89c70d-ad9f-4843-b99f-6cc0252067e9")
 ///             .build());
 ///
 ///     }
@@ -10887,7 +10929,7 @@ pulumi.Output<GetCustomCsrsInvokeResult> getCustomCsrsOutput(
 ///       function: cloudflare:getCustomHostname
 ///       arguments:
 ///         zoneId: 023e105f4ecef8ad9ca31a8372d0c353
-///         customHostnameId: 023e105f4ecef8ad9ca31a8372d0c353
+///         customHostnameId: 0d89c70d-ad9f-4843-b99f-6cc0252067e9
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_custom_hostname_get_custom_hostname_args_doc}
 /// [options] Invoke options controlling this call.
@@ -10973,7 +11015,7 @@ pulumi.Output<GetCustomHostnameResult> getCustomHostnameOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -10981,7 +11023,7 @@ pulumi.Output<GetCustomHostnameResult> getCustomHostnameOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcustomhostnamefallbackorigin" "exampleCustomHostnameFallbackOrigin" {
+/// data "cloudflare_custom_hostname_fallback_origin" "exampleCustomHostnameFallbackOrigin" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -11071,7 +11113,6 @@ pulumi.Output<GetCustomHostnameFallbackOriginResult> getCustomHostnameFallbackOr
 ///         startsWith: "app",
 ///     },
 ///     hostnameStatus: "provisioned",
-///     ssl: 0,
 ///     sslStatus: "active",
 ///     wildcard: false,
 /// });
@@ -11091,7 +11132,6 @@ pulumi.Output<GetCustomHostnameFallbackOriginResult> getCustomHostnameFallbackOr
 ///         "starts_with": "app",
 ///     },
 ///     hostname_status="provisioned",
-///     ssl=0,
 ///     ssl_status="active",
 ///     wildcard=False)
 /// ```
@@ -11117,7 +11157,6 @@ pulumi.Output<GetCustomHostnameFallbackOriginResult> getCustomHostnameFallbackOr
 ///             StartsWith = "app",
 ///         },
 ///         HostnameStatus = "provisioned",
-///         Ssl = 0,
 ///         SslStatus = "active",
 ///         Wildcard = false,
 ///     });
@@ -11146,7 +11185,6 @@ pulumi.Output<GetCustomHostnameFallbackOriginResult> getCustomHostnameFallbackOr
 /// 				StartsWith: pulumi.StringRef("app"),
 /// 			},
 /// 			HostnameStatus: pulumi.StringRef("provisioned"),
-/// 			Ssl:            pulumi.IntRef(0),
 /// 			SslStatus:      pulumi.StringRef("active"),
 /// 			Wildcard:       pulumi.BoolRef(false),
 /// 		}, nil)
@@ -11158,7 +11196,7 @@ pulumi.Output<GetCustomHostnameFallbackOriginResult> getCustomHostnameFallbackOr
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -11166,7 +11204,7 @@ pulumi.Output<GetCustomHostnameFallbackOriginResult> getCustomHostnameFallbackOr
 ///   }
 /// }
 ///
-/// data "cloudflare_getcustomhostnames" "exampleCustomHostnames" {
+/// data "cloudflare_custom_hostnames" "exampleCustomHostnames" {
 ///   zone_id               = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   id                    = "0d89c70d-ad9f-4843-b99f-6cc0252067e9"
 ///   certificate_authority = "google"
@@ -11178,7 +11216,6 @@ pulumi.Output<GetCustomHostnameFallbackOriginResult> getCustomHostnameFallbackOr
 ///     starts_with = "app"
 ///   }
 ///   hostname_status = "provisioned"
-///   ssl             = 0
 ///   ssl_status      = "active"
 ///   wildcard        = false
 /// }
@@ -11217,7 +11254,6 @@ pulumi.Output<GetCustomHostnameFallbackOriginResult> getCustomHostnameFallbackOr
 ///                 .startsWith("app")
 ///                 .build())
 ///             .hostnameStatus("provisioned")
-///             .ssl(0)
 ///             .sslStatus("active")
 ///             .wildcard(false)
 ///             .build());
@@ -11241,7 +11277,6 @@ pulumi.Output<GetCustomHostnameFallbackOriginResult> getCustomHostnameFallbackOr
 ///           exact: app.example.com
 ///           startsWith: app
 ///         hostnameStatus: provisioned
-///         ssl: 0
 ///         sslStatus: active
 ///         wildcard: false
 /// ```
@@ -11285,7 +11320,7 @@ pulumi.Output<GetCustomHostnamesInvokeResult> getCustomHostnamesOutput(
 ///
 /// const exampleCustomOriginTrustStore = cloudflare.getCustomOriginTrustStore({
 ///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     customOriginTrustStoreId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     customOriginTrustStoreId: "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
 /// });
 /// ```
 /// ```python
@@ -11293,7 +11328,7 @@ pulumi.Output<GetCustomHostnamesInvokeResult> getCustomHostnamesOutput(
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_custom_origin_trust_store = cloudflare.get_custom_origin_trust_store(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     custom_origin_trust_store_id="023e105f4ecef8ad9ca31a8372d0c353")
+///     custom_origin_trust_store_id="2458ce5a-0c35-4c7f-82c7-8e9487d3ff60")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -11306,7 +11341,7 @@ pulumi.Output<GetCustomHostnamesInvokeResult> getCustomHostnamesOutput(
 ///     var exampleCustomOriginTrustStore = Cloudflare.GetCustomOriginTrustStore.Invoke(new()
 ///     {
 ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         CustomOriginTrustStoreId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         CustomOriginTrustStoreId = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
 ///     });
 ///
 /// });
@@ -11323,7 +11358,7 @@ pulumi.Output<GetCustomHostnamesInvokeResult> getCustomHostnamesOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetCustomOriginTrustStore(ctx, &cloudflare.LookupCustomOriginTrustStoreArgs{
 /// 			ZoneId:                   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			CustomOriginTrustStoreId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			CustomOriginTrustStoreId: pulumi.StringRef("2458ce5a-0c35-4c7f-82c7-8e9487d3ff60"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -11333,7 +11368,7 @@ pulumi.Output<GetCustomHostnamesInvokeResult> getCustomHostnamesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -11341,9 +11376,9 @@ pulumi.Output<GetCustomHostnamesInvokeResult> getCustomHostnamesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcustomorigintruststore" "exampleCustomOriginTrustStore" {
+/// data "cloudflare_custom_origin_trust_store" "exampleCustomOriginTrustStore" {
 ///   zone_id                      = "023e105f4ecef8ad9ca31a8372d0c353"
-///   custom_origin_trust_store_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   custom_origin_trust_store_id = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60"
 /// }
 /// ```
 /// ```java
@@ -11369,7 +11404,7 @@ pulumi.Output<GetCustomHostnamesInvokeResult> getCustomHostnamesOutput(
 ///     public static void stack(Context ctx) {
 ///         final var exampleCustomOriginTrustStore = CloudflareFunctions.getCustomOriginTrustStore(GetCustomOriginTrustStoreArgs.builder()
 ///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .customOriginTrustStoreId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .customOriginTrustStoreId("2458ce5a-0c35-4c7f-82c7-8e9487d3ff60")
 ///             .build());
 ///
 ///     }
@@ -11382,7 +11417,7 @@ pulumi.Output<GetCustomHostnamesInvokeResult> getCustomHostnamesOutput(
 ///       function: cloudflare:getCustomOriginTrustStore
 ///       arguments:
 ///         zoneId: 023e105f4ecef8ad9ca31a8372d0c353
-///         customOriginTrustStoreId: 023e105f4ecef8ad9ca31a8372d0c353
+///         customOriginTrustStoreId: 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_custom_origin_trust_store_get_custom_origin_trust_store_args_doc}
 /// [options] Invoke options controlling this call.
@@ -11476,7 +11511,7 @@ pulumi.Output<GetCustomOriginTrustStoreResult> getCustomOriginTrustStoreOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -11484,7 +11519,7 @@ pulumi.Output<GetCustomOriginTrustStoreResult> getCustomOriginTrustStoreOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcustomorigintruststores" "exampleCustomOriginTrustStores" {
+/// data "cloudflare_custom_origin_trust_stores" "exampleCustomOriginTrustStores" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   limit   = 10
 ///   offset  = 10
@@ -11617,7 +11652,7 @@ pulumi.Output<GetCustomOriginTrustStoresInvokeResult> getCustomOriginTrustStores
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -11625,7 +11660,7 @@ pulumi.Output<GetCustomOriginTrustStoresInvokeResult> getCustomOriginTrustStores
 ///   }
 /// }
 ///
-/// data "cloudflare_getcustompageasset" "exampleCustomPageAsset" {
+/// data "cloudflare_custom_page_asset" "exampleCustomPageAsset" {
 ///   asset_name = "my_custom_error_page"
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
@@ -11754,7 +11789,7 @@ pulumi.Output<GetCustomPageAssetResult> getCustomPageAssetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -11762,7 +11797,7 @@ pulumi.Output<GetCustomPageAssetResult> getCustomPageAssetOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcustompageassets" "exampleCustomPageAssets" {
+/// data "cloudflare_custom_page_assets" "exampleCustomPageAssets" {
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
 /// }
@@ -11900,7 +11935,7 @@ pulumi.Output<GetCustomPageAssetsInvokeResult> getCustomPageAssetsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -11908,7 +11943,7 @@ pulumi.Output<GetCustomPageAssetsInvokeResult> getCustomPageAssetsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcustompages" "exampleCustomPages" {
+/// data "cloudflare_custom_pages" "exampleCustomPages" {
 ///   identifier = "ratelimit_block"
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
@@ -12045,7 +12080,7 @@ pulumi.Output<GetCustomPagesResult> getCustomPagesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -12053,7 +12088,7 @@ pulumi.Output<GetCustomPagesResult> getCustomPagesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcustompageslist" "exampleCustomPagesList" {
+/// data "cloudflare_custom_pages_list" "exampleCustomPagesList" {
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
 /// }
@@ -12138,7 +12173,7 @@ pulumi.Output<GetCustomPagesListInvokeResult> getCustomPagesListOutput(
 ///
 /// const exampleCustomSsl = cloudflare.getCustomSsl({
 ///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     customCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     customCertificateId: "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
 /// });
 /// ```
 /// ```python
@@ -12146,7 +12181,7 @@ pulumi.Output<GetCustomPagesListInvokeResult> getCustomPagesListOutput(
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_custom_ssl = cloudflare.get_custom_ssl(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     custom_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
+///     custom_certificate_id="2458ce5a-0c35-4c7f-82c7-8e9487d3ff60")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -12159,7 +12194,7 @@ pulumi.Output<GetCustomPagesListInvokeResult> getCustomPagesListOutput(
 ///     var exampleCustomSsl = Cloudflare.GetCustomSsl.Invoke(new()
 ///     {
 ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         CustomCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         CustomCertificateId = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
 ///     });
 ///
 /// });
@@ -12176,7 +12211,7 @@ pulumi.Output<GetCustomPagesListInvokeResult> getCustomPagesListOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetCustomSsl(ctx, &cloudflare.LookupCustomSslArgs{
 /// 			ZoneId:              pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			CustomCertificateId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			CustomCertificateId: pulumi.StringRef("2458ce5a-0c35-4c7f-82c7-8e9487d3ff60"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -12186,7 +12221,7 @@ pulumi.Output<GetCustomPagesListInvokeResult> getCustomPagesListOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -12194,9 +12229,9 @@ pulumi.Output<GetCustomPagesListInvokeResult> getCustomPagesListOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcustomssl" "exampleCustomSsl" {
+/// data "cloudflare_custom_ssl" "exampleCustomSsl" {
 ///   zone_id               = "023e105f4ecef8ad9ca31a8372d0c353"
-///   custom_certificate_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   custom_certificate_id = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60"
 /// }
 /// ```
 /// ```java
@@ -12222,7 +12257,7 @@ pulumi.Output<GetCustomPagesListInvokeResult> getCustomPagesListOutput(
 ///     public static void stack(Context ctx) {
 ///         final var exampleCustomSsl = CloudflareFunctions.getCustomSsl(GetCustomSslArgs.builder()
 ///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .customCertificateId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .customCertificateId("2458ce5a-0c35-4c7f-82c7-8e9487d3ff60")
 ///             .build());
 ///
 ///     }
@@ -12235,7 +12270,7 @@ pulumi.Output<GetCustomPagesListInvokeResult> getCustomPagesListOutput(
 ///       function: cloudflare:getCustomSsl
 ///       arguments:
 ///         zoneId: 023e105f4ecef8ad9ca31a8372d0c353
-///         customCertificateId: 023e105f4ecef8ad9ca31a8372d0c353
+///         customCertificateId: 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_custom_ssl_get_custom_ssl_args_doc}
 /// [options] Invoke options controlling this call.
@@ -12327,7 +12362,7 @@ pulumi.Output<GetCustomSslResult> getCustomSslOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -12335,7 +12370,7 @@ pulumi.Output<GetCustomSslResult> getCustomSslOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getcustomssls" "exampleCustomSsls" {
+/// data "cloudflare_custom_ssls" "exampleCustomSsls" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   status  = "active"
 /// }
@@ -12475,7 +12510,7 @@ pulumi.Output<GetCustomSslsInvokeResult> getCustomSslsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -12483,7 +12518,7 @@ pulumi.Output<GetCustomSslsInvokeResult> getCustomSslsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getd1database" "exampleD1Database" {
+/// data "cloudflare_d1_database" "exampleD1Database" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   database_id = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ///   fields      = ["uuid"]
@@ -12618,7 +12653,7 @@ pulumi.Output<GetD1DatabaseResult> getD1DatabaseOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -12626,7 +12661,7 @@ pulumi.Output<GetD1DatabaseResult> getD1DatabaseOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getd1databases" "exampleD1Databases" {
+/// data "cloudflare_d1_databases" "exampleD1Databases" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "name"
 /// }
@@ -12753,7 +12788,7 @@ pulumi.Output<GetD1DatabasesInvokeResult> getD1DatabasesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -12761,7 +12796,7 @@ pulumi.Output<GetD1DatabasesInvokeResult> getD1DatabasesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getdcvdelegation" "exampleDcvDelegation" {
+/// data "cloudflare_dcv_delegation" "exampleDcvDelegation" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -12827,11 +12862,6 @@ pulumi.Output<GetDcvDelegationResult> getDcvDelegationOutput(
   ).apply(GetDcvDelegationResult.fromMap);
 }
 
-/// Accepted Permissions
-///
-/// - `DLS: Read`
-/// - `DLS: Write`
-///
 /// ## Example Usage
 ///
 ///
@@ -12889,7 +12919,7 @@ pulumi.Output<GetDcvDelegationResult> getDcvDelegationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -12897,7 +12927,7 @@ pulumi.Output<GetDcvDelegationResult> getDcvDelegationOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getdlsprefixbinding" "exampleDlsPrefixBinding" {
+/// data "cloudflare_dls_prefix_binding" "exampleDlsPrefixBinding" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   binding_id = "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
 /// }
@@ -12966,11 +12996,6 @@ pulumi.Output<GetDlsPrefixBindingResult> getDlsPrefixBindingOutput(
   ).apply(GetDlsPrefixBindingResult.fromMap);
 }
 
-/// Accepted Permissions
-///
-/// - `DLS: Read`
-/// - `DLS: Write`
-///
 /// ## Example Usage
 ///
 ///
@@ -13024,7 +13049,7 @@ pulumi.Output<GetDlsPrefixBindingResult> getDlsPrefixBindingOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -13032,7 +13057,7 @@ pulumi.Output<GetDlsPrefixBindingResult> getDlsPrefixBindingOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getdlsprefixbindings" "exampleDlsPrefixBindings" {
+/// data "cloudflare_dls_prefix_bindings" "exampleDlsPrefixBindings" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -13160,7 +13185,7 @@ pulumi.Output<GetDlsPrefixBindingsInvokeResult> getDlsPrefixBindingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -13168,7 +13193,7 @@ pulumi.Output<GetDlsPrefixBindingsInvokeResult> getDlsPrefixBindingsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getdnsfirewall" "exampleDnsFirewall" {
+/// data "cloudflare_dns_firewall" "exampleDnsFirewall" {
 ///   account_id      = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   dns_firewall_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -13295,7 +13320,7 @@ pulumi.Output<GetDnsFirewallResult> getDnsFirewallOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -13303,7 +13328,7 @@ pulumi.Output<GetDnsFirewallResult> getDnsFirewallOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getdnsfirewalls" "exampleDnsFirewalls" {
+/// data "cloudflare_dns_firewalls" "exampleDnsFirewalls" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -13435,7 +13460,7 @@ pulumi.Output<GetDnsFirewallsInvokeResult> getDnsFirewallsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -13443,7 +13468,7 @@ pulumi.Output<GetDnsFirewallsInvokeResult> getDnsFirewallsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getdnsrecord" "exampleDnsRecord" {
+/// data "cloudflare_dns_record" "exampleDnsRecord" {
 ///   zone_id                 = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   dns_record_id           = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   include_shadow_metadata = true
@@ -13705,7 +13730,7 @@ pulumi.Output<GetDnsRecordResult> getDnsRecordOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -13713,7 +13738,7 @@ pulumi.Output<GetDnsRecordResult> getDnsRecordOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getdnsrecords" "exampleDnsRecords" {
+/// data "cloudflare_dns_records" "exampleDnsRecords" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   comment = {
 ///     absent     = "absent"
@@ -13937,7 +13962,7 @@ pulumi.Output<GetDnsRecordsInvokeResult> getDnsRecordsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -13945,7 +13970,7 @@ pulumi.Output<GetDnsRecordsInvokeResult> getDnsRecordsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getdnszonetransfersacl" "exampleDnsZoneTransfersAcl" {
+/// data "cloudflare_dns_zone_transfers_acl" "exampleDnsZoneTransfersAcl" {
 ///   account_id = "01a7362d577a6c3019a474fd6f485823"
 ///   acl_id     = "23ff594956f20c2a721606e94745a8aa"
 /// }
@@ -14072,7 +14097,7 @@ pulumi.Output<GetDnsZoneTransfersAclResult> getDnsZoneTransfersAclOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -14080,7 +14105,7 @@ pulumi.Output<GetDnsZoneTransfersAclResult> getDnsZoneTransfersAclOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getdnszonetransfersacls" "exampleDnsZoneTransfersAcls" {
+/// data "cloudflare_dns_zone_transfers_acls" "exampleDnsZoneTransfersAcls" {
 ///   account_id = "01a7362d577a6c3019a474fd6f485823"
 /// }
 /// ```
@@ -14207,7 +14232,7 @@ pulumi.Output<GetDnsZoneTransfersAclsInvokeResult> getDnsZoneTransfersAclsOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -14215,7 +14240,7 @@ pulumi.Output<GetDnsZoneTransfersAclsInvokeResult> getDnsZoneTransfersAclsOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getdnszonetransfersincoming" "exampleDnsZoneTransfersIncoming" {
+/// data "cloudflare_dns_zone_transfers_incoming" "exampleDnsZoneTransfersIncoming" {
 ///   zone_id = "269d8f4853475ca241c4e730be286b20"
 /// }
 /// ```
@@ -14342,7 +14367,7 @@ pulumi.Output<GetDnsZoneTransfersIncomingResult> getDnsZoneTransfersIncomingOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -14350,7 +14375,7 @@ pulumi.Output<GetDnsZoneTransfersIncomingResult> getDnsZoneTransfersIncomingOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getdnszonetransfersoutgoing" "exampleDnsZoneTransfersOutgoing" {
+/// data "cloudflare_dns_zone_transfers_outgoing" "exampleDnsZoneTransfersOutgoing" {
 ///   zone_id = "269d8f4853475ca241c4e730be286b20"
 /// }
 /// ```
@@ -14478,7 +14503,7 @@ pulumi.Output<GetDnsZoneTransfersOutgoingResult> getDnsZoneTransfersOutgoingOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -14486,7 +14511,7 @@ pulumi.Output<GetDnsZoneTransfersOutgoingResult> getDnsZoneTransfersOutgoingOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getdnszonetransferspeer" "exampleDnsZoneTransfersPeer" {
+/// data "cloudflare_dns_zone_transfers_peer" "exampleDnsZoneTransfersPeer" {
 ///   account_id = "01a7362d577a6c3019a474fd6f485823"
 ///   peer_id    = "23ff594956f20c2a721606e94745a8aa"
 /// }
@@ -14613,7 +14638,7 @@ pulumi.Output<GetDnsZoneTransfersPeerResult> getDnsZoneTransfersPeerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -14621,7 +14646,7 @@ pulumi.Output<GetDnsZoneTransfersPeerResult> getDnsZoneTransfersPeerOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getdnszonetransferspeers" "exampleDnsZoneTransfersPeers" {
+/// data "cloudflare_dns_zone_transfers_peers" "exampleDnsZoneTransfersPeers" {
 ///   account_id = "01a7362d577a6c3019a474fd6f485823"
 /// }
 /// ```
@@ -14749,7 +14774,7 @@ pulumi.Output<GetDnsZoneTransfersPeersInvokeResult> getDnsZoneTransfersPeersOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -14757,7 +14782,7 @@ pulumi.Output<GetDnsZoneTransfersPeersInvokeResult> getDnsZoneTransfersPeersOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getdnszonetransferstsig" "exampleDnsZoneTransfersTsig" {
+/// data "cloudflare_dns_zone_transfers_tsig" "exampleDnsZoneTransfersTsig" {
 ///   account_id = "01a7362d577a6c3019a474fd6f485823"
 ///   tsig_id    = "69cd1e104af3e6ed3cb344f263fd0d5a"
 /// }
@@ -14884,7 +14909,7 @@ pulumi.Output<GetDnsZoneTransfersTsigResult> getDnsZoneTransfersTsigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -14892,7 +14917,7 @@ pulumi.Output<GetDnsZoneTransfersTsigResult> getDnsZoneTransfersTsigOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getdnszonetransferstsigs" "exampleDnsZoneTransfersTsigs" {
+/// data "cloudflare_dns_zone_transfers_tsigs" "exampleDnsZoneTransfersTsigs" {
 ///   account_id = "01a7362d577a6c3019a474fd6f485823"
 /// }
 /// ```
@@ -15020,7 +15045,7 @@ pulumi.Output<GetDnsZoneTransfersTsigsInvokeResult> getDnsZoneTransfersTsigsOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -15028,7 +15053,7 @@ pulumi.Output<GetDnsZoneTransfersTsigsInvokeResult> getDnsZoneTransfersTsigsOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getemailroutingaddress" "exampleEmailRoutingAddress" {
+/// data "cloudflare_email_routing_address" "exampleEmailRoutingAddress" {
 ///   account_id                     = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   destination_address_identifier = "ea95132c15732412d22c1476fa83f27a"
 /// }
@@ -15155,7 +15180,7 @@ pulumi.Output<GetEmailRoutingAddressResult> getEmailRoutingAddressOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -15163,7 +15188,7 @@ pulumi.Output<GetEmailRoutingAddressResult> getEmailRoutingAddressOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getemailroutingaddresses" "exampleEmailRoutingAddresses" {
+/// data "cloudflare_email_routing_addresses" "exampleEmailRoutingAddresses" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -15287,7 +15312,7 @@ pulumi.Output<GetEmailRoutingAddressesInvokeResult> getEmailRoutingAddressesOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -15295,7 +15320,7 @@ pulumi.Output<GetEmailRoutingAddressesInvokeResult> getEmailRoutingAddressesOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getemailroutingcatchall" "exampleEmailRoutingCatchAll" {
+/// data "cloudflare_email_routing_catch_all" "exampleEmailRoutingCatchAll" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -15412,7 +15437,7 @@ pulumi.Output<GetEmailRoutingCatchAllResult> getEmailRoutingCatchAllOutput(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetEmailRoutingDns(ctx, &cloudflare.LookupEmailRoutingDnsArgs{
-/// 			ZoneId:    pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			ZoneId:    "023e105f4ecef8ad9ca31a8372d0c353",
 /// 			Subdomain: pulumi.StringRef("example.net"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -15423,7 +15448,7 @@ pulumi.Output<GetEmailRoutingCatchAllResult> getEmailRoutingCatchAllOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -15431,7 +15456,7 @@ pulumi.Output<GetEmailRoutingCatchAllResult> getEmailRoutingCatchAllOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getemailroutingdns" "exampleEmailRoutingDns" {
+/// data "cloudflare_email_routing_dns" "exampleEmailRoutingDns" {
 ///   zone_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   subdomain = "example.net"
 /// }
@@ -15476,7 +15501,7 @@ pulumi.Output<GetEmailRoutingCatchAllResult> getEmailRoutingCatchAllOutput(
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_email_routing_dns_get_email_routing_dns_args_doc}
 /// [options] Invoke options controlling this call.
-Future<GetEmailRoutingDnsInvokeResult> getEmailRoutingDns(
+Future<GetEmailRoutingDnsResult> getEmailRoutingDns(
   GetEmailRoutingDnsArgs args, {
   pulumi.InvokeOptions? options,
 }) async {
@@ -15486,10 +15511,10 @@ Future<GetEmailRoutingDnsInvokeResult> getEmailRoutingDns(
     args.toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
-  return GetEmailRoutingDnsInvokeResult.fromMap(result);
+  return GetEmailRoutingDnsResult.fromMap(result);
 }
 
-pulumi.Output<GetEmailRoutingDnsInvokeResult> getEmailRoutingDnsOutput(
+pulumi.Output<GetEmailRoutingDnsResult> getEmailRoutingDnsOutput(
   GetEmailRoutingDnsArgs args, {
   pulumi.InvokeOutputOptions? options,
 }) {
@@ -15497,7 +15522,7 @@ pulumi.Output<GetEmailRoutingDnsInvokeResult> getEmailRoutingDnsOutput(
     'cloudflare:index/getEmailRoutingDns:getEmailRoutingDns',
     pulumi.Input.mapToInputs(args.toMap()),
     options: options,
-  ).apply(GetEmailRoutingDnsInvokeResult.fromMap);
+  ).apply(GetEmailRoutingDnsResult.fromMap);
 }
 
 /// Accepted Permissions
@@ -15562,7 +15587,7 @@ pulumi.Output<GetEmailRoutingDnsInvokeResult> getEmailRoutingDnsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -15570,7 +15595,7 @@ pulumi.Output<GetEmailRoutingDnsInvokeResult> getEmailRoutingDnsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getemailroutingrule" "exampleEmailRoutingRule" {
+/// data "cloudflare_email_routing_rule" "exampleEmailRoutingRule" {
 ///   zone_id         = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   rule_identifier = "a7e6fb77503c41d8a7f3113c6918f10c"
 /// }
@@ -15701,7 +15726,7 @@ pulumi.Output<GetEmailRoutingRuleResult> getEmailRoutingRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -15709,7 +15734,7 @@ pulumi.Output<GetEmailRoutingRuleResult> getEmailRoutingRuleOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getemailroutingrules" "exampleEmailRoutingRules" {
+/// data "cloudflare_email_routing_rules" "exampleEmailRoutingRules" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   enabled = true
 /// }
@@ -15836,7 +15861,7 @@ pulumi.Output<GetEmailRoutingRulesInvokeResult> getEmailRoutingRulesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -15844,7 +15869,7 @@ pulumi.Output<GetEmailRoutingRulesInvokeResult> getEmailRoutingRulesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getemailroutingsettings" "exampleEmailRoutingSettings" {
+/// data "cloudflare_email_routing_settings" "exampleEmailRoutingSettings" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -15922,9 +15947,343 @@ pulumi.Output<GetEmailRoutingSettingsResult> getEmailRoutingSettingsOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as cloudflare from "@pulumi/cloudflare";
 ///
+/// const exampleEmailSecurityAllowPolicies = cloudflare.getEmailSecurityAllowPolicies({
+///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     direction: "asc",
+///     isAcceptableSender: true,
+///     isExemptRecipient: true,
+///     isTrustedSender: true,
+///     order: "pattern",
+///     pattern: "pattern",
+///     patternType: "EMAIL",
+///     search: "search",
+///     verifySender: true,
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_email_security_allow_policies = cloudflare.get_email_security_allow_policies(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     direction="asc",
+///     is_acceptable_sender=True,
+///     is_exempt_recipient=True,
+///     is_trusted_sender=True,
+///     order="pattern",
+///     pattern="pattern",
+///     pattern_type="EMAIL",
+///     search="search",
+///     verify_sender=True)
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleEmailSecurityAllowPolicies = Cloudflare.GetEmailSecurityAllowPolicies.Invoke(new()
+///     {
+///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         Direction = "asc",
+///         IsAcceptableSender = true,
+///         IsExemptRecipient = true,
+///         IsTrustedSender = true,
+///         Order = "pattern",
+///         Pattern = "pattern",
+///         PatternType = "EMAIL",
+///         Search = "search",
+///         VerifySender = true,
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetEmailSecurityAllowPolicies(ctx, &cloudflare.LookupEmailSecurityAllowPoliciesArgs{
+/// 			AccountId:          "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			Direction:          pulumi.StringRef("asc"),
+/// 			IsAcceptableSender: pulumi.BoolRef(true),
+/// 			IsExemptRecipient:  pulumi.BoolRef(true),
+/// 			IsTrustedSender:    pulumi.BoolRef(true),
+/// 			Order:              pulumi.StringRef("pattern"),
+/// 			Pattern:            pulumi.StringRef("pattern"),
+/// 			PatternType:        pulumi.StringRef("EMAIL"),
+/// 			Search:             pulumi.StringRef("search"),
+/// 			VerifySender:       pulumi.BoolRef(true),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_email_security_allow_policies" "exampleEmailSecurityAllowPolicies" {
+///   account_id           = "023e105f4ecef8ad9ca31a8372d0c353"
+///   direction            = "asc"
+///   is_acceptable_sender = true
+///   is_exempt_recipient  = true
+///   is_trusted_sender    = true
+///   order                = "pattern"
+///   pattern              = "pattern"
+///   pattern_type         = "EMAIL"
+///   search               = "search"
+///   verify_sender        = true
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPoliciesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleEmailSecurityAllowPolicies = CloudflareFunctions.getEmailSecurityAllowPolicies(GetEmailSecurityAllowPoliciesArgs.builder()
+///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .direction("asc")
+///             .isAcceptableSender(true)
+///             .isExemptRecipient(true)
+///             .isTrustedSender(true)
+///             .order("pattern")
+///             .pattern("pattern")
+///             .patternType("EMAIL")
+///             .search("search")
+///             .verifySender(true)
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleEmailSecurityAllowPolicies:
+///     fn::invoke:
+///       function: cloudflare:getEmailSecurityAllowPolicies
+///       arguments:
+///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
+///         direction: asc
+///         isAcceptableSender: true
+///         isExemptRecipient: true
+///         isTrustedSender: true
+///         order: pattern
+///         pattern: pattern
+///         patternType: EMAIL
+///         search: search
+///         verifySender: true
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_email_security_allow_policies_get_email_security_allow_policies_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetEmailSecurityAllowPoliciesInvokeResult> getEmailSecurityAllowPolicies(
+  GetEmailSecurityAllowPoliciesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getEmailSecurityAllowPolicies:getEmailSecurityAllowPolicies',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetEmailSecurityAllowPoliciesInvokeResult.fromMap(result);
+}
+
+pulumi.Output<GetEmailSecurityAllowPoliciesInvokeResult> getEmailSecurityAllowPoliciesOutput(
+  GetEmailSecurityAllowPoliciesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getEmailSecurityAllowPolicies:getEmailSecurityAllowPolicies',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEmailSecurityAllowPoliciesInvokeResult.fromMap);
+}
+
+/// Accepted Permissions
+///
+/// - `Cloud Email Security: Read`
+/// - `Cloud Email Security: Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleEmailSecurityAllowPolicy = cloudflare.getEmailSecurityAllowPolicy({
+///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     policyId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_email_security_allow_policy = cloudflare.get_email_security_allow_policy(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     policy_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleEmailSecurityAllowPolicy = Cloudflare.GetEmailSecurityAllowPolicy.Invoke(new()
+///     {
+///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         PolicyId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetEmailSecurityAllowPolicy(ctx, &cloudflare.LookupEmailSecurityAllowPolicyArgs{
+/// 			AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			PolicyId:  pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_email_security_allow_policy" "exampleEmailSecurityAllowPolicy" {
+///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   policy_id  = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetEmailSecurityAllowPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleEmailSecurityAllowPolicy = CloudflareFunctions.getEmailSecurityAllowPolicy(GetEmailSecurityAllowPolicyArgs.builder()
+///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .policyId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleEmailSecurityAllowPolicy:
+///     fn::invoke:
+///       function: cloudflare:getEmailSecurityAllowPolicy
+///       arguments:
+///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
+///         policyId: f174e90a-fafe-4643-bbbc-4a0ed4fc8415
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_email_security_allow_policy_get_email_security_allow_policy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetEmailSecurityAllowPolicyResult> getEmailSecurityAllowPolicy(
+  GetEmailSecurityAllowPolicyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getEmailSecurityAllowPolicy:getEmailSecurityAllowPolicy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetEmailSecurityAllowPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetEmailSecurityAllowPolicyResult> getEmailSecurityAllowPolicyOutput(
+  GetEmailSecurityAllowPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getEmailSecurityAllowPolicy:getEmailSecurityAllowPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEmailSecurityAllowPolicyResult.fromMap);
+}
+
+/// Accepted Permissions
+///
+/// - `Cloud Email Security: Read`
+/// - `Cloud Email Security: Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
 /// const exampleEmailSecurityBlockSender = cloudflare.getEmailSecurityBlockSender({
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     patternId: "2402",
+///     patternId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 /// });
 /// ```
 /// ```python
@@ -15932,7 +16291,7 @@ pulumi.Output<GetEmailRoutingSettingsResult> getEmailRoutingSettingsOutput(
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_email_security_block_sender = cloudflare.get_email_security_block_sender(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     pattern_id="2402")
+///     pattern_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -15945,7 +16304,7 @@ pulumi.Output<GetEmailRoutingSettingsResult> getEmailRoutingSettingsOutput(
 ///     var exampleEmailSecurityBlockSender = Cloudflare.GetEmailSecurityBlockSender.Invoke(new()
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         PatternId = "2402",
+///         PatternId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 ///     });
 ///
 /// });
@@ -15961,8 +16320,8 @@ pulumi.Output<GetEmailRoutingSettingsResult> getEmailRoutingSettingsOutput(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetEmailSecurityBlockSender(ctx, &cloudflare.LookupEmailSecurityBlockSenderArgs{
-/// 			AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			PatternId: pulumi.StringRef("2402"),
+/// 			AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			PatternId: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -15972,7 +16331,7 @@ pulumi.Output<GetEmailRoutingSettingsResult> getEmailRoutingSettingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -15980,9 +16339,9 @@ pulumi.Output<GetEmailRoutingSettingsResult> getEmailRoutingSettingsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getemailsecurityblocksender" "exampleEmailSecurityBlockSender" {
+/// data "cloudflare_email_security_block_sender" "exampleEmailSecurityBlockSender" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
-///   pattern_id = 2402
+///   pattern_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
 /// ```
 /// ```java
@@ -16008,7 +16367,7 @@ pulumi.Output<GetEmailRoutingSettingsResult> getEmailRoutingSettingsOutput(
 ///     public static void stack(Context ctx) {
 ///         final var exampleEmailSecurityBlockSender = CloudflareFunctions.getEmailSecurityBlockSender(GetEmailSecurityBlockSenderArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .patternId("2402")
+///             .patternId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
 ///             .build());
 ///
 ///     }
@@ -16021,7 +16380,7 @@ pulumi.Output<GetEmailRoutingSettingsResult> getEmailRoutingSettingsOutput(
 ///       function: cloudflare:getEmailSecurityBlockSender
 ///       arguments:
 ///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
-///         patternId: 2402
+///         patternId: f174e90a-fafe-4643-bbbc-4a0ed4fc8415
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_email_security_block_sender_get_email_security_block_sender_args_doc}
 /// [options] Invoke options controlling this call.
@@ -16112,7 +16471,7 @@ pulumi.Output<GetEmailSecurityBlockSenderResult> getEmailSecurityBlockSenderOutp
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetEmailSecurityBlockSenders(ctx, &cloudflare.LookupEmailSecurityBlockSendersArgs{
-/// 			AccountId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
 /// 			Direction:   pulumi.StringRef("asc"),
 /// 			Order:       pulumi.StringRef("pattern"),
 /// 			Pattern:     pulumi.StringRef("pattern"),
@@ -16127,7 +16486,7 @@ pulumi.Output<GetEmailSecurityBlockSenderResult> getEmailSecurityBlockSenderOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -16135,7 +16494,7 @@ pulumi.Output<GetEmailSecurityBlockSenderResult> getEmailSecurityBlockSenderOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getemailsecurityblocksenders" "exampleEmailSecurityBlockSenders" {
+/// data "cloudflare_email_security_block_senders" "exampleEmailSecurityBlockSenders" {
 ///   account_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   direction    = "asc"
 ///   order        = "pattern"
@@ -16228,6 +16587,339 @@ pulumi.Output<GetEmailSecurityBlockSendersInvokeResult> getEmailSecurityBlockSen
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as cloudflare from "@pulumi/cloudflare";
 ///
+/// const exampleEmailSecurityDomain = cloudflare.getEmailSecurityDomain({
+///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     domainId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_email_security_domain = cloudflare.get_email_security_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     domain_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleEmailSecurityDomain = Cloudflare.GetEmailSecurityDomain.Invoke(new()
+///     {
+///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         DomainId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetEmailSecurityDomain(ctx, &cloudflare.LookupEmailSecurityDomainArgs{
+/// 			AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			DomainId:  pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_email_security_domain" "exampleEmailSecurityDomain" {
+///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   domain_id  = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleEmailSecurityDomain = CloudflareFunctions.getEmailSecurityDomain(GetEmailSecurityDomainArgs.builder()
+///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .domainId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleEmailSecurityDomain:
+///     fn::invoke:
+///       function: cloudflare:getEmailSecurityDomain
+///       arguments:
+///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
+///         domainId: f174e90a-fafe-4643-bbbc-4a0ed4fc8415
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_email_security_domain_get_email_security_domain_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetEmailSecurityDomainResult> getEmailSecurityDomain(
+  GetEmailSecurityDomainArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getEmailSecurityDomain:getEmailSecurityDomain',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetEmailSecurityDomainResult.fromMap(result);
+}
+
+pulumi.Output<GetEmailSecurityDomainResult> getEmailSecurityDomainOutput(
+  GetEmailSecurityDomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getEmailSecurityDomain:getEmailSecurityDomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEmailSecurityDomainResult.fromMap);
+}
+
+/// Accepted Permissions
+///
+/// - `Cloud Email Security: Read`
+/// - `Cloud Email Security: Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleEmailSecurityDomains = cloudflare.getEmailSecurityDomains({
+///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     activeDeliveryMode: "DIRECT",
+///     allowedDeliveryMode: "DIRECT",
+///     direction: "asc",
+///     domains: ["string"],
+///     integrationId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+///     order: "domain",
+///     search: "search",
+///     status: "PENDING",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_email_security_domains = cloudflare.get_email_security_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     active_delivery_mode="DIRECT",
+///     allowed_delivery_mode="DIRECT",
+///     direction="asc",
+///     domains=["string"],
+///     integration_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+///     order="domain",
+///     search="search",
+///     status="PENDING")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleEmailSecurityDomains = Cloudflare.GetEmailSecurityDomains.Invoke(new()
+///     {
+///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         ActiveDeliveryMode = "DIRECT",
+///         AllowedDeliveryMode = "DIRECT",
+///         Direction = "asc",
+///         Domains = new[]
+///         {
+///             "string",
+///         },
+///         IntegrationId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+///         Order = "domain",
+///         Search = "search",
+///         Status = "PENDING",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetEmailSecurityDomains(ctx, &cloudflare.LookupEmailSecurityDomainsArgs{
+/// 			AccountId:           "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			ActiveDeliveryMode:  pulumi.StringRef("DIRECT"),
+/// 			AllowedDeliveryMode: pulumi.StringRef("DIRECT"),
+/// 			Direction:           pulumi.StringRef("asc"),
+/// 			Domains: []string{
+/// 				"string",
+/// 			},
+/// 			IntegrationId: pulumi.StringRef("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"),
+/// 			Order:         pulumi.StringRef("domain"),
+/// 			Search:        pulumi.StringRef("search"),
+/// 			Status:        pulumi.StringRef("PENDING"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_email_security_domains" "exampleEmailSecurityDomains" {
+///   account_id            = "023e105f4ecef8ad9ca31a8372d0c353"
+///   active_delivery_mode  = "DIRECT"
+///   allowed_delivery_mode = "DIRECT"
+///   direction             = "asc"
+///   domains               = ["string"]
+///   integration_id        = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+///   order                 = "domain"
+///   search                = "search"
+///   status                = "PENDING"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetEmailSecurityDomainsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleEmailSecurityDomains = CloudflareFunctions.getEmailSecurityDomains(GetEmailSecurityDomainsArgs.builder()
+///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .activeDeliveryMode("DIRECT")
+///             .allowedDeliveryMode("DIRECT")
+///             .direction("asc")
+///             .domains("string")
+///             .integrationId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+///             .order("domain")
+///             .search("search")
+///             .status("PENDING")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleEmailSecurityDomains:
+///     fn::invoke:
+///       function: cloudflare:getEmailSecurityDomains
+///       arguments:
+///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
+///         activeDeliveryMode: DIRECT
+///         allowedDeliveryMode: DIRECT
+///         direction: asc
+///         domains:
+///           - string
+///         integrationId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e
+///         order: domain
+///         search: search
+///         status: PENDING
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_email_security_domains_get_email_security_domains_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetEmailSecurityDomainsInvokeResult> getEmailSecurityDomains(
+  GetEmailSecurityDomainsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getEmailSecurityDomains:getEmailSecurityDomains',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetEmailSecurityDomainsInvokeResult.fromMap(result);
+}
+
+pulumi.Output<GetEmailSecurityDomainsInvokeResult> getEmailSecurityDomainsOutput(
+  GetEmailSecurityDomainsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getEmailSecurityDomains:getEmailSecurityDomains',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEmailSecurityDomainsInvokeResult.fromMap);
+}
+
+/// Accepted Permissions
+///
+/// - `Cloud Email Security: Read`
+/// - `Cloud Email Security: Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
 /// const exampleEmailSecurityImpersonationRegistries = cloudflare.getEmailSecurityImpersonationRegistries({
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     direction: "asc",
@@ -16290,7 +16982,7 @@ pulumi.Output<GetEmailSecurityBlockSendersInvokeResult> getEmailSecurityBlockSen
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -16298,7 +16990,7 @@ pulumi.Output<GetEmailSecurityBlockSendersInvokeResult> getEmailSecurityBlockSen
 ///   }
 /// }
 ///
-/// data "cloudflare_getemailsecurityimpersonationregistries" "exampleEmailSecurityImpersonationRegistries" {
+/// data "cloudflare_email_security_impersonation_registries" "exampleEmailSecurityImpersonationRegistries" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   direction  = "asc"
 ///   order      = "name"
@@ -16384,8 +17076,61 @@ pulumi.Output<GetEmailSecurityImpersonationRegistriesInvokeResult> getEmailSecur
 /// ## Example Usage
 ///
 ///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleEmailSecurityImpersonationRegistry = cloudflare.getEmailSecurityImpersonationRegistry({
+///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     impersonationRegistryId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_email_security_impersonation_registry = cloudflare.get_email_security_impersonation_registry(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     impersonation_registry_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleEmailSecurityImpersonationRegistry = Cloudflare.GetEmailSecurityImpersonationRegistry.Invoke(new()
+///     {
+///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         ImpersonationRegistryId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetEmailSecurityImpersonationRegistry(ctx, &cloudflare.LookupEmailSecurityImpersonationRegistryArgs{
+/// 			AccountId:               pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			ImpersonationRegistryId: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -16393,9 +17138,38 @@ pulumi.Output<GetEmailSecurityImpersonationRegistriesInvokeResult> getEmailSecur
 ///   }
 /// }
 ///
-/// data "cloudflare_getemailsecurityimpersonationregistry" "exampleEmailSecurityImpersonationRegistry" {
-///   account_id      = "023e105f4ecef8ad9ca31a8372d0c353"
-///   display_name_id = 2403
+/// data "cloudflare_email_security_impersonation_registry" "exampleEmailSecurityImpersonationRegistry" {
+///   account_id                = "023e105f4ecef8ad9ca31a8372d0c353"
+///   impersonation_registry_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetEmailSecurityImpersonationRegistryArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleEmailSecurityImpersonationRegistry = CloudflareFunctions.getEmailSecurityImpersonationRegistry(GetEmailSecurityImpersonationRegistryArgs.builder()
+///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .impersonationRegistryId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
+///             .build());
+///
+///     }
 /// }
 /// ```
 /// ```yaml
@@ -16405,7 +17179,7 @@ pulumi.Output<GetEmailSecurityImpersonationRegistriesInvokeResult> getEmailSecur
 ///       function: cloudflare:getEmailSecurityImpersonationRegistry
 ///       arguments:
 ///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
-///         displayNameId: 2403
+///         impersonationRegistryId: f174e90a-fafe-4643-bbbc-4a0ed4fc8415
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_email_security_impersonation_registry_get_email_security_impersonation_registry_args_doc}
 /// [options] Invoke options controlling this call.
@@ -16447,7 +17221,7 @@ pulumi.Output<GetEmailSecurityImpersonationRegistryResult> getEmailSecurityImper
 ///
 /// const exampleEmailSecurityTrustedDomains = cloudflare.getEmailSecurityTrustedDomains({
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     trustedDomainId: "2401",
+///     trustedDomainId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 /// });
 /// ```
 /// ```python
@@ -16455,7 +17229,7 @@ pulumi.Output<GetEmailSecurityImpersonationRegistryResult> getEmailSecurityImper
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_email_security_trusted_domains = cloudflare.get_email_security_trusted_domains(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     trusted_domain_id="2401")
+///     trusted_domain_id="f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -16468,7 +17242,7 @@ pulumi.Output<GetEmailSecurityImpersonationRegistryResult> getEmailSecurityImper
 ///     var exampleEmailSecurityTrustedDomains = Cloudflare.GetEmailSecurityTrustedDomains.Invoke(new()
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         TrustedDomainId = "2401",
+///         TrustedDomainId = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
 ///     });
 ///
 /// });
@@ -16485,7 +17259,7 @@ pulumi.Output<GetEmailSecurityImpersonationRegistryResult> getEmailSecurityImper
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetEmailSecurityTrustedDomains(ctx, &cloudflare.LookupEmailSecurityTrustedDomainsArgs{
 /// 			AccountId:       pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			TrustedDomainId: pulumi.StringRef("2401"),
+/// 			TrustedDomainId: pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -16495,7 +17269,7 @@ pulumi.Output<GetEmailSecurityImpersonationRegistryResult> getEmailSecurityImper
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -16503,9 +17277,9 @@ pulumi.Output<GetEmailSecurityImpersonationRegistryResult> getEmailSecurityImper
 ///   }
 /// }
 ///
-/// data "cloudflare_getemailsecuritytrusteddomains" "exampleEmailSecurityTrustedDomains" {
+/// data "cloudflare_email_security_trusted_domains" "exampleEmailSecurityTrustedDomains" {
 ///   account_id        = "023e105f4ecef8ad9ca31a8372d0c353"
-///   trusted_domain_id = 2401
+///   trusted_domain_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
 /// ```
 /// ```java
@@ -16531,7 +17305,7 @@ pulumi.Output<GetEmailSecurityImpersonationRegistryResult> getEmailSecurityImper
 ///     public static void stack(Context ctx) {
 ///         final var exampleEmailSecurityTrustedDomains = CloudflareFunctions.getEmailSecurityTrustedDomains(GetEmailSecurityTrustedDomainsArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .trustedDomainId("2401")
+///             .trustedDomainId("f174e90a-fafe-4643-bbbc-4a0ed4fc8415")
 ///             .build());
 ///
 ///     }
@@ -16544,7 +17318,7 @@ pulumi.Output<GetEmailSecurityImpersonationRegistryResult> getEmailSecurityImper
 ///       function: cloudflare:getEmailSecurityTrustedDomains
 ///       arguments:
 ///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
-///         trustedDomainId: 2401
+///         trustedDomainId: f174e90a-fafe-4643-bbbc-4a0ed4fc8415
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_email_security_trusted_domains_get_email_security_trusted_domains_args_doc}
 /// [options] Invoke options controlling this call.
@@ -16654,7 +17428,7 @@ pulumi.Output<GetEmailSecurityTrustedDomainsResult> getEmailSecurityTrustedDomai
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -16662,7 +17436,7 @@ pulumi.Output<GetEmailSecurityTrustedDomainsResult> getEmailSecurityTrustedDomai
 ///   }
 /// }
 ///
-/// data "cloudflare_getemailsecuritytrusteddomainslist" "exampleEmailSecurityTrustedDomainsList" {
+/// data "cloudflare_email_security_trusted_domains_list" "exampleEmailSecurityTrustedDomainsList" {
 ///   account_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   direction     = "asc"
 ///   is_recent     = true
@@ -16746,6 +17520,401 @@ pulumi.Output<GetEmailSecurityTrustedDomainsListInvokeResult> getEmailSecurityTr
   ).apply(GetEmailSecurityTrustedDomainsListInvokeResult.fromMap);
 }
 
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleEmailSendingSubdomain = cloudflare.getEmailSendingSubdomain({
+///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     subdomainId: "aabbccdd11223344aabbccdd11223344",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_email_sending_subdomain = cloudflare.get_email_sending_subdomain(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     subdomain_id="aabbccdd11223344aabbccdd11223344")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleEmailSendingSubdomain = Cloudflare.GetEmailSendingSubdomain.Invoke(new()
+///     {
+///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         SubdomainId = "aabbccdd11223344aabbccdd11223344",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetEmailSendingSubdomain(ctx, &cloudflare.LookupEmailSendingSubdomainArgs{
+/// 			ZoneId:      "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			SubdomainId: "aabbccdd11223344aabbccdd11223344",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_email_sending_subdomain" "exampleEmailSendingSubdomain" {
+///   zone_id      = "023e105f4ecef8ad9ca31a8372d0c353"
+///   subdomain_id = "aabbccdd11223344aabbccdd11223344"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleEmailSendingSubdomain = CloudflareFunctions.getEmailSendingSubdomain(GetEmailSendingSubdomainArgs.builder()
+///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .subdomainId("aabbccdd11223344aabbccdd11223344")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleEmailSendingSubdomain:
+///     fn::invoke:
+///       function: cloudflare:getEmailSendingSubdomain
+///       arguments:
+///         zoneId: 023e105f4ecef8ad9ca31a8372d0c353
+///         subdomainId: aabbccdd11223344aabbccdd11223344
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_email_sending_subdomain_get_email_sending_subdomain_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetEmailSendingSubdomainResult> getEmailSendingSubdomain(
+  GetEmailSendingSubdomainArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getEmailSendingSubdomain:getEmailSendingSubdomain',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetEmailSendingSubdomainResult.fromMap(result);
+}
+
+pulumi.Output<GetEmailSendingSubdomainResult> getEmailSendingSubdomainOutput(
+  GetEmailSendingSubdomainArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getEmailSendingSubdomain:getEmailSendingSubdomain',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEmailSendingSubdomainResult.fromMap);
+}
+
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleEmailSendingSubdomains = cloudflare.getEmailSendingSubdomains({
+///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_email_sending_subdomains = cloudflare.get_email_sending_subdomains(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleEmailSendingSubdomains = Cloudflare.GetEmailSendingSubdomains.Invoke(new()
+///     {
+///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetEmailSendingSubdomains(ctx, &cloudflare.LookupEmailSendingSubdomainsArgs{
+/// 			ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_email_sending_subdomains" "exampleEmailSendingSubdomains" {
+///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetEmailSendingSubdomainsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleEmailSendingSubdomains = CloudflareFunctions.getEmailSendingSubdomains(GetEmailSendingSubdomainsArgs.builder()
+///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleEmailSendingSubdomains:
+///     fn::invoke:
+///       function: cloudflare:getEmailSendingSubdomains
+///       arguments:
+///         zoneId: 023e105f4ecef8ad9ca31a8372d0c353
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_email_sending_subdomains_get_email_sending_subdomains_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetEmailSendingSubdomainsInvokeResult> getEmailSendingSubdomains(
+  GetEmailSendingSubdomainsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getEmailSendingSubdomains:getEmailSendingSubdomains',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetEmailSendingSubdomainsInvokeResult.fromMap(result);
+}
+
+pulumi.Output<GetEmailSendingSubdomainsInvokeResult> getEmailSendingSubdomainsOutput(
+  GetEmailSendingSubdomainsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getEmailSendingSubdomains:getEmailSendingSubdomains',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEmailSendingSubdomainsInvokeResult.fromMap);
+}
+
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleFieldExtractor = cloudflare.getFieldExtractor({
+///     accountId: "123456",
+///     extractor: "llm_prompts",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_field_extractor = cloudflare.get_field_extractor(account_id="123456",
+///     extractor="llm_prompts")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleFieldExtractor = Cloudflare.GetFieldExtractor.Invoke(new()
+///     {
+///         AccountId = "123456",
+///         Extractor = "llm_prompts",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetFieldExtractor(ctx, &cloudflare.LookupFieldExtractorArgs{
+/// 			AccountId: "123456",
+/// 			Extractor: "llm_prompts",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_field_extractor" "exampleFieldExtractor" {
+///   account_id = "123456"
+///   extractor  = "llm_prompts"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetFieldExtractorArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleFieldExtractor = CloudflareFunctions.getFieldExtractor(GetFieldExtractorArgs.builder()
+///             .accountId("123456")
+///             .extractor("llm_prompts")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleFieldExtractor:
+///     fn::invoke:
+///       function: cloudflare:getFieldExtractor
+///       arguments:
+///         accountId: '123456'
+///         extractor: llm_prompts
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_field_extractor_get_field_extractor_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetFieldExtractorResult> getFieldExtractor(
+  GetFieldExtractorArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getFieldExtractor:getFieldExtractor',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetFieldExtractorResult.fromMap(result);
+}
+
+pulumi.Output<GetFieldExtractorResult> getFieldExtractorOutput(
+  GetFieldExtractorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getFieldExtractor:getFieldExtractor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFieldExtractorResult.fromMap);
+}
+
 /// Accepted Permissions
 ///
 /// - `Firewall Services Read`
@@ -16808,7 +17977,7 @@ pulumi.Output<GetEmailSecurityTrustedDomainsListInvokeResult> getEmailSecurityTr
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -16816,7 +17985,7 @@ pulumi.Output<GetEmailSecurityTrustedDomainsListInvokeResult> getEmailSecurityTr
 ///   }
 /// }
 ///
-/// data "cloudflare_getfilter" "exampleFilter" {
+/// data "cloudflare_filter" "exampleFilter" {
 ///   zone_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   filter_id = "372e67954025e0ba6aaa6d586b9e0b61"
 /// }
@@ -16963,7 +18132,7 @@ pulumi.Output<GetFilterResult> getFilterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -16971,7 +18140,7 @@ pulumi.Output<GetFilterResult> getFilterOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getfilters" "exampleFilters" {
+/// data "cloudflare_filters" "exampleFilters" {
 ///   zone_id     = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   id          = "372e67954025e0ba6aaa6d586b9e0b61"
 ///   description = "browsers"
@@ -17114,7 +18283,7 @@ pulumi.Output<GetFiltersInvokeResult> getFiltersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -17122,7 +18291,7 @@ pulumi.Output<GetFiltersInvokeResult> getFiltersOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getfirewallrule" "exampleFirewallRule" {
+/// data "cloudflare_firewall_rule" "exampleFirewallRule" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   rule_id = "372e67954025e0ba6aaa6d586b9e0b60"
 /// }
@@ -17265,7 +18434,7 @@ pulumi.Output<GetFirewallRuleResult> getFirewallRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -17273,7 +18442,7 @@ pulumi.Output<GetFirewallRuleResult> getFirewallRuleOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getfirewallrules" "exampleFirewallRules" {
+/// data "cloudflare_firewall_rules" "exampleFirewallRules" {
 ///   zone_id     = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   id          = "372e67954025e0ba6aaa6d586b9e0b60"
 ///   action      = "block"
@@ -17412,7 +18581,7 @@ pulumi.Output<GetFirewallRulesInvokeResult> getFirewallRulesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -17420,7 +18589,7 @@ pulumi.Output<GetFirewallRulesInvokeResult> getFirewallRulesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getflagshipapp" "exampleFlagshipApp" {
+/// data "cloudflare_flagship_app" "exampleFlagshipApp" {
 ///   account_id = "account_id"
 ///   app_id     = "app_id"
 /// }
@@ -17546,7 +18715,7 @@ pulumi.Output<GetFlagshipAppResult> getFlagshipAppOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -17554,7 +18723,7 @@ pulumi.Output<GetFlagshipAppResult> getFlagshipAppOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getflagshipapps" "exampleFlagshipApps" {
+/// data "cloudflare_flagship_apps" "exampleFlagshipApps" {
 ///   account_id = "account_id"
 /// }
 /// ```
@@ -17675,7 +18844,7 @@ pulumi.Output<GetFlagshipAppsInvokeResult> getFlagshipAppsOutput(
 /// 		_, err := cloudflare.GetFlagshipFlag(ctx, &cloudflare.LookupFlagshipFlagArgs{
 /// 			AccountId: "account_id",
 /// 			AppId:     "app_id",
-/// 			FlagKey:   "flag_key",
+/// 			FlagKey:   pulumi.StringRef("flag_key"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -17685,7 +18854,7 @@ pulumi.Output<GetFlagshipAppsInvokeResult> getFlagshipAppsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -17693,7 +18862,7 @@ pulumi.Output<GetFlagshipAppsInvokeResult> getFlagshipAppsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getflagshipflag" "exampleFlagshipFlag" {
+/// data "cloudflare_flagship_flag" "exampleFlagshipFlag" {
 ///   account_id = "account_id"
 ///   app_id     = "app_id"
 ///   flag_key   = "flag_key"
@@ -17779,7 +18948,7 @@ pulumi.Output<GetFlagshipFlagResult> getFlagshipFlagOutput(
 /// const exampleFlagshipFlags = cloudflare.getFlagshipFlags({
 ///     accountId: "account_id",
 ///     appId: "app_id",
-///     limit: "limit",
+///     limit: 1,
 /// });
 /// ```
 /// ```python
@@ -17788,7 +18957,7 @@ pulumi.Output<GetFlagshipFlagResult> getFlagshipFlagOutput(
 ///
 /// example_flagship_flags = cloudflare.get_flagship_flags(account_id="account_id",
 ///     app_id="app_id",
-///     limit="limit")
+///     limit=1)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -17802,7 +18971,7 @@ pulumi.Output<GetFlagshipFlagResult> getFlagshipFlagOutput(
 ///     {
 ///         AccountId = "account_id",
 ///         AppId = "app_id",
-///         Limit = "limit",
+///         Limit = 1,
 ///     });
 ///
 /// });
@@ -17820,7 +18989,7 @@ pulumi.Output<GetFlagshipFlagResult> getFlagshipFlagOutput(
 /// 		_, err := cloudflare.GetFlagshipFlags(ctx, &cloudflare.LookupFlagshipFlagsArgs{
 /// 			AccountId: "account_id",
 /// 			AppId:     "app_id",
-/// 			Limit:     pulumi.StringRef("limit"),
+/// 			Limit:     pulumi.IntRef(1),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -17830,7 +18999,7 @@ pulumi.Output<GetFlagshipFlagResult> getFlagshipFlagOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -17838,10 +19007,10 @@ pulumi.Output<GetFlagshipFlagResult> getFlagshipFlagOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getflagshipflags" "exampleFlagshipFlags" {
+/// data "cloudflare_flagship_flags" "exampleFlagshipFlags" {
 ///   account_id = "account_id"
 ///   app_id     = "app_id"
-///   limit      = "limit"
+///   limit      = 1
 /// }
 /// ```
 /// ```java
@@ -17868,7 +19037,7 @@ pulumi.Output<GetFlagshipFlagResult> getFlagshipFlagOutput(
 ///         final var exampleFlagshipFlags = CloudflareFunctions.getFlagshipFlags(GetFlagshipFlagsArgs.builder()
 ///             .accountId("account_id")
 ///             .appId("app_id")
-///             .limit("limit")
+///             .limit(1)
 ///             .build());
 ///
 ///     }
@@ -17882,7 +19051,7 @@ pulumi.Output<GetFlagshipFlagResult> getFlagshipFlagOutput(
 ///       arguments:
 ///         accountId: account_id
 ///         appId: app_id
-///         limit: limit
+///         limit: 1
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_flagship_flags_get_flagship_flags_args_doc}
 /// [options] Invoke options controlling this call.
@@ -17969,7 +19138,7 @@ pulumi.Output<GetFlagshipFlagsInvokeResult> getFlagshipFlagsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -17977,7 +19146,7 @@ pulumi.Output<GetFlagshipFlagsInvokeResult> getFlagshipFlagsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getgoogletaggateway" "exampleGoogleTagGateway" {
+/// data "cloudflare_google_tag_gateway" "exampleGoogleTagGateway" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -18105,7 +19274,7 @@ pulumi.Output<GetGoogleTagGatewayResult> getGoogleTagGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -18113,7 +19282,7 @@ pulumi.Output<GetGoogleTagGatewayResult> getGoogleTagGatewayOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_gethealthcheck" "exampleHealthcheck" {
+/// data "cloudflare_healthcheck" "exampleHealthcheck" {
 ///   zone_id        = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   healthcheck_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -18240,7 +19409,7 @@ pulumi.Output<GetHealthcheckResult> getHealthcheckOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -18248,7 +19417,7 @@ pulumi.Output<GetHealthcheckResult> getHealthcheckOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_gethealthchecks" "exampleHealthchecks" {
+/// data "cloudflare_healthchecks" "exampleHealthchecks" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -18375,7 +19544,7 @@ pulumi.Output<GetHealthchecksInvokeResult> getHealthchecksOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -18383,7 +19552,7 @@ pulumi.Output<GetHealthchecksInvokeResult> getHealthchecksOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_gethostnametlssetting" "exampleHostnameTlsSetting" {
+/// data "cloudflare_hostname_tls_setting" "exampleHostnameTlsSetting" {
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "ciphers"
 ///   hostname   = "app.example.com"
@@ -18517,7 +19686,7 @@ pulumi.Output<GetHostnameTlsSettingResult> getHostnameTlsSettingOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -18525,7 +19694,7 @@ pulumi.Output<GetHostnameTlsSettingResult> getHostnameTlsSettingOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_gethostnametlssettings" "exampleHostnameTlsSettings" {
+/// data "cloudflare_hostname_tls_settings" "exampleHostnameTlsSettings" {
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "ciphers"
 /// }
@@ -18656,7 +19825,7 @@ pulumi.Output<GetHostnameTlsSettingsInvokeResult> getHostnameTlsSettingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -18664,7 +19833,7 @@ pulumi.Output<GetHostnameTlsSettingsInvokeResult> getHostnameTlsSettingsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_gethyperdriveconfig" "exampleHyperdriveConfig" {
+/// data "cloudflare_hyperdrive_config" "exampleHyperdriveConfig" {
 ///   account_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   hyperdrive_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -18791,7 +19960,7 @@ pulumi.Output<GetHyperdriveConfigResult> getHyperdriveConfigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -18799,7 +19968,7 @@ pulumi.Output<GetHyperdriveConfigResult> getHyperdriveConfigOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_gethyperdriveconfigs" "exampleHyperdriveConfigs" {
+/// data "cloudflare_hyperdrive_configs" "exampleHyperdriveConfigs" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -18927,7 +20096,7 @@ pulumi.Output<GetHyperdriveConfigsInvokeResult> getHyperdriveConfigsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -18935,7 +20104,7 @@ pulumi.Output<GetHyperdriveConfigsInvokeResult> getHyperdriveConfigsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getimage" "exampleImage" {
+/// data "cloudflare_image" "exampleImage" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   image_id   = "image_id"
 /// }
@@ -19066,7 +20235,7 @@ pulumi.Output<GetImageResult> getImageOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -19074,7 +20243,7 @@ pulumi.Output<GetImageResult> getImageOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getimagevariant" "exampleImageVariant" {
+/// data "cloudflare_image_variant" "exampleImageVariant" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   variant_id = "hero"
 /// }
@@ -19205,7 +20374,7 @@ pulumi.Output<GetImageVariantResult> getImageVariantOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -19213,7 +20382,7 @@ pulumi.Output<GetImageVariantResult> getImageVariantOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getimages" "exampleImages" {
+/// data "cloudflare_images" "exampleImages" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   creator    = "creator"
 /// }
@@ -19335,7 +20504,7 @@ pulumi.Output<GetImagesInvokeResult> getImagesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -19343,7 +20512,7 @@ pulumi.Output<GetImagesInvokeResult> getImagesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getipranges" "exampleIpRanges" {
+/// data "cloudflare_ip_ranges" "exampleIpRanges" {
 ///   networks = "networks"
 /// }
 /// ```
@@ -19457,7 +20626,7 @@ pulumi.Output<GetIpRangesResult> getIpRangesOutput(
 ///
 /// const exampleKeylessCertificate = cloudflare.getKeylessCertificate({
 ///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     keylessCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     keylessCertificateId: "4d2844d2ce78891c34d0b6c0535a291e",
 /// });
 /// ```
 /// ```python
@@ -19465,7 +20634,7 @@ pulumi.Output<GetIpRangesResult> getIpRangesOutput(
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_keyless_certificate = cloudflare.get_keyless_certificate(zone_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     keyless_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
+///     keyless_certificate_id="4d2844d2ce78891c34d0b6c0535a291e")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -19478,7 +20647,7 @@ pulumi.Output<GetIpRangesResult> getIpRangesOutput(
 ///     var exampleKeylessCertificate = Cloudflare.GetKeylessCertificate.Invoke(new()
 ///     {
 ///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         KeylessCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         KeylessCertificateId = "4d2844d2ce78891c34d0b6c0535a291e",
 ///     });
 ///
 /// });
@@ -19495,7 +20664,7 @@ pulumi.Output<GetIpRangesResult> getIpRangesOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetKeylessCertificate(ctx, &cloudflare.LookupKeylessCertificateArgs{
 /// 			ZoneId:               pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 			KeylessCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			KeylessCertificateId: "4d2844d2ce78891c34d0b6c0535a291e",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -19505,7 +20674,7 @@ pulumi.Output<GetIpRangesResult> getIpRangesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -19513,9 +20682,9 @@ pulumi.Output<GetIpRangesResult> getIpRangesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getkeylesscertificate" "exampleKeylessCertificate" {
+/// data "cloudflare_keyless_certificate" "exampleKeylessCertificate" {
 ///   zone_id                = "023e105f4ecef8ad9ca31a8372d0c353"
-///   keyless_certificate_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   keyless_certificate_id = "4d2844d2ce78891c34d0b6c0535a291e"
 /// }
 /// ```
 /// ```java
@@ -19541,7 +20710,7 @@ pulumi.Output<GetIpRangesResult> getIpRangesOutput(
 ///     public static void stack(Context ctx) {
 ///         final var exampleKeylessCertificate = CloudflareFunctions.getKeylessCertificate(GetKeylessCertificateArgs.builder()
 ///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .keylessCertificateId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .keylessCertificateId("4d2844d2ce78891c34d0b6c0535a291e")
 ///             .build());
 ///
 ///     }
@@ -19554,7 +20723,7 @@ pulumi.Output<GetIpRangesResult> getIpRangesOutput(
 ///       function: cloudflare:getKeylessCertificate
 ///       arguments:
 ///         zoneId: 023e105f4ecef8ad9ca31a8372d0c353
-///         keylessCertificateId: 023e105f4ecef8ad9ca31a8372d0c353
+///         keylessCertificateId: 4d2844d2ce78891c34d0b6c0535a291e
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_keyless_certificate_get_keyless_certificate_args_doc}
 /// [options] Invoke options controlling this call.
@@ -19640,7 +20809,7 @@ pulumi.Output<GetKeylessCertificateResult> getKeylessCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -19648,7 +20817,7 @@ pulumi.Output<GetKeylessCertificateResult> getKeylessCertificateOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getkeylesscertificates" "exampleKeylessCertificates" {
+/// data "cloudflare_keyless_certificates" "exampleKeylessCertificates" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -19774,7 +20943,7 @@ pulumi.Output<GetKeylessCertificatesInvokeResult> getKeylessCertificatesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -19782,7 +20951,7 @@ pulumi.Output<GetKeylessCertificatesInvokeResult> getKeylessCertificatesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getleakedcredentialcheck" "exampleLeakedCredentialCheck" {
+/// data "cloudflare_leaked_credential_check" "exampleLeakedCredentialCheck" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -19912,7 +21081,7 @@ pulumi.Output<GetLeakedCredentialCheckResult> getLeakedCredentialCheckOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -19920,7 +21089,7 @@ pulumi.Output<GetLeakedCredentialCheckResult> getLeakedCredentialCheckOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getleakedcredentialcheckrule" "exampleLeakedCredentialCheckRule" {
+/// data "cloudflare_leaked_credential_check_rule" "exampleLeakedCredentialCheckRule" {
 ///   zone_id      = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   detection_id = "18a14bafaa8eb1df04ce683ec18c765e"
 /// }
@@ -20049,7 +21218,7 @@ pulumi.Output<GetLeakedCredentialCheckRuleResult> getLeakedCredentialCheckRuleOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -20057,7 +21226,7 @@ pulumi.Output<GetLeakedCredentialCheckRuleResult> getLeakedCredentialCheckRuleOu
 ///   }
 /// }
 ///
-/// data "cloudflare_getleakedcredentialcheckrules" "exampleLeakedCredentialCheckRules" {
+/// data "cloudflare_leaked_credential_check_rules" "exampleLeakedCredentialCheckRules" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -20137,7 +21306,6 @@ pulumi.Output<GetLeakedCredentialCheckRulesInvokeResult> getLeakedCredentialChec
 /// const exampleList = cloudflare.getList({
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     listId: "2c0fc9fa937b11eaa1b71c4d701ab86e",
-///     search: "1.1.1.1",
 /// });
 /// ```
 /// ```python
@@ -20145,8 +21313,7 @@ pulumi.Output<GetLeakedCredentialCheckRulesInvokeResult> getLeakedCredentialChec
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_list = cloudflare.get_list(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     list_id="2c0fc9fa937b11eaa1b71c4d701ab86e",
-///     search="1.1.1.1")
+///     list_id="2c0fc9fa937b11eaa1b71c4d701ab86e")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -20160,7 +21327,6 @@ pulumi.Output<GetLeakedCredentialCheckRulesInvokeResult> getLeakedCredentialChec
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         ListId = "2c0fc9fa937b11eaa1b71c4d701ab86e",
-///         Search = "1.1.1.1",
 ///     });
 ///
 /// });
@@ -20178,7 +21344,6 @@ pulumi.Output<GetLeakedCredentialCheckRulesInvokeResult> getLeakedCredentialChec
 /// 		_, err := cloudflare.GetList(ctx, &cloudflare.LookupListArgs{
 /// 			AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
 /// 			ListId:    "2c0fc9fa937b11eaa1b71c4d701ab86e",
-/// 			Search:    pulumi.StringRef("1.1.1.1"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -20188,7 +21353,7 @@ pulumi.Output<GetLeakedCredentialCheckRulesInvokeResult> getLeakedCredentialChec
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -20196,10 +21361,9 @@ pulumi.Output<GetLeakedCredentialCheckRulesInvokeResult> getLeakedCredentialChec
 ///   }
 /// }
 ///
-/// data "cloudflare_getlist" "exampleList" {
+/// data "cloudflare_list" "exampleList" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   list_id    = "2c0fc9fa937b11eaa1b71c4d701ab86e"
-///   search     = "1.1.1.1"
 /// }
 /// ```
 /// ```java
@@ -20226,7 +21390,6 @@ pulumi.Output<GetLeakedCredentialCheckRulesInvokeResult> getLeakedCredentialChec
 ///         final var exampleList = CloudflareFunctions.getList(GetListArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .listId("2c0fc9fa937b11eaa1b71c4d701ab86e")
-///             .search("1.1.1.1")
 ///             .build());
 ///
 ///     }
@@ -20240,7 +21403,6 @@ pulumi.Output<GetLeakedCredentialCheckRulesInvokeResult> getLeakedCredentialChec
 ///       arguments:
 ///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
 ///         listId: 2c0fc9fa937b11eaa1b71c4d701ab86e
-///         search: 1.1.1.1
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_list_get_list_args_doc}
 /// [options] Invoke options controlling this call.
@@ -20334,7 +21496,7 @@ pulumi.Output<GetListResult> getListOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -20342,7 +21504,7 @@ pulumi.Output<GetListResult> getListOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getlistitem" "exampleListItem" {
+/// data "cloudflare_list_item" "exampleListItem" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   list_id    = "2c0fc9fa937b11eaa1b71c4d701ab86e"
 ///   item_id    = "34b12448945f11eaa1b71c4d701ab86e"
@@ -20484,7 +21646,7 @@ pulumi.Output<GetListItemResult> getListItemOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -20492,7 +21654,7 @@ pulumi.Output<GetListItemResult> getListItemOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getlistitems" "exampleListItems" {
+/// data "cloudflare_list_items" "exampleListItems" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   list_id    = "2c0fc9fa937b11eaa1b71c4d701ab86e"
 ///   per_page   = 1
@@ -20625,7 +21787,7 @@ pulumi.Output<GetListItemsInvokeResult> getListItemsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -20633,7 +21795,7 @@ pulumi.Output<GetListItemsInvokeResult> getListItemsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getlists" "exampleLists" {
+/// data "cloudflare_lists" "exampleLists" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -20708,7 +21870,7 @@ pulumi.Output<GetListsInvokeResult> getListsOutput(
 ///
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -20716,7 +21878,7 @@ pulumi.Output<GetListsInvokeResult> getListsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getloadbalancer" "exampleLoadBalancer" {
+/// data "cloudflare_load_balancer" "exampleLoadBalancer" {
 ///   load_balancer_id = "699d98642c564d2e855e9661899b7252"
 ///   account_id       = "account_id"
 ///   zone_id          = "zone_id"
@@ -20820,7 +21982,7 @@ pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -20828,7 +21990,7 @@ pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getloadbalancermonitor" "exampleLoadBalancerMonitor" {
+/// data "cloudflare_load_balancer_monitor" "exampleLoadBalancerMonitor" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   monitor_id = "f1aba936b94213e5b8dca0c0dbf1f9cc"
 /// }
@@ -20954,7 +22116,7 @@ pulumi.Output<GetLoadBalancerMonitorResult> getLoadBalancerMonitorOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -20962,7 +22124,7 @@ pulumi.Output<GetLoadBalancerMonitorResult> getLoadBalancerMonitorOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getloadbalancermonitorgroup" "exampleLoadBalancerMonitorGroup" {
+/// data "cloudflare_load_balancer_monitor_group" "exampleLoadBalancerMonitorGroup" {
 ///   account_id       = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   monitor_group_id = "17b5962d775c646f3f9725cbc7a53df4"
 /// }
@@ -21084,7 +22246,7 @@ pulumi.Output<GetLoadBalancerMonitorGroupResult> getLoadBalancerMonitorGroupOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -21092,7 +22254,7 @@ pulumi.Output<GetLoadBalancerMonitorGroupResult> getLoadBalancerMonitorGroupOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getloadbalancermonitorgroups" "exampleLoadBalancerMonitorGroups" {
+/// data "cloudflare_load_balancer_monitor_groups" "exampleLoadBalancerMonitorGroups" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -21216,7 +22378,7 @@ pulumi.Output<GetLoadBalancerMonitorGroupsInvokeResult> getLoadBalancerMonitorGr
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -21224,7 +22386,7 @@ pulumi.Output<GetLoadBalancerMonitorGroupsInvokeResult> getLoadBalancerMonitorGr
 ///   }
 /// }
 ///
-/// data "cloudflare_getloadbalancermonitors" "exampleLoadBalancerMonitors" {
+/// data "cloudflare_load_balancer_monitors" "exampleLoadBalancerMonitors" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -21352,7 +22514,7 @@ pulumi.Output<GetLoadBalancerMonitorsInvokeResult> getLoadBalancerMonitorsOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -21360,7 +22522,7 @@ pulumi.Output<GetLoadBalancerMonitorsInvokeResult> getLoadBalancerMonitorsOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getloadbalancerpool" "exampleLoadBalancerPool" {
+/// data "cloudflare_load_balancer_pool" "exampleLoadBalancerPool" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   pool_id    = "17b5962d775c646f3f9725cbc7a53df4"
 /// }
@@ -21491,7 +22653,7 @@ pulumi.Output<GetLoadBalancerPoolResult> getLoadBalancerPoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -21499,7 +22661,7 @@ pulumi.Output<GetLoadBalancerPoolResult> getLoadBalancerPoolOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getloadbalancerpools" "exampleLoadBalancerPools" {
+/// data "cloudflare_load_balancer_pools" "exampleLoadBalancerPools" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   monitor    = "monitor"
 /// }
@@ -21577,7 +22739,7 @@ pulumi.Output<GetLoadBalancerPoolsInvokeResult> getLoadBalancerPoolsOutput(
 ///
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -21585,7 +22747,7 @@ pulumi.Output<GetLoadBalancerPoolsInvokeResult> getLoadBalancerPoolsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getloadbalancers" "exampleLoadBalancers" {
+/// data "cloudflare_load_balancers" "exampleLoadBalancers" {
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
 /// }
@@ -21683,7 +22845,7 @@ pulumi.Output<GetLoadBalancersInvokeResult> getLoadBalancersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -21691,7 +22853,7 @@ pulumi.Output<GetLoadBalancersInvokeResult> getLoadBalancersOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getlogpullretention" "exampleLogpullRetention" {
+/// data "cloudflare_logpull_retention" "exampleLogpullRetention" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -21822,7 +22984,7 @@ pulumi.Output<GetLogpullRetentionResult> getLogpullRetentionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -21830,7 +22992,7 @@ pulumi.Output<GetLogpullRetentionResult> getLogpullRetentionOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getlogpushdatasetfield" "exampleLogpushDatasetField" {
+/// data "cloudflare_logpush_dataset_field" "exampleLogpushDatasetField" {
 ///   dataset_id = "gateway_dns"
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
@@ -21967,7 +23129,7 @@ pulumi.Output<GetLogpushDatasetFieldResult> getLogpushDatasetFieldOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -21975,7 +23137,7 @@ pulumi.Output<GetLogpushDatasetFieldResult> getLogpushDatasetFieldOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getlogpushdatasetjob" "exampleLogpushDatasetJob" {
+/// data "cloudflare_logpush_dataset_job" "exampleLogpushDatasetJob" {
 ///   dataset_id = "gateway_dns"
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
@@ -22112,7 +23274,7 @@ pulumi.Output<GetLogpushDatasetJobResult> getLogpushDatasetJobOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -22120,7 +23282,7 @@ pulumi.Output<GetLogpushDatasetJobResult> getLogpushDatasetJobOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getlogpushjob" "exampleLogpushJob" {
+/// data "cloudflare_logpush_job" "exampleLogpushJob" {
 ///   job_id     = 1
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
@@ -22253,7 +23415,7 @@ pulumi.Output<GetLogpushJobResult> getLogpushJobOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -22261,7 +23423,7 @@ pulumi.Output<GetLogpushJobResult> getLogpushJobOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getlogpushjobs" "exampleLogpushJobs" {
+/// data "cloudflare_logpush_jobs" "exampleLogpushJobs" {
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
 /// }
@@ -22389,7 +23551,7 @@ pulumi.Output<GetLogpushJobsInvokeResult> getLogpushJobsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -22397,7 +23559,7 @@ pulumi.Output<GetLogpushJobsInvokeResult> getLogpushJobsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagicnetworkmonitoringconfiguration" "exampleMagicNetworkMonitoringConfiguration" {
+/// data "cloudflare_magic_network_monitoring_configuration" "exampleMagicNetworkMonitoringConfiguration" {
 ///   account_id = "6f91088a406011ed95aed352566e8d4c"
 /// }
 /// ```
@@ -22526,7 +23688,7 @@ pulumi.Output<GetMagicNetworkMonitoringConfigurationResult> getMagicNetworkMonit
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -22534,7 +23696,7 @@ pulumi.Output<GetMagicNetworkMonitoringConfigurationResult> getMagicNetworkMonit
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagicnetworkmonitoringrule" "exampleMagicNetworkMonitoringRule" {
+/// data "cloudflare_magic_network_monitoring_rule" "exampleMagicNetworkMonitoringRule" {
 ///   account_id = "6f91088a406011ed95aed352566e8d4c"
 ///   rule_id    = "2890e6fa406311ed9b5a23f70f6fb8cf"
 /// }
@@ -22662,7 +23824,7 @@ pulumi.Output<GetMagicNetworkMonitoringRuleResult> getMagicNetworkMonitoringRule
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -22670,7 +23832,7 @@ pulumi.Output<GetMagicNetworkMonitoringRuleResult> getMagicNetworkMonitoringRule
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagicnetworkmonitoringrules" "exampleMagicNetworkMonitoringRules" {
+/// data "cloudflare_magic_network_monitoring_rules" "exampleMagicNetworkMonitoringRules" {
 ///   account_id = "6f91088a406011ed95aed352566e8d4c"
 /// }
 /// ```
@@ -22800,7 +23962,7 @@ pulumi.Output<GetMagicNetworkMonitoringRulesInvokeResult> getMagicNetworkMonitor
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -22808,7 +23970,7 @@ pulumi.Output<GetMagicNetworkMonitoringRulesInvokeResult> getMagicNetworkMonitor
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagictransitcf1site" "exampleMagicTransitCf1Site" {
+/// data "cloudflare_magic_transit_cf1_site" "exampleMagicTransitCf1Site" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   cf1_site_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -22937,7 +24099,7 @@ pulumi.Output<GetMagicTransitCf1SiteResult> getMagicTransitCf1SiteOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -22945,7 +24107,7 @@ pulumi.Output<GetMagicTransitCf1SiteResult> getMagicTransitCf1SiteOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagictransitcf1sites" "exampleMagicTransitCf1Sites" {
+/// data "cloudflare_magic_transit_cf1_sites" "exampleMagicTransitCf1Sites" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -23062,7 +24224,7 @@ pulumi.Output<GetMagicTransitCf1SitesInvokeResult> getMagicTransitCf1SitesOutput
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetMagicTransitConnector(ctx, &cloudflare.LookupMagicTransitConnectorArgs{
-/// 			AccountId:   pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
 /// 			ConnectorId: pulumi.StringRef("connector_id"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -23073,7 +24235,7 @@ pulumi.Output<GetMagicTransitCf1SitesInvokeResult> getMagicTransitCf1SitesOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -23081,7 +24243,7 @@ pulumi.Output<GetMagicTransitCf1SitesInvokeResult> getMagicTransitCf1SitesOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagictransitconnector" "exampleMagicTransitConnector" {
+/// data "cloudflare_magic_transit_connector" "exampleMagicTransitConnector" {
 ///   account_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   connector_id = "connector_id"
 /// }
@@ -23164,13 +24326,15 @@ pulumi.Output<GetMagicTransitConnectorResult> getMagicTransitConnectorOutput(
 ///
 /// const exampleMagicTransitConnectors = cloudflare.getMagicTransitConnectors({
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     deviceType: "MANAGED",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_cloudflare as cloudflare
 ///
-/// example_magic_transit_connectors = cloudflare.get_magic_transit_connectors(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+/// example_magic_transit_connectors = cloudflare.get_magic_transit_connectors(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     device_type="MANAGED")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -23183,6 +24347,7 @@ pulumi.Output<GetMagicTransitConnectorResult> getMagicTransitConnectorOutput(
 ///     var exampleMagicTransitConnectors = Cloudflare.GetMagicTransitConnectors.Invoke(new()
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         DeviceType = "MANAGED",
 ///     });
 ///
 /// });
@@ -23198,7 +24363,8 @@ pulumi.Output<GetMagicTransitConnectorResult> getMagicTransitConnectorOutput(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetMagicTransitConnectors(ctx, &cloudflare.LookupMagicTransitConnectorsArgs{
-/// 			AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			DeviceType: pulumi.StringRef("MANAGED"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -23208,7 +24374,7 @@ pulumi.Output<GetMagicTransitConnectorResult> getMagicTransitConnectorOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -23216,8 +24382,9 @@ pulumi.Output<GetMagicTransitConnectorResult> getMagicTransitConnectorOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagictransitconnectors" "exampleMagicTransitConnectors" {
-///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
+/// data "cloudflare_magic_transit_connectors" "exampleMagicTransitConnectors" {
+///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
+///   device_type = "MANAGED"
 /// }
 /// ```
 /// ```java
@@ -23243,6 +24410,7 @@ pulumi.Output<GetMagicTransitConnectorResult> getMagicTransitConnectorOutput(
 ///     public static void stack(Context ctx) {
 ///         final var exampleMagicTransitConnectors = CloudflareFunctions.getMagicTransitConnectors(GetMagicTransitConnectorsArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .deviceType("MANAGED")
 ///             .build());
 ///
 ///     }
@@ -23255,6 +24423,7 @@ pulumi.Output<GetMagicTransitConnectorResult> getMagicTransitConnectorOutput(
 ///       function: cloudflare:getMagicTransitConnectors
 ///       arguments:
 ///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
+///         deviceType: MANAGED
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_magic_transit_connectors_get_magic_transit_connectors_args_doc}
 /// [options] Invoke options controlling this call.
@@ -23346,7 +24515,7 @@ pulumi.Output<GetMagicTransitConnectorsInvokeResult> getMagicTransitConnectorsOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -23354,7 +24523,7 @@ pulumi.Output<GetMagicTransitConnectorsInvokeResult> getMagicTransitConnectorsOu
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagictransitsite" "exampleMagicTransitSite" {
+/// data "cloudflare_magic_transit_site" "exampleMagicTransitSite" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   site_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -23491,7 +24660,7 @@ pulumi.Output<GetMagicTransitSiteResult> getMagicTransitSiteOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -23499,7 +24668,7 @@ pulumi.Output<GetMagicTransitSiteResult> getMagicTransitSiteOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagictransitsiteacl" "exampleMagicTransitSiteAcl" {
+/// data "cloudflare_magic_transit_site_acl" "exampleMagicTransitSiteAcl" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   site_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   acl_id     = "023e105f4ecef8ad9ca31a8372d0c353"
@@ -23635,7 +24804,7 @@ pulumi.Output<GetMagicTransitSiteAclResult> getMagicTransitSiteAclOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -23643,7 +24812,7 @@ pulumi.Output<GetMagicTransitSiteAclResult> getMagicTransitSiteAclOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagictransitsiteacls" "exampleMagicTransitSiteAcls" {
+/// data "cloudflare_magic_transit_site_acls" "exampleMagicTransitSiteAcls" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   site_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -23780,7 +24949,7 @@ pulumi.Output<GetMagicTransitSiteAclsInvokeResult> getMagicTransitSiteAclsOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -23788,7 +24957,7 @@ pulumi.Output<GetMagicTransitSiteAclsInvokeResult> getMagicTransitSiteAclsOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagictransitsitelan" "exampleMagicTransitSiteLan" {
+/// data "cloudflare_magic_transit_site_lan" "exampleMagicTransitSiteLan" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   site_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   lan_id     = "023e105f4ecef8ad9ca31a8372d0c353"
@@ -23924,7 +25093,7 @@ pulumi.Output<GetMagicTransitSiteLanResult> getMagicTransitSiteLanOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -23932,7 +25101,7 @@ pulumi.Output<GetMagicTransitSiteLanResult> getMagicTransitSiteLanOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagictransitsitelans" "exampleMagicTransitSiteLans" {
+/// data "cloudflare_magic_transit_site_lans" "exampleMagicTransitSiteLans" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   site_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -24069,7 +25238,7 @@ pulumi.Output<GetMagicTransitSiteLansInvokeResult> getMagicTransitSiteLansOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -24077,7 +25246,7 @@ pulumi.Output<GetMagicTransitSiteLansInvokeResult> getMagicTransitSiteLansOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagictransitsitewan" "exampleMagicTransitSiteWan" {
+/// data "cloudflare_magic_transit_site_wan" "exampleMagicTransitSiteWan" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   site_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   wan_id     = "023e105f4ecef8ad9ca31a8372d0c353"
@@ -24213,7 +25382,7 @@ pulumi.Output<GetMagicTransitSiteWanResult> getMagicTransitSiteWanOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -24221,7 +25390,7 @@ pulumi.Output<GetMagicTransitSiteWanResult> getMagicTransitSiteWanOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagictransitsitewans" "exampleMagicTransitSiteWans" {
+/// data "cloudflare_magic_transit_site_wans" "exampleMagicTransitSiteWans" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   site_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -24354,7 +25523,7 @@ pulumi.Output<GetMagicTransitSiteWansInvokeResult> getMagicTransitSiteWansOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -24362,7 +25531,7 @@ pulumi.Output<GetMagicTransitSiteWansInvokeResult> getMagicTransitSiteWansOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagictransitsites" "exampleMagicTransitSites" {
+/// data "cloudflare_magic_transit_sites" "exampleMagicTransitSites" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   connectorid = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -24431,6 +25600,267 @@ pulumi.Output<GetMagicTransitSitesInvokeResult> getMagicTransitSitesOutput(
   ).apply(GetMagicTransitSitesInvokeResult.fromMap);
 }
 
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleMagicWanBgpFilterProfile = cloudflare.getMagicWanBgpFilterProfile({
+///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     profileId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_magic_wan_bgp_filter_profile = cloudflare.get_magic_wan_bgp_filter_profile(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     profile_id="023e105f4ecef8ad9ca31a8372d0c353")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleMagicWanBgpFilterProfile = Cloudflare.GetMagicWanBgpFilterProfile.Invoke(new()
+///     {
+///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         ProfileId = "023e105f4ecef8ad9ca31a8372d0c353",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetMagicWanBgpFilterProfile(ctx, &cloudflare.LookupMagicWanBgpFilterProfileArgs{
+/// 			AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			ProfileId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_magic_wan_bgp_filter_profile" "exampleMagicWanBgpFilterProfile" {
+///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   profile_id = "023e105f4ecef8ad9ca31a8372d0c353"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetMagicWanBgpFilterProfileArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleMagicWanBgpFilterProfile = CloudflareFunctions.getMagicWanBgpFilterProfile(GetMagicWanBgpFilterProfileArgs.builder()
+///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .profileId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleMagicWanBgpFilterProfile:
+///     fn::invoke:
+///       function: cloudflare:getMagicWanBgpFilterProfile
+///       arguments:
+///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
+///         profileId: 023e105f4ecef8ad9ca31a8372d0c353
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_magic_wan_bgp_filter_profile_get_magic_wan_bgp_filter_profile_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetMagicWanBgpFilterProfileResult> getMagicWanBgpFilterProfile(
+  GetMagicWanBgpFilterProfileArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getMagicWanBgpFilterProfile:getMagicWanBgpFilterProfile',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetMagicWanBgpFilterProfileResult.fromMap(result);
+}
+
+pulumi.Output<GetMagicWanBgpFilterProfileResult> getMagicWanBgpFilterProfileOutput(
+  GetMagicWanBgpFilterProfileArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getMagicWanBgpFilterProfile:getMagicWanBgpFilterProfile',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMagicWanBgpFilterProfileResult.fromMap);
+}
+
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleMagicWanBgpFilterProfiles = cloudflare.getMagicWanBgpFilterProfiles({
+///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_magic_wan_bgp_filter_profiles = cloudflare.get_magic_wan_bgp_filter_profiles(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleMagicWanBgpFilterProfiles = Cloudflare.GetMagicWanBgpFilterProfiles.Invoke(new()
+///     {
+///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetMagicWanBgpFilterProfiles(ctx, &cloudflare.LookupMagicWanBgpFilterProfilesArgs{
+/// 			AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_magic_wan_bgp_filter_profiles" "exampleMagicWanBgpFilterProfiles" {
+///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetMagicWanBgpFilterProfilesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleMagicWanBgpFilterProfiles = CloudflareFunctions.getMagicWanBgpFilterProfiles(GetMagicWanBgpFilterProfilesArgs.builder()
+///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleMagicWanBgpFilterProfiles:
+///     fn::invoke:
+///       function: cloudflare:getMagicWanBgpFilterProfiles
+///       arguments:
+///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_magic_wan_bgp_filter_profiles_get_magic_wan_bgp_filter_profiles_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetMagicWanBgpFilterProfilesInvokeResult> getMagicWanBgpFilterProfiles(
+  GetMagicWanBgpFilterProfilesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getMagicWanBgpFilterProfiles:getMagicWanBgpFilterProfiles',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetMagicWanBgpFilterProfilesInvokeResult.fromMap(result);
+}
+
+pulumi.Output<GetMagicWanBgpFilterProfilesInvokeResult> getMagicWanBgpFilterProfilesOutput(
+  GetMagicWanBgpFilterProfilesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getMagicWanBgpFilterProfiles:getMagicWanBgpFilterProfiles',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMagicWanBgpFilterProfilesInvokeResult.fromMap);
+}
+
 /// Accepted Permissions
 ///
 /// - `Magic Transit Read`
@@ -24495,7 +25925,7 @@ pulumi.Output<GetMagicTransitSitesInvokeResult> getMagicTransitSitesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -24503,7 +25933,7 @@ pulumi.Output<GetMagicTransitSitesInvokeResult> getMagicTransitSitesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagicwangretunnel" "exampleMagicWanGreTunnel" {
+/// data "cloudflare_magic_wan_gre_tunnel" "exampleMagicWanGreTunnel" {
 ///   account_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   gre_tunnel_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -24636,7 +26066,7 @@ pulumi.Output<GetMagicWanGreTunnelResult> getMagicWanGreTunnelOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -24644,7 +26074,7 @@ pulumi.Output<GetMagicWanGreTunnelResult> getMagicWanGreTunnelOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagicwanipsectunnel" "exampleMagicWanIpsecTunnel" {
+/// data "cloudflare_magic_wan_ipsec_tunnel" "exampleMagicWanIpsecTunnel" {
 ///   account_id      = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   ipsec_tunnel_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -24777,7 +26207,7 @@ pulumi.Output<GetMagicWanIpsecTunnelResult> getMagicWanIpsecTunnelOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -24785,7 +26215,7 @@ pulumi.Output<GetMagicWanIpsecTunnelResult> getMagicWanIpsecTunnelOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getmagicwanstaticroute" "exampleMagicWanStaticRoute" {
+/// data "cloudflare_magic_wan_static_route" "exampleMagicWanStaticRoute" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   route_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -24950,7 +26380,7 @@ pulumi.Output<GetMagicWanStaticRouteResult> getMagicWanStaticRouteOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -24958,7 +26388,7 @@ pulumi.Output<GetMagicWanStaticRouteResult> getMagicWanStaticRouteOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getmanagedtransforms" "exampleManagedTransforms" {
+/// data "cloudflare_managed_transforms" "exampleManagedTransforms" {
 ///   zone_id = "9f1839b6152d298aca64c4e906b6d074"
 /// }
 /// ```
@@ -25024,6 +26454,114 @@ pulumi.Output<GetManagedTransformsResult> getManagedTransformsOutput(
   ).apply(GetManagedTransformsResult.fromMap);
 }
 
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleMoqRelay = cloudflare.getMoqRelay({
+///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     relayId: "a1b2c3d4e5f67890a1b2c3d4e5f67890",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_moq_relay = cloudflare.get_moq_relay(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     relay_id="a1b2c3d4e5f67890a1b2c3d4e5f67890")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleMoqRelay = Cloudflare.GetMoqRelay.Invoke(new()
+///     {
+///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         RelayId = "a1b2c3d4e5f67890a1b2c3d4e5f67890",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetMoqRelay(ctx, &cloudflare.LookupMoqRelayArgs{
+/// 			AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			RelayId:   pulumi.StringRef("a1b2c3d4e5f67890a1b2c3d4e5f67890"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_moq_relay" "exampleMoqRelay" {
+///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   relay_id   = "a1b2c3d4e5f67890a1b2c3d4e5f67890"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetMoqRelayArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleMoqRelay = CloudflareFunctions.getMoqRelay(GetMoqRelayArgs.builder()
+///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .relayId("a1b2c3d4e5f67890a1b2c3d4e5f67890")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleMoqRelay:
+///     fn::invoke:
+///       function: cloudflare:getMoqRelay
+///       arguments:
+///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
+///         relayId: a1b2c3d4e5f67890a1b2c3d4e5f67890
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_moq_relay_get_moq_relay_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetMoqRelayResult> getMoqRelay(
@@ -25111,7 +26649,7 @@ pulumi.Output<GetMoqRelayResult> getMoqRelayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -25119,7 +26657,7 @@ pulumi.Output<GetMoqRelayResult> getMoqRelayOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getmoqrelays" "exampleMoqRelays" {
+/// data "cloudflare_moq_relays" "exampleMoqRelays" {
 ///   account_id     = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   created_after  = "2026-03-27T15:00:00Z"
 ///   created_before = "2026-03-27T15:00:00Z"
@@ -25248,7 +26786,7 @@ pulumi.Output<GetMoqRelaysInvokeResult> getMoqRelaysOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -25256,7 +26794,7 @@ pulumi.Output<GetMoqRelaysInvokeResult> getMoqRelaysOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getmtlscertificate" "exampleMtlsCertificate" {
+/// data "cloudflare_mtls_certificate" "exampleMtlsCertificate" {
 ///   account_id          = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   mtls_certificate_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -25339,7 +26877,7 @@ pulumi.Output<GetMtlsCertificateResult> getMtlsCertificateOutput(
 ///
 /// const exampleMtlsCertificateAssociations = cloudflare.getMtlsCertificateAssociations({
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
-///     mtlsCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     mtlsCertificateId: "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
 /// });
 /// ```
 /// ```python
@@ -25347,7 +26885,7 @@ pulumi.Output<GetMtlsCertificateResult> getMtlsCertificateOutput(
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_mtls_certificate_associations = cloudflare.get_mtls_certificate_associations(account_id="023e105f4ecef8ad9ca31a8372d0c353",
-///     mtls_certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
+///     mtls_certificate_id="2458ce5a-0c35-4c7f-82c7-8e9487d3ff60")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -25360,7 +26898,7 @@ pulumi.Output<GetMtlsCertificateResult> getMtlsCertificateOutput(
 ///     var exampleMtlsCertificateAssociations = Cloudflare.GetMtlsCertificateAssociations.Invoke(new()
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
-///         MtlsCertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         MtlsCertificateId = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
 ///     });
 ///
 /// });
@@ -25377,7 +26915,7 @@ pulumi.Output<GetMtlsCertificateResult> getMtlsCertificateOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetMtlsCertificateAssociations(ctx, &cloudflare.GetMtlsCertificateAssociationsArgs{
 /// 			AccountId:         "023e105f4ecef8ad9ca31a8372d0c353",
-/// 			MtlsCertificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			MtlsCertificateId: "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -25387,7 +26925,7 @@ pulumi.Output<GetMtlsCertificateResult> getMtlsCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -25395,9 +26933,9 @@ pulumi.Output<GetMtlsCertificateResult> getMtlsCertificateOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getmtlscertificateassociations" "exampleMtlsCertificateAssociations" {
+/// data "cloudflare_mtls_certificate_associations" "exampleMtlsCertificateAssociations" {
 ///   account_id          = "023e105f4ecef8ad9ca31a8372d0c353"
-///   mtls_certificate_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   mtls_certificate_id = "2458ce5a-0c35-4c7f-82c7-8e9487d3ff60"
 /// }
 /// ```
 /// ```java
@@ -25423,7 +26961,7 @@ pulumi.Output<GetMtlsCertificateResult> getMtlsCertificateOutput(
 ///     public static void stack(Context ctx) {
 ///         final var exampleMtlsCertificateAssociations = CloudflareFunctions.getMtlsCertificateAssociations(GetMtlsCertificateAssociationsArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .mtlsCertificateId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .mtlsCertificateId("2458ce5a-0c35-4c7f-82c7-8e9487d3ff60")
 ///             .build());
 ///
 ///     }
@@ -25436,7 +26974,7 @@ pulumi.Output<GetMtlsCertificateResult> getMtlsCertificateOutput(
 ///       function: cloudflare:getMtlsCertificateAssociations
 ///       arguments:
 ///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
-///         mtlsCertificateId: 023e105f4ecef8ad9ca31a8372d0c353
+///         mtlsCertificateId: 2458ce5a-0c35-4c7f-82c7-8e9487d3ff60
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_mtls_certificate_associations_get_mtls_certificate_associations_args_doc}
 /// [options] Invoke options controlling this call.
@@ -25517,7 +27055,7 @@ pulumi.Output<GetMtlsCertificateAssociationsResult> getMtlsCertificateAssociatio
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -25525,7 +27063,7 @@ pulumi.Output<GetMtlsCertificateAssociationsResult> getMtlsCertificateAssociatio
 ///   }
 /// }
 ///
-/// data "cloudflare_getmtlscertificates" "exampleMtlsCertificates" {
+/// data "cloudflare_mtls_certificates" "exampleMtlsCertificates" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -25593,6 +27131,137 @@ pulumi.Output<GetMtlsCertificatesInvokeResult> getMtlsCertificatesOutput(
 
 /// Accepted Permissions
 ///
+/// - `Zone Settings Read`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleNelSetting = cloudflare.getNelSetting({
+///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_nel_setting = cloudflare.get_nel_setting(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleNelSetting = Cloudflare.GetNelSetting.Invoke(new()
+///     {
+///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetNelSetting(ctx, &cloudflare.LookupNelSettingArgs{
+/// 			ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_nel_setting" "exampleNelSetting" {
+///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetNelSettingArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleNelSetting = CloudflareFunctions.getNelSetting(GetNelSettingArgs.builder()
+///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleNelSetting:
+///     fn::invoke:
+///       function: cloudflare:getNelSetting
+///       arguments:
+///         zoneId: 023e105f4ecef8ad9ca31a8372d0c353
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_nel_setting_get_nel_setting_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetNelSettingResult> getNelSetting(
+  GetNelSettingArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getNelSetting:getNelSetting',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetNelSettingResult.fromMap(result);
+}
+
+pulumi.Output<GetNelSettingResult> getNelSettingOutput(
+  GetNelSettingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getNelSetting:getNelSetting',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNelSettingResult.fromMap);
+}
+
+/// Accepted Permissions
+///
 /// - `Account Settings Read`
 /// - `Account Settings Write`
 /// - `Notifications Read`
@@ -25652,7 +27321,7 @@ pulumi.Output<GetMtlsCertificatesInvokeResult> getMtlsCertificatesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -25660,7 +27329,7 @@ pulumi.Output<GetMtlsCertificatesInvokeResult> getMtlsCertificatesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getnotificationpolicies" "exampleNotificationPolicies" {
+/// data "cloudflare_notification_policies" "exampleNotificationPolicies" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -25791,7 +27460,7 @@ pulumi.Output<GetNotificationPoliciesInvokeResult> getNotificationPoliciesOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -25799,7 +27468,7 @@ pulumi.Output<GetNotificationPoliciesInvokeResult> getNotificationPoliciesOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getnotificationpolicy" "exampleNotificationPolicy" {
+/// data "cloudflare_notification_policy" "exampleNotificationPolicy" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   policy_id  = "0da2b59ef118439d8097bdfb215203c9"
 /// }
@@ -25933,7 +27602,7 @@ pulumi.Output<GetNotificationPolicyResult> getNotificationPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -25941,7 +27610,7 @@ pulumi.Output<GetNotificationPolicyResult> getNotificationPolicyOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getnotificationpolicywebhooks" "exampleNotificationPolicyWebhooks" {
+/// data "cloudflare_notification_policy_webhooks" "exampleNotificationPolicyWebhooks" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   webhook_id = "b115d5ec15c641ee8b7692c449b5227b"
 /// }
@@ -26071,7 +27740,7 @@ pulumi.Output<GetNotificationPolicyWebhooksResult> getNotificationPolicyWebhooks
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -26079,7 +27748,7 @@ pulumi.Output<GetNotificationPolicyWebhooksResult> getNotificationPolicyWebhooks
 ///   }
 /// }
 ///
-/// data "cloudflare_getnotificationpolicywebhookslist" "exampleNotificationPolicyWebhooksList" {
+/// data "cloudflare_notification_policy_webhooks_list" "exampleNotificationPolicyWebhooksList" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -26206,7 +27875,7 @@ pulumi.Output<GetNotificationPolicyWebhooksListInvokeResult> getNotificationPoli
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -26214,7 +27883,7 @@ pulumi.Output<GetNotificationPolicyWebhooksListInvokeResult> getNotificationPoli
 ///   }
 /// }
 ///
-/// data "cloudflare_getoauthclient" "exampleOauthClient" {
+/// data "cloudflare_oauth_client" "exampleOauthClient" {
 ///   account_id      = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   oauth_client_id = "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4"
 /// }
@@ -26340,7 +28009,7 @@ pulumi.Output<GetOauthClientResult> getOauthClientOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -26348,7 +28017,7 @@ pulumi.Output<GetOauthClientResult> getOauthClientOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getoauthclients" "exampleOauthClients" {
+/// data "cloudflare_oauth_clients" "exampleOauthClients" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -26460,7 +28129,7 @@ pulumi.Output<GetOauthClientsInvokeResult> getOauthClientsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -26468,7 +28137,7 @@ pulumi.Output<GetOauthClientsInvokeResult> getOauthClientsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getoauthscopes" "exampleOauthScopes" {
+/// data "cloudflare_oauth_scopes" "exampleOauthScopes" {
 /// }
 /// ```
 /// ```java
@@ -26597,7 +28266,7 @@ pulumi.Output<GetOauthScopesInvokeResult> getOauthScopesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -26605,7 +28274,7 @@ pulumi.Output<GetOauthScopesInvokeResult> getOauthScopesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getobservatoryscheduledtest" "exampleObservatoryScheduledTest" {
+/// data "cloudflare_observatory_scheduled_test" "exampleObservatoryScheduledTest" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   url     = "example.com"
 ///   region  = "us-central1"
@@ -26690,14 +28359,14 @@ pulumi.Output<GetObservatoryScheduledTestResult> getObservatoryScheduledTestOutp
 /// import * as cloudflare from "@pulumi/cloudflare";
 ///
 /// const exampleOrganization = cloudflare.getOrganization({
-///     organizationId: "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///     organizationId: "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_cloudflare as cloudflare
 ///
-/// example_organization = cloudflare.get_organization(organization_id="a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+/// example_organization = cloudflare.get_organization(organization_id="a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -26709,7 +28378,7 @@ pulumi.Output<GetObservatoryScheduledTestResult> getObservatoryScheduledTestOutp
 /// {
 ///     var exampleOrganization = Cloudflare.GetOrganization.Invoke(new()
 ///     {
-///         OrganizationId = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///         OrganizationId = "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 ///     });
 ///
 /// });
@@ -26725,7 +28394,7 @@ pulumi.Output<GetObservatoryScheduledTestResult> getObservatoryScheduledTestOutp
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetOrganization(ctx, &cloudflare.LookupOrganizationArgs{
-/// 			OrganizationId: pulumi.StringRef("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"),
+/// 			OrganizationId: pulumi.StringRef("a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -26735,7 +28404,7 @@ pulumi.Output<GetObservatoryScheduledTestResult> getObservatoryScheduledTestOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -26743,8 +28412,8 @@ pulumi.Output<GetObservatoryScheduledTestResult> getObservatoryScheduledTestOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getorganization" "exampleOrganization" {
-///   organization_id = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"
+/// data "cloudflare_organization" "exampleOrganization" {
+///   organization_id = "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8"
 /// }
 /// ```
 /// ```java
@@ -26769,7 +28438,7 @@ pulumi.Output<GetObservatoryScheduledTestResult> getObservatoryScheduledTestOutp
 ///
 ///     public static void stack(Context ctx) {
 ///         final var exampleOrganization = CloudflareFunctions.getOrganization(GetOrganizationArgs.builder()
-///             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+///             .organizationId("a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8")
 ///             .build());
 ///
 ///     }
@@ -26781,7 +28450,7 @@ pulumi.Output<GetObservatoryScheduledTestResult> getObservatoryScheduledTestOutp
 ///     fn::invoke:
 ///       function: cloudflare:getOrganization
 ///       arguments:
-///         organizationId: a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8
+///         organizationId: a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_organization_get_organization_args_doc}
 /// [options] Invoke options controlling this call.
@@ -26817,14 +28486,14 @@ pulumi.Output<GetOrganizationResult> getOrganizationOutput(
 /// import * as cloudflare from "@pulumi/cloudflare";
 ///
 /// const exampleOrganizationProfile = cloudflare.getOrganizationProfile({
-///     organizationId: "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///     organizationId: "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_cloudflare as cloudflare
 ///
-/// example_organization_profile = cloudflare.get_organization_profile(organization_id="a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+/// example_organization_profile = cloudflare.get_organization_profile(organization_id="a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -26836,7 +28505,7 @@ pulumi.Output<GetOrganizationResult> getOrganizationOutput(
 /// {
 ///     var exampleOrganizationProfile = Cloudflare.GetOrganizationProfile.Invoke(new()
 ///     {
-///         OrganizationId = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///         OrganizationId = "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 ///     });
 ///
 /// });
@@ -26852,7 +28521,7 @@ pulumi.Output<GetOrganizationResult> getOrganizationOutput(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetOrganizationProfile(ctx, &cloudflare.LookupOrganizationProfileArgs{
-/// 			OrganizationId: "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+/// 			OrganizationId: "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -26862,7 +28531,7 @@ pulumi.Output<GetOrganizationResult> getOrganizationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -26870,8 +28539,8 @@ pulumi.Output<GetOrganizationResult> getOrganizationOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getorganizationprofile" "exampleOrganizationProfile" {
-///   organization_id = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"
+/// data "cloudflare_organization_profile" "exampleOrganizationProfile" {
+///   organization_id = "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8"
 /// }
 /// ```
 /// ```java
@@ -26896,7 +28565,7 @@ pulumi.Output<GetOrganizationResult> getOrganizationOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var exampleOrganizationProfile = CloudflareFunctions.getOrganizationProfile(GetOrganizationProfileArgs.builder()
-///             .organizationId("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+///             .organizationId("a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8")
 ///             .build());
 ///
 ///     }
@@ -26908,7 +28577,7 @@ pulumi.Output<GetOrganizationResult> getOrganizationOutput(
 ///     fn::invoke:
 ///       function: cloudflare:getOrganizationProfile
 ///       arguments:
-///         organizationId: a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8
+///         organizationId: a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_organization_profile_get_organization_profile_args_doc}
 /// [options] Invoke options controlling this call.
@@ -26949,7 +28618,7 @@ pulumi.Output<GetOrganizationProfileResult> getOrganizationProfileOutput(
 /// import * as cloudflare from "@pulumi/cloudflare";
 ///
 /// const exampleOrganizations = cloudflare.getOrganizations({
-///     ids: ["a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"],
+///     ids: ["a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8"],
 ///     containing: {
 ///         account: "account",
 ///         organization: "organization",
@@ -26963,7 +28632,7 @@ pulumi.Output<GetOrganizationProfileResult> getOrganizationProfileOutput(
 ///     pageSize: 0,
 ///     pageToken: "page_token",
 ///     parent: {
-///         id: "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///         id: "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 ///     },
 /// });
 /// ```
@@ -26971,7 +28640,7 @@ pulumi.Output<GetOrganizationProfileResult> getOrganizationProfileOutput(
 /// import pulumi
 /// import pulumi_cloudflare as cloudflare
 ///
-/// example_organizations = cloudflare.get_organizations(ids=["a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"],
+/// example_organizations = cloudflare.get_organizations(ids=["a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8"],
 ///     containing={
 ///         "account": "account",
 ///         "organization": "organization",
@@ -26985,7 +28654,7 @@ pulumi.Output<GetOrganizationProfileResult> getOrganizationProfileOutput(
 ///     page_size=0,
 ///     page_token="page_token",
 ///     parent={
-///         "id": "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///         "id": "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 ///     })
 /// ```
 /// ```csharp
@@ -27000,7 +28669,7 @@ pulumi.Output<GetOrganizationProfileResult> getOrganizationProfileOutput(
 ///     {
 ///         Ids = new[]
 ///         {
-///             "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///             "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 ///         },
 ///         Containing = new Cloudflare.Inputs.GetOrganizationsContainingInputArgs
 ///         {
@@ -27018,7 +28687,7 @@ pulumi.Output<GetOrganizationProfileResult> getOrganizationProfileOutput(
 ///         PageToken = "page_token",
 ///         Parent = new Cloudflare.Inputs.GetOrganizationsParentInputArgs
 ///         {
-///             Id = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+///             Id = "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 ///         },
 ///     });
 ///
@@ -27036,7 +28705,7 @@ pulumi.Output<GetOrganizationProfileResult> getOrganizationProfileOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetOrganizations(ctx, &cloudflare.LookupOrganizationsArgs{
 /// 			Ids: []string{
-/// 				"a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+/// 				"a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 /// 			},
 /// 			Containing: cloudflare.GetOrganizationsContaining{
 /// 				Account:      pulumi.StringRef("account"),
@@ -27051,7 +28720,7 @@ pulumi.Output<GetOrganizationProfileResult> getOrganizationProfileOutput(
 /// 			PageSize:  pulumi.IntRef(0),
 /// 			PageToken: pulumi.StringRef("page_token"),
 /// 			Parent: cloudflare.GetOrganizationsParent{
-/// 				Id: "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8",
+/// 				Id: "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8",
 /// 			},
 /// 		}, nil)
 /// 		if err != nil {
@@ -27062,7 +28731,7 @@ pulumi.Output<GetOrganizationProfileResult> getOrganizationProfileOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -27070,8 +28739,8 @@ pulumi.Output<GetOrganizationProfileResult> getOrganizationProfileOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getorganizations" "exampleOrganizations" {
-///   ids = ["a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"]
+/// data "cloudflare_organizations" "exampleOrganizations" {
+///   ids = ["a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8"]
 ///   containing = {
 ///     account      = "account"
 ///     organization = "organization"
@@ -27085,7 +28754,7 @@ pulumi.Output<GetOrganizationProfileResult> getOrganizationProfileOutput(
 ///   page_size  = 0
 ///   page_token = "page_token"
 ///   parent = {
-///     id = "a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8"
+///     id = "a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8"
 ///   }
 /// }
 /// ```
@@ -27114,7 +28783,7 @@ pulumi.Output<GetOrganizationProfileResult> getOrganizationProfileOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var exampleOrganizations = CloudflareFunctions.getOrganizations(GetOrganizationsArgs.builder()
-///             .ids("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+///             .ids("a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8")
 ///             .containing(GetOrganizationsContainingArgs.builder()
 ///                 .account("account")
 ///                 .organization("organization")
@@ -27128,7 +28797,7 @@ pulumi.Output<GetOrganizationProfileResult> getOrganizationProfileOutput(
 ///             .pageSize(0)
 ///             .pageToken("page_token")
 ///             .parent(GetOrganizationsParentArgs.builder()
-///                 .id("a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8")
+///                 .id("a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8")
 ///                 .build())
 ///             .build());
 ///
@@ -27142,7 +28811,7 @@ pulumi.Output<GetOrganizationProfileResult> getOrganizationProfileOutput(
 ///       function: cloudflare:getOrganizations
 ///       arguments:
 ///         ids:
-///           - a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8
+///           - a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8
 ///         containing:
 ///           account: account
 ///           organization: organization
@@ -27154,7 +28823,7 @@ pulumi.Output<GetOrganizationProfileResult> getOrganizationProfileOutput(
 ///         pageSize: 0
 ///         pageToken: page_token
 ///         parent:
-///           id: a7b9c3d2e8f4g1h5i6j0k9l2m3n7o4p8
+///           id: a7b9c3d2e8f4a1b5c6d0e9f2a3b7c4d8
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_organizations_get_organizations_args_doc}
 /// [options] Invoke options controlling this call.
@@ -27190,14 +28859,14 @@ pulumi.Output<GetOrganizationsInvokeResult> getOrganizationsOutput(
 /// import * as cloudflare from "@pulumi/cloudflare";
 ///
 /// const exampleOriginCaCertificate = cloudflare.getOriginCaCertificate({
-///     certificateId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     certificateId: "328578533902268680212849205732770752308931942346",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_cloudflare as cloudflare
 ///
-/// example_origin_ca_certificate = cloudflare.get_origin_ca_certificate(certificate_id="023e105f4ecef8ad9ca31a8372d0c353")
+/// example_origin_ca_certificate = cloudflare.get_origin_ca_certificate(certificate_id="328578533902268680212849205732770752308931942346")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -27209,7 +28878,7 @@ pulumi.Output<GetOrganizationsInvokeResult> getOrganizationsOutput(
 /// {
 ///     var exampleOriginCaCertificate = Cloudflare.GetOriginCaCertificate.Invoke(new()
 ///     {
-///         CertificateId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         CertificateId = "328578533902268680212849205732770752308931942346",
 ///     });
 ///
 /// });
@@ -27225,7 +28894,7 @@ pulumi.Output<GetOrganizationsInvokeResult> getOrganizationsOutput(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetOriginCaCertificate(ctx, &cloudflare.LookupOriginCaCertificateArgs{
-/// 			CertificateId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			CertificateId: pulumi.StringRef("328578533902268680212849205732770752308931942346"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -27235,7 +28904,7 @@ pulumi.Output<GetOrganizationsInvokeResult> getOrganizationsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -27243,8 +28912,8 @@ pulumi.Output<GetOrganizationsInvokeResult> getOrganizationsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getorigincacertificate" "exampleOriginCaCertificate" {
-///   certificate_id = "023e105f4ecef8ad9ca31a8372d0c353"
+/// data "cloudflare_origin_ca_certificate" "exampleOriginCaCertificate" {
+///   certificate_id = "328578533902268680212849205732770752308931942346"
 /// }
 /// ```
 /// ```java
@@ -27269,7 +28938,7 @@ pulumi.Output<GetOrganizationsInvokeResult> getOrganizationsOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var exampleOriginCaCertificate = CloudflareFunctions.getOriginCaCertificate(GetOriginCaCertificateArgs.builder()
-///             .certificateId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .certificateId("328578533902268680212849205732770752308931942346")
 ///             .build());
 ///
 ///     }
@@ -27281,7 +28950,7 @@ pulumi.Output<GetOrganizationsInvokeResult> getOrganizationsOutput(
 ///     fn::invoke:
 ///       function: cloudflare:getOriginCaCertificate
 ///       arguments:
-///         certificateId: 023e105f4ecef8ad9ca31a8372d0c353
+///         certificateId: 328578533902268680212849205732770752308931942346
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_origin_ca_certificate_get_origin_ca_certificate_args_doc}
 /// [options] Invoke options controlling this call.
@@ -27370,7 +29039,7 @@ pulumi.Output<GetOriginCaCertificateResult> getOriginCaCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -27378,7 +29047,7 @@ pulumi.Output<GetOriginCaCertificateResult> getOriginCaCertificateOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getorigincacertificates" "exampleOriginCaCertificates" {
+/// data "cloudflare_origin_ca_certificates" "exampleOriginCaCertificates" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   limit   = 10
 ///   offset  = 10
@@ -27507,7 +29176,7 @@ pulumi.Output<GetOriginCaCertificatesInvokeResult> getOriginCaCertificatesOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -27515,7 +29184,7 @@ pulumi.Output<GetOriginCaCertificatesInvokeResult> getOriginCaCertificatesOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getorigincloudregion" "exampleOriginCloudRegion" {
+/// data "cloudflare_origin_cloud_region" "exampleOriginCloudRegion" {
 ///   zone_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   origin_ip = "192.0.2.1"
 /// }
@@ -27637,7 +29306,7 @@ pulumi.Output<GetOriginCloudRegionResult> getOriginCloudRegionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -27645,7 +29314,7 @@ pulumi.Output<GetOriginCloudRegionResult> getOriginCloudRegionOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getorigincloudregions" "exampleOriginCloudRegions" {
+/// data "cloudflare_origin_cloud_regions" "exampleOriginCloudRegions" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -27764,7 +29433,7 @@ pulumi.Output<GetOriginCloudRegionsInvokeResult> getOriginCloudRegionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -27772,7 +29441,7 @@ pulumi.Output<GetOriginCloudRegionsInvokeResult> getOriginCloudRegionsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getorigintlscompliancemodes" "exampleOriginTlsComplianceModes" {
+/// data "cloudflare_origin_tls_compliance_modes" "exampleOriginTlsComplianceModes" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -27934,7 +29603,7 @@ pulumi.Output<GetOriginTlsComplianceModesResult> getOriginTlsComplianceModesOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -27942,7 +29611,7 @@ pulumi.Output<GetOriginTlsComplianceModesResult> getOriginTlsComplianceModesOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getpagerule" "examplePageRule" {
+/// data "cloudflare_page_rule" "examplePageRule" {
 ///   zone_id     = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   pagerule_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -28077,7 +29746,7 @@ pulumi.Output<GetPageRuleResult> getPageRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -28085,7 +29754,7 @@ pulumi.Output<GetPageRuleResult> getPageRuleOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getpageshieldconnections" "examplePageShieldConnections" {
+/// data "cloudflare_page_shield_connections" "examplePageShieldConnections" {
 ///   zone_id       = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   connection_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -28223,7 +29892,7 @@ pulumi.Output<GetPageShieldConnectionsResult> getPageShieldConnectionsOutput(
 ///         OrderBy = "first_seen_at",
 ///         Page = "2",
 ///         PageUrl = "example.com/page,*/checkout,example.com/*,*checkout*",
-///         PerPage = 100,
+///         PerPage = 100.0,
 ///         PrioritizeMalicious = true,
 ///         Status = "active,inactive",
 ///         Urls = "blog.cloudflare.com,www.example",
@@ -28264,7 +29933,7 @@ pulumi.Output<GetPageShieldConnectionsResult> getPageShieldConnectionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -28272,7 +29941,7 @@ pulumi.Output<GetPageShieldConnectionsResult> getPageShieldConnectionsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getpageshieldconnectionslist" "examplePageShieldConnectionsList" {
+/// data "cloudflare_page_shield_connections_list" "examplePageShieldConnectionsList" {
 ///   zone_id              = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   direction            = "asc"
 ///   exclude_cdn_cgi      = true
@@ -28440,7 +30109,7 @@ pulumi.Output<GetPageShieldConnectionsListInvokeResult> getPageShieldConnections
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -28448,7 +30117,7 @@ pulumi.Output<GetPageShieldConnectionsListInvokeResult> getPageShieldConnections
 ///   }
 /// }
 ///
-/// data "cloudflare_getpageshieldcookies" "examplePageShieldCookies" {
+/// data "cloudflare_page_shield_cookies" "examplePageShieldCookies" {
 ///   zone_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   cookie_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -28592,7 +30261,7 @@ pulumi.Output<GetPageShieldCookiesResult> getPageShieldCookiesOutput(
 ///         Page = "2",
 ///         PageUrl = "example.com/page,*/checkout,example.com/*,*checkout*",
 ///         Path = "/",
-///         PerPage = 100,
+///         PerPage = 100.0,
 ///         SameSite = "strict",
 ///         Secure = true,
 ///         Type = "first_party",
@@ -28635,7 +30304,7 @@ pulumi.Output<GetPageShieldCookiesResult> getPageShieldCookiesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -28643,7 +30312,7 @@ pulumi.Output<GetPageShieldCookiesResult> getPageShieldCookiesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getpageshieldcookieslist" "examplePageShieldCookiesList" {
+/// data "cloudflare_page_shield_cookies_list" "examplePageShieldCookiesList" {
 ///   zone_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   direction = "asc"
 ///   domain    = "example.com"
@@ -28813,7 +30482,7 @@ pulumi.Output<GetPageShieldCookiesListInvokeResult> getPageShieldCookiesListOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -28821,7 +30490,7 @@ pulumi.Output<GetPageShieldCookiesListInvokeResult> getPageShieldCookiesListOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getpageshieldpolicies" "examplePageShieldPolicies" {
+/// data "cloudflare_page_shield_policies" "examplePageShieldPolicies" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -28953,7 +30622,7 @@ pulumi.Output<GetPageShieldPoliciesInvokeResult> getPageShieldPoliciesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -28961,7 +30630,7 @@ pulumi.Output<GetPageShieldPoliciesInvokeResult> getPageShieldPoliciesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getpageshieldpolicy" "examplePageShieldPolicy" {
+/// data "cloudflare_page_shield_policy" "examplePageShieldPolicy" {
 ///   zone_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   policy_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -29096,7 +30765,7 @@ pulumi.Output<GetPageShieldPolicyResult> getPageShieldPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -29104,7 +30773,7 @@ pulumi.Output<GetPageShieldPolicyResult> getPageShieldPolicyOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getpageshieldscripts" "examplePageShieldScripts" {
+/// data "cloudflare_page_shield_scripts" "examplePageShieldScripts" {
 ///   zone_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   script_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -29239,7 +30908,7 @@ pulumi.Output<GetPageShieldScriptsResult> getPageShieldScriptsOutput(
 ///         OrderBy = "first_seen_at",
 ///         Page = "2",
 ///         PageUrl = "example.com/page,*/checkout,example.com/*,*checkout*",
-///         PerPage = 100,
+///         PerPage = 100.0,
 ///         PrioritizeMalicious = true,
 ///         Status = "active,inactive",
 ///         Urls = "blog.cloudflare.com,www.example",
@@ -29279,7 +30948,7 @@ pulumi.Output<GetPageShieldScriptsResult> getPageShieldScriptsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -29287,7 +30956,7 @@ pulumi.Output<GetPageShieldScriptsResult> getPageShieldScriptsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getpageshieldscriptslist" "examplePageShieldScriptsList" {
+/// data "cloudflare_page_shield_scripts_list" "examplePageShieldScriptsList" {
 ///   zone_id              = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   direction            = "asc"
 ///   exclude_urls         = "blog.cloudflare.com,www.example"
@@ -29401,7 +31070,7 @@ pulumi.Output<GetPageShieldScriptsListInvokeResult> getPageShieldScriptsListOutp
 /// const examplePagesDomain = cloudflare.getPagesDomain({
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     projectName: "this-is-my-project-01",
-///     domainName: "this-is-my-domain-01.com",
+///     domainName: "example.com",
 /// });
 /// ```
 /// ```python
@@ -29410,7 +31079,7 @@ pulumi.Output<GetPageShieldScriptsListInvokeResult> getPageShieldScriptsListOutp
 ///
 /// example_pages_domain = cloudflare.get_pages_domain(account_id="023e105f4ecef8ad9ca31a8372d0c353",
 ///     project_name="this-is-my-project-01",
-///     domain_name="this-is-my-domain-01.com")
+///     domain_name="example.com")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -29424,7 +31093,7 @@ pulumi.Output<GetPageShieldScriptsListInvokeResult> getPageShieldScriptsListOutp
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
 ///         ProjectName = "this-is-my-project-01",
-///         DomainName = "this-is-my-domain-01.com",
+///         DomainName = "example.com",
 ///     });
 ///
 /// });
@@ -29442,7 +31111,7 @@ pulumi.Output<GetPageShieldScriptsListInvokeResult> getPageShieldScriptsListOutp
 /// 		_, err := cloudflare.GetPagesDomain(ctx, &cloudflare.LookupPagesDomainArgs{
 /// 			AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
 /// 			ProjectName: "this-is-my-project-01",
-/// 			DomainName:  "this-is-my-domain-01.com",
+/// 			DomainName:  "example.com",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -29452,7 +31121,7 @@ pulumi.Output<GetPageShieldScriptsListInvokeResult> getPageShieldScriptsListOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -29460,10 +31129,10 @@ pulumi.Output<GetPageShieldScriptsListInvokeResult> getPageShieldScriptsListOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getpagesdomain" "examplePagesDomain" {
+/// data "cloudflare_pages_domain" "examplePagesDomain" {
 ///   account_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   project_name = "this-is-my-project-01"
-///   domain_name  = "this-is-my-domain-01.com"
+///   domain_name  = "example.com"
 /// }
 /// ```
 /// ```java
@@ -29490,7 +31159,7 @@ pulumi.Output<GetPageShieldScriptsListInvokeResult> getPageShieldScriptsListOutp
 ///         final var examplePagesDomain = CloudflareFunctions.getPagesDomain(GetPagesDomainArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
 ///             .projectName("this-is-my-project-01")
-///             .domainName("this-is-my-domain-01.com")
+///             .domainName("example.com")
 ///             .build());
 ///
 ///     }
@@ -29504,7 +31173,7 @@ pulumi.Output<GetPageShieldScriptsListInvokeResult> getPageShieldScriptsListOutp
 ///       arguments:
 ///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
 ///         projectName: this-is-my-project-01
-///         domainName: this-is-my-domain-01.com
+///         domainName: example.com
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_pages_domain_get_pages_domain_args_doc}
 /// [options] Invoke options controlling this call.
@@ -29594,7 +31263,7 @@ pulumi.Output<GetPagesDomainResult> getPagesDomainOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -29602,7 +31271,7 @@ pulumi.Output<GetPagesDomainResult> getPagesDomainOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getpagesdomains" "examplePagesDomains" {
+/// data "cloudflare_pages_domains" "examplePagesDomains" {
 ///   account_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   project_name = "this-is-my-project-01"
 /// }
@@ -29733,7 +31402,7 @@ pulumi.Output<GetPagesDomainsInvokeResult> getPagesDomainsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -29741,7 +31410,7 @@ pulumi.Output<GetPagesDomainsInvokeResult> getPagesDomainsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getpagesproject" "examplePagesProject" {
+/// data "cloudflare_pages_project" "examplePagesProject" {
 ///   account_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   project_name = "this-is-my-project-01"
 /// }
@@ -29868,7 +31537,7 @@ pulumi.Output<GetPagesProjectResult> getPagesProjectOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -29876,7 +31545,7 @@ pulumi.Output<GetPagesProjectResult> getPagesProjectOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getpagesprojects" "examplePagesProjects" {
+/// data "cloudflare_pages_projects" "examplePagesProjects" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -30004,7 +31673,7 @@ pulumi.Output<GetPagesProjectsInvokeResult> getPagesProjectsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -30012,7 +31681,7 @@ pulumi.Output<GetPagesProjectsInvokeResult> getPagesProjectsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getpipeline" "examplePipeline" {
+/// data "cloudflare_pipeline" "examplePipeline" {
 ///   account_id  = "0123105f4ecef8ad9ca31a8372d0c353"
 ///   pipeline_id = "043e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -30143,7 +31812,7 @@ pulumi.Output<GetPipelineResult> getPipelineOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -30151,7 +31820,7 @@ pulumi.Output<GetPipelineResult> getPipelineOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getpipelinesink" "examplePipelineSink" {
+/// data "cloudflare_pipeline_sink" "examplePipelineSink" {
 ///   account_id = "0123105f4ecef8ad9ca31a8372d0c353"
 ///   sink_id    = "0223105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -30234,6 +31903,7 @@ pulumi.Output<GetPipelineSinkResult> getPipelineSinkOutput(
 ///
 /// const examplePipelineSinks = cloudflare.getPipelineSinks({
 ///     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
+///     name: "x",
 ///     pipelineId: "pipeline_id",
 /// });
 /// ```
@@ -30242,6 +31912,7 @@ pulumi.Output<GetPipelineSinkResult> getPipelineSinkOutput(
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_pipeline_sinks = cloudflare.get_pipeline_sinks(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+///     name="x",
 ///     pipeline_id="pipeline_id")
 /// ```
 /// ```csharp
@@ -30255,6 +31926,7 @@ pulumi.Output<GetPipelineSinkResult> getPipelineSinkOutput(
 ///     var examplePipelineSinks = Cloudflare.GetPipelineSinks.Invoke(new()
 ///     {
 ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
+///         Name = "x",
 ///         PipelineId = "pipeline_id",
 ///     });
 ///
@@ -30272,6 +31944,7 @@ pulumi.Output<GetPipelineSinkResult> getPipelineSinkOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetPipelineSinks(ctx, &cloudflare.LookupPipelineSinksArgs{
 /// 			AccountId:  pulumi.StringRef("0123105f4ecef8ad9ca31a8372d0c353"),
+/// 			Name:       pulumi.StringRef("x"),
 /// 			PipelineId: pulumi.StringRef("pipeline_id"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -30282,7 +31955,7 @@ pulumi.Output<GetPipelineSinkResult> getPipelineSinkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -30290,8 +31963,9 @@ pulumi.Output<GetPipelineSinkResult> getPipelineSinkOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getpipelinesinks" "examplePipelineSinks" {
+/// data "cloudflare_pipeline_sinks" "examplePipelineSinks" {
 ///   account_id  = "0123105f4ecef8ad9ca31a8372d0c353"
+///   name        = "x"
 ///   pipeline_id = "pipeline_id"
 /// }
 /// ```
@@ -30318,6 +31992,7 @@ pulumi.Output<GetPipelineSinkResult> getPipelineSinkOutput(
 ///     public static void stack(Context ctx) {
 ///         final var examplePipelineSinks = CloudflareFunctions.getPipelineSinks(GetPipelineSinksArgs.builder()
 ///             .accountId("0123105f4ecef8ad9ca31a8372d0c353")
+///             .name("x")
 ///             .pipelineId("pipeline_id")
 ///             .build());
 ///
@@ -30331,6 +32006,7 @@ pulumi.Output<GetPipelineSinkResult> getPipelineSinkOutput(
 ///       function: cloudflare:getPipelineSinks
 ///       arguments:
 ///         accountId: 0123105f4ecef8ad9ca31a8372d0c353
+///         name: x
 ///         pipelineId: pipeline_id
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_pipeline_sinks_get_pipeline_sinks_args_doc}
@@ -30421,7 +32097,7 @@ pulumi.Output<GetPipelineSinksInvokeResult> getPipelineSinksOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -30429,7 +32105,7 @@ pulumi.Output<GetPipelineSinksInvokeResult> getPipelineSinksOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getpipelinestream" "examplePipelineStream" {
+/// data "cloudflare_pipeline_stream" "examplePipelineStream" {
 ///   account_id = "0123105f4ecef8ad9ca31a8372d0c353"
 ///   stream_id  = "033e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -30512,6 +32188,7 @@ pulumi.Output<GetPipelineStreamResult> getPipelineStreamOutput(
 ///
 /// const examplePipelineStreams = cloudflare.getPipelineStreams({
 ///     accountId: "0123105f4ecef8ad9ca31a8372d0c353",
+///     name: "x",
 ///     pipelineId: "043e105f4ecef8ad9ca31a8372d0c353",
 /// });
 /// ```
@@ -30520,6 +32197,7 @@ pulumi.Output<GetPipelineStreamResult> getPipelineStreamOutput(
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_pipeline_streams = cloudflare.get_pipeline_streams(account_id="0123105f4ecef8ad9ca31a8372d0c353",
+///     name="x",
 ///     pipeline_id="043e105f4ecef8ad9ca31a8372d0c353")
 /// ```
 /// ```csharp
@@ -30533,6 +32211,7 @@ pulumi.Output<GetPipelineStreamResult> getPipelineStreamOutput(
 ///     var examplePipelineStreams = Cloudflare.GetPipelineStreams.Invoke(new()
 ///     {
 ///         AccountId = "0123105f4ecef8ad9ca31a8372d0c353",
+///         Name = "x",
 ///         PipelineId = "043e105f4ecef8ad9ca31a8372d0c353",
 ///     });
 ///
@@ -30550,6 +32229,7 @@ pulumi.Output<GetPipelineStreamResult> getPipelineStreamOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetPipelineStreams(ctx, &cloudflare.LookupPipelineStreamsArgs{
 /// 			AccountId:  pulumi.StringRef("0123105f4ecef8ad9ca31a8372d0c353"),
+/// 			Name:       pulumi.StringRef("x"),
 /// 			PipelineId: pulumi.StringRef("043e105f4ecef8ad9ca31a8372d0c353"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -30560,7 +32240,7 @@ pulumi.Output<GetPipelineStreamResult> getPipelineStreamOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -30568,8 +32248,9 @@ pulumi.Output<GetPipelineStreamResult> getPipelineStreamOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getpipelinestreams" "examplePipelineStreams" {
+/// data "cloudflare_pipeline_streams" "examplePipelineStreams" {
 ///   account_id  = "0123105f4ecef8ad9ca31a8372d0c353"
+///   name        = "x"
 ///   pipeline_id = "043e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -30596,6 +32277,7 @@ pulumi.Output<GetPipelineStreamResult> getPipelineStreamOutput(
 ///     public static void stack(Context ctx) {
 ///         final var examplePipelineStreams = CloudflareFunctions.getPipelineStreams(GetPipelineStreamsArgs.builder()
 ///             .accountId("0123105f4ecef8ad9ca31a8372d0c353")
+///             .name("x")
 ///             .pipelineId("043e105f4ecef8ad9ca31a8372d0c353")
 ///             .build());
 ///
@@ -30609,6 +32291,7 @@ pulumi.Output<GetPipelineStreamResult> getPipelineStreamOutput(
 ///       function: cloudflare:getPipelineStreams
 ///       arguments:
 ///         accountId: 0123105f4ecef8ad9ca31a8372d0c353
+///         name: x
 ///         pipelineId: 043e105f4ecef8ad9ca31a8372d0c353
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_pipeline_streams_get_pipeline_streams_args_doc}
@@ -30690,7 +32373,7 @@ pulumi.Output<GetPipelineStreamsInvokeResult> getPipelineStreamsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -30698,7 +32381,7 @@ pulumi.Output<GetPipelineStreamsInvokeResult> getPipelineStreamsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getprecursor" "examplePrecursor" {
+/// data "cloudflare_precursor" "examplePrecursor" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -30828,7 +32511,7 @@ pulumi.Output<GetPrecursorResult> getPrecursorOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -30836,7 +32519,7 @@ pulumi.Output<GetPrecursorResult> getPrecursorOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getqueue" "exampleQueue" {
+/// data "cloudflare_queue" "exampleQueue" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   queue_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -30916,7 +32599,7 @@ pulumi.Output<GetQueueResult> getQueueOutput(
 ///
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -30924,7 +32607,7 @@ pulumi.Output<GetQueueResult> getQueueOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getqueueconsumer" "exampleQueueConsumer" {
+/// data "cloudflare_queue_consumer" "exampleQueueConsumer" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   queue_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   consumer_id = "023e105f4ecef8ad9ca31a8372d0c353"
@@ -31030,7 +32713,7 @@ pulumi.Output<GetQueueConsumerResult> getQueueConsumerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -31038,7 +32721,7 @@ pulumi.Output<GetQueueConsumerResult> getQueueConsumerOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getqueueconsumers" "exampleQueueConsumers" {
+/// data "cloudflare_queue_consumers" "exampleQueueConsumers" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   queue_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -31167,7 +32850,7 @@ pulumi.Output<GetQueueConsumersInvokeResult> getQueueConsumersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -31175,7 +32858,7 @@ pulumi.Output<GetQueueConsumersInvokeResult> getQueueConsumersOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getqueues" "exampleQueues" {
+/// data "cloudflare_queues" "exampleQueues" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -31298,7 +32981,7 @@ pulumi.Output<GetQueuesInvokeResult> getQueuesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -31306,7 +32989,7 @@ pulumi.Output<GetQueuesInvokeResult> getQueuesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getr2bucket" "exampleR2Bucket" {
+/// data "cloudflare_r2_bucket" "exampleR2Bucket" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bucket_name = "example-bucket"
 /// }
@@ -31432,7 +33115,7 @@ pulumi.Output<GetR2BucketResult> getR2BucketOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -31440,7 +33123,7 @@ pulumi.Output<GetR2BucketResult> getR2BucketOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getr2bucketcors" "exampleR2BucketCors" {
+/// data "cloudflare_r2_bucket_cors" "exampleR2BucketCors" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bucket_name = "example-bucket"
 /// }
@@ -31575,7 +33258,7 @@ pulumi.Output<GetR2BucketCorsResult> getR2BucketCorsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -31583,7 +33266,7 @@ pulumi.Output<GetR2BucketCorsResult> getR2BucketCorsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getr2bucketeventnotification" "exampleR2BucketEventNotification" {
+/// data "cloudflare_r2_bucket_event_notification" "exampleR2BucketEventNotification" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bucket_name = "example-bucket"
 ///   queue_id    = "queue_id"
@@ -31712,7 +33395,7 @@ pulumi.Output<GetR2BucketEventNotificationResult> getR2BucketEventNotificationOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -31720,7 +33403,7 @@ pulumi.Output<GetR2BucketEventNotificationResult> getR2BucketEventNotificationOu
 ///   }
 /// }
 ///
-/// data "cloudflare_getr2bucketlifecycle" "exampleR2BucketLifecycle" {
+/// data "cloudflare_r2_bucket_lifecycle" "exampleR2BucketLifecycle" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bucket_name = "example-bucket"
 /// }
@@ -31846,7 +33529,7 @@ pulumi.Output<GetR2BucketLifecycleResult> getR2BucketLifecycleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -31854,7 +33537,7 @@ pulumi.Output<GetR2BucketLifecycleResult> getR2BucketLifecycleOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getr2bucketlock" "exampleR2BucketLock" {
+/// data "cloudflare_r2_bucket_lock" "exampleR2BucketLock" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bucket_name = "example-bucket"
 /// }
@@ -31980,7 +33663,7 @@ pulumi.Output<GetR2BucketLockResult> getR2BucketLockOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -31988,7 +33671,7 @@ pulumi.Output<GetR2BucketLockResult> getR2BucketLockOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getr2bucketsippy" "exampleR2BucketSippy" {
+/// data "cloudflare_r2_bucket_sippy" "exampleR2BucketSippy" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bucket_name = "example-bucket"
 /// }
@@ -32123,7 +33806,7 @@ pulumi.Output<GetR2BucketSippyResult> getR2BucketSippyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -32131,7 +33814,7 @@ pulumi.Output<GetR2BucketSippyResult> getR2BucketSippyOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getr2customdomain" "exampleR2CustomDomain" {
+/// data "cloudflare_r2_custom_domain" "exampleR2CustomDomain" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bucket_name = "example-bucket"
 ///   domain      = "example-domain/custom-domain.com"
@@ -32265,7 +33948,7 @@ pulumi.Output<GetR2CustomDomainResult> getR2CustomDomainOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -32273,7 +33956,7 @@ pulumi.Output<GetR2CustomDomainResult> getR2CustomDomainOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getr2datacatalog" "exampleR2DataCatalog" {
+/// data "cloudflare_r2_data_catalog" "exampleR2DataCatalog" {
 ///   account_id  = "0123456789abcdef0123456789abcdef"
 ///   bucket_name = "my-data-bucket"
 /// }
@@ -32404,7 +34087,7 @@ pulumi.Output<GetR2DataCatalogResult> getR2DataCatalogOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -32412,7 +34095,7 @@ pulumi.Output<GetR2DataCatalogResult> getR2DataCatalogOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getratelimit" "exampleRateLimit" {
+/// data "cloudflare_rate_limit" "exampleRateLimit" {
 ///   zone_id       = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   rate_limit_id = "372e67954025e0ba6aaa6d586b9e0b59"
 /// }
@@ -32483,138 +34166,6 @@ pulumi.Output<GetRateLimitResult> getRateLimitOutput(
 
 /// Accepted Permissions
 ///
-/// - `Firewall Services Read`
-/// - `Firewall Services Write`
-///
-/// ## Example Usage
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as cloudflare from "@pulumi/cloudflare";
-///
-/// const exampleRateLimits = cloudflare.getRateLimits({
-///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_cloudflare as cloudflare
-///
-/// example_rate_limits = cloudflare.get_rate_limits(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Cloudflare = Pulumi.Cloudflare;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var exampleRateLimits = Cloudflare.GetRateLimits.Invoke(new()
-///     {
-///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := cloudflare.GetRateLimits(ctx, &cloudflare.LookupRateLimitsArgs{
-/// 			ZoneId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
-/// 		}, nil)
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     cloudflare = {
-///       source = "pulumi/cloudflare"
-///     }
-///   }
-/// }
-///
-/// data "cloudflare_getratelimits" "exampleRateLimits" {
-///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.cloudflare.CloudflareFunctions;
-/// import com.pulumi.cloudflare.inputs.GetRateLimitsArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         final var exampleRateLimits = CloudflareFunctions.getRateLimits(GetRateLimitsArgs.builder()
-///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// variables:
-///   exampleRateLimits:
-///     fn::invoke:
-///       function: cloudflare:getRateLimits
-///       arguments:
-///         zoneId: 023e105f4ecef8ad9ca31a8372d0c353
-/// ```
-/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_rate_limits_get_rate_limits_args_doc}
-/// [options] Invoke options controlling this call.
-Future<GetRateLimitsInvokeResult> getRateLimits(
-  GetRateLimitsArgs args, {
-  pulumi.InvokeOptions? options,
-}) async {
-  final deployment = pulumi.Deployment.instance;
-  final result = await deployment.invoke<Map<String, dynamic>>(
-    'cloudflare:index/getRateLimits:getRateLimits',
-    args.toMap(),
-    options: pulumi.toDeploymentInvokeOptions(options),
-  );
-  return GetRateLimitsInvokeResult.fromMap(result);
-}
-
-pulumi.Output<GetRateLimitsInvokeResult> getRateLimitsOutput(
-  GetRateLimitsArgs args, {
-  pulumi.InvokeOutputOptions? options,
-}) {
-  return pulumi.invokeOutput<Map<String, dynamic>>(
-    'cloudflare:index/getRateLimits:getRateLimits',
-    pulumi.Input.mapToInputs(args.toMap()),
-    options: options,
-  ).apply(GetRateLimitsInvokeResult.fromMap);
-}
-
-/// Accepted Permissions
-///
 /// - `DNS Read`
 /// - `DNS Write`
 ///
@@ -32675,7 +34226,7 @@ pulumi.Output<GetRateLimitsInvokeResult> getRateLimitsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -32683,7 +34234,7 @@ pulumi.Output<GetRateLimitsInvokeResult> getRateLimitsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getregionalhostname" "exampleRegionalHostname" {
+/// data "cloudflare_regional_hostname" "exampleRegionalHostname" {
 ///   zone_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   hostname = "foo.example.com"
 /// }
@@ -32810,7 +34361,7 @@ pulumi.Output<GetRegionalHostnameResult> getRegionalHostnameOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -32818,7 +34369,7 @@ pulumi.Output<GetRegionalHostnameResult> getRegionalHostnameOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getregionalhostnames" "exampleRegionalHostnames" {
+/// data "cloudflare_regional_hostnames" "exampleRegionalHostnames" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -32944,7 +34495,7 @@ pulumi.Output<GetRegionalHostnamesInvokeResult> getRegionalHostnamesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -32952,7 +34503,7 @@ pulumi.Output<GetRegionalHostnamesInvokeResult> getRegionalHostnamesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getregionaltieredcache" "exampleRegionalTieredCache" {
+/// data "cloudflare_regional_tiered_cache" "exampleRegionalTieredCache" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -33075,7 +34626,7 @@ pulumi.Output<GetRegionalTieredCacheResult> getRegionalTieredCacheOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -33083,7 +34634,7 @@ pulumi.Output<GetRegionalTieredCacheResult> getRegionalTieredCacheOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getregistrardomain" "exampleRegistrarDomain" {
+/// data "cloudflare_registrar_domain" "exampleRegistrarDomain" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   domain_name = "example.com"
 /// }
@@ -33195,7 +34746,7 @@ pulumi.Output<GetRegistrarDomainResult> getRegistrarDomainOutput(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetRegistrarDomains(ctx, &cloudflare.LookupRegistrarDomainsArgs{
-/// 			AccountId: pulumi.StringRef("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -33205,7 +34756,7 @@ pulumi.Output<GetRegistrarDomainResult> getRegistrarDomainOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -33213,7 +34764,7 @@ pulumi.Output<GetRegistrarDomainResult> getRegistrarDomainOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getregistrardomains" "exampleRegistrarDomains" {
+/// data "cloudflare_registrar_domains" "exampleRegistrarDomains" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -33342,7 +34893,7 @@ pulumi.Output<GetRegistrarDomainsInvokeResult> getRegistrarDomainsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -33350,7 +34901,7 @@ pulumi.Output<GetRegistrarDomainsInvokeResult> getRegistrarDomainsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getresourcegroup" "exampleResourceGroup" {
+/// data "cloudflare_resource_group" "exampleResourceGroup" {
 ///   account_id        = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   resource_group_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -33486,7 +35037,7 @@ pulumi.Output<GetResourceGroupResult> getResourceGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -33494,7 +35045,7 @@ pulumi.Output<GetResourceGroupResult> getResourceGroupOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getresourcegroups" "exampleResourceGroups" {
+/// data "cloudflare_resource_groups" "exampleResourceGroups" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   id         = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "NameOfTheResourceGroup"
@@ -33623,7 +35174,7 @@ pulumi.Output<GetResourceGroupsInvokeResult> getResourceGroupsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -33631,7 +35182,7 @@ pulumi.Output<GetResourceGroupsInvokeResult> getResourceGroupsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getruleset" "exampleRuleset" {
+/// data "cloudflare_ruleset" "exampleRuleset" {
 ///   zone_id = "9f1839b6152d298aca64c4e906b6d074"
 ///   id      = "2f2feab2026849078ba485f918791bdc"
 /// }
@@ -33753,7 +35304,7 @@ pulumi.Output<GetRulesetResult> getRulesetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -33761,7 +35312,7 @@ pulumi.Output<GetRulesetResult> getRulesetOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getrulesets" "exampleRulesets" {
+/// data "cloudflare_rulesets" "exampleRulesets" {
 ///   zone_id = "9f1839b6152d298aca64c4e906b6d074"
 /// }
 /// ```
@@ -33891,7 +35442,7 @@ pulumi.Output<GetRulesetsInvokeResult> getRulesetsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -33899,7 +35450,7 @@ pulumi.Output<GetRulesetsInvokeResult> getRulesetsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getschemavalidationoperationsettings" "exampleSchemaValidationOperationSettings" {
+/// data "cloudflare_schema_validation_operation_settings" "exampleSchemaValidationOperationSettings" {
 ///   zone_id      = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   operation_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -34028,7 +35579,7 @@ pulumi.Output<GetSchemaValidationOperationSettingsResult> getSchemaValidationOpe
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -34036,7 +35587,7 @@ pulumi.Output<GetSchemaValidationOperationSettingsResult> getSchemaValidationOpe
 ///   }
 /// }
 ///
-/// data "cloudflare_getschemavalidationoperationsettingslist" "exampleSchemaValidationOperationSettingsList" {
+/// data "cloudflare_schema_validation_operation_settings_list" "exampleSchemaValidationOperationSettingsList" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -34170,7 +35721,7 @@ pulumi.Output<GetSchemaValidationOperationSettingsListInvokeResult> getSchemaVal
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -34178,7 +35729,7 @@ pulumi.Output<GetSchemaValidationOperationSettingsListInvokeResult> getSchemaVal
 ///   }
 /// }
 ///
-/// data "cloudflare_getschemavalidationschemas" "exampleSchemaValidationSchemas" {
+/// data "cloudflare_schema_validation_schemas" "exampleSchemaValidationSchemas" {
 ///   zone_id     = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   schema_id   = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   omit_source = true
@@ -34314,7 +35865,7 @@ pulumi.Output<GetSchemaValidationSchemasResult> getSchemaValidationSchemasOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -34322,7 +35873,7 @@ pulumi.Output<GetSchemaValidationSchemasResult> getSchemaValidationSchemasOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getschemavalidationschemaslist" "exampleSchemaValidationSchemasList" {
+/// data "cloudflare_schema_validation_schemas_list" "exampleSchemaValidationSchemasList" {
 ///   zone_id            = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   validation_enabled = true
 /// }
@@ -34451,7 +36002,7 @@ pulumi.Output<GetSchemaValidationSchemasListInvokeResult> getSchemaValidationSch
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -34459,7 +36010,7 @@ pulumi.Output<GetSchemaValidationSchemasListInvokeResult> getSchemaValidationSch
 ///   }
 /// }
 ///
-/// data "cloudflare_getschemavalidationsettings" "exampleSchemaValidationSettings" {
+/// data "cloudflare_schema_validation_settings" "exampleSchemaValidationSettings" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -34587,7 +36138,7 @@ pulumi.Output<GetSchemaValidationSettingsResult> getSchemaValidationSettingsOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -34595,7 +36146,7 @@ pulumi.Output<GetSchemaValidationSettingsResult> getSchemaValidationSettingsOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getsecretsstore" "exampleSecretsStore" {
+/// data "cloudflare_secrets_store" "exampleSecretsStore" {
 ///   account_id = "985e105f4ecef8ad9ca31a8372d0c353"
 ///   store_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -34730,7 +36281,7 @@ pulumi.Output<GetSecretsStoreResult> getSecretsStoreOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -34738,7 +36289,7 @@ pulumi.Output<GetSecretsStoreResult> getSecretsStoreOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getsecretsstoresecret" "exampleSecretsStoreSecret" {
+/// data "cloudflare_secrets_store_secret" "exampleSecretsStoreSecret" {
 ///   account_id = "985e105f4ecef8ad9ca31a8372d0c353"
 ///   store_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   secret_id  = "3fd85f74b32742f1bff64a85009dda07"
@@ -34885,7 +36436,7 @@ pulumi.Output<GetSecretsStoreSecretResult> getSecretsStoreSecretOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -34893,7 +36444,7 @@ pulumi.Output<GetSecretsStoreSecretResult> getSecretsStoreSecretOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getsecretsstoresecrets" "exampleSecretsStoreSecrets" {
+/// data "cloudflare_secrets_store_secrets" "exampleSecretsStoreSecrets" {
 ///   account_id = "985e105f4ecef8ad9ca31a8372d0c353"
 ///   store_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   scopes     = ["workers"]
@@ -35027,7 +36578,7 @@ pulumi.Output<GetSecretsStoreSecretsInvokeResult> getSecretsStoreSecretsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -35035,7 +36586,7 @@ pulumi.Output<GetSecretsStoreSecretsInvokeResult> getSecretsStoreSecretsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getsecretsstores" "exampleSecretsStores" {
+/// data "cloudflare_secrets_stores" "exampleSecretsStores" {
 ///   account_id = "985e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -35166,7 +36717,7 @@ pulumi.Output<GetSecretsStoresInvokeResult> getSecretsStoresOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -35174,7 +36725,7 @@ pulumi.Output<GetSecretsStoresInvokeResult> getSecretsStoresOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getshare" "exampleShare" {
+/// data "cloudflare_share" "exampleShare" {
 ///   account_id               = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   share_id                 = "3fd85f74b32742f1bff64a85009dda07"
 ///   include_recipient_counts = true
@@ -35314,7 +36865,7 @@ pulumi.Output<GetShareResult> getShareOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -35322,7 +36873,7 @@ pulumi.Output<GetShareResult> getShareOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getsharerecipient" "exampleShareRecipient" {
+/// data "cloudflare_share_recipient" "exampleShareRecipient" {
 ///   account_id        = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   share_id          = "3fd85f74b32742f1bff64a85009dda07"
 ///   recipient_id      = "3fd85f74b32742f1bff64a85009dda07"
@@ -35458,7 +37009,7 @@ pulumi.Output<GetShareRecipientResult> getShareRecipientOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -35466,7 +37017,7 @@ pulumi.Output<GetShareRecipientResult> getShareRecipientOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getsharerecipients" "exampleShareRecipients" {
+/// data "cloudflare_share_recipients" "exampleShareRecipients" {
 ///   account_id        = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   share_id          = "3fd85f74b32742f1bff64a85009dda07"
 ///   include_resources = true
@@ -35599,7 +37150,7 @@ pulumi.Output<GetShareRecipientsInvokeResult> getShareRecipientsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -35607,7 +37158,7 @@ pulumi.Output<GetShareRecipientsInvokeResult> getShareRecipientsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getshareresource" "exampleShareResource" {
+/// data "cloudflare_share_resource" "exampleShareResource" {
 ///   account_id        = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   share_id          = "3fd85f74b32742f1bff64a85009dda07"
 ///   share_resource_id = "023e105f4ecef8ad9ca31a8372d0c353"
@@ -35744,7 +37295,7 @@ pulumi.Output<GetShareResourceResult> getShareResourceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -35752,7 +37303,7 @@ pulumi.Output<GetShareResourceResult> getShareResourceOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getshareresources" "exampleShareResources" {
+/// data "cloudflare_share_resources" "exampleShareResources" {
 ///   account_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   share_id      = "3fd85f74b32742f1bff64a85009dda07"
 ///   resource_type = "custom-ruleset"
@@ -35918,7 +37469,7 @@ pulumi.Output<GetShareResourcesInvokeResult> getShareResourcesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -35926,7 +37477,7 @@ pulumi.Output<GetShareResourcesInvokeResult> getShareResourcesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getshares" "exampleShares" {
+/// data "cloudflare_shares" "exampleShares" {
 ///   account_id               = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   include_recipient_counts = true
 ///   include_resources        = true
@@ -36077,7 +37628,7 @@ pulumi.Output<GetSharesInvokeResult> getSharesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -36085,7 +37636,7 @@ pulumi.Output<GetSharesInvokeResult> getSharesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getsnippet" "exampleSnippet" {
+/// data "cloudflare_snippet" "exampleSnippet" {
 ///   zone_id      = "9f1839b6152d298aca64c4e906b6d074"
 ///   snippet_name = "my_snippet"
 /// }
@@ -36188,6 +37739,108 @@ pulumi.Output<GetSnippetListInvokeResult> getSnippetListOutput(
 ///
 /// - `Snippets Read`
 /// - `Snippets Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleSnippetRules = cloudflare.getSnippetRules({
+///     zoneId: "9f1839b6152d298aca64c4e906b6d074",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_snippet_rules = cloudflare.get_snippet_rules(zone_id="9f1839b6152d298aca64c4e906b6d074")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleSnippetRules = Cloudflare.GetSnippetRules.Invoke(new()
+///     {
+///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetSnippetRules(ctx, &cloudflare.LookupSnippetRulesArgs{
+/// 			ZoneId: "9f1839b6152d298aca64c4e906b6d074",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_snippet_rules" "exampleSnippetRules" {
+///   zone_id = "9f1839b6152d298aca64c4e906b6d074"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetSnippetRulesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleSnippetRules = CloudflareFunctions.getSnippetRules(GetSnippetRulesArgs.builder()
+///             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleSnippetRules:
+///     fn::invoke:
+///       function: cloudflare:getSnippetRules
+///       arguments:
+///         zoneId: 9f1839b6152d298aca64c4e906b6d074
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_snippet_rules_get_snippet_rules_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSnippetRulesResult> getSnippetRules(
@@ -36214,6 +37867,112 @@ pulumi.Output<GetSnippetRulesResult> getSnippetRulesOutput(
   ).apply(GetSnippetRulesResult.fromMap);
 }
 
+/// Accepted Permissions
+///
+/// - `Snippets Read`
+/// - `Snippets Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleSnippetRulesList = cloudflare.getSnippetRulesList({
+///     zoneId: "9f1839b6152d298aca64c4e906b6d074",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_snippet_rules_list = cloudflare.get_snippet_rules_list(zone_id="9f1839b6152d298aca64c4e906b6d074")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleSnippetRulesList = Cloudflare.GetSnippetRulesList.Invoke(new()
+///     {
+///         ZoneId = "9f1839b6152d298aca64c4e906b6d074",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetSnippetRulesList(ctx, &cloudflare.LookupSnippetRulesListArgs{
+/// 			ZoneId: "9f1839b6152d298aca64c4e906b6d074",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_snippet_rules_list" "exampleSnippetRulesList" {
+///   zone_id = "9f1839b6152d298aca64c4e906b6d074"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetSnippetRulesListArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleSnippetRulesList = CloudflareFunctions.getSnippetRulesList(GetSnippetRulesListArgs.builder()
+///             .zoneId("9f1839b6152d298aca64c4e906b6d074")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleSnippetRulesList:
+///     fn::invoke:
+///       function: cloudflare:getSnippetRulesList
+///       arguments:
+///         zoneId: 9f1839b6152d298aca64c4e906b6d074
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_snippet_rules_list_get_snippet_rules_list_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSnippetRulesListInvokeResult> getSnippetRulesList(
@@ -36293,7 +38052,7 @@ pulumi.Output<GetSnippetRulesListInvokeResult> getSnippetRulesListOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -36301,7 +38060,7 @@ pulumi.Output<GetSnippetRulesListInvokeResult> getSnippetRulesListOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getsnippets" "exampleSnippets" {
+/// data "cloudflare_snippets" "exampleSnippets" {
 ///   zone_id = "9f1839b6152d298aca64c4e906b6d074"
 /// }
 /// ```
@@ -36455,7 +38214,7 @@ pulumi.Output<GetSnippetsListInvokeResult> getSnippetsListOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -36463,7 +38222,7 @@ pulumi.Output<GetSnippetsListInvokeResult> getSnippetsListOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getspectrumapplication" "exampleSpectrumApplication" {
+/// data "cloudflare_spectrum_application" "exampleSpectrumApplication" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   app_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -36590,7 +38349,7 @@ pulumi.Output<GetSpectrumApplicationResult> getSpectrumApplicationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -36598,7 +38357,7 @@ pulumi.Output<GetSpectrumApplicationResult> getSpectrumApplicationOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getspectrumapplications" "exampleSpectrumApplications" {
+/// data "cloudflare_spectrum_applications" "exampleSpectrumApplications" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -36666,6 +38425,138 @@ pulumi.Output<GetSpectrumApplicationsInvokeResult> getSpectrumApplicationsOutput
 
 /// Accepted Permissions
 ///
+/// - `Zone Settings Read`
+/// - `Zone Settings Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleSpectrumProtocols = cloudflare.getSpectrumProtocols({
+///     zoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_spectrum_protocols = cloudflare.get_spectrum_protocols(zone_id="023e105f4ecef8ad9ca31a8372d0c353")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleSpectrumProtocols = Cloudflare.GetSpectrumProtocols.Invoke(new()
+///     {
+///         ZoneId = "023e105f4ecef8ad9ca31a8372d0c353",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetSpectrumProtocols(ctx, &cloudflare.LookupSpectrumProtocolsArgs{
+/// 			ZoneId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_spectrum_protocols" "exampleSpectrumProtocols" {
+///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetSpectrumProtocolsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleSpectrumProtocols = CloudflareFunctions.getSpectrumProtocols(GetSpectrumProtocolsArgs.builder()
+///             .zoneId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleSpectrumProtocols:
+///     fn::invoke:
+///       function: cloudflare:getSpectrumProtocols
+///       arguments:
+///         zoneId: 023e105f4ecef8ad9ca31a8372d0c353
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_spectrum_protocols_get_spectrum_protocols_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetSpectrumProtocolsInvokeResult> getSpectrumProtocols(
+  GetSpectrumProtocolsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getSpectrumProtocols:getSpectrumProtocols',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetSpectrumProtocolsInvokeResult.fromMap(result);
+}
+
+pulumi.Output<GetSpectrumProtocolsInvokeResult> getSpectrumProtocolsOutput(
+  GetSpectrumProtocolsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getSpectrumProtocols:getSpectrumProtocols',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpectrumProtocolsInvokeResult.fromMap);
+}
+
+/// Accepted Permissions
+///
 /// - `SSO Connector Read`
 ///
 /// ## Example Usage
@@ -36725,7 +38616,7 @@ pulumi.Output<GetSpectrumApplicationsInvokeResult> getSpectrumApplicationsOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -36733,7 +38624,7 @@ pulumi.Output<GetSpectrumApplicationsInvokeResult> getSpectrumApplicationsOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getssoconnector" "exampleSsoConnector" {
+/// data "cloudflare_sso_connector" "exampleSsoConnector" {
 ///   account_id       = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   sso_connector_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -36859,7 +38750,7 @@ pulumi.Output<GetSsoConnectorResult> getSsoConnectorOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -36867,7 +38758,7 @@ pulumi.Output<GetSsoConnectorResult> getSsoConnectorOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getssoconnectors" "exampleSsoConnectors" {
+/// data "cloudflare_sso_connectors" "exampleSsoConnectors" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -36995,7 +38886,7 @@ pulumi.Output<GetSsoConnectorsInvokeResult> getSsoConnectorsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -37003,7 +38894,7 @@ pulumi.Output<GetSsoConnectorsInvokeResult> getSsoConnectorsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getstream" "exampleStream" {
+/// data "cloudflare_stream" "exampleStream" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   identifier = "ea95132c15732412d22c1476fa83f27a"
 /// }
@@ -37134,7 +39025,7 @@ pulumi.Output<GetStreamResult> getStreamOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -37142,7 +39033,7 @@ pulumi.Output<GetStreamResult> getStreamOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getstreamaudiotrack" "exampleStreamAudioTrack" {
+/// data "cloudflare_stream_audio_track" "exampleStreamAudioTrack" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   identifier = "ea95132c15732412d22c1476fa83f27a"
 /// }
@@ -37277,7 +39168,7 @@ pulumi.Output<GetStreamAudioTrackResult> getStreamAudioTrackOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -37285,7 +39176,7 @@ pulumi.Output<GetStreamAudioTrackResult> getStreamAudioTrackOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getstreamcaptionlanguage" "exampleStreamCaptionLanguage" {
+/// data "cloudflare_stream_caption_language" "exampleStreamCaptionLanguage" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   identifier = "ea95132c15732412d22c1476fa83f27a"
 ///   language   = "tr"
@@ -37419,7 +39310,7 @@ pulumi.Output<GetStreamCaptionLanguageResult> getStreamCaptionLanguageOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -37427,7 +39318,7 @@ pulumi.Output<GetStreamCaptionLanguageResult> getStreamCaptionLanguageOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getstreamdownload" "exampleStreamDownload" {
+/// data "cloudflare_stream_download" "exampleStreamDownload" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   identifier = "ea95132c15732412d22c1476fa83f27a"
 /// }
@@ -37554,7 +39445,7 @@ pulumi.Output<GetStreamDownloadResult> getStreamDownloadOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -37562,7 +39453,7 @@ pulumi.Output<GetStreamDownloadResult> getStreamDownloadOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getstreamkey" "exampleStreamKey" {
+/// data "cloudflare_stream_key" "exampleStreamKey" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -37690,7 +39581,7 @@ pulumi.Output<GetStreamKeyResult> getStreamKeyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -37698,7 +39589,7 @@ pulumi.Output<GetStreamKeyResult> getStreamKeyOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getstreamliveinput" "exampleStreamLiveInput" {
+/// data "cloudflare_stream_live_input" "exampleStreamLiveInput" {
 ///   account_id            = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   live_input_identifier = "66be4bf738797e01e1fca35a7bdecdcd"
 /// }
@@ -37829,7 +39720,7 @@ pulumi.Output<GetStreamLiveInputResult> getStreamLiveInputOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -37837,7 +39728,7 @@ pulumi.Output<GetStreamLiveInputResult> getStreamLiveInputOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getstreamwatermark" "exampleStreamWatermark" {
+/// data "cloudflare_stream_watermark" "exampleStreamWatermark" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   identifier = "ea95132c15732412d22c1476fa83f27a"
 /// }
@@ -37964,7 +39855,7 @@ pulumi.Output<GetStreamWatermarkResult> getStreamWatermarkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -37972,7 +39863,7 @@ pulumi.Output<GetStreamWatermarkResult> getStreamWatermarkOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getstreamwatermarks" "exampleStreamWatermarks" {
+/// data "cloudflare_stream_watermarks" "exampleStreamWatermarks" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -38096,7 +39987,7 @@ pulumi.Output<GetStreamWatermarksInvokeResult> getStreamWatermarksOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -38104,7 +39995,7 @@ pulumi.Output<GetStreamWatermarksInvokeResult> getStreamWatermarksOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getstreamwebhook" "exampleStreamWebhook" {
+/// data "cloudflare_stream_webhook" "exampleStreamWebhook" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -38280,7 +40171,7 @@ pulumi.Output<GetStreamWebhookResult> getStreamWebhookOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -38288,7 +40179,7 @@ pulumi.Output<GetStreamWebhookResult> getStreamWebhookOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getstreams" "exampleStreams" {
+/// data "cloudflare_streams" "exampleStreams" {
 ///   account_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   id            = "ea95132c15732412d22c1476fa83f27a"
 ///   after         = "2019-12-27T18:11:19.117Z"
@@ -38453,7 +40344,7 @@ pulumi.Output<GetStreamsInvokeResult> getStreamsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -38461,7 +40352,7 @@ pulumi.Output<GetStreamsInvokeResult> getStreamsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_gettieredcache" "exampleTieredCache" {
+/// data "cloudflare_tiered_cache" "exampleTieredCache" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -38591,7 +40482,7 @@ pulumi.Output<GetTieredCacheResult> getTieredCacheOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -38599,7 +40490,7 @@ pulumi.Output<GetTieredCacheResult> getTieredCacheOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_gettokenvalidationconfig" "exampleTokenValidationConfig" {
+/// data "cloudflare_token_validation_config" "exampleTokenValidationConfig" {
 ///   zone_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   config_id = "4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7"
 /// }
@@ -38728,7 +40619,7 @@ pulumi.Output<GetTokenValidationConfigResult> getTokenValidationConfigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -38736,7 +40627,7 @@ pulumi.Output<GetTokenValidationConfigResult> getTokenValidationConfigOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_gettokenvalidationconfigs" "exampleTokenValidationConfigs" {
+/// data "cloudflare_token_validation_configs" "exampleTokenValidationConfigs" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -38866,7 +40757,7 @@ pulumi.Output<GetTokenValidationConfigsInvokeResult> getTokenValidationConfigsOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -38874,7 +40765,7 @@ pulumi.Output<GetTokenValidationConfigsInvokeResult> getTokenValidationConfigsOu
 ///   }
 /// }
 ///
-/// data "cloudflare_gettokenvalidationrules" "exampleTokenValidationRules" {
+/// data "cloudflare_token_validation_rules" "exampleTokenValidationRules" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   rule_id = "4a7ee8d3-dd63-4ceb-9d5f-c27831854ce7"
 /// }
@@ -39036,7 +40927,7 @@ pulumi.Output<GetTokenValidationRulesResult> getTokenValidationRulesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -39044,7 +40935,7 @@ pulumi.Output<GetTokenValidationRulesResult> getTokenValidationRulesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_gettokenvalidationruleslist" "exampleTokenValidationRulesList" {
+/// data "cloudflare_token_validation_rules_list" "exampleTokenValidationRulesList" {
 ///   zone_id              = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   id                   = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   action               = "log"
@@ -39190,7 +41081,7 @@ pulumi.Output<GetTokenValidationRulesListInvokeResult> getTokenValidationRulesLi
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -39198,7 +41089,7 @@ pulumi.Output<GetTokenValidationRulesListInvokeResult> getTokenValidationRulesLi
 ///   }
 /// }
 ///
-/// data "cloudflare_gettotaltls" "exampleTotalTls" {
+/// data "cloudflare_total_tls" "exampleTotalTls" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -39328,7 +41219,7 @@ pulumi.Output<GetTotalTlsResult> getTotalTlsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -39336,7 +41227,7 @@ pulumi.Output<GetTotalTlsResult> getTotalTlsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getturnstilewidget" "exampleTurnstileWidget" {
+/// data "cloudflare_turnstile_widget" "exampleTurnstileWidget" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   sitekey    = "0x4AAF00AAAABn0R22HWm-YUc"
 /// }
@@ -39477,7 +41368,7 @@ pulumi.Output<GetTurnstileWidgetResult> getTurnstileWidgetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -39485,7 +41376,7 @@ pulumi.Output<GetTurnstileWidgetResult> getTurnstileWidgetOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getturnstilewidgets" "exampleTurnstileWidgets" {
+/// data "cloudflare_turnstile_widgets" "exampleTurnstileWidgets" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   direction  = "asc"
 ///   filter     = "name:my-widget"
@@ -39618,7 +41509,7 @@ pulumi.Output<GetTurnstileWidgetsInvokeResult> getTurnstileWidgetsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -39626,7 +41517,7 @@ pulumi.Output<GetTurnstileWidgetsInvokeResult> getTurnstileWidgetsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getuniversalsslsetting" "exampleUniversalSslSetting" {
+/// data "cloudflare_universal_ssl_setting" "exampleUniversalSslSetting" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -39788,7 +41679,7 @@ pulumi.Output<GetUniversalSslSettingResult> getUniversalSslSettingOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -39796,7 +41687,7 @@ pulumi.Output<GetUniversalSslSettingResult> getUniversalSslSettingOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_geturlnormalizationsettings" "exampleUrlNormalizationSettings" {
+/// data "cloudflare_url_normalization_settings" "exampleUrlNormalizationSettings" {
 ///   zone_id = "9f1839b6152d298aca64c4e906b6d074"
 /// }
 /// ```
@@ -39913,7 +41804,7 @@ pulumi.Output<GetUrlNormalizationSettingsResult> getUrlNormalizationSettingsOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -39921,7 +41812,7 @@ pulumi.Output<GetUrlNormalizationSettingsResult> getUrlNormalizationSettingsOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getuser" "exampleUser" {
+/// data "cloudflare_user" "exampleUser" {
 /// }
 /// ```
 /// ```java
@@ -40043,7 +41934,7 @@ pulumi.Output<GetUserResult> getUserOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -40051,7 +41942,7 @@ pulumi.Output<GetUserResult> getUserOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getuseragentblockingrule" "exampleUserAgentBlockingRule" {
+/// data "cloudflare_user_agent_blocking_rule" "exampleUserAgentBlockingRule" {
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   ua_rule_id = "372e67954025e0ba6aaa6d586b9e0b59"
 /// }
@@ -40190,7 +42081,7 @@ pulumi.Output<GetUserAgentBlockingRuleResult> getUserAgentBlockingRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -40198,7 +42089,7 @@ pulumi.Output<GetUserAgentBlockingRuleResult> getUserAgentBlockingRuleOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getuseragentblockingrules" "exampleUserAgentBlockingRules" {
+/// data "cloudflare_user_agent_blocking_rules" "exampleUserAgentBlockingRules" {
 ///   zone_id     = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   description = "abusive"
 ///   paused      = false
@@ -40336,7 +42227,7 @@ pulumi.Output<GetUserAgentBlockingRulesInvokeResult> getUserAgentBlockingRulesOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -40344,7 +42235,7 @@ pulumi.Output<GetUserAgentBlockingRulesInvokeResult> getUserAgentBlockingRulesOu
 ///   }
 /// }
 ///
-/// data "cloudflare_getusergroup" "exampleUserGroup" {
+/// data "cloudflare_user_group" "exampleUserGroup" {
 ///   account_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   user_group_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -40484,7 +42375,7 @@ pulumi.Output<GetUserGroupResult> getUserGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -40492,7 +42383,7 @@ pulumi.Output<GetUserGroupResult> getUserGroupOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getusergroupmembers" "exampleUserGroupMembers" {
+/// data "cloudflare_user_group_members" "exampleUserGroupMembers" {
 ///   account_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   user_group_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   direction     = "asc"
@@ -40638,7 +42529,7 @@ pulumi.Output<GetUserGroupMembersResult> getUserGroupMembersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -40646,7 +42537,7 @@ pulumi.Output<GetUserGroupMembersResult> getUserGroupMembersOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getusergroups" "exampleUserGroups" {
+/// data "cloudflare_user_groups" "exampleUserGroups" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   id         = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   fuzzy_name = "Foo"
@@ -40782,7 +42673,7 @@ pulumi.Output<GetUserGroupsInvokeResult> getUserGroupsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -40790,7 +42681,7 @@ pulumi.Output<GetUserGroupsInvokeResult> getUserGroupsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getvulnerabilityscannercredential" "exampleVulnerabilityScannerCredential" {
+/// data "cloudflare_vulnerability_scanner_credential" "exampleVulnerabilityScannerCredential" {
 ///   account_id        = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   credential_set_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 ///   credential_id     = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
@@ -40919,7 +42810,7 @@ pulumi.Output<GetVulnerabilityScannerCredentialResult> getVulnerabilityScannerCr
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -40927,7 +42818,7 @@ pulumi.Output<GetVulnerabilityScannerCredentialResult> getVulnerabilityScannerCr
 ///   }
 /// }
 ///
-/// data "cloudflare_getvulnerabilityscannercredentialset" "exampleVulnerabilityScannerCredentialSet" {
+/// data "cloudflare_vulnerability_scanner_credential_set" "exampleVulnerabilityScannerCredentialSet" {
 ///   account_id        = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   credential_set_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -41049,7 +42940,7 @@ pulumi.Output<GetVulnerabilityScannerCredentialSetResult> getVulnerabilityScanne
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -41057,7 +42948,7 @@ pulumi.Output<GetVulnerabilityScannerCredentialSetResult> getVulnerabilityScanne
 ///   }
 /// }
 ///
-/// data "cloudflare_getvulnerabilityscannercredentialsets" "exampleVulnerabilityScannerCredentialSets" {
+/// data "cloudflare_vulnerability_scanner_credential_sets" "exampleVulnerabilityScannerCredentialSets" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -41180,7 +43071,7 @@ pulumi.Output<GetVulnerabilityScannerCredentialSetsInvokeResult> getVulnerabilit
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -41188,7 +43079,7 @@ pulumi.Output<GetVulnerabilityScannerCredentialSetsInvokeResult> getVulnerabilit
 ///   }
 /// }
 ///
-/// data "cloudflare_getvulnerabilityscannercredentials" "exampleVulnerabilityScannerCredentials" {
+/// data "cloudflare_vulnerability_scanner_credentials" "exampleVulnerabilityScannerCredentials" {
 ///   account_id        = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   credential_set_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -41314,7 +43205,7 @@ pulumi.Output<GetVulnerabilityScannerCredentialsInvokeResult> getVulnerabilitySc
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -41322,7 +43213,7 @@ pulumi.Output<GetVulnerabilityScannerCredentialsInvokeResult> getVulnerabilitySc
 ///   }
 /// }
 ///
-/// data "cloudflare_getvulnerabilityscannertargetenvironment" "exampleVulnerabilityScannerTargetEnvironment" {
+/// data "cloudflare_vulnerability_scanner_target_environment" "exampleVulnerabilityScannerTargetEnvironment" {
 ///   account_id            = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   target_environment_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -41444,7 +43335,7 @@ pulumi.Output<GetVulnerabilityScannerTargetEnvironmentResult> getVulnerabilitySc
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -41452,7 +43343,7 @@ pulumi.Output<GetVulnerabilityScannerTargetEnvironmentResult> getVulnerabilitySc
 ///   }
 /// }
 ///
-/// data "cloudflare_getvulnerabilityscannertargetenvironments" "exampleVulnerabilityScannerTargetEnvironments" {
+/// data "cloudflare_vulnerability_scanner_target_environments" "exampleVulnerabilityScannerTargetEnvironments" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -41580,7 +43471,7 @@ pulumi.Output<GetVulnerabilityScannerTargetEnvironmentsInvokeResult> getVulnerab
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -41588,7 +43479,7 @@ pulumi.Output<GetVulnerabilityScannerTargetEnvironmentsInvokeResult> getVulnerab
 ///   }
 /// }
 ///
-/// data "cloudflare_getwaitingroom" "exampleWaitingRoom" {
+/// data "cloudflare_waiting_room" "exampleWaitingRoom" {
 ///   zone_id         = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   waiting_room_id = "699d98642c564d2e855e9661899b7252"
 /// }
@@ -41723,7 +43614,7 @@ pulumi.Output<GetWaitingRoomResult> getWaitingRoomOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -41731,7 +43622,7 @@ pulumi.Output<GetWaitingRoomResult> getWaitingRoomOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getwaitingroomevent" "exampleWaitingRoomEvent" {
+/// data "cloudflare_waiting_room_event" "exampleWaitingRoomEvent" {
 ///   zone_id         = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   waiting_room_id = "699d98642c564d2e855e9661899b7252"
 ///   event_id        = "25756b2dfe6e378a06b033b670413757"
@@ -41865,7 +43756,7 @@ pulumi.Output<GetWaitingRoomEventResult> getWaitingRoomEventOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -41873,7 +43764,7 @@ pulumi.Output<GetWaitingRoomEventResult> getWaitingRoomEventOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getwaitingroomevents" "exampleWaitingRoomEvents" {
+/// data "cloudflare_waiting_room_events" "exampleWaitingRoomEvents" {
 ///   zone_id         = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   waiting_room_id = "699d98642c564d2e855e9661899b7252"
 /// }
@@ -42004,7 +43895,7 @@ pulumi.Output<GetWaitingRoomEventsInvokeResult> getWaitingRoomEventsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -42012,7 +43903,7 @@ pulumi.Output<GetWaitingRoomEventsInvokeResult> getWaitingRoomEventsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getwaitingroomrules" "exampleWaitingRoomRules" {
+/// data "cloudflare_waiting_room_rules" "exampleWaitingRoomRules" {
 ///   zone_id         = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   waiting_room_id = "699d98642c564d2e855e9661899b7252"
 /// }
@@ -42139,7 +44030,7 @@ pulumi.Output<GetWaitingRoomRulesResult> getWaitingRoomRulesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -42147,7 +44038,7 @@ pulumi.Output<GetWaitingRoomRulesResult> getWaitingRoomRulesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getwaitingroomsettings" "exampleWaitingRoomSettings" {
+/// data "cloudflare_waiting_room_settings" "exampleWaitingRoomSettings" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -42274,7 +44165,7 @@ pulumi.Output<GetWaitingRoomSettingsResult> getWaitingRoomSettingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -42282,7 +44173,7 @@ pulumi.Output<GetWaitingRoomSettingsResult> getWaitingRoomSettingsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getwaitingrooms" "exampleWaitingRooms" {
+/// data "cloudflare_waiting_rooms" "exampleWaitingRooms" {
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
 /// }
@@ -42413,7 +44304,7 @@ pulumi.Output<GetWaitingRoomsInvokeResult> getWaitingRoomsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -42421,7 +44312,7 @@ pulumi.Output<GetWaitingRoomsInvokeResult> getWaitingRoomsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getweb3hostname" "exampleWeb3Hostname" {
+/// data "cloudflare_web3_hostname" "exampleWeb3Hostname" {
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   identifier = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -42548,7 +44439,7 @@ pulumi.Output<GetWeb3HostnameResult> getWeb3HostnameOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -42556,7 +44447,7 @@ pulumi.Output<GetWeb3HostnameResult> getWeb3HostnameOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getweb3hostnames" "exampleWeb3Hostnames" {
+/// data "cloudflare_web3_hostnames" "exampleWeb3Hostnames" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -42683,7 +44574,7 @@ pulumi.Output<GetWeb3HostnamesInvokeResult> getWeb3HostnamesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -42691,7 +44582,7 @@ pulumi.Output<GetWeb3HostnamesInvokeResult> getWeb3HostnamesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getwebanalyticssite" "exampleWebAnalyticsSite" {
+/// data "cloudflare_web_analytics_site" "exampleWebAnalyticsSite" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   site_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -42821,7 +44712,7 @@ pulumi.Output<GetWebAnalyticsSiteResult> getWebAnalyticsSiteOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -42829,7 +44720,7 @@ pulumi.Output<GetWebAnalyticsSiteResult> getWebAnalyticsSiteOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getwebanalyticssites" "exampleWebAnalyticsSites" {
+/// data "cloudflare_web_analytics_sites" "exampleWebAnalyticsSites" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   order_by   = "host"
 /// }
@@ -42961,7 +44852,7 @@ pulumi.Output<GetWebAnalyticsSitesInvokeResult> getWebAnalyticsSitesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -42969,7 +44860,7 @@ pulumi.Output<GetWebAnalyticsSitesInvokeResult> getWebAnalyticsSitesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworker" "exampleWorker" {
+/// data "cloudflare_worker" "exampleWorker" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   worker_id  = "worker_id"
 /// }
@@ -43109,7 +45000,7 @@ pulumi.Output<GetWorkerResult> getWorkerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -43117,7 +45008,7 @@ pulumi.Output<GetWorkerResult> getWorkerOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkerversion" "exampleWorkerVersion" {
+/// data "cloudflare_worker_version" "exampleWorkerVersion" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   worker_id  = "worker_id"
 ///   version_id = "version_id"
@@ -43255,7 +45146,7 @@ pulumi.Output<GetWorkerVersionResult> getWorkerVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -43263,7 +45154,7 @@ pulumi.Output<GetWorkerVersionResult> getWorkerVersionOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkerversions" "exampleWorkerVersions" {
+/// data "cloudflare_worker_versions" "exampleWorkerVersions" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   worker_id  = "worker_id"
 /// }
@@ -43391,7 +45282,7 @@ pulumi.Output<GetWorkerVersionsInvokeResult> getWorkerVersionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -43399,7 +45290,7 @@ pulumi.Output<GetWorkerVersionsInvokeResult> getWorkerVersionsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkers" "exampleWorkers" {
+/// data "cloudflare_workers" "exampleWorkers" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -43527,7 +45418,7 @@ pulumi.Output<GetWorkersInvokeResult> getWorkersOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -43535,7 +45426,7 @@ pulumi.Output<GetWorkersInvokeResult> getWorkersOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkerscrontrigger" "exampleWorkersCronTrigger" {
+/// data "cloudflare_workers_cron_trigger" "exampleWorkersCronTrigger" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   script_name = "this-is_my_script-01"
 /// }
@@ -43666,7 +45557,7 @@ pulumi.Output<GetWorkersCronTriggerResult> getWorkersCronTriggerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -43674,7 +45565,7 @@ pulumi.Output<GetWorkersCronTriggerResult> getWorkersCronTriggerOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkerscustomdomain" "exampleWorkersCustomDomain" {
+/// data "cloudflare_workers_custom_domain" "exampleWorkersCustomDomain" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   domain_id  = "dbe10b4bc17c295377eabd600e1787fd"
 /// }
@@ -43821,7 +45712,7 @@ pulumi.Output<GetWorkersCustomDomainResult> getWorkersCustomDomainOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -43829,7 +45720,7 @@ pulumi.Output<GetWorkersCustomDomainResult> getWorkersCustomDomainOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkerscustomdomains" "exampleWorkersCustomDomains" {
+/// data "cloudflare_workers_custom_domains" "exampleWorkersCustomDomains" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   environment = "production"
 ///   hostname    = "app.example.com"
@@ -43977,7 +45868,7 @@ pulumi.Output<GetWorkersCustomDomainsInvokeResult> getWorkersCustomDomainsOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -43985,7 +45876,7 @@ pulumi.Output<GetWorkersCustomDomainsInvokeResult> getWorkersCustomDomainsOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkersdeployment" "exampleWorkersDeployment" {
+/// data "cloudflare_workers_deployment" "exampleWorkersDeployment" {
 ///   account_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   script_name   = "this-is_my_script-01"
 ///   deployment_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
@@ -44070,6 +45961,160 @@ pulumi.Output<GetWorkersDeploymentResult> getWorkersDeploymentOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as cloudflare from "@pulumi/cloudflare";
 ///
+/// const exampleWorkersDeployments = cloudflare.getWorkersDeployments({
+///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     scriptName: "this-is_my_script-01",
+///     since: "2019-12-27T18:11:19.117Z",
+///     until: "2019-12-27T18:11:19.117Z",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_workers_deployments = cloudflare.get_workers_deployments(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     script_name="this-is_my_script-01",
+///     since="2019-12-27T18:11:19.117Z",
+///     until="2019-12-27T18:11:19.117Z")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleWorkersDeployments = Cloudflare.GetWorkersDeployments.Invoke(new()
+///     {
+///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         ScriptName = "this-is_my_script-01",
+///         Since = "2019-12-27T18:11:19.117Z",
+///         Until = "2019-12-27T18:11:19.117Z",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetWorkersDeployments(ctx, &cloudflare.LookupWorkersDeploymentsArgs{
+/// 			AccountId:  "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			ScriptName: "this-is_my_script-01",
+/// 			Since:      pulumi.StringRef("2019-12-27T18:11:19.117Z"),
+/// 			Until:      pulumi.StringRef("2019-12-27T18:11:19.117Z"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_workers_deployments" "exampleWorkersDeployments" {
+///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
+///   script_name = "this-is_my_script-01"
+///   since       = "2019-12-27T18:11:19.117Z"
+///   until       = "2019-12-27T18:11:19.117Z"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetWorkersDeploymentsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleWorkersDeployments = CloudflareFunctions.getWorkersDeployments(GetWorkersDeploymentsArgs.builder()
+///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .scriptName("this-is_my_script-01")
+///             .since("2019-12-27T18:11:19.117Z")
+///             .until("2019-12-27T18:11:19.117Z")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleWorkersDeployments:
+///     fn::invoke:
+///       function: cloudflare:getWorkersDeployments
+///       arguments:
+///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
+///         scriptName: this-is_my_script-01
+///         since: 2019-12-27T18:11:19.117Z
+///         until: 2019-12-27T18:11:19.117Z
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_workers_deployments_get_workers_deployments_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetWorkersDeploymentsInvokeResult> getWorkersDeployments(
+  GetWorkersDeploymentsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getWorkersDeployments:getWorkersDeployments',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetWorkersDeploymentsInvokeResult.fromMap(result);
+}
+
+pulumi.Output<GetWorkersDeploymentsInvokeResult> getWorkersDeploymentsOutput(
+  GetWorkersDeploymentsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getWorkersDeployments:getWorkersDeployments',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetWorkersDeploymentsInvokeResult.fromMap);
+}
+
+/// Accepted Permissions
+///
+/// - `Workers Scripts Read`
+/// - `Workers Scripts Write`
+/// - `Workers Tail Read`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
 /// const exampleWorkersForPlatformsDispatchNamespace = cloudflare.getWorkersForPlatformsDispatchNamespace({
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
 ///     dispatchNamespace: "my-dispatch-namespace",
@@ -44120,7 +46165,7 @@ pulumi.Output<GetWorkersDeploymentResult> getWorkersDeploymentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -44128,7 +46173,7 @@ pulumi.Output<GetWorkersDeploymentResult> getWorkersDeploymentOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkersforplatformsdispatchnamespace" "exampleWorkersForPlatformsDispatchNamespace" {
+/// data "cloudflare_workers_for_platforms_dispatch_namespace" "exampleWorkersForPlatformsDispatchNamespace" {
 ///   account_id         = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   dispatch_namespace = "my-dispatch-namespace"
 /// }
@@ -44256,7 +46301,7 @@ pulumi.Output<GetWorkersForPlatformsDispatchNamespaceResult> getWorkersForPlatfo
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -44264,7 +46309,7 @@ pulumi.Output<GetWorkersForPlatformsDispatchNamespaceResult> getWorkersForPlatfo
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkersforplatformsdispatchnamespaces" "exampleWorkersForPlatformsDispatchNamespaces" {
+/// data "cloudflare_workers_for_platforms_dispatch_namespaces" "exampleWorkersForPlatformsDispatchNamespaces" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -44396,7 +46441,7 @@ pulumi.Output<GetWorkersForPlatformsDispatchNamespacesInvokeResult> getWorkersFo
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -44404,7 +46449,7 @@ pulumi.Output<GetWorkersForPlatformsDispatchNamespacesInvokeResult> getWorkersFo
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkerskv" "exampleWorkersKv" {
+/// data "cloudflare_workers_kv" "exampleWorkersKv" {
 ///   account_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   namespace_id = "0f2ac74b498b48028cb68387c421e279"
 ///   key_name     = "My-Key"
@@ -44538,7 +46583,7 @@ pulumi.Output<GetWorkersKvResult> getWorkersKvOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -44546,7 +46591,7 @@ pulumi.Output<GetWorkersKvResult> getWorkersKvOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkerskvnamespace" "exampleWorkersKvNamespace" {
+/// data "cloudflare_workers_kv_namespace" "exampleWorkersKvNamespace" {
 ///   account_id   = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   namespace_id = "0f2ac74b498b48028cb68387c421e279"
 /// }
@@ -44681,7 +46726,7 @@ pulumi.Output<GetWorkersKvNamespaceResult> getWorkersKvNamespaceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -44689,7 +46734,7 @@ pulumi.Output<GetWorkersKvNamespaceResult> getWorkersKvNamespaceOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkerskvnamespaces" "exampleWorkersKvNamespaces" {
+/// data "cloudflare_workers_kv_namespaces" "exampleWorkersKvNamespaces" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   direction  = "asc"
 ///   order      = "id"
@@ -44823,7 +46868,7 @@ pulumi.Output<GetWorkersKvNamespacesInvokeResult> getWorkersKvNamespacesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -44831,7 +46876,7 @@ pulumi.Output<GetWorkersKvNamespacesInvokeResult> getWorkersKvNamespacesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkersroute" "exampleWorkersRoute" {
+/// data "cloudflare_workers_route" "exampleWorkersRoute" {
 ///   zone_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   route_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
@@ -44958,7 +47003,7 @@ pulumi.Output<GetWorkersRouteResult> getWorkersRouteOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -44966,7 +47011,7 @@ pulumi.Output<GetWorkersRouteResult> getWorkersRouteOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkersroutes" "exampleWorkersRoutes" {
+/// data "cloudflare_workers_routes" "exampleWorkersRoutes" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -45095,7 +47140,7 @@ pulumi.Output<GetWorkersRoutesInvokeResult> getWorkersRoutesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -45103,7 +47148,7 @@ pulumi.Output<GetWorkersRoutesInvokeResult> getWorkersRoutesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkersscript" "exampleWorkersScript" {
+/// data "cloudflare_workers_script" "exampleWorkersScript" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   script_name = "this-is_my_script-01"
 /// }
@@ -45235,7 +47280,7 @@ pulumi.Output<GetWorkersScriptResult> getWorkersScriptOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -45243,7 +47288,7 @@ pulumi.Output<GetWorkersScriptResult> getWorkersScriptOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkersscriptsubdomain" "exampleWorkersScriptSubdomain" {
+/// data "cloudflare_workers_script_subdomain" "exampleWorkersScriptSubdomain" {
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   script_name = "this-is_my_script-01"
 /// }
@@ -45375,7 +47420,7 @@ pulumi.Output<GetWorkersScriptSubdomainResult> getWorkersScriptSubdomainOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -45383,7 +47428,7 @@ pulumi.Output<GetWorkersScriptSubdomainResult> getWorkersScriptSubdomainOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkersscripts" "exampleWorkersScripts" {
+/// data "cloudflare_workers_scripts" "exampleWorkersScripts" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   tags       = "production:yes,staging:no"
 /// }
@@ -45515,7 +47560,7 @@ pulumi.Output<GetWorkersScriptsInvokeResult> getWorkersScriptsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -45523,7 +47568,7 @@ pulumi.Output<GetWorkersScriptsInvokeResult> getWorkersScriptsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkflow" "exampleWorkflow" {
+/// data "cloudflare_workflow" "exampleWorkflow" {
 ///   account_id    = "account_id"
 ///   workflow_name = "x"
 /// }
@@ -45655,7 +47700,7 @@ pulumi.Output<GetWorkflowResult> getWorkflowOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -45663,7 +47708,7 @@ pulumi.Output<GetWorkflowResult> getWorkflowOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getworkflows" "exampleWorkflows" {
+/// data "cloudflare_workflows" "exampleWorkflows" {
 ///   account_id = "account_id"
 ///   search     = "x"
 /// }
@@ -45794,7 +47839,7 @@ pulumi.Output<GetWorkflowsInvokeResult> getWorkflowsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -45802,7 +47847,7 @@ pulumi.Output<GetWorkflowsInvokeResult> getWorkflowsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessaicontrolsmcpportal" "exampleZeroTrustAccessAiControlsMcpPortal" {
+/// data "cloudflare_zero_trust_access_ai_controls_mcp_portal" "exampleZeroTrustAccessAiControlsMcpPortal" {
 ///   account_id = "a86a8f5c339544d7bdc89926de14fb8c"
 ///   id         = "my-mcp-portal"
 /// }
@@ -45933,7 +47978,7 @@ pulumi.Output<GetZeroTrustAccessAiControlsMcpPortalResult> getZeroTrustAccessAiC
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -45941,7 +47986,7 @@ pulumi.Output<GetZeroTrustAccessAiControlsMcpPortalResult> getZeroTrustAccessAiC
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessaicontrolsmcpportals" "exampleZeroTrustAccessAiControlsMcpPortals" {
+/// data "cloudflare_zero_trust_access_ai_controls_mcp_portals" "exampleZeroTrustAccessAiControlsMcpPortals" {
 ///   account_id = "a86a8f5c339544d7bdc89926de14fb8c"
 ///   search     = "search"
 /// }
@@ -46072,7 +48117,7 @@ pulumi.Output<GetZeroTrustAccessAiControlsMcpPortalsInvokeResult> getZeroTrustAc
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -46080,7 +48125,7 @@ pulumi.Output<GetZeroTrustAccessAiControlsMcpPortalsInvokeResult> getZeroTrustAc
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessaicontrolsmcpserver" "exampleZeroTrustAccessAiControlsMcpServer" {
+/// data "cloudflare_zero_trust_access_ai_controls_mcp_server" "exampleZeroTrustAccessAiControlsMcpServer" {
 ///   account_id = "a86a8f5c339544d7bdc89926de14fb8c"
 ///   id         = "my-mcp-server"
 /// }
@@ -46211,7 +48256,7 @@ pulumi.Output<GetZeroTrustAccessAiControlsMcpServerResult> getZeroTrustAccessAiC
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -46219,7 +48264,7 @@ pulumi.Output<GetZeroTrustAccessAiControlsMcpServerResult> getZeroTrustAccessAiC
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessaicontrolsmcpservers" "exampleZeroTrustAccessAiControlsMcpServers" {
+/// data "cloudflare_zero_trust_access_ai_controls_mcp_servers" "exampleZeroTrustAccessAiControlsMcpServers" {
 ///   account_id = "a86a8f5c339544d7bdc89926de14fb8c"
 ///   search     = "search"
 /// }
@@ -46349,7 +48394,7 @@ pulumi.Output<GetZeroTrustAccessAiControlsMcpServersInvokeResult> getZeroTrustAc
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -46357,7 +48402,7 @@ pulumi.Output<GetZeroTrustAccessAiControlsMcpServersInvokeResult> getZeroTrustAc
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessapplication" "exampleZeroTrustAccessApplication" {
+/// data "cloudflare_zero_trust_access_application" "exampleZeroTrustAccessApplication" {
 ///   app_id     = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
@@ -46506,7 +48551,7 @@ pulumi.Output<GetZeroTrustAccessApplicationResult> getZeroTrustAccessApplication
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -46514,7 +48559,7 @@ pulumi.Output<GetZeroTrustAccessApplicationResult> getZeroTrustAccessApplication
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessapplications" "exampleZeroTrustAccessApplications" {
+/// data "cloudflare_zero_trust_access_applications" "exampleZeroTrustAccessApplications" {
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
 ///   aud        = "aud"
@@ -46660,7 +48705,7 @@ pulumi.Output<GetZeroTrustAccessApplicationsInvokeResult> getZeroTrustAccessAppl
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -46668,7 +48713,7 @@ pulumi.Output<GetZeroTrustAccessApplicationsInvokeResult> getZeroTrustAccessAppl
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccesscustompage" "exampleZeroTrustAccessCustomPage" {
+/// data "cloudflare_zero_trust_access_custom_page" "exampleZeroTrustAccessCustomPage" {
 ///   account_id     = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   custom_page_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -46795,7 +48840,7 @@ pulumi.Output<GetZeroTrustAccessCustomPageResult> getZeroTrustAccessCustomPageOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -46803,7 +48848,7 @@ pulumi.Output<GetZeroTrustAccessCustomPageResult> getZeroTrustAccessCustomPageOu
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccesscustompages" "exampleZeroTrustAccessCustomPages" {
+/// data "cloudflare_zero_trust_access_custom_pages" "exampleZeroTrustAccessCustomPages" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -46935,7 +48980,7 @@ pulumi.Output<GetZeroTrustAccessCustomPagesInvokeResult> getZeroTrustAccessCusto
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -46943,7 +48988,7 @@ pulumi.Output<GetZeroTrustAccessCustomPagesInvokeResult> getZeroTrustAccessCusto
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessgroup" "exampleZeroTrustAccessGroup" {
+/// data "cloudflare_zero_trust_access_group" "exampleZeroTrustAccessGroup" {
 ///   group_id   = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
@@ -47085,7 +49130,7 @@ pulumi.Output<GetZeroTrustAccessGroupResult> getZeroTrustAccessGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -47093,7 +49138,7 @@ pulumi.Output<GetZeroTrustAccessGroupResult> getZeroTrustAccessGroupOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessgroups" "exampleZeroTrustAccessGroups" {
+/// data "cloudflare_zero_trust_access_groups" "exampleZeroTrustAccessGroups" {
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
 ///   name       = "name"
@@ -47234,7 +49279,7 @@ pulumi.Output<GetZeroTrustAccessGroupsInvokeResult> getZeroTrustAccessGroupsOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -47242,7 +49287,7 @@ pulumi.Output<GetZeroTrustAccessGroupsInvokeResult> getZeroTrustAccessGroupsOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessidentityprovider" "exampleZeroTrustAccessIdentityProvider" {
+/// data "cloudflare_zero_trust_access_identity_provider" "exampleZeroTrustAccessIdentityProvider" {
 ///   identity_provider_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   account_id           = "account_id"
 ///   zone_id              = "zone_id"
@@ -47380,7 +49425,7 @@ pulumi.Output<GetZeroTrustAccessIdentityProviderResult> getZeroTrustAccessIdenti
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -47388,7 +49433,7 @@ pulumi.Output<GetZeroTrustAccessIdentityProviderResult> getZeroTrustAccessIdenti
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessidentityproviders" "exampleZeroTrustAccessIdentityProviders" {
+/// data "cloudflare_zero_trust_access_identity_providers" "exampleZeroTrustAccessIdentityProviders" {
 ///   account_id   = "account_id"
 ///   zone_id      = "zone_id"
 ///   scim_enabled = "scim_enabled"
@@ -47517,7 +49562,7 @@ pulumi.Output<GetZeroTrustAccessIdentityProvidersInvokeResult> getZeroTrustAcces
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -47525,7 +49570,7 @@ pulumi.Output<GetZeroTrustAccessIdentityProvidersInvokeResult> getZeroTrustAcces
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessinfrastructuretarget" "exampleZeroTrustAccessInfrastructureTarget" {
+/// data "cloudflare_zero_trust_access_infrastructure_target" "exampleZeroTrustAccessInfrastructureTarget" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   target_id  = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -47619,6 +49664,7 @@ pulumi.Output<GetZeroTrustAccessInfrastructureTargetResult> getZeroTrustAccessIn
 ///     modifiedAfter: "2019-12-27T18:11:19.117Z",
 ///     modifiedBefore: "2019-12-27T18:11:19.117Z",
 ///     order: "hostname",
+///     tags: ["string"],
 ///     targetIds: ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
 ///     virtualNetworkId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 /// });
@@ -47644,6 +49690,7 @@ pulumi.Output<GetZeroTrustAccessInfrastructureTargetResult> getZeroTrustAccessIn
 ///     modified_after="2019-12-27T18:11:19.117Z",
 ///     modified_before="2019-12-27T18:11:19.117Z",
 ///     order="hostname",
+///     tags=["string"],
 ///     target_ids=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
 ///     virtual_network_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 /// ```
@@ -47677,6 +49724,10 @@ pulumi.Output<GetZeroTrustAccessInfrastructureTargetResult> getZeroTrustAccessIn
 ///         ModifiedAfter = "2019-12-27T18:11:19.117Z",
 ///         ModifiedBefore = "2019-12-27T18:11:19.117Z",
 ///         Order = "hostname",
+///         Tags = new[]
+///         {
+///             "string",
+///         },
 ///         TargetIds = new[]
 ///         {
 ///             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -47716,6 +49767,9 @@ pulumi.Output<GetZeroTrustAccessInfrastructureTargetResult> getZeroTrustAccessIn
 /// 			ModifiedAfter:  pulumi.StringRef("2019-12-27T18:11:19.117Z"),
 /// 			ModifiedBefore: pulumi.StringRef("2019-12-27T18:11:19.117Z"),
 /// 			Order:          pulumi.StringRef("hostname"),
+/// 			Tags: []string{
+/// 				"string",
+/// 			},
 /// 			TargetIds: []string{
 /// 				"182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 /// 			},
@@ -47729,7 +49783,7 @@ pulumi.Output<GetZeroTrustAccessInfrastructureTargetResult> getZeroTrustAccessIn
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -47737,7 +49791,7 @@ pulumi.Output<GetZeroTrustAccessInfrastructureTargetResult> getZeroTrustAccessIn
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessinfrastructuretargets" "exampleZeroTrustAccessInfrastructureTargets" {
+/// data "cloudflare_zero_trust_access_infrastructure_targets" "exampleZeroTrustAccessInfrastructureTargets" {
 ///   account_id         = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   created_after      = "2019-12-27T18:11:19.117Z"
 ///   created_before     = "2019-12-27T18:11:19.117Z"
@@ -47755,6 +49809,7 @@ pulumi.Output<GetZeroTrustAccessInfrastructureTargetResult> getZeroTrustAccessIn
 ///   modified_after     = "2019-12-27T18:11:19.117Z"
 ///   modified_before    = "2019-12-27T18:11:19.117Z"
 ///   order              = "hostname"
+///   tags               = ["string"]
 ///   target_ids         = ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"]
 ///   virtual_network_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -47798,6 +49853,7 @@ pulumi.Output<GetZeroTrustAccessInfrastructureTargetResult> getZeroTrustAccessIn
 ///             .modifiedAfter("2019-12-27T18:11:19.117Z")
 ///             .modifiedBefore("2019-12-27T18:11:19.117Z")
 ///             .order("hostname")
+///             .tags("string")
 ///             .targetIds("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 ///             .virtualNetworkId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 ///             .build());
@@ -47829,6 +49885,8 @@ pulumi.Output<GetZeroTrustAccessInfrastructureTargetResult> getZeroTrustAccessIn
 ///         modifiedAfter: 2019-12-27T18:11:19.117Z
 ///         modifiedBefore: 2019-12-27T18:11:19.117Z
 ///         order: hostname
+///         tags:
+///           - string
 ///         targetIds:
 ///           - 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e
 ///         virtualNetworkId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e
@@ -47917,7 +49975,7 @@ pulumi.Output<GetZeroTrustAccessInfrastructureTargetsInvokeResult> getZeroTrustA
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -47925,7 +49983,7 @@ pulumi.Output<GetZeroTrustAccessInfrastructureTargetsInvokeResult> getZeroTrustA
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccesskeyconfiguration" "exampleZeroTrustAccessKeyConfiguration" {
+/// data "cloudflare_zero_trust_access_key_configuration" "exampleZeroTrustAccessKeyConfiguration" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -48057,7 +50115,7 @@ pulumi.Output<GetZeroTrustAccessKeyConfigurationResult> getZeroTrustAccessKeyCon
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -48065,7 +50123,7 @@ pulumi.Output<GetZeroTrustAccessKeyConfigurationResult> getZeroTrustAccessKeyCon
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessmtlscertificate" "exampleZeroTrustAccessMtlsCertificate" {
+/// data "cloudflare_zero_trust_access_mtls_certificate" "exampleZeroTrustAccessMtlsCertificate" {
 ///   certificate_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   account_id     = "account_id"
 ///   zone_id        = "zone_id"
@@ -48199,7 +50257,7 @@ pulumi.Output<GetZeroTrustAccessMtlsCertificateResult> getZeroTrustAccessMtlsCer
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -48207,7 +50265,7 @@ pulumi.Output<GetZeroTrustAccessMtlsCertificateResult> getZeroTrustAccessMtlsCer
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessmtlscertificates" "exampleZeroTrustAccessMtlsCertificates" {
+/// data "cloudflare_zero_trust_access_mtls_certificates" "exampleZeroTrustAccessMtlsCertificates" {
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
 /// }
@@ -48338,7 +50396,7 @@ pulumi.Output<GetZeroTrustAccessMtlsCertificatesInvokeResult> getZeroTrustAccess
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -48346,7 +50404,7 @@ pulumi.Output<GetZeroTrustAccessMtlsCertificatesInvokeResult> getZeroTrustAccess
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessmtlshostnamesettings" "exampleZeroTrustAccessMtlsHostnameSettings" {
+/// data "cloudflare_zero_trust_access_mtls_hostname_settings" "exampleZeroTrustAccessMtlsHostnameSettings" {
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
 /// }
@@ -48473,7 +50531,7 @@ pulumi.Output<GetZeroTrustAccessMtlsHostnameSettingsResult> getZeroTrustAccessMt
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -48481,7 +50539,7 @@ pulumi.Output<GetZeroTrustAccessMtlsHostnameSettingsResult> getZeroTrustAccessMt
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccesspolicies" "exampleZeroTrustAccessPolicies" {
+/// data "cloudflare_zero_trust_access_policies" "exampleZeroTrustAccessPolicies" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -48609,7 +50667,7 @@ pulumi.Output<GetZeroTrustAccessPoliciesInvokeResult> getZeroTrustAccessPolicies
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -48617,7 +50675,7 @@ pulumi.Output<GetZeroTrustAccessPoliciesInvokeResult> getZeroTrustAccessPolicies
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccesspolicy" "exampleZeroTrustAccessPolicy" {
+/// data "cloudflare_zero_trust_access_policy" "exampleZeroTrustAccessPolicy" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   policy_id  = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -48752,7 +50810,7 @@ pulumi.Output<GetZeroTrustAccessPolicyResult> getZeroTrustAccessPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -48760,7 +50818,7 @@ pulumi.Output<GetZeroTrustAccessPolicyResult> getZeroTrustAccessPolicyOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessservicetoken" "exampleZeroTrustAccessServiceToken" {
+/// data "cloudflare_zero_trust_access_service_token" "exampleZeroTrustAccessServiceToken" {
 ///   service_token_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   account_id       = "account_id"
 ///   zone_id          = "zone_id"
@@ -48902,7 +50960,7 @@ pulumi.Output<GetZeroTrustAccessServiceTokenResult> getZeroTrustAccessServiceTok
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -48910,7 +50968,7 @@ pulumi.Output<GetZeroTrustAccessServiceTokenResult> getZeroTrustAccessServiceTok
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessservicetokens" "exampleZeroTrustAccessServiceTokens" {
+/// data "cloudflare_zero_trust_access_service_tokens" "exampleZeroTrustAccessServiceTokens" {
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
 ///   name       = "name"
@@ -49051,7 +51109,7 @@ pulumi.Output<GetZeroTrustAccessServiceTokensInvokeResult> getZeroTrustAccessSer
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -49059,7 +51117,7 @@ pulumi.Output<GetZeroTrustAccessServiceTokensInvokeResult> getZeroTrustAccessSer
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessshortlivedcertificate" "exampleZeroTrustAccessShortLivedCertificate" {
+/// data "cloudflare_zero_trust_access_short_lived_certificate" "exampleZeroTrustAccessShortLivedCertificate" {
 ///   app_id     = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
@@ -49193,7 +51251,7 @@ pulumi.Output<GetZeroTrustAccessShortLivedCertificateResult> getZeroTrustAccessS
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -49201,7 +51259,7 @@ pulumi.Output<GetZeroTrustAccessShortLivedCertificateResult> getZeroTrustAccessS
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccessshortlivedcertificates" "exampleZeroTrustAccessShortLivedCertificates" {
+/// data "cloudflare_zero_trust_access_short_lived_certificates" "exampleZeroTrustAccessShortLivedCertificates" {
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
 /// }
@@ -49327,7 +51385,7 @@ pulumi.Output<GetZeroTrustAccessShortLivedCertificatesInvokeResult> getZeroTrust
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -49335,7 +51393,7 @@ pulumi.Output<GetZeroTrustAccessShortLivedCertificatesInvokeResult> getZeroTrust
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccesstag" "exampleZeroTrustAccessTag" {
+/// data "cloudflare_zero_trust_access_tag" "exampleZeroTrustAccessTag" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   tag_name   = "engineers"
 /// }
@@ -49457,7 +51515,7 @@ pulumi.Output<GetZeroTrustAccessTagResult> getZeroTrustAccessTagOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -49465,7 +51523,7 @@ pulumi.Output<GetZeroTrustAccessTagResult> getZeroTrustAccessTagOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustaccesstags" "exampleZeroTrustAccessTags" {
+/// data "cloudflare_zero_trust_access_tags" "exampleZeroTrustAccessTags" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -49538,6 +51596,1005 @@ pulumi.Output<GetZeroTrustAccessTagsInvokeResult> getZeroTrustAccessTagsOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as cloudflare from "@pulumi/cloudflare";
 ///
+/// const exampleZeroTrustCasbIntegration = cloudflare.getZeroTrustCasbIntegration({
+///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     id: "id",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_zero_trust_casb_integration = cloudflare.get_zero_trust_casb_integration(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     id="id")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleZeroTrustCasbIntegration = Cloudflare.GetZeroTrustCasbIntegration.Invoke(new()
+///     {
+///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         Id = "id",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetZeroTrustCasbIntegration(ctx, &cloudflare.LookupZeroTrustCasbIntegrationArgs{
+/// 			AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			Id:        pulumi.StringRef("id"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_zero_trust_casb_integration" "exampleZeroTrustCasbIntegration" {
+///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   id         = "id"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetZeroTrustCasbIntegrationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleZeroTrustCasbIntegration = CloudflareFunctions.getZeroTrustCasbIntegration(GetZeroTrustCasbIntegrationArgs.builder()
+///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .id("id")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleZeroTrustCasbIntegration:
+///     fn::invoke:
+///       function: cloudflare:getZeroTrustCasbIntegration
+///       arguments:
+///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
+///         id: id
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_casb_integration_get_zero_trust_casb_integration_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetZeroTrustCasbIntegrationResult> getZeroTrustCasbIntegration(
+  GetZeroTrustCasbIntegrationArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getZeroTrustCasbIntegration:getZeroTrustCasbIntegration',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetZeroTrustCasbIntegrationResult.fromMap(result);
+}
+
+pulumi.Output<GetZeroTrustCasbIntegrationResult> getZeroTrustCasbIntegrationOutput(
+  GetZeroTrustCasbIntegrationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getZeroTrustCasbIntegration:getZeroTrustCasbIntegration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZeroTrustCasbIntegrationResult.fromMap);
+}
+
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleZeroTrustCasbIntegrations = cloudflare.getZeroTrustCasbIntegrations({
+///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     application: "application",
+///     direction: "asc",
+///     dlpEnabled: true,
+///     order: "application",
+///     page: 0,
+///     pageSize: 0,
+///     search: "search",
+///     status: "Healthy",
+///     useCases: "use_cases",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_zero_trust_casb_integrations = cloudflare.get_zero_trust_casb_integrations(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     application="application",
+///     direction="asc",
+///     dlp_enabled=True,
+///     order="application",
+///     page=0,
+///     page_size=0,
+///     search="search",
+///     status="Healthy",
+///     use_cases="use_cases")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleZeroTrustCasbIntegrations = Cloudflare.GetZeroTrustCasbIntegrations.Invoke(new()
+///     {
+///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         Application = "application",
+///         Direction = "asc",
+///         DlpEnabled = true,
+///         Order = "application",
+///         Page = 0,
+///         PageSize = 0,
+///         Search = "search",
+///         Status = "Healthy",
+///         UseCases = "use_cases",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetZeroTrustCasbIntegrations(ctx, &cloudflare.LookupZeroTrustCasbIntegrationsArgs{
+/// 			AccountId:   "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			Application: pulumi.StringRef("application"),
+/// 			Direction:   pulumi.StringRef("asc"),
+/// 			DlpEnabled:  pulumi.BoolRef(true),
+/// 			Order:       pulumi.StringRef("application"),
+/// 			Page:        pulumi.IntRef(0),
+/// 			PageSize:    pulumi.IntRef(0),
+/// 			Search:      pulumi.StringRef("search"),
+/// 			Status:      pulumi.StringRef("Healthy"),
+/// 			UseCases:    pulumi.StringRef("use_cases"),
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_zero_trust_casb_integrations" "exampleZeroTrustCasbIntegrations" {
+///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
+///   application = "application"
+///   direction   = "asc"
+///   dlp_enabled = true
+///   order       = "application"
+///   page        = 0
+///   page_size   = 0
+///   search      = "search"
+///   status      = "Healthy"
+///   use_cases   = "use_cases"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetZeroTrustCasbIntegrationsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleZeroTrustCasbIntegrations = CloudflareFunctions.getZeroTrustCasbIntegrations(GetZeroTrustCasbIntegrationsArgs.builder()
+///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .application("application")
+///             .direction("asc")
+///             .dlpEnabled(true)
+///             .order("application")
+///             .page(0)
+///             .pageSize(0)
+///             .search("search")
+///             .status("Healthy")
+///             .useCases("use_cases")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleZeroTrustCasbIntegrations:
+///     fn::invoke:
+///       function: cloudflare:getZeroTrustCasbIntegrations
+///       arguments:
+///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
+///         application: application
+///         direction: asc
+///         dlpEnabled: true
+///         order: application
+///         page: 0
+///         pageSize: 0
+///         search: search
+///         status: Healthy
+///         useCases: use_cases
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_casb_integrations_get_zero_trust_casb_integrations_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetZeroTrustCasbIntegrationsInvokeResult> getZeroTrustCasbIntegrations(
+  GetZeroTrustCasbIntegrationsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getZeroTrustCasbIntegrations:getZeroTrustCasbIntegrations',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetZeroTrustCasbIntegrationsInvokeResult.fromMap(result);
+}
+
+pulumi.Output<GetZeroTrustCasbIntegrationsInvokeResult> getZeroTrustCasbIntegrationsOutput(
+  GetZeroTrustCasbIntegrationsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getZeroTrustCasbIntegrations:getZeroTrustCasbIntegrations',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZeroTrustCasbIntegrationsInvokeResult.fromMap);
+}
+
+/// Accepted Permissions
+///
+/// - `Zero Trust Read`
+/// - `Zero Trust Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleZeroTrustCasbPolicies = cloudflare.getZeroTrustCasbPolicies({
+///     accountId: "46148281d8a93d002ef242d8b0d5f9f6",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_zero_trust_casb_policies = cloudflare.get_zero_trust_casb_policies(account_id="46148281d8a93d002ef242d8b0d5f9f6")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleZeroTrustCasbPolicies = Cloudflare.GetZeroTrustCasbPolicies.Invoke(new()
+///     {
+///         AccountId = "46148281d8a93d002ef242d8b0d5f9f6",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetZeroTrustCasbPolicies(ctx, &cloudflare.LookupZeroTrustCasbPoliciesArgs{
+/// 			AccountId: "46148281d8a93d002ef242d8b0d5f9f6",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_zero_trust_casb_policies" "exampleZeroTrustCasbPolicies" {
+///   account_id = "46148281d8a93d002ef242d8b0d5f9f6"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetZeroTrustCasbPoliciesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleZeroTrustCasbPolicies = CloudflareFunctions.getZeroTrustCasbPolicies(GetZeroTrustCasbPoliciesArgs.builder()
+///             .accountId("46148281d8a93d002ef242d8b0d5f9f6")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleZeroTrustCasbPolicies:
+///     fn::invoke:
+///       function: cloudflare:getZeroTrustCasbPolicies
+///       arguments:
+///         accountId: 46148281d8a93d002ef242d8b0d5f9f6
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_casb_policies_get_zero_trust_casb_policies_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetZeroTrustCasbPoliciesInvokeResult> getZeroTrustCasbPolicies(
+  GetZeroTrustCasbPoliciesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getZeroTrustCasbPolicies:getZeroTrustCasbPolicies',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetZeroTrustCasbPoliciesInvokeResult.fromMap(result);
+}
+
+pulumi.Output<GetZeroTrustCasbPoliciesInvokeResult> getZeroTrustCasbPoliciesOutput(
+  GetZeroTrustCasbPoliciesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getZeroTrustCasbPolicies:getZeroTrustCasbPolicies',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZeroTrustCasbPoliciesInvokeResult.fromMap);
+}
+
+/// Accepted Permissions
+///
+/// - `Zero Trust Read`
+/// - `Zero Trust Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleZeroTrustCasbPolicy = cloudflare.getZeroTrustCasbPolicy({
+///     accountId: "46148281d8a93d002ef242d8b0d5f9f6",
+///     policyId: "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_zero_trust_casb_policy = cloudflare.get_zero_trust_casb_policy(account_id="46148281d8a93d002ef242d8b0d5f9f6",
+///     policy_id="497f6eca-6276-4993-bfeb-53cbbbba6f08")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleZeroTrustCasbPolicy = Cloudflare.GetZeroTrustCasbPolicy.Invoke(new()
+///     {
+///         AccountId = "46148281d8a93d002ef242d8b0d5f9f6",
+///         PolicyId = "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetZeroTrustCasbPolicy(ctx, &cloudflare.LookupZeroTrustCasbPolicyArgs{
+/// 			AccountId: "46148281d8a93d002ef242d8b0d5f9f6",
+/// 			PolicyId:  "497f6eca-6276-4993-bfeb-53cbbbba6f08",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_zero_trust_casb_policy" "exampleZeroTrustCasbPolicy" {
+///   account_id = "46148281d8a93d002ef242d8b0d5f9f6"
+///   policy_id  = "497f6eca-6276-4993-bfeb-53cbbbba6f08"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetZeroTrustCasbPolicyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleZeroTrustCasbPolicy = CloudflareFunctions.getZeroTrustCasbPolicy(GetZeroTrustCasbPolicyArgs.builder()
+///             .accountId("46148281d8a93d002ef242d8b0d5f9f6")
+///             .policyId("497f6eca-6276-4993-bfeb-53cbbbba6f08")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleZeroTrustCasbPolicy:
+///     fn::invoke:
+///       function: cloudflare:getZeroTrustCasbPolicy
+///       arguments:
+///         accountId: 46148281d8a93d002ef242d8b0d5f9f6
+///         policyId: 497f6eca-6276-4993-bfeb-53cbbbba6f08
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_casb_policy_get_zero_trust_casb_policy_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetZeroTrustCasbPolicyResult> getZeroTrustCasbPolicy(
+  GetZeroTrustCasbPolicyArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getZeroTrustCasbPolicy:getZeroTrustCasbPolicy',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetZeroTrustCasbPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetZeroTrustCasbPolicyResult> getZeroTrustCasbPolicyOutput(
+  GetZeroTrustCasbPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getZeroTrustCasbPolicy:getZeroTrustCasbPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZeroTrustCasbPolicyResult.fromMap);
+}
+
+/// Accepted Permissions
+///
+/// - `Zero Trust Read`
+/// - `Zero Trust Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleZeroTrustCasbWebhook = cloudflare.getZeroTrustCasbWebhook({
+///     accountId: "46148281d8a93d002ef242d8b0d5f9f6",
+///     webhookId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_zero_trust_casb_webhook = cloudflare.get_zero_trust_casb_webhook(account_id="46148281d8a93d002ef242d8b0d5f9f6",
+///     webhook_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleZeroTrustCasbWebhook = Cloudflare.GetZeroTrustCasbWebhook.Invoke(new()
+///     {
+///         AccountId = "46148281d8a93d002ef242d8b0d5f9f6",
+///         WebhookId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetZeroTrustCasbWebhook(ctx, &cloudflare.LookupZeroTrustCasbWebhookArgs{
+/// 			AccountId: "46148281d8a93d002ef242d8b0d5f9f6",
+/// 			WebhookId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_zero_trust_casb_webhook" "exampleZeroTrustCasbWebhook" {
+///   account_id = "46148281d8a93d002ef242d8b0d5f9f6"
+///   webhook_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetZeroTrustCasbWebhookArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleZeroTrustCasbWebhook = CloudflareFunctions.getZeroTrustCasbWebhook(GetZeroTrustCasbWebhookArgs.builder()
+///             .accountId("46148281d8a93d002ef242d8b0d5f9f6")
+///             .webhookId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleZeroTrustCasbWebhook:
+///     fn::invoke:
+///       function: cloudflare:getZeroTrustCasbWebhook
+///       arguments:
+///         accountId: 46148281d8a93d002ef242d8b0d5f9f6
+///         webhookId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_casb_webhook_get_zero_trust_casb_webhook_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetZeroTrustCasbWebhookResult> getZeroTrustCasbWebhook(
+  GetZeroTrustCasbWebhookArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getZeroTrustCasbWebhook:getZeroTrustCasbWebhook',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetZeroTrustCasbWebhookResult.fromMap(result);
+}
+
+pulumi.Output<GetZeroTrustCasbWebhookResult> getZeroTrustCasbWebhookOutput(
+  GetZeroTrustCasbWebhookArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getZeroTrustCasbWebhook:getZeroTrustCasbWebhook',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZeroTrustCasbWebhookResult.fromMap);
+}
+
+/// Accepted Permissions
+///
+/// - `Zero Trust Read`
+/// - `Zero Trust Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleZeroTrustCasbWebhooks = cloudflare.getZeroTrustCasbWebhooks({
+///     accountId: "46148281d8a93d002ef242d8b0d5f9f6",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_zero_trust_casb_webhooks = cloudflare.get_zero_trust_casb_webhooks(account_id="46148281d8a93d002ef242d8b0d5f9f6")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleZeroTrustCasbWebhooks = Cloudflare.GetZeroTrustCasbWebhooks.Invoke(new()
+///     {
+///         AccountId = "46148281d8a93d002ef242d8b0d5f9f6",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetZeroTrustCasbWebhooks(ctx, &cloudflare.LookupZeroTrustCasbWebhooksArgs{
+/// 			AccountId: "46148281d8a93d002ef242d8b0d5f9f6",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_zero_trust_casb_webhooks" "exampleZeroTrustCasbWebhooks" {
+///   account_id = "46148281d8a93d002ef242d8b0d5f9f6"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetZeroTrustCasbWebhooksArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleZeroTrustCasbWebhooks = CloudflareFunctions.getZeroTrustCasbWebhooks(GetZeroTrustCasbWebhooksArgs.builder()
+///             .accountId("46148281d8a93d002ef242d8b0d5f9f6")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleZeroTrustCasbWebhooks:
+///     fn::invoke:
+///       function: cloudflare:getZeroTrustCasbWebhooks
+///       arguments:
+///         accountId: 46148281d8a93d002ef242d8b0d5f9f6
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_casb_webhooks_get_zero_trust_casb_webhooks_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetZeroTrustCasbWebhooksInvokeResult> getZeroTrustCasbWebhooks(
+  GetZeroTrustCasbWebhooksArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getZeroTrustCasbWebhooks:getZeroTrustCasbWebhooks',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetZeroTrustCasbWebhooksInvokeResult.fromMap(result);
+}
+
+pulumi.Output<GetZeroTrustCasbWebhooksInvokeResult> getZeroTrustCasbWebhooksOutput(
+  GetZeroTrustCasbWebhooksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getZeroTrustCasbWebhooks:getZeroTrustCasbWebhooks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZeroTrustCasbWebhooksInvokeResult.fromMap);
+}
+
+/// Accepted Permissions
+///
+/// - `Zero Trust Read`
+/// - `Zero Trust Report`
+/// - `Zero Trust Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleZeroTrustConnectivitySettings = cloudflare.getZeroTrustConnectivitySettings({
+///     accountId: "699d98642c564d2e855e9661899b7252",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_zero_trust_connectivity_settings = cloudflare.get_zero_trust_connectivity_settings(account_id="699d98642c564d2e855e9661899b7252")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleZeroTrustConnectivitySettings = Cloudflare.GetZeroTrustConnectivitySettings.Invoke(new()
+///     {
+///         AccountId = "699d98642c564d2e855e9661899b7252",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetZeroTrustConnectivitySettings(ctx, &cloudflare.LookupZeroTrustConnectivitySettingsArgs{
+/// 			AccountId: "699d98642c564d2e855e9661899b7252",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_zero_trust_connectivity_settings" "exampleZeroTrustConnectivitySettings" {
+///   account_id = "699d98642c564d2e855e9661899b7252"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetZeroTrustConnectivitySettingsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleZeroTrustConnectivitySettings = CloudflareFunctions.getZeroTrustConnectivitySettings(GetZeroTrustConnectivitySettingsArgs.builder()
+///             .accountId("699d98642c564d2e855e9661899b7252")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleZeroTrustConnectivitySettings:
+///     fn::invoke:
+///       function: cloudflare:getZeroTrustConnectivitySettings
+///       arguments:
+///         accountId: 699d98642c564d2e855e9661899b7252
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_connectivity_settings_get_zero_trust_connectivity_settings_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetZeroTrustConnectivitySettingsResult> getZeroTrustConnectivitySettings(
+  GetZeroTrustConnectivitySettingsArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getZeroTrustConnectivitySettings:getZeroTrustConnectivitySettings',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetZeroTrustConnectivitySettingsResult.fromMap(result);
+}
+
+pulumi.Output<GetZeroTrustConnectivitySettingsResult> getZeroTrustConnectivitySettingsOutput(
+  GetZeroTrustConnectivitySettingsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getZeroTrustConnectivitySettings:getZeroTrustConnectivitySettings',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZeroTrustConnectivitySettingsResult.fromMap);
+}
+
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
 /// const exampleZeroTrustDeviceCustomProfile = cloudflare.getZeroTrustDeviceCustomProfile({
 ///     accountId: "699d98642c564d2e855e9661899b7252",
 ///     policyId: "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
@@ -49578,7 +52635,7 @@ pulumi.Output<GetZeroTrustAccessTagsInvokeResult> getZeroTrustAccessTagsOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetZeroTrustDeviceCustomProfile(ctx, &cloudflare.LookupZeroTrustDeviceCustomProfileArgs{
 /// 			AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
-/// 			PolicyId:  "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+/// 			PolicyId:  pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -49588,7 +52645,7 @@ pulumi.Output<GetZeroTrustAccessTagsInvokeResult> getZeroTrustAccessTagsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -49596,7 +52653,7 @@ pulumi.Output<GetZeroTrustAccessTagsInvokeResult> getZeroTrustAccessTagsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdevicecustomprofile" "exampleZeroTrustDeviceCustomProfile" {
+/// data "cloudflare_zero_trust_device_custom_profile" "exampleZeroTrustDeviceCustomProfile" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   policy_id  = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -49722,7 +52779,7 @@ pulumi.Output<GetZeroTrustDeviceCustomProfileResult> getZeroTrustDeviceCustomPro
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -49730,7 +52787,7 @@ pulumi.Output<GetZeroTrustDeviceCustomProfileResult> getZeroTrustDeviceCustomPro
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdevicecustomprofilelocaldomainfallback" "exampleZeroTrustDeviceCustomProfileLocalDomainFallback" {
+/// data "cloudflare_zero_trust_device_custom_profile_local_domain_fallback" "exampleZeroTrustDeviceCustomProfileLocalDomainFallback" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   policy_id  = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -49852,7 +52909,7 @@ pulumi.Output<GetZeroTrustDeviceCustomProfileLocalDomainFallbackResult> getZeroT
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -49860,7 +52917,7 @@ pulumi.Output<GetZeroTrustDeviceCustomProfileLocalDomainFallbackResult> getZeroT
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdevicecustomprofiles" "exampleZeroTrustDeviceCustomProfiles" {
+/// data "cloudflare_zero_trust_device_custom_profiles" "exampleZeroTrustDeviceCustomProfiles" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 /// }
 /// ```
@@ -49979,7 +53036,7 @@ pulumi.Output<GetZeroTrustDeviceCustomProfilesInvokeResult> getZeroTrustDeviceCu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -49987,7 +53044,7 @@ pulumi.Output<GetZeroTrustDeviceCustomProfilesInvokeResult> getZeroTrustDeviceCu
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdevicedefaultprofile" "exampleZeroTrustDeviceDefaultProfile" {
+/// data "cloudflare_zero_trust_device_default_profile" "exampleZeroTrustDeviceDefaultProfile" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 /// }
 /// ```
@@ -50111,7 +53168,7 @@ pulumi.Output<GetZeroTrustDeviceDefaultProfileResult> getZeroTrustDeviceDefaultP
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -50119,7 +53176,7 @@ pulumi.Output<GetZeroTrustDeviceDefaultProfileResult> getZeroTrustDeviceDefaultP
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdevicedefaultprofilecertificates" "exampleZeroTrustDeviceDefaultProfileCertificates" {
+/// data "cloudflare_zero_trust_device_default_profile_certificates" "exampleZeroTrustDeviceDefaultProfileCertificates" {
 ///   zone_id = "699d98642c564d2e855e9661899b7252"
 /// }
 /// ```
@@ -50238,7 +53295,7 @@ pulumi.Output<GetZeroTrustDeviceDefaultProfileCertificatesResult> getZeroTrustDe
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -50246,7 +53303,7 @@ pulumi.Output<GetZeroTrustDeviceDefaultProfileCertificatesResult> getZeroTrustDe
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdevicedefaultprofilelocaldomainfallback" "exampleZeroTrustDeviceDefaultProfileLocalDomainFallback" {
+/// data "cloudflare_zero_trust_device_default_profile_local_domain_fallback" "exampleZeroTrustDeviceDefaultProfileLocalDomainFallback" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 /// }
 /// ```
@@ -50369,7 +53426,7 @@ pulumi.Output<GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult> getZero
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -50377,7 +53434,7 @@ pulumi.Output<GetZeroTrustDeviceDefaultProfileLocalDomainFallbackResult> getZero
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdevicedeploymentgroups" "exampleZeroTrustDeviceDeploymentGroups" {
+/// data "cloudflare_zero_trust_device_deployment_groups" "exampleZeroTrustDeviceDeploymentGroups" {
 ///   account_id = "account_id"
 ///   group_id   = "group_id"
 /// }
@@ -50446,6 +53503,107 @@ pulumi.Output<GetZeroTrustDeviceDeploymentGroupsResult> getZeroTrustDeviceDeploy
   ).apply(GetZeroTrustDeviceDeploymentGroupsResult.fromMap);
 }
 
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleZeroTrustDeviceDeploymentGroupsList = cloudflare.getZeroTrustDeviceDeploymentGroupsList({
+///     accountId: "account_id",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_zero_trust_device_deployment_groups_list = cloudflare.get_zero_trust_device_deployment_groups_list(account_id="account_id")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleZeroTrustDeviceDeploymentGroupsList = Cloudflare.GetZeroTrustDeviceDeploymentGroupsList.Invoke(new()
+///     {
+///         AccountId = "account_id",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetZeroTrustDeviceDeploymentGroupsList(ctx, &cloudflare.LookupZeroTrustDeviceDeploymentGroupsListArgs{
+/// 			AccountId: "account_id",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_zero_trust_device_deployment_groups_list" "exampleZeroTrustDeviceDeploymentGroupsList" {
+///   account_id = "account_id"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetZeroTrustDeviceDeploymentGroupsListArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleZeroTrustDeviceDeploymentGroupsList = CloudflareFunctions.getZeroTrustDeviceDeploymentGroupsList(GetZeroTrustDeviceDeploymentGroupsListArgs.builder()
+///             .accountId("account_id")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleZeroTrustDeviceDeploymentGroupsList:
+///     fn::invoke:
+///       function: cloudflare:getZeroTrustDeviceDeploymentGroupsList
+///       arguments:
+///         accountId: account_id
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_device_deployment_groups_list_get_zero_trust_device_deployment_groups_list_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetZeroTrustDeviceDeploymentGroupsListInvokeResult> getZeroTrustDeviceDeploymentGroupsList(
@@ -50534,7 +53692,7 @@ pulumi.Output<GetZeroTrustDeviceDeploymentGroupsListInvokeResult> getZeroTrustDe
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -50542,7 +53700,7 @@ pulumi.Output<GetZeroTrustDeviceDeploymentGroupsListInvokeResult> getZeroTrustDe
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdeviceipprofile" "exampleZeroTrustDeviceIpProfile" {
+/// data "cloudflare_zero_trust_device_ip_profile" "exampleZeroTrustDeviceIpProfile" {
 ///   account_id = "account_id"
 ///   profile_id = "profile_id"
 /// }
@@ -50669,7 +53827,7 @@ pulumi.Output<GetZeroTrustDeviceIpProfileResult> getZeroTrustDeviceIpProfileOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -50677,7 +53835,7 @@ pulumi.Output<GetZeroTrustDeviceIpProfileResult> getZeroTrustDeviceIpProfileOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdeviceipprofiles" "exampleZeroTrustDeviceIpProfiles" {
+/// data "cloudflare_zero_trust_device_ip_profiles" "exampleZeroTrustDeviceIpProfiles" {
 ///   account_id = "account_id"
 /// }
 /// ```
@@ -50800,7 +53958,7 @@ pulumi.Output<GetZeroTrustDeviceIpProfilesInvokeResult> getZeroTrustDeviceIpProf
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -50808,7 +53966,7 @@ pulumi.Output<GetZeroTrustDeviceIpProfilesInvokeResult> getZeroTrustDeviceIpProf
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdevicemanagednetworks" "exampleZeroTrustDeviceManagedNetworks" {
+/// data "cloudflare_zero_trust_device_managed_networks" "exampleZeroTrustDeviceManagedNetworks" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   network_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -50930,7 +54088,7 @@ pulumi.Output<GetZeroTrustDeviceManagedNetworksResult> getZeroTrustDeviceManaged
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -50938,7 +54096,7 @@ pulumi.Output<GetZeroTrustDeviceManagedNetworksResult> getZeroTrustDeviceManaged
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdevicemanagednetworkslist" "exampleZeroTrustDeviceManagedNetworksList" {
+/// data "cloudflare_zero_trust_device_managed_networks_list" "exampleZeroTrustDeviceManagedNetworksList" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 /// }
 /// ```
@@ -51061,7 +54219,7 @@ pulumi.Output<GetZeroTrustDeviceManagedNetworksListInvokeResult> getZeroTrustDev
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -51069,7 +54227,7 @@ pulumi.Output<GetZeroTrustDeviceManagedNetworksListInvokeResult> getZeroTrustDev
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdevicepostureintegration" "exampleZeroTrustDevicePostureIntegration" {
+/// data "cloudflare_zero_trust_device_posture_integration" "exampleZeroTrustDevicePostureIntegration" {
 ///   account_id     = "699d98642c564d2e855e9661899b7252"
 ///   integration_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -51191,7 +54349,7 @@ pulumi.Output<GetZeroTrustDevicePostureIntegrationResult> getZeroTrustDevicePost
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -51199,7 +54357,7 @@ pulumi.Output<GetZeroTrustDevicePostureIntegrationResult> getZeroTrustDevicePost
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdevicepostureintegrations" "exampleZeroTrustDevicePostureIntegrations" {
+/// data "cloudflare_zero_trust_device_posture_integrations" "exampleZeroTrustDevicePostureIntegrations" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 /// }
 /// ```
@@ -51322,7 +54480,7 @@ pulumi.Output<GetZeroTrustDevicePostureIntegrationsInvokeResult> getZeroTrustDev
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -51330,7 +54488,7 @@ pulumi.Output<GetZeroTrustDevicePostureIntegrationsInvokeResult> getZeroTrustDev
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdeviceposturerule" "exampleZeroTrustDevicePostureRule" {
+/// data "cloudflare_zero_trust_device_posture_rule" "exampleZeroTrustDevicePostureRule" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   rule_id    = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -51452,7 +54610,7 @@ pulumi.Output<GetZeroTrustDevicePostureRuleResult> getZeroTrustDevicePostureRule
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -51460,7 +54618,7 @@ pulumi.Output<GetZeroTrustDevicePostureRuleResult> getZeroTrustDevicePostureRule
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdeviceposturerules" "exampleZeroTrustDevicePostureRules" {
+/// data "cloudflare_zero_trust_device_posture_rules" "exampleZeroTrustDevicePostureRules" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 /// }
 /// ```
@@ -51579,7 +54737,7 @@ pulumi.Output<GetZeroTrustDevicePostureRulesInvokeResult> getZeroTrustDevicePost
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -51587,7 +54745,7 @@ pulumi.Output<GetZeroTrustDevicePostureRulesInvokeResult> getZeroTrustDevicePost
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdevicesettings" "exampleZeroTrustDeviceSettings" {
+/// data "cloudflare_zero_trust_device_settings" "exampleZeroTrustDeviceSettings" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 /// }
 /// ```
@@ -51715,7 +54873,7 @@ pulumi.Output<GetZeroTrustDeviceSettingsResult> getZeroTrustDeviceSettingsOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -51723,7 +54881,7 @@ pulumi.Output<GetZeroTrustDeviceSettingsResult> getZeroTrustDeviceSettingsOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdevicesubnet" "exampleZeroTrustDeviceSubnet" {
+/// data "cloudflare_zero_trust_device_subnet" "exampleZeroTrustDeviceSubnet" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   subnet_id  = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -51856,7 +55014,7 @@ pulumi.Output<GetZeroTrustDeviceSubnetResult> getZeroTrustDeviceSubnetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -51864,7 +55022,7 @@ pulumi.Output<GetZeroTrustDeviceSubnetResult> getZeroTrustDeviceSubnetOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdexrule" "exampleZeroTrustDexRule" {
+/// data "cloudflare_zero_trust_dex_rule" "exampleZeroTrustDexRule" {
 ///   account_id = "01a7362d577a6c3019a474fd6f485823"
 ///   rule_id    = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -51997,7 +55155,7 @@ pulumi.Output<GetZeroTrustDexRuleResult> getZeroTrustDexRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -52005,7 +55163,7 @@ pulumi.Output<GetZeroTrustDexRuleResult> getZeroTrustDexRuleOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdexrules" "exampleZeroTrustDexRules" {
+/// data "cloudflare_zero_trust_dex_rules" "exampleZeroTrustDexRules" {
 ///   account_id = "01a7362d577a6c3019a474fd6f485823"
 ///   name       = "name"
 /// }
@@ -52138,7 +55296,7 @@ pulumi.Output<GetZeroTrustDexRulesInvokeResult> getZeroTrustDexRulesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -52146,7 +55304,7 @@ pulumi.Output<GetZeroTrustDexRulesInvokeResult> getZeroTrustDexRulesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdextest" "exampleZeroTrustDexTest" {
+/// data "cloudflare_zero_trust_dex_test" "exampleZeroTrustDexTest" {
 ///   account_id  = "01a7362d577a6c3019a474fd6f485823"
 ///   dex_test_id = "372e67954025e0ba6aaa6d586b9e0b59"
 /// }
@@ -52283,7 +55441,7 @@ pulumi.Output<GetZeroTrustDexTestResult> getZeroTrustDexTestOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -52291,7 +55449,7 @@ pulumi.Output<GetZeroTrustDexTestResult> getZeroTrustDexTestOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdextests" "exampleZeroTrustDexTests" {
+/// data "cloudflare_zero_trust_dex_tests" "exampleZeroTrustDexTests" {
 ///   account_id = "01a7362d577a6c3019a474fd6f485823"
 ///   kind       = "http"
 ///   test_name  = "testName"
@@ -52421,7 +55579,7 @@ pulumi.Output<GetZeroTrustDexTestsInvokeResult> getZeroTrustDexTestsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -52429,7 +55587,7 @@ pulumi.Output<GetZeroTrustDexTestsInvokeResult> getZeroTrustDexTestsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpcustomentries" "exampleZeroTrustDlpCustomEntries" {
+/// data "cloudflare_zero_trust_dlp_custom_entries" "exampleZeroTrustDlpCustomEntries" {
 ///   account_id = "account_id"
 /// }
 /// ```
@@ -52557,7 +55715,7 @@ pulumi.Output<GetZeroTrustDlpCustomEntriesInvokeResult> getZeroTrustDlpCustomEnt
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -52565,7 +55723,7 @@ pulumi.Output<GetZeroTrustDlpCustomEntriesInvokeResult> getZeroTrustDlpCustomEnt
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpcustomentry" "exampleZeroTrustDlpCustomEntry" {
+/// data "cloudflare_zero_trust_dlp_custom_entry" "exampleZeroTrustDlpCustomEntry" {
 ///   account_id = "account_id"
 ///   entry_id   = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -52696,7 +55854,7 @@ pulumi.Output<GetZeroTrustDlpCustomEntryResult> getZeroTrustDlpCustomEntryOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -52704,7 +55862,7 @@ pulumi.Output<GetZeroTrustDlpCustomEntryResult> getZeroTrustDlpCustomEntryOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpcustomprofile" "exampleZeroTrustDlpCustomProfile" {
+/// data "cloudflare_zero_trust_dlp_custom_profile" "exampleZeroTrustDlpCustomProfile" {
 ///   account_id = "account_id"
 ///   profile_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -52777,6 +55935,115 @@ pulumi.Output<GetZeroTrustDlpCustomProfileResult> getZeroTrustDlpCustomProfileOu
 ///
 /// - `Zero Trust Read`
 /// - `Zero Trust Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleZeroTrustDlpCustomPromptTopic = cloudflare.getZeroTrustDlpCustomPromptTopic({
+///     accountId: "account_id",
+///     entryId: "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_zero_trust_dlp_custom_prompt_topic = cloudflare.get_zero_trust_dlp_custom_prompt_topic(account_id="account_id",
+///     entry_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleZeroTrustDlpCustomPromptTopic = Cloudflare.GetZeroTrustDlpCustomPromptTopic.Invoke(new()
+///     {
+///         AccountId = "account_id",
+///         EntryId = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetZeroTrustDlpCustomPromptTopic(ctx, &cloudflare.GetZeroTrustDlpCustomPromptTopicArgs{
+/// 			AccountId: "account_id",
+/// 			EntryId:   "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_zero_trust_dlp_custom_prompt_topic" "exampleZeroTrustDlpCustomPromptTopic" {
+///   account_id = "account_id"
+///   entry_id   = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomPromptTopicArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleZeroTrustDlpCustomPromptTopic = CloudflareFunctions.getZeroTrustDlpCustomPromptTopic(GetZeroTrustDlpCustomPromptTopicArgs.builder()
+///             .accountId("account_id")
+///             .entryId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleZeroTrustDlpCustomPromptTopic:
+///     fn::invoke:
+///       function: cloudflare:getZeroTrustDlpCustomPromptTopic
+///       arguments:
+///         accountId: account_id
+///         entryId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_dlp_custom_prompt_topic_get_zero_trust_dlp_custom_prompt_topic_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetZeroTrustDlpCustomPromptTopicResult> getZeroTrustDlpCustomPromptTopic(
@@ -52807,6 +56074,108 @@ pulumi.Output<GetZeroTrustDlpCustomPromptTopicResult> getZeroTrustDlpCustomPromp
 ///
 /// - `Zero Trust Read`
 /// - `Zero Trust Write`
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleZeroTrustDlpCustomPromptTopics = cloudflare.getZeroTrustDlpCustomPromptTopics({
+///     accountId: "account_id",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_zero_trust_dlp_custom_prompt_topics = cloudflare.get_zero_trust_dlp_custom_prompt_topics(account_id="account_id")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleZeroTrustDlpCustomPromptTopics = Cloudflare.GetZeroTrustDlpCustomPromptTopics.Invoke(new()
+///     {
+///         AccountId = "account_id",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetZeroTrustDlpCustomPromptTopics(ctx, &cloudflare.LookupZeroTrustDlpCustomPromptTopicsArgs{
+/// 			AccountId: "account_id",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_zero_trust_dlp_custom_prompt_topics" "exampleZeroTrustDlpCustomPromptTopics" {
+///   account_id = "account_id"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetZeroTrustDlpCustomPromptTopicsArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleZeroTrustDlpCustomPromptTopics = CloudflareFunctions.getZeroTrustDlpCustomPromptTopics(GetZeroTrustDlpCustomPromptTopicsArgs.builder()
+///             .accountId("account_id")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleZeroTrustDlpCustomPromptTopics:
+///     fn::invoke:
+///       function: cloudflare:getZeroTrustDlpCustomPromptTopics
+///       arguments:
+///         accountId: account_id
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_dlp_custom_prompt_topics_get_zero_trust_dlp_custom_prompt_topics_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetZeroTrustDlpCustomPromptTopicsInvokeResult> getZeroTrustDlpCustomPromptTopics(
@@ -52895,7 +56264,7 @@ pulumi.Output<GetZeroTrustDlpCustomPromptTopicsInvokeResult> getZeroTrustDlpCust
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -52903,7 +56272,7 @@ pulumi.Output<GetZeroTrustDlpCustomPromptTopicsInvokeResult> getZeroTrustDlpCust
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpdataclass" "exampleZeroTrustDlpDataClass" {
+/// data "cloudflare_zero_trust_dlp_data_class" "exampleZeroTrustDlpDataClass" {
 ///   account_id    = "account_id"
 ///   data_class_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -53030,7 +56399,7 @@ pulumi.Output<GetZeroTrustDlpDataClassResult> getZeroTrustDlpDataClassOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -53038,7 +56407,7 @@ pulumi.Output<GetZeroTrustDlpDataClassResult> getZeroTrustDlpDataClassOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpdataclasses" "exampleZeroTrustDlpDataClasses" {
+/// data "cloudflare_zero_trust_dlp_data_classes" "exampleZeroTrustDlpDataClasses" {
 ///   account_id = "account_id"
 /// }
 /// ```
@@ -53170,7 +56539,7 @@ pulumi.Output<GetZeroTrustDlpDataClassesInvokeResult> getZeroTrustDlpDataClasses
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -53178,7 +56547,7 @@ pulumi.Output<GetZeroTrustDlpDataClassesInvokeResult> getZeroTrustDlpDataClasses
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpdatatag" "exampleZeroTrustDlpDataTag" {
+/// data "cloudflare_zero_trust_dlp_data_tag" "exampleZeroTrustDlpDataTag" {
 ///   account_id  = "account_id"
 ///   category_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 ///   tag_id      = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
@@ -53308,7 +56677,7 @@ pulumi.Output<GetZeroTrustDlpDataTagResult> getZeroTrustDlpDataTagOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -53316,7 +56685,7 @@ pulumi.Output<GetZeroTrustDlpDataTagResult> getZeroTrustDlpDataTagOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpdatatagcategories" "exampleZeroTrustDlpDataTagCategories" {
+/// data "cloudflare_zero_trust_dlp_data_tag_categories" "exampleZeroTrustDlpDataTagCategories" {
 ///   account_id = "account_id"
 /// }
 /// ```
@@ -53444,7 +56813,7 @@ pulumi.Output<GetZeroTrustDlpDataTagCategoriesInvokeResult> getZeroTrustDlpDataT
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -53452,7 +56821,7 @@ pulumi.Output<GetZeroTrustDlpDataTagCategoriesInvokeResult> getZeroTrustDlpDataT
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpdatatagcategory" "exampleZeroTrustDlpDataTagCategory" {
+/// data "cloudflare_zero_trust_dlp_data_tag_category" "exampleZeroTrustDlpDataTagCategory" {
 ///   account_id  = "account_id"
 ///   category_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -53583,7 +56952,7 @@ pulumi.Output<GetZeroTrustDlpDataTagCategoryResult> getZeroTrustDlpDataTagCatego
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -53591,7 +56960,7 @@ pulumi.Output<GetZeroTrustDlpDataTagCategoryResult> getZeroTrustDlpDataTagCatego
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpdatatags" "exampleZeroTrustDlpDataTags" {
+/// data "cloudflare_zero_trust_dlp_data_tags" "exampleZeroTrustDlpDataTags" {
 ///   account_id  = "account_id"
 ///   category_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -53722,7 +57091,7 @@ pulumi.Output<GetZeroTrustDlpDataTagsInvokeResult> getZeroTrustDlpDataTagsOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -53730,7 +57099,7 @@ pulumi.Output<GetZeroTrustDlpDataTagsInvokeResult> getZeroTrustDlpDataTagsOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpdataset" "exampleZeroTrustDlpDataset" {
+/// data "cloudflare_zero_trust_dlp_dataset" "exampleZeroTrustDlpDataset" {
 ///   account_id = "account_id"
 ///   dataset_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -53857,7 +57226,7 @@ pulumi.Output<GetZeroTrustDlpDatasetResult> getZeroTrustDlpDatasetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -53865,7 +57234,7 @@ pulumi.Output<GetZeroTrustDlpDatasetResult> getZeroTrustDlpDatasetOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpdatasets" "exampleZeroTrustDlpDatasets" {
+/// data "cloudflare_zero_trust_dlp_datasets" "exampleZeroTrustDlpDatasets" {
 ///   account_id = "account_id"
 /// }
 /// ```
@@ -53989,7 +57358,7 @@ pulumi.Output<GetZeroTrustDlpDatasetsInvokeResult> getZeroTrustDlpDatasetsOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -53997,7 +57366,7 @@ pulumi.Output<GetZeroTrustDlpDatasetsInvokeResult> getZeroTrustDlpDatasetsOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpentries" "exampleZeroTrustDlpEntries" {
+/// data "cloudflare_zero_trust_dlp_entries" "exampleZeroTrustDlpEntries" {
 ///   account_id = "account_id"
 /// }
 /// ```
@@ -54125,7 +57494,7 @@ pulumi.Output<GetZeroTrustDlpEntriesInvokeResult> getZeroTrustDlpEntriesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -54133,7 +57502,7 @@ pulumi.Output<GetZeroTrustDlpEntriesInvokeResult> getZeroTrustDlpEntriesOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpentry" "exampleZeroTrustDlpEntry" {
+/// data "cloudflare_zero_trust_dlp_entry" "exampleZeroTrustDlpEntry" {
 ///   account_id = "account_id"
 ///   entry_id   = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -54260,7 +57629,7 @@ pulumi.Output<GetZeroTrustDlpEntryResult> getZeroTrustDlpEntryOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -54268,7 +57637,7 @@ pulumi.Output<GetZeroTrustDlpEntryResult> getZeroTrustDlpEntryOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpintegrationentries" "exampleZeroTrustDlpIntegrationEntries" {
+/// data "cloudflare_zero_trust_dlp_integration_entries" "exampleZeroTrustDlpIntegrationEntries" {
 ///   account_id = "account_id"
 /// }
 /// ```
@@ -54396,7 +57765,7 @@ pulumi.Output<GetZeroTrustDlpIntegrationEntriesInvokeResult> getZeroTrustDlpInte
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -54404,7 +57773,7 @@ pulumi.Output<GetZeroTrustDlpIntegrationEntriesInvokeResult> getZeroTrustDlpInte
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpintegrationentry" "exampleZeroTrustDlpIntegrationEntry" {
+/// data "cloudflare_zero_trust_dlp_integration_entry" "exampleZeroTrustDlpIntegrationEntry" {
 ///   account_id = "account_id"
 ///   entry_id   = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -54531,7 +57900,7 @@ pulumi.Output<GetZeroTrustDlpIntegrationEntryResult> getZeroTrustDlpIntegrationE
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -54539,7 +57908,7 @@ pulumi.Output<GetZeroTrustDlpIntegrationEntryResult> getZeroTrustDlpIntegrationE
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlppredefinedentries" "exampleZeroTrustDlpPredefinedEntries" {
+/// data "cloudflare_zero_trust_dlp_predefined_entries" "exampleZeroTrustDlpPredefinedEntries" {
 ///   account_id = "account_id"
 /// }
 /// ```
@@ -54667,7 +58036,7 @@ pulumi.Output<GetZeroTrustDlpPredefinedEntriesInvokeResult> getZeroTrustDlpPrede
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -54675,7 +58044,7 @@ pulumi.Output<GetZeroTrustDlpPredefinedEntriesInvokeResult> getZeroTrustDlpPrede
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlppredefinedentry" "exampleZeroTrustDlpPredefinedEntry" {
+/// data "cloudflare_zero_trust_dlp_predefined_entry" "exampleZeroTrustDlpPredefinedEntry" {
 ///   account_id = "account_id"
 ///   entry_id   = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -54806,7 +58175,7 @@ pulumi.Output<GetZeroTrustDlpPredefinedEntryResult> getZeroTrustDlpPredefinedEnt
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -54814,7 +58183,7 @@ pulumi.Output<GetZeroTrustDlpPredefinedEntryResult> getZeroTrustDlpPredefinedEnt
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlppredefinedprofile" "exampleZeroTrustDlpPredefinedProfile" {
+/// data "cloudflare_zero_trust_dlp_predefined_profile" "exampleZeroTrustDlpPredefinedProfile" {
 ///   account_id = "account_id"
 ///   profile_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -54945,7 +58314,7 @@ pulumi.Output<GetZeroTrustDlpPredefinedProfileResult> getZeroTrustDlpPredefinedP
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -54953,7 +58322,7 @@ pulumi.Output<GetZeroTrustDlpPredefinedProfileResult> getZeroTrustDlpPredefinedP
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpsensitivitygroup" "exampleZeroTrustDlpSensitivityGroup" {
+/// data "cloudflare_zero_trust_dlp_sensitivity_group" "exampleZeroTrustDlpSensitivityGroup" {
 ///   account_id           = "account_id"
 ///   sensitivity_group_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -55080,7 +58449,7 @@ pulumi.Output<GetZeroTrustDlpSensitivityGroupResult> getZeroTrustDlpSensitivityG
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -55088,7 +58457,7 @@ pulumi.Output<GetZeroTrustDlpSensitivityGroupResult> getZeroTrustDlpSensitivityG
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpsensitivitygroups" "exampleZeroTrustDlpSensitivityGroups" {
+/// data "cloudflare_zero_trust_dlp_sensitivity_groups" "exampleZeroTrustDlpSensitivityGroups" {
 ///   account_id = "account_id"
 /// }
 /// ```
@@ -55220,7 +58589,7 @@ pulumi.Output<GetZeroTrustDlpSensitivityGroupsInvokeResult> getZeroTrustDlpSensi
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -55228,7 +58597,7 @@ pulumi.Output<GetZeroTrustDlpSensitivityGroupsInvokeResult> getZeroTrustDlpSensi
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpsensitivitylevel" "exampleZeroTrustDlpSensitivityLevel" {
+/// data "cloudflare_zero_trust_dlp_sensitivity_level" "exampleZeroTrustDlpSensitivityLevel" {
 ///   account_id           = "account_id"
 ///   sensitivity_group_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 ///   sensitivity_level_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
@@ -55362,7 +58731,7 @@ pulumi.Output<GetZeroTrustDlpSensitivityLevelResult> getZeroTrustDlpSensitivityL
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -55370,7 +58739,7 @@ pulumi.Output<GetZeroTrustDlpSensitivityLevelResult> getZeroTrustDlpSensitivityL
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpsensitivitylevelorder" "exampleZeroTrustDlpSensitivityLevelOrder" {
+/// data "cloudflare_zero_trust_dlp_sensitivity_level_order" "exampleZeroTrustDlpSensitivityLevelOrder" {
 ///   account_id           = "account_id"
 ///   sensitivity_group_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -55501,7 +58870,7 @@ pulumi.Output<GetZeroTrustDlpSensitivityLevelOrderResult> getZeroTrustDlpSensiti
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -55509,7 +58878,7 @@ pulumi.Output<GetZeroTrustDlpSensitivityLevelOrderResult> getZeroTrustDlpSensiti
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpsensitivitylevels" "exampleZeroTrustDlpSensitivityLevels" {
+/// data "cloudflare_zero_trust_dlp_sensitivity_levels" "exampleZeroTrustDlpSensitivityLevels" {
 ///   account_id           = "account_id"
 ///   sensitivity_group_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -55636,7 +59005,7 @@ pulumi.Output<GetZeroTrustDlpSensitivityLevelsInvokeResult> getZeroTrustDlpSensi
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -55644,7 +59013,7 @@ pulumi.Output<GetZeroTrustDlpSensitivityLevelsInvokeResult> getZeroTrustDlpSensi
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdlpsettings" "exampleZeroTrustDlpSettings" {
+/// data "cloudflare_zero_trust_dlp_settings" "exampleZeroTrustDlpSettings" {
 ///   account_id = "account_id"
 /// }
 /// ```
@@ -55763,7 +59132,7 @@ pulumi.Output<GetZeroTrustDlpSettingsResult> getZeroTrustDlpSettingsOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetZeroTrustDnsLocation(ctx, &cloudflare.LookupZeroTrustDnsLocationArgs{
 /// 			AccountId:  pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
-/// 			LocationId: "ed35569b41ce4d1facfe683550f54086",
+/// 			LocationId: pulumi.StringRef("ed35569b41ce4d1facfe683550f54086"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -55773,7 +59142,7 @@ pulumi.Output<GetZeroTrustDlpSettingsResult> getZeroTrustDlpSettingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -55781,7 +59150,7 @@ pulumi.Output<GetZeroTrustDlpSettingsResult> getZeroTrustDlpSettingsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdnslocation" "exampleZeroTrustDnsLocation" {
+/// data "cloudflare_zero_trust_dns_location" "exampleZeroTrustDnsLocation" {
 ///   account_id  = "699d98642c564d2e855e9661899b7252"
 ///   location_id = "ed35569b41ce4d1facfe683550f54086"
 /// }
@@ -55865,13 +59234,21 @@ pulumi.Output<GetZeroTrustDnsLocationResult> getZeroTrustDnsLocationOutput(
 ///
 /// const exampleZeroTrustDnsLocations = cloudflare.getZeroTrustDnsLocations({
 ///     accountId: "699d98642c564d2e855e9661899b7252",
+///     direction: "asc",
+///     filters: ["string"],
+///     orderBy: "name",
+///     search: "search",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_cloudflare as cloudflare
 ///
-/// example_zero_trust_dns_locations = cloudflare.get_zero_trust_dns_locations(account_id="699d98642c564d2e855e9661899b7252")
+/// example_zero_trust_dns_locations = cloudflare.get_zero_trust_dns_locations(account_id="699d98642c564d2e855e9661899b7252",
+///     direction="asc",
+///     filters=["string"],
+///     order_by="name",
+///     search="search")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -55884,6 +59261,13 @@ pulumi.Output<GetZeroTrustDnsLocationResult> getZeroTrustDnsLocationOutput(
 ///     var exampleZeroTrustDnsLocations = Cloudflare.GetZeroTrustDnsLocations.Invoke(new()
 ///     {
 ///         AccountId = "699d98642c564d2e855e9661899b7252",
+///         Direction = "asc",
+///         Filters = new[]
+///         {
+///             "string",
+///         },
+///         OrderBy = "name",
+///         Search = "search",
 ///     });
 ///
 /// });
@@ -55900,6 +59284,12 @@ pulumi.Output<GetZeroTrustDnsLocationResult> getZeroTrustDnsLocationOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetZeroTrustDnsLocations(ctx, &cloudflare.LookupZeroTrustDnsLocationsArgs{
 /// 			AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
+/// 			Direction: pulumi.StringRef("asc"),
+/// 			Filters: []string{
+/// 				"string",
+/// 			},
+/// 			OrderBy: pulumi.StringRef("name"),
+/// 			Search:  pulumi.StringRef("search"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -55909,7 +59299,7 @@ pulumi.Output<GetZeroTrustDnsLocationResult> getZeroTrustDnsLocationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -55917,8 +59307,12 @@ pulumi.Output<GetZeroTrustDnsLocationResult> getZeroTrustDnsLocationOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustdnslocations" "exampleZeroTrustDnsLocations" {
+/// data "cloudflare_zero_trust_dns_locations" "exampleZeroTrustDnsLocations" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
+///   direction  = "asc"
+///   filters    = ["string"]
+///   order_by   = "name"
+///   search     = "search"
 /// }
 /// ```
 /// ```java
@@ -55944,6 +59338,10 @@ pulumi.Output<GetZeroTrustDnsLocationResult> getZeroTrustDnsLocationOutput(
 ///     public static void stack(Context ctx) {
 ///         final var exampleZeroTrustDnsLocations = CloudflareFunctions.getZeroTrustDnsLocations(GetZeroTrustDnsLocationsArgs.builder()
 ///             .accountId("699d98642c564d2e855e9661899b7252")
+///             .direction("asc")
+///             .filters("string")
+///             .orderBy("name")
+///             .search("search")
 ///             .build());
 ///
 ///     }
@@ -55956,6 +59354,11 @@ pulumi.Output<GetZeroTrustDnsLocationResult> getZeroTrustDnsLocationOutput(
 ///       function: cloudflare:getZeroTrustDnsLocations
 ///       arguments:
 ///         accountId: 699d98642c564d2e855e9661899b7252
+///         direction: asc
+///         filters:
+///           - string
+///         orderBy: name
+///         search: search
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_dns_locations_get_zero_trust_dns_locations_args_doc}
 /// [options] Invoke options controlling this call.
@@ -56041,7 +59444,7 @@ pulumi.Output<GetZeroTrustDnsLocationsInvokeResult> getZeroTrustDnsLocationsOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -56049,7 +59452,7 @@ pulumi.Output<GetZeroTrustDnsLocationsInvokeResult> getZeroTrustDnsLocationsOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustgatewayapptypeslist" "exampleZeroTrustGatewayAppTypesList" {
+/// data "cloudflare_zero_trust_gateway_app_types_list" "exampleZeroTrustGatewayAppTypesList" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -56173,7 +59576,7 @@ pulumi.Output<GetZeroTrustGatewayAppTypesListInvokeResult> getZeroTrustGatewayAp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -56181,7 +59584,7 @@ pulumi.Output<GetZeroTrustGatewayAppTypesListInvokeResult> getZeroTrustGatewayAp
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustgatewaycategorieslist" "exampleZeroTrustGatewayCategoriesList" {
+/// data "cloudflare_zero_trust_gateway_categories_list" "exampleZeroTrustGatewayCategoriesList" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -56304,7 +59707,7 @@ pulumi.Output<GetZeroTrustGatewayCategoriesListInvokeResult> getZeroTrustGateway
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -56312,7 +59715,7 @@ pulumi.Output<GetZeroTrustGatewayCategoriesListInvokeResult> getZeroTrustGateway
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustgatewaycertificate" "exampleZeroTrustGatewayCertificate" {
+/// data "cloudflare_zero_trust_gateway_certificate" "exampleZeroTrustGatewayCertificate" {
 ///   account_id     = "699d98642c564d2e855e9661899b7252"
 ///   certificate_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -56434,7 +59837,7 @@ pulumi.Output<GetZeroTrustGatewayCertificateResult> getZeroTrustGatewayCertifica
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -56442,7 +59845,7 @@ pulumi.Output<GetZeroTrustGatewayCertificateResult> getZeroTrustGatewayCertifica
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustgatewaycertificates" "exampleZeroTrustGatewayCertificates" {
+/// data "cloudflare_zero_trust_gateway_certificates" "exampleZeroTrustGatewayCertificates" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 /// }
 /// ```
@@ -56561,7 +59964,7 @@ pulumi.Output<GetZeroTrustGatewayCertificatesInvokeResult> getZeroTrustGatewayCe
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -56569,7 +59972,7 @@ pulumi.Output<GetZeroTrustGatewayCertificatesInvokeResult> getZeroTrustGatewayCe
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustgatewaylogging" "exampleZeroTrustGatewayLogging" {
+/// data "cloudflare_zero_trust_gateway_logging" "exampleZeroTrustGatewayLogging" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 /// }
 /// ```
@@ -56697,7 +60100,7 @@ pulumi.Output<GetZeroTrustGatewayLoggingResult> getZeroTrustGatewayLoggingOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -56705,7 +60108,7 @@ pulumi.Output<GetZeroTrustGatewayLoggingResult> getZeroTrustGatewayLoggingOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustgatewaypacfile" "exampleZeroTrustGatewayPacfile" {
+/// data "cloudflare_zero_trust_gateway_pacfile" "exampleZeroTrustGatewayPacfile" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   pacfile_id = "ed35569b41ce4d1facfe683550f54086"
 /// }
@@ -56832,7 +60235,7 @@ pulumi.Output<GetZeroTrustGatewayPacfileResult> getZeroTrustGatewayPacfileOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -56840,7 +60243,7 @@ pulumi.Output<GetZeroTrustGatewayPacfileResult> getZeroTrustGatewayPacfileOutput
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustgatewaypacfiles" "exampleZeroTrustGatewayPacfiles" {
+/// data "cloudflare_zero_trust_gateway_pacfiles" "exampleZeroTrustGatewayPacfiles" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 /// }
 /// ```
@@ -56915,13 +60318,21 @@ pulumi.Output<GetZeroTrustGatewayPacfilesInvokeResult> getZeroTrustGatewayPacfil
 ///
 /// const exampleZeroTrustGatewayPolicies = cloudflare.getZeroTrustGatewayPolicies({
 ///     accountId: "699d98642c564d2e855e9661899b7252",
+///     direction: "asc",
+///     filters: ["string"],
+///     orderBy: "name",
+///     search: "search",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_cloudflare as cloudflare
 ///
-/// example_zero_trust_gateway_policies = cloudflare.get_zero_trust_gateway_policies(account_id="699d98642c564d2e855e9661899b7252")
+/// example_zero_trust_gateway_policies = cloudflare.get_zero_trust_gateway_policies(account_id="699d98642c564d2e855e9661899b7252",
+///     direction="asc",
+///     filters=["string"],
+///     order_by="name",
+///     search="search")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -56934,6 +60345,13 @@ pulumi.Output<GetZeroTrustGatewayPacfilesInvokeResult> getZeroTrustGatewayPacfil
 ///     var exampleZeroTrustGatewayPolicies = Cloudflare.GetZeroTrustGatewayPolicies.Invoke(new()
 ///     {
 ///         AccountId = "699d98642c564d2e855e9661899b7252",
+///         Direction = "asc",
+///         Filters = new[]
+///         {
+///             "string",
+///         },
+///         OrderBy = "name",
+///         Search = "search",
 ///     });
 ///
 /// });
@@ -56950,6 +60368,12 @@ pulumi.Output<GetZeroTrustGatewayPacfilesInvokeResult> getZeroTrustGatewayPacfil
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetZeroTrustGatewayPolicies(ctx, &cloudflare.LookupZeroTrustGatewayPoliciesArgs{
 /// 			AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
+/// 			Direction: pulumi.StringRef("asc"),
+/// 			Filters: []string{
+/// 				"string",
+/// 			},
+/// 			OrderBy: pulumi.StringRef("name"),
+/// 			Search:  pulumi.StringRef("search"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -56959,7 +60383,7 @@ pulumi.Output<GetZeroTrustGatewayPacfilesInvokeResult> getZeroTrustGatewayPacfil
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -56967,8 +60391,12 @@ pulumi.Output<GetZeroTrustGatewayPacfilesInvokeResult> getZeroTrustGatewayPacfil
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustgatewaypolicies" "exampleZeroTrustGatewayPolicies" {
+/// data "cloudflare_zero_trust_gateway_policies" "exampleZeroTrustGatewayPolicies" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
+///   direction  = "asc"
+///   filters    = ["string"]
+///   order_by   = "name"
+///   search     = "search"
 /// }
 /// ```
 /// ```java
@@ -56994,6 +60422,10 @@ pulumi.Output<GetZeroTrustGatewayPacfilesInvokeResult> getZeroTrustGatewayPacfil
 ///     public static void stack(Context ctx) {
 ///         final var exampleZeroTrustGatewayPolicies = CloudflareFunctions.getZeroTrustGatewayPolicies(GetZeroTrustGatewayPoliciesArgs.builder()
 ///             .accountId("699d98642c564d2e855e9661899b7252")
+///             .direction("asc")
+///             .filters("string")
+///             .orderBy("name")
+///             .search("search")
 ///             .build());
 ///
 ///     }
@@ -57006,6 +60438,11 @@ pulumi.Output<GetZeroTrustGatewayPacfilesInvokeResult> getZeroTrustGatewayPacfil
 ///       function: cloudflare:getZeroTrustGatewayPolicies
 ///       arguments:
 ///         accountId: 699d98642c564d2e855e9661899b7252
+///         direction: asc
+///         filters:
+///           - string
+///         orderBy: name
+///         search: search
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_gateway_policies_get_zero_trust_gateway_policies_args_doc}
 /// [options] Invoke options controlling this call.
@@ -57080,7 +60517,7 @@ pulumi.Output<GetZeroTrustGatewayPoliciesInvokeResult> getZeroTrustGatewayPolici
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetZeroTrustGatewayPolicy(ctx, &cloudflare.LookupZeroTrustGatewayPolicyArgs{
 /// 			AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
-/// 			RuleId:    "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
+/// 			RuleId:    pulumi.StringRef("f174e90a-fafe-4643-bbbc-4a0ed4fc8415"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -57090,7 +60527,7 @@ pulumi.Output<GetZeroTrustGatewayPoliciesInvokeResult> getZeroTrustGatewayPolici
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -57098,7 +60535,7 @@ pulumi.Output<GetZeroTrustGatewayPoliciesInvokeResult> getZeroTrustGatewayPolici
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustgatewaypolicy" "exampleZeroTrustGatewayPolicy" {
+/// data "cloudflare_zero_trust_gateway_policy" "exampleZeroTrustGatewayPolicy" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   rule_id    = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -57214,7 +60651,7 @@ pulumi.Output<GetZeroTrustGatewayPolicyResult> getZeroTrustGatewayPolicyOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetZeroTrustGatewayProxyEndpoint(ctx, &cloudflare.LookupZeroTrustGatewayProxyEndpointArgs{
 /// 			AccountId:       pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
-/// 			ProxyEndpointId: "ed35569b41ce4d1facfe683550f54086",
+/// 			ProxyEndpointId: pulumi.StringRef("ed35569b41ce4d1facfe683550f54086"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -57224,7 +60661,7 @@ pulumi.Output<GetZeroTrustGatewayPolicyResult> getZeroTrustGatewayPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -57232,7 +60669,7 @@ pulumi.Output<GetZeroTrustGatewayPolicyResult> getZeroTrustGatewayPolicyOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustgatewayproxyendpoint" "exampleZeroTrustGatewayProxyEndpoint" {
+/// data "cloudflare_zero_trust_gateway_proxy_endpoint" "exampleZeroTrustGatewayProxyEndpoint" {
 ///   account_id        = "699d98642c564d2e855e9661899b7252"
 ///   proxy_endpoint_id = "ed35569b41ce4d1facfe683550f54086"
 /// }
@@ -57310,13 +60747,21 @@ pulumi.Output<GetZeroTrustGatewayProxyEndpointResult> getZeroTrustGatewayProxyEn
 ///
 /// const exampleZeroTrustGatewayProxyEndpoints = cloudflare.getZeroTrustGatewayProxyEndpoints({
 ///     accountId: "699d98642c564d2e855e9661899b7252",
+///     direction: "asc",
+///     filters: ["string"],
+///     orderBy: "name",
+///     search: "search",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_cloudflare as cloudflare
 ///
-/// example_zero_trust_gateway_proxy_endpoints = cloudflare.get_zero_trust_gateway_proxy_endpoints(account_id="699d98642c564d2e855e9661899b7252")
+/// example_zero_trust_gateway_proxy_endpoints = cloudflare.get_zero_trust_gateway_proxy_endpoints(account_id="699d98642c564d2e855e9661899b7252",
+///     direction="asc",
+///     filters=["string"],
+///     order_by="name",
+///     search="search")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -57329,6 +60774,13 @@ pulumi.Output<GetZeroTrustGatewayProxyEndpointResult> getZeroTrustGatewayProxyEn
 ///     var exampleZeroTrustGatewayProxyEndpoints = Cloudflare.GetZeroTrustGatewayProxyEndpoints.Invoke(new()
 ///     {
 ///         AccountId = "699d98642c564d2e855e9661899b7252",
+///         Direction = "asc",
+///         Filters = new[]
+///         {
+///             "string",
+///         },
+///         OrderBy = "name",
+///         Search = "search",
 ///     });
 ///
 /// });
@@ -57345,6 +60797,12 @@ pulumi.Output<GetZeroTrustGatewayProxyEndpointResult> getZeroTrustGatewayProxyEn
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetZeroTrustGatewayProxyEndpoints(ctx, &cloudflare.LookupZeroTrustGatewayProxyEndpointsArgs{
 /// 			AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
+/// 			Direction: pulumi.StringRef("asc"),
+/// 			Filters: []string{
+/// 				"string",
+/// 			},
+/// 			OrderBy: pulumi.StringRef("name"),
+/// 			Search:  pulumi.StringRef("search"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -57354,7 +60812,7 @@ pulumi.Output<GetZeroTrustGatewayProxyEndpointResult> getZeroTrustGatewayProxyEn
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -57362,8 +60820,12 @@ pulumi.Output<GetZeroTrustGatewayProxyEndpointResult> getZeroTrustGatewayProxyEn
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustgatewayproxyendpoints" "exampleZeroTrustGatewayProxyEndpoints" {
+/// data "cloudflare_zero_trust_gateway_proxy_endpoints" "exampleZeroTrustGatewayProxyEndpoints" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
+///   direction  = "asc"
+///   filters    = ["string"]
+///   order_by   = "name"
+///   search     = "search"
 /// }
 /// ```
 /// ```java
@@ -57389,6 +60851,10 @@ pulumi.Output<GetZeroTrustGatewayProxyEndpointResult> getZeroTrustGatewayProxyEn
 ///     public static void stack(Context ctx) {
 ///         final var exampleZeroTrustGatewayProxyEndpoints = CloudflareFunctions.getZeroTrustGatewayProxyEndpoints(GetZeroTrustGatewayProxyEndpointsArgs.builder()
 ///             .accountId("699d98642c564d2e855e9661899b7252")
+///             .direction("asc")
+///             .filters("string")
+///             .orderBy("name")
+///             .search("search")
 ///             .build());
 ///
 ///     }
@@ -57401,6 +60867,11 @@ pulumi.Output<GetZeroTrustGatewayProxyEndpointResult> getZeroTrustGatewayProxyEn
 ///       function: cloudflare:getZeroTrustGatewayProxyEndpoints
 ///       arguments:
 ///         accountId: 699d98642c564d2e855e9661899b7252
+///         direction: asc
+///         filters:
+///           - string
+///         orderBy: name
+///         search: search
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_gateway_proxy_endpoints_get_zero_trust_gateway_proxy_endpoints_args_doc}
 /// [options] Invoke options controlling this call.
@@ -57481,7 +60952,7 @@ pulumi.Output<GetZeroTrustGatewayProxyEndpointsInvokeResult> getZeroTrustGateway
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -57489,7 +60960,7 @@ pulumi.Output<GetZeroTrustGatewayProxyEndpointsInvokeResult> getZeroTrustGateway
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustgatewaysettings" "exampleZeroTrustGatewaySettings" {
+/// data "cloudflare_zero_trust_gateway_settings" "exampleZeroTrustGatewaySettings" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 /// }
 /// ```
@@ -57612,7 +61083,7 @@ pulumi.Output<GetZeroTrustGatewaySettingsResult> getZeroTrustGatewaySettingsOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -57620,7 +61091,7 @@ pulumi.Output<GetZeroTrustGatewaySettingsResult> getZeroTrustGatewaySettingsOutp
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustlist" "exampleZeroTrustList" {
+/// data "cloudflare_zero_trust_list" "exampleZeroTrustList" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   list_id    = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -57698,6 +61169,10 @@ pulumi.Output<GetZeroTrustListResult> getZeroTrustListOutput(
 ///
 /// const exampleZeroTrustLists = cloudflare.getZeroTrustLists({
 ///     accountId: "699d98642c564d2e855e9661899b7252",
+///     direction: "asc",
+///     filters: ["string"],
+///     orderBy: "name",
+///     search: "search",
 ///     type: "SERIAL",
 /// });
 /// ```
@@ -57706,6 +61181,10 @@ pulumi.Output<GetZeroTrustListResult> getZeroTrustListOutput(
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_zero_trust_lists = cloudflare.get_zero_trust_lists(account_id="699d98642c564d2e855e9661899b7252",
+///     direction="asc",
+///     filters=["string"],
+///     order_by="name",
+///     search="search",
 ///     type="SERIAL")
 /// ```
 /// ```csharp
@@ -57719,6 +61198,13 @@ pulumi.Output<GetZeroTrustListResult> getZeroTrustListOutput(
 ///     var exampleZeroTrustLists = Cloudflare.GetZeroTrustLists.Invoke(new()
 ///     {
 ///         AccountId = "699d98642c564d2e855e9661899b7252",
+///         Direction = "asc",
+///         Filters = new[]
+///         {
+///             "string",
+///         },
+///         OrderBy = "name",
+///         Search = "search",
 ///         Type = "SERIAL",
 ///     });
 ///
@@ -57736,7 +61222,13 @@ pulumi.Output<GetZeroTrustListResult> getZeroTrustListOutput(
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetZeroTrustLists(ctx, &cloudflare.LookupZeroTrustListsArgs{
 /// 			AccountId: pulumi.StringRef("699d98642c564d2e855e9661899b7252"),
-/// 			Type:      pulumi.StringRef("SERIAL"),
+/// 			Direction: pulumi.StringRef("asc"),
+/// 			Filters: []string{
+/// 				"string",
+/// 			},
+/// 			OrderBy: pulumi.StringRef("name"),
+/// 			Search:  pulumi.StringRef("search"),
+/// 			Type:    pulumi.StringRef("SERIAL"),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -57746,7 +61238,7 @@ pulumi.Output<GetZeroTrustListResult> getZeroTrustListOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -57754,8 +61246,12 @@ pulumi.Output<GetZeroTrustListResult> getZeroTrustListOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustlists" "exampleZeroTrustLists" {
+/// data "cloudflare_zero_trust_lists" "exampleZeroTrustLists" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
+///   direction  = "asc"
+///   filters    = ["string"]
+///   order_by   = "name"
+///   search     = "search"
 ///   type       = "SERIAL"
 /// }
 /// ```
@@ -57782,6 +61278,10 @@ pulumi.Output<GetZeroTrustListResult> getZeroTrustListOutput(
 ///     public static void stack(Context ctx) {
 ///         final var exampleZeroTrustLists = CloudflareFunctions.getZeroTrustLists(GetZeroTrustListsArgs.builder()
 ///             .accountId("699d98642c564d2e855e9661899b7252")
+///             .direction("asc")
+///             .filters("string")
+///             .orderBy("name")
+///             .search("search")
 ///             .type("SERIAL")
 ///             .build());
 ///
@@ -57795,6 +61295,11 @@ pulumi.Output<GetZeroTrustListResult> getZeroTrustListOutput(
 ///       function: cloudflare:getZeroTrustLists
 ///       arguments:
 ///         accountId: 699d98642c564d2e855e9661899b7252
+///         direction: asc
+///         filters:
+///           - string
+///         orderBy: name
+///         search: search
 ///         type: SERIAL
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_lists_get_zero_trust_lists_args_doc}
@@ -57887,7 +61392,7 @@ pulumi.Output<GetZeroTrustListsInvokeResult> getZeroTrustListsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -57895,7 +61400,7 @@ pulumi.Output<GetZeroTrustListsInvokeResult> getZeroTrustListsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustnetworkhostnameroute" "exampleZeroTrustNetworkHostnameRoute" {
+/// data "cloudflare_zero_trust_network_hostname_route" "exampleZeroTrustNetworkHostnameRoute" {
 ///   account_id        = "699d98642c564d2e855e9661899b7252"
 ///   hostname_route_id = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -58044,7 +61549,7 @@ pulumi.Output<GetZeroTrustNetworkHostnameRouteResult> getZeroTrustNetworkHostnam
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -58052,7 +61557,7 @@ pulumi.Output<GetZeroTrustNetworkHostnameRouteResult> getZeroTrustNetworkHostnam
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustnetworkhostnameroutes" "exampleZeroTrustNetworkHostnameRoutes" {
+/// data "cloudflare_zero_trust_network_hostname_routes" "exampleZeroTrustNetworkHostnameRoutes" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   id         = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 ///   comment    = "example%20comment"
@@ -58196,7 +61701,7 @@ pulumi.Output<GetZeroTrustNetworkHostnameRoutesInvokeResult> getZeroTrustNetwork
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -58204,7 +61709,7 @@ pulumi.Output<GetZeroTrustNetworkHostnameRoutesInvokeResult> getZeroTrustNetwork
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustorganization" "exampleZeroTrustOrganization" {
+/// data "cloudflare_zero_trust_organization" "exampleZeroTrustOrganization" {
 ///   account_id = "account_id"
 ///   zone_id    = "zone_id"
 /// }
@@ -58318,9 +61823,9 @@ pulumi.Output<GetZeroTrustOrganizationResult> getZeroTrustOrganizationOutput(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := cloudflare.GetZeroTrustResourceLibraryApplication(ctx, &cloudflare.GetZeroTrustResourceLibraryApplicationArgs{
+/// 		_, err := cloudflare.GetZeroTrustResourceLibraryApplication(ctx, &cloudflare.LookupZeroTrustResourceLibraryApplicationArgs{
 /// 			AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
-/// 			Id:        498,
+/// 			Id:        pulumi.IntRef(498),
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -58330,7 +61835,7 @@ pulumi.Output<GetZeroTrustOrganizationResult> getZeroTrustOrganizationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -58338,7 +61843,7 @@ pulumi.Output<GetZeroTrustOrganizationResult> getZeroTrustOrganizationOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustresourcelibraryapplication" "exampleZeroTrustResourceLibraryApplication" {
+/// data "cloudflare_zero_trust_resource_library_application" "exampleZeroTrustResourceLibraryApplication" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   id         = 498
 /// }
@@ -58416,6 +61921,7 @@ pulumi.Output<GetZeroTrustResourceLibraryApplicationResult> getZeroTrustResource
 ///
 /// const exampleZeroTrustResourceLibraryApplications = cloudflare.getZeroTrustResourceLibraryApplications({
 ///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     fields: "fields",
 ///     filter: "filter",
 ///     orderBy: "order_by",
 ///     search: "xx",
@@ -58426,6 +61932,7 @@ pulumi.Output<GetZeroTrustResourceLibraryApplicationResult> getZeroTrustResource
 /// import pulumi_cloudflare as cloudflare
 ///
 /// example_zero_trust_resource_library_applications = cloudflare.get_zero_trust_resource_library_applications(account_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     fields="fields",
 ///     filter="filter",
 ///     order_by="order_by",
 ///     search="xx")
@@ -58441,6 +61948,7 @@ pulumi.Output<GetZeroTrustResourceLibraryApplicationResult> getZeroTrustResource
 ///     var exampleZeroTrustResourceLibraryApplications = Cloudflare.GetZeroTrustResourceLibraryApplications.Invoke(new()
 ///     {
 ///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         Fields = "fields",
 ///         Filter = "filter",
 ///         OrderBy = "order_by",
 ///         Search = "xx",
@@ -58460,6 +61968,7 @@ pulumi.Output<GetZeroTrustResourceLibraryApplicationResult> getZeroTrustResource
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := cloudflare.GetZeroTrustResourceLibraryApplications(ctx, &cloudflare.LookupZeroTrustResourceLibraryApplicationsArgs{
 /// 			AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 			Fields:    pulumi.StringRef("fields"),
 /// 			Filter:    pulumi.StringRef("filter"),
 /// 			OrderBy:   pulumi.StringRef("order_by"),
 /// 			Search:    pulumi.StringRef("xx"),
@@ -58472,7 +61981,7 @@ pulumi.Output<GetZeroTrustResourceLibraryApplicationResult> getZeroTrustResource
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -58480,8 +61989,9 @@ pulumi.Output<GetZeroTrustResourceLibraryApplicationResult> getZeroTrustResource
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustresourcelibraryapplications" "exampleZeroTrustResourceLibraryApplications" {
+/// data "cloudflare_zero_trust_resource_library_applications" "exampleZeroTrustResourceLibraryApplications" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
+///   fields     = "fields"
 ///   filter     = "filter"
 ///   order_by   = "order_by"
 ///   search     = "xx"
@@ -58510,6 +62020,7 @@ pulumi.Output<GetZeroTrustResourceLibraryApplicationResult> getZeroTrustResource
 ///     public static void stack(Context ctx) {
 ///         final var exampleZeroTrustResourceLibraryApplications = CloudflareFunctions.getZeroTrustResourceLibraryApplications(GetZeroTrustResourceLibraryApplicationsArgs.builder()
 ///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .fields("fields")
 ///             .filter("filter")
 ///             .orderBy("order_by")
 ///             .search("xx")
@@ -58525,6 +62036,7 @@ pulumi.Output<GetZeroTrustResourceLibraryApplicationResult> getZeroTrustResource
 ///       function: cloudflare:getZeroTrustResourceLibraryApplications
 ///       arguments:
 ///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
+///         fields: fields
 ///         filter: filter
 ///         orderBy: order_by
 ///         search: xx
@@ -58555,6 +62067,107 @@ pulumi.Output<GetZeroTrustResourceLibraryApplicationsInvokeResult> getZeroTrustR
   ).apply(GetZeroTrustResourceLibraryApplicationsInvokeResult.fromMap);
 }
 
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleZeroTrustResourceLibraryCategories = cloudflare.getZeroTrustResourceLibraryCategories({
+///     accountId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_zero_trust_resource_library_categories = cloudflare.get_zero_trust_resource_library_categories(account_id="023e105f4ecef8ad9ca31a8372d0c353")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleZeroTrustResourceLibraryCategories = Cloudflare.GetZeroTrustResourceLibraryCategories.Invoke(new()
+///     {
+///         AccountId = "023e105f4ecef8ad9ca31a8372d0c353",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetZeroTrustResourceLibraryCategories(ctx, &cloudflare.LookupZeroTrustResourceLibraryCategoriesArgs{
+/// 			AccountId: "023e105f4ecef8ad9ca31a8372d0c353",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_zero_trust_resource_library_categories" "exampleZeroTrustResourceLibraryCategories" {
+///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetZeroTrustResourceLibraryCategoriesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleZeroTrustResourceLibraryCategories = CloudflareFunctions.getZeroTrustResourceLibraryCategories(GetZeroTrustResourceLibraryCategoriesArgs.builder()
+///             .accountId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleZeroTrustResourceLibraryCategories:
+///     fn::invoke:
+///       function: cloudflare:getZeroTrustResourceLibraryCategories
+///       arguments:
+///         accountId: 023e105f4ecef8ad9ca31a8372d0c353
+/// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zero_trust_resource_library_categories_get_zero_trust_resource_library_categories_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetZeroTrustResourceLibraryCategoriesInvokeResult> getZeroTrustResourceLibraryCategories(
@@ -58638,7 +62251,7 @@ pulumi.Output<GetZeroTrustResourceLibraryCategoriesInvokeResult> getZeroTrustRes
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -58646,7 +62259,7 @@ pulumi.Output<GetZeroTrustResourceLibraryCategoriesInvokeResult> getZeroTrustRes
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustresourcelibrarycategory" "exampleZeroTrustResourceLibraryCategory" {
+/// data "cloudflare_zero_trust_resource_library_category" "exampleZeroTrustResourceLibraryCategory" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   id         = 12
 /// }
@@ -58773,7 +62386,7 @@ pulumi.Output<GetZeroTrustResourceLibraryCategoryResult> getZeroTrustResourceLib
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -58781,7 +62394,7 @@ pulumi.Output<GetZeroTrustResourceLibraryCategoryResult> getZeroTrustResourceLib
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustriskbehavior" "exampleZeroTrustRiskBehavior" {
+/// data "cloudflare_zero_trust_risk_behavior" "exampleZeroTrustRiskBehavior" {
 ///   account_id = "account_id"
 /// }
 /// ```
@@ -58909,7 +62522,7 @@ pulumi.Output<GetZeroTrustRiskBehaviorResult> getZeroTrustRiskBehaviorOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -58917,7 +62530,7 @@ pulumi.Output<GetZeroTrustRiskBehaviorResult> getZeroTrustRiskBehaviorOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustriskscoringintegration" "exampleZeroTrustRiskScoringIntegration" {
+/// data "cloudflare_zero_trust_risk_scoring_integration" "exampleZeroTrustRiskScoringIntegration" {
 ///   account_id     = "account_id"
 ///   integration_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 /// }
@@ -59044,7 +62657,7 @@ pulumi.Output<GetZeroTrustRiskScoringIntegrationResult> getZeroTrustRiskScoringI
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -59052,7 +62665,7 @@ pulumi.Output<GetZeroTrustRiskScoringIntegrationResult> getZeroTrustRiskScoringI
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrustriskscoringintegrations" "exampleZeroTrustRiskScoringIntegrations" {
+/// data "cloudflare_zero_trust_risk_scoring_integrations" "exampleZeroTrustRiskScoringIntegrations" {
 ///   account_id = "account_id"
 /// }
 /// ```
@@ -59184,7 +62797,7 @@ pulumi.Output<GetZeroTrustRiskScoringIntegrationsInvokeResult> getZeroTrustRiskS
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -59192,7 +62805,7 @@ pulumi.Output<GetZeroTrustRiskScoringIntegrationsInvokeResult> getZeroTrustRiskS
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrusttunnelcloudflared" "exampleZeroTrustTunnelCloudflared" {
+/// data "cloudflare_zero_trust_tunnel_cloudflared" "exampleZeroTrustTunnelCloudflared" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   tunnel_id  = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -59327,7 +62940,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredResult> getZeroTrustTunnelCloudflared
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -59335,7 +62948,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredResult> getZeroTrustTunnelCloudflared
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrusttunnelcloudflaredconfig" "exampleZeroTrustTunnelCloudflaredConfig" {
+/// data "cloudflare_zero_trust_tunnel_cloudflared_config" "exampleZeroTrustTunnelCloudflaredConfig" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   tunnel_id  = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -59468,7 +63081,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredConfigResult> getZeroTrustTunnelCloud
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -59476,7 +63089,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredConfigResult> getZeroTrustTunnelCloud
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrusttunnelcloudflaredroute" "exampleZeroTrustTunnelCloudflaredRoute" {
+/// data "cloudflare_zero_trust_tunnel_cloudflared_route" "exampleZeroTrustTunnelCloudflaredRoute" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   route_id   = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -59642,7 +63255,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredRouteResult> getZeroTrustTunnelCloudf
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -59650,7 +63263,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredRouteResult> getZeroTrustTunnelCloudf
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrusttunnelcloudflaredroutes" "exampleZeroTrustTunnelCloudflaredRoutes" {
+/// data "cloudflare_zero_trust_tunnel_cloudflared_routes" "exampleZeroTrustTunnelCloudflaredRoutes" {
 ///   account_id         = "699d98642c564d2e855e9661899b7252"
 ///   existed_at         = "2019-10-12T07%3A20%3A50.52Z"
 ///   is_deleted         = true
@@ -59804,7 +63417,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredRoutesInvokeResult> getZeroTrustTunne
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -59812,7 +63425,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredRoutesInvokeResult> getZeroTrustTunne
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrusttunnelcloudflaredtoken" "exampleZeroTrustTunnelCloudflaredToken" {
+/// data "cloudflare_zero_trust_tunnel_cloudflared_token" "exampleZeroTrustTunnelCloudflaredToken" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   tunnel_id  = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -59945,7 +63558,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredTokenResult> getZeroTrustTunnelCloudf
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -59953,7 +63566,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredTokenResult> getZeroTrustTunnelCloudf
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrusttunnelcloudflaredvirtualnetwork" "exampleZeroTrustTunnelCloudflaredVirtualNetwork" {
+/// data "cloudflare_zero_trust_tunnel_cloudflared_virtual_network" "exampleZeroTrustTunnelCloudflaredVirtualNetwork" {
 ///   account_id         = "699d98642c564d2e855e9661899b7252"
 ///   virtual_network_id = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -60102,7 +63715,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredVirtualNetworkResult> getZeroTrustTun
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -60110,7 +63723,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredVirtualNetworkResult> getZeroTrustTun
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrusttunnelcloudflaredvirtualnetworks" "exampleZeroTrustTunnelCloudflaredVirtualNetworks" {
+/// data "cloudflare_zero_trust_tunnel_cloudflared_virtual_networks" "exampleZeroTrustTunnelCloudflaredVirtualNetworks" {
 ///   account_id         = "699d98642c564d2e855e9661899b7252"
 ///   id                 = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 ///   is_default         = true
@@ -60289,7 +63902,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredVirtualNetworksInvokeResult> getZeroT
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -60297,7 +63910,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredVirtualNetworksInvokeResult> getZeroT
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrusttunnelcloudflareds" "exampleZeroTrustTunnelCloudflareds" {
+/// data "cloudflare_zero_trust_tunnel_cloudflareds" "exampleZeroTrustTunnelCloudflareds" {
 ///   account_id      = "699d98642c564d2e855e9661899b7252"
 ///   exclude_prefix  = "vpc1-"
 ///   existed_at      = "2019-10-12T07%3A20%3A50.52Z"
@@ -60454,7 +64067,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredsInvokeResult> getZeroTrustTunnelClou
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -60462,7 +64075,7 @@ pulumi.Output<GetZeroTrustTunnelCloudflaredsInvokeResult> getZeroTrustTunnelClou
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrusttunnelwarpconnector" "exampleZeroTrustTunnelWarpConnector" {
+/// data "cloudflare_zero_trust_tunnel_warp_connector" "exampleZeroTrustTunnelWarpConnector" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   tunnel_id  = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -60595,7 +64208,7 @@ pulumi.Output<GetZeroTrustTunnelWarpConnectorResult> getZeroTrustTunnelWarpConne
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -60603,7 +64216,7 @@ pulumi.Output<GetZeroTrustTunnelWarpConnectorResult> getZeroTrustTunnelWarpConne
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrusttunnelwarpconnectorconfig" "exampleZeroTrustTunnelWarpConnectorConfig" {
+/// data "cloudflare_zero_trust_tunnel_warp_connector_config" "exampleZeroTrustTunnelWarpConnectorConfig" {
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   tunnel_id  = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -60735,7 +64348,7 @@ pulumi.Output<GetZeroTrustTunnelWarpConnectorConfigResult> getZeroTrustTunnelWar
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -60743,7 +64356,7 @@ pulumi.Output<GetZeroTrustTunnelWarpConnectorConfigResult> getZeroTrustTunnelWar
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrusttunnelwarpconnectortoken" "exampleZeroTrustTunnelWarpConnectorToken" {
+/// data "cloudflare_zero_trust_tunnel_warp_connector_token" "exampleZeroTrustTunnelWarpConnectorToken" {
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   tunnel_id  = "f70ff985-a4ef-4643-bbbc-4a0ed4fc8415"
 /// }
@@ -60908,7 +64521,7 @@ pulumi.Output<GetZeroTrustTunnelWarpConnectorTokenResult> getZeroTrustTunnelWarp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -60916,7 +64529,7 @@ pulumi.Output<GetZeroTrustTunnelWarpConnectorTokenResult> getZeroTrustTunnelWarp
 ///   }
 /// }
 ///
-/// data "cloudflare_getzerotrusttunnelwarpconnectors" "exampleZeroTrustTunnelWarpConnectors" {
+/// data "cloudflare_zero_trust_tunnel_warp_connectors" "exampleZeroTrustTunnelWarpConnectors" {
 ///   account_id      = "699d98642c564d2e855e9661899b7252"
 ///   exclude_prefix  = "vpc1-"
 ///   existed_at      = "2019-10-12T07%3A20%3A50.52Z"
@@ -61102,7 +64715,7 @@ pulumi.Output<GetZeroTrustTunnelWarpConnectorsInvokeResult> getZeroTrustTunnelWa
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -61110,7 +64723,7 @@ pulumi.Output<GetZeroTrustTunnelWarpConnectorsInvokeResult> getZeroTrustTunnelWa
 ///   }
 /// }
 ///
-/// data "cloudflare_getzone" "exampleZone" {
+/// data "cloudflare_zone" "exampleZone" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -61229,7 +64842,7 @@ pulumi.Output<GetZoneResult> getZoneOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -61237,7 +64850,7 @@ pulumi.Output<GetZoneResult> getZoneOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzoneautoorigintlskex" "exampleZoneAutoOriginTlsKex" {
+/// data "cloudflare_zone_auto_origin_tls_kex" "exampleZoneAutoOriginTlsKex" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -61363,7 +64976,7 @@ pulumi.Output<GetZoneAutoOriginTlsKexResult> getZoneAutoOriginTlsKexOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -61371,7 +64984,7 @@ pulumi.Output<GetZoneAutoOriginTlsKexResult> getZoneAutoOriginTlsKexOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzonecachereserve" "exampleZoneCacheReserve" {
+/// data "cloudflare_zone_cache_reserve" "exampleZoneCacheReserve" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -61497,7 +65110,7 @@ pulumi.Output<GetZoneCacheReserveResult> getZoneCacheReserveOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -61505,7 +65118,7 @@ pulumi.Output<GetZoneCacheReserveResult> getZoneCacheReserveOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzonecachevariants" "exampleZoneCacheVariants" {
+/// data "cloudflare_zone_cache_variants" "exampleZoneCacheVariants" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -61631,7 +65244,7 @@ pulumi.Output<GetZoneCacheVariantsResult> getZoneCacheVariantsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -61639,7 +65252,7 @@ pulumi.Output<GetZoneCacheVariantsResult> getZoneCacheVariantsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzonednssettings" "exampleZoneDnsSettings" {
+/// data "cloudflare_zone_dns_settings" "exampleZoneDnsSettings" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -61763,7 +65376,7 @@ pulumi.Output<GetZoneDnsSettingsResult> getZoneDnsSettingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -61771,7 +65384,7 @@ pulumi.Output<GetZoneDnsSettingsResult> getZoneDnsSettingsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzonednssec" "exampleZoneDnssec" {
+/// data "cloudflare_zone_dnssec" "exampleZoneDnssec" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -61929,7 +65542,7 @@ pulumi.Output<GetZoneDnssecResult> getZoneDnssecOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -61937,7 +65550,7 @@ pulumi.Output<GetZoneDnssecResult> getZoneDnssecOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzonehold" "exampleZoneHold" {
+/// data "cloudflare_zone_hold" "exampleZoneHold" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -62065,7 +65678,7 @@ pulumi.Output<GetZoneHoldResult> getZoneHoldOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -62073,7 +65686,7 @@ pulumi.Output<GetZoneHoldResult> getZoneHoldOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzonelockdown" "exampleZoneLockdown" {
+/// data "cloudflare_zone_lockdown" "exampleZoneLockdown" {
 ///   zone_id       = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   lock_downs_id = "372e67954025e0ba6aaa6d586b9e0b59"
 /// }
@@ -62200,7 +65813,7 @@ pulumi.Output<GetZoneLockdownResult> getZoneLockdownOutput(
 ///         IpRangeSearch = "1.2.3.0/16",
 ///         IpSearch = "1.2.3.4",
 ///         ModifiedOn = "2014-01-01T05:20:00.12345Z",
-///         Priority = 5,
+///         Priority = 5.0,
 ///         UriSearch = "/some/path",
 ///     });
 ///
@@ -62236,7 +65849,7 @@ pulumi.Output<GetZoneLockdownResult> getZoneLockdownOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -62244,7 +65857,7 @@ pulumi.Output<GetZoneLockdownResult> getZoneLockdownOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzonelockdowns" "exampleZoneLockdowns" {
+/// data "cloudflare_zone_lockdowns" "exampleZoneLockdowns" {
 ///   zone_id            = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   created_on         = "2014-01-01T05:20:00.12345Z"
 ///   description        = "endpoints"
@@ -62377,7 +65990,7 @@ pulumi.Output<GetZoneLockdownsInvokeResult> getZoneLockdownsOutput(
 /// | `imageResizing` | `"on"`, `"off"`, `"open"` | Image Transformations provides on-demand resizing, conversion and optimizatio... |
 /// | `ipGeolocation` | `"on"` / `"off"` | Enable IP Geolocation to have Cloudflare geolocate visitors to your website a... |
 /// | `ipv6` | `"on"` / `"off"` | Enable IPv6 on all subdomains that are Cloudflare enabled.  (https://support.... |
-/// | `maxUpload` | Number (18 values) | Maximum size of an allowable upload. |
+/// | `maxUpload` | Number (26 values) | Maximum size of an allowable upload. |
 /// | `minTlsVersion` | `"1.0"`, `"1.1"`, `"1.2"`, `"1.3"` | Only accepts HTTPS requests that use at least the TLS protocol version specif... |
 /// | `mirage` | `"on"` / `"off"` | Automatically optimize image loading for website visitors on mobile devices. ... |
 /// | `nel` | Object | Enable Network Error Logging reporting on your zone. (Beta) |
@@ -62388,6 +66001,7 @@ pulumi.Output<GetZoneLockdownsInvokeResult> getZoneLockdownsOutput(
 /// | `originH2MaxStreams` | Number | Origin H2 Max Streams configures the max number of concurrent requests that C... |
 /// | `originMaxHttpVersion` | `"2"`, `"1"` | Origin Max HTTP Setting Version sets the highest HTTP version Cloudflare will... |
 /// | `polish` | `"off"`, `"lossless"`, `"lossy"` | Removes metadata and compresses your images for faster page load times. Basic... |
+/// | `preRender` | `"on"` / `"off"` | When enabled, Cloudflare serves pre-rendered HTML to eligible search and AI c... |
 /// | `prefetchPreload` | `"on"` / `"off"` | Cloudflare will prefetch any URLs that are included in the response headers. ... |
 /// | `privacyPass` | `"on"` / `"off"` | Privacy Pass v1 was a browser extension developed by the Privacy Pass Team to... |
 /// | `proxyReadTimeout` | Number | Maximum time between two read operations from origin. |
@@ -62475,7 +66089,7 @@ pulumi.Output<GetZoneLockdownsInvokeResult> getZoneLockdownsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -62483,7 +66097,7 @@ pulumi.Output<GetZoneLockdownsInvokeResult> getZoneLockdownsOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzonesetting" "exampleZoneSetting" {
+/// data "cloudflare_zone_setting" "exampleZoneSetting" {
 ///   zone_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   setting_id = "always_online"
 /// }
@@ -62610,7 +66224,7 @@ pulumi.Output<GetZoneSettingResult> getZoneSettingOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -62618,7 +66232,7 @@ pulumi.Output<GetZoneSettingResult> getZoneSettingOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzonesubscription" "exampleZoneSubscription" {
+/// data "cloudflare_zone_subscription" "exampleZoneSubscription" {
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 /// }
 /// ```
@@ -62684,6 +66298,260 @@ pulumi.Output<GetZoneSubscriptionResult> getZoneSubscriptionOutput(
   ).apply(GetZoneSubscriptionResult.fromMap);
 }
 
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleZoneTracing = cloudflare.getZoneTracing({
+///     zoneId: "zone_id",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_zone_tracing = cloudflare.get_zone_tracing(zone_id="zone_id")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleZoneTracing = Cloudflare.GetZoneTracing.Invoke(new()
+///     {
+///         ZoneId = "zone_id",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetZoneTracing(ctx, &cloudflare.LookupZoneTracingArgs{
+/// 			ZoneId: "zone_id",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_zone_tracing" "exampleZoneTracing" {
+///   zone_id = "zone_id"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetZoneTracingArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleZoneTracing = CloudflareFunctions.getZoneTracing(GetZoneTracingArgs.builder()
+///             .zoneId("zone_id")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleZoneTracing:
+///     fn::invoke:
+///       function: cloudflare:getZoneTracing
+///       arguments:
+///         zoneId: zone_id
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zone_tracing_get_zone_tracing_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetZoneTracingResult> getZoneTracing(
+  GetZoneTracingArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getZoneTracing:getZoneTracing',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetZoneTracingResult.fromMap(result);
+}
+
+pulumi.Output<GetZoneTracingResult> getZoneTracingOutput(
+  GetZoneTracingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getZoneTracing:getZoneTracing',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZoneTracingResult.fromMap);
+}
+
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as cloudflare from "@pulumi/cloudflare";
+///
+/// const exampleZoneTracingRules = cloudflare.getZoneTracingRules({
+///     zoneId: "zone_id",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_cloudflare as cloudflare
+///
+/// example_zone_tracing_rules = cloudflare.get_zone_tracing_rules(zone_id="zone_id")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Cloudflare = Pulumi.Cloudflare;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var exampleZoneTracingRules = Cloudflare.GetZoneTracingRules.Invoke(new()
+///     {
+///         ZoneId = "zone_id",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-cloudflare/sdk/v6/go/cloudflare"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := cloudflare.GetZoneTracingRules(ctx, &cloudflare.LookupZoneTracingRulesArgs{
+/// 			ZoneId: "zone_id",
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     cloudflare = {
+///       source = "pulumi/cloudflare"
+///     }
+///   }
+/// }
+///
+/// data "cloudflare_zone_tracing_rules" "exampleZoneTracingRules" {
+///   zone_id = "zone_id"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.cloudflare.CloudflareFunctions;
+/// import com.pulumi.cloudflare.inputs.GetZoneTracingRulesArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var exampleZoneTracingRules = CloudflareFunctions.getZoneTracingRules(GetZoneTracingRulesArgs.builder()
+///             .zoneId("zone_id")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// variables:
+///   exampleZoneTracingRules:
+///     fn::invoke:
+///       function: cloudflare:getZoneTracingRules
+///       arguments:
+///         zoneId: zone_id
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zone_tracing_rules_get_zone_tracing_rules_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetZoneTracingRulesResult> getZoneTracingRules(
+  GetZoneTracingRulesArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'cloudflare:index/getZoneTracingRules:getZoneTracingRules',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetZoneTracingRulesResult.fromMap(result);
+}
+
+pulumi.Output<GetZoneTracingRulesResult> getZoneTracingRulesOutput(
+  GetZoneTracingRulesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'cloudflare:index/getZoneTracingRules:getZoneTracingRules',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZoneTracingRulesResult.fromMap);
+}
+
 /// Accepted Permissions
 ///
 /// - `Zone Zone Read`
@@ -62704,6 +66572,7 @@ pulumi.Output<GetZoneSubscriptionResult> getZoneSubscriptionOutput(
 ///     name: "name",
 ///     order: "status",
 ///     status: "initializing",
+///     types: ["full"],
 /// });
 /// ```
 /// ```python
@@ -62717,7 +66586,8 @@ pulumi.Output<GetZoneSubscriptionResult> getZoneSubscriptionOutput(
 ///     direction="desc",
 ///     name="name",
 ///     order="status",
-///     status="initializing")
+///     status="initializing",
+///     types=["full"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -62738,6 +66608,10 @@ pulumi.Output<GetZoneSubscriptionResult> getZoneSubscriptionOutput(
 ///         Name = "name",
 ///         Order = "status",
 ///         Status = "initializing",
+///         Types = new[]
+///         {
+///             "full",
+///         },
 ///     });
 ///
 /// });
@@ -62761,6 +66635,9 @@ pulumi.Output<GetZoneSubscriptionResult> getZoneSubscriptionOutput(
 /// 			Name:      pulumi.StringRef("name"),
 /// 			Order:     pulumi.StringRef("status"),
 /// 			Status:    pulumi.StringRef("initializing"),
+/// 			Types: []string{
+/// 				"full",
+/// 			},
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -62770,7 +66647,7 @@ pulumi.Output<GetZoneSubscriptionResult> getZoneSubscriptionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -62778,7 +66655,7 @@ pulumi.Output<GetZoneSubscriptionResult> getZoneSubscriptionOutput(
 ///   }
 /// }
 ///
-/// data "cloudflare_getzones" "exampleZones" {
+/// data "cloudflare_zones" "exampleZones" {
 ///   account = {
 ///     id   = "id"
 ///     name = "name"
@@ -62787,6 +66664,7 @@ pulumi.Output<GetZoneSubscriptionResult> getZoneSubscriptionOutput(
 ///   name      = "name"
 ///   order     = "status"
 ///   status    = "initializing"
+///   types     = ["full"]
 /// }
 /// ```
 /// ```java
@@ -62820,6 +66698,7 @@ pulumi.Output<GetZoneSubscriptionResult> getZoneSubscriptionOutput(
 ///             .name("name")
 ///             .order("status")
 ///             .status("initializing")
+///             .types("full")
 ///             .build());
 ///
 ///     }
@@ -62838,6 +66717,8 @@ pulumi.Output<GetZoneSubscriptionResult> getZoneSubscriptionOutput(
 ///         name: name
 ///         order: status
 ///         status: initializing
+///         types:
+///           - full
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_get_zones_get_zones_args_doc}
 /// [options] Invoke options controlling this call.

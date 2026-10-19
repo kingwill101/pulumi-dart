@@ -76,7 +76,7 @@ import 'notification_policy_webhooks_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -84,7 +84,10 @@ import 'notification_policy_webhooks_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_notificationpolicywebhooks" "example_notification_policy_webhooks" {
+/// resource "cloudflare_notification_policy_webhooks" "example_notification_policy_webhooks" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "Slack Webhook"
 ///   url        = "https://hooks.slack.com/services/Ds3fdBFbV/456464Gdd"
@@ -171,7 +174,7 @@ class NotificationPolicyWebhooks extends pulumi.CustomResource {
           'cloudflare:index/notificationPolicyWebhooks:NotificationPolicyWebhooks',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
           additionalSecretOutputs: const ['secret'],
         ) {
     accountId = registerOutput<String>('accountId');

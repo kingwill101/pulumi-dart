@@ -73,7 +73,7 @@ import 'zero_trust_risk_scoring_integration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -81,7 +81,10 @@ import 'zero_trust_risk_scoring_integration_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustriskscoringintegration" "example_zero_trust_risk_scoring_integration" {
+/// resource "cloudflare_zero_trust_risk_scoring_integration" "example_zero_trust_risk_scoring_integration" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id       = "account_id"
 ///   integration_type = "Okta"
 ///   tenant_url       = "https://example.com"
@@ -167,7 +170,7 @@ class ZeroTrustRiskScoringIntegration extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustRiskScoringIntegration:ZeroTrustRiskScoringIntegration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     accountTag = registerOutput<String>('accountTag');

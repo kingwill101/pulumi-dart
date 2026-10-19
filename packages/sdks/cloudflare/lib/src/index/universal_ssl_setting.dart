@@ -65,7 +65,7 @@ import 'universal_ssl_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -73,7 +73,10 @@ import 'universal_ssl_setting_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_universalsslsetting" "example_universal_ssl_setting" {
+/// resource "cloudflare_universal_ssl_setting" "example_universal_ssl_setting" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   enabled = true
 /// }
@@ -141,7 +144,7 @@ class UniversalSslSetting extends pulumi.CustomResource {
           'cloudflare:index/universalSslSetting:UniversalSslSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     enabled = registerOutput<bool?>('enabled');
     zoneId = registerOutput<String>('zoneId');

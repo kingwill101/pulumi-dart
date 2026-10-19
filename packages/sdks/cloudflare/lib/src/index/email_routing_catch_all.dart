@@ -124,7 +124,7 @@ import 'email_routing_catch_all_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -132,7 +132,10 @@ import 'email_routing_catch_all_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_emailroutingcatchall" "example_email_routing_catch_all" {
+/// resource "cloudflare_email_routing_catch_all" "example_email_routing_catch_all" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   actions {
 ///     type  = "forward"
@@ -247,7 +250,7 @@ class EmailRoutingCatchAll extends pulumi.CustomResource {
           'cloudflare:index/emailRoutingCatchAll:EmailRoutingCatchAll',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     actions = registerOutput<List<EmailRoutingCatchAllAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailRoutingCatchAllAction>(guardedValue, (value) => EmailRoutingCatchAllAction.fromMap((value as Map).cast<String, dynamic>())); });
     enabled = registerOutput<bool>('enabled');

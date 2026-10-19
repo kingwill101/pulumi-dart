@@ -5,13 +5,26 @@ import 'bot_management_stale_zone_configuration.dart';
 
 /// Input properties used for looking up and filtering BotManagement resources.
 class BotManagementState {
+  /// Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
+  final pulumi.Input<bool?>? aiBotsMigrationOptOut;
   /// Enable rule to block AI Scrapers and Crawlers.
   /// Available values: "block", "disabled", "only*on*ad_pages".
   final pulumi.Input<String?>? aiBotsProtection;
+  /// Configure robots.txt policy for AI model training bots.
+  /// Available values: "disabled", "disallow", "block", "only*on*ad_pages".
+  final pulumi.Input<String?>? aiTraining;
+  /// Configure robots.txt policy for AI assistant and agent bots.
+  /// Available values: "disabled", "block", "only*on*ad_pages".
+  final pulumi.Input<String?>? aiUser;
+  /// Configure robots.txt policy for AI search bots.
+  /// Available values: "disabled", "block", "only*on*ad_pages".
+  final pulumi.Input<String?>? aisearch;
   /// Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
   final pulumi.Input<bool?>? autoUpdateModel;
   /// Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
   final pulumi.Input<bool?>? bmCookieEnabled;
+  /// Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
+  final pulumi.Input<bool?>? botPreferenceSyncEnabled;
   /// Specifies the Robots Access Control License variant to use.
   /// Available values: "off", "policyOnly".
   final pulumi.Input<String?>? cfRobotsVariant;
@@ -27,6 +40,8 @@ class BotManagementState {
   final pulumi.Input<bool?>? fightMode;
   /// Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
   final pulumi.Input<bool?>? isRobotsTxtManaged;
+  /// Whether to use JavaScript Detection results submitted through the API for this zone.
+  final pulumi.Input<bool?>? jsdApiResultsEnabled;
   /// Whether to optimize Super Bot Fight Mode protections for Wordpress.
   final pulumi.Input<bool?>? optimizeWordpress;
   /// Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
@@ -52,15 +67,21 @@ class BotManagementState {
   final pulumi.Input<String?>? zoneId;
 
   /// Creates a new [BotManagementState].
+  /// [aiBotsMigrationOptOut] Temporary migration flag tracking zones opted out of AI bots managed-rule updates.
   /// [aiBotsProtection] Enable rule to block AI Scrapers and Crawlers.
+  /// [aiTraining] Configure robots.txt policy for AI model training bots.
+  /// [aiUser] Configure robots.txt policy for AI assistant and agent bots.
+  /// [aisearch] Configure robots.txt policy for AI search bots.
   /// [autoUpdateModel] Automatically update to the newest bot detection models created by Cloudflare as they are released. [Learn more.](https://developers.cloudflare.com/bots/reference/machine-learning-models#model-versions-and-release-notes)
   /// [bmCookieEnabled] Indicates that the bot management cookie can be placed on end user devices accessing the site. Defaults to true
+  /// [botPreferenceSyncEnabled] Enable Bot Preference Sync for this zone. When enabled, Cloudflare can serve robots.txt content derived from the zone's AI Search, AI User, and AI Training preferences.
   /// [cfRobotsVariant] Specifies the Robots Access Control License variant to use.
   /// [contentBotsProtection] Enable rule to block content bots. When enabled, blocks automated traffic with low bot scores, excluding safe verified bot categories. Exceptions should be managed via skip rules.
   /// [crawlerProtection] Enable rule to punish AI Scrapers and Crawlers via a link maze.
   /// [enableJs] Use lightweight, invisible JavaScript detections to improve Bot Management. [Learn more about JavaScript Detections](https://developers.cloudflare.com/bots/reference/javascript-detections/).
   /// [fightMode] Whether to enable Bot Fight Mode.
   /// [isRobotsTxtManaged] Enable cloudflare managed robots.txt. If an existing robots.txt is detected, then managed robots.txt will be prepended to the existing robots.txt.
+  /// [jsdApiResultsEnabled] Whether to use JavaScript Detection results submitted through the API for this zone.
   /// [optimizeWordpress] Whether to optimize Super Bot Fight Mode protections for Wordpress.
   /// [sbfmDefinitelyAutomated] Super Bot Fight Mode (SBFM) action to take on definitely automated requests.
   /// [sbfmLikelyAutomated] Super Bot Fight Mode (SBFM) action to take on likely automated requests.
@@ -71,15 +92,21 @@ class BotManagementState {
   /// [usingLatestModel] A read-only field that indicates whether the zone currently is running the latest ML model.
   /// [zoneId] Identifier.
   const BotManagementState({
+    this.aiBotsMigrationOptOut,
     this.aiBotsProtection,
+    this.aiTraining,
+    this.aiUser,
+    this.aisearch,
     this.autoUpdateModel,
     this.bmCookieEnabled,
+    this.botPreferenceSyncEnabled,
     this.cfRobotsVariant,
     this.contentBotsProtection,
     this.crawlerProtection,
     this.enableJs,
     this.fightMode,
     this.isRobotsTxtManaged,
+    this.jsdApiResultsEnabled,
     this.optimizeWordpress,
     this.sbfmDefinitelyAutomated,
     this.sbfmLikelyAutomated,
@@ -93,15 +120,21 @@ class BotManagementState {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'aiBotsMigrationOptOut': ?aiBotsMigrationOptOut,
       'aiBotsProtection': ?aiBotsProtection,
+      'aiTraining': ?aiTraining,
+      'aiUser': ?aiUser,
+      'aisearch': ?aisearch,
       'autoUpdateModel': ?autoUpdateModel,
       'bmCookieEnabled': ?bmCookieEnabled,
+      'botPreferenceSyncEnabled': ?botPreferenceSyncEnabled,
       'cfRobotsVariant': ?cfRobotsVariant,
       'contentBotsProtection': ?contentBotsProtection,
       'crawlerProtection': ?crawlerProtection,
       'enableJs': ?enableJs,
       'fightMode': ?fightMode,
       'isRobotsTxtManaged': ?isRobotsTxtManaged,
+      'jsdApiResultsEnabled': ?jsdApiResultsEnabled,
       'optimizeWordpress': ?optimizeWordpress,
       'sbfmDefinitelyAutomated': ?sbfmDefinitelyAutomated,
       'sbfmLikelyAutomated': ?sbfmLikelyAutomated,
@@ -116,15 +149,21 @@ class BotManagementState {
 
   factory BotManagementState.fromMap(Map<String, dynamic> map) {
     return BotManagementState(
+      aiBotsMigrationOptOut: (() { final guardedValue = map['aiBotsMigrationOptOut']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       aiBotsProtection: (() { final guardedValue = map['aiBotsProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      aiTraining: (() { final guardedValue = map['aiTraining']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      aiUser: (() { final guardedValue = map['aiUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      aisearch: (() { final guardedValue = map['aisearch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       autoUpdateModel: (() { final guardedValue = map['autoUpdateModel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       bmCookieEnabled: (() { final guardedValue = map['bmCookieEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      botPreferenceSyncEnabled: (() { final guardedValue = map['botPreferenceSyncEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       cfRobotsVariant: (() { final guardedValue = map['cfRobotsVariant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       contentBotsProtection: (() { final guardedValue = map['contentBotsProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       crawlerProtection: (() { final guardedValue = map['crawlerProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enableJs: (() { final guardedValue = map['enableJs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       fightMode: (() { final guardedValue = map['fightMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isRobotsTxtManaged: (() { final guardedValue = map['isRobotsTxtManaged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      jsdApiResultsEnabled: (() { final guardedValue = map['jsdApiResultsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       optimizeWordpress: (() { final guardedValue = map['optimizeWordpress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       sbfmDefinitelyAutomated: (() { final guardedValue = map['sbfmDefinitelyAutomated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sbfmLikelyAutomated: (() { final guardedValue = map['sbfmLikelyAutomated']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

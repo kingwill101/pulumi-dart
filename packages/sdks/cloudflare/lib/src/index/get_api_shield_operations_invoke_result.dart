@@ -68,7 +68,7 @@ class GetApiShieldOperationsInvokeResult {
       endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
       features: (() { final guardedValue = map['features']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       hosts: (() { final guardedValue = map['hosts']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       methods: (() { final guardedValue = map['methods']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       order: (() { final guardedValue = map['order']; if (guardedValue == null) return null; return guardedValue as String; })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetApiShieldOperationsResult>(guardedValue, (value) => GetApiShieldOperationsResult.fromMap((value as Map).cast<String, dynamic>())); })(),

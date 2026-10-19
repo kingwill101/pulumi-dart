@@ -17,6 +17,7 @@ class GetZeroTrustAccessAiControlsMcpPortalServer {
   final pulumi.Input<String> authenticationStatus;
   final pulumi.Input<String> createdAt;
   final pulumi.Input<String> createdBy;
+  /// Hide this server's tools and prompts by default. To expose specific capabilities, set enabled: true for them in updated*tools or updated*prompts.
   final pulumi.Input<bool> defaultDisabled;
   /// Optional description of the MCP server.
   final pulumi.Input<String> description;
@@ -53,7 +54,7 @@ class GetZeroTrustAccessAiControlsMcpPortalServer {
   /// [authenticationStatus] Whether administrative authentication is required before capabilities can be synced. Manual OAuth is user-managed and has no administrative authentication flow.
   /// [createdAt] Required.
   /// [createdBy] Required.
-  /// [defaultDisabled] Required.
+  /// [defaultDisabled] Hide this server's tools and prompts by default. To expose specific capabilities, set enabled: true for them in updated*tools or updated*prompts.
   /// [description] Optional description of the MCP server.
   /// [error] Required.
   /// [errorDetails] Required.

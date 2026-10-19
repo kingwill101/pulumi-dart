@@ -77,7 +77,7 @@ import 'zero_trust_dlp_predefined_entry_variant.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -85,7 +85,10 @@ import 'zero_trust_dlp_predefined_entry_variant.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdlppredefinedentry" "example_zero_trust_dlp_predefined_entry" {
+/// resource "cloudflare_zero_trust_dlp_predefined_entry" "example_zero_trust_dlp_predefined_entry" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "account_id"
 ///   enabled    = true
 ///   entry_id   = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
@@ -183,7 +186,7 @@ class ZeroTrustDlpPredefinedEntry extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDlpPredefinedEntry:ZeroTrustDlpPredefinedEntry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     caseSensitive = registerOutput<bool>('caseSensitive');

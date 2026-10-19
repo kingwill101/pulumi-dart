@@ -73,7 +73,7 @@ import 'cloudforce_one_request_asset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -81,7 +81,10 @@ import 'cloudforce_one_request_asset_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_cloudforceonerequestasset" "example_cloudforce_one_request_asset" {
+/// resource "cloudflare_cloudforce_one_request_asset" "example_cloudforce_one_request_asset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   request_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   page       = 0
@@ -169,7 +172,7 @@ class CloudforceOneRequestAsset extends pulumi.CustomResource {
           'cloudflare:index/cloudforceOneRequestAsset:CloudforceOneRequestAsset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     created = registerOutput<String>('created');

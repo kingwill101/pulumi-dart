@@ -101,7 +101,7 @@ import 'address_map_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -109,7 +109,10 @@ import 'address_map_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_addressmap" "example_address_map" {
+/// resource "cloudflare_address_map" "example_address_map" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "258def64c72dae45f3e4c8516e2111f2"
 ///   description = "My Ecommerce zones"
 ///   enabled     = true
@@ -209,7 +212,7 @@ class AddressMap extends pulumi.CustomResource {
           'cloudflare:index/addressMap:AddressMap',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     canDelete = registerOutput<bool>('canDelete');

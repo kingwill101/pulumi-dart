@@ -9,12 +9,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPagesProjectArgs {
   /// Identifier.
   final pulumi.Input<String?>? accountId;
-  /// Name of the project.
+  /// Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   final pulumi.Input<String> projectName;
 
   /// Creates a new [GetPagesProjectArgs].
   /// [accountId] Identifier.
-  /// [projectName] Name of the project.
+  /// [projectName] Name of the Pages project. Must begin with a lowercase letter or digit and contain only lowercase letters, digits, and hyphens.
   const GetPagesProjectArgs({
     this.accountId,
     required this.projectName,

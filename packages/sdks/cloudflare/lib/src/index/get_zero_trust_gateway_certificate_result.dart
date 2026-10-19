@@ -3,6 +3,7 @@
 
 /// Result data returned by getZeroTrustGatewayCertificate.
 class GetZeroTrustGatewayCertificateResult {
+  /// Specify the Cloudflare account identifier.
   final String? accountId;
   /// Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
   /// Available values: "pending*deployment", "available", "pending*deletion", "inactive".
@@ -30,7 +31,7 @@ class GetZeroTrustGatewayCertificateResult {
   final String? uploadedOn;
 
   /// Creates a new [GetZeroTrustGatewayCertificateResult].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [bindingStatus] Indicate the read-only deployment status of the certificate on Cloudflare's edge. Gateway TLS interception can use certificates in the 'available' (previously called 'active') state.
   /// [certificate] Provide the CA certificate (read-only).
   /// [certificateId] Identify the certificate with a UUID.

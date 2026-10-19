@@ -81,7 +81,7 @@ import 'web_analytics_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -89,7 +89,10 @@ import 'web_analytics_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_webanalyticsrule" "example_web_analytics_rule" {
+/// resource "cloudflare_web_analytics_rule" "example_web_analytics_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   ruleset_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   host       = "example.com"
@@ -176,7 +179,7 @@ class WebAnalyticsRule extends pulumi.CustomResource {
           'cloudflare:index/webAnalyticsRule:WebAnalyticsRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     created = registerOutput<String>('created');

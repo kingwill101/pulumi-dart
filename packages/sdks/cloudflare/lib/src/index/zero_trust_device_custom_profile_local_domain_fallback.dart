@@ -96,7 +96,7 @@ import 'zero_trust_device_custom_profile_local_domain_fallback_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -104,7 +104,10 @@ import 'zero_trust_device_custom_profile_local_domain_fallback_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdevicecustomprofilelocaldomainfallback" "example_zero_trust_device_custom_profile_local_domain_fallback" {
+/// resource "cloudflare_zero_trust_device_custom_profile_local_domain_fallback" "example_zero_trust_device_custom_profile_local_domain_fallback" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   policy_id  = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   domains {
@@ -187,7 +190,7 @@ class ZeroTrustDeviceCustomProfileLocalDomainFallback extends pulumi.CustomResou
           'cloudflare:index/zeroTrustDeviceCustomProfileLocalDomainFallback:ZeroTrustDeviceCustomProfileLocalDomainFallback',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     domains = registerOutput<List<ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain>>('domains', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain>(guardedValue, (value) => ZeroTrustDeviceCustomProfileLocalDomainFallbackDomain.fromMap((value as Map).cast<String, dynamic>())); });

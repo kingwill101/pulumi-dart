@@ -71,7 +71,7 @@ import 'leaked_credential_check_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -79,7 +79,10 @@ import 'leaked_credential_check_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_leakedcredentialcheckrule" "example_leaked_credential_check_rule" {
+/// resource "cloudflare_leaked_credential_check_rule" "example_leaked_credential_check_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   password = "lookup_json_string(http.request.body.raw, \"secret\")"
 ///   username = "lookup_json_string(http.request.body.raw, \"user\")"
@@ -152,7 +155,7 @@ class LeakedCredentialCheckRule extends pulumi.CustomResource {
           'cloudflare:index/leakedCredentialCheckRule:LeakedCredentialCheckRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     password = registerOutput<String?>('password');
     username = registerOutput<String?>('username');

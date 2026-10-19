@@ -77,7 +77,7 @@ import 'zero_trust_gateway_pacfile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -85,7 +85,10 @@ import 'zero_trust_gateway_pacfile_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustgatewaypacfile" "example_zero_trust_gateway_pacfile" {
+/// resource "cloudflare_zero_trust_gateway_pacfile" "example_zero_trust_gateway_pacfile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "699d98642c564d2e855e9661899b7252"
 ///   contents    = "function FindProxyForURL(url, host) { return \"DIRECT\"; }"
 ///   name        = "Devops team"
@@ -145,6 +148,7 @@ import 'zero_trust_gateway_pacfile_state.dart';
 /// $ pulumi import cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile example '<account_id>/<pacfile_id>'
 /// ```
 class ZeroTrustGatewayPacfile extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   /// Actual contents of the PAC file
   late final pulumi.Output<String> contents;
@@ -171,7 +175,7 @@ class ZeroTrustGatewayPacfile extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustGatewayPacfile:ZeroTrustGatewayPacfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     contents = registerOutput<String>('contents');

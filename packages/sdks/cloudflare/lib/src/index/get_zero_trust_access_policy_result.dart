@@ -121,7 +121,7 @@ class GetZeroTrustAccessPolicyResult {
   factory GetZeroTrustAccessPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustAccessPolicyResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      appCount: (() { final guardedValue = map['appCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      appCount: (() { final guardedValue = map['appCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       approvalGroups: (() { final guardedValue = map['approvalGroups']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustAccessPolicyApprovalGroup>(guardedValue, (value) => GetZeroTrustAccessPolicyApprovalGroup.fromMap((value as Map).cast<String, dynamic>())); })(),
       approvalRequired: (() { final guardedValue = map['approvalRequired']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       connectionRules: (() { final guardedValue = map['connectionRules']; if (guardedValue == null) return null; return GetZeroTrustAccessPolicyConnectionRules.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),

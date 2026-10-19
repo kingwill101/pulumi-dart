@@ -77,7 +77,7 @@ import 'tunnel_virtual_network_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -85,7 +85,10 @@ import 'tunnel_virtual_network_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrusttunnelcloudflaredvirtualnetwork" "example_zero_trust_tunnel_cloudflared_virtual_network" {
+/// resource "cloudflare_zero_trust_tunnel_cloudflared_virtual_network" "example_zero_trust_tunnel_cloudflared_virtual_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id         = "699d98642c564d2e855e9661899b7252"
 ///   name               = "us-east-1-vpc"
 ///   comment            = "Staging VPC for data science"
@@ -172,7 +175,7 @@ class TunnelVirtualNetwork extends pulumi.CustomResource {
           'cloudflare:index/tunnelVirtualNetwork:TunnelVirtualNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     comment = registerOutput<String>('comment');

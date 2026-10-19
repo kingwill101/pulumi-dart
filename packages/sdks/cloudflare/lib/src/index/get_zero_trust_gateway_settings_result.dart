@@ -4,18 +4,19 @@ import 'get_zero_trust_gateway_settings_settings.dart';
 
 /// Result data returned by getZeroTrustGatewaySettings.
 class GetZeroTrustGatewaySettingsResult {
+  /// Specify the Cloudflare account identifier.
   final String? accountId;
   final String? createdAt;
-  /// The ID of this resource.
+  /// Specify the Cloudflare account identifier.
   final String? id;
   /// Specify account settings.
   final GetZeroTrustGatewaySettingsSettings? settings;
   final String? updatedAt;
 
   /// Creates a new [GetZeroTrustGatewaySettingsResult].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [createdAt] Optional.
-  /// [id] The ID of this resource.
+  /// [id] Specify the Cloudflare account identifier.
   /// [settings] Specify account settings.
   /// [updatedAt] Optional.
   const GetZeroTrustGatewaySettingsResult({
