@@ -180,7 +180,7 @@ import 'grant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -190,6 +190,9 @@ import 'grant_state.dart';
 ///
 /// # Grant SELECT privileges on 2 tables
 /// resource "postgresql_grant" "readonly_tables" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database    = "test_db"
 ///   role        = "test_role"
 ///   schema      = "public"
@@ -199,6 +202,9 @@ import 'grant_state.dart';
 /// }
 /// # Grant SELECT & INSERT privileges on 2 columns in 1 table
 /// resource "postgresql_grant" "read_insert_column" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database    = "test_db"
 ///   role        = "test_role"
 ///   schema      = "public"
@@ -337,7 +343,7 @@ import 'grant_state.dart';
 ///         Role = "public",
 ///         Schema = "public",
 ///         ObjectType = "schema",
-///         Privileges = new[] {},
+///         Privileges = new() {},
 ///     });
 ///
 /// });
@@ -367,7 +373,7 @@ import 'grant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -376,6 +382,9 @@ import 'grant_state.dart';
 /// }
 ///
 /// resource "postgresql_grant" "revoke_public" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   database    = "test_db"
 ///   role        = "public"
 ///   schema      = "public"
@@ -457,13 +466,13 @@ class Grant extends pulumi.CustomResource {
           'postgresql:index/grant:Grant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.2').merge(options),
         ) {
-    columns = registerOutput<List<String>?>('columns');
+    columns = registerOutput<List<String>?>('columns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     database = registerOutput<String>('database');
     objectType = registerOutput<String>('objectType');
-    objects = registerOutput<List<String>?>('objects');
-    privileges = registerOutput<List<String>>('privileges');
+    objects = registerOutput<List<String>?>('objects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privileges = registerOutput<List<String>>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
     schema = registerOutput<String?>('schema');
     withGrantOption = registerOutput<bool?>('withGrantOption');
@@ -474,11 +483,12 @@ class Grant extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GrantState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Grant._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -492,11 +502,30 @@ class Grant extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    columns = registerOutput<List<String>?>('columns');
+    columns = registerOutput<List<String>?>('columns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     database = registerOutput<String>('database');
     objectType = registerOutput<String>('objectType');
-    objects = registerOutput<List<String>?>('objects');
-    privileges = registerOutput<List<String>>('privileges');
+    objects = registerOutput<List<String>?>('objects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privileges = registerOutput<List<String>>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    role = registerOutput<String>('role');
+    schema = registerOutput<String?>('schema');
+    withGrantOption = registerOutput<bool?>('withGrantOption');
+  }
+
+  /// Creates a typed reference to an existing [Grant] resource.
+  Grant.reference(String urn)
+    : super(
+        'postgresql:index/grant:Grant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    columns = registerOutput<List<String>?>('columns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    database = registerOutput<String>('database');
+    objectType = registerOutput<String>('objectType');
+    objects = registerOutput<List<String>?>('objects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    privileges = registerOutput<List<String>>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String>('role');
     schema = registerOutput<String?>('schema');
     withGrantOption = registerOutput<bool?>('withGrantOption');
