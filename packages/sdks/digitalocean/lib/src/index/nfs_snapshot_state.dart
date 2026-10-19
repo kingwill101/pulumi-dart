@@ -5,16 +5,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NfsSnapshot resources.
 class NfsSnapshotState {
   /// The date and time when the snapshot was created.
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// A name for the NFS snapshot. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The region where the NFS snapshot will be created.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the NFS share to snapshot.
-  final pulumi.Input<String>? shareId;
+  final pulumi.Input<String?>? shareId;
   /// The size of the snapshot in GiB.
-  final pulumi.Input<int>? size;
-  final pulumi.Input<String>? status;
+  final pulumi.Input<int?>? size;
+  final pulumi.Input<String?>? status;
 
   /// Creates a new [NfsSnapshotState].
   /// [createdAt] The date and time when the snapshot was created.
@@ -49,7 +49,7 @@ class NfsSnapshotState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       shareId: (() { final guardedValue = map['shareId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -50,13 +50,13 @@ class GetLoadBalancerHealthcheck {
 
   factory GetLoadBalancerHealthcheck.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancerHealthcheck(
-      checkIntervalSeconds: pulumi.Input.fromValue(map['checkIntervalSeconds'] as int),
-      healthyThreshold: pulumi.Input.fromValue(map['healthyThreshold'] as int),
+      checkIntervalSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['checkIntervalSeconds'])),
+      healthyThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['healthyThreshold'])),
       path: pulumi.Input.fromValue(map['path'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      responseTimeoutSeconds: pulumi.Input.fromValue(map['responseTimeoutSeconds'] as int),
-      unhealthyThreshold: pulumi.Input.fromValue(map['unhealthyThreshold'] as int),
+      responseTimeoutSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['responseTimeoutSeconds'])),
+      unhealthyThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['unhealthyThreshold'])),
     );
   }
 }

@@ -12,17 +12,17 @@ class FirewallArgs {
   /// The list of the IDs of the Droplets assigned
   /// to the Firewall (max. 10). If you want to assign more droplets to the
   /// Firewall, add Tags to them and use the `tags` argument below.
-  final pulumi.Input<List<int>>? dropletIds;
+  final pulumi.Input<List<int>?>? dropletIds;
   /// The inbound access rule block for the Firewall.
   /// The `inboundRule` block is documented below.
-  final pulumi.Input<List<FirewallInboundRule>>? inboundRules;
+  final pulumi.Input<List<FirewallInboundRule>?>? inboundRules;
   /// The Firewall name
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The outbound access rule block for the Firewall.
   /// The `outboundRule` block is documented below.
-  final pulumi.Input<List<FirewallOutboundRule>>? outboundRules;
+  final pulumi.Input<List<FirewallOutboundRule>?>? outboundRules;
   /// The names of the Tags assigned to the Firewall (max. 5).
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
 
   /// Creates a new [FirewallArgs].
   /// [dropletIds] The list of the IDs of the Droplets assigned

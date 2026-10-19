@@ -78,7 +78,7 @@ import 'volume_attachment_state.dart';
 ///
 ///     var foobarVolumeAttachment = new DigitalOcean.VolumeAttachment("foobar", new()
 ///     {
-///         DropletId = foobarDroplet.Id,
+///         DropletId = foobarDroplet.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         VolumeId = foobar.Id,
 ///     });
 ///
@@ -127,7 +127,7 @@ import 'volume_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -136,6 +136,9 @@ import 'volume_attachment_state.dart';
 /// }
 ///
 /// resource "digitalocean_volume" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region                  = "nyc1"
 ///   name                    = "baz"
 ///   size                    = 100
@@ -143,12 +146,18 @@ import 'volume_attachment_state.dart';
 ///   description             = "an example volume"
 /// }
 /// resource "digitalocean_droplet" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "baz"
 ///   size   = "s-1vcpu-1gb"
 ///   image  = "ubuntu-18-04-x64"
 ///   region = "nyc1"
 /// }
-/// resource "digitalocean_volumeattachment" "foobar" {
+/// resource "digitalocean_volume_attachment" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   droplet_id = digitalocean_droplet.foobar.id
 ///   volume_id  = digitalocean_volume.foobar.id
 /// }
@@ -244,7 +253,7 @@ class VolumeAttachment extends pulumi.CustomResource {
           'digitalocean:index/volumeAttachment:VolumeAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     dropletId = registerOutput<int>('dropletId');
     volumeId = registerOutput<String>('volumeId');
@@ -255,11 +264,12 @@ class VolumeAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VolumeAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -273,6 +283,19 @@ class VolumeAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dropletId = registerOutput<int>('dropletId');
+    volumeId = registerOutput<String>('volumeId');
+  }
+
+  /// Creates a typed reference to an existing [VolumeAttachment] resource.
+  VolumeAttachment.reference(String urn)
+    : super(
+        'digitalocean:index/volumeAttachment:VolumeAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dropletId = registerOutput<int>('dropletId');
     volumeId = registerOutput<String>('volumeId');
   }

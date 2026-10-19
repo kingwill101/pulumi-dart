@@ -125,7 +125,7 @@ import 'project_resources_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -133,18 +133,24 @@ import 'project_resources_state.dart';
 ///   }
 /// }
 ///
-/// data "digitalocean_getproject" "playground" {
+/// data "digitalocean_project" "playground" {
 ///   name = "playground"
 /// }
 ///
 /// resource "digitalocean_droplet" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example"
 ///   size   = "s-1vcpu-1gb"
 ///   image  = "ubuntu-22-04-x64"
 ///   region = "nyc3"
 /// }
-/// resource "digitalocean_projectresources" "barfoo" {
-///   project   = data.digitalocean_getproject.playground.id
+/// resource "digitalocean_project_resources" "barfoo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project   = data.digitalocean_project.playground.id
 ///   resources = [digitalocean_droplet.foobar.droplet_urn]
 /// }
 /// ```
@@ -237,10 +243,10 @@ class ProjectResources extends pulumi.CustomResource {
           'digitalocean:index/projectResources:ProjectResources',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     project = registerOutput<String>('project');
-    resources = registerOutput<List<String>>('resources');
+    resources = registerOutput<List<String>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ProjectResources] resource's state with the given [name] and [id].
@@ -248,11 +254,12 @@ class ProjectResources extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ProjectResourcesState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ProjectResources._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -267,6 +274,19 @@ class ProjectResources extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     project = registerOutput<String>('project');
-    resources = registerOutput<List<String>>('resources');
+    resources = registerOutput<List<String>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ProjectResources] resource.
+  ProjectResources.reference(String urn)
+    : super(
+        'digitalocean:index/projectResources:ProjectResources',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    project = registerOutput<String>('project');
+    resources = registerOutput<List<String>>('resources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource {
   /// The name of the Spaces bucket
-  final pulumi.Input<String>? bucketName;
+  final pulumi.Input<String?>? bucketName;
   /// The path to the item in the bucket
-  final pulumi.Input<String>? itemPath;
+  final pulumi.Input<String?>? itemPath;
   /// The region of the Spaces bucket
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource].
   /// [bucketName] The name of the Spaces bucket

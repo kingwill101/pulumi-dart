@@ -3,21 +3,21 @@ import 'gradientai_function_args.dart';
 import 'gradientai_function_state.dart';
 
 class GradientaiFunction extends pulumi.CustomResource {
-  /// The name of the GradientAI resource.
+  /// The name of the Agent Platform resource.
   late final pulumi.Output<String> agentId;
-  /// The region where the GradientAI resource will be created.
+  /// The region where the Agent Platform resource will be created.
   late final pulumi.Output<String> description;
-  /// The model to use for the GradientAI resource.
+  /// The model to use for the Agent Platform resource.
   late final pulumi.Output<String?> faasName;
-  /// The current status of the GradientAI resource.
+  /// The current status of the Agent Platform resource.
   late final pulumi.Output<String> faasNamespace;
-  /// The creation timestamp of the GradientAI resource.
+  /// The creation timestamp of the Agent Platform resource.
   late final pulumi.Output<String> functionName;
-  /// The unique identifier of the GradientAI function.
+  /// The unique identifier of the Agent Platform function.
   late final pulumi.Output<String> functionUuid;
-  /// The input schema of the GradientAI resource.
+  /// The input schema of the Agent Platform resource.
   late final pulumi.Output<String> inputSchema;
-  /// The output schema of the GradientAI resource.
+  /// The output schema of the Agent Platform resource.
   late final pulumi.Output<String?> outputSchema;
 
   /// Creates a new [GradientaiFunction].
@@ -32,7 +32,7 @@ class GradientaiFunction extends pulumi.CustomResource {
           'digitalocean:index/gradientaiFunction:GradientaiFunction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
     description = registerOutput<String>('description');
@@ -49,11 +49,12 @@ class GradientaiFunction extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GradientaiFunctionState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GradientaiFunction._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -67,6 +68,25 @@ class GradientaiFunction extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    agentId = registerOutput<String>('agentId');
+    description = registerOutput<String>('description');
+    faasName = registerOutput<String?>('faasName');
+    faasNamespace = registerOutput<String>('faasNamespace');
+    functionName = registerOutput<String>('functionName');
+    functionUuid = registerOutput<String>('functionUuid');
+    inputSchema = registerOutput<String>('inputSchema');
+    outputSchema = registerOutput<String?>('outputSchema');
+  }
+
+  /// Creates a typed reference to an existing [GradientaiFunction] resource.
+  GradientaiFunction.reference(String urn)
+    : super(
+        'digitalocean:index/gradientaiFunction:GradientaiFunction',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     agentId = registerOutput<String>('agentId');
     description = registerOutput<String>('description');
     faasName = registerOutput<String?>('faasName');

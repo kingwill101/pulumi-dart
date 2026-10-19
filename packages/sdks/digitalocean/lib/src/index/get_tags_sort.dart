@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTagsSort {
   /// The sort direction. This may be either `asc` or `desc`.
-  final pulumi.Input<String>? direction;
+  final pulumi.Input<String?>? direction;
   /// Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
   final pulumi.Input<String> key;
 

@@ -11,10 +11,10 @@ import 'get_sizes_sort.dart';
 class GetSizesArgs {
   /// Filter the results.
   /// The `filter` block is documented below.
-  final pulumi.Input<List<GetSizesFilter>>? filters;
+  final pulumi.Input<List<GetSizesFilter>?>? filters;
   /// Sort the results.
   /// The `sort` block is documented below.
-  final pulumi.Input<List<GetSizesSort>>? sorts;
+  final pulumi.Input<List<GetSizesSort>?>? sorts;
 
   /// Creates a new [GetSizesArgs].
   /// [filters] Filter the results.

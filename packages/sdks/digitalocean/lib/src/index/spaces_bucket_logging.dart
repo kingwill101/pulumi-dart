@@ -63,7 +63,7 @@ import 'spaces_bucket_logging_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -71,7 +71,10 @@ import 'spaces_bucket_logging_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_spacesbucket" "static-assets" {
+/// resource "digitalocean_spaces_bucket" "static-assets" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -213,7 +216,7 @@ import 'spaces_bucket_logging_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -221,18 +224,27 @@ import 'spaces_bucket_logging_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_spacesbucket" "assets" {
+/// resource "digitalocean_spaces_bucket" "assets" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "assets"
 ///   region = "nyc3"
 /// }
-/// resource "digitalocean_spacesbucket" "logs" {
+/// resource "digitalocean_spaces_bucket" "logs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "logs"
 ///   region = "nyc3"
 /// }
-/// resource "digitalocean_spacesbucketlogging" "example" {
+/// resource "digitalocean_spaces_bucket_logging" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region        = "%s"
-///   bucket        = digitalocean_spacesbucket.assets.id
-///   target_bucket = digitalocean_spacesbucket.logs.id
+///   bucket        = digitalocean_spaces_bucket.assets.id
+///   target_bucket = digitalocean_spaces_bucket.logs.id
 ///   target_prefix = "access-logs/"
 /// }
 /// ```
@@ -330,7 +342,7 @@ class SpacesBucketLogging extends pulumi.CustomResource {
           'digitalocean:index/spacesBucketLogging:SpacesBucketLogging',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');
@@ -343,11 +355,12 @@ class SpacesBucketLogging extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpacesBucketLoggingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpacesBucketLogging._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -361,6 +374,21 @@ class SpacesBucketLogging extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    region = registerOutput<String>('region');
+    targetBucket = registerOutput<String>('targetBucket');
+    targetPrefix = registerOutput<String>('targetPrefix');
+  }
+
+  /// Creates a typed reference to an existing [SpacesBucketLogging] resource.
+  SpacesBucketLogging.reference(String urn)
+    : super(
+        'digitalocean:index/spacesBucketLogging:SpacesBucketLogging',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     region = registerOutput<String>('region');
     targetBucket = registerOutput<String>('targetBucket');

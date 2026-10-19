@@ -123,7 +123,7 @@ import 'database_logsink_opensearch_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -131,14 +131,20 @@ import 'database_logsink_opensearch_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databaselogsinkopensearch" "example" {
-///   cluster_id     = digitalocean_databasecluster.postgres-example.id
+/// resource "digitalocean_database_logsink_opensearch" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id     = digitalocean_database_cluster.postgres-example.id
 ///   name           = "opensearch-logs"
 ///   endpoint       = "https://opensearch.example.com:9200"
 ///   index_prefix   = "db-logs"
 ///   index_days_max = 7
 /// }
-/// resource "digitalocean_databasecluster" "postgres-example" {
+/// resource "digitalocean_database_cluster" "postgres-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-postgres-cluster"
 ///   engine     = "pg"
 ///   version    = "15"
@@ -305,7 +311,7 @@ import 'database_logsink_opensearch_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -316,7 +322,10 @@ import 'database_logsink_opensearch_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databaselogsinkopensearch" "example-secure" {
+/// resource "digitalocean_database_logsink_opensearch" "example-secure" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id      = postgres-example.id
 ///   name            = "opensearch-secure"
 ///   endpoint        = "https://user:password@opensearch.example.com:9200"
@@ -350,7 +359,7 @@ import 'database_logsink_opensearch_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example_secure = new DatabaseLogsinkOpensearch("example-secure", DatabaseLogsinkOpensearchArgs.builder()
-///             .clusterId(postgres_example.id())
+///             .clusterId(postgres_example.get("id"))
 ///             .name("opensearch-secure")
 ///             .endpoint("https://user:password@opensearch.example.com:9200")
 ///             .indexPrefix("secure-logs")
@@ -454,7 +463,7 @@ import 'database_logsink_opensearch_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -462,7 +471,10 @@ import 'database_logsink_opensearch_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databaselogsinkopensearch" "elasticsearch" {
+/// resource "digitalocean_database_logsink_opensearch" "elasticsearch" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id     = postgres-example.id
 ///   name           = "elasticsearch-logs"
 ///   endpoint       = "https://elasticsearch.example.com:9243"
@@ -492,7 +504,7 @@ import 'database_logsink_opensearch_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var elasticsearch = new DatabaseLogsinkOpensearch("elasticsearch", DatabaseLogsinkOpensearchArgs.builder()
-///             .clusterId(postgres_example.id())
+///             .clusterId(postgres_example.get("id"))
 ///             .name("elasticsearch-logs")
 ///             .endpoint("https://elasticsearch.example.com:9243")
 ///             .indexPrefix("es-logs")
@@ -621,7 +633,7 @@ import 'database_logsink_opensearch_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -629,14 +641,20 @@ import 'database_logsink_opensearch_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databaselogsinkopensearch" "mysql" {
-///   cluster_id     = digitalocean_databasecluster.mysql-example.id
+/// resource "digitalocean_database_logsink_opensearch" "mysql" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id     = digitalocean_database_cluster.mysql-example.id
 ///   name           = "mysql-logs"
 ///   endpoint       = "https://opensearch.example.com:9200"
 ///   index_prefix   = "mysql-logs"
 ///   index_days_max = 7
 /// }
-/// resource "digitalocean_databasecluster" "mysql-example" {
+/// resource "digitalocean_database_cluster" "mysql-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-mysql-cluster"
 ///   engine     = "mysql"
 ///   version    = "8"
@@ -760,9 +778,10 @@ class DatabaseLogsinkOpensearch extends pulumi.CustomResource {
           'digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
+          additionalSecretOutputs: const ['caCert'],
         ) {
-    caCert = registerOutput<String?>('caCert');
+    caCert = registerOutput<String?>('caCert', isSecret: true);
     clusterId = registerOutput<String>('clusterId');
     endpoint = registerOutput<String>('endpoint');
     indexDaysMax = registerOutput<int?>('indexDaysMax');
@@ -777,11 +796,12 @@ class DatabaseLogsinkOpensearch extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseLogsinkOpensearchState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseLogsinkOpensearch._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -795,7 +815,27 @@ class DatabaseLogsinkOpensearch extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    caCert = registerOutput<String?>('caCert');
+    caCert = registerOutput<String?>('caCert', isSecret: true);
+    clusterId = registerOutput<String>('clusterId');
+    endpoint = registerOutput<String>('endpoint');
+    indexDaysMax = registerOutput<int?>('indexDaysMax');
+    indexPrefix = registerOutput<String>('indexPrefix');
+    logsinkId = registerOutput<String>('logsinkId');
+    this.name = registerOutput<String>('name');
+    timeoutSeconds = registerOutput<int?>('timeoutSeconds');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseLogsinkOpensearch] resource.
+  DatabaseLogsinkOpensearch.reference(String urn)
+    : super(
+        'digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['caCert'],
+        isResourceReference: true,
+      ) {
+    caCert = registerOutput<String?>('caCert', isSecret: true);
     clusterId = registerOutput<String>('clusterId');
     endpoint = registerOutput<String>('endpoint');
     indexDaysMax = registerOutput<int?>('indexDaysMax');

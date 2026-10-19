@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_image_get_image_args_doc}
 class GetImageArgs {
   /// The id of the image
-  final pulumi.Input<int>? id;
+  final pulumi.Input<int?>? id;
   /// The name of the image.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The slug of the official image.
   ///
   /// If `name` is specified, you may also specify:
-  final pulumi.Input<String>? slug;
+  final pulumi.Input<String?>? slug;
   /// Restrict the search to one of the following categories of images:
-  final pulumi.Input<String>? source;
+  final pulumi.Input<String?>? source;
 
   /// Creates a new [GetImageArgs].
   /// [id] The id of the image
@@ -41,7 +41,7 @@ class GetImageArgs {
 
   factory GetImageArgs.fromMap(Map<String, dynamic> map) {
     return GetImageArgs(
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       slug: (() { final guardedValue = map['slug']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

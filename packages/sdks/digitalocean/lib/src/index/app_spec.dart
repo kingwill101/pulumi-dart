@@ -17,38 +17,38 @@ import 'app_spec_worker.dart';
 
 class AppSpec {
   /// Describes an alert policy for the component.
-  final pulumi.Input<List<AppSpecAlert>>? alerts;
-  final pulumi.Input<List<AppSpecDatabase>>? databases;
+  final pulumi.Input<List<AppSpecAlert>?>? alerts;
+  final pulumi.Input<List<AppSpecDatabase>?>? databases;
   /// A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
-  final pulumi.Input<bool>? disableEdgeCache;
+  final pulumi.Input<bool?>? disableEdgeCache;
   /// A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
-  final pulumi.Input<bool>? disableEmailObfuscation;
+  final pulumi.Input<bool?>? disableEmailObfuscation;
   /// Describes a domain where the application will be made available.
-  final pulumi.Input<List<AppSpecDomainName>>? domainNames;
-  final pulumi.Input<List<String>>? domains;
+  final pulumi.Input<List<AppSpecDomainName>?>? domainNames;
+  final pulumi.Input<List<String>?>? domains;
   /// Specification for app egress configurations.
-  final pulumi.Input<List<AppSpecEgress>>? egresses;
+  final pulumi.Input<List<AppSpecEgress>?>? egresses;
   /// A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
-  final pulumi.Input<bool>? enhancedThreatControlEnabled;
+  final pulumi.Input<bool?>? enhancedThreatControlEnabled;
   /// Describes an environment variable made available to an app competent.
-  final pulumi.Input<List<AppSpecEnv>>? envs;
+  final pulumi.Input<List<AppSpecEnv>?>? envs;
   /// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
-  final pulumi.Input<List<String>>? features;
-  final pulumi.Input<List<AppSpecFunction>>? functions;
+  final pulumi.Input<List<String>?>? features;
+  final pulumi.Input<List<AppSpecFunction>?>? functions;
   /// Specification for component routing, rewrites, and redirects.
-  final pulumi.Input<AppSpecIngress>? ingress;
-  final pulumi.Input<List<AppSpecJob>>? jobs;
+  final pulumi.Input<AppSpecIngress?>? ingress;
+  final pulumi.Input<List<AppSpecJob>?>? jobs;
   /// Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
-  final pulumi.Input<AppSpecMaintenance>? maintenance;
+  final pulumi.Input<AppSpecMaintenance?>? maintenance;
   /// The name of the component.
   final pulumi.Input<String> name;
   /// The slug for the DigitalOcean data center region hosting the app.
-  final pulumi.Input<String>? region;
-  final pulumi.Input<List<AppSpecService>>? services;
-  final pulumi.Input<List<AppSpecStaticSite>>? staticSites;
+  final pulumi.Input<String?>? region;
+  final pulumi.Input<List<AppSpecService>?>? services;
+  final pulumi.Input<List<AppSpecStaticSite>?>? staticSites;
   /// Specification for VPC.
-  final pulumi.Input<List<AppSpecVpc>>? vpcs;
-  final pulumi.Input<List<AppSpecWorker>>? workers;
+  final pulumi.Input<List<AppSpecVpc>?>? vpcs;
+  final pulumi.Input<List<AppSpecWorker>?>? workers;
 
   /// Creates a new [AppSpec].
   /// [alerts] Describes an alert policy for the component.

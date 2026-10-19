@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering NfsAttachment resources.
 class NfsAttachmentState {
   /// The region of the NFS share.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The ID of the NFS share to attach.
-  final pulumi.Input<String>? shareId;
+  final pulumi.Input<String?>? shareId;
   /// The ID of the VPC to attach the NFS share to.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [NfsAttachmentState].
   /// [region] The region of the NFS share.

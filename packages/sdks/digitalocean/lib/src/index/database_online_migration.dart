@@ -226,7 +226,7 @@ import 'database_online_migration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -234,7 +234,10 @@ import 'database_online_migration_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasecluster" "source" {
+/// resource "digitalocean_database_cluster" "source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "st01"
 ///   engine     = "mysql"
 ///   version    = "8"
@@ -243,7 +246,10 @@ import 'database_online_migration_state.dart';
 ///   node_count = 1
 ///   tags       = ["production"]
 /// }
-/// resource "digitalocean_databasecluster" "destination" {
+/// resource "digitalocean_database_cluster" "destination" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "dt01"
 ///   engine     = "mysql"
 ///   version    = "8"
@@ -252,19 +258,25 @@ import 'database_online_migration_state.dart';
 ///   node_count = 1
 ///   tags       = ["production"]
 /// }
-/// resource "digitalocean_databasedb" "source_db" {
-///   cluster_id = digitalocean_databasecluster.source.id
+/// resource "digitalocean_database_db" "source_db" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id = digitalocean_database_cluster.source.id
 ///   name       = "terraform-db-om-source"
 /// }
-/// resource "digitalocean_databaseonlinemigration" "foobar" {
-///   depends_on = [digitalocean_databasecluster.destination, digitalocean_databasecluster.source, digitalocean_databasedb.source_db]
-///   cluster_id = digitalocean_databasecluster.destination.id
+/// resource "digitalocean_database_online_migration" "foobar" {
+///   depends_on = [digitalocean_database_cluster.destination, digitalocean_database_cluster.source, digitalocean_database_db.source_db]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id = digitalocean_database_cluster.destination.id
 ///   source = {
-///     host     = digitalocean_databasecluster.source.host
-///     db_name  = digitalocean_databasedb.source_db.name
-///     port     = digitalocean_databasecluster.source.port
-///     username = digitalocean_databasecluster.source.user
-///     password = digitalocean_databasecluster.source.password
+///     host     = digitalocean_database_cluster.source.host
+///     db_name  = digitalocean_database_db.source_db.name
+///     port     = digitalocean_database_cluster.source.port
+///     username = digitalocean_database_cluster.source.user
+///     password = digitalocean_database_cluster.source.password
 ///   }
 /// }
 /// ```
@@ -420,12 +432,12 @@ class DatabaseOnlineMigration extends pulumi.CustomResource {
           'digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
     createdAt = registerOutput<String>('createdAt');
     disableSsl = registerOutput<bool?>('disableSsl');
-    ignoreDbs = registerOutput<List<String>?>('ignoreDbs');
+    ignoreDbs = registerOutput<List<String>?>('ignoreDbs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     source = registerOutput<DatabaseOnlineMigrationSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseOnlineMigrationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
   }
@@ -435,11 +447,12 @@ class DatabaseOnlineMigration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseOnlineMigrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseOnlineMigration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -456,7 +469,24 @@ class DatabaseOnlineMigration extends pulumi.CustomResource {
     clusterId = registerOutput<String>('clusterId');
     createdAt = registerOutput<String>('createdAt');
     disableSsl = registerOutput<bool?>('disableSsl');
-    ignoreDbs = registerOutput<List<String>?>('ignoreDbs');
+    ignoreDbs = registerOutput<List<String>?>('ignoreDbs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    source = registerOutput<DatabaseOnlineMigrationSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseOnlineMigrationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseOnlineMigration] resource.
+  DatabaseOnlineMigration.reference(String urn)
+    : super(
+        'digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterId = registerOutput<String>('clusterId');
+    createdAt = registerOutput<String>('createdAt');
+    disableSsl = registerOutput<bool?>('disableSsl');
+    ignoreDbs = registerOutput<List<String>?>('ignoreDbs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     source = registerOutput<DatabaseOnlineMigrationSource>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DatabaseOnlineMigrationSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     status = registerOutput<String>('status');
   }

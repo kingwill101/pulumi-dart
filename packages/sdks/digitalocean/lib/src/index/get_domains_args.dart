@@ -11,10 +11,10 @@ import 'get_domains_sort.dart';
 class GetDomainsArgs {
   /// Filter the results.
   /// The `filter` block is documented below.
-  final pulumi.Input<List<GetDomainsFilter>>? filters;
+  final pulumi.Input<List<GetDomainsFilter>?>? filters;
   /// Sort the results.
   /// The `sort` block is documented below.
-  final pulumi.Input<List<GetDomainsSort>>? sorts;
+  final pulumi.Input<List<GetDomainsSort>?>? sorts;
 
   /// Creates a new [GetDomainsArgs].
   /// [filters] Filter the results.

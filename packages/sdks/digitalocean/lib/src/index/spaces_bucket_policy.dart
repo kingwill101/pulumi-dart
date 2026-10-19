@@ -62,7 +62,7 @@ import 'spaces_bucket_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -70,7 +70,10 @@ import 'spaces_bucket_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_spacesbucket" "static-assets" {
+/// resource "digitalocean_spaces_bucket" "static-assets" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -282,7 +285,7 @@ import 'spaces_bucket_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -290,13 +293,19 @@ import 'spaces_bucket_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_spacesbucket" "foobar" {
+/// resource "digitalocean_spaces_bucket" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "foobar"
 ///   region = "nyc3"
 /// }
-/// resource "digitalocean_spacesbucketpolicy" "foobar" {
-///   region = digitalocean_spacesbucket.foobar.region
-///   bucket = digitalocean_spacesbucket.foobar.name
+/// resource "digitalocean_spaces_bucket_policy" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   region = digitalocean_spaces_bucket.foobar.region
+///   bucket = digitalocean_spaces_bucket.foobar.name
 ///   policy = jsonencode({
 ///     "Version" = "2012-10-17"
 ///     "Statement" = [{
@@ -304,7 +313,7 @@ import 'spaces_bucket_policy_state.dart';
 ///       "Effect"    = "Deny"
 ///       "Principal" = "*"
 ///       "Action"    = "s3:*"
-///       "Resource"  = ["arn:aws:s3:::${digitalocean_spacesbucket.foobar.name}", "arn:aws:s3:::${digitalocean_spacesbucket.foobar.name}/*"]
+///       "Resource"  = ["arn:aws:s3:::${digitalocean_spaces_bucket.foobar.name}", "arn:aws:s3:::${digitalocean_spaces_bucket.foobar.name}/*"]
 ///       "Condition" = {
 ///         "NotIpAddress" = {
 ///           "aws:SourceIp" = "54.240.143.0/24"
@@ -429,7 +438,7 @@ class SpacesBucketPolicy extends pulumi.CustomResource {
           'digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     policy = registerOutput<String>('policy');
@@ -441,11 +450,12 @@ class SpacesBucketPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpacesBucketPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpacesBucketPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -459,6 +469,20 @@ class SpacesBucketPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bucket = registerOutput<String>('bucket');
+    policy = registerOutput<String>('policy');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [SpacesBucketPolicy] resource.
+  SpacesBucketPolicy.reference(String urn)
+    : super(
+        'digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucket = registerOutput<String>('bucket');
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');
