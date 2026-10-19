@@ -8,7 +8,7 @@ import 'environment_profile_user_parameter.dart';
 /// {@endtemplate}
 /// {@macro pulumi_datazone_environment_profile_environment_profile_args_doc}
 class EnvironmentProfileArgs {
-  /// Id of the AWS account being used.
+  /// ID of the AWS account being used.
   final pulumi.Input<String?>? awsAccountId;
   /// Desired region for environment profile.
   final pulumi.Input<String> awsAccountRegion;
@@ -28,7 +28,7 @@ class EnvironmentProfileArgs {
   final pulumi.Input<List<EnvironmentProfileUserParameter>?>? userParameters;
 
   /// Creates a new [EnvironmentProfileArgs].
-  /// [awsAccountId] Id of the AWS account being used.
+  /// [awsAccountId] ID of the AWS account being used.
   /// [awsAccountRegion] Desired region for environment profile.
   /// [description] Description of environment profile.
   /// [domainIdentifier] Domain Identifier for environment profile.

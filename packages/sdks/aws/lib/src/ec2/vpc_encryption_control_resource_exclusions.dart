@@ -11,32 +11,32 @@ import 'vpc_encryption_control_resource_exclusions_vpc_lattice.dart';
 import 'vpc_encryption_control_resource_exclusions_vpc_peering.dart';
 
 class VpcEncryptionControlResourceExclusions {
-  /// `state` and `stateMessage` describing encryption enforcement state for Egress-Only Internet Gateways.
+  /// Encryption enforcement state for Egress-Only Internet Gateways. See `resource_exclusions.egress_only_internet_gateway` below.
   final pulumi.Input<VpcEncryptionControlResourceExclusionsEgressOnlyInternetGateway> egressOnlyInternetGateway;
-  /// `state` and `stateMessage` describing encryption enforcement state for Elastic File System (EFS).
+  /// Encryption enforcement state for Elastic File System (EFS). See `resource_exclusions.elastic_file_system` below.
   final pulumi.Input<VpcEncryptionControlResourceExclusionsElasticFileSystem> elasticFileSystem;
-  /// `state` and `stateMessage` describing encryption enforcement state for Internet Gateways.
+  /// Encryption enforcement state for Internet Gateways. See `resource_exclusions.internet_gateway` below.
   final pulumi.Input<VpcEncryptionControlResourceExclusionsInternetGateway> internetGateway;
-  /// `state` and `stateMessage` describing encryption enforcement state for Lambda Functions.
+  /// Encryption enforcement state for Lambda Functions. See `resource_exclusions.lambda` below.
   final pulumi.Input<VpcEncryptionControlResourceExclusionsLambda> lambda;
-  /// `state` and `stateMessage` describing encryption enforcement state for NAT Gateways.
+  /// Encryption enforcement state for NAT Gateways. See `resource_exclusions.nat_gateway` below.
   final pulumi.Input<VpcEncryptionControlResourceExclusionsNatGateway> natGateway;
-  /// `state` and `stateMessage` describing encryption enforcement state for Virtual Private Gateways.
+  /// Encryption enforcement state for Virtual Private Gateways. See `resource_exclusions.virtual_private_gateway` below.
   final pulumi.Input<VpcEncryptionControlResourceExclusionsVirtualPrivateGateway> virtualPrivateGateway;
-  /// `state` and `stateMessage` describing encryption enforcement state for VPC Lattice.
+  /// Encryption enforcement state for VPC Lattice. See `resource_exclusions.vpc_lattice` below.
   final pulumi.Input<VpcEncryptionControlResourceExclusionsVpcLattice> vpcLattice;
-  /// `state` and `stateMessage` describing encryption enforcement state for peered VPCs.
+  /// Encryption enforcement state for peered VPCs. See `resource_exclusions.vpc_peering` below.
   final pulumi.Input<VpcEncryptionControlResourceExclusionsVpcPeering> vpcPeering;
 
   /// Creates a new [VpcEncryptionControlResourceExclusions].
-  /// [egressOnlyInternetGateway] `state` and `stateMessage` describing encryption enforcement state for Egress-Only Internet Gateways.
-  /// [elasticFileSystem] `state` and `stateMessage` describing encryption enforcement state for Elastic File System (EFS).
-  /// [internetGateway] `state` and `stateMessage` describing encryption enforcement state for Internet Gateways.
-  /// [lambda] `state` and `stateMessage` describing encryption enforcement state for Lambda Functions.
-  /// [natGateway] `state` and `stateMessage` describing encryption enforcement state for NAT Gateways.
-  /// [virtualPrivateGateway] `state` and `stateMessage` describing encryption enforcement state for Virtual Private Gateways.
-  /// [vpcLattice] `state` and `stateMessage` describing encryption enforcement state for VPC Lattice.
-  /// [vpcPeering] `state` and `stateMessage` describing encryption enforcement state for peered VPCs.
+  /// [egressOnlyInternetGateway] Encryption enforcement state for Egress-Only Internet Gateways. See `resource_exclusions.egress_only_internet_gateway` below.
+  /// [elasticFileSystem] Encryption enforcement state for Elastic File System (EFS). See `resource_exclusions.elastic_file_system` below.
+  /// [internetGateway] Encryption enforcement state for Internet Gateways. See `resource_exclusions.internet_gateway` below.
+  /// [lambda] Encryption enforcement state for Lambda Functions. See `resource_exclusions.lambda` below.
+  /// [natGateway] Encryption enforcement state for NAT Gateways. See `resource_exclusions.nat_gateway` below.
+  /// [virtualPrivateGateway] Encryption enforcement state for Virtual Private Gateways. See `resource_exclusions.virtual_private_gateway` below.
+  /// [vpcLattice] Encryption enforcement state for VPC Lattice. See `resource_exclusions.vpc_lattice` below.
+  /// [vpcPeering] Encryption enforcement state for peered VPCs. See `resource_exclusions.vpc_peering` below.
   const VpcEncryptionControlResourceExclusions({
     required this.egressOnlyInternetGateway,
     required this.elasticFileSystem,

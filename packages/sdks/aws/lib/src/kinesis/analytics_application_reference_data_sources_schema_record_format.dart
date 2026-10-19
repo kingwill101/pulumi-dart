@@ -4,15 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'analytics_application_reference_data_sources_schema_record_format_mapping_parameters.dart';
 
 class AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat {
-  /// The Mapping Information for the record format.
-  /// See Mapping Parameters below for more details.
   final pulumi.Input<AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters?>? mappingParameters;
-  /// The type of Record Format. Can be `CSV` or `JSON`.
+  /// Type of Record Format of the reference data source.
   final pulumi.Input<String?>? recordFormatType;
 
   /// Creates a new [AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat].
-  /// [mappingParameters] The Mapping Information for the record format.
-  /// [recordFormatType] The type of Record Format. Can be `CSV` or `JSON`.
+  /// [mappingParameters] Optional.
+  /// [recordFormatType] Type of Record Format of the reference data source.
   const AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat({
     this.mappingParameters,
     this.recordFormatType,

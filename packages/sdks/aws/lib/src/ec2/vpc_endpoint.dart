@@ -1498,57 +1498,55 @@ import 'vpc_endpoint_subnet_configuration.dart';
 class VpcEndpoint extends pulumi.CustomResource {
   /// ARN of the VPC endpoint.
   late final pulumi.Output<String> arn;
-  /// Accept the VPC endpoint (the VPC endpoint and service need to be in the same AWS account).
+  /// Whether to accept the VPC endpoint (the VPC endpoint and service need to be in the same AWS account).
   late final pulumi.Output<bool?> autoAccept;
-  /// The list of CIDR blocks for the exposed AWS service. Applicable for endpoints of type `Gateway`.
+  /// List of CIDR blocks for the exposed AWS service. Applicable for endpoints of type `Gateway`.
   late final pulumi.Output<List<String>> cidrBlocks;
-  /// The DNS entries for the VPC Endpoint. Applicable for endpoints of type `Interface`. DNS blocks are documented below.
+  /// DNS entries for the VPC Endpoint. Applicable for endpoints of type `Interface`. See `dnsEntry` below.
   late final pulumi.Output<List<VpcEndpointDnsEntry>> dnsEntries;
-  /// The DNS options for the endpoint. See dnsOptions below.
+  /// DNS options for the endpoint. See `dnsOptions` below.
   late final pulumi.Output<VpcEndpointDnsOptions> dnsOptions;
-  /// The IP address type for the endpoint. Valid values are `ipv4`, `dualstack`, and `ipv6`.
+  /// IP address type for the endpoint. Valid values are `ipv4`, `dualstack`, and `ipv6`.
   late final pulumi.Output<String> ipAddressType;
   /// One or more network interfaces for the VPC Endpoint. Applicable for endpoints of type `Interface`.
   late final pulumi.Output<List<String>> networkInterfaceIds;
-  /// The ID of the AWS account that owns the VPC endpoint.
+  /// ID of the AWS account that owns the VPC endpoint.
   late final pulumi.Output<String> ownerId;
-  /// A policy to attach to the endpoint that controls access to the service. This is a JSON formatted string. Defaults to full access. All `Gateway` and some `Interface` endpoints support policies - see the [relevant AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints-access.html) for more details.
+  /// Policy to attach to the endpoint that controls access to the service. This is a JSON formatted string. Defaults to full access. All `Gateway` and some `Interface` endpoints support policies - see the [relevant AWS documentation](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints-access.html) for more details. For more information about building AWS IAM policy documents with Pulumi, see the AWS IAM Policy Document Guide.
   late final pulumi.Output<String> policy;
-  /// The prefix list ID of the exposed AWS service. Applicable for endpoints of type `Gateway`.
+  /// Prefix list ID of the exposed AWS service. Applicable for endpoints of type `Gateway`.
   late final pulumi.Output<String> prefixListId;
-  /// Whether or not to associate a private hosted zone with the specified VPC. Applicable for endpoints of type `Interface`. Most users will want this enabled to allow services within the VPC to automatically use the endpoint.
-  /// Defaults to `false`. If `vpcEndpointType` is anything other than `Interface`, changing this value forces a new resource to be created.
+  /// Whether to associate a private hosted zone with the specified VPC. Available for AWS services and AWS Marketplace partner services only. Applicable for endpoints of type `Interface`. Most users will want this enabled to allow services within the VPC to automatically use the endpoint. Defaults to `false`. If `vpcEndpointType` is anything other than `Interface`, changing this value forces a new resource to be created.
   late final pulumi.Output<bool> privateDnsEnabled;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Whether or not the VPC Endpoint is being managed by its service - `true` or `false`.
   late final pulumi.Output<bool> requesterManaged;
-  /// The ARN of a Resource Configuration to connect this VPC Endpoint to. Exactly one of `resourceConfigurationArn`, `serviceName` or `serviceNetworkArn` is required.
+  /// ARN of a Resource Configuration to connect this VPC Endpoint to. Exactly one of `resourceConfigurationArn`, `serviceName` or `serviceNetworkArn` is required.
   late final pulumi.Output<String?> resourceConfigurationArn;
   /// One or more route table IDs. Applicable for endpoints of type `Gateway`.
   late final pulumi.Output<List<String>> routeTableIds;
-  /// The ID of one or more security groups to associate with the network interface. Applicable for endpoints of type `Interface`.
-  /// If no security groups are specified, the VPC's [default security group](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup) is associated with the endpoint.
+  /// ID of one or more security groups to associate with the network interface. Applicable for endpoints of type `Interface`. If no security groups are specified, the VPC's [default security group](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html#DefaultSecurityGroup) is associated with the endpoint.
   late final pulumi.Output<List<String>> securityGroupIds;
-  /// The service name. For AWS services the service name is usually in the form `com.amazonaws.&lt;region&gt;.&lt;service&gt;` (the SageMaker AI Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.&lt;region&gt;.notebook`). Exactly one of `resourceConfigurationArn`, `serviceName` or `serviceNetworkArn` is required.
+  /// Service name. For AWS services the service name is usually in the form `com.amazonaws.&lt;region&gt;.&lt;service&gt;` (the SageMaker AI Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.&lt;region&gt;.notebook`). Exactly one of `resourceConfigurationArn`, `serviceName` or `serviceNetworkArn` is required.
   late final pulumi.Output<String?> serviceName;
-  /// The ARN of a Service Network to connect this VPC Endpoint to. Exactly one of `resourceConfigurationArn`, `serviceName` or `serviceNetworkArn` is required.
+  /// ARN of a Service Network to connect this VPC Endpoint to. Exactly one of `resourceConfigurationArn`, `serviceName` or `serviceNetworkArn` is required.
   late final pulumi.Output<String?> serviceNetworkArn;
-  /// The AWS region of the VPC Endpoint Service. If specified, the VPC endpoint will connect to the service in the provided region. Applicable for endpoints of type `Interface`.
+  /// AWS region of the VPC Endpoint Service. If specified, the VPC endpoint will connect to the service in the provided region. Applicable for endpoints of type `Interface`.
   late final pulumi.Output<String> serviceRegion;
-  /// The state of the VPC endpoint.
+  /// State of the VPC endpoint.
   late final pulumi.Output<String> state;
   /// Subnet configuration for the endpoint, used to select specific IPv4 and/or IPv6 addresses to the endpoint. See subnetConfiguration below.
   late final pulumi.Output<List<VpcEndpointSubnetConfiguration>> subnetConfigurations;
-  /// The ID of one or more subnets in which to create a network interface for the endpoint. Applicable for endpoints of type `GatewayLoadBalancer` and `Interface`. Interface type endpoints cannot function without being assigned to a subnet.
+  /// ID of one or more subnets in which to create a network interface for the endpoint. Applicable for endpoints of type `GatewayLoadBalancer` and `Interface`. Interface type endpoints cannot function without being assigned to a subnet.
   late final pulumi.Output<List<String>> subnetIds;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The VPC endpoint type, `Gateway`, `GatewayLoadBalancer`,`Interface`, `Resource` or `ServiceNetwork`. Defaults to `Gateway`.
+  /// VPC endpoint type, `Gateway`, `GatewayLoadBalancer`,`Interface`, `Resource` or `ServiceNetwork`. Defaults to `Gateway`.
   late final pulumi.Output<String?> vpcEndpointType;
-  /// The ID of the VPC in which the endpoint will be used.
+  /// ID of the VPC in which the endpoint will be used.
   late final pulumi.Output<String> vpcId;
 
   /// Creates a new [VpcEndpoint].
@@ -1563,7 +1561,7 @@ class VpcEndpoint extends pulumi.CustomResource {
           'aws:ec2/vpcEndpoint:VpcEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoAccept = registerOutput<bool?>('autoAccept');

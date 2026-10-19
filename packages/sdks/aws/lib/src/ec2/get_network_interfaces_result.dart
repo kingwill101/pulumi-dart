@@ -8,7 +8,7 @@ class GetNetworkInterfacesResult {
   final List<GetNetworkInterfacesFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// List of all the network interface ids found.
+  /// List of all the network interface IDs found.
   final List<String>? ids;
   final String? region;
   final Map<String, String>? tags;
@@ -16,7 +16,7 @@ class GetNetworkInterfacesResult {
   /// Creates a new [GetNetworkInterfacesResult].
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ids] List of all the network interface ids found.
+  /// [ids] List of all the network interface IDs found.
   /// [region] Optional.
   /// [tags] Optional.
   const GetNetworkInterfacesResult({

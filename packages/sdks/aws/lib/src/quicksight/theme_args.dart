@@ -11,13 +11,13 @@ import 'theme_permission.dart';
 class ThemeArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String?>? awsAccountId;
-  /// The ID of the theme that a custom theme will inherit from. All themes inherit from one of the starting themes defined by Amazon QuickSight. For a list of the starting themes, use ListThemes or choose Themes from within an analysis.
+  /// ID of the theme that a custom theme will inherit from. All themes inherit from one of the starting themes defined by Amazon QuickSight. For a list of the starting themes, use ListThemes or choose Themes from within an analysis.
   final pulumi.Input<String> baseThemeId;
-  /// The theme configuration, which contains the theme display properties. See configuration.
+  /// Theme configuration, which contains the theme display properties. See configuration.
   final pulumi.Input<ThemeConfiguration?>? configuration;
   /// Display name of the theme.
   final pulumi.Input<String?>? name;
-  /// A set of resource permissions on the theme. Maximum of 64 items. See permissions.
+  /// Set of resource permissions on the theme. Maximum of 64 items. See permissions.
   final pulumi.Input<List<ThemePermission>?>? permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -27,19 +27,19 @@ class ThemeArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> themeId;
-  /// A description of the current theme version being created/updated.
+  /// Description of the current theme version being created/updated.
   final pulumi.Input<String?>? versionDescription;
 
   /// Creates a new [ThemeArgs].
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  /// [baseThemeId] The ID of the theme that a custom theme will inherit from. All themes inherit from one of the starting themes defined by Amazon QuickSight. For a list of the starting themes, use ListThemes or choose Themes from within an analysis.
-  /// [configuration] The theme configuration, which contains the theme display properties. See configuration.
+  /// [baseThemeId] ID of the theme that a custom theme will inherit from. All themes inherit from one of the starting themes defined by Amazon QuickSight. For a list of the starting themes, use ListThemes or choose Themes from within an analysis.
+  /// [configuration] Theme configuration, which contains the theme display properties. See configuration.
   /// [name] Display name of the theme.
-  /// [permissions] A set of resource permissions on the theme. Maximum of 64 items. See permissions.
+  /// [permissions] Set of resource permissions on the theme. Maximum of 64 items. See permissions.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [themeId] Identifier of the theme.
-  /// [versionDescription] A description of the current theme version being created/updated.
+  /// [versionDescription] Description of the current theme version being created/updated.
   const ThemeArgs({
     this.awsAccountId,
     required this.baseThemeId,

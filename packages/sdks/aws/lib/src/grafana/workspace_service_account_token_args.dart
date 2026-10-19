@@ -7,23 +7,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_grafana_workspace_service_account_token_workspace_service_account_token_args_doc}
 class WorkspaceServiceAccountTokenArgs {
-  /// A name for the token to create. The name must be unique within the workspace.
+  /// Name for the token to create. The name must be unique within the workspace.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// Sets how long the token will be valid, in seconds. You can set the time up to 30 days in the future.
   final pulumi.Input<int> secondsToLive;
-  /// The ID of the service account for which to create a token.
+  /// ID of the service account for which to create a token.
   final pulumi.Input<String> serviceAccountId;
-  /// The Grafana workspace with which the service account token is associated.
+  /// Grafana workspace with which the service account token is associated.
   final pulumi.Input<String> workspaceId;
 
   /// Creates a new [WorkspaceServiceAccountTokenArgs].
-  /// [name] A name for the token to create. The name must be unique within the workspace.
+  /// [name] Name for the token to create. The name must be unique within the workspace.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secondsToLive] Sets how long the token will be valid, in seconds. You can set the time up to 30 days in the future.
-  /// [serviceAccountId] The ID of the service account for which to create a token.
-  /// [workspaceId] The Grafana workspace with which the service account token is associated.
+  /// [serviceAccountId] ID of the service account for which to create a token.
+  /// [workspaceId] Grafana workspace with which the service account token is associated.
   const WorkspaceServiceAccountTokenArgs({
     this.name,
     this.region,
@@ -46,7 +46,7 @@ class WorkspaceServiceAccountTokenArgs {
     return WorkspaceServiceAccountTokenArgs(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      secondsToLive: pulumi.Input.fromValue((map['secondsToLive'] as num).toInt()),
+      secondsToLive: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['secondsToLive'])),
       serviceAccountId: pulumi.Input.fromValue(map['serviceAccountId'] as String),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );

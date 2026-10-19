@@ -306,7 +306,7 @@ import 'stack_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Cloudformation Stacks using the `name`. For example:
+/// Using `pulumi import`, import CloudFormation Stacks using the `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudformation/stack:Stack stack networking-stack
@@ -362,7 +362,7 @@ class Stack extends pulumi.CustomResource {
           'aws:cloudformation/stack:Stack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     capabilities = registerOutput<List<String>?>('capabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     disableRollback = registerOutput<bool?>('disableRollback');

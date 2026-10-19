@@ -3,20 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MLTransformInputRecordTable {
-  /// A unique identifier for the AWS Glue Data Catalog.
+  /// Unique identifier for the AWS Glue Data Catalog.
   final pulumi.Input<String?>? catalogId;
-  /// The name of the connection to the AWS Glue Data Catalog.
+  /// Name of the connection to the AWS Glue Data Catalog.
   final pulumi.Input<String?>? connectionName;
-  /// A database name in the AWS Glue Data Catalog.
+  /// Database name in the AWS Glue Data Catalog.
   final pulumi.Input<String> databaseName;
-  /// A table name in the AWS Glue Data Catalog.
+  /// Table name in the AWS Glue Data Catalog.
   final pulumi.Input<String> tableName;
 
   /// Creates a new [MLTransformInputRecordTable].
-  /// [catalogId] A unique identifier for the AWS Glue Data Catalog.
-  /// [connectionName] The name of the connection to the AWS Glue Data Catalog.
-  /// [databaseName] A database name in the AWS Glue Data Catalog.
-  /// [tableName] A table name in the AWS Glue Data Catalog.
+  /// [catalogId] Unique identifier for the AWS Glue Data Catalog.
+  /// [connectionName] Name of the connection to the AWS Glue Data Catalog.
+  /// [databaseName] Database name in the AWS Glue Data Catalog.
+  /// [tableName] Table name in the AWS Glue Data Catalog.
   const MLTransformInputRecordTable({
     this.catalogId,
     this.connectionName,

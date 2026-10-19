@@ -7,31 +7,31 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_macie2_member_member_args_doc}
 class MemberArgs {
-  /// The AWS account ID for the account.
+  /// AWS account ID for the account.
   final pulumi.Input<String> accountId;
-  /// The email address for the account.
+  /// Email address for the account.
   final pulumi.Input<String> email;
-  /// Specifies whether to send an email notification to the root user of each account that the invitation will be sent to. This notification is in addition to an alert that the root user receives in AWS Personal Health Dashboard. To send an email notification to the root user of each account, set this value to `true`.
+  /// Whether to send an email notification to the root user of each account that the invitation will be sent to. This notification is in addition to an alert that the root user receives in AWS Personal Health Dashboard. To send an email notification to the root user of each account, set this value to `true`.
   final pulumi.Input<bool?>? invitationDisableEmailNotification;
-  /// A custom message to include in the invitation. Amazon Macie adds this message to the standard content that it sends for an invitation.
+  /// Custom message to include in the invitation. Amazon Macie adds this message to the standard content that it sends for an invitation.
   final pulumi.Input<String?>? invitationMessage;
-  /// Send an invitation to a member
+  /// Whether to send an invitation to a member.
   final pulumi.Input<bool?>? invite;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
+  /// Status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
   final pulumi.Input<String?>? status;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [MemberArgs].
-  /// [accountId] The AWS account ID for the account.
-  /// [email] The email address for the account.
-  /// [invitationDisableEmailNotification] Specifies whether to send an email notification to the root user of each account that the invitation will be sent to. This notification is in addition to an alert that the root user receives in AWS Personal Health Dashboard. To send an email notification to the root user of each account, set this value to `true`.
-  /// [invitationMessage] A custom message to include in the invitation. Amazon Macie adds this message to the standard content that it sends for an invitation.
-  /// [invite] Send an invitation to a member
+  /// [accountId] AWS account ID for the account.
+  /// [email] Email address for the account.
+  /// [invitationDisableEmailNotification] Whether to send an email notification to the root user of each account that the invitation will be sent to. This notification is in addition to an alert that the root user receives in AWS Personal Health Dashboard. To send an email notification to the root user of each account, set this value to `true`.
+  /// [invitationMessage] Custom message to include in the invitation. Amazon Macie adds this message to the standard content that it sends for an invitation.
+  /// [invite] Whether to send an invitation to a member.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [status] Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
+  /// [status] Status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const MemberArgs({
     required this.accountId,

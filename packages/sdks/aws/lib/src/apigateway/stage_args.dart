@@ -9,13 +9,13 @@ import 'stage_canary_settings.dart';
 /// {@endtemplate}
 /// {@macro pulumi_apigateway_stage_stage_args_doc}
 class StageArgs {
-  /// Enables access logs for the API stage. See Access Log Settings below.
+  /// Enables access logs for the API stage. See `accessLogSettings` Block below.
   final pulumi.Input<StageAccessLogSettings?>? accessLogSettings;
   /// Whether a cache cluster is enabled for the stage
   final pulumi.Input<bool?>? cacheClusterEnabled;
   /// Size of the cache cluster for the stage, if enabled. Allowed values include `0.5`, `1.6`, `6.1`, `13.5`, `28.4`, `58.2`, `118` and `237`.
   final pulumi.Input<String?>? cacheClusterSize;
-  /// Configuration settings of a canary deployment. See Canary Settings below.
+  /// Configuration settings of a canary deployment. See `canarySettings` Block below.
   final pulumi.Input<StageCanarySettings?>? canarySettings;
   /// Identifier of a client certificate for the stage.
   final pulumi.Input<String?>? clientCertificateId;
@@ -39,10 +39,10 @@ class StageArgs {
   final pulumi.Input<bool?>? xrayTracingEnabled;
 
   /// Creates a new [StageArgs].
-  /// [accessLogSettings] Enables access logs for the API stage. See Access Log Settings below.
+  /// [accessLogSettings] Enables access logs for the API stage. See `accessLogSettings` Block below.
   /// [cacheClusterEnabled] Whether a cache cluster is enabled for the stage
   /// [cacheClusterSize] Size of the cache cluster for the stage, if enabled. Allowed values include `0.5`, `1.6`, `6.1`, `13.5`, `28.4`, `58.2`, `118` and `237`.
-  /// [canarySettings] Configuration settings of a canary deployment. See Canary Settings below.
+  /// [canarySettings] Configuration settings of a canary deployment. See `canarySettings` Block below.
   /// [clientCertificateId] Identifier of a client certificate for the stage.
   /// [deployment] ID of the deployment that the stage points to
   /// [description] Description of the stage.

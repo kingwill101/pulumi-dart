@@ -113,7 +113,7 @@ import 'domain_state.dart';
 /// - `arn` (String) ARN of the CodeArtifact domain.
 ///
 ///
-/// Using `pulumi import`, import CodeArtifact Domain using the CodeArtifact Domain arn. For example:
+/// Using `pulumi import`, import CodeArtifact Domain using the CodeArtifact Domain ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:codeartifact/domain:Domain example arn:aws:codeartifact:us-west-2:012345678912:domain/tf-acc-test-8593714120730241305
@@ -154,7 +154,7 @@ class Domain extends pulumi.CustomResource {
           'aws:codeartifact/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assetSizeBytes = registerOutput<String>('assetSizeBytes');

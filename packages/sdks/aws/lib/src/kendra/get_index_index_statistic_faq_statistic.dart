@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetIndexIndexStatisticFaqStatistic {
-  /// The total number of FAQ questions and answers contained in the index.
+  /// Total number of FAQ questions and answers contained in the index.
   final pulumi.Input<int> indexedQuestionAnswersCount;
 
   /// Creates a new [GetIndexIndexStatisticFaqStatistic].
-  /// [indexedQuestionAnswersCount] The total number of FAQ questions and answers contained in the index.
+  /// [indexedQuestionAnswersCount] Total number of FAQ questions and answers contained in the index.
   const GetIndexIndexStatisticFaqStatistic({
     required this.indexedQuestionAnswersCount,
   });
@@ -20,7 +20,7 @@ class GetIndexIndexStatisticFaqStatistic {
 
   factory GetIndexIndexStatisticFaqStatistic.fromMap(Map<String, dynamic> map) {
     return GetIndexIndexStatisticFaqStatistic(
-      indexedQuestionAnswersCount: pulumi.Input.fromValue((map['indexedQuestionAnswersCount'] as num).toInt()),
+      indexedQuestionAnswersCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['indexedQuestionAnswersCount'])),
     );
   }
 }

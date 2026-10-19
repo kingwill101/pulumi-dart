@@ -9,16 +9,16 @@ class MultiplexProgramMultiplexProgramSettings {
   final pulumi.Input<String> preferredChannelPipeline;
   /// Unique program number.
   final pulumi.Input<int> programNumber;
-  /// Service Descriptor. See Service Descriptor for more details.
+  /// Service Descriptor. See `serviceDescriptor` Block for more details.
   final pulumi.Input<MultiplexProgramMultiplexProgramSettingsServiceDescriptor?>? serviceDescriptor;
-  /// Video settings. See Video Settings for more details.
+  /// Video settings. See `videoSettings` Block for more details.
   final pulumi.Input<MultiplexProgramMultiplexProgramSettingsVideoSettings?>? videoSettings;
 
   /// Creates a new [MultiplexProgramMultiplexProgramSettings].
   /// [preferredChannelPipeline] Enum for preferred channel pipeline. Options are `CURRENTLY_ACTIVE`, `PIPELINE_0`, or `PIPELINE_1`.
   /// [programNumber] Unique program number.
-  /// [serviceDescriptor] Service Descriptor. See Service Descriptor for more details.
-  /// [videoSettings] Video settings. See Video Settings for more details.
+  /// [serviceDescriptor] Service Descriptor. See `serviceDescriptor` Block for more details.
+  /// [videoSettings] Video settings. See `videoSettings` Block for more details.
   const MultiplexProgramMultiplexProgramSettings({
     required this.preferredChannelPipeline,
     required this.programNumber,
@@ -38,7 +38,7 @@ class MultiplexProgramMultiplexProgramSettings {
   factory MultiplexProgramMultiplexProgramSettings.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramMultiplexProgramSettings(
       preferredChannelPipeline: pulumi.Input.fromValue(map['preferredChannelPipeline'] as String),
-      programNumber: pulumi.Input.fromValue((map['programNumber'] as num).toInt()),
+      programNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['programNumber'])),
       serviceDescriptor: (() { final guardedValue = map['serviceDescriptor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MultiplexProgramMultiplexProgramSettingsServiceDescriptor.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       videoSettings: (() { final guardedValue = map['videoSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MultiplexProgramMultiplexProgramSettingsVideoSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

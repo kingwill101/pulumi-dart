@@ -16,7 +16,7 @@ class JobDefinitionArgs {
   final pulumi.Input<bool?>? deregisterOnNewRevision;
   /// Valid [ECS properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) provided as a single valid JSON document. This parameter is only valid if the `type` parameter is `container`.
   final pulumi.Input<String?>? ecsProperties;
-  /// Valid eks properties. This parameter is only valid if the `type` parameter is `container`.
+  /// Valid EKS properties. This parameter is only valid if the `type` parameter is `container`.
   final pulumi.Input<JobDefinitionEksProperties?>? eksProperties;
   /// Name of the job definition.
   final pulumi.Input<String?>? name;
@@ -47,7 +47,7 @@ class JobDefinitionArgs {
   /// [containerProperties] Valid [container properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) provided as a single valid JSON document. This parameter is only valid if the `type` parameter is `container`.
   /// [deregisterOnNewRevision] When updating a job definition a new revision is created. This parameter determines if the previous version is `deregistered` (`INACTIVE`) or left  `ACTIVE`. Defaults to `true`.
   /// [ecsProperties] Valid [ECS properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) provided as a single valid JSON document. This parameter is only valid if the `type` parameter is `container`.
-  /// [eksProperties] Valid eks properties. This parameter is only valid if the `type` parameter is `container`.
+  /// [eksProperties] Valid EKS properties. This parameter is only valid if the `type` parameter is `container`.
   /// [name] Name of the job definition.
   /// [nodeProperties] Valid [node properties](http://docs.aws.amazon.com/batch/latest/APIReference/API_RegisterJobDefinition.html) provided as a single valid JSON document. This parameter is required if the `type` parameter is `multinode`.
   /// [parameters] Parameter substitution placeholders to set in the job definition.
@@ -110,7 +110,7 @@ class JobDefinitionArgs {
       propagateTags: (() { final guardedValue = map['propagateTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       retryStrategy: (() { final guardedValue = map['retryStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobDefinitionRetryStrategy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      schedulingPriority: (() { final guardedValue = map['schedulingPriority']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      schedulingPriority: (() { final guardedValue = map['schedulingPriority']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobDefinitionTimeout.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),

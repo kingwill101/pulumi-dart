@@ -43,7 +43,7 @@ class GetServiceLoadBalancer {
     return GetServiceLoadBalancer(
       advancedConfigurations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetServiceLoadBalancerAdvancedConfiguration>(map['advancedConfigurations']!, (value) => GetServiceLoadBalancerAdvancedConfiguration.fromMap((value as Map).cast<String, dynamic>()))),
       containerName: pulumi.Input.fromValue(map['containerName'] as String),
-      containerPort: pulumi.Input.fromValue((map['containerPort'] as num).toInt()),
+      containerPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['containerPort'])),
       elbName: pulumi.Input.fromValue(map['elbName'] as String),
       targetGroupArn: pulumi.Input.fromValue(map['targetGroupArn'] as String),
     );

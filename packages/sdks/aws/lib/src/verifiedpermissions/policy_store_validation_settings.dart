@@ -3,13 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyStoreValidationSettings {
-  /// The mode for the validation settings. Valid values: `OFF`, `STRICT`.
-  ///
-  /// The following arguments are optional:
+  /// Mode for the validation settings. Valid values: `OFF`, `STRICT`.
   final pulumi.Input<String> mode;
 
   /// Creates a new [PolicyStoreValidationSettings].
-  /// [mode] The mode for the validation settings. Valid values: `OFF`, `STRICT`.
+  /// [mode] Mode for the validation settings. Valid values: `OFF`, `STRICT`.
   const PolicyStoreValidationSettings({
     required this.mode,
   });

@@ -11,40 +11,40 @@ class FirehoseDeliveryStreamSplunkConfiguration {
   final pulumi.Input<int?>? bufferingInterval;
   /// Buffer incoming data to the specified size, in MBs between 1 to 5, before delivering it to the destination.  The default value is 5MB.
   final pulumi.Input<int?>? bufferingSize;
-  /// The CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
+  /// CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptions?>? cloudwatchLoggingOptions;
-  /// The amount of time, in seconds between 180 and 600, that Kinesis Firehose waits to receive an acknowledgment from Splunk after it sends it data.
+  /// Amount of time, in seconds between 180 and 600, that Kinesis Firehose waits to receive an acknowledgment from Splunk after it sends it data.
   final pulumi.Input<int?>? hecAcknowledgmentTimeout;
-  /// The HTTP Event Collector (HEC) endpoint to which Kinesis Firehose sends your data.
+  /// HTTP Event Collector (HEC) endpoint to which Kinesis Firehose sends your data.
   final pulumi.Input<String> hecEndpoint;
-  /// The HEC endpoint type. Valid values are `Raw` or `Event`. The default value is `Raw`.
+  /// HEC endpoint type. Valid values are `Raw` or `Event`. The default value is `Raw`.
   final pulumi.Input<String?>? hecEndpointType;
-  /// The GUID that you obtain from your Splunk cluster when you create a new HEC endpoint. This value is required if `secretsManagerConfiguration` is not provided.
+  /// GUID that you obtain from your Splunk cluster when you create a new HEC endpoint. This value is required if `secretsManagerConfiguration` is not provided.
   final pulumi.Input<String?>? hecToken;
-  /// The data processing configuration.  See `processingConfiguration` block below for details.
+  /// Data processing configuration.  See `processingConfiguration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration?>? processingConfiguration;
   /// After an initial failure to deliver to Splunk, the total amount of time, in seconds between 0 to 7200, during which Firehose re-attempts delivery (including the first attempt).  After this time has elapsed, the failed documents are written to Amazon S3.  The default value is 300s.  There will be no retry if the value is 0.
   final pulumi.Input<int?>? retryDuration;
-  /// Defines how documents should be delivered to Amazon S3.  Valid values are `FailedEventsOnly` and `AllEvents`.  Default value is `FailedEventsOnly`.
-  /// `secretsManagerConfiguration` - (Optional) The Secrets Manager configuration. See `secretsManagerConfiguration` block below for details. This value is required if `hecToken` is not provided.
+  /// How documents should be delivered to Amazon S3.  Valid values are `FailedEventsOnly` and `AllEvents`.  Default value is `FailedEventsOnly`.
   final pulumi.Input<String?>? s3BackupMode;
-  /// The S3 Configuration. See `s3Configuration` block below for details.
+  /// S3 Configuration. See `s3Configuration` block below for details.
   final pulumi.Input<FirehoseDeliveryStreamSplunkConfigurationS3Configuration> s3Configuration;
+  /// Secrets Manager configuration. See `secretsManagerConfiguration` block below for details. This value is required if `hecToken` is not provided.
   final pulumi.Input<FirehoseDeliveryStreamSplunkConfigurationSecretsManagerConfiguration?>? secretsManagerConfiguration;
 
   /// Creates a new [FirehoseDeliveryStreamSplunkConfiguration].
   /// [bufferingInterval] Buffer incoming data for the specified period of time, in seconds between 0 to 60, before delivering it to the destination.  The default value is 60s.
   /// [bufferingSize] Buffer incoming data to the specified size, in MBs between 1 to 5, before delivering it to the destination.  The default value is 5MB.
-  /// [cloudwatchLoggingOptions] The CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
-  /// [hecAcknowledgmentTimeout] The amount of time, in seconds between 180 and 600, that Kinesis Firehose waits to receive an acknowledgment from Splunk after it sends it data.
-  /// [hecEndpoint] The HTTP Event Collector (HEC) endpoint to which Kinesis Firehose sends your data.
-  /// [hecEndpointType] The HEC endpoint type. Valid values are `Raw` or `Event`. The default value is `Raw`.
-  /// [hecToken] The GUID that you obtain from your Splunk cluster when you create a new HEC endpoint. This value is required if `secretsManagerConfiguration` is not provided.
-  /// [processingConfiguration] The data processing configuration.  See `processingConfiguration` block below for details.
+  /// [cloudwatchLoggingOptions] CloudWatch Logging Options for the delivery stream. See `cloudwatchLoggingOptions` block below for details.
+  /// [hecAcknowledgmentTimeout] Amount of time, in seconds between 180 and 600, that Kinesis Firehose waits to receive an acknowledgment from Splunk after it sends it data.
+  /// [hecEndpoint] HTTP Event Collector (HEC) endpoint to which Kinesis Firehose sends your data.
+  /// [hecEndpointType] HEC endpoint type. Valid values are `Raw` or `Event`. The default value is `Raw`.
+  /// [hecToken] GUID that you obtain from your Splunk cluster when you create a new HEC endpoint. This value is required if `secretsManagerConfiguration` is not provided.
+  /// [processingConfiguration] Data processing configuration.  See `processingConfiguration` block below for details.
   /// [retryDuration] After an initial failure to deliver to Splunk, the total amount of time, in seconds between 0 to 7200, during which Firehose re-attempts delivery (including the first attempt).  After this time has elapsed, the failed documents are written to Amazon S3.  The default value is 300s.  There will be no retry if the value is 0.
-  /// [s3BackupMode] Defines how documents should be delivered to Amazon S3.  Valid values are `FailedEventsOnly` and `AllEvents`.  Default value is `FailedEventsOnly`.
-  /// [s3Configuration] The S3 Configuration. See `s3Configuration` block below for details.
-  /// [secretsManagerConfiguration] Optional.
+  /// [s3BackupMode] How documents should be delivered to Amazon S3.  Valid values are `FailedEventsOnly` and `AllEvents`.  Default value is `FailedEventsOnly`.
+  /// [s3Configuration] S3 Configuration. See `s3Configuration` block below for details.
+  /// [secretsManagerConfiguration] Secrets Manager configuration. See `secretsManagerConfiguration` block below for details. This value is required if `hecToken` is not provided.
   const FirehoseDeliveryStreamSplunkConfiguration({
     this.bufferingInterval,
     this.bufferingSize,
@@ -79,15 +79,15 @@ class FirehoseDeliveryStreamSplunkConfiguration {
 
   factory FirehoseDeliveryStreamSplunkConfiguration.fromMap(Map<String, dynamic> map) {
     return FirehoseDeliveryStreamSplunkConfiguration(
-      bufferingInterval: (() { final guardedValue = map['bufferingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      bufferingSize: (() { final guardedValue = map['bufferingSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bufferingInterval: (() { final guardedValue = map['bufferingInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      bufferingSize: (() { final guardedValue = map['bufferingSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       cloudwatchLoggingOptions: (() { final guardedValue = map['cloudwatchLoggingOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirehoseDeliveryStreamSplunkConfigurationCloudwatchLoggingOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      hecAcknowledgmentTimeout: (() { final guardedValue = map['hecAcknowledgmentTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      hecAcknowledgmentTimeout: (() { final guardedValue = map['hecAcknowledgmentTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       hecEndpoint: pulumi.Input.fromValue(map['hecEndpoint'] as String),
       hecEndpointType: (() { final guardedValue = map['hecEndpointType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       hecToken: (() { final guardedValue = map['hecToken']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       processingConfiguration: (() { final guardedValue = map['processingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      retryDuration: (() { final guardedValue = map['retryDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retryDuration: (() { final guardedValue = map['retryDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       s3BackupMode: (() { final guardedValue = map['s3BackupMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3Configuration: pulumi.Input.fromValue(FirehoseDeliveryStreamSplunkConfigurationS3Configuration.fromMap((map['s3Configuration']! as Map).cast<String, dynamic>())),
       secretsManagerConfiguration: (() { final guardedValue = map['secretsManagerConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FirehoseDeliveryStreamSplunkConfigurationSecretsManagerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

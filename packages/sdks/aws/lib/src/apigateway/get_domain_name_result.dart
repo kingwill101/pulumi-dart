@@ -13,7 +13,7 @@ class GetDomainNameResult {
   final String? certificateName;
   /// Upload date associated with the domain certificate.
   final String? certificateUploadDate;
-  /// Hostname created by Cloudfront to represent the distribution that implements this domain name mapping.
+  /// Hostname created by CloudFront to represent the distribution that implements this domain name mapping.
   final String? cloudfrontDomainName;
   /// For convenience, the hosted zone ID (`Z2FDTNDATAQYW2`) that can be used to create a Route53 alias record for the distribution.
   final String? cloudfrontZoneId;
@@ -46,7 +46,7 @@ class GetDomainNameResult {
   /// [certificateArn] ARN for an AWS-managed certificate that is used by edge-optimized endpoint for this domain name.
   /// [certificateName] Name of the certificate that is used by edge-optimized endpoint for this domain name.
   /// [certificateUploadDate] Upload date associated with the domain certificate.
-  /// [cloudfrontDomainName] Hostname created by Cloudfront to represent the distribution that implements this domain name mapping.
+  /// [cloudfrontDomainName] Hostname created by CloudFront to represent the distribution that implements this domain name mapping.
   /// [cloudfrontZoneId] For convenience, the hosted zone ID (`Z2FDTNDATAQYW2`) that can be used to create a Route53 alias record for the distribution.
   /// [domainName] Optional.
   /// [domainNameId] Optional.

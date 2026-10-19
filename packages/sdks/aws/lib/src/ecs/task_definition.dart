@@ -367,7 +367,7 @@ import 'task_definition_volume.dart';
 /// ```
 ///
 ///
-/// ### With AppMesh Proxy
+/// ### With App Mesh Proxy
 ///
 ///
 /// ```typescript
@@ -1831,7 +1831,7 @@ class TaskDefinition extends pulumi.CustomResource {
   late final pulumi.Output<String> arnWithoutRevision;
   /// List of valid [container definitions](http://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html) provided as a single valid JSON document. Please note that you should only provide values that are part of the container definition document. For a detailed description of what parameters are available, see the [Task Definition Parameters](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html) section from the official [Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide).
   late final pulumi.Output<String> containerDefinitions;
-  /// Number of cpu units used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
+  /// Number of CPU units used by the task. If the `requiresCompatibilities` is `FARGATE` this field is required.
   late final pulumi.Output<String?> cpu;
   /// Enables fault injection and allows for fault injection requests to be accepted from the task's containers. Default is `false`.
   late final pulumi.Output<bool> enableFaultInjection;
@@ -1892,7 +1892,7 @@ class TaskDefinition extends pulumi.CustomResource {
           'aws:ecs/taskDefinition:TaskDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     arnWithoutRevision = registerOutput<String>('arnWithoutRevision');

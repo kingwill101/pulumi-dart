@@ -4,16 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'endpoint_cidr_options_port_range.dart';
 
 class EndpointCidrOptions {
+  /// CIDR block to send traffic to.
   final pulumi.Input<String> cidr;
+  /// Port ranges. See below.
   final pulumi.Input<List<EndpointCidrOptionsPortRange>> portRanges;
+  /// Protocol. Currently `tcp` is supported.
   final pulumi.Input<String?>? protocol;
+  /// IDs of the subnets.
   final pulumi.Input<List<String>?>? subnetIds;
 
   /// Creates a new [EndpointCidrOptions].
-  /// [cidr] Required.
-  /// [portRanges] Required.
-  /// [protocol] Optional.
-  /// [subnetIds] Optional.
+  /// [cidr] CIDR block to send traffic to.
+  /// [portRanges] Port ranges. See below.
+  /// [protocol] Protocol. Currently `tcp` is supported.
+  /// [subnetIds] IDs of the subnets.
   const EndpointCidrOptions({
     required this.cidr,
     required this.portRanges,

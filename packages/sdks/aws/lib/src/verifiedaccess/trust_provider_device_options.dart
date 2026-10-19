@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TrustProviderDeviceOptions {
+  /// ID of the tenant application with the device-identity provider.
   final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [TrustProviderDeviceOptions].
-  /// [tenantId] Optional.
+  /// [tenantId] ID of the tenant application with the device-identity provider.
   const TrustProviderDeviceOptions({
     this.tenantId,
   });

@@ -5,14 +5,14 @@ import 'guardrail_sensitive_information_policy_config_pii_entities_config.dart';
 import 'guardrail_sensitive_information_policy_config_regexes_config.dart';
 
 class GuardrailSensitiveInformationPolicyConfig {
-  /// List of entities. See PII Entities Config for more information.
+  /// List of entities. See `piiEntitiesConfig` Block for more information.
   final pulumi.Input<List<GuardrailSensitiveInformationPolicyConfigPiiEntitiesConfig>?>? piiEntitiesConfigs;
-  /// List of regex. See Regexes Config for more information.
+  /// List of regex. See `regexesConfig` Block for more information.
   final pulumi.Input<List<GuardrailSensitiveInformationPolicyConfigRegexesConfig>?>? regexesConfigs;
 
   /// Creates a new [GuardrailSensitiveInformationPolicyConfig].
-  /// [piiEntitiesConfigs] List of entities. See PII Entities Config for more information.
-  /// [regexesConfigs] List of regex. See Regexes Config for more information.
+  /// [piiEntitiesConfigs] List of entities. See `piiEntitiesConfig` Block for more information.
+  /// [regexesConfigs] List of regex. See `regexesConfig` Block for more information.
   const GuardrailSensitiveInformationPolicyConfig({
     this.piiEntitiesConfigs,
     this.regexesConfigs,

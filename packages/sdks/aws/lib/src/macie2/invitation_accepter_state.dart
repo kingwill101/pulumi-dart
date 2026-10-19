@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering InvitationAccepter resources.
 class InvitationAccepterState {
-  /// The AWS account ID for the account that sent the invitation.
+  /// AWS account ID for the account that sent the invitation.
   final pulumi.Input<String?>? administratorAccountId;
-  /// The unique identifier for the invitation.
+  /// Unique identifier for the invitation.
   final pulumi.Input<String?>? invitationId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [InvitationAccepterState].
-  /// [administratorAccountId] The AWS account ID for the account that sent the invitation.
-  /// [invitationId] The unique identifier for the invitation.
+  /// [administratorAccountId] AWS account ID for the account that sent the invitation.
+  /// [invitationId] Unique identifier for the invitation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const InvitationAccepterState({
     this.administratorAccountId,

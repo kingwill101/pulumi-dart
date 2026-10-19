@@ -31,8 +31,8 @@ class V2PolicyMultiAz {
   factory V2PolicyMultiAz.fromMap(Map<String, dynamic> map) {
     return V2PolicyMultiAz(
       disasterRecoveryApproach: pulumi.Input.fromValue(map['disasterRecoveryApproach'] as String),
-      rpoInMinutes: (() { final guardedValue = map['rpoInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      rtoInMinutes: (() { final guardedValue = map['rtoInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rpoInMinutes: (() { final guardedValue = map['rpoInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      rtoInMinutes: (() { final guardedValue = map['rtoInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

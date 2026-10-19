@@ -7,7 +7,7 @@ class TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Config
   final pulumi.Input<String?>? bucketName;
   /// Encryption option for the customer s3 location. Options are S3 server side encryption with an S3-managed key or KMS managed key. Valid values are `SSE_KMS` and `SSE_S3`.
   final pulumi.Input<String?>? encryptionOption;
-  /// KMS key arn for the customer s3 location when encrypting with a KMS managed key.
+  /// KMS key ARN for the customer s3 location when encrypting with a KMS managed key.
   final pulumi.Input<String?>? kmsKeyId;
   /// Object key prefix for the customer S3 location.
   final pulumi.Input<String?>? objectKeyPrefix;
@@ -15,7 +15,7 @@ class TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Config
   /// Creates a new [TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration].
   /// [bucketName] Bucket name of the customer S3 bucket.
   /// [encryptionOption] Encryption option for the customer s3 location. Options are S3 server side encryption with an S3-managed key or KMS managed key. Valid values are `SSE_KMS` and `SSE_S3`.
-  /// [kmsKeyId] KMS key arn for the customer s3 location when encrypting with a KMS managed key.
+  /// [kmsKeyId] KMS key ARN for the customer s3 location when encrypting with a KMS managed key.
   /// [objectKeyPrefix] Object key prefix for the customer S3 location.
   const TableMagneticStoreWritePropertiesMagneticStoreRejectedDataLocationS3Configuration({
     this.bucketName,

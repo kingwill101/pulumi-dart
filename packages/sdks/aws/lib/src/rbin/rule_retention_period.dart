@@ -26,7 +26,7 @@ class RuleRetentionPeriod {
   factory RuleRetentionPeriod.fromMap(Map<String, dynamic> map) {
     return RuleRetentionPeriod(
       retentionPeriodUnit: pulumi.Input.fromValue(map['retentionPeriodUnit'] as String),
-      retentionPeriodValue: pulumi.Input.fromValue((map['retentionPeriodValue'] as num).toInt()),
+      retentionPeriodValue: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionPeriodValue'])),
     );
   }
 }

@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MemberArgs {
   /// AWS account ID for member account.
   final pulumi.Input<String> accountId;
-  /// The detector ID of the GuardDuty account where you want to create member accounts.
+  /// Detector ID of the GuardDuty account where you want to create member accounts.
   final pulumi.Input<String> detectorId;
   /// Boolean whether an email notification is sent to the accounts. Defaults to `false`.
   final pulumi.Input<bool?>? disableEmailNotification;
@@ -24,7 +24,7 @@ class MemberArgs {
 
   /// Creates a new [MemberArgs].
   /// [accountId] AWS account ID for member account.
-  /// [detectorId] The detector ID of the GuardDuty account where you want to create member accounts.
+  /// [detectorId] Detector ID of the GuardDuty account where you want to create member accounts.
   /// [disableEmailNotification] Boolean whether an email notification is sent to the accounts. Defaults to `false`.
   /// [email] Email address for member account.
   /// [invitationMessage] Message for invitation.

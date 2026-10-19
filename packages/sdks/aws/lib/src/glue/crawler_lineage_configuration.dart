@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CrawlerLineageConfiguration {
-  /// Specifies whether data lineage is enabled for the crawler. Valid values are: `ENABLE` and `DISABLE`. Default value is `DISABLE`.
+  /// Whether data lineage is enabled for the crawler. Valid values are: `ENABLE` and `DISABLE`. Default value is `DISABLE`.
   final pulumi.Input<String?>? crawlerLineageSettings;
 
   /// Creates a new [CrawlerLineageConfiguration].
-  /// [crawlerLineageSettings] Specifies whether data lineage is enabled for the crawler. Valid values are: `ENABLE` and `DISABLE`. Default value is `DISABLE`.
+  /// [crawlerLineageSettings] Whether data lineage is enabled for the crawler. Valid values are: `ENABLE` and `DISABLE`. Default value is `DISABLE`.
   const CrawlerLineageConfiguration({
     this.crawlerLineageSettings,
   });

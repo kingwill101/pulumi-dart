@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class SchemaDefinition {
-  /// A JSON string representation of the schema.
+  /// JSON string representation of the schema.
   final pulumi.Input<String> value;
 
   /// Creates a new [SchemaDefinition].
-  /// [value] A JSON string representation of the schema.
+  /// [value] JSON string representation of the schema.
   const SchemaDefinition({
     required this.value,
   });

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetCloudAutonomousVmClustersCloudAutonomousVmCluster {
   /// ARN for the Exadata infrastructure.
   final pulumi.Input<String> arn;
-  /// Cloud exadata infrastructure id associated with this cloud autonomous VM cluster.
+  /// Cloud exadata infrastructure ID associated with this cloud autonomous VM cluster.
   final pulumi.Input<String> cloudExadataInfrastructureId;
   /// Display name of the Autonomous VM cluster.
   final pulumi.Input<String> displayName;
@@ -22,7 +22,7 @@ class GetCloudAutonomousVmClustersCloudAutonomousVmCluster {
 
   /// Creates a new [GetCloudAutonomousVmClustersCloudAutonomousVmCluster].
   /// [arn] ARN for the Exadata infrastructure.
-  /// [cloudExadataInfrastructureId] Cloud exadata infrastructure id associated with this cloud autonomous VM cluster.
+  /// [cloudExadataInfrastructureId] Cloud exadata infrastructure ID associated with this cloud autonomous VM cluster.
   /// [displayName] Display name of the Autonomous VM cluster.
   /// [id] Unique identifier of the cloud autonomous vm cluster.
   /// [ociResourceAnchorName] Name of the OCI resource anchor associated with this Autonomous VM cluster.

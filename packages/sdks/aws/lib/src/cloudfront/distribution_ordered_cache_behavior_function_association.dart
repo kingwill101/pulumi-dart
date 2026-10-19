@@ -6,6 +6,8 @@ class DistributionOrderedCacheBehaviorFunctionAssociation {
   /// Specific event to trigger this function. Valid values: `viewer-request` or `viewer-response`.
   final pulumi.Input<String> eventType;
   /// ARN of the CloudFront function.
+  ///
+  /// #### `GRPC` config arguments
   final pulumi.Input<String> functionArn;
 
   /// Creates a new [DistributionOrderedCacheBehaviorFunctionAssociation].

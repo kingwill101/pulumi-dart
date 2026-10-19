@@ -130,7 +130,7 @@ import 'domain_name_access_association_state.dart';
 /// - `arn` (String) ARN of the API Gateway domain name access association.
 ///
 ///
-/// Using `pulumi import`, import API Gateway domain name acces associations as using their `arn`. For example:
+/// Using `pulumi import`, import API Gateway domain name access associations as using their `arn`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:apigateway/domainNameAccessAssociation:DomainNameAccessAssociation example arn:aws:apigateway:us-west-2:123456789012:/domainnameaccessassociations/domainname/12qmzgp2.9m7ilski.test+hykg7a12e7/vpcesource/vpce-05de3f8f82740a748
@@ -163,7 +163,7 @@ class DomainNameAccessAssociation extends pulumi.CustomResource {
           'aws:apigateway/domainNameAccessAssociation:DomainNameAccessAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     accessAssociationSource = registerOutput<String>('accessAssociationSource');
     accessAssociationSourceType = registerOutput<String>('accessAssociationSourceType');

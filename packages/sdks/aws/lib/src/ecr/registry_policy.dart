@@ -284,7 +284,7 @@ import 'registry_policy_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import ECR Registry Policy using the registry id. For example:
+/// Using `pulumi import`, import ECR Registry Policy using the registry ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ecr/registryPolicy:RegistryPolicy example 123456789012
@@ -309,7 +309,7 @@ class RegistryPolicy extends pulumi.CustomResource {
           'aws:ecr/registryPolicy:RegistryPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     policy = registerOutput<String>('policy');
     region = registerOutput<String>('region');

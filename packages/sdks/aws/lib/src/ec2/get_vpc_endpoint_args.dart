@@ -20,15 +20,11 @@ class GetVpcEndpointArgs {
   final pulumi.Input<String?>? serviceRegion;
   /// State of the specific VPC Endpoint to retrieve.
   final pulumi.Input<String?>? state;
-  /// Map of tags, each pair of which must exactly match
-  /// a pair on the specific VPC Endpoint to retrieve.
+  /// Map of tags, each pair of which must exactly match a pair on the specific VPC Endpoint to retrieve.
   final pulumi.Input<Map<String, String>?>? tags;
   /// VPC Endpoint type. Valid values are `Interface`, `Gateway`, `GatewayLoadBalancer`, `Resource`, and `ServiceNetwork`.
   final pulumi.Input<String?>? vpcEndpointType;
   /// ID of the VPC in which the specific VPC Endpoint is used.
-  ///
-  /// The arguments of this data source act as filters for querying the available VPC endpoints.
-  /// The given filters must match exactly one VPC endpoint whose data will be exported as attributes.
   final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [GetVpcEndpointArgs].
@@ -38,7 +34,7 @@ class GetVpcEndpointArgs {
   /// [serviceName] Service name of the specific VPC Endpoint to retrieve. For AWS services the service name is usually in the form `com.amazonaws.&lt;region&gt;.&lt;service&gt;` (the SageMaker AI Notebook service is an exception to this rule, the service name is in the form `aws.sagemaker.&lt;region&gt;.notebook`).
   /// [serviceRegion] AWS region of the VPC Endpoint Service. Applicable for endpoints of type `Interface`.
   /// [state] State of the specific VPC Endpoint to retrieve.
-  /// [tags] Map of tags, each pair of which must exactly match
+  /// [tags] Map of tags, each pair of which must exactly match a pair on the specific VPC Endpoint to retrieve.
   /// [vpcEndpointType] VPC Endpoint type. Valid values are `Interface`, `Gateway`, `GatewayLoadBalancer`, `Resource`, and `ServiceNetwork`.
   /// [vpcId] ID of the VPC in which the specific VPC Endpoint is used.
   const GetVpcEndpointArgs({

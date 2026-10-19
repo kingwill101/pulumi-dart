@@ -5,26 +5,26 @@ import 'catalog_table_optimizer_configuration.dart';
 
 /// Input properties used for looking up and filtering CatalogTableOptimizer resources.
 class CatalogTableOptimizerState {
-  /// The Catalog ID of the table.
+  /// Catalog ID of the table.
   final pulumi.Input<String?>? catalogId;
-  /// A configuration block that defines the table optimizer settings. See Configuration for additional details.
+  /// Configuration block that defines the table optimizer settings. See `configuration` Block for additional details.
   final pulumi.Input<CatalogTableOptimizerConfiguration?>? configuration;
-  /// The name of the database in the catalog in which the table resides.
+  /// Name of the database in the catalog in which the table resides.
   final pulumi.Input<String?>? databaseName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The name of the table.
+  /// Name of the table.
   final pulumi.Input<String?>? tableName;
-  /// The type of table optimizer. Valid values are `compaction`, `retention`, and `orphanFileDeletion`.
+  /// Type of table optimizer. Valid values are `compaction`, `retention`, and `orphanFileDeletion`.
   final pulumi.Input<String?>? type;
 
   /// Creates a new [CatalogTableOptimizerState].
-  /// [catalogId] The Catalog ID of the table.
-  /// [configuration] A configuration block that defines the table optimizer settings. See Configuration for additional details.
-  /// [databaseName] The name of the database in the catalog in which the table resides.
+  /// [catalogId] Catalog ID of the table.
+  /// [configuration] Configuration block that defines the table optimizer settings. See `configuration` Block for additional details.
+  /// [databaseName] Name of the database in the catalog in which the table resides.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tableName] The name of the table.
-  /// [type] The type of table optimizer. Valid values are `compaction`, `retention`, and `orphanFileDeletion`.
+  /// [tableName] Name of the table.
+  /// [type] Type of table optimizer. Valid values are `compaction`, `retention`, and `orphanFileDeletion`.
   const CatalogTableOptimizerState({
     this.catalogId,
     this.configuration,

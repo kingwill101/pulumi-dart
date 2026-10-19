@@ -3,9 +3,9 @@ import 'notification_args.dart';
 import 'notification_state.dart';
 import 'notification_type.dart';
 
-/// Provides an AutoScaling Group with Notification support, via SNS Topics. Each of
+/// Provides an Auto Scaling group with Notification support, via SNS Topics. Each of
 /// the `notifications` map to a [Notification Configuration](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_DescribeNotificationConfigurations.html) inside Amazon Web
-/// Services, and are applied to each AutoScaling Group you supply.
+/// Services, and are applied to each Auto Scaling group you supply.
 ///
 /// ## Example Usage
 ///
@@ -249,7 +249,7 @@ import 'notification_type.dart';
 ///       name: barfoo-test
 /// ```
 class Notification extends pulumi.CustomResource {
-  /// List of AutoScaling Group Names
+  /// List of Auto Scaling group Names
   late final pulumi.Output<List<String>> groupNames;
   /// List of Notification Types that trigger
   /// notifications. Acceptable values are documented [in the AWS documentation here](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_NotificationConfiguration.html)
@@ -271,7 +271,7 @@ class Notification extends pulumi.CustomResource {
           'aws:autoscaling/notification:Notification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     groupNames = registerOutput<List<String>>('groupNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     notifications = registerOutput<List<NotificationType>>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NotificationType>(guardedValue, (value) => NotificationType.fromValue(value as String)); });

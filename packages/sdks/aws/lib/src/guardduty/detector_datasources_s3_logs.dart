@@ -3,12 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DetectorDatasourcesS3Logs {
-  /// If true, enables [S3 protection](https://docs.aws.amazon.com/guardduty/latest/ug/s3-protection.html).
-  /// Defaults to `true`.
+  /// If true, enables [S3 protection](https://docs.aws.amazon.com/guardduty/latest/ug/s3-protection.html). Defaults to `true`.
   final pulumi.Input<bool> enable;
 
   /// Creates a new [DetectorDatasourcesS3Logs].
-  /// [enable] If true, enables [S3 protection](https://docs.aws.amazon.com/guardduty/latest/ug/s3-protection.html).
+  /// [enable] If true, enables [S3 protection](https://docs.aws.amazon.com/guardduty/latest/ug/s3-protection.html). Defaults to `true`.
   const DetectorDatasourcesS3Logs({
     required this.enable,
   });

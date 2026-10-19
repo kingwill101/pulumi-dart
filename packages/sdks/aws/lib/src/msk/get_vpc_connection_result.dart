@@ -4,32 +4,32 @@
 /// Result data returned by getVpcConnection.
 class GetVpcConnectionResult {
   final String? arn;
-  /// The authentication type for the client VPC Connection.
+  /// Authentication type for the client VPC Connection.
   final String? authentication;
-  /// The list of subnets in the client VPC.
+  /// List of subnets in the client VPC.
   final List<String>? clientSubnets;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
   final String? region;
-  /// The security groups attached to the ENIs for the broker nodes.
+  /// Security groups attached to the ENIs for the broker nodes.
   final List<String>? securityGroups;
   /// Map of key-value pairs assigned to the VPC Connection.
   final Map<String, String>? tags;
   /// ARN of the cluster.
   final String? targetClusterArn;
-  /// The VPC ID of the remote client.
+  /// VPC ID of the remote client.
   final String? vpcId;
 
   /// Creates a new [GetVpcConnectionResult].
   /// [arn] Optional.
-  /// [authentication] The authentication type for the client VPC Connection.
-  /// [clientSubnets] The list of subnets in the client VPC.
+  /// [authentication] Authentication type for the client VPC Connection.
+  /// [clientSubnets] List of subnets in the client VPC.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Optional.
-  /// [securityGroups] The security groups attached to the ENIs for the broker nodes.
+  /// [securityGroups] Security groups attached to the ENIs for the broker nodes.
   /// [tags] Map of key-value pairs assigned to the VPC Connection.
   /// [targetClusterArn] ARN of the cluster.
-  /// [vpcId] The VPC ID of the remote client.
+  /// [vpcId] VPC ID of the remote client.
   const GetVpcConnectionResult({
     this.arn,
     this.authentication,

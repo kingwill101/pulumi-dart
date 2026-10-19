@@ -56,7 +56,7 @@ class GetServerlessCollectionGroupsCollectionGroupSummary {
       createdDate: pulumi.Input.fromValue(map['createdDate'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      numberOfCollections: pulumi.Input.fromValue((map['numberOfCollections'] as num).toInt()),
+      numberOfCollections: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfCollections'])),
       standbyReplicas: pulumi.Input.fromValue(map['standbyReplicas'] as String),
     );
   }

@@ -205,7 +205,7 @@ class ImageBuilder extends pulumi.CustomResource {
   late final pulumi.Output<List<ImageBuilderAccessEndpoint>?> accessEndpoints;
   /// Version of the AppStream 2.0 agent to use for this image builder.
   late final pulumi.Output<String> appstreamAgentVersion;
-  /// ARN of the appstream image builder.
+  /// ARN of the AppStream image builder.
   late final pulumi.Output<String> arn;
   /// Date and time, in UTC and extended RFC 3339 format, when the image builder was created.
   late final pulumi.Output<String> createdTime;
@@ -252,7 +252,7 @@ class ImageBuilder extends pulumi.CustomResource {
           'aws:appstream/imageBuilder:ImageBuilder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     accessEndpoints = registerOutput<List<ImageBuilderAccessEndpoint>?>('accessEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ImageBuilderAccessEndpoint>(guardedValue, (value) => ImageBuilderAccessEndpoint.fromMap((value as Map).cast<String, dynamic>())); });
     appstreamAgentVersion = registerOutput<String>('appstreamAgentVersion');

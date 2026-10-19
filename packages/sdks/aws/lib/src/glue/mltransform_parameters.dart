@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'mltransform_parameters_find_matches_parameters.dart';
 
 class MLTransformParameters {
-  /// The parameters for the find matches algorithm. see Find Matches Parameters.
+  /// Parameters for the find matches algorithm. See `findMatchesParameters`.
   final pulumi.Input<MLTransformParametersFindMatchesParameters> findMatchesParameters;
-  /// The type of machine learning transform. For information about the types of machine learning transforms, see [Creating Machine Learning Transforms](http://docs.aws.amazon.com/glue/latest/dg/add-job-machine-learning-transform.html).
+  /// Type of machine learning transform. For information about the types of machine learning transforms, see [Creating Machine Learning Transforms](http://docs.aws.amazon.com/glue/latest/dg/add-job-machine-learning-transform.html).
   final pulumi.Input<String> transformType;
 
   /// Creates a new [MLTransformParameters].
-  /// [findMatchesParameters] The parameters for the find matches algorithm. see Find Matches Parameters.
-  /// [transformType] The type of machine learning transform. For information about the types of machine learning transforms, see [Creating Machine Learning Transforms](http://docs.aws.amazon.com/glue/latest/dg/add-job-machine-learning-transform.html).
+  /// [findMatchesParameters] Parameters for the find matches algorithm. See `findMatchesParameters`.
+  /// [transformType] Type of machine learning transform. For information about the types of machine learning transforms, see [Creating Machine Learning Transforms](http://docs.aws.amazon.com/glue/latest/dg/add-job-machine-learning-transform.html).
   const MLTransformParameters({
     required this.findMatchesParameters,
     required this.transformType,

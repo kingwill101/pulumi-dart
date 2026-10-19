@@ -12,35 +12,35 @@ import 'channel_encoder_settings_timecode_config.dart';
 import 'channel_encoder_settings_video_description.dart';
 
 class ChannelEncoderSettings {
-  /// Audio descriptions for the channel. See Audio Descriptions for more details.
+  /// Audio descriptions for the channel. See `audioDescriptions` Block for details.
   final pulumi.Input<List<ChannelEncoderSettingsAudioDescription>?>? audioDescriptions;
-  /// Settings for ad avail blanking. See Avail Blanking for more details.
+  /// Settings for ad avail blanking. See `availBlanking` Block for details.
   final pulumi.Input<ChannelEncoderSettingsAvailBlanking?>? availBlanking;
-  /// Caption Descriptions. See Caption Descriptions for more details.
+  /// Caption descriptions for the channel. See `captionDescriptions` Block for details.
   final pulumi.Input<List<ChannelEncoderSettingsCaptionDescription>?>? captionDescriptions;
-  /// Configuration settings that apply to the event as a whole. See Global Configuration for more details.
+  /// Configuration settings that apply to the event as a whole. See `globalConfiguration` Block for details.
   final pulumi.Input<ChannelEncoderSettingsGlobalConfiguration?>? globalConfiguration;
-  /// Settings for motion graphics. See Motion Graphics Configuration for more details.
+  /// Settings for motion graphics. See `motionGraphicsConfiguration` Block for details.
   final pulumi.Input<ChannelEncoderSettingsMotionGraphicsConfiguration?>? motionGraphicsConfiguration;
-  /// Nielsen configuration settings. See Nielsen Configuration for more details.
+  /// Nielsen configuration settings. See `nielsenConfiguration` Block for details.
   final pulumi.Input<ChannelEncoderSettingsNielsenConfiguration?>? nielsenConfiguration;
-  /// Output groups for the channel. See Output Groups for more details.
+  /// Output groups for the channel. See `outputGroups` Block for details.
   final pulumi.Input<List<ChannelEncoderSettingsOutputGroup>> outputGroups;
-  /// Contains settings used to acquire and adjust timecode information from inputs. See Timecode Config for more details.
+  /// Settings used to acquire and adjust timecode information from inputs. See `timecodeConfig` Block for details.
   final pulumi.Input<ChannelEncoderSettingsTimecodeConfig> timecodeConfig;
-  /// Video Descriptions. See Video Descriptions for more details.
+  /// Video descriptions for the channel. See `videoDescriptions` Block for details.
   final pulumi.Input<List<ChannelEncoderSettingsVideoDescription>?>? videoDescriptions;
 
   /// Creates a new [ChannelEncoderSettings].
-  /// [audioDescriptions] Audio descriptions for the channel. See Audio Descriptions for more details.
-  /// [availBlanking] Settings for ad avail blanking. See Avail Blanking for more details.
-  /// [captionDescriptions] Caption Descriptions. See Caption Descriptions for more details.
-  /// [globalConfiguration] Configuration settings that apply to the event as a whole. See Global Configuration for more details.
-  /// [motionGraphicsConfiguration] Settings for motion graphics. See Motion Graphics Configuration for more details.
-  /// [nielsenConfiguration] Nielsen configuration settings. See Nielsen Configuration for more details.
-  /// [outputGroups] Output groups for the channel. See Output Groups for more details.
-  /// [timecodeConfig] Contains settings used to acquire and adjust timecode information from inputs. See Timecode Config for more details.
-  /// [videoDescriptions] Video Descriptions. See Video Descriptions for more details.
+  /// [audioDescriptions] Audio descriptions for the channel. See `audioDescriptions` Block for details.
+  /// [availBlanking] Settings for ad avail blanking. See `availBlanking` Block for details.
+  /// [captionDescriptions] Caption descriptions for the channel. See `captionDescriptions` Block for details.
+  /// [globalConfiguration] Configuration settings that apply to the event as a whole. See `globalConfiguration` Block for details.
+  /// [motionGraphicsConfiguration] Settings for motion graphics. See `motionGraphicsConfiguration` Block for details.
+  /// [nielsenConfiguration] Nielsen configuration settings. See `nielsenConfiguration` Block for details.
+  /// [outputGroups] Output groups for the channel. See `outputGroups` Block for details.
+  /// [timecodeConfig] Settings used to acquire and adjust timecode information from inputs. See `timecodeConfig` Block for details.
+  /// [videoDescriptions] Video descriptions for the channel. See `videoDescriptions` Block for details.
   const ChannelEncoderSettings({
     this.audioDescriptions,
     this.availBlanking,

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeSourceParametersKinesisStreamParametersDeadLetterConfig {
-  /// ARN of this pipe.
+  /// ARN of the Amazon SQS queue specified as the target for the dead-letter queue.
   final pulumi.Input<String?>? arn;
 
   /// Creates a new [PipeSourceParametersKinesisStreamParametersDeadLetterConfig].
-  /// [arn] ARN of this pipe.
+  /// [arn] ARN of the Amazon SQS queue specified as the target for the dead-letter queue.
   const PipeSourceParametersKinesisStreamParametersDeadLetterConfig({
     this.arn,
   });

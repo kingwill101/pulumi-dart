@@ -5,17 +5,17 @@ import 'policy_definition_template_linked_principal.dart';
 import 'policy_definition_template_linked_resource.dart';
 
 class PolicyDefinitionTemplateLinked {
-  /// The ID of the template.
+  /// ID of the template.
   final pulumi.Input<String> policyTemplateId;
-  /// The principal of the template linked policy.
+  /// Principal of the template linked policy. See Principal below.
   final pulumi.Input<PolicyDefinitionTemplateLinkedPrincipal?>? principal;
-  /// The resource of the template linked policy.
+  /// Resource of the template linked policy. See Resource below.
   final pulumi.Input<PolicyDefinitionTemplateLinkedResource?>? resource;
 
   /// Creates a new [PolicyDefinitionTemplateLinked].
-  /// [policyTemplateId] The ID of the template.
-  /// [principal] The principal of the template linked policy.
-  /// [resource] The resource of the template linked policy.
+  /// [policyTemplateId] ID of the template.
+  /// [principal] Principal of the template linked policy. See Principal below.
+  /// [resource] Resource of the template linked policy. See Resource below.
   const PolicyDefinitionTemplateLinked({
     required this.policyTemplateId,
     this.principal,

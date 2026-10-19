@@ -177,34 +177,35 @@ import 'member_state.dart';
 /// $ pulumi import aws:macie2/member:Member example 123456789012
 /// ```
 class Member extends pulumi.CustomResource {
-  /// The AWS account ID for the account.
+  /// AWS account ID for the account.
   late final pulumi.Output<String> accountId;
-  /// The AWS account ID for the administrator account.
+  /// AWS account ID for the administrator account.
   late final pulumi.Output<String> administratorAccountId;
   /// ARN of the account.
   late final pulumi.Output<String> arn;
-  /// The email address for the account.
+  /// Email address for the account.
   late final pulumi.Output<String> email;
-  /// Specifies whether to send an email notification to the root user of each account that the invitation will be sent to. This notification is in addition to an alert that the root user receives in AWS Personal Health Dashboard. To send an email notification to the root user of each account, set this value to `true`.
+  /// Whether to send an email notification to the root user of each account that the invitation will be sent to. This notification is in addition to an alert that the root user receives in AWS Personal Health Dashboard. To send an email notification to the root user of each account, set this value to `true`.
   late final pulumi.Output<bool?> invitationDisableEmailNotification;
-  /// A custom message to include in the invitation. Amazon Macie adds this message to the standard content that it sends for an invitation.
+  /// Custom message to include in the invitation. Amazon Macie adds this message to the standard content that it sends for an invitation.
   late final pulumi.Output<String?> invitationMessage;
-  /// Send an invitation to a member
+  /// Whether to send an invitation to a member.
   late final pulumi.Output<bool> invite;
-  /// The date and time, in UTC and extended RFC 3339 format, when an Amazon Macie membership invitation was last sent to the account. This value is null if a Macie invitation hasn't been sent to the account.
+  /// Date and time, in UTC and extended RFC 3339 format, when an Amazon Macie membership invitation was last sent to the account. This value is null if a Macie invitation hasn't been sent to the account.
   late final pulumi.Output<String> invitedAt;
+  /// AWS account ID for the master account.
   late final pulumi.Output<String> masterAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The current status of the relationship between the account and the administrator account.
+  /// Current status of the relationship between the account and the administrator account.
   late final pulumi.Output<String> relationshipStatus;
-  /// Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
+  /// Status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
   late final pulumi.Output<String> status;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The date and time, in UTC and extended RFC 3339 format, of the most recent change to the status of the relationship between the account and the administrator account.
+  /// Date and time, in UTC and extended RFC 3339 format, of the most recent change to the status of the relationship between the account and the administrator account.
   late final pulumi.Output<String> updatedAt;
 
   /// Creates a new [Member].
@@ -219,7 +220,7 @@ class Member extends pulumi.CustomResource {
           'aws:macie2/member:Member',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     administratorAccountId = registerOutput<String>('administratorAccountId');

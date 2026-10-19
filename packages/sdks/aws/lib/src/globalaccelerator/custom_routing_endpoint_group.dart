@@ -200,11 +200,11 @@ import 'custom_routing_endpoint_group_state.dart';
 class CustomRoutingEndpointGroup extends pulumi.CustomResource {
   /// ARN of the custom routing endpoint group.
   late final pulumi.Output<String> arn;
-  /// The port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. Fields documented below.
+  /// Port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. See `destinationConfiguration` below.
   late final pulumi.Output<List<CustomRoutingEndpointGroupDestinationConfiguration>> destinationConfigurations;
-  /// The list of endpoint objects. Fields documented below.
+  /// Endpoint objects. See `endpointConfiguration` below.
   late final pulumi.Output<List<CustomRoutingEndpointGroupEndpointConfiguration>?> endpointConfigurations;
-  /// The name of the AWS Region where the custom routing endpoint group is located.
+  /// AWS Region where the custom routing endpoint group is located.
   late final pulumi.Output<String> endpointGroupRegion;
   /// ARN of the custom routing listener.
   late final pulumi.Output<String> listenerArn;
@@ -221,7 +221,7 @@ class CustomRoutingEndpointGroup extends pulumi.CustomResource {
           'aws:globalaccelerator/customRoutingEndpointGroup:CustomRoutingEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destinationConfigurations = registerOutput<List<CustomRoutingEndpointGroupDestinationConfiguration>>('destinationConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomRoutingEndpointGroupDestinationConfiguration>(guardedValue, (value) => CustomRoutingEndpointGroupDestinationConfiguration.fromMap((value as Map).cast<String, dynamic>())); });

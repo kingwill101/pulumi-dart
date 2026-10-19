@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration {
-  /// The ARN of the lambda to use for custom transformation.
+  /// ARN of the Lambda to use for custom transformation.
   final pulumi.Input<String> lambdaArn;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration].
-  /// [lambdaArn] The ARN of the lambda to use for custom transformation.
+  /// [lambdaArn] ARN of the Lambda to use for custom transformation.
   const AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration({
     required this.lambdaArn,
   });

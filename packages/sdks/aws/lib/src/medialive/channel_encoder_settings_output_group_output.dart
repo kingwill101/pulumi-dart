@@ -4,23 +4,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_output_group_output_output_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutput {
-  /// The names of the audio descriptions used as audio sources for the output.
+  /// Names of the audio descriptions used as audio sources for the output.
   final pulumi.Input<List<String>?>? audioDescriptionNames;
-  /// The names of the caption descriptions used as caption sources for the output.
+  /// Names of the caption descriptions used as caption sources for the output.
   final pulumi.Input<List<String>?>? captionDescriptionNames;
-  /// The name used to identify an output.
+  /// Name used to identify an output.
   final pulumi.Input<String?>? outputName;
-  /// Settings for output. See Output Settings for more details.
+  /// Settings for the output. See `outputSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettings> outputSettings;
-  /// The name of the video description used as video source for the output.
+  /// Name of the video description used as the video source for the output.
   final pulumi.Input<String?>? videoDescriptionName;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutput].
-  /// [audioDescriptionNames] The names of the audio descriptions used as audio sources for the output.
-  /// [captionDescriptionNames] The names of the caption descriptions used as caption sources for the output.
-  /// [outputName] The name used to identify an output.
-  /// [outputSettings] Settings for output. See Output Settings for more details.
-  /// [videoDescriptionName] The name of the video description used as video source for the output.
+  /// [audioDescriptionNames] Names of the audio descriptions used as audio sources for the output.
+  /// [captionDescriptionNames] Names of the caption descriptions used as caption sources for the output.
+  /// [outputName] Name used to identify an output.
+  /// [outputSettings] Settings for the output. See `outputSettings` Block for details.
+  /// [videoDescriptionName] Name of the video description used as the video source for the output.
   const ChannelEncoderSettingsOutputGroupOutput({
     this.audioDescriptionNames,
     this.captionDescriptionNames,

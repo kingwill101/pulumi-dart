@@ -619,7 +619,7 @@ import 's3_endpoint_state.dart';
 /// $ pulumi import aws:dms/s3Endpoint:S3Endpoint example example-dms-endpoint-tf
 /// ```
 class S3Endpoint extends pulumi.CustomResource {
-  /// Whether to add column name information to the .csv output file. Default is `false`.
+  /// Whether to add column name information to the `.csv` output file. Default is `false`.
   late final pulumi.Output<bool?> addColumnName;
   /// Whether to add padding. Default is `false`. (Ignored for source endpoints.)
   late final pulumi.Output<bool?> addTrailingPaddingCharacter;
@@ -629,9 +629,9 @@ class S3Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<String> bucketName;
   /// Predefined (canned) access control list for objects created in an S3 bucket. Valid values include `none`, `private`, `public-read`, `public-read-write`, `authenticated-read`, `aws-exec-read`, `bucket-owner-read`, and `bucket-owner-full-control`. Default is `none`.
   late final pulumi.Output<String?> cannedAclForObjects;
-  /// Whether to write insert and update operations to .csv or .parquet output files. Default is `false`.
+  /// Whether to write insert and update operations to `.csv` or .parquet output files. Default is `false`.
   late final pulumi.Output<bool?> cdcInsertsAndUpdates;
-  /// Whether to write insert operations to .csv or .parquet output files. Default is `false`.
+  /// Whether to write insert operations to `.csv` or .parquet output files. Default is `false`.
   late final pulumi.Output<bool?> cdcInsertsOnly;
   /// Maximum length of the interval, defined in seconds, after which to output a file to Amazon S3. (AWS default is `60`.)
   late final pulumi.Output<int?> cdcMaxBatchInterval;
@@ -645,7 +645,7 @@ class S3Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<String?> compressionType;
   /// Delimiter used to separate columns in the source files. Default is `,`.
   late final pulumi.Output<String?> csvDelimiter;
-  /// Only applies if output files for a CDC load are written in .csv format. If `useCsvNoSupValue` is set to `true`, string to use for all columns not included in the supplemental log. If you do not specify a string value, DMS uses the null value for these columns regardless of `useCsvNoSupValue`. (Ignored for source endpoints.)
+  /// Only applies if output files for a CDC load are written in `.csv` format. If `useCsvNoSupValue` is set to `true`, string to use for all columns not included in the supplemental log. If you do not specify a string value, DMS uses the null value for these columns regardless of `useCsvNoSupValue`. (Ignored for source endpoints.)
   late final pulumi.Output<String?> csvNoSupValue;
   /// String to as null when writing to the target. (AWS default is `NULL`.)
   late final pulumi.Output<String?> csvNullValue;
@@ -671,7 +671,7 @@ class S3Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<bool?> enableStatistics;
   /// Type of encoding to use. Value values are `rle-dictionary`, `plain`, and `plain-dictionary`. (AWS default is `rle-dictionary`.)
   late final pulumi.Output<String?> encodingType;
-  /// Server-side encryption mode that you want to encrypt your .csv or .parquet object files copied to S3. Valid values are `SSE_S3` and `SSE_KMS`. (AWS default is `SSE_S3`.) (Ignored for source endpoints -- only `SSE_S3` is valid.)
+  /// Server-side encryption mode that you want to encrypt your `.csv` or .parquet object files copied to S3. Valid values are `SSE_S3` and `SSE_KMS`. (AWS default is `SSE_S3`.) (Ignored for source endpoints -- only `SSE_S3` is valid.)
   late final pulumi.Output<String?> encryptionMode;
   /// ARN for the endpoint.
   late final pulumi.Output<String> endpointArn;
@@ -689,13 +689,13 @@ class S3Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<String?> externalTableDefinition;
   /// Whether to integrate AWS Glue Data Catalog with an Amazon S3 target. See [Using AWS Glue Data Catalog with an Amazon S3 target for AWS DMS](https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.GlueCatalog) for more information. Default is `false`.
   late final pulumi.Output<bool?> glueCatalogGeneration;
-  /// When this value is set to `1`, DMS ignores the first row header in a .csv file. (AWS default is `0`.)
+  /// When this value is set to `1`, DMS ignores the first row header in a `.csv` file. (AWS default is `0`.)
   late final pulumi.Output<int?> ignoreHeaderRows;
-  /// Whether to enable a full load to write INSERT operations to the .csv output files only to indicate how the rows were added to the source database. Default is `false`.
+  /// Whether to enable a full load to write INSERT operations to the `.csv` output files only to indicate how the rows were added to the source database. Default is `false`.
   late final pulumi.Output<bool?> includeOpForFullLoad;
   /// ARN for the KMS key that will be used to encrypt the connection parameters. If you do not specify a value for `kmsKeyArn`, then AWS DMS will use your default encryption key. AWS KMS creates the default encryption key for your AWS account. Your AWS account has a different default encryption key for each AWS region.
   late final pulumi.Output<String> kmsKeyArn;
-  /// Maximum size (in KB) of any .csv file to be created while migrating to an S3 target during full load. Valid values are from `1` to `1048576`. (AWS default is 1 GB, _i.e._, `1048576`.)
+  /// Maximum size (in KB) of any `.csv` file to be created while migrating to an S3 target during full load. Valid values are from `1` to `1048576`. (AWS default is 1 GB, _i.e._, `1048576`.)
   late final pulumi.Output<int?> maxFileSize;
   /// Specifies the precision of any TIMESTAMP column values written to an S3 object file in .parquet format. Default is `false`. (Ignored for source endpoints.)
   late final pulumi.Output<bool?> parquetTimestampInMillisecond;
@@ -742,7 +742,7 @@ class S3Endpoint extends pulumi.CustomResource {
           'aws:dms/s3Endpoint:S3Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     addColumnName = registerOutput<bool?>('addColumnName');
     addTrailingPaddingCharacter = registerOutput<bool?>('addTrailingPaddingCharacter');

@@ -8,7 +8,7 @@ class GetNatGatewaysResult {
   final List<GetNatGatewaysFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// List of all the NAT gateway ids found.
+  /// List of all the NAT gateway IDs found.
   final List<String>? ids;
   final String? region;
   final Map<String, String>? tags;
@@ -17,7 +17,7 @@ class GetNatGatewaysResult {
   /// Creates a new [GetNatGatewaysResult].
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ids] List of all the NAT gateway ids found.
+  /// [ids] List of all the NAT gateway IDs found.
   /// [region] Optional.
   /// [tags] Optional.
   /// [vpcId] Optional.

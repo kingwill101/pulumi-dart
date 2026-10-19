@@ -4,12 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_plan_rule_copy_action_lifecycle.dart';
 
 class GetPlanRuleCopyAction {
+  /// ARN of the destination backup vault for the copied backup.
   final pulumi.Input<String> destinationVaultArn;
+  /// Lifecycle defining when a recovery point transitions to cold storage and when it expires. See below.
   final pulumi.Input<List<GetPlanRuleCopyActionLifecycle>> lifecycles;
 
   /// Creates a new [GetPlanRuleCopyAction].
-  /// [destinationVaultArn] Required.
-  /// [lifecycles] Required.
+  /// [destinationVaultArn] ARN of the destination backup vault for the copied backup.
+  /// [lifecycles] Lifecycle defining when a recovery point transitions to cold storage and when it expires. See below.
   const GetPlanRuleCopyAction({
     required this.destinationVaultArn,
     required this.lifecycles,

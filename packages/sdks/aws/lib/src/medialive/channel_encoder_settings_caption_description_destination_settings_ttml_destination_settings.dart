@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings {
-  /// This field is not currently supported and will not affect the output styling. Leave the default value.
+  /// Whether to include style information when writing the TTML captions. This field is not currently supported and does not affect the output styling. Leave the default value.
   final pulumi.Input<String> styleControl;
 
   /// Creates a new [ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings].
-  /// [styleControl] This field is not currently supported and will not affect the output styling. Leave the default value.
+  /// [styleControl] Whether to include style information when writing the TTML captions. This field is not currently supported and does not affect the output styling. Leave the default value.
   const ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings({
     required this.styleControl,
   });

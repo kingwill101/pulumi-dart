@@ -4,12 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client_authentication_sasl.dart';
 
 class GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication {
+  /// SASL authentication configuration for VPC connectivity. See `sasl` Block for details.
   final pulumi.Input<List<GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl>> sasls;
+  /// Whether TLS authentication is enabled for VPC connectivity.
   final pulumi.Input<bool> tls;
 
   /// Creates a new [GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication].
-  /// [sasls] Required.
-  /// [tls] Required.
+  /// [sasls] SASL authentication configuration for VPC connectivity. See `sasl` Block for details.
+  /// [tls] Whether TLS authentication is enabled for VPC connectivity.
   const GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication({
     required this.sasls,
     required this.tls,

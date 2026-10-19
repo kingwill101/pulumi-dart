@@ -17,7 +17,7 @@ class GetInvocationArgs {
   final pulumi.Input<String?>? qualifier;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Tenant Id to serve invocations from specified tenant.
+  /// Tenant ID to serve invocations from specified tenant.
   final pulumi.Input<String?>? tenantId;
 
   /// Creates a new [GetInvocationArgs].
@@ -25,7 +25,7 @@ class GetInvocationArgs {
   /// [input] String in JSON format that is passed as payload to the Lambda function.
   /// [qualifier] Qualifier (a.k.a version) of the Lambda function. Defaults to `$LATEST`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tenantId] Tenant Id to serve invocations from specified tenant.
+  /// [tenantId] Tenant ID to serve invocations from specified tenant.
   const GetInvocationArgs({
     required this.functionName,
     required this.input,

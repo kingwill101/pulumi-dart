@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class StreamStreamModeDetails {
-  /// Specifies the capacity mode of the stream. Must be either `PROVISIONED` or `ON_DEMAND`.
+  /// Capacity mode of the stream. Must be either `PROVISIONED` or `ON_DEMAND`.
   final pulumi.Input<String> streamMode;
 
   /// Creates a new [StreamStreamModeDetails].
-  /// [streamMode] Specifies the capacity mode of the stream. Must be either `PROVISIONED` or `ON_DEMAND`.
+  /// [streamMode] Capacity mode of the stream. Must be either `PROVISIONED` or `ON_DEMAND`.
   const StreamStreamModeDetails({
     required this.streamMode,
   });

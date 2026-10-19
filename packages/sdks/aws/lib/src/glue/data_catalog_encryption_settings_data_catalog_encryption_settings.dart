@@ -5,14 +5,14 @@ import 'data_catalog_encryption_settings_data_catalog_encryption_settings_connec
 import 'data_catalog_encryption_settings_data_catalog_encryption_settings_encryption_at_rest.dart';
 
 class DataCatalogEncryptionSettingsDataCatalogEncryptionSettings {
-  /// When connection password protection is enabled, the Data Catalog uses a customer-provided key to encrypt the password as part of CreateConnection or UpdateConnection and store it in the ENCRYPTED_PASSWORD field in the connection properties. You can enable catalog encryption or only password encryption. see Connection Password Encryption.
+  /// When connection password protection is enabled, the Data Catalog uses a customer-provided key to encrypt the password as part of CreateConnection or UpdateConnection and store it in the ENCRYPTED_PASSWORD field in the connection properties. You can enable catalog encryption or only password encryption. see `connectionPasswordEncryption` Block.
   final pulumi.Input<DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsConnectionPasswordEncryption> connectionPasswordEncryption;
-  /// Specifies the encryption-at-rest configuration for the Data Catalog. see Encryption At Rest.
+  /// Encryption-at-rest configuration for the Data Catalog. see `encryptionAtRest` Block.
   final pulumi.Input<DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest> encryptionAtRest;
 
   /// Creates a new [DataCatalogEncryptionSettingsDataCatalogEncryptionSettings].
-  /// [connectionPasswordEncryption] When connection password protection is enabled, the Data Catalog uses a customer-provided key to encrypt the password as part of CreateConnection or UpdateConnection and store it in the ENCRYPTED_PASSWORD field in the connection properties. You can enable catalog encryption or only password encryption. see Connection Password Encryption.
-  /// [encryptionAtRest] Specifies the encryption-at-rest configuration for the Data Catalog. see Encryption At Rest.
+  /// [connectionPasswordEncryption] When connection password protection is enabled, the Data Catalog uses a customer-provided key to encrypt the password as part of CreateConnection or UpdateConnection and store it in the ENCRYPTED_PASSWORD field in the connection properties. You can enable catalog encryption or only password encryption. see `connectionPasswordEncryption` Block.
+  /// [encryptionAtRest] Encryption-at-rest configuration for the Data Catalog. see `encryptionAtRest` Block.
   const DataCatalogEncryptionSettingsDataCatalogEncryptionSettings({
     required this.connectionPasswordEncryption,
     required this.encryptionAtRest,

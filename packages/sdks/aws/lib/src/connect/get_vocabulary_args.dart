@@ -15,7 +15,7 @@ class GetVocabularyArgs {
   final pulumi.Input<String?>? region;
   /// A map of tags to assign to the Vocabulary.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// Returns information on a specific Vocabulary by Vocabulary id
+  /// Returns information on a specific Vocabulary by Vocabulary ID
   ///
   /// &gt; **NOTE:** `instanceId` and one of either `name` or `vocabularyId` is required.
   final pulumi.Input<String?>? vocabularyId;
@@ -25,7 +25,7 @@ class GetVocabularyArgs {
   /// [name] Returns information on a specific Vocabulary by name
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the Vocabulary.
-  /// [vocabularyId] Returns information on a specific Vocabulary by Vocabulary id
+  /// [vocabularyId] Returns information on a specific Vocabulary by Vocabulary ID
   const GetVocabularyArgs({
     required this.instanceId,
     this.name,

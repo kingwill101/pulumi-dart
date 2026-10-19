@@ -8,7 +8,7 @@ class GetVpcsResult {
   final List<GetVpcsFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// List of all the VPC Ids found.
+  /// List of all the VPC IDs found.
   final List<String>? ids;
   final String? region;
   final Map<String, String>? tags;
@@ -16,7 +16,7 @@ class GetVpcsResult {
   /// Creates a new [GetVpcsResult].
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ids] List of all the VPC Ids found.
+  /// [ids] List of all the VPC IDs found.
   /// [region] Optional.
   /// [tags] Optional.
   const GetVpcsResult({

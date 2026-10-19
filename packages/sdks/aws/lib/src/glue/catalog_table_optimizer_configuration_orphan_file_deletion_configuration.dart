@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'catalog_table_optimizer_configuration_orphan_file_deletion_configuration_iceberg_configuration.dart';
 
 class CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration {
-  /// The configuration for an Iceberg orphan file deletion optimizer.
+  /// Configuration for an Iceberg orphan file deletion optimizer. See `configuration.orphan_file_deletion_configuration.iceberg_configuration` Block for additional details.
   final pulumi.Input<CatalogTableOptimizerConfigurationOrphanFileDeletionConfigurationIcebergConfiguration?>? icebergConfiguration;
 
   /// Creates a new [CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration].
-  /// [icebergConfiguration] The configuration for an Iceberg orphan file deletion optimizer.
+  /// [icebergConfiguration] Configuration for an Iceberg orphan file deletion optimizer. See `configuration.orphan_file_deletion_configuration.iceberg_configuration` Block for additional details.
   const CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration({
     this.icebergConfiguration,
   });

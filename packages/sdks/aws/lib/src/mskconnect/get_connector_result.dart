@@ -11,7 +11,7 @@ class GetConnectorResult {
   final String? id;
   final String? name;
   final String? region;
-  /// A map of tags assigned to the resource.
+  /// Map of tags assigned to the resource.
   final Map<String, String>? tags;
   /// Current version of the connector.
   final String? version;
@@ -22,7 +22,7 @@ class GetConnectorResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Optional.
   /// [region] Optional.
-  /// [tags] A map of tags assigned to the resource.
+  /// [tags] Map of tags assigned to the resource.
   /// [version] Current version of the connector.
   const GetConnectorResult({
     this.arn,

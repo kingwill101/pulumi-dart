@@ -6,12 +6,12 @@ import 'multiplex_program_multiplex_program_settings_video_settings_statmux_sett
 class MultiplexProgramMultiplexProgramSettingsVideoSettings {
   /// Constant bitrate value.
   final pulumi.Input<int?>? constantBitrate;
-  /// Statmux settings. See Statmux Settings for more details.
+  /// Statmux settings. See `statmuxSettings` Block for more details.
   final pulumi.Input<MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings?>? statmuxSettings;
 
   /// Creates a new [MultiplexProgramMultiplexProgramSettingsVideoSettings].
   /// [constantBitrate] Constant bitrate value.
-  /// [statmuxSettings] Statmux settings. See Statmux Settings for more details.
+  /// [statmuxSettings] Statmux settings. See `statmuxSettings` Block for more details.
   const MultiplexProgramMultiplexProgramSettingsVideoSettings({
     this.constantBitrate,
     this.statmuxSettings,
@@ -26,7 +26,7 @@ class MultiplexProgramMultiplexProgramSettingsVideoSettings {
 
   factory MultiplexProgramMultiplexProgramSettingsVideoSettings.fromMap(Map<String, dynamic> map) {
     return MultiplexProgramMultiplexProgramSettingsVideoSettings(
-      constantBitrate: (() { final guardedValue = map['constantBitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      constantBitrate: (() { final guardedValue = map['constantBitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       statmuxSettings: (() { final guardedValue = map['statmuxSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MultiplexProgramMultiplexProgramSettingsVideoSettingsStatmuxSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'replicator_log_delivery_replicator_log_delivery.dart';
 
 class ReplicatorLogDelivery {
-  /// Configuration block for replicator log delivery. Detailed below.
+  /// Configuration block for replicator log delivery. See `replicatorLogDelivery` Block below.
   final pulumi.Input<ReplicatorLogDeliveryReplicatorLogDelivery?>? replicatorLogDelivery;
 
   /// Creates a new [ReplicatorLogDelivery].
-  /// [replicatorLogDelivery] Configuration block for replicator log delivery. Detailed below.
+  /// [replicatorLogDelivery] Configuration block for replicator log delivery. See `replicatorLogDelivery` Block below.
   const ReplicatorLogDelivery({
     this.replicatorLogDelivery,
   });

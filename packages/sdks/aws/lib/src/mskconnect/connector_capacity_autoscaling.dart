@@ -5,23 +5,23 @@ import 'connector_capacity_autoscaling_scale_in_policy.dart';
 import 'connector_capacity_autoscaling_scale_out_policy.dart';
 
 class ConnectorCapacityAutoscaling {
-  /// The maximum number of workers allocated to the connector.
+  /// Maximum number of workers allocated to the connector.
   final pulumi.Input<int> maxWorkerCount;
-  /// The number of microcontroller units (MCUs) allocated to each connector worker. Valid values: `1`, `2`, `4`, `8`. The default value is `1`.
+  /// Number of microcontroller units (MCUs) allocated to each connector worker. Valid values: `1`, `2`, `4`, `8`. The default value is `1`.
   final pulumi.Input<int?>? mcuCount;
-  /// The minimum number of workers allocated to the connector.
+  /// Minimum number of workers allocated to the connector.
   final pulumi.Input<int> minWorkerCount;
-  /// The scale-in policy for the connector. See `scaleInPolicy` Block for details.
+  /// Scale-in policy for the connector. See `scaleInPolicy` Block for details.
   final pulumi.Input<ConnectorCapacityAutoscalingScaleInPolicy?>? scaleInPolicy;
-  /// The scale-out policy for the connector. See `scaleOutPolicy` Block for details.
+  /// Scale-out policy for the connector. See `scaleOutPolicy` Block for details.
   final pulumi.Input<ConnectorCapacityAutoscalingScaleOutPolicy?>? scaleOutPolicy;
 
   /// Creates a new [ConnectorCapacityAutoscaling].
-  /// [maxWorkerCount] The maximum number of workers allocated to the connector.
-  /// [mcuCount] The number of microcontroller units (MCUs) allocated to each connector worker. Valid values: `1`, `2`, `4`, `8`. The default value is `1`.
-  /// [minWorkerCount] The minimum number of workers allocated to the connector.
-  /// [scaleInPolicy] The scale-in policy for the connector. See `scaleInPolicy` Block for details.
-  /// [scaleOutPolicy] The scale-out policy for the connector. See `scaleOutPolicy` Block for details.
+  /// [maxWorkerCount] Maximum number of workers allocated to the connector.
+  /// [mcuCount] Number of microcontroller units (MCUs) allocated to each connector worker. Valid values: `1`, `2`, `4`, `8`. The default value is `1`.
+  /// [minWorkerCount] Minimum number of workers allocated to the connector.
+  /// [scaleInPolicy] Scale-in policy for the connector. See `scaleInPolicy` Block for details.
+  /// [scaleOutPolicy] Scale-out policy for the connector. See `scaleOutPolicy` Block for details.
   const ConnectorCapacityAutoscaling({
     required this.maxWorkerCount,
     this.mcuCount,
@@ -42,9 +42,9 @@ class ConnectorCapacityAutoscaling {
 
   factory ConnectorCapacityAutoscaling.fromMap(Map<String, dynamic> map) {
     return ConnectorCapacityAutoscaling(
-      maxWorkerCount: pulumi.Input.fromValue((map['maxWorkerCount'] as num).toInt()),
-      mcuCount: (() { final guardedValue = map['mcuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minWorkerCount: pulumi.Input.fromValue((map['minWorkerCount'] as num).toInt()),
+      maxWorkerCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxWorkerCount'])),
+      mcuCount: (() { final guardedValue = map['mcuCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minWorkerCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minWorkerCount'])),
       scaleInPolicy: (() { final guardedValue = map['scaleInPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectorCapacityAutoscalingScaleInPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       scaleOutPolicy: (() { final guardedValue = map['scaleOutPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ConnectorCapacityAutoscalingScaleOutPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

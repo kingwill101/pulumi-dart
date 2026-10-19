@@ -15,15 +15,19 @@ class AgentcoreWorkloadIdentityArgs {
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
+  /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AgentcoreWorkloadIdentityArgs].
   /// [allowedResourceOauth2ReturnUrls] Set of allowed OAuth2 return URLs for resources associated with this workload identity. These URLs are used as valid redirect targets during OAuth2 authentication flows.
   /// [name] Name of the workload identity. Must be 3-255 characters and contain only alphanumeric characters, hyphens, periods, and underscores.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const AgentcoreWorkloadIdentityArgs({
     this.allowedResourceOauth2ReturnUrls,
     this.name,
     this.region,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
@@ -31,6 +35,7 @@ class AgentcoreWorkloadIdentityArgs {
       'allowedResourceOauth2ReturnUrls': ?allowedResourceOauth2ReturnUrls,
       'name': ?name,
       'region': ?region,
+      'tags': ?tags,
     };
   }
 
@@ -39,6 +44,7 @@ class AgentcoreWorkloadIdentityArgs {
       allowedResourceOauth2ReturnUrls: (() { final guardedValue = map['allowedResourceOauth2ReturnUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }

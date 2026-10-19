@@ -8,9 +8,9 @@ class HsmState {
   final pulumi.Input<String?>? availabilityZone;
   /// The ID of Cloud HSM v2 cluster to which HSM will be added.
   final pulumi.Input<String?>? clusterId;
-  /// The id of the ENI interface allocated for HSM module.
+  /// The ID of the ENI interface allocated for HSM module.
   final pulumi.Input<String?>? hsmEniId;
-  /// The id of the HSM module.
+  /// The ID of the HSM module.
   final pulumi.Input<String?>? hsmId;
   /// The state of the HSM module.
   final pulumi.Input<String?>? hsmState;
@@ -26,8 +26,8 @@ class HsmState {
   /// Creates a new [HsmState].
   /// [availabilityZone] The IDs of AZ in which HSM module will be located. Conflicts with `subnetId`.
   /// [clusterId] The ID of Cloud HSM v2 cluster to which HSM will be added.
-  /// [hsmEniId] The id of the ENI interface allocated for HSM module.
-  /// [hsmId] The id of the HSM module.
+  /// [hsmEniId] The ID of the ENI interface allocated for HSM module.
+  /// [hsmId] The ID of the HSM module.
   /// [hsmState] The state of the HSM module.
   /// [ipAddress] The IP address of HSM module. Must be within the CIDR of selected subnet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

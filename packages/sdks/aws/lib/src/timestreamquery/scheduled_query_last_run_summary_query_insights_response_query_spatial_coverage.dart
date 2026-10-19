@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'scheduled_query_last_run_summary_query_insights_response_query_spatial_coverage_maxis.dart';
 
 class ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage {
-  /// Insights into the most sub-optimal performing table on the temporal axis:
+  /// Insights into the most sub-optimal performing table on the temporal axis. See `recently_failed_runs.query_insights_response.query_temporal_range.max` Block for details.
   final pulumi.Input<List<ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverageMaxis>?>? maxes;
 
   /// Creates a new [ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage].
-  /// [maxes] Insights into the most sub-optimal performing table on the temporal axis:
+  /// [maxes] Insights into the most sub-optimal performing table on the temporal axis. See `recently_failed_runs.query_insights_response.query_temporal_range.max` Block for details.
   const ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage({
     this.maxes,
   });

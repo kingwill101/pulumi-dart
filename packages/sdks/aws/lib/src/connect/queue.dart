@@ -510,7 +510,7 @@ class Queue extends pulumi.CustomResource {
   late final pulumi.Output<QueueOutboundCallerConfig?> outboundCallerConfig;
   /// The identifier for the Queue.
   late final pulumi.Output<String> queueId;
-  /// Specifies a list of quick connects ids that determine the quick connects available to agents who are working the queue.
+  /// Specifies a list of quick connects IDs that determine the quick connects available to agents who are working the queue.
   late final pulumi.Output<List<String>?> quickConnectIds;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -533,7 +533,7 @@ class Queue extends pulumi.CustomResource {
           'aws:connect/queue:Queue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

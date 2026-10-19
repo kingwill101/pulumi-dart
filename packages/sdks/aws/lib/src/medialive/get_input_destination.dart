@@ -4,16 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_input_destination_vpc.dart';
 
 class GetInputDestination {
+  /// IP address.
   final pulumi.Input<String> ip;
+  /// Port.
   final pulumi.Input<String> port;
+  /// URL where the stream is pulled from.
   final pulumi.Input<String> url;
+  /// VPC settings. See `destinations.vpc` Block for more details.
   final pulumi.Input<List<GetInputDestinationVpc>> vpcs;
 
   /// Creates a new [GetInputDestination].
-  /// [ip] Required.
-  /// [port] Required.
-  /// [url] Required.
-  /// [vpcs] Required.
+  /// [ip] IP address.
+  /// [port] Port.
+  /// [url] URL where the stream is pulled from.
+  /// [vpcs] VPC settings. See `destinations.vpc` Block for more details.
   const GetInputDestination({
     required this.ip,
     required this.port,

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'serverless_cluster_client_authentication_sasl_iam.dart';
 
 class ServerlessClusterClientAuthenticationSasl {
-  /// Details for client authentication using IAM. See below.
+  /// Details for client authentication using IAM. See `iam` Block below.
   final pulumi.Input<ServerlessClusterClientAuthenticationSaslIam> iam;
 
   /// Creates a new [ServerlessClusterClientAuthenticationSasl].
-  /// [iam] Details for client authentication using IAM. See below.
+  /// [iam] Details for client authentication using IAM. See `iam` Block below.
   const ServerlessClusterClientAuthenticationSasl({
     required this.iam,
   });

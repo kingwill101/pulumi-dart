@@ -21,7 +21,7 @@ import 'launch_template_secondary_interface.dart';
 import 'launch_template_state.dart';
 import 'launch_template_tag_specification.dart';
 
-/// Provides an EC2 launch template resource. Can be used to create instances or auto scaling groups.
+/// Provides an EC2 launch template resource. Can be used to create instances or Auto Scaling groups.
 ///
 /// #### Optional
 ///
@@ -138,7 +138,7 @@ class LaunchTemplate extends pulumi.CustomResource {
           'aws:ec2/launchTemplate:LaunchTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     blockDeviceMappings = registerOutput<List<LaunchTemplateBlockDeviceMapping>?>('blockDeviceMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LaunchTemplateBlockDeviceMapping>(guardedValue, (value) => LaunchTemplateBlockDeviceMapping.fromMap((value as Map).cast<String, dynamic>())); });

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_output_group_output_output_settings_archive_output_settings_container_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings {
-  /// Settings specific to the container type of the file. See Container Settings for more details.
+  /// Settings specific to the container type of the file. See `archive_output_settings.container_settings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettingsContainerSettings?>? containerSettings;
   /// Output file extension.
   final pulumi.Input<String?>? extension;
@@ -12,7 +12,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
   final pulumi.Input<String?>? nameModifier;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings].
-  /// [containerSettings] Settings specific to the container type of the file. See Container Settings for more details.
+  /// [containerSettings] Settings specific to the container type of the file. See `archive_output_settings.container_settings` Block for details.
   /// [extension] Output file extension.
   /// [nameModifier] String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
   const ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings({

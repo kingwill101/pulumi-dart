@@ -186,9 +186,9 @@ import 'data_catalog_encryption_settings_state.dart';
 /// $ pulumi import aws:glue/dataCatalogEncryptionSettings:DataCatalogEncryptionSettings example 123456789012
 /// ```
 class DataCatalogEncryptionSettings extends pulumi.CustomResource {
-  /// The ID of the Data Catalog to set the security configuration for. If none is provided, the AWS account ID is used by default.
+  /// ID of the Data Catalog to set the security configuration for. If none is provided, the AWS account ID is used by default.
   late final pulumi.Output<String> catalogId;
-  /// The security configuration to set. see Data Catalog Encryption Settings.
+  /// Security configuration to set. see `dataCatalogEncryptionSettings` Block.
   late final pulumi.Output<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings> dataCatalogEncryptionSettings;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -205,7 +205,7 @@ class DataCatalogEncryptionSettings extends pulumi.CustomResource {
           'aws:glue/dataCatalogEncryptionSettings:DataCatalogEncryptionSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     dataCatalogEncryptionSettings = registerOutput<DataCatalogEncryptionSettingsDataCatalogEncryptionSettings>('dataCatalogEncryptionSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataCatalogEncryptionSettingsDataCatalogEncryptionSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

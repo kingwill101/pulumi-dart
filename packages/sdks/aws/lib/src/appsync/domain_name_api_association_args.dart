@@ -9,14 +9,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DomainNameApiAssociationArgs {
   /// API ID.
   final pulumi.Input<String> apiId;
-  /// Appsync domain name.
+  /// AppSync domain name.
   final pulumi.Input<String> domainName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [DomainNameApiAssociationArgs].
   /// [apiId] API ID.
-  /// [domainName] Appsync domain name.
+  /// [domainName] AppSync domain name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const DomainNameApiAssociationArgs({
     required this.apiId,

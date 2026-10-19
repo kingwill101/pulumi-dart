@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupInsightsConfiguration {
-  /// Specifies whether insights are enabled.
+  /// Whether insights are enabled.
   final pulumi.Input<bool> insightsEnabled;
-  /// Specifies whether insight notifications are enabled.
+  /// Whether insight notifications are enabled.
   final pulumi.Input<bool?>? notificationsEnabled;
 
   /// Creates a new [GroupInsightsConfiguration].
-  /// [insightsEnabled] Specifies whether insights are enabled.
-  /// [notificationsEnabled] Specifies whether insight notifications are enabled.
+  /// [insightsEnabled] Whether insights are enabled.
+  /// [notificationsEnabled] Whether insight notifications are enabled.
   const GroupInsightsConfiguration({
     required this.insightsEnabled,
     this.notificationsEnabled,

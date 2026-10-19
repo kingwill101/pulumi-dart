@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput {
-  /// The ARN of the destination delivery stream to write to.
+  /// ARN of the destination delivery stream to write to.
   final pulumi.Input<String> resourceArn;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput].
-  /// [resourceArn] The ARN of the destination delivery stream to write to.
+  /// [resourceArn] ARN of the destination delivery stream to write to.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput({
     required this.resourceArn,
   });

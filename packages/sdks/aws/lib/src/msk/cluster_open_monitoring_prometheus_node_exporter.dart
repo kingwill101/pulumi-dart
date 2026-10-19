@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClusterOpenMonitoringPrometheusNodeExporter {
-  /// Indicates whether you want to enable or disable the Node Exporter.
+  /// Whether to enable or disable the Node Exporter.
   final pulumi.Input<bool> enabledInBroker;
 
   /// Creates a new [ClusterOpenMonitoringPrometheusNodeExporter].
-  /// [enabledInBroker] Indicates whether you want to enable or disable the Node Exporter.
+  /// [enabledInBroker] Whether to enable or disable the Node Exporter.
   const ClusterOpenMonitoringPrometheusNodeExporter({
     required this.enabledInBroker,
   });

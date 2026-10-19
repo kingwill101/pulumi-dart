@@ -14,9 +14,9 @@ class EventSubscriptionState {
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// SNS topic arn to send events on.
+  /// SNS topic ARN to send events on.
   final pulumi.Input<String?>? snsTopicArn;
-  /// Ids of sources to listen to. If you don't specify a value, notifications are provided for all sources.
+  /// IDs of sources to listen to. If you don't specify a value, notifications are provided for all sources.
   final pulumi.Input<List<String>?>? sourceIds;
   /// Type of source for events. Valid values: `replication-instance` or `replication-task`
   final pulumi.Input<String?>? sourceType;
@@ -31,8 +31,8 @@ class EventSubscriptionState {
   /// [eventCategories] List of event categories to listen for, see `DescribeEventCategories` for a canonical list.
   /// [name] Name of event subscription.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [snsTopicArn] SNS topic arn to send events on.
-  /// [sourceIds] Ids of sources to listen to. If you don't specify a value, notifications are provided for all sources.
+  /// [snsTopicArn] SNS topic ARN to send events on.
+  /// [sourceIds] IDs of sources to listen to. If you don't specify a value, notifications are provided for all sources.
   /// [sourceType] Type of source for events. Valid values: `replication-instance` or `replication-task`
   /// [tags] Map of resource tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.

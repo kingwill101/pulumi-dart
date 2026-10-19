@@ -73,7 +73,7 @@ class LicenseConfigurationState {
     return LicenseConfigurationState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      licenseCount: (() { final guardedValue = map['licenseCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      licenseCount: (() { final guardedValue = map['licenseCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       licenseCountHardLimit: (() { final guardedValue = map['licenseCountHardLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       licenseCountingType: (() { final guardedValue = map['licenseCountingType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       licenseRules: (() { final guardedValue = map['licenseRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

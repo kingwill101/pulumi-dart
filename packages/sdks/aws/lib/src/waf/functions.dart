@@ -10,7 +10,7 @@ import 'get_subscribed_rule_group_result.dart';
 import 'get_web_acl_args.dart';
 import 'get_web_acl_result.dart';
 
-/// `aws.waf.IpSet` Retrieves a WAF IP Set Resource Id.
+/// `aws.waf.IpSet` Retrieves a WAF IP Set Resource ID.
 ///
 /// ## Example Usage
 ///
@@ -139,7 +139,7 @@ pulumi.Output<GetIpsetResult> getIpsetOutput(
   ).apply(GetIpsetResult.fromMap);
 }
 
-/// `aws.waf.RateBasedRule` Retrieves a WAF Rate Based Rule Resource Id.
+/// `aws.waf.RateBasedRule` Retrieves a WAF Rate Based Rule Resource ID.
 ///
 /// ## Example Usage
 ///
@@ -268,7 +268,7 @@ pulumi.Output<GetRateBasedRuleResult> getRateBasedRuleOutput(
   ).apply(GetRateBasedRuleResult.fromMap);
 }
 
-/// `aws.waf.Rule` Retrieves a WAF Rule Resource Id.
+/// `aws.waf.Rule` Retrieves a WAF Rule Resource ID.
 ///
 /// ## Example Usage
 ///
@@ -654,7 +654,7 @@ pulumi.Output<GetSubscribedRuleGroupResult> getSubscribedRuleGroupOutput(
   ).apply(GetSubscribedRuleGroupResult.fromMap);
 }
 
-/// `aws.waf.WebAcl` Retrieves a WAF Web ACL Resource Id.
+/// `aws.waf.WebAcl` Retrieves a WAF Web ACL Resource ID.
 ///
 /// ## Example Usage
 ///

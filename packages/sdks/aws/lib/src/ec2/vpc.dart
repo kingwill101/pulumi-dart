@@ -547,7 +547,7 @@ class Vpc extends pulumi.CustomResource {
   late final pulumi.Output<String> defaultRouteTableId;
   /// ID of the security group created by default on VPC creation.
   late final pulumi.Output<String> defaultSecurityGroupId;
-  /// DHCP options id of the desired VPC.
+  /// DHCP options ID of the desired VPC.
   late final pulumi.Output<String> dhcpOptionsId;
   /// Whether to enable DNS hostnames in the VPC. Defaults to `false`.
   late final pulumi.Output<bool> enableDnsHostnames;
@@ -594,7 +594,7 @@ class Vpc extends pulumi.CustomResource {
           'aws:ec2/vpc:Vpc',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     assignGeneratedIpv6CidrBlock = registerOutput<bool?>('assignGeneratedIpv6CidrBlock');

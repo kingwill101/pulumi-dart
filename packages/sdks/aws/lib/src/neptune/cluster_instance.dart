@@ -254,7 +254,7 @@ class ClusterInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> endpoint;
   /// The name of the database engine to be used for the neptune instance. Defaults to `neptune`. Valid Values: `neptune`.
   late final pulumi.Output<String?> engine;
-  /// The neptune engine version. Currently configuring this argumnet has no effect.
+  /// The neptune engine version. Currently configuring this argument has no effect.
   late final pulumi.Output<String> engineVersion;
   /// The identifier for the neptune instance, if omitted, this provider will assign a random, unique identifier.
   late final pulumi.Output<String> identifier;
@@ -306,7 +306,7 @@ class ClusterInstance extends pulumi.CustomResource {
           'aws:neptune/clusterInstance:ClusterInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     address = registerOutput<String>('address');
     applyImmediately = registerOutput<bool>('applyImmediately');

@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters {
-  /// The column delimiter. For example, in a CSV format, a comma (`,`) is the typical column delimiter.
+  /// Column delimiter. For example, in a CSV format, a comma (`,`) is the typical column delimiter.
   final pulumi.Input<String> recordColumnDelimiter;
-  /// The row delimiter. For example, in a CSV format, `\n` is the typical row delimiter.
+  /// Row delimiter. For example, in a CSV format, `\n` is the typical row delimiter.
   final pulumi.Input<String> recordRowDelimiter;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters].
-  /// [recordColumnDelimiter] The column delimiter. For example, in a CSV format, a comma (`,`) is the typical column delimiter.
-  /// [recordRowDelimiter] The row delimiter. For example, in a CSV format, `\n` is the typical row delimiter.
+  /// [recordColumnDelimiter] Column delimiter. For example, in a CSV format, a comma (`,`) is the typical column delimiter.
+  /// [recordRowDelimiter] Row delimiter. For example, in a CSV format, `\n` is the typical row delimiter.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters({
     required this.recordColumnDelimiter,
     required this.recordRowDelimiter,

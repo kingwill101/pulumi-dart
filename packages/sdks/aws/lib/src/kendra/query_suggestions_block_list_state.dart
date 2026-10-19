@@ -7,6 +7,7 @@ import 'query_suggestions_block_list_source_s3_path.dart';
 class QuerySuggestionsBlockListState {
   /// ARN of the block list.
   final pulumi.Input<String?>? arn;
+  /// Description for a block list.
   final pulumi.Input<String?>? description;
   /// Identifier of the index for a block list.
   final pulumi.Input<String?>? indexId;
@@ -14,28 +15,32 @@ class QuerySuggestionsBlockListState {
   final pulumi.Input<String?>? name;
   /// Unique identifier of the block list.
   final pulumi.Input<String?>? querySuggestionsBlockListId;
-  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// IAM (Identity and Access Management) role used to access the block list text file in S3.
   final pulumi.Input<String?>? roleArn;
-  /// S3 path where your block list text file is located. See details below.
+  /// S3 path where your block list text file is located. See `sourceS3Path` Block for details.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<QuerySuggestionsBlockListSourceS3Path?>? sourceS3Path;
+  /// Current status of the block list.
   final pulumi.Input<String?>? status;
+  /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider's defaultTags configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [QuerySuggestionsBlockListState].
   /// [arn] ARN of the block list.
-  /// [description] Optional.
+  /// [description] Description for a block list.
   /// [indexId] Identifier of the index for a block list.
   /// [name] Name for the block list.
   /// [querySuggestionsBlockListId] Unique identifier of the block list.
-  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the [provider configuration](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#aws-configuration-reference).
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] IAM (Identity and Access Management) role used to access the block list text file in S3.
-  /// [sourceS3Path] S3 path where your block list text file is located. See details below.
-  /// [status] Optional.
-  /// [tags] Optional.
+  /// [sourceS3Path] S3 path where your block list text file is located. See `sourceS3Path` Block for details.
+  /// [status] Current status of the block list.
+  /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider's defaultTags configuration block.
   const QuerySuggestionsBlockListState({
     this.arn,

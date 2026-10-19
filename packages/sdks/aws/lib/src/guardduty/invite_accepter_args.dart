@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_guardduty_invite_accepter_invite_accepter_args_doc}
 class InviteAccepterArgs {
-  /// The detector ID of the member GuardDuty account.
+  /// Detector ID of the member GuardDuty account.
   final pulumi.Input<String> detectorId;
   /// AWS account ID for primary account.
   final pulumi.Input<String> masterAccountId;
@@ -15,7 +15,7 @@ class InviteAccepterArgs {
   final pulumi.Input<String?>? region;
 
   /// Creates a new [InviteAccepterArgs].
-  /// [detectorId] The detector ID of the member GuardDuty account.
+  /// [detectorId] Detector ID of the member GuardDuty account.
   /// [masterAccountId] AWS account ID for primary account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const InviteAccepterArgs({

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetThemeConfigurationSheetTileBorder {
-  /// This Boolean value controls whether to display sheet margins.
+  /// Whether to display sheet margins.
   final pulumi.Input<bool> show;
 
   /// Creates a new [GetThemeConfigurationSheetTileBorder].
-  /// [show] This Boolean value controls whether to display sheet margins.
+  /// [show] Whether to display sheet margins.
   const GetThemeConfigurationSheetTileBorder({
     required this.show,
   });

@@ -20,9 +20,9 @@ class FormTypeState {
   final pulumi.Input<FormTypeModel?>? model;
   /// Name of the form type. Must be the name of the structure in smithy document.
   final pulumi.Input<String?>? name;
-  /// Origin domain id of the Form Type.
+  /// Origin domain ID of the Form Type.
   final pulumi.Input<String?>? originDomainId;
-  /// Origin project id of the Form Type.
+  /// Origin project ID of the Form Type.
   final pulumi.Input<String?>? originProjectId;
   /// Identifier of project that owns the form type. Must follow regex of ^[a-zA-Z0-9_-]{1,36}.
   final pulumi.Input<String?>? owningProjectIdentifier;
@@ -42,8 +42,8 @@ class FormTypeState {
   /// [imports] Optional.
   /// [model] Object of the model of the form type that contains the following attributes.
   /// [name] Name of the form type. Must be the name of the structure in smithy document.
-  /// [originDomainId] Origin domain id of the Form Type.
-  /// [originProjectId] Origin project id of the Form Type.
+  /// [originDomainId] Origin domain ID of the Form Type.
+  /// [originProjectId] Origin project ID of the Form Type.
   /// [owningProjectIdentifier] Identifier of project that owns the form type. Must follow regex of ^[a-zA-Z0-9_-]{1,36}.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [revision] Revision of the Form Type.

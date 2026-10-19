@@ -8,16 +8,17 @@ class UserState {
   /// Access permissions string used for this user.
   final pulumi.Input<String?>? accessString;
   /// ARN of the user.
+  /// * `authentication_mode[0].password_count` - Number of passwords belonging to the user if `type` is set to `password`.
   final pulumi.Input<String?>? arn;
-  /// Denotes the user's authentication properties. Detailed below.
+  /// Authentication properties for the user. Detailed below.
   final pulumi.Input<UserAuthenticationMode?>? authenticationMode;
   /// Minimum engine version supported for the user.
   final pulumi.Input<String?>? minimumEngineVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
   /// Name of the MemoryDB user. Up to 40 characters.
   ///
@@ -27,11 +28,11 @@ class UserState {
   /// Creates a new [UserState].
   /// [accessString] Access permissions string used for this user.
   /// [arn] ARN of the user.
-  /// [authenticationMode] Denotes the user's authentication properties. Detailed below.
+  /// [authenticationMode] Authentication properties for the user. Detailed below.
   /// [minimumEngineVersion] Minimum engine version supported for the user.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [userName] Name of the MemoryDB user. Up to 40 characters.
   const UserState({
     this.accessString,

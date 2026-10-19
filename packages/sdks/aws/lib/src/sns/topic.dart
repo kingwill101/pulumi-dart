@@ -575,7 +575,7 @@ class Topic extends pulumi.CustomResource {
   late final pulumi.Output<int?> applicationSuccessFeedbackSampleRate;
   /// The message archive policy for FIFO topics. More details in the [AWS documentation](https://docs.aws.amazon.com/sns/latest/dg/message-archiving-and-replay-topic-owner.html).
   late final pulumi.Output<String?> archivePolicy;
-  /// The ARN of the SNS topic, as a more obvious property (clone of id)
+  /// The ARN of the SNS topic, as a more obvious property (clone of `id`)
   late final pulumi.Output<String> arn;
   /// The oldest timestamp at which a FIFO topic subscriber can start a replay.
   late final pulumi.Output<String> beginningArchiveTime;
@@ -609,6 +609,8 @@ class Topic extends pulumi.CustomResource {
   late final pulumi.Output<String?> lambdaSuccessFeedbackRoleArn;
   /// Percentage of success to sample
   late final pulumi.Output<int?> lambdaSuccessFeedbackSampleRate;
+  /// The maximum size, in bytes, of a message that can be published to the topic. Valid values are `1024` to `1048576` (1 MiB). The default is `262144` (256 KiB). A topic with a `maximumMessageSize` above 256 KiB must have 100 or fewer subscriptions, and each subscription must be an Amazon SQS, Amazon Data Firehose, or AWS Lambda subscription.
+  late final pulumi.Output<int> maximumMessageSize;
   /// The name of the topic. Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long. For a FIFO (first-in-first-out) topic, the name must end with the `.fifo` suffix. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`
@@ -646,7 +648,7 @@ class Topic extends pulumi.CustomResource {
           'aws:sns/topic:Topic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     applicationFailureFeedbackRoleArn = registerOutput<String?>('applicationFailureFeedbackRoleArn');
     applicationSuccessFeedbackRoleArn = registerOutput<String?>('applicationSuccessFeedbackRoleArn');
@@ -669,6 +671,7 @@ class Topic extends pulumi.CustomResource {
     lambdaFailureFeedbackRoleArn = registerOutput<String?>('lambdaFailureFeedbackRoleArn');
     lambdaSuccessFeedbackRoleArn = registerOutput<String?>('lambdaSuccessFeedbackRoleArn');
     lambdaSuccessFeedbackSampleRate = registerOutput<int?>('lambdaSuccessFeedbackSampleRate');
+    maximumMessageSize = registerOutput<int>('maximumMessageSize');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     owner = registerOutput<String>('owner');
@@ -728,6 +731,7 @@ class Topic extends pulumi.CustomResource {
     lambdaFailureFeedbackRoleArn = registerOutput<String?>('lambdaFailureFeedbackRoleArn');
     lambdaSuccessFeedbackRoleArn = registerOutput<String?>('lambdaSuccessFeedbackRoleArn');
     lambdaSuccessFeedbackSampleRate = registerOutput<int?>('lambdaSuccessFeedbackSampleRate');
+    maximumMessageSize = registerOutput<int>('maximumMessageSize');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     owner = registerOutput<String>('owner');
@@ -772,6 +776,7 @@ class Topic extends pulumi.CustomResource {
     lambdaFailureFeedbackRoleArn = registerOutput<String?>('lambdaFailureFeedbackRoleArn');
     lambdaSuccessFeedbackRoleArn = registerOutput<String?>('lambdaSuccessFeedbackRoleArn');
     lambdaSuccessFeedbackSampleRate = registerOutput<int?>('lambdaSuccessFeedbackSampleRate');
+    maximumMessageSize = registerOutput<int>('maximumMessageSize');
     this.name = registerOutput<String>('name');
     namePrefix = registerOutput<String>('namePrefix');
     owner = registerOutput<String>('owner');

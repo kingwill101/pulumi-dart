@@ -8,7 +8,7 @@ import 'evaluation_job_timeouts.dart';
 
 /// Manages an Amazon Bedrock evaluation job. An evaluation job assesses model or knowledge base performance using either automated metrics or human workers.
 ///
-/// &gt; Amazon Bedrock does not support permanently deleting an evaluation job. Destroying this resource stops the job (if it is still running) using the [StopEvaluationJob](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_StopEvaluationJob.html) API, then removes it from Terraform state. Set `skipDestroy` to leave the job in its current state instead.
+/// &gt; **Note:** Amazon Bedrock does not support permanently deleting an evaluation job. Destroying this resource stops the job (if it is still running) using the [StopEvaluationJob](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_StopEvaluationJob.html) API, then removes it from Terraform state. Set `skipDestroy` to leave the job in its current state instead.
 ///
 /// ## Example Usage
 ///
@@ -299,7 +299,7 @@ import 'evaluation_job_timeouts.dart';
 ///
 /// #### Required
 ///
-/// - `jobArn` (String) ARN of the evaluation job.
+/// * `jobArn` (String) ARN of the evaluation job.
 ///
 ///
 /// Using `pulumi import`, import Bedrock Evaluation Job using the `jobArn`. For example:
@@ -344,6 +344,7 @@ class EvaluationJob extends pulumi.CustomResource {
   late final pulumi.Output<String> status;
   /// Map of tags to assign to the evaluation job. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<EvaluationJobTimeouts?> timeouts;
 
@@ -359,7 +360,7 @@ class EvaluationJob extends pulumi.CustomResource {
           'aws:bedrock/evaluationJob:EvaluationJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     applicationType = registerOutput<String>('applicationType');
     createdAt = registerOutput<String>('createdAt');

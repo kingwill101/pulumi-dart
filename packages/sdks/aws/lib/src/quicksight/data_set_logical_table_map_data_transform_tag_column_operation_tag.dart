@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_set_logical_table_map_data_transform_tag_column_operation_tag_column_description.dart';
 
 class DataSetLogicalTableMapDataTransformTagColumnOperationTag {
-  /// A description for a column. See column_description.
+  /// Description for a column. See `columnDescription` Block below.
   final pulumi.Input<DataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription?>? columnDescription;
-  /// A geospatial role for a column. Valid values are `COUNTRY`, `STATE`, `COUNTY`, `CITY`, `POSTCODE`, `LONGITUDE`, and `LATITUDE`.
+  /// Geospatial role for a column. Valid values are `COUNTRY`, `STATE`, `COUNTY`, `CITY`, `POSTCODE`, `LONGITUDE`, and `LATITUDE`.
   final pulumi.Input<String?>? columnGeographicRole;
 
   /// Creates a new [DataSetLogicalTableMapDataTransformTagColumnOperationTag].
-  /// [columnDescription] A description for a column. See column_description.
-  /// [columnGeographicRole] A geospatial role for a column. Valid values are `COUNTRY`, `STATE`, `COUNTY`, `CITY`, `POSTCODE`, `LONGITUDE`, and `LATITUDE`.
+  /// [columnDescription] Description for a column. See `columnDescription` Block below.
+  /// [columnGeographicRole] Geospatial role for a column. Valid values are `COUNTRY`, `STATE`, `COUNTY`, `CITY`, `POSTCODE`, `LONGITUDE`, and `LATITUDE`.
   const DataSetLogicalTableMapDataTransformTagColumnOperationTag({
     this.columnDescription,
     this.columnGeographicRole,

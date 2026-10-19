@@ -3,24 +3,24 @@
 
 /// Result data returned by getQueue.
 class GetQueueResult {
-  /// The Arn of the queue.
+  /// ARN of the queue.
   final String? arn;
   final String? id;
-  /// The same as `id`.
+  /// Same as `id`.
   final String? name;
   final String? region;
-  /// The status of the queue.
+  /// Status of the queue.
   final String? status;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final Map<String, String>? tags;
 
   /// Creates a new [GetQueueResult].
-  /// [arn] The Arn of the queue.
+  /// [arn] ARN of the queue.
   /// [id] Optional.
-  /// [name] The same as `id`.
+  /// [name] Same as `id`.
   /// [region] Optional.
-  /// [status] The status of the queue.
-  /// [tags] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [status] Status of the queue.
+  /// [tags] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const GetQueueResult({
     this.arn,
     this.id,

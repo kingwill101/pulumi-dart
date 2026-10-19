@@ -112,7 +112,7 @@ import 'hsm_client_certificate_state.dart';
 /// $ pulumi import aws:redshift/hsmClientCertificate:HsmClientCertificate test example
 /// ```
 class HsmClientCertificate extends pulumi.CustomResource {
-  /// ARN of the Hsm Client Certificate.
+  /// ARN of the HSM Client Certificate.
   late final pulumi.Output<String> arn;
   /// The identifier of the HSM client certificate.
   late final pulumi.Output<String> hsmClientCertificateIdentifier;
@@ -137,7 +137,7 @@ class HsmClientCertificate extends pulumi.CustomResource {
           'aws:redshift/hsmClientCertificate:HsmClientCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     hsmClientCertificateIdentifier = registerOutput<String>('hsmClientCertificateIdentifier');

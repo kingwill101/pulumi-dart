@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'catalog_database_create_table_default_permission_principal.dart';
 
 class CatalogDatabaseCreateTableDefaultPermission {
-  /// The permissions that are granted to the principal.
+  /// Permissions that are granted to the principal.
   final pulumi.Input<List<String>?>? permissions;
-  /// The principal who is granted permissions.. See `principal` below.
+  /// Principal who is granted permissions.. See `principal` Block below.
   final pulumi.Input<CatalogDatabaseCreateTableDefaultPermissionPrincipal?>? principal;
 
   /// Creates a new [CatalogDatabaseCreateTableDefaultPermission].
-  /// [permissions] The permissions that are granted to the principal.
-  /// [principal] The principal who is granted permissions.. See `principal` below.
+  /// [permissions] Permissions that are granted to the principal.
+  /// [principal] Principal who is granted permissions.. See `principal` Block below.
   const CatalogDatabaseCreateTableDefaultPermission({
     this.permissions,
     this.principal,

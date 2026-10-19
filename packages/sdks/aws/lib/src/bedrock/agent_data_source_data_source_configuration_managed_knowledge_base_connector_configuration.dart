@@ -3,23 +3,28 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_data_source_data_source_configuration_managed_knowledge_base_connector_configuration_deletion_protection_configuration.dart';
 import 'agent_data_source_data_source_configuration_managed_knowledge_base_connector_configuration_media_extraction_configuration.dart';
+import 'agent_data_source_data_source_configuration_managed_knowledge_base_connector_configuration_sync_schedule.dart';
 
 class AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfiguration {
   /// JSON-encoded string containing the connector-specific parameters. The structure depends on the connector type (S3, SharePoint, Google Drive, etc.). See [Managed Knowledge Base connector parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-connectors.html) for details on each connector type.
   final pulumi.Input<String?>? connectorParameters;
-  /// Configuration for deletion protection on the data source. See `deletionProtectionConfiguration` block for details.
+  /// Configuration for deletion protection on the data source. See `deletionProtectionConfiguration` Block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationDeletionProtectionConfiguration?>? deletionProtectionConfiguration;
-  /// Configuration for extracting media content (images, audio, video) from documents. See `mediaExtractionConfiguration` block for details.
+  /// Configuration for extracting media content (images, audio, video) from documents. See `mediaExtractionConfiguration` Block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationMediaExtractionConfiguration?>? mediaExtractionConfiguration;
+  /// Recurring schedule on which the connector automatically syncs this data source. See `syncSchedule` Block for details.
+  final pulumi.Input<AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationSyncSchedule?>? syncSchedule;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfiguration].
   /// [connectorParameters] JSON-encoded string containing the connector-specific parameters. The structure depends on the connector type (S3, SharePoint, Google Drive, etc.). See [Managed Knowledge Base connector parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-connectors.html) for details on each connector type.
-  /// [deletionProtectionConfiguration] Configuration for deletion protection on the data source. See `deletionProtectionConfiguration` block for details.
-  /// [mediaExtractionConfiguration] Configuration for extracting media content (images, audio, video) from documents. See `mediaExtractionConfiguration` block for details.
+  /// [deletionProtectionConfiguration] Configuration for deletion protection on the data source. See `deletionProtectionConfiguration` Block for details.
+  /// [mediaExtractionConfiguration] Configuration for extracting media content (images, audio, video) from documents. See `mediaExtractionConfiguration` Block for details.
+  /// [syncSchedule] Recurring schedule on which the connector automatically syncs this data source. See `syncSchedule` Block for details.
   const AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfiguration({
     this.connectorParameters,
     this.deletionProtectionConfiguration,
     this.mediaExtractionConfiguration,
+    this.syncSchedule,
   });
 
   Map<String, dynamic> toMap() {
@@ -27,6 +32,7 @@ class AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigu
       'connectorParameters': ?connectorParameters,
       'deletionProtectionConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationDeletionProtectionConfiguration, Map<String, dynamic>>(deletionProtectionConfiguration, (value) => value.toMap()),
       'mediaExtractionConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationMediaExtractionConfiguration, Map<String, dynamic>>(mediaExtractionConfiguration, (value) => value.toMap()),
+      'syncSchedule': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationSyncSchedule, Map<String, dynamic>>(syncSchedule, (value) => value.toMap()),
     };
   }
 
@@ -35,6 +41,7 @@ class AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigu
       connectorParameters: (() { final guardedValue = map['connectorParameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtectionConfiguration: (() { final guardedValue = map['deletionProtectionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationDeletionProtectionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       mediaExtractionConfiguration: (() { final guardedValue = map['mediaExtractionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationMediaExtractionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      syncSchedule: (() { final guardedValue = map['syncSchedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentDataSourceDataSourceConfigurationManagedKnowledgeBaseConnectorConfigurationSyncSchedule.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

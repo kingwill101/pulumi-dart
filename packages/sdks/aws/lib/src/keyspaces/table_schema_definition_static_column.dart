@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableSchemaDefinitionStaticColumn {
-  /// The name of the static column.
+  /// Name of the static column.
   final pulumi.Input<String> name;
 
   /// Creates a new [TableSchemaDefinitionStaticColumn].
-  /// [name] The name of the static column.
+  /// [name] Name of the static column.
   const TableSchemaDefinitionStaticColumn({
     required this.name,
   });

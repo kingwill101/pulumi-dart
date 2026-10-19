@@ -144,7 +144,7 @@ import 'vpc_block_public_access_exclusion_timeouts.dart';
 /// ```
 ///
 ///
-/// ### Usage with subnet id
+/// ### Usage with subnet ID
 ///
 ///
 /// ```typescript
@@ -334,14 +334,14 @@ class VpcBlockPublicAccessExclusion extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// ARN the excluded resource.
   late final pulumi.Output<String> resourceArn;
-  /// Id of the subnet to which this exclusion applies. Either this or the vpcId needs to be provided.
+  /// ID of the subnet to which this exclusion applies. Either this or the vpcId needs to be provided.
   late final pulumi.Output<String?> subnetId;
-  /// A map of tags to assign to the exclusion. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the exclusion. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<VpcBlockPublicAccessExclusionTimeouts?> timeouts;
-  /// Id of the VPC to which this exclusion applies. Either this or the subnetId needs to be provided.
+  /// ID of the VPC to which this exclusion applies. Either this or the subnetId needs to be provided.
   late final pulumi.Output<String?> vpcId;
 
   /// Creates a new [VpcBlockPublicAccessExclusion].
@@ -356,7 +356,7 @@ class VpcBlockPublicAccessExclusion extends pulumi.CustomResource {
           'aws:ec2/vpcBlockPublicAccessExclusion:VpcBlockPublicAccessExclusion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     internetGatewayExclusionMode = registerOutput<String>('internetGatewayExclusionMode');
     region = registerOutput<String>('region');

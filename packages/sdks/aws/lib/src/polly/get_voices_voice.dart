@@ -15,7 +15,7 @@ class GetVoicesVoice {
   final pulumi.Input<String> languageName;
   /// Name of the voice.
   final pulumi.Input<String> name;
-  /// Specifies which engines are supported by a given voice.
+  /// Engines supported by a given voice.
   final pulumi.Input<List<String>> supportedEngines;
 
   /// Creates a new [GetVoicesVoice].
@@ -25,7 +25,7 @@ class GetVoicesVoice {
   /// [languageCode] Language identification tag for filtering the list of voices returned. If not specified, all available voices are returned.
   /// [languageName] Human readable name of the language in English.
   /// [name] Name of the voice.
-  /// [supportedEngines] Specifies which engines are supported by a given voice.
+  /// [supportedEngines] Engines supported by a given voice.
   const GetVoicesVoice({
     required this.additionalLanguageCodes,
     required this.gender,

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataLakeConfigurationEncryptionConfiguration {
-  /// The id of KMS encryption key used by Amazon Security Lake to encrypt the Security Lake object.
+  /// The ID of KMS encryption key used by Amazon Security Lake to encrypt the Security Lake object.
   final pulumi.Input<String> kmsKeyId;
 
   /// Creates a new [DataLakeConfigurationEncryptionConfiguration].
-  /// [kmsKeyId] The id of KMS encryption key used by Amazon Security Lake to encrypt the Security Lake object.
+  /// [kmsKeyId] The ID of KMS encryption key used by Amazon Security Lake to encrypt the Security Lake object.
   const DataLakeConfigurationEncryptionConfiguration({
     required this.kmsKeyId,
   });

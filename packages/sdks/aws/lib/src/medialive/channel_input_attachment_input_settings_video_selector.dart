@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputAttachmentInputSettingsVideoSelector {
+  /// Color space of the input.
   final pulumi.Input<String?>? colorSpace;
+  /// How MediaLive applies the color space metadata from the input.
   final pulumi.Input<String?>? colorSpaceUsage;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsVideoSelector].
-  /// [colorSpace] Optional.
-  /// [colorSpaceUsage] Optional.
+  /// [colorSpace] Color space of the input.
+  /// [colorSpaceUsage] How MediaLive applies the color space metadata from the input.
   const ChannelInputAttachmentInputSettingsVideoSelector({
     this.colorSpace,
     this.colorSpaceUsage,

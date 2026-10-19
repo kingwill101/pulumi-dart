@@ -14,20 +14,20 @@ class DataQualityRulesetArgs {
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
+  /// Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
   final pulumi.Input<String> ruleset;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A Configuration block specifying a target table associated with the data quality ruleset. See `targetTable` below.
+  /// Configuration block specifying a target table associated with the data quality ruleset. See `targetTable` Block below.
   final pulumi.Input<DataQualityRulesetTargetTable?>? targetTable;
 
   /// Creates a new [DataQualityRulesetArgs].
   /// [description] Description of the data quality ruleset.
   /// [name] Name of the data quality ruleset.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [ruleset] A Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
+  /// [ruleset] Data Quality Definition Language (DQDL) ruleset. For more information, see the AWS Glue developer guide.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [targetTable] A Configuration block specifying a target table associated with the data quality ruleset. See `targetTable` below.
+  /// [targetTable] Configuration block specifying a target table associated with the data quality ruleset. See `targetTable` Block below.
   const DataQualityRulesetArgs({
     this.description,
     this.name,

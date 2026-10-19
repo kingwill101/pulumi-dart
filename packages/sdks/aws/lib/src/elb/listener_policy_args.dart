@@ -45,7 +45,7 @@ class ListenerPolicyArgs {
   factory ListenerPolicyArgs.fromMap(Map<String, dynamic> map) {
     return ListenerPolicyArgs(
       loadBalancerName: pulumi.Input.fromValue(map['loadBalancerName'] as String),
-      loadBalancerPort: pulumi.Input.fromValue((map['loadBalancerPort'] as num).toInt()),
+      loadBalancerPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['loadBalancerPort'])),
       policyNames: (() { final guardedValue = map['policyNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       triggers: (() { final guardedValue = map['triggers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

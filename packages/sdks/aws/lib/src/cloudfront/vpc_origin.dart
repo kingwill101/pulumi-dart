@@ -193,7 +193,7 @@ import 'vpc_origin_vpc_origin_endpoint_config.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Cloudfront VPC origins using the `id`. For example:
+/// Using `pulumi import`, import CloudFront VPC origins using the `id`. For example:
 ///
 /// ```sh
 /// % pulumi import aws_cloudfront_vpc_origin vo_JQEa410sssUFoY6wMkx69j
@@ -225,7 +225,7 @@ class VpcOrigin extends pulumi.CustomResource {
           'aws:cloudfront/vpcOrigin:VpcOrigin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     etag = registerOutput<String>('etag');

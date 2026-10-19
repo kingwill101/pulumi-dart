@@ -500,7 +500,7 @@ import 'web_acl_logging_configuration_state.dart';
 /// $ pulumi import aws:wafv2/webAclLoggingConfiguration:WebAclLoggingConfiguration example arn:aws:wafv2:us-west-2:123456789012:regional/webacl/test-logs/a1b2c3d4-5678-90ab-cdef
 /// ```
 class WebAclLoggingConfiguration extends pulumi.CustomResource {
-  /// Configuration block that allows you to associate Amazon Kinesis Data Firehose, Cloudwatch Log log group, or S3 bucket ARNs with the web ACL. **Note:** data firehose, log group, or bucket name **must** be prefixed with `aws-waf-logs-`, e.g. `aws-waf-logs-example-firehose`, `aws-waf-logs-example-log-group`, or `aws-waf-logs-example-bucket`.
+  /// Configuration block that allows you to associate Amazon Kinesis Data Firehose, CloudWatch Log log group, or S3 bucket ARNs with the web ACL. **Note:** data firehose, log group, or bucket name **must** be prefixed with `aws-waf-logs-`, e.g. `aws-waf-logs-example-firehose`, `aws-waf-logs-example-log-group`, or `aws-waf-logs-example-bucket`.
   late final pulumi.Output<List<String>> logDestinationConfigs;
   /// Configuration block that specifies which web requests are kept in the logs and which are dropped. It allows filtering based on the rule action and the web request labels applied by matching rules during web ACL evaluation. For more details, refer to the Logging Filter section below.
   late final pulumi.Output<WebAclLoggingConfigurationLoggingFilter?> loggingFilter;
@@ -523,7 +523,7 @@ class WebAclLoggingConfiguration extends pulumi.CustomResource {
           'aws:wafv2/webAclLoggingConfiguration:WebAclLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     logDestinationConfigs = registerOutput<List<String>>('logDestinationConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     loggingFilter = registerOutput<WebAclLoggingConfigurationLoggingFilter?>('loggingFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclLoggingConfigurationLoggingFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });

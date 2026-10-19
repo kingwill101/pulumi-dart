@@ -11,7 +11,7 @@ class TrustStoreArgs {
   final pulumi.Input<String> caCertificatesBundleS3Bucket;
   /// S3 object key holding the client certificate CA bundle.
   final pulumi.Input<String> caCertificatesBundleS3Key;
-  /// Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
+  /// Version ID of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
   final pulumi.Input<String?>? caCertificatesBundleS3ObjectVersion;
   /// Name of the Trust Store. If omitted, the provider will assign a random, unique name. This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
   final pulumi.Input<String?>? name;
@@ -25,7 +25,7 @@ class TrustStoreArgs {
   /// Creates a new [TrustStoreArgs].
   /// [caCertificatesBundleS3Bucket] S3 Bucket name holding the client certificate CA bundle.
   /// [caCertificatesBundleS3Key] S3 object key holding the client certificate CA bundle.
-  /// [caCertificatesBundleS3ObjectVersion] Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
+  /// [caCertificatesBundleS3ObjectVersion] Version ID of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
   /// [name] Name of the Trust Store. If omitted, the provider will assign a random, unique name. This name must be unique per region per account, can have a maximum of 32 characters, must contain only alphanumeric characters or hyphens, and must not begin or end with a hyphen.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`. Cannot be longer than 6 characters.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_connect_get_user_hierarchy_group_get_user_hierarchy_group_args_doc}
 class GetUserHierarchyGroupArgs {
-  /// Returns information on a specific hierarchy group by hierarchy group id
+  /// Returns information on a specific hierarchy group by hierarchy group ID
   final pulumi.Input<String?>? hierarchyGroupId;
   /// Reference to the hosting Amazon Connect Instance
   final pulumi.Input<String> instanceId;
@@ -21,7 +21,7 @@ class GetUserHierarchyGroupArgs {
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetUserHierarchyGroupArgs].
-  /// [hierarchyGroupId] Returns information on a specific hierarchy group by hierarchy group id
+  /// [hierarchyGroupId] Returns information on a specific hierarchy group by hierarchy group ID
   /// [instanceId] Reference to the hosting Amazon Connect Instance
   /// [name] Returns information on a specific hierarchy group by name
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

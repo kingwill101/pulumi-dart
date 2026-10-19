@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetNodeGroupResourceAutoscalingGroup {
-  /// Name of the AutoScaling Group.
+  /// Name of the Auto Scaling group.
   final pulumi.Input<String> name;
 
   /// Creates a new [GetNodeGroupResourceAutoscalingGroup].
-  /// [name] Name of the AutoScaling Group.
+  /// [name] Name of the Auto Scaling group.
   const GetNodeGroupResourceAutoscalingGroup({
     required this.name,
   });

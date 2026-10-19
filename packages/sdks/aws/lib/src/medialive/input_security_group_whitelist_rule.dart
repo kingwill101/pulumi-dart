@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InputSecurityGroupWhitelistRule {
-  /// The IPv4 CIDR that's whitelisted.
+  /// IPv4 CIDR that's whitelisted.
   final pulumi.Input<String> cidr;
 
   /// Creates a new [InputSecurityGroupWhitelistRule].
-  /// [cidr] The IPv4 CIDR that's whitelisted.
+  /// [cidr] IPv4 CIDR that's whitelisted.
   const InputSecurityGroupWhitelistRule({
     required this.cidr,
   });

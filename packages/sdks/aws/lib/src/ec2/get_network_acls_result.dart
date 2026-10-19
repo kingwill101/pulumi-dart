@@ -8,7 +8,7 @@ class GetNetworkAclsResult {
   final List<GetNetworkAclsFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// List of all the network ACL ids found.
+  /// List of all the network ACL IDs found.
   final List<String>? ids;
   final String? region;
   final Map<String, String>? tags;
@@ -17,7 +17,7 @@ class GetNetworkAclsResult {
   /// Creates a new [GetNetworkAclsResult].
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ids] List of all the network ACL ids found.
+  /// [ids] List of all the network ACL IDs found.
   /// [region] Optional.
   /// [tags] Optional.
   /// [vpcId] Optional.

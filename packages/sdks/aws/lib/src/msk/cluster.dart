@@ -1359,51 +1359,51 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<String> bootstrapBrokersTls;
   /// One or more IPv6 DNS names (or IP addresses) and TLS port pairs. This attribute will have a value if the cluster is configured with `broker_node_group_info.0.connectivity_info.0.network_type` set to `DUAL` and `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersTlsIpv6;
-  /// A string containing one or more DNS names (or IP addresses) and SASL IAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
+  /// One or more DNS names (or IP addresses) and SASL IAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersVpcConnectivitySaslIam;
-  /// A string containing one or more DNS names (or IP addresses) and SASL SCRAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
+  /// One or more DNS names (or IP addresses) and SASL SCRAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersVpcConnectivitySaslScram;
-  /// A string containing one or more DNS names (or IP addresses) and TLS port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
+  /// One or more DNS names (or IP addresses) and TLS port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
   late final pulumi.Output<String> bootstrapBrokersVpcConnectivityTls;
-  /// Configuration block for the broker nodes of the Kafka cluster. See brokerNodeGroupInfo Argument Reference below.
+  /// Configuration block for the broker nodes of the Kafka cluster. See `brokerNodeGroupInfo` Block below.
   late final pulumi.Output<ClusterBrokerNodeGroupInfo> brokerNodeGroupInfo;
-  /// Configuration block for specifying a client authentication. See clientAuthentication Argument Reference below.
+  /// Configuration block for specifying a client authentication. See `clientAuthentication` Block below.
   late final pulumi.Output<ClusterClientAuthentication?> clientAuthentication;
   /// Name of the MSK cluster.
   late final pulumi.Output<String> clusterName;
   /// UUID of the MSK cluster, for use in IAM policies.
   late final pulumi.Output<String> clusterUuid;
-  /// Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See configurationInfo Argument Reference below.
+  /// Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See `configurationInfo` Block below.
   late final pulumi.Output<ClusterConfigurationInfo?> configurationInfo;
   /// Current version of the MSK Cluster used for updates, e.g., `K13V1IB3VIYZZH`
   late final pulumi.Output<String> currentVersion;
   /// Status indicating whether Amazon MSK requires customer action for the cluster. Valid values are `NONE`, `ACTION_RECOMMENDED`, and `CRITICAL_ACTION_REQUIRED`.
   late final pulumi.Output<String> customerActionStatus;
-  /// Configuration block for specifying encryption. See encryptionInfo Argument Reference below.
+  /// Configuration block for specifying encryption. See `encryptionInfo` Block below.
   late final pulumi.Output<ClusterEncryptionInfo?> encryptionInfo;
-  /// Specify the desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
+  /// Desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html).
   late final pulumi.Output<String?> enhancedMonitoring;
-  /// Specify the desired Kafka software version.
+  /// Desired Kafka software version.
   late final pulumi.Output<String> kafkaVersion;
-  /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See loggingInfo Argument Reference below.
+  /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See `loggingInfo` Block below.
   late final pulumi.Output<ClusterLoggingInfo?> loggingInfo;
-  /// The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
+  /// Desired total number of broker nodes in the kafka cluster. It must be a multiple of the number of specified client subnets.
   late final pulumi.Output<int> numberOfBrokerNodes;
-  /// Configuration block for JMX and Node monitoring for the MSK cluster. See openMonitoring Argument Reference below.
+  /// Configuration block for JMX and Node monitoring for the MSK cluster. See `openMonitoring` Block below.
   late final pulumi.Output<ClusterOpenMonitoring?> openMonitoring;
-  /// Configuration block for intelligent rebalancing. See rebalancing Argument Reference below. Only applicable to MSK Provisioned clusters with Express brokers.
+  /// Configuration block for intelligent rebalancing. See `rebalancing` Block below. Only applicable to MSK Provisioned clusters with Express brokers.
   late final pulumi.Output<ClusterRebalancing> rebalancing;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Controls storage mode for supported storage tiers. Valid values are: `LOCAL` or `TIERED`.
   late final pulumi.Output<String> storageMode;
-  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
+  /// Comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   late final pulumi.Output<String> zookeeperConnectString;
-  /// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster via TLS. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
+  /// Comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster via TLS. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   late final pulumi.Output<String> zookeeperConnectStringTls;
 
   /// Creates a new [Cluster].
@@ -1418,7 +1418,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:msk/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     bootstrapBrokers = registerOutput<String>('bootstrapBrokers');

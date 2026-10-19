@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ConnectorKafkaClusterApacheKafkaClusterVpc {
-  /// The security groups for the connector.
+  /// Security groups for the connector.
   final pulumi.Input<List<String>> securityGroups;
-  /// The subnets for the connector.
+  /// Subnets for the connector.
   final pulumi.Input<List<String>> subnets;
 
   /// Creates a new [ConnectorKafkaClusterApacheKafkaClusterVpc].
-  /// [securityGroups] The security groups for the connector.
-  /// [subnets] The subnets for the connector.
+  /// [securityGroups] Security groups for the connector.
+  /// [subnets] Subnets for the connector.
   const ConnectorKafkaClusterApacheKafkaClusterVpc({
     required this.securityGroups,
     required this.subnets,

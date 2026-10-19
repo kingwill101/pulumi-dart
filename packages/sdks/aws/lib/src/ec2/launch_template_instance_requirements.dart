@@ -24,7 +24,7 @@ class LaunchTemplateInstanceRequirements {
   /// * xilinx
   /// ```
   final pulumi.Input<List<String>?>? acceleratorManufacturers;
-  /// List of accelerator names. Default is any acclerator.
+  /// List of accelerator names. Default is any accelerator.
   ///
   /// ```
   /// Valid names:
@@ -52,7 +52,7 @@ class LaunchTemplateInstanceRequirements {
   ///
   /// &gt; **NOTE:** If you specify `allowedInstanceTypes`, you can't specify `excludedInstanceTypes`.
   final pulumi.Input<List<String>?>? allowedInstanceTypes;
-  /// Indicate whether bare metal instace types should be `included`, `excluded`, or `required`. Default is `excluded`.
+  /// Indicate whether bare metal instance types should be `included`, `excluded`, or `required`. Default is `excluded`.
   final pulumi.Input<String?>? bareMetal;
   /// Block describing the minimum and maximum baseline EBS bandwidth, in Mbps. Default is no minimum or maximum.
   final pulumi.Input<LaunchTemplateInstanceRequirementsBaselineEbsBandwidthMbps?>? baselineEbsBandwidthMbps;
@@ -119,11 +119,11 @@ class LaunchTemplateInstanceRequirements {
   /// Creates a new [LaunchTemplateInstanceRequirements].
   /// [acceleratorCount] Block describing the minimum and maximum number of accelerators (GPUs, FPGAs, or AWS Inferentia chips). Default is no minimum or maximum.
   /// [acceleratorManufacturers] List of accelerator manufacturer names. Default is any manufacturer.
-  /// [acceleratorNames] List of accelerator names. Default is any acclerator.
+  /// [acceleratorNames] List of accelerator names. Default is any accelerator.
   /// [acceleratorTotalMemoryMib] Block describing the minimum and maximum total memory of the accelerators. Default is no minimum or maximum.
   /// [acceleratorTypes] List of accelerator types. Default is any accelerator type.
   /// [allowedInstanceTypes] List of instance types to apply your specified attributes against. All other instance types are ignored, even if they match your specified attributes. You can use strings with one or more wild cards, represented by an asterisk (\*), to allow an instance type, size, or generation. The following are examples: `m5.8xlarge`, `c5*.*`, `m5a.*`, `r*`, `*3*`. For example, if you specify `c5*`, you are allowing the entire C5 instance family, which includes all C5a and C5n instance types. If you specify `m5a.*`, you are allowing all the M5a instance types, but not the M5n instance types. Maximum of 400 entries in the list; each entry is limited to 30 characters. Default is all instance types.
-  /// [bareMetal] Indicate whether bare metal instace types should be `included`, `excluded`, or `required`. Default is `excluded`.
+  /// [bareMetal] Indicate whether bare metal instance types should be `included`, `excluded`, or `required`. Default is `excluded`.
   /// [baselineEbsBandwidthMbps] Block describing the minimum and maximum baseline EBS bandwidth, in Mbps. Default is no minimum or maximum.
   /// [burstablePerformance] Indicate whether burstable performance instance types should be `included`, `excluded`, or `required`. Default is `excluded`.
   /// [cpuManufacturers] List of CPU manufacturer names. Default is any manufacturer.
@@ -213,14 +213,14 @@ class LaunchTemplateInstanceRequirements {
       instanceGenerations: (() { final guardedValue = map['instanceGenerations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       localStorage: (() { final guardedValue = map['localStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       localStorageTypes: (() { final guardedValue = map['localStorageTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      maxSpotPriceAsPercentageOfOptimalOnDemandPrice: (() { final guardedValue = map['maxSpotPriceAsPercentageOfOptimalOnDemandPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxSpotPriceAsPercentageOfOptimalOnDemandPrice: (() { final guardedValue = map['maxSpotPriceAsPercentageOfOptimalOnDemandPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       memoryGibPerVcpu: (() { final guardedValue = map['memoryGibPerVcpu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LaunchTemplateInstanceRequirementsMemoryGibPerVcpu.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       memoryMib: pulumi.Input.fromValue(LaunchTemplateInstanceRequirementsMemoryMib.fromMap((map['memoryMib']! as Map).cast<String, dynamic>())),
       networkBandwidthGbps: (() { final guardedValue = map['networkBandwidthGbps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LaunchTemplateInstanceRequirementsNetworkBandwidthGbps.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       networkInterfaceCount: (() { final guardedValue = map['networkInterfaceCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LaunchTemplateInstanceRequirementsNetworkInterfaceCount.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      onDemandMaxPricePercentageOverLowestPrice: (() { final guardedValue = map['onDemandMaxPricePercentageOverLowestPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      onDemandMaxPricePercentageOverLowestPrice: (() { final guardedValue = map['onDemandMaxPricePercentageOverLowestPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       requireHibernateSupport: (() { final guardedValue = map['requireHibernateSupport']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      spotMaxPricePercentageOverLowestPrice: (() { final guardedValue = map['spotMaxPricePercentageOverLowestPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      spotMaxPricePercentageOverLowestPrice: (() { final guardedValue = map['spotMaxPricePercentageOverLowestPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       totalLocalStorageGb: (() { final guardedValue = map['totalLocalStorageGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LaunchTemplateInstanceRequirementsTotalLocalStorageGb.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       vcpuCount: pulumi.Input.fromValue(LaunchTemplateInstanceRequirementsVcpuCount.fromMap((map['vcpuCount']! as Map).cast<String, dynamic>())),
     );

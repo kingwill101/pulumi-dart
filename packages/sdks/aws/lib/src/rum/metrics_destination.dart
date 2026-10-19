@@ -116,7 +116,7 @@ import 'metrics_destination_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Cloudwatch RUM Metrics Destination using the `id`. For example:
+/// Using `pulumi import`, import CloudWatch RUM Metrics Destination using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:rum/metricsDestination:MetricsDestination example example
@@ -145,7 +145,7 @@ class MetricsDestination extends pulumi.CustomResource {
           'aws:rum/metricsDestination:MetricsDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     appMonitorName = registerOutput<String>('appMonitorName');
     destination = registerOutput<String>('destination');

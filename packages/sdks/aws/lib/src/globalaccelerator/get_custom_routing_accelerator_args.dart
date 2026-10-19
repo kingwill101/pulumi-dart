@@ -13,12 +13,13 @@ class GetCustomRoutingAcceleratorArgs {
   ///
   /// &gt; **NOTE:** When both `arn` and `name` are specified, `arn` takes precedence.
   final pulumi.Input<String?>? name;
+  /// Map of tags assigned to the resource.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetCustomRoutingAcceleratorArgs].
   /// [arn] Full ARN of the custom routing accelerator.
   /// [name] Unique name of the custom routing accelerator.
-  /// [tags] Optional.
+  /// [tags] Map of tags assigned to the resource.
   const GetCustomRoutingAcceleratorArgs({
     this.arn,
     this.name,

@@ -3,20 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MLTransformParametersFindMatchesParameters {
-  /// The value that is selected when tuning your transform for a balance between accuracy and cost.
+  /// Value that is selected when tuning your transform for a balance between accuracy and cost.
   final pulumi.Input<double?>? accuracyCostTradeOff;
-  /// The value to switch on or off to force the output to match the provided labels from users.
+  /// Value to switch on or off to force the output to match the provided labels from users.
   final pulumi.Input<bool?>? enforceProvidedLabels;
-  /// The value selected when tuning your transform for a balance between precision and recall.
+  /// Value selected when tuning your transform for a balance between precision and recall.
   final pulumi.Input<double?>? precisionRecallTradeOff;
-  /// The name of a column that uniquely identifies rows in the source table.
+  /// Name of a column that uniquely identifies rows in the source table.
   final pulumi.Input<String?>? primaryKeyColumnName;
 
   /// Creates a new [MLTransformParametersFindMatchesParameters].
-  /// [accuracyCostTradeOff] The value that is selected when tuning your transform for a balance between accuracy and cost.
-  /// [enforceProvidedLabels] The value to switch on or off to force the output to match the provided labels from users.
-  /// [precisionRecallTradeOff] The value selected when tuning your transform for a balance between precision and recall.
-  /// [primaryKeyColumnName] The name of a column that uniquely identifies rows in the source table.
+  /// [accuracyCostTradeOff] Value that is selected when tuning your transform for a balance between accuracy and cost.
+  /// [enforceProvidedLabels] Value to switch on or off to force the output to match the provided labels from users.
+  /// [precisionRecallTradeOff] Value selected when tuning your transform for a balance between precision and recall.
+  /// [primaryKeyColumnName] Name of a column that uniquely identifies rows in the source table.
   const MLTransformParametersFindMatchesParameters({
     this.accuracyCostTradeOff,
     this.enforceProvidedLabels,

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_broker_node_group_info_connectivity_info_vpc_connectivity_client_authentication.dart';
 
 class ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity {
-  /// Configuration block for specifying a client authentication. See clientAuthentication Argument Reference below.
+  /// Client authentication information for VPC connectivity. See `vpc_connectivity.client_authentication` Block below.
   final pulumi.Input<ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthentication?>? clientAuthentication;
 
   /// Creates a new [ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity].
-  /// [clientAuthentication] Configuration block for specifying a client authentication. See clientAuthentication Argument Reference below.
+  /// [clientAuthentication] Client authentication information for VPC connectivity. See `vpc_connectivity.client_authentication` Block below.
   const ClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity({
     this.clientAuthentication,
   });

@@ -118,7 +118,7 @@ import 'app_monitor_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Cloudwatch RUM App Monitor using the `name`. For example:
+/// Using `pulumi import`, import CloudWatch RUM App Monitor using the `name`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:rum/appMonitor:AppMonitor example example
@@ -161,7 +161,7 @@ class AppMonitor extends pulumi.CustomResource {
           'aws:rum/appMonitor:AppMonitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     appMonitorConfiguration = registerOutput<AppMonitorAppMonitorConfiguration>('appMonitorConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AppMonitorAppMonitorConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     appMonitorId = registerOutput<String>('appMonitorId');

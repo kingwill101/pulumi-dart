@@ -8,26 +8,26 @@ import 'accelerator_attributes.dart';
 /// {@endtemplate}
 /// {@macro pulumi_globalaccelerator_accelerator_accelerator_args_doc}
 class AcceleratorArgs {
-  /// The attributes of the accelerator. Fields documented below.
+  /// Configuration block with accelerator attributes. See `attributes` below.
   final pulumi.Input<AcceleratorAttributes?>? attributes;
-  /// Indicates whether the accelerator is enabled. Defaults to `true`. Valid values: `true`, `false`.
+  /// Whether the accelerator is enabled. Defaults to `true`. Valid values: `true`, `false`.
   final pulumi.Input<bool?>? enabled;
-  /// The value for the address type. Defaults to `IPV4`. Valid values: `IPV4`, `DUAL_STACK`.
+  /// Value for the address type. Defaults to `IPV4`. Valid values: `IPV4`, `DUAL_STACK`.
   final pulumi.Input<String?>? ipAddressType;
-  /// The IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
+  /// IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
   final pulumi.Input<List<String>?>? ipAddresses;
-  /// The name of the accelerator.
+  /// Name of the accelerator.
   final pulumi.Input<String?>? name;
-  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [AcceleratorArgs].
-  /// [attributes] The attributes of the accelerator. Fields documented below.
-  /// [enabled] Indicates whether the accelerator is enabled. Defaults to `true`. Valid values: `true`, `false`.
-  /// [ipAddressType] The value for the address type. Defaults to `IPV4`. Valid values: `IPV4`, `DUAL_STACK`.
-  /// [ipAddresses] The IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
-  /// [name] The name of the accelerator.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [attributes] Configuration block with accelerator attributes. See `attributes` below.
+  /// [enabled] Whether the accelerator is enabled. Defaults to `true`. Valid values: `true`, `false`.
+  /// [ipAddressType] Value for the address type. Defaults to `IPV4`. Valid values: `IPV4`, `DUAL_STACK`.
+  /// [ipAddresses] IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
+  /// [name] Name of the accelerator.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const AcceleratorArgs({
     this.attributes,
     this.enabled,

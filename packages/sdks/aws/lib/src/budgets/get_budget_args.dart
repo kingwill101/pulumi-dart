@@ -7,21 +7,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_budgets_get_budget_get_budget_args_doc}
 class GetBudgetArgs {
-  /// The ID of the target account for budget. Will use current user's accountId by default if omitted.
+  /// ID of the target account for the budget. Defaults to the current account ID.
   final pulumi.Input<String?>? accountId;
-  /// The name of a budget. Unique within accounts.
+  /// Name of the budget. Unique within an account.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> name;
-  /// The prefix of the name of a budget. Unique within accounts.
+  /// Prefix of the budget name. Unique within an account.
   final pulumi.Input<String?>? namePrefix;
   /// Map of tags assigned to the resource.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetBudgetArgs].
-  /// [accountId] The ID of the target account for budget. Will use current user's accountId by default if omitted.
-  /// [name] The name of a budget. Unique within accounts.
-  /// [namePrefix] The prefix of the name of a budget. Unique within accounts.
+  /// [accountId] ID of the target account for the budget. Defaults to the current account ID.
+  /// [name] Name of the budget. Unique within an account.
+  /// [namePrefix] Prefix of the budget name. Unique within an account.
   /// [tags] Map of tags assigned to the resource.
   const GetBudgetArgs({
     this.accountId,

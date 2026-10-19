@@ -208,43 +208,45 @@ import 'classification_job_user_paused_detail.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.macie2.ClassificationJob` using the id. For example:
+/// Using `pulumi import`, import `aws.macie2.ClassificationJob` using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:macie2/classificationJob:ClassificationJob example abcd1
 /// ```
 class ClassificationJob extends pulumi.CustomResource {
-  /// The date and time, in UTC and extended RFC 3339 format, when the job was created.
+  /// Date and time, in UTC and extended RFC 3339 format, when the job was created.
   late final pulumi.Output<String> createdAt;
-  /// The custom data identifiers to use for data analysis and classification.
+  /// Custom data identifiers to use for data analysis and classification.
   late final pulumi.Output<List<String>> customDataIdentifierIds;
-  /// A custom description of the job. The description can contain as many as 200 characters.
+  /// Custom description of the job. Can contain as many as 200 characters.
   late final pulumi.Output<String> description;
-  /// Specifies whether to analyze all existing, eligible objects immediately after the job is created.
+  /// Whether to analyze all existing, eligible objects immediately after the job is created.
   late final pulumi.Output<bool?> initialRun;
+  /// ARN of the classification job.
   late final pulumi.Output<String> jobArn;
+  /// Unique identifier (ID) of the classification job.
   late final pulumi.Output<String> jobId;
-  /// The status for the job. Valid values are: `CANCELLED`, `RUNNING` and `USER_PAUSED`
+  /// Status for the job. Valid values are `CANCELLED`, `RUNNING` and `USER_PAUSED`.
   late final pulumi.Output<String> jobStatus;
-  /// The schedule for running the job. Valid values are: `ONE_TIME` - Run the job only once. If you specify this value, don't specify a value for the `scheduleFrequency` property. `SCHEDULED` - Run the job on a daily, weekly, or monthly basis. If you specify this value, use the `scheduleFrequency` property to define the recurrence pattern for the job.
+  /// Schedule for running the job. Valid values are `ONE_TIME`, to run the job only once, and `SCHEDULED`, to run the job on a daily, weekly, or monthly basis. When set to `SCHEDULED`, use `scheduleFrequency` to define the recurrence pattern for the job.
   late final pulumi.Output<String> jobType;
-  /// A custom name for the job. The name can contain as many as 500 characters. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
+  /// Custom name for the job. Can contain as many as 500 characters. If omitted, Terraform assigns a random, unique name. Conflicts with `namePrefix`.
   late final pulumi.Output<String> name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The S3 buckets that contain the objects to analyze, and the scope of that analysis. (documented below)
+  /// S3 buckets that contain the objects to analyze, and the scope of that analysis. See `s3JobDefinition` Block for details.
   late final pulumi.Output<ClassificationJobS3JobDefinition> s3JobDefinition;
-  /// The sampling depth, as a percentage, to apply when processing objects. This value determines the percentage of eligible objects that the job analyzes. If this value is less than 100, Amazon Macie selects the objects to analyze at random, up to the specified percentage, and analyzes all the data in those objects.
+  /// Sampling depth, as a percentage, to apply when processing objects. This value determines the percentage of eligible objects that the job analyzes. If this value is less than 100, Amazon Macie selects the objects to analyze at random, up to the specified percentage, and analyzes all the data in those objects.
   late final pulumi.Output<int> samplingPercentage;
-  /// The recurrence pattern for running the job. To run the job only once, don't specify a value for this property and set the value for the `jobType` property to `ONE_TIME`. (documented below)
+  /// Recurrence pattern for running the job. To run the job only once, omit this argument and set `jobType` to `ONE_TIME`. See `scheduleFrequency` Block for details.
   late final pulumi.Output<ClassificationJobScheduleFrequency> scheduleFrequency;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// If the current status of the job is `USER_PAUSED`, specifies when the job was paused and when the job or job run will expire and be canceled if it isn't resumed. This value is present only if the value for `job-status` is `USER_PAUSED`.
+  /// If the current status of the job is `USER_PAUSED`, information about when the job was paused and when the job or job run will expire and be cancelled if it isn't resumed. This value is present only if `jobStatus` is `USER_PAUSED`. See `userPausedDetails` Block for details.
   late final pulumi.Output<List<ClassificationJobUserPausedDetail>> userPausedDetails;
 
   /// Creates a new [ClassificationJob].
@@ -259,7 +261,7 @@ class ClassificationJob extends pulumi.CustomResource {
           'aws:macie2/classificationJob:ClassificationJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     customDataIdentifierIds = registerOutput<List<String>>('customDataIdentifierIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

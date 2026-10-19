@@ -182,7 +182,7 @@ import 'model_agreement_timeouts.dart';
 ///
 /// #### Required
 ///
-/// * `modelId` - Model ID argument of the Foundation Model Agreement.
+/// * `modelId` (String) Model ID of the foundation model.
 ///
 /// #### Optional
 ///
@@ -202,7 +202,7 @@ class ModelAgreement extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> offerToken;
-  /// Region where this action should be [run](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   late final pulumi.Output<ModelAgreementTimeouts?> timeouts;
 
@@ -218,7 +218,7 @@ class ModelAgreement extends pulumi.CustomResource {
           'aws:bedrockfoundation/modelAgreement:ModelAgreement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     modelId = registerOutput<String>('modelId');
     offerToken = registerOutput<String>('offerToken');

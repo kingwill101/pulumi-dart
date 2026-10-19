@@ -4,52 +4,53 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering Member resources.
 class MemberState {
-  /// The AWS account ID for the account.
+  /// AWS account ID for the account.
   final pulumi.Input<String?>? accountId;
-  /// The AWS account ID for the administrator account.
+  /// AWS account ID for the administrator account.
   final pulumi.Input<String?>? administratorAccountId;
   /// ARN of the account.
   final pulumi.Input<String?>? arn;
-  /// The email address for the account.
+  /// Email address for the account.
   final pulumi.Input<String?>? email;
-  /// Specifies whether to send an email notification to the root user of each account that the invitation will be sent to. This notification is in addition to an alert that the root user receives in AWS Personal Health Dashboard. To send an email notification to the root user of each account, set this value to `true`.
+  /// Whether to send an email notification to the root user of each account that the invitation will be sent to. This notification is in addition to an alert that the root user receives in AWS Personal Health Dashboard. To send an email notification to the root user of each account, set this value to `true`.
   final pulumi.Input<bool?>? invitationDisableEmailNotification;
-  /// A custom message to include in the invitation. Amazon Macie adds this message to the standard content that it sends for an invitation.
+  /// Custom message to include in the invitation. Amazon Macie adds this message to the standard content that it sends for an invitation.
   final pulumi.Input<String?>? invitationMessage;
-  /// Send an invitation to a member
+  /// Whether to send an invitation to a member.
   final pulumi.Input<bool?>? invite;
-  /// The date and time, in UTC and extended RFC 3339 format, when an Amazon Macie membership invitation was last sent to the account. This value is null if a Macie invitation hasn't been sent to the account.
+  /// Date and time, in UTC and extended RFC 3339 format, when an Amazon Macie membership invitation was last sent to the account. This value is null if a Macie invitation hasn't been sent to the account.
   final pulumi.Input<String?>? invitedAt;
+  /// AWS account ID for the master account.
   final pulumi.Input<String?>? masterAccountId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The current status of the relationship between the account and the administrator account.
+  /// Current status of the relationship between the account and the administrator account.
   final pulumi.Input<String?>? relationshipStatus;
-  /// Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
+  /// Status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
   final pulumi.Input<String?>? status;
   /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
-  /// The date and time, in UTC and extended RFC 3339 format, of the most recent change to the status of the relationship between the account and the administrator account.
+  /// Date and time, in UTC and extended RFC 3339 format, of the most recent change to the status of the relationship between the account and the administrator account.
   final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [MemberState].
-  /// [accountId] The AWS account ID for the account.
-  /// [administratorAccountId] The AWS account ID for the administrator account.
+  /// [accountId] AWS account ID for the account.
+  /// [administratorAccountId] AWS account ID for the administrator account.
   /// [arn] ARN of the account.
-  /// [email] The email address for the account.
-  /// [invitationDisableEmailNotification] Specifies whether to send an email notification to the root user of each account that the invitation will be sent to. This notification is in addition to an alert that the root user receives in AWS Personal Health Dashboard. To send an email notification to the root user of each account, set this value to `true`.
-  /// [invitationMessage] A custom message to include in the invitation. Amazon Macie adds this message to the standard content that it sends for an invitation.
-  /// [invite] Send an invitation to a member
-  /// [invitedAt] The date and time, in UTC and extended RFC 3339 format, when an Amazon Macie membership invitation was last sent to the account. This value is null if a Macie invitation hasn't been sent to the account.
-  /// [masterAccountId] Optional.
+  /// [email] Email address for the account.
+  /// [invitationDisableEmailNotification] Whether to send an email notification to the root user of each account that the invitation will be sent to. This notification is in addition to an alert that the root user receives in AWS Personal Health Dashboard. To send an email notification to the root user of each account, set this value to `true`.
+  /// [invitationMessage] Custom message to include in the invitation. Amazon Macie adds this message to the standard content that it sends for an invitation.
+  /// [invite] Whether to send an invitation to a member.
+  /// [invitedAt] Date and time, in UTC and extended RFC 3339 format, when an Amazon Macie membership invitation was last sent to the account. This value is null if a Macie invitation hasn't been sent to the account.
+  /// [masterAccountId] AWS account ID for the master account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [relationshipStatus] The current status of the relationship between the account and the administrator account.
-  /// [status] Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
+  /// [relationshipStatus] Current status of the relationship between the account and the administrator account.
+  /// [status] Status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [updatedAt] The date and time, in UTC and extended RFC 3339 format, of the most recent change to the status of the relationship between the account and the administrator account.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [updatedAt] Date and time, in UTC and extended RFC 3339 format, of the most recent change to the status of the relationship between the account and the administrator account.
   const MemberState({
     this.accountId,
     this.administratorAccountId,

@@ -31,8 +31,8 @@ class AutomationRuleV2ActionFindingFieldsUpdate {
   factory AutomationRuleV2ActionFindingFieldsUpdate.fromMap(Map<String, dynamic> map) {
     return AutomationRuleV2ActionFindingFieldsUpdate(
       comment: (() { final guardedValue = map['comment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      severityId: (() { final guardedValue = map['severityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      statusId: (() { final guardedValue = map['statusId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      severityId: (() { final guardedValue = map['severityId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      statusId: (() { final guardedValue = map['statusId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

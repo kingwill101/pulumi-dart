@@ -30,9 +30,9 @@ class GetBucketObjectLockConfigurationRuleDefaultRetention {
 
   factory GetBucketObjectLockConfigurationRuleDefaultRetention.fromMap(Map<String, dynamic> map) {
     return GetBucketObjectLockConfigurationRuleDefaultRetention(
-      days: pulumi.Input.fromValue((map['days'] as num).toInt()),
+      days: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['days'])),
       mode: pulumi.Input.fromValue(map['mode'] as String),
-      years: pulumi.Input.fromValue((map['years'] as num).toInt()),
+      years: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['years'])),
     );
   }
 }

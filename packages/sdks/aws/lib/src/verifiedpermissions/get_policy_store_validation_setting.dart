@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetPolicyStoreValidationSetting {
+  /// Mode for the validation settings.
   final pulumi.Input<String> mode;
 
   /// Creates a new [GetPolicyStoreValidationSetting].
-  /// [mode] Required.
+  /// [mode] Mode for the validation settings.
   const GetPolicyStoreValidationSetting({
     required this.mode,
   });

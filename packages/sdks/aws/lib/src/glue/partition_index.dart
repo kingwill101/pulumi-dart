@@ -675,11 +675,11 @@ import 'partition_index_state.dart';
 /// $ pulumi import aws:glue/partitionIndex:PartitionIndex example 123456789012:MyDatabase:MyTable:index-name
 /// ```
 class PartitionIndex extends pulumi.CustomResource {
-  /// The catalog ID where the table resides.
+  /// Catalog ID where the table resides.
   late final pulumi.Output<String> catalogId;
   /// Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
   late final pulumi.Output<String> databaseName;
-  /// Configuration block for a partition index. See `partitionIndex` below.
+  /// Configuration block for a partition index. See `partitionIndex` Block below.
   late final pulumi.Output<PartitionIndexPartitionIndex> partitionIndex;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -698,7 +698,7 @@ class PartitionIndex extends pulumi.CustomResource {
           'aws:glue/partitionIndex:PartitionIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     databaseName = registerOutput<String>('databaseName');

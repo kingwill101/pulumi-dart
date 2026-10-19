@@ -7,16 +7,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_mediastore_container_policy_container_policy_args_doc}
 class ContainerPolicyArgs {
-  /// The name of the container.
+  /// Name of the container.
   final pulumi.Input<String> containerName;
-  /// The contents of the policy.
+  /// Contents of the policy. For more information about building AWS IAM policy documents with Terraform, see the AWS IAM Policy Document Guide.
   final pulumi.Input<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
 
   /// Creates a new [ContainerPolicyArgs].
-  /// [containerName] The name of the container.
-  /// [policy] The contents of the policy.
+  /// [containerName] Name of the container.
+  /// [policy] Contents of the policy. For more information about building AWS IAM policy documents with Terraform, see the AWS IAM Policy Document Guide.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const ContainerPolicyArgs({
     required this.containerName,

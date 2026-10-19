@@ -618,38 +618,41 @@ import 'channel_vpc.dart';
 class Channel extends pulumi.CustomResource {
   /// ARN of the Channel.
   late final pulumi.Output<String> arn;
-  /// Specification of CDI inputs for this channel. See CDI Input Specification for more details.
+  /// Specification of CDI inputs for this channel. See `cdiInputSpecification` Block for details.
   late final pulumi.Output<ChannelCdiInputSpecification?> cdiInputSpecification;
-  /// Concise argument description.
+  /// Class of the channel. Valid values: `STANDARD`, `SINGLE_PIPELINE`.
   late final pulumi.Output<String> channelClass;
   /// ID of the Channel.
   late final pulumi.Output<String> channelId;
-  /// Destinations for channel. See Destinations for more details.
+  /// Destinations for the channel. See `destinations` Block for details.
   late final pulumi.Output<List<ChannelDestination>> destinations;
-  /// Encoder settings. See Encoder Settings for more details.
+  /// Encoder settings. See `encoderSettings` Block for details.
   late final pulumi.Output<ChannelEncoderSettings> encoderSettings;
-  /// Input attachments for the channel. See Input Attachments for more details.
+  /// Input attachments for the channel. See `inputAttachments` Block for details.
   late final pulumi.Output<List<ChannelInputAttachment>> inputAttachments;
-  /// Specification of network and file inputs for the channel.
+  /// Specification of network and file inputs for the channel. See `inputSpecification` Block for details.
   late final pulumi.Output<ChannelInputSpecification> inputSpecification;
-  /// The log level to write to Cloudwatch logs.
+  /// Level of verbosity for the logs written to CloudWatch Logs.
   late final pulumi.Output<String> logLevel;
-  /// Maintenance settings for this channel. See Maintenance for more details.
+  /// Maintenance settings for this channel. See `maintenance` Block for details.
   late final pulumi.Output<ChannelMaintenance> maintenance;
-  /// Name of the Channel.
+  /// Name of the channel.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Concise argument description.
+  /// ARN of the IAM role for the channel.
   late final pulumi.Output<String?> roleArn;
-  /// Whether to start/stop channel. Default: `false`
+  /// Whether to start/stop channel. Default: `false`.
   late final pulumi.Output<bool?> startChannel;
-  /// A map of tags to assign to the channel. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the channel. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// * `vpc[0].availability_zones` - Availability zones where the network interfaces are created.
+  /// * `vpc[0].network_interface_ids` - Network interface IDs created in the output VPC.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Settings for the VPC outputs. See VPC for more details.
+  /// Settings for the VPC outputs. See `vpc` Block for details.
   late final pulumi.Output<ChannelVpc?> vpc;
 
   /// Creates a new [Channel].
@@ -664,7 +667,7 @@ class Channel extends pulumi.CustomResource {
           'aws:medialive/channel:Channel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     cdiInputSpecification = registerOutput<ChannelCdiInputSpecification?>('cdiInputSpecification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ChannelCdiInputSpecification.fromMap((guardedValue as Map).cast<String, dynamic>()); });

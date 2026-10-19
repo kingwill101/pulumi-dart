@@ -598,7 +598,7 @@ class CloudAutonomousVmCluster extends pulumi.CustomResource {
   late final pulumi.Output<double> availableCpus;
   /// Exadata infrastructure ARN. Changing this will force Terraform to create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
   late final pulumi.Output<String> cloudExadataInfrastructureArn;
-  /// Exadata infrastructure id. Changing this will force Terraform to create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
+  /// Exadata infrastructure ID. Changing this will force Terraform to create a new resource. Either the combination of `cloudExadataInfrastructureId` and `odbNetworkId` or `cloudExadataInfrastructureArn` and `odbNetworkArn` must be used.
   late final pulumi.Output<String> cloudExadataInfrastructureId;
   /// Compute model of the Autonomous VM cluster: ECPU or OCPU.
   late final pulumi.Output<String> computeModel;
@@ -706,7 +706,7 @@ class CloudAutonomousVmCluster extends pulumi.CustomResource {
           'aws:odb/cloudAutonomousVmCluster:CloudAutonomousVmCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autonomousDataStoragePercentage = registerOutput<double>('autonomousDataStoragePercentage');

@@ -9,7 +9,7 @@ import 'guardrail_timeouts.dart';
 import 'guardrail_topic_policy_config.dart';
 import 'guardrail_word_policy_config.dart';
 
-/// Resource for managing an Amazon Bedrock Guardrail.
+/// Manages an Amazon Bedrock Guardrail.
 ///
 /// ## Example Usage
 ///
@@ -28,7 +28,7 @@ import 'guardrail_word_policy_config.dart';
 ///             type: "HATE",
 ///         }],
 ///         tierConfigs: [{
-///             tierName: "STANDARD",
+///             tierName: "CLASSIC",
 ///         }],
 ///     },
 ///     sensitiveInformationPolicyConfig: {
@@ -88,7 +88,7 @@ import 'guardrail_word_policy_config.dart';
 ///             "type": "HATE",
 ///         }],
 ///         "tier_configs": [{
-///             "tier_name": "STANDARD",
+///             "tier_name": "CLASSIC",
 ///         }],
 ///     },
 ///     sensitive_information_policy_config={
@@ -160,7 +160,7 @@ import 'guardrail_word_policy_config.dart';
 ///             {
 ///                 new Aws.Bedrock.Inputs.GuardrailContentPolicyConfigTierConfigArgs
 ///                 {
-///                     TierName = "STANDARD",
+///                     TierName = "CLASSIC",
 ///                 },
 ///             },
 ///         },
@@ -262,7 +262,7 @@ import 'guardrail_word_policy_config.dart';
 /// 				},
 /// 				TierConfigs: bedrock.GuardrailContentPolicyConfigTierConfigArray{
 /// 					&bedrock.GuardrailContentPolicyConfigTierConfigArgs{
-/// 						TierName: pulumi.String("STANDARD"),
+/// 						TierName: pulumi.String("CLASSIC"),
 /// 					},
 /// 				},
 /// 			},
@@ -348,7 +348,7 @@ import 'guardrail_word_policy_config.dart';
 ///       "type"           = "HATE"
 ///     }]
 ///     tier_configs = [{
-///       "tierName" = "STANDARD"
+///       "tierName" = "CLASSIC"
 ///     }]
 ///   }
 ///   sensitive_information_policy_config = {
@@ -437,7 +437,7 @@ import 'guardrail_word_policy_config.dart';
 ///                     .type("HATE")
 ///                     .build())
 ///                 .tierConfigs(GuardrailContentPolicyConfigTierConfigArgs.builder()
-///                     .tierName("STANDARD")
+///                     .tierName("CLASSIC")
 ///                     .build())
 ///                 .build())
 ///             .sensitiveInformationPolicyConfig(GuardrailSensitiveInformationPolicyConfigArgs.builder()
@@ -499,7 +499,7 @@ import 'guardrail_word_policy_config.dart';
 ///             outputStrength: MEDIUM
 ///             type: HATE
 ///         tierConfigs:
-///           - tierName: STANDARD
+///           - tierName: CLASSIC
 ///       sensitiveInformationPolicyConfig:
 ///         piiEntitiesConfigs:
 ///           - action: BLOCK
@@ -540,7 +540,7 @@ import 'guardrail_word_policy_config.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Bedrock Guardrail using using a comma-delimited string of `guardrailId` and `version`. For example:
+/// Using `pulumi import`, import Amazon Bedrock Guardrail using a comma-delimited string of `guardrailId` and `version`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:bedrock/guardrail:Guardrail example guardrail-id-12345678,DRAFT
@@ -550,12 +550,13 @@ class Guardrail extends pulumi.CustomResource {
   late final pulumi.Output<String> blockedInputMessaging;
   /// Message to return when the guardrail blocks a model response.
   late final pulumi.Output<String> blockedOutputsMessaging;
-  /// Content policy config for a guardrail. See Content Policy Config for more information.
+  /// Content policy config for a guardrail. See `contentPolicyConfig` Block for more information.
   late final pulumi.Output<GuardrailContentPolicyConfig?> contentPolicyConfig;
-  /// Contextual grounding policy config for a guardrail. See Contextual Grounding Policy Config for more information.
+  /// Contextual grounding policy config for a guardrail. See `contextualGroundingPolicyConfig` Block for more information.
   late final pulumi.Output<GuardrailContextualGroundingPolicyConfig?> contextualGroundingPolicyConfig;
-  /// Unix epoch timestamp in seconds for when the Guardrail was created.
+  /// Date and time the Guardrail was created, in RFC3339 format.
   late final pulumi.Output<String> createdAt;
+  /// Configuration block to enable cross-region routing for bedrock guardrails. See `crossRegionConfig` Block for more information. See [available Regions](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-cross-region-support.html).
   late final pulumi.Output<GuardrailCrossRegionConfig?> crossRegionConfig;
   /// Description of the guardrail or its version.
   late final pulumi.Output<String> description;
@@ -563,7 +564,7 @@ class Guardrail extends pulumi.CustomResource {
   late final pulumi.Output<String> guardrailArn;
   /// ID of the Guardrail.
   late final pulumi.Output<String> guardrailId;
-  /// The KMS key with which the guardrail was encrypted at rest.
+  /// KMS key with which the guardrail was encrypted at rest.
   late final pulumi.Output<String?> kmsKeyArn;
   /// Name of the guardrail.
   ///
@@ -571,21 +572,22 @@ class Guardrail extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Sensitive information policy config for a guardrail. See Sensitive Information Policy Config for more information.
+  /// Sensitive information policy config for a guardrail. See `sensitiveInformationPolicyConfig` Block for more information.
   late final pulumi.Output<GuardrailSensitiveInformationPolicyConfig?> sensitiveInformationPolicyConfig;
-  /// Status of the Bedrock Guardrail. One of `READY`, `FAILED`.
+  /// Status of the Bedrock Guardrail.
   late final pulumi.Output<String> status;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<GuardrailTimeouts?> timeouts;
-  /// Topic policy config for a guardrail. See Topic Policy Config for more information.
+  /// Topic policy config for a guardrail. See `topicPolicyConfig` Block for more information.
   late final pulumi.Output<GuardrailTopicPolicyConfig?> topicPolicyConfig;
-  /// Date and time that the Guardrail list was last updated.
+  /// Date and time that the Guardrail was last updated, in RFC3339 format.
   late final pulumi.Output<String> updatedAt;
   /// Version of the Guardrail.
   late final pulumi.Output<String> version;
-  /// Word policy config for a guardrail. See Word Policy Config for more information.
+  /// Word policy config for a guardrail. See `wordPolicyConfig` Block for more information.
   late final pulumi.Output<GuardrailWordPolicyConfig?> wordPolicyConfig;
 
   /// Creates a new [Guardrail].
@@ -600,7 +602,7 @@ class Guardrail extends pulumi.CustomResource {
           'aws:bedrock/guardrail:Guardrail',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     blockedInputMessaging = registerOutput<String>('blockedInputMessaging');
     blockedOutputsMessaging = registerOutput<String>('blockedOutputsMessaging');

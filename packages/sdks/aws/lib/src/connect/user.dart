@@ -781,7 +781,7 @@ import 'user_state.dart';
 /// ```
 ///
 ///
-/// ### With multiple Security profile ids specified in securityProfileIds
+/// ### With multiple Security profile IDs specified in securityProfileIds
 ///
 ///
 /// ```typescript
@@ -1000,7 +1000,7 @@ class User extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// The identifier of the routing profile for the user.
   late final pulumi.Output<String> routingProfileId;
-  /// A list of identifiers for the security profiles for the user. Specify a minimum of 1 and maximum of 10 security profile ids. For more information, see [Best Practices for Security Profiles](https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-best-practices.html) in the Amazon Connect Administrator Guide.
+  /// A list of identifiers for the security profiles for the user. Specify a minimum of 1 and maximum of 10 security profile IDs. For more information, see [Best Practices for Security Profiles](https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-best-practices.html) in the Amazon Connect Administrator Guide.
   late final pulumi.Output<List<String>> securityProfileIds;
   /// Tags to apply to the user. If configured with a provider
   /// `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
@@ -1022,7 +1022,7 @@ class User extends pulumi.CustomResource {
           'aws:connect/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     arn = registerOutput<String>('arn');

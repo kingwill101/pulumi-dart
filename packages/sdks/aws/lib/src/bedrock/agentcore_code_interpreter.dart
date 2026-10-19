@@ -20,7 +20,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///     networkConfiguration: {
 ///         networkMode: "PUBLIC",
 ///     },
-///     name: "example-code-interpreter",
+///     name: "example_code_interpreter",
 ///     description: "Code interpreter for data analysis",
 /// });
 /// ```
@@ -32,7 +32,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///     network_configuration={
 ///         "network_mode": "PUBLIC",
 ///     },
-///     name="example-code-interpreter",
+///     name="example_code_interpreter",
 ///     description="Code interpreter for data analysis")
 /// ```
 /// ```csharp
@@ -49,7 +49,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///         {
 ///             NetworkMode = "PUBLIC",
 ///         },
-///         Name = "example-code-interpreter",
+///         Name = "example_code_interpreter",
 ///         Description = "Code interpreter for data analysis",
 ///     });
 ///
@@ -69,7 +69,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// 			NetworkConfiguration: &bedrock.AgentcoreCodeInterpreterNetworkConfigurationArgs{
 /// 				NetworkMode: pulumi.String("PUBLIC"),
 /// 			},
-/// 			Name:        pulumi.String("example-code-interpreter"),
+/// 			Name:        pulumi.String("example_code_interpreter"),
 /// 			Description: pulumi.String("Code interpreter for data analysis"),
 /// 		})
 /// 		if err != nil {
@@ -92,7 +92,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///   network_configuration = {
 ///     network_mode = "PUBLIC"
 ///   }
-///   name        = "example-code-interpreter"
+///   name        = "example_code_interpreter"
 ///   description = "Code interpreter for data analysis"
 /// }
 /// ```
@@ -122,7 +122,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///             .networkConfiguration(AgentcoreCodeInterpreterNetworkConfigurationArgs.builder()
 ///                 .networkMode("PUBLIC")
 ///                 .build())
-///             .name("example-code-interpreter")
+///             .name("example_code_interpreter")
 ///             .description("Code interpreter for data analysis")
 ///             .build());
 ///
@@ -136,7 +136,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///     properties:
 ///       networkConfiguration:
 ///         networkMode: PUBLIC
-///       name: example-code-interpreter
+///       name: example_code_interpreter
 ///       description: Code interpreter for data analysis
 /// ```
 ///
@@ -166,7 +166,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///     networkConfiguration: {
 ///         networkMode: "SANDBOX",
 ///     },
-///     name: "example-code-interpreter",
+///     name: "example_code_interpreter",
 ///     description: "Code interpreter with custom execution role",
 ///     executionRoleArn: example.arn,
 /// });
@@ -190,7 +190,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///     network_configuration={
 ///         "network_mode": "SANDBOX",
 ///     },
-///     name="example-code-interpreter",
+///     name="example_code_interpreter",
 ///     description="Code interpreter with custom execution role",
 ///     execution_role_arn=example.arn)
 /// ```
@@ -240,7 +240,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///         {
 ///             NetworkMode = "SANDBOX",
 ///         },
-///         Name = "example-code-interpreter",
+///         Name = "example_code_interpreter",
 ///         Description = "Code interpreter with custom execution role",
 ///         ExecutionRoleArn = example.Arn,
 ///     });
@@ -290,7 +290,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 /// 			NetworkConfiguration: &bedrock.AgentcoreCodeInterpreterNetworkConfigurationArgs{
 /// 				NetworkMode: pulumi.String("SANDBOX"),
 /// 			},
-/// 			Name:             pulumi.String("example-code-interpreter"),
+/// 			Name:             pulumi.String("example_code_interpreter"),
 /// 			Description:      pulumi.String("Code interpreter with custom execution role"),
 /// 			ExecutionRoleArn: example.Arn,
 /// 		})
@@ -329,7 +329,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///   network_configuration = {
 ///     network_mode = "SANDBOX"
 ///   }
-///   name               = "example-code-interpreter"
+///   name               = "example_code_interpreter"
 ///   description        = "Code interpreter with custom execution role"
 ///   execution_role_arn = aws_iam_role.example.arn
 /// }
@@ -382,7 +382,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///             .networkConfiguration(AgentcoreCodeInterpreterNetworkConfigurationArgs.builder()
 ///                 .networkMode("SANDBOX")
 ///                 .build())
-///             .name("example-code-interpreter")
+///             .name("example_code_interpreter")
 ///             .description("Code interpreter with custom execution role")
 ///             .executionRoleArn(example.arn())
 ///             .build());
@@ -403,7 +403,7 @@ import 'agentcore_code_interpreter_timeouts.dart';
 ///     properties:
 ///       networkConfiguration:
 ///         networkMode: SANDBOX
-///       name: example-code-interpreter
+///       name: example_code_interpreter
 ///       description: Code interpreter with custom execution role
 ///       executionRoleArn: ${example.arn}
 /// variables:
@@ -438,7 +438,7 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
   late final pulumi.Output<String> codeInterpreterId;
   /// Description of the code interpreter.
   late final pulumi.Output<String?> description;
-  /// ARN of the IAM role that the code interpreter assumes for execution. Required when using `SANDBOX` network mode.
+  /// ARN of the IAM role that the code interpreter assumes for execution.
   late final pulumi.Output<String?> executionRoleArn;
   /// Name of the code interpreter.
   late final pulumi.Output<String> name;
@@ -450,7 +450,7 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<AgentcoreCodeInterpreterTimeouts?> timeouts;
 
@@ -466,7 +466,7 @@ class AgentcoreCodeInterpreter extends pulumi.CustomResource {
           'aws:bedrock/agentcoreCodeInterpreter:AgentcoreCodeInterpreter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     certificates = registerOutput<List<AgentcoreCodeInterpreterCertificate>?>('certificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AgentcoreCodeInterpreterCertificate>(guardedValue, (value) => AgentcoreCodeInterpreterCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     codeInterpreterArn = registerOutput<String>('codeInterpreterArn');

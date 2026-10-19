@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess {
+  /// Public access type.
   final pulumi.Input<String> type;
 
   /// Creates a new [GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess].
-  /// [type] Required.
+  /// [type] Public access type.
   const GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess({
     required this.type,
   });

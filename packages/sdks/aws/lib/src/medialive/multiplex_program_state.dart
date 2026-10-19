@@ -8,11 +8,11 @@ import 'multiplex_program_timeouts.dart';
 class MultiplexProgramState {
   /// Multiplex ID.
   final pulumi.Input<String?>? multiplexId;
-  /// MultiplexProgram settings. See Multiplex Program Settings for more details.
-  ///
-  /// The following arguments are optional:
+  /// MultiplexProgram settings. See `multiplexProgramSettings` Block for more details.
   final pulumi.Input<MultiplexProgramMultiplexProgramSettings?>? multiplexProgramSettings;
   /// Unique program name.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String?>? programName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -20,7 +20,7 @@ class MultiplexProgramState {
 
   /// Creates a new [MultiplexProgramState].
   /// [multiplexId] Multiplex ID.
-  /// [multiplexProgramSettings] MultiplexProgram settings. See Multiplex Program Settings for more details.
+  /// [multiplexProgramSettings] MultiplexProgram settings. See `multiplexProgramSettings` Block for more details.
   /// [programName] Unique program name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.

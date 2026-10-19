@@ -52,7 +52,7 @@ class ManagedPrefixListArgs {
     return ManagedPrefixListArgs(
       addressFamily: pulumi.Input.fromValue(map['addressFamily'] as String),
       entries: (() { final guardedValue = map['entries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedPrefixListEntry>(guardedValue, (value) => ManagedPrefixListEntry.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maxEntries: pulumi.Input.fromValue((map['maxEntries'] as num).toInt()),
+      maxEntries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxEntries'])),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

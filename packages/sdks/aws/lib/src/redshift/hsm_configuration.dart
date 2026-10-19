@@ -150,7 +150,7 @@ import 'hsm_configuration_state.dart';
 /// $ pulumi import aws:redshift/hsmConfiguration:HsmConfiguration example example
 /// ```
 class HsmConfiguration extends pulumi.CustomResource {
-  /// ARN of the Hsm Client Certificate.
+  /// ARN of the HSM Client Certificate.
   late final pulumi.Output<String> arn;
   /// A text description of the HSM configuration to be created.
   late final pulumi.Output<String> description;
@@ -183,7 +183,7 @@ class HsmConfiguration extends pulumi.CustomResource {
           'aws:redshift/hsmConfiguration:HsmConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
           additionalSecretOutputs: const ['hsmPartitionPassword'],
         ) {
     arn = registerOutput<String>('arn');

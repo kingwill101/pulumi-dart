@@ -5,19 +5,17 @@
 class GetAuthPolicyResult {
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// Auth policy. The policy string in JSON must not contain newlines or blank lines.
   final String? policy;
   final String? region;
   final String? resourceIdentifier;
-  /// State of the auth policy. The auth policy is only active when the auth type is set to AWS_IAM. If you provide a policy, then authentication and authorization decisions are made based on this policy and the client's IAM policy. If the Auth type is NONE, then, any auth policy you provide will remain inactive.
   final String? state;
 
   /// Creates a new [GetAuthPolicyResult].
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [policy] Auth policy. The policy string in JSON must not contain newlines or blank lines.
+  /// [policy] Optional.
   /// [region] Optional.
   /// [resourceIdentifier] Optional.
-  /// [state] State of the auth policy. The auth policy is only active when the auth type is set to AWS_IAM. If you provide a policy, then authentication and authorization decisions are made based on this policy and the client's IAM policy. If the Auth type is NONE, then, any auth policy you provide will remain inactive.
+  /// [state] Optional.
   const GetAuthPolicyResult({
     this.id,
     this.policy,

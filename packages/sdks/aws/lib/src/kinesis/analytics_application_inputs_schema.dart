@@ -5,19 +5,14 @@ import 'analytics_application_inputs_schema_record_column.dart';
 import 'analytics_application_inputs_schema_record_format.dart';
 
 class AnalyticsApplicationInputsSchema {
-  /// The Record Column mapping for the streaming source data element.
-  /// See Record Columns below for more details.
   final pulumi.Input<List<AnalyticsApplicationInputsSchemaRecordColumn>> recordColumns;
-  /// The Encoding of the record in the streaming source.
   final pulumi.Input<String?>? recordEncoding;
-  /// The Record Format and mapping information to schematize a record.
-  /// See Record Format below for more details.
   final pulumi.Input<AnalyticsApplicationInputsSchemaRecordFormat> recordFormat;
 
   /// Creates a new [AnalyticsApplicationInputsSchema].
-  /// [recordColumns] The Record Column mapping for the streaming source data element.
-  /// [recordEncoding] The Encoding of the record in the streaming source.
-  /// [recordFormat] The Record Format and mapping information to schematize a record.
+  /// [recordColumns] Required.
+  /// [recordEncoding] Optional.
+  /// [recordFormat] Required.
   const AnalyticsApplicationInputsSchema({
     required this.recordColumns,
     this.recordEncoding,

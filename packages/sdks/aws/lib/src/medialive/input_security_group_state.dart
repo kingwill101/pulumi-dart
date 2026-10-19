@@ -7,25 +7,25 @@ import 'input_security_group_whitelist_rule.dart';
 class InputSecurityGroupState {
   /// ARN of the InputSecurityGroup.
   final pulumi.Input<String?>? arn;
-  /// The list of inputs currently using this InputSecurityGroup.
+  /// List of inputs currently using this InputSecurityGroup.
   final pulumi.Input<List<String>?>? inputs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   final pulumi.Input<Map<String, String>?>? tagsAll;
-  /// Whitelist rules. See Whitelist Rules for more details.
+  /// Whitelist rules. See `whitelistRules` Block for more details.
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<InputSecurityGroupWhitelistRule>?>? whitelistRules;
 
   /// Creates a new [InputSecurityGroupState].
   /// [arn] ARN of the InputSecurityGroup.
-  /// [inputs] The list of inputs currently using this InputSecurityGroup.
+  /// [inputs] List of inputs currently using this InputSecurityGroup.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
-  /// [whitelistRules] Whitelist rules. See Whitelist Rules for more details.
+  /// [whitelistRules] Whitelist rules. See `whitelistRules` Block for more details.
   const InputSecurityGroupState({
     this.arn,
     this.inputs,

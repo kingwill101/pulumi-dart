@@ -6,16 +6,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class VpcIpamScopeState {
   /// ARN of the scope.
   final pulumi.Input<String?>? arn;
-  /// A description for the scope you're creating.
+  /// Description for the scope you're creating.
   final pulumi.Input<String?>? description;
-  /// The ARN of the IPAM for which you're creating this scope.
+  /// ARN of the IPAM for which you're creating this scope.
   final pulumi.Input<String?>? ipamArn;
-  /// The ID of the IPAM for which you're creating this scope.
+  /// ID of the IPAM for which you're creating this scope.
   final pulumi.Input<String?>? ipamId;
+  /// Type of the scope.
   final pulumi.Input<String?>? ipamScopeType;
-  /// Defines if the scope is the default scope or not.
+  /// Whether the scope is the default scope.
   final pulumi.Input<bool?>? isDefault;
-  /// The number of pools in the scope.
+  /// Number of pools in the scope.
   final pulumi.Input<int?>? poolCount;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -25,12 +26,12 @@ class VpcIpamScopeState {
 
   /// Creates a new [VpcIpamScopeState].
   /// [arn] ARN of the scope.
-  /// [description] A description for the scope you're creating.
-  /// [ipamArn] The ARN of the IPAM for which you're creating this scope.
-  /// [ipamId] The ID of the IPAM for which you're creating this scope.
-  /// [ipamScopeType] Optional.
-  /// [isDefault] Defines if the scope is the default scope or not.
-  /// [poolCount] The number of pools in the scope.
+  /// [description] Description for the scope you're creating.
+  /// [ipamArn] ARN of the IPAM for which you're creating this scope.
+  /// [ipamId] ID of the IPAM for which you're creating this scope.
+  /// [ipamScopeType] Type of the scope.
+  /// [isDefault] Whether the scope is the default scope.
+  /// [poolCount] Number of pools in the scope.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
@@ -70,7 +71,7 @@ class VpcIpamScopeState {
       ipamId: (() { final guardedValue = map['ipamId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipamScopeType: (() { final guardedValue = map['ipamScopeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      poolCount: (() { final guardedValue = map['poolCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      poolCount: (() { final guardedValue = map['poolCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       tagsAll: (() { final guardedValue = map['tagsAll']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

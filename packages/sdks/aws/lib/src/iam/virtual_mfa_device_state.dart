@@ -16,7 +16,7 @@ class VirtualMfaDeviceState {
   final pulumi.Input<String?>? qrCodePng;
   /// Serial number associated with the virtual MFA device.
   final pulumi.Input<String?>? serialNumber;
-  /// Map of resource tags for the virtual mfa device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags for the virtual MFA device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
@@ -32,7 +32,7 @@ class VirtualMfaDeviceState {
   /// [path] Path for the virtual MFA device.
   /// [qrCodePng] QR code PNG image that encodes `otpauth://totp/$virtualMFADeviceName@$AccountName?secret=$Base32String` where `$virtualMFADeviceName` is one of the create call arguments. `AccountName` is the user name if set (otherwise, the account ID), and `Base32String` is the seed in base32 format.
   /// [serialNumber] Serial number associated with the virtual MFA device.
-  /// [tags] Map of resource tags for the virtual mfa device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of resource tags for the virtual MFA device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [userName] Name of the IAM user associated with this virtual MFA device.
   /// [virtualMfaDeviceName] Name of the virtual MFA device. Use with path to uniquely identify a virtual MFA device.

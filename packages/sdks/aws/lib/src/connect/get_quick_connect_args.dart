@@ -13,7 +13,7 @@ class GetQuickConnectArgs {
   ///
   /// &gt; **NOTE:** `instanceId` and one of either `name` or `quickConnectId` is required.
   final pulumi.Input<String?>? name;
-  /// Returns information on a specific Quick Connect by Quick Connect id
+  /// Returns information on a specific Quick Connect by Quick Connect ID
   final pulumi.Input<String?>? quickConnectId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -23,7 +23,7 @@ class GetQuickConnectArgs {
   /// Creates a new [GetQuickConnectArgs].
   /// [instanceId] Reference to the hosting Amazon Connect Instance
   /// [name] Returns information on a specific Quick Connect by name
-  /// [quickConnectId] Returns information on a specific Quick Connect by Quick Connect id
+  /// [quickConnectId] Returns information on a specific Quick Connect by Quick Connect ID
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the Quick Connect.
   const GetQuickConnectArgs({

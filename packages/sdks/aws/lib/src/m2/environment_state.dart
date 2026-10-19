@@ -7,28 +7,30 @@ import 'environment_timeouts.dart';
 
 /// Input properties used for looking up and filtering Environment resources.
 class EnvironmentState {
+  /// Whether to apply configuration changes during the preferred maintenance window instead of immediately.
   final pulumi.Input<bool?>? applyChangesDuringMaintenanceWindow;
   /// ARN of the Environment.
   final pulumi.Input<String?>? arn;
+  /// Description of the runtime environment.
   final pulumi.Input<String?>? description;
   /// Engine type must be `microfocus` or `bluage`.
   final pulumi.Input<String?>? engineType;
-  /// The specific version of the engine for the Environment.
+  /// Specific version of the engine for the Environment.
   final pulumi.Input<String?>? engineVersion;
-  /// The id of the Environment.
+  /// ID of the Environment.
   final pulumi.Input<String?>? environmentId;
   /// Force update the environment even if applications are running.
   final pulumi.Input<bool?>? forceUpdate;
   final pulumi.Input<EnvironmentHighAvailabilityConfig?>? highAvailabilityConfig;
   /// M2 Instance Type.
-  ///
-  /// The following arguments are optional:
   final pulumi.Input<String?>? instanceType;
   /// ARN of the KMS key to use for the Environment.
   final pulumi.Input<String?>? kmsKeyId;
   /// ARN of the load balancer created by the Environment.
   final pulumi.Input<String?>? loadBalancerArn;
   /// Name of the runtime environment. Must be unique within the account.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String?>? name;
   /// Configures the maintenance window that you want for the runtime environment. The maintenance window must have the format `ddd:hh24:mi-ddd:hh24:mi` and must be less than 24 hours. If not provided a random value will be used.
   final pulumi.Input<String?>? preferredMaintenanceWindow;
@@ -36,10 +38,10 @@ class EnvironmentState {
   final pulumi.Input<bool?>? publiclyAccessible;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// List of security group ids.
+  /// List of security group IDs.
   final pulumi.Input<List<String>?>? securityGroupIds;
   final pulumi.Input<EnvironmentStorageConfiguration?>? storageConfiguration;
-  /// List of subnet ids to deploy environment to.
+  /// List of subnet IDs to deploy environment to.
   final pulumi.Input<List<String>?>? subnetIds;
   /// Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
@@ -47,12 +49,12 @@ class EnvironmentState {
   final pulumi.Input<EnvironmentTimeouts?>? timeouts;
 
   /// Creates a new [EnvironmentState].
-  /// [applyChangesDuringMaintenanceWindow] Optional.
+  /// [applyChangesDuringMaintenanceWindow] Whether to apply configuration changes during the preferred maintenance window instead of immediately.
   /// [arn] ARN of the Environment.
-  /// [description] Optional.
+  /// [description] Description of the runtime environment.
   /// [engineType] Engine type must be `microfocus` or `bluage`.
-  /// [engineVersion] The specific version of the engine for the Environment.
-  /// [environmentId] The id of the Environment.
+  /// [engineVersion] Specific version of the engine for the Environment.
+  /// [environmentId] ID of the Environment.
   /// [forceUpdate] Force update the environment even if applications are running.
   /// [highAvailabilityConfig] Optional.
   /// [instanceType] M2 Instance Type.
@@ -62,9 +64,9 @@ class EnvironmentState {
   /// [preferredMaintenanceWindow] Configures the maintenance window that you want for the runtime environment. The maintenance window must have the format `ddd:hh24:mi-ddd:hh24:mi` and must be less than 24 hours. If not provided a random value will be used.
   /// [publiclyAccessible] Allow applications deployed to this environment to be publicly accessible.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [securityGroupIds] List of security group ids.
+  /// [securityGroupIds] List of security group IDs.
   /// [storageConfiguration] Optional.
-  /// [subnetIds] List of subnet ids to deploy environment to.
+  /// [subnetIds] List of subnet IDs to deploy environment to.
   /// [tags] Key-value tags for the place index. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [timeouts] Optional.

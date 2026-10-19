@@ -13,6 +13,7 @@ class GetStreamConsumerResult {
   /// Current status of the stream consumer.
   final String? status;
   final String? streamArn;
+  /// Map of tags assigned to the resource.
   final Map<String, String>? tags;
 
   /// Creates a new [GetStreamConsumerResult].
@@ -23,7 +24,7 @@ class GetStreamConsumerResult {
   /// [region] Optional.
   /// [status] Current status of the stream consumer.
   /// [streamArn] Optional.
-  /// [tags] Optional.
+  /// [tags] Map of tags assigned to the resource.
   const GetStreamConsumerResult({
     this.arn,
     this.creationTimestamp,

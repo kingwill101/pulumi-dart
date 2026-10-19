@@ -4,6 +4,8 @@ import 'vpc_dhcp_options_state.dart';
 
 /// Provides a VPC DHCP Options resource.
 ///
+/// You can find more technical documentation about DHCP Options Set in the official [AWS User Guide](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html).
+///
 /// ## Example Usage
 ///
 /// Basic usage:
@@ -318,7 +320,7 @@ import 'vpc_dhcp_options_state.dart';
 /// $ pulumi import aws:ec2/vpcDhcpOptions:VpcDhcpOptions my_options dopt-d9070ebb
 /// ```
 class VpcDhcpOptions extends pulumi.CustomResource {
-  /// The ARN of the DHCP Options Set.
+  /// ARN of the DHCP Options Set.
   late final pulumi.Output<String> arn;
   /// the suffix domain name to use by default when resolving non Fully Qualified Domain Names. In other words, this is what ends up being the `search` value in the `/etc/resolv.conf` file.
   late final pulumi.Output<String?> domainName;
@@ -328,19 +330,19 @@ class VpcDhcpOptions extends pulumi.CustomResource {
   late final pulumi.Output<String?> ipv6AddressPreferredLeaseTime;
   /// List of NETBIOS name servers.
   late final pulumi.Output<List<String>?> netbiosNameServers;
-  /// The NetBIOS node type (1, 2, 4, or 8). AWS recommends to specify 2 since broadcast and multicast are not supported in their network. For more information about these node types, see [RFC 2132](http://www.ietf.org/rfc/rfc2132.txt).
+  /// NetBIOS node type (1, 2, 4, or 8). AWS recommends to specify 2 since broadcast and multicast are not supported in their network. For more information about these node types, see [RFC 2132](http://www.ietf.org/rfc/rfc2132.txt).
   late final pulumi.Output<String?> netbiosNodeType;
   /// List of NTP servers to configure.
   late final pulumi.Output<List<String>?> ntpServers;
-  /// The ID of the AWS account that owns the DHCP options set.
+  /// ID of the AWS account that owns the DHCP options set.
   late final pulumi.Output<String> ownerId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   ///
   /// &gt; **Note:** All arguments are optional but at least one must be specified. `domainNameServers`, `netbiosNameServers`, and `ntpServers` are limited to four servers each. To use the DHCP Options Set you must associate it to a VPC using `aws.ec2.VpcDhcpOptionsAssociation`. If you delete a DHCP Options Set, all VPCs using it will be associated to AWS's `default` DHCP Option Set. In most cases, set `domainNameServers` to `AmazonProvidedDNS` unless configuring your own DNS.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [VpcDhcpOptions].
@@ -355,7 +357,7 @@ class VpcDhcpOptions extends pulumi.CustomResource {
           'aws:ec2/vpcDhcpOptions:VpcDhcpOptions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     domainName = registerOutput<String?>('domainName');

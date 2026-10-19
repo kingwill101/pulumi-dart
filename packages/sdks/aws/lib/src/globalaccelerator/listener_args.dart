@@ -12,16 +12,16 @@ class ListenerArgs {
   final pulumi.Input<String> acceleratorArn;
   /// Direct all requests from a user to the same endpoint. Valid values are `NONE`, `SOURCE_IP`. Default: `NONE`. If `NONE`, Global Accelerator uses the "five-tuple" properties of source IP address, source port, destination IP address, destination port, and protocol to select the hash value. If `SOURCE_IP`, Global Accelerator uses the "two-tuple" properties of source (client) IP address and destination IP address to select the hash value.
   final pulumi.Input<String?>? clientAffinity;
-  /// The list of port ranges for the connections from clients to the accelerator. Fields documented below.
+  /// Port ranges for the connections from clients to the accelerator. See `portRange` below.
   final pulumi.Input<List<ListenerPortRange>> portRanges;
-  /// The protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.
+  /// Protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.
   final pulumi.Input<String> protocol;
 
   /// Creates a new [ListenerArgs].
   /// [acceleratorArn] ARN of your accelerator.
   /// [clientAffinity] Direct all requests from a user to the same endpoint. Valid values are `NONE`, `SOURCE_IP`. Default: `NONE`. If `NONE`, Global Accelerator uses the "five-tuple" properties of source IP address, source port, destination IP address, destination port, and protocol to select the hash value. If `SOURCE_IP`, Global Accelerator uses the "two-tuple" properties of source (client) IP address and destination IP address to select the hash value.
-  /// [portRanges] The list of port ranges for the connections from clients to the accelerator. Fields documented below.
-  /// [protocol] The protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.
+  /// [portRanges] Port ranges for the connections from clients to the accelerator. See `portRange` below.
+  /// [protocol] Protocol for the connections from clients to the accelerator. Valid values are `TCP`, `UDP`.
   const ListenerArgs({
     required this.acceleratorArn,
     this.clientAffinity,

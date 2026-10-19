@@ -10,7 +10,7 @@ class HttpNamespaceState {
   final pulumi.Input<String?>? description;
   /// The name of an HTTP namespace.
   final pulumi.Input<String?>? httpName;
-  /// The name of the http namespace.
+  /// The name of the HTTP namespace.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -23,7 +23,7 @@ class HttpNamespaceState {
   /// [arn] The ARN that Amazon Route 53 assigns to the namespace when you create it.
   /// [description] The description that you specify for the namespace when you create it.
   /// [httpName] The name of an HTTP namespace.
-  /// [name] The name of the http namespace.
+  /// [name] The name of the HTTP namespace.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the namespace. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.

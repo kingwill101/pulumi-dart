@@ -73,15 +73,15 @@ class GetContainerDefinitionResult {
   factory GetContainerDefinitionResult.fromMap(Map<String, dynamic> map) {
     return GetContainerDefinitionResult(
       containerName: (() { final guardedValue = map['containerName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      cpu: (() { final guardedValue = map['cpu']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       disableNetworking: (() { final guardedValue = map['disableNetworking']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       dockerLabels: (() { final guardedValue = map['dockerLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       image: (() { final guardedValue = map['image']; if (guardedValue == null) return null; return guardedValue as String; })(),
       imageDigest: (() { final guardedValue = map['imageDigest']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      memoryReservation: (() { final guardedValue = map['memoryReservation']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      memory: (() { final guardedValue = map['memory']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      memoryReservation: (() { final guardedValue = map['memoryReservation']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       taskDefinition: (() { final guardedValue = map['taskDefinition']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );

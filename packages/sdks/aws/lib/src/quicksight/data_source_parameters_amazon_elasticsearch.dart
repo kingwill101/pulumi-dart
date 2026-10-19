@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersAmazonElasticsearch {
-  /// The OpenSearch domain.
+  /// OpenSearch domain.
   final pulumi.Input<String> domain;
 
   /// Creates a new [DataSourceParametersAmazonElasticsearch].
-  /// [domain] The OpenSearch domain.
+  /// [domain] OpenSearch domain.
   const DataSourceParametersAmazonElasticsearch({
     required this.domain,
   });

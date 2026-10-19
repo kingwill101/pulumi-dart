@@ -4,28 +4,28 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering PolicyTemplate resources.
 class PolicyTemplateState {
-  /// The date the Policy Store was created.
+  /// Date the policy template was created.
   final pulumi.Input<String?>? createdDate;
   /// Provides a description for the policy template.
   final pulumi.Input<String?>? description;
-  /// The ID of the Policy Store.
+  /// ID of the Policy Store.
   final pulumi.Input<String?>? policyStoreId;
-  /// The ID of the Policy Store.
+  /// ID of the policy template.
   final pulumi.Input<String?>? policyTemplateId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Defines the content of the statement, written in Cedar policy language.
+  /// Content of the statement, written in Cedar policy language.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String?>? statement;
 
   /// Creates a new [PolicyTemplateState].
-  /// [createdDate] The date the Policy Store was created.
+  /// [createdDate] Date the policy template was created.
   /// [description] Provides a description for the policy template.
-  /// [policyStoreId] The ID of the Policy Store.
-  /// [policyTemplateId] The ID of the Policy Store.
+  /// [policyStoreId] ID of the Policy Store.
+  /// [policyTemplateId] ID of the policy template.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [statement] Defines the content of the statement, written in Cedar policy language.
+  /// [statement] Content of the statement, written in Cedar policy language.
   const PolicyTemplateState({
     this.createdDate,
     this.description,

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GroupInstanceRefreshPreferencesAlarmSpecification {
-  /// List of Cloudwatch alarms. If any of these alarms goes into ALARM state, Instance Refresh is failed.
+  /// List of CloudWatch alarms. If any of these alarms goes into ALARM state, Instance Refresh is failed.
   final pulumi.Input<List<String>?>? alarms;
 
   /// Creates a new [GroupInstanceRefreshPreferencesAlarmSpecification].
-  /// [alarms] List of Cloudwatch alarms. If any of these alarms goes into ALARM state, Instance Refresh is failed.
+  /// [alarms] List of CloudWatch alarms. If any of these alarms goes into ALARM state, Instance Refresh is failed.
   const GroupInstanceRefreshPreferencesAlarmSpecification({
     this.alarms,
   });

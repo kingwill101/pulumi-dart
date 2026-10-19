@@ -12,7 +12,7 @@ class UsagePlanKeyState {
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Id of the usage plan resource representing to associate the key to.
+  /// ID of the usage plan resource representing to associate the key to.
   final pulumi.Input<String?>? usagePlanId;
   /// Value of a usage plan key.
   final pulumi.Input<String?>? value;
@@ -22,7 +22,7 @@ class UsagePlanKeyState {
   /// [keyType] Type of the API key resource. Currently, the valid key type is API_KEY.
   /// [name] Name of a usage plan key.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [usagePlanId] Id of the usage plan resource representing to associate the key to.
+  /// [usagePlanId] ID of the usage plan resource representing to associate the key to.
   /// [value] Value of a usage plan key.
   const UsagePlanKeyState({
     this.keyId,

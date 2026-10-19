@@ -4,29 +4,29 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering ChannelGroup resources.
 class ChannelGroupState {
-  /// The ARN of the channel
+  /// ARN of the channel group
   final pulumi.Input<String?>? arn;
-  /// A description of the channel group
+  /// Description of the channel group
   final pulumi.Input<String?>? description;
-  /// The egress domain of the channel group
+  /// Egress domain of the channel group
   final pulumi.Input<String?>? egressDomain;
-  /// A unique identifier naming the channel group
+  /// Unique identifier naming the channel group
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [ChannelGroupState].
-  /// [arn] The ARN of the channel
-  /// [description] A description of the channel group
-  /// [egressDomain] The egress domain of the channel group
-  /// [name] A unique identifier naming the channel group
+  /// [arn] ARN of the channel group
+  /// [description] Description of the channel group
+  /// [egressDomain] Egress domain of the channel group
+  /// [name] Unique identifier naming the channel group
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const ChannelGroupState({
     this.arn,
     this.description,

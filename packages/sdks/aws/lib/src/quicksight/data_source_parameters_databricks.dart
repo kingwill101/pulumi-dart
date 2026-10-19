@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersDatabricks {
-  /// The host name of the Databricks data source.
+  /// Host name of the Databricks data source.
   final pulumi.Input<String> host;
-  /// The port for the Databricks data source.
+  /// Port for the Databricks data source.
   final pulumi.Input<int> port;
-  /// The HTTP path of the Databricks data source.
+  /// HTTP path of the Databricks data source.
   final pulumi.Input<String> sqlEndpointPath;
 
   /// Creates a new [DataSourceParametersDatabricks].
-  /// [host] The host name of the Databricks data source.
-  /// [port] The port for the Databricks data source.
-  /// [sqlEndpointPath] The HTTP path of the Databricks data source.
+  /// [host] Host name of the Databricks data source.
+  /// [port] Port for the Databricks data source.
+  /// [sqlEndpointPath] HTTP path of the Databricks data source.
   const DataSourceParametersDatabricks({
     required this.host,
     required this.port,
@@ -31,7 +31,7 @@ class DataSourceParametersDatabricks {
   factory DataSourceParametersDatabricks.fromMap(Map<String, dynamic> map) {
     return DataSourceParametersDatabricks(
       host: pulumi.Input.fromValue(map['host'] as String),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       sqlEndpointPath: pulumi.Input.fromValue(map['sqlEndpointPath'] as String),
     );
   }

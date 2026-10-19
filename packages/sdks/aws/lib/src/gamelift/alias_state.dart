@@ -13,11 +13,11 @@ class AliasState {
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Specifies the fleet and/or routing type to use for the alias.
+  /// Fleet and/or routing type to use for the alias.
   final pulumi.Input<AliasRoutingStrategy?>? routingStrategy;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [AliasState].
@@ -25,9 +25,9 @@ class AliasState {
   /// [description] Description of the alias.
   /// [name] Name of the alias.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [routingStrategy] Specifies the fleet and/or routing type to use for the alias.
+  /// [routingStrategy] Fleet and/or routing type to use for the alias.
   /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const AliasState({
     this.arn,
     this.description,

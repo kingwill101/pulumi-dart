@@ -9,7 +9,7 @@ import 'pipeline_variable.dart';
 
 /// Input properties used for looking up and filtering Pipeline resources.
 class PipelineState {
-  /// Codepipeline ARN.
+  /// CodePipeline ARN.
   final pulumi.Input<String?>? arn;
   /// One or more artifactStore blocks. Artifact stores are documented below.
   final pulumi.Input<List<PipelineArtifactStore>?>? artifactStores;
@@ -39,7 +39,7 @@ class PipelineState {
   final pulumi.Input<List<PipelineVariable>?>? variables;
 
   /// Creates a new [PipelineState].
-  /// [arn] Codepipeline ARN.
+  /// [arn] CodePipeline ARN.
   /// [artifactStores] One or more artifactStore blocks. Artifact stores are documented below.
   /// [executionMode] The method that the pipeline will use to handle multiple executions. The default mode is `SUPERSEDED`. For value values, refer to the [AWS documentation](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_PipelineDeclaration.html#CodePipeline-Type-PipelineDeclaration-executionMode).
   /// [name] The name of the pipeline.

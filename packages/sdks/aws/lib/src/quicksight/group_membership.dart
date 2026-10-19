@@ -122,14 +122,15 @@ import 'group_membership_state.dart';
 /// $ pulumi import aws:quicksight/groupMembership:GroupMembership example 123456789123/default/all-access-users/john_smith
 /// ```
 class GroupMembership extends pulumi.CustomResource {
+  /// ARN of the group membership.
   late final pulumi.Output<String> arn;
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   late final pulumi.Output<String> awsAccountId;
-  /// The name of the group in which the member will be added.
+  /// Name of the group in which the member will be added.
   late final pulumi.Output<String> groupName;
-  /// The name of the member to add to the group.
+  /// Name of the member to add to the group.
   late final pulumi.Output<String> memberName;
-  /// The namespace that you want the user to be a part of. Defaults to `default`.
+  /// Namespace that you want the user to be a part of. Defaults to `default`.
   late final pulumi.Output<String?> namespace;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -146,7 +147,7 @@ class GroupMembership extends pulumi.CustomResource {
           'aws:quicksight/groupMembership:GroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     awsAccountId = registerOutput<String>('awsAccountId');

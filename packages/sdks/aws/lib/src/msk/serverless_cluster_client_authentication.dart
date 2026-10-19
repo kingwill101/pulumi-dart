@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'serverless_cluster_client_authentication_sasl.dart';
 
 class ServerlessClusterClientAuthentication {
-  /// Details for client authentication using SASL. See below.
+  /// Details for client authentication using SASL. See `sasl` Block below.
   final pulumi.Input<ServerlessClusterClientAuthenticationSasl> sasl;
 
   /// Creates a new [ServerlessClusterClientAuthentication].
-  /// [sasl] Details for client authentication using SASL. See below.
+  /// [sasl] Details for client authentication using SASL. See `sasl` Block below.
   const ServerlessClusterClientAuthentication({
     required this.sasl,
   });

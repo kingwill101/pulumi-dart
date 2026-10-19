@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor {
-  /// The ARN of the Lambda function that operates on records in the stream.
+  /// ARN of the Lambda function that operates on records in the stream.
   final pulumi.Input<String> resourceArn;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor].
-  /// [resourceArn] The ARN of the Lambda function that operates on records in the stream.
+  /// [resourceArn] ARN of the Lambda function that operates on records in the stream.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputProcessingConfigurationInputLambdaProcessor({
     required this.resourceArn,
   });

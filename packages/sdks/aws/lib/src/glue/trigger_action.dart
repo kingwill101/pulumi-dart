@@ -6,24 +6,24 @@ import 'trigger_action_notification_property.dart';
 class TriggerAction {
   /// Arguments to be passed to the job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
   final pulumi.Input<Map<String, String>?>? arguments;
-  /// The name of the crawler to be executed. Conflicts with `jobName`.
+  /// Name of the crawler to be executed. Conflicts with `jobName`.
   final pulumi.Input<String?>? crawlerName;
-  /// The name of a job to be executed. Conflicts with `crawlerName`.
+  /// Name of a job to be executed. Conflicts with `crawlerName`.
   final pulumi.Input<String?>? jobName;
-  /// Specifies configuration properties of a job run notification. See Notification Property details below.
+  /// Configuration properties of a job run notification. See `notificationProperty` details below.
   final pulumi.Input<TriggerActionNotificationProperty?>? notificationProperty;
-  /// The name of the Security Configuration structure to be used with this action.
+  /// Name of the Security Configuration structure to be used with this action.
   final pulumi.Input<String?>? securityConfiguration;
-  /// The job run timeout in minutes. It overrides the timeout value of the job.
+  /// Job run timeout in minutes. It overrides the timeout value of the job.
   final pulumi.Input<int?>? timeout;
 
   /// Creates a new [TriggerAction].
   /// [arguments] Arguments to be passed to the job. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes.
-  /// [crawlerName] The name of the crawler to be executed. Conflicts with `jobName`.
-  /// [jobName] The name of a job to be executed. Conflicts with `crawlerName`.
-  /// [notificationProperty] Specifies configuration properties of a job run notification. See Notification Property details below.
-  /// [securityConfiguration] The name of the Security Configuration structure to be used with this action.
-  /// [timeout] The job run timeout in minutes. It overrides the timeout value of the job.
+  /// [crawlerName] Name of the crawler to be executed. Conflicts with `jobName`.
+  /// [jobName] Name of a job to be executed. Conflicts with `crawlerName`.
+  /// [notificationProperty] Configuration properties of a job run notification. See `notificationProperty` details below.
+  /// [securityConfiguration] Name of the Security Configuration structure to be used with this action.
+  /// [timeout] Job run timeout in minutes. It overrides the timeout value of the job.
   const TriggerAction({
     this.arguments,
     this.crawlerName,
@@ -51,7 +51,7 @@ class TriggerAction {
       jobName: (() { final guardedValue = map['jobName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       notificationProperty: (() { final guardedValue = map['notificationProperty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TriggerActionNotificationProperty.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       securityConfiguration: (() { final guardedValue = map['securityConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'analysis_source_entity_source_template.dart';
 
 class AnalysisSourceEntity {
-  /// The source template. See source_template.
+  /// Source template. See source_template.
   final pulumi.Input<AnalysisSourceEntitySourceTemplate?>? sourceTemplate;
 
   /// Creates a new [AnalysisSourceEntity].
-  /// [sourceTemplate] The source template. See source_template.
+  /// [sourceTemplate] Source template. See source_template.
   const AnalysisSourceEntity({
     this.sourceTemplate,
   });

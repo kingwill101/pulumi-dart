@@ -31,8 +31,8 @@ class CompositeAlarmActionsSuppressor {
   factory CompositeAlarmActionsSuppressor.fromMap(Map<String, dynamic> map) {
     return CompositeAlarmActionsSuppressor(
       alarm: pulumi.Input.fromValue(map['alarm'] as String),
-      extensionPeriod: pulumi.Input.fromValue((map['extensionPeriod'] as num).toInt()),
-      waitPeriod: pulumi.Input.fromValue((map['waitPeriod'] as num).toInt()),
+      extensionPeriod: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['extensionPeriod'])),
+      waitPeriod: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['waitPeriod'])),
     );
   }
 }

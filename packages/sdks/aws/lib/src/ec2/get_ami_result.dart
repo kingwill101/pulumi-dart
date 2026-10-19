@@ -67,7 +67,7 @@ class GetAmiResult {
   final String? rootDeviceName;
   /// Type of root device (ie: `ebs` or `instance-store`).
   final String? rootDeviceType;
-  /// Snapshot id associated with the root device, if any (only applies to `ebs` root devices).
+  /// Snapshot ID associated with the root device, if any (only applies to `ebs` root devices).
   final String? rootSnapshotId;
   /// Whether enhanced networking is enabled.
   final String? sriovNetSupport;
@@ -120,7 +120,7 @@ class GetAmiResult {
   /// [region] Optional.
   /// [rootDeviceName] Device name of the root device.
   /// [rootDeviceType] Type of root device (ie: `ebs` or `instance-store`).
-  /// [rootSnapshotId] Snapshot id associated with the root device, if any (only applies to `ebs` root devices).
+  /// [rootSnapshotId] Snapshot ID associated with the root device, if any (only applies to `ebs` root devices).
   /// [sriovNetSupport] Whether enhanced networking is enabled.
   /// [state] Current state of the AMI. If the state is `available`, the image is successfully registered and can be used to launch an instance.
   /// [stateReason] Describes a state change. Fields are `UNSET` if not available. See `stateReason` below.

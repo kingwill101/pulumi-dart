@@ -7,50 +7,50 @@ import 'get_security_group_rule_filter.dart';
 class GetSecurityGroupRuleResult {
   /// ARN of the security group rule.
   final String? arn;
-  /// The destination IPv4 CIDR range.
+  /// Destination IPv4 CIDR range.
   final String? cidrIpv4;
-  /// The destination IPv6 CIDR range.
+  /// Destination IPv6 CIDR range.
   final String? cidrIpv6;
-  /// The security group rule description.
+  /// Security group rule description.
   final String? description;
   final List<GetSecurityGroupRuleFilter>? filters;
-  /// The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type.
+  /// Start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type.
   final int? fromPort;
   final String? id;
-  /// The IP protocol name or number. Use `-1` to specify all protocols.
+  /// IP protocol name or number. Use `-1` to specify all protocols.
   final String? ipProtocol;
-  /// Indicates whether the security group rule is an outbound rule.
+  /// Whether the security group rule is an outbound rule.
   final bool? isEgress;
-  /// The ID of the destination prefix list.
+  /// ID of the destination prefix list.
   final String? prefixListId;
-  /// The destination security group that is referenced in the rule.
+  /// Destination security group that is referenced in the rule.
   final String? referencedSecurityGroupId;
   final String? region;
-  /// The ID of the security group.
+  /// ID of the security group.
   final String? securityGroupId;
   final String? securityGroupRuleId;
-  /// A map of tags assigned to the resource.
+  /// Map of tags assigned to the resource.
   final Map<String, String>? tags;
-  /// (Optional) The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
+  /// End of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
   final int? toPort;
 
   /// Creates a new [GetSecurityGroupRuleResult].
   /// [arn] ARN of the security group rule.
-  /// [cidrIpv4] The destination IPv4 CIDR range.
-  /// [cidrIpv6] The destination IPv6 CIDR range.
-  /// [description] The security group rule description.
+  /// [cidrIpv4] Destination IPv4 CIDR range.
+  /// [cidrIpv6] Destination IPv6 CIDR range.
+  /// [description] Security group rule description.
   /// [filters] Optional.
-  /// [fromPort] The start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type.
+  /// [fromPort] Start of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 type.
   /// [id] Optional.
-  /// [ipProtocol] The IP protocol name or number. Use `-1` to specify all protocols.
-  /// [isEgress] Indicates whether the security group rule is an outbound rule.
-  /// [prefixListId] The ID of the destination prefix list.
-  /// [referencedSecurityGroupId] The destination security group that is referenced in the rule.
+  /// [ipProtocol] IP protocol name or number. Use `-1` to specify all protocols.
+  /// [isEgress] Whether the security group rule is an outbound rule.
+  /// [prefixListId] ID of the destination prefix list.
+  /// [referencedSecurityGroupId] Destination security group that is referenced in the rule.
   /// [region] Optional.
-  /// [securityGroupId] The ID of the security group.
+  /// [securityGroupId] ID of the security group.
   /// [securityGroupRuleId] Optional.
-  /// [tags] A map of tags assigned to the resource.
-  /// [toPort] (Optional) The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
+  /// [tags] Map of tags assigned to the resource.
+  /// [toPort] End of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
   const GetSecurityGroupRuleResult({
     this.arn,
     this.cidrIpv4,
@@ -98,7 +98,7 @@ class GetSecurityGroupRuleResult {
       cidrIpv6: (() { final guardedValue = map['cidrIpv6']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSecurityGroupRuleFilter>(guardedValue, (value) => GetSecurityGroupRuleFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
-      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      fromPort: (() { final guardedValue = map['fromPort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipProtocol: (() { final guardedValue = map['ipProtocol']; if (guardedValue == null) return null; return guardedValue as String; })(),
       isEgress: (() { final guardedValue = map['isEgress']; if (guardedValue == null) return null; return guardedValue as bool; })(),
@@ -108,7 +108,7 @@ class GetSecurityGroupRuleResult {
       securityGroupId: (() { final guardedValue = map['securityGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       securityGroupRuleId: (() { final guardedValue = map['securityGroupRuleId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      toPort: (() { final guardedValue = map['toPort']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

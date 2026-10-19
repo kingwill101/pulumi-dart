@@ -11,42 +11,43 @@ import 'trust_provider_sse_specification.dart';
 /// {@endtemplate}
 /// {@macro pulumi_verifiedaccess_trust_provider_trust_provider_args_doc}
 class TrustProviderArgs {
-  /// A description for the AWS Verified Access trust provider.
+  /// Description for the AWS Verified Access trust provider.
   final pulumi.Input<String?>? description;
-  /// A block of options for device identity based trust providers.
+  /// Block of options for device identity based trust providers. See below.
   final pulumi.Input<TrustProviderDeviceOptions?>? deviceOptions;
-  /// The type of device-based trust provider.
+  /// Type of device-based trust provider.
   final pulumi.Input<String?>? deviceTrustProviderType;
-  /// The OpenID Connect details for an Native Application OIDC, user-identity based trust provider.
+  /// OpenID Connect details for a Native Application OIDC, user-identity based trust provider. See below.
   final pulumi.Input<TrustProviderNativeApplicationOidcOptions?>? nativeApplicationOidcOptions;
-  /// The OpenID Connect details for an oidc-type, user-identity based trust provider.
+  /// OpenID Connect details for an oidc-type, user-identity based trust provider. See below.
   final pulumi.Input<TrustProviderOidcOptions?>? oidcOptions;
-  /// The identifier to be used when working with policy rules.
+  /// Identifier to be used when working with policy rules.
   final pulumi.Input<String> policyReferenceName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
+  /// Block of options in use for server side encryption. See below.
   final pulumi.Input<TrustProviderSseSpecification?>? sseSpecification;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// The type of trust provider can be either user or device-based.
+  /// Type of trust provider can be either user or device-based.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> trustProviderType;
-  /// The type of user-based trust provider.
+  /// Type of user-based trust provider.
   final pulumi.Input<String?>? userTrustProviderType;
 
   /// Creates a new [TrustProviderArgs].
-  /// [description] A description for the AWS Verified Access trust provider.
-  /// [deviceOptions] A block of options for device identity based trust providers.
-  /// [deviceTrustProviderType] The type of device-based trust provider.
-  /// [nativeApplicationOidcOptions] The OpenID Connect details for an Native Application OIDC, user-identity based trust provider.
-  /// [oidcOptions] The OpenID Connect details for an oidc-type, user-identity based trust provider.
-  /// [policyReferenceName] The identifier to be used when working with policy rules.
+  /// [description] Description for the AWS Verified Access trust provider.
+  /// [deviceOptions] Block of options for device identity based trust providers. See below.
+  /// [deviceTrustProviderType] Type of device-based trust provider.
+  /// [nativeApplicationOidcOptions] OpenID Connect details for a Native Application OIDC, user-identity based trust provider. See below.
+  /// [oidcOptions] OpenID Connect details for an oidc-type, user-identity based trust provider. See below.
+  /// [policyReferenceName] Identifier to be used when working with policy rules.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [sseSpecification] Optional.
+  /// [sseSpecification] Block of options in use for server side encryption. See below.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [trustProviderType] The type of trust provider can be either user or device-based.
-  /// [userTrustProviderType] The type of user-based trust provider.
+  /// [trustProviderType] Type of trust provider can be either user or device-based.
+  /// [userTrustProviderType] Type of user-based trust provider.
   const TrustProviderArgs({
     this.description,
     this.deviceOptions,

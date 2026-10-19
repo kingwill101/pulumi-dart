@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_kms_get_cipher_text_get_cipher_text_args_doc}
 class GetCipherTextArgs {
-  /// An optional mapping that makes up the encryption context.
+  /// Mapping that makes up the encryption context.
   final pulumi.Input<Map<String, String>?>? context;
   /// Globally unique key ID for the customer master key.
   final pulumi.Input<String> keyId;
@@ -17,7 +17,7 @@ class GetCipherTextArgs {
   final pulumi.Input<String?>? region;
 
   /// Creates a new [GetCipherTextArgs].
-  /// [context] An optional mapping that makes up the encryption context.
+  /// [context] Mapping that makes up the encryption context.
   /// [keyId] Globally unique key ID for the customer master key.
   /// [plaintext] Data to be encrypted. Note that this may show up in logs, and it will be stored in the state file.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

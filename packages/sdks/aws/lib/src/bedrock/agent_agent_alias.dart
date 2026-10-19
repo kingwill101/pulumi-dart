@@ -4,7 +4,7 @@ import 'agent_agent_alias_routing_configuration.dart';
 import 'agent_agent_alias_state.dart';
 import 'agent_agent_alias_timeouts.dart';
 
-/// Resource for managing an AWS Agents for Amazon Bedrock Agent Alias.
+/// Manages an AWS Agents for Amazon Bedrock Agent Alias.
 ///
 /// ## Example Usage
 ///
@@ -56,8 +56,9 @@ import 'agent_agent_alias_timeouts.dart';
 /// const exampleAgentAgent = new aws.bedrock.AgentAgent("example", {
 ///     agentName: "my-agent-name",
 ///     agentResourceRoleArn: example.arn,
-///     idleTtl: 500,
+///     idleSessionTtlInSeconds: 500,
 ///     foundationModel: "anthropic.claude-v2",
+///     instruction: "You are a friendly assistant who helps answer questions.",
 /// });
 /// const exampleAgentAgentAlias = new aws.bedrock.AgentAgentAlias("example", {
 ///     agentAliasName: "my-agent-alias",
@@ -104,8 +105,9 @@ import 'agent_agent_alias_timeouts.dart';
 /// example_agent_agent = aws.bedrock.AgentAgent("example",
 ///     agent_name="my-agent-name",
 ///     agent_resource_role_arn=example.arn,
-///     idle_ttl=500,
-///     foundation_model="anthropic.claude-v2")
+///     idle_session_ttl_in_seconds=500,
+///     foundation_model="anthropic.claude-v2",
+///     instruction="You are a friendly assistant who helps answer questions.")
 /// example_agent_agent_alias = aws.bedrock.AgentAgentAlias("example",
 ///     agent_alias_name="my-agent-alias",
 ///     agent_id=example_agent_agent.agent_id,
@@ -205,8 +207,9 @@ import 'agent_agent_alias_timeouts.dart';
 ///     {
 ///         AgentName = "my-agent-name",
 ///         AgentResourceRoleArn = example.Arn,
-///         IdleTtl = 500,
+///         IdleSessionTtlInSeconds = 500,
 ///         FoundationModel = "anthropic.claude-v2",
+///         Instruction = "You are a friendly assistant who helps answer questions.",
 ///     });
 ///
 ///     var exampleAgentAgentAlias = new Aws.Bedrock.AgentAgentAlias("example", new()
@@ -310,10 +313,11 @@ import 'agent_agent_alias_timeouts.dart';
 /// 			return err
 /// 		}
 /// 		exampleAgentAgent, err := bedrock.NewAgentAgent(ctx, "example", &bedrock.AgentAgentArgs{
-/// 			AgentName:            pulumi.String("my-agent-name"),
-/// 			AgentResourceRoleArn: example.Arn,
-/// 			IdleTtl:              500,
-/// 			FoundationModel:      pulumi.String("anthropic.claude-v2"),
+/// 			AgentName:               pulumi.String("my-agent-name"),
+/// 			AgentResourceRoleArn:    example.Arn,
+/// 			IdleSessionTtlInSeconds: pulumi.Int(500),
+/// 			FoundationModel:         pulumi.String("anthropic.claude-v2"),
+/// 			Instruction:             pulumi.String("You are a friendly assistant who helps answer questions."),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -380,10 +384,11 @@ import 'agent_agent_alias_timeouts.dart';
 ///   role   = aws_iam_role.example.id
 /// }
 /// resource "aws_bedrock_agentagent" "example" {
-///   agent_name              = "my-agent-name"
-///   agent_resource_role_arn = aws_iam_role.example.arn
-///   idle_ttl                = 500
-///   foundation_model        = "anthropic.claude-v2"
+///   agent_name                  = "my-agent-name"
+///   agent_resource_role_arn     = aws_iam_role.example.arn
+///   idle_session_ttl_in_seconds = 500
+///   foundation_model            = "anthropic.claude-v2"
+///   instruction                 = "You are a friendly assistant who helps answer questions."
 /// }
 /// resource "aws_bedrock_agentagentalias" "example" {
 ///   agent_alias_name = "my-agent-alias"
@@ -477,8 +482,9 @@ import 'agent_agent_alias_timeouts.dart';
 ///         var exampleAgentAgent = new AgentAgent("exampleAgentAgent", AgentAgentArgs.builder()
 ///             .agentName("my-agent-name")
 ///             .agentResourceRoleArn(example.arn())
-///             .idleTtl(500)
+///             .idleSessionTtlInSeconds(500)
 ///             .foundationModel("anthropic.claude-v2")
+///             .instruction("You are a friendly assistant who helps answer questions.")
 ///             .build());
 ///
 ///         var exampleAgentAgentAlias = new AgentAgentAlias("exampleAgentAgentAlias", AgentAgentAliasArgs.builder()
@@ -509,8 +515,9 @@ import 'agent_agent_alias_timeouts.dart';
 ///     properties:
 ///       agentName: my-agent-name
 ///       agentResourceRoleArn: ${example.arn}
-///       idleTtl: 500
+///       idleSessionTtlInSeconds: 500
 ///       foundationModel: anthropic.claude-v2
+///       instruction: You are a friendly assistant who helps answer questions.
 ///   exampleAgentAgentAlias:
 ///     type: aws:bedrock:AgentAgentAlias
 ///     name: example
@@ -605,7 +612,7 @@ class AgentAgentAlias extends pulumi.CustomResource {
           'aws:bedrock/agentAgentAlias:AgentAgentAlias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     agentAliasArn = registerOutput<String>('agentAliasArn');
     agentAliasId = registerOutput<String>('agentAliasId');

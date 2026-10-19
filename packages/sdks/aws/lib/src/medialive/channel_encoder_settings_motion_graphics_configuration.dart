@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_motion_graphics_configuration_motion_graphics_settings.dart';
 
 class ChannelEncoderSettingsMotionGraphicsConfiguration {
-  /// Motion Graphics Insertion.
+  /// Whether to activate motion graphics insertion.
   final pulumi.Input<String?>? motionGraphicsInsertion;
-  /// Motion Graphics Settings. See Motion Graphics Settings for more details.
+  /// Motion graphics settings. See `motionGraphicsSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings> motionGraphicsSettings;
 
   /// Creates a new [ChannelEncoderSettingsMotionGraphicsConfiguration].
-  /// [motionGraphicsInsertion] Motion Graphics Insertion.
-  /// [motionGraphicsSettings] Motion Graphics Settings. See Motion Graphics Settings for more details.
+  /// [motionGraphicsInsertion] Whether to activate motion graphics insertion.
+  /// [motionGraphicsSettings] Motion graphics settings. See `motionGraphicsSettings` Block for details.
   const ChannelEncoderSettingsMotionGraphicsConfiguration({
     this.motionGraphicsInsertion,
     required this.motionGraphicsSettings,

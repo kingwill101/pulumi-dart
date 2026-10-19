@@ -10,7 +10,7 @@ import 'parameter_group_parameter.dart';
 class ParameterGroupArgs {
   /// Description for the parameter group. Defaults to `"Managed by Pulumi"`.
   final pulumi.Input<String?>? description;
-  /// The engine version that the parameter group can be used with.
+  /// Engine version that the parameter group can be used with.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> family;
@@ -22,17 +22,17 @@ class ParameterGroupArgs {
   final pulumi.Input<List<ParameterGroupParameter>?>? parameters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ParameterGroupArgs].
   /// [description] Description for the parameter group. Defaults to `"Managed by Pulumi"`.
-  /// [family] The engine version that the parameter group can be used with.
+  /// [family] Engine version that the parameter group can be used with.
   /// [name] Name of the parameter group. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [parameters] Set of MemoryDB parameters to apply. Any parameters not specified will fall back to their family defaults. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ParameterGroupArgs({
     this.description,
     required this.family,

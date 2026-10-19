@@ -5,14 +5,14 @@ import 'channel_input_attachment_input_settings_audio_selector_selector_settings
 import 'channel_input_attachment_input_settings_audio_selector_selector_settings_audio_track_selection_track.dart';
 
 class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection {
-  /// Configure decoding options for Dolby E streams - these should be Dolby E frames carried in PCM streams tagged with SMPTE-337. See Dolby E Decode for more details.
+  /// Decoding options for Dolby E streams. These should be Dolby E frames carried in PCM streams tagged with SMPTE-337. See `dolbyEDecode` Block for details.
   final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionDolbyEDecode?>? dolbyEDecode;
-  /// Selects one or more unique audio tracks from within a source. See Audio Tracks for more details.
+  /// One or more unique audio tracks from within a source. See `tracks` Block for details.
   final pulumi.Input<List<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelectionTrack>> tracks;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection].
-  /// [dolbyEDecode] Configure decoding options for Dolby E streams - these should be Dolby E frames carried in PCM streams tagged with SMPTE-337. See Dolby E Decode for more details.
-  /// [tracks] Selects one or more unique audio tracks from within a source. See Audio Tracks for more details.
+  /// [dolbyEDecode] Decoding options for Dolby E streams. These should be Dolby E frames carried in PCM streams tagged with SMPTE-337. See `dolbyEDecode` Block for details.
+  /// [tracks] One or more unique audio tracks from within a source. See `tracks` Block for details.
   const ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection({
     this.dolbyEDecode,
     required this.tracks,

@@ -3,7 +3,7 @@ import 'workspace_args.dart';
 import 'workspace_state.dart';
 import 'workspace_workspace_properties.dart';
 
-/// Provides a workspace in [AWS Workspaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces.html) Service
+/// Provides a workspace in [AWS WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces.html) Service
 ///
 /// &gt; **NOTE:** AWS WorkSpaces service requires [`workspaces_DefaultRole`](https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role) IAM role to operate normally.
 ///
@@ -277,7 +277,7 @@ import 'workspace_workspace_properties.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Workspaces using their ID. For example:
+/// Using `pulumi import`, import WorkSpaces using their ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:workspaces/workspace:Workspace example ws-9z9zmbkhv
@@ -322,7 +322,7 @@ class Workspace extends pulumi.CustomResource {
           'aws:workspaces/workspace:Workspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     bundleId = registerOutput<String>('bundleId');
     computerName = registerOutput<String>('computerName');

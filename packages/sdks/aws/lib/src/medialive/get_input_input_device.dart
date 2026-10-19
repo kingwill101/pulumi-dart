@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInputInputDevice {
-  /// The ID of the Input.
+  /// ID of the Input.
   final pulumi.Input<String> id;
 
   /// Creates a new [GetInputInputDevice].
-  /// [id] The ID of the Input.
+  /// [id] ID of the Input.
   const GetInputInputDevice({
     required this.id,
   });

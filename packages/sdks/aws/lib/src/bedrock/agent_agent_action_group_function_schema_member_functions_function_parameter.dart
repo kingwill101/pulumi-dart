@@ -9,7 +9,7 @@ class AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter {
   ///
   /// **Note:** The argument name `mapBlockKey` may seem out of context, but is necessary for backward compatibility reasons in the provider.
   final pulumi.Input<String> mapBlockKey;
-  /// Whether the parameter is required for the agent to complete the function for action group invocation.
+  /// Whether to require the parameter for the agent to complete the function for action group invocation.
   final pulumi.Input<bool?>? required;
   /// Data type of the parameter. Valid values: `string`, `number`, `integer`, `boolean`, `array`.
   final pulumi.Input<String> type;
@@ -17,7 +17,7 @@ class AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter {
   /// Creates a new [AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter].
   /// [description] Description of the parameter. Helps the foundation model determine how to elicit the parameters from the user.
   /// [mapBlockKey] Name of the parameter.
-  /// [required] Whether the parameter is required for the agent to complete the function for action group invocation.
+  /// [required] Whether to require the parameter for the agent to complete the function for action group invocation.
   /// [type] Data type of the parameter. Valid values: `string`, `number`, `integer`, `boolean`, `array`.
   const AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter({
     this.description,

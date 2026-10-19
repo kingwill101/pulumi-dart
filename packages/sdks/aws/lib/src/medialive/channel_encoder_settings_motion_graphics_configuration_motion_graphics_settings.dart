@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings {
-  /// Html Motion Graphics Settings.
+  /// HTML motion graphics settings. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? htmlMotionGraphicsSettings;
 
   /// Creates a new [ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings].
-  /// [htmlMotionGraphicsSettings] Html Motion Graphics Settings.
+  /// [htmlMotionGraphicsSettings] HTML motion graphics settings. Can be set as an empty block.
   const ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings({
     this.htmlMotionGraphicsSettings,
   });

@@ -19,7 +19,7 @@ class SubnetGroupArgs {
   ///
   /// The following arguments are optional:
   final pulumi.Input<List<String>> subnetIds;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [SubnetGroupArgs].
@@ -28,7 +28,7 @@ class SubnetGroupArgs {
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subnetIds] Set of VPC Subnet ID-s for the subnet group. At least one subnet must be provided.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const SubnetGroupArgs({
     this.description,
     this.name,

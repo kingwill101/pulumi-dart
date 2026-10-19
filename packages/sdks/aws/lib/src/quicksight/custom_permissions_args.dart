@@ -10,7 +10,7 @@ import 'custom_permissions_capabilities.dart';
 class CustomPermissionsArgs {
   /// AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   final pulumi.Input<String?>? awsAccountId;
-  /// Actions to include in the custom permissions profile. See capabilities.
+  /// Actions to include in the custom permissions profile. See `capabilities` Block.
   final pulumi.Input<CustomPermissionsCapabilities> capabilities;
   /// Custom permissions profile name.
   ///
@@ -23,7 +23,7 @@ class CustomPermissionsArgs {
 
   /// Creates a new [CustomPermissionsArgs].
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
-  /// [capabilities] Actions to include in the custom permissions profile. See capabilities.
+  /// [capabilities] Actions to include in the custom permissions profile. See `capabilities` Block.
   /// [customPermissionsName] Custom permissions profile name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

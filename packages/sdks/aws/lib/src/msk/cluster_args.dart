@@ -14,50 +14,50 @@ import 'cluster_rebalancing.dart';
 /// {@endtemplate}
 /// {@macro pulumi_msk_cluster_cluster_args_doc}
 class ClusterArgs {
-  /// Configuration block for the broker nodes of the Kafka cluster. See brokerNodeGroupInfo Argument Reference below.
+  /// Configuration block for the broker nodes of the Kafka cluster. See `brokerNodeGroupInfo` Block below.
   final pulumi.Input<ClusterBrokerNodeGroupInfo> brokerNodeGroupInfo;
-  /// Configuration block for specifying a client authentication. See clientAuthentication Argument Reference below.
+  /// Configuration block for specifying a client authentication. See `clientAuthentication` Block below.
   final pulumi.Input<ClusterClientAuthentication?>? clientAuthentication;
   /// Name of the MSK cluster.
   final pulumi.Input<String?>? clusterName;
-  /// Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See configurationInfo Argument Reference below.
+  /// Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See `configurationInfo` Block below.
   final pulumi.Input<ClusterConfigurationInfo?>? configurationInfo;
-  /// Configuration block for specifying encryption. See encryptionInfo Argument Reference below.
+  /// Configuration block for specifying encryption. See `encryptionInfo` Block below.
   final pulumi.Input<ClusterEncryptionInfo?>? encryptionInfo;
-  /// Specify the desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
+  /// Desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html).
   final pulumi.Input<String?>? enhancedMonitoring;
-  /// Specify the desired Kafka software version.
+  /// Desired Kafka software version.
   final pulumi.Input<String> kafkaVersion;
-  /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See loggingInfo Argument Reference below.
+  /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See `loggingInfo` Block below.
   final pulumi.Input<ClusterLoggingInfo?>? loggingInfo;
-  /// The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
+  /// Desired total number of broker nodes in the kafka cluster. It must be a multiple of the number of specified client subnets.
   final pulumi.Input<int> numberOfBrokerNodes;
-  /// Configuration block for JMX and Node monitoring for the MSK cluster. See openMonitoring Argument Reference below.
+  /// Configuration block for JMX and Node monitoring for the MSK cluster. See `openMonitoring` Block below.
   final pulumi.Input<ClusterOpenMonitoring?>? openMonitoring;
-  /// Configuration block for intelligent rebalancing. See rebalancing Argument Reference below. Only applicable to MSK Provisioned clusters with Express brokers.
+  /// Configuration block for intelligent rebalancing. See `rebalancing` Block below. Only applicable to MSK Provisioned clusters with Express brokers.
   final pulumi.Input<ClusterRebalancing?>? rebalancing;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// Controls storage mode for supported storage tiers. Valid values are: `LOCAL` or `TIERED`.
   final pulumi.Input<String?>? storageMode;
-  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ClusterArgs].
-  /// [brokerNodeGroupInfo] Configuration block for the broker nodes of the Kafka cluster. See brokerNodeGroupInfo Argument Reference below.
-  /// [clientAuthentication] Configuration block for specifying a client authentication. See clientAuthentication Argument Reference below.
+  /// [brokerNodeGroupInfo] Configuration block for the broker nodes of the Kafka cluster. See `brokerNodeGroupInfo` Block below.
+  /// [clientAuthentication] Configuration block for specifying a client authentication. See `clientAuthentication` Block below.
   /// [clusterName] Name of the MSK cluster.
-  /// [configurationInfo] Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See configurationInfo Argument Reference below.
-  /// [encryptionInfo] Configuration block for specifying encryption. See encryptionInfo Argument Reference below.
-  /// [enhancedMonitoring] Specify the desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
-  /// [kafkaVersion] Specify the desired Kafka software version.
-  /// [loggingInfo] Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See loggingInfo Argument Reference below.
-  /// [numberOfBrokerNodes] The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
-  /// [openMonitoring] Configuration block for JMX and Node monitoring for the MSK cluster. See openMonitoring Argument Reference below.
-  /// [rebalancing] Configuration block for intelligent rebalancing. See rebalancing Argument Reference below. Only applicable to MSK Provisioned clusters with Express brokers.
+  /// [configurationInfo] Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See `configurationInfo` Block below.
+  /// [encryptionInfo] Configuration block for specifying encryption. See `encryptionInfo` Block below.
+  /// [enhancedMonitoring] Desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html).
+  /// [kafkaVersion] Desired Kafka software version.
+  /// [loggingInfo] Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See `loggingInfo` Block below.
+  /// [numberOfBrokerNodes] Desired total number of broker nodes in the kafka cluster. It must be a multiple of the number of specified client subnets.
+  /// [openMonitoring] Configuration block for JMX and Node monitoring for the MSK cluster. See `openMonitoring` Block below.
+  /// [rebalancing] Configuration block for intelligent rebalancing. See `rebalancing` Block below. Only applicable to MSK Provisioned clusters with Express brokers.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [storageMode] Controls storage mode for supported storage tiers. Valid values are: `LOCAL` or `TIERED`.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ClusterArgs({
     required this.brokerNodeGroupInfo,
     this.clientAuthentication,
@@ -104,7 +104,7 @@ class ClusterArgs {
       enhancedMonitoring: (() { final guardedValue = map['enhancedMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kafkaVersion: pulumi.Input.fromValue(map['kafkaVersion'] as String),
       loggingInfo: (() { final guardedValue = map['loggingInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterLoggingInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      numberOfBrokerNodes: pulumi.Input.fromValue((map['numberOfBrokerNodes'] as num).toInt()),
+      numberOfBrokerNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfBrokerNodes'])),
       openMonitoring: (() { final guardedValue = map['openMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterOpenMonitoring.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rebalancing: (() { final guardedValue = map['rebalancing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterRebalancing.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

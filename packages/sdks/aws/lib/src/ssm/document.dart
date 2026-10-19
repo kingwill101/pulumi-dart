@@ -11,7 +11,7 @@ import 'document_state.dart';
 ///
 /// ## Example Usage
 ///
-/// ### Create an ssm document in JSON format
+/// ### Create an SSM document in JSON format
 ///
 ///
 /// ```typescript
@@ -231,7 +231,7 @@ import 'document_state.dart';
 /// ```
 ///
 ///
-/// ### Create an ssm document in YAML format
+/// ### Create an SSM document in YAML format
 ///
 ///
 /// ```typescript
@@ -660,7 +660,7 @@ class Document extends pulumi.CustomResource {
           'aws:ssm/document:Document',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachmentsSources = registerOutput<List<DocumentAttachmentsSource>?>('attachmentsSources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DocumentAttachmentsSource>(guardedValue, (value) => DocumentAttachmentsSource.fromMap((value as Map).cast<String, dynamic>())); });

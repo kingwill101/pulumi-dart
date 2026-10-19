@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class IndexServerSideEncryptionConfiguration {
-  /// The identifier of the AWS KMScustomer master key (CMK). Amazon Kendra doesn't support asymmetric CMKs.
+  /// Identifier of the AWS KMS customer master key (CMK). Amazon Kendra doesn't support asymmetric CMKs.
   final pulumi.Input<String?>? kmsKeyId;
 
   /// Creates a new [IndexServerSideEncryptionConfiguration].
-  /// [kmsKeyId] The identifier of the AWS KMScustomer master key (CMK). Amazon Kendra doesn't support asymmetric CMKs.
+  /// [kmsKeyId] Identifier of the AWS KMS customer master key (CMK). Amazon Kendra doesn't support asymmetric CMKs.
   const IndexServerSideEncryptionConfiguration({
     this.kmsKeyId,
   });

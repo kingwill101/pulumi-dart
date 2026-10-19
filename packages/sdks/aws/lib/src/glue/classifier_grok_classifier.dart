@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ClassifierGrokClassifier {
-  /// An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
+  /// Identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
   final pulumi.Input<String> classification;
   /// Custom grok patterns used by this classifier.
   final pulumi.Input<String?>? customPatterns;
-  /// The grok pattern used by this classifier.
+  /// Grok pattern used by this classifier.
   final pulumi.Input<String> grokPattern;
 
   /// Creates a new [ClassifierGrokClassifier].
-  /// [classification] An identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
+  /// [classification] Identifier of the data format that the classifier matches, such as Twitter, JSON, Omniture logs, Amazon CloudWatch Logs, and so on.
   /// [customPatterns] Custom grok patterns used by this classifier.
-  /// [grokPattern] The grok pattern used by this classifier.
+  /// [grokPattern] Grok pattern used by this classifier.
   const ClassifierGrokClassifier({
     required this.classification,
     this.customPatterns,

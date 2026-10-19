@@ -12,22 +12,20 @@ class AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironment {
   final pulumi.Input<String> agentRuntimeId;
   /// Name of the agent runtime the service derives for the harness.
   final pulumi.Input<String> agentRuntimeName;
-  /// Filesystem configurations. See `filesystemConfiguration` Block below.
-  ///
-  /// The following attributes are exported under `agentcoreRuntimeEnvironment`:
+  /// Filesystem configurations. See `environment_actual.agentcore_runtime_environment.filesystem_configuration` Block below.
   final pulumi.Input<List<AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentFilesystemConfiguration>> filesystemConfigurations;
-  /// Lifecycle configuration. See `lifecycleConfiguration` Block below.
+  /// Lifecycle configuration. See `environment_actual.agentcore_runtime_environment.lifecycle_configuration` Block below.
   final pulumi.Input<List<AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentLifecycleConfiguration>> lifecycleConfigurations;
-  /// Network configuration. See `networkConfiguration` Block below.
+  /// Network configuration. See `environment_actual.agentcore_runtime_environment.network_configuration` Block below.
   final pulumi.Input<List<AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironmentNetworkConfiguration>> networkConfigurations;
 
   /// Creates a new [AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironment].
   /// [agentRuntimeArn] ARN of the agent runtime the service provisions for the harness.
   /// [agentRuntimeId] ID of the agent runtime the service provisions for the harness.
   /// [agentRuntimeName] Name of the agent runtime the service derives for the harness.
-  /// [filesystemConfigurations] Filesystem configurations. See `filesystemConfiguration` Block below.
-  /// [lifecycleConfigurations] Lifecycle configuration. See `lifecycleConfiguration` Block below.
-  /// [networkConfigurations] Network configuration. See `networkConfiguration` Block below.
+  /// [filesystemConfigurations] Filesystem configurations. See `environment_actual.agentcore_runtime_environment.filesystem_configuration` Block below.
+  /// [lifecycleConfigurations] Lifecycle configuration. See `environment_actual.agentcore_runtime_environment.lifecycle_configuration` Block below.
+  /// [networkConfigurations] Network configuration. See `environment_actual.agentcore_runtime_environment.network_configuration` Block below.
   const AgentcoreHarnessEnvironmentActualAgentcoreRuntimeEnvironment({
     required this.agentRuntimeArn,
     required this.agentRuntimeId,

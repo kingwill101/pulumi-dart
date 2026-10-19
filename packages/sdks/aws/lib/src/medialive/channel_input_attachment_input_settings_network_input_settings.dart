@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_input_attachment_input_settings_network_input_settings_hls_input_settings.dart';
 
 class ChannelInputAttachmentInputSettingsNetworkInputSettings {
-  /// Specifies HLS input settings when the uri is for a HLS manifest. See HLS Input Settings for more details.
+  /// HLS input settings when the URI is for an HLS manifest. See `hlsInputSettings` Block for details.
   final pulumi.Input<ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings?>? hlsInputSettings;
   /// Check HTTPS server certificates.
   final pulumi.Input<String?>? serverValidation;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsNetworkInputSettings].
-  /// [hlsInputSettings] Specifies HLS input settings when the uri is for a HLS manifest. See HLS Input Settings for more details.
+  /// [hlsInputSettings] HLS input settings when the URI is for an HLS manifest. See `hlsInputSettings` Block for details.
   /// [serverValidation] Check HTTPS server certificates.
   const ChannelInputAttachmentInputSettingsNetworkInputSettings({
     this.hlsInputSettings,

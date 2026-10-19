@@ -7,13 +7,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_guardduty_publishing_destination_publishing_destination_args_doc}
 class PublishingDestinationArgs {
-  /// The bucket arn and prefix under which the findings get exported. Bucket-ARN is required, the prefix is optional and will be `AWSLogs/[Account-ID]/GuardDuty/[Region]/` if not provided
+  /// Bucket ARN and prefix under which the findings get exported. Bucket-ARN is required, the prefix is optional and will be `AWSLogs/[Account-ID]/GuardDuty/[Region]/` if not provided
   final pulumi.Input<String> destinationArn;
   /// Currently there is only "S3" available as destination type which is also the default value
   final pulumi.Input<String?>? destinationType;
-  /// The detector ID of the GuardDuty.
+  /// Detector ID of the GuardDuty.
   final pulumi.Input<String> detectorId;
-  /// The ARN of the KMS key used to encrypt GuardDuty findings. GuardDuty enforces this to be encrypted.
+  /// ARN of the KMS key used to encrypt GuardDuty findings. GuardDuty enforces this to be encrypted.
   final pulumi.Input<String> kmsKeyArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -23,10 +23,10 @@ class PublishingDestinationArgs {
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [PublishingDestinationArgs].
-  /// [destinationArn] The bucket arn and prefix under which the findings get exported. Bucket-ARN is required, the prefix is optional and will be `AWSLogs/[Account-ID]/GuardDuty/[Region]/` if not provided
+  /// [destinationArn] Bucket ARN and prefix under which the findings get exported. Bucket-ARN is required, the prefix is optional and will be `AWSLogs/[Account-ID]/GuardDuty/[Region]/` if not provided
   /// [destinationType] Currently there is only "S3" available as destination type which is also the default value
-  /// [detectorId] The detector ID of the GuardDuty.
-  /// [kmsKeyArn] The ARN of the KMS key used to encrypt GuardDuty findings. GuardDuty enforces this to be encrypted.
+  /// [detectorId] Detector ID of the GuardDuty.
+  /// [kmsKeyArn] ARN of the KMS key used to encrypt GuardDuty findings. GuardDuty enforces this to be encrypted.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const PublishingDestinationArgs({

@@ -80,16 +80,16 @@ class GetLocalGatewayVirtualInterfaceResult {
       filters: (() { final guardedValue = map['filters']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetLocalGatewayVirtualInterfaceFilter>(guardedValue, (value) => GetLocalGatewayVirtualInterfaceFilter.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       localAddress: (() { final guardedValue = map['localAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      localBgpAsn: (() { final guardedValue = map['localBgpAsn']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      localBgpAsn: (() { final guardedValue = map['localBgpAsn']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       localGatewayId: (() { final guardedValue = map['localGatewayId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       localGatewayVirtualInterfaceGroupId: (() { final guardedValue = map['localGatewayVirtualInterfaceGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       localGatewayVirtualInterfaceIds: (() { final guardedValue = map['localGatewayVirtualInterfaceIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       outpostLagId: (() { final guardedValue = map['outpostLagId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       peerAddress: (() { final guardedValue = map['peerAddress']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      peerBgpAsn: (() { final guardedValue = map['peerBgpAsn']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      peerBgpAsn: (() { final guardedValue = map['peerBgpAsn']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
-      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

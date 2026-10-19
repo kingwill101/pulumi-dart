@@ -8,7 +8,7 @@ class TrafficMirrorTargetState {
   final pulumi.Input<String?>? arn;
   /// A description of the traffic mirror session.
   final pulumi.Input<String?>? description;
-  /// The VPC Endpoint Id of the Gateway Load Balancer that is associated with the target.
+  /// The VPC Endpoint ID of the Gateway Load Balancer that is associated with the target.
   final pulumi.Input<String?>? gatewayLoadBalancerEndpointId;
   /// The network interface ID that is associated with the target.
   final pulumi.Input<String?>? networkInterfaceId;
@@ -28,7 +28,7 @@ class TrafficMirrorTargetState {
   /// Creates a new [TrafficMirrorTargetState].
   /// [arn] The ARN of the traffic mirror target.
   /// [description] A description of the traffic mirror session.
-  /// [gatewayLoadBalancerEndpointId] The VPC Endpoint Id of the Gateway Load Balancer that is associated with the target.
+  /// [gatewayLoadBalancerEndpointId] The VPC Endpoint ID of the Gateway Load Balancer that is associated with the target.
   /// [networkInterfaceId] The network interface ID that is associated with the target.
   /// [networkLoadBalancerArn] ARN of the Network Load Balancer that is associated with the target.
   /// [ownerId] The ID of the AWS account that owns the traffic mirror target.

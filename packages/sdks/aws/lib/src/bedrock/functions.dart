@@ -11,7 +11,7 @@ import 'get_inference_profiles_args.dart';
 import 'get_inference_profiles_result.dart';
 import 'get_use_case_for_model_access_result.dart';
 
-/// Data source for managing an AWS Amazon BedrockAgent Agent Versions.
+/// Provides details about AWS Bedrock Agents Agent Versions.
 ///
 /// ## Example Usage
 ///
@@ -22,15 +22,15 @@ import 'get_use_case_for_model_access_result.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const test = aws.bedrock.getAgentAgentVersions({
-///     agentId: testAwsBedrockagentAgent.agentId,
+/// const example = aws.bedrock.getAgentAgentVersions({
+///     agentId: exampleAwsBedrockagentAgent.agentId,
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.bedrock.get_agent_agent_versions(agent_id=test_aws_bedrockagent_agent["agentId"])
+/// example = aws.bedrock.get_agent_agent_versions(agent_id=example_aws_bedrockagent_agent["agentId"])
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -40,9 +40,9 @@ import 'get_use_case_for_model_access_result.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var test = Aws.Bedrock.GetAgentAgentVersions.Invoke(new()
+///     var example = Aws.Bedrock.GetAgentAgentVersions.Invoke(new()
 ///     {
-///         AgentId = testAwsBedrockagentAgent.AgentId,
+///         AgentId = exampleAwsBedrockagentAgent.AgentId,
 ///     });
 ///
 /// });
@@ -58,7 +58,7 @@ import 'get_use_case_for_model_access_result.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.GetAgentAgentVersions(ctx, &bedrock.GetAgentAgentVersionsArgs{
-/// 			AgentId: testAwsBedrockagentAgent.AgentId,
+/// 			AgentId: exampleAwsBedrockagentAgent.AgentId,
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -76,8 +76,8 @@ import 'get_use_case_for_model_access_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_bedrock_getagentagentversions" "test" {
-///   agent_id = testAwsBedrockagentAgent.agentId
+/// data "aws_bedrock_getagentagentversions" "example" {
+///   agent_id = exampleAwsBedrockagentAgent.agentId
 /// }
 /// ```
 /// ```java
@@ -101,8 +101,8 @@ import 'get_use_case_for_model_access_result.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var test = BedrockFunctions.getAgentAgentVersions(GetAgentAgentVersionsArgs.builder()
-///             .agentId(testAwsBedrockagentAgent.agentId())
+///         final var example = BedrockFunctions.getAgentAgentVersions(GetAgentAgentVersionsArgs.builder()
+///             .agentId(exampleAwsBedrockagentAgent.agentId())
 ///             .build());
 ///
 ///     }
@@ -110,11 +110,11 @@ import 'get_use_case_for_model_access_result.dart';
 /// ```
 /// ```yaml
 /// variables:
-///   test:
+///   example:
 ///     fn::invoke:
 ///       function: aws:bedrock:getAgentAgentVersions
 ///       arguments:
-///         agentId: ${testAwsBedrockagentAgent.agentId}
+///         agentId: ${exampleAwsBedrockagentAgent.agentId}
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_bedrock_get_agent_agent_versions_get_agent_agent_versions_args_doc}
 /// [options] Invoke options controlling this call.
@@ -142,7 +142,7 @@ pulumi.Output<GetAgentAgentVersionsResult> getAgentAgentVersionsOutput(
   ).apply(GetAgentAgentVersionsResult.fromMap);
 }
 
-/// Returns properties of a specific Amazon Bedrock custom model.
+/// Provides details about a specific Amazon Bedrock custom model.
 ///
 /// ## Example Usage
 ///
@@ -151,15 +151,15 @@ pulumi.Output<GetAgentAgentVersionsResult> getAgentAgentVersionsOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const test = aws.bedrock.getCustomModel({
-///     modelId: "arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4 ",
+/// const example = aws.bedrock.getCustomModel({
+///     modelId: "arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4",
 /// });
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.bedrock.get_custom_model(model_id="arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4 ")
+/// example = aws.bedrock.get_custom_model(model_id="arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -169,9 +169,9 @@ pulumi.Output<GetAgentAgentVersionsResult> getAgentAgentVersionsOutput(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var test = Aws.Bedrock.GetCustomModel.Invoke(new()
+///     var example = Aws.Bedrock.GetCustomModel.Invoke(new()
 ///     {
-///         ModelId = "arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4 ",
+///         ModelId = "arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4",
 ///     });
 ///
 /// });
@@ -187,7 +187,7 @@ pulumi.Output<GetAgentAgentVersionsResult> getAgentAgentVersionsOutput(
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.LookupCustomModel(ctx, &bedrock.LookupCustomModelArgs{
-/// 			ModelId: "arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4 ",
+/// 			ModelId: "arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4",
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -205,8 +205,8 @@ pulumi.Output<GetAgentAgentVersionsResult> getAgentAgentVersionsOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrock_getcustommodel" "test" {
-///   model_id = "arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4 "
+/// data "aws_bedrock_getcustommodel" "example" {
+///   model_id = "arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4"
 /// }
 /// ```
 /// ```java
@@ -230,8 +230,8 @@ pulumi.Output<GetAgentAgentVersionsResult> getAgentAgentVersionsOutput(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var test = BedrockFunctions.getCustomModel(GetCustomModelArgs.builder()
-///             .modelId("arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4 ")
+///         final var example = BedrockFunctions.getCustomModel(GetCustomModelArgs.builder()
+///             .modelId("arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4")
 ///             .build());
 ///
 ///     }
@@ -239,11 +239,11 @@ pulumi.Output<GetAgentAgentVersionsResult> getAgentAgentVersionsOutput(
 /// ```
 /// ```yaml
 /// variables:
-///   test:
+///   example:
 ///     fn::invoke:
 ///       function: aws:bedrock:getCustomModel
 ///       arguments:
-///         modelId: 'arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4 '
+///         modelId: arn:aws:bedrock:us-west-2:123456789012:custom-model/amazon.titan-text-express-v1:0:8k/ly16hhi765j4
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_bedrock_get_custom_model_get_custom_model_args_doc}
 /// [options] Invoke options controlling this call.
@@ -271,7 +271,7 @@ pulumi.Output<GetCustomModelResult> getCustomModelOutput(
   ).apply(GetCustomModelResult.fromMap);
 }
 
-/// Returns a list of Amazon Bedrock custom models.
+/// Provides details about Amazon Bedrock custom models.
 ///
 /// ## Example Usage
 ///
@@ -280,13 +280,13 @@ pulumi.Output<GetCustomModelResult> getCustomModelOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const test = aws.bedrock.getCustomModels({});
+/// const example = aws.bedrock.getCustomModels({});
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.bedrock.get_custom_models()
+/// example = aws.bedrock.get_custom_models()
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -296,7 +296,7 @@ pulumi.Output<GetCustomModelResult> getCustomModelOutput(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var test = Aws.Bedrock.GetCustomModels.Invoke();
+///     var example = Aws.Bedrock.GetCustomModels.Invoke();
 ///
 /// });
 /// ```
@@ -327,7 +327,7 @@ pulumi.Output<GetCustomModelResult> getCustomModelOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrock_getcustommodels" "test" {
+/// data "aws_bedrock_getcustommodels" "example" {
 /// }
 /// ```
 /// ```java
@@ -351,7 +351,7 @@ pulumi.Output<GetCustomModelResult> getCustomModelOutput(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var test = BedrockFunctions.getCustomModels(GetCustomModelsArgs.builder()
+///         final var example = BedrockFunctions.getCustomModels(GetCustomModelsArgs.builder()
 ///             .build());
 ///
 ///     }
@@ -359,7 +359,7 @@ pulumi.Output<GetCustomModelResult> getCustomModelOutput(
 /// ```
 /// ```yaml
 /// variables:
-///   test:
+///   example:
 ///     fn::invoke:
 ///       function: aws:bedrock:getCustomModels
 ///       arguments: {}
@@ -390,7 +390,7 @@ pulumi.Output<GetCustomModelsResult> getCustomModelsOutput(
   ).apply(GetCustomModelsResult.fromMap);
 }
 
-/// Data source for managing an AWS Bedrock Inference Profile.
+/// Provides details about an AWS Bedrock Inference Profile.
 ///
 /// ## Example Usage
 ///
@@ -401,17 +401,17 @@ pulumi.Output<GetCustomModelsResult> getCustomModelsOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const test = aws.bedrock.getInferenceProfiles({});
-/// const testGetInferenceProfile = test.then(test => aws.bedrock.getInferenceProfile({
-///     inferenceProfileId: test.inferenceProfileSummaries?.[0]?.inferenceProfileId,
+/// const example = aws.bedrock.getInferenceProfiles({});
+/// const exampleGetInferenceProfile = example.then(example => aws.bedrock.getInferenceProfile({
+///     inferenceProfileId: example.inferenceProfileSummaries?.[0]?.inferenceProfileId,
 /// }));
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.bedrock.get_inference_profiles()
-/// test_get_inference_profile = aws.bedrock.get_inference_profile(inference_profile_id=test.inference_profile_summaries[0].inference_profile_id)
+/// example = aws.bedrock.get_inference_profiles()
+/// example_get_inference_profile = aws.bedrock.get_inference_profile(inference_profile_id=example.inference_profile_summaries[0].inference_profile_id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -421,11 +421,11 @@ pulumi.Output<GetCustomModelsResult> getCustomModelsOutput(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var test = Aws.Bedrock.GetInferenceProfiles.Invoke();
+///     var example = Aws.Bedrock.GetInferenceProfiles.Invoke();
 ///
-///     var testGetInferenceProfile = Aws.Bedrock.GetInferenceProfile.Invoke(new()
+///     var exampleGetInferenceProfile = Aws.Bedrock.GetInferenceProfile.Invoke(new()
 ///     {
-///         InferenceProfileId = test.Apply(getInferenceProfilesResult => getInferenceProfilesResult.InferenceProfileSummaries[0]?.InferenceProfileId),
+///         InferenceProfileId = example.Apply(getInferenceProfilesResult => getInferenceProfilesResult.InferenceProfileSummaries[0]?.InferenceProfileId),
 ///     });
 ///
 /// });
@@ -440,12 +440,12 @@ pulumi.Output<GetCustomModelsResult> getCustomModelsOutput(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		test, err := bedrock.GetInferenceProfiles(ctx, &bedrock.GetInferenceProfilesArgs{}, nil)
+/// 		example, err := bedrock.GetInferenceProfiles(ctx, &bedrock.GetInferenceProfilesArgs{}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = bedrock.LookupInferenceProfile(ctx, &bedrock.LookupInferenceProfileArgs{
-/// 			InferenceProfileId: test.InferenceProfileSummaries[0].InferenceProfileId,
+/// 			InferenceProfileId: example.InferenceProfileSummaries[0].InferenceProfileId,
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -463,10 +463,10 @@ pulumi.Output<GetCustomModelsResult> getCustomModelsOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrock_getinferenceprofiles" "test" {
+/// data "aws_bedrock_getinferenceprofiles" "example" {
 /// }
-/// data "aws_bedrock_getinferenceprofile" "testGetInferenceProfile" {
-///   inference_profile_id = data.aws_bedrock_getinferenceprofiles.test.inference_profile_summaries[0].inference_profile_id
+/// data "aws_bedrock_getinferenceprofile" "exampleGetInferenceProfile" {
+///   inference_profile_id = data.aws_bedrock_getinferenceprofiles.example.inference_profile_summaries[0].inference_profile_id
 /// }
 /// ```
 /// ```java
@@ -491,11 +491,11 @@ pulumi.Output<GetCustomModelsResult> getCustomModelsOutput(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var test = BedrockFunctions.getInferenceProfiles(GetInferenceProfilesArgs.builder()
+///         final var example = BedrockFunctions.getInferenceProfiles(GetInferenceProfilesArgs.builder()
 ///             .build());
 ///
-///         final var testGetInferenceProfile = BedrockFunctions.getInferenceProfile(GetInferenceProfileArgs.builder()
-///             .inferenceProfileId(test.inferenceProfileSummaries()[0].inferenceProfileId())
+///         final var exampleGetInferenceProfile = BedrockFunctions.getInferenceProfile(GetInferenceProfileArgs.builder()
+///             .inferenceProfileId(example.inferenceProfileSummaries()[0].inferenceProfileId())
 ///             .build());
 ///
 ///     }
@@ -503,15 +503,15 @@ pulumi.Output<GetCustomModelsResult> getCustomModelsOutput(
 /// ```
 /// ```yaml
 /// variables:
-///   test:
+///   example:
 ///     fn::invoke:
 ///       function: aws:bedrock:getInferenceProfiles
 ///       arguments: {}
-///   testGetInferenceProfile:
+///   exampleGetInferenceProfile:
 ///     fn::invoke:
 ///       function: aws:bedrock:getInferenceProfile
 ///       arguments:
-///         inferenceProfileId: ${test.inferenceProfileSummaries[0].inferenceProfileId}
+///         inferenceProfileId: ${example.inferenceProfileSummaries[0].inferenceProfileId}
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_bedrock_get_inference_profile_get_inference_profile_args_doc}
 /// [options] Invoke options controlling this call.
@@ -539,7 +539,7 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
   ).apply(GetInferenceProfileResult.fromMap);
 }
 
-/// Data source for managing AWS Bedrock Inference Profiles.
+/// Provides details about AWS Bedrock Inference Profiles.
 ///
 /// ## Example Usage
 ///
@@ -550,13 +550,13 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const test = aws.bedrock.getInferenceProfiles({});
+/// const example = aws.bedrock.getInferenceProfiles({});
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.bedrock.get_inference_profiles()
+/// example = aws.bedrock.get_inference_profiles()
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -566,7 +566,7 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var test = Aws.Bedrock.GetInferenceProfiles.Invoke();
+///     var example = Aws.Bedrock.GetInferenceProfiles.Invoke();
 ///
 /// });
 /// ```
@@ -597,7 +597,7 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrock_getinferenceprofiles" "test" {
+/// data "aws_bedrock_getinferenceprofiles" "example" {
 /// }
 /// ```
 /// ```java
@@ -621,7 +621,7 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var test = BedrockFunctions.getInferenceProfiles(GetInferenceProfilesArgs.builder()
+///         final var example = BedrockFunctions.getInferenceProfiles(GetInferenceProfilesArgs.builder()
 ///             .build());
 ///
 ///     }
@@ -629,7 +629,7 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
 /// ```
 /// ```yaml
 /// variables:
-///   test:
+///   example:
 ///     fn::invoke:
 ///       function: aws:bedrock:getInferenceProfiles
 ///       arguments: {}
@@ -643,7 +643,7 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const test = aws.bedrock.getInferenceProfiles({
+/// const example = aws.bedrock.getInferenceProfiles({
 ///     type: "APPLICATION",
 /// });
 /// ```
@@ -651,7 +651,7 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.bedrock.get_inference_profiles(type="APPLICATION")
+/// example = aws.bedrock.get_inference_profiles(type="APPLICATION")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -661,7 +661,7 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var test = Aws.Bedrock.GetInferenceProfiles.Invoke(new()
+///     var example = Aws.Bedrock.GetInferenceProfiles.Invoke(new()
 ///     {
 ///         Type = "APPLICATION",
 ///     });
@@ -697,7 +697,7 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrock_getinferenceprofiles" "test" {
+/// data "aws_bedrock_getinferenceprofiles" "example" {
 ///   type = "APPLICATION"
 /// }
 /// ```
@@ -722,7 +722,7 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var test = BedrockFunctions.getInferenceProfiles(GetInferenceProfilesArgs.builder()
+///         final var example = BedrockFunctions.getInferenceProfiles(GetInferenceProfilesArgs.builder()
 ///             .type("APPLICATION")
 ///             .build());
 ///
@@ -731,7 +731,7 @@ pulumi.Output<GetInferenceProfileResult> getInferenceProfileOutput(
 /// ```
 /// ```yaml
 /// variables:
-///   test:
+///   example:
 ///     fn::invoke:
 ///       function: aws:bedrock:getInferenceProfiles
 ///       arguments:

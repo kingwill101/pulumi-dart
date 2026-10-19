@@ -296,6 +296,7 @@ import 'cluster_policy_state.dart';
 class ClusterPolicy extends pulumi.CustomResource {
   /// ARN that uniquely identifies the cluster.
   late final pulumi.Output<String> clusterArn;
+  /// Current version of the policy.
   late final pulumi.Output<String> currentVersion;
   /// Resource policy for cluster.
   late final pulumi.Output<String> policy;
@@ -314,7 +315,7 @@ class ClusterPolicy extends pulumi.CustomResource {
           'aws:msk/clusterPolicy:ClusterPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     clusterArn = registerOutput<String>('clusterArn');
     currentVersion = registerOutput<String>('currentVersion');

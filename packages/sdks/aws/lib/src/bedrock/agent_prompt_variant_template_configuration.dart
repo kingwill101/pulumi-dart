@@ -5,14 +5,14 @@ import 'agent_prompt_variant_template_configuration_chat.dart';
 import 'agent_prompt_variant_template_configuration_text.dart';
 
 class AgentPromptVariantTemplateConfiguration {
-  /// Contains configurations to use the prompt in a conversational format. See Chat Template Configuration for more information.
+  /// Configurations to use the prompt in a conversational format. See `chat` Block for more information.
   final pulumi.Input<AgentPromptVariantTemplateConfigurationChat?>? chat;
-  /// Contains configurations for the text in a message for a prompt. See Text Template Configuration
+  /// Configurations for the text in a message for a prompt. See `variant.template_configuration.text` Block for more information.
   final pulumi.Input<AgentPromptVariantTemplateConfigurationText?>? text;
 
   /// Creates a new [AgentPromptVariantTemplateConfiguration].
-  /// [chat] Contains configurations to use the prompt in a conversational format. See Chat Template Configuration for more information.
-  /// [text] Contains configurations for the text in a message for a prompt. See Text Template Configuration
+  /// [chat] Configurations to use the prompt in a conversational format. See `chat` Block for more information.
+  /// [text] Configurations for the text in a message for a prompt. See `variant.template_configuration.text` Block for more information.
   const AgentPromptVariantTemplateConfiguration({
     this.chat,
     this.text,

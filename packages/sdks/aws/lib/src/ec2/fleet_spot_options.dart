@@ -58,10 +58,10 @@ class FleetSpotOptions {
     return FleetSpotOptions(
       allocationStrategy: (() { final guardedValue = map['allocationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceInterruptionBehavior: (() { final guardedValue = map['instanceInterruptionBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      instancePoolsToUseCount: (() { final guardedValue = map['instancePoolsToUseCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      instancePoolsToUseCount: (() { final guardedValue = map['instancePoolsToUseCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       maintenanceStrategies: (() { final guardedValue = map['maintenanceStrategies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FleetSpotOptionsMaintenanceStrategies.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       maxTotalPrice: (() { final guardedValue = map['maxTotalPrice']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      minTargetCapacity: (() { final guardedValue = map['minTargetCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      minTargetCapacity: (() { final guardedValue = map['minTargetCapacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       singleAvailabilityZone: (() { final guardedValue = map['singleAvailabilityZone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       singleInstanceType: (() { final guardedValue = map['singleInstanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

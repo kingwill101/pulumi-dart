@@ -6,9 +6,9 @@ import 'get_vpc_ipams_ipam_operating_region.dart';
 class GetVpcIpamsIpam {
   /// ARN of the IPAM.
   final pulumi.Input<String> arn;
-  /// The default resource discovery association ID.
+  /// Default resource discovery association ID.
   final pulumi.Input<String> defaultResourceDiscoveryAssociationId;
-  /// The default resource discovery ID.
+  /// Default resource discovery ID.
   final pulumi.Input<String> defaultResourceDiscoveryId;
   /// Description for the IPAM.
   final pulumi.Input<String> description;
@@ -18,8 +18,9 @@ class GetVpcIpamsIpam {
   final pulumi.Input<String> id;
   /// Region that the IPAM exists in.
   final pulumi.Input<String> ipamRegion;
+  /// AWS account that is charged for active IP addresses managed in IPAM.
   final pulumi.Input<String> meteredAccount;
-  /// Regions that the IPAM is configured to operate in.
+  /// Regions that the IPAM is configured to operate in. See below.
   final pulumi.Input<List<GetVpcIpamsIpamOperatingRegion>> operatingRegions;
   /// ID of the account that owns this IPAM.
   final pulumi.Input<String> ownerId;
@@ -40,14 +41,14 @@ class GetVpcIpamsIpam {
 
   /// Creates a new [GetVpcIpamsIpam].
   /// [arn] ARN of the IPAM.
-  /// [defaultResourceDiscoveryAssociationId] The default resource discovery association ID.
-  /// [defaultResourceDiscoveryId] The default resource discovery ID.
+  /// [defaultResourceDiscoveryAssociationId] Default resource discovery association ID.
+  /// [defaultResourceDiscoveryId] Default resource discovery ID.
   /// [description] Description for the IPAM.
   /// [enablePrivateGua] If private GUA is enabled.
   /// [id] ID of the IPAM resource.
   /// [ipamRegion] Region that the IPAM exists in.
-  /// [meteredAccount] Required.
-  /// [operatingRegions] Regions that the IPAM is configured to operate in.
+  /// [meteredAccount] AWS account that is charged for active IP addresses managed in IPAM.
+  /// [operatingRegions] Regions that the IPAM is configured to operate in. See below.
   /// [ownerId] ID of the account that owns this IPAM.
   /// [privateDefaultScopeId] ID of the default private scope.
   /// [publicDefaultScopeId] ID of the default public scope.
@@ -112,8 +113,8 @@ class GetVpcIpamsIpam {
       ownerId: pulumi.Input.fromValue(map['ownerId'] as String),
       privateDefaultScopeId: pulumi.Input.fromValue(map['privateDefaultScopeId'] as String),
       publicDefaultScopeId: pulumi.Input.fromValue(map['publicDefaultScopeId'] as String),
-      resourceDiscoveryAssociationCount: pulumi.Input.fromValue((map['resourceDiscoveryAssociationCount'] as num).toInt()),
-      scopeCount: pulumi.Input.fromValue((map['scopeCount'] as num).toInt()),
+      resourceDiscoveryAssociationCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['resourceDiscoveryAssociationCount'])),
+      scopeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scopeCount'])),
       state: pulumi.Input.fromValue(map['state'] as String),
       stateMessage: pulumi.Input.fromValue(map['stateMessage'] as String),
       tier: pulumi.Input.fromValue(map['tier'] as String),

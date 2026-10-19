@@ -13,7 +13,7 @@ class RepositoryAssociationState {
   final pulumi.Input<String?>? associationId;
   /// ARN of an AWS CodeStar Connections connection.
   final pulumi.Input<String?>? connectionArn;
-  /// An object describing the KMS key to asssociate. Block is documented below.
+  /// An object describing the KMS key to associate. Block is documented below.
   final pulumi.Input<RepositoryAssociationKmsKeyDetails?>? kmsKeyDetails;
   /// The name of the repository.
   final pulumi.Input<String?>? name;
@@ -39,7 +39,7 @@ class RepositoryAssociationState {
   /// [arn] ARN identifying the repository association.
   /// [associationId] The ID of the repository association.
   /// [connectionArn] ARN of an AWS CodeStar Connections connection.
-  /// [kmsKeyDetails] An object describing the KMS key to asssociate. Block is documented below.
+  /// [kmsKeyDetails] An object describing the KMS key to associate. Block is documented below.
   /// [name] The name of the repository.
   /// [owner] The owner of the repository.
   /// [providerType] The provider type of the repository association.

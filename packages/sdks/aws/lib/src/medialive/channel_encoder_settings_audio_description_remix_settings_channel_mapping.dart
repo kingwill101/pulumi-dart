@@ -4,12 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_audio_description_remix_settings_channel_mapping_input_channel_level.dart';
 
 class ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping {
+  /// Levels for each of the input channels. See `inputChannelLevels` Block for details.
   final pulumi.Input<List<ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel>> inputChannelLevels;
+  /// Index of the output channel being produced.
   final pulumi.Input<int> outputChannel;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping].
-  /// [inputChannelLevels] Required.
-  /// [outputChannel] Required.
+  /// [inputChannelLevels] Levels for each of the input channels. See `inputChannelLevels` Block for details.
+  /// [outputChannel] Index of the output channel being produced.
   const ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping({
     required this.inputChannelLevels,
     required this.outputChannel,
@@ -25,7 +27,7 @@ class ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping {
   factory ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMapping(
       inputChannelLevels: pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel>(map['inputChannelLevels']!, (value) => ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel.fromMap((value as Map).cast<String, dynamic>()))),
-      outputChannel: pulumi.Input.fromValue((map['outputChannel'] as num).toInt()),
+      outputChannel: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['outputChannel'])),
     );
   }
 }

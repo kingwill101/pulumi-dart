@@ -8,22 +8,23 @@ import 'channel_encoder_settings_video_description_codec_settings_h265_settings_
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings {
   /// Enables or disables adaptive quantization.
   final pulumi.Input<String?>? adaptiveQuantization;
-  /// Indicates that AFD values will be written into the output stream.
+  /// Whether AFD values are written into the output stream.
   final pulumi.Input<String?>? afdSignaling;
-  /// Whether or not EML should insert an Alternative Transfer Function SEI message.
+  /// Whether EML inserts an Alternative Transfer Function SEI message.
   final pulumi.Input<String?>? alternativeTransferFunction;
   /// Average bitrate in bits/second.
   final pulumi.Input<int> bitrate;
-  /// Size of buffer in bits.
+  /// Size of the buffer in bits.
   final pulumi.Input<int?>? bufSize;
-  /// Includes color space metadata in the output.
+  /// Whether color space metadata is included in the output.
   final pulumi.Input<String?>? colorMetadata;
-  /// Define the color metadata for the output. H265 Color Space Settings for more details.
+  /// Color metadata for the output. See `colorSpaceSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings?>? colorSpaceSettings;
-  /// Filters to apply to an encode. See H265 Filter Settings for more details.
+  /// Filters to apply to an encode. See `filterSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettings?>? filterSettings;
-  /// Four bit AFD value to write on all frames of video in the output stream.
+  /// Four-bit AFD value to write on all frames of video in the output stream.
   final pulumi.Input<String?>? fixedAfd;
+  /// Makes adjustments within each frame to reduce flicker on the I-frames.
   final pulumi.Input<String?>? flickerAq;
   /// Framerate denominator.
   final pulumi.Input<int> framerateDenominator;
@@ -31,93 +32,93 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings {
   final pulumi.Input<int> framerateNumerator;
   /// Frequency of closed GOPs.
   final pulumi.Input<int?>? gopClosedCadence;
-  /// GOP size in units of either frames of seconds per `gopSizeUnits`.
+  /// GOP size in units of either frames or seconds per `gopSizeUnits`.
   final pulumi.Input<double?>? gopSize;
-  /// Indicates if the `gopSize` is specified in frames or seconds.
+  /// Whether `gopSize` is specified in frames or seconds.
   final pulumi.Input<String?>? gopSizeUnits;
   /// H265 level.
   final pulumi.Input<String?>? level;
   /// Amount of lookahead.
   final pulumi.Input<String?>? lookAheadRateControl;
-  /// Set the maximum bitrate in order to accommodate expected spikes in the complexity of the video.
+  /// Maximum bitrate, used to accommodate expected spikes in the complexity of the video.
   final pulumi.Input<int?>? maxBitrate;
-  /// Min interval.
+  /// Minimum interval, in frames, between two I-frames.
   final pulumi.Input<int?>? minIInterval;
-  /// Set the minimum QP.
+  /// Sets the minimum QP.
   final pulumi.Input<int?>? minQp;
-  /// Enables or disables motion vector over picture boundaries.
+  /// Enables or disables motion vectors over picture boundaries.
   final pulumi.Input<String?>? mvOverPictureBoundaries;
   /// Enables or disables the motion vector temporal predictor.
   final pulumi.Input<String?>? mvTemporalPredictor;
-  /// Pixel Aspect Ratio denominator.
+  /// Pixel aspect ratio denominator.
   final pulumi.Input<int?>? parDenominator;
-  /// Pixel Aspect Ratio numerator.
+  /// Pixel aspect ratio numerator.
   final pulumi.Input<int?>? parNumerator;
   /// H265 profile.
   final pulumi.Input<String?>? profile;
-  /// Controls the target quality for the video encode.
+  /// Target quality for the video encode.
   final pulumi.Input<int?>? qvbrQualityLevel;
   /// Rate control mode.
   final pulumi.Input<String?>? rateControlMode;
-  /// Sets the scan type of the output.
+  /// Scan type of the output.
   final pulumi.Input<String?>? scanType;
   /// Scene change detection.
   final pulumi.Input<String?>? sceneChangeDetect;
   /// Number of slices per picture.
   final pulumi.Input<int?>? slices;
-  /// Set the H265 tier in the output.
+  /// H265 tier in the output.
   final pulumi.Input<String?>? tier;
-  /// Sets the height of tiles.
+  /// Height of tiles.
   final pulumi.Input<int?>? tileHeight;
   /// Enables or disables padding of tiles.
   final pulumi.Input<String?>? tilePadding;
-  /// Sets the width of tiles.
+  /// Width of tiles.
   final pulumi.Input<int?>? tileWidth;
-  /// Apply a burned in timecode. See H265 Timecode Burnin Settings for more details.
+  /// Apply a burned-in timecode. See `timecodeBurninSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings?>? timecodeBurninSettings;
-  /// Determines how timecodes should be inserted into the video elementary stream.
+  /// How timecodes are inserted into the video elementary stream.
   final pulumi.Input<String?>? timecodeInsertion;
-  /// Sets the size of the treeblock.
+  /// Size of the treeblock.
   final pulumi.Input<String?>? treeblockSize;
 
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings].
   /// [adaptiveQuantization] Enables or disables adaptive quantization.
-  /// [afdSignaling] Indicates that AFD values will be written into the output stream.
-  /// [alternativeTransferFunction] Whether or not EML should insert an Alternative Transfer Function SEI message.
+  /// [afdSignaling] Whether AFD values are written into the output stream.
+  /// [alternativeTransferFunction] Whether EML inserts an Alternative Transfer Function SEI message.
   /// [bitrate] Average bitrate in bits/second.
-  /// [bufSize] Size of buffer in bits.
-  /// [colorMetadata] Includes color space metadata in the output.
-  /// [colorSpaceSettings] Define the color metadata for the output. H265 Color Space Settings for more details.
-  /// [filterSettings] Filters to apply to an encode. See H265 Filter Settings for more details.
-  /// [fixedAfd] Four bit AFD value to write on all frames of video in the output stream.
-  /// [flickerAq] Optional.
+  /// [bufSize] Size of the buffer in bits.
+  /// [colorMetadata] Whether color space metadata is included in the output.
+  /// [colorSpaceSettings] Color metadata for the output. See `colorSpaceSettings` Block for details.
+  /// [filterSettings] Filters to apply to an encode. See `filterSettings` Block for details.
+  /// [fixedAfd] Four-bit AFD value to write on all frames of video in the output stream.
+  /// [flickerAq] Makes adjustments within each frame to reduce flicker on the I-frames.
   /// [framerateDenominator] Framerate denominator.
   /// [framerateNumerator] Framerate numerator.
   /// [gopClosedCadence] Frequency of closed GOPs.
-  /// [gopSize] GOP size in units of either frames of seconds per `gopSizeUnits`.
-  /// [gopSizeUnits] Indicates if the `gopSize` is specified in frames or seconds.
+  /// [gopSize] GOP size in units of either frames or seconds per `gopSizeUnits`.
+  /// [gopSizeUnits] Whether `gopSize` is specified in frames or seconds.
   /// [level] H265 level.
   /// [lookAheadRateControl] Amount of lookahead.
-  /// [maxBitrate] Set the maximum bitrate in order to accommodate expected spikes in the complexity of the video.
-  /// [minIInterval] Min interval.
-  /// [minQp] Set the minimum QP.
-  /// [mvOverPictureBoundaries] Enables or disables motion vector over picture boundaries.
+  /// [maxBitrate] Maximum bitrate, used to accommodate expected spikes in the complexity of the video.
+  /// [minIInterval] Minimum interval, in frames, between two I-frames.
+  /// [minQp] Sets the minimum QP.
+  /// [mvOverPictureBoundaries] Enables or disables motion vectors over picture boundaries.
   /// [mvTemporalPredictor] Enables or disables the motion vector temporal predictor.
-  /// [parDenominator] Pixel Aspect Ratio denominator.
-  /// [parNumerator] Pixel Aspect Ratio numerator.
+  /// [parDenominator] Pixel aspect ratio denominator.
+  /// [parNumerator] Pixel aspect ratio numerator.
   /// [profile] H265 profile.
-  /// [qvbrQualityLevel] Controls the target quality for the video encode.
+  /// [qvbrQualityLevel] Target quality for the video encode.
   /// [rateControlMode] Rate control mode.
-  /// [scanType] Sets the scan type of the output.
+  /// [scanType] Scan type of the output.
   /// [sceneChangeDetect] Scene change detection.
   /// [slices] Number of slices per picture.
-  /// [tier] Set the H265 tier in the output.
-  /// [tileHeight] Sets the height of tiles.
+  /// [tier] H265 tier in the output.
+  /// [tileHeight] Height of tiles.
   /// [tilePadding] Enables or disables padding of tiles.
-  /// [tileWidth] Sets the width of tiles.
-  /// [timecodeBurninSettings] Apply a burned in timecode. See H265 Timecode Burnin Settings for more details.
-  /// [timecodeInsertion] Determines how timecodes should be inserted into the video elementary stream.
-  /// [treeblockSize] Sets the size of the treeblock.
+  /// [tileWidth] Width of tiles.
+  /// [timecodeBurninSettings] Apply a burned-in timecode. See `timecodeBurninSettings` Block for details.
+  /// [timecodeInsertion] How timecodes are inserted into the video elementary stream.
+  /// [treeblockSize] Size of the treeblock.
   const ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings({
     this.adaptiveQuantization,
     this.afdSignaling,
@@ -205,37 +206,37 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings {
       adaptiveQuantization: (() { final guardedValue = map['adaptiveQuantization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       afdSignaling: (() { final guardedValue = map['afdSignaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       alternativeTransferFunction: (() { final guardedValue = map['alternativeTransferFunction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      bitrate: pulumi.Input.fromValue((map['bitrate'] as num).toInt()),
-      bufSize: (() { final guardedValue = map['bufSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bitrate: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bitrate'])),
+      bufSize: (() { final guardedValue = map['bufSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       colorMetadata: (() { final guardedValue = map['colorMetadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       colorSpaceSettings: (() { final guardedValue = map['colorSpaceSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       filterSettings: (() { final guardedValue = map['filterSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsFilterSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       fixedAfd: (() { final guardedValue = map['fixedAfd']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       flickerAq: (() { final guardedValue = map['flickerAq']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      framerateDenominator: pulumi.Input.fromValue((map['framerateDenominator'] as num).toInt()),
-      framerateNumerator: pulumi.Input.fromValue((map['framerateNumerator'] as num).toInt()),
-      gopClosedCadence: (() { final guardedValue = map['gopClosedCadence']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      framerateDenominator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['framerateDenominator'])),
+      framerateNumerator: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['framerateNumerator'])),
+      gopClosedCadence: (() { final guardedValue = map['gopClosedCadence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       gopSize: (() { final guardedValue = map['gopSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       gopSizeUnits: (() { final guardedValue = map['gopSizeUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       level: (() { final guardedValue = map['level']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       lookAheadRateControl: (() { final guardedValue = map['lookAheadRateControl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxBitrate: (() { final guardedValue = map['maxBitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minIInterval: (() { final guardedValue = map['minIInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minQp: (() { final guardedValue = map['minQp']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxBitrate: (() { final guardedValue = map['maxBitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minIInterval: (() { final guardedValue = map['minIInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minQp: (() { final guardedValue = map['minQp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mvOverPictureBoundaries: (() { final guardedValue = map['mvOverPictureBoundaries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mvTemporalPredictor: (() { final guardedValue = map['mvTemporalPredictor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      parDenominator: (() { final guardedValue = map['parDenominator']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      parNumerator: (() { final guardedValue = map['parNumerator']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      parDenominator: (() { final guardedValue = map['parDenominator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      parNumerator: (() { final guardedValue = map['parNumerator']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       profile: (() { final guardedValue = map['profile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      qvbrQualityLevel: (() { final guardedValue = map['qvbrQualityLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      qvbrQualityLevel: (() { final guardedValue = map['qvbrQualityLevel']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       rateControlMode: (() { final guardedValue = map['rateControlMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       scanType: (() { final guardedValue = map['scanType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sceneChangeDetect: (() { final guardedValue = map['sceneChangeDetect']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      slices: (() { final guardedValue = map['slices']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      slices: (() { final guardedValue = map['slices']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tileHeight: (() { final guardedValue = map['tileHeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tileHeight: (() { final guardedValue = map['tileHeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tilePadding: (() { final guardedValue = map['tilePadding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      tileWidth: (() { final guardedValue = map['tileWidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tileWidth: (() { final guardedValue = map['tileWidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       timecodeBurninSettings: (() { final guardedValue = map['timecodeBurninSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       timecodeInsertion: (() { final guardedValue = map['timecodeInsertion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       treeblockSize: (() { final guardedValue = map['treeblockSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

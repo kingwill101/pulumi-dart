@@ -9,7 +9,7 @@ class GetDetectorResult {
   final String? arn;
   /// Current configuration of the detector features.
   final List<GetDetectorFeature>? features;
-  /// The frequency of notifications sent about subsequent finding occurrences.
+  /// Frequency of notifications sent about subsequent finding occurrences.
   final String? findingPublishingFrequency;
   final String? id;
   final String? region;
@@ -23,7 +23,7 @@ class GetDetectorResult {
   /// Creates a new [GetDetectorResult].
   /// [arn] ARN of the detector.
   /// [features] Current configuration of the detector features.
-  /// [findingPublishingFrequency] The frequency of notifications sent about subsequent finding occurrences.
+  /// [findingPublishingFrequency] Frequency of notifications sent about subsequent finding occurrences.
   /// [id] Optional.
   /// [region] Optional.
   /// [serviceRoleArn] Service-linked role that grants GuardDuty access to the resources in the AWS account.

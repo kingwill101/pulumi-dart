@@ -3,10 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInputMediaConnectFlow {
+  /// ARN of the MediaConnect Flow.
   final pulumi.Input<String> flowArn;
 
   /// Creates a new [GetInputMediaConnectFlow].
-  /// [flowArn] Required.
+  /// [flowArn] ARN of the MediaConnect Flow.
   const GetInputMediaConnectFlow({
     required this.flowArn,
   });

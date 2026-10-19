@@ -21,7 +21,7 @@ class OrganizationConformancePackState {
   final pulumi.Input<String?>? region;
   /// A string containing full conformance pack template body. Maximum length of 51200. Drift detection is not possible with this argument.
   final pulumi.Input<String?>? templateBody;
-  /// Location of file, e.g., `s3://bucketname/prefix`, containing the template body. The uri must point to the conformance pack template that is located in an Amazon S3 bucket in the same region as the conformance pack. Maximum length of 1024. Drift detection is not possible with this argument.
+  /// Location of file, e.g., `s3://bucketname/prefix`, containing the template body. The URI must point to the conformance pack template that is located in an Amazon S3 bucket in the same region as the conformance pack. Maximum length of 1024. Drift detection is not possible with this argument.
   final pulumi.Input<String?>? templateS3Uri;
 
   /// Creates a new [OrganizationConformancePackState].
@@ -33,7 +33,7 @@ class OrganizationConformancePackState {
   /// [name] The name of the organization conformance pack. Must begin with a letter and contain from 1 to 128 alphanumeric characters and hyphens.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [templateBody] A string containing full conformance pack template body. Maximum length of 51200. Drift detection is not possible with this argument.
-  /// [templateS3Uri] Location of file, e.g., `s3://bucketname/prefix`, containing the template body. The uri must point to the conformance pack template that is located in an Amazon S3 bucket in the same region as the conformance pack. Maximum length of 1024. Drift detection is not possible with this argument.
+  /// [templateS3Uri] Location of file, e.g., `s3://bucketname/prefix`, containing the template body. The URI must point to the conformance pack template that is located in an Amazon S3 bucket in the same region as the conformance pack. Maximum length of 1024. Drift detection is not possible with this argument.
   const OrganizationConformancePackState({
     this.arn,
     this.deliveryS3Bucket,

@@ -143,7 +143,7 @@ import 'risk_configuration_state.dart';
 /// Import using the user pool ID and Client ID separated by a `:`:
 ///
 ///
-/// **Using `pulumi import` to import** Cognito Risk Configurations using the user pool ID or the user pool ID and Client Id separated by a `:`. For example:
+/// **Using `pulumi import` to import** Cognito Risk Configurations using the user pool ID or the user pool ID and Client ID separated by a `:`. For example:
 ///
 /// Import using the user pool ID:
 ///
@@ -182,7 +182,7 @@ class RiskConfiguration extends pulumi.CustomResource {
           'aws:cognito/riskConfiguration:RiskConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     accountTakeoverRiskConfiguration = registerOutput<RiskConfigurationAccountTakeoverRiskConfiguration?>('accountTakeoverRiskConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RiskConfigurationAccountTakeoverRiskConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientId = registerOutput<String?>('clientId');

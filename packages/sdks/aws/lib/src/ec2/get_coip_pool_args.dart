@@ -9,14 +9,14 @@ import 'get_coip_pool_filter.dart';
 /// {@macro pulumi_ec2_get_coip_pool_get_coip_pool_args_doc}
 class GetCoipPoolArgs {
   final pulumi.Input<List<GetCoipPoolFilter>?>? filters;
-  /// Local Gateway Route Table Id assigned to desired COIP Pool
+  /// Local Gateway Route Table ID assigned to desired CoIP Pool
   final pulumi.Input<String?>? localGatewayRouteTableId;
-  /// ID of the specific COIP Pool to retrieve.
+  /// ID of the specific CoIP Pool to retrieve.
   final pulumi.Input<String?>? poolId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// Mapping of tags, each pair of which must exactly match
-  /// a pair on the desired COIP Pool.
+  /// a pair on the desired CoIP Pool.
   ///
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
   /// which take the following arguments:
@@ -24,8 +24,8 @@ class GetCoipPoolArgs {
 
   /// Creates a new [GetCoipPoolArgs].
   /// [filters] Optional.
-  /// [localGatewayRouteTableId] Local Gateway Route Table Id assigned to desired COIP Pool
-  /// [poolId] ID of the specific COIP Pool to retrieve.
+  /// [localGatewayRouteTableId] Local Gateway Route Table ID assigned to desired CoIP Pool
+  /// [poolId] ID of the specific CoIP Pool to retrieve.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Mapping of tags, each pair of which must exactly match
   const GetCoipPoolArgs({

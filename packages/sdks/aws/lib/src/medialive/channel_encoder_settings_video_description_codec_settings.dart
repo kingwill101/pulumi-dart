@@ -6,16 +6,17 @@ import 'channel_encoder_settings_video_description_codec_settings_h264_settings.
 import 'channel_encoder_settings_video_description_codec_settings_h265_settings.dart';
 
 class ChannelEncoderSettingsVideoDescriptionCodecSettings {
-  /// Frame capture settings. See Frame Capture Settings for more details.
+  /// Frame capture settings. See `frameCaptureSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings?>? frameCaptureSettings;
-  /// H264 settings. See H264 Settings for more details.
+  /// H264 settings. See `h264Settings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH264Settings?>? h264Settings;
+  /// H265 settings. See `h265Settings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsVideoDescriptionCodecSettingsH265Settings?>? h265Settings;
 
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettings].
-  /// [frameCaptureSettings] Frame capture settings. See Frame Capture Settings for more details.
-  /// [h264Settings] H264 settings. See H264 Settings for more details.
-  /// [h265Settings] Optional.
+  /// [frameCaptureSettings] Frame capture settings. See `frameCaptureSettings` Block for details.
+  /// [h264Settings] H264 settings. See `h264Settings` Block for details.
+  /// [h265Settings] H265 settings. See `h265Settings` Block for details.
   const ChannelEncoderSettingsVideoDescriptionCodecSettings({
     this.frameCaptureSettings,
     this.h264Settings,

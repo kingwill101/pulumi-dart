@@ -10,7 +10,7 @@ import 'launch_configuration_root_block_device.dart';
 class LaunchConfigurationState {
   /// ARN of the launch configuration.
   final pulumi.Input<String?>? arn;
-  /// Associate a public ip address with an instance in a VPC.
+  /// Associate a public IP address with an instance in a VPC.
   final pulumi.Input<bool?>? associatePublicIpAddress;
   /// Additional EBS block devices to attach to the instance. See Block Devices below for details.
   final pulumi.Input<List<LaunchConfigurationEbsBlockDevice>?>? ebsBlockDevices;
@@ -42,7 +42,7 @@ class LaunchConfigurationState {
   final pulumi.Input<String?>? region;
   /// Customize details about the root block device of the instance. See Block Devices below for details.
   final pulumi.Input<LaunchConfigurationRootBlockDevice?>? rootBlockDevice;
-  /// A list of associated security group IDS.
+  /// A list of associated security group IDs.
   final pulumi.Input<List<String>?>? securityGroups;
   /// The maximum price to use for reserving spot instances.
   final pulumi.Input<String?>? spotPrice;
@@ -53,7 +53,7 @@ class LaunchConfigurationState {
 
   /// Creates a new [LaunchConfigurationState].
   /// [arn] ARN of the launch configuration.
-  /// [associatePublicIpAddress] Associate a public ip address with an instance in a VPC.
+  /// [associatePublicIpAddress] Associate a public IP address with an instance in a VPC.
   /// [ebsBlockDevices] Additional EBS block devices to attach to the instance. See Block Devices below for details.
   /// [ebsOptimized] If true, the launched EC2 instance will be EBS-optimized.
   /// [enableMonitoring] Enables/disables detailed monitoring. This is enabled by default.
@@ -68,7 +68,7 @@ class LaunchConfigurationState {
   /// [placementTenancy] The tenancy of the instance. Valid values are `default` or `dedicated`, see [AWS's Create Launch Configuration](http://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_CreateLaunchConfiguration.html) for more details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rootBlockDevice] Customize details about the root block device of the instance. See Block Devices below for details.
-  /// [securityGroups] A list of associated security group IDS.
+  /// [securityGroups] A list of associated security group IDs.
   /// [spotPrice] The maximum price to use for reserving spot instances.
   /// [userData] The user data to provide when launching the instance. Do not pass gzip-compressed data via this argument; see `userDataBase64` instead.
   /// [userDataBase64] Can be used instead of `userData` to pass base64-encoded binary data directly. Use this instead of `userData` whenever the value is not a valid UTF-8 string. For example, gzip-encoded user data must be base64-encoded and passed via this argument to avoid corruption.

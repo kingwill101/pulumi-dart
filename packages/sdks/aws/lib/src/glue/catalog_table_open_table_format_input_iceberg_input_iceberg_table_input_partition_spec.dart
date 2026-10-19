@@ -27,7 +27,7 @@ class CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpec
   factory CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpec.fromMap(Map<String, dynamic> map) {
     return CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpec(
       fields: pulumi.Input.fromValue(pulumi.Input.decodeList<CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpecField>(map['fields']!, (value) => CatalogTableOpenTableFormatInputIcebergInputIcebergTableInputPartitionSpecField.fromMap((value as Map).cast<String, dynamic>()))),
-      specId: (() { final guardedValue = map['specId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      specId: (() { final guardedValue = map['specId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

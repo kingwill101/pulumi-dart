@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentcoreGatewayProtocolConfigurationMcpStreamingConfiguration {
-  /// Boolean indicating whether response streaming is enabled for the gateway.
+  /// Whether to enable response streaming for the gateway.
   final pulumi.Input<bool?>? enableResponseStreaming;
 
   /// Creates a new [AgentcoreGatewayProtocolConfigurationMcpStreamingConfiguration].
-  /// [enableResponseStreaming] Boolean indicating whether response streaming is enabled for the gateway.
+  /// [enableResponseStreaming] Whether to enable response streaming for the gateway.
   const AgentcoreGatewayProtocolConfigurationMcpStreamingConfiguration({
     this.enableResponseStreaming,
   });

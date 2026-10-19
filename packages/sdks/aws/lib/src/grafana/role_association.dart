@@ -320,15 +320,15 @@ import 'role_association_state.dart';
 ///                 Service: grafana.amazonaws.com
 /// ```
 class RoleAssociation extends pulumi.CustomResource {
-  /// The AWS SSO group ids to be assigned the role given in `role`.
+  /// AWS SSO group IDs to be assigned the role given in `role`.
   late final pulumi.Output<List<String>?> groupIds;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The grafana role. Valid values can be found [here](https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateInstruction.html#ManagedGrafana-Type-UpdateInstruction-role).
+  /// Grafana role. Valid values can be found [here](https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateInstruction.html#ManagedGrafana-Type-UpdateInstruction-role).
   late final pulumi.Output<String> role;
-  /// The AWS SSO user ids to be assigned the role given in `role`.
+  /// AWS SSO user IDs to be assigned the role given in `role`.
   late final pulumi.Output<List<String>?> userIds;
-  /// The workspace id.
+  /// Workspace ID.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> workspaceId;
@@ -345,7 +345,7 @@ class RoleAssociation extends pulumi.CustomResource {
           'aws:grafana/roleAssociation:RoleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     groupIds = registerOutput<List<String>?>('groupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     region = registerOutput<String>('region');

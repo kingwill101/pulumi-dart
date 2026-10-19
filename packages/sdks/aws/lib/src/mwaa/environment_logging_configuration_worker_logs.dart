@@ -3,15 +3,16 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentLoggingConfigurationWorkerLogs {
+  /// ARN of the CloudWatch Logs log group where the logs are published.
   final pulumi.Input<String?>? cloudWatchLogGroupArn;
-  /// Enabling or disabling the collection of logs
+  /// Whether to enable the collection of logs.
   final pulumi.Input<bool?>? enabled;
   /// Logging level. Valid values: `CRITICAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`. Will be `INFO` by default.
   final pulumi.Input<String?>? logLevel;
 
   /// Creates a new [EnvironmentLoggingConfigurationWorkerLogs].
-  /// [cloudWatchLogGroupArn] Optional.
-  /// [enabled] Enabling or disabling the collection of logs
+  /// [cloudWatchLogGroupArn] ARN of the CloudWatch Logs log group where the logs are published.
+  /// [enabled] Whether to enable the collection of logs.
   /// [logLevel] Logging level. Valid values: `CRITICAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`. Will be `INFO` by default.
   const EnvironmentLoggingConfigurationWorkerLogs({
     this.cloudWatchLogGroupArn,

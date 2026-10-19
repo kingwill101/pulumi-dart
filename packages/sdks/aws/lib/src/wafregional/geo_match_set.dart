@@ -177,7 +177,7 @@ import 'geo_match_set_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import WAF Regional Geo Match Set using the id. For example:
+/// Using `pulumi import`, import WAF Regional Geo Match Set using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:wafregional/geoMatchSet:GeoMatchSet geo_match_set a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
@@ -202,7 +202,7 @@ class GeoMatchSet extends pulumi.CustomResource {
           'aws:wafregional/geoMatchSet:GeoMatchSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     geoMatchConstraints = registerOutput<List<GeoMatchSetGeoMatchConstraint>?>('geoMatchConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GeoMatchSetGeoMatchConstraint>(guardedValue, (value) => GeoMatchSetGeoMatchConstraint.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');

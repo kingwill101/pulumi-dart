@@ -3,14 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInputSource {
+  /// Key used to extract the password from EC2 Parameter store.
   final pulumi.Input<String> passwordParam;
+  /// URL where the stream is pulled from.
   final pulumi.Input<String> url;
+  /// Username for the input source.
   final pulumi.Input<String> username;
 
   /// Creates a new [GetInputSource].
-  /// [passwordParam] Required.
-  /// [url] Required.
-  /// [username] Required.
+  /// [passwordParam] Key used to extract the password from EC2 Parameter store.
+  /// [url] URL where the stream is pulled from.
+  /// [username] Username for the input source.
   const GetInputSource({
     required this.passwordParam,
     required this.url,

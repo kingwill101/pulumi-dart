@@ -4,25 +4,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering RoleAssociation resources.
 class RoleAssociationState {
-  /// The AWS SSO group ids to be assigned the role given in `role`.
+  /// AWS SSO group IDs to be assigned the role given in `role`.
   final pulumi.Input<List<String>?>? groupIds;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The grafana role. Valid values can be found [here](https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateInstruction.html#ManagedGrafana-Type-UpdateInstruction-role).
+  /// Grafana role. Valid values can be found [here](https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateInstruction.html#ManagedGrafana-Type-UpdateInstruction-role).
   final pulumi.Input<String?>? role;
-  /// The AWS SSO user ids to be assigned the role given in `role`.
+  /// AWS SSO user IDs to be assigned the role given in `role`.
   final pulumi.Input<List<String>?>? userIds;
-  /// The workspace id.
+  /// Workspace ID.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [RoleAssociationState].
-  /// [groupIds] The AWS SSO group ids to be assigned the role given in `role`.
+  /// [groupIds] AWS SSO group IDs to be assigned the role given in `role`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [role] The grafana role. Valid values can be found [here](https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateInstruction.html#ManagedGrafana-Type-UpdateInstruction-role).
-  /// [userIds] The AWS SSO user ids to be assigned the role given in `role`.
-  /// [workspaceId] The workspace id.
+  /// [role] Grafana role. Valid values can be found [here](https://docs.aws.amazon.com/grafana/latest/APIReference/API_UpdateInstruction.html#ManagedGrafana-Type-UpdateInstruction-role).
+  /// [userIds] AWS SSO user IDs to be assigned the role given in `role`.
+  /// [workspaceId] Workspace ID.
   const RoleAssociationState({
     this.groupIds,
     this.region,

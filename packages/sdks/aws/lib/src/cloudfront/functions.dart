@@ -1319,7 +1319,7 @@ pulumi.Output<GetOriginAccessControlResult> getOriginAccessControlOutput(
   ).apply(GetOriginAccessControlResult.fromMap);
 }
 
-/// Use this data source to get ARNs, ids and S3 canonical user IDs of Amazon CloudFront origin access identities.
+/// Use this data source to get ARNs, IDs and S3 canonical user IDs of Amazon CloudFront origin access identities.
 ///
 /// ## Example Usage
 ///

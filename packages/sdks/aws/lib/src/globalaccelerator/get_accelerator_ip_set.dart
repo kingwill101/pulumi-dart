@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetAcceleratorIpSet {
+  /// List of IP addresses in the IP address set.
   final pulumi.Input<List<String>> ipAddresses;
+  /// Type of IP addresses included in this IP set.
   final pulumi.Input<String> ipFamily;
 
   /// Creates a new [GetAcceleratorIpSet].
-  /// [ipAddresses] Required.
-  /// [ipFamily] Required.
+  /// [ipAddresses] List of IP addresses in the IP address set.
+  /// [ipFamily] Type of IP addresses included in this IP set.
   const GetAcceleratorIpSet({
     required this.ipAddresses,
     required this.ipFamily,

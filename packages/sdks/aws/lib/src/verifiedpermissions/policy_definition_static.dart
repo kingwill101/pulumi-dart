@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PolicyDefinitionStatic {
-  /// The description of the static policy.
+  /// Description of the static policy.
   final pulumi.Input<String?>? description;
-  /// The statement of the static policy.
+  /// Statement of the static policy.
   final pulumi.Input<String> statement;
 
   /// Creates a new [PolicyDefinitionStatic].
-  /// [description] The description of the static policy.
-  /// [statement] The statement of the static policy.
+  /// [description] Description of the static policy.
+  /// [statement] Statement of the static policy.
   const PolicyDefinitionStatic({
     this.description,
     required this.statement,

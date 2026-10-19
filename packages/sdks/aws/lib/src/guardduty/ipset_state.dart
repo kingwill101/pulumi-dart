@@ -4,38 +4,38 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering IPSet resources.
 class IPSetState {
-  /// Specifies whether GuardDuty is to start using the uploaded IPSet.
+  /// Whether to start using the uploaded IPSet.
   final pulumi.Input<bool?>? activate;
   /// ARN of the GuardDuty IPSet.
   final pulumi.Input<String?>? arn;
-  /// The detector ID of the GuardDuty.
+  /// Detector ID of the GuardDuty.
   final pulumi.Input<String?>? detectorId;
-  /// The format of the file that contains the IPSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
+  /// Format of the file that contains the IPSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
   final pulumi.Input<String?>? format;
   /// ID of the GuardDuty IPSet.
   final pulumi.Input<String?>? ipSetId;
-  /// The URI of the file that contains the IPSet.
+  /// URI of the file that contains the IPSet.
   final pulumi.Input<String?>? location;
-  /// The friendly name to identify the IPSet.
+  /// Friendly name to identify the IPSet.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [IPSetState].
-  /// [activate] Specifies whether GuardDuty is to start using the uploaded IPSet.
+  /// [activate] Whether to start using the uploaded IPSet.
   /// [arn] ARN of the GuardDuty IPSet.
-  /// [detectorId] The detector ID of the GuardDuty.
-  /// [format] The format of the file that contains the IPSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
+  /// [detectorId] Detector ID of the GuardDuty.
+  /// [format] Format of the file that contains the IPSet. Valid values: `TXT` | `STIX` | `OTX_CSV` | `ALIEN_VAULT` | `PROOF_POINT` | `FIRE_EYE`
   /// [ipSetId] ID of the GuardDuty IPSet.
-  /// [location] The URI of the file that contains the IPSet.
-  /// [name] The friendly name to identify the IPSet.
+  /// [location] URI of the file that contains the IPSet.
+  /// [name] Friendly name to identify the IPSet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const IPSetState({
     this.activate,
     this.arn,

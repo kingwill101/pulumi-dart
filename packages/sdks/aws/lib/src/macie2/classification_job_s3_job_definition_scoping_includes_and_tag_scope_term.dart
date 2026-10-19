@@ -4,20 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'classification_job_s3_job_definition_scoping_includes_and_tag_scope_term_tag_value.dart';
 
 class ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm {
-  /// The operator to use in the condition.
+  /// Operator to use in the condition.
   final pulumi.Input<String?>? comparator;
-  /// The tag key to use in the condition. The only valid value is `TAG`.
+  /// Tag key to use in the condition. The only valid value is `TAG`.
   final pulumi.Input<String?>? key;
-  /// The tag keys or tag key and value pairs to use in the condition.
+  /// Tag keys or tag key and value pairs to use in the condition. See `s3_job_definition.scoping.includes.and.tag_scope_term.tag_values` Block for details.
   final pulumi.Input<List<ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTermTagValue>?>? tagValues;
-  /// The type of object to apply the condition to. The only valid value is `S3_OBJECT`.
+  /// Type of object to apply the condition to. The only valid value is `S3_OBJECT`. The AWS API requires this argument when `tagScopeTerm` is used.
   final pulumi.Input<String?>? target;
 
   /// Creates a new [ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm].
-  /// [comparator] The operator to use in the condition.
-  /// [key] The tag key to use in the condition. The only valid value is `TAG`.
-  /// [tagValues] The tag keys or tag key and value pairs to use in the condition.
-  /// [target] The type of object to apply the condition to. The only valid value is `S3_OBJECT`.
+  /// [comparator] Operator to use in the condition.
+  /// [key] Tag key to use in the condition. The only valid value is `TAG`.
+  /// [tagValues] Tag keys or tag key and value pairs to use in the condition. See `s3_job_definition.scoping.includes.and.tag_scope_term.tag_values` Block for details.
+  /// [target] Type of object to apply the condition to. The only valid value is `S3_OBJECT`. The AWS API requires this argument when `tagScopeTerm` is used.
   const ClassificationJobS3JobDefinitionScopingIncludesAndTagScopeTerm({
     this.comparator,
     this.key,

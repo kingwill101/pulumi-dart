@@ -126,7 +126,7 @@ class Bucket extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Availability Zone. Follows the format us-east-2a (case-sensitive).
   late final pulumi.Output<String> availabilityZone;
-  /// Bundle ID to use for the bucket. A bucket bundle specifies the monthly cost, storage space, and data transfer quota for a bucket. Use the [get-bucket-bundles](https://docs.aws.amazon.com/cli/latest/reference/lightsail/get-bucket-bundles.html) cli command to get a list of bundle IDs that you can specify.
+  /// Bundle ID to use for the bucket. A bucket bundle specifies the monthly cost, storage space, and data transfer quota for a bucket. Use the [get-bucket-bundles](https://docs.aws.amazon.com/cli/latest/reference/lightsail/get-bucket-bundles.html) CLI command to get a list of bundle IDs that you can specify.
   late final pulumi.Output<String> bundleId;
   /// Date and time when the bucket was created.
   late final pulumi.Output<String> createdAt;
@@ -159,7 +159,7 @@ class Bucket extends pulumi.CustomResource {
           'aws:lightsail/bucket:Bucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     availabilityZone = registerOutput<String>('availabilityZone');

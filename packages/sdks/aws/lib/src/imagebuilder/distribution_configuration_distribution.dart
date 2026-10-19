@@ -23,7 +23,7 @@ class DistributionConfigurationDistribution {
   final pulumi.Input<String> region;
   /// Configuration block with S3 export settings. Detailed below.
   final pulumi.Input<DistributionConfigurationDistributionS3ExportConfiguration?>? s3ExportConfiguration;
-  /// Configuration block with SSM parameter configuration to use as AMI id output. Detailed below.
+  /// Configuration block with SSM parameter configuration to use as AMI ID output. Detailed below.
   final pulumi.Input<List<DistributionConfigurationDistributionSsmParameterConfiguration>?>? ssmParameterConfigurations;
 
   /// Creates a new [DistributionConfigurationDistribution].
@@ -34,7 +34,7 @@ class DistributionConfigurationDistribution {
   /// [licenseConfigurationArns] Set of ARNs of License Manager License Configurations.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3ExportConfiguration] Configuration block with S3 export settings. Detailed below.
-  /// [ssmParameterConfigurations] Configuration block with SSM parameter configuration to use as AMI id output. Detailed below.
+  /// [ssmParameterConfigurations] Configuration block with SSM parameter configuration to use as AMI ID output. Detailed below.
   const DistributionConfigurationDistribution({
     this.amiDistributionConfiguration,
     this.containerDistributionConfiguration,

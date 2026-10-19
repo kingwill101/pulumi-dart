@@ -246,36 +246,36 @@ class InputType extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Channels attached to Input.
   late final pulumi.Output<List<String>> attachedChannels;
-  /// Destination settings for PUSH type inputs. See Destinations for more details.
+  /// Destination settings for PUSH type inputs. See `destinations` Block for more details.
   late final pulumi.Output<List<InputDestination>?> destinations;
-  /// The input class.
+  /// Input class.
   late final pulumi.Output<String> inputClass;
-  /// Settings for the devices. See Input Devices for more details.
+  /// Settings for the devices. See `inputDevices` Block for more details.
   late final pulumi.Output<List<InputInputDevice>> inputDevices;
-  /// A list of IDs for all Inputs which are partners of this one.
+  /// IDs for all Inputs which are partners of this one.
   late final pulumi.Output<List<String>> inputPartnerIds;
   /// List of input security groups.
   late final pulumi.Output<List<String>?> inputSecurityGroups;
   /// Source type of the input.
   late final pulumi.Output<String> inputSourceType;
-  /// A list of the MediaConnect Flows. See Media Connect Flows for more details.
+  /// MediaConnect Flows. See `mediaConnectFlows` Block for more details.
   late final pulumi.Output<List<InputMediaConnectFlow>> mediaConnectFlows;
   /// Name of the input.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ARN of the role this input assumes during and after creation.
+  /// ARN of the role this input assumes during and after creation.
   late final pulumi.Output<String> roleArn;
-  /// The source URLs for a PULL-type input. See Sources for more details.
+  /// Source URLs for a PULL-type input. See `sources` Block for more details.
   late final pulumi.Output<List<InputSource>> sources;
-  /// A map of tags to assign to the Input. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the Input. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The different types of inputs that AWS Elemental MediaLive supports.
+  /// Type of input that AWS Elemental MediaLive supports.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> type;
-  /// Settings for a private VPC Input. See VPC for more details.
+  /// Settings for a private VPC Input. See `vpc` Block for more details.
   late final pulumi.Output<InputVpc?> vpc;
 
   /// Creates a new [InputType].
@@ -290,7 +290,7 @@ class InputType extends pulumi.CustomResource {
           'aws:medialive/input:Input',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attachedChannels = registerOutput<List<String>>('attachedChannels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

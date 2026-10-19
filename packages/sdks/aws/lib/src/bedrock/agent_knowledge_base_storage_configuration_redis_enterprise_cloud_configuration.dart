@@ -8,7 +8,7 @@ class AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration {
   final pulumi.Input<String> credentialsSecretArn;
   /// Endpoint URL of the Redis Enterprise Cloud database.
   final pulumi.Input<String> endpoint;
-  /// The names of the fields to which to map information about the vector store. This block supports the following arguments:
+  /// Names of the fields to which to map information about the vector store. See `storage_configuration.redis_enterprise_cloud_configuration.field_mapping` Block for details.
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfigurationFieldMapping> fieldMapping;
   /// Name of the vector index.
   final pulumi.Input<String> vectorIndexName;
@@ -16,7 +16,7 @@ class AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration {
   /// Creates a new [AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration].
   /// [credentialsSecretArn] ARN of the secret that you created in AWS Secrets Manager that is linked to your Redis Enterprise Cloud database.
   /// [endpoint] Endpoint URL of the Redis Enterprise Cloud database.
-  /// [fieldMapping] The names of the fields to which to map information about the vector store. This block supports the following arguments:
+  /// [fieldMapping] Names of the fields to which to map information about the vector store. See `storage_configuration.redis_enterprise_cloud_configuration.field_mapping` Block for details.
   /// [vectorIndexName] Name of the vector index.
   const AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration({
     required this.credentialsSecretArn,

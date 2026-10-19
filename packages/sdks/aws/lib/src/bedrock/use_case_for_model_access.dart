@@ -6,9 +6,9 @@ import 'use_case_for_model_access_state.dart';
 ///
 /// **This is an advanced resource** and has special caveats to be aware of when using it. Please read this document in its entirety before using this resource.
 ///
-/// The `aws.bedrock.UseCaseForModelAccess` resource behaves differently from normal resources in that if an Use Case For Model Access already exists, Terraform does not _create_ this resource, but instead "adopts" it into management if it is the same. As the ability to update doesn't exist, changes compared to the existing resource generate an error.
+/// The `aws.bedrock.UseCaseForModelAccess` resource behaves differently from normal resources in that if a Use Case For Model Access already exists, Terraform does not _create_ this resource, but instead "adopts" it into management if it is the same. As the ability to update doesn't exist, changes compared to the existing resource generate an error.
 /// If no Use Case For Model Access exists, Terraform creates a new Use Case For Model Access.
-/// By default, `terraform destroy` does not delete the Use Case For Model Access but does remove the resource from Terraform state. Real deletion does not exist for this resource.
+/// `terraform destroy` does not delete the Use Case For Model Access but does remove the resource from Terraform state. Real deletion does not exist for this resource.
 ///
 /// ## Example Usage
 ///
@@ -201,8 +201,6 @@ import 'use_case_for_model_access_state.dart';
 /// ```
 class UseCaseForModelAccess extends pulumi.CustomResource {
   /// Form data from the Anthropic first time user request. See also the example [payload](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_PutUseCaseForModelAccess.html#API_PutUseCaseForModelAccess_Examples).
-  ///
-  /// The following arguments are optional:
   late final pulumi.Output<String> formData;
 
   /// Creates a new [UseCaseForModelAccess].
@@ -217,7 +215,7 @@ class UseCaseForModelAccess extends pulumi.CustomResource {
           'aws:bedrock/useCaseForModelAccess:UseCaseForModelAccess',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     formData = registerOutput<String>('formData');
   }

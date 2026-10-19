@@ -5,7 +5,7 @@ import 'agentcore_token_vault_cmk_state.dart';
 
 /// Manages the AWS KMS customer master key (CMK) for a token vault.
 ///
-/// &gt; Deletion of this resource will not modify the CMK, only remove the resource from state.
+/// &gt; **Note:** Deletion of this resource will not modify the CMK, only remove the resource from state.
 ///
 /// ## Example Usage
 ///
@@ -156,7 +156,7 @@ class AgentcoreTokenVaultCmk extends pulumi.CustomResource {
           'aws:bedrock/agentcoreTokenVaultCmk:AgentcoreTokenVaultCmk',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     kmsConfiguration = registerOutput<AgentcoreTokenVaultCmkKmsConfiguration>('kmsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreTokenVaultCmkKmsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

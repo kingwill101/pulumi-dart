@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GameServerGroupLaunchTemplate {
-  /// A unique identifier for an existing EC2 launch template.
+  /// Unique identifier for an existing EC2 launch template.
   final pulumi.Input<String?>? id;
-  /// A readable identifier for an existing EC2 launch template.
+  /// Readable identifier for an existing EC2 launch template.
   final pulumi.Input<String?>? name;
-  /// The version of the EC2 launch template to use. If none is set, the default is the first version created.
+  /// Version of the EC2 launch template to use. If none is set, the default is the first version created.
   final pulumi.Input<String?>? version;
 
   /// Creates a new [GameServerGroupLaunchTemplate].
-  /// [id] A unique identifier for an existing EC2 launch template.
-  /// [name] A readable identifier for an existing EC2 launch template.
-  /// [version] The version of the EC2 launch template to use. If none is set, the default is the first version created.
+  /// [id] Unique identifier for an existing EC2 launch template.
+  /// [name] Readable identifier for an existing EC2 launch template.
+  /// [version] Version of the EC2 launch template to use. If none is set, the default is the first version created.
   const GameServerGroupLaunchTemplate({
     this.id,
     this.name,

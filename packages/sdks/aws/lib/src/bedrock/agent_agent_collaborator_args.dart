@@ -9,9 +9,11 @@ import 'agent_agent_collaborator_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_bedrock_agent_agent_collaborator_agent_agent_collaborator_args_doc}
 class AgentAgentCollaboratorArgs {
+  /// Agent descriptor for the agent collaborator. See `agentDescriptor` Block for details.
   final pulumi.Input<AgentAgentCollaboratorAgentDescriptor> agentDescriptor;
-  /// ID if the agent to associate the collaborator.
+  /// ID of the agent to associate the collaborator with.
   final pulumi.Input<String> agentId;
+  /// Version of the agent to associate the collaborator with. Defaults to `DRAFT`.
   final pulumi.Input<String?>? agentVersion;
   /// Instruction to give the collaborator.
   final pulumi.Input<String> collaborationInstruction;
@@ -28,9 +30,9 @@ class AgentAgentCollaboratorArgs {
   final pulumi.Input<AgentAgentCollaboratorTimeouts?>? timeouts;
 
   /// Creates a new [AgentAgentCollaboratorArgs].
-  /// [agentDescriptor] Required.
-  /// [agentId] ID if the agent to associate the collaborator.
-  /// [agentVersion] Optional.
+  /// [agentDescriptor] Agent descriptor for the agent collaborator. See `agentDescriptor` Block for details.
+  /// [agentId] ID of the agent to associate the collaborator with.
+  /// [agentVersion] Version of the agent to associate the collaborator with. Defaults to `DRAFT`.
   /// [collaborationInstruction] Instruction to give the collaborator.
   /// [collaboratorName] Name of this collaborator.
   /// [prepareAgent] Whether to prepare the agent after creation or modification. Defaults to `true`.

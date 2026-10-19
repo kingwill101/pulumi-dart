@@ -87,7 +87,7 @@ class WorkgroupConfiguration {
 
   factory WorkgroupConfiguration.fromMap(Map<String, dynamic> map) {
     return WorkgroupConfiguration(
-      bytesScannedCutoffPerQuery: (() { final guardedValue = map['bytesScannedCutoffPerQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bytesScannedCutoffPerQuery: (() { final guardedValue = map['bytesScannedCutoffPerQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       customerContentEncryptionConfiguration: (() { final guardedValue = map['customerContentEncryptionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkgroupConfigurationCustomerContentEncryptionConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       enableMinimumEncryptionConfiguration: (() { final guardedValue = map['enableMinimumEncryptionConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enforceWorkgroupConfiguration: (() { final guardedValue = map['enforceWorkgroupConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

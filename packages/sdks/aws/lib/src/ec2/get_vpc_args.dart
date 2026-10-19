@@ -12,7 +12,7 @@ class GetVpcArgs {
   final pulumi.Input<String?>? cidrBlock;
   /// Boolean constraint on whether the desired VPC is the default VPC for the region.
   final pulumi.Input<bool?>? default_;
-  /// DHCP options id of the desired VPC.
+  /// DHCP options ID of the desired VPC.
   final pulumi.Input<String?>? dhcpOptionsId;
   /// Custom filter block as described below. See `filter` Block below.
   final pulumi.Input<List<GetVpcFilter>?>? filters;
@@ -28,7 +28,7 @@ class GetVpcArgs {
   /// Creates a new [GetVpcArgs].
   /// [cidrBlock] CIDR block of the desired VPC.
   /// [default_] Boolean constraint on whether the desired VPC is the default VPC for the region.
-  /// [dhcpOptionsId] DHCP options id of the desired VPC.
+  /// [dhcpOptionsId] DHCP options ID of the desired VPC.
   /// [filters] Custom filter block as described below. See `filter` Block below.
   /// [id] ID of the specific VPC to retrieve.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

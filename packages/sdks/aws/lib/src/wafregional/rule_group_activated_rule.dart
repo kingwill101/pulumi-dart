@@ -36,7 +36,7 @@ class RuleGroupActivatedRule {
   factory RuleGroupActivatedRule.fromMap(Map<String, dynamic> map) {
     return RuleGroupActivatedRule(
       action: pulumi.Input.fromValue(RuleGroupActivatedRuleAction.fromMap((map['action']! as Map).cast<String, dynamic>())),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       ruleId: pulumi.Input.fromValue(map['ruleId'] as String),
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

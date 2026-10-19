@@ -331,7 +331,7 @@ class EmailIdentityPolicy extends pulumi.CustomResource {
           'aws:sesv2/emailIdentityPolicy:EmailIdentityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     emailIdentity = registerOutput<String>('emailIdentity');
     policy = registerOutput<String>('policy');

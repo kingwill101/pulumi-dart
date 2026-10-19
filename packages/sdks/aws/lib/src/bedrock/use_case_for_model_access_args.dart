@@ -8,8 +8,6 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_bedrock_use_case_for_model_access_use_case_for_model_access_args_doc}
 class UseCaseForModelAccessArgs {
   /// Form data from the Anthropic first time user request. See also the example [payload](https://docs.aws.amazon.com/bedrock/latest/APIReference/API_PutUseCaseForModelAccess.html#API_PutUseCaseForModelAccess_Examples).
-  ///
-  /// The following arguments are optional:
   final pulumi.Input<String> formData;
 
   /// Creates a new [UseCaseForModelAccessArgs].

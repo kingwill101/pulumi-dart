@@ -10,12 +10,12 @@ import 'custom_routing_listener_port_range.dart';
 class CustomRoutingListenerArgs {
   /// ARN of a custom routing accelerator.
   final pulumi.Input<String> acceleratorArn;
-  /// The list of port ranges for the connections from clients to the accelerator. Fields documented below.
+  /// Port ranges for the connections from clients to the accelerator. See `portRange` below.
   final pulumi.Input<List<CustomRoutingListenerPortRange>> portRanges;
 
   /// Creates a new [CustomRoutingListenerArgs].
   /// [acceleratorArn] ARN of a custom routing accelerator.
-  /// [portRanges] The list of port ranges for the connections from clients to the accelerator. Fields documented below.
+  /// [portRanges] Port ranges for the connections from clients to the accelerator. See `portRange` below.
   const CustomRoutingListenerArgs({
     required this.acceleratorArn,
     required this.portRanges,

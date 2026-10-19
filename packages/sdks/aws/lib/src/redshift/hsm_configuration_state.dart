@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering HsmConfiguration resources.
 class HsmConfigurationState {
-  /// ARN of the Hsm Client Certificate.
+  /// ARN of the HSM Client Certificate.
   final pulumi.Input<String?>? arn;
   /// A text description of the HSM configuration to be created.
   final pulumi.Input<String?>? description;
@@ -26,7 +26,7 @@ class HsmConfigurationState {
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [HsmConfigurationState].
-  /// [arn] ARN of the Hsm Client Certificate.
+  /// [arn] ARN of the HSM Client Certificate.
   /// [description] A text description of the HSM configuration to be created.
   /// [hsmConfigurationIdentifier] The identifier to be assigned to the new Amazon Redshift HSM configuration.
   /// [hsmIpAddress] The IP address that the Amazon Redshift cluster must use to access the HSM.

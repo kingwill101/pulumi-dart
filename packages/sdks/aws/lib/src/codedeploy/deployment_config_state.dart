@@ -11,7 +11,7 @@ class DeploymentConfigState {
   final pulumi.Input<String?>? arn;
   /// The compute platform can be `Server`, `Lambda`, or `ECS`. Default is `Server`.
   final pulumi.Input<String?>? computePlatform;
-  /// The AWS Assigned deployment config id
+  /// The AWS Assigned deployment config ID
   final pulumi.Input<String?>? deploymentConfigId;
   /// The name of the deployment config.
   final pulumi.Input<String?>? deploymentConfigName;
@@ -27,7 +27,7 @@ class DeploymentConfigState {
   /// Creates a new [DeploymentConfigState].
   /// [arn] The ARN of the deployment config.
   /// [computePlatform] The compute platform can be `Server`, `Lambda`, or `ECS`. Default is `Server`.
-  /// [deploymentConfigId] The AWS Assigned deployment config id
+  /// [deploymentConfigId] The AWS Assigned deployment config ID
   /// [deploymentConfigName] The name of the deployment config.
   /// [minimumHealthyHosts] A minimumHealthyHosts block. Required for `Server` compute platform. Minimum Healthy Hosts are documented below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

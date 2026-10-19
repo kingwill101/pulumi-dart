@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn {
-  /// A reference to the data element in the streaming input or the reference data source.
+  /// Reference to the data element in the streaming input or the reference data source.
   final pulumi.Input<String?>? mapping;
-  /// The name of the column that is created in the in-application input stream or reference table.
+  /// Name of the column that is created in the in-application input stream or reference table.
   final pulumi.Input<String> name;
-  /// The type of column created in the in-application input stream or reference table.
+  /// Type of column created in the in-application input stream or reference table.
   final pulumi.Input<String> sqlType;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn].
-  /// [mapping] A reference to the data element in the streaming input or the reference data source.
-  /// [name] The name of the column that is created in the in-application input stream or reference table.
-  /// [sqlType] The type of column created in the in-application input stream or reference table.
+  /// [mapping] Reference to the data element in the streaming input or the reference data source.
+  /// [name] Name of the column that is created in the in-application input stream or reference table.
+  /// [sqlType] Type of column created in the in-application input stream or reference table.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn({
     this.mapping,
     required this.name,

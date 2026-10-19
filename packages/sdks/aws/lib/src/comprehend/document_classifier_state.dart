@@ -26,7 +26,7 @@ class DocumentClassifierState {
   final pulumi.Input<String?>? modelKmsKeyId;
   /// Name for the Document Classifier.
   /// Has a maximum length of 63 characters.
-  /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
+  /// Can contain upper- and lower-case letters, numbers, and hyphen (`-`).
   ///
   /// The following arguments are optional:
   final pulumi.Input<String?>? name;
@@ -44,12 +44,12 @@ class DocumentClassifierState {
   /// If omitted, the provider will assign a random, unique version name.
   /// If explicitly set to `""`, no version name will be set.
   /// Has a maximum length of 63 characters.
-  /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
+  /// Can contain upper- and lower-case letters, numbers, and hyphen (`-`).
   /// Conflicts with `versionNamePrefix`.
   final pulumi.Input<String?>? versionName;
   /// Creates a unique version name beginning with the specified prefix.
   /// Has a maximum length of 37 characters.
-  /// Can contain upper- and lower-case letters, numbers, and hypen (`-`).
+  /// Can contain upper- and lower-case letters, numbers, and hyphen (`-`).
   /// Conflicts with `versionName`.
   final pulumi.Input<String?>? versionNamePrefix;
   /// KMS Key used to encrypt storage volumes during job processing.

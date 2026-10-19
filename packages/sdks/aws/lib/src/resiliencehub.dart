@@ -28,6 +28,8 @@ export 'resiliencehub/v2_input_source.dart';
 export 'resiliencehub/v2_input_source_args.dart';
 export 'resiliencehub/v2_input_source_resource_configuration.dart';
 export 'resiliencehub/v2_input_source_resource_configuration_eks.dart';
+export 'resiliencehub/v2_input_source_resource_configuration_eks_label_selector.dart';
+export 'resiliencehub/v2_input_source_resource_configuration_eks_label_selector_match_expression.dart';
 export 'resiliencehub/v2_input_source_resource_configuration_resource_tag.dart';
 export 'resiliencehub/v2_input_source_state.dart';
 export 'resiliencehub/v2_policy.dart';

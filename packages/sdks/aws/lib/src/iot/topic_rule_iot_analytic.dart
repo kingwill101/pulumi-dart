@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TopicRuleIotAnalytic {
   /// The payload that contains a JSON array of records will be sent to IoT Analytics via a batch call.
   final pulumi.Input<bool?>? batchMode;
-  /// Name of AWS IOT Analytics channel.
+  /// Name of AWS IoT Analytics channel.
   final pulumi.Input<String> channelName;
   /// The ARN of the IAM role that grants access.
   final pulumi.Input<String> roleArn;
 
   /// Creates a new [TopicRuleIotAnalytic].
   /// [batchMode] The payload that contains a JSON array of records will be sent to IoT Analytics via a batch call.
-  /// [channelName] Name of AWS IOT Analytics channel.
+  /// [channelName] Name of AWS IoT Analytics channel.
   /// [roleArn] The ARN of the IAM role that grants access.
   const TopicRuleIotAnalytic({
     this.batchMode,

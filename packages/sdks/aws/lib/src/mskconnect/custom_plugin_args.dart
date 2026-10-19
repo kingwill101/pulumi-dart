@@ -8,26 +8,26 @@ import 'custom_plugin_location.dart';
 /// {@endtemplate}
 /// {@macro pulumi_mskconnect_custom_plugin_custom_plugin_args_doc}
 class CustomPluginArgs {
-  /// The type of the plugin file. Allowed values are `ZIP` and `JAR`.
+  /// Type of the plugin file. Allowed values are `ZIP` and `JAR`.
   final pulumi.Input<String> contentType;
-  /// A summary description of the custom plugin.
+  /// Summary description of the custom plugin.
   final pulumi.Input<String?>? description;
   /// Information about the location of a custom plugin. See `location` Block for details.
   final pulumi.Input<CustomPluginLocation> location;
-  /// The name of the custom plugin..
+  /// Name of the custom plugin.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [CustomPluginArgs].
-  /// [contentType] The type of the plugin file. Allowed values are `ZIP` and `JAR`.
-  /// [description] A summary description of the custom plugin.
+  /// [contentType] Type of the plugin file. Allowed values are `ZIP` and `JAR`.
+  /// [description] Summary description of the custom plugin.
   /// [location] Information about the location of a custom plugin. See `location` Block for details.
-  /// [name] The name of the custom plugin..
+  /// [name] Name of the custom plugin.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const CustomPluginArgs({
     required this.contentType,
     this.description,

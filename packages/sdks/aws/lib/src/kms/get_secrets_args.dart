@@ -8,13 +8,14 @@ import 'get_secrets_secret.dart';
 /// {@endtemplate}
 /// {@macro pulumi_kms_get_secrets_get_secrets_args_doc}
 class GetSecretsArgs {
+  /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// One or more encrypted payload definitions from the KMS service. See the Secret Definitions below.
+  /// One or more encrypted payload definitions from the KMS service. See `secret` below.
   final pulumi.Input<List<GetSecretsSecret>> secrets;
 
   /// Creates a new [GetSecretsArgs].
-  /// [region] Optional.
-  /// [secrets] One or more encrypted payload definitions from the KMS service. See the Secret Definitions below.
+  /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
+  /// [secrets] One or more encrypted payload definitions from the KMS service. See `secret` below.
   const GetSecretsArgs({
     this.region,
     required this.secrets,

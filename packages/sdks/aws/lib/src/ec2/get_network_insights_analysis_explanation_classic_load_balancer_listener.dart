@@ -23,8 +23,8 @@ class GetNetworkInsightsAnalysisExplanationClassicLoadBalancerListener {
 
   factory GetNetworkInsightsAnalysisExplanationClassicLoadBalancerListener.fromMap(Map<String, dynamic> map) {
     return GetNetworkInsightsAnalysisExplanationClassicLoadBalancerListener(
-      instancePort: pulumi.Input.fromValue((map['instancePort'] as num).toInt()),
-      loadBalancerPort: pulumi.Input.fromValue((map['loadBalancerPort'] as num).toInt()),
+      instancePort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instancePort'])),
+      loadBalancerPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['loadBalancerPort'])),
     );
   }
 }

@@ -85,15 +85,15 @@ class MaintenanceWindowArgs {
   factory MaintenanceWindowArgs.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowArgs(
       allowUnassociatedTargets: (() { final guardedValue = map['allowUnassociatedTargets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      cutoff: pulumi.Input.fromValue((map['cutoff'] as num).toInt()),
+      cutoff: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cutoff'])),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      duration: pulumi.Input.fromValue((map['duration'] as num).toInt()),
+      duration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['duration'])),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       endDate: (() { final guardedValue = map['endDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       schedule: pulumi.Input.fromValue(map['schedule'] as String),
-      scheduleOffset: (() { final guardedValue = map['scheduleOffset']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      scheduleOffset: (() { final guardedValue = map['scheduleOffset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scheduleTimezone: (() { final guardedValue = map['scheduleTimezone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startDate: (() { final guardedValue = map['startDate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

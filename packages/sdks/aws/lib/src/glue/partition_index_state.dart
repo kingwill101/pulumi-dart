@@ -5,11 +5,11 @@ import 'partition_index_partition_index.dart';
 
 /// Input properties used for looking up and filtering PartitionIndex resources.
 class PartitionIndexState {
-  /// The catalog ID where the table resides.
+  /// Catalog ID where the table resides.
   final pulumi.Input<String?>? catalogId;
   /// Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
   final pulumi.Input<String?>? databaseName;
-  /// Configuration block for a partition index. See `partitionIndex` below.
+  /// Configuration block for a partition index. See `partitionIndex` Block below.
   final pulumi.Input<PartitionIndexPartitionIndex?>? partitionIndex;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -17,9 +17,9 @@ class PartitionIndexState {
   final pulumi.Input<String?>? tableName;
 
   /// Creates a new [PartitionIndexState].
-  /// [catalogId] The catalog ID where the table resides.
+  /// [catalogId] Catalog ID where the table resides.
   /// [databaseName] Name of the metadata database where the table metadata resides. For Hive compatibility, this must be all lowercase.
-  /// [partitionIndex] Configuration block for a partition index. See `partitionIndex` below.
+  /// [partitionIndex] Configuration block for a partition index. See `partitionIndex` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableName] Name of the table. For Hive compatibility, this must be entirely lowercase.
   const PartitionIndexState({

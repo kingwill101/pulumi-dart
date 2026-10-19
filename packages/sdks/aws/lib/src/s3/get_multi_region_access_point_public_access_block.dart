@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetMultiRegionAccessPointPublicAccessBlock {
-  /// Whether Amazon S3 should block public access control lists (ACLs). When set to `true`, PUT Bucket acl and PUT Object acl calls fail if the specified ACL is public, PUT Object calls fail if the request includes a public ACL, and PUT Bucket calls fail if the request includes a public ACL.
+  /// Whether Amazon S3 should block public access control lists (ACLs). When set to `true`, PUT Bucket ACL and PUT Object ACL calls fail if the specified ACL is public, PUT Object calls fail if the request includes a public ACL, and PUT Bucket calls fail if the request includes a public ACL.
   final pulumi.Input<bool> blockPublicAcls;
   /// Whether Amazon S3 should block public bucket policies for buckets in this account. When set to `true`, Amazon S3 rejects calls to PUT Bucket policy if the specified bucket policy allows public access.
   final pulumi.Input<bool> blockPublicPolicy;
@@ -13,7 +13,7 @@ class GetMultiRegionAccessPointPublicAccessBlock {
   final pulumi.Input<bool> restrictPublicBuckets;
 
   /// Creates a new [GetMultiRegionAccessPointPublicAccessBlock].
-  /// [blockPublicAcls] Whether Amazon S3 should block public access control lists (ACLs). When set to `true`, PUT Bucket acl and PUT Object acl calls fail if the specified ACL is public, PUT Object calls fail if the request includes a public ACL, and PUT Bucket calls fail if the request includes a public ACL.
+  /// [blockPublicAcls] Whether Amazon S3 should block public access control lists (ACLs). When set to `true`, PUT Bucket ACL and PUT Object ACL calls fail if the specified ACL is public, PUT Object calls fail if the request includes a public ACL, and PUT Bucket calls fail if the request includes a public ACL.
   /// [blockPublicPolicy] Whether Amazon S3 should block public bucket policies for buckets in this account. When set to `true`, Amazon S3 rejects calls to PUT Bucket policy if the specified bucket policy allows public access.
   /// [ignorePublicAcls] Whether Amazon S3 should ignore public ACLs for buckets in this account. When set to `true`, Amazon S3 ignores all public ACLs on buckets in this account and any objects that they contain.
   /// [restrictPublicBuckets] Whether Amazon S3 should restrict public bucket policies for buckets in this account. When set to `true`, only the bucket owner and AWS Services can access buckets with public policies.

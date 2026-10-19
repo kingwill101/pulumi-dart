@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class TrafficMirrorTargetArgs {
   /// A description of the traffic mirror session.
   final pulumi.Input<String?>? description;
-  /// The VPC Endpoint Id of the Gateway Load Balancer that is associated with the target.
+  /// The VPC Endpoint ID of the Gateway Load Balancer that is associated with the target.
   final pulumi.Input<String?>? gatewayLoadBalancerEndpointId;
   /// The network interface ID that is associated with the target.
   final pulumi.Input<String?>? networkInterfaceId;
@@ -24,7 +24,7 @@ class TrafficMirrorTargetArgs {
 
   /// Creates a new [TrafficMirrorTargetArgs].
   /// [description] A description of the traffic mirror session.
-  /// [gatewayLoadBalancerEndpointId] The VPC Endpoint Id of the Gateway Load Balancer that is associated with the target.
+  /// [gatewayLoadBalancerEndpointId] The VPC Endpoint ID of the Gateway Load Balancer that is associated with the target.
   /// [networkInterfaceId] The network interface ID that is associated with the target.
   /// [networkLoadBalancerArn] ARN of the Network Load Balancer that is associated with the target.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

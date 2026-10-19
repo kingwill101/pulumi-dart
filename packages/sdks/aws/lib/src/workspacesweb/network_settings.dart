@@ -321,7 +321,7 @@ class NetworkSettings extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// One or more security groups used to control access from streaming instances to your VPC.
   late final pulumi.Output<List<String>> securityGroupIds;
-  /// The subnets in which network interfaces are created to connect streaming instances to your VPC. At least two subnet ids must be specified.
+  /// The subnets in which network interfaces are created to connect streaming instances to your VPC. At least two subnet IDs must be specified.
   late final pulumi.Output<List<String>> subnetIds;
   /// Map of tags assigned to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
@@ -344,7 +344,7 @@ class NetworkSettings extends pulumi.CustomResource {
           'aws:workspacesweb/networkSettings:NetworkSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     associatedPortalArns = registerOutput<List<String>>('associatedPortalArns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     networkSettingsArn = registerOutput<String>('networkSettingsArn');

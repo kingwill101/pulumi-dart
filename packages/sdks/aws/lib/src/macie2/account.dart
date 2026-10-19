@@ -116,23 +116,23 @@ import 'account_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.macie2.Account` using the id. For example:
+/// Using `pulumi import`, import `aws.macie2.Account` using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:macie2/account:Account example abcd1
 /// ```
 class Account extends pulumi.CustomResource {
-  /// The date and time, in UTC and extended RFC 3339 format, when the Amazon Macie account was created.
+  /// Date and time, in UTC and extended RFC 3339 format, when the Amazon Macie account was created.
   late final pulumi.Output<String> createdAt;
-  /// Specifies how often to publish updates to policy findings for the account. This includes publishing updates to AWS Security Hub and Amazon EventBridge (formerly called Amazon CloudWatch Events). Valid values are `FIFTEEN_MINUTES`, `ONE_HOUR` or `SIX_HOURS`.
+  /// How often to publish updates to policy findings for the account. This includes publishing updates to AWS Security Hub and Amazon EventBridge (formerly called Amazon CloudWatch Events). Valid values are `FIFTEEN_MINUTES`, `ONE_HOUR` or `SIX_HOURS`.
   late final pulumi.Output<String> findingPublishingFrequency;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// ARN of the service-linked role that allows Macie to monitor and analyze data in AWS resources for the account.
   late final pulumi.Output<String> serviceRole;
-  /// Specifies the status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
+  /// Status for the account. To enable Amazon Macie and start all Macie activities for the account, set this value to `ENABLED`. Valid values are `ENABLED` or `PAUSED`.
   late final pulumi.Output<String> status;
-  /// The date and time, in UTC and extended RFC 3339 format, of the most recent change to the status of the Macie account.
+  /// Date and time, in UTC and extended RFC 3339 format, of the most recent change to the status of the Macie account.
   late final pulumi.Output<String> updatedAt;
 
   /// Creates a new [Account].
@@ -147,7 +147,7 @@ class Account extends pulumi.CustomResource {
           'aws:macie2/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     findingPublishingFrequency = registerOutput<String>('findingPublishingFrequency');

@@ -11,20 +11,20 @@ class MemberDetectorFeatureState {
   final pulumi.Input<List<MemberDetectorFeatureAdditionalConfiguration>?>? additionalConfigurations;
   /// Amazon GuardDuty detector ID.
   final pulumi.Input<String?>? detectorId;
-  /// The name of the detector feature. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`,`RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`.
+  /// Name of the detector feature. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`,`RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The status of the detector feature. Valid values: `ENABLED`, `DISABLED`.
+  /// Status of the detector feature. Valid values: `ENABLED`, `DISABLED`.
   final pulumi.Input<String?>? status;
 
   /// Creates a new [MemberDetectorFeatureState].
   /// [accountId] Member account ID to be updated.
   /// [additionalConfigurations] Additional feature configuration block. See below.
   /// [detectorId] Amazon GuardDuty detector ID.
-  /// [name] The name of the detector feature. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`,`RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`.
+  /// [name] Name of the detector feature. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`,`RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [status] The status of the detector feature. Valid values: `ENABLED`, `DISABLED`.
+  /// [status] Status of the detector feature. Valid values: `ENABLED`, `DISABLED`.
   const MemberDetectorFeatureState({
     this.accountId,
     this.additionalConfigurations,

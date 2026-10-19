@@ -355,22 +355,21 @@ import 'vault_state.dart';
 /// $ pulumi import aws:glacier/vault:Vault archive my_archive
 /// ```
 class Vault extends pulumi.CustomResource {
-  /// The policy document. This is a JSON formatted string.
-  /// The heredoc syntax or `file` function is helpful here. Use the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html) for more information on Glacier Vault Policy
+  /// Policy document. This is a JSON formatted string. The heredoc syntax or `file` function is helpful here. Use the [Glacier Developer Guide](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html) for more information on Glacier Vault Policy
   late final pulumi.Output<String?> accessPolicy;
-  /// The ARN of the vault.
+  /// ARN of the vault.
   late final pulumi.Output<String> arn;
-  /// The URI of the vault that was created.
+  /// URI of the vault that was created.
   late final pulumi.Output<String> location;
-  /// The name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
+  /// Name of the Vault. Names can be between 1 and 255 characters long and the valid characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen), and '.' (period).
   late final pulumi.Output<String> name;
-  /// The notifications for the Vault. Fields documented below.
+  /// Notifications for the Vault. See below.
   late final pulumi.Output<VaultNotification?> notification;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Vault].
@@ -385,7 +384,7 @@ class Vault extends pulumi.CustomResource {
           'aws:glacier/vault:Vault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     accessPolicy = registerOutput<String?>('accessPolicy');
     arn = registerOutput<String>('arn');

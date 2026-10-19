@@ -70,7 +70,7 @@ class DataRepositoryAssociationArgs {
       deleteDataInFilesystem: (() { final guardedValue = map['deleteDataInFilesystem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       fileSystemId: pulumi.Input.fromValue(map['fileSystemId'] as String),
       fileSystemPath: pulumi.Input.fromValue(map['fileSystemPath'] as String),
-      importedFileChunkSize: (() { final guardedValue = map['importedFileChunkSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      importedFileChunkSize: (() { final guardedValue = map['importedFileChunkSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       s3: (() { final guardedValue = map['s3']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataRepositoryAssociationS3.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

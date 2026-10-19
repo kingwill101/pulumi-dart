@@ -8,7 +8,7 @@ class BucketState {
   final pulumi.Input<String?>? arn;
   /// Availability Zone. Follows the format us-east-2a (case-sensitive).
   final pulumi.Input<String?>? availabilityZone;
-  /// Bundle ID to use for the bucket. A bucket bundle specifies the monthly cost, storage space, and data transfer quota for a bucket. Use the [get-bucket-bundles](https://docs.aws.amazon.com/cli/latest/reference/lightsail/get-bucket-bundles.html) cli command to get a list of bundle IDs that you can specify.
+  /// Bundle ID to use for the bucket. A bucket bundle specifies the monthly cost, storage space, and data transfer quota for a bucket. Use the [get-bucket-bundles](https://docs.aws.amazon.com/cli/latest/reference/lightsail/get-bucket-bundles.html) CLI command to get a list of bundle IDs that you can specify.
   final pulumi.Input<String?>? bundleId;
   /// Date and time when the bucket was created.
   final pulumi.Input<String?>? createdAt;
@@ -32,7 +32,7 @@ class BucketState {
   /// Creates a new [BucketState].
   /// [arn] ARN of the Lightsail bucket.
   /// [availabilityZone] Availability Zone. Follows the format us-east-2a (case-sensitive).
-  /// [bundleId] Bundle ID to use for the bucket. A bucket bundle specifies the monthly cost, storage space, and data transfer quota for a bucket. Use the [get-bucket-bundles](https://docs.aws.amazon.com/cli/latest/reference/lightsail/get-bucket-bundles.html) cli command to get a list of bundle IDs that you can specify.
+  /// [bundleId] Bundle ID to use for the bucket. A bucket bundle specifies the monthly cost, storage space, and data transfer quota for a bucket. Use the [get-bucket-bundles](https://docs.aws.amazon.com/cli/latest/reference/lightsail/get-bucket-bundles.html) CLI command to get a list of bundle IDs that you can specify.
   /// [createdAt] Date and time when the bucket was created.
   /// [forceDelete] Whether to force delete non-empty buckets using `pulumi destroy`. AWS by default will not delete a bucket which is not empty, to prevent losing bucket data and affecting other resources in Lightsail. If `forceDelete` is set to `true` the bucket will be deleted even when not empty.
   /// [name] Name for the bucket.

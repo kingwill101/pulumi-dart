@@ -5,14 +5,14 @@ import 'classification_job_s3_job_definition_scoping_excludes.dart';
 import 'classification_job_s3_job_definition_scoping_includes.dart';
 
 class ClassificationJobS3JobDefinitionScoping {
-  /// The property- or tag-based conditions that determine which objects to exclude from the analysis. (documented below)
+  /// Property- or tag-based conditions that determine which objects to exclude from the analysis. See `scoping.excludes` Block for details.
   final pulumi.Input<ClassificationJobS3JobDefinitionScopingExcludes?>? excludes;
-  /// The property- or tag-based conditions that determine which objects to include in the analysis. (documented below)
+  /// Property- or tag-based conditions that determine which objects to include in the analysis. See `scoping.includes` Block for details.
   final pulumi.Input<ClassificationJobS3JobDefinitionScopingIncludes?>? includes;
 
   /// Creates a new [ClassificationJobS3JobDefinitionScoping].
-  /// [excludes] The property- or tag-based conditions that determine which objects to exclude from the analysis. (documented below)
-  /// [includes] The property- or tag-based conditions that determine which objects to include in the analysis. (documented below)
+  /// [excludes] Property- or tag-based conditions that determine which objects to exclude from the analysis. See `scoping.excludes` Block for details.
+  /// [includes] Property- or tag-based conditions that determine which objects to include in the analysis. See `scoping.includes` Block for details.
   const ClassificationJobS3JobDefinitionScoping({
     this.excludes,
     this.includes,

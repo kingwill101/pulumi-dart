@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceLoggingConfigurationAccessLogsCloudwatchLogs {
-  /// Indicates whether logging is enabled.
+  /// Whether logging is enabled.
   final pulumi.Input<bool> enabled;
-  /// The name of the CloudWatch Logs Log Group.
+  /// Name of the CloudWatch Logs Log Group.
   final pulumi.Input<String?>? logGroup;
 
   /// Creates a new [InstanceLoggingConfigurationAccessLogsCloudwatchLogs].
-  /// [enabled] Indicates whether logging is enabled.
-  /// [logGroup] The name of the CloudWatch Logs Log Group.
+  /// [enabled] Whether logging is enabled.
+  /// [logGroup] Name of the CloudWatch Logs Log Group.
   const InstanceLoggingConfigurationAccessLogsCloudwatchLogs({
     required this.enabled,
     this.logGroup,

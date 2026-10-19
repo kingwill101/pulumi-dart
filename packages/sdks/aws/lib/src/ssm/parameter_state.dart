@@ -37,9 +37,9 @@ class ParameterState {
   /// Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of `type
   final pulumi.Input<String?>? value;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of `type`. Additionally, `write-only` values are never stored to state. `valueWoVersion` can be used to trigger an update and is required with this argument.
+  /// Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of `type`. Additionally, `write-only` values are never stored to state. If set, requires `valueWoVersion`.
   final pulumi.Input<String?>? valueWo;
-  /// Used together with `valueWo` to trigger an update. Increment this value when an update to the `valueWo` is required.
+  /// Required when `valueWo` is set. Changing this value triggers an update to `valueWo`.
   ///
   /// &gt; **NOTE:** `aws:ssm:integration` dataType parameters must be of the type `SecureString` and the name must start with the prefix `/d9d01087-4a3f-49e0-b0b4-d568d7826553/ssm/integrations/webhook/`. See [here](https://docs.aws.amazon.com/systems-manager/latest/userguide/creating-integrations.html) for information on the usage of `aws:ssm:integration` parameters.
   final pulumi.Input<int?>? valueWoVersion;
@@ -63,7 +63,7 @@ class ParameterState {
   /// [type] Type of the parameter. Valid types are `String`, `StringList` and `SecureString`.
   /// [value] Value of the parameter. This value is always marked as sensitive in the pulumi preview output, regardless of `type
   /// [valueWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [valueWoVersion] Used together with `valueWo` to trigger an update. Increment this value when an update to the `valueWo` is required.
+  /// [valueWoVersion] Required when `valueWo` is set. Changing this value triggers an update to `valueWo`.
   /// [version] Version of the parameter.
   const ParameterState({
     this.allowedPattern,
@@ -127,8 +127,8 @@ class ParameterState {
       type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
       value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       valueWo: (() { final guardedValue = map['valueWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      valueWoVersion: (() { final guardedValue = map['valueWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      valueWoVersion: (() { final guardedValue = map['valueWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

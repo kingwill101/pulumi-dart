@@ -6,15 +6,17 @@ import 'security_configuration_encryption_configuration_job_bookmarks_encryption
 import 'security_configuration_encryption_configuration_s3_encryption.dart';
 
 class SecurityConfigurationEncryptionConfiguration {
+  /// `cloudwatchEncryption` block as described below, which contains encryption configuration for CloudWatch.
   final pulumi.Input<SecurityConfigurationEncryptionConfigurationCloudwatchEncryption> cloudwatchEncryption;
+  /// `jobBookmarksEncryption` block as described below, which contains encryption configuration for job bookmarks.
   final pulumi.Input<SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption> jobBookmarksEncryption;
-  /// A `s3Encryption ` block as described below, which contains encryption configuration for S3 data.
+  /// `s3Encryption` block as described below, which contains encryption configuration for S3 data.
   final pulumi.Input<SecurityConfigurationEncryptionConfigurationS3Encryption> s3Encryption;
 
   /// Creates a new [SecurityConfigurationEncryptionConfiguration].
-  /// [cloudwatchEncryption] Required.
-  /// [jobBookmarksEncryption] Required.
-  /// [s3Encryption] A `s3Encryption ` block as described below, which contains encryption configuration for S3 data.
+  /// [cloudwatchEncryption] `cloudwatchEncryption` block as described below, which contains encryption configuration for CloudWatch.
+  /// [jobBookmarksEncryption] `jobBookmarksEncryption` block as described below, which contains encryption configuration for job bookmarks.
+  /// [s3Encryption] `s3Encryption` block as described below, which contains encryption configuration for S3 data.
   const SecurityConfigurationEncryptionConfiguration({
     required this.cloudwatchEncryption,
     required this.jobBookmarksEncryption,

@@ -417,7 +417,7 @@ import 'report_group_state.dart';
 /// - `arn` (String) ARN of the CodeBuild report group.
 ///
 ///
-/// Using `pulumi import`, import CodeBuild Report Group using the CodeBuild Report Group arn. For example:
+/// Using `pulumi import`, import CodeBuild Report Group using the CodeBuild Report Group ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:codebuild/reportGroup:ReportGroup example arn:aws:codebuild:us-west-2:123456789:report-group/report-group-name
@@ -454,7 +454,7 @@ class ReportGroup extends pulumi.CustomResource {
           'aws:codebuild/reportGroup:ReportGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     created = registerOutput<String>('created');

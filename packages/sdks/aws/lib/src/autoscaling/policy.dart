@@ -8,7 +8,7 @@ import 'policy_target_tracking_configuration.dart';
 /// Provides an AutoScaling Scaling Policy resource.
 ///
 /// &gt; **NOTE:** You may want to omit `desiredCapacity` attribute from attached `aws.autoscaling.Group`
-/// when using autoscaling policies. It's good practice to pick either
+/// when using Auto Scaling policies. It's good practice to pick either
 /// [manual](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-manual-scaling.html)
 /// or [dynamic](https://docs.aws.amazon.com/AutoScaling/latest/DeveloperGuide/as-scale-based-on-demand.html)
 /// (policy-based) scaling.
@@ -1392,7 +1392,7 @@ class Policy extends pulumi.CustomResource {
   late final pulumi.Output<String?> adjustmentType;
   /// ARN assigned by AWS to the scaling policy.
   late final pulumi.Output<String> arn;
-  /// Name of the autoscaling group.
+  /// Name of the Auto Scaling group.
   late final pulumi.Output<String> autoscalingGroupName;
   /// Amount of time, in seconds, after a scaling activity completes and before the next scaling activity can start.
   late final pulumi.Output<int?> cooldown;
@@ -1748,7 +1748,7 @@ class Policy extends pulumi.CustomResource {
           'aws:autoscaling/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     adjustmentType = registerOutput<String?>('adjustmentType');
     arn = registerOutput<String>('arn');

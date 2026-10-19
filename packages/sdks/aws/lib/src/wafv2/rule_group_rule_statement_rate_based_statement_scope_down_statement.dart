@@ -16,47 +16,47 @@ import 'rule_group_rule_statement_rate_based_statement_scope_down_statement_sqli
 import 'rule_group_rule_statement_rate_based_statement_scope_down_statement_xss_match_statement.dart';
 
 class RuleGroupRuleStatementRateBasedStatementScopeDownStatement {
-  /// A logical rule statement used to combine other rule statements with AND logic. See AND Statement below for details.
+  /// Logical rule statement used to combine other rule statements with AND logic. See AND Statement below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementAndStatement?>? andStatement;
-  /// Rule statement that inspects web traffic based on the Autonomous System Number (ASN) associated with the request's IP address. See `asnMatchStatement` below for details.
+  /// Rule statement that inspects web traffic based on the Autonomous System Number (ASN) associated with the request's IP address. See ASN Match Statement below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementAsnMatchStatement?>? asnMatchStatement;
-  /// A rule statement that defines a string match search for AWS WAF to apply to web requests. See Byte Match Statement below for details.
+  /// Rule statement that defines a string match search for AWS WAF to apply to web requests. See Byte Match Statement below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatement?>? byteMatchStatement;
-  /// A rule statement used to identify web requests based on country of origin. See GEO Match Statement below for details.
+  /// Rule statement used to identify web requests based on country of origin. See GEO Match Statement below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementGeoMatchStatement?>? geoMatchStatement;
-  /// A rule statement used to detect web requests coming from particular IP addresses or address ranges. See IP Set Reference Statement below for details.
+  /// Rule statement used to detect web requests coming from particular IP addresses or address ranges. See IP Set Reference Statement below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementIpSetReferenceStatement?>? ipSetReferenceStatement;
-  /// A rule statement that defines a string match search against labels that have been added to the web request by rules that have already run in the web ACL. See Label Match Statement below for details.
+  /// Rule statement that defines a string match search against labels that have been added to the web request by rules that have already run in the web ACL. See Label Match Statement below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatement?>? labelMatchStatement;
-  /// A logical rule statement used to negate the results of another rule statement. See NOT Statement below for details.
+  /// Logical rule statement used to negate the results of another rule statement. See NOT Statement below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementNotStatement?>? notStatement;
-  /// A logical rule statement used to combine other rule statements with OR logic. See OR Statement below for details.
+  /// Logical rule statement used to combine other rule statements with OR logic. See OR Statement below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementOrStatement?>? orStatement;
-  /// A rule statement used to search web request components for a match against a single regular expression. See Regex Match Statement below for details.
+  /// Rule statement used to search web request components for a match against a single regular expression. See Regex Match Statement below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatement?>? regexMatchStatement;
-  /// A rule statement used to search web request components for matches with regular expressions. See Regex Pattern Set Reference Statement below for details.
+  /// Rule statement used to search web request components for matches with regular expressions. See Regex Pattern Set Reference Statement below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatement?>? regexPatternSetReferenceStatement;
-  /// A rule statement that compares a number of bytes against the size of a request component, using a comparison operator, such as greater than (&gt;) or less than (&lt;). See Size Constraint Statement below for more details.
+  /// Rule statement that compares a number of bytes against the size of a request component, using a comparison operator, such as greater than (&gt;) or less than (&lt;). See Size Constraint Statement below for more details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatement?>? sizeConstraintStatement;
-  /// An SQL injection match condition identifies the part of web requests, such as the URI or the query string, that you want AWS WAF to inspect. See SQL Injection Match Statement below for details.
+  /// SQL injection match condition identifies the part of web requests, such as the URI or the query string, that you want AWS WAF to inspect. See SQL Injection Match Statement below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatement?>? sqliMatchStatement;
-  /// A rule statement that defines a cross-site scripting (XSS) match search for AWS WAF to apply to web requests. See XSS Match Statement below for details.
+  /// Rule statement that defines a cross-site scripting (XSS) match search for AWS WAF to apply to web requests. See XSS Match Statement below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatement?>? xssMatchStatement;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatement].
-  /// [andStatement] A logical rule statement used to combine other rule statements with AND logic. See AND Statement below for details.
-  /// [asnMatchStatement] Rule statement that inspects web traffic based on the Autonomous System Number (ASN) associated with the request's IP address. See `asnMatchStatement` below for details.
-  /// [byteMatchStatement] A rule statement that defines a string match search for AWS WAF to apply to web requests. See Byte Match Statement below for details.
-  /// [geoMatchStatement] A rule statement used to identify web requests based on country of origin. See GEO Match Statement below for details.
-  /// [ipSetReferenceStatement] A rule statement used to detect web requests coming from particular IP addresses or address ranges. See IP Set Reference Statement below for details.
-  /// [labelMatchStatement] A rule statement that defines a string match search against labels that have been added to the web request by rules that have already run in the web ACL. See Label Match Statement below for details.
-  /// [notStatement] A logical rule statement used to negate the results of another rule statement. See NOT Statement below for details.
-  /// [orStatement] A logical rule statement used to combine other rule statements with OR logic. See OR Statement below for details.
-  /// [regexMatchStatement] A rule statement used to search web request components for a match against a single regular expression. See Regex Match Statement below for details.
-  /// [regexPatternSetReferenceStatement] A rule statement used to search web request components for matches with regular expressions. See Regex Pattern Set Reference Statement below for details.
-  /// [sizeConstraintStatement] A rule statement that compares a number of bytes against the size of a request component, using a comparison operator, such as greater than (&gt;) or less than (&lt;). See Size Constraint Statement below for more details.
-  /// [sqliMatchStatement] An SQL injection match condition identifies the part of web requests, such as the URI or the query string, that you want AWS WAF to inspect. See SQL Injection Match Statement below for details.
-  /// [xssMatchStatement] A rule statement that defines a cross-site scripting (XSS) match search for AWS WAF to apply to web requests. See XSS Match Statement below for details.
+  /// [andStatement] Logical rule statement used to combine other rule statements with AND logic. See AND Statement below for details.
+  /// [asnMatchStatement] Rule statement that inspects web traffic based on the Autonomous System Number (ASN) associated with the request's IP address. See ASN Match Statement below for details.
+  /// [byteMatchStatement] Rule statement that defines a string match search for AWS WAF to apply to web requests. See Byte Match Statement below for details.
+  /// [geoMatchStatement] Rule statement used to identify web requests based on country of origin. See GEO Match Statement below for details.
+  /// [ipSetReferenceStatement] Rule statement used to detect web requests coming from particular IP addresses or address ranges. See IP Set Reference Statement below for details.
+  /// [labelMatchStatement] Rule statement that defines a string match search against labels that have been added to the web request by rules that have already run in the web ACL. See Label Match Statement below for details.
+  /// [notStatement] Logical rule statement used to negate the results of another rule statement. See NOT Statement below for details.
+  /// [orStatement] Logical rule statement used to combine other rule statements with OR logic. See OR Statement below for details.
+  /// [regexMatchStatement] Rule statement used to search web request components for a match against a single regular expression. See Regex Match Statement below for details.
+  /// [regexPatternSetReferenceStatement] Rule statement used to search web request components for matches with regular expressions. See Regex Pattern Set Reference Statement below for details.
+  /// [sizeConstraintStatement] Rule statement that compares a number of bytes against the size of a request component, using a comparison operator, such as greater than (&gt;) or less than (&lt;). See Size Constraint Statement below for more details.
+  /// [sqliMatchStatement] SQL injection match condition identifies the part of web requests, such as the URI or the query string, that you want AWS WAF to inspect. See SQL Injection Match Statement below for details.
+  /// [xssMatchStatement] Rule statement that defines a cross-site scripting (XSS) match search for AWS WAF to apply to web requests. See XSS Match Statement below for details.
   const RuleGroupRuleStatementRateBasedStatementScopeDownStatement({
     this.andStatement,
     this.asnMatchStatement,

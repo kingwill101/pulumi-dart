@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcEndpointSubnetConfiguration {
-  /// The IPv4 address to assign to the endpoint network interface in the subnet. You must provide an IPv4 address if the VPC endpoint supports IPv4.
+  /// IPv4 address to assign to the endpoint network interface in the subnet. You must provide an IPv4 address if the VPC endpoint supports IPv4.
   final pulumi.Input<String?>? ipv4;
-  /// The IPv6 address to assign to the endpoint network interface in the subnet. You must provide an IPv6 address if the VPC endpoint supports IPv6.
+  /// IPv6 address to assign to the endpoint network interface in the subnet. You must provide an IPv6 address if the VPC endpoint supports IPv6.
   final pulumi.Input<String?>? ipv6;
-  /// The ID of the subnet. Must have a corresponding subnet in the `subnetIds` argument.
+  /// ID of the subnet. Must have a corresponding subnet in the `subnetIds` argument.
   final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [VpcEndpointSubnetConfiguration].
-  /// [ipv4] The IPv4 address to assign to the endpoint network interface in the subnet. You must provide an IPv4 address if the VPC endpoint supports IPv4.
-  /// [ipv6] The IPv6 address to assign to the endpoint network interface in the subnet. You must provide an IPv6 address if the VPC endpoint supports IPv6.
-  /// [subnetId] The ID of the subnet. Must have a corresponding subnet in the `subnetIds` argument.
+  /// [ipv4] IPv4 address to assign to the endpoint network interface in the subnet. You must provide an IPv4 address if the VPC endpoint supports IPv4.
+  /// [ipv6] IPv6 address to assign to the endpoint network interface in the subnet. You must provide an IPv6 address if the VPC endpoint supports IPv6.
+  /// [subnetId] ID of the subnet. Must have a corresponding subnet in the `subnetIds` argument.
   const VpcEndpointSubnetConfiguration({
     this.ipv4,
     this.ipv6,

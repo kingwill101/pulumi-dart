@@ -652,7 +652,7 @@ import 'cluster_state.dart';
 /// ```
 ///
 ///
-/// ### Elasticache Cluster in Outpost
+/// ### ElastiCache Cluster in Outpost
 ///
 ///
 /// ```typescript
@@ -1096,7 +1096,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:elasticache/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     applyImmediately = registerOutput<bool>('applyImmediately');
     arn = registerOutput<String>('arn');

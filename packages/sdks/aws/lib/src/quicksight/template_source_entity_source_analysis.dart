@@ -6,12 +6,12 @@ import 'template_source_entity_source_analysis_data_set_reference.dart';
 class TemplateSourceEntitySourceAnalysis {
   /// ARN of the resource.
   final pulumi.Input<String> arn;
-  /// A list of dataset references used as placeholders in the template. See data_set_references.
+  /// List of dataset references used as placeholders in the template. See `dataSetReferences` Block.
   final pulumi.Input<List<TemplateSourceEntitySourceAnalysisDataSetReference>> dataSetReferences;
 
   /// Creates a new [TemplateSourceEntitySourceAnalysis].
   /// [arn] ARN of the resource.
-  /// [dataSetReferences] A list of dataset references used as placeholders in the template. See data_set_references.
+  /// [dataSetReferences] List of dataset references used as placeholders in the template. See `dataSetReferences` Block.
   const TemplateSourceEntitySourceAnalysis({
     required this.arn,
     required this.dataSetReferences,

@@ -13,17 +13,17 @@ class TemplateArgs {
   final pulumi.Input<String?>? awsAccountId;
   /// Display name for the template.
   final pulumi.Input<String?>? name;
-  /// A set of resource permissions on the template. Maximum of 64 items. See permissions.
+  /// Set of resource permissions on the template. Maximum of 64 items. See `permissions` Block.
   final pulumi.Input<List<TemplatePermission>?>? permissions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `sourceEntity` should be configured. See source_entity.
+  /// Entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `sourceEntity` should be configured. See `sourceEntity` Block.
   final pulumi.Input<TemplateSourceEntity?>? sourceEntity;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   /// Identifier for the template.
   final pulumi.Input<String> templateId;
-  /// A description of the current template version being created/updated.
+  /// Description of the current template version being created/updated.
   ///
   /// The following arguments are optional:
   final pulumi.Input<String> versionDescription;
@@ -31,12 +31,12 @@ class TemplateArgs {
   /// Creates a new [TemplateArgs].
   /// [awsAccountId] AWS account ID. Defaults to automatically determined account ID of the Terraform AWS provider.
   /// [name] Display name for the template.
-  /// [permissions] A set of resource permissions on the template. Maximum of 64 items. See permissions.
+  /// [permissions] Set of resource permissions on the template. Maximum of 64 items. See `permissions` Block.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [sourceEntity] The entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `sourceEntity` should be configured. See source_entity.
+  /// [sourceEntity] Entity that you are using as a source when you create the template (analysis or template). Only one of `definition` or `sourceEntity` should be configured. See `sourceEntity` Block.
   /// [tags] Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [templateId] Identifier for the template.
-  /// [versionDescription] A description of the current template version being created/updated.
+  /// [versionDescription] Description of the current template version being created/updated.
   const TemplateArgs({
     this.awsAccountId,
     this.name,

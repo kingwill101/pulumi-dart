@@ -16,7 +16,7 @@ class IdentityProviderState {
   final pulumi.Input<String?>? providerType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The user pool id
+  /// The user pool ID
   final pulumi.Input<String?>? userPoolId;
 
   /// Creates a new [IdentityProviderState].
@@ -26,7 +26,7 @@ class IdentityProviderState {
   /// [providerName] The provider name
   /// [providerType] The provider type.  [See AWS API for valid values](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateIdentityProvider.html#CognitoUserPools-CreateIdentityProvider-request-ProviderType)
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [userPoolId] The user pool id
+  /// [userPoolId] The user pool ID
   const IdentityProviderState({
     this.attributeMapping,
     this.idpIdentifiers,

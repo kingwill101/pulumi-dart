@@ -11,34 +11,34 @@ import 'agent_knowledge_base_storage_configuration_redis_enterprise_cloud_config
 import 'agent_knowledge_base_storage_configuration_s3_vectors_configuration.dart';
 
 class AgentKnowledgeBaseStorageConfiguration {
-  /// The storage configuration of the knowledge base in MongoDB Atlas. See `mongoDbAtlasConfiguration` block for details.
+  /// Storage configuration of the knowledge base in MongoDB Atlas. See `mongoDbAtlasConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfiguration?>? mongoDbAtlasConfiguration;
-  /// The storage configuration of the knowledge base in Amazon Neptune Analytics. See `neptuneAnalyticsConfiguration` block for details.
+  /// Storage configuration of the knowledge base in Amazon Neptune Analytics. See `neptuneAnalyticsConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration?>? neptuneAnalyticsConfiguration;
-  /// The storage configuration of the knowledge base in Amazon OpenSearch Service Managed Cluster. See `opensearchManagedClusterConfiguration` block for details.
+  /// Storage configuration of the knowledge base in Amazon OpenSearch Service Managed Cluster. See `opensearchManagedClusterConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationOpensearchManagedClusterConfiguration?>? opensearchManagedClusterConfiguration;
-  /// The storage configuration of the knowledge base in Amazon OpenSearch Service Serverless. See `opensearchServerlessConfiguration` block for details.
+  /// Storage configuration of the knowledge base in Amazon OpenSearch Service Serverless. See `opensearchServerlessConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration?>? opensearchServerlessConfiguration;
-  /// The storage configuration of the knowledge base in Pinecone. See `pineconeConfiguration` block for details.
+  /// Storage configuration of the knowledge base in Pinecone. See `pineconeConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationPineconeConfiguration?>? pineconeConfiguration;
-  /// Details about the storage configuration of the knowledge base in Amazon RDS. For more information, see [Create a vector index in Amazon RDS](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup.html). See `rdsConfiguration` block for details.
+  /// Details about the storage configuration of the knowledge base in Amazon RDS. For more information, see [Create a vector index in Amazon RDS](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup.html). See `rdsConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationRdsConfiguration?>? rdsConfiguration;
-  /// The storage configuration of the knowledge base in Redis Enterprise Cloud. See `redisEnterpriseCloudConfiguration` block for details.
+  /// Storage configuration of the knowledge base in Redis Enterprise Cloud. See `redisEnterpriseCloudConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationRedisEnterpriseCloudConfiguration?>? redisEnterpriseCloudConfiguration;
-  /// The storage configuration of the knowledge base in Amazon S3 Vectors. See `s3VectorsConfiguration` block for details.
+  /// Storage configuration of the knowledge base in Amazon S3 Vectors. See `s3VectorsConfiguration` Block for details.
   final pulumi.Input<AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration?>? s3VectorsConfiguration;
   /// Vector store service in which the knowledge base is stored. Valid Values: `MONGO_DB_ATLAS`, `OPENSEARCH_SERVERLESS`, `OPENSEARCH_MANAGED_CLUSTER`, `PINECONE`, `REDIS_ENTERPRISE_CLOUD`, `RDS`, `S3_VECTORS`, `NEPTUNE_ANALYTICS`.
   final pulumi.Input<String> type;
 
   /// Creates a new [AgentKnowledgeBaseStorageConfiguration].
-  /// [mongoDbAtlasConfiguration] The storage configuration of the knowledge base in MongoDB Atlas. See `mongoDbAtlasConfiguration` block for details.
-  /// [neptuneAnalyticsConfiguration] The storage configuration of the knowledge base in Amazon Neptune Analytics. See `neptuneAnalyticsConfiguration` block for details.
-  /// [opensearchManagedClusterConfiguration] The storage configuration of the knowledge base in Amazon OpenSearch Service Managed Cluster. See `opensearchManagedClusterConfiguration` block for details.
-  /// [opensearchServerlessConfiguration] The storage configuration of the knowledge base in Amazon OpenSearch Service Serverless. See `opensearchServerlessConfiguration` block for details.
-  /// [pineconeConfiguration] The storage configuration of the knowledge base in Pinecone. See `pineconeConfiguration` block for details.
-  /// [rdsConfiguration] Details about the storage configuration of the knowledge base in Amazon RDS. For more information, see [Create a vector index in Amazon RDS](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup.html). See `rdsConfiguration` block for details.
-  /// [redisEnterpriseCloudConfiguration] The storage configuration of the knowledge base in Redis Enterprise Cloud. See `redisEnterpriseCloudConfiguration` block for details.
-  /// [s3VectorsConfiguration] The storage configuration of the knowledge base in Amazon S3 Vectors. See `s3VectorsConfiguration` block for details.
+  /// [mongoDbAtlasConfiguration] Storage configuration of the knowledge base in MongoDB Atlas. See `mongoDbAtlasConfiguration` Block for details.
+  /// [neptuneAnalyticsConfiguration] Storage configuration of the knowledge base in Amazon Neptune Analytics. See `neptuneAnalyticsConfiguration` Block for details.
+  /// [opensearchManagedClusterConfiguration] Storage configuration of the knowledge base in Amazon OpenSearch Service Managed Cluster. See `opensearchManagedClusterConfiguration` Block for details.
+  /// [opensearchServerlessConfiguration] Storage configuration of the knowledge base in Amazon OpenSearch Service Serverless. See `opensearchServerlessConfiguration` Block for details.
+  /// [pineconeConfiguration] Storage configuration of the knowledge base in Pinecone. See `pineconeConfiguration` Block for details.
+  /// [rdsConfiguration] Details about the storage configuration of the knowledge base in Amazon RDS. For more information, see [Create a vector index in Amazon RDS](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup.html). See `rdsConfiguration` Block for details.
+  /// [redisEnterpriseCloudConfiguration] Storage configuration of the knowledge base in Redis Enterprise Cloud. See `redisEnterpriseCloudConfiguration` Block for details.
+  /// [s3VectorsConfiguration] Storage configuration of the knowledge base in Amazon S3 Vectors. See `s3VectorsConfiguration` Block for details.
   /// [type] Vector store service in which the knowledge base is stored. Valid Values: `MONGO_DB_ATLAS`, `OPENSEARCH_SERVERLESS`, `OPENSEARCH_MANAGED_CLUSTER`, `PINECONE`, `REDIS_ENTERPRISE_CLOUD`, `RDS`, `S3_VECTORS`, `NEPTUNE_ANALYTICS`.
   const AgentKnowledgeBaseStorageConfiguration({
     this.mongoDbAtlasConfiguration,

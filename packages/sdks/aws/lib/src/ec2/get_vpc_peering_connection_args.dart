@@ -24,11 +24,7 @@ class GetVpcPeeringConnectionArgs {
   final pulumi.Input<String?>? peerVpcId;
   /// Status of the specific VPC Peering Connection to retrieve.
   final pulumi.Input<String?>? status;
-  /// Map of tags, each pair of which must exactly match
-  /// a pair on the desired VPC Peering Connection.
-  ///
-  /// The arguments of this data source act as filters for querying the available VPC peering connection.
-  /// The given filters must match exactly one VPC peering connection whose data will be exported as attributes.
+  /// Map of tags, each pair of which must exactly match a pair on the desired VPC Peering Connection.
   final pulumi.Input<Map<String, String>?>? tags;
   /// ID of the requester VPC of the specific VPC Peering Connection to retrieve.
   final pulumi.Input<String?>? vpcId;
@@ -42,7 +38,7 @@ class GetVpcPeeringConnectionArgs {
   /// [peerOwnerId] AWS account ID of the owner of the accepter VPC of the specific VPC Peering Connection to retrieve.
   /// [peerVpcId] ID of the accepter VPC of the specific VPC Peering Connection to retrieve.
   /// [status] Status of the specific VPC Peering Connection to retrieve.
-  /// [tags] Map of tags, each pair of which must exactly match
+  /// [tags] Map of tags, each pair of which must exactly match a pair on the desired VPC Peering Connection.
   /// [vpcId] ID of the requester VPC of the specific VPC Peering Connection to retrieve.
   const GetVpcPeeringConnectionArgs({
     this.cidrBlock,

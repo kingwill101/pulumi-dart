@@ -7,7 +7,7 @@ class PresetVideoWatermark {
   final pulumi.Input<String?>? horizontalAlign;
   /// The amount by which you want the horizontal position of the watermark to be offset from the position specified by `horizontalAlign`.
   final pulumi.Input<String?>? horizontalOffset;
-  /// A unique identifier for the settings for one watermark. The value of Id can be up to 40 characters long. You can specify settings for up to four watermarks.
+  /// A unique identifier for the settings for one watermark. The value of ID can be up to 40 characters long. You can specify settings for up to four watermarks.
   final pulumi.Input<String?>? id;
   /// The maximum height of the watermark.
   final pulumi.Input<String?>? maxHeight;
@@ -27,7 +27,7 @@ class PresetVideoWatermark {
   /// Creates a new [PresetVideoWatermark].
   /// [horizontalAlign] The horizontal position of the watermark unless you specify a nonzero value for `horzontalOffset`.
   /// [horizontalOffset] The amount by which you want the horizontal position of the watermark to be offset from the position specified by `horizontalAlign`.
-  /// [id] A unique identifier for the settings for one watermark. The value of Id can be up to 40 characters long. You can specify settings for up to four watermarks.
+  /// [id] A unique identifier for the settings for one watermark. The value of ID can be up to 40 characters long. You can specify settings for up to four watermarks.
   /// [maxHeight] The maximum height of the watermark.
   /// [maxWidth] The maximum width of the watermark.
   /// [opacity] A percentage that indicates how much you want a watermark to obscure the video in the location where it appears.

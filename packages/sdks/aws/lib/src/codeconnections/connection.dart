@@ -134,9 +134,9 @@ import 'connection_timeouts.dart';
 /// $ pulumi import aws:codeconnections/connection:Connection test-connection arn:aws:codeconnections:us-west-1:0123456789:connection/79d4d357-a2ee-41e4-b350-2fe39ae59448
 /// ```
 class Connection extends pulumi.CustomResource {
-  /// The codeconnections connection ARN.
+  /// The CodeConnections connection ARN.
   late final pulumi.Output<String> arn;
-  /// The codeconnections connection status. Possible values are `PENDING`, `AVAILABLE` and `ERROR`.
+  /// The CodeConnections connection status. Possible values are `PENDING`, `AVAILABLE` and `ERROR`.
   late final pulumi.Output<String> connectionStatus;
   /// ARN of the host associated with the connection. Conflicts with `providerType`
   late final pulumi.Output<String?> hostArn;
@@ -165,7 +165,7 @@ class Connection extends pulumi.CustomResource {
           'aws:codeconnections/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     connectionStatus = registerOutput<String>('connectionStatus');

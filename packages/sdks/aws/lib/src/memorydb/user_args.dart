@@ -10,11 +10,11 @@ import 'user_authentication_mode.dart';
 class UserArgs {
   /// Access permissions string used for this user.
   final pulumi.Input<String> accessString;
-  /// Denotes the user's authentication properties. Detailed below.
+  /// Authentication properties for the user. Detailed below.
   final pulumi.Input<UserAuthenticationMode> authenticationMode;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   /// Name of the MemoryDB user. Up to 40 characters.
   ///
@@ -23,9 +23,9 @@ class UserArgs {
 
   /// Creates a new [UserArgs].
   /// [accessString] Access permissions string used for this user.
-  /// [authenticationMode] Denotes the user's authentication properties. Detailed below.
+  /// [authenticationMode] Authentication properties for the user. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [userName] Name of the MemoryDB user. Up to 40 characters.
   const UserArgs({
     required this.accessString,

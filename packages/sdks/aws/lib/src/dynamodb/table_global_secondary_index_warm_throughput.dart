@@ -25,8 +25,8 @@ class TableGlobalSecondaryIndexWarmThroughput {
 
   factory TableGlobalSecondaryIndexWarmThroughput.fromMap(Map<String, dynamic> map) {
     return TableGlobalSecondaryIndexWarmThroughput(
-      readUnitsPerSecond: (() { final guardedValue = map['readUnitsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      writeUnitsPerSecond: (() { final guardedValue = map['writeUnitsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      readUnitsPerSecond: (() { final guardedValue = map['readUnitsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      writeUnitsPerSecond: (() { final guardedValue = map['writeUnitsPerSecond']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

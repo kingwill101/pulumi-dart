@@ -4,12 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_cluster_broker_node_group_info_storage_info_ebs_storage_info_provisioned_throughput.dart';
 
 class GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo {
+  /// Provisioned throughput configuration. See `provisionedThroughput` Block for details.
   final pulumi.Input<List<GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput>> provisionedThroughputs;
+  /// Size in GiB of the EBS volume for the data drive on each broker node.
   final pulumi.Input<int> volumeSize;
 
   /// Creates a new [GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo].
-  /// [provisionedThroughputs] Required.
-  /// [volumeSize] Required.
+  /// [provisionedThroughputs] Provisioned throughput configuration. See `provisionedThroughput` Block for details.
+  /// [volumeSize] Size in GiB of the EBS volume for the data drive on each broker node.
   const GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo({
     required this.provisionedThroughputs,
     required this.volumeSize,
@@ -25,7 +27,7 @@ class GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo {
   factory GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo.fromMap(Map<String, dynamic> map) {
     return GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfo(
       provisionedThroughputs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput>(map['provisionedThroughputs']!, (value) => GetClusterBrokerNodeGroupInfoStorageInfoEbsStorageInfoProvisionedThroughput.fromMap((value as Map).cast<String, dynamic>()))),
-      volumeSize: pulumi.Input.fromValue((map['volumeSize'] as num).toInt()),
+      volumeSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['volumeSize'])),
     );
   }
 }

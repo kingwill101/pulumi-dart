@@ -259,7 +259,7 @@ class UsagePlanKey extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Id of the usage plan resource representing to associate the key to.
+  /// ID of the usage plan resource representing to associate the key to.
   late final pulumi.Output<String> usagePlanId;
   /// Value of a usage plan key.
   late final pulumi.Output<String> value;
@@ -276,7 +276,7 @@ class UsagePlanKey extends pulumi.CustomResource {
           'aws:apigateway/usagePlanKey:UsagePlanKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     keyId = registerOutput<String>('keyId');
     keyType = registerOutput<String>('keyType');

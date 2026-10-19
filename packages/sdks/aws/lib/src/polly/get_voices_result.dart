@@ -12,7 +12,7 @@ class GetVoicesResult {
   /// Language code of the voice.
   final String? languageCode;
   final String? region;
-  /// List of voices with their properties. See `voices` Attribute Reference below.
+  /// List of voices with their properties. See `voices` Block below.
   final List<GetVoicesVoice>? voices;
 
   /// Creates a new [GetVoicesResult].
@@ -21,7 +21,7 @@ class GetVoicesResult {
   /// [includeAdditionalLanguageCodes] Optional.
   /// [languageCode] Language code of the voice.
   /// [region] Optional.
-  /// [voices] List of voices with their properties. See `voices` Attribute Reference below.
+  /// [voices] List of voices with their properties. See `voices` Block below.
   const GetVoicesResult({
     this.engine,
     this.id,

@@ -13,65 +13,65 @@ import 'custom_model_vpc_config.dart';
 class CustomModelState {
   /// ARN of the base model.
   final pulumi.Input<String?>? baseModelIdentifier;
-  /// The ARN of the output model.
+  /// ARN of the output model.
   final pulumi.Input<String?>? customModelArn;
-  /// The custom model is encrypted at rest using this key. Specify the key ARN.
+  /// Key ARN used to encrypt the custom model at rest.
   final pulumi.Input<String?>? customModelKmsKeyId;
   /// Name for the custom model.
   final pulumi.Input<String?>? customModelName;
-  /// The customization type. Valid values: `FINE_TUNING`, `CONTINUED_PRE_TRAINING`.
+  /// Customization type. Valid values: `FINE_TUNING`, `CONTINUED_PRE_TRAINING`.
   final pulumi.Input<String?>? customizationType;
   /// [Parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models-hp.html) related to tuning the model.
   final pulumi.Input<Map<String, String>?>? hyperparameters;
-  /// The ARN of the customization job.
+  /// ARN of the customization job.
   final pulumi.Input<String?>? jobArn;
-  /// A name for the customization job.
+  /// Name for the customization job.
   final pulumi.Input<String?>? jobName;
-  /// The status of the customization job. A successful job transitions from `InProgress` to `Completed` when the output model is ready to use.
+  /// Status of the customization job. A successful job transitions from `InProgress` to `Completed` when the output model is ready to use.
   final pulumi.Input<String?>? jobStatus;
-  /// S3 location for the output data.
+  /// S3 location for the output data. See `outputDataConfig` below.
   final pulumi.Input<CustomModelOutputDataConfig?>? outputDataConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// ARN of an IAM role that Bedrock can assume to perform tasks on your behalf.
   final pulumi.Input<String?>? roleArn;
-  /// A map of tags to assign to the customization job and custom model. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the customization job and custom model. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
   final pulumi.Input<CustomModelTimeouts?>? timeouts;
-  /// Information about the training dataset.
+  /// Information about the training dataset. See `trainingDataConfig` below.
   final pulumi.Input<CustomModelTrainingDataConfig?>? trainingDataConfig;
   /// Metrics associated with the customization job.
   final pulumi.Input<List<CustomModelTrainingMetric>?>? trainingMetrics;
-  /// Information about the validation dataset.
+  /// Information about the validation dataset. See `validationDataConfig` below.
   final pulumi.Input<CustomModelValidationDataConfig?>? validationDataConfig;
-  /// The loss metric for each validator that you provided.
+  /// Loss metric for each validator that you provided.
   final pulumi.Input<List<CustomModelValidationMetric>?>? validationMetrics;
-  /// Configuration parameters for the private VPC that contains the resources you are using for this job.
+  /// Configuration parameters for the private VPC that contains the resources you are using for this job. See `vpcConfig` below.
   final pulumi.Input<CustomModelVpcConfig?>? vpcConfig;
 
   /// Creates a new [CustomModelState].
   /// [baseModelIdentifier] ARN of the base model.
-  /// [customModelArn] The ARN of the output model.
-  /// [customModelKmsKeyId] The custom model is encrypted at rest using this key. Specify the key ARN.
+  /// [customModelArn] ARN of the output model.
+  /// [customModelKmsKeyId] Key ARN used to encrypt the custom model at rest.
   /// [customModelName] Name for the custom model.
-  /// [customizationType] The customization type. Valid values: `FINE_TUNING`, `CONTINUED_PRE_TRAINING`.
+  /// [customizationType] Customization type. Valid values: `FINE_TUNING`, `CONTINUED_PRE_TRAINING`.
   /// [hyperparameters] [Parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/custom-models-hp.html) related to tuning the model.
-  /// [jobArn] The ARN of the customization job.
-  /// [jobName] A name for the customization job.
-  /// [jobStatus] The status of the customization job. A successful job transitions from `InProgress` to `Completed` when the output model is ready to use.
-  /// [outputDataConfig] S3 location for the output data.
+  /// [jobArn] ARN of the customization job.
+  /// [jobName] Name for the customization job.
+  /// [jobStatus] Status of the customization job. A successful job transitions from `InProgress` to `Completed` when the output model is ready to use.
+  /// [outputDataConfig] S3 location for the output data. See `outputDataConfig` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of an IAM role that Bedrock can assume to perform tasks on your behalf.
-  /// [tags] A map of tags to assign to the customization job and custom model. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tags] Map of tags to assign to the customization job and custom model. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [timeouts] Optional.
-  /// [trainingDataConfig] Information about the training dataset.
+  /// [trainingDataConfig] Information about the training dataset. See `trainingDataConfig` below.
   /// [trainingMetrics] Metrics associated with the customization job.
-  /// [validationDataConfig] Information about the validation dataset.
-  /// [validationMetrics] The loss metric for each validator that you provided.
-  /// [vpcConfig] Configuration parameters for the private VPC that contains the resources you are using for this job.
+  /// [validationDataConfig] Information about the validation dataset. See `validationDataConfig` below.
+  /// [validationMetrics] Loss metric for each validator that you provided.
+  /// [vpcConfig] Configuration parameters for the private VPC that contains the resources you are using for this job. See `vpcConfig` below.
   const CustomModelState({
     this.baseModelIdentifier,
     this.customModelArn,

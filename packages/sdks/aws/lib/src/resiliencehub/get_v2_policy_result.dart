@@ -24,6 +24,8 @@ class GetV2PolicyResult {
   /// Name of the policy.
   final String? name;
   final String? region;
+  /// Whether the policy is shared with other member accounts of the organization.
+  final bool? sharingEnabled;
   /// Map of tags assigned to the resource.
   final Map<String, String>? tags;
 
@@ -37,6 +39,7 @@ class GetV2PolicyResult {
   /// [multiRegions] Multi-region disaster recovery configuration. See `multiRegion` Block below.
   /// [name] Name of the policy.
   /// [region] Optional.
+  /// [sharingEnabled] Whether the policy is shared with other member accounts of the organization.
   /// [tags] Map of tags assigned to the resource.
   const GetV2PolicyResult({
     this.arn,
@@ -48,6 +51,7 @@ class GetV2PolicyResult {
     this.multiRegions,
     this.name,
     this.region,
+    this.sharingEnabled,
     this.tags,
   });
 
@@ -62,6 +66,7 @@ class GetV2PolicyResult {
       'multiRegions': ?(() { final guardedValue = multiRegions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetV2PolicyMultiRegion, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'name': ?name,
       'region': ?region,
+      'sharingEnabled': ?sharingEnabled,
       'tags': ?tags,
     };
   }
@@ -77,6 +82,7 @@ class GetV2PolicyResult {
       multiRegions: (() { final guardedValue = map['multiRegions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetV2PolicyMultiRegion>(guardedValue, (value) => GetV2PolicyMultiRegion.fromMap((value as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sharingEnabled: (() { final guardedValue = map['sharingEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
     );
   }

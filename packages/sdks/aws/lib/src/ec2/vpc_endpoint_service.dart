@@ -256,13 +256,13 @@ import 'vpc_endpoint_service_state.dart';
 class VpcEndpointService extends pulumi.CustomResource {
   /// Whether or not VPC endpoint connection requests to the service must be accepted by the service owner - `true` or `false`.
   late final pulumi.Output<bool> acceptanceRequired;
-  /// The ARNs of one or more principals allowed to discover the endpoint service.
+  /// ARNs of one or more principals allowed to discover the endpoint service.
   late final pulumi.Output<List<String>> allowedPrincipals;
   /// ARN of the VPC endpoint service.
   late final pulumi.Output<String> arn;
-  /// A set of Availability Zones in which the service is available.
+  /// Set of Availability Zones in which the service is available.
   late final pulumi.Output<List<String>> availabilityZones;
-  /// A set of DNS names for the service.
+  /// Set of DNS names for the service.
   late final pulumi.Output<List<String>> baseEndpointDnsNames;
   /// ARNs of one or more Gateway Load Balancers for the endpoint service.
   late final pulumi.Output<List<String>?> gatewayLoadBalancerArns;
@@ -270,25 +270,25 @@ class VpcEndpointService extends pulumi.CustomResource {
   late final pulumi.Output<bool> managesVpcEndpoints;
   /// ARNs of one or more Network Load Balancers for the endpoint service.
   late final pulumi.Output<List<String>?> networkLoadBalancerArns;
-  /// The private DNS name for the service.
+  /// Private DNS name for the service.
   late final pulumi.Output<String> privateDnsName;
   /// List of objects containing information about the endpoint service private DNS name configuration.
   late final pulumi.Output<List<VpcEndpointServicePrivateDnsNameConfiguration>> privateDnsNameConfigurations;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The service name.
+  /// Service name.
   late final pulumi.Output<String> serviceName;
-  /// The service type, `Gateway` or `Interface`.
+  /// Service type, `Gateway` or `Interface`.
   late final pulumi.Output<String> serviceType;
-  /// Verification state of the VPC endpoint service. Consumers of the endpoint service can use the private name only when the state is `verified`.
+  /// State of the VPC endpoint service.
   late final pulumi.Output<String> state;
-  /// The supported IP address types. The possible values are `ipv4` and `ipv6`.
+  /// Supported IP address types. The possible values are `ipv4` and `ipv6`.
   late final pulumi.Output<List<String>> supportedIpAddressTypes;
-  /// The set of regions from which service consumers can access the service.
+  /// Set of regions from which service consumers can access the service.
   late final pulumi.Output<List<String>> supportedRegions;
-  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [VpcEndpointService].
@@ -303,7 +303,7 @@ class VpcEndpointService extends pulumi.CustomResource {
           'aws:ec2/vpcEndpointService:VpcEndpointService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     acceptanceRequired = registerOutput<bool>('acceptanceRequired');
     allowedPrincipals = registerOutput<List<String>>('allowedPrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

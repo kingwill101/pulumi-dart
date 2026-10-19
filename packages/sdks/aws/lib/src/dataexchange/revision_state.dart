@@ -8,11 +8,11 @@ class RevisionState {
   final pulumi.Input<String?>? arn;
   /// An optional comment about the revision.
   final pulumi.Input<String?>? comment;
-  /// The dataset id.
+  /// The dataset ID.
   final pulumi.Input<String?>? dataSetId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The Id of the revision.
+  /// The ID of the revision.
   final pulumi.Input<String?>? revisionId;
   /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
@@ -22,9 +22,9 @@ class RevisionState {
   /// Creates a new [RevisionState].
   /// [arn] ARN of this data set.
   /// [comment] An optional comment about the revision.
-  /// [dataSetId] The dataset id.
+  /// [dataSetId] The dataset ID.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [revisionId] The Id of the revision.
+  /// [revisionId] The ID of the revision.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const RevisionState({

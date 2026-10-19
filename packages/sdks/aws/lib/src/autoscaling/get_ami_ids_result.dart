@@ -5,20 +5,20 @@ import 'get_ami_ids_filter.dart';
 
 /// Result data returned by getAmiIds.
 class GetAmiIdsResult {
-  /// List of the Autoscaling Groups Arns in the current region.
+  /// List of the Auto Scaling groups ARNs in the current region.
   final List<String>? arns;
   final List<GetAmiIdsFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// List of the Autoscaling Groups in the current region.
+  /// List of the Auto Scaling groups in the current region.
   final List<String>? names;
   final String? region;
 
   /// Creates a new [GetAmiIdsResult].
-  /// [arns] List of the Autoscaling Groups Arns in the current region.
+  /// [arns] List of the Auto Scaling groups ARNs in the current region.
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [names] List of the Autoscaling Groups in the current region.
+  /// [names] List of the Auto Scaling groups in the current region.
   /// [region] Optional.
   const GetAmiIdsResult({
     this.arns,

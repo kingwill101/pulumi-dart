@@ -3,11 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariable {
-  /// The name of the variable.
+  /// Name for the flow.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> name;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariable].
-  /// [name] The name of the variable.
+  /// [name] Name for the flow.
   const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextInputVariable({
     required this.name,
   });

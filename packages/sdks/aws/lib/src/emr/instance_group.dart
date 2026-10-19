@@ -136,13 +136,13 @@ import 'instance_group_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import EMR task instance group using their EMR Cluster id and Instance Group id separated by a forward-slash `/`. For example:
+/// Using `pulumi import`, import EMR task instance group using their EMR Cluster ID and Instance Group ID separated by a forward-slash `/`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:emr/instanceGroup:InstanceGroup task_group j-123456ABCDEF/ig-15EK4O09RZLNR
 /// ```
 class InstanceGroup extends pulumi.CustomResource {
-  /// The autoscaling policy document. This is a JSON formatted string. See [EMR Auto Scaling](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-automatic-scaling.html)
+  /// The Auto Scaling policy document. This is a JSON formatted string. See [EMR Auto Scaling](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-automatic-scaling.html)
   late final pulumi.Output<String?> autoscalingPolicy;
   /// If set, the bid price for each EC2 instance in the instance group, expressed in USD. By setting this attribute, the instance group is being declared as a Spot Instance, and will implicitly create a Spot request. Leave this blank to use On-Demand Instances.
   late final pulumi.Output<String?> bidPrice;
@@ -361,7 +361,7 @@ class InstanceGroup extends pulumi.CustomResource {
           'aws:emr/instanceGroup:InstanceGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     autoscalingPolicy = registerOutput<String?>('autoscalingPolicy');
     bidPrice = registerOutput<String?>('bidPrice');

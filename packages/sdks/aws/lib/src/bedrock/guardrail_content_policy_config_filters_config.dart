@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GuardrailContentPolicyConfigFiltersConfig {
   /// Action to take when harmful content is detected. Valid values: `BLOCK`, `NONE`.
   final pulumi.Input<String?>? inputAction;
-  /// Toggles guardrail evaluation on input.
+  /// Whether to enable guardrail evaluation on input.
   final pulumi.Input<bool?>? inputEnabled;
   /// List of selected input modalities. Valid values: `IMAGE`, `TEXT`.
   final pulumi.Input<List<String>?>? inputModalities;
@@ -13,7 +13,7 @@ class GuardrailContentPolicyConfigFiltersConfig {
   final pulumi.Input<String> inputStrength;
   /// Action to take when harmful content is detected. Valid values: `BLOCK`, `NONE`.
   final pulumi.Input<String?>? outputAction;
-  /// Toggles guardrail evaluation on output.
+  /// Whether to enable guardrail evaluation on output.
   final pulumi.Input<bool?>? outputEnabled;
   /// List of selected output modalities. Valid values: `IMAGE`, `TEXT`.
   final pulumi.Input<List<String>?>? outputModalities;
@@ -24,11 +24,11 @@ class GuardrailContentPolicyConfigFiltersConfig {
 
   /// Creates a new [GuardrailContentPolicyConfigFiltersConfig].
   /// [inputAction] Action to take when harmful content is detected. Valid values: `BLOCK`, `NONE`.
-  /// [inputEnabled] Toggles guardrail evaluation on input.
+  /// [inputEnabled] Whether to enable guardrail evaluation on input.
   /// [inputModalities] List of selected input modalities. Valid values: `IMAGE`, `TEXT`.
   /// [inputStrength] Strength for filters. Valid values: `NONE`, `LOW`, `MEDIUM`, `HIGH`.
   /// [outputAction] Action to take when harmful content is detected. Valid values: `BLOCK`, `NONE`.
-  /// [outputEnabled] Toggles guardrail evaluation on output.
+  /// [outputEnabled] Whether to enable guardrail evaluation on output.
   /// [outputModalities] List of selected output modalities. Valid values: `IMAGE`, `TEXT`.
   /// [outputStrength] Strength for filters. Valid values: `NONE`, `LOW`, `MEDIUM`, `HIGH`.
   /// [type] Type of contextual grounding filter.

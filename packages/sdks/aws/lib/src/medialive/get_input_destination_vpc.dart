@@ -3,12 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetInputDestinationVpc {
+  /// Availability Zone.
   final pulumi.Input<String> availabilityZone;
+  /// Network interface ID.
   final pulumi.Input<String> networkInterfaceId;
 
   /// Creates a new [GetInputDestinationVpc].
-  /// [availabilityZone] Required.
-  /// [networkInterfaceId] Required.
+  /// [availabilityZone] Availability Zone.
+  /// [networkInterfaceId] Network interface ID.
   const GetInputDestinationVpc({
     required this.availabilityZone,
     required this.networkInterfaceId,

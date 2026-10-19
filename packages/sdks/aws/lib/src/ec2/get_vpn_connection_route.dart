@@ -3,15 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpnConnectionRoute {
+  /// CIDR block associated with the local subnet of the customer data center.
   final pulumi.Input<String> destinationCidrBlock;
+  /// How the routes were provided.
   final pulumi.Input<String> source;
-  /// Current state of the VPN connection.
+  /// Current state of the static route.
   final pulumi.Input<String> state;
 
   /// Creates a new [GetVpnConnectionRoute].
-  /// [destinationCidrBlock] Required.
-  /// [source] Required.
-  /// [state] Current state of the VPN connection.
+  /// [destinationCidrBlock] CIDR block associated with the local subnet of the customer data center.
+  /// [source] How the routes were provided.
+  /// [state] Current state of the static route.
   const GetVpnConnectionRoute({
     required this.destinationCidrBlock,
     required this.source,

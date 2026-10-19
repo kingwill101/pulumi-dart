@@ -7,7 +7,7 @@ class GetUserPoolsResult {
   final List<String>? arns;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// Set of cognito user pool ids.
+  /// Set of cognito user pool IDs.
   final List<String>? ids;
   final String? name;
   final String? region;
@@ -15,7 +15,7 @@ class GetUserPoolsResult {
   /// Creates a new [GetUserPoolsResult].
   /// [arns] Set of cognito user pool ARNs.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ids] Set of cognito user pool ids.
+  /// [ids] Set of cognito user pool IDs.
   /// [name] Optional.
   /// [region] Optional.
   const GetUserPoolsResult({

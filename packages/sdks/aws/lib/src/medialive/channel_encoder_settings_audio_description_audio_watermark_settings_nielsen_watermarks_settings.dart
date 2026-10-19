@@ -5,17 +5,17 @@ import 'channel_encoder_settings_audio_description_audio_watermark_settings_niel
 import 'channel_encoder_settings_audio_description_audio_watermark_settings_nielsen_watermarks_settings_nielsen_naes_ii_nw_setting.dart';
 
 class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings {
-  /// Used to insert watermarks of type Nielsen CBET. See Nielsen CBET Settings for more details.
+  /// Settings to insert watermarks of type Nielsen CBET. See `nielsenCbetSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenCbetSettings?>? nielsenCbetSettings;
   /// Distribution types to assign to the watermarks. Options are `PROGRAM_CONTENT` and `FINAL_DISTRIBUTOR`.
   final pulumi.Input<String?>? nielsenDistributionType;
-  /// Used to insert watermarks of type Nielsen NAES, II (N2) and Nielsen NAES VI (NW). See Nielsen NAES II NW Settings for more details.
+  /// Settings to insert watermarks of type Nielsen NAES, II (N2) and Nielsen NAES VI (NW). See `nielsenNaesIiNwSettings` Block for details.
   final pulumi.Input<List<ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettingsNielsenNaesIiNwSetting>?>? nielsenNaesIiNwSettings;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings].
-  /// [nielsenCbetSettings] Used to insert watermarks of type Nielsen CBET. See Nielsen CBET Settings for more details.
+  /// [nielsenCbetSettings] Settings to insert watermarks of type Nielsen CBET. See `nielsenCbetSettings` Block for details.
   /// [nielsenDistributionType] Distribution types to assign to the watermarks. Options are `PROGRAM_CONTENT` and `FINAL_DISTRIBUTOR`.
-  /// [nielsenNaesIiNwSettings] Used to insert watermarks of type Nielsen NAES, II (N2) and Nielsen NAES VI (NW). See Nielsen NAES II NW Settings for more details.
+  /// [nielsenNaesIiNwSettings] Settings to insert watermarks of type Nielsen NAES, II (N2) and Nielsen NAES VI (NW). See `nielsenNaesIiNwSettings` Block for details.
   const ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings({
     this.nielsenCbetSettings,
     this.nielsenDistributionType,

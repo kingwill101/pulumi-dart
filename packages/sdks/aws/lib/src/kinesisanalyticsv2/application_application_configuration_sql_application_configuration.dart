@@ -6,17 +6,17 @@ import 'application_application_configuration_sql_application_configuration_outp
 import 'application_application_configuration_sql_application_configuration_reference_data_source.dart';
 
 class ApplicationApplicationConfigurationSqlApplicationConfiguration {
-  /// The input stream used by the application.
+  /// Input stream used by the application. See `input` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationInput?>? input;
-  /// The destination streams used by the application.
+  /// Destination streams used by the application. See `output` Block below.
   final pulumi.Input<List<ApplicationApplicationConfigurationSqlApplicationConfigurationOutput>?>? outputs;
-  /// The reference data source used by the application.
+  /// Reference data source used by the application. See `referenceDataSource` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource?>? referenceDataSource;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfiguration].
-  /// [input] The input stream used by the application.
-  /// [outputs] The destination streams used by the application.
-  /// [referenceDataSource] The reference data source used by the application.
+  /// [input] Input stream used by the application. See `input` Block below.
+  /// [outputs] Destination streams used by the application. See `output` Block below.
+  /// [referenceDataSource] Reference data source used by the application. See `referenceDataSource` Block below.
   const ApplicationApplicationConfigurationSqlApplicationConfiguration({
     this.input,
     this.outputs,

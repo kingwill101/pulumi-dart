@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class VpcIpamOperatingRegion {
-  /// The name of the Region you want to add to the IPAM.
+  /// Name of the Region you want to add to the IPAM.
   final pulumi.Input<String> regionName;
 
   /// Creates a new [VpcIpamOperatingRegion].
-  /// [regionName] The name of the Region you want to add to the IPAM.
+  /// [regionName] Name of the Region you want to add to the IPAM.
   const VpcIpamOperatingRegion({
     required this.regionName,
   });

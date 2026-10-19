@@ -50,7 +50,7 @@ class VoiceConnectorStreamingArgs {
 
   factory VoiceConnectorStreamingArgs.fromMap(Map<String, dynamic> map) {
     return VoiceConnectorStreamingArgs(
-      dataRetention: pulumi.Input.fromValue((map['dataRetention'] as num).toInt()),
+      dataRetention: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dataRetention'])),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       mediaInsightsConfiguration: (() { final guardedValue = map['mediaInsightsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VoiceConnectorStreamingMediaInsightsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

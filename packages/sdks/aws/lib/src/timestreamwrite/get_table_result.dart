@@ -15,9 +15,9 @@ class GetTableResult {
   final String? databaseName;
   /// Last time table was updated.
   final String? lastUpdatedTime;
-  /// Object containing the following attributes to desribe magnetic store writes.
+  /// Object containing the following attributes to describe magnetic store writes.
   final List<GetTableMagneticStoreWriteProperty>? magneticStoreWriteProperties;
-  /// Name of the table.
+  /// Name of the timestream attribute used for a dimension key.
   final String? name;
   final String? region;
   /// Object containing the following attributes to describe the retention duration for the memory and magnetic stores.
@@ -32,8 +32,8 @@ class GetTableResult {
   /// [creationTime] Time that table was created.
   /// [databaseName] Name of database.
   /// [lastUpdatedTime] Last time table was updated.
-  /// [magneticStoreWriteProperties] Object containing the following attributes to desribe magnetic store writes.
-  /// [name] Name of the table.
+  /// [magneticStoreWriteProperties] Object containing the following attributes to describe magnetic store writes.
+  /// [name] Name of the timestream attribute used for a dimension key.
   /// [region] Optional.
   /// [retentionProperties] Object containing the following attributes to describe the retention duration for the memory and magnetic stores.
   /// [schemas] Object containing the following attributes to describe the schema of the table.

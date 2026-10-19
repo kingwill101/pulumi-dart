@@ -5,14 +5,14 @@ import 'application_application_configuration_run_configuration_application_rest
 import 'application_application_configuration_run_configuration_flink_run_configuration.dart';
 
 class ApplicationApplicationConfigurationRunConfiguration {
-  /// The restore behavior of a restarting application.
+  /// Restore behavior of a restarting application. See `applicationRestoreConfiguration` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationRunConfigurationApplicationRestoreConfiguration?>? applicationRestoreConfiguration;
-  /// The starting parameters for a Flink-based Kinesis Data Analytics application.
+  /// Starting parameters for a Flink-based application. See `flinkRunConfiguration` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationRunConfigurationFlinkRunConfiguration?>? flinkRunConfiguration;
 
   /// Creates a new [ApplicationApplicationConfigurationRunConfiguration].
-  /// [applicationRestoreConfiguration] The restore behavior of a restarting application.
-  /// [flinkRunConfiguration] The starting parameters for a Flink-based Kinesis Data Analytics application.
+  /// [applicationRestoreConfiguration] Restore behavior of a restarting application. See `applicationRestoreConfiguration` Block below.
+  /// [flinkRunConfiguration] Starting parameters for a Flink-based application. See `flinkRunConfiguration` Block below.
   const ApplicationApplicationConfigurationRunConfiguration({
     this.applicationRestoreConfiguration,
     this.flinkRunConfiguration,

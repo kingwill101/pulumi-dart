@@ -6,23 +6,23 @@ import 'catalog_table_optimizer_configuration_orphan_file_deletion_configuration
 import 'catalog_table_optimizer_configuration_retention_configuration.dart';
 
 class CatalogTableOptimizerConfiguration {
-  /// The configuration block for a compaction optimizer. See Compaction Configuration for additional details.
+  /// Configuration block for a compaction optimizer. See `compactionConfiguration` Block for additional details.
   final pulumi.Input<CatalogTableOptimizerConfigurationCompactionConfiguration?>? compactionConfiguration;
-  /// Indicates whether the table optimizer is enabled.
+  /// Whether the table optimizer is enabled.
   final pulumi.Input<bool> enabled;
-  /// The configuration block for an orphan file deletion optimizer. See Orphan File Deletion Configuration for additional details.
+  /// Configuration block for an orphan file deletion optimizer. See `orphanFileDeletionConfiguration` Block for additional details.
   final pulumi.Input<CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration?>? orphanFileDeletionConfiguration;
-  /// The configuration block for a snapshot retention optimizer. See Retention Configuration for additional details.
+  /// Configuration block for a snapshot retention optimizer. See `retentionConfiguration` Block for additional details.
   final pulumi.Input<CatalogTableOptimizerConfigurationRetentionConfiguration?>? retentionConfiguration;
-  /// The ARN of the IAM role to use for the table optimizer.
+  /// ARN of the IAM role to use for the table optimizer.
   final pulumi.Input<String> roleArn;
 
   /// Creates a new [CatalogTableOptimizerConfiguration].
-  /// [compactionConfiguration] The configuration block for a compaction optimizer. See Compaction Configuration for additional details.
-  /// [enabled] Indicates whether the table optimizer is enabled.
-  /// [orphanFileDeletionConfiguration] The configuration block for an orphan file deletion optimizer. See Orphan File Deletion Configuration for additional details.
-  /// [retentionConfiguration] The configuration block for a snapshot retention optimizer. See Retention Configuration for additional details.
-  /// [roleArn] The ARN of the IAM role to use for the table optimizer.
+  /// [compactionConfiguration] Configuration block for a compaction optimizer. See `compactionConfiguration` Block for additional details.
+  /// [enabled] Whether the table optimizer is enabled.
+  /// [orphanFileDeletionConfiguration] Configuration block for an orphan file deletion optimizer. See `orphanFileDeletionConfiguration` Block for additional details.
+  /// [retentionConfiguration] Configuration block for a snapshot retention optimizer. See `retentionConfiguration` Block for additional details.
+  /// [roleArn] ARN of the IAM role to use for the table optimizer.
   const CatalogTableOptimizerConfiguration({
     this.compactionConfiguration,
     required this.enabled,

@@ -14,6 +14,7 @@ class DeploymentArgs {
   final pulumi.Input<int> applicationVersion;
   /// Environment to deploy application to.
   final pulumi.Input<String> environmentId;
+  /// Stop the application during deployment, even if it is running.
   final pulumi.Input<bool?>? forceStop;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -25,7 +26,7 @@ class DeploymentArgs {
   /// [applicationId] Application to deploy.
   /// [applicationVersion] Version to application to deploy
   /// [environmentId] Environment to deploy application to.
-  /// [forceStop] Optional.
+  /// [forceStop] Stop the application during deployment, even if it is running.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [start] Start the application once deployed.
   /// [timeouts] Optional.
@@ -54,7 +55,7 @@ class DeploymentArgs {
   factory DeploymentArgs.fromMap(Map<String, dynamic> map) {
     return DeploymentArgs(
       applicationId: pulumi.Input.fromValue(map['applicationId'] as String),
-      applicationVersion: pulumi.Input.fromValue((map['applicationVersion'] as num).toInt()),
+      applicationVersion: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['applicationVersion'])),
       environmentId: pulumi.Input.fromValue(map['environmentId'] as String),
       forceStop: (() { final guardedValue = map['forceStop']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

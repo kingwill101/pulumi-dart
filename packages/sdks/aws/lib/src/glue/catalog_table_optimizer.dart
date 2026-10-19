@@ -620,17 +620,17 @@ import 'catalog_table_optimizer_state.dart';
 /// $ pulumi import aws:glue/catalogTableOptimizer:CatalogTableOptimizer example 123456789012,example_database,example_table,compaction
 /// ```
 class CatalogTableOptimizer extends pulumi.CustomResource {
-  /// The Catalog ID of the table.
+  /// Catalog ID of the table.
   late final pulumi.Output<String> catalogId;
-  /// A configuration block that defines the table optimizer settings. See Configuration for additional details.
+  /// Configuration block that defines the table optimizer settings. See `configuration` Block for additional details.
   late final pulumi.Output<CatalogTableOptimizerConfiguration> configuration;
-  /// The name of the database in the catalog in which the table resides.
+  /// Name of the database in the catalog in which the table resides.
   late final pulumi.Output<String> databaseName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The name of the table.
+  /// Name of the table.
   late final pulumi.Output<String> tableName;
-  /// The type of table optimizer. Valid values are `compaction`, `retention`, and `orphanFileDeletion`.
+  /// Type of table optimizer. Valid values are `compaction`, `retention`, and `orphanFileDeletion`.
   late final pulumi.Output<String> type;
 
   /// Creates a new [CatalogTableOptimizer].
@@ -645,7 +645,7 @@ class CatalogTableOptimizer extends pulumi.CustomResource {
           'aws:glue/catalogTableOptimizer:CatalogTableOptimizer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     configuration = registerOutput<CatalogTableOptimizerConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogTableOptimizerConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -20,8 +20,10 @@ import 'kinesis_streaming_destination_state.dart';
 ///     hashKey: "id",
 /// });
 /// const exampleStream = new aws.kinesis.Stream("example", {
+///     streamModeDetails: {
+///         streamMode: "ON_DEMAND",
+///     },
 ///     name: "order_item_changes",
-///     shardCount: 1,
 /// });
 /// const exampleKinesisStreamingDestination = new aws.dynamodb.KinesisStreamingDestination("example", {
 ///     streamArn: exampleStream.arn,
@@ -41,8 +43,10 @@ import 'kinesis_streaming_destination_state.dart';
 ///     name="orders",
 ///     hash_key="id")
 /// example_stream = aws.kinesis.Stream("example",
-///     name="order_item_changes",
-///     shard_count=1)
+///     stream_mode_details={
+///         "stream_mode": "ON_DEMAND",
+///     },
+///     name="order_item_changes")
 /// example_kinesis_streaming_destination = aws.dynamodb.KinesisStreamingDestination("example",
 ///     stream_arn=example_stream.arn,
 ///     table_name=example.name,
@@ -72,8 +76,11 @@ import 'kinesis_streaming_destination_state.dart';
 ///
 ///     var exampleStream = new Aws.Kinesis.Stream("example", new()
 ///     {
+///         StreamModeDetails = new Aws.Kinesis.Inputs.StreamStreamModeDetailsArgs
+///         {
+///             StreamMode = "ON_DEMAND",
+///         },
 ///         Name = "order_item_changes",
-///         ShardCount = 1,
 ///     });
 ///
 ///     var exampleKinesisStreamingDestination = new Aws.DynamoDB.KinesisStreamingDestination("example", new()
@@ -110,8 +117,10 @@ import 'kinesis_streaming_destination_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleStream, err := kinesis.NewStream(ctx, "example", &kinesis.StreamArgs{
-/// 			Name:       pulumi.String("order_item_changes"),
-/// 			ShardCount: pulumi.Int(1),
+/// 			StreamModeDetails: &kinesis.StreamStreamModeDetailsArgs{
+/// 				StreamMode: pulumi.String("ON_DEMAND"),
+/// 			},
+/// 			Name: pulumi.String("order_item_changes"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -146,8 +155,10 @@ import 'kinesis_streaming_destination_state.dart';
 ///   hash_key = "id"
 /// }
 /// resource "aws_kinesis_stream" "example" {
-///   name        = "order_item_changes"
-///   shard_count = 1
+///   stream_mode_details = {
+///     stream_mode = "ON_DEMAND"
+///   }
+///   name = "order_item_changes"
 /// }
 /// resource "aws_dynamodb_kinesisstreamingdestination" "example" {
 ///   stream_arn                               = aws_kinesis_stream.example.arn
@@ -166,6 +177,7 @@ import 'kinesis_streaming_destination_state.dart';
 /// import com.pulumi.aws.dynamodb.inputs.TableAttributeArgs;
 /// import com.pulumi.aws.kinesis.Stream;
 /// import com.pulumi.aws.kinesis.StreamArgs;
+/// import com.pulumi.aws.kinesis.inputs.StreamStreamModeDetailsArgs;
 /// import com.pulumi.aws.dynamodb.KinesisStreamingDestination;
 /// import com.pulumi.aws.dynamodb.KinesisStreamingDestinationArgs;
 /// import java.util.ArrayList;
@@ -191,8 +203,10 @@ import 'kinesis_streaming_destination_state.dart';
 ///             .build());
 ///
 ///         var exampleStream = new Stream("exampleStream", StreamArgs.builder()
+///             .streamModeDetails(StreamStreamModeDetailsArgs.builder()
+///                 .streamMode("ON_DEMAND")
+///                 .build())
 ///             .name("order_item_changes")
-///             .shardCount(1)
 ///             .build());
 ///
 ///         var exampleKinesisStreamingDestination = new KinesisStreamingDestination("exampleKinesisStreamingDestination", KinesisStreamingDestinationArgs.builder()
@@ -218,8 +232,9 @@ import 'kinesis_streaming_destination_state.dart';
 ///     type: aws:kinesis:Stream
 ///     name: example
 ///     properties:
+///       streamModeDetails:
+///         streamMode: ON_DEMAND
 ///       name: order_item_changes
-///       shardCount: 1
 ///   exampleKinesisStreamingDestination:
 ///     type: aws:dynamodb:KinesisStreamingDestination
 ///     name: example
@@ -259,7 +274,7 @@ class KinesisStreamingDestination extends pulumi.CustomResource {
           'aws:dynamodb/kinesisStreamingDestination:KinesisStreamingDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     approximateCreationDateTimePrecision = registerOutput<String>('approximateCreationDateTimePrecision');
     region = registerOutput<String>('region');

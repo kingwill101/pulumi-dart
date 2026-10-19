@@ -21,9 +21,9 @@ class DistributionDefaultCacheBehavior {
   final pulumi.Input<String?>? fieldLevelEncryptionId;
   /// The forwarded values configuration that specifies how CloudFront handles query strings, cookies and headers (maximum one).
   final pulumi.Input<DistributionDefaultCacheBehaviorForwardedValues?>? forwardedValues;
-  /// A config block that triggers a cloudfront function with specific actions (maximum 2).
+  /// A config block that triggers a CloudFront function with specific actions (maximum 2).
   final pulumi.Input<List<DistributionDefaultCacheBehaviorFunctionAssociation>?>? functionAssociations;
-  /// A config block that sets the grpc config.
+  /// A config block that sets the gRPC config.
   final pulumi.Input<DistributionDefaultCacheBehaviorGrpcConfig?>? grpcConfig;
   /// A config block that triggers a lambda function with specific actions (maximum 4).
   final pulumi.Input<List<DistributionDefaultCacheBehaviorLambdaFunctionAssociation>?>? lambdaFunctionAssociations;
@@ -56,8 +56,8 @@ class DistributionDefaultCacheBehavior {
   /// [defaultTtl] Default amount of time (in seconds) that an object is in a CloudFront cache before CloudFront forwards another request in the absence of an `Cache-Control max-age` or `Expires` header. The TTL defined in Cache Policy overrides this configuration.
   /// [fieldLevelEncryptionId] Field level encryption configuration ID.
   /// [forwardedValues] The forwarded values configuration that specifies how CloudFront handles query strings, cookies and headers (maximum one).
-  /// [functionAssociations] A config block that triggers a cloudfront function with specific actions (maximum 2).
-  /// [grpcConfig] A config block that sets the grpc config.
+  /// [functionAssociations] A config block that triggers a CloudFront function with specific actions (maximum 2).
+  /// [grpcConfig] A config block that sets the gRPC config.
   /// [lambdaFunctionAssociations] A config block that triggers a lambda function with specific actions (maximum 4).
   /// [maxTtl] Maximum amount of time (in seconds) that an object is in a CloudFront cache before CloudFront forwards another request to your origin to determine whether the object has been updated. Only effective in the presence of `Cache-Control max-age`, `Cache-Control s-maxage`, and `Expires` headers. The TTL defined in Cache Policy overrides this configuration.
   /// [minTtl] Minimum amount of time that you want objects to stay in CloudFront caches before CloudFront queries your origin to see whether the object has been updated. Defaults to 0 seconds. The TTL defined in Cache Policy overrides this configuration.
@@ -123,14 +123,14 @@ class DistributionDefaultCacheBehavior {
       cachePolicyId: (() { final guardedValue = map['cachePolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       cachedMethods: pulumi.Input.fromValue((map['cachedMethods'] as List).cast<String>()),
       compress: (() { final guardedValue = map['compress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       fieldLevelEncryptionId: (() { final guardedValue = map['fieldLevelEncryptionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       forwardedValues: (() { final guardedValue = map['forwardedValues']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DistributionDefaultCacheBehaviorForwardedValues.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       functionAssociations: (() { final guardedValue = map['functionAssociations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DistributionDefaultCacheBehaviorFunctionAssociation>(guardedValue, (value) => DistributionDefaultCacheBehaviorFunctionAssociation.fromMap((value as Map).cast<String, dynamic>()))); })(),
       grpcConfig: (() { final guardedValue = map['grpcConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DistributionDefaultCacheBehaviorGrpcConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       lambdaFunctionAssociations: (() { final guardedValue = map['lambdaFunctionAssociations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DistributionDefaultCacheBehaviorLambdaFunctionAssociation>(guardedValue, (value) => DistributionDefaultCacheBehaviorLambdaFunctionAssociation.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maxTtl: (() { final guardedValue = map['maxTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minTtl: (() { final guardedValue = map['minTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxTtl: (() { final guardedValue = map['maxTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minTtl: (() { final guardedValue = map['minTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       originRequestPolicyId: (() { final guardedValue = map['originRequestPolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       realtimeLogConfigArn: (() { final guardedValue = map['realtimeLogConfigArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       responseHeadersPolicyId: (() { final guardedValue = map['responseHeadersPolicyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

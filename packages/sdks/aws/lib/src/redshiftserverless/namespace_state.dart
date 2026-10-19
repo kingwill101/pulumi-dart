@@ -8,14 +8,12 @@ class NamespaceState {
   final pulumi.Input<String?>? adminPasswordSecretArn;
   /// ID of the KMS key used to encrypt the namespace's admin credentials secret.
   final pulumi.Input<String?>? adminPasswordSecretKmsKeyId;
-  /// The password of the administrator for the first database created in the namespace.
-  /// Conflicts with `manageAdminPassword` and `adminUserPasswordWo`.
+  /// The password of the administrator for the first database created in the namespace. Conflicts with `manageAdminPassword` and `adminUserPasswordWo`.
   final pulumi.Input<String?>? adminUserPassword;
   /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// The password of the administrator for the first database created in the namespace.
-  /// Conflicts with `manageAdminPassword` and `adminUserPassword`.
+  /// The password of the administrator for the first database created in the namespace. Conflicts with `manageAdminPassword` and `adminUserPassword`. If set, requires `adminUserPasswordWoVersion` to be set.
   final pulumi.Input<String?>? adminUserPasswordWo;
-  /// Used together with `adminUserPasswordWo` to trigger an update. Increment this value when an update to the `adminUserPasswordWo` is required
+  /// Required when `adminUserPasswordWo` is set. Changing this value triggers an update to `adminUserPasswordWo`.
   final pulumi.Input<int?>? adminUserPasswordWoVersion;
   /// The username of the administrator for the first database created in the namespace.
   final pulumi.Input<String?>? adminUsername;
@@ -31,8 +29,7 @@ class NamespaceState {
   final pulumi.Input<String?>? kmsKeyId;
   /// The types of logs the namespace can export. Available export types are `userlog`, `connectionlog`, and `useractivitylog`.
   final pulumi.Input<List<String>?>? logExports;
-  /// Whether to use AWS SecretManager to manage namespace's admin credentials.
-  /// Conflicts with `adminUserPassword` and `adminUserPasswordWo`.
+  /// Whether to use AWS SecretManager to manage namespace's admin credentials. Conflicts with `adminUserPassword` and `adminUserPasswordWo`.
   final pulumi.Input<bool?>? manageAdminPassword;
   /// The Redshift Namespace ID.
   final pulumi.Input<String?>? namespaceId;
@@ -48,9 +45,9 @@ class NamespaceState {
   /// Creates a new [NamespaceState].
   /// [adminPasswordSecretArn] ARN of namespace's admin user credentials secret.
   /// [adminPasswordSecretKmsKeyId] ID of the KMS key used to encrypt the namespace's admin credentials secret.
-  /// [adminUserPassword] The password of the administrator for the first database created in the namespace.
+  /// [adminUserPassword] The password of the administrator for the first database created in the namespace. Conflicts with `manageAdminPassword` and `adminUserPasswordWo`.
   /// [adminUserPasswordWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
-  /// [adminUserPasswordWoVersion] Used together with `adminUserPasswordWo` to trigger an update. Increment this value when an update to the `adminUserPasswordWo` is required
+  /// [adminUserPasswordWoVersion] Required when `adminUserPasswordWo` is set. Changing this value triggers an update to `adminUserPasswordWo`.
   /// [adminUsername] The username of the administrator for the first database created in the namespace.
   /// [arn] ARN of the Redshift Serverless Namespace.
   /// [dbName] The name of the first database created in the namespace.
@@ -58,7 +55,7 @@ class NamespaceState {
   /// [iamRoles] A list of IAM roles to associate with the namespace.
   /// [kmsKeyId] ARN of the Amazon Web Services KMS key used to encrypt your data.
   /// [logExports] The types of logs the namespace can export. Available export types are `userlog`, `connectionlog`, and `useractivitylog`.
-  /// [manageAdminPassword] Whether to use AWS SecretManager to manage namespace's admin credentials.
+  /// [manageAdminPassword] Whether to use AWS SecretManager to manage namespace's admin credentials. Conflicts with `adminUserPassword` and `adminUserPasswordWo`.
   /// [namespaceId] The Redshift Namespace ID.
   /// [namespaceName] The name of the namespace.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -114,7 +111,7 @@ class NamespaceState {
       adminPasswordSecretKmsKeyId: (() { final guardedValue = map['adminPasswordSecretKmsKeyId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       adminUserPassword: (() { final guardedValue = map['adminUserPassword']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       adminUserPasswordWo: (() { final guardedValue = map['adminUserPasswordWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      adminUserPasswordWoVersion: (() { final guardedValue = map['adminUserPasswordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      adminUserPasswordWoVersion: (() { final guardedValue = map['adminUserPasswordWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       adminUsername: (() { final guardedValue = map['adminUsername']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dbName: (() { final guardedValue = map['dbName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

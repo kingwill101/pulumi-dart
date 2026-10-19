@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSetColumnLevelPermissionRule {
-  /// An array of column names.
+  /// Array of column names.
   final pulumi.Input<List<String>?>? columnNames;
-  /// An array of ARNs for Amazon QuickSight users or groups.
+  /// Array of ARNs for Amazon QuickSight users or groups.
   final pulumi.Input<List<String>?>? principals;
 
   /// Creates a new [DataSetColumnLevelPermissionRule].
-  /// [columnNames] An array of column names.
-  /// [principals] An array of ARNs for Amazon QuickSight users or groups.
+  /// [columnNames] Array of column names.
+  /// [principals] Array of ARNs for Amazon QuickSight users or groups.
   const DataSetColumnLevelPermissionRule({
     this.columnNames,
     this.principals,

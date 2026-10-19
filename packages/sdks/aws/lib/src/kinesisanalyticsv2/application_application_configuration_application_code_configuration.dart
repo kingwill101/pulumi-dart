@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'application_application_configuration_application_code_configuration_code_content.dart';
 
 class ApplicationApplicationConfigurationApplicationCodeConfiguration {
-  /// The location and type of the application code.
+  /// Location and type of the application code. See `codeContent` Block below.
   final pulumi.Input<ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent?>? codeContent;
-  /// Specifies whether the code content is in text or zip format. Valid values: `PLAINTEXT`, `ZIPFILE`.
+  /// Whether the code content is in text or zip format. Valid values: `PLAINTEXT`, `ZIPFILE`.
   final pulumi.Input<String> codeContentType;
 
   /// Creates a new [ApplicationApplicationConfigurationApplicationCodeConfiguration].
-  /// [codeContent] The location and type of the application code.
-  /// [codeContentType] Specifies whether the code content is in text or zip format. Valid values: `PLAINTEXT`, `ZIPFILE`.
+  /// [codeContent] Location and type of the application code. See `codeContent` Block below.
+  /// [codeContentType] Whether the code content is in text or zip format. Valid values: `PLAINTEXT`, `ZIPFILE`.
   const ApplicationApplicationConfigurationApplicationCodeConfiguration({
     this.codeContent,
     required this.codeContentType,

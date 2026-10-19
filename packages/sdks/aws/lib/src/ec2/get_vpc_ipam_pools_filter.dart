@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetVpcIpamPoolsFilter {
-  /// The name of the filter. Filter names are case-sensitive.
+  /// Name of the filter. Filter names are case-sensitive.
   final pulumi.Input<String> name;
-  /// The filter values. Filter values are case-sensitive.
+  /// Filter values. Filter values are case-sensitive.
   final pulumi.Input<List<String>> values;
 
   /// Creates a new [GetVpcIpamPoolsFilter].
-  /// [name] The name of the filter. Filter names are case-sensitive.
-  /// [values] The filter values. Filter values are case-sensitive.
+  /// [name] Name of the filter. Filter names are case-sensitive.
+  /// [values] Filter values. Filter values are case-sensitive.
   const GetVpcIpamPoolsFilter({
     required this.name,
     required this.values,

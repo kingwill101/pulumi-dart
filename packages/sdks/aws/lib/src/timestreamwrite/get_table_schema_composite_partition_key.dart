@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetTableSchemaCompositePartitionKey {
+  /// Level of enforcement for the specification of a dimension key in ingested records.
   final pulumi.Input<String> enforcementInRecord;
   /// Name of the Timestream table.
   final pulumi.Input<String> name;
@@ -10,7 +11,7 @@ class GetTableSchemaCompositePartitionKey {
   final pulumi.Input<String> type;
 
   /// Creates a new [GetTableSchemaCompositePartitionKey].
-  /// [enforcementInRecord] Required.
+  /// [enforcementInRecord] Level of enforcement for the specification of a dimension key in ingested records.
   /// [name] Name of the Timestream table.
   /// [type] Type of partition key.
   const GetTableSchemaCompositePartitionKey({

@@ -12,16 +12,13 @@ class GetVpcPeeringConnectionsArgs {
   final pulumi.Input<List<GetVpcPeeringConnectionsFilter>?>? filters;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Mapping of tags, each pair of which must exactly match
-  /// a pair on the desired VPC Peering Connection.
-  ///
-  /// The arguments of this data source act as filters for querying the available VPC peering connections.
+  /// Mapping of tags, each pair of which must exactly match a pair on the desired VPC Peering Connection.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetVpcPeeringConnectionsArgs].
   /// [filters] Custom filter block as described below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] Mapping of tags, each pair of which must exactly match
+  /// [tags] Mapping of tags, each pair of which must exactly match a pair on the desired VPC Peering Connection.
   const GetVpcPeeringConnectionsArgs({
     this.filters,
     this.region,

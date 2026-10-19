@@ -229,7 +229,7 @@ import 'event_action_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Data Exchange Event Action using the id. For example:
+/// Using `pulumi import`, import Data Exchange Event Action using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:dataexchange/eventAction:EventAction example example-event-action-id
@@ -262,7 +262,7 @@ class EventAction extends pulumi.CustomResource {
           'aws:dataexchange/eventAction:EventAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     action = registerOutput<EventActionAction>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EventActionAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

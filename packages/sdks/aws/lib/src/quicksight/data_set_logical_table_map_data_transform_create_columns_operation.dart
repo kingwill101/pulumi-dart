@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_set_logical_table_map_data_transform_create_columns_operation_column.dart';
 
 class DataSetLogicalTableMapDataTransformCreateColumnsOperation {
-  /// Calculated columns to create. See columns.
+  /// Calculated columns to create. See `logical_table_map.data_transforms.create_columns_operation.columns` Block below.
   final pulumi.Input<List<DataSetLogicalTableMapDataTransformCreateColumnsOperationColumn>> columns;
 
   /// Creates a new [DataSetLogicalTableMapDataTransformCreateColumnsOperation].
-  /// [columns] Calculated columns to create. See columns.
+  /// [columns] Calculated columns to create. See `logical_table_map.data_transforms.create_columns_operation.columns` Block below.
   const DataSetLogicalTableMapDataTransformCreateColumnsOperation({
     required this.columns,
   });

@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings {
-  /// The frequency at which to capture frames for inclusion in the output.
+  /// Frequency at which to capture frames for inclusion in the output.
   final pulumi.Input<int?>? captureInterval;
   /// Unit for the frame capture interval.
   final pulumi.Input<String?>? captureIntervalUnits;
 
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings].
-  /// [captureInterval] The frequency at which to capture frames for inclusion in the output.
+  /// [captureInterval] Frequency at which to capture frames for inclusion in the output.
   /// [captureIntervalUnits] Unit for the frame capture interval.
   const ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings({
     this.captureInterval,
@@ -25,7 +25,7 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings {
 
   factory ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsVideoDescriptionCodecSettingsFrameCaptureSettings(
-      captureInterval: (() { final guardedValue = map['captureInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      captureInterval: (() { final guardedValue = map['captureInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       captureIntervalUnits: (() { final guardedValue = map['captureIntervalUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

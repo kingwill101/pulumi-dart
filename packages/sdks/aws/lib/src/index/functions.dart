@@ -1811,7 +1811,7 @@ pulumi.Output<GetCallerIdentityResult> getCallerIdentityOutput(
 /// ```
 ///
 ///
-/// ### Dynamically Apply Default Tags to Auto Scaling Group
+/// ### Dynamically Apply Default Tags to Auto Scaling group
 ///
 ///
 /// ```typescript

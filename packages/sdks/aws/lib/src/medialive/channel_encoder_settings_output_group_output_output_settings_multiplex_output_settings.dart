@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_output_group_output_output_settings_multiplex_output_settings_destination.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettings {
-  /// Destination is a multiplex. See Destination for more details.
+  /// Multiplex destination. See `destination` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettingsDestination> destination;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettings].
-  /// [destination] Destination is a multiplex. See Destination for more details.
+  /// [destination] Multiplex destination. See `destination` Block for details.
   const ChannelEncoderSettingsOutputGroupOutputOutputSettingsMultiplexOutputSettings({
     required this.destination,
   });

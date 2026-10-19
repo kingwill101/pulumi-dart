@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoggingConfigurationDestinationConfigurationCloudwatchLogs {
-  /// Name of the Amazon Cloudwatch Logs destination where chat activity will be logged.
+  /// Name of the Amazon CloudWatch Logs destination where chat activity will be logged.
   final pulumi.Input<String> logGroupName;
 
   /// Creates a new [LoggingConfigurationDestinationConfigurationCloudwatchLogs].
-  /// [logGroupName] Name of the Amazon Cloudwatch Logs destination where chat activity will be logged.
+  /// [logGroupName] Name of the Amazon CloudWatch Logs destination where chat activity will be logged.
   const LoggingConfigurationDestinationConfigurationCloudwatchLogs({
     required this.logGroupName,
   });

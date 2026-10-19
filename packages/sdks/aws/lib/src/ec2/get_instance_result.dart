@@ -302,7 +302,7 @@ class GetInstanceResult {
       passwordData: (() { final guardedValue = map['passwordData']; if (guardedValue == null) return null; return guardedValue as String; })(),
       placementGroup: (() { final guardedValue = map['placementGroup']; if (guardedValue == null) return null; return guardedValue as String; })(),
       placementGroupId: (() { final guardedValue = map['placementGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      placementPartitionNumber: (() { final guardedValue = map['placementPartitionNumber']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      placementPartitionNumber: (() { final guardedValue = map['placementPartitionNumber']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       privateDns: (() { final guardedValue = map['privateDns']; if (guardedValue == null) return null; return guardedValue as String; })(),
       privateDnsNameOptions: (() { final guardedValue = map['privateDnsNameOptions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstancePrivateDnsNameOption>(guardedValue, (value) => GetInstancePrivateDnsNameOption.fromMap((value as Map).cast<String, dynamic>())); })(),
       privateIp: (() { final guardedValue = map['privateIp']; if (guardedValue == null) return null; return guardedValue as String; })(),

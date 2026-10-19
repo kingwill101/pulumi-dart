@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDomainEncryptionAtRest {
   /// Enabled disabled toggle for off-peak update window
   final pulumi.Input<bool> enabled;
-  /// KMS key id used to encrypt data at rest.
+  /// KMS key ID used to encrypt data at rest.
   final pulumi.Input<String> kmsKeyId;
 
   /// Creates a new [GetDomainEncryptionAtRest].
   /// [enabled] Enabled disabled toggle for off-peak update window
-  /// [kmsKeyId] KMS key id used to encrypt data at rest.
+  /// [kmsKeyId] KMS key ID used to encrypt data at rest.
   const GetDomainEncryptionAtRest({
     required this.enabled,
     required this.kmsKeyId,

@@ -460,23 +460,23 @@ class Connector extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Information about the capacity allocated to the connector. See `capacity` Block for details.
   late final pulumi.Output<ConnectorCapacity> capacity;
-  /// A map of keys to values that represent the configuration for the connector.
+  /// Map of keys to values that represent the configuration for the connector.
   late final pulumi.Output<Map<String, String>> connectorConfiguration;
-  /// A summary description of the connector.
+  /// Summary description of the connector.
   late final pulumi.Output<String?> description;
-  /// Specifies which Apache Kafka cluster to connect to. See `kafkaCluster` Block for details.
+  /// Apache Kafka cluster to connect to. See `kafkaCluster` Block for details.
   late final pulumi.Output<ConnectorKafkaCluster> kafkaCluster;
   /// Details of the client authentication used by the Apache Kafka cluster. See `kafkaClusterClientAuthentication` Block for details.
   late final pulumi.Output<ConnectorKafkaClusterClientAuthentication> kafkaClusterClientAuthentication;
   /// Details of encryption in transit to the Apache Kafka cluster. See `kafkaClusterEncryptionInTransit` Block for details.
   late final pulumi.Output<ConnectorKafkaClusterEncryptionInTransit> kafkaClusterEncryptionInTransit;
-  /// The version of Kafka Connect. It has to be compatible with both the Apache Kafka cluster's version and the plugins.
+  /// Version of Kafka Connect. It has to be compatible with both the Apache Kafka cluster's version and the plugins.
   late final pulumi.Output<String> kafkaconnectVersion;
   /// Details about log delivery. See `logDelivery` Block for details.
   late final pulumi.Output<ConnectorLogDelivery?> logDelivery;
-  /// The name of the connector.
+  /// Name of the connector.
   late final pulumi.Output<String> name;
-  /// Specifies which plugins to use for the connector. See `plugin` Block for details.
+  /// Plugins to use for the connector. See `plugin` Block for details.
   late final pulumi.Output<List<ConnectorPlugin>> plugins;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -484,13 +484,13 @@ class Connector extends pulumi.CustomResource {
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> serviceExecutionRoleArn;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The current version of the connector.
+  /// Current version of the connector.
   late final pulumi.Output<String> version;
-  /// Specifies which worker configuration to use with the connector. See `workerConfiguration` Block for details.
+  /// Worker configuration to use with the connector. See `workerConfiguration` Block for details.
   late final pulumi.Output<ConnectorWorkerConfiguration?> workerConfiguration;
 
   /// Creates a new [Connector].
@@ -505,7 +505,7 @@ class Connector extends pulumi.CustomResource {
           'aws:mskconnect/connector:Connector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     capacity = registerOutput<ConnectorCapacity>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectorCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });

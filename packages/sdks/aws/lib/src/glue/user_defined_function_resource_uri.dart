@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class UserDefinedFunctionResourceUri {
-  /// The type of the resource. can be one of `JAR`, `FILE`, and `ARCHIVE`.
+  /// Type of the resource. can be one of `JAR`, `FILE`, and `ARCHIVE`.
   final pulumi.Input<String> resourceType;
-  /// The URI for accessing the resource.
+  /// URI for accessing the resource.
   final pulumi.Input<String> uri;
 
   /// Creates a new [UserDefinedFunctionResourceUri].
-  /// [resourceType] The type of the resource. can be one of `JAR`, `FILE`, and `ARCHIVE`.
-  /// [uri] The URI for accessing the resource.
+  /// [resourceType] Type of the resource. can be one of `JAR`, `FILE`, and `ARCHIVE`.
+  /// [uri] URI for accessing the resource.
   const UserDefinedFunctionResourceUri({
     required this.resourceType,
     required this.uri,

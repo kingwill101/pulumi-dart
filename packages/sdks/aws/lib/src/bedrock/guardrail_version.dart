@@ -3,7 +3,7 @@ import 'guardrail_version_args.dart';
 import 'guardrail_version_state.dart';
 import 'guardrail_version_timeouts.dart';
 
-/// Resource for managing an AWS Bedrock Guardrail Version.
+/// Manages an AWS Bedrock Guardrail Version.
 ///
 /// ## Example Usage
 ///
@@ -16,7 +16,7 @@ import 'guardrail_version_timeouts.dart';
 ///
 /// const example = new aws.bedrock.GuardrailVersion("example", {
 ///     description: "example",
-///     guardrailArn: test.guardrailArn,
+///     guardrailArn: exampleAwsBedrockGuardrail.guardrailArn,
 ///     skipDestroy: true,
 /// });
 /// ```
@@ -26,7 +26,7 @@ import 'guardrail_version_timeouts.dart';
 ///
 /// example = aws.bedrock.GuardrailVersion("example",
 ///     description="example",
-///     guardrail_arn=test["guardrailArn"],
+///     guardrail_arn=example_aws_bedrock_guardrail["guardrailArn"],
 ///     skip_destroy=True)
 /// ```
 /// ```csharp
@@ -40,7 +40,7 @@ import 'guardrail_version_timeouts.dart';
 ///     var example = new Aws.Bedrock.GuardrailVersion("example", new()
 ///     {
 ///         Description = "example",
-///         GuardrailArn = test.GuardrailArn,
+///         GuardrailArn = exampleAwsBedrockGuardrail.GuardrailArn,
 ///         SkipDestroy = true,
 ///     });
 ///
@@ -58,7 +58,7 @@ import 'guardrail_version_timeouts.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewGuardrailVersion(ctx, "example", &bedrock.GuardrailVersionArgs{
 /// 			Description:  pulumi.String("example"),
-/// 			GuardrailArn: pulumi.Any(test.GuardrailArn),
+/// 			GuardrailArn: pulumi.Any(exampleAwsBedrockGuardrail.GuardrailArn),
 /// 			SkipDestroy:  pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -79,7 +79,7 @@ import 'guardrail_version_timeouts.dart';
 ///
 /// resource "aws_bedrock_guardrailversion" "example" {
 ///   description   = "example"
-///   guardrail_arn = test.guardrailArn
+///   guardrail_arn = exampleAwsBedrockGuardrail.guardrailArn
 ///   skip_destroy  = true
 /// }
 /// ```
@@ -106,7 +106,7 @@ import 'guardrail_version_timeouts.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new GuardrailVersion("example", GuardrailVersionArgs.builder()
 ///             .description("example")
-///             .guardrailArn(test.guardrailArn())
+///             .guardrailArn(exampleAwsBedrockGuardrail.guardrailArn())
 ///             .skipDestroy(true)
 ///             .build());
 ///
@@ -119,17 +119,17 @@ import 'guardrail_version_timeouts.dart';
 ///     type: aws:bedrock:GuardrailVersion
 ///     properties:
 ///       description: example
-///       guardrailArn: ${test.guardrailArn}
+///       guardrailArn: ${exampleAwsBedrockGuardrail.guardrailArn}
 ///       skipDestroy: true
 /// ```
 ///
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Amazon Bedrock Guardrail Version using using a comma-delimited string of `guardrailArn` and `version`. For example:
+/// Using `pulumi import`, import Amazon Bedrock Guardrail Version using a comma-delimited string of `guardrailArn` and `version`. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:bedrock/guardrailVersion:GuardrailVersion example arn:aws:bedrock:us-west-2:123456789012:guardrail-id-12345678,1
+/// $ pulumi import aws:bedrock/guardrailVersion:GuardrailVersion example arn:aws:bedrock:us-west-2:123456789012:guardrail/guardrail-id-12345678,1
 /// ```
 class GuardrailVersion extends pulumi.CustomResource {
   /// Description of the Guardrail version.
@@ -140,7 +140,7 @@ class GuardrailVersion extends pulumi.CustomResource {
   late final pulumi.Output<String> guardrailArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Whether to retain the old version of a previously deployed Guardrail. Default is `false`
+  /// Whether to retain the old version of a previously deployed Guardrail. Default is `false`.
   late final pulumi.Output<bool?> skipDestroy;
   late final pulumi.Output<GuardrailVersionTimeouts?> timeouts;
   /// Guardrail version.
@@ -158,7 +158,7 @@ class GuardrailVersion extends pulumi.CustomResource {
           'aws:bedrock/guardrailVersion:GuardrailVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     guardrailArn = registerOutput<String>('guardrailArn');

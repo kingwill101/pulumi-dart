@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GetDirectoryWorkspaceCreationProperty {
-  /// The identifier of your custom security group. Should relate to the same VPC, where workspaces reside in.
+  /// The identifier of your custom security group. Should relate to the same VPC, where WorkSpaces reside in.
   final pulumi.Input<String> customSecurityGroupId;
   /// The default organizational unit (OU) for your WorkSpace directories.
   final pulumi.Input<String> defaultOu;
@@ -15,7 +15,7 @@ class GetDirectoryWorkspaceCreationProperty {
   final pulumi.Input<bool> userEnabledAsLocalAdministrator;
 
   /// Creates a new [GetDirectoryWorkspaceCreationProperty].
-  /// [customSecurityGroupId] The identifier of your custom security group. Should relate to the same VPC, where workspaces reside in.
+  /// [customSecurityGroupId] The identifier of your custom security group. Should relate to the same VPC, where WorkSpaces reside in.
   /// [defaultOu] The default organizational unit (OU) for your WorkSpace directories.
   /// [enableInternetAccess] Indicates whether internet access is enabled for your WorkSpaces.
   /// [enableMaintenanceMode] Indicates whether maintenance mode is enabled for your WorkSpaces. For more information, see [WorkSpace Maintenance](https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html).

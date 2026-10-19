@@ -183,7 +183,7 @@ class TrustStoreRevocation extends pulumi.CustomResource {
   late final pulumi.Output<String> revocationsS3Bucket;
   /// S3 object key holding the client certificate CA bundle.
   late final pulumi.Output<String> revocationsS3Key;
-  /// Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
+  /// Version ID of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
   late final pulumi.Output<String?> revocationsS3ObjectVersion;
   /// Trust Store ARN.
   late final pulumi.Output<String> trustStoreArn;
@@ -200,7 +200,7 @@ class TrustStoreRevocation extends pulumi.CustomResource {
           'aws:lb/trustStoreRevocation:TrustStoreRevocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     revocationId = registerOutput<int>('revocationId');

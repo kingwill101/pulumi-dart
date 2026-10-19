@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsTimecodeConfig {
-  /// The source for the timecode that will be associated with the events outputs.
+  /// Source for the timecode associated with the event outputs.
   final pulumi.Input<String> source;
-  /// Threshold in frames beyond which output timecode is resynchronized to the input timecode.
+  /// Threshold, in frames, beyond which output timecode is resynchronized to the input timecode.
   final pulumi.Input<int?>? syncThreshold;
 
   /// Creates a new [ChannelEncoderSettingsTimecodeConfig].
-  /// [source] The source for the timecode that will be associated with the events outputs.
-  /// [syncThreshold] Threshold in frames beyond which output timecode is resynchronized to the input timecode.
+  /// [source] Source for the timecode associated with the event outputs.
+  /// [syncThreshold] Threshold, in frames, beyond which output timecode is resynchronized to the input timecode.
   const ChannelEncoderSettingsTimecodeConfig({
     required this.source,
     this.syncThreshold,
@@ -26,7 +26,7 @@ class ChannelEncoderSettingsTimecodeConfig {
   factory ChannelEncoderSettingsTimecodeConfig.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsTimecodeConfig(
       source: pulumi.Input.fromValue(map['source'] as String),
-      syncThreshold: (() { final guardedValue = map['syncThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      syncThreshold: (() { final guardedValue = map['syncThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

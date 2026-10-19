@@ -31,8 +31,8 @@ class OntapVolumeAggregateConfiguration {
   factory OntapVolumeAggregateConfiguration.fromMap(Map<String, dynamic> map) {
     return OntapVolumeAggregateConfiguration(
       aggregates: (() { final guardedValue = map['aggregates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      constituentsPerAggregate: (() { final guardedValue = map['constituentsPerAggregate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      totalConstituents: (() { final guardedValue = map['totalConstituents']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      constituentsPerAggregate: (() { final guardedValue = map['constituentsPerAggregate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      totalConstituents: (() { final guardedValue = map['totalConstituents']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

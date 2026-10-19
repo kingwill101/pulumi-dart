@@ -399,11 +399,11 @@ class MemberDetectorFeature extends pulumi.CustomResource {
   late final pulumi.Output<List<MemberDetectorFeatureAdditionalConfiguration>?> additionalConfigurations;
   /// Amazon GuardDuty detector ID.
   late final pulumi.Output<String> detectorId;
-  /// The name of the detector feature. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`,`RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`.
+  /// Name of the detector feature. Valid values: `S3_DATA_EVENTS`, `EKS_AUDIT_LOGS`, `EBS_MALWARE_PROTECTION`, `RDS_LOGIN_EVENTS`, `EKS_RUNTIME_MONITORING`,`RUNTIME_MONITORING`, `LAMBDA_NETWORK_LOGS`.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The status of the detector feature. Valid values: `ENABLED`, `DISABLED`.
+  /// Status of the detector feature. Valid values: `ENABLED`, `DISABLED`.
   late final pulumi.Output<String> status;
 
   /// Creates a new [MemberDetectorFeature].
@@ -418,7 +418,7 @@ class MemberDetectorFeature extends pulumi.CustomResource {
           'aws:guardduty/memberDetectorFeature:MemberDetectorFeature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     additionalConfigurations = registerOutput<List<MemberDetectorFeatureAdditionalConfiguration>?>('additionalConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MemberDetectorFeatureAdditionalConfiguration>(guardedValue, (value) => MemberDetectorFeatureAdditionalConfiguration.fromMap((value as Map).cast<String, dynamic>())); });

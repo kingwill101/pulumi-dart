@@ -108,7 +108,7 @@ class ReservedCacheNodeState {
   factory ReservedCacheNodeState.fromMap(Map<String, dynamic> map) {
     return ReservedCacheNodeState(
       arn: (() { final guardedValue = map['arn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cacheNodeCount: (() { final guardedValue = map['cacheNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cacheNodeCount: (() { final guardedValue = map['cacheNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       cacheNodeType: (() { final guardedValue = map['cacheNodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       duration: (() { final guardedValue = map['duration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       elasticacheReservedCacheNodeId: (() { final guardedValue = map['elasticacheReservedCacheNodeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

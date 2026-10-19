@@ -3,13 +3,13 @@
 
 /// Result data returned by getExperimentTemplates.
 class GetExperimentTemplatesResult {
-  /// List of all the experiment template ids found.
+  /// List of all the experiment template IDs found.
   final List<String>? ids;
   final String? region;
   final Map<String, String>? tags;
 
   /// Creates a new [GetExperimentTemplatesResult].
-  /// [ids] List of all the experiment template ids found.
+  /// [ids] List of all the experiment template IDs found.
   /// [region] Optional.
   /// [tags] Optional.
   const GetExperimentTemplatesResult({

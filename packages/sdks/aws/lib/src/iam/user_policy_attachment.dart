@@ -199,7 +199,7 @@ import 'user_policy_attachment_state.dart';
 /// * `accountId` (String) AWS Account where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import IAM user policy attachments using the user name and policy arn separated by `/`. For example:
+/// Using `pulumi import`, import IAM user policy attachments using the user name and policy ARN separated by `/`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:iam/userPolicyAttachment:UserPolicyAttachment example test-user/arn:aws:iam::xxxxxxxxxxxx:policy/test-policy
@@ -222,7 +222,7 @@ class UserPolicyAttachment extends pulumi.CustomResource {
           'aws:iam/userPolicyAttachment:UserPolicyAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     policyArn = registerOutput<String>('policyArn');
     user = registerOutput<String>('user');

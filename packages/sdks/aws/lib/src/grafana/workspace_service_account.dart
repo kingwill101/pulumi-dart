@@ -134,15 +134,15 @@ import 'workspace_service_account_state.dart';
 /// $ pulumi import aws:grafana/workspaceServiceAccount:WorkspaceServiceAccount example g-abc12345,1
 /// ```
 class WorkspaceServiceAccount extends pulumi.CustomResource {
-  /// The permission level to use for this service account. For more information about the roles and the permissions each has, see the [User roles](https://docs.aws.amazon.com/grafana/latest/userguide/Grafana-user-roles.html) documentation.
+  /// Permission level to use for this service account. For more information about the roles and the permissions each has, see the [User roles](https://docs.aws.amazon.com/grafana/latest/userguide/Grafana-user-roles.html) documentation.
   late final pulumi.Output<String> grafanaRole;
-  /// A name for the service account. The name must be unique within the workspace, as it determines the ID associated with the service account.
+  /// Name for the service account. The name must be unique within the workspace, as it determines the ID associated with the service account.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Identifier of the service account in the given Grafana workspace
   late final pulumi.Output<String> serviceAccountId;
-  /// The Grafana workspace with which the service account is associated.
+  /// Grafana workspace with which the service account is associated.
   late final pulumi.Output<String> workspaceId;
 
   /// Creates a new [WorkspaceServiceAccount].
@@ -157,7 +157,7 @@ class WorkspaceServiceAccount extends pulumi.CustomResource {
           'aws:grafana/workspaceServiceAccount:WorkspaceServiceAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     grafanaRole = registerOutput<String>('grafanaRole');
     this.name = registerOutput<String>('name');

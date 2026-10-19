@@ -6,7 +6,7 @@ import 'get_model_result.dart';
 import 'get_models_args.dart';
 import 'get_models_result.dart';
 
-/// Data source for managing an AWS Bedrock Foundation Model.
+/// Provides details about an AWS Bedrock Foundation Model.
 ///
 /// ## Example Usage
 ///
@@ -17,17 +17,17 @@ import 'get_models_result.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const test = aws.bedrockfoundation.getModels({});
-/// const testGetModel = test.then(test => aws.bedrockfoundation.getModel({
-///     modelId: test.modelSummaries?.[0]?.modelId,
+/// const example = aws.bedrockfoundation.getModels({});
+/// const exampleGetModel = example.then(example => aws.bedrockfoundation.getModel({
+///     modelId: example.modelSummaries?.[0]?.modelId,
 /// }));
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.bedrockfoundation.get_models()
-/// test_get_model = aws.bedrockfoundation.get_model(model_id=test.model_summaries[0].model_id)
+/// example = aws.bedrockfoundation.get_models()
+/// example_get_model = aws.bedrockfoundation.get_model(model_id=example.model_summaries[0].model_id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -37,11 +37,11 @@ import 'get_models_result.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var test = Aws.BedrockFoundation.GetModels.Invoke();
+///     var example = Aws.BedrockFoundation.GetModels.Invoke();
 ///
-///     var testGetModel = Aws.BedrockFoundation.GetModel.Invoke(new()
+///     var exampleGetModel = Aws.BedrockFoundation.GetModel.Invoke(new()
 ///     {
-///         ModelId = test.Apply(getModelsResult => getModelsResult.ModelSummaries[0]?.ModelId),
+///         ModelId = example.Apply(getModelsResult => getModelsResult.ModelSummaries[0]?.ModelId),
 ///     });
 ///
 /// });
@@ -56,12 +56,12 @@ import 'get_models_result.dart';
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		test, err := bedrockfoundation.GetModels(ctx, &bedrockfoundation.GetModelsArgs{}, nil)
+/// 		example, err := bedrockfoundation.GetModels(ctx, &bedrockfoundation.GetModelsArgs{}, nil)
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = bedrockfoundation.GetModel(ctx, &bedrockfoundation.GetModelArgs{
-/// 			ModelId: test.ModelSummaries[0].ModelId,
+/// 			ModelId: example.ModelSummaries[0].ModelId,
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -79,10 +79,10 @@ import 'get_models_result.dart';
 ///   }
 /// }
 ///
-/// data "aws_bedrockfoundation_getmodels" "test" {
+/// data "aws_bedrockfoundation_getmodels" "example" {
 /// }
-/// data "aws_bedrockfoundation_getmodel" "testGetModel" {
-///   model_id = data.aws_bedrockfoundation_getmodels.test.model_summaries[0].model_id
+/// data "aws_bedrockfoundation_getmodel" "exampleGetModel" {
+///   model_id = data.aws_bedrockfoundation_getmodels.example.model_summaries[0].model_id
 /// }
 /// ```
 /// ```java
@@ -107,11 +107,11 @@ import 'get_models_result.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var test = BedrockfoundationFunctions.getModels(GetModelsArgs.builder()
+///         final var example = BedrockfoundationFunctions.getModels(GetModelsArgs.builder()
 ///             .build());
 ///
-///         final var testGetModel = BedrockfoundationFunctions.getModel(GetModelArgs.builder()
-///             .modelId(test.modelSummaries()[0].modelId())
+///         final var exampleGetModel = BedrockfoundationFunctions.getModel(GetModelArgs.builder()
+///             .modelId(example.modelSummaries()[0].modelId())
 ///             .build());
 ///
 ///     }
@@ -119,15 +119,15 @@ import 'get_models_result.dart';
 /// ```
 /// ```yaml
 /// variables:
-///   test:
+///   example:
 ///     fn::invoke:
 ///       function: aws:bedrockfoundation:getModels
 ///       arguments: {}
-///   testGetModel:
+///   exampleGetModel:
 ///     fn::invoke:
 ///       function: aws:bedrockfoundation:getModel
 ///       arguments:
-///         modelId: ${test.modelSummaries[0].modelId}
+///         modelId: ${example.modelSummaries[0].modelId}
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_bedrockfoundation_get_model_get_model_args_doc}
 /// [options] Invoke options controlling this call.
@@ -166,15 +166,17 @@ pulumi.Output<GetModelResult> getModelOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const example = aws.bedrockfoundation.getModelAgreementOffers({
-///     modelId: exampleAwsBedrockFoundationModels.modelSummaries[0].modelId,
-/// });
+/// const example = aws.bedrockfoundation.getModels({});
+/// const exampleGetModelAgreementOffers = example.then(example => aws.bedrockfoundation.getModelAgreementOffers({
+///     modelId: example.modelSummaries?.[0]?.modelId,
+/// }));
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// example = aws.bedrockfoundation.get_model_agreement_offers(model_id=example_aws_bedrock_foundation_models["modelSummaries"][0]["modelId"])
+/// example = aws.bedrockfoundation.get_models()
+/// example_get_model_agreement_offers = aws.bedrockfoundation.get_model_agreement_offers(model_id=example.model_summaries[0].model_id)
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -184,9 +186,11 @@ pulumi.Output<GetModelResult> getModelOutput(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var example = Aws.BedrockFoundation.GetModelAgreementOffers.Invoke(new()
+///     var example = Aws.BedrockFoundation.GetModels.Invoke();
+///
+///     var exampleGetModelAgreementOffers = Aws.BedrockFoundation.GetModelAgreementOffers.Invoke(new()
 ///     {
-///         ModelId = exampleAwsBedrockFoundationModels.ModelSummaries[0].ModelId,
+///         ModelId = example.Apply(getModelsResult => getModelsResult.ModelSummaries[0]?.ModelId),
 ///     });
 ///
 /// });
@@ -201,8 +205,12 @@ pulumi.Output<GetModelResult> getModelOutput(
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := bedrockfoundation.GetModelAgreementOffers(ctx, &bedrockfoundation.GetModelAgreementOffersArgs{
-/// 			ModelId: exampleAwsBedrockFoundationModels.ModelSummaries[0].ModelId,
+/// 		example, err := bedrockfoundation.GetModels(ctx, &bedrockfoundation.GetModelsArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = bedrockfoundation.GetModelAgreementOffers(ctx, &bedrockfoundation.GetModelAgreementOffersArgs{
+/// 			ModelId: example.ModelSummaries[0].ModelId,
 /// 		}, nil)
 /// 		if err != nil {
 /// 			return err
@@ -220,8 +228,10 @@ pulumi.Output<GetModelResult> getModelOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrockfoundation_getmodelagreementoffers" "example" {
-///   model_id = exampleAwsBedrockFoundationModels.modelSummaries[0].modelId
+/// data "aws_bedrockfoundation_getmodels" "example" {
+/// }
+/// data "aws_bedrockfoundation_getmodelagreementoffers" "exampleGetModelAgreementOffers" {
+///   model_id = data.aws_bedrockfoundation_getmodels.example.model_summaries[0].model_id
 /// }
 /// ```
 /// ```java
@@ -231,6 +241,7 @@ pulumi.Output<GetModelResult> getModelOutput(
 /// import com.pulumi.Pulumi;
 /// import com.pulumi.core.Output;
 /// import com.pulumi.aws.bedrockfoundation.BedrockfoundationFunctions;
+/// import com.pulumi.aws.bedrockfoundation.inputs.GetModelsArgs;
 /// import com.pulumi.aws.bedrockfoundation.inputs.GetModelAgreementOffersArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -245,8 +256,11 @@ pulumi.Output<GetModelResult> getModelOutput(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var example = BedrockfoundationFunctions.getModelAgreementOffers(GetModelAgreementOffersArgs.builder()
-///             .modelId(exampleAwsBedrockFoundationModels.modelSummaries()[0].modelId())
+///         final var example = BedrockfoundationFunctions.getModels(GetModelsArgs.builder()
+///             .build());
+///
+///         final var exampleGetModelAgreementOffers = BedrockfoundationFunctions.getModelAgreementOffers(GetModelAgreementOffersArgs.builder()
+///             .modelId(example.modelSummaries()[0].modelId())
 ///             .build());
 ///
 ///     }
@@ -256,9 +270,13 @@ pulumi.Output<GetModelResult> getModelOutput(
 /// variables:
 ///   example:
 ///     fn::invoke:
+///       function: aws:bedrockfoundation:getModels
+///       arguments: {}
+///   exampleGetModelAgreementOffers:
+///     fn::invoke:
 ///       function: aws:bedrockfoundation:getModelAgreementOffers
 ///       arguments:
-///         modelId: ${exampleAwsBedrockFoundationModels.modelSummaries[0].modelId}
+///         modelId: ${example.modelSummaries[0].modelId}
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_bedrockfoundation_get_model_agreement_offers_get_model_agreement_offers_args_doc}
 /// [options] Invoke options controlling this call.
@@ -286,7 +304,7 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
   ).apply(GetModelAgreementOffersResult.fromMap);
 }
 
-/// Data source for managing AWS Bedrock Foundation Models.
+/// Provides details about AWS Bedrock Foundation Models.
 ///
 /// ## Example Usage
 ///
@@ -297,13 +315,13 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const test = aws.bedrockfoundation.getModels({});
+/// const example = aws.bedrockfoundation.getModels({});
 /// ```
 /// ```python
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.bedrockfoundation.get_models()
+/// example = aws.bedrockfoundation.get_models()
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -313,7 +331,7 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var test = Aws.BedrockFoundation.GetModels.Invoke();
+///     var example = Aws.BedrockFoundation.GetModels.Invoke();
 ///
 /// });
 /// ```
@@ -344,7 +362,7 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrockfoundation_getmodels" "test" {
+/// data "aws_bedrockfoundation_getmodels" "example" {
 /// }
 /// ```
 /// ```java
@@ -368,7 +386,7 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var test = BedrockfoundationFunctions.getModels(GetModelsArgs.builder()
+///         final var example = BedrockfoundationFunctions.getModels(GetModelsArgs.builder()
 ///             .build());
 ///
 ///     }
@@ -376,7 +394,7 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
 /// ```
 /// ```yaml
 /// variables:
-///   test:
+///   example:
 ///     fn::invoke:
 ///       function: aws:bedrockfoundation:getModels
 ///       arguments: {}
@@ -390,7 +408,7 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as aws from "@pulumi/aws";
 ///
-/// const test = aws.bedrockfoundation.getModels({
+/// const example = aws.bedrockfoundation.getModels({
 ///     byInferenceType: "ON_DEMAND",
 /// });
 /// ```
@@ -398,7 +416,7 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
 /// import pulumi
 /// import pulumi_aws as aws
 ///
-/// test = aws.bedrockfoundation.get_models(by_inference_type="ON_DEMAND")
+/// example = aws.bedrockfoundation.get_models(by_inference_type="ON_DEMAND")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -408,7 +426,7 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     var test = Aws.BedrockFoundation.GetModels.Invoke(new()
+///     var example = Aws.BedrockFoundation.GetModels.Invoke(new()
 ///     {
 ///         ByInferenceType = "ON_DEMAND",
 ///     });
@@ -444,7 +462,7 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
 ///   }
 /// }
 ///
-/// data "aws_bedrockfoundation_getmodels" "test" {
+/// data "aws_bedrockfoundation_getmodels" "example" {
 ///   by_inference_type = "ON_DEMAND"
 /// }
 /// ```
@@ -469,7 +487,7 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         final var test = BedrockfoundationFunctions.getModels(GetModelsArgs.builder()
+///         final var example = BedrockfoundationFunctions.getModels(GetModelsArgs.builder()
 ///             .byInferenceType("ON_DEMAND")
 ///             .build());
 ///
@@ -478,7 +496,7 @@ pulumi.Output<GetModelAgreementOffersResult> getModelAgreementOffersOutput(
 /// ```
 /// ```yaml
 /// variables:
-///   test:
+///   example:
 ///     fn::invoke:
 ///       function: aws:bedrockfoundation:getModels
 ///       arguments:

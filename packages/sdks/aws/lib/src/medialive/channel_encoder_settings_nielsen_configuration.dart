@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelEncoderSettingsNielsenConfiguration {
-  /// Enter the Distributor ID assigned to your organization by Nielsen.
+  /// Distributor ID assigned to your organization by Nielsen.
   final pulumi.Input<String?>? distributorId;
   /// Enables Nielsen PCM to ID3 tagging.
   final pulumi.Input<String?>? nielsenPcmToId3Tagging;
 
   /// Creates a new [ChannelEncoderSettingsNielsenConfiguration].
-  /// [distributorId] Enter the Distributor ID assigned to your organization by Nielsen.
+  /// [distributorId] Distributor ID assigned to your organization by Nielsen.
   /// [nielsenPcmToId3Tagging] Enables Nielsen PCM to ID3 tagging.
   const ChannelEncoderSettingsNielsenConfiguration({
     this.distributorId,

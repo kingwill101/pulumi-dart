@@ -6,12 +6,12 @@ import 'data_set_logical_table_map_data_transform_tag_column_operation_tag.dart'
 class DataSetLogicalTableMapDataTransformTagColumnOperation {
   /// Column name.
   final pulumi.Input<String> columnName;
-  /// The dataset column tag, currently only used for geospatial type tagging. See tags.
+  /// Dataset column tag, currently only used for geospatial type tagging. See `tags` Block below.
   final pulumi.Input<List<DataSetLogicalTableMapDataTransformTagColumnOperationTag>> tags;
 
   /// Creates a new [DataSetLogicalTableMapDataTransformTagColumnOperation].
   /// [columnName] Column name.
-  /// [tags] The dataset column tag, currently only used for geospatial type tagging. See tags.
+  /// [tags] Dataset column tag, currently only used for geospatial type tagging. See `tags` Block below.
   const DataSetLogicalTableMapDataTransformTagColumnOperation({
     required this.columnName,
     required this.tags,

@@ -7,7 +7,7 @@ import 'get_snapshot_cluster_configuration.dart';
 class GetSnapshotResult {
   /// ARN of the snapshot.
   final String? arn;
-  /// The configuration of the cluster from which the snapshot was taken.
+  /// Configuration of the cluster from which the snapshot was taken.
   final List<GetSnapshotClusterConfiguration>? clusterConfigurations;
   /// Name of the MemoryDB cluster that this snapshot was taken from.
   final String? clusterName;
@@ -25,7 +25,7 @@ class GetSnapshotResult {
 
   /// Creates a new [GetSnapshotResult].
   /// [arn] ARN of the snapshot.
-  /// [clusterConfigurations] The configuration of the cluster from which the snapshot was taken.
+  /// [clusterConfigurations] Configuration of the cluster from which the snapshot was taken.
   /// [clusterName] Name of the MemoryDB cluster that this snapshot was taken from.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [kmsKeyArn] ARN of the KMS key used to encrypt the snapshot at rest.

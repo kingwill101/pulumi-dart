@@ -9,16 +9,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class MainRouteTableAssociationArgs {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The ID of the Route Table to set as the new
-  /// main route table for the target VPC
+  /// ID of the Route Table to set as the new main route table for the target VPC
   final pulumi.Input<String> routeTableId;
-  /// The ID of the VPC whose main route table should be set
+  /// ID of the VPC whose main route table should be set
   final pulumi.Input<String> vpcId;
 
   /// Creates a new [MainRouteTableAssociationArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [routeTableId] The ID of the Route Table to set as the new
-  /// [vpcId] The ID of the VPC whose main route table should be set
+  /// [routeTableId] ID of the Route Table to set as the new main route table for the target VPC
+  /// [vpcId] ID of the VPC whose main route table should be set
   const MainRouteTableAssociationArgs({
     this.region,
     required this.routeTableId,

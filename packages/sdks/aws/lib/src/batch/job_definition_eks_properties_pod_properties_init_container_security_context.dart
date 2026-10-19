@@ -48,9 +48,9 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext {
       allowPrivilegeEscalation: (() { final guardedValue = map['allowPrivilegeEscalation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       privileged: (() { final guardedValue = map['privileged']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       readOnlyRootFileSystem: (() { final guardedValue = map['readOnlyRootFileSystem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      runAsGroup: (() { final guardedValue = map['runAsGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      runAsGroup: (() { final guardedValue = map['runAsGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       runAsNonRoot: (() { final guardedValue = map['runAsNonRoot']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      runAsUser: (() { final guardedValue = map['runAsUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      runAsUser: (() { final guardedValue = map['runAsUser']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_action_captcha_custom_request_handling.dart';
 
 class RuleGroupRuleActionCaptcha {
-  /// Defines custom handling for the web request. See Custom Request Handling below for details.
+  /// Custom handling for the web request. See Custom Request Handling below for details.
   final pulumi.Input<RuleGroupRuleActionCaptchaCustomRequestHandling?>? customRequestHandling;
 
   /// Creates a new [RuleGroupRuleActionCaptcha].
-  /// [customRequestHandling] Defines custom handling for the web request. See Custom Request Handling below for details.
+  /// [customRequestHandling] Custom handling for the web request. See Custom Request Handling below for details.
   const RuleGroupRuleActionCaptcha({
     this.customRequestHandling,
   });

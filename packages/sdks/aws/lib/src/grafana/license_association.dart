@@ -307,15 +307,15 @@ import 'license_association_state.dart';
 class LicenseAssociation extends pulumi.CustomResource {
   /// If `licenseType` is set to `ENTERPRISE_FREE_TRIAL`, this is the expiration date of the free trial.
   late final pulumi.Output<String> freeTrialExpiration;
-  /// A token from Grafana Labs that ties your AWS account with a Grafana Labs account.
+  /// Token from Grafana Labs that ties your AWS account with a Grafana Labs account.
   late final pulumi.Output<String?> grafanaToken;
   /// If `licenseType` is set to `ENTERPRISE`, this is the expiration date of the enterprise license.
   late final pulumi.Output<String> licenseExpiration;
-  /// The type of license for the workspace license association. Valid values are `ENTERPRISE` and `ENTERPRISE_FREE_TRIAL`.
+  /// Type of license for the workspace license association. Valid values are `ENTERPRISE` and `ENTERPRISE_FREE_TRIAL`.
   late final pulumi.Output<String> licenseType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The workspace id.
+  /// Workspace ID.
   late final pulumi.Output<String> workspaceId;
 
   /// Creates a new [LicenseAssociation].
@@ -330,7 +330,7 @@ class LicenseAssociation extends pulumi.CustomResource {
           'aws:grafana/licenseAssociation:LicenseAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     freeTrialExpiration = registerOutput<String>('freeTrialExpiration');
     grafanaToken = registerOutput<String?>('grafanaToken');

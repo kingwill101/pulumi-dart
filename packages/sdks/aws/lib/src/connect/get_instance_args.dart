@@ -11,7 +11,7 @@ class GetInstanceArgs {
   ///
   /// &gt; **NOTE:** One of either `instanceId` or `instanceAlias` is required.
   final pulumi.Input<String?>? instanceAlias;
-  /// Returns information on a specific connect instance by id
+  /// Returns information on a specific connect instance by ID
   final pulumi.Input<String?>? instanceId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
@@ -20,7 +20,7 @@ class GetInstanceArgs {
 
   /// Creates a new [GetInstanceArgs].
   /// [instanceAlias] Returns information on a specific connect instance by alias
-  /// [instanceId] Returns information on a specific connect instance by id
+  /// [instanceId] Returns information on a specific connect instance by ID
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assigned to the instance.
   const GetInstanceArgs({

@@ -373,9 +373,9 @@ class ObjectCopy extends pulumi.CustomResource {
   late final pulumi.Output<String> customerKeyMd5;
   /// ETag generated for the object (an MD5 sum of the object content). For plaintext objects or objects encrypted with an AWS-managed key, the hash is an MD5 digest of the object data. For objects encrypted with a KMS key or objects created by either the Multipart Upload or Part Copy operation, the hash is not an MD5 digest, regardless of the method of encryption. More information on possible values can be found on [Common Response Headers](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTCommonResponseHeaders.html).
   late final pulumi.Output<String> etag;
-  /// Account id of the expected destination bucket owner. If the destination bucket is owned by a different account, the request will fail with an HTTP 403 (Access Denied) error.
+  /// Account ID of the expected destination bucket owner. If the destination bucket is owned by a different account, the request will fail with an HTTP 403 (Access Denied) error.
   late final pulumi.Output<String?> expectedBucketOwner;
-  /// Account id of the expected source bucket owner. If the source bucket is owned by a different account, the request will fail with an HTTP 403 (Access Denied) error.
+  /// Account ID of the expected source bucket owner. If the source bucket is owned by a different account, the request will fail with an HTTP 403 (Access Denied) error.
   late final pulumi.Output<String?> expectedSourceBucketOwner;
   /// If the object expiration is configured, this attribute will be set.
   late final pulumi.Output<String> expiration;
@@ -449,7 +449,7 @@ class ObjectCopy extends pulumi.CustomResource {
           'aws:s3/objectCopy:ObjectCopy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
           additionalSecretOutputs: const ['customerKey', 'kmsEncryptionContext', 'kmsKeyId', 'sourceCustomerKey'],
         ) {
     acl = registerOutput<String>('acl');

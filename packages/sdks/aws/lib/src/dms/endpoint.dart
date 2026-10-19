@@ -271,7 +271,7 @@ class Endpoint extends pulumi.CustomResource {
   late final pulumi.Output<String?> secretsManagerArn;
   /// Host name of the server.
   late final pulumi.Output<String?> serverName;
-  /// ARN used by the service access IAM role for dynamodb endpoints.
+  /// ARN used by the service access IAM role for DynamoDB endpoints.
   late final pulumi.Output<String?> serviceAccessRole;
   /// SSL mode to use for the connection. Valid values are `none`, `require`, `verify-ca`, `verify-full`
   late final pulumi.Output<String> sslMode;
@@ -294,7 +294,7 @@ class Endpoint extends pulumi.CustomResource {
           'aws:dms/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     certificateArn = registerOutput<String>('certificateArn');

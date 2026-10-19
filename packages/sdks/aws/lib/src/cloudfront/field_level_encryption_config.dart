@@ -253,7 +253,7 @@ import 'field_level_encryption_config_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Cloudfront Field Level Encryption Config using the `id`. For example:
+/// Using `pulumi import`, import CloudFront Field Level Encryption Config using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudfront/fieldLevelEncryptionConfig:FieldLevelEncryptionConfig config E74FTE3AEXAMPLE
@@ -284,7 +284,7 @@ class FieldLevelEncryptionConfig extends pulumi.CustomResource {
           'aws:cloudfront/fieldLevelEncryptionConfig:FieldLevelEncryptionConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     callerReference = registerOutput<String>('callerReference');

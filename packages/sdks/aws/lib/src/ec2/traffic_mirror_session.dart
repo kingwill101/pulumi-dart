@@ -236,7 +236,7 @@ class TrafficMirrorSession extends pulumi.CustomResource {
   late final pulumi.Output<String> trafficMirrorFilterId;
   /// ID of the traffic mirror target to be used
   late final pulumi.Output<String> trafficMirrorTargetId;
-  /// The VXLAN ID for the Traffic Mirror session. For more information about the VXLAN protocol, see RFC 7348. If you do not specify a VirtualNetworkId, an account-wide unique id is chosen at random.
+  /// The VXLAN ID for the Traffic Mirror session. For more information about the VXLAN protocol, see RFC 7348. If you do not specify a VirtualNetworkId, an account-wide unique ID is chosen at random.
   late final pulumi.Output<int> virtualNetworkId;
 
   /// Creates a new [TrafficMirrorSession].
@@ -251,7 +251,7 @@ class TrafficMirrorSession extends pulumi.CustomResource {
           'aws:ec2/trafficMirrorSession:TrafficMirrorSession',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

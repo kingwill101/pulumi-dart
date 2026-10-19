@@ -446,23 +446,23 @@ import 'table_state.dart';
 /// $ pulumi import aws:timestreamwrite/table:Table example ExampleTable:ExampleDatabase
 /// ```
 class Table extends pulumi.CustomResource {
-  /// The ARN that uniquely identifies this table.
+  /// ARN that uniquely identifies this table.
   late final pulumi.Output<String> arn;
-  /// The name of the Timestream database.
+  /// Name of the Timestream database.
   late final pulumi.Output<String> databaseName;
-  /// Contains properties to set on the table when enabling magnetic store writes. See Magnetic Store Write Properties below for more details.
+  /// Properties to set on the table when enabling magnetic store writes. See `magneticStoreWriteProperties` Block below for more details.
   late final pulumi.Output<TableMagneticStoreWriteProperties> magneticStoreWriteProperties;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The retention duration for the memory store and magnetic store. See Retention Properties below for more details. If not provided, `magneticStoreRetentionPeriodInDays` default to 73000 and `memoryStoreRetentionPeriodInHours` defaults to 6.
+  /// Retention duration for the memory store and magnetic store. See `retentionProperties` Block below for more details. If not provided, `magneticStoreRetentionPeriodInDays` defaults to 73000 and `memoryStoreRetentionPeriodInHours` defaults to 6.
   late final pulumi.Output<TableRetentionProperties> retentionProperties;
-  /// The schema of the table. See Schema below for more details.
+  /// Schema of the table. See `schema` Block below for more details.
   late final pulumi.Output<TableSchema> schema;
-  /// The name of the Timestream table.
+  /// Name of the Timestream table.
   late final pulumi.Output<String> tableName;
   /// Map of tags to assign to this resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Table].
@@ -477,7 +477,7 @@ class Table extends pulumi.CustomResource {
           'aws:timestreamwrite/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     databaseName = registerOutput<String>('databaseName');

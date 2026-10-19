@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'cluster_logging_info_broker_logs.dart';
 
 class ClusterLoggingInfo {
-  /// Configuration block for Broker Logs settings for logging info. See loggingInfo broker_logs Argument Reference below.
+  /// Configuration block for Broker Logs settings for logging info. See `brokerLogs` Block below.
   final pulumi.Input<ClusterLoggingInfoBrokerLogs> brokerLogs;
 
   /// Creates a new [ClusterLoggingInfo].
-  /// [brokerLogs] Configuration block for Broker Logs settings for logging info. See loggingInfo broker_logs Argument Reference below.
+  /// [brokerLogs] Configuration block for Broker Logs settings for logging info. See `brokerLogs` Block below.
   const ClusterLoggingInfo({
     required this.brokerLogs,
   });

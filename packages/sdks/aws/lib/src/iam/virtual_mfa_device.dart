@@ -131,7 +131,7 @@ class VirtualMfaDevice extends pulumi.CustomResource {
   late final pulumi.Output<String> qrCodePng;
   /// Serial number associated with the virtual MFA device.
   late final pulumi.Output<String> serialNumber;
-  /// Map of resource tags for the virtual mfa device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags for the virtual MFA device. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
@@ -152,7 +152,7 @@ class VirtualMfaDevice extends pulumi.CustomResource {
           'aws:iam/virtualMfaDevice:VirtualMfaDevice',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     base32StringSeed = registerOutput<String>('base32StringSeed');

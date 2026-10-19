@@ -170,15 +170,15 @@ import 'vpc_ipv4_cidr_block_association_state.dart';
 /// $ pulumi import aws:ec2/vpcIpv4CidrBlockAssociation:VpcIpv4CidrBlockAssociation example vpc-cidr-assoc-021e8461d70ed08be,ipam-pool-0a07c432810393463,28
 /// ```
 class VpcIpv4CidrBlockAssociation extends pulumi.CustomResource {
-  /// The IPv4 CIDR block for the VPC. CIDR can be explicitly set or it can be derived from IPAM using `ipv4NetmaskLength`.
+  /// IPv4 CIDR block for the VPC. CIDR can be explicitly set or it can be derived from IPAM using `ipv4NetmaskLength`.
   late final pulumi.Output<String> cidrBlock;
-  /// The ID of an IPv4 IPAM pool you want to use for allocating this VPC's CIDR. IPAM is a VPC feature that you can use to automate your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP addresses across AWS Regions and accounts. Using IPAM you can monitor IP address usage throughout your AWS Organization.
+  /// ID of an IPv4 IPAM pool you want to use for allocating this VPC's CIDR. IPAM is a VPC feature that you can use to automate your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP addresses across AWS Regions and accounts. Using IPAM you can monitor IP address usage throughout your AWS Organization.
   late final pulumi.Output<String?> ipv4IpamPoolId;
-  /// The netmask length of the IPv4 CIDR you want to allocate to this VPC. Requires specifying a `ipv4IpamPoolId`.
+  /// Netmask length of the IPv4 CIDR you want to allocate to this VPC. Requires specifying a `ipv4IpamPoolId`.
   late final pulumi.Output<int?> ipv4NetmaskLength;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ID of the VPC to make the association with.
+  /// ID of the VPC to make the association with.
   late final pulumi.Output<String> vpcId;
 
   /// Creates a new [VpcIpv4CidrBlockAssociation].
@@ -193,7 +193,7 @@ class VpcIpv4CidrBlockAssociation extends pulumi.CustomResource {
           'aws:ec2/vpcIpv4CidrBlockAssociation:VpcIpv4CidrBlockAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     cidrBlock = registerOutput<String>('cidrBlock');
     ipv4IpamPoolId = registerOutput<String?>('ipv4IpamPoolId');

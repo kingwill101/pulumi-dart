@@ -177,17 +177,17 @@ import 'rule_group_namespace_state.dart';
 /// - `arn` (String) ARN of the Prometheus rule group namespace.
 ///
 ///
-/// Using `pulumi import`, import the prometheus rule group namespace using the arn. For example:
+/// Using `pulumi import`, import the prometheus rule group namespace using the ARN. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:amp/ruleGroupNamespace:RuleGroupNamespace demo arn:aws:aps:us-west-2:123456789012:rulegroupsnamespace/IDstring/namespace_name
 /// ```
 class RuleGroupNamespace extends pulumi.CustomResource {
-  /// The ARN of the rule group namespace.
+  /// ARN of the rule group namespace.
   late final pulumi.Output<String> arn;
   /// the rule group namespace data that you want to be applied. See more [in AWS Docs](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-Ruler.html).
   late final pulumi.Output<String> data;
-  /// The name of the rule group namespace.
+  /// Name of the rule group namespace.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -210,7 +210,7 @@ class RuleGroupNamespace extends pulumi.CustomResource {
           'aws:amp/ruleGroupNamespace:RuleGroupNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     data = registerOutput<String>('data');

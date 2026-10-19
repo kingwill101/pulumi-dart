@@ -725,9 +725,9 @@ class FormType extends pulumi.CustomResource {
   late final pulumi.Output<FormTypeModel> model;
   /// Name of the form type. Must be the name of the structure in smithy document.
   late final pulumi.Output<String> name;
-  /// Origin domain id of the Form Type.
+  /// Origin domain ID of the Form Type.
   late final pulumi.Output<String> originDomainId;
-  /// Origin project id of the Form Type.
+  /// Origin project ID of the Form Type.
   late final pulumi.Output<String> originProjectId;
   /// Identifier of project that owns the form type. Must follow regex of ^[a-zA-Z0-9_-]{1,36}.
   late final pulumi.Output<String> owningProjectIdentifier;
@@ -751,7 +751,7 @@ class FormType extends pulumi.CustomResource {
           'aws:datazone/formType:FormType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     createdBy = registerOutput<String>('createdBy');

@@ -189,27 +189,25 @@ import 'custom_routing_accelerator_state.dart';
 class CustomRoutingAccelerator extends pulumi.CustomResource {
   /// ARN of the custom accelerator.
   late final pulumi.Output<String> arn;
-  /// The attributes of the accelerator. Fields documented below.
+  /// Configuration block with accelerator attributes. See `attributes` below.
   late final pulumi.Output<CustomRoutingAcceleratorAttributes?> attributes;
-  /// The DNS name of the accelerator. For example, `a5d53ff5ee6bca4ce.awsglobalaccelerator.com`.
+  /// DNS name of the accelerator. For example, `a5d53ff5ee6bca4ce.awsglobalaccelerator.com`.
   late final pulumi.Output<String> dnsName;
-  /// Indicates whether the accelerator is enabled. Defaults to `true`. Valid values: `true`, `false`.
+  /// Whether the accelerator is enabled. Defaults to `true`. Valid values: `true`, `false`.
   late final pulumi.Output<bool?> enabled;
-  /// -  The Global Accelerator Route 53 zone ID that can be used to
-  /// route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the Global Accelerator. This attribute
-  /// is simply an alias for the zone ID `Z2BJ6XQ5FK7U4H`.
+  /// Global Accelerator Route 53 zone ID used to route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the accelerator. This is an alias for the zone ID `Z2BJ6XQ5FK7U4H`.
   late final pulumi.Output<String> hostedZoneId;
-  /// The IP address type that an accelerator supports. For a custom routing accelerator, the value must be `"IPV4"`.
+  /// IP address type that an accelerator supports. For a custom routing accelerator, the value must be `"IPV4"`.
   late final pulumi.Output<String?> ipAddressType;
-  /// The IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
+  /// IP addresses to use for BYOIP accelerators. If not specified, the service assigns IP addresses. Valid values: 1 or 2 IPv4 addresses.
   late final pulumi.Output<List<String>?> ipAddresses;
-  /// IP address set associated with the accelerator.
+  /// IP address set associated with the accelerator. See `ipSets` below.
   late final pulumi.Output<List<CustomRoutingAcceleratorIpSet>> ipSets;
-  /// The name of a custom routing accelerator.
+  /// Name of a custom routing accelerator.
   late final pulumi.Output<String> name;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [CustomRoutingAccelerator].
@@ -224,7 +222,7 @@ class CustomRoutingAccelerator extends pulumi.CustomResource {
           'aws:globalaccelerator/customRoutingAccelerator:CustomRoutingAccelerator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     attributes = registerOutput<CustomRoutingAcceleratorAttributes?>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomRoutingAcceleratorAttributes.fromMap((guardedValue as Map).cast<String, dynamic>()); });

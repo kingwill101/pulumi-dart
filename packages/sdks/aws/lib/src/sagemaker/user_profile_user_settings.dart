@@ -24,7 +24,7 @@ class UserProfileUserSettings {
   final pulumi.Input<UserProfileUserSettingsCodeEditorAppSettings?>? codeEditorAppSettings;
   /// The settings for assigning a custom file system to a user profile. Permitted users can access this file system in Amazon SageMaker AI Studio. See Custom File System Config below.
   final pulumi.Input<List<UserProfileUserSettingsCustomFileSystemConfig>?>? customFileSystemConfigs;
-  /// Details about the POSIX identity that is used for file system operations. See Custom Posix User Config below.
+  /// Details about the POSIX identity that is used for file system operations. See Custom POSIX User Config below.
   final pulumi.Input<UserProfileUserSettingsCustomPosixUserConfig?>? customPosixUserConfig;
   /// The default experience that the user is directed to when accessing the domain. The supported values are: `studio::`: Indicates that Studio is the default experience. This value can only be passed if StudioWebPortal is set to ENABLED. `app:JupyterServer:`: Indicates that Studio Classic is the default experience.
   final pulumi.Input<String?>? defaultLandingUri;
@@ -58,7 +58,7 @@ class UserProfileUserSettings {
   /// [canvasAppSettings] The Canvas app settings. See Canvas App Settings below.
   /// [codeEditorAppSettings] The Code Editor application settings. See Code Editor App Settings below.
   /// [customFileSystemConfigs] The settings for assigning a custom file system to a user profile. Permitted users can access this file system in Amazon SageMaker AI Studio. See Custom File System Config below.
-  /// [customPosixUserConfig] Details about the POSIX identity that is used for file system operations. See Custom Posix User Config below.
+  /// [customPosixUserConfig] Details about the POSIX identity that is used for file system operations. See Custom POSIX User Config below.
   /// [defaultLandingUri] The default experience that the user is directed to when accessing the domain. The supported values are: `studio::`: Indicates that Studio is the default experience. This value can only be passed if StudioWebPortal is set to ENABLED. `app:JupyterServer:`: Indicates that Studio Classic is the default experience.
   /// [executionRole] The execution role ARN for the user.
   /// [jupyterLabAppSettings] The settings for the JupyterLab application. See Jupyter Lab App Settings below.

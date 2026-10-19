@@ -7,20 +7,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_ec2_vpc_ipam_resource_discovery_association_vpc_ipam_resource_discovery_association_args_doc}
 class VpcIpamResourceDiscoveryAssociationArgs {
-  /// The ID of the IPAM to associate.
+  /// ID of the IPAM to associate.
   final pulumi.Input<String> ipamId;
-  /// The ID of the Resource Discovery to associate.
+  /// ID of the Resource Discovery to associate.
   final pulumi.Input<String> ipamResourceDiscoveryId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A map of tags to add to the IPAM resource discovery association resource.
+  /// Map of tags to add to the IPAM resource discovery association resource.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [VpcIpamResourceDiscoveryAssociationArgs].
-  /// [ipamId] The ID of the IPAM to associate.
-  /// [ipamResourceDiscoveryId] The ID of the Resource Discovery to associate.
+  /// [ipamId] ID of the IPAM to associate.
+  /// [ipamResourceDiscoveryId] ID of the Resource Discovery to associate.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to add to the IPAM resource discovery association resource.
+  /// [tags] Map of tags to add to the IPAM resource discovery association resource.
   const VpcIpamResourceDiscoveryAssociationArgs({
     required this.ipamId,
     required this.ipamResourceDiscoveryId,

@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'idc_application_service_integration_lake_formation_lake_formation_query.dart';
 
 class IdcApplicationServiceIntegrationLakeFormation {
-  /// Lake formation scope.
+  /// Lake Formation scope.
   final pulumi.Input<IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery?>? lakeFormationQuery;
 
   /// Creates a new [IdcApplicationServiceIntegrationLakeFormation].
-  /// [lakeFormationQuery] Lake formation scope.
+  /// [lakeFormationQuery] Lake Formation scope.
   const IdcApplicationServiceIntegrationLakeFormation({
     this.lakeFormationQuery,
   });

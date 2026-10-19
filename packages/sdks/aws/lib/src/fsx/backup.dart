@@ -165,7 +165,7 @@ import 'backup_state.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const exampleWindowsFileSystem = new aws.fsx.WindowsFileSystem("example", {
-///     activeDirectoryId: eample.id,
+///     activeDirectoryId: exampleAwsDirectoryServiceDirectory.id,
 ///     skipFinalBackup: true,
 ///     storageCapacity: 32,
 ///     subnetIds: [example1.id],
@@ -178,7 +178,7 @@ import 'backup_state.dart';
 /// import pulumi_aws as aws
 ///
 /// example_windows_file_system = aws.fsx.WindowsFileSystem("example",
-///     active_directory_id=eample["id"],
+///     active_directory_id=example_aws_directory_service_directory["id"],
 ///     skip_final_backup=True,
 ///     storage_capacity=32,
 ///     subnet_ids=[example1["id"]],
@@ -195,7 +195,7 @@ import 'backup_state.dart';
 /// {
 ///     var exampleWindowsFileSystem = new Aws.Fsx.WindowsFileSystem("example", new()
 ///     {
-///         ActiveDirectoryId = eample.Id,
+///         ActiveDirectoryId = exampleAwsDirectoryServiceDirectory.Id,
 ///         SkipFinalBackup = true,
 ///         StorageCapacity = 32,
 ///         SubnetIds = new[]
@@ -223,7 +223,7 @@ import 'backup_state.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		exampleWindowsFileSystem, err := fsx.NewWindowsFileSystem(ctx, "example", &fsx.WindowsFileSystemArgs{
-/// 			ActiveDirectoryId: pulumi.Any(eample.Id),
+/// 			ActiveDirectoryId: pulumi.Any(exampleAwsDirectoryServiceDirectory.Id),
 /// 			SkipFinalBackup:   pulumi.Bool(true),
 /// 			StorageCapacity:   pulumi.Int(32),
 /// 			SubnetIds: pulumi.StringArray{
@@ -257,7 +257,7 @@ import 'backup_state.dart';
 ///   file_system_id = aws_fsx_windowsfilesystem.example.id
 /// }
 /// resource "aws_fsx_windowsfilesystem" "example" {
-///   active_directory_id = eample.id
+///   active_directory_id = exampleAwsDirectoryServiceDirectory.id
 ///   skip_final_backup   = true
 ///   storage_capacity    = 32
 ///   subnet_ids          = [example1.id]
@@ -288,7 +288,7 @@ import 'backup_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleWindowsFileSystem = new WindowsFileSystem("exampleWindowsFileSystem", WindowsFileSystemArgs.builder()
-///             .activeDirectoryId(eample.id())
+///             .activeDirectoryId(exampleAwsDirectoryServiceDirectory.id())
 ///             .skipFinalBackup(true)
 ///             .storageCapacity(32)
 ///             .subnetIds(example1.id())
@@ -312,7 +312,7 @@ import 'backup_state.dart';
 ///     type: aws:fsx:WindowsFileSystem
 ///     name: example
 ///     properties:
-///       activeDirectoryId: ${eample.id}
+///       activeDirectoryId: ${exampleAwsDirectoryServiceDirectory.id}
 ///       skipFinalBackup: true
 ///       storageCapacity: 32
 ///       subnetIds:
@@ -675,7 +675,7 @@ class Backup extends pulumi.CustomResource {
           'aws:fsx/backup:Backup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     fileSystemId = registerOutput<String?>('fileSystemId');

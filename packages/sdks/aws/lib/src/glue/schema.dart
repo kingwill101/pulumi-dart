@@ -152,31 +152,31 @@ import 'schema_state.dart';
 class Schema extends pulumi.CustomResource {
   /// ARN of the schema.
   late final pulumi.Output<String> arn;
-  /// The compatibility mode of the schema. Values values are: `NONE`, `DISABLED`, `BACKWARD`, `BACKWARD_ALL`, `FORWARD`, `FORWARD_ALL`, `FULL`, and `FULL_ALL`.
+  /// Compatibility mode of the schema. Values values are: `NONE`, `DISABLED`, `BACKWARD`, `BACKWARD_ALL`, `FORWARD`, `FORWARD_ALL`, `FULL`, and `FULL_ALL`.
   late final pulumi.Output<String> compatibility;
-  /// The data format of the schema definition. Valid values are `AVRO`, `JSON` and `PROTOBUF`.
+  /// Data format of the schema definition. Valid values are `AVRO`, `JSON` and `PROTOBUF`.
   late final pulumi.Output<String> dataFormat;
-  /// A description of the schema.
+  /// Description of the schema.
   late final pulumi.Output<String?> description;
-  /// The latest version of the schema associated with the returned schema definition.
+  /// Latest version of the schema associated with the returned schema definition.
   late final pulumi.Output<int> latestSchemaVersion;
-  /// The next version of the schema associated with the returned schema definition.
+  /// Next version of the schema associated with the returned schema definition.
   late final pulumi.Output<int> nextSchemaVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ARN of the Glue Registry to create the schema in.
+  /// ARN of the Glue Registry to create the schema in.
   late final pulumi.Output<String> registryArn;
-  /// The name of the Glue Registry.
+  /// Name of the Glue Registry.
   late final pulumi.Output<String> registryName;
-  /// The version number of the checkpoint (the last time the compatibility mode was changed).
+  /// Version number of the checkpoint (the last time the compatibility mode was changed).
   late final pulumi.Output<int> schemaCheckpoint;
-  /// The schema definition using the `dataFormat` setting for `schemaName`.
+  /// Schema definition using the `dataFormat` setting for `schemaName`.
   late final pulumi.Output<String> schemaDefinition;
-  /// The Name of the schema.
+  /// Name of the schema.
   late final pulumi.Output<String> schemaName;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Schema].
@@ -191,7 +191,7 @@ class Schema extends pulumi.CustomResource {
           'aws:glue/schema:Schema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     compatibility = registerOutput<String>('compatibility');

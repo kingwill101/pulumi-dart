@@ -62,7 +62,7 @@ class EventTargetArgs {
   final pulumi.Input<EventTargetSagemakerPipelineTarget?>? sagemakerPipelineTarget;
   /// Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
   final pulumi.Input<EventTargetSqsTarget?>? sqsTarget;
-  /// The unique target assignment ID. If missing, will generate a random, unique id.
+  /// The unique target assignment ID. If missing, will generate a random, unique ID.
   final pulumi.Input<String?>? targetId;
 
   /// Creates a new [EventTargetArgs].
@@ -86,7 +86,7 @@ class EventTargetArgs {
   /// [runCommandTargets] Parameters used when you are using the rule to invoke Amazon EC2 Run Command. Documented below. A maximum of 5 are allowed.
   /// [sagemakerPipelineTarget] Parameters used when you are using the rule to invoke an Amazon SageMaker AI Pipeline. Documented below. A maximum of 1 are allowed.
   /// [sqsTarget] Parameters used when you are using the rule to invoke an Amazon SQS Queue. Documented below. A maximum of 1 are allowed.
-  /// [targetId] The unique target assignment ID. If missing, will generate a random, unique id.
+  /// [targetId] The unique target assignment ID. If missing, will generate a random, unique ID.
   const EventTargetArgs({
     this.appsyncTarget,
     required this.arn,

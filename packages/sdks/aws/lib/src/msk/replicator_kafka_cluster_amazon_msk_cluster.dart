@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ReplicatorKafkaClusterAmazonMskCluster {
-  /// The ARN of an Amazon MSK cluster.
+  /// ARN of an Amazon MSK cluster.
   final pulumi.Input<String> mskClusterArn;
 
   /// Creates a new [ReplicatorKafkaClusterAmazonMskCluster].
-  /// [mskClusterArn] The ARN of an Amazon MSK cluster.
+  /// [mskClusterArn] ARN of an Amazon MSK cluster.
   const ReplicatorKafkaClusterAmazonMskCluster({
     required this.mskClusterArn,
   });

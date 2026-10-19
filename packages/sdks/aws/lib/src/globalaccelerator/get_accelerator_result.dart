@@ -7,29 +7,37 @@ import 'get_accelerator_ip_set.dart';
 /// Result data returned by getAccelerator.
 class GetAcceleratorResult {
   final String? arn;
+  /// Attributes of the accelerator. See `attributes` below.
   final List<GetAcceleratorAttribute>? attributes;
+  /// DNS name of the accelerator. For example, `a5d53ff5ee6bca4ce.awsglobalaccelerator.com`.
   final String? dnsName;
+  /// DNS name that points to a dual-stack accelerator's four static IP addresses: two IPv4 addresses and two IPv6 addresses.
   final String? dualStackDnsName;
+  /// Whether the accelerator is enabled.
   final bool? enabled;
+  /// Global Accelerator Route 53 zone ID used to route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the accelerator.
   final String? hostedZoneId;
   final String? id;
+  /// Value for the address type.
   final String? ipAddressType;
+  /// IP address set associated with the accelerator. See `ipSets` below.
   final List<GetAcceleratorIpSet>? ipSets;
   final String? name;
+  /// Map of tags assigned to the resource.
   final Map<String, String>? tags;
 
   /// Creates a new [GetAcceleratorResult].
   /// [arn] Optional.
-  /// [attributes] Optional.
-  /// [dnsName] Optional.
-  /// [dualStackDnsName] Optional.
-  /// [enabled] Optional.
-  /// [hostedZoneId] Optional.
+  /// [attributes] Attributes of the accelerator. See `attributes` below.
+  /// [dnsName] DNS name of the accelerator. For example, `a5d53ff5ee6bca4ce.awsglobalaccelerator.com`.
+  /// [dualStackDnsName] DNS name that points to a dual-stack accelerator's four static IP addresses: two IPv4 addresses and two IPv6 addresses.
+  /// [enabled] Whether the accelerator is enabled.
+  /// [hostedZoneId] Global Accelerator Route 53 zone ID used to route an [Alias Resource Record Set](https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html) to the accelerator.
   /// [id] Optional.
-  /// [ipAddressType] Optional.
-  /// [ipSets] Optional.
+  /// [ipAddressType] Value for the address type.
+  /// [ipSets] IP address set associated with the accelerator. See `ipSets` below.
   /// [name] Optional.
-  /// [tags] Optional.
+  /// [tags] Map of tags assigned to the resource.
   const GetAcceleratorResult({
     this.arn,
     this.attributes,

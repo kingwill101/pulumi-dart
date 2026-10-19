@@ -195,15 +195,15 @@ class VpnConcentrator extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// ID of the transit gateway attachment created for the VPN concentrator.
   late final pulumi.Output<String> transitGatewayAttachmentId;
   /// ID of the transit gateway to attach the VPN concentrator to.
-  ///
-  /// The following arguments are optional:
   late final pulumi.Output<String> transitGatewayId;
   /// Type of VPN concentrator. Valid value: `ipsec.1`.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<String> type;
   /// ID of the VPN Concentrator.
   late final pulumi.Output<String> vpnConcentratorId;
@@ -220,7 +220,7 @@ class VpnConcentrator extends pulumi.CustomResource {
           'aws:ec2/vpnConcentrator:VpnConcentrator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     tags = registerOutput<Map<String, String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

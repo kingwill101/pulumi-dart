@@ -37,7 +37,7 @@ class RecordGeoproximityRoutingPolicy {
   factory RecordGeoproximityRoutingPolicy.fromMap(Map<String, dynamic> map) {
     return RecordGeoproximityRoutingPolicy(
       awsRegion: (() { final guardedValue = map['awsRegion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      bias: (() { final guardedValue = map['bias']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bias: (() { final guardedValue = map['bias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       coordinates: (() { final guardedValue = map['coordinates']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RecordGeoproximityRoutingPolicyCoordinate>(guardedValue, (value) => RecordGeoproximityRoutingPolicyCoordinate.fromMap((value as Map).cast<String, dynamic>()))); })(),
       localZoneGroup: (() { final guardedValue = map['localZoneGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

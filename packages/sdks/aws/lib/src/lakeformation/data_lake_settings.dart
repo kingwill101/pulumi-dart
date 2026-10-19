@@ -344,7 +344,7 @@ import 'data_lake_settings_state.dart';
 /// ```
 ///
 ///
-/// ### Enable EMR access to LakeFormation resources
+/// ### Enable EMR access to Lake Formation resources
 ///
 ///
 /// ```typescript
@@ -762,7 +762,7 @@ class DataLakeSettings extends pulumi.CustomResource {
           'aws:lakeformation/dataLakeSettings:DataLakeSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     admins = registerOutput<List<String>>('admins', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowExternalDataFiltering = registerOutput<bool?>('allowExternalDataFiltering');

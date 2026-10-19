@@ -25,8 +25,8 @@ class GetStreamWarmThroughput {
 
   factory GetStreamWarmThroughput.fromMap(Map<String, dynamic> map) {
     return GetStreamWarmThroughput(
-      currentMibPs: pulumi.Input.fromValue((map['currentMibPs'] as num).toInt()),
-      targetMibPs: pulumi.Input.fromValue((map['targetMibPs'] as num).toInt()),
+      currentMibPs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['currentMibPs'])),
+      targetMibPs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetMibPs'])),
     );
   }
 }

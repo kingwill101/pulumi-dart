@@ -2167,9 +2167,9 @@ class Domain extends pulumi.CustomResource {
   late final pulumi.Output<DomainClusterConfig> clusterConfig;
   /// Configuration block for authenticating dashboard with Cognito. Detailed below.
   late final pulumi.Output<DomainCognitoOptions?> cognitoOptions;
-  /// Domain-specific endpoint for Dashboard without https scheme.
+  /// Domain-specific endpoint for Dashboard without HTTPS scheme.
   late final pulumi.Output<String> dashboardEndpoint;
-  /// V2 domain endpoint for Dashboard that works with both IPv4 and IPv6 addresses, without https scheme.
+  /// V2 domain endpoint for Dashboard that works with both IPv4 and IPv6 addresses, without HTTPS scheme.
   late final pulumi.Output<String> dashboardEndpointV2;
   /// Configuration block for the deployment strategy options of the domain. Detailed below.
   late final pulumi.Output<DomainDeploymentStrategyOptions> deploymentStrategyOptions;
@@ -2230,7 +2230,7 @@ class Domain extends pulumi.CustomResource {
           'aws:opensearch/domain:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     accessPolicies = registerOutput<String>('accessPolicies');
     advancedOptions = registerOutput<Map<String, String>>('advancedOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

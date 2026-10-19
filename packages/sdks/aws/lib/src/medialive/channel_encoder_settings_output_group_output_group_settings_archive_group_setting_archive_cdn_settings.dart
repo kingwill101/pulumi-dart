@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_output_group_output_group_settings_archive_group_setting_archive_cdn_settings_archive_s3_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings {
-  /// Archive S3 Settings. See Archive S3 Settings for more details.
+  /// Archive S3 settings. See `archiveS3Settings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettingsArchiveS3Settings?>? archiveS3Settings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings].
-  /// [archiveS3Settings] Archive S3 Settings. See Archive S3 Settings for more details.
+  /// [archiveS3Settings] Archive S3 settings. See `archiveS3Settings` Block for details.
   const ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings({
     this.archiveS3Settings,
   });

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersJira {
-  /// The base URL of the Jira instance's site to which to connect.
+  /// Base URL of the Jira instance's site to which to connect.
   final pulumi.Input<String> siteBaseUrl;
 
   /// Creates a new [DataSourceParametersJira].
-  /// [siteBaseUrl] The base URL of the Jira instance's site to which to connect.
+  /// [siteBaseUrl] Base URL of the Jira instance's site to which to connect.
   const DataSourceParametersJira({
     required this.siteBaseUrl,
   });

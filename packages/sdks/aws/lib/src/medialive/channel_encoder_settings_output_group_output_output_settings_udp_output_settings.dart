@@ -6,19 +6,20 @@ import 'channel_encoder_settings_output_group_output_output_settings_udp_output_
 import 'channel_encoder_settings_output_group_output_output_settings_udp_output_settings_fec_output_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings {
-  /// UDP output buffering in milliseconds.
+  /// UDP output buffering, in milliseconds.
   final pulumi.Input<int?>? bufferMsec;
-  /// UDP container settings. See Container Settings for more details.
+  /// UDP container settings. See `udp_output_settings.container_settings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettings> containerSettings;
-  /// Destination address and port number for RTP or UDP packets. See Destination for more details.
+  /// Destination address and port number for RTP or UDP packets. See `destination` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsDestination> destination;
+  /// Settings for enabling and adjusting Forward Error Correction on UDP outputs. See `fecOutputSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings?>? fecOutputSettings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings].
-  /// [bufferMsec] UDP output buffering in milliseconds.
-  /// [containerSettings] UDP container settings. See Container Settings for more details.
-  /// [destination] Destination address and port number for RTP or UDP packets. See Destination for more details.
-  /// [fecOutputSettings] Optional.
+  /// [bufferMsec] UDP output buffering, in milliseconds.
+  /// [containerSettings] UDP container settings. See `udp_output_settings.container_settings` Block for details.
+  /// [destination] Destination address and port number for RTP or UDP packets. See `destination` Block for details.
+  /// [fecOutputSettings] Settings for enabling and adjusting Forward Error Correction on UDP outputs. See `fecOutputSettings` Block for details.
   const ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings({
     this.bufferMsec,
     required this.containerSettings,
@@ -37,7 +38,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings {
 
   factory ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettings(
-      bufferMsec: (() { final guardedValue = map['bufferMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bufferMsec: (() { final guardedValue = map['bufferMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       containerSettings: pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettings.fromMap((map['containerSettings']! as Map).cast<String, dynamic>())),
       destination: pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
       fecOutputSettings: (() { final guardedValue = map['fecOutputSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -16,7 +16,7 @@ class VpcState {
   final pulumi.Input<String?>? defaultRouteTableId;
   /// ID of the security group created by default on VPC creation.
   final pulumi.Input<String?>? defaultSecurityGroupId;
-  /// DHCP options id of the desired VPC.
+  /// DHCP options ID of the desired VPC.
   final pulumi.Input<String?>? dhcpOptionsId;
   /// Whether to enable DNS hostnames in the VPC. Defaults to `false`.
   final pulumi.Input<bool?>? enableDnsHostnames;
@@ -58,7 +58,7 @@ class VpcState {
   /// [defaultNetworkAclId] ID of the network ACL created by default on VPC creation.
   /// [defaultRouteTableId] ID of the route table created by default on VPC creation.
   /// [defaultSecurityGroupId] ID of the security group created by default on VPC creation.
-  /// [dhcpOptionsId] DHCP options id of the desired VPC.
+  /// [dhcpOptionsId] DHCP options ID of the desired VPC.
   /// [enableDnsHostnames] Whether to enable DNS hostnames in the VPC. Defaults to `false`.
   /// [enableDnsSupport] Whether to enable DNS support in the VPC. Defaults to `true`.
   /// [enableNetworkAddressUsageMetrics] Whether to enable Network Address Usage metrics for your VPC. Defaults to `false`.
@@ -143,12 +143,12 @@ class VpcState {
       enableNetworkAddressUsageMetrics: (() { final guardedValue = map['enableNetworkAddressUsageMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       instanceTenancy: (() { final guardedValue = map['instanceTenancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv4IpamPoolId: (() { final guardedValue = map['ipv4IpamPoolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ipv4NetmaskLength: (() { final guardedValue = map['ipv4NetmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ipv4NetmaskLength: (() { final guardedValue = map['ipv4NetmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipv6AssociationId: (() { final guardedValue = map['ipv6AssociationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv6CidrBlock: (() { final guardedValue = map['ipv6CidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv6CidrBlockNetworkBorderGroup: (() { final guardedValue = map['ipv6CidrBlockNetworkBorderGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv6IpamPoolId: (() { final guardedValue = map['ipv6IpamPoolId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ipv6NetmaskLength: (() { final guardedValue = map['ipv6NetmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ipv6NetmaskLength: (() { final guardedValue = map['ipv6NetmaskLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       mainRouteTableId: (() { final guardedValue = map['mainRouteTableId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

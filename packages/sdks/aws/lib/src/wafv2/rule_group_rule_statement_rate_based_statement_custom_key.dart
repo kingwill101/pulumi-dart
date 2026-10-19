@@ -12,42 +12,42 @@ import 'rule_group_rule_statement_rate_based_statement_custom_key_uri_path.dart'
 
 class RuleGroupRuleStatementRateBasedStatementCustomKey {
   final pulumi.Input<Map<String, dynamic>?>? asn;
-  /// (Optional) Use the value of a cookie in the request as an aggregate key. See RateLimit `cookie` below for details.
+  /// Use the value of a cookie in the request as an aggregate key. See RateLimit `cookie` below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyCookie?>? cookie;
-  /// (Optional) Use the first IP address in an HTTP header as an aggregate key. See `forwardedIp` below for details.
+  /// Use the first IP address in an HTTP header as an aggregate key. See `forwardedIp` below for details.
   final pulumi.Input<Map<String, dynamic>?>? forwardedIp;
-  /// (Optional) Use the value of a header in the request as an aggregate key. See RateLimit `header` below for details.
+  /// Use the value of a header in the request as an aggregate key. See RateLimit `header` below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyHeader?>? header;
-  /// (Optional) Use the request's HTTP method as an aggregate key. See RateLimit `httpMethod` below for details.
+  /// Use the request's HTTP method as an aggregate key. See RateLimit `httpMethod` below for details.
   final pulumi.Input<Map<String, dynamic>?>? httpMethod;
-  /// (Optional) Use the request's originating IP address as an aggregate key. See `RateLimit ip` below for details.
+  /// Use the request's originating IP address as an aggregate key. See `RateLimit ip` below for details.
   final pulumi.Input<Map<String, dynamic>?>? ip;
-  /// (Optional) Use the JA3 fingerprint in the request as an aggregate key. See `RateLimit ip` below for details.
+  /// Use the JA3 fingerprint in the request as an aggregate key. See `RateLimit ja3Fingerprint` below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyJa3Fingerprint?>? ja3Fingerprint;
-  /// (Optional) Use the JA3 fingerprint in the request as an aggregate key. See `RateLimit ip` below for details.
+  /// Use the JA4 fingerprint in the request as an aggregate key. See `RateLimit ja4Fingerprint` below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyJa4Fingerprint?>? ja4Fingerprint;
-  /// (Optional) Use the specified label namespace as an aggregate key. See RateLimit `labelNamespace` below for details.
+  /// Use the specified label namespace as an aggregate key. See RateLimit `labelNamespace` below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyLabelNamespace?>? labelNamespace;
-  /// (Optional) Use the specified query argument as an aggregate key. See RateLimit `queryArgument` below for details.
+  /// Use the specified query argument as an aggregate key. See RateLimit `queryArgument` below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyQueryArgument?>? queryArgument;
-  /// (Optional) Use the request's query string as an aggregate key. See RateLimit `queryString` below for details.
+  /// Use the request's query string as an aggregate key. See RateLimit `queryString` below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyQueryString?>? queryString;
-  /// (Optional) Use the request's URI path as an aggregate key. See RateLimit `uriPath` below for details.
+  /// Use the request's URI path as an aggregate key. See RateLimit `uriPath` below for details.
   final pulumi.Input<RuleGroupRuleStatementRateBasedStatementCustomKeyUriPath?>? uriPath;
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementCustomKey].
   /// [asn] Optional.
-  /// [cookie] (Optional) Use the value of a cookie in the request as an aggregate key. See RateLimit `cookie` below for details.
-  /// [forwardedIp] (Optional) Use the first IP address in an HTTP header as an aggregate key. See `forwardedIp` below for details.
-  /// [header] (Optional) Use the value of a header in the request as an aggregate key. See RateLimit `header` below for details.
-  /// [httpMethod] (Optional) Use the request's HTTP method as an aggregate key. See RateLimit `httpMethod` below for details.
-  /// [ip] (Optional) Use the request's originating IP address as an aggregate key. See `RateLimit ip` below for details.
-  /// [ja3Fingerprint] (Optional) Use the JA3 fingerprint in the request as an aggregate key. See `RateLimit ip` below for details.
-  /// [ja4Fingerprint] (Optional) Use the JA3 fingerprint in the request as an aggregate key. See `RateLimit ip` below for details.
-  /// [labelNamespace] (Optional) Use the specified label namespace as an aggregate key. See RateLimit `labelNamespace` below for details.
-  /// [queryArgument] (Optional) Use the specified query argument as an aggregate key. See RateLimit `queryArgument` below for details.
-  /// [queryString] (Optional) Use the request's query string as an aggregate key. See RateLimit `queryString` below for details.
-  /// [uriPath] (Optional) Use the request's URI path as an aggregate key. See RateLimit `uriPath` below for details.
+  /// [cookie] Use the value of a cookie in the request as an aggregate key. See RateLimit `cookie` below for details.
+  /// [forwardedIp] Use the first IP address in an HTTP header as an aggregate key. See `forwardedIp` below for details.
+  /// [header] Use the value of a header in the request as an aggregate key. See RateLimit `header` below for details.
+  /// [httpMethod] Use the request's HTTP method as an aggregate key. See RateLimit `httpMethod` below for details.
+  /// [ip] Use the request's originating IP address as an aggregate key. See `RateLimit ip` below for details.
+  /// [ja3Fingerprint] Use the JA3 fingerprint in the request as an aggregate key. See `RateLimit ja3Fingerprint` below for details.
+  /// [ja4Fingerprint] Use the JA4 fingerprint in the request as an aggregate key. See `RateLimit ja4Fingerprint` below for details.
+  /// [labelNamespace] Use the specified label namespace as an aggregate key. See RateLimit `labelNamespace` below for details.
+  /// [queryArgument] Use the specified query argument as an aggregate key. See RateLimit `queryArgument` below for details.
+  /// [queryString] Use the request's query string as an aggregate key. See RateLimit `queryString` below for details.
+  /// [uriPath] Use the request's URI path as an aggregate key. See RateLimit `uriPath` below for details.
   const RuleGroupRuleStatementRateBasedStatementCustomKey({
     this.asn,
     this.cookie,

@@ -4,16 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_last_updated_error.dart';
 
 class EnvironmentLastUpdated {
-  /// The Created At date of the MWAA Environment
+  /// Date and time the environment was last updated.
   final pulumi.Input<String?>? createdAt;
+  /// Error that occurred during the last update, if any. See `last_updated.error` Block for details.
   final pulumi.Input<List<EnvironmentLastUpdatedError>?>? errors;
-  /// The status of the Amazon MWAA Environment
+  /// Status of the last update.
   final pulumi.Input<String?>? status;
 
   /// Creates a new [EnvironmentLastUpdated].
-  /// [createdAt] The Created At date of the MWAA Environment
-  /// [errors] Optional.
-  /// [status] The status of the Amazon MWAA Environment
+  /// [createdAt] Date and time the environment was last updated.
+  /// [errors] Error that occurred during the last update, if any. See `last_updated.error` Block for details.
+  /// [status] Status of the last update.
   const EnvironmentLastUpdated({
     this.createdAt,
     this.errors,

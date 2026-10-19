@@ -5,12 +5,14 @@ import 'agent_data_source_data_source_configuration_confluence_configuration_cra
 import 'agent_data_source_data_source_configuration_confluence_configuration_source_configuration.dart';
 
 class AgentDataSourceDataSourceConfigurationConfluenceConfiguration {
+  /// Configuration for Confluence content. See `data_source_configuration.confluence_configuration.crawler_configuration` Block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration?>? crawlerConfiguration;
+  /// Endpoint information to connect to your Confluence data source. See `data_source_configuration.confluence_configuration.source_configuration` Block for details.
   final pulumi.Input<AgentDataSourceDataSourceConfigurationConfluenceConfigurationSourceConfiguration?>? sourceConfiguration;
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationConfluenceConfiguration].
-  /// [crawlerConfiguration] Optional.
-  /// [sourceConfiguration] Optional.
+  /// [crawlerConfiguration] Configuration for Confluence content. See `data_source_configuration.confluence_configuration.crawler_configuration` Block for details.
+  /// [sourceConfiguration] Endpoint information to connect to your Confluence data source. See `data_source_configuration.confluence_configuration.source_configuration` Block for details.
   const AgentDataSourceDataSourceConfigurationConfluenceConfiguration({
     this.crawlerConfiguration,
     this.sourceConfiguration,

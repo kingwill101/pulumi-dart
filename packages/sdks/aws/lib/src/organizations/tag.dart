@@ -214,7 +214,7 @@ import 'tag_state.dart';
 class Tag extends pulumi.CustomResource {
   /// Tag name.
   late final pulumi.Output<String> key;
-  /// Id of the Organizations resource to tag.
+  /// ID of the Organizations resource to tag.
   late final pulumi.Output<String> resourceId;
   /// Tag value.
   late final pulumi.Output<String> value;
@@ -231,7 +231,7 @@ class Tag extends pulumi.CustomResource {
           'aws:organizations/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     key = registerOutput<String>('key');
     resourceId = registerOutput<String>('resourceId');

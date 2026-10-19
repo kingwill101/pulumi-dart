@@ -4,17 +4,17 @@
 /// Result data returned by getFindingIds.
 class GetFindingIdsResult {
   final String? detectorId;
-  /// A list of finding IDs for the specified detector.
+  /// List of finding IDs for the specified detector.
   final List<String>? findingIds;
-  /// Indicates whether findings are present for the specified detector.
+  /// Whether findings are present for the specified detector.
   final bool? hasFindings;
   final String? id;
   final String? region;
 
   /// Creates a new [GetFindingIdsResult].
   /// [detectorId] Optional.
-  /// [findingIds] A list of finding IDs for the specified detector.
-  /// [hasFindings] Indicates whether findings are present for the specified detector.
+  /// [findingIds] List of finding IDs for the specified detector.
+  /// [hasFindings] Whether findings are present for the specified detector.
   /// [id] Optional.
   /// [region] Optional.
   const GetFindingIdsResult({

@@ -26,7 +26,7 @@ class BucketIntelligentTieringConfigurationTiering {
   factory BucketIntelligentTieringConfigurationTiering.fromMap(Map<String, dynamic> map) {
     return BucketIntelligentTieringConfigurationTiering(
       accessTier: pulumi.Input.fromValue(map['accessTier'] as String),
-      days: pulumi.Input.fromValue((map['days'] as num).toInt()),
+      days: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['days'])),
     );
   }
 }

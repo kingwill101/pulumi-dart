@@ -7,11 +7,13 @@ import 'metering_policy_entry_timeouts.dart';
 class MeteringPolicyEntryState {
   /// Destination CIDR block to match. If not specified, all destination CIDR blocks are matched.
   final pulumi.Input<String?>? destinationCidrBlock;
+  /// Destination port range to match. If not specified, all destination ports are matched.
   final pulumi.Input<String?>? destinationPortRange;
+  /// Destination Transit Gateway attachment ID to match.
   final pulumi.Input<String?>? destinationTransitGatewayAttachmentId;
-  /// Destination attachment resource type to match. Valid values are `vpc`, `vpn`, `direct-connect-gateway`, `connect`, `peering`, `tgw-peering`.
+  /// Destination attachment resource type to match. Valid values are `vpc`, `vpn`, `vpn-concentrator`, `direct-connect-gateway`, `connect`, `peering`, `tgw-peering`, `network-function`, `client-vpn`.
   final pulumi.Input<String?>? destinationTransitGatewayAttachmentType;
-  /// The account to charge for matching traffic. Valid values are `source-attachment-owner` or `destination-attachment-owner`.
+  /// The account to charge for matching traffic. Valid values are `source-attachment-owner`, `destination-attachment-owner`, or `transit-gateway-owner`.
   final pulumi.Input<String?>? meteredAccount;
   /// Rule number for this entry. Lower numbers have higher priority. Valid values are between `1` and `32766`.
   final pulumi.Input<int?>? policyRuleNumber;
@@ -21,9 +23,11 @@ class MeteringPolicyEntryState {
   final pulumi.Input<String?>? region;
   /// Source CIDR block to match. If not specified, all source CIDR blocks are matched.
   final pulumi.Input<String?>? sourceCidrBlock;
+  /// Source port range to match. If not specified, all source ports are matched.
   final pulumi.Input<String?>? sourcePortRange;
+  /// Source Transit Gateway attachment ID to match.
   final pulumi.Input<String?>? sourceTransitGatewayAttachmentId;
-  /// Source attachment resource type to match. Valid values are `vpc`, `vpn`, `direct-connect-gateway`, `connect`, `peering`, `tgw-peering`.
+  /// Source attachment resource type to match. Valid values are `vpc`, `vpn`, `vpn-concentrator`, `direct-connect-gateway`, `connect`, `peering`, `tgw-peering`, `network-function`, `client-vpn`.
   final pulumi.Input<String?>? sourceTransitGatewayAttachmentType;
   final pulumi.Input<MeteringPolicyEntryTimeouts?>? timeouts;
   /// EC2 Transit Gateway Metering Policy identifier.
@@ -33,17 +37,17 @@ class MeteringPolicyEntryState {
 
   /// Creates a new [MeteringPolicyEntryState].
   /// [destinationCidrBlock] Destination CIDR block to match. If not specified, all destination CIDR blocks are matched.
-  /// [destinationPortRange] Optional.
-  /// [destinationTransitGatewayAttachmentId] Optional.
-  /// [destinationTransitGatewayAttachmentType] Destination attachment resource type to match. Valid values are `vpc`, `vpn`, `direct-connect-gateway`, `connect`, `peering`, `tgw-peering`.
-  /// [meteredAccount] The account to charge for matching traffic. Valid values are `source-attachment-owner` or `destination-attachment-owner`.
+  /// [destinationPortRange] Destination port range to match. If not specified, all destination ports are matched.
+  /// [destinationTransitGatewayAttachmentId] Destination Transit Gateway attachment ID to match.
+  /// [destinationTransitGatewayAttachmentType] Destination attachment resource type to match. Valid values are `vpc`, `vpn`, `vpn-concentrator`, `direct-connect-gateway`, `connect`, `peering`, `tgw-peering`, `network-function`, `client-vpn`.
+  /// [meteredAccount] The account to charge for matching traffic. Valid values are `source-attachment-owner`, `destination-attachment-owner`, or `transit-gateway-owner`.
   /// [policyRuleNumber] Rule number for this entry. Lower numbers have higher priority. Valid values are between `1` and `32766`.
   /// [protocol] Protocol number to match (e.g., `6` for TCP, `17` for UDP). If not specified, all protocols are matched.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourceCidrBlock] Source CIDR block to match. If not specified, all source CIDR blocks are matched.
-  /// [sourcePortRange] Optional.
-  /// [sourceTransitGatewayAttachmentId] Optional.
-  /// [sourceTransitGatewayAttachmentType] Source attachment resource type to match. Valid values are `vpc`, `vpn`, `direct-connect-gateway`, `connect`, `peering`, `tgw-peering`.
+  /// [sourcePortRange] Source port range to match. If not specified, all source ports are matched.
+  /// [sourceTransitGatewayAttachmentId] Source Transit Gateway attachment ID to match.
+  /// [sourceTransitGatewayAttachmentType] Source attachment resource type to match. Valid values are `vpc`, `vpn`, `vpn-concentrator`, `direct-connect-gateway`, `connect`, `peering`, `tgw-peering`, `network-function`, `client-vpn`.
   /// [timeouts] Optional.
   /// [transitGatewayMeteringPolicyId] EC2 Transit Gateway Metering Policy identifier.
   const MeteringPolicyEntryState({
@@ -89,7 +93,7 @@ class MeteringPolicyEntryState {
       destinationTransitGatewayAttachmentId: (() { final guardedValue = map['destinationTransitGatewayAttachmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationTransitGatewayAttachmentType: (() { final guardedValue = map['destinationTransitGatewayAttachmentType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       meteredAccount: (() { final guardedValue = map['meteredAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      policyRuleNumber: (() { final guardedValue = map['policyRuleNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      policyRuleNumber: (() { final guardedValue = map['policyRuleNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceCidrBlock: (() { final guardedValue = map['sourceCidrBlock']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

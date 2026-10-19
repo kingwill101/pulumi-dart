@@ -22,7 +22,7 @@ import 'instance_secondary_network_interface.dart';
 /// {@endtemplate}
 /// {@macro pulumi_ec2_instance_instance_args_doc}
 class InstanceArgs {
-  /// AMI to use for the instance. Required unless `launchTemplate` is specified and the Launch Template specifes an AMI. If an AMI is specified in the Launch Template, setting `ami` will override the AMI specified in the Launch Template.
+  /// AMI to use for the instance. Required unless `launchTemplate` is specified and the Launch Template specifies an AMI. If an AMI is specified in the Launch Template, setting `ami` will override the AMI specified in the Launch Template.
   final pulumi.Input<String?>? ami;
   /// Whether to associate a public IP address with an instance in a VPC.
   final pulumi.Input<bool?>? associatePublicIpAddress;
@@ -128,7 +128,7 @@ class InstanceArgs {
   final pulumi.Input<List<String>?>? vpcSecurityGroupIds;
 
   /// Creates a new [InstanceArgs].
-  /// [ami] AMI to use for the instance. Required unless `launchTemplate` is specified and the Launch Template specifes an AMI. If an AMI is specified in the Launch Template, setting `ami` will override the AMI specified in the Launch Template.
+  /// [ami] AMI to use for the instance. Required unless `launchTemplate` is specified and the Launch Template specifies an AMI. If an AMI is specified in the Launch Template, setting `ami` will override the AMI specified in the Launch Template.
   /// [associatePublicIpAddress] Whether to associate a public IP address with an instance in a VPC.
   /// [availabilityZone] AZ to start the instance in.
   /// [capacityReservationSpecification] Describes an instance's Capacity Reservation targeting option. See Capacity Reservation Specification below for more details.
@@ -310,7 +310,7 @@ class InstanceArgs {
       instanceInitiatedShutdownBehavior: (() { final guardedValue = map['instanceInitiatedShutdownBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       instanceMarketOptions: (() { final guardedValue = map['instanceMarketOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceInstanceMarketOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       instanceType: (() { final guardedValue = map['instanceType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      ipv6AddressCount: (() { final guardedValue = map['ipv6AddressCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ipv6AddressCount: (() { final guardedValue = map['ipv6AddressCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipv6Addresses: (() { final guardedValue = map['ipv6Addresses']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       keyName: (() { final guardedValue = map['keyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       launchTemplate: (() { final guardedValue = map['launchTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceLaunchTemplate.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -320,7 +320,7 @@ class InstanceArgs {
       networkInterfaces: (() { final guardedValue = map['networkInterfaces']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceNetworkInterface>(guardedValue, (value) => InstanceNetworkInterface.fromMap((value as Map).cast<String, dynamic>()))); })(),
       placementGroup: (() { final guardedValue = map['placementGroup']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       placementGroupId: (() { final guardedValue = map['placementGroupId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      placementPartitionNumber: (() { final guardedValue = map['placementPartitionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      placementPartitionNumber: (() { final guardedValue = map['placementPartitionNumber']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       primaryNetworkInterface: (() { final guardedValue = map['primaryNetworkInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstancePrimaryNetworkInterface.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       privateDnsNameOptions: (() { final guardedValue = map['privateDnsNameOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstancePrivateDnsNameOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       privateIp: (() { final guardedValue = map['privateIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

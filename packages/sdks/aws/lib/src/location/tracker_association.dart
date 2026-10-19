@@ -195,7 +195,7 @@ class TrackerAssociation extends pulumi.CustomResource {
           'aws:location/trackerAssociation:TrackerAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     consumerArn = registerOutput<String>('consumerArn');
     region = registerOutput<String>('region');

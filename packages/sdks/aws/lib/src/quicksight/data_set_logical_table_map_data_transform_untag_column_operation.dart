@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class DataSetLogicalTableMapDataTransformUntagColumnOperation {
   /// Column name.
   final pulumi.Input<String> columnName;
-  /// The column tags to remove from this column.
+  /// Column tags to remove from this column.
   final pulumi.Input<List<String>> tagNames;
 
   /// Creates a new [DataSetLogicalTableMapDataTransformUntagColumnOperation].
   /// [columnName] Column name.
-  /// [tagNames] The column tags to remove from this column.
+  /// [tagNames] Column tags to remove from this column.
   const DataSetLogicalTableMapDataTransformUntagColumnOperation({
     required this.columnName,
     required this.tagNames,

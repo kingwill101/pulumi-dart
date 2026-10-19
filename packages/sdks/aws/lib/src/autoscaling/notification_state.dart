@@ -5,7 +5,7 @@ import 'notification_type.dart';
 
 /// Input properties used for looking up and filtering Notification resources.
 class NotificationState {
-  /// List of AutoScaling Group Names
+  /// List of Auto Scaling group Names
   final pulumi.Input<List<String>?>? groupNames;
   /// List of Notification Types that trigger
   /// notifications. Acceptable values are documented [in the AWS documentation here](https://docs.aws.amazon.com/AutoScaling/latest/APIReference/API_NotificationConfiguration.html)
@@ -16,7 +16,7 @@ class NotificationState {
   final pulumi.Input<String?>? topicArn;
 
   /// Creates a new [NotificationState].
-  /// [groupNames] List of AutoScaling Group Names
+  /// [groupNames] List of Auto Scaling group Names
   /// [notifications] List of Notification Types that trigger
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [topicArn] Topic ARN for notifications to be sent through

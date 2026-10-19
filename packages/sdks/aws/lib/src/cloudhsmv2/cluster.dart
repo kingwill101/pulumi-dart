@@ -299,7 +299,7 @@ import 'cluster_state.dart';
 class Cluster extends pulumi.CustomResource {
   /// The list of cluster certificates.
   late final pulumi.Output<List<ClusterClusterCertificate>> clusterCertificates;
-  /// The id of the CloudHSM cluster.
+  /// The ID of the CloudHSM cluster.
   late final pulumi.Output<String> clusterId;
   /// The state of the CloudHSM cluster.
   late final pulumi.Output<String> clusterState;
@@ -319,7 +319,7 @@ class Cluster extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The id of the VPC that the CloudHSM cluster resides in.
+  /// The ID of the VPC that the CloudHSM cluster resides in.
   late final pulumi.Output<String> vpcId;
 
   /// Creates a new [Cluster].
@@ -334,7 +334,7 @@ class Cluster extends pulumi.CustomResource {
           'aws:cloudhsmv2/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     clusterCertificates = registerOutput<List<ClusterClusterCertificate>>('clusterCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterClusterCertificate>(guardedValue, (value) => ClusterClusterCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     clusterId = registerOutput<String>('clusterId');

@@ -13,7 +13,7 @@ import 'record_weighted_routing_policy.dart';
 ///
 /// ## Example Usage
 ///
-/// ### Simple routing policy
+/// ### Simple Routing Policy
 ///
 ///
 /// ```typescript
@@ -150,7 +150,7 @@ import 'record_weighted_routing_policy.dart';
 /// ```
 ///
 ///
-/// ### Weighted routing policy
+/// ### Weighted Routing Policy
 ///
 /// Other routing policies are configured similarly. See [Amazon Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html) for details.
 ///
@@ -417,7 +417,7 @@ import 'record_weighted_routing_policy.dart';
 /// ```
 ///
 ///
-/// ### Geoproximity routing policy
+/// ### Geoproximity Routing Policy
 ///
 ///
 /// ```typescript
@@ -610,7 +610,7 @@ import 'record_weighted_routing_policy.dart';
 /// ```
 ///
 ///
-/// ### Alias record
+/// ### Alias Record
 ///
 /// See [related part of Amazon Route 53 Developer Guide](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-choosing-alias-non-alias.html)
 /// to understand differences between alias and non-alias records.
@@ -865,7 +865,7 @@ import 'record_weighted_routing_policy.dart';
 /// ```
 ///
 ///
-/// ### Alias record for AWS Global Accelerator
+/// ### Alias Record for AWS Global Accelerator
 ///
 ///
 /// ```typescript
@@ -1271,6 +1271,20 @@ import 'record_weighted_routing_policy.dart';
 /// ```
 ///
 ///
+/// ### Caching Read Results
+///
+/// &gt; Cached reads is an experimental feature. The behavior may change without notice, and it is not subject to the backwards compatibility guarantee of the provider. Please provide feedback on this tracking issue.
+///
+/// AWS Route53 enforces API [rate limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-requests) at the account level. Configurations that manage many records in the same account may trigger throttling and cause slow `plan` and `apply` times because each record resource issues its own API call during read/write operations.
+///
+/// Setting the `TF_AWS_ROUTE53_RECORD_BATCH_READS` environment variable to `true` causes the provider to fetch all records for hosted zones referenced by `aws.route53.Record` once and cache the results in memory for the duration of the `plan` or `apply`, regardless of how many records are managed. No per-resource configuration is required.
+///
+/// ```console
+/// % TF_AWS_ROUTE53_RECORD_BATCH_READS=true pulumi preview
+/// ```
+///
+/// &gt; **Warning:** When `TF_AWS_ROUTE53_RECORD_BATCH_READS` is set to a true value, the provider caches a zone's full record set the first time a record in that zone is read, then serves all subsequent reads from that cache. The caching layer ensures removal of cache entries for any records that are updated during an `apply` operation; however, any changes made to records outside of Pulumi (e.g. via the AWS Console or CLI) after the cache is populated will not be detected.
+///
 /// ## Import
 ///
 /// ### Identity Schema
@@ -1357,7 +1371,7 @@ class Record extends pulumi.CustomResource {
           'aws:route53/record:Record',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     aliases = registerOutput<List<RecordAlias>?>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RecordAlias>(guardedValue, (value) => RecordAlias.fromMap((value as Map).cast<String, dynamic>())); });
     allowOverwrite = registerOutput<bool>('allowOverwrite');

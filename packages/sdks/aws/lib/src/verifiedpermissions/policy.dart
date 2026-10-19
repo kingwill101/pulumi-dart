@@ -155,13 +155,13 @@ import 'policy_state.dart';
 /// $ pulumi import aws:verifiedpermissions/policy:Policy example policy-id-12345678,policy-store-id-12345678
 /// ```
 class Policy extends pulumi.CustomResource {
-  /// The date the policy was created.
+  /// Date the policy was created.
   late final pulumi.Output<String> createdDate;
-  /// The definition of the policy. See Definition below.
+  /// Definition of the policy. See Definition below.
   late final pulumi.Output<PolicyDefinition> definition;
-  /// The Policy ID of the policy.
+  /// Policy ID of the policy.
   late final pulumi.Output<String> policyId;
-  /// The Policy Store ID of the policy store.
+  /// Policy Store ID of the policy store.
   late final pulumi.Output<String> policyStoreId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -178,7 +178,7 @@ class Policy extends pulumi.CustomResource {
           'aws:verifiedpermissions/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     createdDate = registerOutput<String>('createdDate');
     definition = registerOutput<PolicyDefinition>('definition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyDefinition.fromMap((guardedValue as Map).cast<String, dynamic>()); });

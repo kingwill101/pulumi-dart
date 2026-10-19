@@ -6,13 +6,13 @@ class ProjectSecondarySourceBuildStatusConfig {
   /// Specifies the context of the build status CodeBuild sends to the source provider. The usage of
   /// this parameter depends on the source provider.
   final pulumi.Input<String?>? context;
-  /// Specifies the target url of the build status CodeBuild sends to the source provider. The
+  /// Specifies the target URL of the build status CodeBuild sends to the source provider. The
   /// usage of this parameter depends on the source provider.
   final pulumi.Input<String?>? targetUrl;
 
   /// Creates a new [ProjectSecondarySourceBuildStatusConfig].
   /// [context] Specifies the context of the build status CodeBuild sends to the source provider. The usage of
-  /// [targetUrl] Specifies the target url of the build status CodeBuild sends to the source provider. The
+  /// [targetUrl] Specifies the target URL of the build status CodeBuild sends to the source provider. The
   const ProjectSecondarySourceBuildStatusConfig({
     this.context,
     this.targetUrl,

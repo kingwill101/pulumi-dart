@@ -3,7 +3,7 @@
 
 /// Result data returned by getStateMachine.
 class GetStateMachineResult {
-  /// Set to the arn of the state function.
+  /// Set to the ARN of the state function.
   final String? arn;
   /// Date the state machine was created.
   final String? creationDate;
@@ -22,7 +22,7 @@ class GetStateMachineResult {
   final String? status;
 
   /// Creates a new [GetStateMachineResult].
-  /// [arn] Set to the arn of the state function.
+  /// [arn] Set to the ARN of the state function.
   /// [creationDate] Date the state machine was created.
   /// [definition] Set to the state machine definition.
   /// [description] Optional.

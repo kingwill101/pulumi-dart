@@ -791,20 +791,19 @@ import 'environment_state.dart';
 /// $ pulumi import aws:mwaa/environment:Environment example MyAirflowEnvironment
 /// ```
 class Environment extends pulumi.CustomResource {
-  /// The `airflowConfigurationOptions` parameter specifies airflow override options. Check the [Official documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html#configuring-env-variables-reference) for all possible configuration options.
+  /// Airflow override options. Check the [Official documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html#configuring-env-variables-reference) for all possible configuration options.
   late final pulumi.Output<Map<String, String>?> airflowConfigurationOptions;
   /// Airflow version of your environment, will be set by default to the latest version that MWAA supports.
   late final pulumi.Output<String> airflowVersion;
-  /// The ARN of the MWAA Environment
+  /// ARN of the MWAA Environment.
   late final pulumi.Output<String> arn;
-  /// The Created At date of the MWAA Environment
+  /// Date and time the environment was last updated.
   late final pulumi.Output<String> createdAt;
-  /// The relative path to the DAG folder on your Amazon S3 storage bucket. For example, dags. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
+  /// Relative path to the DAG folder on your Amazon S3 storage bucket. For example, dags. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
   late final pulumi.Output<String> dagS3Path;
-  /// The VPC endpoint for the environment's Amazon RDS database
-  /// * `logging_configuration[0].&lt;LOG_CONFIGURATION_TYPE&gt;[0].cloud_watch_log_group_arn` - Provides the ARN for the CloudWatch group where the logs will be published
+  /// VPC endpoint for the environment's Amazon RDS database.
   late final pulumi.Output<String> databaseVpcEndpointService;
-  /// Defines whether the VPC endpoints configured for the environment are created and managed by the customer or by AWS. If set to `SERVICE`, Amazon MWAA will create and manage the required VPC endpoints in your VPC. If set to `CUSTOMER`, you must create, and manage, the VPC endpoints for your VPC. Defaults to `SERVICE` if not set.
+  /// Whether the VPC endpoints configured for the environment are created and managed by the customer or by AWS. If set to `SERVICE`, Amazon MWAA will create and manage the required VPC endpoints in your VPC. If set to `CUSTOMER`, you must create, and manage, the VPC endpoints for your VPC. Defaults to `SERVICE` if not set.
   late final pulumi.Output<String> endpointManagement;
   /// Environment class for the cluster. Possible options are `mw1.micro`, `mw1.small`, `mw1.medium`, `mw1.large`. Will be set by default to `mw1.small`. Please check the [AWS Pricing](https://aws.amazon.com/de/managed-workflows-for-apache-airflow/pricing/) for more information about the environment classes.
   late final pulumi.Output<String> environmentClass;
@@ -812,54 +811,55 @@ class Environment extends pulumi.CustomResource {
   late final pulumi.Output<String> executionRoleArn;
   /// ARN of your KMS key that you want to use for encryption. Will be set to the ARN of the managed KMS key `aws/airflow` by default. Please check the [Official Documentation](https://docs.aws.amazon.com/mwaa/latest/userguide/custom-keys-certs.html) for more information.
   late final pulumi.Output<String?> kmsKey;
+  /// Information about the last update of the environment. See `lastUpdated` Block for details.
   late final pulumi.Output<List<EnvironmentLastUpdated>> lastUpdateds;
-  /// The Apache Airflow logs you want to send to Amazon CloudWatch Logs. See `loggingConfiguration` Block for details.
+  /// Apache Airflow logs you want to send to Amazon CloudWatch Logs. See `loggingConfiguration` Block for details.
   late final pulumi.Output<EnvironmentLoggingConfiguration> loggingConfiguration;
-  /// The maximum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environmentClass` is not `mw1.micro`, `1` otherwise.
+  /// Maximum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environmentClass` is not `mw1.micro`, `1` otherwise.
   late final pulumi.Output<int> maxWebservers;
-  /// The maximum number of workers that can be automatically scaled up. Value need to be between `1` and `25`. Will be `10` by default.
+  /// Maximum number of workers that can be automatically scaled up. Value need to be between `1` and `25`. Will be `10` by default.
   late final pulumi.Output<int> maxWorkers;
-  /// The minimum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environmentClass` is not `mw1.micro`, `1` otherwise.
+  /// Minimum number of web servers that you want to run in your environment. Value need to be between `2` and `5` if `environmentClass` is not `mw1.micro`, `1` otherwise.
   late final pulumi.Output<int> minWebservers;
-  /// The minimum number of workers that you want to run in your environment. Will be `1` by default.
+  /// Minimum number of workers that you want to run in your environment. Will be `1` by default.
   late final pulumi.Output<int> minWorkers;
-  /// The name of the Apache Airflow Environment
+  /// Name of the Apache Airflow Environment.
   late final pulumi.Output<String> name;
-  /// Specifies the network configuration for your Apache Airflow Environment. This includes two private subnets as well as security groups for the Airflow environment. Each subnet requires internet connection, otherwise the deployment will fail. See `networkConfiguration` Block for details.
+  /// Network configuration for your Apache Airflow Environment. This includes two private subnets as well as security groups for the Airflow environment. Each subnet requires internet connection, otherwise the deployment will fail. See `networkConfiguration` Block for details.
   late final pulumi.Output<EnvironmentNetworkConfiguration> networkConfiguration;
-  /// The plugins.zip file version you want to use.
+  /// Version of the plugins.zip file you want to use.
   late final pulumi.Output<String> pluginsS3ObjectVersion;
-  /// The relative path to the plugins.zip file on your Amazon S3 storage bucket. For example, plugins.zip. If a relative path is provided in the request, then pluginsS3ObjectVersion is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
+  /// Relative path to the plugins.zip file on your Amazon S3 storage bucket. For example, plugins.zip. If a relative path is provided in the request, then pluginsS3ObjectVersion is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
   late final pulumi.Output<String?> pluginsS3Path;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The requirements.txt file version you want to use.
+  /// Version of the requirements.txt file you want to use.
   late final pulumi.Output<String> requirementsS3ObjectVersion;
-  /// The relative path to the requirements.txt file on your Amazon S3 storage bucket. For example, requirements.txt. If a relative path is provided in the request, then requirementsS3ObjectVersion is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
+  /// Relative path to the requirements.txt file on your Amazon S3 storage bucket. For example, requirements.txt. If a relative path is provided in the request, then requirementsS3ObjectVersion is required. For more information, see [Importing DAGs on Amazon MWAA](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import.html).
   late final pulumi.Output<String?> requirementsS3Path;
-  /// The number of schedulers that you want to run in your environment. v2.0.2 and above accepts `2` - `5`, default `2`. v1.10.12 accepts `1`.
+  /// Number of schedulers that you want to run in your environment. v2.0.2 and above accepts `2` - `5`, default `2`. v1.10.12 accepts `1`.
   late final pulumi.Output<int> schedulers;
-  /// The Service Role ARN of the Amazon MWAA Environment
+  /// Service Role ARN of the Amazon MWAA Environment.
   late final pulumi.Output<String> serviceRoleArn;
   /// ARN of your Amazon S3 storage bucket. For example, arn:aws:s3:::airflow-mybucketname.
   late final pulumi.Output<String> sourceBucketArn;
-  /// The version of the startup shell script you want to use. You must specify the version ID that Amazon S3 assigns to the file every time you update the script.
+  /// Version of the startup shell script you want to use. You must specify the version ID that Amazon S3 assigns to the file every time you update the script.
   late final pulumi.Output<String> startupScriptS3ObjectVersion;
-  /// The relative path to the script hosted in your bucket. The script runs as your environment starts before starting the Apache Airflow process. Use this script to install dependencies, modify configuration options, and set environment variables. See [Using a startup script](https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html). Supported for environment versions 2.x and later.
+  /// Relative path to the script hosted in your bucket. The script runs as your environment starts before starting the Apache Airflow process. Use this script to install dependencies, modify configuration options, and set environment variables. See [Using a startup script](https://docs.aws.amazon.com/mwaa/latest/userguide/using-startup-script.html). Supported for environment versions 2.x and later.
   late final pulumi.Output<String?> startupScriptS3Path;
-  /// The status of the Amazon MWAA Environment
+  /// Status of the last update.
   late final pulumi.Output<String> status;
-  /// A map of resource tags to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of resource tags to associate with the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Specifies whether the webserver should be accessible over the internet or via your specified VPC. Possible options: `PRIVATE_ONLY` (default), `PUBLIC_ONLY` and `PUBLIC_AND_PRIVATE`.
+  /// Whether the webserver should be accessible over the internet or via your specified VPC. Possible options: `PRIVATE_ONLY` (default), `PUBLIC_ONLY` and `PUBLIC_AND_PRIVATE`.
   late final pulumi.Output<String> webserverAccessMode;
-  /// The webserver URL of the MWAA Environment
+  /// Webserver URL of the MWAA Environment.
   late final pulumi.Output<String> webserverUrl;
-  /// The VPC endpoint for the environment's web server
+  /// VPC endpoint for the environment's web server.
   late final pulumi.Output<String> webserverVpcEndpointService;
-  /// Specifies the start date for the weekly maintenance window.
+  /// Start date for the weekly maintenance window.
   late final pulumi.Output<String> weeklyMaintenanceWindowStart;
   /// Worker replacement strategy. Valid values: `FORCED`, `GRACEFUL`.
   late final pulumi.Output<String> workerReplacementStrategy;
@@ -876,7 +876,7 @@ class Environment extends pulumi.CustomResource {
           'aws:mwaa/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
           additionalSecretOutputs: const ['airflowConfigurationOptions'],
         ) {
     airflowConfigurationOptions = registerOutput<Map<String, String>?>('airflowConfigurationOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);

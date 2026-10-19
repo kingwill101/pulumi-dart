@@ -110,7 +110,7 @@ import 'activity_state.dart';
 ///
 /// ### Encryption
 ///
-/// &gt; *NOTE:* See the section [Data at rest encyption](https://docs.aws.amazon.com/step-functions/latest/dg/encryption-at-rest.html) in the [AWS Step Functions Developer Guide](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html) for more information about enabling encryption of data using a customer-managed key for Step Functions State Machines data.
+/// &gt; *NOTE:* See the section [Data at rest encryption](https://docs.aws.amazon.com/step-functions/latest/dg/encryption-at-rest.html) in the [AWS Step Functions Developer Guide](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html) for more information about enabling encryption of data using a customer-managed key for Step Functions State Machines data.
 ///
 ///
 /// ```typescript
@@ -269,7 +269,7 @@ class Activity extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// Date the activity was created.
   late final pulumi.Output<String> creationDate;
-  /// Defines what encryption configuration is used to encrypt data in the Activity. For more information see the section [Data at rest encyption](https://docs.aws.amazon.com/step-functions/latest/dg/encryption-at-rest.html) in the AWS Step Functions User Guide.
+  /// Defines what encryption configuration is used to encrypt data in the Activity. For more information see the section [Data at rest encryption](https://docs.aws.amazon.com/step-functions/latest/dg/encryption-at-rest.html) in the AWS Step Functions User Guide.
   late final pulumi.Output<ActivityEncryptionConfiguration> encryptionConfiguration;
   /// The name of the activity to create.
   late final pulumi.Output<String> name;
@@ -292,7 +292,7 @@ class Activity extends pulumi.CustomResource {
           'aws:sfn/activity:Activity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     creationDate = registerOutput<String>('creationDate');

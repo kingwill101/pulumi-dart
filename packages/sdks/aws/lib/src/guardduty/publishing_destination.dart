@@ -783,15 +783,15 @@ import 'publishing_destination_state.dart';
 class PublishingDestination extends pulumi.CustomResource {
   /// Resource ARN.
   late final pulumi.Output<String> arn;
-  /// The bucket arn and prefix under which the findings get exported. Bucket-ARN is required, the prefix is optional and will be `AWSLogs/[Account-ID]/GuardDuty/[Region]/` if not provided
+  /// Bucket ARN and prefix under which the findings get exported. Bucket-ARN is required, the prefix is optional and will be `AWSLogs/[Account-ID]/GuardDuty/[Region]/` if not provided
   late final pulumi.Output<String> destinationArn;
   /// Destination ID.
   late final pulumi.Output<String> destinationId;
   /// Currently there is only "S3" available as destination type which is also the default value
   late final pulumi.Output<String?> destinationType;
-  /// The detector ID of the GuardDuty.
+  /// Detector ID of the GuardDuty.
   late final pulumi.Output<String> detectorId;
-  /// The ARN of the KMS key used to encrypt GuardDuty findings. GuardDuty enforces this to be encrypted.
+  /// ARN of the KMS key used to encrypt GuardDuty findings. GuardDuty enforces this to be encrypted.
   late final pulumi.Output<String> kmsKeyArn;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -799,7 +799,7 @@ class PublishingDestination extends pulumi.CustomResource {
   ///
   /// &gt; **Note:** In case of missing permissions (S3 Bucket Policy _or_ KMS Key permissions) the resource will fail to create. If the permissions are changed after resource creation, this can be asked from the AWS API via the "DescribePublishingDestination" call (https://docs.aws.amazon.com/cli/latest/reference/guardduty/describe-publishing-destination.html).
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [PublishingDestination].
@@ -814,7 +814,7 @@ class PublishingDestination extends pulumi.CustomResource {
           'aws:guardduty/publishingDestination:PublishingDestination',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     destinationArn = registerOutput<String>('destinationArn');

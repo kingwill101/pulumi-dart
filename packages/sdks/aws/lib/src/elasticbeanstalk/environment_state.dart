@@ -14,7 +14,7 @@ class EnvironmentState {
   /// to be deployed
   final pulumi.Input<dynamic>? application;
   final pulumi.Input<String?>? arn;
-  /// The autoscaling groups used by this Environment.
+  /// The Auto Scaling groups used by this Environment.
   final pulumi.Input<List<String>?>? autoscalingGroups;
   /// Fully qualified DNS name for this Environment.
   final pulumi.Input<String?>? cname;
@@ -63,7 +63,7 @@ class EnvironmentState {
   /// Elastic Beanstalk Environment tier. Valid values are `Worker`
   /// or `WebServer`. If tier is left blank `WebServer` will be used.
   final pulumi.Input<String?>? tier;
-  /// Autoscaling triggers in use by this Environment.
+  /// Auto Scaling triggers in use by this Environment.
   final pulumi.Input<List<String>?>? triggers;
   /// The name of the Elastic Beanstalk Application Version
   /// to use in deployment.
@@ -78,7 +78,7 @@ class EnvironmentState {
   /// [allSettings] List of all option settings configured in this Environment. These
   /// [application] Name of the application that contains the version
   /// [arn] Optional.
-  /// [autoscalingGroups] The autoscaling groups used by this Environment.
+  /// [autoscalingGroups] The Auto Scaling groups used by this Environment.
   /// [cname] Fully qualified DNS name for this Environment.
   /// [cnamePrefix] Prefix to use for the fully qualified DNS name of
   /// [description] Short description of the Environment
@@ -97,7 +97,7 @@ class EnvironmentState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   /// [templateName] The name of the Elastic Beanstalk Configuration
   /// [tier] Elastic Beanstalk Environment tier. Valid values are `Worker`
-  /// [triggers] Autoscaling triggers in use by this Environment.
+  /// [triggers] Auto Scaling triggers in use by this Environment.
   /// [version] The name of the Elastic Beanstalk Application Version
   /// [waitForReadyTimeout] The maximum
   const EnvironmentState({

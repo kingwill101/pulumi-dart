@@ -3,13 +3,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvironmentStorageConfigurationFsx {
-  /// Id of the FSX filesystem to mount.
+  /// ID of the FSx filesystem to mount.
   final pulumi.Input<String> fileSystemId;
   /// Path to mount the filesystem on, must start with `/m2/mount/`.
   final pulumi.Input<String> mountPoint;
 
   /// Creates a new [EnvironmentStorageConfigurationFsx].
-  /// [fileSystemId] Id of the FSX filesystem to mount.
+  /// [fileSystemId] ID of the FSx filesystem to mount.
   /// [mountPoint] Path to mount the filesystem on, must start with `/m2/mount/`.
   const EnvironmentStorageConfigurationFsx({
     required this.fileSystemId,

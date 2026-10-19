@@ -39,11 +39,11 @@ class GetClusterResult {
   final String? networkType;
   /// Compute and memory capacity of the nodes in the cluster.
   final String? nodeType;
-  /// The number of replicas to apply to each shard.
+  /// Number of replicas to apply to each shard.
   final int? numReplicasPerShard;
   /// Number of shards in the cluster.
   final int? numShards;
-  /// The name of the parameter group associated with the cluster.
+  /// Name of the parameter group associated with the cluster.
   final String? parameterGroupName;
   /// Port number that this node is listening on.
   final int? port;
@@ -52,13 +52,13 @@ class GetClusterResult {
   final List<String>? securityGroupIds;
   /// Set of shards in this cluster.
   final List<GetClusterShard>? shards;
-  /// The number of days for which MemoryDB retains automatic snapshots before deleting them. When set to `0`, automatic backups are disabled.
+  /// Number of days for which MemoryDB retains automatic snapshots before deleting them. When set to `0`, automatic backups are disabled.
   final int? snapshotRetentionLimit;
   /// Daily time range (in UTC) during which MemoryDB begins taking a daily snapshot of your shard. Example: `05:00-09:00`.
   final String? snapshotWindow;
   /// ARN of the SNS topic to which cluster notifications are sent.
   final String? snsTopicArn;
-  /// The name of the subnet group used for the cluster.
+  /// Name of the subnet group used for the cluster.
   final String? subnetGroupName;
   /// Map of tags assigned to the cluster.
   final Map<String, String>? tags;
@@ -83,17 +83,17 @@ class GetClusterResult {
   /// [name] Name of this node.
   /// [networkType] IP address type for the cluster.
   /// [nodeType] Compute and memory capacity of the nodes in the cluster.
-  /// [numReplicasPerShard] The number of replicas to apply to each shard.
+  /// [numReplicasPerShard] Number of replicas to apply to each shard.
   /// [numShards] Number of shards in the cluster.
-  /// [parameterGroupName] The name of the parameter group associated with the cluster.
+  /// [parameterGroupName] Name of the parameter group associated with the cluster.
   /// [port] Port number that this node is listening on.
   /// [region] Optional.
   /// [securityGroupIds] Set of VPC Security Group ID-s associated with this cluster.
   /// [shards] Set of shards in this cluster.
-  /// [snapshotRetentionLimit] The number of days for which MemoryDB retains automatic snapshots before deleting them. When set to `0`, automatic backups are disabled.
+  /// [snapshotRetentionLimit] Number of days for which MemoryDB retains automatic snapshots before deleting them. When set to `0`, automatic backups are disabled.
   /// [snapshotWindow] Daily time range (in UTC) during which MemoryDB begins taking a daily snapshot of your shard. Example: `05:00-09:00`.
   /// [snsTopicArn] ARN of the SNS topic to which cluster notifications are sent.
-  /// [subnetGroupName] The name of the subnet group used for the cluster.
+  /// [subnetGroupName] Name of the subnet group used for the cluster.
   /// [tags] Map of tags assigned to the cluster.
   /// [tlsEnabled] When true, in-transit encryption is enabled for the cluster.
   const GetClusterResult({
@@ -183,14 +183,14 @@ class GetClusterResult {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkType: (() { final guardedValue = map['networkType']; if (guardedValue == null) return null; return guardedValue as String; })(),
       nodeType: (() { final guardedValue = map['nodeType']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      numReplicasPerShard: (() { final guardedValue = map['numReplicasPerShard']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      numShards: (() { final guardedValue = map['numShards']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      numReplicasPerShard: (() { final guardedValue = map['numReplicasPerShard']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      numShards: (() { final guardedValue = map['numShards']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       parameterGroupName: (() { final guardedValue = map['parameterGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       securityGroupIds: (() { final guardedValue = map['securityGroupIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       shards: (() { final guardedValue = map['shards']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetClusterShard>(guardedValue, (value) => GetClusterShard.fromMap((value as Map).cast<String, dynamic>())); })(),
-      snapshotRetentionLimit: (() { final guardedValue = map['snapshotRetentionLimit']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      snapshotRetentionLimit: (() { final guardedValue = map['snapshotRetentionLimit']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       snapshotWindow: (() { final guardedValue = map['snapshotWindow']; if (guardedValue == null) return null; return guardedValue as String; })(),
       snsTopicArn: (() { final guardedValue = map['snsTopicArn']; if (guardedValue == null) return null; return guardedValue as String; })(),
       subnetGroupName: (() { final guardedValue = map['subnetGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),

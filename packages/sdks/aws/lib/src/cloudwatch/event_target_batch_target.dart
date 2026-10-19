@@ -35,8 +35,8 @@ class EventTargetBatchTarget {
 
   factory EventTargetBatchTarget.fromMap(Map<String, dynamic> map) {
     return EventTargetBatchTarget(
-      arraySize: (() { final guardedValue = map['arraySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      jobAttempts: (() { final guardedValue = map['jobAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      arraySize: (() { final guardedValue = map['arraySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      jobAttempts: (() { final guardedValue = map['jobAttempts']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       jobDefinition: pulumi.Input.fromValue(map['jobDefinition'] as String),
       jobName: pulumi.Input.fromValue(map['jobName'] as String),
     );

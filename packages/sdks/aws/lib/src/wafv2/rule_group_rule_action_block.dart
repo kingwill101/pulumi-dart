@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_action_block_custom_response.dart';
 
 class RuleGroupRuleActionBlock {
-  /// Defines a custom response for the web request. See Custom Response below for details.
+  /// Custom response for the web request. See Custom Response below for details.
   final pulumi.Input<RuleGroupRuleActionBlockCustomResponse?>? customResponse;
 
   /// Creates a new [RuleGroupRuleActionBlock].
-  /// [customResponse] Defines a custom response for the web request. See Custom Response below for details.
+  /// [customResponse] Custom response for the web request. See Custom Response below for details.
   const RuleGroupRuleActionBlock({
     this.customResponse,
   });

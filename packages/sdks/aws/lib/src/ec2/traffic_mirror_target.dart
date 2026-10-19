@@ -197,7 +197,7 @@ class TrafficMirrorTarget extends pulumi.CustomResource {
   late final pulumi.Output<String> arn;
   /// A description of the traffic mirror session.
   late final pulumi.Output<String?> description;
-  /// The VPC Endpoint Id of the Gateway Load Balancer that is associated with the target.
+  /// The VPC Endpoint ID of the Gateway Load Balancer that is associated with the target.
   late final pulumi.Output<String?> gatewayLoadBalancerEndpointId;
   /// The network interface ID that is associated with the target.
   late final pulumi.Output<String?> networkInterfaceId;
@@ -226,7 +226,7 @@ class TrafficMirrorTarget extends pulumi.CustomResource {
           'aws:ec2/trafficMirrorTarget:TrafficMirrorTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     description = registerOutput<String?>('description');

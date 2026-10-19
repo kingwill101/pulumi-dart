@@ -6,11 +6,11 @@ import 'launch_configuration_metadata_options.dart';
 import 'launch_configuration_root_block_device.dart';
 import 'launch_configuration_state.dart';
 
-/// Provides a resource to create a new launch configuration, used for autoscaling groups.
+/// Provides a resource to create a new launch configuration, used for Auto Scaling groups.
 ///
 /// &gt; **WARNING:** The use of launch configurations is discouraged in favor of launch templates. Read more in the [AWS EC2 Documentation](https://docs.aws.amazon.com/autoscaling/ec2/userguide/launch-configurations.html).
 ///
-/// &gt; **Note** When using `aws.ec2.LaunchConfiguration` with `aws.autoscaling.Group`, it is recommended to use the `namePrefix` (Optional) instead of the `name` (Optional) attribute.
+/// &gt; **Note** When using `aws.ec2.LaunchConfiguration` with `aws.autoscaling.Group`, it is recommended to use the `namePrefix` (Optional) instead of the `name` (Optional) attribute. This will allow Pulumi lifecycles to detect changes to the launch configuration and update the Auto Scaling group correctly.
 ///
 /// ## Example Usage
 ///
@@ -267,7 +267,7 @@ import 'launch_configuration_state.dart';
 class LaunchConfiguration extends pulumi.CustomResource {
   /// ARN of the launch configuration.
   late final pulumi.Output<String> arn;
-  /// Associate a public ip address with an instance in a VPC.
+  /// Associate a public IP address with an instance in a VPC.
   late final pulumi.Output<bool?> associatePublicIpAddress;
   /// Additional EBS block devices to attach to the instance. See Block Devices below for details.
   late final pulumi.Output<List<LaunchConfigurationEbsBlockDevice>> ebsBlockDevices;
@@ -299,7 +299,7 @@ class LaunchConfiguration extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Customize details about the root block device of the instance. See Block Devices below for details.
   late final pulumi.Output<LaunchConfigurationRootBlockDevice> rootBlockDevice;
-  /// A list of associated security group IDS.
+  /// A list of associated security group IDs.
   late final pulumi.Output<List<String>?> securityGroups;
   /// The maximum price to use for reserving spot instances.
   late final pulumi.Output<String?> spotPrice;
@@ -320,7 +320,7 @@ class LaunchConfiguration extends pulumi.CustomResource {
           'aws:ec2/launchConfiguration:LaunchConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     associatePublicIpAddress = registerOutput<bool?>('associatePublicIpAddress');

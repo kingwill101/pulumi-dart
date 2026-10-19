@@ -8,7 +8,7 @@ class GetRouteTablesResult {
   final List<GetRouteTablesFilter>? filters;
   /// The provider-assigned unique ID for this managed resource.
   final String? id;
-  /// List of all the route table ids found.
+  /// List of all the route table IDs found.
   final List<String>? ids;
   final String? region;
   final Map<String, String>? tags;
@@ -17,7 +17,7 @@ class GetRouteTablesResult {
   /// Creates a new [GetRouteTablesResult].
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
-  /// [ids] List of all the route table ids found.
+  /// [ids] List of all the route table IDs found.
   /// [region] Optional.
   /// [tags] Optional.
   /// [vpcId] Optional.

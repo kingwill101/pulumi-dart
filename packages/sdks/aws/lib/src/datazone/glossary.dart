@@ -742,7 +742,7 @@ import 'glossary_state.dart';
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import DataZone Glossary using the import Datazone Glossary using a comma-delimited string combining the domain id, glossary id, and the id of the project it's under. For example:
+/// Using `pulumi import`, import DataZone Glossary using the import DataZone Glossary using a comma-delimited string combining the domain ID, glossary ID, and the ID of the project it's under. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:datazone/glossary:Glossary example domain-id,glossary-id,owning-project-identifier
@@ -774,7 +774,7 @@ class Glossary extends pulumi.CustomResource {
           'aws:datazone/glossary:Glossary',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     domainIdentifier = registerOutput<String>('domainIdentifier');

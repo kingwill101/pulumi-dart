@@ -194,9 +194,9 @@ import 'vpn_gateway_attachment_state.dart';
 class VpnGatewayAttachment extends pulumi.CustomResource {
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ID of the VPC.
+  /// ID of the VPC.
   late final pulumi.Output<String> vpcId;
-  /// The ID of the Virtual Private Gateway.
+  /// ID of the Virtual Private Gateway.
   late final pulumi.Output<String> vpnGatewayId;
 
   /// Creates a new [VpnGatewayAttachment].
@@ -211,7 +211,7 @@ class VpnGatewayAttachment extends pulumi.CustomResource {
           'aws:ec2/vpnGatewayAttachment:VpnGatewayAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     vpcId = registerOutput<String>('vpcId');

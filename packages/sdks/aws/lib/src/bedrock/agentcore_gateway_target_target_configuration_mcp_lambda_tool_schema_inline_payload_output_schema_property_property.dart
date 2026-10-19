@@ -11,7 +11,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
   final pulumi.Input<String> name;
   /// JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with `itemsJson`.
   final pulumi.Input<String?>? propertiesJson;
-  /// Whether this property is required. Defaults to `false`.
+  /// Whether to mark this property as required. Defaults to `false`.
   final pulumi.Input<bool?>? required;
   /// Data type of the property.
   final pulumi.Input<String> type;
@@ -21,7 +21,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
   /// [itemsJson] JSON-encoded schema definition for array items. Used for complex nested structures. Cannot be used with `propertiesJson`.
   /// [name] Name of the property.
   /// [propertiesJson] JSON-encoded schema definition for object properties. Used for complex nested structures. Cannot be used with `itemsJson`.
-  /// [required] Whether this property is required. Defaults to `false`.
+  /// [required] Whether to mark this property as required. Defaults to `false`.
   /// [type] Data type of the property.
   const AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchemaPropertyProperty({
     this.description,

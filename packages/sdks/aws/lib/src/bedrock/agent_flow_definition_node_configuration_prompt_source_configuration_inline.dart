@@ -7,21 +7,21 @@ import 'agent_flow_definition_node_configuration_prompt_source_configuration_inl
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline {
   /// Additional fields to be included in the model request for the Prompt node.
   final pulumi.Input<String?>? additionalModelRequestFields;
-  /// Contains inference configurations for the prompt. See Inference Configuration for more information.
+  /// Inference configurations for the prompt. See `definition.node.configuration.prompt.source_configuration.inline.inference_configuration` Block for details.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineInferenceConfiguration?>? inferenceConfiguration;
-  /// The unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) to run inference with.
+  /// Unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) to run inference with.
   final pulumi.Input<String> modelId;
-  /// Contains a prompt and variables in the prompt that can be replaced with values at runtime. See Prompt Template Configuration for more information.
+  /// Prompt and variables in the prompt that can be replaced with values at runtime. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration` Block for details.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfiguration?>? templateConfiguration;
-  /// The type of prompt template. Valid values: `TEXT`, `CHAT`.
+  /// Type of prompt template. Valid values: `TEXT`, `CHAT`.
   final pulumi.Input<String> templateType;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline].
   /// [additionalModelRequestFields] Additional fields to be included in the model request for the Prompt node.
-  /// [inferenceConfiguration] Contains inference configurations for the prompt. See Inference Configuration for more information.
-  /// [modelId] The unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) to run inference with.
-  /// [templateConfiguration] Contains a prompt and variables in the prompt that can be replaced with values at runtime. See Prompt Template Configuration for more information.
-  /// [templateType] The type of prompt template. Valid values: `TEXT`, `CHAT`.
+  /// [inferenceConfiguration] Inference configurations for the prompt. See `definition.node.configuration.prompt.source_configuration.inline.inference_configuration` Block for details.
+  /// [modelId] Unique identifier of the model or [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html) to run inference with.
+  /// [templateConfiguration] Prompt and variables in the prompt that can be replaced with values at runtime. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration` Block for details.
+  /// [templateType] Type of prompt template. Valid values: `TEXT`, `CHAT`.
   const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInline({
     this.additionalModelRequestFields,
     this.inferenceConfiguration,

@@ -16,12 +16,12 @@ class GetConnectorResult {
   /// Egress configuration for the connector. Contains the following attributes:
   final List<GetConnectorEgressConfig>? egressConfigs;
   final String? id;
-  /// ARN of the IAM role that allows a connector to turn on CLoudwatch logging for Amazon S3 events.
+  /// ARN of the IAM role that allows a connector to turn on CloudWatch logging for Amazon S3 events.
   final String? loggingRole;
   final String? region;
   /// Name of security policy.
   final String? securityPolicyName;
-  /// List of egress Ip addresses.
+  /// List of egress IP addresses.
   final List<String>? serviceManagedEgressIpAddresses;
   /// Object containing the following attributes:
   final List<GetConnectorSftpConfig>? sftpConfigs;
@@ -36,10 +36,10 @@ class GetConnectorResult {
   /// [as2Configs] Structure containing the parameters for an AS2 connector object. Contains the following attributes:
   /// [egressConfigs] Egress configuration for the connector. Contains the following attributes:
   /// [id] Optional.
-  /// [loggingRole] ARN of the IAM role that allows a connector to turn on CLoudwatch logging for Amazon S3 events.
+  /// [loggingRole] ARN of the IAM role that allows a connector to turn on CloudWatch logging for Amazon S3 events.
   /// [region] Optional.
   /// [securityPolicyName] Name of security policy.
-  /// [serviceManagedEgressIpAddresses] List of egress Ip addresses.
+  /// [serviceManagedEgressIpAddresses] List of egress IP addresses.
   /// [sftpConfigs] Object containing the following attributes:
   /// [tags] Map of tags assigned to the resource.
   /// [url] URL of the partner's AS2 or SFTP endpoint.

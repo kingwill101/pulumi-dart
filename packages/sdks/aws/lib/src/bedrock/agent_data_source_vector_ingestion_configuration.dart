@@ -2,23 +2,28 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_data_source_vector_ingestion_configuration_chunking_configuration.dart';
+import 'agent_data_source_vector_ingestion_configuration_context_enrichment_configuration.dart';
 import 'agent_data_source_vector_ingestion_configuration_custom_transformation_configuration.dart';
 import 'agent_data_source_vector_ingestion_configuration_parsing_configuration.dart';
 
 class AgentDataSourceVectorIngestionConfiguration {
-  /// Details about how to chunk the documents in the data source. A chunk refers to an excerpt from a data source that is returned when the knowledge base that it belongs to is queried. See `chunkingConfiguration` block for details.
+  /// Details about how to chunk the documents in the data source. A chunk refers to an excerpt from a data source that is returned when the knowledge base that it belongs to is queried. See `chunkingConfiguration` Block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfigurationChunkingConfiguration?>? chunkingConfiguration;
-  /// Configuration for custom transformation of data source documents.
+  /// Context enrichment configuration used to provide additional context to the RAG application. Required when the knowledge base uses Amazon Neptune Analytics (GraphRAG) storage. See `contextEnrichmentConfiguration` Block for details.
+  final pulumi.Input<AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfiguration?>? contextEnrichmentConfiguration;
+  /// Configuration for custom transformation of data source documents. See `customTransformationConfiguration` Block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration?>? customTransformationConfiguration;
-  /// Configuration for custom parsing of data source documents. See `parsingConfiguration` block for details.
+  /// Configuration for custom parsing of data source documents. See `parsingConfiguration` Block for details.
   final pulumi.Input<AgentDataSourceVectorIngestionConfigurationParsingConfiguration?>? parsingConfiguration;
 
   /// Creates a new [AgentDataSourceVectorIngestionConfiguration].
-  /// [chunkingConfiguration] Details about how to chunk the documents in the data source. A chunk refers to an excerpt from a data source that is returned when the knowledge base that it belongs to is queried. See `chunkingConfiguration` block for details.
-  /// [customTransformationConfiguration] Configuration for custom transformation of data source documents.
-  /// [parsingConfiguration] Configuration for custom parsing of data source documents. See `parsingConfiguration` block for details.
+  /// [chunkingConfiguration] Details about how to chunk the documents in the data source. A chunk refers to an excerpt from a data source that is returned when the knowledge base that it belongs to is queried. See `chunkingConfiguration` Block for details.
+  /// [contextEnrichmentConfiguration] Context enrichment configuration used to provide additional context to the RAG application. Required when the knowledge base uses Amazon Neptune Analytics (GraphRAG) storage. See `contextEnrichmentConfiguration` Block for details.
+  /// [customTransformationConfiguration] Configuration for custom transformation of data source documents. See `customTransformationConfiguration` Block for details.
+  /// [parsingConfiguration] Configuration for custom parsing of data source documents. See `parsingConfiguration` Block for details.
   const AgentDataSourceVectorIngestionConfiguration({
     this.chunkingConfiguration,
+    this.contextEnrichmentConfiguration,
     this.customTransformationConfiguration,
     this.parsingConfiguration,
   });
@@ -26,6 +31,7 @@ class AgentDataSourceVectorIngestionConfiguration {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'chunkingConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceVectorIngestionConfigurationChunkingConfiguration, Map<String, dynamic>>(chunkingConfiguration, (value) => value.toMap()),
+      'contextEnrichmentConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfiguration, Map<String, dynamic>>(contextEnrichmentConfiguration, (value) => value.toMap()),
       'customTransformationConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration, Map<String, dynamic>>(customTransformationConfiguration, (value) => value.toMap()),
       'parsingConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentDataSourceVectorIngestionConfigurationParsingConfiguration, Map<String, dynamic>>(parsingConfiguration, (value) => value.toMap()),
     };
@@ -34,6 +40,7 @@ class AgentDataSourceVectorIngestionConfiguration {
   factory AgentDataSourceVectorIngestionConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentDataSourceVectorIngestionConfiguration(
       chunkingConfiguration: (() { final guardedValue = map['chunkingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentDataSourceVectorIngestionConfigurationChunkingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      contextEnrichmentConfiguration: (() { final guardedValue = map['contextEnrichmentConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       customTransformationConfiguration: (() { final guardedValue = map['customTransformationConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentDataSourceVectorIngestionConfigurationCustomTransformationConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       parsingConfiguration: (() { final guardedValue = map['parsingConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentDataSourceVectorIngestionConfigurationParsingConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

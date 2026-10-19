@@ -15,7 +15,7 @@ import 'domain_name_state.dart';
 /// API Gateway domains can be defined as either 'edge-optimized' or 'regional'.  In an edge-optimized configuration,
 /// API Gateway internally creates and manages a CloudFront distribution to route requests on the given hostname. In
 /// addition to this resource it's necessary to create a DNS record corresponding to the given domain name which is an alias
-/// (either Route53 alias or traditional CNAME) to the Cloudfront domain name exported in the `cloudfrontDomainName`
+/// (either Route53 alias or traditional CNAME) to the CloudFront domain name exported in the `cloudfrontDomainName`
 /// attribute.
 ///
 /// In a regional configuration, API Gateway does not create a CloudFront distribution to route requests to the API, though
@@ -652,7 +652,7 @@ class DomainName extends pulumi.CustomResource {
   late final pulumi.Output<String?> certificatePrivateKey;
   /// Upload date associated with the domain certificate.
   late final pulumi.Output<String> certificateUploadDate;
-  /// Hostname created by Cloudfront to represent the distribution that implements this domain name mapping.
+  /// Hostname created by CloudFront to represent the distribution that implements this domain name mapping.
   late final pulumi.Output<String> cloudfrontDomainName;
   /// For convenience, the hosted zone ID (`Z2FDTNDATAQYW2`) that can be used to create a Route53 alias record for the distribution.
   late final pulumi.Output<String> cloudfrontZoneId;
@@ -701,7 +701,7 @@ class DomainName extends pulumi.CustomResource {
           'aws:apigateway/domainName:DomainName',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
           additionalSecretOutputs: const ['certificatePrivateKey'],
         ) {
     arn = registerOutput<String>('arn');

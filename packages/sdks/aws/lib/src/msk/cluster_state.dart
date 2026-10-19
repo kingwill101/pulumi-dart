@@ -35,51 +35,51 @@ class ClusterState {
   final pulumi.Input<String?>? bootstrapBrokersTls;
   /// One or more IPv6 DNS names (or IP addresses) and TLS port pairs. This attribute will have a value if the cluster is configured with `broker_node_group_info.0.connectivity_info.0.network_type` set to `DUAL` and `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   final pulumi.Input<String?>? bootstrapBrokersTlsIpv6;
-  /// A string containing one or more DNS names (or IP addresses) and SASL IAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
+  /// One or more DNS names (or IP addresses) and SASL IAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
   final pulumi.Input<String?>? bootstrapBrokersVpcConnectivitySaslIam;
-  /// A string containing one or more DNS names (or IP addresses) and SASL SCRAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
+  /// One or more DNS names (or IP addresses) and SASL SCRAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
   final pulumi.Input<String?>? bootstrapBrokersVpcConnectivitySaslScram;
-  /// A string containing one or more DNS names (or IP addresses) and TLS port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
+  /// One or more DNS names (or IP addresses) and TLS port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
   final pulumi.Input<String?>? bootstrapBrokersVpcConnectivityTls;
-  /// Configuration block for the broker nodes of the Kafka cluster. See brokerNodeGroupInfo Argument Reference below.
+  /// Configuration block for the broker nodes of the Kafka cluster. See `brokerNodeGroupInfo` Block below.
   final pulumi.Input<ClusterBrokerNodeGroupInfo?>? brokerNodeGroupInfo;
-  /// Configuration block for specifying a client authentication. See clientAuthentication Argument Reference below.
+  /// Configuration block for specifying a client authentication. See `clientAuthentication` Block below.
   final pulumi.Input<ClusterClientAuthentication?>? clientAuthentication;
   /// Name of the MSK cluster.
   final pulumi.Input<String?>? clusterName;
   /// UUID of the MSK cluster, for use in IAM policies.
   final pulumi.Input<String?>? clusterUuid;
-  /// Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See configurationInfo Argument Reference below.
+  /// Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See `configurationInfo` Block below.
   final pulumi.Input<ClusterConfigurationInfo?>? configurationInfo;
   /// Current version of the MSK Cluster used for updates, e.g., `K13V1IB3VIYZZH`
   final pulumi.Input<String?>? currentVersion;
   /// Status indicating whether Amazon MSK requires customer action for the cluster. Valid values are `NONE`, `ACTION_RECOMMENDED`, and `CRITICAL_ACTION_REQUIRED`.
   final pulumi.Input<String?>? customerActionStatus;
-  /// Configuration block for specifying encryption. See encryptionInfo Argument Reference below.
+  /// Configuration block for specifying encryption. See `encryptionInfo` Block below.
   final pulumi.Input<ClusterEncryptionInfo?>? encryptionInfo;
-  /// Specify the desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
+  /// Desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html).
   final pulumi.Input<String?>? enhancedMonitoring;
-  /// Specify the desired Kafka software version.
+  /// Desired Kafka software version.
   final pulumi.Input<String?>? kafkaVersion;
-  /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See loggingInfo Argument Reference below.
+  /// Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See `loggingInfo` Block below.
   final pulumi.Input<ClusterLoggingInfo?>? loggingInfo;
-  /// The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
+  /// Desired total number of broker nodes in the kafka cluster. It must be a multiple of the number of specified client subnets.
   final pulumi.Input<int?>? numberOfBrokerNodes;
-  /// Configuration block for JMX and Node monitoring for the MSK cluster. See openMonitoring Argument Reference below.
+  /// Configuration block for JMX and Node monitoring for the MSK cluster. See `openMonitoring` Block below.
   final pulumi.Input<ClusterOpenMonitoring?>? openMonitoring;
-  /// Configuration block for intelligent rebalancing. See rebalancing Argument Reference below. Only applicable to MSK Provisioned clusters with Express brokers.
+  /// Configuration block for intelligent rebalancing. See `rebalancing` Block below. Only applicable to MSK Provisioned clusters with Express brokers.
   final pulumi.Input<ClusterRebalancing?>? rebalancing;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
   /// Controls storage mode for supported storage tiers. Valid values are: `LOCAL` or `TIERED`.
   final pulumi.Input<String?>? storageMode;
-  /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
-  /// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
+  /// Comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   final pulumi.Input<String?>? zookeeperConnectString;
-  /// A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster via TLS. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
+  /// Comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster via TLS. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   final pulumi.Input<String?>? zookeeperConnectStringTls;
 
   /// Creates a new [ClusterState].
@@ -95,29 +95,29 @@ class ClusterState {
   /// [bootstrapBrokersSaslScramIpv6] One or more IPv6 DNS names (or IP addresses) and SASL SCRAM port pairs. This attribute will have a value if the cluster is configured with `broker_node_group_info.0.connectivity_info.0.network_type` set to `DUAL` and `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS` and `client_authentication.0.sasl.0.scram` is set to `true`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   /// [bootstrapBrokersTls] One or more DNS names (or IP addresses) and TLS port pairs. For example, `b-1.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9094,b-2.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9094,b-3.exampleClusterName.abcde.c2.kafka.us-east-1.amazonaws.com:9094`. This attribute will have a value if `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   /// [bootstrapBrokersTlsIpv6] One or more IPv6 DNS names (or IP addresses) and TLS port pairs. This attribute will have a value if the cluster is configured with `broker_node_group_info.0.connectivity_info.0.network_type` set to `DUAL` and `encryption_info.0.encryption_in_transit.0.client_broker` is set to `TLS_PLAINTEXT` or `TLS`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
-  /// [bootstrapBrokersVpcConnectivitySaslIam] A string containing one or more DNS names (or IP addresses) and SASL IAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
-  /// [bootstrapBrokersVpcConnectivitySaslScram] A string containing one or more DNS names (or IP addresses) and SASL SCRAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
-  /// [bootstrapBrokersVpcConnectivityTls] A string containing one or more DNS names (or IP addresses) and TLS port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
-  /// [brokerNodeGroupInfo] Configuration block for the broker nodes of the Kafka cluster. See brokerNodeGroupInfo Argument Reference below.
-  /// [clientAuthentication] Configuration block for specifying a client authentication. See clientAuthentication Argument Reference below.
+  /// [bootstrapBrokersVpcConnectivitySaslIam] One or more DNS names (or IP addresses) and SASL IAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
+  /// [bootstrapBrokersVpcConnectivitySaslScram] One or more DNS names (or IP addresses) and SASL SCRAM port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
+  /// [bootstrapBrokersVpcConnectivityTls] One or more DNS names (or IP addresses) and TLS port pairs for VPC connectivity. AWS may not always return all endpoints so the values may not be stable across applies.
+  /// [brokerNodeGroupInfo] Configuration block for the broker nodes of the Kafka cluster. See `brokerNodeGroupInfo` Block below.
+  /// [clientAuthentication] Configuration block for specifying a client authentication. See `clientAuthentication` Block below.
   /// [clusterName] Name of the MSK cluster.
   /// [clusterUuid] UUID of the MSK cluster, for use in IAM policies.
-  /// [configurationInfo] Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See configurationInfo Argument Reference below.
+  /// [configurationInfo] Configuration block for specifying an MSK Configuration to attach to Kafka brokers. See `configurationInfo` Block below.
   /// [currentVersion] Current version of the MSK Cluster used for updates, e.g., `K13V1IB3VIYZZH`
   /// [customerActionStatus] Status indicating whether Amazon MSK requires customer action for the cluster. Valid values are `NONE`, `ACTION_RECOMMENDED`, and `CRITICAL_ACTION_REQUIRED`.
-  /// [encryptionInfo] Configuration block for specifying encryption. See encryptionInfo Argument Reference below.
-  /// [enhancedMonitoring] Specify the desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html)
-  /// [kafkaVersion] Specify the desired Kafka software version.
-  /// [loggingInfo] Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See loggingInfo Argument Reference below.
-  /// [numberOfBrokerNodes] The desired total number of broker nodes in the kafka cluster.  It must be a multiple of the number of specified client subnets.
-  /// [openMonitoring] Configuration block for JMX and Node monitoring for the MSK cluster. See openMonitoring Argument Reference below.
-  /// [rebalancing] Configuration block for intelligent rebalancing. See rebalancing Argument Reference below. Only applicable to MSK Provisioned clusters with Express brokers.
+  /// [encryptionInfo] Configuration block for specifying encryption. See `encryptionInfo` Block below.
+  /// [enhancedMonitoring] Desired enhanced MSK CloudWatch monitoring level. See [Monitoring Amazon MSK with Amazon CloudWatch](https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html).
+  /// [kafkaVersion] Desired Kafka software version.
+  /// [loggingInfo] Configuration block for streaming broker logs to Cloudwatch/S3/Kinesis Firehose. See `loggingInfo` Block below.
+  /// [numberOfBrokerNodes] Desired total number of broker nodes in the kafka cluster. It must be a multiple of the number of specified client subnets.
+  /// [openMonitoring] Configuration block for JMX and Node monitoring for the MSK cluster. See `openMonitoring` Block below.
+  /// [rebalancing] Configuration block for intelligent rebalancing. See `rebalancing` Block below. Only applicable to MSK Provisioned clusters with Express brokers.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [storageMode] Controls storage mode for supported storage tiers. Valid values are: `LOCAL` or `TIERED`.
-  /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [zookeeperConnectString] A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
-  /// [zookeeperConnectStringTls] A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster via TLS. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [zookeeperConnectString] Comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
+  /// [zookeeperConnectStringTls] Comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster via TLS. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   const ClusterState({
     this.arn,
     this.bootstrapBrokers,
@@ -224,7 +224,7 @@ class ClusterState {
       enhancedMonitoring: (() { final guardedValue = map['enhancedMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kafkaVersion: (() { final guardedValue = map['kafkaVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loggingInfo: (() { final guardedValue = map['loggingInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterLoggingInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      numberOfBrokerNodes: (() { final guardedValue = map['numberOfBrokerNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numberOfBrokerNodes: (() { final guardedValue = map['numberOfBrokerNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       openMonitoring: (() { final guardedValue = map['openMonitoring']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterOpenMonitoring.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       rebalancing: (() { final guardedValue = map['rebalancing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterRebalancing.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

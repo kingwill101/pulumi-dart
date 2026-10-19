@@ -50,7 +50,7 @@ class ServiceServiceConnectConfigurationService {
     return ServiceServiceConnectConfigurationService(
       clientAlias: (() { final guardedValue = map['clientAlias']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ServiceServiceConnectConfigurationServiceClientAlias>(guardedValue, (value) => ServiceServiceConnectConfigurationServiceClientAlias.fromMap((value as Map).cast<String, dynamic>()))); })(),
       discoveryName: (() { final guardedValue = map['discoveryName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ingressPortOverride: (() { final guardedValue = map['ingressPortOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ingressPortOverride: (() { final guardedValue = map['ingressPortOverride']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       portName: pulumi.Input.fromValue(map['portName'] as String),
       timeout: (() { final guardedValue = map['timeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceServiceConnectConfigurationServiceTimeout.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tls: (() { final guardedValue = map['tls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceServiceConnectConfigurationServiceTls.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

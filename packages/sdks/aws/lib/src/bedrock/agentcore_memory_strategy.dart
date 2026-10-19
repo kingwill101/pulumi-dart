@@ -8,11 +8,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 
 /// Manages an AWS Bedrock AgentCore Memory Strategy. Memory strategies define how the agent processes and organizes information within a memory, such as semantic understanding, summarization, or custom processing logic.
 ///
-/// **Important Limitations:**
-///
-/// - Each memory can have a maximum of 6 strategies total
-/// - Only one strategy of each built-in type (`SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`, `EPISODIC`) can exist per memory
-/// - Multiple `CUSTOM` strategies are allowed (subject to the total limit of 6)
+/// &gt; **Note:** Each memory can have a maximum of 6 strategies. Only one strategy of each built-in type (`SEMANTIC`, `SUMMARIZATION`, `USER_PREFERENCE`, `EPISODIC`) can exist per memory. Multiple `CUSTOM` strategies are allowed, subject to the total limit of 6.
 ///
 /// ## Example Usage
 ///
@@ -24,7 +20,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const semantic = new aws.bedrock.AgentcoreMemoryStrategy("semantic", {
-///     name: "semantic-strategy",
+///     name: "semantic_strategy",
 ///     memoryId: example.id,
 ///     type: "SEMANTIC",
 ///     description: "Semantic understanding strategy",
@@ -36,7 +32,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// semantic = aws.bedrock.AgentcoreMemoryStrategy("semantic",
-///     name="semantic-strategy",
+///     name="semantic_strategy",
 ///     memory_id=example["id"],
 ///     type="SEMANTIC",
 ///     description="Semantic understanding strategy",
@@ -52,7 +48,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// {
 ///     var semantic = new Aws.Bedrock.AgentcoreMemoryStrategy("semantic", new()
 ///     {
-///         Name = "semantic-strategy",
+///         Name = "semantic_strategy",
 ///         MemoryId = example.Id,
 ///         Type = "SEMANTIC",
 ///         Description = "Semantic understanding strategy",
@@ -75,7 +71,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreMemoryStrategy(ctx, "semantic", &bedrock.AgentcoreMemoryStrategyArgs{
-/// 			Name:        pulumi.String("semantic-strategy"),
+/// 			Name:        pulumi.String("semantic_strategy"),
 /// 			MemoryId:    pulumi.Any(example.Id),
 /// 			Type:        pulumi.String("SEMANTIC"),
 /// 			Description: pulumi.String("Semantic understanding strategy"),
@@ -100,7 +96,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcorememorystrategy" "semantic" {
-///   name                = "semantic-strategy"
+///   name                = "semantic_strategy"
 ///   memory_id           = example.id
 ///   type                = "SEMANTIC"
 ///   description         = "Semantic understanding strategy"
@@ -129,7 +125,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var semantic = new AgentcoreMemoryStrategy("semantic", AgentcoreMemoryStrategyArgs.builder()
-///             .name("semantic-strategy")
+///             .name("semantic_strategy")
 ///             .memoryId(example.id())
 ///             .type("SEMANTIC")
 ///             .description("Semantic understanding strategy")
@@ -144,7 +140,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///   semantic:
 ///     type: aws:bedrock:AgentcoreMemoryStrategy
 ///     properties:
-///       name: semantic-strategy
+///       name: semantic_strategy
 ///       memoryId: ${example.id}
 ///       type: SEMANTIC
 ///       description: Semantic understanding strategy
@@ -161,7 +157,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const summary = new aws.bedrock.AgentcoreMemoryStrategy("summary", {
-///     name: "summary-strategy",
+///     name: "summary_strategy",
 ///     memoryId: example.id,
 ///     type: "SUMMARIZATION",
 ///     description: "Text summarization strategy",
@@ -173,7 +169,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// summary = aws.bedrock.AgentcoreMemoryStrategy("summary",
-///     name="summary-strategy",
+///     name="summary_strategy",
 ///     memory_id=example["id"],
 ///     type="SUMMARIZATION",
 ///     description="Text summarization strategy",
@@ -189,7 +185,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// {
 ///     var summary = new Aws.Bedrock.AgentcoreMemoryStrategy("summary", new()
 ///     {
-///         Name = "summary-strategy",
+///         Name = "summary_strategy",
 ///         MemoryId = example.Id,
 ///         Type = "SUMMARIZATION",
 ///         Description = "Text summarization strategy",
@@ -212,7 +208,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreMemoryStrategy(ctx, "summary", &bedrock.AgentcoreMemoryStrategyArgs{
-/// 			Name:        pulumi.String("summary-strategy"),
+/// 			Name:        pulumi.String("summary_strategy"),
 /// 			MemoryId:    pulumi.Any(example.Id),
 /// 			Type:        pulumi.String("SUMMARIZATION"),
 /// 			Description: pulumi.String("Text summarization strategy"),
@@ -237,7 +233,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcorememorystrategy" "summary" {
-///   name                = "summary-strategy"
+///   name                = "summary_strategy"
 ///   memory_id           = example.id
 ///   type                = "SUMMARIZATION"
 ///   description         = "Text summarization strategy"
@@ -266,7 +262,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var summary = new AgentcoreMemoryStrategy("summary", AgentcoreMemoryStrategyArgs.builder()
-///             .name("summary-strategy")
+///             .name("summary_strategy")
 ///             .memoryId(example.id())
 ///             .type("SUMMARIZATION")
 ///             .description("Text summarization strategy")
@@ -281,7 +277,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///   summary:
 ///     type: aws:bedrock:AgentcoreMemoryStrategy
 ///     properties:
-///       name: summary-strategy
+///       name: summary_strategy
 ///       memoryId: ${example.id}
 ///       type: SUMMARIZATION
 ///       description: Text summarization strategy
@@ -298,7 +294,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const userPref = new aws.bedrock.AgentcoreMemoryStrategy("user_pref", {
-///     name: "user-preference-strategy",
+///     name: "user_preference_strategy",
 ///     memoryId: example.id,
 ///     type: "USER_PREFERENCE",
 ///     description: "User preference tracking strategy",
@@ -310,7 +306,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// user_pref = aws.bedrock.AgentcoreMemoryStrategy("user_pref",
-///     name="user-preference-strategy",
+///     name="user_preference_strategy",
 ///     memory_id=example["id"],
 ///     type="USER_PREFERENCE",
 ///     description="User preference tracking strategy",
@@ -326,7 +322,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// {
 ///     var userPref = new Aws.Bedrock.AgentcoreMemoryStrategy("user_pref", new()
 ///     {
-///         Name = "user-preference-strategy",
+///         Name = "user_preference_strategy",
 ///         MemoryId = example.Id,
 ///         Type = "USER_PREFERENCE",
 ///         Description = "User preference tracking strategy",
@@ -349,7 +345,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreMemoryStrategy(ctx, "user_pref", &bedrock.AgentcoreMemoryStrategyArgs{
-/// 			Name:        pulumi.String("user-preference-strategy"),
+/// 			Name:        pulumi.String("user_preference_strategy"),
 /// 			MemoryId:    pulumi.Any(example.Id),
 /// 			Type:        pulumi.String("USER_PREFERENCE"),
 /// 			Description: pulumi.String("User preference tracking strategy"),
@@ -374,7 +370,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcorememorystrategy" "user_pref" {
-///   name                = "user-preference-strategy"
+///   name                = "user_preference_strategy"
 ///   memory_id           = example.id
 ///   type                = "USER_PREFERENCE"
 ///   description         = "User preference tracking strategy"
@@ -403,7 +399,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var userPref = new AgentcoreMemoryStrategy("userPref", AgentcoreMemoryStrategyArgs.builder()
-///             .name("user-preference-strategy")
+///             .name("user_preference_strategy")
 ///             .memoryId(example.id())
 ///             .type("USER_PREFERENCE")
 ///             .description("User preference tracking strategy")
@@ -419,7 +415,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     type: aws:bedrock:AgentcoreMemoryStrategy
 ///     name: user_pref
 ///     properties:
-///       name: user-preference-strategy
+///       name: user_preference_strategy
 ///       memoryId: ${example.id}
 ///       type: USER_PREFERENCE
 ///       description: User preference tracking strategy
@@ -436,7 +432,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import * as aws from "@pulumi/aws";
 ///
 /// const episodic = new aws.bedrock.AgentcoreMemoryStrategy("episodic", {
-///     name: "episodic-strategy",
+///     name: "episodic_strategy",
 ///     memoryId: example.id,
 ///     type: "EPISODIC",
 ///     description: "Episodic memory strategy",
@@ -448,7 +444,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import pulumi_aws as aws
 ///
 /// episodic = aws.bedrock.AgentcoreMemoryStrategy("episodic",
-///     name="episodic-strategy",
+///     name="episodic_strategy",
 ///     memory_id=example["id"],
 ///     type="EPISODIC",
 ///     description="Episodic memory strategy",
@@ -464,7 +460,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// {
 ///     var episodic = new Aws.Bedrock.AgentcoreMemoryStrategy("episodic", new()
 ///     {
-///         Name = "episodic-strategy",
+///         Name = "episodic_strategy",
 ///         MemoryId = example.Id,
 ///         Type = "EPISODIC",
 ///         Description = "Episodic memory strategy",
@@ -487,7 +483,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := bedrock.NewAgentcoreMemoryStrategy(ctx, "episodic", &bedrock.AgentcoreMemoryStrategyArgs{
-/// 			Name:        pulumi.String("episodic-strategy"),
+/// 			Name:        pulumi.String("episodic_strategy"),
 /// 			MemoryId:    pulumi.Any(example.Id),
 /// 			Type:        pulumi.String("EPISODIC"),
 /// 			Description: pulumi.String("Episodic memory strategy"),
@@ -512,7 +508,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// }
 ///
 /// resource "aws_bedrock_agentcorememorystrategy" "episodic" {
-///   name                = "episodic-strategy"
+///   name                = "episodic_strategy"
 ///   memory_id           = example.id
 ///   type                = "EPISODIC"
 ///   description         = "Episodic memory strategy"
@@ -541,7 +537,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var episodic = new AgentcoreMemoryStrategy("episodic", AgentcoreMemoryStrategyArgs.builder()
-///             .name("episodic-strategy")
+///             .name("episodic_strategy")
 ///             .memoryId(example.id())
 ///             .type("EPISODIC")
 ///             .description("Episodic memory strategy")
@@ -556,7 +552,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///   episodic:
 ///     type: aws:bedrock:AgentcoreMemoryStrategy
 ///     properties:
-///       name: episodic-strategy
+///       name: episodic_strategy
 ///       memoryId: ${example.id}
 ///       type: EPISODIC
 ///       description: Episodic memory strategy
@@ -584,7 +580,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///         },
 ///         type: "SEMANTIC_OVERRIDE",
 ///     },
-///     name: "custom-semantic-strategy",
+///     name: "custom_semantic_strategy",
 ///     memoryId: example.id,
 ///     memoryExecutionRoleArn: example.memoryExecutionRoleArn,
 ///     type: "CUSTOM",
@@ -608,7 +604,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///         },
 ///         "type": "SEMANTIC_OVERRIDE",
 ///     },
-///     name="custom-semantic-strategy",
+///     name="custom_semantic_strategy",
 ///     memory_id=example["id"],
 ///     memory_execution_role_arn=example["memoryExecutionRoleArn"],
 ///     type="CUSTOM",
@@ -639,7 +635,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///             },
 ///             Type = "SEMANTIC_OVERRIDE",
 ///         },
-///         Name = "custom-semantic-strategy",
+///         Name = "custom_semantic_strategy",
 ///         MemoryId = example.Id,
 ///         MemoryExecutionRoleArn = example.MemoryExecutionRoleArn,
 ///         Type = "CUSTOM",
@@ -674,7 +670,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 				},
 /// 				Type: pulumi.String("SEMANTIC_OVERRIDE"),
 /// 			},
-/// 			Name:                   pulumi.String("custom-semantic-strategy"),
+/// 			Name:                   pulumi.String("custom_semantic_strategy"),
 /// 			MemoryId:               pulumi.Any(example.Id),
 /// 			MemoryExecutionRoleArn: pulumi.Any(example.MemoryExecutionRoleArn),
 /// 			Type:                   pulumi.String("CUSTOM"),
@@ -711,7 +707,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     }
 ///     type = "SEMANTIC_OVERRIDE"
 ///   }
-///   name                      = "custom-semantic-strategy"
+///   name                      = "custom_semantic_strategy"
 ///   memory_id                 = example.id
 ///   memory_execution_role_arn = example.memoryExecutionRoleArn
 ///   type                      = "CUSTOM"
@@ -755,7 +751,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///                     .build())
 ///                 .type("SEMANTIC_OVERRIDE")
 ///                 .build())
-///             .name("custom-semantic-strategy")
+///             .name("custom_semantic_strategy")
 ///             .memoryId(example.id())
 ///             .memoryExecutionRoleArn(example.memoryExecutionRoleArn())
 ///             .type("CUSTOM")
@@ -780,7 +776,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///           appendToPrompt: Extract and categorize semantic information
 ///           modelId: anthropic.claude-3-haiku-20240307-v1:0
 ///         type: SEMANTIC_OVERRIDE
-///       name: custom-semantic-strategy
+///       name: custom_semantic_strategy
 ///       memoryId: ${example.id}
 ///       memoryExecutionRoleArn: ${example.memoryExecutionRoleArn}
 ///       type: CUSTOM
@@ -805,7 +801,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///         },
 ///         type: "SUMMARY_OVERRIDE",
 ///     },
-///     name: "custom-summary-strategy",
+///     name: "custom_summary_strategy",
 ///     memoryId: example.id,
 ///     type: "CUSTOM",
 ///     description: "Custom summarization strategy",
@@ -824,7 +820,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///         },
 ///         "type": "SUMMARY_OVERRIDE",
 ///     },
-///     name="custom-summary-strategy",
+///     name="custom_summary_strategy",
 ///     memory_id=example["id"],
 ///     type="CUSTOM",
 ///     description="Custom summarization strategy",
@@ -849,7 +845,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///             },
 ///             Type = "SUMMARY_OVERRIDE",
 ///         },
-///         Name = "custom-summary-strategy",
+///         Name = "custom_summary_strategy",
 ///         MemoryId = example.Id,
 ///         Type = "CUSTOM",
 ///         Description = "Custom summarization strategy",
@@ -879,7 +875,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 				},
 /// 				Type: pulumi.String("SUMMARY_OVERRIDE"),
 /// 			},
-/// 			Name:        pulumi.String("custom-summary-strategy"),
+/// 			Name:        pulumi.String("custom_summary_strategy"),
 /// 			MemoryId:    pulumi.Any(example.Id),
 /// 			Type:        pulumi.String("CUSTOM"),
 /// 			Description: pulumi.String("Custom summarization strategy"),
@@ -911,7 +907,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     }
 ///     type = "SUMMARY_OVERRIDE"
 ///   }
-///   name                = "custom-summary-strategy"
+///   name                = "custom_summary_strategy"
 ///   memory_id           = example.id
 ///   type                = "CUSTOM"
 ///   description         = "Custom summarization strategy"
@@ -949,7 +945,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///                     .build())
 ///                 .type("SUMMARY_OVERRIDE")
 ///                 .build())
-///             .name("custom-summary-strategy")
+///             .name("custom_summary_strategy")
 ///             .memoryId(example.id())
 ///             .type("CUSTOM")
 ///             .description("Custom summarization strategy")
@@ -970,7 +966,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///           appendToPrompt: Create concise summaries while preserving key details
 ///           modelId: anthropic.claude-3-sonnet-20240229-v1:0
 ///         type: SUMMARY_OVERRIDE
-///       name: custom-summary-strategy
+///       name: custom_summary_strategy
 ///       memoryId: ${example.id}
 ///       type: CUSTOM
 ///       description: Custom summarization strategy
@@ -998,7 +994,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///         },
 ///         type: "USER_PREFERENCE_OVERRIDE",
 ///     },
-///     name: "custom-user-preference-strategy",
+///     name: "custom_user_preference_strategy",
 ///     memoryId: example.id,
 ///     type: "CUSTOM",
 ///     description: "Custom user preference tracking strategy",
@@ -1021,7 +1017,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///         },
 ///         "type": "USER_PREFERENCE_OVERRIDE",
 ///     },
-///     name="custom-user-preference-strategy",
+///     name="custom_user_preference_strategy",
 ///     memory_id=example["id"],
 ///     type="CUSTOM",
 ///     description="Custom user preference tracking strategy",
@@ -1051,7 +1047,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///             },
 ///             Type = "USER_PREFERENCE_OVERRIDE",
 ///         },
-///         Name = "custom-user-preference-strategy",
+///         Name = "custom_user_preference_strategy",
 ///         MemoryId = example.Id,
 ///         Type = "CUSTOM",
 ///         Description = "Custom user preference tracking strategy",
@@ -1085,7 +1081,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 				},
 /// 				Type: pulumi.String("USER_PREFERENCE_OVERRIDE"),
 /// 			},
-/// 			Name:        pulumi.String("custom-user-preference-strategy"),
+/// 			Name:        pulumi.String("custom_user_preference_strategy"),
 /// 			MemoryId:    pulumi.Any(example.Id),
 /// 			Type:        pulumi.String("CUSTOM"),
 /// 			Description: pulumi.String("Custom user preference tracking strategy"),
@@ -1121,7 +1117,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     }
 ///     type = "USER_PREFERENCE_OVERRIDE"
 ///   }
-///   name                = "custom-user-preference-strategy"
+///   name                = "custom_user_preference_strategy"
 ///   memory_id           = example.id
 ///   type                = "CUSTOM"
 ///   description         = "Custom user preference tracking strategy"
@@ -1164,7 +1160,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///                     .build())
 ///                 .type("USER_PREFERENCE_OVERRIDE")
 ///                 .build())
-///             .name("custom-user-preference-strategy")
+///             .name("custom_user_preference_strategy")
 ///             .memoryId(example.id())
 ///             .type("CUSTOM")
 ///             .description("Custom user preference tracking strategy")
@@ -1188,7 +1184,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///           appendToPrompt: Extract user preferences and interaction patterns
 ///           modelId: anthropic.claude-3-haiku-20240307-v1:0
 ///         type: USER_PREFERENCE_OVERRIDE
-///       name: custom-user-preference-strategy
+///       name: custom_user_preference_strategy
 ///       memoryId: ${example.id}
 ///       type: CUSTOM
 ///       description: Custom user preference tracking strategy
@@ -1214,9 +1210,14 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///             appendToPrompt: "Extract key events and episodes from interactions",
 ///             modelId: "anthropic.claude-3-haiku-20240307-v1:0",
 ///         },
+///         reflection: {
+///             appendToPrompt: "Reflect on episodes to derive cross-session insights",
+///             modelId: "anthropic.claude-3-sonnet-20240229-v1:0",
+///             namespaceTemplates: ["/strategies/{memoryStrategyId}/actors/{actorId}"],
+///         },
 ///         type: "EPISODIC_OVERRIDE",
 ///     },
-///     name: "custom-episodic-strategy",
+///     name: "custom_episodic_strategy",
 ///     memoryId: example.id,
 ///     memoryExecutionRoleArn: example.memoryExecutionRoleArn,
 ///     type: "CUSTOM",
@@ -1238,9 +1239,14 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///             "append_to_prompt": "Extract key events and episodes from interactions",
 ///             "model_id": "anthropic.claude-3-haiku-20240307-v1:0",
 ///         },
+///         "reflection": {
+///             "append_to_prompt": "Reflect on episodes to derive cross-session insights",
+///             "model_id": "anthropic.claude-3-sonnet-20240229-v1:0",
+///             "namespace_templates": ["/strategies/{memoryStrategyId}/actors/{actorId}"],
+///         },
 ///         "type": "EPISODIC_OVERRIDE",
 ///     },
-///     name="custom-episodic-strategy",
+///     name="custom_episodic_strategy",
 ///     memory_id=example["id"],
 ///     memory_execution_role_arn=example["memoryExecutionRoleArn"],
 ///     type="CUSTOM",
@@ -1269,9 +1275,18 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///                 AppendToPrompt = "Extract key events and episodes from interactions",
 ///                 ModelId = "anthropic.claude-3-haiku-20240307-v1:0",
 ///             },
+///             Reflection = new Aws.Bedrock.Inputs.AgentcoreMemoryStrategyConfigurationReflectionArgs
+///             {
+///                 AppendToPrompt = "Reflect on episodes to derive cross-session insights",
+///                 ModelId = "anthropic.claude-3-sonnet-20240229-v1:0",
+///                 NamespaceTemplates = new[]
+///                 {
+///                     "/strategies/{memoryStrategyId}/actors/{actorId}",
+///                 },
+///             },
 ///             Type = "EPISODIC_OVERRIDE",
 ///         },
-///         Name = "custom-episodic-strategy",
+///         Name = "custom_episodic_strategy",
 ///         MemoryId = example.Id,
 ///         MemoryExecutionRoleArn = example.MemoryExecutionRoleArn,
 ///         Type = "CUSTOM",
@@ -1304,9 +1319,16 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 					AppendToPrompt: pulumi.String("Extract key events and episodes from interactions"),
 /// 					ModelId:        pulumi.String("anthropic.claude-3-haiku-20240307-v1:0"),
 /// 				},
+/// 				Reflection: &bedrock.AgentcoreMemoryStrategyConfigurationReflectionArgs{
+/// 					AppendToPrompt: pulumi.String("Reflect on episodes to derive cross-session insights"),
+/// 					ModelId:        pulumi.String("anthropic.claude-3-sonnet-20240229-v1:0"),
+/// 					NamespaceTemplates: pulumi.StringArray{
+/// 						pulumi.String("/strategies/{memoryStrategyId}/actors/{actorId}"),
+/// 					},
+/// 				},
 /// 				Type: pulumi.String("EPISODIC_OVERRIDE"),
 /// 			},
-/// 			Name:                   pulumi.String("custom-episodic-strategy"),
+/// 			Name:                   pulumi.String("custom_episodic_strategy"),
 /// 			MemoryId:               pulumi.Any(example.Id),
 /// 			MemoryExecutionRoleArn: pulumi.Any(example.MemoryExecutionRoleArn),
 /// 			Type:                   pulumi.String("CUSTOM"),
@@ -1341,9 +1363,14 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///       append_to_prompt = "Extract key events and episodes from interactions"
 ///       model_id         = "anthropic.claude-3-haiku-20240307-v1:0"
 ///     }
+///     reflection = {
+///       append_to_prompt    = "Reflect on episodes to derive cross-session insights"
+///       model_id            = "anthropic.claude-3-sonnet-20240229-v1:0"
+///       namespace_templates = ["/strategies/{memoryStrategyId}/actors/{actorId}"]
+///     }
 ///     type = "EPISODIC_OVERRIDE"
 ///   }
-///   name                      = "custom-episodic-strategy"
+///   name                      = "custom_episodic_strategy"
 ///   memory_id                 = example.id
 ///   memory_execution_role_arn = example.memoryExecutionRoleArn
 ///   type                      = "CUSTOM"
@@ -1362,6 +1389,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationConsolidationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationExtractionArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationReflectionArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -1385,9 +1413,14 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///                     .appendToPrompt("Extract key events and episodes from interactions")
 ///                     .modelId("anthropic.claude-3-haiku-20240307-v1:0")
 ///                     .build())
+///                 .reflection(AgentcoreMemoryStrategyConfigurationReflectionArgs.builder()
+///                     .appendToPrompt("Reflect on episodes to derive cross-session insights")
+///                     .modelId("anthropic.claude-3-sonnet-20240229-v1:0")
+///                     .namespaceTemplates("/strategies/{memoryStrategyId}/actors/{actorId}")
+///                     .build())
 ///                 .type("EPISODIC_OVERRIDE")
 ///                 .build())
-///             .name("custom-episodic-strategy")
+///             .name("custom_episodic_strategy")
 ///             .memoryId(example.id())
 ///             .memoryExecutionRoleArn(example.memoryExecutionRoleArn())
 ///             .type("CUSTOM")
@@ -1411,8 +1444,13 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///         extraction:
 ///           appendToPrompt: Extract key events and episodes from interactions
 ///           modelId: anthropic.claude-3-haiku-20240307-v1:0
+///         reflection:
+///           appendToPrompt: Reflect on episodes to derive cross-session insights
+///           modelId: anthropic.claude-3-sonnet-20240229-v1:0
+///           namespaceTemplates:
+///             - /strategies/{memoryStrategyId}/actors/{actorId}
 ///         type: EPISODIC_OVERRIDE
-///       name: custom-episodic-strategy
+///       name: custom_episodic_strategy
 ///       memoryId: ${example.id}
 ///       memoryExecutionRoleArn: ${example.memoryExecutionRoleArn}
 ///       type: CUSTOM
@@ -1431,275 +1469,21 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///
 /// const selfManaged = new aws.bedrock.AgentcoreMemoryStrategy("self_managed", {
 ///     configuration: {
-///         selfManaged: [{
-///             invocationConfiguration: [{
-///                 topicArn: example.arn,
-///                 payloadDeliveryBucketName: exampleAwsS3Bucket.bucket,
-///             }],
-///             triggerConditions: [{
-///                 messageBasedTrigger: [{
+///         selfManagedConfiguration: {
+///             triggerConditions: {
+///                 messageBasedTrigger: {
 ///                     messageCount: 12,
-///                 }],
-///             }],
-///             historicalContextWindowSize: 10,
-///         }],
-///         type: "SELF_MANAGED",
-///     },
-///     name: "self-managed-strategy",
-///     memoryId: exampleAwsBedrockagentcoreMemory.id,
-///     memoryExecutionRoleArn: exampleAwsBedrockagentcoreMemory.memoryExecutionRoleArn,
-///     type: "CUSTOM",
-///     description: "Self-managed processing strategy",
-/// });
-/// ```
-/// ```python
-/// import pulumi
-/// import pulumi_aws as aws
-///
-/// self_managed = aws.bedrock.AgentcoreMemoryStrategy("self_managed",
-///     configuration={
-///         "self_managed": [{
-///             "invocationConfiguration": [{
-///                 "topicArn": example["arn"],
-///                 "payloadDeliveryBucketName": example_aws_s3_bucket["bucket"],
-///             }],
-///             "triggerConditions": [{
-///                 "messageBasedTrigger": [{
-///                     "messageCount": 12,
-///                 }],
-///             }],
-///             "historicalContextWindowSize": 10,
-///         }],
-///         "type": "SELF_MANAGED",
-///     },
-///     name="self-managed-strategy",
-///     memory_id=example_aws_bedrockagentcore_memory["id"],
-///     memory_execution_role_arn=example_aws_bedrockagentcore_memory["memoryExecutionRoleArn"],
-///     type="CUSTOM",
-///     description="Self-managed processing strategy")
-/// ```
-/// ```csharp
-/// using System.Collections.Generic;
-/// using System.Linq;
-/// using Pulumi;
-/// using Aws = Pulumi.Aws;
-///
-/// return await Deployment.RunAsync(() =>
-/// {
-///     var selfManaged = new Aws.Bedrock.AgentcoreMemoryStrategy("self_managed", new()
-///     {
-///         Configuration = new Aws.Bedrock.Inputs.AgentcoreMemoryStrategyConfigurationArgs
-///         {
-///             SelfManaged = new[]
-///             {
-///
-///                 {
-///                     { "invocationConfiguration", new[]
-///                     {
-///
-///                         {
-///                             { "topicArn", example.Arn },
-///                             { "payloadDeliveryBucketName", exampleAwsS3Bucket.Bucket },
-///                         },
-///                     } },
-///                     { "triggerConditions", new[]
-///                     {
-///
-///                         {
-///                             { "messageBasedTrigger", new[]
-///                             {
-///
-///                                 {
-///                                     { "messageCount", 12 },
-///                                 },
-///                             } },
-///                         },
-///                     } },
-///                     { "historicalContextWindowSize", 10 },
 ///                 },
 ///             },
-///             Type = "SELF_MANAGED",
-///         },
-///         Name = "self-managed-strategy",
-///         MemoryId = exampleAwsBedrockagentcoreMemory.Id,
-///         MemoryExecutionRoleArn = exampleAwsBedrockagentcoreMemory.MemoryExecutionRoleArn,
-///         Type = "CUSTOM",
-///         Description = "Self-managed processing strategy",
-///     });
-///
-/// });
-/// ```
-/// ```go
-/// package main
-///
-/// import (
-/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/bedrock"
-/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-/// )
-///
-/// func main() {
-/// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		_, err := bedrock.NewAgentcoreMemoryStrategy(ctx, "self_managed", &bedrock.AgentcoreMemoryStrategyArgs{
-/// 			Configuration: &bedrock.AgentcoreMemoryStrategyConfigurationArgs{
-/// 				SelfManaged: []map[string]interface{}{
-/// 					map[string]interface{}{
-/// 						"invocationConfiguration": []map[string]interface{}{
-/// 							map[string]interface{}{
-/// 								"topicArn":                  example.Arn,
-/// 								"payloadDeliveryBucketName": exampleAwsS3Bucket.Bucket,
-/// 							},
-/// 						},
-/// 						"triggerConditions": []map[string][]map[string]int{
-/// 							{
-/// 								"messageBasedTrigger": []map[string]int{
-/// 									{
-/// 										"messageCount": 12,
-/// 									},
-/// 								},
-/// 							},
-/// 						},
-/// 						"historicalContextWindowSize": 10,
-/// 					},
-/// 				},
-/// 				Type: pulumi.String("SELF_MANAGED"),
-/// 			},
-/// 			Name:                   pulumi.String("self-managed-strategy"),
-/// 			MemoryId:               pulumi.Any(exampleAwsBedrockagentcoreMemory.Id),
-/// 			MemoryExecutionRoleArn: pulumi.Any(exampleAwsBedrockagentcoreMemory.MemoryExecutionRoleArn),
-/// 			Type:                   pulumi.String("CUSTOM"),
-/// 			Description:            pulumi.String("Self-managed processing strategy"),
-/// 		})
-/// 		if err != nil {
-/// 			return err
-/// 		}
-/// 		return nil
-/// 	})
-/// }
-/// ```
-/// ```hcl
-/// pulumi {
-///   required_providers {
-///     aws = {
-///       source = "pulumi/aws"
-///     }
-///   }
-/// }
-///
-/// resource "aws_bedrock_agentcorememorystrategy" "self_managed" {
-///   configuration = {
-///     self_managed = [{
-///       "invocationConfiguration" = [{
-///         "topicArn"                  = example.arn
-///         "payloadDeliveryBucketName" = exampleAwsS3Bucket.bucket
-///       }]
-///       "triggerConditions" = [{
-///         "messageBasedTrigger" = [{
-///           "messageCount" = 12
-///         }]
-///       }]
-///       "historicalContextWindowSize" = 10
-///     }]
-///     type = "SELF_MANAGED"
-///   }
-///   name                      = "self-managed-strategy"
-///   memory_id                 = exampleAwsBedrockagentcoreMemory.id
-///   memory_execution_role_arn = exampleAwsBedrockagentcoreMemory.memoryExecutionRoleArn
-///   type                      = "CUSTOM"
-///   description               = "Self-managed processing strategy"
-/// }
-/// ```
-/// ```java
-/// package generated_program;
-///
-/// import com.pulumi.Context;
-/// import com.pulumi.Pulumi;
-/// import com.pulumi.core.Output;
-/// import com.pulumi.aws.bedrock.AgentcoreMemoryStrategy;
-/// import com.pulumi.aws.bedrock.AgentcoreMemoryStrategyArgs;
-/// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationArgs;
-/// import java.util.ArrayList;
-/// import java.util.Arrays;
-/// import java.util.Map;
-/// import java.io.File;
-/// import java.nio.file.Files;
-/// import java.nio.file.Paths;
-///
-/// public class App {
-///     public static void main(String[] args) {
-///         Pulumi.run(App::stack);
-///     }
-///
-///     public static void stack(Context ctx) {
-///         var selfManaged = new AgentcoreMemoryStrategy("selfManaged", AgentcoreMemoryStrategyArgs.builder()
-///             .configuration(AgentcoreMemoryStrategyConfigurationArgs.builder()
-///                 .selfManaged(Arrays.asList(Map.ofEntries(
-///                     Map.entry("invocationConfiguration", Arrays.asList(Map.ofEntries(
-///                         Map.entry("topicArn", example.arn()),
-///                         Map.entry("payloadDeliveryBucketName", exampleAwsS3Bucket.bucket())
-///                     ))),
-///                     Map.entry("triggerConditions", Arrays.asList(Map.of("messageBasedTrigger", Arrays.asList(Map.of("messageCount", 12))))),
-///                     Map.entry("historicalContextWindowSize", 10)
-///                 )))
-///                 .type("SELF_MANAGED")
-///                 .build())
-///             .name("self-managed-strategy")
-///             .memoryId(exampleAwsBedrockagentcoreMemory.id())
-///             .memoryExecutionRoleArn(exampleAwsBedrockagentcoreMemory.memoryExecutionRoleArn())
-///             .type("CUSTOM")
-///             .description("Self-managed processing strategy")
-///             .build());
-///
-///     }
-/// }
-/// ```
-/// ```yaml
-/// resources:
-///   selfManaged:
-///     type: aws:bedrock:AgentcoreMemoryStrategy
-///     name: self_managed
-///     properties:
-///       configuration:
-///         selfManaged:
-///           - invocationConfiguration:
-///               - topicArn: ${example.arn}
-///                 payloadDeliveryBucketName: ${exampleAwsS3Bucket.bucket}
-///             triggerConditions:
-///               - messageBasedTrigger:
-///                   - messageCount: 12
-///             historicalContextWindowSize: 10
-///         type: SELF_MANAGED
-///       name: self-managed-strategy
-///       memoryId: ${exampleAwsBedrockagentcoreMemory.id}
-///       memoryExecutionRoleArn: ${exampleAwsBedrockagentcoreMemory.memoryExecutionRoleArn}
-///       type: CUSTOM
-///       description: Self-managed processing strategy
-/// ```
-///
-///
-/// ### Custom Strategy with Self-Managed Configuration
-///
-///
-/// ```typescript
-/// import * as pulumi from "@pulumi/pulumi";
-/// import * as aws from "@pulumi/aws";
-///
-/// const selfManaged = new aws.bedrock.AgentcoreMemoryStrategy("self_managed", {
-///     configuration: {
-///         selfManagedConfiguration: {
 ///             invocationConfiguration: {
 ///                 topicArn: example.arn,
 ///                 payloadDeliveryBucketName: exampleAwsS3Bucket.bucket,
 ///             },
-///             triggerCondition: [{
-///                 messageBasedTrigger: [{
-///                     messageCount: 12,
-///                 }],
-///             }],
 ///             historicalContextWindowSize: 10,
 ///         },
 ///         type: "SELF_MANAGED",
 ///     },
-///     name: "self-managed-strategy",
+///     name: "self_managed_strategy",
 ///     memoryId: exampleAwsBedrockagentcoreMemory.id,
 ///     memoryExecutionRoleArn: exampleAwsBedrockagentcoreMemory.memoryExecutionRoleArn,
 ///     type: "CUSTOM",
@@ -1713,20 +1497,20 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// self_managed = aws.bedrock.AgentcoreMemoryStrategy("self_managed",
 ///     configuration={
 ///         "self_managed_configuration": {
+///             "trigger_conditions": {
+///                 "message_based_trigger": {
+///                     "message_count": 12,
+///                 },
+///             },
 ///             "invocation_configuration": {
 ///                 "topic_arn": example["arn"],
 ///                 "payload_delivery_bucket_name": example_aws_s3_bucket["bucket"],
 ///             },
-///             "trigger_condition": [{
-///                 "messageBasedTrigger": [{
-///                     "messageCount": 12,
-///                 }],
-///             }],
 ///             "historical_context_window_size": 10,
 ///         },
 ///         "type": "SELF_MANAGED",
 ///     },
-///     name="self-managed-strategy",
+///     name="self_managed_strategy",
 ///     memory_id=example_aws_bedrockagentcore_memory["id"],
 ///     memory_execution_role_arn=example_aws_bedrockagentcore_memory["memoryExecutionRoleArn"],
 ///     type="CUSTOM",
@@ -1746,29 +1530,23 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///         {
 ///             SelfManagedConfiguration = new Aws.Bedrock.Inputs.AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationArgs
 ///             {
+///                 TriggerConditions = new Aws.Bedrock.Inputs.AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditionsArgs
+///                 {
+///                     MessageBasedTrigger = new Aws.Bedrock.Inputs.AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditionsMessageBasedTriggerArgs
+///                     {
+///                         MessageCount = 12,
+///                     },
+///                 },
 ///                 InvocationConfiguration = new Aws.Bedrock.Inputs.AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationInvocationConfigurationArgs
 ///                 {
 ///                     TopicArn = example.Arn,
 ///                     PayloadDeliveryBucketName = exampleAwsS3Bucket.Bucket,
 ///                 },
-///                 TriggerCondition = new[]
-///                 {
-///
-///                     {
-///                         { "messageBasedTrigger", new[]
-///                         {
-///
-///                             {
-///                                 { "messageCount", 12 },
-///                             },
-///                         } },
-///                     },
-///                 },
 ///                 HistoricalContextWindowSize = 10,
 ///             },
 ///             Type = "SELF_MANAGED",
 ///         },
-///         Name = "self-managed-strategy",
+///         Name = "self_managed_strategy",
 ///         MemoryId = exampleAwsBedrockagentcoreMemory.Id,
 ///         MemoryExecutionRoleArn = exampleAwsBedrockagentcoreMemory.MemoryExecutionRoleArn,
 ///         Type = "CUSTOM",
@@ -1790,24 +1568,20 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// 		_, err := bedrock.NewAgentcoreMemoryStrategy(ctx, "self_managed", &bedrock.AgentcoreMemoryStrategyArgs{
 /// 			Configuration: &bedrock.AgentcoreMemoryStrategyConfigurationArgs{
 /// 				SelfManagedConfiguration: &bedrock.AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationArgs{
+/// 					TriggerConditions: &bedrock.AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditionsArgs{
+/// 						MessageBasedTrigger: &bedrock.AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditionsMessageBasedTriggerArgs{
+/// 							MessageCount: pulumi.Int(12),
+/// 						},
+/// 					},
 /// 					InvocationConfiguration: &bedrock.AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationInvocationConfigurationArgs{
 /// 						TopicArn:                  pulumi.Any(example.Arn),
 /// 						PayloadDeliveryBucketName: pulumi.Any(exampleAwsS3Bucket.Bucket),
-/// 					},
-/// 					TriggerCondition: []map[string][]map[string]int{
-/// 						{
-/// 							"messageBasedTrigger": []map[string]int{
-/// 								{
-/// 									"messageCount": 12,
-/// 								},
-/// 							},
-/// 						},
 /// 					},
 /// 					HistoricalContextWindowSize: pulumi.Int(10),
 /// 				},
 /// 				Type: pulumi.String("SELF_MANAGED"),
 /// 			},
-/// 			Name:                   pulumi.String("self-managed-strategy"),
+/// 			Name:                   pulumi.String("self_managed_strategy"),
 /// 			MemoryId:               pulumi.Any(exampleAwsBedrockagentcoreMemory.Id),
 /// 			MemoryExecutionRoleArn: pulumi.Any(exampleAwsBedrockagentcoreMemory.MemoryExecutionRoleArn),
 /// 			Type:                   pulumi.String("CUSTOM"),
@@ -1832,20 +1606,20 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// resource "aws_bedrock_agentcorememorystrategy" "self_managed" {
 ///   configuration = {
 ///     self_managed_configuration = {
+///       trigger_conditions = {
+///         message_based_trigger = {
+///           message_count = 12
+///         }
+///       }
 ///       invocation_configuration = {
 ///         topic_arn                    = example.arn
 ///         payload_delivery_bucket_name = exampleAwsS3Bucket.bucket
 ///       }
-///       trigger_condition = [{
-///         "messageBasedTrigger" = [{
-///           "messageCount" = 12
-///         }]
-///       }]
 ///       historical_context_window_size = 10
 ///     }
 ///     type = "SELF_MANAGED"
 ///   }
-///   name                      = "self-managed-strategy"
+///   name                      = "self_managed_strategy"
 ///   memory_id                 = exampleAwsBedrockagentcoreMemory.id
 ///   memory_execution_role_arn = exampleAwsBedrockagentcoreMemory.memoryExecutionRoleArn
 ///   type                      = "CUSTOM"
@@ -1862,6 +1636,8 @@ import 'agentcore_memory_strategy_timeouts.dart';
 /// import com.pulumi.aws.bedrock.AgentcoreMemoryStrategyArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditionsArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditionsMessageBasedTriggerArgs;
 /// import com.pulumi.aws.bedrock.inputs.AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationInvocationConfigurationArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -1879,16 +1655,20 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///         var selfManaged = new AgentcoreMemoryStrategy("selfManaged", AgentcoreMemoryStrategyArgs.builder()
 ///             .configuration(AgentcoreMemoryStrategyConfigurationArgs.builder()
 ///                 .selfManagedConfiguration(AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationArgs.builder()
+///                     .triggerConditions(AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditionsArgs.builder()
+///                         .messageBasedTrigger(AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationTriggerConditionsMessageBasedTriggerArgs.builder()
+///                             .messageCount(12)
+///                             .build())
+///                         .build())
 ///                     .invocationConfiguration(AgentcoreMemoryStrategyConfigurationSelfManagedConfigurationInvocationConfigurationArgs.builder()
 ///                         .topicArn(example.arn())
 ///                         .payloadDeliveryBucketName(exampleAwsS3Bucket.bucket())
 ///                         .build())
-///                     .triggerCondition(Arrays.asList(Map.of("messageBasedTrigger", Arrays.asList(Map.of("messageCount", 12)))))
 ///                     .historicalContextWindowSize(10)
 ///                     .build())
 ///                 .type("SELF_MANAGED")
 ///                 .build())
-///             .name("self-managed-strategy")
+///             .name("self_managed_strategy")
 ///             .memoryId(exampleAwsBedrockagentcoreMemory.id())
 ///             .memoryExecutionRoleArn(exampleAwsBedrockagentcoreMemory.memoryExecutionRoleArn())
 ///             .type("CUSTOM")
@@ -1906,15 +1686,15 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///     properties:
 ///       configuration:
 ///         selfManagedConfiguration:
+///           triggerConditions:
+///             messageBasedTrigger:
+///               messageCount: 12
 ///           invocationConfiguration:
 ///             topicArn: ${example.arn}
 ///             payloadDeliveryBucketName: ${exampleAwsS3Bucket.bucket}
-///           triggerCondition:
-///             - messageBasedTrigger:
-///                 - messageCount: 12
 ///           historicalContextWindowSize: 10
 ///         type: SELF_MANAGED
-///       name: self-managed-strategy
+///       name: self_managed_strategy
 ///       memoryId: ${exampleAwsBedrockagentcoreMemory.id}
 ///       memoryExecutionRoleArn: ${exampleAwsBedrockagentcoreMemory.memoryExecutionRoleArn}
 ///       type: CUSTOM
@@ -1933,7 +1713,7 @@ import 'agentcore_memory_strategy_timeouts.dart';
 ///
 /// #### Optional
 ///
-/// * `accountId` (String) Account ID where this resource is managed.
+/// * `accountId` (String) AWS Account where this resource is managed.
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
@@ -1957,9 +1737,9 @@ class AgentcoreMemoryStrategy extends pulumi.CustomResource {
   late final pulumi.Output<String> memoryStrategyId;
   /// Name of the memory strategy. Changing this forces a new resource, because the service API does not support renaming a strategy.
   late final pulumi.Output<String> name;
-  /// Set containing exactly one namespace template where this strategy applies (for example `/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}`). Namespace templates help organize and scope memory content. Exactly one of `namespaceTemplates` or `namespaces` must be configured for all strategies except `CUSTOM` strategies using `SELF_MANAGED` configuration.
+  /// Set containing exactly one namespace template where this strategy applies (for example `/strategies/{memoryStrategyId}/actors/{actorId}/sessions/{sessionId}`). Namespace templates help organize and scope memory content. Exactly one of `namespaceTemplates` or `namespaces` must be configured, except for `CUSTOM` strategies using `SELF_MANAGED` configuration, where neither can be configured.
   late final pulumi.Output<List<String>> namespaceTemplates;
-  /// Set of namespace identifiers where this strategy applies. Exactly one of `namespaces` or `namespaceTemplates` must be configured. The API treats this as a legacy parameter; prefer `namespaceTemplates`. Since the API mirrors the two fields, switching an existing configuration from `namespaces` to `namespaceTemplates` with the same value is an in-place no-op.
+  /// Set of namespace identifiers where this strategy applies. Exactly one of `namespaces` or `namespaceTemplates` must be configured, except for `CUSTOM` strategies using `SELF_MANAGED` configuration, where neither can be configured. The API treats this as a legacy parameter; prefer `namespaceTemplates`. Since the API mirrors the two fields, switching an existing configuration from `namespaces` to `namespaceTemplates` with the same value is an in-place no-op.
   late final pulumi.Output<List<String>> namespaces;
   /// Configuration for the reflections created with the episodic memory strategy. Valid when `type` is `EPISODIC`, must be omitted for other types. See `reflectionConfiguration` Block below.
   late final pulumi.Output<AgentcoreMemoryStrategyReflectionConfiguration?> reflectionConfiguration;
@@ -1983,7 +1763,7 @@ class AgentcoreMemoryStrategy extends pulumi.CustomResource {
           'aws:bedrock/agentcoreMemoryStrategy:AgentcoreMemoryStrategy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     configuration = registerOutput<AgentcoreMemoryStrategyConfiguration?>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentcoreMemoryStrategyConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');

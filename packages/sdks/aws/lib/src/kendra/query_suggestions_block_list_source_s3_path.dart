@@ -6,8 +6,6 @@ class QuerySuggestionsBlockListSourceS3Path {
   /// Name of the S3 bucket that contains the file.
   final pulumi.Input<String> bucket;
   /// Name of the file.
-  ///
-  /// The following arguments are optional:
   final pulumi.Input<String> key;
 
   /// Creates a new [QuerySuggestionsBlockListSourceS3Path].

@@ -5,38 +5,38 @@ import 'user_defined_function_resource_uri.dart';
 
 /// Input properties used for looking up and filtering UserDefinedFunction resources.
 class UserDefinedFunctionState {
-  /// The ARN of the Glue User Defined Function.
+  /// ARN of the Glue User Defined Function.
   final pulumi.Input<String?>? arn;
   /// ID of the Glue Catalog to create the function in. If omitted, this defaults to the AWS Account ID.
   final pulumi.Input<String?>? catalogId;
-  /// The Java class that contains the function code.
+  /// Java class that contains the function code.
   final pulumi.Input<String?>? className;
-  /// The time at which the function was created.
+  /// Time at which the function was created.
   final pulumi.Input<String?>? createTime;
-  /// The name of the Database to create the Function.
+  /// Name of the Database to create the Function.
   final pulumi.Input<String?>? databaseName;
-  /// The name of the function.
+  /// Name of the function.
   final pulumi.Input<String?>? name;
-  /// The owner of the function.
+  /// Owner of the function.
   final pulumi.Input<String?>? ownerName;
-  /// The owner type. can be one of `USER`, `ROLE`, and `GROUP`.
+  /// Owner type. can be one of `USER`, `ROLE`, and `GROUP`.
   final pulumi.Input<String?>? ownerType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The configuration block for Resource URIs. See resource uris below for more details.
+  /// Configuration block for Resource URIs. See `resourceUris` Block below for more details.
   final pulumi.Input<List<UserDefinedFunctionResourceUri>?>? resourceUris;
 
   /// Creates a new [UserDefinedFunctionState].
-  /// [arn] The ARN of the Glue User Defined Function.
+  /// [arn] ARN of the Glue User Defined Function.
   /// [catalogId] ID of the Glue Catalog to create the function in. If omitted, this defaults to the AWS Account ID.
-  /// [className] The Java class that contains the function code.
-  /// [createTime] The time at which the function was created.
-  /// [databaseName] The name of the Database to create the Function.
-  /// [name] The name of the function.
-  /// [ownerName] The owner of the function.
-  /// [ownerType] The owner type. can be one of `USER`, `ROLE`, and `GROUP`.
+  /// [className] Java class that contains the function code.
+  /// [createTime] Time at which the function was created.
+  /// [databaseName] Name of the Database to create the Function.
+  /// [name] Name of the function.
+  /// [ownerName] Owner of the function.
+  /// [ownerType] Owner type. can be one of `USER`, `ROLE`, and `GROUP`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [resourceUris] The configuration block for Resource URIs. See resource uris below for more details.
+  /// [resourceUris] Configuration block for Resource URIs. See `resourceUris` Block below for more details.
   const UserDefinedFunctionState({
     this.arn,
     this.catalogId,

@@ -66,8 +66,8 @@ class GetImageResult {
     return GetImageResult(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       imageDigest: (() { final guardedValue = map['imageDigest']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      imagePushedAt: (() { final guardedValue = map['imagePushedAt']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
-      imageSizeInBytes: (() { final guardedValue = map['imageSizeInBytes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      imagePushedAt: (() { final guardedValue = map['imagePushedAt']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      imageSizeInBytes: (() { final guardedValue = map['imageSizeInBytes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       imageTag: (() { final guardedValue = map['imageTag']; if (guardedValue == null) return null; return guardedValue as String; })(),
       imageTags: (() { final guardedValue = map['imageTags']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       imageUri: (() { final guardedValue = map['imageUri']; if (guardedValue == null) return null; return guardedValue as String; })(),

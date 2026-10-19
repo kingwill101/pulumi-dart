@@ -107,7 +107,7 @@ import 'thing_type_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import IOT Thing Types using the name. For example:
+/// Using `pulumi import`, import IoT Thing Types using the name. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:iot/thingType:ThingType example example
@@ -140,7 +140,7 @@ class ThingType extends pulumi.CustomResource {
           'aws:iot/thingType:ThingType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deprecated = registerOutput<bool?>('deprecated');

@@ -284,11 +284,11 @@ class CrossAccountAttachment extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// List of AWS account IDs that are allowed to associate resources with the accelerator.
   late final pulumi.Output<List<String>?> principals;
-  /// List of resources to be associated with the accelerator.
+  /// List of resources to be associated with the accelerator. See `resource` below.
   late final pulumi.Output<List<CrossAccountAttachmentResource>?> resources;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [CrossAccountAttachment].
@@ -303,7 +303,7 @@ class CrossAccountAttachment extends pulumi.CustomResource {
           'aws:globalaccelerator/crossAccountAttachment:CrossAccountAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdTime = registerOutput<String>('createdTime');

@@ -6,12 +6,12 @@ import 'firehose_delivery_stream_redshift_configuration_processing_configuration
 class FirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration {
   /// Enables or disables data processing.
   final pulumi.Input<bool?>? enabled;
-  /// Specifies the data processors as multiple blocks. See `processors` block below for details.
+  /// Data processors as multiple blocks. See `processors` block below for details.
   final pulumi.Input<List<FirehoseDeliveryStreamRedshiftConfigurationProcessingConfigurationProcessor>?>? processors;
 
   /// Creates a new [FirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.
-  /// [processors] Specifies the data processors as multiple blocks. See `processors` block below for details.
+  /// [processors] Data processors as multiple blocks. See `processors` block below for details.
   const FirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration({
     this.enabled,
     this.processors,

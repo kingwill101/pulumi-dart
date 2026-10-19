@@ -3,20 +3,20 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class CrawlerDeltaTarget {
-  /// The name of the connection to use to connect to the Delta table target.
+  /// Name of the connection to use to connect to the Delta table target.
   final pulumi.Input<String?>? connectionName;
-  /// Specifies whether the crawler will create native tables, to allow integration with query engines that support querying of the Delta transaction log directly.
+  /// Whether the crawler will create native tables, to allow integration with query engines that support querying of the Delta transaction log directly.
   final pulumi.Input<bool?>? createNativeDeltaTable;
-  /// A list of the Amazon S3 paths to the Delta tables.
+  /// List of the Amazon S3 paths to the Delta tables.
   final pulumi.Input<List<String>> deltaTables;
-  /// Specifies whether to write the manifest files to the Delta table path.
+  /// Whether to write the manifest files to the Delta table path.
   final pulumi.Input<bool> writeManifest;
 
   /// Creates a new [CrawlerDeltaTarget].
-  /// [connectionName] The name of the connection to use to connect to the Delta table target.
-  /// [createNativeDeltaTable] Specifies whether the crawler will create native tables, to allow integration with query engines that support querying of the Delta transaction log directly.
-  /// [deltaTables] A list of the Amazon S3 paths to the Delta tables.
-  /// [writeManifest] Specifies whether to write the manifest files to the Delta table path.
+  /// [connectionName] Name of the connection to use to connect to the Delta table target.
+  /// [createNativeDeltaTable] Whether the crawler will create native tables, to allow integration with query engines that support querying of the Delta transaction log directly.
+  /// [deltaTables] List of the Amazon S3 paths to the Delta tables.
+  /// [writeManifest] Whether to write the manifest files to the Delta table path.
   const CrawlerDeltaTarget({
     this.connectionName,
     this.createNativeDeltaTable,

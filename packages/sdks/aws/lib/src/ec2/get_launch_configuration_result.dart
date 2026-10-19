@@ -39,7 +39,7 @@ class GetLaunchConfigurationResult {
   final String? region;
   /// Root Block Device of the instance.
   final List<GetLaunchConfigurationRootBlockDevice>? rootBlockDevices;
-  /// List of associated Security Group IDS.
+  /// List of associated Security Group IDs.
   final List<String>? securityGroups;
   /// Price to use for reserving Spot instances.
   final String? spotPrice;
@@ -63,7 +63,7 @@ class GetLaunchConfigurationResult {
   /// [placementTenancy] Tenancy of the instance.
   /// [region] Optional.
   /// [rootBlockDevices] Root Block Device of the instance.
-  /// [securityGroups] List of associated Security Group IDS.
+  /// [securityGroups] List of associated Security Group IDs.
   /// [spotPrice] Price to use for reserving Spot instances.
   /// [userData] User Data of the instance.
   const GetLaunchConfigurationResult({

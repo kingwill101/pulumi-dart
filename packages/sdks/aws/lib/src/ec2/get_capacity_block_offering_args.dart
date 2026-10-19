@@ -49,9 +49,9 @@ class GetCapacityBlockOfferingArgs {
 
   factory GetCapacityBlockOfferingArgs.fromMap(Map<String, dynamic> map) {
     return GetCapacityBlockOfferingArgs(
-      capacityDurationHours: pulumi.Input.fromValue((map['capacityDurationHours'] as num).toInt()),
+      capacityDurationHours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['capacityDurationHours'])),
       endDateRange: (() { final guardedValue = map['endDateRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toInt()),
+      instanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instanceCount'])),
       instanceType: pulumi.Input.fromValue(map['instanceType'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       startDateRange: (() { final guardedValue = map['startDateRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

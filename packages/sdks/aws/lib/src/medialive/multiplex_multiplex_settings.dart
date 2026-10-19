@@ -35,10 +35,10 @@ class MultiplexMultiplexSettings {
 
   factory MultiplexMultiplexSettings.fromMap(Map<String, dynamic> map) {
     return MultiplexMultiplexSettings(
-      maximumVideoBufferDelayMilliseconds: (() { final guardedValue = map['maximumVideoBufferDelayMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      transportStreamBitrate: pulumi.Input.fromValue((map['transportStreamBitrate'] as num).toInt()),
-      transportStreamId: pulumi.Input.fromValue((map['transportStreamId'] as num).toInt()),
-      transportStreamReservedBitrate: (() { final guardedValue = map['transportStreamReservedBitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maximumVideoBufferDelayMilliseconds: (() { final guardedValue = map['maximumVideoBufferDelayMilliseconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      transportStreamBitrate: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['transportStreamBitrate'])),
+      transportStreamId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['transportStreamId'])),
+      transportStreamReservedBitrate: (() { final guardedValue = map['transportStreamReservedBitrate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

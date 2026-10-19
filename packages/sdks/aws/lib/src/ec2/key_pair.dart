@@ -124,31 +124,43 @@ import 'key_pair_state.dart';
 ///
 /// ## Import
 ///
+/// ### Identity Schema
+///
+/// #### Required
+///
+/// * `keyName` - (String) The name of the Key Pair.
+///
+/// #### Optional
+///
+/// * `accountId` (String) AWS Account where this resource is managed.
+/// * `region` (String) Region where this resource is managed.
+///
+///
 /// Using `pulumi import`, import Key Pairs using the `keyName`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:ec2/keyPair:KeyPair deployer deployer-key
 /// ```
 class KeyPair extends pulumi.CustomResource {
-  /// The key pair ARN.
+  /// Key pair ARN.
   late final pulumi.Output<String> arn;
-  /// The MD5 public key fingerprint as specified in section 4 of RFC 4716.
+  /// MD5 public key fingerprint as specified in section 4 of RFC 4716.
   late final pulumi.Output<String> fingerprint;
-  /// The name for the key pair. If neither `keyName` nor `keyNamePrefix` is provided, the provider will create a unique key name.
+  /// Name for the key pair. If neither `keyName` nor `keyNamePrefix` is provided, the provider will create a unique key name.
   late final pulumi.Output<String> keyName;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `keyName`. If neither `keyName` nor `keyNamePrefix` is provided, the provider will create a unique key name.
   late final pulumi.Output<String> keyNamePrefix;
-  /// The key pair ID.
+  /// Key pair ID.
   late final pulumi.Output<String> keyPairId;
-  /// The type of key pair.
+  /// Type of key pair.
   late final pulumi.Output<String> keyType;
-  /// The public key material.
+  /// Public key material.
   late final pulumi.Output<String> publicKey;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [KeyPair].
@@ -163,7 +175,7 @@ class KeyPair extends pulumi.CustomResource {
           'aws:ec2/keyPair:KeyPair',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     fingerprint = registerOutput<String>('fingerprint');

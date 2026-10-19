@@ -200,16 +200,17 @@ class User extends pulumi.CustomResource {
   /// Access permissions string used for this user.
   late final pulumi.Output<String> accessString;
   /// ARN of the user.
+  /// * `authentication_mode[0].password_count` - Number of passwords belonging to the user if `type` is set to `password`.
   late final pulumi.Output<String> arn;
-  /// Denotes the user's authentication properties. Detailed below.
+  /// Authentication properties for the user. Detailed below.
   late final pulumi.Output<UserAuthenticationMode> authenticationMode;
   /// Minimum engine version supported for the user.
   late final pulumi.Output<String> minimumEngineVersion;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Name of the MemoryDB user. Up to 40 characters.
   ///
@@ -228,7 +229,7 @@ class User extends pulumi.CustomResource {
           'aws:memorydb/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     accessString = registerOutput<String>('accessString');
     arn = registerOutput<String>('arn');

@@ -119,7 +119,7 @@ class LoggingOptions extends pulumi.CustomResource {
   late final pulumi.Output<bool?> disableAllLogs;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The ARN of the role that allows IoT to write to Cloudwatch logs.
+  /// The ARN of the role that allows IoT to write to CloudWatch logs.
   late final pulumi.Output<String> roleArn;
 
   /// Creates a new [LoggingOptions].
@@ -134,7 +134,7 @@ class LoggingOptions extends pulumi.CustomResource {
           'aws:iot/loggingOptions:LoggingOptions',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     defaultLogLevel = registerOutput<String>('defaultLogLevel');
     disableAllLogs = registerOutput<bool?>('disableAllLogs');

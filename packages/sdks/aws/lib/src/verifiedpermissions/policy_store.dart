@@ -130,13 +130,13 @@ import 'policy_store_validation_settings.dart';
 /// $ pulumi import aws:verifiedpermissions/policyStore:PolicyStore example DxQg2j8xvXJQ1tQCYNWj9T
 /// ```
 class PolicyStore extends pulumi.CustomResource {
-  /// The ARN of the Policy Store.
+  /// ARN of the Policy Store.
   late final pulumi.Output<String> arn;
-  /// Specifies whether the policy store can be deleted. If enabled, the policy store can't be deleted. Valid Values: `ENABLED`, `DISABLED`. Default value: `DISABLED`.
+  /// Whether the policy store can be deleted. If enabled, the policy store can't be deleted. Valid Values: `ENABLED`, `DISABLED`. Default value: `DISABLED`.
   late final pulumi.Output<String> deletionProtection;
-  /// A description of the Policy Store.
+  /// Description of the Policy Store.
   late final pulumi.Output<String?> description;
-  /// The ID of the Policy Store.
+  /// ID of the Policy Store.
   late final pulumi.Output<String> policyStoreId;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -144,7 +144,9 @@ class PolicyStore extends pulumi.CustomResource {
   late final pulumi.Output<Map<String, String>?> tags;
   /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// Validation settings for the policy store.
+  /// Validation settings for the policy store. See Validation Settings below.
+  ///
+  /// The following arguments are optional:
   late final pulumi.Output<PolicyStoreValidationSettings> validationSettings;
 
   /// Creates a new [PolicyStore].
@@ -159,7 +161,7 @@ class PolicyStore extends pulumi.CustomResource {
           'aws:verifiedpermissions/policyStore:PolicyStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     deletionProtection = registerOutput<String>('deletionProtection');

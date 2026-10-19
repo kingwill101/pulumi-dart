@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'connector_kafka_cluster_apache_kafka_cluster_vpc.dart';
 
 class ConnectorKafkaClusterApacheKafkaCluster {
-  /// The bootstrap servers of the cluster.
+  /// Bootstrap servers of the cluster.
   final pulumi.Input<String> bootstrapServers;
   /// Details of an Amazon VPC which has network connectivity to the Apache Kafka cluster. See `vpc` Block for details.
   final pulumi.Input<ConnectorKafkaClusterApacheKafkaClusterVpc> vpc;
 
   /// Creates a new [ConnectorKafkaClusterApacheKafkaCluster].
-  /// [bootstrapServers] The bootstrap servers of the cluster.
+  /// [bootstrapServers] Bootstrap servers of the cluster.
   /// [vpc] Details of an Amazon VPC which has network connectivity to the Apache Kafka cluster. See `vpc` Block for details.
   const ConnectorKafkaClusterApacheKafkaCluster({
     required this.bootstrapServers,

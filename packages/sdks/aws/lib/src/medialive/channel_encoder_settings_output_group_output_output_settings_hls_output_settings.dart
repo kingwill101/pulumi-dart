@@ -4,17 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_encoder_settings_output_group_output_output_settings_hls_output_settings_hls_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettings {
+  /// Only applicable when this output is referencing an H.265 video description. Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
   final pulumi.Input<String?>? h265PackagingType;
+  /// Settings regarding the underlying stream. See `hlsSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings> hlsSettings;
   /// String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
   final pulumi.Input<String?>? nameModifier;
+  /// String concatenated to the end of the destination filename.
   final pulumi.Input<String?>? segmentModifier;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettings].
-  /// [h265PackagingType] Optional.
-  /// [hlsSettings] Required.
+  /// [h265PackagingType] Only applicable when this output is referencing an H.265 video description. Specifies whether MP4 segments should be packaged as HEV1 or HVC1.
+  /// [hlsSettings] Settings regarding the underlying stream. See `hlsSettings` Block for details.
   /// [nameModifier] String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
-  /// [segmentModifier] Optional.
+  /// [segmentModifier] String concatenated to the end of the destination filename.
   const ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettings({
     this.h265PackagingType,
     required this.hlsSettings,

@@ -6,24 +6,24 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class LicenseAssociationState {
   /// If `licenseType` is set to `ENTERPRISE_FREE_TRIAL`, this is the expiration date of the free trial.
   final pulumi.Input<String?>? freeTrialExpiration;
-  /// A token from Grafana Labs that ties your AWS account with a Grafana Labs account.
+  /// Token from Grafana Labs that ties your AWS account with a Grafana Labs account.
   final pulumi.Input<String?>? grafanaToken;
   /// If `licenseType` is set to `ENTERPRISE`, this is the expiration date of the enterprise license.
   final pulumi.Input<String?>? licenseExpiration;
-  /// The type of license for the workspace license association. Valid values are `ENTERPRISE` and `ENTERPRISE_FREE_TRIAL`.
+  /// Type of license for the workspace license association. Valid values are `ENTERPRISE` and `ENTERPRISE_FREE_TRIAL`.
   final pulumi.Input<String?>? licenseType;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The workspace id.
+  /// Workspace ID.
   final pulumi.Input<String?>? workspaceId;
 
   /// Creates a new [LicenseAssociationState].
   /// [freeTrialExpiration] If `licenseType` is set to `ENTERPRISE_FREE_TRIAL`, this is the expiration date of the free trial.
-  /// [grafanaToken] A token from Grafana Labs that ties your AWS account with a Grafana Labs account.
+  /// [grafanaToken] Token from Grafana Labs that ties your AWS account with a Grafana Labs account.
   /// [licenseExpiration] If `licenseType` is set to `ENTERPRISE`, this is the expiration date of the enterprise license.
-  /// [licenseType] The type of license for the workspace license association. Valid values are `ENTERPRISE` and `ENTERPRISE_FREE_TRIAL`.
+  /// [licenseType] Type of license for the workspace license association. Valid values are `ENTERPRISE` and `ENTERPRISE_FREE_TRIAL`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [workspaceId] The workspace id.
+  /// [workspaceId] Workspace ID.
   const LicenseAssociationState({
     this.freeTrialExpiration,
     this.grafanaToken,

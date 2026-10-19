@@ -7,7 +7,7 @@ import 'cluster_cluster_certificate.dart';
 class ClusterState {
   /// The list of cluster certificates.
   final pulumi.Input<List<ClusterClusterCertificate>?>? clusterCertificates;
-  /// The id of the CloudHSM cluster.
+  /// The ID of the CloudHSM cluster.
   final pulumi.Input<String?>? clusterId;
   /// The state of the CloudHSM cluster.
   final pulumi.Input<String?>? clusterState;
@@ -27,12 +27,12 @@ class ClusterState {
   final pulumi.Input<Map<String, String>?>? tags;
   /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
-  /// The id of the VPC that the CloudHSM cluster resides in.
+  /// The ID of the VPC that the CloudHSM cluster resides in.
   final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [ClusterState].
   /// [clusterCertificates] The list of cluster certificates.
-  /// [clusterId] The id of the CloudHSM cluster.
+  /// [clusterId] The ID of the CloudHSM cluster.
   /// [clusterState] The state of the CloudHSM cluster.
   /// [hsmType] The type of HSM module in the cluster. Currently, `hsm1.medium` and `hsm2m.medium` are supported.
   /// [mode] The mode to use in the cluster. The allowed values are `FIPS` and `NON_FIPS`. This field is required if `hsmType` is `hsm2m.medium`.
@@ -42,7 +42,7 @@ class ClusterState {
   /// [subnetIds] The IDs of subnets in which cluster will operate.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [vpcId] The id of the VPC that the CloudHSM cluster resides in.
+  /// [vpcId] The ID of the VPC that the CloudHSM cluster resides in.
   const ClusterState({
     this.clusterCertificates,
     this.clusterId,

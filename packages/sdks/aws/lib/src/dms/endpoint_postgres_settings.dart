@@ -31,7 +31,7 @@ class EndpointPostgresSettings {
   final pulumi.Input<bool?>? mapJsonbAsClob;
   /// Specifies how DMS maps LONG VARCHAR values. Valid values are `wstring`, `clob`, and `nclob`.
   final pulumi.Input<String?>? mapLongVarcharAs;
-  /// Specifies the maximum size (in KB) of any .csv file used to transfer data to PostgreSQL. Default is `32,768 KB`.
+  /// Specifies the maximum size (in KB) of any `.csv` file used to transfer data to PostgreSQL. Default is `32,768 KB`.
   final pulumi.Input<int?>? maxFileSize;
   /// Specifies the plugin to use to create a replication slot. Valid values: `pglogical`, `test-decoding`.
   final pulumi.Input<String?>? pluginName;
@@ -55,7 +55,7 @@ class EndpointPostgresSettings {
   /// [mapBooleanAsBoolean] You can use PostgreSQL endpoint settings to map a boolean as a boolean from your PostgreSQL source to a Amazon Redshift target. Default value is `false`.
   /// [mapJsonbAsClob] Optional When true, DMS migrates JSONB values as CLOB.
   /// [mapLongVarcharAs] Specifies how DMS maps LONG VARCHAR values. Valid values are `wstring`, `clob`, and `nclob`.
-  /// [maxFileSize] Specifies the maximum size (in KB) of any .csv file used to transfer data to PostgreSQL. Default is `32,768 KB`.
+  /// [maxFileSize] Specifies the maximum size (in KB) of any `.csv` file used to transfer data to PostgreSQL. Default is `32,768 KB`.
   /// [pluginName] Specifies the plugin to use to create a replication slot. Valid values: `pglogical`, `test-decoding`.
   /// [serviceAccessRoleArn] Specifies the IAM role to use to authenticate the connection.
   /// [slotName] Sets the name of a previously created logical replication slot for a CDC load of the PostgreSQL source instance.
@@ -111,15 +111,15 @@ class EndpointPostgresSettings {
       captureDdls: (() { final guardedValue = map['captureDdls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       databaseMode: (() { final guardedValue = map['databaseMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ddlArtifactsSchema: (() { final guardedValue = map['ddlArtifactsSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      executeTimeout: (() { final guardedValue = map['executeTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      executeTimeout: (() { final guardedValue = map['executeTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       failTasksOnLobTruncation: (() { final guardedValue = map['failTasksOnLobTruncation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       heartbeatEnable: (() { final guardedValue = map['heartbeatEnable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      heartbeatFrequency: (() { final guardedValue = map['heartbeatFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      heartbeatFrequency: (() { final guardedValue = map['heartbeatFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       heartbeatSchema: (() { final guardedValue = map['heartbeatSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mapBooleanAsBoolean: (() { final guardedValue = map['mapBooleanAsBoolean']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       mapJsonbAsClob: (() { final guardedValue = map['mapJsonbAsClob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       mapLongVarcharAs: (() { final guardedValue = map['mapLongVarcharAs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxFileSize: (() { final guardedValue = map['maxFileSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxFileSize: (() { final guardedValue = map['maxFileSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       pluginName: (() { final guardedValue = map['pluginName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceAccessRoleArn: (() { final guardedValue = map['serviceAccessRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       slotName: (() { final guardedValue = map['slotName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

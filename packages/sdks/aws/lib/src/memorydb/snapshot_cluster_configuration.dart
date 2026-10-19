@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class SnapshotClusterConfiguration {
   /// Description for the cluster.
   final pulumi.Input<String?>? description;
-  /// The engine that will run on cluster nodes.
+  /// Engine that will run on cluster nodes.
   final pulumi.Input<String?>? engine;
   /// Version number of the engine used by the cluster.
   final pulumi.Input<String?>? engineVersion;
-  /// The weekly time range during which maintenance on the cluster is performed.
+  /// Weekly time range during which maintenance on the cluster is performed.
   final pulumi.Input<String?>? maintenanceWindow;
   /// Name of the snapshot. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   final pulumi.Input<String?>? name;
@@ -23,30 +23,30 @@ class SnapshotClusterConfiguration {
   final pulumi.Input<int?>? port;
   /// Number of days for which MemoryDB retains automatic snapshots before deleting them.
   final pulumi.Input<int?>? snapshotRetentionLimit;
-  /// The daily time range (in UTC) during which MemoryDB begins taking a daily snapshot of the shard.
+  /// Daily time range (in UTC) during which MemoryDB begins taking a daily snapshot of the shard.
   final pulumi.Input<String?>? snapshotWindow;
   /// Name of the subnet group used by the cluster.
   final pulumi.Input<String?>? subnetGroupName;
   /// ARN of the SNS topic to which cluster notifications are sent.
   final pulumi.Input<String?>? topicArn;
-  /// The VPC in which the cluster exists.
+  /// VPC in which the cluster exists.
   final pulumi.Input<String?>? vpcId;
 
   /// Creates a new [SnapshotClusterConfiguration].
   /// [description] Description for the cluster.
-  /// [engine] The engine that will run on cluster nodes.
+  /// [engine] Engine that will run on cluster nodes.
   /// [engineVersion] Version number of the engine used by the cluster.
-  /// [maintenanceWindow] The weekly time range during which maintenance on the cluster is performed.
+  /// [maintenanceWindow] Weekly time range during which maintenance on the cluster is performed.
   /// [name] Name of the snapshot. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   /// [nodeType] Compute and memory capacity of the nodes in the cluster.
   /// [numShards] Number of shards in the cluster.
   /// [parameterGroupName] Name of the parameter group associated with the cluster.
   /// [port] Port number on which the cluster accepts connections.
   /// [snapshotRetentionLimit] Number of days for which MemoryDB retains automatic snapshots before deleting them.
-  /// [snapshotWindow] The daily time range (in UTC) during which MemoryDB begins taking a daily snapshot of the shard.
+  /// [snapshotWindow] Daily time range (in UTC) during which MemoryDB begins taking a daily snapshot of the shard.
   /// [subnetGroupName] Name of the subnet group used by the cluster.
   /// [topicArn] ARN of the SNS topic to which cluster notifications are sent.
-  /// [vpcId] The VPC in which the cluster exists.
+  /// [vpcId] VPC in which the cluster exists.
   const SnapshotClusterConfiguration({
     this.description,
     this.engine,
@@ -91,10 +91,10 @@ class SnapshotClusterConfiguration {
       maintenanceWindow: (() { final guardedValue = map['maintenanceWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeType: (() { final guardedValue = map['nodeType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      numShards: (() { final guardedValue = map['numShards']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numShards: (() { final guardedValue = map['numShards']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       parameterGroupName: (() { final guardedValue = map['parameterGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      snapshotRetentionLimit: (() { final guardedValue = map['snapshotRetentionLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      snapshotRetentionLimit: (() { final guardedValue = map['snapshotRetentionLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       snapshotWindow: (() { final guardedValue = map['snapshotWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetGroupName: (() { final guardedValue = map['subnetGroupName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       topicArn: (() { final guardedValue = map['topicArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

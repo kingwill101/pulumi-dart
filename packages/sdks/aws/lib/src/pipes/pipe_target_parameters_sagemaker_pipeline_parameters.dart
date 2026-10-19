@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'pipe_target_parameters_sagemaker_pipeline_parameters_pipeline_parameter.dart';
 
 class PipeTargetParametersSagemakerPipelineParameters {
-  /// List of Parameter names and values for SageMaker AI Model Building Pipeline execution. Detailed below.
+  /// List of Parameter names and values for SageMaker AI Model Building Pipeline execution. See `pipelineParameter` Block for details.
   final pulumi.Input<List<PipeTargetParametersSagemakerPipelineParametersPipelineParameter>?>? pipelineParameters;
 
   /// Creates a new [PipeTargetParametersSagemakerPipelineParameters].
-  /// [pipelineParameters] List of Parameter names and values for SageMaker AI Model Building Pipeline execution. Detailed below.
+  /// [pipelineParameters] List of Parameter names and values for SageMaker AI Model Building Pipeline execution. See `pipelineParameter` Block for details.
   const PipeTargetParametersSagemakerPipelineParameters({
     this.pipelineParameters,
   });

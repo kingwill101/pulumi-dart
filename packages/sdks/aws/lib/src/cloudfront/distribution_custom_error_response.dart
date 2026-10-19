@@ -35,9 +35,9 @@ class DistributionCustomErrorResponse {
 
   factory DistributionCustomErrorResponse.fromMap(Map<String, dynamic> map) {
     return DistributionCustomErrorResponse(
-      errorCachingMinTtl: (() { final guardedValue = map['errorCachingMinTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      errorCode: pulumi.Input.fromValue((map['errorCode'] as num).toInt()),
-      responseCode: (() { final guardedValue = map['responseCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      errorCachingMinTtl: (() { final guardedValue = map['errorCachingMinTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      errorCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['errorCode'])),
+      responseCode: (() { final guardedValue = map['responseCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       responsePagePath: (() { final guardedValue = map['responsePagePath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

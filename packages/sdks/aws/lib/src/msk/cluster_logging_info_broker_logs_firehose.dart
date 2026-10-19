@@ -5,11 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterLoggingInfoBrokerLogsFirehose {
   /// Name of the Kinesis Data Firehose delivery stream to deliver logs to.
   final pulumi.Input<String?>? deliveryStream;
+  /// Whether to enable or disable streaming broker logs to Kinesis Data Firehose.
   final pulumi.Input<bool> enabled;
 
   /// Creates a new [ClusterLoggingInfoBrokerLogsFirehose].
   /// [deliveryStream] Name of the Kinesis Data Firehose delivery stream to deliver logs to.
-  /// [enabled] Required.
+  /// [enabled] Whether to enable or disable streaming broker logs to Kinesis Data Firehose.
   const ClusterLoggingInfoBrokerLogsFirehose({
     this.deliveryStream,
     required this.enabled,

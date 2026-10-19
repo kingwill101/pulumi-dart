@@ -7,23 +7,23 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_grafana_workspace_api_key_workspace_api_key_args_doc}
 class WorkspaceApiKeyArgs {
-  /// Specifies the name of the API key. Key names must be unique to the workspace.
+  /// Name of the API key. Key names must be unique to the workspace.
   final pulumi.Input<String> keyName;
-  /// Specifies the permission level of the API key. Valid values are `VIEWER`, `EDITOR`, or `ADMIN`.
+  /// Permission level of the API key. Valid values are `VIEWER`, `EDITOR`, or `ADMIN`.
   final pulumi.Input<String> keyRole;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Specifies the time in seconds until the API key expires. Keys can be valid for up to 30 days.
+  /// Time in seconds until the API key expires. Keys can be valid for up to 30 days.
   final pulumi.Input<int> secondsToLive;
-  /// The ID of the workspace that the API key is valid for.
+  /// ID of the workspace that the API key is valid for.
   final pulumi.Input<String> workspaceId;
 
   /// Creates a new [WorkspaceApiKeyArgs].
-  /// [keyName] Specifies the name of the API key. Key names must be unique to the workspace.
-  /// [keyRole] Specifies the permission level of the API key. Valid values are `VIEWER`, `EDITOR`, or `ADMIN`.
+  /// [keyName] Name of the API key. Key names must be unique to the workspace.
+  /// [keyRole] Permission level of the API key. Valid values are `VIEWER`, `EDITOR`, or `ADMIN`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [secondsToLive] Specifies the time in seconds until the API key expires. Keys can be valid for up to 30 days.
-  /// [workspaceId] The ID of the workspace that the API key is valid for.
+  /// [secondsToLive] Time in seconds until the API key expires. Keys can be valid for up to 30 days.
+  /// [workspaceId] ID of the workspace that the API key is valid for.
   const WorkspaceApiKeyArgs({
     required this.keyName,
     required this.keyRole,
@@ -47,7 +47,7 @@ class WorkspaceApiKeyArgs {
       keyName: pulumi.Input.fromValue(map['keyName'] as String),
       keyRole: pulumi.Input.fromValue(map['keyRole'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      secondsToLive: pulumi.Input.fromValue((map['secondsToLive'] as num).toInt()),
+      secondsToLive: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['secondsToLive'])),
       workspaceId: pulumi.Input.fromValue(map['workspaceId'] as String),
     );
   }

@@ -4,20 +4,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_input_attachment_automatic_input_failover_settings_failover_condition.dart';
 
 class ChannelInputAttachmentAutomaticInputFailoverSettings {
-  /// This clear time defines the requirement a recovered input must meet to be considered healthy. The input must have no failover conditions for this length of time. Enter a time in milliseconds. This value is particularly important if the input\_preference for the failover pair is set to PRIMARY\_INPUT\_PREFERRED, because after this time, MediaLive will switch back to the primary input.
+  /// Amount of time, in milliseconds, that a recovered input must have no failover conditions before it is considered healthy. This value is particularly important when `inputPreference` is set to `PRIMARY_INPUT_PREFERRED`, because after this time, MediaLive switches back to the primary input.
   final pulumi.Input<int?>? errorClearTimeMsec;
-  /// A list of failover conditions. If any of these conditions occur, MediaLive will perform a failover to the other input. See Failover Condition Block for more details.
+  /// Failover conditions. If any of these conditions occur, MediaLive fails over to the other input. See `failoverCondition` Block for details.
   final pulumi.Input<List<ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition>?>? failoverConditions;
   /// Input preference when deciding which input to make active when a previously failed input has recovered.
   final pulumi.Input<String?>? inputPreference;
-  /// The input ID of the secondary input in the automatic input failover pair.
+  /// Input ID of the secondary input in the automatic input failover pair.
   final pulumi.Input<String> secondaryInputId;
 
   /// Creates a new [ChannelInputAttachmentAutomaticInputFailoverSettings].
-  /// [errorClearTimeMsec] This clear time defines the requirement a recovered input must meet to be considered healthy. The input must have no failover conditions for this length of time. Enter a time in milliseconds. This value is particularly important if the input\_preference for the failover pair is set to PRIMARY\_INPUT\_PREFERRED, because after this time, MediaLive will switch back to the primary input.
-  /// [failoverConditions] A list of failover conditions. If any of these conditions occur, MediaLive will perform a failover to the other input. See Failover Condition Block for more details.
+  /// [errorClearTimeMsec] Amount of time, in milliseconds, that a recovered input must have no failover conditions before it is considered healthy. This value is particularly important when `inputPreference` is set to `PRIMARY_INPUT_PREFERRED`, because after this time, MediaLive switches back to the primary input.
+  /// [failoverConditions] Failover conditions. If any of these conditions occur, MediaLive fails over to the other input. See `failoverCondition` Block for details.
   /// [inputPreference] Input preference when deciding which input to make active when a previously failed input has recovered.
-  /// [secondaryInputId] The input ID of the secondary input in the automatic input failover pair.
+  /// [secondaryInputId] Input ID of the secondary input in the automatic input failover pair.
   const ChannelInputAttachmentAutomaticInputFailoverSettings({
     this.errorClearTimeMsec,
     this.failoverConditions,
@@ -36,7 +36,7 @@ class ChannelInputAttachmentAutomaticInputFailoverSettings {
 
   factory ChannelInputAttachmentAutomaticInputFailoverSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentAutomaticInputFailoverSettings(
-      errorClearTimeMsec: (() { final guardedValue = map['errorClearTimeMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      errorClearTimeMsec: (() { final guardedValue = map['errorClearTimeMsec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       failoverConditions: (() { final guardedValue = map['failoverConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition>(guardedValue, (value) => ChannelInputAttachmentAutomaticInputFailoverSettingsFailoverCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       inputPreference: (() { final guardedValue = map['inputPreference']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secondaryInputId: pulumi.Input.fromValue(map['secondaryInputId'] as String),

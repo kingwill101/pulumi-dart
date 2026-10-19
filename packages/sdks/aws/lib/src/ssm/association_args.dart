@@ -41,7 +41,7 @@ class AssociationArgs {
   final pulumi.Input<Map<String, String>?>? tags;
   /// A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
   final pulumi.Input<List<AssociationTarget>?>? targets;
-  /// The number of seconds to wait for the association status to be `Success`. If `Success` status is not reached within the given time, create opration will fail.
+  /// The number of seconds to wait for the association status to be `Success`. If `Success` status is not reached within the given time, create operation will fail.
   ///
   /// Output Location (`outputLocation`) is an S3 bucket where you want to store the results of this association:
   final pulumi.Input<int?>? waitForSuccessTimeoutSeconds;
@@ -63,7 +63,7 @@ class AssociationArgs {
   /// [syncCompliance] The mode for generating association compliance. You can specify `AUTO` or `MANUAL`.
   /// [tags] A map of tags to assign to the object. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targets] A block containing the targets of the SSM association. Targets are documented below. AWS currently supports a maximum of 5 targets.
-  /// [waitForSuccessTimeoutSeconds] The number of seconds to wait for the association status to be `Success`. If `Success` status is not reached within the given time, create opration will fail.
+  /// [waitForSuccessTimeoutSeconds] The number of seconds to wait for the association status to be `Success`. If `Success` status is not reached within the given time, create operation will fail.
   const AssociationArgs({
     this.applyOnlyAtCronInterval,
     this.associationName,
@@ -124,7 +124,7 @@ class AssociationArgs {
       syncCompliance: (() { final guardedValue = map['syncCompliance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       targets: (() { final guardedValue = map['targets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AssociationTarget>(guardedValue, (value) => AssociationTarget.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      waitForSuccessTimeoutSeconds: (() { final guardedValue = map['waitForSuccessTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      waitForSuccessTimeoutSeconds: (() { final guardedValue = map['waitForSuccessTimeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -40,10 +40,10 @@ class AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfigura
 
   factory AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfiguration.fromMap(Map<String, dynamic> map) {
     return AgentAgentPromptOverrideConfigurationPromptConfigurationInferenceConfiguration(
-      maxLength: pulumi.Input.fromValue((map['maxLength'] as num).toInt()),
+      maxLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxLength'])),
       stopSequences: pulumi.Input.fromValue((map['stopSequences'] as List).cast<String>()),
       temperature: pulumi.Input.fromValue((map['temperature'] as num).toDouble()),
-      topK: pulumi.Input.fromValue((map['topK'] as num).toInt()),
+      topK: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['topK'])),
       topP: pulumi.Input.fromValue((map['topP'] as num).toDouble()),
     );
   }

@@ -3,12 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class OrganizationConfigurationDatasourcesKubernetesAuditLogs {
-  /// If true, enables Kubernetes audit logs as a data source for [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
-  /// Defaults to `true`.
+  /// If true, enables Kubernetes audit logs as a data source for [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html). Defaults to `true`.
   final pulumi.Input<bool> enable;
 
   /// Creates a new [OrganizationConfigurationDatasourcesKubernetesAuditLogs].
-  /// [enable] If true, enables Kubernetes audit logs as a data source for [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
+  /// [enable] If true, enables Kubernetes audit logs as a data source for [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html). Defaults to `true`.
   const OrganizationConfigurationDatasourcesKubernetesAuditLogs({
     required this.enable,
   });

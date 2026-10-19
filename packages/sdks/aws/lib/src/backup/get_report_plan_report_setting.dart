@@ -47,7 +47,7 @@ class GetReportPlanReportSetting {
     return GetReportPlanReportSetting(
       accounts: pulumi.Input.fromValue((map['accounts'] as List).cast<String>()),
       frameworkArns: pulumi.Input.fromValue((map['frameworkArns'] as List).cast<String>()),
-      numberOfFrameworks: pulumi.Input.fromValue((map['numberOfFrameworks'] as num).toInt()),
+      numberOfFrameworks: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfFrameworks'])),
       organizationUnits: pulumi.Input.fromValue((map['organizationUnits'] as List).cast<String>()),
       regions: pulumi.Input.fromValue((map['regions'] as List).cast<String>()),
       reportTemplate: pulumi.Input.fromValue(map['reportTemplate'] as String),

@@ -7,9 +7,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_backup_vault_vault_args_doc}
 class VaultArgs {
-  /// A boolean that indicates that all recovery points stored in the vault are deleted so that the vault can be destroyed without error.
+  /// Whether to delete all recovery points stored in the vault so that the vault can be destroyed without error. Default value: `false`.
   final pulumi.Input<bool?>? forceDestroy;
-  /// The server-side encryption key that is used to protect your backups.
+  /// Server-side encryption key that is used to protect your backups.
   final pulumi.Input<String?>? kmsKeyArn;
   /// Name of the backup vault to create.
   final pulumi.Input<String?>? name;
@@ -19,8 +19,8 @@ class VaultArgs {
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [VaultArgs].
-  /// [forceDestroy] A boolean that indicates that all recovery points stored in the vault are deleted so that the vault can be destroyed without error.
-  /// [kmsKeyArn] The server-side encryption key that is used to protect your backups.
+  /// [forceDestroy] Whether to delete all recovery points stored in the vault so that the vault can be destroyed without error. Default value: `false`.
+  /// [kmsKeyArn] Server-side encryption key that is used to protect your backups.
   /// [name] Name of the backup vault to create.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Metadata that you can assign to help organize the resources that you create. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.

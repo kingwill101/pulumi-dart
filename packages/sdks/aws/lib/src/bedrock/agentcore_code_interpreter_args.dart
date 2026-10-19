@@ -14,7 +14,7 @@ class AgentcoreCodeInterpreterArgs {
   final pulumi.Input<List<AgentcoreCodeInterpreterCertificate>?>? certificates;
   /// Description of the code interpreter.
   final pulumi.Input<String?>? description;
-  /// ARN of the IAM role that the code interpreter assumes for execution. Required when using `SANDBOX` network mode.
+  /// ARN of the IAM role that the code interpreter assumes for execution.
   final pulumi.Input<String?>? executionRoleArn;
   /// Name of the code interpreter.
   final pulumi.Input<String?>? name;
@@ -31,7 +31,7 @@ class AgentcoreCodeInterpreterArgs {
   /// Creates a new [AgentcoreCodeInterpreterArgs].
   /// [certificates] Certificates to install in the code interpreter. Between 1 and 200 blocks are supported. See `certificate` below.
   /// [description] Description of the code interpreter.
-  /// [executionRoleArn] ARN of the IAM role that the code interpreter assumes for execution. Required when using `SANDBOX` network mode.
+  /// [executionRoleArn] ARN of the IAM role that the code interpreter assumes for execution.
   /// [name] Name of the code interpreter.
   /// [networkConfiguration] Network configuration for the code interpreter. See `networkConfiguration` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

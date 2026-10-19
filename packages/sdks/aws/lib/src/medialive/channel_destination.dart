@@ -6,20 +6,20 @@ import 'channel_destination_multiplex_settings.dart';
 import 'channel_destination_setting.dart';
 
 class ChannelDestination {
-  /// User-specified id. Ths is used in an output group or an output.
+  /// User-specified ID used in an output group or an output.
   final pulumi.Input<String> id;
-  /// Destination settings for a MediaPackage output; one destination for both encoders. See Media Package Settings for more details.
+  /// Destination settings for a MediaPackage output; one destination for both encoders. See `mediaPackageSettings` Block for details.
   final pulumi.Input<List<ChannelDestinationMediaPackageSetting>?>? mediaPackageSettings;
-  /// Destination settings for a Multiplex output; one destination for both encoders. See Multiplex Settings for more details.
+  /// Destination settings for a Multiplex output; one destination for both encoders. See `multiplexSettings` Block for details.
   final pulumi.Input<ChannelDestinationMultiplexSettings?>? multiplexSettings;
-  /// Destination settings for a standard output; one destination for each redundant encoder. See Settings for more details.
+  /// Destination settings for a standard output; one destination for each redundant encoder. See `settings` Block for details.
   final pulumi.Input<List<ChannelDestinationSetting>?>? settings;
 
   /// Creates a new [ChannelDestination].
-  /// [id] User-specified id. Ths is used in an output group or an output.
-  /// [mediaPackageSettings] Destination settings for a MediaPackage output; one destination for both encoders. See Media Package Settings for more details.
-  /// [multiplexSettings] Destination settings for a Multiplex output; one destination for both encoders. See Multiplex Settings for more details.
-  /// [settings] Destination settings for a standard output; one destination for each redundant encoder. See Settings for more details.
+  /// [id] User-specified ID used in an output group or an output.
+  /// [mediaPackageSettings] Destination settings for a MediaPackage output; one destination for both encoders. See `mediaPackageSettings` Block for details.
+  /// [multiplexSettings] Destination settings for a Multiplex output; one destination for both encoders. See `multiplexSettings` Block for details.
+  /// [settings] Destination settings for a standard output; one destination for each redundant encoder. See `settings` Block for details.
   const ChannelDestination({
     required this.id,
     this.mediaPackageSettings,

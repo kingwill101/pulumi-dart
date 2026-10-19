@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'trigger_predicate_condition.dart';
 
 class TriggerPredicate {
-  /// A list of the conditions that determine when the trigger will fire. See Conditions.
+  /// List of the conditions that determine when the trigger will fire. See `conditions`.
   final pulumi.Input<List<TriggerPredicateCondition>> conditions;
   /// How to handle multiple conditions. Defaults to `AND`. Valid values are `AND` or `ANY`.
   final pulumi.Input<String?>? logical;
 
   /// Creates a new [TriggerPredicate].
-  /// [conditions] A list of the conditions that determine when the trigger will fire. See Conditions.
+  /// [conditions] List of the conditions that determine when the trigger will fire. See `conditions`.
   /// [logical] How to handle multiple conditions. Defaults to `AND`. Valid values are `AND` or `ANY`.
   const TriggerPredicate({
     required this.conditions,

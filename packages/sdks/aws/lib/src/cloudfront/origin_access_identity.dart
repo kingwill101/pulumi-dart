@@ -482,7 +482,7 @@ import 'origin_access_identity_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Cloudfront Origin Access Identities using the `id`. For example:
+/// Using `pulumi import`, import CloudFront Origin Access Identities using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:cloudfront/originAccessIdentity:OriginAccessIdentity origin_access E74FTE3AEXAMPLE
@@ -522,7 +522,7 @@ class OriginAccessIdentity extends pulumi.CustomResource {
           'aws:cloudfront/originAccessIdentity:OriginAccessIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     callerReference = registerOutput<String>('callerReference');

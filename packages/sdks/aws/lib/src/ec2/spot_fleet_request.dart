@@ -9,7 +9,7 @@ import 'spot_fleet_request_state.dart';
 /// instances to be requested on the Spot market.
 ///
 /// &gt; **NOTE [AWS strongly discourages](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-best-practices.html#which-spot-request-method-to-use) the use of the legacy APIs called by this resource.
-/// We recommend using the EC2 Fleet or Auto Scaling Group resources instead.
+/// We recommend using the EC2 Fleet or Auto Scaling group resources instead.
 ///
 /// ## Example Usage
 ///
@@ -797,7 +797,7 @@ import 'spot_fleet_request_state.dart';
 /// ```
 ///
 ///
-/// &gt; In this example, we use a `dynamic` block to define zero or more `launchSpecification` blocks, producing one for each element in the list of subnet ids.
+/// &gt; In this example, we use a `dynamic` block to define zero or more `launchSpecification` blocks, producing one for each element in the list of subnet IDs.
 ///
 ///
 /// ```typescript
@@ -1445,7 +1445,7 @@ class SpotFleetRequest extends pulumi.CustomResource {
           'aws:ec2/spotFleetRequest:SpotFleetRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     allocationStrategy = registerOutput<String?>('allocationStrategy');
     clientToken = registerOutput<String>('clientToken');

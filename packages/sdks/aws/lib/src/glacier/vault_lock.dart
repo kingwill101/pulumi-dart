@@ -412,7 +412,7 @@ class VaultLock extends pulumi.CustomResource {
   late final pulumi.Output<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The name of the Glacier Vault.
+  /// Name of the Glacier Vault.
   late final pulumi.Output<String> vaultName;
 
   /// Creates a new [VaultLock].
@@ -427,7 +427,7 @@ class VaultLock extends pulumi.CustomResource {
           'aws:glacier/vaultLock:VaultLock',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     completeLock = registerOutput<bool>('completeLock');
     ignoreDeletionError = registerOutput<bool?>('ignoreDeletionError');

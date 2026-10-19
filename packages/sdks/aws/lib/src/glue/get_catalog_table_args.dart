@@ -13,20 +13,20 @@ class GetCatalogTableArgs {
   final pulumi.Input<String> databaseName;
   /// Name of the table.
   final pulumi.Input<String> name;
-  /// The time as of when to read the table contents. If not set, the most recent transaction commit time will be used. Cannot be specified along with `transactionId`. Specified in RFC 3339 format, e.g. `2006-01-02T15:04:05Z07:00`.
+  /// Time as of when to read the table contents. If not set, the most recent transaction commit time will be used. Cannot be specified along with `transactionId`. Specified in RFC 3339 format, e.g. `2006-01-02T15:04:05Z07:00`.
   final pulumi.Input<String?>? queryAsOfTime;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// The transaction ID at which to read the table contents.
+  /// Transaction ID at which to read the table contents.
   final pulumi.Input<int?>? transactionId;
 
   /// Creates a new [GetCatalogTableArgs].
   /// [catalogId] ID of the Glue Catalog and database where the table metadata resides. If omitted, this defaults to the current AWS Account ID.
   /// [databaseName] Name of the metadata database where the table metadata resides.
   /// [name] Name of the table.
-  /// [queryAsOfTime] The time as of when to read the table contents. If not set, the most recent transaction commit time will be used. Cannot be specified along with `transactionId`. Specified in RFC 3339 format, e.g. `2006-01-02T15:04:05Z07:00`.
+  /// [queryAsOfTime] Time as of when to read the table contents. If not set, the most recent transaction commit time will be used. Cannot be specified along with `transactionId`. Specified in RFC 3339 format, e.g. `2006-01-02T15:04:05Z07:00`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [transactionId] The transaction ID at which to read the table contents.
+  /// [transactionId] Transaction ID at which to read the table contents.
   const GetCatalogTableArgs({
     this.catalogId,
     required this.databaseName,
@@ -54,7 +54,7 @@ class GetCatalogTableArgs {
       name: pulumi.Input.fromValue(map['name'] as String),
       queryAsOfTime: (() { final guardedValue = map['queryAsOfTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      transactionId: (() { final guardedValue = map['transactionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      transactionId: (() { final guardedValue = map['transactionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

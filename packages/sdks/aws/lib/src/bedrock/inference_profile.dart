@@ -5,7 +5,7 @@ import 'inference_profile_model_source.dart';
 import 'inference_profile_state.dart';
 import 'inference_profile_timeouts.dart';
 
-/// Resource for managing an AWS Bedrock Inference Profile.
+/// Manages an AWS Bedrock Inference Profile.
 ///
 /// ## Example Usage
 ///
@@ -184,37 +184,38 @@ import 'inference_profile_timeouts.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import Bedrock Inference Profile using the `name`. For example:
+/// Using `pulumi import`, import Bedrock Inference Profile using the `id`. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:bedrock/inferenceProfile:InferenceProfile example inference_profile-id-12345678
 /// ```
 class InferenceProfile extends pulumi.CustomResource {
-  /// The ARN of the inference profile.
+  /// ARN of the inference profile.
   late final pulumi.Output<String> arn;
-  /// The time at which the inference profile was created.
+  /// Time at which the inference profile was created.
   late final pulumi.Output<String> createdAt;
-  /// The description of the inference profile.
+  /// Description of the inference profile.
   late final pulumi.Output<String?> description;
-  /// The source of the model this inference profile will track metrics and cost for. See `modelSource`.
+  /// Source of the model this inference profile will track metrics and cost for. See `modelSource`.
+  late final pulumi.Output<InferenceProfileModelSource?> modelSource;
+  /// List of information about each model in the inference profile. See `models`.
+  late final pulumi.Output<List<InferenceProfileModel>> models;
+  /// Name of the inference profile.
   ///
   /// The following arguments are optional:
-  late final pulumi.Output<InferenceProfileModelSource?> modelSource;
-  /// A list of information about each model in the inference profile. See `models`.
-  late final pulumi.Output<List<InferenceProfileModel>> models;
-  /// The name of the inference profile.
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The status of the inference profile. `ACTIVE` means that the inference profile is available to use.
+  /// Status of the inference profile. `ACTIVE` means that the inference profile is available to use.
   late final pulumi.Output<String> status;
   /// Key-value mapping of resource tags for the inference profile.
   late final pulumi.Output<Map<String, String>?> tags;
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   late final pulumi.Output<InferenceProfileTimeouts?> timeouts;
-  /// The type of the inference profile. `SYSTEM_DEFINED` means that the inference profile is defined by Amazon Bedrock. `APPLICATION` means that the inference profile is defined by the user.
+  /// Type of the inference profile. `SYSTEM_DEFINED` means that the inference profile is defined by Amazon Bedrock. `APPLICATION` means that the inference profile is defined by the user.
   late final pulumi.Output<String> type;
-  /// The time at which the inference profile was last updated.
+  /// Time at which the inference profile was last updated.
   late final pulumi.Output<String> updatedAt;
 
   /// Creates a new [InferenceProfile].
@@ -229,7 +230,7 @@ class InferenceProfile extends pulumi.CustomResource {
           'aws:bedrock/inferenceProfile:InferenceProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     createdAt = registerOutput<String>('createdAt');

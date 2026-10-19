@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation {
-  /// The ARN for the S3 bucket containing the application code.
+  /// ARN for the S3 bucket containing the application code.
   final pulumi.Input<String> bucketArn;
-  /// The file key for the object containing the application code.
+  /// File key for the object containing the application code.
   final pulumi.Input<String> fileKey;
-  /// The version of the object containing the application code.
+  /// Version of the object containing the application code.
   final pulumi.Input<String?>? objectVersion;
 
   /// Creates a new [ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation].
-  /// [bucketArn] The ARN for the S3 bucket containing the application code.
-  /// [fileKey] The file key for the object containing the application code.
-  /// [objectVersion] The version of the object containing the application code.
+  /// [bucketArn] ARN for the S3 bucket containing the application code.
+  /// [fileKey] File key for the object containing the application code.
+  /// [objectVersion] Version of the object containing the application code.
   const ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation({
     required this.bucketArn,
     required this.fileKey,

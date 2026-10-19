@@ -5,12 +5,12 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ConnectorWorkerConfiguration {
   /// ARN of the worker configuration.
   final pulumi.Input<String> arn;
-  /// The revision of the worker configuration.
+  /// Revision of the worker configuration.
   final pulumi.Input<int> revision;
 
   /// Creates a new [ConnectorWorkerConfiguration].
   /// [arn] ARN of the worker configuration.
-  /// [revision] The revision of the worker configuration.
+  /// [revision] Revision of the worker configuration.
   const ConnectorWorkerConfiguration({
     required this.arn,
     required this.revision,
@@ -26,7 +26,7 @@ class ConnectorWorkerConfiguration {
   factory ConnectorWorkerConfiguration.fromMap(Map<String, dynamic> map) {
     return ConnectorWorkerConfiguration(
       arn: pulumi.Input.fromValue(map['arn'] as String),
-      revision: pulumi.Input.fromValue((map['revision'] as num).toInt()),
+      revision: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['revision'])),
     );
   }
 }

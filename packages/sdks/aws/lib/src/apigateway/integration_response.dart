@@ -4,7 +4,7 @@ import 'integration_response_state.dart';
 
 /// Provides an HTTP Method Integration Response for an API Gateway Resource.
 ///
-/// &gt; **Note:** Depends on having `aws.apigateway.Integration` inside your rest api. To ensure this
+/// &gt; **Note:** Depends on having `aws.apigateway.Integration` inside your REST API. To ensure this
 /// you might need to add an explicit `dependsOn` for clean runs.
 ///
 /// ## Example Usage
@@ -472,7 +472,7 @@ class IntegrationResponse extends pulumi.CustomResource {
           'aws:apigateway/integrationResponse:IntegrationResponse',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     contentHandling = registerOutput<String?>('contentHandling');
     httpMethod = registerOutput<String>('httpMethod');

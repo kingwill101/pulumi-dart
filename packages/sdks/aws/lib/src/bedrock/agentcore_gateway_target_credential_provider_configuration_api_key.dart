@@ -9,14 +9,14 @@ class AgentcoreGatewayTargetCredentialProviderConfigurationApiKey {
   final pulumi.Input<String?>? credentialParameterName;
   /// Prefix to add to the API key credential value.
   final pulumi.Input<String?>? credentialPrefix;
-  /// ARN of the OIDC provider for API key authentication.
+  /// ARN of the API key credential provider.
   final pulumi.Input<String> providerArn;
 
   /// Creates a new [AgentcoreGatewayTargetCredentialProviderConfigurationApiKey].
   /// [credentialLocation] Location where the API key credential is provided. Valid values: `HEADER`, `QUERY_PARAMETER`.
   /// [credentialParameterName] Name of the parameter containing the API key credential.
   /// [credentialPrefix] Prefix to add to the API key credential value.
-  /// [providerArn] ARN of the OIDC provider for API key authentication.
+  /// [providerArn] ARN of the API key credential provider.
   const AgentcoreGatewayTargetCredentialProviderConfigurationApiKey({
     this.credentialLocation,
     this.credentialParameterName,

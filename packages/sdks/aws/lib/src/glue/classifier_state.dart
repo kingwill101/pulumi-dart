@@ -8,26 +8,26 @@ import 'classifier_xml_classifier.dart';
 
 /// Input properties used for looking up and filtering Classifier resources.
 class ClassifierState {
-  /// A classifier for CSV content. Defined below.
+  /// Classifier for CSV content. Defined below.
   final pulumi.Input<ClassifierCsvClassifier?>? csvClassifier;
-  /// A classifier that uses grok patterns. Defined below.
+  /// Classifier that uses grok patterns. Defined below.
   final pulumi.Input<ClassifierGrokClassifier?>? grokClassifier;
-  /// A classifier for JSON content. Defined below.
+  /// Classifier for JSON content. Defined below.
   final pulumi.Input<ClassifierJsonClassifier?>? jsonClassifier;
-  /// The name of the classifier.
+  /// Name of the classifier.
   final pulumi.Input<String?>? name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A classifier for XML content. Defined below.
+  /// Classifier for XML content. Defined below.
   final pulumi.Input<ClassifierXmlClassifier?>? xmlClassifier;
 
   /// Creates a new [ClassifierState].
-  /// [csvClassifier] A classifier for CSV content. Defined below.
-  /// [grokClassifier] A classifier that uses grok patterns. Defined below.
-  /// [jsonClassifier] A classifier for JSON content. Defined below.
-  /// [name] The name of the classifier.
+  /// [csvClassifier] Classifier for CSV content. Defined below.
+  /// [grokClassifier] Classifier that uses grok patterns. Defined below.
+  /// [jsonClassifier] Classifier for JSON content. Defined below.
+  /// [name] Name of the classifier.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [xmlClassifier] A classifier for XML content. Defined below.
+  /// [xmlClassifier] Classifier for XML content. Defined below.
   const ClassifierState({
     this.csvClassifier,
     this.grokClassifier,

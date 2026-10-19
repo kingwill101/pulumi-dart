@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'catalog_table_optimizer_configuration_compaction_configuration_iceberg_configuration.dart';
 
 class CatalogTableOptimizerConfigurationCompactionConfiguration {
-  /// The configuration for an Iceberg compaction optimizer.
+  /// Configuration for an Iceberg compaction optimizer. See `configuration.compaction_configuration.iceberg_configuration` Block for additional details.
   final pulumi.Input<CatalogTableOptimizerConfigurationCompactionConfigurationIcebergConfiguration?>? icebergConfiguration;
 
   /// Creates a new [CatalogTableOptimizerConfigurationCompactionConfiguration].
-  /// [icebergConfiguration] The configuration for an Iceberg compaction optimizer.
+  /// [icebergConfiguration] Configuration for an Iceberg compaction optimizer. See `configuration.compaction_configuration.iceberg_configuration` Block for additional details.
   const CatalogTableOptimizerConfigurationCompactionConfiguration({
     this.icebergConfiguration,
   });

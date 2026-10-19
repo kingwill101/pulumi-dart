@@ -154,10 +154,9 @@ import 'alias_state.dart';
 class Alias extends pulumi.CustomResource {
   /// ARN of the key alias.
   late final pulumi.Output<String> arn;
-  /// The display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
+  /// Display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/).
   late final pulumi.Output<String> name;
-  /// Creates an unique alias beginning with the specified prefix.
-  /// The name must start with the word "alias" followed by a forward slash (alias/).  Conflicts with `name`.
+  /// Creates a unique alias beginning with the specified prefix. The name must start with the word "alias" followed by a forward slash (alias/). Conflicts with `name`.
   late final pulumi.Output<String> namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -178,7 +177,7 @@ class Alias extends pulumi.CustomResource {
           'aws:kms/alias:Alias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     this.name = registerOutput<String>('name');

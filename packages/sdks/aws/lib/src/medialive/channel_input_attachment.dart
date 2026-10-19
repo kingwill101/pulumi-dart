@@ -5,20 +5,20 @@ import 'channel_input_attachment_automatic_input_failover_settings.dart';
 import 'channel_input_attachment_input_settings.dart';
 
 class ChannelInputAttachment {
-  /// User-specified settings for defining what the conditions are for declaring the input unhealthy and failing over to a different input. See Automatic Input Failover Settings for more details.
+  /// Settings that define the conditions for declaring the input unhealthy and failing over to a different input. See `automaticInputFailoverSettings` Block for details.
   final pulumi.Input<ChannelInputAttachmentAutomaticInputFailoverSettings?>? automaticInputFailoverSettings;
   /// User-specified name for the attachment.
   final pulumi.Input<String> inputAttachmentName;
-  /// The ID of the input.
+  /// ID of the input.
   final pulumi.Input<String> inputId;
-  /// Settings of an input. See Input Settings for more details.
+  /// Settings of an input. See `inputSettings` Block for details.
   final pulumi.Input<ChannelInputAttachmentInputSettings?>? inputSettings;
 
   /// Creates a new [ChannelInputAttachment].
-  /// [automaticInputFailoverSettings] User-specified settings for defining what the conditions are for declaring the input unhealthy and failing over to a different input. See Automatic Input Failover Settings for more details.
+  /// [automaticInputFailoverSettings] Settings that define the conditions for declaring the input unhealthy and failing over to a different input. See `automaticInputFailoverSettings` Block for details.
   /// [inputAttachmentName] User-specified name for the attachment.
-  /// [inputId] The ID of the input.
-  /// [inputSettings] Settings of an input. See Input Settings for more details.
+  /// [inputId] ID of the input.
+  /// [inputSettings] Settings of an input. See `inputSettings` Block for details.
   const ChannelInputAttachment({
     this.automaticInputFailoverSettings,
     required this.inputAttachmentName,

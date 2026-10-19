@@ -159,11 +159,11 @@ import 'group_state.dart';
 /// $ pulumi import aws:xray/group:Group example arn:aws:xray:us-west-2:1234567890:group/example-group/TNGX7SW5U6QY36T4ZMOUA3HVLBYCZTWDIOOXY3CJAXTHSS3YCWUA
 /// ```
 class Group extends pulumi.CustomResource {
-  /// The ARN of the Group.
+  /// ARN of the Group.
   late final pulumi.Output<String> arn;
-  /// The filter expression defining criteria by which to group traces. more info can be found in official [docs](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html).
+  /// Filter expression defining criteria by which to group traces. More info can be found in official [docs](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html).
   late final pulumi.Output<String> filterExpression;
-  /// The name of the group.
+  /// Name of the group.
   late final pulumi.Output<String> groupName;
   /// Configuration options for enabling insights.
   late final pulumi.Output<GroupInsightsConfiguration> insightsConfiguration;
@@ -171,7 +171,7 @@ class Group extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Key-value mapping of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Group].
@@ -186,7 +186,7 @@ class Group extends pulumi.CustomResource {
           'aws:xray/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     filterExpression = registerOutput<String>('filterExpression');

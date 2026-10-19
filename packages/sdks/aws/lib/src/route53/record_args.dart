@@ -121,7 +121,7 @@ class RecordArgs {
       name: pulumi.Input.fromValue(map['name'] as String),
       records: (() { final guardedValue = map['records']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       setIdentifier: (() { final guardedValue = map['setIdentifier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: pulumi.Input.fromValue(map['type']),
       weightedRoutingPolicies: (() { final guardedValue = map['weightedRoutingPolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<RecordWeightedRoutingPolicy>(guardedValue, (value) => RecordWeightedRoutingPolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       zoneId: pulumi.Input.fromValue(map['zoneId'] as String),

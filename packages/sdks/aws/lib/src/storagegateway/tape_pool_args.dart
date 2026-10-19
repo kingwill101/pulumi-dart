@@ -51,7 +51,7 @@ class TapePoolArgs {
     return TapePoolArgs(
       poolName: pulumi.Input.fromValue(map['poolName'] as String),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      retentionLockTimeInDays: (() { final guardedValue = map['retentionLockTimeInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retentionLockTimeInDays: (() { final guardedValue = map['retentionLockTimeInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       retentionLockType: (() { final guardedValue = map['retentionLockType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageClass: pulumi.Input.fromValue(map['storageClass'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

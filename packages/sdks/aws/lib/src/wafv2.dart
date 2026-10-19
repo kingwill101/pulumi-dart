@@ -42,6 +42,10 @@ export 'wafv2/regex_pattern_set_state.dart';
 export 'wafv2/rule_group.dart';
 export 'wafv2/rule_group_args.dart';
 export 'wafv2/rule_group_custom_response_body.dart';
+export 'wafv2/rule_group_monetization_config.dart';
+export 'wafv2/rule_group_monetization_config_crypto_config.dart';
+export 'wafv2/rule_group_monetization_config_crypto_config_payment_network.dart';
+export 'wafv2/rule_group_monetization_config_crypto_config_payment_network_prices.dart';
 export 'wafv2/rule_group_rule.dart';
 export 'wafv2/rule_group_rule_action.dart';
 export 'wafv2/rule_group_rule_action_allow.dart';
@@ -59,6 +63,7 @@ export 'wafv2/rule_group_rule_action_challenge_custom_request_handling_insert_he
 export 'wafv2/rule_group_rule_action_count.dart';
 export 'wafv2/rule_group_rule_action_count_custom_request_handling.dart';
 export 'wafv2/rule_group_rule_action_count_custom_request_handling_insert_header.dart';
+export 'wafv2/rule_group_rule_action_monetize.dart';
 export 'wafv2/rule_group_rule_captcha_config.dart';
 export 'wafv2/rule_group_rule_captcha_config_immunity_time_property.dart';
 export 'wafv2/rule_group_rule_rule_label.dart';
@@ -344,6 +349,10 @@ export 'wafv2/web_acl_logging_configuration_logging_filter_filter_condition_labe
 export 'wafv2/web_acl_logging_configuration_redacted_field.dart';
 export 'wafv2/web_acl_logging_configuration_redacted_field_single_header.dart';
 export 'wafv2/web_acl_logging_configuration_state.dart';
+export 'wafv2/web_acl_monetization_config.dart';
+export 'wafv2/web_acl_monetization_config_crypto_config.dart';
+export 'wafv2/web_acl_monetization_config_crypto_config_payment_network.dart';
+export 'wafv2/web_acl_monetization_config_crypto_config_payment_network_prices.dart';
 export 'wafv2/web_acl_rule.dart';
 export 'wafv2/web_acl_rule_action.dart';
 export 'wafv2/web_acl_rule_action_allow.dart';
@@ -361,6 +370,7 @@ export 'wafv2/web_acl_rule_action_challenge_custom_request_handling_insert_heade
 export 'wafv2/web_acl_rule_action_count.dart';
 export 'wafv2/web_acl_rule_action_count_custom_request_handling.dart';
 export 'wafv2/web_acl_rule_action_count_custom_request_handling_insert_header.dart';
+export 'wafv2/web_acl_rule_action_monetize.dart';
 export 'wafv2/web_acl_rule_args.dart';
 export 'wafv2/web_acl_rule_captcha_config.dart';
 export 'wafv2/web_acl_rule_captcha_config_immunity_time_property.dart';

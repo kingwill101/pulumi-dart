@@ -9,26 +9,29 @@ import 'channel_encoder_settings_audio_description_codec_settings_mp2_settings.d
 import 'channel_encoder_settings_audio_description_codec_settings_wav_settings.dart';
 
 class ChannelEncoderSettingsAudioDescriptionCodecSettings {
-  /// Aac Settings. See AAC Settings for more details.
+  /// AAC settings. See `aacSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsAudioDescriptionCodecSettingsAacSettings?>? aacSettings;
-  /// Ac3 Settings. See AC3 Settings for more details.
+  /// AC3 settings. See `ac3Settings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsAudioDescriptionCodecSettingsAc3Settings?>? ac3Settings;
-  /// Eac3 Atmos Settings. See EAC3 Atmos Settings
+  /// EAC3 Atmos settings. See `eac3AtmosSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings?>? eac3AtmosSettings;
-  /// Eac3 Settings. See EAC3 Settings
+  /// EAC3 settings. See `eac3Settings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3Settings?>? eac3Settings;
+  /// MP2 settings. See `mp2Settings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsAudioDescriptionCodecSettingsMp2Settings?>? mp2Settings;
+  /// Pass-through settings. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? passThroughSettings;
+  /// WAV settings. See `wavSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsAudioDescriptionCodecSettingsWavSettings?>? wavSettings;
 
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionCodecSettings].
-  /// [aacSettings] Aac Settings. See AAC Settings for more details.
-  /// [ac3Settings] Ac3 Settings. See AC3 Settings for more details.
-  /// [eac3AtmosSettings] Eac3 Atmos Settings. See EAC3 Atmos Settings
-  /// [eac3Settings] Eac3 Settings. See EAC3 Settings
-  /// [mp2Settings] Optional.
-  /// [passThroughSettings] Optional.
-  /// [wavSettings] Optional.
+  /// [aacSettings] AAC settings. See `aacSettings` Block for details.
+  /// [ac3Settings] AC3 settings. See `ac3Settings` Block for details.
+  /// [eac3AtmosSettings] EAC3 Atmos settings. See `eac3AtmosSettings` Block for details.
+  /// [eac3Settings] EAC3 settings. See `eac3Settings` Block for details.
+  /// [mp2Settings] MP2 settings. See `mp2Settings` Block for details.
+  /// [passThroughSettings] Pass-through settings. Can be set as an empty block.
+  /// [wavSettings] WAV settings. See `wavSettings` Block for details.
   const ChannelEncoderSettingsAudioDescriptionCodecSettings({
     this.aacSettings,
     this.ac3Settings,

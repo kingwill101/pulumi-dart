@@ -4,16 +4,16 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'rule_group_rule_statement_regex_pattern_set_reference_statement_field_to_match_header_match_pattern.dart';
 
 class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader {
-  /// The filter to use to identify the subset of headers to inspect in a web request. The `matchPattern` block supports only one of the following arguments:
+  /// Filter to use to identify the subset of headers to inspect in a web request. See `headers.match_pattern` Block below for details.
   final pulumi.Input<RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeaderMatchPattern> matchPattern;
-  /// The parts of the headers to inspect with the rule inspection criteria. If you specify `All`, AWS WAF inspects both keys and values. Valid values include the following: `ALL`, `Key`, `Value`.
+  /// Parts of the headers to inspect with the rule inspection criteria. If you specify `All`, AWS WAF inspects both keys and values. Valid values include the following: `ALL`, `Key`, `Value`.
   final pulumi.Input<String> matchScope;
   /// Oversize handling tells AWS WAF what to do with a web request when the request component that the rule inspects is over the limits. Valid values include the following: `CONTINUE`, `MATCH`, `NO_MATCH`. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-oversize-handling.html) for more information.
   final pulumi.Input<String> oversizeHandling;
 
   /// Creates a new [RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader].
-  /// [matchPattern] The filter to use to identify the subset of headers to inspect in a web request. The `matchPattern` block supports only one of the following arguments:
-  /// [matchScope] The parts of the headers to inspect with the rule inspection criteria. If you specify `All`, AWS WAF inspects both keys and values. Valid values include the following: `ALL`, `Key`, `Value`.
+  /// [matchPattern] Filter to use to identify the subset of headers to inspect in a web request. See `headers.match_pattern` Block below for details.
+  /// [matchScope] Parts of the headers to inspect with the rule inspection criteria. If you specify `All`, AWS WAF inspects both keys and values. Valid values include the following: `ALL`, `Key`, `Value`.
   /// [oversizeHandling] Oversize handling tells AWS WAF what to do with a web request when the request component that the rule inspects is over the limits. Valid values include the following: `CONTINUE`, `MATCH`, `NO_MATCH`. See the AWS [documentation](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-statement-oversize-handling.html) for more information.
   const RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchHeader({
     required this.matchPattern,

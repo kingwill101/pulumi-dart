@@ -5,17 +5,17 @@ import 'channel_encoder_settings_output_group_output_group_settings_archive_grou
 import 'channel_encoder_settings_output_group_output_group_settings_archive_group_setting_destination.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting {
-  /// Parameters that control the interactions with the CDN. See Archive CDN Settings for more details.
+  /// Parameters that control the interactions with the CDN. See `archiveCdnSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings?>? archiveCdnSettings;
-  /// A director and base filename where archive files should be written. See Destination for more details.
+  /// Directory and base filename where archive files are written. See `destination` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination> destination;
-  /// Number of seconds to write to archive file before closing and starting a new one.
+  /// Number of seconds to write to an archive file before closing and starting a new one.
   final pulumi.Input<int?>? rolloverInterval;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting].
-  /// [archiveCdnSettings] Parameters that control the interactions with the CDN. See Archive CDN Settings for more details.
-  /// [destination] A director and base filename where archive files should be written. See Destination for more details.
-  /// [rolloverInterval] Number of seconds to write to archive file before closing and starting a new one.
+  /// [archiveCdnSettings] Parameters that control the interactions with the CDN. See `archiveCdnSettings` Block for details.
+  /// [destination] Directory and base filename where archive files are written. See `destination` Block for details.
+  /// [rolloverInterval] Number of seconds to write to an archive file before closing and starting a new one.
   const ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting({
     this.archiveCdnSettings,
     required this.destination,
@@ -34,7 +34,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting {
     return ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting(
       archiveCdnSettings: (() { final guardedValue = map['archiveCdnSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingArchiveCdnSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       destination: pulumi.Input.fromValue(ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSettingDestination.fromMap((map['destination']! as Map).cast<String, dynamic>())),
-      rolloverInterval: (() { final guardedValue = map['rolloverInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rolloverInterval: (() { final guardedValue = map['rolloverInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

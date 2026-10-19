@@ -5,9 +5,9 @@ import 'snapshot_cluster_configuration.dart';
 
 /// Input properties used for looking up and filtering Snapshot resources.
 class SnapshotState {
-  /// The ARN of the snapshot.
+  /// ARN of the snapshot.
   final pulumi.Input<String?>? arn;
-  /// The configuration of the cluster from which the snapshot was taken.
+  /// Configuration of the cluster from which the snapshot was taken.
   final pulumi.Input<List<SnapshotClusterConfiguration>?>? clusterConfigurations;
   /// Name of the MemoryDB cluster to take a snapshot of.
   final pulumi.Input<String?>? clusterName;
@@ -19,24 +19,24 @@ class SnapshotState {
   final pulumi.Input<String?>? namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// Indicates whether the snapshot is from an automatic backup (`automated`) or was created manually (`manual`).
+  /// Whether the snapshot is from an automatic backup (`automated`) or was created manually (`manual`).
   final pulumi.Input<String?>? source;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [SnapshotState].
-  /// [arn] The ARN of the snapshot.
-  /// [clusterConfigurations] The configuration of the cluster from which the snapshot was taken.
+  /// [arn] ARN of the snapshot.
+  /// [clusterConfigurations] Configuration of the cluster from which the snapshot was taken.
   /// [clusterName] Name of the MemoryDB cluster to take a snapshot of.
   /// [kmsKeyArn] ARN of the KMS key used to encrypt the snapshot at rest.
   /// [name] Name of the snapshot. If omitted, the provider will assign a random, unique name. Conflicts with `namePrefix`.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [source] Indicates whether the snapshot is from an automatic backup (`automated`) or was created manually (`manual`).
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [source] Whether the snapshot is from an automatic backup (`automated`) or was created manually (`manual`).
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   const SnapshotState({
     this.arn,
     this.clusterConfigurations,

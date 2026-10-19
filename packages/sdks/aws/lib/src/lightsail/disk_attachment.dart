@@ -290,7 +290,7 @@ import 'disk_attachment_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.lightsail.Disk_attachment` using the id attribute. For example:
+/// Using `pulumi import`, import `aws.lightsail.Disk_attachment` using the `id` attribute. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:lightsail/disk_attachment:Disk_attachment example example-disk,example-instance
@@ -317,7 +317,7 @@ class DiskAttachment extends pulumi.CustomResource {
           'aws:lightsail/disk_attachment:Disk_attachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     diskName = registerOutput<String>('diskName');
     diskPath = registerOutput<String>('diskPath');

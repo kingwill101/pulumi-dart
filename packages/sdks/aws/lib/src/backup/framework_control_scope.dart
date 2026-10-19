@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FrameworkControlScope {
-  /// The ID of the only AWS resource that you want your control scope to contain. Minimum number of 1 item. Maximum number of 100 items.
+  /// ID of the only AWS resource that you want your control scope to contain. Minimum number of 1 item. Maximum number of 100 items.
   final pulumi.Input<List<String>?>? complianceResourceIds;
-  /// Describes whether the control scope includes one or more types of resources, such as EFS or RDS.
+  /// Whether the control scope includes one or more types of resources, such as EFS or RDS.
   final pulumi.Input<List<String>?>? complianceResourceTypes;
-  /// The tag key-value pair applied to those AWS resources that you want to trigger an evaluation for a rule. A maximum of one key-value pair can be provided.
+  /// Tag key-value pair applied to those AWS resources that you want to trigger an evaluation for a rule. A maximum of one key-value pair can be provided.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [FrameworkControlScope].
-  /// [complianceResourceIds] The ID of the only AWS resource that you want your control scope to contain. Minimum number of 1 item. Maximum number of 100 items.
-  /// [complianceResourceTypes] Describes whether the control scope includes one or more types of resources, such as EFS or RDS.
-  /// [tags] The tag key-value pair applied to those AWS resources that you want to trigger an evaluation for a rule. A maximum of one key-value pair can be provided.
+  /// [complianceResourceIds] ID of the only AWS resource that you want your control scope to contain. Minimum number of 1 item. Maximum number of 100 items.
+  /// [complianceResourceTypes] Whether the control scope includes one or more types of resources, such as EFS or RDS.
+  /// [tags] Tag key-value pair applied to those AWS resources that you want to trigger an evaluation for a rule. A maximum of one key-value pair can be provided.
   const FrameworkControlScope({
     this.complianceResourceIds,
     this.complianceResourceTypes,

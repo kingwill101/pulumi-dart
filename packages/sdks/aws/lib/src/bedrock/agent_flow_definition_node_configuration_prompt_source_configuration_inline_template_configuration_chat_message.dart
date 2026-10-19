@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_flow_definition_node_configuration_prompt_source_configuration_inline_template_configuration_chat_message_content.dart';
 
 class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessage {
-  /// Contains the content for the message you pass to, or receive from a model. See Message Content for more information.
+  /// Content for the message you pass to, or receive from, a model. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.chat.message.content` Block for details.
   final pulumi.Input<AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessageContent?>? content;
-  /// The role that the message belongs to.
+  /// Role that the message belongs to.
   final pulumi.Input<String> role;
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessage].
-  /// [content] Contains the content for the message you pass to, or receive from a model. See Message Content for more information.
-  /// [role] The role that the message belongs to.
+  /// [content] Content for the message you pass to, or receive from, a model. See `definition.node.configuration.prompt.source_configuration.inline.template_configuration.chat.message.content` Block for details.
+  /// [role] Role that the message belongs to.
   const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatMessage({
     this.content,
     required this.role,

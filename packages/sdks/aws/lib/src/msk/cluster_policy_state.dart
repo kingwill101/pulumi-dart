@@ -6,6 +6,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ClusterPolicyState {
   /// ARN that uniquely identifies the cluster.
   final pulumi.Input<String?>? clusterArn;
+  /// Current version of the policy.
   final pulumi.Input<String?>? currentVersion;
   /// Resource policy for cluster.
   final pulumi.Input<String?>? policy;
@@ -14,7 +15,7 @@ class ClusterPolicyState {
 
   /// Creates a new [ClusterPolicyState].
   /// [clusterArn] ARN that uniquely identifies the cluster.
-  /// [currentVersion] Optional.
+  /// [currentVersion] Current version of the policy.
   /// [policy] Resource policy for cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   const ClusterPolicyState({

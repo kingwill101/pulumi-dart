@@ -5,14 +5,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNodeGroupLaunchTemplate {
   /// The ID of the launch template.
   final pulumi.Input<String> id;
-  /// Name of the AutoScaling Group.
+  /// Name of the Auto Scaling group.
   final pulumi.Input<String> name;
   /// Kubernetes version.
   final pulumi.Input<String> version;
 
   /// Creates a new [GetNodeGroupLaunchTemplate].
   /// [id] The ID of the launch template.
-  /// [name] Name of the AutoScaling Group.
+  /// [name] Name of the Auto Scaling group.
   /// [version] Kubernetes version.
   const GetNodeGroupLaunchTemplate({
     required this.id,

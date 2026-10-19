@@ -6,7 +6,7 @@ import 'agent_data_source_state.dart';
 import 'agent_data_source_timeouts.dart';
 import 'agent_data_source_vector_ingestion_configuration.dart';
 
-/// Resource for managing an AWS Agents for Amazon Bedrock Data Source.
+/// Manages an AWS Agents for Amazon Bedrock Data Source.
 ///
 /// ## Example Usage
 ///
@@ -1072,6 +1072,405 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 /// ```
 ///
 ///
+/// ### GraphRAG with Neptune Analytics
+///
+/// Knowledge bases that use `NEPTUNE_ANALYTICS` storage require every associated data source to set `contextEnrichmentConfiguration`.
+///
+/// The graph construction model must be one that GraphRAG currently supports, and the supported models are reachable only through a cross-Region [inference profile](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html). Passing a plain foundation model ARN fails with `ValidationException: Invalid graph bedrock foundation model provided`.
+///
+/// The knowledge base service role needs:
+///
+/// * `bedrock:GetInferenceProfile` on `*`. Scoping this to the profile ARN is not honored, and creation fails with `Not authorized to call GetInferenceProfile` even when the granted ARN matches the one in the error.
+/// * `bedrock:InvokeModel` on the inference profile ARN.
+/// * `bedrock:InvokeModel` on the underlying foundation model in every Region the profile routes to, which `aws bedrock get-inference-profile` reports as `models[].modelArn`.
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as aws from "@pulumi/aws";
+///
+/// const example = new aws.bedrock.AgentKnowledgeBase("example", {
+///     knowledgeBaseConfiguration: {
+///         vectorKnowledgeBaseConfiguration: {
+///             embeddingModelArn: "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-english-v3",
+///         },
+///         type: "VECTOR",
+///     },
+///     storageConfiguration: {
+///         neptuneAnalyticsConfiguration: {
+///             fieldMapping: {
+///                 metadataField: "metadata",
+///                 textField: "text",
+///             },
+///             graphArn: exampleAwsNeptunegraphGraph.arn,
+///         },
+///         type: "NEPTUNE_ANALYTICS",
+///     },
+///     name: "graphrag-example",
+///     roleArn: exampleAwsIamRole.arn,
+/// });
+/// const exampleAgentDataSource = new aws.bedrock.AgentDataSource("example", {
+///     dataSourceConfiguration: {
+///         s3Configuration: {
+///             bucketArn: exampleAwsS3Bucket.arn,
+///         },
+///         type: "S3",
+///     },
+///     vectorIngestionConfiguration: {
+///         contextEnrichmentConfiguration: {
+///             bedrockFoundationModelConfiguration: {
+///                 enrichmentStrategyConfiguration: {
+///                     method: "CHUNK_ENTITY_EXTRACTION",
+///                 },
+///                 modelArn: `arn:aws:bedrock:us-east-1:${current.accountId}:inference-profile/us.anthropic.claude-haiku-4-5-20251001-v1:0`,
+///             },
+///             type: "BEDROCK_FOUNDATION_MODEL",
+///         },
+///     },
+///     knowledgeBaseId: example.id,
+///     name: "graphrag-example",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_aws as aws
+///
+/// example = aws.bedrock.AgentKnowledgeBase("example",
+///     knowledge_base_configuration={
+///         "vector_knowledge_base_configuration": {
+///             "embedding_model_arn": "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-english-v3",
+///         },
+///         "type": "VECTOR",
+///     },
+///     storage_configuration={
+///         "neptune_analytics_configuration": {
+///             "field_mapping": {
+///                 "metadata_field": "metadata",
+///                 "text_field": "text",
+///             },
+///             "graph_arn": example_aws_neptunegraph_graph["arn"],
+///         },
+///         "type": "NEPTUNE_ANALYTICS",
+///     },
+///     name="graphrag-example",
+///     role_arn=example_aws_iam_role["arn"])
+/// example_agent_data_source = aws.bedrock.AgentDataSource("example",
+///     data_source_configuration={
+///         "s3_configuration": {
+///             "bucket_arn": example_aws_s3_bucket["arn"],
+///         },
+///         "type": "S3",
+///     },
+///     vector_ingestion_configuration={
+///         "context_enrichment_configuration": {
+///             "bedrock_foundation_model_configuration": {
+///                 "enrichment_strategy_configuration": {
+///                     "method": "CHUNK_ENTITY_EXTRACTION",
+///                 },
+///                 "model_arn": f"arn:aws:bedrock:us-east-1:{current['accountId']}:inference-profile/us.anthropic.claude-haiku-4-5-20251001-v1:0",
+///             },
+///             "type": "BEDROCK_FOUNDATION_MODEL",
+///         },
+///     },
+///     knowledge_base_id=example.id,
+///     name="graphrag-example")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Aws = Pulumi.Aws;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var example = new Aws.Bedrock.AgentKnowledgeBase("example", new()
+///     {
+///         KnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs
+///         {
+///             VectorKnowledgeBaseConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs
+///             {
+///                 EmbeddingModelArn = "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-english-v3",
+///             },
+///             Type = "VECTOR",
+///         },
+///         StorageConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseStorageConfigurationArgs
+///         {
+///             NeptuneAnalyticsConfiguration = new Aws.Bedrock.Inputs.AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationArgs
+///             {
+///                 FieldMapping = new Aws.Bedrock.Inputs.AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationFieldMappingArgs
+///                 {
+///                     MetadataField = "metadata",
+///                     TextField = "text",
+///                 },
+///                 GraphArn = exampleAwsNeptunegraphGraph.Arn,
+///             },
+///             Type = "NEPTUNE_ANALYTICS",
+///         },
+///         Name = "graphrag-example",
+///         RoleArn = exampleAwsIamRole.Arn,
+///     });
+///
+///     var exampleAgentDataSource = new Aws.Bedrock.AgentDataSource("example", new()
+///     {
+///         DataSourceConfiguration = new Aws.Bedrock.Inputs.AgentDataSourceDataSourceConfigurationArgs
+///         {
+///             S3Configuration = new Aws.Bedrock.Inputs.AgentDataSourceDataSourceConfigurationS3ConfigurationArgs
+///             {
+///                 BucketArn = exampleAwsS3Bucket.Arn,
+///             },
+///             Type = "S3",
+///         },
+///         VectorIngestionConfiguration = new Aws.Bedrock.Inputs.AgentDataSourceVectorIngestionConfigurationArgs
+///         {
+///             ContextEnrichmentConfiguration = new Aws.Bedrock.Inputs.AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfigurationArgs
+///             {
+///                 BedrockFoundationModelConfiguration = new Aws.Bedrock.Inputs.AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfigurationBedrockFoundationModelConfigurationArgs
+///                 {
+///                     EnrichmentStrategyConfiguration = new Aws.Bedrock.Inputs.AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfigurationBedrockFoundationModelConfigurationEnrichmentStrategyConfigurationArgs
+///                     {
+///                         Method = "CHUNK_ENTITY_EXTRACTION",
+///                     },
+///                     ModelArn = $"arn:aws:bedrock:us-east-1:{current.AccountId}:inference-profile/us.anthropic.claude-haiku-4-5-20251001-v1:0",
+///                 },
+///                 Type = "BEDROCK_FOUNDATION_MODEL",
+///             },
+///         },
+///         KnowledgeBaseId = example.Id,
+///         Name = "graphrag-example",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-aws/sdk/v7/go/aws/bedrock"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		example, err := bedrock.NewAgentKnowledgeBase(ctx, "example", &bedrock.AgentKnowledgeBaseArgs{
+/// 			KnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs{
+/// 				VectorKnowledgeBaseConfiguration: &bedrock.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs{
+/// 					EmbeddingModelArn: pulumi.String("arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-english-v3"),
+/// 				},
+/// 				Type: pulumi.String("VECTOR"),
+/// 			},
+/// 			StorageConfiguration: &bedrock.AgentKnowledgeBaseStorageConfigurationArgs{
+/// 				NeptuneAnalyticsConfiguration: &bedrock.AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationArgs{
+/// 					FieldMapping: &bedrock.AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationFieldMappingArgs{
+/// 						MetadataField: pulumi.String("metadata"),
+/// 						TextField:     pulumi.String("text"),
+/// 					},
+/// 					GraphArn: pulumi.Any(exampleAwsNeptunegraphGraph.Arn),
+/// 				},
+/// 				Type: pulumi.String("NEPTUNE_ANALYTICS"),
+/// 			},
+/// 			Name:    pulumi.String("graphrag-example"),
+/// 			RoleArn: pulumi.Any(exampleAwsIamRole.Arn),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = bedrock.NewAgentDataSource(ctx, "example", &bedrock.AgentDataSourceArgs{
+/// 			DataSourceConfiguration: &bedrock.AgentDataSourceDataSourceConfigurationArgs{
+/// 				S3Configuration: &bedrock.AgentDataSourceDataSourceConfigurationS3ConfigurationArgs{
+/// 					BucketArn: pulumi.Any(exampleAwsS3Bucket.Arn),
+/// 				},
+/// 				Type: pulumi.String("S3"),
+/// 			},
+/// 			VectorIngestionConfiguration: &bedrock.AgentDataSourceVectorIngestionConfigurationArgs{
+/// 				ContextEnrichmentConfiguration: &bedrock.AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfigurationArgs{
+/// 					BedrockFoundationModelConfiguration: &bedrock.AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfigurationBedrockFoundationModelConfigurationArgs{
+/// 						EnrichmentStrategyConfiguration: &bedrock.AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfigurationBedrockFoundationModelConfigurationEnrichmentStrategyConfigurationArgs{
+/// 							Method: pulumi.String("CHUNK_ENTITY_EXTRACTION"),
+/// 						},
+/// 						ModelArn: pulumi.Sprintf("arn:aws:bedrock:us-east-1:%v:inference-profile/us.anthropic.claude-haiku-4-5-20251001-v1:0", current.AccountId),
+/// 					},
+/// 					Type: pulumi.String("BEDROCK_FOUNDATION_MODEL"),
+/// 				},
+/// 			},
+/// 			KnowledgeBaseId: example.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:            pulumi.String("graphrag-example"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// pulumi {
+///   required_providers {
+///     aws = {
+///       source = "pulumi/aws"
+///     }
+///   }
+/// }
+///
+/// resource "aws_bedrock_agentknowledgebase" "example" {
+///   knowledge_base_configuration = {
+///     vector_knowledge_base_configuration = {
+///       embedding_model_arn = "arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-english-v3"
+///     }
+///     type = "VECTOR"
+///   }
+///   storage_configuration = {
+///     neptune_analytics_configuration = {
+///       field_mapping = {
+///         metadata_field = "metadata"
+///         text_field     = "text"
+///       }
+///       graph_arn = exampleAwsNeptunegraphGraph.arn
+///     }
+///     type = "NEPTUNE_ANALYTICS"
+///   }
+///   name     = "graphrag-example"
+///   role_arn = exampleAwsIamRole.arn
+/// }
+/// resource "aws_bedrock_agentdatasource" "example" {
+///   data_source_configuration = {
+///     s3_configuration = {
+///       bucket_arn = exampleAwsS3Bucket.arn
+///     }
+///     type = "S3"
+///   }
+///   vector_ingestion_configuration = {
+///     context_enrichment_configuration = {
+///       bedrock_foundation_model_configuration = {
+///         enrichment_strategy_configuration = {
+///           method = "CHUNK_ENTITY_EXTRACTION"
+///         }
+///         model_arn ="arn:aws:bedrock:us-east-1:${current.accountId}:inference-profile/us.anthropic.claude-haiku-4-5-20251001-v1:0"
+///       }
+///       type = "BEDROCK_FOUNDATION_MODEL"
+///     }
+///   }
+///   knowledge_base_id = aws_bedrock_agentknowledgebase.example.id
+///   name              = "graphrag-example"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.aws.bedrock.AgentKnowledgeBase;
+/// import com.pulumi.aws.bedrock.AgentKnowledgeBaseArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseStorageConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationFieldMappingArgs;
+/// import com.pulumi.aws.bedrock.AgentDataSource;
+/// import com.pulumi.aws.bedrock.AgentDataSourceArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentDataSourceDataSourceConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentDataSourceDataSourceConfigurationS3ConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentDataSourceVectorIngestionConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfigurationBedrockFoundationModelConfigurationArgs;
+/// import com.pulumi.aws.bedrock.inputs.AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfigurationBedrockFoundationModelConfigurationEnrichmentStrategyConfigurationArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var example = new AgentKnowledgeBase("example", AgentKnowledgeBaseArgs.builder()
+///             .knowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationArgs.builder()
+///                 .vectorKnowledgeBaseConfiguration(AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationArgs.builder()
+///                     .embeddingModelArn("arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-english-v3")
+///                     .build())
+///                 .type("VECTOR")
+///                 .build())
+///             .storageConfiguration(AgentKnowledgeBaseStorageConfigurationArgs.builder()
+///                 .neptuneAnalyticsConfiguration(AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationArgs.builder()
+///                     .fieldMapping(AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfigurationFieldMappingArgs.builder()
+///                         .metadataField("metadata")
+///                         .textField("text")
+///                         .build())
+///                     .graphArn(exampleAwsNeptunegraphGraph.arn())
+///                     .build())
+///                 .type("NEPTUNE_ANALYTICS")
+///                 .build())
+///             .name("graphrag-example")
+///             .roleArn(exampleAwsIamRole.arn())
+///             .build());
+///
+///         var exampleAgentDataSource = new AgentDataSource("exampleAgentDataSource", AgentDataSourceArgs.builder()
+///             .dataSourceConfiguration(AgentDataSourceDataSourceConfigurationArgs.builder()
+///                 .s3Configuration(AgentDataSourceDataSourceConfigurationS3ConfigurationArgs.builder()
+///                     .bucketArn(exampleAwsS3Bucket.arn())
+///                     .build())
+///                 .type("S3")
+///                 .build())
+///             .vectorIngestionConfiguration(AgentDataSourceVectorIngestionConfigurationArgs.builder()
+///                 .contextEnrichmentConfiguration(AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfigurationArgs.builder()
+///                     .bedrockFoundationModelConfiguration(AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfigurationBedrockFoundationModelConfigurationArgs.builder()
+///                         .enrichmentStrategyConfiguration(AgentDataSourceVectorIngestionConfigurationContextEnrichmentConfigurationBedrockFoundationModelConfigurationEnrichmentStrategyConfigurationArgs.builder()
+///                             .method("CHUNK_ENTITY_EXTRACTION")
+///                             .build())
+///                         .modelArn(String.format("arn:aws:bedrock:us-east-1:%s:inference-profile/us.anthropic.claude-haiku-4-5-20251001-v1:0", current.accountId()))
+///                         .build())
+///                     .type("BEDROCK_FOUNDATION_MODEL")
+///                     .build())
+///                 .build())
+///             .knowledgeBaseId(example.id())
+///             .name("graphrag-example")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: aws:bedrock:AgentKnowledgeBase
+///     properties:
+///       knowledgeBaseConfiguration:
+///         vectorKnowledgeBaseConfiguration:
+///           embeddingModelArn: arn:aws:bedrock:us-east-1::foundation-model/cohere.embed-english-v3
+///         type: VECTOR
+///       storageConfiguration:
+///         neptuneAnalyticsConfiguration:
+///           fieldMapping:
+///             metadataField: metadata
+///             textField: text
+///           graphArn: ${exampleAwsNeptunegraphGraph.arn}
+///         type: NEPTUNE_ANALYTICS
+///       name: graphrag-example
+///       roleArn: ${exampleAwsIamRole.arn}
+///   exampleAgentDataSource:
+///     type: aws:bedrock:AgentDataSource
+///     name: example
+///     properties:
+///       dataSourceConfiguration:
+///         s3Configuration:
+///           bucketArn: ${exampleAwsS3Bucket.arn}
+///         type: S3
+///       vectorIngestionConfiguration:
+///         contextEnrichmentConfiguration:
+///           bedrockFoundationModelConfiguration:
+///             enrichmentStrategyConfiguration:
+///               method: CHUNK_ENTITY_EXTRACTION
+///             modelArn: arn:aws:bedrock:us-east-1:${current.accountId}:inference-profile/us.anthropic.claude-haiku-4-5-20251001-v1:0
+///           type: BEDROCK_FOUNDATION_MODEL
+///       knowledgeBaseId: ${example.id}
+///       name: graphrag-example
+/// ```
+///
+///
 /// ## Import
 ///
 /// Using `pulumi import`, import Agents for Amazon Bedrock Data Source using the data source ID and the knowledge base ID. For example:
@@ -1082,7 +1481,7 @@ import 'agent_data_source_vector_ingestion_configuration.dart';
 class AgentDataSource extends pulumi.CustomResource {
   /// Data deletion policy for a data source. Valid values: `RETAIN`, `DELETE`.
   late final pulumi.Output<String> dataDeletionPolicy;
-  /// Details about how the data source is stored. See `dataSourceConfiguration` block for details.
+  /// Details about how the data source is stored. See `dataSourceConfiguration` Block for details.
   late final pulumi.Output<AgentDataSourceDataSourceConfiguration> dataSourceConfiguration;
   /// Unique identifier of the data source.
   late final pulumi.Output<String> dataSourceId;
@@ -1096,10 +1495,10 @@ class AgentDataSource extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Details about the configuration of the server-side encryption. See `serverSideEncryptionConfiguration` block for details.
+  /// Details about the configuration of the server-side encryption. See `serverSideEncryptionConfiguration` Block for details.
   late final pulumi.Output<AgentDataSourceServerSideEncryptionConfiguration?> serverSideEncryptionConfiguration;
   late final pulumi.Output<AgentDataSourceTimeouts?> timeouts;
-  /// Details about the configuration of the server-side encryption. See `vectorIngestionConfiguration` block for details.
+  /// Details about how to ingest the documents in the data source. See `vectorIngestionConfiguration` Block for details.
   late final pulumi.Output<AgentDataSourceVectorIngestionConfiguration?> vectorIngestionConfiguration;
 
   /// Creates a new [AgentDataSource].
@@ -1114,7 +1513,7 @@ class AgentDataSource extends pulumi.CustomResource {
           'aws:bedrock/agentDataSource:AgentDataSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     dataDeletionPolicy = registerOutput<String>('dataDeletionPolicy');
     dataSourceConfiguration = registerOutput<AgentDataSourceDataSourceConfiguration>('dataSourceConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AgentDataSourceDataSourceConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

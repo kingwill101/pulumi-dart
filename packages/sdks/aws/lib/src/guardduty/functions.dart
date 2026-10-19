@@ -123,7 +123,7 @@ pulumi.Output<GetDetectorResult> getDetectorOutput(
   ).apply(GetDetectorResult.fromMap);
 }
 
-/// Data source for managing an AWS GuardDuty Finding Ids.
+/// Data source for managing an AWS GuardDuty Finding IDs.
 ///
 /// ## Example Usage
 ///

@@ -11,9 +11,9 @@ class ReplicatorReplicationInfoListTopicReplication {
   final pulumi.Input<bool?>? copyTopicConfigurations;
   /// Whether to periodically check for new topics and partitions.
   final pulumi.Input<bool?>? detectAndCopyNewTopics;
-  /// Configuration for specifying the position in the topics to start replicating from.
+  /// Configuration for specifying the position in the topics to start replicating from. See `startingPosition` Block below.
   final pulumi.Input<ReplicatorReplicationInfoListTopicReplicationStartingPosition?>? startingPosition;
-  /// Configuration for specifying replicated topic names should be the same as their corresponding upstream topics or prefixed with source cluster alias.
+  /// Configuration for specifying replicated topic names should be the same as their corresponding upstream topics or prefixed with source cluster alias. See `topicNameConfiguration` Block below.
   final pulumi.Input<ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration?>? topicNameConfiguration;
   /// List of regular expression patterns indicating the topics that should not be replica.
   final pulumi.Input<List<String>?>? topicsToExcludes;
@@ -24,8 +24,8 @@ class ReplicatorReplicationInfoListTopicReplication {
   /// [copyAccessControlListsForTopics] Whether to periodically configure remote topic ACLs to match their corresponding upstream topics.
   /// [copyTopicConfigurations] Whether to periodically configure remote topics to match their corresponding upstream topics.
   /// [detectAndCopyNewTopics] Whether to periodically check for new topics and partitions.
-  /// [startingPosition] Configuration for specifying the position in the topics to start replicating from.
-  /// [topicNameConfiguration] Configuration for specifying replicated topic names should be the same as their corresponding upstream topics or prefixed with source cluster alias.
+  /// [startingPosition] Configuration for specifying the position in the topics to start replicating from. See `startingPosition` Block below.
+  /// [topicNameConfiguration] Configuration for specifying replicated topic names should be the same as their corresponding upstream topics or prefixed with source cluster alias. See `topicNameConfiguration` Block below.
   /// [topicsToExcludes] List of regular expression patterns indicating the topics that should not be replica.
   /// [topicsToReplicates] List of regular expression patterns indicating the topics to copy.
   const ReplicatorReplicationInfoListTopicReplication({

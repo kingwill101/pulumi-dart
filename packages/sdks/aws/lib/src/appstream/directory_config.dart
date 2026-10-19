@@ -182,7 +182,7 @@ import 'directory_config_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import `aws.appstream.DirectoryConfig` using the id. For example:
+/// Using `pulumi import`, import `aws.appstream.DirectoryConfig` using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:appstream/directoryConfig:DirectoryConfig example directoryNameExample
@@ -213,7 +213,7 @@ class DirectoryConfig extends pulumi.CustomResource {
           'aws:appstream/directoryConfig:DirectoryConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     certificateBasedAuthProperties = registerOutput<DirectoryConfigCertificateBasedAuthProperties?>('certificateBasedAuthProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DirectoryConfigCertificateBasedAuthProperties.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createdTime = registerOutput<String>('createdTime');

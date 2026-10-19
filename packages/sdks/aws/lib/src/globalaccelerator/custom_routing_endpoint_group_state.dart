@@ -8,20 +8,20 @@ import 'custom_routing_endpoint_group_endpoint_configuration.dart';
 class CustomRoutingEndpointGroupState {
   /// ARN of the custom routing endpoint group.
   final pulumi.Input<String?>? arn;
-  /// The port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. Fields documented below.
+  /// Port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. See `destinationConfiguration` below.
   final pulumi.Input<List<CustomRoutingEndpointGroupDestinationConfiguration>?>? destinationConfigurations;
-  /// The list of endpoint objects. Fields documented below.
+  /// Endpoint objects. See `endpointConfiguration` below.
   final pulumi.Input<List<CustomRoutingEndpointGroupEndpointConfiguration>?>? endpointConfigurations;
-  /// The name of the AWS Region where the custom routing endpoint group is located.
+  /// AWS Region where the custom routing endpoint group is located.
   final pulumi.Input<String?>? endpointGroupRegion;
   /// ARN of the custom routing listener.
   final pulumi.Input<String?>? listenerArn;
 
   /// Creates a new [CustomRoutingEndpointGroupState].
   /// [arn] ARN of the custom routing endpoint group.
-  /// [destinationConfigurations] The port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. Fields documented below.
-  /// [endpointConfigurations] The list of endpoint objects. Fields documented below.
-  /// [endpointGroupRegion] The name of the AWS Region where the custom routing endpoint group is located.
+  /// [destinationConfigurations] Port ranges and protocols for all endpoints in a custom routing endpoint group to accept client traffic on. See `destinationConfiguration` below.
+  /// [endpointConfigurations] Endpoint objects. See `endpointConfiguration` below.
+  /// [endpointGroupRegion] AWS Region where the custom routing endpoint group is located.
   /// [listenerArn] ARN of the custom routing listener.
   const CustomRoutingEndpointGroupState({
     this.arn,

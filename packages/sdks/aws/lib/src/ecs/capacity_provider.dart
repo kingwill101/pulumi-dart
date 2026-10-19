@@ -6,7 +6,7 @@ import 'capacity_provider_state.dart';
 
 /// Provides an ECS cluster capacity provider. More information can be found on the [ECS Developer Guide](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-capacity-providers.html).
 ///
-/// &gt; **NOTE:** Associating an ECS Capacity Provider to an Auto Scaling Group will automatically add the `AmazonECSManaged` tag to the Auto Scaling Group. This tag should be included in the `aws.autoscaling.Group` resource configuration to prevent the provider from removing it in subsequent executions as well as ensuring the `AmazonECSManaged` tag is propagated to all EC2 Instances in the Auto Scaling Group if `minSize` is above 0 on creation. Any EC2 Instances in the Auto Scaling Group without this tag must be manually be updated, otherwise they may cause unexpected scaling behavior and metrics.
+/// &gt; **NOTE:** Associating an ECS Capacity Provider to an Auto Scaling group will automatically add the `AmazonECSManaged` tag to the Auto Scaling group. This tag should be included in the `aws.autoscaling.Group` resource configuration to prevent Terraform from removing it in subsequent executions as well as ensuring the `AmazonECSManaged` tag is propagated to all EC2 Instances in the Auto Scaling group if `minSize` is above 0 on creation. Any EC2 Instances in the Auto Scaling group without this tag must be manually be updated, otherwise they may cause unexpected scaling behavior and metrics.
 ///
 /// &gt; **NOTE:** You must specify exactly one of `autoScalingGroupProvider` or `managedInstancesProvider`. When using `managedInstancesProvider`, the `cluster` parameter is required. When using `autoScalingGroupProvider`, the `cluster` parameter must not be set.
 ///
@@ -14,7 +14,7 @@ import 'capacity_provider_state.dart';
 ///
 /// ## Example Usage
 ///
-/// ### Auto Scaling Group Provider
+/// ### Auto Scaling group Provider
 ///
 ///
 /// ```typescript
@@ -609,7 +609,7 @@ import 'capacity_provider_state.dart';
 class CapacityProvider extends pulumi.CustomResource {
   /// ARN that identifies the capacity provider.
   late final pulumi.Output<String> arn;
-  /// Configuration block for the provider for the ECS auto scaling group. Detailed below. Exactly one of `autoScalingGroupProvider` or `managedInstancesProvider` must be specified.
+  /// Configuration block for the provider for the ECS Auto Scaling group. Detailed below. Exactly one of `autoScalingGroupProvider` or `managedInstancesProvider` must be specified.
   late final pulumi.Output<CapacityProviderAutoScalingGroupProvider?> autoScalingGroupProvider;
   /// Name of the ECS cluster. Required when using `managedInstancesProvider`. Must not be set when using `autoScalingGroupProvider`.
   late final pulumi.Output<String?> cluster;
@@ -636,7 +636,7 @@ class CapacityProvider extends pulumi.CustomResource {
           'aws:ecs/capacityProvider:CapacityProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     autoScalingGroupProvider = registerOutput<CapacityProviderAutoScalingGroupProvider?>('autoScalingGroupProvider', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CapacityProviderAutoScalingGroupProvider.fromMap((guardedValue as Map).cast<String, dynamic>()); });

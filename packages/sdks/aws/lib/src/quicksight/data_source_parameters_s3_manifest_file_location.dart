@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DataSourceParametersS3ManifestFileLocation {
-  /// The name of the bucket that contains the manifest file.
+  /// Name of the bucket that contains the manifest file.
   final pulumi.Input<String> bucket;
-  /// The key of the manifest file within the bucket.
+  /// Key of the manifest file within the bucket.
   final pulumi.Input<String> key;
 
   /// Creates a new [DataSourceParametersS3ManifestFileLocation].
-  /// [bucket] The name of the bucket that contains the manifest file.
-  /// [key] The key of the manifest file within the bucket.
+  /// [bucket] Name of the bucket that contains the manifest file.
+  /// [key] Key of the manifest file within the bucket.
   const DataSourceParametersS3ManifestFileLocation({
     required this.bucket,
     required this.key,

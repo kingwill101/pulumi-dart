@@ -4,14 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'classification_job_s3_job_definition_bucket_criteria_includes_and_tag_criterion_tag_value.dart';
 
 class ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion {
-  /// The operator to use in the condition. Valid combination and values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-jobcomparator)
+  /// Operator to use in the condition. Valid combinations of values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-jobcomparator).
   final pulumi.Input<String?>? comparator;
-  /// The  tag key and value pairs to use in the condition. One or more blocks are allowed. (documented below)
+  /// Tag key and value pairs to use in the condition. One or more blocks are allowed. See `s3_job_definition.bucket_criteria.includes.and.tag_criterion.tag_values` Block for details.
   final pulumi.Input<List<ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterionTagValue>?>? tagValues;
 
   /// Creates a new [ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion].
-  /// [comparator] The operator to use in the condition. Valid combination and values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-jobcomparator)
-  /// [tagValues] The  tag key and value pairs to use in the condition. One or more blocks are allowed. (documented below)
+  /// [comparator] Operator to use in the condition. Valid combinations of values are available in the [AWS Documentation](https://docs.aws.amazon.com/macie/latest/APIReference/jobs.html#jobs-model-jobcomparator).
+  /// [tagValues] Tag key and value pairs to use in the condition. One or more blocks are allowed. See `s3_job_definition.bucket_criteria.includes.and.tag_criterion.tag_values` Block for details.
   const ClassificationJobS3JobDefinitionBucketCriteriaIncludesAndTagCriterion({
     this.comparator,
     this.tagValues,

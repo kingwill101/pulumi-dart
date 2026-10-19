@@ -207,10 +207,11 @@ class Fleet extends pulumi.CustomResource {
   late final pulumi.Output<String?> fleetType;
   /// ARN of an IAM role that instances in the fleet can assume.
   late final pulumi.Output<String?> instanceRoleArn;
+  /// List of paths from which the fleet captures logs.
   late final pulumi.Output<List<String>> logPaths;
   /// List of names of metric groups to add this fleet to. A metric group tracks metrics across all fleets in the group. Defaults to `default`.
   late final pulumi.Output<List<String>> metricGroups;
-  /// The name of the fleet.
+  /// Name of the fleet.
   late final pulumi.Output<String> name;
   /// Game session protection policy to apply to all instances in this fleetE.g., `FullProtection`. Defaults to `NoProtection`.
   late final pulumi.Output<String?> newGameSessionProtectionPolicy;
@@ -228,7 +229,7 @@ class Fleet extends pulumi.CustomResource {
   late final pulumi.Output<String?> scriptId;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Fleet].
@@ -243,7 +244,7 @@ class Fleet extends pulumi.CustomResource {
           'aws:gamelift/fleet:Fleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     buildArn = registerOutput<String>('buildArn');

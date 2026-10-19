@@ -135,7 +135,7 @@ import 'account_public_access_block_state.dart';
 class AccountPublicAccessBlock extends pulumi.CustomResource {
   /// AWS account ID to configure. Defaults to automatically determined account ID of the this provider AWS provider.
   late final pulumi.Output<String> accountId;
-  /// Whether Amazon S3 should block public ACLs for buckets in this account. Defaults to `false`. Enabling this setting does not affect existing policies or ACLs. When set to `true`, PUT Bucket acl and PUT Object acl calls fail if the specified ACL allows public access, and PUT Object calls fail if the request includes a public ACL.
+  /// Whether Amazon S3 should block public ACLs for buckets in this account. Defaults to `false`. Enabling this setting does not affect existing policies or ACLs. When set to `true`, PUT Bucket ACL and PUT Object ACL calls fail if the specified ACL allows public access, and PUT Object calls fail if the request includes a public ACL.
   late final pulumi.Output<bool?> blockPublicAcls;
   /// Whether Amazon S3 should block public bucket policies for buckets in this account. Defaults to `false`. Enabling this setting does not affect existing bucket policies. When set to `true`, Amazon S3 rejects calls to PUT Bucket policy if the specified bucket policy allows public access.
   late final pulumi.Output<bool?> blockPublicPolicy;
@@ -156,7 +156,7 @@ class AccountPublicAccessBlock extends pulumi.CustomResource {
           'aws:s3/accountPublicAccessBlock:AccountPublicAccessBlock',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     blockPublicAcls = registerOutput<bool?>('blockPublicAcls');

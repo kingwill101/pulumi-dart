@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_connect_get_hours_of_operation_get_hours_of_operation_args_doc}
 class GetHoursOfOperationArgs {
-  /// Returns information on a specific Hours of Operation by hours of operation id
+  /// Returns information on a specific Hours of Operation by hours of operation ID
   final pulumi.Input<String?>? hoursOfOperationId;
   /// Reference to the hosting Amazon Connect Instance
   final pulumi.Input<String> instanceId;
@@ -21,7 +21,7 @@ class GetHoursOfOperationArgs {
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [GetHoursOfOperationArgs].
-  /// [hoursOfOperationId] Returns information on a specific Hours of Operation by hours of operation id
+  /// [hoursOfOperationId] Returns information on a specific Hours of Operation by hours of operation ID
   /// [instanceId] Reference to the hosting Amazon Connect Instance
   /// [name] Returns information on a specific Hours of Operation by name
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.

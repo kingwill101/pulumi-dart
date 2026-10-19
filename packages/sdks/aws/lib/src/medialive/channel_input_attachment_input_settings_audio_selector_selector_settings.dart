@@ -7,20 +7,20 @@ import 'channel_input_attachment_input_settings_audio_selector_selector_settings
 import 'channel_input_attachment_input_settings_audio_selector_selector_settings_audio_track_selection.dart';
 
 class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings {
-  /// Audio HLS Rendition Selection. See Audio HLS Rendition Selection for more details.
+  /// HLS rendition selection. See `audioHlsRenditionSelection` Block for details.
   final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection?>? audioHlsRenditionSelection;
-  /// Audio Language Selection. See Audio Language Selection for more details.
+  /// Language selection. See `audioLanguageSelection` Block for details.
   final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioLanguageSelection?>? audioLanguageSelection;
-  /// Audio Pid Selection. See Audio PID Selection for more details.
+  /// PID selection. See `audioPidSelection` Block for details.
   final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioPidSelection?>? audioPidSelection;
-  /// Audio Track Selection. See Audio Track Selection for more details.
+  /// Track selection. See `audioTrackSelection` Block for details.
   final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioTrackSelection?>? audioTrackSelection;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings].
-  /// [audioHlsRenditionSelection] Audio HLS Rendition Selection. See Audio HLS Rendition Selection for more details.
-  /// [audioLanguageSelection] Audio Language Selection. See Audio Language Selection for more details.
-  /// [audioPidSelection] Audio Pid Selection. See Audio PID Selection for more details.
-  /// [audioTrackSelection] Audio Track Selection. See Audio Track Selection for more details.
+  /// [audioHlsRenditionSelection] HLS rendition selection. See `audioHlsRenditionSelection` Block for details.
+  /// [audioLanguageSelection] Language selection. See `audioLanguageSelection` Block for details.
+  /// [audioPidSelection] PID selection. See `audioPidSelection` Block for details.
+  /// [audioTrackSelection] Track selection. See `audioTrackSelection` Block for details.
   const ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings({
     this.audioHlsRenditionSelection,
     this.audioLanguageSelection,

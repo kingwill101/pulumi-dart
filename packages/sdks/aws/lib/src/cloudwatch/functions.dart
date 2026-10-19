@@ -1090,7 +1090,7 @@ pulumi.Output<GetLogDataProtectionPolicyDocumentResult> getLogDataProtectionPoli
   ).apply(GetLogDataProtectionPolicyDocumentResult.fromMap);
 }
 
-/// Use this data source to get information about an AWS Cloudwatch Log Group
+/// Use this data source to get information about an AWS CloudWatch Log Group
 ///
 /// ## Example Usage
 ///
@@ -1219,7 +1219,7 @@ pulumi.Output<GetLogGroupResult> getLogGroupOutput(
   ).apply(GetLogGroupResult.fromMap);
 }
 
-/// Use this data source to get a list of AWS Cloudwatch Log Groups
+/// Use this data source to get a list of AWS CloudWatch Log Groups
 ///
 /// ## Example Usage
 ///

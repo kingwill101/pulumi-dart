@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration {
-  /// The VPCE ID for Firehose to privately connect with Snowflake.
+  /// VPCE ID for Firehose to privately connect with Snowflake.
   final pulumi.Input<String> privateLinkVpceId;
 
   /// Creates a new [FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration].
-  /// [privateLinkVpceId] The VPCE ID for Firehose to privately connect with Snowflake.
+  /// [privateLinkVpceId] VPCE ID for Firehose to privately connect with Snowflake.
   const FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration({
     required this.privateLinkVpceId,
   });

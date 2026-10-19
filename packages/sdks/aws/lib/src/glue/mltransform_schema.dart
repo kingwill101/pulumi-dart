@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class MLTransformSchema {
-  /// The type of data in the column.
+  /// Type of data in the column.
   final pulumi.Input<String?>? dataType;
-  /// The name you assign to this ML Transform. It must be unique in your account.
+  /// Name you assign to this ML Transform. It must be unique in your account.
   final pulumi.Input<String?>? name;
 
   /// Creates a new [MLTransformSchema].
-  /// [dataType] The type of data in the column.
-  /// [name] The name you assign to this ML Transform. It must be unique in your account.
+  /// [dataType] Type of data in the column.
+  /// [name] Name you assign to this ML Transform. It must be unique in your account.
   const MLTransformSchema({
     this.dataType,
     this.name,

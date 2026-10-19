@@ -4,11 +4,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Input properties used for looking up and filtering SubnetGroup resources.
 class SubnetGroupState {
-  /// The ARN of the docDB subnet group.
+  /// The ARN of the DocDB subnet group.
   final pulumi.Input<String?>? arn;
-  /// The description of the docDB subnet group. Defaults to "Managed by Pulumi".
+  /// The description of the DocDB subnet group. Defaults to "Managed by Pulumi".
   final pulumi.Input<String?>? description;
-  /// The name of the docDB subnet group. If omitted, this provider will assign a random, unique name.
+  /// The name of the DocDB subnet group. If omitted, the provider will assign a random, unique name.
   final pulumi.Input<String?>? name;
   /// Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   final pulumi.Input<String?>? namePrefix;
@@ -16,7 +16,7 @@ class SubnetGroupState {
   final pulumi.Input<String?>? region;
   /// A list of VPC subnet IDs.
   final pulumi.Input<List<String>?>? subnetIds;
-  /// The network type of the docDB subnet group (`IPV4` or `DUAL`).
+  /// The network type of the DocDB subnet group (`IPV4` or `DUAL`).
   final pulumi.Input<List<String>?>? supportedNetworkTypes;
   /// A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
@@ -24,13 +24,13 @@ class SubnetGroupState {
   final pulumi.Input<Map<String, String>?>? tagsAll;
 
   /// Creates a new [SubnetGroupState].
-  /// [arn] The ARN of the docDB subnet group.
-  /// [description] The description of the docDB subnet group. Defaults to "Managed by Pulumi".
-  /// [name] The name of the docDB subnet group. If omitted, this provider will assign a random, unique name.
+  /// [arn] The ARN of the DocDB subnet group.
+  /// [description] The description of the DocDB subnet group. Defaults to "Managed by Pulumi".
+  /// [name] The name of the DocDB subnet group. If omitted, the provider will assign a random, unique name.
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subnetIds] A list of VPC subnet IDs.
-  /// [supportedNetworkTypes] The network type of the docDB subnet group (`IPV4` or `DUAL`).
+  /// [supportedNetworkTypes] The network type of the DocDB subnet group (`IPV4` or `DUAL`).
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   SubnetGroupState({

@@ -10,7 +10,7 @@ import 'get_security_group_filter.dart';
 class GetSecurityGroupArgs {
   /// Custom filter block as described below.
   final pulumi.Input<List<GetSecurityGroupFilter>?>? filters;
-  /// Id of the specific security group to retrieve.
+  /// ID of the specific security group to retrieve.
   final pulumi.Input<String?>? id;
   /// Name of the field to filter by, as defined by
   /// [the underlying AWS API](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSecurityGroups.html).
@@ -20,7 +20,7 @@ class GetSecurityGroupArgs {
   /// Map of tags, each pair of which must exactly match
   /// a pair on the desired security group.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// Id of the VPC that the desired security group belongs to.
+  /// ID of the VPC that the desired security group belongs to.
   ///
   /// More complex filters can be expressed using one or more `filter` sub-blocks,
   /// which take the following arguments:
@@ -28,11 +28,11 @@ class GetSecurityGroupArgs {
 
   /// Creates a new [GetSecurityGroupArgs].
   /// [filters] Custom filter block as described below.
-  /// [id] Id of the specific security group to retrieve.
+  /// [id] ID of the specific security group to retrieve.
   /// [name] Name of the field to filter by, as defined by
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags, each pair of which must exactly match
-  /// [vpcId] Id of the VPC that the desired security group belongs to.
+  /// [vpcId] ID of the VPC that the desired security group belongs to.
   const GetSecurityGroupArgs({
     this.filters,
     this.id,

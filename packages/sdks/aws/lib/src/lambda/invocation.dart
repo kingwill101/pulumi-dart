@@ -798,7 +798,7 @@ class Invocation extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// String result of the Lambda function invocation.
   late final pulumi.Output<String> result;
-  /// Tenant Id to serve invocations from specified tenant.
+  /// Tenant ID to serve invocations from specified tenant.
   late final pulumi.Output<String?> tenantId;
   late final pulumi.Output<String?> terraformKey;
   /// Map of arbitrary keys and values that, when changed, will trigger a re-invocation.
@@ -816,7 +816,7 @@ class Invocation extends pulumi.CustomResource {
           'aws:lambda/invocation:Invocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     functionName = registerOutput<String>('functionName');
     input = registerOutput<String>('input');

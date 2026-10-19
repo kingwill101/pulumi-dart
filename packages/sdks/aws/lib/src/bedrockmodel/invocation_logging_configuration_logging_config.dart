@@ -7,24 +7,24 @@ import 'invocation_logging_configuration_logging_config_s3_config.dart';
 class InvocationLoggingConfigurationLoggingConfig {
   /// CloudWatch logging configuration. See `cloudwatchConfig` Block for details.
   final pulumi.Input<InvocationLoggingConfigurationLoggingConfigCloudwatchConfig?>? cloudwatchConfig;
-  /// Set to include embeddings data in the log delivery. Defaults to `true`.
+  /// Whether to include embeddings data in the log delivery. Defaults to `true`.
   final pulumi.Input<bool?>? embeddingDataDeliveryEnabled;
-  /// Set to include image data in the log delivery. Defaults to `true`.
+  /// Whether to include image data in the log delivery. Defaults to `true`.
   final pulumi.Input<bool?>? imageDataDeliveryEnabled;
   /// S3 configuration for storing log data. See `s3Config` Block for details.
   final pulumi.Input<InvocationLoggingConfigurationLoggingConfigS3Config?>? s3Config;
-  /// Set to include text data in the log delivery. Defaults to `true`.
+  /// Whether to include text data in the log delivery. Defaults to `true`.
   final pulumi.Input<bool?>? textDataDeliveryEnabled;
-  /// Set to include text data in the log delivery. Defaults to `true`.
+  /// Whether to include video data in the log delivery. Defaults to `true`.
   final pulumi.Input<bool?>? videoDataDeliveryEnabled;
 
   /// Creates a new [InvocationLoggingConfigurationLoggingConfig].
   /// [cloudwatchConfig] CloudWatch logging configuration. See `cloudwatchConfig` Block for details.
-  /// [embeddingDataDeliveryEnabled] Set to include embeddings data in the log delivery. Defaults to `true`.
-  /// [imageDataDeliveryEnabled] Set to include image data in the log delivery. Defaults to `true`.
+  /// [embeddingDataDeliveryEnabled] Whether to include embeddings data in the log delivery. Defaults to `true`.
+  /// [imageDataDeliveryEnabled] Whether to include image data in the log delivery. Defaults to `true`.
   /// [s3Config] S3 configuration for storing log data. See `s3Config` Block for details.
-  /// [textDataDeliveryEnabled] Set to include text data in the log delivery. Defaults to `true`.
-  /// [videoDataDeliveryEnabled] Set to include text data in the log delivery. Defaults to `true`.
+  /// [textDataDeliveryEnabled] Whether to include text data in the log delivery. Defaults to `true`.
+  /// [videoDataDeliveryEnabled] Whether to include video data in the log delivery. Defaults to `true`.
   const InvocationLoggingConfigurationLoggingConfig({
     this.cloudwatchConfig,
     this.embeddingDataDeliveryEnabled,

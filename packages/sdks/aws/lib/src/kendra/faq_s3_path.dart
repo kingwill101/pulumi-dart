@@ -3,16 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FaqS3Path {
-  /// The name of the S3 bucket that contains the file.
+  /// Name of the S3 bucket that contains the file.
   final pulumi.Input<String> bucket;
-  /// The name of the file.
-  ///
-  /// The following arguments are optional:
+  /// Name of the file.
   final pulumi.Input<String> key;
 
   /// Creates a new [FaqS3Path].
-  /// [bucket] The name of the S3 bucket that contains the file.
-  /// [key] The name of the file.
+  /// [bucket] Name of the S3 bucket that contains the file.
+  /// [key] Name of the file.
   const FaqS3Path({
     required this.bucket,
     required this.key,

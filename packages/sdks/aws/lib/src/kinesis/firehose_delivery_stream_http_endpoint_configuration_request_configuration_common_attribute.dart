@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute {
-  /// The name of the HTTP endpoint common attribute.
+  /// Name of the HTTP endpoint common attribute.
   final pulumi.Input<String> name;
-  /// The value of the HTTP endpoint common attribute.
+  /// Value of the HTTP endpoint common attribute.
   final pulumi.Input<String> value;
 
   /// Creates a new [FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute].
-  /// [name] The name of the HTTP endpoint common attribute.
-  /// [value] The value of the HTTP endpoint common attribute.
+  /// [name] Name of the HTTP endpoint common attribute.
+  /// [value] Value of the HTTP endpoint common attribute.
   const FirehoseDeliveryStreamHttpEndpointConfigurationRequestConfigurationCommonAttribute({
     required this.name,
     required this.value,

@@ -6,14 +6,14 @@ import 'get_detector_feature_additional_configuration.dart';
 class GetDetectorFeature {
   /// Additional feature configuration.
   final pulumi.Input<List<GetDetectorFeatureAdditionalConfiguration>> additionalConfigurations;
-  /// The name of the detector feature.
+  /// Name of the detector feature.
   final pulumi.Input<String> name;
   /// Current status of the detector.
   final pulumi.Input<String> status;
 
   /// Creates a new [GetDetectorFeature].
   /// [additionalConfigurations] Additional feature configuration.
-  /// [name] The name of the detector feature.
+  /// [name] Name of the detector feature.
   /// [status] Current status of the detector.
   const GetDetectorFeature({
     required this.additionalConfigurations,

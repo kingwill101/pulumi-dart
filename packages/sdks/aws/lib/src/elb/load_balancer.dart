@@ -443,7 +443,7 @@ class LoadBalancer extends pulumi.CustomResource {
   late final pulumi.Output<LoadBalancerHealthCheck> healthCheck;
   /// The time in seconds that the connection is allowed to be idle. Default: `60`
   late final pulumi.Output<int?> idleTimeout;
-  /// A list of instance ids to place in the ELB pool.
+  /// A list of instance IDs to place in the ELB pool.
   late final pulumi.Output<List<String>> instances;
   /// If true, ELB will be an internal ELB.
   late final pulumi.Output<bool> internal;
@@ -491,7 +491,7 @@ class LoadBalancer extends pulumi.CustomResource {
           'aws:elb/loadBalancer:LoadBalancer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     accessLogs = registerOutput<LoadBalancerAccessLogs?>('accessLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LoadBalancerAccessLogs.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     arn = registerOutput<String>('arn');

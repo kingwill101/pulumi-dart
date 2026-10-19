@@ -312,7 +312,7 @@ import 'endpoint_state.dart';
 /// ```
 ///
 ///
-/// ### Cidr Example
+/// ### CIDR Example
 ///
 ///
 /// ```typescript
@@ -431,44 +431,46 @@ import 'endpoint_state.dart';
 /// $ pulumi import aws:verifiedaccess/endpoint:Endpoint example vae-8012925589
 /// ```
 class Endpoint extends pulumi.CustomResource {
-  /// The DNS name for users to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
+  /// DNS name for users to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
   late final pulumi.Output<String?> applicationDomain;
-  /// The type of attachment. Currently, only `vpc` is supported.
+  /// Type of attachment. Currently, only `vpc` is supported.
   late final pulumi.Output<String> attachmentType;
-  /// The CIDR block details. This parameter is required if the endpoint type is `cidr`.
+  /// CIDR block details. This parameter is required if the endpoint type is `cidr`. See below.
   late final pulumi.Output<EndpointCidrOptions?> cidrOptions;
-  /// A description for the Verified Access endpoint.
+  /// Description for the Verified Access endpoint.
   late final pulumi.Output<String?> description;
   /// Returned if endpoint has a device trust provider attached.
   late final pulumi.Output<String> deviceValidationDomain;
-  /// The ARN of the public TLS/SSL certificate in AWS Certificate Manager to associate with the endpoint. The CN in the certificate must match the DNS name your end users will use to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
+  /// ARN of the public TLS/SSL certificate in AWS Certificate Manager to associate with the endpoint. The CN in the certificate must match the DNS name your end users will use to reach your application. This parameter is required if the endpoint type is `load-balancer` or `network-interface`.
   late final pulumi.Output<String?> domainCertificateArn;
-  /// A DNS name that is generated for the endpoint.
+  /// DNS name that is generated for the endpoint.
   late final pulumi.Output<String> endpointDomain;
-  /// A custom identifier that is prepended to the DNS name that is generated for the endpoint.
+  /// Custom identifier that is prepended to the DNS name that is generated for the endpoint.
   late final pulumi.Output<String?> endpointDomainPrefix;
-  /// The type of Verified Access endpoint to create. Currently `load-balancer` or `network-interface` are supported.
+  /// Type of Verified Access endpoint to create. Valid values are `load-balancer`, `network-interface`, `cidr`, and `rds`.
   late final pulumi.Output<String> endpointType;
-  /// The load balancer details. This parameter is required if the endpoint type is `load-balancer`.
+  /// Load balancer details. This parameter is required if the endpoint type is `load-balancer`. See below.
   late final pulumi.Output<EndpointLoadBalancerOptions?> loadBalancerOptions;
-  /// The network interface details. This parameter is required if the endpoint type is `network-interface`.
+  /// Network interface details. This parameter is required if the endpoint type is `network-interface`. See below.
   late final pulumi.Output<EndpointNetworkInterfaceOptions?> networkInterfaceOptions;
-  /// The policy document that is associated with this resource.
+  /// Policy document that is associated with this resource.
   late final pulumi.Output<String?> policyDocument;
+  /// RDS details. This parameter is required if the endpoint type is `rds`. See below.
   late final pulumi.Output<EndpointRdsOptions?> rdsOptions;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// List of the the security groups IDs to associate with the Verified Access endpoint.
+  /// List of the security groups IDs to associate with the Verified Access endpoint.
   late final pulumi.Output<List<String>?> securityGroupIds;
-  /// The options in use for server side encryption.
+  /// Options in use for server side encryption. See below.
   late final pulumi.Output<EndpointSseSpecification> sseSpecification;
   /// Key-value tags for the Verified Access Endpoint. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
   late final pulumi.Output<Map<String, String>> tagsAll;
-  /// The ID of the Verified Access group to associate the endpoint with.
+  /// ID of the Verified Access group to associate the endpoint with.
   ///
   /// The following arguments are optional:
   late final pulumi.Output<String> verifiedAccessGroupId;
+  /// ID of the Verified Access instance.
   late final pulumi.Output<String> verifiedAccessInstanceId;
 
   /// Creates a new [Endpoint].
@@ -483,7 +485,7 @@ class Endpoint extends pulumi.CustomResource {
           'aws:verifiedaccess/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     applicationDomain = registerOutput<String?>('applicationDomain');
     attachmentType = registerOutput<String>('attachmentType');

@@ -365,9 +365,9 @@ import 'container_policy_state.dart';
 /// $ pulumi import aws:mediastore/containerPolicy:ContainerPolicy example example
 /// ```
 class ContainerPolicy extends pulumi.CustomResource {
-  /// The name of the container.
+  /// Name of the container.
   late final pulumi.Output<String> containerName;
-  /// The contents of the policy.
+  /// Contents of the policy. For more information about building AWS IAM policy documents with Terraform, see the AWS IAM Policy Document Guide.
   late final pulumi.Output<String> policy;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -384,7 +384,7 @@ class ContainerPolicy extends pulumi.CustomResource {
           'aws:mediastore/containerPolicy:ContainerPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     containerName = registerOutput<String>('containerName');
     policy = registerOutput<String>('policy');

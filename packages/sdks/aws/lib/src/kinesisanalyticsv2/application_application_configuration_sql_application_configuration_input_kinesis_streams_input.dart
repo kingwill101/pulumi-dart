@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput {
-  /// The ARN of the input Kinesis data stream to read.
+  /// ARN of the input Kinesis data stream to read.
   final pulumi.Input<String> resourceArn;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput].
-  /// [resourceArn] The ARN of the input Kinesis data stream to read.
+  /// [resourceArn] ARN of the input Kinesis data stream to read.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationInputKinesisStreamsInput({
     required this.resourceArn,
   });

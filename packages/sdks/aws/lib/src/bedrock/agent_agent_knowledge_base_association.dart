@@ -3,7 +3,7 @@ import 'agent_agent_knowledge_base_association_args.dart';
 import 'agent_agent_knowledge_base_association_state.dart';
 import 'agent_agent_knowledge_base_association_timeouts.dart';
 
-/// Resource for managing an AWS Agents for Amazon Bedrock Agent Knowledge Base Association.
+/// Manages an AWS Agents for Amazon Bedrock Agent Knowledge Base Association.
 ///
 /// ## Example Usage
 ///
@@ -141,7 +141,7 @@ import 'agent_agent_knowledge_base_association_timeouts.dart';
 class AgentAgentKnowledgeBaseAssociation extends pulumi.CustomResource {
   /// Unique identifier of the agent with which you want to associate the knowledge base.
   late final pulumi.Output<String> agentId;
-  /// Version of the agent with which you want to associate the knowledge base. Valid values: `DRAFT`.
+  /// Version of the agent with which you want to associate the knowledge base. Valid values: `DRAFT`. Defaults to `DRAFT`.
   late final pulumi.Output<String> agentVersion;
   /// Description of what the agent should use the knowledge base for.
   late final pulumi.Output<String> description;
@@ -167,7 +167,7 @@ class AgentAgentKnowledgeBaseAssociation extends pulumi.CustomResource {
           'aws:bedrock/agentAgentKnowledgeBaseAssociation:AgentAgentKnowledgeBaseAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
     agentVersion = registerOutput<String>('agentVersion');

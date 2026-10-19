@@ -19,7 +19,7 @@ import 'role_association_state.dart';
 class RoleAssociation extends pulumi.CustomResource {
   /// DB Instance Identifier to associate with the IAM Role.
   late final pulumi.Output<String> dbInstanceIdentifier;
-  /// Name of the feature for association. This can be found in the AWS documentation relevant to the integration or a full list is available in the `SupportedFeatureNames` list returned by [AWS CLI rds describe-db-engine-versions](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-engine-versions.html).
+  /// Name of the feature for association. This can be found in the AWS documentation relevant to the integration or a full list is available in the `SupportedFeatureNames` list returned by [AWS CLI `rds describe-db-engine-versions`](https://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-engine-versions.html).
   late final pulumi.Output<String> featureName;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -38,7 +38,7 @@ class RoleAssociation extends pulumi.CustomResource {
           'aws:rds/roleAssociation:RoleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     dbInstanceIdentifier = registerOutput<String>('dbInstanceIdentifier');
     featureName = registerOutput<String>('featureName');

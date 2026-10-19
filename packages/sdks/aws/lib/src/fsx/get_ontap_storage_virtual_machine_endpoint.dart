@@ -7,19 +7,20 @@ import 'get_ontap_storage_virtual_machine_endpoint_nf.dart';
 import 'get_ontap_storage_virtual_machine_endpoint_smb.dart';
 
 class GetOntapStorageVirtualMachineEndpoint {
+  /// Endpoint for connecting using the Internet Small Computer Systems Interface (iSCSI) protocol. See `iscsi` Block below.
   final pulumi.Input<List<GetOntapStorageVirtualMachineEndpointIscsi>> iscsis;
-  /// Endpoint for managing SVMs using the NetApp ONTAP CLI, NetApp ONTAP API, or NetApp CloudManager. See SVM Endpoint below.
+  /// Endpoint for managing SVMs using the NetApp ONTAP CLI, NetApp ONTAP API, or NetApp CloudManager. See `management` Block below.
   final pulumi.Input<List<GetOntapStorageVirtualMachineEndpointManagement>> managements;
-  /// Endpoint for connecting using the Network File System (NFS) protocol. See SVM Endpoint below.
+  /// Endpoint for connecting using the Network File System (NFS) protocol. See `nfs` Block below.
   final pulumi.Input<List<GetOntapStorageVirtualMachineEndpointNf>> nfs;
-  /// Endpoint for connecting using the Server Message Block (SMB) protocol. See SVM Endpoint below.
+  /// Endpoint for connecting using the Server Message Block (SMB) protocol. See `smb` Block below.
   final pulumi.Input<List<GetOntapStorageVirtualMachineEndpointSmb>> smbs;
 
   /// Creates a new [GetOntapStorageVirtualMachineEndpoint].
-  /// [iscsis] Required.
-  /// [managements] Endpoint for managing SVMs using the NetApp ONTAP CLI, NetApp ONTAP API, or NetApp CloudManager. See SVM Endpoint below.
-  /// [nfs] Endpoint for connecting using the Network File System (NFS) protocol. See SVM Endpoint below.
-  /// [smbs] Endpoint for connecting using the Server Message Block (SMB) protocol. See SVM Endpoint below.
+  /// [iscsis] Endpoint for connecting using the Internet Small Computer Systems Interface (iSCSI) protocol. See `iscsi` Block below.
+  /// [managements] Endpoint for managing SVMs using the NetApp ONTAP CLI, NetApp ONTAP API, or NetApp CloudManager. See `management` Block below.
+  /// [nfs] Endpoint for connecting using the Network File System (NFS) protocol. See `nfs` Block below.
+  /// [smbs] Endpoint for connecting using the Server Message Block (SMB) protocol. See `smb` Block below.
   const GetOntapStorageVirtualMachineEndpoint({
     required this.iscsis,
     required this.managements,

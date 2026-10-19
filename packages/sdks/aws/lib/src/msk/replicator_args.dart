@@ -10,32 +10,32 @@ import 'replicator_replication_info_list.dart';
 /// {@endtemplate}
 /// {@macro pulumi_msk_replicator_replicator_args_doc}
 class ReplicatorArgs {
-  /// A summary description of the replicator.
+  /// Summary description of the replicator.
   final pulumi.Input<String?>? description;
-  /// A list of Kafka clusters which are targets of the replicator.
+  /// Source and target Kafka clusters for the replicator. Exactly two blocks are required. See `kafkaCluster` Block below.
   final pulumi.Input<List<ReplicatorKafkaCluster>> kafkaClusters;
-  /// Configuration block for delivering replicator logs to customer destinations. Detailed below.
+  /// Configuration block for delivering replicator logs to customer destinations. See `logDelivery` Block below.
   final pulumi.Input<ReplicatorLogDelivery?>? logDelivery;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A list of replication configurations, where each configuration targets a given source cluster to target cluster replication flow.
+  /// List of replication configurations, where each configuration targets a given source cluster to target cluster replication flow. See `replicationInfoList` Block below.
   final pulumi.Input<ReplicatorReplicationInfoList> replicationInfoList;
-  /// The name of the replicator.
+  /// Name of the replicator.
   final pulumi.Input<String> replicatorName;
-  /// The ARN of the IAM role used by the replicator to access resources in the customer's account (e.g source and target clusters).
+  /// ARN of the IAM role used by the replicator to access resources in the customer's account (e.g source and target clusters).
   final pulumi.Input<String> serviceExecutionRoleArn;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ReplicatorArgs].
-  /// [description] A summary description of the replicator.
-  /// [kafkaClusters] A list of Kafka clusters which are targets of the replicator.
-  /// [logDelivery] Configuration block for delivering replicator logs to customer destinations. Detailed below.
+  /// [description] Summary description of the replicator.
+  /// [kafkaClusters] Source and target Kafka clusters for the replicator. Exactly two blocks are required. See `kafkaCluster` Block below.
+  /// [logDelivery] Configuration block for delivering replicator logs to customer destinations. See `logDelivery` Block below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [replicationInfoList] A list of replication configurations, where each configuration targets a given source cluster to target cluster replication flow.
-  /// [replicatorName] The name of the replicator.
-  /// [serviceExecutionRoleArn] The ARN of the IAM role used by the replicator to access resources in the customer's account (e.g source and target clusters).
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [replicationInfoList] List of replication configurations, where each configuration targets a given source cluster to target cluster replication flow. See `replicationInfoList` Block below.
+  /// [replicatorName] Name of the replicator.
+  /// [serviceExecutionRoleArn] ARN of the IAM role used by the replicator to access resources in the customer's account (e.g source and target clusters).
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   const ReplicatorArgs({
     this.description,
     required this.kafkaClusters,

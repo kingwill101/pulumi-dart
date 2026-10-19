@@ -731,7 +731,7 @@ import 'web_acl_state.dart';
 ///
 /// ## Import
 ///
-/// Using `pulumi import`, import WAF Regional Web ACL using the id. For example:
+/// Using `pulumi import`, import WAF Regional Web ACL using the ID. For example:
 ///
 /// ```sh
 /// $ pulumi import aws:wafregional/webAcl:WebAcl wafacl a1b2c3d4-d5f6-7777-8888-9999aaaabbbbcccc
@@ -768,7 +768,7 @@ class WebAcl extends pulumi.CustomResource {
           'aws:wafregional/webAcl:WebAcl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     defaultAction = registerOutput<WebAclDefaultAction>('defaultAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return WebAclDefaultAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });

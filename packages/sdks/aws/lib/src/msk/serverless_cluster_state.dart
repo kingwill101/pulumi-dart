@@ -6,35 +6,35 @@ import 'serverless_cluster_vpc_config.dart';
 
 /// Input properties used for looking up and filtering ServerlessCluster resources.
 class ServerlessClusterState {
-  /// The ARN of the serverless cluster.
+  /// ARN of the serverless cluster.
   final pulumi.Input<String?>? arn;
   /// One or more DNS names (or IP addresses) and SASL IAM port pairs. For example, `boot-abcdefg.c2.kafka-serverless.eu-central-1.amazonaws.com:9098`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
   final pulumi.Input<String?>? bootstrapBrokersSaslIam;
-  /// Specifies client authentication information for the serverless cluster. See below.
+  /// Client authentication information for the serverless cluster. See `clientAuthentication` Block below.
   final pulumi.Input<ServerlessClusterClientAuthentication?>? clientAuthentication;
-  /// The name of the serverless cluster.
+  /// Name of the serverless cluster.
   final pulumi.Input<String?>? clusterName;
   /// UUID of the serverless cluster, for use in IAM policies.
   final pulumi.Input<String?>? clusterUuid;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   final pulumi.Input<String?>? region;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   final pulumi.Input<Map<String, String>?>? tagsAll;
-  /// VPC configuration information. See below.
+  /// VPC configuration information. See `vpcConfig` Block below.
   final pulumi.Input<List<ServerlessClusterVpcConfig>?>? vpcConfigs;
 
   /// Creates a new [ServerlessClusterState].
-  /// [arn] The ARN of the serverless cluster.
+  /// [arn] ARN of the serverless cluster.
   /// [bootstrapBrokersSaslIam] One or more DNS names (or IP addresses) and SASL IAM port pairs. For example, `boot-abcdefg.c2.kafka-serverless.eu-central-1.amazonaws.com:9098`. The resource sorts the list alphabetically. AWS may not always return all endpoints so the values may not be stable across applies.
-  /// [clientAuthentication] Specifies client authentication information for the serverless cluster. See below.
-  /// [clusterName] The name of the serverless cluster.
+  /// [clientAuthentication] Client authentication information for the serverless cluster. See `clientAuthentication` Block below.
+  /// [clusterName] Name of the serverless cluster.
   /// [clusterUuid] UUID of the serverless cluster, for use in IAM policies.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  /// [tags] A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
-  /// [vpcConfigs] VPC configuration information. See below.
+  /// [tags] Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// [vpcConfigs] VPC configuration information. See `vpcConfig` Block below.
   const ServerlessClusterState({
     this.arn,
     this.bootstrapBrokersSaslIam,

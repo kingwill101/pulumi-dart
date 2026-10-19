@@ -221,7 +221,7 @@ class GameSessionQueue extends pulumi.CustomResource {
   late final pulumi.Output<List<String>?> destinations;
   /// Name of the session queue.
   late final pulumi.Output<String> name;
-  /// An SNS topic ARN that is set up to receive game session placement notifications.
+  /// SNS topic ARN that is set up to receive game session placement notifications.
   late final pulumi.Output<String?> notificationTarget;
   /// One or more policies used to choose fleet based on player latency. See below.
   late final pulumi.Output<List<GameSessionQueuePlayerLatencyPolicy>?> playerLatencyPolicies;
@@ -229,7 +229,7 @@ class GameSessionQueue extends pulumi.CustomResource {
   late final pulumi.Output<String> region;
   /// Key-value map of resource tags. .If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
   /// Maximum time a game session request can remain in the queue.
   late final pulumi.Output<int?> timeoutInSeconds;
@@ -246,7 +246,7 @@ class GameSessionQueue extends pulumi.CustomResource {
           'aws:gamelift/gameSessionQueue:GameSessionQueue',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     customEventData = registerOutput<String?>('customEventData');

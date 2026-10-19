@@ -9,14 +9,14 @@ class DataQualityJobDefinitionDataQualityAppSpecification {
   final pulumi.Input<String> imageUri;
   /// An Amazon S3 URI to a script that is called after analysis has been performed. Applicable only for the built-in (first party) containers.
   final pulumi.Input<String?>? postAnalyticsProcessorSourceUri;
-  /// An Amazon S3 URI to a script that is called per row prior to running analysis. It can base64 decode the payload and convert it into a flatted json so that the built-in container can use the converted data. Applicable only for the built-in (first party) containers.
+  /// An Amazon S3 URI to a script that is called per row prior to running analysis. It can base64 decode the payload and convert it into a flatted JSON so that the built-in container can use the converted data. Applicable only for the built-in (first party) containers.
   final pulumi.Input<String?>? recordPreprocessorSourceUri;
 
   /// Creates a new [DataQualityJobDefinitionDataQualityAppSpecification].
   /// [environment] Sets the environment variables in the container that the monitoring job runs. A list of key value pairs.
   /// [imageUri] The container image that the data quality monitoring job runs.
   /// [postAnalyticsProcessorSourceUri] An Amazon S3 URI to a script that is called after analysis has been performed. Applicable only for the built-in (first party) containers.
-  /// [recordPreprocessorSourceUri] An Amazon S3 URI to a script that is called per row prior to running analysis. It can base64 decode the payload and convert it into a flatted json so that the built-in container can use the converted data. Applicable only for the built-in (first party) containers.
+  /// [recordPreprocessorSourceUri] An Amazon S3 URI to a script that is called per row prior to running analysis. It can base64 decode the payload and convert it into a flatted JSON so that the built-in container can use the converted data. Applicable only for the built-in (first party) containers.
   const DataQualityJobDefinitionDataQualityAppSpecification({
     this.environment,
     required this.imageUri,

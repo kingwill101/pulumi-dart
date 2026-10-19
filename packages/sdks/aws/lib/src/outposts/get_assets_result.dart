@@ -4,7 +4,7 @@
 /// Result data returned by getAssets.
 class GetAssetsResult {
   final String? arn;
-  /// List of all the asset ids found. This data source will fail if none are found.
+  /// List of all the asset IDs found. This data source will fail if none are found.
   final List<String>? assetIds;
   final List<String>? hostIdFilters;
   /// The provider-assigned unique ID for this managed resource.
@@ -14,7 +14,7 @@ class GetAssetsResult {
 
   /// Creates a new [GetAssetsResult].
   /// [arn] Optional.
-  /// [assetIds] List of all the asset ids found. This data source will fail if none are found.
+  /// [assetIds] List of all the asset IDs found. This data source will fail if none are found.
   /// [hostIdFilters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Optional.

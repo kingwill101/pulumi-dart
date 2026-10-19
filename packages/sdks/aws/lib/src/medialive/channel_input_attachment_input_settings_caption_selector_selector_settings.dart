@@ -9,29 +9,29 @@ import 'channel_input_attachment_input_settings_caption_selector_selector_settin
 import 'channel_input_attachment_input_settings_caption_selector_selector_settings_teletext_source_settings.dart';
 
 class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings {
-  /// Ancillary Source Settings. See Ancillary Source Settings for more details.
+  /// Ancillary source settings. See `ancillarySourceSettings` Block for details.
   final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsAncillarySourceSettings?>? ancillarySourceSettings;
-  /// ARIB Source Settings.
+  /// ARIB source settings. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? aribSourceSettings;
-  /// DVB Sub Source Settings. See DVB Sub Source Settings for more details.
+  /// DVB Sub source settings. See `dvbSubSourceSettings` Block for details.
   final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsDvbSubSourceSettings?>? dvbSubSourceSettings;
-  /// Embedded Source Settings. See Embedded Source Settings for more details.
+  /// Embedded source settings. See `embeddedSourceSettings` Block for details.
   final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsEmbeddedSourceSettings?>? embeddedSourceSettings;
-  /// SCTE20 Source Settings. See SCTE 20 Source Settings for more details.
+  /// SCTE-20 source settings. See `scte20SourceSettings` Block for details.
   final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings?>? scte20SourceSettings;
-  /// SCTE27 Source Settings. See SCTE 27 Source Settings for more details.
+  /// SCTE-27 source settings. See `scte27SourceSettings` Block for details.
   final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings?>? scte27SourceSettings;
-  /// Teletext Source Settings. See Teletext Source Settings for more details.
+  /// Teletext source settings. See `teletextSourceSettings` Block for details.
   final pulumi.Input<ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsTeletextSourceSettings?>? teletextSourceSettings;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings].
-  /// [ancillarySourceSettings] Ancillary Source Settings. See Ancillary Source Settings for more details.
-  /// [aribSourceSettings] ARIB Source Settings.
-  /// [dvbSubSourceSettings] DVB Sub Source Settings. See DVB Sub Source Settings for more details.
-  /// [embeddedSourceSettings] Embedded Source Settings. See Embedded Source Settings for more details.
-  /// [scte20SourceSettings] SCTE20 Source Settings. See SCTE 20 Source Settings for more details.
-  /// [scte27SourceSettings] SCTE27 Source Settings. See SCTE 27 Source Settings for more details.
-  /// [teletextSourceSettings] Teletext Source Settings. See Teletext Source Settings for more details.
+  /// [ancillarySourceSettings] Ancillary source settings. See `ancillarySourceSettings` Block for details.
+  /// [aribSourceSettings] ARIB source settings. Can be set as an empty block.
+  /// [dvbSubSourceSettings] DVB Sub source settings. See `dvbSubSourceSettings` Block for details.
+  /// [embeddedSourceSettings] Embedded source settings. See `embeddedSourceSettings` Block for details.
+  /// [scte20SourceSettings] SCTE-20 source settings. See `scte20SourceSettings` Block for details.
+  /// [scte27SourceSettings] SCTE-27 source settings. See `scte27SourceSettings` Block for details.
+  /// [teletextSourceSettings] Teletext source settings. See `teletextSourceSettings` Block for details.
   const ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettings({
     this.ancillarySourceSettings,
     this.aribSourceSettings,

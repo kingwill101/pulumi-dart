@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'agent_knowledge_base_knowledge_base_configuration_sql_knowledge_base_configuration_redshift_configuration_query_generation_configuration_generation_context_table_column.dart';
 
 class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable {
-  /// Information about a column in the table. See `column` block for details.
+  /// Information about a column in the table. See `column` Block for details.
   final pulumi.Input<List<AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTableColumn>?>? columns;
   /// Description of the table that helps the query engine understand the contents of the table.
   final pulumi.Input<String?>? description;
@@ -14,7 +14,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   final pulumi.Input<String> name;
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryGenerationConfigurationGenerationContextTable].
-  /// [columns] Information about a column in the table. See `column` block for details.
+  /// [columns] Information about a column in the table. See `column` Block for details.
   /// [description] Description of the table that helps the query engine understand the contents of the table.
   /// [inclusion] Whether to include or exclude the table during query generation. Valid values `INCLUDE`, `EXCLUDE`.
   /// [name] Name of the table for which the other fields in this object apply.

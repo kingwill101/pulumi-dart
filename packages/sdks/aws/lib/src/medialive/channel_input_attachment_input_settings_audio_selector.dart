@@ -4,15 +4,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'channel_input_attachment_input_settings_audio_selector_selector_settings.dart';
 
 class ChannelInputAttachmentInputSettingsAudioSelector {
-  /// Name of the Channel.
-  ///
-  /// The following arguments are optional:
+  /// Name of the audio selector.
   final pulumi.Input<String> name;
+  /// Audio selector settings. See `audio_selector.selector_settings` Block for details.
   final pulumi.Input<ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettings?>? selectorSettings;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsAudioSelector].
-  /// [name] Name of the Channel.
-  /// [selectorSettings] Optional.
+  /// [name] Name of the audio selector.
+  /// [selectorSettings] Audio selector settings. See `audio_selector.selector_settings` Block for details.
   const ChannelInputAttachmentInputSettingsAudioSelector({
     required this.name,
     this.selectorSettings,

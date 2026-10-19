@@ -196,7 +196,7 @@ import 'member_state.dart';
 class Member extends pulumi.CustomResource {
   /// AWS account ID for member account.
   late final pulumi.Output<String> accountId;
-  /// The detector ID of the GuardDuty account where you want to create member accounts.
+  /// Detector ID of the GuardDuty account where you want to create member accounts.
   late final pulumi.Output<String> detectorId;
   /// Boolean whether an email notification is sent to the accounts. Defaults to `false`.
   late final pulumi.Output<bool?> disableEmailNotification;
@@ -208,7 +208,7 @@ class Member extends pulumi.CustomResource {
   late final pulumi.Output<bool?> invite;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// The status of the relationship between the member account and its primary account. More information can be found in [Amazon GuardDuty API Reference](https://docs.aws.amazon.com/guardduty/latest/ug/get-members.html).
+  /// Status of the relationship between the member account and its primary account. More information can be found in [Amazon GuardDuty API Reference](https://docs.aws.amazon.com/guardduty/latest/ug/get-members.html).
   late final pulumi.Output<String> relationshipStatus;
 
   /// Creates a new [Member].
@@ -223,7 +223,7 @@ class Member extends pulumi.CustomResource {
           'aws:guardduty/member:Member',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     detectorId = registerOutput<String>('detectorId');

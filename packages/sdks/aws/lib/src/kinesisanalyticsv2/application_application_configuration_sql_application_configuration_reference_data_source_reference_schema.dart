@@ -5,17 +5,17 @@ import 'application_application_configuration_sql_application_configuration_refe
 import 'application_application_configuration_sql_application_configuration_reference_data_source_reference_schema_record_format.dart';
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema {
-  /// Describes the mapping of each data element in the streaming source to the corresponding column in the in-application stream.
+  /// Mapping of each data element in the streaming source to the corresponding column in the in-application stream. See `recordColumn` Block above.
   final pulumi.Input<List<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordColumn>> recordColumns;
-  /// Specifies the encoding of the records in the streaming source. For example, `UTF-8`.
+  /// Encoding of the records in the streaming source. For example, `UTF-8`.
   final pulumi.Input<String?>? recordEncoding;
-  /// Specifies the format of the records on the streaming source.
+  /// Format of the records on the streaming source. See `recordFormat` Block above.
   final pulumi.Input<ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat> recordFormat;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema].
-  /// [recordColumns] Describes the mapping of each data element in the streaming source to the corresponding column in the in-application stream.
-  /// [recordEncoding] Specifies the encoding of the records in the streaming source. For example, `UTF-8`.
-  /// [recordFormat] Specifies the format of the records on the streaming source.
+  /// [recordColumns] Mapping of each data element in the streaming source to the corresponding column in the in-application stream. See `recordColumn` Block above.
+  /// [recordEncoding] Encoding of the records in the streaming source. For example, `UTF-8`.
+  /// [recordFormat] Format of the records on the streaming source. See `recordFormat` Block above.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchema({
     required this.recordColumns,
     this.recordEncoding,

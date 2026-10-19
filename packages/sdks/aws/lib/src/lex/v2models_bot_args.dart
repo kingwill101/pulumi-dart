@@ -80,7 +80,7 @@ class V2modelsBotArgs {
     return V2modelsBotArgs(
       dataPrivacies: pulumi.Input.fromValue(pulumi.Input.decodeList<V2modelsBotDataPrivacy>(map['dataPrivacies']!, (value) => V2modelsBotDataPrivacy.fromMap((value as Map).cast<String, dynamic>()))),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      idleSessionTtlInSeconds: pulumi.Input.fromValue((map['idleSessionTtlInSeconds'] as num).toInt()),
+      idleSessionTtlInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['idleSessionTtlInSeconds'])),
       members: (() { final guardedValue = map['members']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<V2modelsBotMember>(guardedValue, (value) => V2modelsBotMember.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

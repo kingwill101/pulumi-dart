@@ -40,7 +40,7 @@ class EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration {
       canarySize: (() { final guardedValue = map['canarySize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationCanarySize.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       linearStepSize: (() { final guardedValue = map['linearStepSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfigurationLinearStepSize.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
-      waitIntervalInSeconds: pulumi.Input.fromValue((map['waitIntervalInSeconds'] as num).toInt()),
+      waitIntervalInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['waitIntervalInSeconds'])),
     );
   }
 }

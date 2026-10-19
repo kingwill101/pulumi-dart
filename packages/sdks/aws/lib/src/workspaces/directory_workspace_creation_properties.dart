@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class DirectoryWorkspaceCreationProperties {
-  /// The identifier of your custom security group. Should relate to the same VPC, where workspaces reside in.
+  /// The identifier of your custom security group. Should relate to the same VPC, where WorkSpaces reside in.
   final pulumi.Input<String?>? customSecurityGroupId;
   /// The default organizational unit (OU) for your WorkSpace directories. Should conform `"OU=&lt;value&gt;,DC=&lt;value&gt;,...,DC=&lt;value&gt;"` pattern.
   final pulumi.Input<String?>? defaultOu;
@@ -15,7 +15,7 @@ class DirectoryWorkspaceCreationProperties {
   final pulumi.Input<bool?>? userEnabledAsLocalAdministrator;
 
   /// Creates a new [DirectoryWorkspaceCreationProperties].
-  /// [customSecurityGroupId] The identifier of your custom security group. Should relate to the same VPC, where workspaces reside in.
+  /// [customSecurityGroupId] The identifier of your custom security group. Should relate to the same VPC, where WorkSpaces reside in.
   /// [defaultOu] The default organizational unit (OU) for your WorkSpace directories. Should conform `"OU=&lt;value&gt;,DC=&lt;value&gt;,...,DC=&lt;value&gt;"` pattern.
   /// [enableInternetAccess] Indicates whether internet access is enabled for your WorkSpaces.
   /// [enableMaintenanceMode] Indicates whether maintenance mode is enabled for your WorkSpaces. Valid only if `workspaceType` is set to `PERSONAL`.

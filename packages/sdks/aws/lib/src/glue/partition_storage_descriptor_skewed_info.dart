@@ -3,17 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PartitionStorageDescriptorSkewedInfo {
-  /// A list of names of columns that contain skewed values.
+  /// List of names of columns that contain skewed values.
   final pulumi.Input<List<String>?>? skewedColumnNames;
-  /// A list of values that appear so frequently as to be considered skewed.
+  /// List of values that appear so frequently as to be considered skewed.
   final pulumi.Input<Map<String, String>?>? skewedColumnValueLocationMaps;
-  /// A map of skewed values to the columns that contain them.
+  /// Map of skewed values to the columns that contain them.
   final pulumi.Input<List<String>?>? skewedColumnValues;
 
   /// Creates a new [PartitionStorageDescriptorSkewedInfo].
-  /// [skewedColumnNames] A list of names of columns that contain skewed values.
-  /// [skewedColumnValueLocationMaps] A list of values that appear so frequently as to be considered skewed.
-  /// [skewedColumnValues] A map of skewed values to the columns that contain them.
+  /// [skewedColumnNames] List of names of columns that contain skewed values.
+  /// [skewedColumnValueLocationMaps] List of values that appear so frequently as to be considered skewed.
+  /// [skewedColumnValues] Map of skewed values to the columns that contain them.
   const PartitionStorageDescriptorSkewedInfo({
     this.skewedColumnNames,
     this.skewedColumnValueLocationMaps,

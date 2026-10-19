@@ -27,9 +27,9 @@ class GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification {
 
   factory GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification.fromMap(Map<String, dynamic> map) {
     return GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification(
-      tcpEstablishedTimeout: pulumi.Input.fromValue((map['tcpEstablishedTimeout'] as num).toInt()),
-      udpStreamTimeout: pulumi.Input.fromValue((map['udpStreamTimeout'] as num).toInt()),
-      udpTimeout: pulumi.Input.fromValue((map['udpTimeout'] as num).toInt()),
+      tcpEstablishedTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tcpEstablishedTimeout'])),
+      udpStreamTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['udpStreamTimeout'])),
+      udpTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['udpTimeout'])),
     );
   }
 }

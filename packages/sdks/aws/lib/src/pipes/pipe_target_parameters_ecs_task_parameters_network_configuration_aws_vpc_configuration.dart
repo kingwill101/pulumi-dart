@@ -3,15 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration {
-  /// Specifies whether the task's elastic network interface receives a public IP address. You can specify ENABLED only when LaunchType in EcsParameters is set to FARGATE. Valid Values: ENABLED, DISABLED.
+  /// Whether the task's elastic network interface receives a public IP address. You can specify ENABLED only when LaunchType in EcsParameters is set to FARGATE. Valid Values: ENABLED, DISABLED.
   final pulumi.Input<String?>? assignPublicIp;
+  /// Security groups associated with the task. These security groups must all be in the same VPC. You can specify as many as five security groups. If you do not specify a security group, the default security group for the VPC is used.
   final pulumi.Input<List<String>?>? securityGroups;
+  /// Subnets associated with the task. These subnets must all be in the same VPC. You can specify as many as 16 subnets.
   final pulumi.Input<List<String>?>? subnets;
 
   /// Creates a new [PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration].
-  /// [assignPublicIp] Specifies whether the task's elastic network interface receives a public IP address. You can specify ENABLED only when LaunchType in EcsParameters is set to FARGATE. Valid Values: ENABLED, DISABLED.
-  /// [securityGroups] Optional.
-  /// [subnets] Optional.
+  /// [assignPublicIp] Whether the task's elastic network interface receives a public IP address. You can specify ENABLED only when LaunchType in EcsParameters is set to FARGATE. Valid Values: ENABLED, DISABLED.
+  /// [securityGroups] Security groups associated with the task. These security groups must all be in the same VPC. You can specify as many as five security groups. If you do not specify a security group, the default security group for the VPC is used.
+  /// [subnets] Subnets associated with the task. These subnets must all be in the same VPC. You can specify as many as 16 subnets.
   const PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration({
     this.assignPublicIp,
     this.securityGroups,

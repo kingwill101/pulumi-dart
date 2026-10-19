@@ -30,7 +30,7 @@ class FleetRuntimeConfigurationServerProcess {
 
   factory FleetRuntimeConfigurationServerProcess.fromMap(Map<String, dynamic> map) {
     return FleetRuntimeConfigurationServerProcess(
-      concurrentExecutions: pulumi.Input.fromValue((map['concurrentExecutions'] as num).toInt()),
+      concurrentExecutions: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['concurrentExecutions'])),
       launchPath: pulumi.Input.fromValue(map['launchPath'] as String),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

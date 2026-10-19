@@ -6,16 +6,20 @@ import 'channel_encoder_settings_output_group_output_output_settings_hls_output_
 import 'channel_encoder_settings_output_group_output_output_settings_hls_output_settings_hls_settings_standard_hls_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings {
+  /// Audio-only HLS settings. See `audioOnlyHlsSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsAudioOnlyHlsSettings?>? audioOnlyHlsSettings;
+  /// fMP4 HLS settings. See `fmp4HlsSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings?>? fmp4HlsSettings;
+  /// Frame capture HLS settings. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? frameCaptureHlsSettings;
+  /// Standard HLS settings. See `standardHlsSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsStandardHlsSettings?>? standardHlsSettings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings].
-  /// [audioOnlyHlsSettings] Optional.
-  /// [fmp4HlsSettings] Optional.
-  /// [frameCaptureHlsSettings] Optional.
-  /// [standardHlsSettings] Optional.
+  /// [audioOnlyHlsSettings] Audio-only HLS settings. See `audioOnlyHlsSettings` Block for details.
+  /// [fmp4HlsSettings] fMP4 HLS settings. See `fmp4HlsSettings` Block for details.
+  /// [frameCaptureHlsSettings] Frame capture HLS settings. Can be set as an empty block.
+  /// [standardHlsSettings] Standard HLS settings. See `standardHlsSettings` Block for details.
   const ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettings({
     this.audioOnlyHlsSettings,
     this.fmp4HlsSettings,

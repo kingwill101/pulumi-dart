@@ -5,14 +5,17 @@ import 'get_cluster_broker_node_group_info_connectivity_info_public_access.dart'
 import 'get_cluster_broker_node_group_info_connectivity_info_vpc_connectivity.dart';
 
 class GetClusterBrokerNodeGroupInfoConnectivityInfo {
+  /// Network type of the cluster.
   final pulumi.Input<String> networkType;
+  /// Public access configuration. See `publicAccess` Block for details.
   final pulumi.Input<List<GetClusterBrokerNodeGroupInfoConnectivityInfoPublicAccess>> publicAccesses;
+  /// VPC connectivity configuration. See `vpcConnectivity` Block for details.
   final pulumi.Input<List<GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivity>> vpcConnectivities;
 
   /// Creates a new [GetClusterBrokerNodeGroupInfoConnectivityInfo].
-  /// [networkType] Required.
-  /// [publicAccesses] Required.
-  /// [vpcConnectivities] Required.
+  /// [networkType] Network type of the cluster.
+  /// [publicAccesses] Public access configuration. See `publicAccess` Block for details.
+  /// [vpcConnectivities] VPC connectivity configuration. See `vpcConnectivity` Block for details.
   const GetClusterBrokerNodeGroupInfoConnectivityInfo({
     required this.networkType,
     required this.publicAccesses,

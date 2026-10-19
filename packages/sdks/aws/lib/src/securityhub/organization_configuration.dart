@@ -11,7 +11,7 @@ import 'organization_configuration_state.dart';
 ///
 /// &gt; **NOTE:** This is an advanced AWS resource. Pulumi will automatically assume management of the Security Hub Organization Configuration without import and perform no actions on removal from the Pulumi program.
 ///
-/// &gt; **NOTE:** Deleting this resource resets security hub to a local organization configuration with auto enable false.
+/// &gt; **NOTE:** Deleting this resource resets Security Hub to a local organization configuration with auto enable false.
 ///
 /// ## Example Usage
 ///
@@ -471,7 +471,7 @@ class OrganizationConfiguration extends pulumi.CustomResource {
           'aws:securityhub/organizationConfiguration:OrganizationConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     autoEnable = registerOutput<bool>('autoEnable');
     autoEnableStandards = registerOutput<String>('autoEnableStandards');

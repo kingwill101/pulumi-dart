@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters {
-  /// The path to the top-level parent that contains the records.
+  /// Path to the top-level parent that contains the records.
   final pulumi.Input<String> recordRowPath;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters].
-  /// [recordRowPath] The path to the top-level parent that contains the records.
+  /// [recordRowPath] Path to the top-level parent that contains the records.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters({
     required this.recordRowPath,
   });

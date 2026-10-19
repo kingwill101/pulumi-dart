@@ -37,7 +37,7 @@ import 'get_zones_result.dart';
 ///
 /// ## Example Usage
 ///
-/// The following example shows how to get a delegation set from its id.
+/// The following example shows how to get a delegation set from its ID.
 ///
 ///
 /// ```typescript
@@ -1805,7 +1805,7 @@ pulumi.Output<GetResolverFirewallRuleGroupResult> getResolverFirewallRuleGroupOu
 ///
 /// ## Example Usage
 ///
-/// The following example shows how to get a firewall rule group association from its id.
+/// The following example shows how to get a firewall rule group association from its ID.
 ///
 ///
 /// ```typescript
@@ -1936,7 +1936,7 @@ pulumi.Output<GetResolverFirewallRuleGroupAssociationResult> getResolverFirewall
 ///
 /// ## Example Usage
 ///
-/// The following example shows how to get Route53 Resolver Firewall rules based on its associated firewall group id.
+/// The following example shows how to get Route53 Resolver Firewall rules based on its associated firewall group ID.
 ///
 ///
 /// ```typescript

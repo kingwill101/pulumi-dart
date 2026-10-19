@@ -4,7 +4,7 @@ import 'web_acl_association_state.dart';
 
 /// Creates a WAFv2 Web ACL Association.
 ///
-/// &gt; **NOTE on associating a WAFv2 Web ACL with a Cloudfront distribution:** Do not use this resource to associate a WAFv2 Web ACL with a Cloudfront Distribution. The [AWS API call backing this resource](https://docs.aws.amazon.com/waf/latest/APIReference/API_AssociateWebACL.html) notes that you should use the `webAclId` property on the `cloudfrontDistribution` instead.
+/// &gt; **NOTE on associating a WAFv2 Web ACL with a CloudFront distribution:** Do not use this resource to associate a WAFv2 Web ACL with a CloudFront Distribution. The [AWS API call backing this resource](https://docs.aws.amazon.com/waf/latest/APIReference/API_AssociateWebACL.html) notes that you should use the `webAclId` property on the `cloudfrontDistribution` instead.
 ///
 /// ## Import
 ///
@@ -33,7 +33,7 @@ class WebAclAssociation extends pulumi.CustomResource {
           'aws:wafv2/webAclAssociation:WebAclAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     region = registerOutput<String>('region');
     resourceArn = registerOutput<String>('resourceArn');

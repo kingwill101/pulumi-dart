@@ -125,9 +125,9 @@ import 'snapshot_state.dart';
 /// $ pulumi import aws:memorydb/snapshot:Snapshot example my-snapshot
 /// ```
 class Snapshot extends pulumi.CustomResource {
-  /// The ARN of the snapshot.
+  /// ARN of the snapshot.
   late final pulumi.Output<String> arn;
-  /// The configuration of the cluster from which the snapshot was taken.
+  /// Configuration of the cluster from which the snapshot was taken.
   late final pulumi.Output<List<SnapshotClusterConfiguration>> clusterConfigurations;
   /// Name of the MemoryDB cluster to take a snapshot of.
   late final pulumi.Output<String> clusterName;
@@ -139,11 +139,11 @@ class Snapshot extends pulumi.CustomResource {
   late final pulumi.Output<String> namePrefix;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
-  /// Indicates whether the snapshot is from an automatic backup (`automated`) or was created manually (`manual`).
+  /// Whether the snapshot is from an automatic backup (`automated`) or was created manually (`manual`).
   late final pulumi.Output<String> source;
-  /// A map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
+  /// Map of tags to assign to the resource. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   late final pulumi.Output<Map<String, String>?> tags;
-  /// A map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
+  /// Map of tags assigned to the resource, including those inherited from the provider `defaultTags` configuration block.
   late final pulumi.Output<Map<String, String>> tagsAll;
 
   /// Creates a new [Snapshot].
@@ -158,7 +158,7 @@ class Snapshot extends pulumi.CustomResource {
           'aws:memorydb/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     arn = registerOutput<String>('arn');
     clusterConfigurations = registerOutput<List<SnapshotClusterConfiguration>>('clusterConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SnapshotClusterConfiguration>(guardedValue, (value) => SnapshotClusterConfiguration.fromMap((value as Map).cast<String, dynamic>())); });

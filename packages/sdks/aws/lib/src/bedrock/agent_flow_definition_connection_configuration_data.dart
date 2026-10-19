@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AgentFlowDefinitionConnectionConfigurationData {
-  /// The name of the output in the source node that the connection begins from.
+  /// Name of the output in the source node that the connection begins from.
   final pulumi.Input<String> sourceOutput;
-  /// The name of the input in the target node that the connection ends at.
+  /// Name of the input in the target node that the connection ends at.
   final pulumi.Input<String> targetInput;
 
   /// Creates a new [AgentFlowDefinitionConnectionConfigurationData].
-  /// [sourceOutput] The name of the output in the source node that the connection begins from.
-  /// [targetInput] The name of the input in the target node that the connection ends at.
+  /// [sourceOutput] Name of the output in the source node that the connection begins from.
+  /// [targetInput] Name of the input in the target node that the connection ends at.
   const AgentFlowDefinitionConnectionConfigurationData({
     required this.sourceOutput,
     required this.targetInput,

@@ -7,15 +7,15 @@ import 'channel_encoder_settings_output_group_output_group_settings.dart';
 class ChannelEncoderSettingsOutputGroup {
   /// Custom output group name defined by the user.
   final pulumi.Input<String?>? name;
-  /// Settings associated with the output group. See Output Group Settings for more details.
+  /// Settings associated with the output group. See `outputGroupSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettings> outputGroupSettings;
-  /// List of outputs. See Outputs for more details.
+  /// List of outputs. See `outputs` Block for details.
   final pulumi.Input<List<ChannelEncoderSettingsOutputGroupOutput>> outputs;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroup].
   /// [name] Custom output group name defined by the user.
-  /// [outputGroupSettings] Settings associated with the output group. See Output Group Settings for more details.
-  /// [outputs] List of outputs. See Outputs for more details.
+  /// [outputGroupSettings] Settings associated with the output group. See `outputGroupSettings` Block for details.
+  /// [outputs] List of outputs. See `outputs` Block for details.
   const ChannelEncoderSettingsOutputGroup({
     this.name,
     required this.outputGroupSettings,

@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism {
-  /// The number of in-application streams to create.
+  /// Number of in-application streams to create.
   final pulumi.Input<int?>? count;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism].
-  /// [count] The number of in-application streams to create.
+  /// [count] Number of in-application streams to create.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism({
     this.count,
   });
@@ -20,7 +20,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputPa
 
   factory ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism.fromMap(Map<String, dynamic> map) {
     return ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

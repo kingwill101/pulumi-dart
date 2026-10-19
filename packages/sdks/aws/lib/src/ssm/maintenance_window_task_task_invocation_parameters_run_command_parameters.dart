@@ -83,7 +83,7 @@ class MaintenanceWindowTaskTaskInvocationParametersRunCommandParameters {
       outputS3KeyPrefix: (() { final guardedValue = map['outputS3KeyPrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter>(guardedValue, (value) => MaintenanceWindowTaskTaskInvocationParametersRunCommandParametersParameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       serviceRoleArn: (() { final guardedValue = map['serviceRoleArn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

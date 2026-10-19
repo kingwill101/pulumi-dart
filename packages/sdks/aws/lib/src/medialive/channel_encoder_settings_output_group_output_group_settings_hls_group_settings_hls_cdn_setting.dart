@@ -8,18 +8,23 @@ import 'channel_encoder_settings_output_group_output_group_settings_hls_group_se
 import 'channel_encoder_settings_output_group_output_group_settings_hls_group_settings_hls_cdn_setting_hls_webdav_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting {
+  /// Akamai settings. See `hlsAkamaiSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsAkamaiSettings?>? hlsAkamaiSettings;
+  /// Basic put settings. See `hlsBasicPutSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsBasicPutSettings?>? hlsBasicPutSettings;
+  /// Media store settings. See `hlsMediaStoreSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsMediaStoreSettings?>? hlsMediaStoreSettings;
+  /// S3 settings. See `hlsS3Settings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsS3Settings?>? hlsS3Settings;
+  /// WebDAV settings. See `hlsWebdavSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsWebdavSettings?>? hlsWebdavSettings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting].
-  /// [hlsAkamaiSettings] Optional.
-  /// [hlsBasicPutSettings] Optional.
-  /// [hlsMediaStoreSettings] Optional.
-  /// [hlsS3Settings] Optional.
-  /// [hlsWebdavSettings] Optional.
+  /// [hlsAkamaiSettings] Akamai settings. See `hlsAkamaiSettings` Block for details.
+  /// [hlsBasicPutSettings] Basic put settings. See `hlsBasicPutSettings` Block for details.
+  /// [hlsMediaStoreSettings] Media store settings. See `hlsMediaStoreSettings` Block for details.
+  /// [hlsS3Settings] S3 settings. See `hlsS3Settings` Block for details.
+  /// [hlsWebdavSettings] WebDAV settings. See `hlsWebdavSettings` Block for details.
   const ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting({
     this.hlsAkamaiSettings,
     this.hlsBasicPutSettings,

@@ -10,27 +10,32 @@ import 'channel_encoder_settings_output_group_output_group_settings_rtmp_group_s
 import 'channel_encoder_settings_output_group_output_group_settings_udp_group_settings.dart';
 
 class ChannelEncoderSettingsOutputGroupOutputGroupSettings {
-  /// Archive group settings. See Archive Group Settings for more details.
+  /// Archive group settings. See `archiveGroupSettings` Block for details.
   final pulumi.Input<List<ChannelEncoderSettingsOutputGroupOutputGroupSettingsArchiveGroupSetting>?>? archiveGroupSettings;
+  /// Frame capture group settings. See `frameCaptureGroupSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsFrameCaptureGroupSettings?>? frameCaptureGroupSettings;
+  /// HLS group settings. See `hlsGroupSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettings?>? hlsGroupSettings;
-  /// Media package group settings. See Media Package Group Settings for more details.
+  /// Media package group settings. See `mediaPackageGroupSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsMediaPackageGroupSettings?>? mediaPackageGroupSettings;
+  /// Microsoft Smooth group settings. See `msSmoothGroupSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsMsSmoothGroupSettings?>? msSmoothGroupSettings;
+  /// Multiplex group settings. Can be set as an empty block.
   final pulumi.Input<Map<String, dynamic>?>? multiplexGroupSettings;
-  /// RTMP group settings. See RTMP Group Settings for more details.
+  /// RTMP group settings. See `rtmpGroupSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsRtmpGroupSettings?>? rtmpGroupSettings;
+  /// UDP group settings. See `udpGroupSettings` Block for details.
   final pulumi.Input<ChannelEncoderSettingsOutputGroupOutputGroupSettingsUdpGroupSettings?>? udpGroupSettings;
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettings].
-  /// [archiveGroupSettings] Archive group settings. See Archive Group Settings for more details.
-  /// [frameCaptureGroupSettings] Optional.
-  /// [hlsGroupSettings] Optional.
-  /// [mediaPackageGroupSettings] Media package group settings. See Media Package Group Settings for more details.
-  /// [msSmoothGroupSettings] Optional.
-  /// [multiplexGroupSettings] Optional.
-  /// [rtmpGroupSettings] RTMP group settings. See RTMP Group Settings for more details.
-  /// [udpGroupSettings] Optional.
+  /// [archiveGroupSettings] Archive group settings. See `archiveGroupSettings` Block for details.
+  /// [frameCaptureGroupSettings] Frame capture group settings. See `frameCaptureGroupSettings` Block for details.
+  /// [hlsGroupSettings] HLS group settings. See `hlsGroupSettings` Block for details.
+  /// [mediaPackageGroupSettings] Media package group settings. See `mediaPackageGroupSettings` Block for details.
+  /// [msSmoothGroupSettings] Microsoft Smooth group settings. See `msSmoothGroupSettings` Block for details.
+  /// [multiplexGroupSettings] Multiplex group settings. Can be set as an empty block.
+  /// [rtmpGroupSettings] RTMP group settings. See `rtmpGroupSettings` Block for details.
+  /// [udpGroupSettings] UDP group settings. See `udpGroupSettings` Block for details.
   const ChannelEncoderSettingsOutputGroupOutputGroupSettings({
     this.archiveGroupSettings,
     this.frameCaptureGroupSettings,

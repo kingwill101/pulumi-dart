@@ -3,14 +3,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputSpecification {
+  /// Codec to use for the input.
   final pulumi.Input<String> codec;
+  /// Maximum input resolution.
   final pulumi.Input<String> inputResolution;
+  /// Maximum input bitrate for an input.
   final pulumi.Input<String> maximumBitrate;
 
   /// Creates a new [ChannelInputSpecification].
-  /// [codec] Required.
-  /// [inputResolution] Required.
-  /// [maximumBitrate] Required.
+  /// [codec] Codec to use for the input.
+  /// [inputResolution] Maximum input resolution.
+  /// [maximumBitrate] Maximum input bitrate for an input.
   const ChannelInputSpecification({
     required this.codec,
     required this.inputResolution,

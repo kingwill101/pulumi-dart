@@ -5,7 +5,7 @@ import 'invocation_logging_configuration_state.dart';
 
 /// Manages Bedrock model invocation logging configuration.
 ///
-/// &gt; Model invocation logging is configured per AWS region. To avoid overwriting settings, this resource should not be defined in multiple configurations.
+/// &gt; **Note:** Model invocation logging is configured per AWS region. To avoid overwriting settings, this resource should not be defined in multiple configurations.
 ///
 /// ## Example Usage
 ///
@@ -512,13 +512,13 @@ import 'invocation_logging_configuration_state.dart';
 /// * `region` (String) Region where this resource is managed.
 ///
 ///
-/// Using `pulumi import`, import Bedrock custom model using the `id` set to the AWS Region. For example:
+/// Using `pulumi import`, import Bedrock Model Invocation Logging Configuration using the `id` set to the AWS Region. For example:
 ///
 /// ```sh
-/// $ pulumi import aws:bedrockmodel/invocationLoggingConfiguration:InvocationLoggingConfiguration my_config us-east-1
+/// $ pulumi import aws:bedrockmodel/invocationLoggingConfiguration:InvocationLoggingConfiguration example us-east-1
 /// ```
 class InvocationLoggingConfiguration extends pulumi.CustomResource {
-  /// The logging configuration values to set. See `loggingConfig` Block for details.
+  /// Logging configuration values to set. See `loggingConfig` Block for details.
   late final pulumi.Output<InvocationLoggingConfigurationLoggingConfig> loggingConfig;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   late final pulumi.Output<String> region;
@@ -535,7 +535,7 @@ class InvocationLoggingConfiguration extends pulumi.CustomResource {
           'aws:bedrockmodel/invocationLoggingConfiguration:InvocationLoggingConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '7.44.0').merge(options),
+          pulumi.CustomResourceOptions(version: '7.51.1').merge(options),
         ) {
     loggingConfig = registerOutput<InvocationLoggingConfigurationLoggingConfig>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InvocationLoggingConfigurationLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     region = registerOutput<String>('region');

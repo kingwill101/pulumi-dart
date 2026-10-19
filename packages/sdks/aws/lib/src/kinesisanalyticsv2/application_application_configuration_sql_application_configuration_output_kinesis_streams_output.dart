@@ -3,11 +3,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput {
-  /// The ARN of the destination Kinesis data stream to write to.
+  /// ARN of the destination Kinesis data stream to write to.
   final pulumi.Input<String> resourceArn;
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput].
-  /// [resourceArn] The ARN of the destination Kinesis data stream to write to.
+  /// [resourceArn] ARN of the destination Kinesis data stream to write to.
   const ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput({
     required this.resourceArn,
   });

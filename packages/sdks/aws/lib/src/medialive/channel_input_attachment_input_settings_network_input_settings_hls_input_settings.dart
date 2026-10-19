@@ -3,22 +3,23 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings {
-  /// The bitrate is specified in bits per second, as in an HLS manifest.
+  /// Bitrate, in bits per second, as in an HLS manifest.
   final pulumi.Input<int?>? bandwidth;
   /// Buffer segments.
   final pulumi.Input<int?>? bufferSegments;
-  /// The number of consecutive times that attempts to read a manifest or segment must fail before the input is considered unavailable.
+  /// Number of consecutive times that attempts to read a manifest or segment must fail before the input is considered unavailable.
   final pulumi.Input<int?>? retries;
-  /// The number of seconds between retries when an attempt to read a manifest or segment fails.
+  /// Number of seconds between retries when an attempt to read a manifest or segment fails.
   final pulumi.Input<int?>? retryInterval;
+  /// Source for the SCTE-35 messages that MediaLive ingests.
   final pulumi.Input<String?>? scte35Source;
 
   /// Creates a new [ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings].
-  /// [bandwidth] The bitrate is specified in bits per second, as in an HLS manifest.
+  /// [bandwidth] Bitrate, in bits per second, as in an HLS manifest.
   /// [bufferSegments] Buffer segments.
-  /// [retries] The number of consecutive times that attempts to read a manifest or segment must fail before the input is considered unavailable.
-  /// [retryInterval] The number of seconds between retries when an attempt to read a manifest or segment fails.
-  /// [scte35Source] Optional.
+  /// [retries] Number of consecutive times that attempts to read a manifest or segment must fail before the input is considered unavailable.
+  /// [retryInterval] Number of seconds between retries when an attempt to read a manifest or segment fails.
+  /// [scte35Source] Source for the SCTE-35 messages that MediaLive ingests.
   const ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings({
     this.bandwidth,
     this.bufferSegments,
@@ -39,10 +40,10 @@ class ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings {
 
   factory ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings.fromMap(Map<String, dynamic> map) {
     return ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings(
-      bandwidth: (() { final guardedValue = map['bandwidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      bufferSegments: (() { final guardedValue = map['bufferSegments']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      retries: (() { final guardedValue = map['retries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      retryInterval: (() { final guardedValue = map['retryInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bandwidth: (() { final guardedValue = map['bandwidth']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      bufferSegments: (() { final guardedValue = map['bufferSegments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      retries: (() { final guardedValue = map['retries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      retryInterval: (() { final guardedValue = map['retryInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scte35Source: (() { final guardedValue = map['scte35Source']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

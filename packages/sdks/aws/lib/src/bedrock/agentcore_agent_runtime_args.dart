@@ -15,7 +15,7 @@ import 'agentcore_agent_runtime_timeouts.dart';
 /// {@endtemplate}
 /// {@macro pulumi_bedrock_agentcore_agent_runtime_agentcore_agent_runtime_args_doc}
 class AgentcoreAgentRuntimeArgs {
-  /// Container artifact configuration. See `agentRuntimeArtifact` below.
+  /// Artifact configuration for the agent runtime, either a container image or code stored in Amazon S3. See `agentRuntimeArtifact` below.
   final pulumi.Input<AgentcoreAgentRuntimeAgentRuntimeArtifact> agentRuntimeArtifact;
   /// Name of the agent runtime.
   final pulumi.Input<String> agentRuntimeName;
@@ -30,9 +30,9 @@ class AgentcoreAgentRuntimeArgs {
   /// Runtime session and resource lifecycle configuration for the agent runtime. See `lifecycleConfiguration` below.
   final pulumi.Input<List<AgentcoreAgentRuntimeLifecycleConfiguration>?>? lifecycleConfigurations;
   /// Network configuration for the agent runtime. See `networkConfiguration` below.
-  ///
-  /// The following arguments are optional:
   final pulumi.Input<AgentcoreAgentRuntimeNetworkConfiguration> networkConfiguration;
+  /// Platform version that controls how the agent runtime starts your agent. Valid values: `V1`, `V2`. When omitted, a new agent runtime uses `V1` and an existing agent runtime keeps its current platform version. `V2` restores each instance from a prepared snapshot, which keeps cold starts consistent regardless of image size. On `V2`, creates and updates take minutes rather than seconds, `environmentVariables` has a smaller total size limit, and availability is limited to a subset of Regions. See [Platform versions](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-how-it-works.html#runtime-platform-versions) for details.
+  final pulumi.Input<String?>? platformVersion;
   /// Protocol configuration for the agent runtime. See `protocolConfiguration` below.
   final pulumi.Input<AgentcoreAgentRuntimeProtocolConfiguration?>? protocolConfiguration;
   /// Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
@@ -40,13 +40,15 @@ class AgentcoreAgentRuntimeArgs {
   /// Configuration for HTTP request headers that will be passed through to the runtime. See `requestHeaderConfiguration` below.
   final pulumi.Input<AgentcoreAgentRuntimeRequestHeaderConfiguration?>? requestHeaderConfiguration;
   /// ARN of the IAM role that the agent runtime assumes to access AWS services.
+  ///
+  /// The following arguments are optional:
   final pulumi.Input<String> roleArn;
   /// Key-value map of resource tags. If configured with a provider `defaultTags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   final pulumi.Input<Map<String, String>?>? tags;
   final pulumi.Input<AgentcoreAgentRuntimeTimeouts?>? timeouts;
 
   /// Creates a new [AgentcoreAgentRuntimeArgs].
-  /// [agentRuntimeArtifact] Container artifact configuration. See `agentRuntimeArtifact` below.
+  /// [agentRuntimeArtifact] Artifact configuration for the agent runtime, either a container image or code stored in Amazon S3. See `agentRuntimeArtifact` below.
   /// [agentRuntimeName] Name of the agent runtime.
   /// [authorizerConfiguration] Authorization configuration for authenticating incoming requests. See `authorizerConfiguration` below.
   /// [description] Description of the agent runtime.
@@ -54,6 +56,7 @@ class AgentcoreAgentRuntimeArgs {
   /// [filesystemConfigurations] List of filesystems to mount into the agent runtime. Up to 5 entries are supported. Each entry is one of session storage, Amazon S3 Files access point, or Amazon EFS access point. See `filesystemConfiguration` below.
   /// [lifecycleConfigurations] Runtime session and resource lifecycle configuration for the agent runtime. See `lifecycleConfiguration` below.
   /// [networkConfiguration] Network configuration for the agent runtime. See `networkConfiguration` below.
+  /// [platformVersion] Platform version that controls how the agent runtime starts your agent. Valid values: `V1`, `V2`. When omitted, a new agent runtime uses `V1` and an existing agent runtime keeps its current platform version. `V2` restores each instance from a prepared snapshot, which keeps cold starts consistent regardless of image size. On `V2`, creates and updates take minutes rather than seconds, `environmentVariables` has a smaller total size limit, and availability is limited to a subset of Regions. See [Platform versions](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-how-it-works.html#runtime-platform-versions) for details.
   /// [protocolConfiguration] Protocol configuration for the agent runtime. See `protocolConfiguration` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [requestHeaderConfiguration] Configuration for HTTP request headers that will be passed through to the runtime. See `requestHeaderConfiguration` below.
@@ -69,6 +72,7 @@ class AgentcoreAgentRuntimeArgs {
     this.filesystemConfigurations,
     this.lifecycleConfigurations,
     required this.networkConfiguration,
+    this.platformVersion,
     this.protocolConfiguration,
     this.region,
     this.requestHeaderConfiguration,
@@ -87,6 +91,7 @@ class AgentcoreAgentRuntimeArgs {
       'filesystemConfigurations': ?pulumi.Input.mapOptionalInputValue<List<AgentcoreAgentRuntimeFilesystemConfiguration>, List<Map<String, dynamic>>>(filesystemConfigurations, (value) => pulumi.Input.encodeList<AgentcoreAgentRuntimeFilesystemConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'lifecycleConfigurations': ?pulumi.Input.mapOptionalInputValue<List<AgentcoreAgentRuntimeLifecycleConfiguration>, List<Map<String, dynamic>>>(lifecycleConfigurations, (value) => pulumi.Input.encodeList<AgentcoreAgentRuntimeLifecycleConfiguration, Map<String, dynamic>>(value, (value) => value.toMap())),
       'networkConfiguration': pulumi.Input.mapInputValue<AgentcoreAgentRuntimeNetworkConfiguration, Map<String, dynamic>>(networkConfiguration, (value) => value.toMap()),
+      'platformVersion': ?platformVersion,
       'protocolConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentcoreAgentRuntimeProtocolConfiguration, Map<String, dynamic>>(protocolConfiguration, (value) => value.toMap()),
       'region': ?region,
       'requestHeaderConfiguration': ?pulumi.Input.mapOptionalInputValue<AgentcoreAgentRuntimeRequestHeaderConfiguration, Map<String, dynamic>>(requestHeaderConfiguration, (value) => value.toMap()),
@@ -106,6 +111,7 @@ class AgentcoreAgentRuntimeArgs {
       filesystemConfigurations: (() { final guardedValue = map['filesystemConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreAgentRuntimeFilesystemConfiguration>(guardedValue, (value) => AgentcoreAgentRuntimeFilesystemConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       lifecycleConfigurations: (() { final guardedValue = map['lifecycleConfigurations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AgentcoreAgentRuntimeLifecycleConfiguration>(guardedValue, (value) => AgentcoreAgentRuntimeLifecycleConfiguration.fromMap((value as Map).cast<String, dynamic>()))); })(),
       networkConfiguration: pulumi.Input.fromValue(AgentcoreAgentRuntimeNetworkConfiguration.fromMap((map['networkConfiguration']! as Map).cast<String, dynamic>())),
+      platformVersion: (() { final guardedValue = map['platformVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocolConfiguration: (() { final guardedValue = map['protocolConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreAgentRuntimeProtocolConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requestHeaderConfiguration: (() { final guardedValue = map['requestHeaderConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AgentcoreAgentRuntimeRequestHeaderConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

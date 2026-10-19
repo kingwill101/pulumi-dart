@@ -3,14 +3,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ComputeEnvironmentUpdatePolicy {
-  /// Specifies the job timeout (in minutes) when the compute environment infrastructure is updated.
+  /// Job timeout (in minutes) when the compute environment infrastructure is updated.
   final pulumi.Input<int?>? jobExecutionTimeoutMinutes;
-  /// Specifies whether jobs are automatically terminated when the compute environment infrastructure is updated.
+  /// Whether jobs are automatically terminated when the compute environment infrastructure is updated.
   final pulumi.Input<bool?>? terminateJobsOnUpdate;
 
   /// Creates a new [ComputeEnvironmentUpdatePolicy].
-  /// [jobExecutionTimeoutMinutes] Specifies the job timeout (in minutes) when the compute environment infrastructure is updated.
-  /// [terminateJobsOnUpdate] Specifies whether jobs are automatically terminated when the compute environment infrastructure is updated.
+  /// [jobExecutionTimeoutMinutes] Job timeout (in minutes) when the compute environment infrastructure is updated.
+  /// [terminateJobsOnUpdate] Whether jobs are automatically terminated when the compute environment infrastructure is updated.
   const ComputeEnvironmentUpdatePolicy({
     this.jobExecutionTimeoutMinutes,
     this.terminateJobsOnUpdate,
@@ -25,7 +25,7 @@ class ComputeEnvironmentUpdatePolicy {
 
   factory ComputeEnvironmentUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return ComputeEnvironmentUpdatePolicy(
-      jobExecutionTimeoutMinutes: (() { final guardedValue = map['jobExecutionTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      jobExecutionTimeoutMinutes: (() { final guardedValue = map['jobExecutionTimeoutMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       terminateJobsOnUpdate: (() { final guardedValue = map['terminateJobsOnUpdate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
