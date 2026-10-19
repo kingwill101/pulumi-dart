@@ -25,7 +25,7 @@ class RepositoryCleanupPolicyMostRecentVersions {
 
   factory RepositoryCleanupPolicyMostRecentVersions.fromMap(Map<String, dynamic> map) {
     return RepositoryCleanupPolicyMostRecentVersions(
-      keepCount: (() { final guardedValue = map['keepCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      keepCount: (() { final guardedValue = map['keepCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       packageNamePrefixes: (() { final guardedValue = map['packageNamePrefixes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );
   }

@@ -99,8 +99,8 @@ import 'transfer_agent_pool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -137,7 +137,7 @@ import 'transfer_agent_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -145,17 +145,23 @@ import 'transfer_agent_pool_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_storage_gettransferprojectserviceaccount" "default" {
+/// data "gcp_storage_transfer_project_service_account" "default" {
 ///   project = "my-project-name"
 /// }
 ///
-/// resource "gcp_projects_iammember" "pubsub_editor_role" {
+/// resource "gcp_projects_i_a_m_member" "pubsub_editor_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/pubsub.editor"
-///   member  ="serviceAccount:${data.gcp_storage_gettransferprojectserviceaccount.default.email}"
+///   member  ="serviceAccount:${data.gcp_storage_transfer_project_service_account.default.email}"
 /// }
-/// resource "gcp_storage_transferagentpool" "example" {
-///   depends_on   = [gcp_projects_iammember.pubsub_editor_role]
+/// resource "gcp_storage_transfer_agent_pool" "example" {
+///   depends_on = [gcp_projects_i_a_m_member.pubsub_editor_role]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "agent-pool-example"
 ///   display_name = "Source A to destination Z"
 ///   bandwidth_limit = {
@@ -297,7 +303,7 @@ class TransferAgentPool extends pulumi.CustomResource {
           'gcp:storage/transferAgentPool:TransferAgentPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     bandwidthLimit = registerOutput<TransferAgentPoolBandwidthLimit?>('bandwidthLimit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransferAgentPoolBandwidthLimit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

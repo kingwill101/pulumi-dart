@@ -17,7 +17,7 @@ import 'database_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+/// // See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
 /// const instance = new gcp.sql.DatabaseInstance("instance", {
 ///     name: "my-database-instance",
 ///     region: "us-central1",
@@ -36,7 +36,7 @@ import 'database_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+/// # See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
 /// instance = gcp.sql.DatabaseInstance("instance",
 ///     name="my-database-instance",
 ///     region="us-central1",
@@ -57,7 +57,7 @@ import 'database_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+///     // See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
 ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
 ///     {
 ///         Name = "my-database-instance",
@@ -82,13 +82,13 @@ import 'database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+/// 		// See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
 /// 		instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
 /// 			Name:            pulumi.String("my-database-instance"),
 /// 			Region:          pulumi.String("us-central1"),
@@ -113,7 +113,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -122,11 +122,17 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "gcp_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-database"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 /// }
-/// # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// # See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-database-instance"
 ///   region           = "us-central1"
 ///   database_version = "MYSQL_8_0"
@@ -160,7 +166,7 @@ import 'database_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+///         // See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
 ///         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
 ///             .name("my-database-instance")
 ///             .region("us-central1")
@@ -186,7 +192,7 @@ import 'database_state.dart';
 ///     properties:
 ///       name: my-database
 ///       instance: ${instance.name}
-///   # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+///   # See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
 ///   instance:
 ///     type: gcp:sql:DatabaseInstance
 ///     properties:
@@ -206,7 +212,7 @@ import 'database_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+/// // See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
 /// const instance = new gcp.sql.DatabaseInstance("instance", {
 ///     name: "my-database-instance",
 ///     region: "us-central1",
@@ -226,7 +232,7 @@ import 'database_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+/// # See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
 /// instance = gcp.sql.DatabaseInstance("instance",
 ///     name="my-database-instance",
 ///     region="us-central1",
@@ -248,7 +254,7 @@ import 'database_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+///     // See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
 ///     var instance = new Gcp.Sql.DatabaseInstance("instance", new()
 ///     {
 ///         Name = "my-database-instance",
@@ -274,13 +280,13 @@ import 'database_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+/// 		// See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
 /// 		instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
 /// 			Name:            pulumi.String("my-database-instance"),
 /// 			Region:          pulumi.String("us-central1"),
@@ -306,7 +312,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -315,12 +321,18 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "gcp_sql_database" "database_deletion_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "my-database"
-///   instance        = gcp_sql_databaseinstance.instance.name
+///   instance        = gcp_sql_database_instance.instance.name
 ///   deletion_policy = "ABANDON"
 /// }
-/// # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// # See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-database-instance"
 ///   region           = "us-central1"
 ///   database_version = "POSTGRES_14"
@@ -354,7 +366,7 @@ import 'database_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         // See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+///         // See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
 ///         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
 ///             .name("my-database-instance")
 ///             .region("us-central1")
@@ -383,7 +395,7 @@ import 'database_state.dart';
 ///       name: my-database
 ///       instance: ${instance.name}
 ///       deletionPolicy: ABANDON
-///   # See versions at https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/sql_database_instance#database_version
+///   # See versions at https://registry.pulumi.io/providers/pulumi/google/latest/docs/resources/sql_database_instance#database_version
 ///   instance:
 ///     type: gcp:sql:DatabaseInstance
 ///     properties:
@@ -458,7 +470,7 @@ class Database extends pulumi.CustomResource {
           'gcp:sql/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     charset = registerOutput<String>('charset');
     collation = registerOutput<String>('collation');

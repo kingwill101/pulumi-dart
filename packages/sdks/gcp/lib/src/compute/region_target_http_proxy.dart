@@ -176,7 +176,7 @@ import 'region_target_http_proxy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -246,7 +246,7 @@ import 'region_target_http_proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -254,37 +254,49 @@ import 'region_target_http_proxy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regiontargethttpproxy" "default" {
+/// resource "gcp_compute_region_target_http_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region  = "us-central1"
 ///   name    = "test-proxy"
-///   url_map = gcp_compute_regionurlmap.default.id
+///   url_map = gcp_compute_region_url_map.default.id
 /// }
-/// resource "gcp_compute_regionurlmap" "default" {
+/// resource "gcp_compute_region_url_map" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region          = "us-central1"
 ///   name            = "url-map"
-///   default_service = gcp_compute_regionbackendservice.default.id
+///   default_service = gcp_compute_region_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_regionbackendservice.default.id
+///     default_service = gcp_compute_region_backend_service.default.id
 ///     path_rules {
 ///       paths   = ["/*"]
-///       service = gcp_compute_regionbackendservice.default.id
+///       service = gcp_compute_region_backend_service.default.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_regionbackendservice" "default" {
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region                = "us-central1"
 ///   name                  = "backend-service"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "INTERNAL_MANAGED"
-///   health_checks         = gcp_compute_regionhealthcheck.default.id
+///   health_checks         = gcp_compute_region_health_check.default.id
 /// }
-/// resource "gcp_compute_regionhealthcheck" "default" {
+/// resource "gcp_compute_region_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region = "us-central1"
 ///   name   = "http-health-check"
 ///   http_health_check = {
@@ -581,7 +593,7 @@ import 'region_target_http_proxy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -653,7 +665,7 @@ import 'region_target_http_proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -661,39 +673,51 @@ import 'region_target_http_proxy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regiontargethttpproxy" "default" {
+/// resource "gcp_compute_region_target_http_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region                      = "us-central1"
 ///   name                        = "test-http-keep-alive-timeout-proxy"
 ///   http_keep_alive_timeout_sec = 600
-///   url_map                     = gcp_compute_regionurlmap.default.id
+///   url_map                     = gcp_compute_region_url_map.default.id
 /// }
-/// resource "gcp_compute_regionurlmap" "default" {
+/// resource "gcp_compute_region_url_map" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region          = "us-central1"
 ///   name            = "url-map"
-///   default_service = gcp_compute_regionbackendservice.default.id
+///   default_service = gcp_compute_region_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_regionbackendservice.default.id
+///     default_service = gcp_compute_region_backend_service.default.id
 ///     path_rules {
 ///       paths   = ["/*"]
-///       service = gcp_compute_regionbackendservice.default.id
+///       service = gcp_compute_region_backend_service.default.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_regionbackendservice" "default" {
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region                = "us-central1"
 ///   name                  = "backend-service"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "INTERNAL_MANAGED"
-///   health_checks         = gcp_compute_regionhealthcheck.default.id
+///   health_checks         = gcp_compute_region_health_check.default.id
 /// }
-/// resource "gcp_compute_regionhealthcheck" "default" {
+/// resource "gcp_compute_region_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region = "us-central1"
 ///   name   = "http-health-check"
 ///   http_health_check = {
@@ -896,7 +920,7 @@ import 'region_target_http_proxy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -926,7 +950,7 @@ import 'region_target_http_proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -934,12 +958,18 @@ import 'region_target_http_proxy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regiontargethttpproxy" "default" {
+/// resource "gcp_compute_region_target_http_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region  = "us-central1"
 ///   name    = "test-https-redirect-proxy"
-///   url_map = gcp_compute_regionurlmap.default.id
+///   url_map = gcp_compute_region_url_map.default.id
 /// }
-/// resource "gcp_compute_regionurlmap" "default" {
+/// resource "gcp_compute_region_url_map" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region = "us-central1"
 ///   name   = "url-map"
 ///   default_url_redirect = {
@@ -1080,7 +1110,7 @@ class RegionTargetHttpProxy extends pulumi.CustomResource {
           'gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

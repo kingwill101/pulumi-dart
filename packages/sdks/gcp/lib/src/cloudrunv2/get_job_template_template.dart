@@ -75,7 +75,7 @@ class GetJobTemplateTemplate {
       encryptionKey: pulumi.Input.fromValue(map['encryptionKey'] as String),
       executionEnvironment: pulumi.Input.fromValue(map['executionEnvironment'] as String),
       gpuZonalRedundancyDisabled: pulumi.Input.fromValue(map['gpuZonalRedundancyDisabled'] as bool),
-      maxRetries: pulumi.Input.fromValue((map['maxRetries'] as num).toInt()),
+      maxRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRetries'])),
       nodeSelectors: pulumi.Input.fromValue(pulumi.Input.decodeList<GetJobTemplateTemplateNodeSelector>(map['nodeSelectors']!, (value) => GetJobTemplateTemplateNodeSelector.fromMap((value as Map).cast<String, dynamic>()))),
       serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
       timeout: pulumi.Input.fromValue(map['timeout'] as String),

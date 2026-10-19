@@ -79,7 +79,7 @@ import 'organization_kaj_policy_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -102,7 +102,7 @@ import 'organization_kaj_policy_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -110,7 +110,10 @@ import 'organization_kaj_policy_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_organizationkajpolicyconfig" "example" {
+/// resource "gcp_kms_organization_kaj_policy_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization = "123456789"
 ///   default_key_access_justification_policy = {
 ///     allowed_access_reasons = ["CUSTOMER_INITIATED_ACCESS", "GOOGLE_INITIATED_SYSTEM_OPERATION"]
@@ -199,7 +202,7 @@ class OrganizationKajPolicyConfig extends pulumi.CustomResource {
           'gcp:kms/organizationKajPolicyConfig:OrganizationKajPolicyConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     defaultKeyAccessJustificationPolicy = registerOutput<OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy?>('defaultKeyAccessJustificationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     organization = registerOutput<String>('organization');

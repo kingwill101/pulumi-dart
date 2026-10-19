@@ -92,8 +92,8 @@ import 'task_iam_member_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -127,7 +127,7 @@ import 'task_iam_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -135,19 +135,22 @@ import 'task_iam_member_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_taskiampolicy" "policy" {
+/// resource "gcp_dataplex_task_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = example.project
 ///   location    = example.location
 ///   lake        = example.lake
 ///   task_id     = example.taskId
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -269,7 +272,7 @@ import 'task_iam_member_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -293,7 +296,7 @@ import 'task_iam_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -301,7 +304,10 @@ import 'task_iam_member_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_taskiambinding" "binding" {
+/// resource "gcp_dataplex_task_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = example.project
 ///   location = example.location
 ///   lake     = example.lake
@@ -410,7 +416,7 @@ import 'task_iam_member_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -432,7 +438,7 @@ import 'task_iam_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -440,7 +446,10 @@ import 'task_iam_member_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_taskiammember" "member" {
+/// resource "gcp_dataplex_task_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = example.project
 ///   location = example.location
 ///   lake     = example.lake
@@ -592,8 +601,8 @@ import 'task_iam_member_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -627,7 +636,7 @@ import 'task_iam_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -635,19 +644,22 @@ import 'task_iam_member_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_taskiampolicy" "policy" {
+/// resource "gcp_dataplex_task_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = example.project
 ///   location    = example.location
 ///   lake        = example.lake
 ///   task_id     = example.taskId
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -769,7 +781,7 @@ import 'task_iam_member_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -793,7 +805,7 @@ import 'task_iam_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -801,7 +813,10 @@ import 'task_iam_member_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_taskiambinding" "binding" {
+/// resource "gcp_dataplex_task_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = example.project
 ///   location = example.location
 ///   lake     = example.lake
@@ -910,7 +925,7 @@ import 'task_iam_member_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -932,7 +947,7 @@ import 'task_iam_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -940,7 +955,10 @@ import 'task_iam_member_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataplex_taskiammember" "member" {
+/// resource "gcp_dataplex_task_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = example.project
 ///   location = example.location
 ///   lake     = example.lake
@@ -1073,7 +1091,7 @@ class TaskIamMember extends pulumi.CustomResource {
           'gcp:dataplex/taskIamMember:TaskIamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     condition = registerOutput<TaskIamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TaskIamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

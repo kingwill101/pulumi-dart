@@ -227,8 +227,8 @@ import 'access_level_condition_vpc_network_source.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -314,7 +314,7 @@ import 'access_level_condition_vpc_network_source.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -322,27 +322,36 @@ import 'access_level_condition_vpc_network_source.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_accesscontextmanager_accesslevel" "access-level-service-account" {
-///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
-///   name   ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/accessLevels/chromeos_no_lock"
+/// resource "gcp_accesscontextmanager_access_level" "access-level-service-account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent ="accessPolicies/${gcp_accesscontextmanager_access_policy.access-policy.name}"
+///   name   ="accessPolicies/${gcp_accesscontextmanager_access_policy.access-policy.name}/accessLevels/chromeos_no_lock"
 ///   title  = "chromeos_no_lock"
 ///   basic = {
 ///     conditions = [{
-///       "devicePolicy" = {
-///         "requireScreenLock" = true
-///         "osConstraints" = [{
-///           "osType" = "DESKTOP_CHROME_OS"
+///       device_policy = {
+///         require_screen_lock = true
+///         os_constraints = [{
+///           os_type = "DESKTOP_CHROME_OS"
 ///         }]
 ///       }
-///       "regions" = ["CH", "IT", "US"]
+///       regions = ["CH", "IT", "US"]
 ///     }]
 ///   }
 /// }
 /// resource "gcp_serviceaccount_account" "created-later" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "my-account-id"
 /// }
-/// resource "gcp_accesscontextmanager_accesslevelcondition" "access-level-conditions" {
-///   access_level   = gcp_accesscontextmanager_accesslevel.access-level-service-account.name
+/// resource "gcp_accesscontextmanager_access_level_condition" "access-level-conditions" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_level   = gcp_accesscontextmanager_access_level.access-level-service-account.name
 ///   ip_subnetworks = ["192.0.4.0/24"]
 ///   members        = ["user:test@google.com", "user:test2@google.com", "serviceAccount:${gcp_serviceaccount_account.created-later.email}"]
 ///   negate         = false
@@ -351,12 +360,15 @@ import 'access_level_condition_vpc_network_source.dart';
 ///     require_admin_approval = false
 ///     require_corp_owned     = true
 ///     os_constraints = [{
-///       "osType" = "DESKTOP_CHROME_OS"
+///       os_type = "DESKTOP_CHROME_OS"
 ///     }]
 ///   }
 ///   regions = ["IT", "US"]
 /// }
-/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+/// resource "gcp_accesscontextmanager_access_policy" "access-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = "organizations/123456789"
 ///   title  = "my policy"
 /// }
@@ -566,7 +578,7 @@ class AccessLevelCondition extends pulumi.CustomResource {
           'gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     accessLevel = registerOutput<String>('accessLevel');
     accessPolicyId = registerOutput<String>('accessPolicyId');

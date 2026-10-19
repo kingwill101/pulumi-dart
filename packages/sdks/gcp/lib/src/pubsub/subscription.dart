@@ -105,7 +105,7 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -139,7 +139,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -148,9 +148,15 @@ import 'subscription_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "gcp_pubsub_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-subscription"
 ///   topic                = gcp_pubsub_topic.example.id
 ///   ack_deadline_seconds = 20
@@ -318,7 +324,7 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -355,7 +361,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -364,9 +370,15 @@ import 'subscription_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "gcp_pubsub_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "example-subscription"
 ///   topic = gcp_pubsub_topic.example.id
 ///   labels = {
@@ -526,7 +538,7 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -555,7 +567,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -564,15 +576,25 @@ import 'subscription_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "gcp_pubsub_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "example-subscription"
 ///   topic = gcp_pubsub_topic.example.id
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
-///   filter               = "    attributes.foo = \\\"foo\\\"\n    AND attributes.bar = \\\"bar\\\"\n"
+///   filter               = <<EOF
+///     attributes.foo = \"foo\"
+///     AND attributes.bar = \"bar\"
+/// EOF
+///
 ///   ack_deadline_seconds = 20
 /// }
 /// ```
@@ -705,7 +727,7 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -739,7 +761,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -748,12 +770,21 @@ import 'subscription_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "gcp_pubsub_topic" "example_dead_letter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic-dead-letter"
 /// }
 /// resource "gcp_pubsub_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "example-subscription"
 ///   topic = gcp_pubsub_topic.example.id
 ///   dead_letter_policy = {
@@ -953,9 +984,9 @@ import 'subscription_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1014,7 +1045,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1022,13 +1053,19 @@ import 'subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "gcp_pubsub_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "example-subscription"
 ///   topic = gcp_pubsub_topic.example.id
 ///   bigquery_config = {
@@ -1036,12 +1073,28 @@ import 'subscription_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "example_dataset"
 /// }
 /// resource "gcp_bigquery_table" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   table_id            = "example_table"
 ///   dataset_id          = gcp_bigquery_dataset.test.dataset_id
-///   schema              = "[\n  {\n    \\\"name\\\": \\\"data\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"description\\\": \\\"The data\\\"\n  }\n]\n"
+///   schema              = <<EOF
+/// [
+///   {
+///     \"name\": \"data\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\",
+///     \"description\": \"The data\"
+///   }
+/// ]
+/// EOF
+///
 ///   deletion_protection = false
 /// }
 /// ```
@@ -1287,9 +1340,9 @@ import 'subscription_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1349,7 +1402,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1357,13 +1410,19 @@ import 'subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "gcp_pubsub_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "example-subscription"
 ///   topic = gcp_pubsub_topic.example.id
 ///   bigquery_config = {
@@ -1372,12 +1431,28 @@ import 'subscription_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "example_dataset"
 /// }
 /// resource "gcp_bigquery_table" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   table_id            = "example_table"
 ///   dataset_id          = gcp_bigquery_dataset.test.dataset_id
-///   schema              = "[\n  {\n    \\\"name\\\": \\\"data\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"description\\\": \\\"The data\\\"\n  }\n]\n"
+///   schema              = <<EOF
+/// [
+///   {
+///     \"name\": \"data\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\",
+///     \"description\": \"The data\"
+///   }
+/// ]
+/// EOF
+///
 ///   deletion_protection = false
 /// }
 /// ```
@@ -1689,11 +1764,11 @@ import 'subscription_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1784,7 +1859,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1792,43 +1867,74 @@ import 'subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "gcp_pubsub_subscription" "example" {
-///   depends_on = [gcp_serviceaccount_account.bq_write_service_account, gcp_projects_iammember.bigquery_metadata_viewer, gcp_projects_iammember.bigquery_data_editor]
-///   name       = "example-subscription"
-///   topic      = gcp_pubsub_topic.example.id
+///   depends_on = [gcp_serviceaccount_account.bq_write_service_account, gcp_projects_i_a_m_member.bigquery_metadata_viewer, gcp_projects_i_a_m_member.bigquery_data_editor]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name  = "example-subscription"
+///   topic = gcp_pubsub_topic.example.id
 ///   bigquery_config = {
 ///     table                 ="${gcp_bigquery_table.test.project}.${gcp_bigquery_table.test.dataset_id}.${gcp_bigquery_table.test.table_id}"
 ///     service_account_email = gcp_serviceaccount_account.bq_write_service_account.email
 ///   }
 /// }
 /// resource "gcp_serviceaccount_account" "bq_write_service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "example-bqw"
 ///   display_name = "BQ Write Service Account"
 /// }
-/// resource "gcp_projects_iammember" "bigquery_metadata_viewer" {
-///   project = data.gcp_organizations_getproject.project.project_id
+/// resource "gcp_projects_i_a_m_member" "bigquery_metadata_viewer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = data.gcp_organizations_project.project.project_id
 ///   role    = "roles/bigquery.metadataViewer"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.bq_write_service_account.email}"
 /// }
-/// resource "gcp_projects_iammember" "bigquery_data_editor" {
-///   project = data.gcp_organizations_getproject.project.project_id
+/// resource "gcp_projects_i_a_m_member" "bigquery_data_editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = data.gcp_organizations_project.project.project_id
 ///   role    = "roles/bigquery.dataEditor"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.bq_write_service_account.email}"
 /// }
 /// resource "gcp_bigquery_dataset" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "example_dataset"
 /// }
 /// resource "gcp_bigquery_table" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   table_id            = "example_table"
 ///   dataset_id          = gcp_bigquery_dataset.test.dataset_id
-///   schema              = "[\n  {\n    \\\"name\\\": \\\"data\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"description\\\": \\\"The data\\\"\n  }\n]\n"
+///   schema              = <<EOF
+/// [
+///   {
+///     \"name\": \"data\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\",
+///     \"description\": \"The data\"
+///   }
+/// ]
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -2025,7 +2131,7 @@ import 'subscription_state.dart';
 ///     cloudStorageConfig: {
 ///         bucket: example.name,
 ///         filenamePrefix: "pre-",
-///         filenameSuffix: "-_75303",
+///         filenameSuffix: "-_45598",
 ///         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
 ///         maxBytes: 1000,
 ///         maxDuration: "300s",
@@ -2058,7 +2164,7 @@ import 'subscription_state.dart';
 ///     cloud_storage_config={
 ///         "bucket": example.name,
 ///         "filename_prefix": "pre-",
-///         "filename_suffix": "-_75303",
+///         "filename_suffix": "-_45598",
 ///         "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
 ///         "max_bytes": 1000,
 ///         "max_duration": "300s",
@@ -2106,7 +2212,7 @@ import 'subscription_state.dart';
 ///         {
 ///             Bucket = example.Name,
 ///             FilenamePrefix = "pre-",
-///             FilenameSuffix = "-_75303",
+///             FilenameSuffix = "-_45598",
 ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
 ///             MaxBytes = 1000,
 ///             MaxDuration = "300s",
@@ -2127,9 +2233,9 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2167,7 +2273,7 @@ import 'subscription_state.dart';
 /// 			CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 /// 				Bucket:                 example.Name,
 /// 				FilenamePrefix:         pulumi.String("pre-"),
-/// 				FilenameSuffix:         pulumi.String("-_75303"),
+/// 				FilenameSuffix:         pulumi.String("-_45598"),
 /// 				FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 /// 				MaxBytes:               pulumi.Int(1000),
 /// 				MaxDuration:            pulumi.String("300s"),
@@ -2185,7 +2291,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2193,35 +2299,47 @@ import 'subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_storage_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-bucket"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "gcp_pubsub_subscription" "example" {
-///   depends_on = [gcp_storage_bucket.example, gcp_storage_bucketiammember.admin]
-///   name       = "example-subscription"
-///   topic      = gcp_pubsub_topic.example.id
+///   depends_on = [gcp_storage_bucket.example, gcp_storage_bucket_i_a_m_member.admin]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name  = "example-subscription"
+///   topic = gcp_pubsub_topic.example.id
 ///   cloud_storage_config = {
 ///     bucket                   = gcp_storage_bucket.example.name
 ///     filename_prefix          = "pre-"
-///     filename_suffix          = "-_75303"
+///     filename_suffix          = "-_45598"
 ///     filename_datetime_format = "YYYY-MM-DD/hh_mm_ssZ"
 ///     max_bytes                = 1000
 ///     max_duration             = "300s"
 ///     max_messages             = 1000
 ///   }
 /// }
-/// resource "gcp_storage_bucketiammember" "admin" {
+/// resource "gcp_storage_bucket_i_a_m_member" "admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.example.name
 ///   role   = "roles/storage.admin"
-///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-pubsub.iam.gserviceaccount.com"
+///   member ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-pubsub.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -2280,7 +2398,7 @@ import 'subscription_state.dart';
 ///             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
 ///                 .bucket(example.name())
 ///                 .filenamePrefix("pre-")
-///                 .filenameSuffix("-_75303")
+///                 .filenameSuffix("-_45598")
 ///                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
 ///                 .maxBytes(1000)
 ///                 .maxDuration("300s")
@@ -2317,7 +2435,7 @@ import 'subscription_state.dart';
 ///       cloudStorageConfig:
 ///         bucket: ${example.name}
 ///         filenamePrefix: pre-
-///         filenameSuffix: -_75303
+///         filenameSuffix: -_45598
 ///         filenameDatetimeFormat: YYYY-MM-DD/hh_mm_ssZ
 ///         maxBytes: 1000
 ///         maxDuration: 300s
@@ -2365,7 +2483,7 @@ import 'subscription_state.dart';
 ///     cloudStorageConfig: {
 ///         bucket: example.name,
 ///         filenamePrefix: "pre-",
-///         filenameSuffix: "-_72437",
+///         filenameSuffix: "-_64623",
 ///         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
 ///         maxBytes: 1000,
 ///         maxDuration: "300s",
@@ -2399,7 +2517,7 @@ import 'subscription_state.dart';
 ///     cloud_storage_config={
 ///         "bucket": example.name,
 ///         "filename_prefix": "pre-",
-///         "filename_suffix": "-_72437",
+///         "filename_suffix": "-_64623",
 ///         "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
 ///         "max_bytes": 1000,
 ///         "max_duration": "300s",
@@ -2448,7 +2566,7 @@ import 'subscription_state.dart';
 ///         {
 ///             Bucket = example.Name,
 ///             FilenamePrefix = "pre-",
-///             FilenameSuffix = "-_72437",
+///             FilenameSuffix = "-_64623",
 ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
 ///             MaxBytes = 1000,
 ///             MaxDuration = "300s",
@@ -2470,9 +2588,9 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2510,7 +2628,7 @@ import 'subscription_state.dart';
 /// 			CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 /// 				Bucket:                 example.Name,
 /// 				FilenamePrefix:         pulumi.String("pre-"),
-/// 				FilenameSuffix:         pulumi.String("-_72437"),
+/// 				FilenameSuffix:         pulumi.String("-_64623"),
 /// 				FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 /// 				MaxBytes:               pulumi.Int(1000),
 /// 				MaxDuration:            pulumi.String("300s"),
@@ -2529,7 +2647,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2537,25 +2655,34 @@ import 'subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_storage_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-bucket"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "gcp_pubsub_subscription" "example" {
-///   depends_on = [gcp_storage_bucket.example, gcp_storage_bucketiammember.admin]
-///   name       = "example-subscription"
-///   topic      = gcp_pubsub_topic.example.id
+///   depends_on = [gcp_storage_bucket.example, gcp_storage_bucket_i_a_m_member.admin]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name  = "example-subscription"
+///   topic = gcp_pubsub_topic.example.id
 ///   cloud_storage_config = {
 ///     bucket                   = gcp_storage_bucket.example.name
 ///     filename_prefix          = "pre-"
-///     filename_suffix          = "-_72437"
+///     filename_suffix          = "-_64623"
 ///     filename_datetime_format = "YYYY-MM-DD/hh_mm_ssZ"
 ///     max_bytes                = 1000
 ///     max_duration             = "300s"
@@ -2563,10 +2690,13 @@ import 'subscription_state.dart';
 ///     text_config              = {}
 ///   }
 /// }
-/// resource "gcp_storage_bucketiammember" "admin" {
+/// resource "gcp_storage_bucket_i_a_m_member" "admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.example.name
 ///   role   = "roles/storage.admin"
-///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-pubsub.iam.gserviceaccount.com"
+///   member ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-pubsub.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -2626,7 +2756,7 @@ import 'subscription_state.dart';
 ///             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
 ///                 .bucket(example.name())
 ///                 .filenamePrefix("pre-")
-///                 .filenameSuffix("-_72437")
+///                 .filenameSuffix("-_64623")
 ///                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
 ///                 .maxBytes(1000)
 ///                 .maxDuration("300s")
@@ -2665,7 +2795,7 @@ import 'subscription_state.dart';
 ///       cloudStorageConfig:
 ///         bucket: ${example.name}
 ///         filenamePrefix: pre-
-///         filenameSuffix: -_72437
+///         filenameSuffix: -_64623
 ///         filenameDatetimeFormat: YYYY-MM-DD/hh_mm_ssZ
 ///         maxBytes: 1000
 ///         maxDuration: 300s
@@ -2714,7 +2844,7 @@ import 'subscription_state.dart';
 ///     cloudStorageConfig: {
 ///         bucket: example.name,
 ///         filenamePrefix: "pre-",
-///         filenameSuffix: "-_7864",
+///         filenameSuffix: "-_42057",
 ///         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
 ///         maxBytes: 1000,
 ///         maxDuration: "300s",
@@ -2751,7 +2881,7 @@ import 'subscription_state.dart';
 ///     cloud_storage_config={
 ///         "bucket": example.name,
 ///         "filename_prefix": "pre-",
-///         "filename_suffix": "-_7864",
+///         "filename_suffix": "-_42057",
 ///         "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
 ///         "max_bytes": 1000,
 ///         "max_duration": "300s",
@@ -2803,7 +2933,7 @@ import 'subscription_state.dart';
 ///         {
 ///             Bucket = example.Name,
 ///             FilenamePrefix = "pre-",
-///             FilenameSuffix = "-_7864",
+///             FilenameSuffix = "-_42057",
 ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
 ///             MaxBytes = 1000,
 ///             MaxDuration = "300s",
@@ -2829,9 +2959,9 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2869,7 +2999,7 @@ import 'subscription_state.dart';
 /// 			CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 /// 				Bucket:                 example.Name,
 /// 				FilenamePrefix:         pulumi.String("pre-"),
-/// 				FilenameSuffix:         pulumi.String("-_7864"),
+/// 				FilenameSuffix:         pulumi.String("-_42057"),
 /// 				FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 /// 				MaxBytes:               pulumi.Int(1000),
 /// 				MaxDuration:            pulumi.String("300s"),
@@ -2891,7 +3021,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2899,25 +3029,34 @@ import 'subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_storage_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-bucket"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "gcp_pubsub_subscription" "example" {
-///   depends_on = [gcp_storage_bucket.example, gcp_storage_bucketiammember.admin]
-///   name       = "example-subscription"
-///   topic      = gcp_pubsub_topic.example.id
+///   depends_on = [gcp_storage_bucket.example, gcp_storage_bucket_i_a_m_member.admin]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name  = "example-subscription"
+///   topic = gcp_pubsub_topic.example.id
 ///   cloud_storage_config = {
 ///     bucket                   = gcp_storage_bucket.example.name
 ///     filename_prefix          = "pre-"
-///     filename_suffix          = "-_7864"
+///     filename_suffix          = "-_42057"
 ///     filename_datetime_format = "YYYY-MM-DD/hh_mm_ssZ"
 ///     max_bytes                = 1000
 ///     max_duration             = "300s"
@@ -2928,10 +3067,13 @@ import 'subscription_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_storage_bucketiammember" "admin" {
+/// resource "gcp_storage_bucket_i_a_m_member" "admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.example.name
 ///   role   = "roles/storage.admin"
-///   member ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-pubsub.iam.gserviceaccount.com"
+///   member ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-pubsub.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -2991,7 +3133,7 @@ import 'subscription_state.dart';
 ///             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
 ///                 .bucket(example.name())
 ///                 .filenamePrefix("pre-")
-///                 .filenameSuffix("-_7864")
+///                 .filenameSuffix("-_42057")
 ///                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
 ///                 .maxBytes(1000)
 ///                 .maxDuration("300s")
@@ -3032,7 +3174,7 @@ import 'subscription_state.dart';
 ///       cloudStorageConfig:
 ///         bucket: ${example.name}
 ///         filenamePrefix: pre-
-///         filenameSuffix: -_7864
+///         filenameSuffix: -_42057
 ///         filenameDatetimeFormat: YYYY-MM-DD/hh_mm_ssZ
 ///         maxBytes: 1000
 ///         maxDuration: 300s
@@ -3086,7 +3228,7 @@ import 'subscription_state.dart';
 ///     cloudStorageConfig: {
 ///         bucket: example.name,
 ///         filenamePrefix: "pre-",
-///         filenameSuffix: "-_70324",
+///         filenameSuffix: "-_84735",
 ///         filenameDatetimeFormat: "YYYY-MM-DD/hh_mm_ssZ",
 ///         maxBytes: 1000,
 ///         maxDuration: "300s",
@@ -3123,7 +3265,7 @@ import 'subscription_state.dart';
 ///     cloud_storage_config={
 ///         "bucket": example.name,
 ///         "filename_prefix": "pre-",
-///         "filename_suffix": "-_70324",
+///         "filename_suffix": "-_84735",
 ///         "filename_datetime_format": "YYYY-MM-DD/hh_mm_ssZ",
 ///         "max_bytes": 1000,
 ///         "max_duration": "300s",
@@ -3177,7 +3319,7 @@ import 'subscription_state.dart';
 ///         {
 ///             Bucket = example.Name,
 ///             FilenamePrefix = "pre-",
-///             FilenameSuffix = "-_70324",
+///             FilenameSuffix = "-_84735",
 ///             FilenameDatetimeFormat = "YYYY-MM-DD/hh_mm_ssZ",
 ///             MaxBytes = 1000,
 ///             MaxDuration = "300s",
@@ -3203,10 +3345,10 @@ import 'subscription_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3249,7 +3391,7 @@ import 'subscription_state.dart';
 /// 			CloudStorageConfig: &pubsub.SubscriptionCloudStorageConfigArgs{
 /// 				Bucket:                 example.Name,
 /// 				FilenamePrefix:         pulumi.String("pre-"),
-/// 				FilenameSuffix:         pulumi.String("-_70324"),
+/// 				FilenameSuffix:         pulumi.String("-_84735"),
 /// 				FilenameDatetimeFormat: pulumi.String("YYYY-MM-DD/hh_mm_ssZ"),
 /// 				MaxBytes:               pulumi.Int(1000),
 /// 				MaxDuration:            pulumi.String("300s"),
@@ -3272,7 +3414,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3280,25 +3422,34 @@ import 'subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_storage_bucket" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-bucket"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "gcp_pubsub_subscription" "example" {
-///   depends_on = [gcp_serviceaccount_account.storage_write_service_account, gcp_storage_bucket.example, gcp_storage_bucketiammember.admin]
-///   name       = "example-subscription"
-///   topic      = gcp_pubsub_topic.example.id
+///   depends_on = [gcp_serviceaccount_account.storage_write_service_account, gcp_storage_bucket.example, gcp_storage_bucket_i_a_m_member.admin]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name  = "example-subscription"
+///   topic = gcp_pubsub_topic.example.id
 ///   cloud_storage_config = {
 ///     bucket                   = gcp_storage_bucket.example.name
 ///     filename_prefix          = "pre-"
-///     filename_suffix          = "-_70324"
+///     filename_suffix          = "-_84735"
 ///     filename_datetime_format = "YYYY-MM-DD/hh_mm_ssZ"
 ///     max_bytes                = 1000
 ///     max_duration             = "300s"
@@ -3306,10 +3457,16 @@ import 'subscription_state.dart';
 ///   }
 /// }
 /// resource "gcp_serviceaccount_account" "storage_write_service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "example-stw"
 ///   display_name = "Storage Write Service Account"
 /// }
-/// resource "gcp_storage_bucketiammember" "admin" {
+/// resource "gcp_storage_bucket_i_a_m_member" "admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.example.name
 ///   role   = "roles/storage.admin"
 ///   member ="serviceAccount:${gcp_serviceaccount_account.storage_write_service_account.email}"
@@ -3375,7 +3532,7 @@ import 'subscription_state.dart';
 ///             .cloudStorageConfig(SubscriptionCloudStorageConfigArgs.builder()
 ///                 .bucket(example.name())
 ///                 .filenamePrefix("pre-")
-///                 .filenameSuffix("-_70324")
+///                 .filenameSuffix("-_84735")
 ///                 .filenameDatetimeFormat("YYYY-MM-DD/hh_mm_ssZ")
 ///                 .maxBytes(1000)
 ///                 .maxDuration("300s")
@@ -3416,7 +3573,7 @@ import 'subscription_state.dart';
 ///       cloudStorageConfig:
 ///         bucket: ${example.name}
 ///         filenamePrefix: pre-
-///         filenameSuffix: -_70324
+///         filenameSuffix: -_84735
 ///         filenameDatetimeFormat: YYYY-MM-DD/hh_mm_ssZ
 ///         maxBytes: 1000
 ///         maxDuration: 300s
@@ -3528,7 +3685,7 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3560,7 +3717,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3569,15 +3726,27 @@ import 'subscription_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "gcp_pubsub_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "example-subscription"
 ///   topic = gcp_pubsub_topic.example.id
 ///   message_transforms {
 ///     javascript_udf = {
 ///       function_name = "isYearEven"
-///       code          = "function isYearEven(message, metadata) {\n  const data = JSON.parse(message.data);\n  return message.year %2 === 0;\n}\n"
+///       code          = <<EOF
+/// function isYearEven(message, metadata) {
+///   const data = JSON.parse(message.data);
+///   return message.year %2 === 0;
+/// }
+/// EOF
+///
 ///     }
 ///   }
 /// }
@@ -3797,7 +3966,7 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3848,7 +4017,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3857,21 +4026,40 @@ import 'subscription_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "gcp_pubsub_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "example-subscription"
 ///   topic = gcp_pubsub_topic.example.id
 ///   message_transforms {
 ///     javascript_udf = {
 ///       function_name = "redactSSN"
-///       code          = "function redactSSN(message, metadata) {\n  const data = JSON.parse(message.data);\n  delete data['ssn'];\n  message.data = JSON.stringify(data);\n  return message;\n}\n"
+///       code          = <<EOF
+/// function redactSSN(message, metadata) {
+///   const data = JSON.parse(message.data);
+///   delete data['ssn'];
+///   message.data = JSON.stringify(data);
+///   return message;
+/// }
+/// EOF
+///
 ///     }
 ///   }
 ///   message_transforms {
 ///     javascript_udf = {
 ///       function_name = "otherFunc"
-///       code          = "function otherFunc(message, metadata) {\n  return null;\n}\n"
+///       code          = <<EOF
+/// function otherFunc(message, metadata) {
+///   return null;
+/// }
+/// EOF
+///
 ///     }
 ///   }
 ///   message_transforms {
@@ -4091,9 +4279,9 @@ import 'subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4144,7 +4332,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4152,26 +4340,38 @@ import 'subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "gcp_pubsub_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "example-subscription"
 ///   topic = gcp_pubsub_topic.example.id
 ///   tags = {
-///     gcp_tags_tagkey.tag_key.namespaced_name = gcp_tags_tagvalue.tag_value.short_name
+///     gcp_tags_tag_key.tag_key.namespaced_name = gcp_tags_tag_value.tag_value.short_name
 ///   }
 /// }
-/// resource "gcp_tags_tagkey" "tag_key" {
+/// resource "gcp_tags_tag_key" "tag_key" {
 ///   depends_on = [gcp_pubsub_topic.example]
-///   parent     = data.gcp_organizations_getproject.project.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent     = data.gcp_organizations_project.project.id
 ///   short_name = "tag_key"
 /// }
-/// resource "gcp_tags_tagvalue" "tag_value" {
-///   parent     = gcp_tags_tagkey.tag_key.id
+/// resource "gcp_tags_tag_value" "tag_value" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent     = gcp_tags_tag_key.tag_key.id
 ///   short_name = "tag_value"
 /// }
 /// ```
@@ -4420,9 +4620,9 @@ import 'subscription_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -4487,7 +4687,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4499,25 +4699,40 @@ import 'subscription_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 /// }
 /// resource "gcp_serviceaccount_account" "gemini_query_service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "example-sa"
 ///   display_name = "Gemini Query Service Account"
 /// }
-/// resource "gcp_projects_iammember" "gemini_inference_get" {
+/// resource "gcp_projects_i_a_m_member" "gemini_inference_get" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/aiplatform.user"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.gemini_query_service_account.email}"
 /// }
 /// resource "time_sleep" "wait_120_seconds" {
-///   depends_on      = [gcp_projects_iammember.gemini_inference_get]
+///   depends_on = [gcp_projects_i_a_m_member.gemini_inference_get]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
 /// resource "gcp_pubsub_subscription" "example" {
 ///   depends_on = [time_sleep.wait_120_seconds]
-///   name       = "example-subscription"
-///   topic      = gcp_pubsub_topic.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name  = "example-subscription"
+///   topic = gcp_pubsub_topic.example.id
 ///   message_transforms {
 ///     ai_inference = {
 ///       endpoint = "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash"
@@ -4803,7 +5018,7 @@ class Subscription extends pulumi.CustomResource {
           'gcp:pubsub/subscription:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     ackDeadlineSeconds = registerOutput<int>('ackDeadlineSeconds');

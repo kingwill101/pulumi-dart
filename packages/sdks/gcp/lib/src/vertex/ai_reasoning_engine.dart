@@ -11,9 +11,9 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///
 /// To get more information about ReasoningEngine, see:
 ///
-/// * [API documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/projects.locations.reasoningEngines/)
+/// * [API documentation](https://docs.cloud.google.com/gemini-enterprise-agent-platform/reference/rest/v1/projects.locations.reasoningEngines)
 /// * How-to Guides
-/// * [Develop and deploy agents on Vertex AI Agent Engine](https://cloud.google.com/vertex-ai/generative-ai/docs/agent-engine/quickstart)
+/// * [Scale your agents](https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale)
 ///
 /// ## Example Usage
 ///
@@ -109,7 +109,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -147,7 +147,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -158,7 +158,10 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
+/// resource "gcp_vertex_ai_reasoning_engine" "reasoning_engine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "reasoning-engine"
 ///   description  = "A basic reasoning engine"
 ///   region       = "us-central1"
@@ -351,8 +354,8 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -391,7 +394,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -399,10 +402,13 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
+/// resource "gcp_vertex_ai_reasoning_engine" "reasoning_engine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "reasoning-engine"
 ///   description  = "A basic reasoning engine"
 ///   region       = "us-central1"
@@ -410,7 +416,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///     source_code_spec = {
 ///       developer_connect_source = {
 ///         config = {
-///           git_repository_link ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/connections/tpg-test-bot-github/gitRepositoryLinks/tpg-test-vertex-reasoning"
+///           git_repository_link ="projects/${data.gcp_organizations_project.project.project_id}/locations/us-central1/connections/tpg-test-bot-github/gitRepositoryLinks/tpg-test-vertex-reasoning"
 ///           dir                 = "source"
 ///           revision            = "main"
 ///         }
@@ -593,7 +599,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -629,7 +635,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -640,7 +646,10 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
+/// resource "gcp_vertex_ai_reasoning_engine" "reasoning_engine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "reasoning-engine"
 ///   description  = "Deployed with BYOC Dockerfile through Terraform"
 ///   region       = "us-central1"
@@ -923,9 +932,9 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1007,7 +1016,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1018,27 +1027,33 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_vertex_getaireasoningenginequery" "tenantMds" {
+/// data "gcp_vertex_ai_reasoning_engine_query" "tenantMds" {
 ///   region              = "us-central1"
-///   reasoning_engine_id = gcp_vertex_aireasoningengine.tenant_mds.name
+///   reasoning_engine_id = gcp_vertex_ai_reasoning_engine.tenant_mds.name
 /// }
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
-///   depends_on   = [gcp_projects_iammember.vertex_ar_reader, gcp_projects_iammember.tenant_ar_reader]
+/// resource "gcp_vertex_ai_reasoning_engine" "reasoning_engine" {
+///   depends_on = [gcp_projects_i_a_m_member.vertex_ar_reader, gcp_projects_i_a_m_member.tenant_ar_reader]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "reasoning-engine"
 ///   description  = "Deployed with BYOC through Terraform"
 ///   region       = "us-central1"
 ///   spec = {
 ///     container_spec = {
-///       image_uri ="us-central1-docker.pkg.dev/${data.gcp_organizations_getproject.project.project_id}/vertex-byoc/byoc-agent:latest"
+///       image_uri ="us-central1-docker.pkg.dev/${data.gcp_organizations_project.project.project_id}/vertex-byoc/byoc-agent:latest"
 ///       port      = 8080
 ///     }
 ///   }
 /// }
 /// # Provision and retrieve the tenant service agent through another agent
-/// resource "gcp_vertex_aireasoningengine" "tenant_mds" {
+/// resource "gcp_vertex_ai_reasoning_engine" "tenant_mds" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "reasoning-engine-mds"
 ///   region       = "us-central1"
 ///   spec = {
@@ -1053,15 +1068,21 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_projects_iammember" "vertex_ar_reader" {
-///   project = data.gcp_organizations_getproject.project.project_id
+/// resource "gcp_projects_i_a_m_member" "vertex_ar_reader" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = data.gcp_organizations_project.project.project_id
 ///   role    = "roles/artifactregistry.reader"
-///   member  ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-aiplatform-re.iam.gserviceaccount.com"
+///   member  ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-aiplatform-re.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_projects_iammember" "tenant_ar_reader" {
-///   project = data.gcp_organizations_getproject.project.project_id
+/// resource "gcp_projects_i_a_m_member" "tenant_ar_reader" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = data.gcp_organizations_project.project.project_id
 ///   role    = "roles/artifactregistry.reader"
-///   member  ="serviceAccount:${jsondecode(data.gcp_vertex_getaireasoningenginequery.tenantMds.output).output}"
+///   member  ="serviceAccount:${jsondecode(data.gcp_vertex_ai_reasoning_engine_query.tenantMds.output).output}"
 /// }
 /// ```
 /// ```java
@@ -1285,7 +1306,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// const project = gcp.organizations.getProject({});
 /// // When PSC-I is configured, Agent deletion will fail,
 /// // although the agent will be deleted.
-/// // Bug at https://github.com/hashicorp/terraform-provider-google/issues/25637
+/// // Bug at https://github.com/pulumi/pulumi-provider-google/issues/25637
 /// const reasoningEngine = new gcp.vertex.AiReasoningEngine("reasoning_engine", {
 ///     displayName: "reasoning-engine",
 ///     description: "A basic reasoning engine",
@@ -1355,7 +1376,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// project = gcp.organizations.get_project()
 /// # When PSC-I is configured, Agent deletion will fail,
 /// # although the agent will be deleted.
-/// # Bug at https://github.com/hashicorp/terraform-provider-google/issues/25637
+/// # Bug at https://github.com/pulumi/pulumi-provider-google/issues/25637
 /// reasoning_engine = gcp.vertex.AiReasoningEngine("reasoning_engine",
 ///     display_name="reasoning-engine",
 ///     description="A basic reasoning engine",
@@ -1473,7 +1494,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///
 ///     // When PSC-I is configured, Agent deletion will fail,
 ///     // although the agent will be deleted.
-///     // Bug at https://github.com/hashicorp/terraform-provider-google/issues/25637
+///     // Bug at https://github.com/pulumi/pulumi-provider-google/issues/25637
 ///     var reasoningEngine = new Gcp.Vertex.AiReasoningEngine("reasoning_engine", new()
 ///     {
 ///         DisplayName = "reasoning-engine",
@@ -1537,10 +1558,10 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -1623,7 +1644,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 		}
 /// 		// When PSC-I is configured, Agent deletion will fail,
 /// 		// although the agent will be deleted.
-/// 		// Bug at https://github.com/hashicorp/terraform-provider-google/issues/25637
+/// 		// Bug at https://github.com/pulumi/pulumi-provider-google/issues/25637
 /// 		_, err = vertex.NewAiReasoningEngine(ctx, "reasoning_engine", &vertex.AiReasoningEngineArgs{
 /// 			DisplayName: pulumi.String("reasoning-engine"),
 /// 			Description: pulumi.String("A basic reasoning engine"),
@@ -1672,7 +1693,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1683,14 +1704,17 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// # When PSC-I is configured, Agent deletion will fail,
 /// # although the agent will be deleted.
-/// # Bug at https://github.com/hashicorp/terraform-provider-google/issues/25637
-/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
-///   depends_on   = [time_sleep.wait_35_minutes]
+/// # Bug at https://github.com/pulumi/pulumi-provider-google/issues/25637
+/// resource "gcp_vertex_ai_reasoning_engine" "reasoning_engine" {
+///   depends_on = [time_sleep.wait_35_minutes]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "reasoning-engine"
 ///   description  = "A basic reasoning engine"
 ///   region       = "us-central1"
@@ -1698,38 +1722,50 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///     agent_framework = "google-adk"
 ///     package_spec = {
 ///       python_version           = "3.11"
-///       dependency_files_gcs_uri ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucketobject.bucket_obj_dependencies_tar_gz.name}"
-///       pickle_object_gcs_uri    ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucketobject.bucket_obj_pickle.name}"
-///       requirements_gcs_uri     ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucketobject.bucket_obj_requirements_txt.name}"
+///       dependency_files_gcs_uri ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucket_object.bucket_obj_dependencies_tar_gz.name}"
+///       pickle_object_gcs_uri    ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucket_object.bucket_obj_pickle.name}"
+///       requirements_gcs_uri     ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucket_object.bucket_obj_requirements_txt.name}"
 ///     }
 ///     deployment_spec = {
 ///       psc_interface_config = {
-///         network_attachment = gcp_compute_networkattachment.network_attachment.id
+///         network_attachment = gcp_compute_network_attachment.network_attachment.id
 ///         dns_peering_configs = [{
-///           "domain"        = "example.com."
-///           "targetProject" = data.gcp_organizations_getproject.project.project_id
-///           "targetNetwork" = gcp_compute_network.network.name
+///           domain         = "example.com."
+///           target_project = data.gcp_organizations_project.project.project_id
+///           target_network = gcp_compute_network.network.name
 ///         }]
 ///       }
 ///     }
 ///   }
 /// }
-/// resource "gcp_storage_bucketobject" "bucket_obj_requirements_txt" {
+/// resource "gcp_storage_bucket_object" "bucket_obj_requirements_txt" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "requirements.txt"
 ///   bucket = gcp_storage_bucket.bucket.id
-///   source = fileAsset("./test-fixtures/requirements_adk.txt")
+///   source = fileasset("./test-fixtures/requirements_adk.txt")
 /// }
-/// resource "gcp_storage_bucketobject" "bucket_obj_pickle" {
+/// resource "gcp_storage_bucket_object" "bucket_obj_pickle" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "code.pkl"
 ///   bucket = gcp_storage_bucket.bucket.id
-///   source = fileAsset("./test-fixtures/pickle_adk.pkl")
+///   source = fileasset("./test-fixtures/pickle_adk.pkl")
 /// }
-/// resource "gcp_storage_bucketobject" "bucket_obj_dependencies_tar_gz" {
+/// resource "gcp_storage_bucket_object" "bucket_obj_dependencies_tar_gz" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "dependencies.tar.gz"
 ///   bucket = gcp_storage_bucket.bucket.id
-///   source = fileAsset("./test-fixtures/dependencies_adk.tar.gz")
+///   source = fileasset("./test-fixtures/dependencies_adk.tar.gz")
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "reasoning-engine"
 ///   location                    = "us-central1"
 ///   uniform_bucket_level_access = true
@@ -1738,22 +1774,34 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// # Destroy network attachment 35 minutes after reasoning engine is deleted.
 /// # It guarantees that the network attachment has no more active PSC interfaces.
 /// resource "time_sleep" "wait_35_minutes" {
-///   depends_on       = [gcp_compute_networkattachment.network_attachment]
+///   depends_on = [gcp_compute_network_attachment.network_attachment]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destroy_duration = "35m"
 /// }
-/// resource "gcp_compute_networkattachment" "network_attachment" {
+/// resource "gcp_compute_network_attachment" "network_attachment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "network-attachment"
 ///   region                = "us-central1"
 ///   connection_preference = "ACCEPT_MANUAL"
 ///   subnetworks           = [gcp_compute_subnetwork.subnetwork.id]
 /// }
 /// resource "gcp_compute_subnetwork" "subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "subnetwork"
 ///   region        = "us-central1"
 ///   ip_cidr_range = "10.0.0.0/16"
 ///   network       = gcp_compute_network.network.id
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network"
 ///   auto_create_subnetworks = false
 /// }
@@ -1857,7 +1905,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///
 ///         // When PSC-I is configured, Agent deletion will fail,
 ///         // although the agent will be deleted.
-///         // Bug at https://github.com/hashicorp/terraform-provider-google/issues/25637
+///         // Bug at https://github.com/pulumi/pulumi-provider-google/issues/25637
 ///         var reasoningEngine = new AiReasoningEngine("reasoningEngine", AiReasoningEngineArgs.builder()
 ///             .displayName("reasoning-engine")
 ///             .description("A basic reasoning engine")
@@ -1904,7 +1952,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// resources:
 ///   # When PSC-I is configured, Agent deletion will fail,
 ///   # although the agent will be deleted.
-///   # Bug at https://github.com/hashicorp/terraform-provider-google/issues/25637
+///   # Bug at https://github.com/pulumi/pulumi-provider-google/issues/25637
 ///   reasoningEngine:
 ///     type: gcp:vertex:AiReasoningEngine
 ///     name: reasoning_engine
@@ -2091,6 +2139,9 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///         agentFramework: "google-adk",
 ///         classMethods: JSON.stringify(classMethods),
 ///         serviceAccount: serviceAccount.email,
+///         buildSpec: {
+///             serviceAccount: serviceAccount.email,
+///         },
 ///         deploymentSpec: {
 ///             minInstances: 1,
 ///             maxInstances: 3,
@@ -2216,6 +2267,9 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///         "agent_framework": "google-adk",
 ///         "class_methods": json.dumps(class_methods),
 ///         "service_account": service_account.email,
+///         "build_spec": {
+///             "service_account": service_account.email,
+///         },
 ///         "deployment_spec": {
 ///             "min_instances": 1,
 ///             "max_instances": 3,
@@ -2284,17 +2338,21 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// {
 ///     var classMethods = new[]
 ///     {
-///
+///         new Dictionary<string, object?>
 ///         {
-///             { "apiMode", "async" },
-///             { "description", null },
-///             { "name", "async_query" },
-///             { "parameters",
+///             ["apiMode"] = "async",
+///             ["description"] = null,
+///             ["name"] = "async_query",
+///             ["parameters"] = new Dictionary<string, object?>
 ///             {
-///                 { "type", "object" },
-///                 { "required", new object?[] {} },
-///                 { "properties", null },
-///             } },
+///                 ["type"] = "object",
+///                 ["required"] = new[]
+///                 {
+///                 },
+///                 ["properties"] = new Dictionary<string, object?>
+///                 {
+///                 },
+///             },
 ///         },
 ///     };
 ///
@@ -2407,6 +2465,10 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///             AgentFramework = "google-adk",
 ///             ClassMethods = JsonSerializer.Serialize(classMethods),
 ///             ServiceAccount = serviceAccount.Email,
+///             BuildSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecBuildSpecArgs
+///             {
+///                 ServiceAccount = serviceAccount.Email,
+///             },
 ///             DeploymentSpec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecDeploymentSpecArgs
 ///             {
 ///                 MinInstances = 1,
@@ -2492,12 +2554,12 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 	"encoding/json"
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -2636,6 +2698,9 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 				AgentFramework: pulumi.String("google-adk"),
 /// 				ClassMethods:   pulumi.String(json0),
 /// 				ServiceAccount: serviceAccount.Email,
+/// 				BuildSpec: &vertex.AiReasoningEngineSpecBuildSpecArgs{
+/// 					ServiceAccount: serviceAccount.Email,
+/// 				},
 /// 				DeploymentSpec: &vertex.AiReasoningEngineSpecDeploymentSpecArgs{
 /// 					MinInstances:         pulumi.Int(1),
 /// 					MaxInstances:         pulumi.Int(3),
@@ -2701,7 +2766,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2712,11 +2777,14 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
-///   depends_on   = [time_sleep.wait_5_minutes]
+/// resource "gcp_vertex_ai_reasoning_engine" "reasoning_engine" {
+///   depends_on = [time_sleep.wait_5_minutes]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "reasoning-engine"
 ///   description  = "A basic reasoning engine"
 ///   region       = "us-central1"
@@ -2727,6 +2795,9 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///     agent_framework = "google-adk"
 ///     class_methods   = jsonencode(local.classMethods)
 ///     service_account = gcp_serviceaccount_account.service_account.email
+///     build_spec = {
+///       service_account = gcp_serviceaccount_account.service_account.email
+///     }
 ///     deployment_spec = {
 ///       min_instances         = 1
 ///       max_instances         = 3
@@ -2736,91 +2807,127 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///         "memory" = "4Gi"
 ///       }
 ///       envs = [{
-///         "name"  = "var_1"
-///         "value" = "value_2"
+///         name  = "var_1"
+///         value = "value_2"
 ///         }, {
-///         "name"  = "var_2"
-///         "value" = "value_2"
+///         name  = "var_2"
+///         value = "value_2"
 ///       }]
 ///       secret_envs = [{
-///         "name" = "secret_var_1"
-///         "secretRef" = {
-///           "secret"  = gcp_secretmanager_secret.secret.secret_id
-///           "version" = "latest"
+///         name = "secret_var_1"
+///         secret_ref = {
+///           secret  = gcp_secretmanager_secret.secret.secret_id
+///           version = "latest"
 ///         }
 ///         }, {
-///         "name" = "secret_var_2"
-///         "secretRef" = {
-///           "secret"  = gcp_secretmanager_secret.secret.secret_id
-///           "version" = "latest"
+///         name = "secret_var_2"
+///         secret_ref = {
+///           secret  = gcp_secretmanager_secret.secret.secret_id
+///           version = "latest"
 ///         }
 ///       }]
 ///     }
 ///     package_spec = {
-///       dependency_files_gcs_uri ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucketobject.bucket_obj_dependencies_tar_gz.name}"
-///       pickle_object_gcs_uri    ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucketobject.bucket_obj_pickle.name}"
+///       dependency_files_gcs_uri ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucket_object.bucket_obj_dependencies_tar_gz.name}"
+///       pickle_object_gcs_uri    ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucket_object.bucket_obj_pickle.name}"
 ///       python_version           = "3.11"
-///       requirements_gcs_uri     ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucketobject.bucket_obj_requirements_txt.name}"
+///       requirements_gcs_uri     ="${gcp_storage_bucket.bucket.url}/${gcp_storage_bucket_object.bucket_obj_requirements_txt.name}"
 ///     }
 ///   }
 /// }
 /// # Ensure we wait enough time for IAM permissions to be propagated
 /// resource "time_sleep" "wait_5_minutes" {
-///   depends_on      = [gcp_projects_iammember.sa_iam_ai_platform_user, gcp_projects_iammember.sa_iam_object_viewer, gcp_projects_iammember.sa_iam_viewer, gcp_secretmanager_secretiammember.secret_access, gcp_secretmanager_secretversion.secret_version]
+///   depends_on = [gcp_projects_i_a_m_member.sa_iam_ai_platform_user, gcp_projects_i_a_m_member.sa_iam_object_viewer, gcp_projects_i_a_m_member.sa_iam_viewer, gcp_secretmanager_secret_iam_member.secret_access, gcp_secretmanager_secret_version.secret_version]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "5m"
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret_version" {
+/// resource "gcp_secretmanager_secret_version" "secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret.id
 ///   secret_data = "test"
 /// }
 /// resource "gcp_secretmanager_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretiammember" "secret_access" {
+/// resource "gcp_secretmanager_secret_iam_member" "secret_access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = gcp_secretmanager_secret.secret.id
 ///   role      = "roles/secretmanager.secretAccessor"
 ///   member    = gcp_serviceaccount_account.service_account.member
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "reasoning-engine"
 ///   location                    = "us-central1"
 ///   uniform_bucket_level_access = true
 ///   force_destroy               = true
 /// }
-/// resource "gcp_storage_bucketobject" "bucket_obj_requirements_txt" {
+/// resource "gcp_storage_bucket_object" "bucket_obj_requirements_txt" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "requirements.txt"
 ///   bucket = gcp_storage_bucket.bucket.id
-///   source = fileAsset("./test-fixtures/requirements_adk.txt")
+///   source = fileasset("./test-fixtures/requirements_adk.txt")
 /// }
-/// resource "gcp_storage_bucketobject" "bucket_obj_pickle" {
+/// resource "gcp_storage_bucket_object" "bucket_obj_pickle" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "code.pkl"
 ///   bucket = gcp_storage_bucket.bucket.id
-///   source = fileAsset("./test-fixtures/pickle_adk.pkl")
+///   source = fileasset("./test-fixtures/pickle_adk.pkl")
 /// }
-/// resource "gcp_storage_bucketobject" "bucket_obj_dependencies_tar_gz" {
+/// resource "gcp_storage_bucket_object" "bucket_obj_dependencies_tar_gz" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "dependencies.tar.gz"
 ///   bucket = gcp_storage_bucket.bucket.id
-///   source = fileAsset("./test-fixtures/dependencies_adk.tar.gz")
+///   source = fileasset("./test-fixtures/dependencies_adk.tar.gz")
 /// }
 /// resource "gcp_serviceaccount_account" "service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "sa"
 /// }
-/// resource "gcp_projects_iammember" "sa_iam_object_viewer" {
+/// resource "gcp_projects_i_a_m_member" "sa_iam_object_viewer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role    = "roles/storage.objectViewer"
-///   project = data.gcp_organizations_getproject.project.id
+///   project = data.gcp_organizations_project.project.id
 ///   member  = gcp_serviceaccount_account.service_account.member
 /// }
-/// resource "gcp_projects_iammember" "sa_iam_ai_platform_user" {
+/// resource "gcp_projects_i_a_m_member" "sa_iam_ai_platform_user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role    = "roles/aiplatform.user"
-///   project = data.gcp_organizations_getproject.project.id
+///   project = data.gcp_organizations_project.project.id
 ///   member  = gcp_serviceaccount_account.service_account.member
 /// }
-/// resource "gcp_projects_iammember" "sa_iam_viewer" {
+/// resource "gcp_projects_i_a_m_member" "sa_iam_viewer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role    = "roles/viewer"
-///   project = data.gcp_organizations_getproject.project.id
+///   project = data.gcp_organizations_project.project.id
 ///   member  = gcp_serviceaccount_account.service_account.member
 /// }
 /// locals {
@@ -2866,6 +2973,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// import com.pulumi.gcp.vertex.AiReasoningEngineArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineEncryptionSpecArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecBuildSpecArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecEnvArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineSpecDeploymentSpecSecretEnvArgs;
@@ -2992,6 +3100,9 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                 .classMethods(serializeJson(
 ///                     classMethods))
 ///                 .serviceAccount(serviceAccount.email())
+///                 .buildSpec(AiReasoningEngineSpecBuildSpecArgs.builder()
+///                     .serviceAccount(serviceAccount.email())
+///                     .build())
 ///                 .deploymentSpec(AiReasoningEngineSpecDeploymentSpecArgs.builder()
 ///                     .minInstances(1)
 ///                     .maxInstances(3)
@@ -3067,6 +3178,8 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///         classMethods:
 ///           fn::toJSON: ${classMethods}
 ///         serviceAccount: ${serviceAccount.email}
+///         buildSpec:
+///           serviceAccount: ${serviceAccount.email}
 ///         deploymentSpec:
 ///           minInstances: 1
 ///           maxInstances: 3
@@ -3219,7 +3332,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///     contextSpec: {
 ///         memoryBankConfig: {
 ///             generationConfig: {
-///                 model: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-2.5-flash`),
+///                 model: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-3.5-flash`),
 ///                 generationTriggerConfig: {
 ///                     generationRule: {
 ///                         idleDuration: "300s",
@@ -3282,6 +3395,17 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                                                 id: "exec-result-1",
 ///                                                 outcome: "OUTCOME_OK",
 ///                                                 output: "pizza",
+///                                             },
+///                                         },
+///                                         {
+///                                             audioTranscription: {
+///                                                 speakerLabel: "spk_1",
+///                                                 text: "I like pepperoni pizza",
+///                                                 words: [{
+///                                                     startOffset: "0.5s",
+///                                                     endOffset: "1.5s",
+///                                                     word: "pepperoni",
+///                                                 }],
 ///                                             },
 ///                                         },
 ///                                     ],
@@ -3399,7 +3523,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///     context_spec={
 ///         "memory_bank_config": {
 ///             "generation_config": {
-///                 "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///                 "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-3.5-flash",
 ///                 "generation_trigger_config": {
 ///                     "generation_rule": {
 ///                         "idle_duration": "300s",
@@ -3462,6 +3586,17 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                                                 "id": "exec-result-1",
 ///                                                 "outcome": "OUTCOME_OK",
 ///                                                 "output": "pizza",
+///                                             },
+///                                         },
+///                                         {
+///                                             "audio_transcription": {
+///                                                 "speaker_label": "spk_1",
+///                                                 "text": "I like pepperoni pizza",
+///                                                 "words": [{
+///                                                     "start_offset": "0.5s",
+///                                                     "end_offset": "1.5s",
+///                                                     "word": "pepperoni",
+///                                                 }],
 ///                                             },
 ///                                         },
 ///                                     ],
@@ -3588,7 +3723,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///             {
 ///                 GenerationConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs
 ///                 {
-///                     Model = $"projects/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///                     Model = $"projects/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/gemini-3.5-flash",
 ///                     GenerationTriggerConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs
 ///                     {
 ///                         GenerationRule = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs
@@ -3685,6 +3820,23 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                                                             Id = "exec-result-1",
 ///                                                             Outcome = "OUTCOME_OK",
 ///                                                             Output = "pizza",
+///                                                         },
+///                                                     },
+///                                                     new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs
+///                                                     {
+///                                                         AudioTranscription = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs
+///                                                         {
+///                                                             SpeakerLabel = "spk_1",
+///                                                             Text = "I like pepperoni pizza",
+///                                                             Words = new[]
+///                                                             {
+///                                                                 new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArgs
+///                                                                 {
+///                                                                     StartOffset = "0.5s",
+///                                                                     EndOffset = "1.5s",
+///                                                                     Word = "pepperoni",
+///                                                                 },
+///                                                             },
 ///                                                         },
 ///                                                     },
 ///                                                 },
@@ -3840,8 +3992,8 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3932,7 +4084,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 			ContextSpec: &vertex.AiReasoningEngineContextSpecArgs{
 /// 				MemoryBankConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigArgs{
 /// 					GenerationConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{
-/// 						Model: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.ProjectId),
+/// 						Model: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/gemini-3.5-flash", project.ProjectId),
 /// 						GenerationTriggerConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs{
 /// 							GenerationRule: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs{
 /// 								IdleDuration:      pulumi.String("300s"),
@@ -3997,6 +4149,19 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 																Id:      pulumi.String("exec-result-1"),
 /// 																Outcome: pulumi.String("OUTCOME_OK"),
 /// 																Output:  pulumi.String("pizza"),
+/// 															},
+/// 														},
+/// 														&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs{
+/// 															AudioTranscription: &vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs{
+/// 																SpeakerLabel: pulumi.String("spk_1"),
+/// 																Text:         pulumi.String("I like pepperoni pizza"),
+/// 																Words: vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArray{
+/// 																	&vertex.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArgs{
+/// 																		StartOffset: pulumi.String("0.5s"),
+/// 																		EndOffset:   pulumi.String("1.5s"),
+/// 																		Word:        pulumi.String("pepperoni"),
+/// 																	},
+/// 																},
 /// 															},
 /// 														},
 /// 													},
@@ -4072,7 +4237,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4080,10 +4245,13 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
+/// resource "gcp_vertex_ai_reasoning_engine" "reasoning_engine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "re-ctx-spec"
 ///   description  = "Reasoning engine with context spec"
 ///   region       = "us-central1"
@@ -4093,7 +4261,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///   context_spec = {
 ///     memory_bank_config = {
 ///       generation_config = {
-///         model ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash"
+///         model ="projects/${data.gcp_organizations_project.project.project_id}/locations/us-central1/publishers/google/models/gemini-3.5-flash"
 ///         generation_trigger_config = {
 ///           generation_rule = {
 ///             idle_duration       = "300s"
@@ -4102,81 +4270,91 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///         }
 ///       }
 ///       similarity_search_config = {
-///         embedding_model ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005"
+///         embedding_model ="projects/${data.gcp_organizations_project.project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005"
 ///       }
 ///       disable_memory_revisions = false
 ///       customization_configs = [{
-///         "scopeKeys"                 = ["user_id"]
-///         "enableThirdPersonMemories" = true
-///         "consolidationConfig" = {
-///           "revisionsPerCandidateCount" = 1
+///         scope_keys                   = ["user_id"]
+///         enable_third_person_memories = true
+///         consolidation_config = {
+///           revisions_per_candidate_count = 1
 ///         }
-///         "memoryTopics" = [{
-///           "managedMemoryTopic" = {
-///             "managedTopicEnum" = "USER_PREFERENCES"
+///         memory_topics = [{
+///           managed_memory_topic = {
+///             managed_topic_enum = "USER_PREFERENCES"
 ///           }
 ///         }]
-///         "generateMemoriesExamples" = [{
-///           "conversationSource" = {
-///             "events" = [{
-///               "content" = {
-///                 "role" = "user"
-///                 "parts" = [{
-///                   "text" = "I like pepperoni pizza"
+///         generate_memories_examples = [{
+///           conversation_source = {
+///             events = [{
+///               content = {
+///                 role = "user"
+///                 parts = [{
+///                   text = "I like pepperoni pizza"
 ///                   }, {
-///                   "functionCall" = {
-///                     "id"   = "fn-call-1"
-///                     "name" = "order_pizza"
-///                     "args" = jsonencode({
+///                   function_call = {
+///                     id   = "fn-call-1"
+///                     name = "order_pizza"
+///                     args = jsonencode({
 ///                       "type" = "pepperoni"
 ///                     })
 ///                   }
 ///                   }, {
-///                   "functionResponse" = {
-///                     "id"   = "fn-resp-1"
-///                     "name" = "order_pizza"
-///                     "response" = jsonencode({
+///                   function_response = {
+///                     id   = "fn-resp-1"
+///                     name = "order_pizza"
+///                     response = jsonencode({
 ///                       "status" = "ordered"
 ///                     })
 ///                   }
 ///                   }, {
-///                   "executableCode" = {
-///                     "id"       = "exec-code-1"
-///                     "language" = "PYTHON"
-///                     "code"     = "print('pizza')"
+///                   executable_code = {
+///                     id       = "exec-code-1"
+///                     language = "PYTHON"
+///                     code     = "print('pizza')"
 ///                   }
 ///                   }, {
-///                   "codeExecutionResult" = {
-///                     "id"      = "exec-result-1"
-///                     "outcome" = "OUTCOME_OK"
-///                     "output"  = "pizza"
+///                   code_execution_result = {
+///                     id      = "exec-result-1"
+///                     outcome = "OUTCOME_OK"
+///                     output  = "pizza"
+///                   }
+///                   }, {
+///                   audio_transcription = {
+///                     speaker_label = "spk_1"
+///                     text          = "I like pepperoni pizza"
+///                     words = [{
+///                       start_offset = "0.5s"
+///                       end_offset   = "1.5s"
+///                       word         = "pepperoni"
+///                     }]
 ///                   }
 ///                 }]
 ///               }
 ///             }]
 ///           }
-///           "generatedMemories" = [{
-///             "fact" = "User likes pepperoni pizza."
-///             "topics" = [{
-///               "managedMemoryTopic" = "USER_PREFERENCES"
+///           generated_memories = [{
+///             fact = "User likes pepperoni pizza."
+///             topics = [{
+///               managed_memory_topic = "USER_PREFERENCES"
 ///             }]
 ///           }]
 ///         }]
 ///         }, {
-///         "scopeKeys"                 = ["user_id", "session_id"]
-///         "enableThirdPersonMemories" = true
-///         "memoryTopics" = [{
-///           "customMemoryTopic" = {
-///             "label"       = "session_scratchpad"
-///             "description" = "Active consideration details, recent queries, and temporary workflow state."
+///         scope_keys                   = ["user_id", "session_id"]
+///         enable_third_person_memories = true
+///         memory_topics = [{
+///           custom_memory_topic = {
+///             label       = "session_scratchpad"
+///             description = "Active consideration details, recent queries, and temporary workflow state."
 ///           }
 ///         }]
 ///       }]
 ///       structured_memory_configs = [{
-///         "scopeKeys" = ["user_id"]
-///         "schemaConfigs" = [{
-///           "id" = "user-profile"
-///           "memorySchema" = jsonencode({
+///         scope_keys = ["user_id"]
+///         schema_configs = [{
+///           id = "user-profile"
+///           memory_schema = jsonencode({
 ///             "type" = "OBJECT"
 ///             "properties" = {
 ///               "name" = {
@@ -4204,10 +4382,10 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///           })
 ///         }]
 ///         }, {
-///         "scopeKeys" = ["user_id", "session_id"]
-///         "schemaConfigs" = [{
-///           "id" = "conversation-summary"
-///           "memorySchema" = jsonencode({
+///         scope_keys = ["user_id", "session_id"]
+///         schema_configs = [{
+///           id = "conversation-summary"
+///           memory_schema = jsonencode({
 ///             "type" = "OBJECT"
 ///             "properties" = {
 ///               "main_topic" = {
@@ -4261,6 +4439,8 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartFunctionResponseArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartExecutableCodeArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartCodeExecutionResultArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs;
+/// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleGeneratedMemoryTopicArgs;
 /// import com.pulumi.gcp.vertex.inputs.AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigMemoryTopicCustomMemoryTopicArgs;
@@ -4295,7 +4475,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///             .contextSpec(AiReasoningEngineContextSpecArgs.builder()
 ///                 .memoryBankConfig(AiReasoningEngineContextSpecMemoryBankConfigArgs.builder()
 ///                     .generationConfig(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs.builder()
-///                         .model(String.format("projects/%s/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.projectId()))
+///                         .model(String.format("projects/%s/locations/us-central1/publishers/google/models/gemini-3.5-flash", project.projectId()))
 ///                         .generationTriggerConfig(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigArgs.builder()
 ///                             .generationRule(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigGenerationTriggerConfigGenerationRuleArgs.builder()
 ///                                 .idleDuration("300s")
@@ -4360,6 +4540,17 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                                                         .id("exec-result-1")
 ///                                                         .outcome("OUTCOME_OK")
 ///                                                         .output("pizza")
+///                                                         .build())
+///                                                     .build(),
+///                                                 AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartArgs.builder()
+///                                                     .audioTranscription(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionArgs.builder()
+///                                                         .speakerLabel("spk_1")
+///                                                         .text("I like pepperoni pizza")
+///                                                         .words(AiReasoningEngineContextSpecMemoryBankConfigCustomizationConfigGenerateMemoriesExampleConversationSourceEventContentPartAudioTranscriptionWordArgs.builder()
+///                                                             .startOffset("0.5s")
+///                                                             .endOffset("1.5s")
+///                                                             .word("pepperoni")
+///                                                             .build())
 ///                                                         .build())
 ///                                                     .build())
 ///                                             .build())
@@ -4475,7 +4666,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///       contextSpec:
 ///         memoryBankConfig:
 ///           generationConfig:
-///             model: projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-2.5-flash
+///             model: projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-3.5-flash
 ///             generationTriggerConfig:
 ///               generationRule:
 ///                 idleDuration: 300s
@@ -4519,6 +4710,13 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///                                 id: exec-result-1
 ///                                 outcome: OUTCOME_OK
 ///                                 output: pizza
+///                             - audioTranscription:
+///                                 speakerLabel: spk_1
+///                                 text: I like pepperoni pizza
+///                                 words:
+///                                   - startOffset: 0.5s
+///                                     endOffset: 1.5s
+///                                     word: pepperoni
 ///                   generatedMemories:
 ///                     - fact: User likes pepperoni pizza.
 ///                       topics:
@@ -4604,7 +4802,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///     contextSpec: {
 ///         memoryBankConfig: {
 ///             generationConfig: {
-///                 model: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-2.5-flash`),
+///                 model: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-3.5-flash`),
 ///             },
 ///             similaritySearchConfig: {
 ///                 embeddingModel: project.then(project => `projects/${project.projectId}/locations/us-central1/publishers/google/models/text-embedding-005`),
@@ -4634,7 +4832,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///     context_spec={
 ///         "memory_bank_config": {
 ///             "generation_config": {
-///                 "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///                 "model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/gemini-3.5-flash",
 ///             },
 ///             "similarity_search_config": {
 ///                 "embedding_model": f"projects/{project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005",
@@ -4672,7 +4870,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///             {
 ///                 GenerationConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs
 ///                 {
-///                     Model = $"projects/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/gemini-2.5-flash",
+///                     Model = $"projects/{project.Apply(getProjectResult => getProjectResult.ProjectId)}/locations/us-central1/publishers/google/models/gemini-3.5-flash",
 ///                 },
 ///                 SimilaritySearchConfig = new Gcp.Vertex.Inputs.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs
 ///                 {
@@ -4699,8 +4897,8 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4717,7 +4915,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// 			ContextSpec: &vertex.AiReasoningEngineContextSpecArgs{
 /// 				MemoryBankConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigArgs{
 /// 					GenerationConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs{
-/// 						Model: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.ProjectId),
+/// 						Model: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/gemini-3.5-flash", project.ProjectId),
 /// 					},
 /// 					SimilaritySearchConfig: &vertex.AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs{
 /// 						EmbeddingModel: pulumi.Sprintf("projects/%v/locations/us-central1/publishers/google/models/text-embedding-005", project.ProjectId),
@@ -4742,7 +4940,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4750,20 +4948,23 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
+/// resource "gcp_vertex_ai_reasoning_engine" "reasoning_engine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "re-gran-ttl"
 ///   description  = "Reasoning engine with granular ttl"
 ///   region       = "us-central1"
 ///   context_spec = {
 ///     memory_bank_config = {
 ///       generation_config = {
-///         model ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash"
+///         model ="projects/${data.gcp_organizations_project.project.project_id}/locations/us-central1/publishers/google/models/gemini-3.5-flash"
 ///       }
 ///       similarity_search_config = {
-///         embedding_model ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005"
+///         embedding_model ="projects/${data.gcp_organizations_project.project.project_id}/locations/us-central1/publishers/google/models/text-embedding-005"
 ///       }
 ///       disable_memory_revisions = false
 ///       ttl_config = {
@@ -4817,7 +5018,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///             .contextSpec(AiReasoningEngineContextSpecArgs.builder()
 ///                 .memoryBankConfig(AiReasoningEngineContextSpecMemoryBankConfigArgs.builder()
 ///                     .generationConfig(AiReasoningEngineContextSpecMemoryBankConfigGenerationConfigArgs.builder()
-///                         .model(String.format("projects/%s/locations/us-central1/publishers/google/models/gemini-2.5-flash", project.projectId()))
+///                         .model(String.format("projects/%s/locations/us-central1/publishers/google/models/gemini-3.5-flash", project.projectId()))
 ///                         .build())
 ///                     .similaritySearchConfig(AiReasoningEngineContextSpecMemoryBankConfigSimilaritySearchConfigArgs.builder()
 ///                         .embeddingModel(String.format("projects/%s/locations/us-central1/publishers/google/models/text-embedding-005", project.projectId()))
@@ -4850,7 +5051,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///       contextSpec:
 ///         memoryBankConfig:
 ///           generationConfig:
-///             model: projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-2.5-flash
+///             model: projects/${project.projectId}/locations/us-central1/publishers/google/models/gemini-3.5-flash
 ///           similaritySearchConfig:
 ///             embeddingModel: projects/${project.projectId}/locations/us-central1/publishers/google/models/text-embedding-005
 ///           disableMemoryRevisions: false
@@ -4931,7 +5132,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4956,7 +5157,7 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4964,7 +5165,10 @@ import 'ai_reasoning_engine_traffic_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aireasoningengine" "reasoning_engine" {
+/// resource "gcp_vertex_ai_reasoning_engine" "reasoning_engine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "re-traffic-cfg"
 ///   description  = "Reasoning engine with traffic config"
 ///   region       = "us-central1"
@@ -5051,7 +5255,6 @@ import 'ai_reasoning_engine_traffic_config.dart';
 /// $ pulumi import gcp:vertex/aiReasoningEngine:AiReasoningEngine default {{name}}
 /// ```
 class AiReasoningEngine extends pulumi.CustomResource {
-  /// (Optional, Beta)
   /// Optional. Configuration for how Agent Engine sub-resources should manage context.
   /// Structure is documented below.
   late final pulumi.Output<AiReasoningEngineContextSpec> contextSpec;
@@ -5122,7 +5325,7 @@ class AiReasoningEngine extends pulumi.CustomResource {
           'gcp:vertex/aiReasoningEngine:AiReasoningEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     contextSpec = registerOutput<AiReasoningEngineContextSpec>('contextSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiReasoningEngineContextSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });

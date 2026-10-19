@@ -70,7 +70,7 @@ import 'custom_list_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -98,7 +98,7 @@ import 'custom_list_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -106,7 +106,10 @@ import 'custom_list_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_customlist" "sample" {
+/// resource "gcp_chronicle_custom_list" "sample" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "us"
 ///   instance          = "00000000-0000-0000-0000-000000000000"
 ///   entity_identifier = "filename.bin"
@@ -219,7 +222,7 @@ class CustomList extends pulumi.CustomResource {
           'gcp:chronicle/customList:CustomList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     category = registerOutput<String>('category');
     customListId = registerOutput<String>('customListId');

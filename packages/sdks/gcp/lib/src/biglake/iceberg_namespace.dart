@@ -91,8 +91,8 @@ import 'iceberg_namespace_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -129,7 +129,7 @@ import 'iceberg_namespace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -138,17 +138,26 @@ import 'iceberg_namespace_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-bucket"
 ///   location                    = "us-central1"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_biglake_icebergcatalog" "catalog" {
+/// resource "gcp_biglake_iceberg_catalog" "catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = gcp_storage_bucket.bucket.name
 ///   catalog_type = "CATALOG_TYPE_GCS_BUCKET"
 /// }
-/// resource "gcp_biglake_icebergnamespace" "my_iceberg_namespace" {
-///   catalog      = gcp_biglake_icebergcatalog.catalog.name
+/// resource "gcp_biglake_iceberg_namespace" "my_iceberg_namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog      = gcp_biglake_iceberg_catalog.catalog.name
 ///   namespace_id = "my_iceberg_namespace"
 ///   properties = {
 ///     "key" = "value"
@@ -272,7 +281,7 @@ class IcebergNamespace extends pulumi.CustomResource {
           'gcp:biglake/icebergNamespace:IcebergNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     deletionPolicy = registerOutput<String>('deletionPolicy');

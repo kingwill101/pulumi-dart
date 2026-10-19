@@ -63,7 +63,7 @@ import 'domain_mapping_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -83,7 +83,7 @@ import 'domain_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -91,7 +91,10 @@ import 'domain_mapping_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_appengine_domainmapping" "domain_mapping" {
+/// resource "gcp_appengine_domain_mapping" "domain_mapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   domain_name = "verified-domain.com"
 ///   ssl_settings = {
 ///     ssl_management_type = "AUTOMATIC"
@@ -198,7 +201,7 @@ class DomainMapping extends pulumi.CustomResource {
           'gcp:appengine/domainMapping:DomainMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     domainName = registerOutput<String>('domainName');

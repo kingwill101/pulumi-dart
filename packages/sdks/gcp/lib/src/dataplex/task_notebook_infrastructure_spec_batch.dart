@@ -25,8 +25,8 @@ class TaskNotebookInfrastructureSpecBatch {
 
   factory TaskNotebookInfrastructureSpecBatch.fromMap(Map<String, dynamic> map) {
     return TaskNotebookInfrastructureSpecBatch(
-      executorsCount: (() { final guardedValue = map['executorsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxExecutorsCount: (() { final guardedValue = map['maxExecutorsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      executorsCount: (() { final guardedValue = map['executorsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxExecutorsCount: (() { final guardedValue = map['maxExecutorsCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

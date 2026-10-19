@@ -20,7 +20,7 @@ class UptimeCheckConfigTcpCheckPingConfig {
 
   factory UptimeCheckConfigTcpCheckPingConfig.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigTcpCheckPingConfig(
-      pingsCount: pulumi.Input.fromValue((map['pingsCount'] as num).toInt()),
+      pingsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pingsCount'])),
     );
   }
 }

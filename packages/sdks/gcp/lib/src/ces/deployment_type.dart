@@ -1,11 +1,18 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'deployment_args.dart';
 import 'deployment_channel_profile.dart';
+import 'deployment_instagram_credentials.dart';
 import 'deployment_state.dart';
+import 'deployment_whatsapp_credentials.dart';
 
 /// Description
 ///
 ///
+///
+///
+///
+/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `instagram_credentials.auth_code_wo`, `whatsapp_credentials.auth_code_wo`, `whatsapp_credentials.pin_wo`.
+/// Read more about Write-only Arguments.
 ///
 /// ## Example Usage
 ///
@@ -149,7 +156,7 @@ import 'deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -204,7 +211,7 @@ import 'deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -213,6 +220,9 @@ import 'deployment_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "my-app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   display_name = "my-app"
 ///   app_id       = "app-id"
@@ -220,7 +230,10 @@ import 'deployment_state.dart';
 ///     time_zone = "America/Los_Angeles"
 ///   }
 /// }
-/// resource "gcp_ces_appversion" "my-app-version" {
+/// resource "gcp_ces_app_version" "my-app-version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us"
 ///   display_name   = "my-app-version"
 ///   app            = gcp_ces_app.my-app.name
@@ -228,10 +241,13 @@ import 'deployment_state.dart';
 ///   description    = "example-app-version"
 /// }
 /// resource "gcp_ces_deployment" "my-deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   display_name = "my-deployment"
 ///   app          = gcp_ces_app.my-app.name
-///   app_version  = gcp_ces_appversion.my-app-version.id
+///   app_version  = gcp_ces_app_version.my-app-version.id
 ///   channel_profile = {
 ///     channel_type             = "API"
 ///     disable_barge_in_control = true
@@ -525,7 +541,7 @@ import 'deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -589,7 +605,7 @@ import 'deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -598,6 +614,9 @@ import 'deployment_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "my-app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   display_name = "my-app"
 ///   app_id       = "app-id"
@@ -605,7 +624,10 @@ import 'deployment_state.dart';
 ///     time_zone = "America/Los_Angeles"
 ///   }
 /// }
-/// resource "gcp_ces_appversion" "my-app-version" {
+/// resource "gcp_ces_app_version" "my-app-version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us"
 ///   display_name   = "my-app-version"
 ///   app            = gcp_ces_app.my-app.name
@@ -613,10 +635,13 @@ import 'deployment_state.dart';
 ///   description    = "example-app-version"
 /// }
 /// resource "gcp_ces_deployment" "my-deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   display_name = "my-deployment"
 ///   app          = gcp_ces_app.my-app.name
-///   app_version  = gcp_ces_appversion.my-app-version.id
+///   app_version  = gcp_ces_app_version.my-app-version.id
 ///   channel_profile = {
 ///     channel_type             = "API"
 ///     disable_barge_in_control = true
@@ -763,6 +788,326 @@ import 'deployment_state.dart';
 ///             enableRecaptcha: true
 /// ```
 ///
+/// ### Ces Deployment Whatsapp
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const my_app = new gcp.ces.App("my-app", {
+///     location: "us",
+///     displayName: "my-app",
+///     appId: "app-id",
+///     timeZoneSettings: {
+///         timeZone: "America/Los_Angeles",
+///     },
+/// });
+/// const my_app_version = new gcp.ces.AppVersion("my-app-version", {
+///     location: "us",
+///     displayName: "my-app-version",
+///     app: my_app.name,
+///     appVersionId: "app-version-id",
+///     description: "example-app-version",
+/// });
+/// const my_deployment = new gcp.ces.Deployment("my-deployment", {
+///     location: "us",
+///     displayName: "my-deployment",
+///     app: my_app.name,
+///     appVersion: my_app_version.id,
+///     channelProfile: {
+///         channelType: "API",
+///         profileId: "temp_profile_id",
+///         whatsappConfig: {
+///             phoneNumber: "+15551234567",
+///             phoneNumberId: "1234567890",
+///             wabaId: "9876543210",
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// my_app = gcp.ces.App("my-app",
+///     location="us",
+///     display_name="my-app",
+///     app_id="app-id",
+///     time_zone_settings={
+///         "time_zone": "America/Los_Angeles",
+///     })
+/// my_app_version = gcp.ces.AppVersion("my-app-version",
+///     location="us",
+///     display_name="my-app-version",
+///     app=my_app.name,
+///     app_version_id="app-version-id",
+///     description="example-app-version")
+/// my_deployment = gcp.ces.Deployment("my-deployment",
+///     location="us",
+///     display_name="my-deployment",
+///     app=my_app.name,
+///     app_version=my_app_version.id,
+///     channel_profile={
+///         "channel_type": "API",
+///         "profile_id": "temp_profile_id",
+///         "whatsapp_config": {
+///             "phone_number": "+15551234567",
+///             "phone_number_id": "1234567890",
+///             "waba_id": "9876543210",
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var my_app = new Gcp.Ces.App("my-app", new()
+///     {
+///         Location = "us",
+///         DisplayName = "my-app",
+///         AppId = "app-id",
+///         TimeZoneSettings = new Gcp.Ces.Inputs.AppTimeZoneSettingsArgs
+///         {
+///             TimeZone = "America/Los_Angeles",
+///         },
+///     });
+///
+///     var my_app_version = new Gcp.Ces.AppVersion("my-app-version", new()
+///     {
+///         Location = "us",
+///         DisplayName = "my-app-version",
+///         App = my_app.Name,
+///         AppVersionId = "app-version-id",
+///         Description = "example-app-version",
+///     });
+///
+///     var my_deployment = new Gcp.Ces.Deployment("my-deployment", new()
+///     {
+///         Location = "us",
+///         DisplayName = "my-deployment",
+///         App = my_app.Name,
+///         AppVersion = my_app_version.Id,
+///         ChannelProfile = new Gcp.Ces.Inputs.DeploymentChannelProfileArgs
+///         {
+///             ChannelType = "API",
+///             ProfileId = "temp_profile_id",
+///             WhatsappConfig = new Gcp.Ces.Inputs.DeploymentChannelProfileWhatsappConfigArgs
+///             {
+///                 PhoneNumber = "+15551234567",
+///                 PhoneNumberId = "1234567890",
+///                 WabaId = "9876543210",
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		my_app, err := ces.NewApp(ctx, "my-app", &ces.AppArgs{
+/// 			Location:    pulumi.String("us"),
+/// 			DisplayName: pulumi.String("my-app"),
+/// 			AppId:       pulumi.String("app-id"),
+/// 			TimeZoneSettings: &ces.AppTimeZoneSettingsArgs{
+/// 				TimeZone: pulumi.String("America/Los_Angeles"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		my_app_version, err := ces.NewAppVersion(ctx, "my-app-version", &ces.AppVersionArgs{
+/// 			Location:     pulumi.String("us"),
+/// 			DisplayName:  pulumi.String("my-app-version"),
+/// 			App:          my_app.Name,
+/// 			AppVersionId: pulumi.String("app-version-id"),
+/// 			Description:  pulumi.String("example-app-version"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = ces.NewDeployment(ctx, "my-deployment", &ces.DeploymentArgs{
+/// 			Location:    pulumi.String("us"),
+/// 			DisplayName: pulumi.String("my-deployment"),
+/// 			App:         my_app.Name,
+/// 			AppVersion:  my_app_version.ID().ToIDOutput().ToStringOutput(),
+/// 			ChannelProfile: &ces.DeploymentChannelProfileArgs{
+/// 				ChannelType: pulumi.String("API"),
+/// 				ProfileId:   pulumi.String("temp_profile_id"),
+/// 				WhatsappConfig: &ces.DeploymentChannelProfileWhatsappConfigArgs{
+/// 					PhoneNumber:   pulumi.String("+15551234567"),
+/// 					PhoneNumberId: pulumi.String("1234567890"),
+/// 					WabaId:        pulumi.String("9876543210"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_ces_app" "my-app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location     = "us"
+///   display_name = "my-app"
+///   app_id       = "app-id"
+///   time_zone_settings = {
+///     time_zone = "America/Los_Angeles"
+///   }
+/// }
+/// resource "gcp_ces_app_version" "my-app-version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location       = "us"
+///   display_name   = "my-app-version"
+///   app            = gcp_ces_app.my-app.name
+///   app_version_id = "app-version-id"
+///   description    = "example-app-version"
+/// }
+/// resource "gcp_ces_deployment" "my-deployment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location     = "us"
+///   display_name = "my-deployment"
+///   app          = gcp_ces_app.my-app.name
+///   app_version  = gcp_ces_app_version.my-app-version.id
+///   channel_profile = {
+///     channel_type = "API"
+///     profile_id   = "temp_profile_id"
+///     whatsapp_config = {
+///       phone_number    = "+15551234567"
+///       phone_number_id = "1234567890"
+///       waba_id         = "9876543210"
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.ces.App;
+/// import com.pulumi.gcp.ces.AppArgs;
+/// import com.pulumi.gcp.ces.inputs.AppTimeZoneSettingsArgs;
+/// import com.pulumi.gcp.ces.AppVersion;
+/// import com.pulumi.gcp.ces.AppVersionArgs;
+/// import com.pulumi.gcp.ces.Deployment;
+/// import com.pulumi.gcp.ces.DeploymentArgs;
+/// import com.pulumi.gcp.ces.inputs.DeploymentChannelProfileArgs;
+/// import com.pulumi.gcp.ces.inputs.DeploymentChannelProfileWhatsappConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var my_app = new App("my-app", AppArgs.builder()
+///             .location("us")
+///             .displayName("my-app")
+///             .appId("app-id")
+///             .timeZoneSettings(AppTimeZoneSettingsArgs.builder()
+///                 .timeZone("America/Los_Angeles")
+///                 .build())
+///             .build());
+///
+///         var my_app_version = new AppVersion("my-app-version", AppVersionArgs.builder()
+///             .location("us")
+///             .displayName("my-app-version")
+///             .app(my_app.name())
+///             .appVersionId("app-version-id")
+///             .description("example-app-version")
+///             .build());
+///
+///         var my_deployment = new Deployment("my-deployment", DeploymentArgs.builder()
+///             .location("us")
+///             .displayName("my-deployment")
+///             .app(my_app.name())
+///             .appVersion(my_app_version.id())
+///             .channelProfile(DeploymentChannelProfileArgs.builder()
+///                 .channelType("API")
+///                 .profileId("temp_profile_id")
+///                 .whatsappConfig(DeploymentChannelProfileWhatsappConfigArgs.builder()
+///                     .phoneNumber("+15551234567")
+///                     .phoneNumberId("1234567890")
+///                     .wabaId("9876543210")
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   my-app:
+///     type: gcp:ces:App
+///     properties:
+///       location: us
+///       displayName: my-app
+///       appId: app-id
+///       timeZoneSettings:
+///         timeZone: America/Los_Angeles
+///   my-app-version:
+///     type: gcp:ces:AppVersion
+///     properties:
+///       location: us
+///       displayName: my-app-version
+///       app: ${["my-app"].name}
+///       appVersionId: app-version-id
+///       description: example-app-version
+///   my-deployment:
+///     type: gcp:ces:Deployment
+///     properties:
+///       location: us
+///       displayName: my-deployment
+///       app: ${["my-app"].name}
+///       appVersion: ${["my-app-version"].id}
+///       channelProfile:
+///         channelType: API
+///         profileId: temp_profile_id
+///         whatsappConfig:
+///           phoneNumber: '+15551234567'
+///           phoneNumberId: '1234567890'
+///           wabaId: '9876543210'
+/// ```
+///
 ///
 /// ## Import
 ///
@@ -806,6 +1151,9 @@ class DeploymentType extends pulumi.CustomResource {
   /// operation. If the etag is empty, the update will overwrite any concurrent
   /// changes.
   late final pulumi.Output<String> etag;
+  /// Ephemeral Meta credentials required when configuring an Instagram channel profile.
+  /// Structure is documented below.
+  late final pulumi.Output<DeploymentInstagramCredentials?> instagramCredentials;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
   /// Identifier. The resource name of the deployment.
@@ -817,6 +1165,9 @@ class DeploymentType extends pulumi.CustomResource {
   late final pulumi.Output<String> project;
   /// Timestamp when this deployment was last updated.
   late final pulumi.Output<String> updateTime;
+  /// Ephemeral Meta credentials required when configuring a WhatsApp channel profile.
+  /// Structure is documented below.
+  late final pulumi.Output<DeploymentWhatsappCredentials?> whatsappCredentials;
 
   /// Creates a new [DeploymentType].
   /// [name] The Pulumi resource name.
@@ -830,7 +1181,7 @@ class DeploymentType extends pulumi.CustomResource {
           'gcp:ces/deployment:Deployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     app = registerOutput<String>('app');
     appVersion = registerOutput<String>('appVersion');
@@ -839,10 +1190,12 @@ class DeploymentType extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
+    instagramCredentials = registerOutput<DeploymentInstagramCredentials?>('instagramCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentInstagramCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
+    whatsappCredentials = registerOutput<DeploymentWhatsappCredentials?>('whatsappCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentWhatsappCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Gets an existing [DeploymentType] resource's state with the given [name] and [id].
@@ -876,10 +1229,12 @@ class DeploymentType extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
+    instagramCredentials = registerOutput<DeploymentInstagramCredentials?>('instagramCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentInstagramCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
+    whatsappCredentials = registerOutput<DeploymentWhatsappCredentials?>('whatsappCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentWhatsappCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
   /// Creates a typed reference to an existing [DeploymentType] resource.
@@ -898,9 +1253,11 @@ class DeploymentType extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');
     etag = registerOutput<String>('etag');
+    instagramCredentials = registerOutput<DeploymentInstagramCredentials?>('instagramCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentInstagramCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     updateTime = registerOutput<String>('updateTime');
+    whatsappCredentials = registerOutput<DeploymentWhatsappCredentials?>('whatsappCredentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeploymentWhatsappCredentials.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

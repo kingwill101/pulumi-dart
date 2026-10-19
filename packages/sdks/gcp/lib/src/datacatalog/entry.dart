@@ -77,7 +77,7 @@ import 'entry_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -103,7 +103,7 @@ import 'entry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -112,12 +112,18 @@ import 'entry_state.dart';
 /// }
 ///
 /// resource "gcp_datacatalog_entry" "basic_entry" {
-///   entry_group           = gcp_datacatalog_entrygroup.entry_group.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   entry_group           = gcp_datacatalog_entry_group.entry_group.id
 ///   entry_id              = "my_entry"
 ///   user_specified_type   = "my_custom_type"
 ///   user_specified_system = "SomethingExternal"
 /// }
-/// resource "gcp_datacatalog_entrygroup" "entry_group" {
+/// resource "gcp_datacatalog_entry_group" "entry_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   entry_group_id = "my_group"
 /// }
 /// ```
@@ -239,7 +245,7 @@ import 'entry_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -269,7 +275,7 @@ import 'entry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -278,14 +284,20 @@ import 'entry_state.dart';
 /// }
 ///
 /// resource "gcp_datacatalog_entry" "basic_entry" {
-///   entry_group = gcp_datacatalog_entrygroup.entry_group.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   entry_group = gcp_datacatalog_entry_group.entry_group.id
 ///   entry_id    = "my_entry"
 ///   type        = "FILESET"
 ///   gcs_fileset_spec = {
 ///     file_patterns = ["gs://fake_bucket/dir/*"]
 ///   }
 /// }
-/// resource "gcp_datacatalog_entrygroup" "entry_group" {
+/// resource "gcp_datacatalog_entry_group" "entry_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   entry_group_id = "my_group"
 /// }
 /// ```
@@ -522,7 +534,7 @@ import 'entry_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -588,7 +600,7 @@ import 'entry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -597,16 +609,60 @@ import 'entry_state.dart';
 /// }
 ///
 /// resource "gcp_datacatalog_entry" "basic_entry" {
-///   entry_group           = gcp_datacatalog_entrygroup.entry_group.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   entry_group           = gcp_datacatalog_entry_group.entry_group.id
 ///   entry_id              = "my_entry"
 ///   user_specified_type   = "my_user_specified_type"
 ///   user_specified_system = "Something_custom"
 ///   linked_resource       = "my/linked/resource"
 ///   display_name          = "my custom type entry"
 ///   description           = "a custom type entry for a user specified system"
-///   schema                = "{\n  \\\"columns\\\": [\n    {\n      \\\"column\\\": \\\"first_name\\\",\n      \\\"description\\\": \\\"First name\\\",\n      \\\"mode\\\": \\\"REQUIRED\\\",\n      \\\"type\\\": \\\"STRING\\\"\n    },\n    {\n      \\\"column\\\": \\\"last_name\\\",\n      \\\"description\\\": \\\"Last name\\\",\n      \\\"mode\\\": \\\"REQUIRED\\\",\n      \\\"type\\\": \\\"STRING\\\"\n    },\n    {\n      \\\"column\\\": \\\"address\\\",\n      \\\"description\\\": \\\"Address\\\",\n      \\\"mode\\\": \\\"REPEATED\\\",\n      \\\"subcolumns\\\": [\n        {\n          \\\"column\\\": \\\"city\\\",\n          \\\"description\\\": \\\"City\\\",\n          \\\"mode\\\": \\\"NULLABLE\\\",\n          \\\"type\\\": \\\"STRING\\\"\n        },\n        {\n          \\\"column\\\": \\\"state\\\",\n          \\\"description\\\": \\\"State\\\",\n          \\\"mode\\\": \\\"NULLABLE\\\",\n          \\\"type\\\": \\\"STRING\\\"\n        }\n      ],\n      \\\"type\\\": \\\"RECORD\\\"\n    }\n  ]\n}\n"
+///   schema                = <<EOF
+/// {
+///   \"columns\": [
+///     {
+///       \"column\": \"first_name\",
+///       \"description\": \"First name\",
+///       \"mode\": \"REQUIRED\",
+///       \"type\": \"STRING\"
+///     },
+///     {
+///       \"column\": \"last_name\",
+///       \"description\": \"Last name\",
+///       \"mode\": \"REQUIRED\",
+///       \"type\": \"STRING\"
+///     },
+///     {
+///       \"column\": \"address\",
+///       \"description\": \"Address\",
+///       \"mode\": \"REPEATED\",
+///       \"subcolumns\": [
+///         {
+///           \"column\": \"city\",
+///           \"description\": \"City\",
+///           \"mode\": \"NULLABLE\",
+///           \"type\": \"STRING\"
+///         },
+///         {
+///           \"column\": \"state\",
+///           \"description\": \"State\",
+///           \"mode\": \"NULLABLE\",
+///           \"type\": \"STRING\"
+///         }
+///       ],
+///       \"type\": \"RECORD\"
+///     }
+///   ]
 /// }
-/// resource "gcp_datacatalog_entrygroup" "entry_group" {
+/// EOF
+///
+/// }
+/// resource "gcp_datacatalog_entry_group" "entry_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   entry_group_id = "my_group"
 /// }
 /// ```
@@ -830,7 +886,7 @@ class Entry extends pulumi.CustomResource {
           'gcp:datacatalog/entry:Entry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     bigqueryDateShardedSpecs = registerOutput<List<EntryBigqueryDateShardedSpec>>('bigqueryDateShardedSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryBigqueryDateShardedSpec>(guardedValue, (value) => EntryBigqueryDateShardedSpec.fromMap((value as Map).cast<String, dynamic>())); });
     bigqueryTableSpecs = registerOutput<List<EntryBigqueryTableSpec>>('bigqueryTableSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EntryBigqueryTableSpec>(guardedValue, (value) => EntryBigqueryTableSpec.fromMap((value as Map).cast<String, dynamic>())); });

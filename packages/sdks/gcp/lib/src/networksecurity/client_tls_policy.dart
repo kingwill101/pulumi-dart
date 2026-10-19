@@ -69,7 +69,7 @@ import 'client_tls_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -91,7 +91,7 @@ import 'client_tls_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -99,7 +99,10 @@ import 'client_tls_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_clienttlspolicy" "default" {
+/// resource "gcp_networksecurity_client_tls_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-client-tls-policy"
 ///   labels = {
 ///     "foo" = "bar"
@@ -239,7 +242,7 @@ import 'client_tls_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -272,7 +275,7 @@ import 'client_tls_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -280,7 +283,10 @@ import 'client_tls_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_clienttlspolicy" "default" {
+/// resource "gcp_networksecurity_client_tls_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-client-tls-policy"
 ///   labels = {
 ///     "foo" = "bar"
@@ -428,7 +434,7 @@ class ClientTlsPolicy extends pulumi.CustomResource {
           'gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     clientCertificate = registerOutput<ClientTlsPolicyClientCertificate?>('clientCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClientTlsPolicyClientCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });

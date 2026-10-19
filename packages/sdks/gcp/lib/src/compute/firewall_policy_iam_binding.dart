@@ -83,8 +83,8 @@ import 'firewall_policy_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -115,7 +115,7 @@ import 'firewall_policy_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -123,16 +123,19 @@ import 'firewall_policy_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_compute_firewallpolicyiampolicy" "policy" {
+/// resource "gcp_compute_firewall_policy_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = default.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -239,7 +242,7 @@ import 'firewall_policy_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -260,7 +263,7 @@ import 'firewall_policy_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -268,7 +271,10 @@ import 'firewall_policy_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_firewallpolicyiambinding" "binding" {
+/// resource "gcp_compute_firewall_policy_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = default.name
 ///   role    = "roles/viewer"
 ///   members = ["user:jane@example.com"]
@@ -359,7 +365,7 @@ import 'firewall_policy_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -378,7 +384,7 @@ import 'firewall_policy_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -386,7 +392,10 @@ import 'firewall_policy_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_firewallpolicyiammember" "member" {
+/// resource "gcp_compute_firewall_policy_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = default.name
 ///   role   = "roles/viewer"
 ///   member = "user:jane@example.com"
@@ -521,8 +530,8 @@ import 'firewall_policy_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -553,7 +562,7 @@ import 'firewall_policy_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -561,16 +570,19 @@ import 'firewall_policy_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_compute_firewallpolicyiampolicy" "policy" {
+/// resource "gcp_compute_firewall_policy_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = default.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -677,7 +689,7 @@ import 'firewall_policy_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -698,7 +710,7 @@ import 'firewall_policy_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -706,7 +718,10 @@ import 'firewall_policy_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_firewallpolicyiambinding" "binding" {
+/// resource "gcp_compute_firewall_policy_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = default.name
 ///   role    = "roles/viewer"
 ///   members = ["user:jane@example.com"]
@@ -797,7 +812,7 @@ import 'firewall_policy_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -816,7 +831,7 @@ import 'firewall_policy_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -824,7 +839,10 @@ import 'firewall_policy_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_firewallpolicyiammember" "member" {
+/// resource "gcp_compute_firewall_policy_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = default.name
 ///   role   = "roles/viewer"
 ///   member = "user:jane@example.com"
@@ -935,7 +953,7 @@ class FirewallPolicyIamBinding extends pulumi.CustomResource {
           'gcp:compute/firewallPolicyIamBinding:FirewallPolicyIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     condition = registerOutput<FirewallPolicyIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FirewallPolicyIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

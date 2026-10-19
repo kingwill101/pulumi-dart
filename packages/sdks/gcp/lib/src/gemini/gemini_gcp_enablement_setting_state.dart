@@ -30,6 +30,8 @@ class GeminiGcpEnablementSettingState {
   final pulumi.Input<Map<String, String>?>? labels;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String?>? location;
+  /// Whether resource mutations should be enabled.
+  final pulumi.Input<bool?>? mutationsEnabled;
   /// Identifier. Name of the resource.
   /// Format:projects/{project}/locations/{location}/geminiGcpEnablementSettings/{geminiGcpEnablementSetting}
   final pulumi.Input<String?>? name;
@@ -56,6 +58,7 @@ class GeminiGcpEnablementSettingState {
   /// [geminiGcpEnablementSettingId] Id of the Gemini Gcp Enablement setting.
   /// [labels] Labels as key value pairs.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// [mutationsEnabled] Whether resource mutations should be enabled.
   /// [name] Identifier. Name of the resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
@@ -70,6 +73,7 @@ class GeminiGcpEnablementSettingState {
     this.geminiGcpEnablementSettingId,
     this.labels,
     this.location,
+    this.mutationsEnabled,
     this.name,
     this.project,
     this.pulumiLabels,
@@ -87,6 +91,7 @@ class GeminiGcpEnablementSettingState {
       'geminiGcpEnablementSettingId': ?geminiGcpEnablementSettingId,
       'labels': ?labels,
       'location': ?location,
+      'mutationsEnabled': ?mutationsEnabled,
       'name': ?name,
       'project': ?project,
       'pulumiLabels': ?pulumiLabels,
@@ -105,6 +110,7 @@ class GeminiGcpEnablementSettingState {
       geminiGcpEnablementSettingId: (() { final guardedValue = map['geminiGcpEnablementSettingId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      mutationsEnabled: (() { final guardedValue = map['mutationsEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

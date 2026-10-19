@@ -168,9 +168,9 @@ import 'backup_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/alloydb"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -238,7 +238,7 @@ import 'backup_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -247,12 +247,18 @@ import 'backup_state.dart';
 /// }
 ///
 /// resource "gcp_alloydb_backup" "default" {
-///   depends_on   = [gcp_alloydb_instance.default]
+///   depends_on = [gcp_alloydb_instance.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-central1"
 ///   backup_id    = "alloydb-backup"
 ///   cluster_name = gcp_alloydb_cluster.default.name
 /// }
 /// resource "gcp_alloydb_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id = "alloydb-cluster"
 ///   location   = "us-central1"
 ///   network_config = {
@@ -261,12 +267,18 @@ import 'backup_state.dart';
 ///   deletion_protection = false
 /// }
 /// resource "gcp_alloydb_instance" "default" {
-///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   depends_on = [gcp_servicenetworking_connection.vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster       = gcp_alloydb_cluster.default.name
 ///   instance_id   = "alloydb-instance"
 ///   instance_type = "PRIMARY"
 /// }
-/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+/// resource "gcp_compute_global_address" "private_ip_alloc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "alloydb-cluster"
 ///   address_type  = "INTERNAL"
 ///   purpose       = "VPC_PEERING"
@@ -274,11 +286,17 @@ import 'backup_state.dart';
 ///   network       = gcp_compute_network.default.id
 /// }
 /// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.default.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.private_ip_alloc.name]
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "alloydb-network"
 /// }
 /// ```
@@ -583,9 +601,9 @@ import 'backup_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/alloydb"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/alloydb"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -658,7 +676,7 @@ import 'backup_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -667,7 +685,10 @@ import 'backup_state.dart';
 /// }
 ///
 /// resource "gcp_alloydb_backup" "default" {
-///   depends_on   = [gcp_alloydb_instance.default]
+///   depends_on = [gcp_alloydb_instance.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-central1"
 ///   backup_id    = "alloydb-backup"
 ///   cluster_name = gcp_alloydb_cluster.default.name
@@ -678,6 +699,9 @@ import 'backup_state.dart';
 ///   }
 /// }
 /// resource "gcp_alloydb_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id = "alloydb-cluster"
 ///   location   = "us-central1"
 ///   network_config = {
@@ -686,12 +710,18 @@ import 'backup_state.dart';
 ///   deletion_protection = false
 /// }
 /// resource "gcp_alloydb_instance" "default" {
-///   depends_on    = [gcp_servicenetworking_connection.vpc_connection]
+///   depends_on = [gcp_servicenetworking_connection.vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster       = gcp_alloydb_cluster.default.name
 ///   instance_id   = "alloydb-instance"
 ///   instance_type = "PRIMARY"
 /// }
-/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+/// resource "gcp_compute_global_address" "private_ip_alloc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "alloydb-cluster"
 ///   address_type  = "INTERNAL"
 ///   purpose       = "VPC_PEERING"
@@ -699,11 +729,17 @@ import 'backup_state.dart';
 ///   network       = gcp_compute_network.default.id
 /// }
 /// resource "gcp_servicenetworking_connection" "vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.default.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.private_ip_alloc.name]
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "alloydb-network"
 /// }
 /// ```
@@ -956,7 +992,7 @@ class Backup extends pulumi.CustomResource {
           'gcp:alloydb/backup:Backup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

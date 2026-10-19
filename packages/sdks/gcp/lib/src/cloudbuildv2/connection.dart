@@ -80,7 +80,7 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuildv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuildv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -104,7 +104,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -113,6 +113,9 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "gcp_cloudbuildv2_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   name     = "tf-test-connection"
 ///   github_config = {
@@ -380,9 +383,9 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuildv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuildv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -477,7 +480,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -488,7 +491,7 @@ import 'connection_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "p4sa-secretAccessor" {
+/// data "gcp_organizations_i_a_m_policy" "p4sa-secretAccessor" {
 ///   bindings {
 ///     role    = "roles/secretmanager.secretAccessor"
 ///     members = ["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"]
@@ -496,42 +499,63 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "private-key-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "ghe-pk-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "private-key-secret-version" {
+/// resource "gcp_secretmanager_secret_version" "private-key-secret-version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.private-key-secret.id
 ///   secret_data = file("private-key.pem")
 /// }
 /// resource "gcp_secretmanager_secret" "webhook-secret-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "github-token-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "webhook-secret-secret-version" {
+/// resource "gcp_secretmanager_secret_version" "webhook-secret-secret-version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.webhook-secret-secret.id
 ///   secret_data = "<webhook-secret-data>"
 /// }
 /// // Here, 123456789 is the Google Cloud project number for the project that contains the connection.
-/// resource "gcp_secretmanager_secretiampolicy" "policy-pk" {
+/// resource "gcp_secretmanager_secret_iam_policy" "policy-pk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id   = gcp_secretmanager_secret.private-key-secret.secret_id
-///   policy_data = data.gcp_organizations_getiampolicy.p4sa-secretAccessor.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.p4sa-secretAccessor.policy_data
 /// }
-/// resource "gcp_secretmanager_secretiampolicy" "policy-whs" {
+/// resource "gcp_secretmanager_secret_iam_policy" "policy-whs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id   = gcp_secretmanager_secret.webhook-secret-secret.secret_id
-///   policy_data = data.gcp_organizations_getiampolicy.p4sa-secretAccessor.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.p4sa-secretAccessor.policy_data
 /// }
 /// resource "gcp_cloudbuildv2_connection" "my-connection" {
-///   depends_on = [gcp_secretmanager_secretiampolicy.policy-pk, gcp_secretmanager_secretiampolicy.policy-whs]
-///   location   = "us-central1"
-///   name       = "my-terraform-ghe-connection"
+///   depends_on = [gcp_secretmanager_secret_iam_policy.policy-pk, gcp_secretmanager_secret_iam_policy.policy-whs]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location = "us-central1"
+///   name     = "my-terraform-ghe-connection"
 ///   github_enterprise_config = {
 ///     host_uri                      = "https://ghe.com"
-///     private_key_secret_version    = gcp_secretmanager_secretversion.private-key-secret-version.id
-///     webhook_secret_secret_version = gcp_secretmanager_secretversion.webhook-secret-secret-version.id
+///     private_key_secret_version    = gcp_secretmanager_secret_version.private-key-secret-version.id
+///     webhook_secret_secret_version = gcp_secretmanager_secret_version.webhook-secret-secret-version.id
 ///     app_id                        = 200
 ///     app_slug                      = "gcb-app"
 ///     app_installation_id           = 300
@@ -845,9 +869,9 @@ import 'connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuildv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuildv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -914,7 +938,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -925,7 +949,7 @@ import 'connection_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "p4sa-secretAccessor" {
+/// data "gcp_organizations_i_a_m_policy" "p4sa-secretAccessor" {
 ///   bindings {
 ///     role    = "roles/secretmanager.secretAccessor"
 ///     members = ["serviceAccount:service-123456789@gcp-sa-cloudbuild.iam.gserviceaccount.com"]
@@ -933,27 +957,39 @@ import 'connection_state.dart';
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "github-token-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "github-token-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "github-token-secret-version" {
+/// resource "gcp_secretmanager_secret_version" "github-token-secret-version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.github-token-secret.id
 ///   secret_data = file("my-github-token.txt")
 /// }
 /// // Here, 123456789 is the Google Cloud project number for the project that contains the connection.
-/// resource "gcp_secretmanager_secretiampolicy" "policy" {
+/// resource "gcp_secretmanager_secret_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id   = gcp_secretmanager_secret.github-token-secret.secret_id
-///   policy_data = data.gcp_organizations_getiampolicy.p4sa-secretAccessor.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.p4sa-secretAccessor.policy_data
 /// }
 /// resource "gcp_cloudbuildv2_connection" "my-connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   name     = "my-connection"
 ///   github_config = {
 ///     app_installation_id = 123123
 ///     authorizer_credential = {
-///       oauth_token_secret_version = gcp_secretmanager_secretversion.github-token-secret-version.id
+///       oauth_token_secret_version = gcp_secretmanager_secret_version.github-token-secret-version.id
 ///     }
 ///   }
 /// }
@@ -1159,7 +1195,7 @@ class Connection extends pulumi.CustomResource {
           'gcp:cloudbuildv2/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     bitbucketCloudConfig = registerOutput<ConnectionBitbucketCloudConfig?>('bitbucketCloudConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionBitbucketCloudConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

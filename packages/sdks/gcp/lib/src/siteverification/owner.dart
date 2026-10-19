@@ -167,8 +167,8 @@ import 'owner_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/siteverification"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/siteverification"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -229,7 +229,7 @@ import 'owner_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -237,36 +237,51 @@ import 'owner_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_siteverification_gettoken" "token" {
+/// data "gcp_siteverification_token" "token" {
 ///   type                = "SITE"
 ///   identifier          ="https://${gcp_storage_bucket.bucket.name}.storage.googleapis.com/"
 ///   verification_method = "FILE"
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-storage-bucket"
 ///   location = "US"
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
-///   name    = data.gcp_siteverification_gettoken.token.token
-///   content ="google-site-verification: ${data.gcp_siteverification_gettoken.token.token}"
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name    = data.gcp_siteverification_token.token.token
+///   content ="google-site-verification: ${data.gcp_siteverification_token.token.token}"
 ///   bucket  = gcp_storage_bucket.bucket.name
 /// }
-/// resource "gcp_storage_objectaccesscontrol" "public_rule" {
+/// resource "gcp_storage_object_access_control" "public_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = gcp_storage_bucket.bucket.name
-///   object = gcp_storage_bucketobject.object.name
+///   object = gcp_storage_bucket_object.object.name
 ///   role   = "READER"
 ///   entity = "allUsers"
 /// }
-/// resource "gcp_siteverification_webresource" "example" {
-///   site = {
-///     type       = data.gcp_siteverification_gettoken.token.type
-///     identifier = data.gcp_siteverification_gettoken.token.identifier
+/// resource "gcp_siteverification_web_resource" "example" {
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   verification_method = data.gcp_siteverification_gettoken.token.verification_method
+///   site = {
+///     type       = data.gcp_siteverification_token.token.type
+///     identifier = data.gcp_siteverification_token.token.identifier
+///   }
+///   verification_method = data.gcp_siteverification_token.token.verification_method
 /// }
 /// resource "gcp_siteverification_owner" "example" {
-///   web_resource_id = gcp_siteverification_webresource.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   web_resource_id = gcp_siteverification_web_resource.example.id
 ///   email           = "user@example.com"
 /// }
 /// ```
@@ -431,7 +446,7 @@ class Owner extends pulumi.CustomResource {
           'gcp:siteverification/owner:Owner',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     email = registerOutput<String>('email');

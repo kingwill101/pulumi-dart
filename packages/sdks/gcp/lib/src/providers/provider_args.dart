@@ -149,7 +149,6 @@ class ProviderArgs {
   final pulumi.Input<String?>? memcacheCustomEndpoint;
   final pulumi.Input<String?>? memorystoreCustomEndpoint;
   final pulumi.Input<String?>? migrationCenterCustomEndpoint;
-  final pulumi.Input<String?>? mlEngineCustomEndpoint;
   final pulumi.Input<String?>? modelArmorCustomEndpoint;
   final pulumi.Input<String?>? modelArmorGlobalCustomEndpoint;
   final pulumi.Input<String?>? monitoringCustomEndpoint;
@@ -157,9 +156,9 @@ class ProviderArgs {
   final pulumi.Input<String?>? networkConnectivityCustomEndpoint;
   final pulumi.Input<String?>? networkConnectivityv1CustomEndpoint;
   final pulumi.Input<String?>? networkManagementCustomEndpoint;
+  final pulumi.Input<String?>? networkManagementv1CustomEndpoint;
   final pulumi.Input<String?>? networkSecurityCustomEndpoint;
   final pulumi.Input<String?>? networkServicesCustomEndpoint;
-  final pulumi.Input<String?>? notebooksCustomEndpoint;
   final pulumi.Input<String?>? observabilityCustomEndpoint;
   final pulumi.Input<String?>? oracleDatabaseCustomEndpoint;
   final pulumi.Input<String?>? orgPolicyCustomEndpoint;
@@ -203,6 +202,7 @@ class ProviderArgs {
   final pulumi.Input<String?>? serviceManagementCustomEndpoint;
   final pulumi.Input<String?>? serviceNetworkingCustomEndpoint;
   final pulumi.Input<String?>? serviceUsageCustomEndpoint;
+  final pulumi.Input<String?>? serviceUsageV2CustomEndpoint;
   final pulumi.Input<String?>? siteVerificationCustomEndpoint;
   final pulumi.Input<String?>? sourceRepoCustomEndpoint;
   final pulumi.Input<String?>? spannerCustomEndpoint;
@@ -210,6 +210,7 @@ class ProviderArgs {
   final pulumi.Input<String?>? storageBatchOperationsCustomEndpoint;
   final pulumi.Input<String?>? storageControlCustomEndpoint;
   final pulumi.Input<String?>? storageCustomEndpoint;
+  final pulumi.Input<String?>? storageFtpCustomEndpoint;
   final pulumi.Input<String?>? storageInsightsCustomEndpoint;
   final pulumi.Input<String?>? storageTransferCustomEndpoint;
   final pulumi.Input<String?>? tagsCustomEndpoint;
@@ -370,7 +371,6 @@ class ProviderArgs {
   /// [memcacheCustomEndpoint] Optional.
   /// [memorystoreCustomEndpoint] Optional.
   /// [migrationCenterCustomEndpoint] Optional.
-  /// [mlEngineCustomEndpoint] Optional.
   /// [modelArmorCustomEndpoint] Optional.
   /// [modelArmorGlobalCustomEndpoint] Optional.
   /// [monitoringCustomEndpoint] Optional.
@@ -378,9 +378,9 @@ class ProviderArgs {
   /// [networkConnectivityCustomEndpoint] Optional.
   /// [networkConnectivityv1CustomEndpoint] Optional.
   /// [networkManagementCustomEndpoint] Optional.
+  /// [networkManagementv1CustomEndpoint] Optional.
   /// [networkSecurityCustomEndpoint] Optional.
   /// [networkServicesCustomEndpoint] Optional.
-  /// [notebooksCustomEndpoint] Optional.
   /// [observabilityCustomEndpoint] Optional.
   /// [oracleDatabaseCustomEndpoint] Optional.
   /// [orgPolicyCustomEndpoint] Optional.
@@ -424,6 +424,7 @@ class ProviderArgs {
   /// [serviceManagementCustomEndpoint] Optional.
   /// [serviceNetworkingCustomEndpoint] Optional.
   /// [serviceUsageCustomEndpoint] Optional.
+  /// [serviceUsageV2CustomEndpoint] Optional.
   /// [siteVerificationCustomEndpoint] Optional.
   /// [sourceRepoCustomEndpoint] Optional.
   /// [spannerCustomEndpoint] Optional.
@@ -431,6 +432,7 @@ class ProviderArgs {
   /// [storageBatchOperationsCustomEndpoint] Optional.
   /// [storageControlCustomEndpoint] Optional.
   /// [storageCustomEndpoint] Optional.
+  /// [storageFtpCustomEndpoint] Optional.
   /// [storageInsightsCustomEndpoint] Optional.
   /// [storageTransferCustomEndpoint] Optional.
   /// [tagsCustomEndpoint] Optional.
@@ -590,7 +592,6 @@ class ProviderArgs {
     this.memcacheCustomEndpoint,
     this.memorystoreCustomEndpoint,
     this.migrationCenterCustomEndpoint,
-    this.mlEngineCustomEndpoint,
     this.modelArmorCustomEndpoint,
     this.modelArmorGlobalCustomEndpoint,
     this.monitoringCustomEndpoint,
@@ -598,9 +599,9 @@ class ProviderArgs {
     this.networkConnectivityCustomEndpoint,
     this.networkConnectivityv1CustomEndpoint,
     this.networkManagementCustomEndpoint,
+    this.networkManagementv1CustomEndpoint,
     this.networkSecurityCustomEndpoint,
     this.networkServicesCustomEndpoint,
-    this.notebooksCustomEndpoint,
     this.observabilityCustomEndpoint,
     this.oracleDatabaseCustomEndpoint,
     this.orgPolicyCustomEndpoint,
@@ -644,6 +645,7 @@ class ProviderArgs {
     this.serviceManagementCustomEndpoint,
     this.serviceNetworkingCustomEndpoint,
     this.serviceUsageCustomEndpoint,
+    this.serviceUsageV2CustomEndpoint,
     this.siteVerificationCustomEndpoint,
     this.sourceRepoCustomEndpoint,
     this.spannerCustomEndpoint,
@@ -651,6 +653,7 @@ class ProviderArgs {
     this.storageBatchOperationsCustomEndpoint,
     this.storageControlCustomEndpoint,
     this.storageCustomEndpoint,
+    this.storageFtpCustomEndpoint,
     this.storageInsightsCustomEndpoint,
     this.storageTransferCustomEndpoint,
     this.tagsCustomEndpoint,
@@ -813,7 +816,6 @@ class ProviderArgs {
       'memcacheCustomEndpoint': ?memcacheCustomEndpoint,
       'memorystoreCustomEndpoint': ?memorystoreCustomEndpoint,
       'migrationCenterCustomEndpoint': ?migrationCenterCustomEndpoint,
-      'mlEngineCustomEndpoint': ?mlEngineCustomEndpoint,
       'modelArmorCustomEndpoint': ?modelArmorCustomEndpoint,
       'modelArmorGlobalCustomEndpoint': ?modelArmorGlobalCustomEndpoint,
       'monitoringCustomEndpoint': ?monitoringCustomEndpoint,
@@ -821,9 +823,9 @@ class ProviderArgs {
       'networkConnectivityCustomEndpoint': ?networkConnectivityCustomEndpoint,
       'networkConnectivityv1CustomEndpoint': ?networkConnectivityv1CustomEndpoint,
       'networkManagementCustomEndpoint': ?networkManagementCustomEndpoint,
+      'networkManagementv1CustomEndpoint': ?networkManagementv1CustomEndpoint,
       'networkSecurityCustomEndpoint': ?networkSecurityCustomEndpoint,
       'networkServicesCustomEndpoint': ?networkServicesCustomEndpoint,
-      'notebooksCustomEndpoint': ?notebooksCustomEndpoint,
       'observabilityCustomEndpoint': ?observabilityCustomEndpoint,
       'oracleDatabaseCustomEndpoint': ?oracleDatabaseCustomEndpoint,
       'orgPolicyCustomEndpoint': ?orgPolicyCustomEndpoint,
@@ -867,6 +869,7 @@ class ProviderArgs {
       'serviceManagementCustomEndpoint': ?serviceManagementCustomEndpoint,
       'serviceNetworkingCustomEndpoint': ?serviceNetworkingCustomEndpoint,
       'serviceUsageCustomEndpoint': ?serviceUsageCustomEndpoint,
+      'serviceUsageV2CustomEndpoint': ?serviceUsageV2CustomEndpoint,
       'siteVerificationCustomEndpoint': ?siteVerificationCustomEndpoint,
       'sourceRepoCustomEndpoint': ?sourceRepoCustomEndpoint,
       'spannerCustomEndpoint': ?spannerCustomEndpoint,
@@ -874,6 +877,7 @@ class ProviderArgs {
       'storageBatchOperationsCustomEndpoint': ?storageBatchOperationsCustomEndpoint,
       'storageControlCustomEndpoint': ?storageControlCustomEndpoint,
       'storageCustomEndpoint': ?storageCustomEndpoint,
+      'storageFtpCustomEndpoint': ?storageFtpCustomEndpoint,
       'storageInsightsCustomEndpoint': ?storageInsightsCustomEndpoint,
       'storageTransferCustomEndpoint': ?storageTransferCustomEndpoint,
       'tagsCustomEndpoint': ?tagsCustomEndpoint,
@@ -1037,7 +1041,6 @@ class ProviderArgs {
       memcacheCustomEndpoint: (() { final guardedValue = map['memcacheCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       memorystoreCustomEndpoint: (() { final guardedValue = map['memorystoreCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       migrationCenterCustomEndpoint: (() { final guardedValue = map['migrationCenterCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      mlEngineCustomEndpoint: (() { final guardedValue = map['mlEngineCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modelArmorCustomEndpoint: (() { final guardedValue = map['modelArmorCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       modelArmorGlobalCustomEndpoint: (() { final guardedValue = map['modelArmorGlobalCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       monitoringCustomEndpoint: (() { final guardedValue = map['monitoringCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1045,9 +1048,9 @@ class ProviderArgs {
       networkConnectivityCustomEndpoint: (() { final guardedValue = map['networkConnectivityCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkConnectivityv1CustomEndpoint: (() { final guardedValue = map['networkConnectivityv1CustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkManagementCustomEndpoint: (() { final guardedValue = map['networkManagementCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      networkManagementv1CustomEndpoint: (() { final guardedValue = map['networkManagementv1CustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkSecurityCustomEndpoint: (() { final guardedValue = map['networkSecurityCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkServicesCustomEndpoint: (() { final guardedValue = map['networkServicesCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      notebooksCustomEndpoint: (() { final guardedValue = map['notebooksCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       observabilityCustomEndpoint: (() { final guardedValue = map['observabilityCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       oracleDatabaseCustomEndpoint: (() { final guardedValue = map['oracleDatabaseCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orgPolicyCustomEndpoint: (() { final guardedValue = map['orgPolicyCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1091,6 +1094,7 @@ class ProviderArgs {
       serviceManagementCustomEndpoint: (() { final guardedValue = map['serviceManagementCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceNetworkingCustomEndpoint: (() { final guardedValue = map['serviceNetworkingCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceUsageCustomEndpoint: (() { final guardedValue = map['serviceUsageCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      serviceUsageV2CustomEndpoint: (() { final guardedValue = map['serviceUsageV2CustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       siteVerificationCustomEndpoint: (() { final guardedValue = map['siteVerificationCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sourceRepoCustomEndpoint: (() { final guardedValue = map['sourceRepoCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       spannerCustomEndpoint: (() { final guardedValue = map['spannerCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -1098,6 +1102,7 @@ class ProviderArgs {
       storageBatchOperationsCustomEndpoint: (() { final guardedValue = map['storageBatchOperationsCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageControlCustomEndpoint: (() { final guardedValue = map['storageControlCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageCustomEndpoint: (() { final guardedValue = map['storageCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      storageFtpCustomEndpoint: (() { final guardedValue = map['storageFtpCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageInsightsCustomEndpoint: (() { final guardedValue = map['storageInsightsCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageTransferCustomEndpoint: (() { final guardedValue = map['storageTransferCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tagsCustomEndpoint: (() { final guardedValue = map['tagsCustomEndpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

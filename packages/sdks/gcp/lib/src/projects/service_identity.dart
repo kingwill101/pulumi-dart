@@ -80,8 +80,8 @@ import 'service_identity_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -111,7 +111,7 @@ import 'service_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -119,17 +119,23 @@ import 'service_identity_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_projects_serviceidentity" "hc_sa" {
-///   project = data.gcp_organizations_getproject.project.project_id
+/// resource "gcp_projects_service_identity" "hc_sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = data.gcp_organizations_project.project.project_id
 ///   service = "healthcare.googleapis.com"
 /// }
-/// resource "gcp_projects_iammember" "hc_sa_bq_jobuser" {
-///   project = data.gcp_organizations_getproject.project.project_id
+/// resource "gcp_projects_i_a_m_member" "hc_sa_bq_jobuser" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = data.gcp_organizations_project.project.project_id
 ///   role    = "roles/bigquery.jobUser"
-///   member  = gcp_projects_serviceidentity.hc_sa.member
+///   member  = gcp_projects_service_identity.hc_sa.member
 /// }
 /// ```
 /// ```java
@@ -225,7 +231,7 @@ class ServiceIdentity extends pulumi.CustomResource {
           'gcp:projects/serviceIdentity:ServiceIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     email = registerOutput<String>('email');
     member = registerOutput<String>('member');

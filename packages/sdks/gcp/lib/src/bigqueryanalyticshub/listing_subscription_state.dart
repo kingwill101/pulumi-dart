@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'listing_subscription_commercial_info.dart';
 import 'listing_subscription_destination_dataset.dart';
+import 'listing_subscription_destination_pubsub_subscription.dart';
 import 'listing_subscription_linked_dataset_map.dart';
 import 'listing_subscription_linked_resource.dart';
 
@@ -25,6 +26,9 @@ class ListingSubscriptionState {
   /// The destination dataset for this subscription.
   /// Structure is documented below.
   final pulumi.Input<ListingSubscriptionDestinationDataset?>? destinationDataset;
+  /// Destination Pub/Sub subscription to create for the subscriber.
+  /// Structure is documented below.
+  final pulumi.Input<ListingSubscriptionDestinationPubsubSubscription?>? destinationPubsubSubscription;
   /// Timestamp when the subscription was last modified.
   final pulumi.Input<String?>? lastModifyTime;
   /// Output only. Map of listing resource names to associated linked resource,
@@ -64,6 +68,7 @@ class ListingSubscriptionState {
   /// [dataExchangeId] The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [destinationDataset] The destination dataset for this subscription.
+  /// [destinationPubsubSubscription] Destination Pub/Sub subscription to create for the subscriber.
   /// [lastModifyTime] Timestamp when the subscription was last modified.
   /// [linkedDatasetMaps] Output only. Map of listing resource names to associated linked resource,
   /// [linkedResources] Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
@@ -84,6 +89,7 @@ class ListingSubscriptionState {
     this.dataExchangeId,
     this.deletionPolicy,
     this.destinationDataset,
+    this.destinationPubsubSubscription,
     this.lastModifyTime,
     this.linkedDatasetMaps,
     this.linkedResources,
@@ -107,6 +113,7 @@ class ListingSubscriptionState {
       'dataExchangeId': ?dataExchangeId,
       'deletionPolicy': ?deletionPolicy,
       'destinationDataset': ?pulumi.Input.mapOptionalInputValue<ListingSubscriptionDestinationDataset, Map<String, dynamic>>(destinationDataset, (value) => value.toMap()),
+      'destinationPubsubSubscription': ?pulumi.Input.mapOptionalInputValue<ListingSubscriptionDestinationPubsubSubscription, Map<String, dynamic>>(destinationPubsubSubscription, (value) => value.toMap()),
       'lastModifyTime': ?lastModifyTime,
       'linkedDatasetMaps': ?pulumi.Input.mapOptionalInputValue<List<ListingSubscriptionLinkedDatasetMap>, List<Map<String, dynamic>>>(linkedDatasetMaps, (value) => pulumi.Input.encodeList<ListingSubscriptionLinkedDatasetMap, Map<String, dynamic>>(value, (value) => value.toMap())),
       'linkedResources': ?pulumi.Input.mapOptionalInputValue<List<ListingSubscriptionLinkedResource>, List<Map<String, dynamic>>>(linkedResources, (value) => pulumi.Input.encodeList<ListingSubscriptionLinkedResource, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -131,6 +138,7 @@ class ListingSubscriptionState {
       dataExchangeId: (() { final guardedValue = map['dataExchangeId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       destinationDataset: (() { final guardedValue = map['destinationDataset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListingSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      destinationPubsubSubscription: (() { final guardedValue = map['destinationPubsubSubscription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ListingSubscriptionDestinationPubsubSubscription.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       lastModifyTime: (() { final guardedValue = map['lastModifyTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       linkedDatasetMaps: (() { final guardedValue = map['linkedDatasetMaps']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ListingSubscriptionLinkedDatasetMap>(guardedValue, (value) => ListingSubscriptionLinkedDatasetMap.fromMap((value as Map).cast<String, dynamic>()))); })(),
       linkedResources: (() { final guardedValue = map['linkedResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ListingSubscriptionLinkedResource>(guardedValue, (value) => ListingSubscriptionLinkedResource.fromMap((value as Map).cast<String, dynamic>()))); })(),

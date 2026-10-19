@@ -65,7 +65,7 @@ import 'security_gateway_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/beyondcorp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -88,7 +88,7 @@ import 'security_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -96,7 +96,10 @@ import 'security_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_beyondcorp_securitygateway" "example" {
+/// resource "gcp_beyondcorp_security_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   security_gateway_id = "default"
 ///   display_name        = "My Security Gateway resource"
 ///   hubs {
@@ -205,7 +208,7 @@ import 'security_gateway_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/beyondcorp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -229,7 +232,7 @@ import 'security_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -237,7 +240,10 @@ import 'security_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_beyondcorp_securitygateway" "example-logging" {
+/// resource "gcp_beyondcorp_security_gateway" "example-logging" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   security_gateway_id = "default-logging"
 ///   display_name        = "My Security Gateway resource with logging enabled"
 ///   hubs {
@@ -438,7 +444,7 @@ import 'security_gateway_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/beyondcorp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/beyondcorp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -487,7 +493,7 @@ import 'security_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -495,7 +501,10 @@ import 'security_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_beyondcorp_securitygateway" "example-spa" {
+/// resource "gcp_beyondcorp_security_gateway" "example-spa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   security_gateway_id = "default-spa"
 ///   display_name        = "My SPA Security Gateway resource"
 ///   proxy_protocol_config = {
@@ -712,7 +721,7 @@ class SecurityGateway extends pulumi.CustomResource {
           'gcp:beyondcorp/securityGateway:SecurityGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     delegatingServiceAccount = registerOutput<String>('delegatingServiceAccount');

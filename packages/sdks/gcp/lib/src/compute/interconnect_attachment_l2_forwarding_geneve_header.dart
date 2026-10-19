@@ -20,7 +20,7 @@ class InterconnectAttachmentL2ForwardingGeneveHeader {
 
   factory InterconnectAttachmentL2ForwardingGeneveHeader.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentL2ForwardingGeneveHeader(
-      vni: (() { final guardedValue = map['vni']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      vni: (() { final guardedValue = map['vni']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

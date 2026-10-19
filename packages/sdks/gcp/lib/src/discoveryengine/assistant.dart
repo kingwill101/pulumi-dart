@@ -174,7 +174,7 @@ import 'assistant_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -239,7 +239,7 @@ import 'assistant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -247,7 +247,10 @@ import 'assistant_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_datastore" "basic" {
+/// resource "gcp_discoveryengine_data_store" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                    = "global"
 ///   data_store_id               = "example-data-store-id"
 ///   display_name                = "tf-test-structured-datastore"
@@ -256,18 +259,24 @@ import 'assistant_state.dart';
 ///   solution_types              = ["SOLUTION_TYPE_SEARCH"]
 ///   create_advanced_site_search = false
 /// }
-/// resource "gcp_discoveryengine_searchengine" "basic" {
+/// resource "gcp_discoveryengine_search_engine" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "global"
 ///   collection_id        = "default_collection"
 ///   engine_id            = "example-engine-id"
 ///   display_name         = "Example Display Name"
-///   data_store_ids       = [gcp_discoveryengine_datastore.basic.data_store_id]
+///   data_store_ids       = [gcp_discoveryengine_data_store.basic.data_store_id]
 ///   search_engine_config = {}
 /// }
 /// resource "gcp_discoveryengine_assistant" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "global"
 ///   collection_id = "default_collection"
-///   engine_id     = gcp_discoveryengine_searchengine.basic.engine_id
+///   engine_id     = gcp_discoveryengine_search_engine.basic.engine_id
 ///   assistant_id  = "default_assistant"
 ///   display_name  = "updated-tf-test-Assistant"
 ///   description   = "Assistant Description"
@@ -279,9 +288,9 @@ import 'assistant_state.dart';
 ///   }
 ///   customer_policy = {
 ///     banned_phrases = [{
-///       "phrase"           = "foo"
-///       "matchType"        = "SIMPLE_STRING_MATCH"
-///       "ignoreDiacritics" = false
+///       phrase            = "foo"
+///       match_type        = "SIMPLE_STRING_MATCH"
+///       ignore_diacritics = false
 ///     }]
 ///   }
 ///   web_grounding_type = "WEB_GROUNDING_TYPE_GOOGLE_SEARCH"
@@ -479,7 +488,7 @@ class Assistant extends pulumi.CustomResource {
           'gcp:discoveryengine/assistant:Assistant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     assistantId = registerOutput<String>('assistantId');
     collectionId = registerOutput<String>('collectionId');

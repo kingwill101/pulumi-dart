@@ -105,8 +105,8 @@ import 'mirroring_endpoint_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -144,7 +144,7 @@ import 'mirroring_endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -153,18 +153,27 @@ import 'mirroring_endpoint_group_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networksecurity_mirroringdeploymentgroup" "deployment_group" {
+/// resource "gcp_networksecurity_mirroring_deployment_group" "deployment_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_deployment_group_id = "example-dg"
 ///   location                      = "global"
 ///   network                       = gcp_compute_network.network.id
 /// }
-/// resource "gcp_networksecurity_mirroringendpointgroup" "default" {
+/// resource "gcp_networksecurity_mirroring_endpoint_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_endpoint_group_id = "example-eg"
 ///   location                    = "global"
-///   mirroring_deployment_group  = gcp_networksecurity_mirroringdeploymentgroup.deployment_group.id
+///   mirroring_deployment_group  = gcp_networksecurity_mirroring_deployment_group.deployment_group.id
 ///   description                 = "some description"
 ///   labels = {
 ///     "foo" = "bar"
@@ -335,8 +344,8 @@ import 'mirroring_endpoint_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -377,7 +386,7 @@ import 'mirroring_endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -386,19 +395,28 @@ import 'mirroring_endpoint_group_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networksecurity_mirroringdeploymentgroup" "deployment_group" {
+/// resource "gcp_networksecurity_mirroring_deployment_group" "deployment_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_deployment_group_id = "example-dg"
 ///   location                      = "global"
 ///   network                       = gcp_compute_network.network.id
 /// }
-/// resource "gcp_networksecurity_mirroringendpointgroup" "default" {
+/// resource "gcp_networksecurity_mirroring_endpoint_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_endpoint_group_id = "example-eg"
 ///   location                    = "global"
 ///   type                        = "BROKER"
-///   mirroring_deployment_groups = [gcp_networksecurity_mirroringdeploymentgroup.deployment_group.id]
+///   mirroring_deployment_groups = [gcp_networksecurity_mirroring_deployment_group.deployment_group.id]
 ///   description                 = "some description"
 ///   labels = {
 ///     "foo" = "bar"
@@ -583,7 +601,7 @@ class MirroringEndpointGroup extends pulumi.CustomResource {
           'gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     associations = registerOutput<List<MirroringEndpointGroupAssociation>>('associations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MirroringEndpointGroupAssociation>(guardedValue, (value) => MirroringEndpointGroupAssociation.fromMap((value as Map).cast<String, dynamic>())); });

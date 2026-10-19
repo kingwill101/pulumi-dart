@@ -76,8 +76,8 @@ import 'app_check_service_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -104,7 +104,7 @@ import 'app_check_service_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -113,11 +113,17 @@ import 'app_check_service_config_state.dart';
 /// }
 ///
 /// resource "gcp_projects_service" "appcheck" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "firebaseappcheck.googleapis.com"
 /// }
-/// resource "gcp_firebase_appcheckserviceconfig" "default" {
+/// resource "gcp_firebase_app_check_service_config" "default" {
 ///   depends_on = [gcp_projects_service.appcheck]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project    = "my-project-name"
 ///   service_id = "firestore.googleapis.com"
 /// }
@@ -244,8 +250,8 @@ import 'app_check_service_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -273,7 +279,7 @@ import 'app_check_service_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -282,11 +288,17 @@ import 'app_check_service_config_state.dart';
 /// }
 ///
 /// resource "gcp_projects_service" "appcheck" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "firebaseappcheck.googleapis.com"
 /// }
-/// resource "gcp_firebase_appcheckserviceconfig" "default" {
-///   depends_on       = [gcp_projects_service.appcheck]
+/// resource "gcp_firebase_app_check_service_config" "default" {
+///   depends_on = [gcp_projects_service.appcheck]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   service_id       = "firebasestorage.googleapis.com"
 ///   enforcement_mode = "ENFORCED"
@@ -416,8 +428,8 @@ import 'app_check_service_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -445,7 +457,7 @@ import 'app_check_service_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -454,11 +466,17 @@ import 'app_check_service_config_state.dart';
 /// }
 ///
 /// resource "gcp_projects_service" "appcheck" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "firebaseappcheck.googleapis.com"
 /// }
-/// resource "gcp_firebase_appcheckserviceconfig" "default" {
-///   depends_on       = [gcp_projects_service.appcheck]
+/// resource "gcp_firebase_app_check_service_config" "default" {
+///   depends_on = [gcp_projects_service.appcheck]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   service_id       = "identitytoolkit.googleapis.com"
 ///   enforcement_mode = "UNENFORCED"
@@ -598,7 +616,7 @@ class AppCheckServiceConfig extends pulumi.CustomResource {
           'gcp:firebase/appCheckServiceConfig:AppCheckServiceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     enforcementMode = registerOutput<String?>('enforcementMode');

@@ -188,7 +188,7 @@ import 'job_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -257,7 +257,7 @@ import 'job_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -266,11 +266,17 @@ import 'job_status.dart';
 /// }
 ///
 /// resource "gcp_dataproc_cluster" "mycluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "dproc-cluster-unique-name"
 ///   region = "us-central1"
 /// }
 /// # Submit an example spark job to a dataproc cluster
 /// resource "gcp_dataproc_job" "spark" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region       = gcp_dataproc_cluster.mycluster.region
 ///   force_delete = true
 ///   placement = {
@@ -292,6 +298,9 @@ import 'job_status.dart';
 /// }
 /// # Submit an example pyspark job to a dataproc cluster
 /// resource "gcp_dataproc_job" "pyspark" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region       = gcp_dataproc_cluster.mycluster.region
 ///   force_delete = true
 ///   placement = {
@@ -499,7 +508,7 @@ class Job extends pulumi.CustomResource {
           'gcp:dataproc/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

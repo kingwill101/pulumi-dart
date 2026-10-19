@@ -21,7 +21,7 @@ class TargetSiteFailureReasonQuotaFailure {
 
   factory TargetSiteFailureReasonQuotaFailure.fromMap(Map<String, dynamic> map) {
     return TargetSiteFailureReasonQuotaFailure(
-      totalRequiredQuota: (() { final guardedValue = map['totalRequiredQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      totalRequiredQuota: (() { final guardedValue = map['totalRequiredQuota']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

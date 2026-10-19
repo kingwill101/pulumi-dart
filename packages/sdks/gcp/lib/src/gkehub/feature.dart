@@ -120,8 +120,8 @@ import 'feature_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -165,7 +165,7 @@ import 'feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -174,11 +174,17 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-cluster"
 ///   location           = "us-central1-a"
 ///   initial_node_count = 1
 /// }
 /// resource "gcp_gkehub_membership" "membership" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   membership_id = "my-membership"
 ///   endpoint = {
 ///     gke_cluster = {
@@ -187,6 +193,9 @@ import 'feature_state.dart';
 ///   }
 /// }
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "multiclusteringress"
 ///   location = "global"
 ///   spec = {
@@ -329,7 +338,7 @@ import 'feature_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -350,7 +359,7 @@ import 'feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -359,6 +368,9 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "multiclusterservicediscovery"
 ///   location = "global"
 ///   labels = {
@@ -448,7 +460,7 @@ import 'feature_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -466,7 +478,7 @@ import 'feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -475,6 +487,9 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "servicemesh"
 ///   location = "global"
 /// }
@@ -589,7 +604,7 @@ import 'feature_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -616,7 +631,7 @@ import 'feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -625,6 +640,9 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "fleetobservability"
 ///   location = "global"
 ///   spec = {
@@ -766,7 +784,7 @@ import 'feature_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -793,7 +811,7 @@ import 'feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -802,6 +820,9 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "fleetobservability"
 ///   location = "global"
 ///   spec = {
@@ -953,7 +974,7 @@ import 'feature_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -983,7 +1004,7 @@ import 'feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -992,6 +1013,9 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "fleetobservability"
 ///   location = "global"
 ///   spec = {
@@ -1128,7 +1152,7 @@ import 'feature_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1151,7 +1175,7 @@ import 'feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1160,6 +1184,9 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "servicemesh"
 ///   location = "global"
 ///   fleet_default_member_config = {
@@ -1289,7 +1316,7 @@ import 'feature_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1316,7 +1343,7 @@ import 'feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1325,6 +1352,9 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "configmanagement"
 ///   location = "global"
 ///   fleet_default_member_config = {
@@ -1514,7 +1544,7 @@ import 'feature_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1558,7 +1588,7 @@ import 'feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1567,6 +1597,9 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "policycontroller"
 ///   location = "global"
 ///   fleet_default_member_config = {
@@ -1576,8 +1609,8 @@ import 'feature_state.dart';
 ///         exemptable_namespaces = ["foo"]
 ///         policy_content = {
 ///           bundles = [{
-///             "bundle"             = "policy-essentials-v2022"
-///             "exemptedNamespaces" = ["foo", "bar"]
+///             bundle              = "policy-essentials-v2022"
+///             exempted_namespaces = ["foo", "bar"]
 ///           }]
 ///           template_library = {
 ///             installation = "ALL"
@@ -1909,7 +1942,7 @@ import 'feature_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1989,7 +2022,7 @@ import 'feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1998,6 +2031,9 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "policycontroller"
 ///   location = "global"
 ///   fleet_default_member_config = {
@@ -2006,11 +2042,11 @@ import 'feature_state.dart';
 ///         install_spec = "INSTALL_SPEC_SUSPENDED"
 ///         policy_content = {
 ///           bundles = [{
-///             "bundle"             = "pci-dss-v3.2.1"
-///             "exemptedNamespaces" = ["baz", "bar"]
+///             bundle              = "pci-dss-v3.2.1"
+///             exempted_namespaces = ["baz", "bar"]
 ///             }, {
-///             "bundle"             = "nist-sp-800-190"
-///             "exemptedNamespaces" = []
+///             bundle              = "nist-sp-800-190"
+///             exempted_namespaces = []
 ///           }]
 ///           template_library = {
 ///             installation = "ALL"
@@ -2021,26 +2057,26 @@ import 'feature_state.dart';
 ///         log_denies_enabled         = true
 ///         mutation_enabled           = true
 ///         deployment_configs = [{
-///           "component"    = "admission"
-///           "replicaCount" = 2
-///           "podAffinity"  = "ANTI_AFFINITY"
+///           component     = "admission"
+///           replica_count = 2
+///           pod_affinity  = "ANTI_AFFINITY"
 ///           }, {
-///           "component" = "audit"
-///           "containerResources" = {
-///             "limits" = {
-///               "memory" = "1Gi"
-///               "cpu"    = "1.5"
+///           component = "audit"
+///           container_resources = {
+///             limits = {
+///               memory = "1Gi"
+///               cpu    = "1.5"
 ///             }
-///             "requests" = {
-///               "memory" = "500Mi"
-///               "cpu"    = "150m"
+///             requests = {
+///               memory = "500Mi"
+///               cpu    = "150m"
 ///             }
 ///           }
-///           "podTolerations" = [{
-///             "key"      = "key1"
-///             "operator" = "Equal"
-///             "value"    = "value1"
-///             "effect"   = "NoSchedule"
+///           pod_tolerations = [{
+///             key      = "key1"
+///             operator = "Equal"
+///             value    = "value1"
+///             effect   = "NoSchedule"
 ///           }]
 ///         }]
 ///         monitoring = {
@@ -2290,7 +2326,7 @@ import 'feature_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2326,7 +2362,7 @@ import 'feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2335,6 +2371,9 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "policycontroller"
 ///   location = "global"
 ///   fleet_default_member_config = {
@@ -2347,7 +2386,7 @@ import 'feature_state.dart';
 ///         log_denies_enabled         = true
 ///         mutation_enabled           = true
 ///         deployment_configs = [{
-///           "component" = "admission"
+///           component = "admission"
 ///         }]
 ///         monitoring = {}
 ///       }
@@ -2497,7 +2536,7 @@ import 'feature_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2523,7 +2562,7 @@ import 'feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2532,6 +2571,9 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "clusterupgrade"
 ///   location = "global"
 ///   spec = {
@@ -2669,7 +2711,7 @@ import 'feature_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2696,7 +2738,7 @@ import 'feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2705,6 +2747,9 @@ import 'feature_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rbacrolebindingactuation"
 ///   location = "global"
 ///   spec = {
@@ -2839,8 +2884,8 @@ import 'feature_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2870,7 +2915,7 @@ import 'feature_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2878,16 +2923,22 @@ import 'feature_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "pool" {
+/// resource "gcp_iam_workload_identity_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 ///   mode                      = "TRUST_DOMAIN"
 /// }
 /// resource "gcp_gkehub_feature" "feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "workloadidentity"
 ///   location = "global"
 ///   spec = {
 ///     workloadidentity = {
-///       scope_tenancy_pool = gcp_iam_workloadidentitypool.pool.name
+///       scope_tenancy_pool = gcp_iam_workload_identity_pool.pool.name
 ///     }
 ///   }
 /// }
@@ -3026,7 +3077,7 @@ class Feature extends pulumi.CustomResource {
           'gcp:gkehub/feature:Feature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

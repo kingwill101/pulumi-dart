@@ -90,7 +90,7 @@ import 'security_profile_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -122,7 +122,7 @@ import 'security_profile_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -130,16 +130,22 @@ import 'security_profile_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_securityprofilegroup" "default" {
+/// resource "gcp_networksecurity_security_profile_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "sec-profile-group"
 ///   parent                    = "organizations/123456789"
 ///   description               = "my description"
-///   threat_prevention_profile = gcp_networksecurity_securityprofile.security_profile.id
+///   threat_prevention_profile = gcp_networksecurity_security_profile.security_profile.id
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_networksecurity_securityprofile" "security_profile" {
+/// resource "gcp_networksecurity_security_profile" "security_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "sec-profile"
 ///   type     = "THREAT_PREVENTION"
 ///   parent   = "organizations/123456789"
@@ -329,8 +335,8 @@ import 'security_profile_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -385,7 +391,7 @@ import 'security_profile_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -394,33 +400,48 @@ import 'security_profile_group_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networksecurity_mirroringdeploymentgroup" "default" {
+/// resource "gcp_networksecurity_mirroring_deployment_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_deployment_group_id = "deployment-group"
 ///   location                      = "global"
 ///   network                       = gcp_compute_network.default.id
 /// }
-/// resource "gcp_networksecurity_mirroringendpointgroup" "default" {
+/// resource "gcp_networksecurity_mirroring_endpoint_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_endpoint_group_id = "endpoint-group"
 ///   location                    = "global"
-///   mirroring_deployment_group  = gcp_networksecurity_mirroringdeploymentgroup.default.id
+///   mirroring_deployment_group  = gcp_networksecurity_mirroring_deployment_group.default.id
 /// }
-/// resource "gcp_networksecurity_securityprofile" "default" {
+/// resource "gcp_networksecurity_security_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "sec-profile"
 ///   parent      = "organizations/123456789"
 ///   description = "my description"
 ///   type        = "CUSTOM_MIRRORING"
 ///   custom_mirroring_profile = {
-///     mirroring_endpoint_group = gcp_networksecurity_mirroringendpointgroup.default.id
+///     mirroring_endpoint_group = gcp_networksecurity_mirroring_endpoint_group.default.id
 ///   }
 /// }
-/// resource "gcp_networksecurity_securityprofilegroup" "default" {
+/// resource "gcp_networksecurity_security_profile_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "sec-profile-group"
 ///   parent                   = "organizations/123456789"
 ///   description              = "my description"
-///   custom_mirroring_profile = gcp_networksecurity_securityprofile.default.id
+///   custom_mirroring_profile = gcp_networksecurity_security_profile.default.id
 /// }
 /// ```
 /// ```java
@@ -652,8 +673,8 @@ import 'security_profile_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -708,7 +729,7 @@ import 'security_profile_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -717,33 +738,48 @@ import 'security_profile_group_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networksecurity_interceptdeploymentgroup" "default" {
+/// resource "gcp_networksecurity_intercept_deployment_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   intercept_deployment_group_id = "deployment-group"
 ///   location                      = "global"
 ///   network                       = gcp_compute_network.default.id
 /// }
-/// resource "gcp_networksecurity_interceptendpointgroup" "default" {
+/// resource "gcp_networksecurity_intercept_endpoint_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   intercept_endpoint_group_id = "endpoint-group"
 ///   location                    = "global"
-///   intercept_deployment_group  = gcp_networksecurity_interceptdeploymentgroup.default.id
+///   intercept_deployment_group  = gcp_networksecurity_intercept_deployment_group.default.id
 /// }
-/// resource "gcp_networksecurity_securityprofile" "default" {
+/// resource "gcp_networksecurity_security_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "sec-profile"
 ///   parent      = "organizations/123456789"
 ///   description = "my description"
 ///   type        = "CUSTOM_INTERCEPT"
 ///   custom_intercept_profile = {
-///     intercept_endpoint_group = gcp_networksecurity_interceptendpointgroup.default.id
+///     intercept_endpoint_group = gcp_networksecurity_intercept_endpoint_group.default.id
 ///   }
 /// }
-/// resource "gcp_networksecurity_securityprofilegroup" "default" {
+/// resource "gcp_networksecurity_security_profile_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "sec-profile-group"
 ///   parent                   = "organizations/123456789"
 ///   description              = "my description"
-///   custom_intercept_profile = gcp_networksecurity_securityprofile.default.id
+///   custom_intercept_profile = gcp_networksecurity_security_profile.default.id
 /// }
 /// ```
 /// ```java
@@ -969,7 +1005,7 @@ import 'security_profile_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1014,7 +1050,7 @@ import 'security_profile_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1022,24 +1058,30 @@ import 'security_profile_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_networksecurity_securityprofilegroup" "default" {
+/// resource "gcp_networksecurity_security_profile_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "sec-profile-group"
 ///   parent                = "organizations/123456789"
 ///   description           = "my description"
-///   url_filtering_profile = gcp_networksecurity_securityprofile.security_profile.id
+///   url_filtering_profile = gcp_networksecurity_security_profile.security_profile.id
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_networksecurity_securityprofile" "security_profile" {
+/// resource "gcp_networksecurity_security_profile" "security_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "sec-profile"
 ///   location = "global"
 ///   type     = "URL_FILTERING"
 ///   url_filtering_profile = {
 ///     url_filters = [{
-///       "priority"        = 1
-///       "filteringAction" = "ALLOW"
-///       "urls"            = ["*example.com", "*about.example.com", "*help.example.com"]
+///       priority         = 1
+///       filtering_action = "ALLOW"
+///       urls             = ["*example.com", "*about.example.com", "*help.example.com"]
 ///     }]
 ///   }
 ///   parent = "organizations/123456789"
@@ -1197,7 +1239,7 @@ class SecurityProfileGroup extends pulumi.CustomResource {
           'gcp:networksecurity/securityProfileGroup:SecurityProfileGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

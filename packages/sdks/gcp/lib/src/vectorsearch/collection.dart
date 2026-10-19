@@ -145,7 +145,7 @@ import 'collection_vector_schema.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vectorsearch"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vectorsearch"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -194,7 +194,7 @@ import 'collection_vector_schema.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -203,6 +203,9 @@ import 'collection_vector_schema.dart';
 /// }
 ///
 /// resource "gcp_vectorsearch_collection" "example-collection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   collection_id = "example-collection"
 ///   display_name  = "My Awesome Collection"
@@ -211,7 +214,20 @@ import 'collection_vector_schema.dart';
 ///     "env"  = "dev"
 ///     "team" = "my-team"
 ///   }
-///   data_schema = "{\n  \\\"type\\\": \\\"object\\\",\n  \\\"properties\\\": {\n    \\\"title\\\": {\n      \\\"type\\\": \\\"string\\\"\n    },\n    \\\"plot\\\": {\n      \\\"type\\\": \\\"string\\\"\n    }\n  }\n}\n"
+///   data_schema = <<EOF
+/// {
+///   \"type\": \"object\",
+///   \"properties\": {
+///     \"title\": {
+///       \"type\": \"string\"
+///     },
+///     \"plot\": {
+///       \"type\": \"string\"
+///     }
+///   }
+/// }
+/// EOF
+///
 ///   vector_schemas {
 ///     field_name = "text_embedding"
 ///     dense_vector = {
@@ -521,9 +537,9 @@ import 'collection_vector_schema.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vectorsearch"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vectorsearch"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -603,7 +619,7 @@ import 'collection_vector_schema.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -611,23 +627,39 @@ import 'collection_vector_schema.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_vectorsearch_collection" "example-cmek-collection" {
-///   depends_on    = [gcp_kms_cryptokeyiammember.crypto_key_member_vs_sa]
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.crypto_key_member_vs_sa]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   collection_id = "example-cmek-collection"
 ///   display_name  = "My Awesome Encrypted Collection"
 ///   description   = "This collection stores important data."
 ///   encryption_spec = {
-///     crypto_key_name = gcp_kms_cryptokey.crypto_key.id
+///     crypto_key_name = gcp_kms_crypto_key.crypto_key.id
 ///   }
 ///   labels = {
 ///     "env"  = "dev"
 ///     "team" = "my-team"
 ///   }
-///   data_schema = "{\n  \\\"type\\\": \\\"object\\\",\n  \\\"properties\\\": {\n    \\\"title\\\": {\n      \\\"type\\\": \\\"string\\\"\n    },\n    \\\"plot\\\": {\n      \\\"type\\\": \\\"string\\\"\n    }\n  }\n}\n"
+///   data_schema = <<EOF
+/// {
+///   \"type\": \"object\",
+///   \"properties\": {
+///     \"title\": {
+///       \"type\": \"string\"
+///     },
+///     \"plot\": {
+///       \"type\": \"string\"
+///     }
+///   }
+/// }
+/// EOF
+///
 ///   vector_schemas {
 ///     field_name = "text_embedding"
 ///     dense_vector = {
@@ -640,18 +672,27 @@ import 'collection_vector_schema.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_kms_cryptokey" "crypto_key" {
+/// resource "gcp_kms_crypto_key" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-cmek-collection"
-///   key_ring = gcp_kms_keyring.key_ring.id
+///   key_ring = gcp_kms_key_ring.key_ring.id
 /// }
-/// resource "gcp_kms_keyring" "key_ring" {
+/// resource "gcp_kms_key_ring" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-cmek-collection"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key_member_vs_sa" {
-///   crypto_key_id = gcp_kms_cryptokey.crypto_key.id
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key_member_vs_sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = gcp_kms_crypto_key.crypto_key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-vectorsearch.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-vectorsearch.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -895,7 +936,7 @@ class Collection extends pulumi.CustomResource {
           'gcp:vectorsearch/collection:Collection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     collectionId = registerOutput<String>('collectionId');

@@ -69,7 +69,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -90,7 +90,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -98,7 +98,10 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aiendpointwithmodelgardendeployment" "deploy" {
+/// resource "gcp_vertex_ai_endpoint_with_model_garden_deployment" "deploy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   publisher_model_name = "publishers/google/models/paligemma@paligemma-224-float32"
 ///   location             = "us-central1"
 ///   model_config = {
@@ -201,7 +204,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -222,7 +225,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -230,7 +233,10 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aiendpointwithmodelgardendeployment" "deploy" {
+/// resource "gcp_vertex_ai_endpoint_with_model_garden_deployment" "deploy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hugging_face_model_id = "Qwen/Qwen3-0.6B"
 ///   location              = "us-central1"
 ///   model_config = {
@@ -366,7 +372,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -397,7 +403,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -405,7 +411,10 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aiendpointwithmodelgardendeployment" "deploy" {
+/// resource "gcp_vertex_ai_endpoint_with_model_garden_deployment" "deploy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   publisher_model_name = "publishers/google/models/paligemma@paligemma-224-float32"
 ///   location             = "us-central1"
 ///   model_config = {
@@ -683,7 +692,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -754,7 +763,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -762,7 +771,10 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aiendpointwithmodelgardendeployment" "deploy-gemma-1_1-2b-it" {
+/// resource "gcp_vertex_ai_endpoint_with_model_garden_deployment" "deploy-gemma-1_1-2b-it" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   publisher_model_name = "publishers/google/models/gemma@gemma-1.1-2b-it"
 ///   location             = "us-central1"
 ///   model_config = {
@@ -779,7 +791,10 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_vertex_aiendpointwithmodelgardendeployment" "deploy-qwen3-0_6b" {
+/// resource "gcp_vertex_ai_endpoint_with_model_garden_deployment" "deploy-qwen3-0_6b" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hugging_face_model_id = "Qwen/Qwen3-0.6B"
 ///   location              = "us-central1"
 ///   model_config = {
@@ -796,7 +811,10 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_vertex_aiendpointwithmodelgardendeployment" "deploy-llama-3_2-1b" {
+/// resource "gcp_vertex_ai_endpoint_with_model_garden_deployment" "deploy-llama-3_2-1b" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   publisher_model_name = "publishers/meta/models/llama3-2@llama-3.2-1b"
 ///   location             = "us-central1"
 ///   model_config = {
@@ -1159,7 +1177,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1234,7 +1252,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1242,7 +1260,10 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aiendpointwithmodelgardendeployment" "deploy-gemma-1_1-2b-it" {
+/// resource "gcp_vertex_ai_endpoint_with_model_garden_deployment" "deploy-gemma-1_1-2b-it" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   publisher_model_name = "publishers/google/models/gemma@gemma-1.1-2b-it"
 ///   location             = "us-central1"
 ///   model_config = {
@@ -1259,8 +1280,11 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_vertex_aiendpointwithmodelgardendeployment" "deploy-qwen3-0_6b" {
-///   depends_on            = [gcp_vertex_aiendpointwithmodelgardendeployment.deploy-gemma-1_1-2b-it]
+/// resource "gcp_vertex_ai_endpoint_with_model_garden_deployment" "deploy-qwen3-0_6b" {
+///   depends_on = [gcp_vertex_ai_endpoint_with_model_garden_deployment.deploy-gemma-1_1-2b-it]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hugging_face_model_id = "Qwen/Qwen3-0.6B"
 ///   location              = "us-central1"
 ///   model_config = {
@@ -1277,8 +1301,11 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_vertex_aiendpointwithmodelgardendeployment" "deploy-llama-3_2-1b" {
-///   depends_on           = [gcp_vertex_aiendpointwithmodelgardendeployment.deploy-qwen3-0_6b]
+/// resource "gcp_vertex_ai_endpoint_with_model_garden_deployment" "deploy-llama-3_2-1b" {
+///   depends_on = [gcp_vertex_ai_endpoint_with_model_garden_deployment.deploy-qwen3-0_6b]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   publisher_model_name = "publishers/meta/models/llama3-2@llama-3.2-1b"
 ///   location             = "us-central1"
 ///   model_config = {
@@ -1512,7 +1539,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1541,7 +1568,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1549,7 +1576,10 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aiendpointwithmodelgardendeployment" "deploy" {
+/// resource "gcp_vertex_ai_endpoint_with_model_garden_deployment" "deploy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   publisher_model_name = "publishers/google/models/paligemma@paligemma-224-float32"
 ///   location             = "us-central1"
 ///   model_config = {
@@ -1743,9 +1773,9 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1798,7 +1828,7 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1806,10 +1836,13 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aiendpointwithmodelgardendeployment" "deploy" {
+/// resource "gcp_vertex_ai_endpoint_with_model_garden_deployment" "deploy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   publisher_model_name = "publishers/google/models/paligemma@paligemma-224-float32"
 ///   location             = "us-central1"
 ///   model_config = {
@@ -1818,21 +1851,27 @@ import 'ai_endpoint_with_model_garden_deployment_state.dart';
 ///   endpoint_config = {
 ///     private_service_connect_config = {
 ///       enable_private_service_connect = true
-///       project_allowlists             = [data.gcp_organizations_getproject.project.id]
+///       project_allowlists             = [data.gcp_organizations_project.project.id]
 ///       psc_automation_configs = {
-///         project_id = data.gcp_organizations_getproject.project.id
+///         project_id = data.gcp_organizations_project.project.id
 ///         network    = gcp_compute_network.network.id
 ///       }
 ///     }
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "subnetwork"
 ///   ip_cidr_range = "192.168.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.network.id
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network"
 ///   auto_create_subnetworks = false
 /// }
@@ -1954,7 +1993,7 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// The deploy config to use for the deployment.
   /// Structure is documented below.
-  late final pulumi.Output<AiEndpointWithModelGardenDeploymentDeployConfig?> deployConfig;
+  late final pulumi.Output<AiEndpointWithModelGardenDeploymentDeployConfig> deployConfig;
   /// Output only. The display name assigned to the model deployed to the endpoint.
   /// This is not required to delete the resource but is used for debug logging.
   late final pulumi.Output<String> deployedModelDisplayName;
@@ -1996,10 +2035,10 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
           'gcp:vertex/aiEndpointWithModelGardenDeployment:AiEndpointWithModelGardenDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deployedModelDisplayName = registerOutput<String>('deployedModelDisplayName');
     deployedModelId = registerOutput<String>('deployedModelId');
     endpoint = registerOutput<String>('endpoint');
@@ -2036,7 +2075,7 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deployedModelDisplayName = registerOutput<String>('deployedModelDisplayName');
     deployedModelId = registerOutput<String>('deployedModelId');
     endpoint = registerOutput<String>('endpoint');
@@ -2058,7 +2097,7 @@ class AiEndpointWithModelGardenDeployment extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig?>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deployConfig = registerOutput<AiEndpointWithModelGardenDeploymentDeployConfig>('deployConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiEndpointWithModelGardenDeploymentDeployConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deployedModelDisplayName = registerOutput<String>('deployedModelDisplayName');
     deployedModelId = registerOutput<String>('deployedModelId');
     endpoint = registerOutput<String>('endpoint');

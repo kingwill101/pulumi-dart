@@ -63,7 +63,7 @@ import 'worker_pool_worker_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -86,7 +86,7 @@ import 'worker_pool_worker_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -94,7 +94,10 @@ import 'worker_pool_worker_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudbuild_workerpool" "pool" {
+/// resource "gcp_cloudbuild_worker_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-pool"
 ///   location = "europe-west1"
 ///   worker_config = {
@@ -310,10 +313,10 @@ import 'worker_pool_worker_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudbuild"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudbuild"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -379,7 +382,7 @@ import 'worker_pool_worker_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -388,14 +391,23 @@ import 'worker_pool_worker_config.dart';
 /// }
 ///
 /// resource "gcp_projects_service" "servicenetworking" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service = "servicenetworking.googleapis.com"
 /// }
 /// resource "gcp_compute_network" "network" {
-///   depends_on              = [gcp_projects_service.servicenetworking]
+///   depends_on = [gcp_projects_service.servicenetworking]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_compute_globaladdress" "worker_range" {
+/// resource "gcp_compute_global_address" "worker_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "worker-pool-range"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -403,15 +415,21 @@ import 'worker_pool_worker_config.dart';
 ///   network       = gcp_compute_network.network.id
 /// }
 /// resource "gcp_servicenetworking_connection" "worker_pool_conn" {
-///   depends_on              = [gcp_projects_service.servicenetworking]
+///   depends_on = [gcp_projects_service.servicenetworking]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.worker_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.worker_range.name]
 /// }
-/// resource "gcp_cloudbuild_workerpool" "pool" {
+/// resource "gcp_cloudbuild_worker_pool" "pool" {
 ///   depends_on = [gcp_servicenetworking_connection.worker_pool_conn]
-///   name       = "my-pool"
-///   location   = "europe-west1"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "my-pool"
+///   location = "europe-west1"
 ///   worker_config = {
 ///     disk_size_gb   = 100
 ///     machine_type   = "e2-standard-4"
@@ -624,7 +642,7 @@ class WorkerPool extends pulumi.CustomResource {
           'gcp:cloudbuild/workerPool:WorkerPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');

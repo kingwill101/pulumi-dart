@@ -272,11 +272,11 @@ import 'target_server_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -385,7 +385,7 @@ import 'target_server_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -394,6 +394,9 @@ import 'target_server_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "my-project"
 ///   name            = "my-project"
 ///   org_id          = "123456789"
@@ -401,25 +404,40 @@ import 'target_server_state.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "gcp_projects_service" "apigee" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.project.project_id
 ///   service = "apigee.googleapis.com"
 /// }
 /// resource "gcp_projects_service" "servicenetworking" {
 ///   depends_on = [gcp_projects_service.apigee]
-///   project    = gcp_organizations_project.project.project_id
-///   service    = "servicenetworking.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.project.project_id
+///   service = "servicenetworking.googleapis.com"
 /// }
 /// resource "gcp_projects_service" "compute" {
 ///   depends_on = [gcp_projects_service.servicenetworking]
-///   project    = gcp_organizations_project.project.project_id
-///   service    = "compute.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.project.project_id
+///   service = "compute.googleapis.com"
 /// }
 /// resource "gcp_compute_network" "apigee_network" {
 ///   depends_on = [gcp_projects_service.compute]
-///   name       = "apigee-network"
-///   project    = gcp_organizations_project.project.project_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name    = "apigee-network"
+///   project = gcp_organizations_project.project.project_id
 /// }
-/// resource "gcp_compute_globaladdress" "apigee_range" {
+/// resource "gcp_compute_global_address" "apigee_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "apigee-range"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -428,24 +446,36 @@ import 'target_server_state.dart';
 ///   project       = gcp_organizations_project.project.project_id
 /// }
 /// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
-///   depends_on              = [gcp_projects_service.servicenetworking]
+///   depends_on = [gcp_projects_service.servicenetworking]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.apigee_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.apigee_range.name]
 /// }
 /// resource "gcp_apigee_organization" "apigee_org" {
-///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection, gcp_projects_service.apigee]
+///   depends_on = [gcp_servicenetworking_connection.apigee_vpc_connection, gcp_projects_service.apigee]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analytics_region   = "us-central1"
 ///   project_id         = gcp_organizations_project.project.project_id
 ///   authorized_network = gcp_compute_network.apigee_network.id
 /// }
 /// resource "gcp_apigee_environment" "apigee_environment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id       = gcp_apigee_organization.apigee_org.id
 ///   name         = "my-environment-name"
 ///   description  = "Apigee Environment"
 ///   display_name = "environment-1"
 /// }
-/// resource "gcp_apigee_targetserver" "apigee_target_server" {
+/// resource "gcp_apigee_target_server" "apigee_target_server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-target-server"
 ///   description = "Apigee Target Server"
 ///   protocol    = "HTTP"
@@ -717,7 +747,7 @@ class TargetServer extends pulumi.CustomResource {
           'gcp:apigee/targetServer:TargetServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

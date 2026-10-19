@@ -208,7 +208,7 @@ import 'region_composite_health_check_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -296,7 +296,7 @@ import 'region_composite_health_check_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -304,52 +304,76 @@ import 'region_composite_health_check_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regioncompositehealthcheck" "example_test_composite_health_check" {
+/// resource "gcp_compute_region_composite_health_check" "example_test_composite_health_check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "test-composite-health-check"
 ///   description        = "test regional composite health check resource"
 ///   region             = "us-central1"
-///   health_sources     = [gcp_compute_regionhealthsource.default.id]
-///   health_destination = gcp_compute_forwardingrule.default.id
+///   health_sources     = [gcp_compute_region_health_source.default.id]
+///   health_destination = gcp_compute_forwarding_rule.default.id
 /// }
-/// resource "gcp_compute_regionhealthsource" "default" {
+/// resource "gcp_compute_region_health_source" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "test-composite-health-check-hs"
 ///   region                    = "us-central1"
 ///   source_type               = "BACKEND_SERVICE"
-///   sources                   = gcp_compute_regionbackendservice.default.id
-///   health_aggregation_policy = gcp_compute_regionhealthaggregationpolicy.hap.id
+///   sources                   = gcp_compute_region_backend_service.default.id
+///   health_aggregation_policy = gcp_compute_region_health_aggregation_policy.hap.id
 /// }
-/// resource "gcp_compute_regionhealthaggregationpolicy" "hap" {
+/// resource "gcp_compute_region_health_aggregation_policy" "hap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-composite-health-check-hap"
 ///   description = "health aggregation policy for health source"
 ///   region      = "us-central1"
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-composite-health-check-hc"
 ///   http_health_check = {
 ///     port = 80
 ///   }
 /// }
-/// resource "gcp_compute_regionbackendservice" "default" {
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "test-composite-health-check-bs"
 ///   region                = "us-central1"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 ///   load_balancing_scheme = "INTERNAL"
 /// }
-/// resource "gcp_compute_forwardingrule" "default" {
+/// resource "gcp_compute_forwarding_rule" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "test-composite-health-check-fr"
 ///   region                = "us-central1"
 ///   load_balancing_scheme = "INTERNAL"
-///   backend_service       = gcp_compute_regionbackendservice.default.id
+///   backend_service       = gcp_compute_region_backend_service.default.id
 ///   network               = gcp_compute_network.default.id
 ///   subnetwork            = gcp_compute_subnetwork.default.id
 ///   ip_protocol           = "TCP"
 ///   all_ports             = true
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test-composite-health-check-net"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "test-composite-health-check-sub"
 ///   ip_cidr_range = "10.2.0.0/16"
 ///   region        = "us-central1"
@@ -604,7 +628,7 @@ class RegionCompositeHealthCheck extends pulumi.CustomResource {
           'gcp:compute/regionCompositeHealthCheck:RegionCompositeHealthCheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

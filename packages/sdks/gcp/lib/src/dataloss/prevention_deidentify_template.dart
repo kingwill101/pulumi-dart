@@ -367,7 +367,7 @@ import 'prevention_deidentify_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -481,7 +481,7 @@ import 'prevention_deidentify_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -489,79 +489,82 @@ import 'prevention_deidentify_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventiondeidentifytemplate" "basic" {
+/// resource "gcp_dataloss_prevention_deidentify_template" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "Description"
 ///   display_name = "Displayname"
 ///   deidentify_config = {
 ///     info_type_transformations = {
 ///       transformations = [{
-///         "infoTypes" = [{
-///           "name" = "FIRST_NAME"
+///         info_types = [{
+///           name = "FIRST_NAME"
 ///         }]
-///         "primitiveTransformation" = {
-///           "replaceWithInfoTypeConfig" = true
+///         primitive_transformation = {
+///           replace_with_info_type_config = true
 ///         }
 ///         }, {
-///         "infoTypes" = [{
-///           "name" = "PHONE_NUMBER"
+///         info_types = [{
+///           name = "PHONE_NUMBER"
 ///           }, {
-///           "name" = "AGE"
+///           name = "AGE"
 ///         }]
-///         "primitiveTransformation" = {
-///           "replaceConfig" = {
-///             "newValue" = {
-///               "integerValue" = 9
+///         primitive_transformation = {
+///           replace_config = {
+///             new_value = {
+///               integer_value = 9
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "infoTypes" = [{
-///           "name" = "EMAIL_ADDRESS"
+///         info_types = [{
+///           name = "EMAIL_ADDRESS"
 ///           }, {
-///           "name" = "LAST_NAME"
+///           name = "LAST_NAME"
 ///         }]
-///         "primitiveTransformation" = {
-///           "characterMaskConfig" = {
-///             "maskingCharacter" = "X"
-///             "numberToMask"     = 4
-///             "reverseOrder"     = true
-///             "charactersToIgnores" = [{
-///               "commonCharactersToIgnore" = "PUNCTUATION"
+///         primitive_transformation = {
+///           character_mask_config = {
+///             masking_character = "X"
+///             number_to_mask    = 4
+///             reverse_order     = true
+///             characters_to_ignores = [{
+///               common_characters_to_ignore = "PUNCTUATION"
 ///             }]
 ///           }
 ///         }
 ///         }, {
-///         "infoTypes" = [{
-///           "name" = "DATE_OF_BIRTH"
+///         info_types = [{
+///           name = "DATE_OF_BIRTH"
 ///         }]
-///         "primitiveTransformation" = {
-///           "replaceConfig" = {
-///             "newValue" = {
-///               "dateValue" = {
-///                 "year"  = 2020
-///                 "month" = 1
-///                 "day"   = 1
+///         primitive_transformation = {
+///           replace_config = {
+///             new_value = {
+///               date_value = {
+///                 year  = 2020
+///                 month = 1
+///                 day   = 1
 ///               }
 ///             }
 ///           }
 ///         }
 ///         }, {
-///         "infoTypes" = [{
-///           "name" = "CREDIT_CARD_NUMBER"
+///         info_types = [{
+///           name = "CREDIT_CARD_NUMBER"
 ///         }]
-///         "primitiveTransformation" = {
-///           "cryptoDeterministicConfig" = {
-///             "context" = {
-///               "name" = "sometweak"
+///         primitive_transformation = {
+///           crypto_deterministic_config = {
+///             context = {
+///               name = "sometweak"
 ///             }
-///             "cryptoKey" = {
-///               "transient" = {
-///                 "name" = "beep"
+///             crypto_key = {
+///               transient = {
+///                 name = "beep"
 ///               }
 ///             }
-///             "surrogateInfoType" = {
-///               "name" = "abc"
+///             surrogate_info_type = {
+///               name = "abc"
 ///             }
 ///           }
 ///         }
@@ -884,7 +887,7 @@ import 'prevention_deidentify_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -930,7 +933,7 @@ import 'prevention_deidentify_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -938,28 +941,31 @@ import 'prevention_deidentify_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventiondeidentifytemplate" "basic" {
+/// resource "gcp_dataloss_prevention_deidentify_template" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "Description"
 ///   display_name = "Displayname"
 ///   deidentify_config = {
 ///     image_transformations = {
 ///       transforms = [{
-///         "redactionColor" = {
-///           "red"   = 0.5
-///           "blue"  = 1
-///           "green" = 0.2
+///         redaction_color = {
+///           red   = 0.5
+///           blue  = 1
+///           green = 0.2
 ///         }
-///         "selectedInfoTypes" = {
-///           "infoTypes" = [{
-///             "name"    = "COLOR_INFO"
-///             "version" = "latest"
+///         selected_info_types = {
+///           info_types = [{
+///             name    = "COLOR_INFO"
+///             version = "latest"
 ///           }]
 ///         }
 ///         }, {
-///         "allInfoTypes" = {}
+///         all_info_types = {}
 ///         }, {
-///         "allText" = {}
+///         all_text = {}
 ///       }]
 ///     }
 ///   }
@@ -1111,7 +1117,7 @@ class PreventionDeidentifyTemplate extends pulumi.CustomResource {
           'gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deidentifyConfig = registerOutput<PreventionDeidentifyTemplateDeidentifyConfig>('deidentifyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PreventionDeidentifyTemplateDeidentifyConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

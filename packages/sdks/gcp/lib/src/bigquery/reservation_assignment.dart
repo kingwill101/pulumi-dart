@@ -79,7 +79,7 @@ import 'reservation_assignment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -108,7 +108,7 @@ import 'reservation_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -117,13 +117,19 @@ import 'reservation_assignment_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_reservation" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-reservation"
 ///   project           = "my-project-name"
 ///   location          = "us-central1"
 ///   slot_capacity     = 0
 ///   ignore_idle_slots = false
 /// }
-/// resource "gcp_bigquery_reservationassignment" "assignment" {
+/// resource "gcp_bigquery_reservation_assignment" "assignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   assignee    = "projects/my-project-name"
 ///   job_type    = "PIPELINE"
 ///   reservation = gcp_bigquery_reservation.basic.id
@@ -247,7 +253,7 @@ class ReservationAssignment extends pulumi.CustomResource {
           'gcp:bigquery/reservationAssignment:ReservationAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     assignee = registerOutput<String>('assignee');
     deletionPolicy = registerOutput<String>('deletionPolicy');

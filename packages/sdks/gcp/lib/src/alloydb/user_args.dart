@@ -33,8 +33,11 @@ class UserArgs {
   final pulumi.Input<String?>? passwordWoVersion;
   /// The database role name of the user.
   final pulumi.Input<String> userId;
-  /// The type of this user.
-  /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`.
+  /// The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
+  /// the google-beta provider (which uses the v1beta alloydb API). Only new or Google-whitelisted
+  /// AlloyDB clusters support IAM group authentication. See
+  /// https://docs.cloud.google.com/alloydb/docs/database-users/manage-iam-auth for details.
+  /// Possible values are: `ALLOYDB_BUILT_IN`, `ALLOYDB_IAM_USER`, `ALLOYDB_IAM_GROUP`.
   final pulumi.Input<String> userType;
 
   /// Creates a new [UserArgs].
@@ -45,7 +48,7 @@ class UserArgs {
   /// [passwordWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [passwordWoVersion] Triggers update of `passwordWo` write-only. Increment this value when an update to `passwordWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   /// [userId] The database role name of the user.
-  /// [userType] The type of this user.
+  /// [userType] The type of this user. Note that 'ALLOYDB_IAM_GROUP' is currently only supported by
   const UserArgs({
     required this.cluster,
     this.databaseRoles,

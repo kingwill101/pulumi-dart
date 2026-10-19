@@ -94,7 +94,7 @@ import 'region_commitment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -122,7 +122,7 @@ import 'region_commitment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -130,7 +130,10 @@ import 'region_commitment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regioncommitment" "foobar" {
+/// resource "gcp_compute_region_commitment" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-region-commitment"
 ///   plan = "THIRTY_SIX_MONTH"
 ///   resources {
@@ -334,8 +337,8 @@ import 'region_commitment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -376,7 +379,7 @@ import 'region_commitment_state.dart';
 /// 				ResourceManagerTags: pulumi.StringMap(pulumi.All(tagKey.ID(), tagValue.ID()).ApplyT(func(_args []interface{}) (map[string]pulumi.ID, error) {
 /// 					tagKeyId := _args[0].(pulumi.ID)
 /// 					tagValueId := _args[1].(pulumi.ID)
-/// 					return map[string]pulumi.ID(pulumi.String(tagKeyId).ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
+/// 					return map[string]pulumi.ID(tagKeyId.ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
 /// 						return map[string]pulumi.ID{
 /// 							__convert: tagValueId,
 /// 						}, nil
@@ -392,7 +395,7 @@ import 'region_commitment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -400,7 +403,10 @@ import 'region_commitment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regioncommitment" "foobar" {
+/// resource "gcp_compute_region_commitment" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-full-commitment"
 ///   description = "some description"
 ///   plan        = "THIRTY_SIX_MONTH"
@@ -417,16 +423,22 @@ import 'region_commitment_state.dart';
 ///   }
 ///   params = {
 ///     resource_manager_tags = {
-///       gcp_tags_tagkey.tag_key.id = gcp_tags_tagvalue.tag_value.id
+///       gcp_tags_tag_key.tag_key.id = gcp_tags_tag_value.tag_value.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_tags_tagkey" "tag_key" {
+/// resource "gcp_tags_tag_key" "tag_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent     = "organizations/ORG_ID"
 ///   short_name = "tagkey"
 /// }
-/// resource "gcp_tags_tagvalue" "tag_value" {
-///   parent     = gcp_tags_tagkey.tag_key.id
+/// resource "gcp_tags_tag_value" "tag_value" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent     = gcp_tags_tag_key.tag_key.id
 ///   short_name = "tagvalue"
 /// }
 /// ```
@@ -624,7 +636,7 @@ class RegionCommitment extends pulumi.CustomResource {
           'gcp:compute/regionCommitment:RegionCommitment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     autoRenew = registerOutput<bool>('autoRenew');
     category = registerOutput<String>('category');

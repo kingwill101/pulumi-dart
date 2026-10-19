@@ -105,7 +105,7 @@ import 'workforce_pool_provider_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -138,7 +138,7 @@ import 'workforce_pool_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -146,14 +146,20 @@ import 'workforce_pool_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workforcepool" "pool" {
+/// resource "gcp_iam_workforce_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workforce_pool_id = "example-pool"
 ///   parent            = "organizations/123456789"
 ///   location          = "global"
 /// }
-/// resource "gcp_iam_workforcepoolprovider" "example" {
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
-///   location          = gcp_iam_workforcepool.pool.location
+/// resource "gcp_iam_workforce_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
+///   location          = gcp_iam_workforce_pool.pool.location
 ///   provider_id       = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject" = "assertion.sub"
@@ -361,7 +367,7 @@ import 'workforce_pool_provider_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -411,7 +417,7 @@ import 'workforce_pool_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -419,14 +425,20 @@ import 'workforce_pool_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workforcepool" "pool" {
+/// resource "gcp_iam_workforce_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workforce_pool_id = "example-pool"
 ///   parent            = "organizations/123456789"
 ///   location          = "global"
 /// }
-/// resource "gcp_iam_workforcepoolprovider" "example" {
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
-///   location          = gcp_iam_workforcepool.pool.location
+/// resource "gcp_iam_workforce_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
+///   location          = gcp_iam_workforce_pool.pool.location
 ///   provider_id       = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject" = "assertion.sub"
@@ -663,7 +675,7 @@ import 'workforce_pool_provider_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -706,7 +718,7 @@ import 'workforce_pool_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -714,14 +726,20 @@ import 'workforce_pool_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workforcepool" "pool" {
+/// resource "gcp_iam_workforce_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workforce_pool_id = "example-pool"
 ///   parent            = "organizations/123456789"
 ///   location          = "global"
 /// }
-/// resource "gcp_iam_workforcepoolprovider" "example" {
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
-///   location          = gcp_iam_workforcepool.pool.location
+/// resource "gcp_iam_workforce_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
+///   location          = gcp_iam_workforce_pool.pool.location
 ///   provider_id       = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject" = "assertion.sub"
@@ -1005,7 +1023,7 @@ import 'workforce_pool_provider_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1069,7 +1087,7 @@ import 'workforce_pool_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1077,14 +1095,20 @@ import 'workforce_pool_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workforcepool" "pool" {
+/// resource "gcp_iam_workforce_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workforce_pool_id = "example-pool"
 ///   parent            = "organizations/123456789"
 ///   location          = "global"
 /// }
-/// resource "gcp_iam_workforcepoolprovider" "example" {
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
-///   location          = gcp_iam_workforcepool.pool.location
+/// resource "gcp_iam_workforce_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
+///   location          = gcp_iam_workforce_pool.pool.location
 ///   provider_id       = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject" = "assertion.sub"
@@ -1391,7 +1415,7 @@ import 'workforce_pool_provider_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1444,7 +1468,7 @@ import 'workforce_pool_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1452,14 +1476,20 @@ import 'workforce_pool_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workforcepool" "pool" {
+/// resource "gcp_iam_workforce_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workforce_pool_id = "example-pool"
 ///   parent            = "organizations/123456789"
 ///   location          = "global"
 /// }
-/// resource "gcp_iam_workforcepoolprovider" "example" {
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
-///   location          = gcp_iam_workforcepool.pool.location
+/// resource "gcp_iam_workforce_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
+///   location          = gcp_iam_workforce_pool.pool.location
 ///   provider_id       = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject" = "assertion.sub"
@@ -1748,7 +1778,7 @@ import 'workforce_pool_provider_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1804,7 +1834,7 @@ import 'workforce_pool_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1812,14 +1842,20 @@ import 'workforce_pool_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workforcepool" "pool" {
+/// resource "gcp_iam_workforce_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workforce_pool_id = "example-pool"
 ///   parent            = "organizations/123456789"
 ///   location          = "global"
 /// }
-/// resource "gcp_iam_workforcepoolprovider" "example" {
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
-///   location          = gcp_iam_workforcepool.pool.location
+/// resource "gcp_iam_workforce_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
+///   location          = gcp_iam_workforce_pool.pool.location
 ///   provider_id       = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject" = "assertion.sub"
@@ -2107,7 +2143,7 @@ import 'workforce_pool_provider_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2160,7 +2196,7 @@ import 'workforce_pool_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2168,14 +2204,20 @@ import 'workforce_pool_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workforcepool" "pool" {
+/// resource "gcp_iam_workforce_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workforce_pool_id = "example-pool"
 ///   parent            = "organizations/123456789"
 ///   location          = "global"
 /// }
-/// resource "gcp_iam_workforcepoolprovider" "example" {
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
-///   location          = gcp_iam_workforcepool.pool.location
+/// resource "gcp_iam_workforce_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
+///   location          = gcp_iam_workforce_pool.pool.location
 ///   provider_id       = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject" = "assertion.sub"
@@ -2464,7 +2506,7 @@ import 'workforce_pool_provider_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2520,7 +2562,7 @@ import 'workforce_pool_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2528,14 +2570,20 @@ import 'workforce_pool_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workforcepool" "pool" {
+/// resource "gcp_iam_workforce_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workforce_pool_id = "example-pool"
 ///   parent            = "organizations/123456789"
 ///   location          = "global"
 /// }
-/// resource "gcp_iam_workforcepoolprovider" "example" {
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
-///   location          = gcp_iam_workforcepool.pool.location
+/// resource "gcp_iam_workforce_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
+///   location          = gcp_iam_workforce_pool.pool.location
 ///   provider_id       = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject" = "assertion.sub"
@@ -2823,7 +2871,7 @@ import 'workforce_pool_provider_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2876,7 +2924,7 @@ import 'workforce_pool_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2884,14 +2932,20 @@ import 'workforce_pool_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workforcepool" "pool" {
+/// resource "gcp_iam_workforce_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workforce_pool_id = "example-pool"
 ///   parent            = "organizations/123456789"
 ///   location          = "global"
 /// }
-/// resource "gcp_iam_workforcepoolprovider" "example" {
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
-///   location          = gcp_iam_workforcepool.pool.location
+/// resource "gcp_iam_workforce_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
+///   location          = gcp_iam_workforce_pool.pool.location
 ///   provider_id       = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject" = "assertion.sub"
@@ -3180,7 +3234,7 @@ import 'workforce_pool_provider_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3236,7 +3290,7 @@ import 'workforce_pool_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3244,14 +3298,20 @@ import 'workforce_pool_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workforcepool" "pool" {
+/// resource "gcp_iam_workforce_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workforce_pool_id = "example-pool"
 ///   parent            = "organizations/123456789"
 ///   location          = "global"
 /// }
-/// resource "gcp_iam_workforcepoolprovider" "example" {
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
-///   location          = gcp_iam_workforcepool.pool.location
+/// resource "gcp_iam_workforce_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
+///   location          = gcp_iam_workforce_pool.pool.location
 ///   provider_id       = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject" = "assertion.sub"
@@ -3509,7 +3569,7 @@ import 'workforce_pool_provider_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3553,7 +3613,7 @@ import 'workforce_pool_provider_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3561,14 +3621,20 @@ import 'workforce_pool_provider_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workforcepool" "pool" {
+/// resource "gcp_iam_workforce_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workforce_pool_id = "example-pool"
 ///   parent            = "organizations/123456789"
 ///   location          = "global"
 /// }
-/// resource "gcp_iam_workforcepoolprovider" "example" {
-///   workforce_pool_id = gcp_iam_workforcepool.pool.workforce_pool_id
-///   location          = gcp_iam_workforcepool.pool.location
+/// resource "gcp_iam_workforce_pool_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workforce_pool_id = gcp_iam_workforce_pool.pool.workforce_pool_id
+///   location          = gcp_iam_workforce_pool.pool.location
 ///   provider_id       = "example-prvdr"
 ///   attribute_mapping = {
 ///     "google.subject" = "assertion.sub"
@@ -3827,7 +3893,7 @@ class WorkforcePoolProvider extends pulumi.CustomResource {
           'gcp:iam/workforcePoolProvider:WorkforcePoolProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     attributeCondition = registerOutput<String?>('attributeCondition');
     attributeMapping = registerOutput<Map<String, String>?>('attributeMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

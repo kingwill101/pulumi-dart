@@ -30,6 +30,8 @@ class ClusterArgs {
   /// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
   /// Structure is documented below.
   final pulumi.Input<ClusterGcpConfig> gcpConfig;
+  /// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+  final pulumi.Input<String?>? kafkaVersion;
   /// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -52,6 +54,7 @@ class ClusterArgs {
   /// [clusterId] The ID to use for the cluster, which will become the final component of the cluster's name. The ID must be 1-63 characters long, and match the regular expression `a-z?` to comply with RFC 1035. This value is structured like: `my-cluster-id`.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [gcpConfig] Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
+  /// [kafkaVersion] The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
   /// [labels] List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
   /// [location] ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   /// [project] The ID of the project in which the resource belongs.
@@ -63,6 +66,7 @@ class ClusterArgs {
     required this.clusterId,
     this.deletionPolicy,
     required this.gcpConfig,
+    this.kafkaVersion,
     this.labels,
     required this.location,
     this.project,
@@ -77,6 +81,7 @@ class ClusterArgs {
       'clusterId': clusterId,
       'deletionPolicy': ?deletionPolicy,
       'gcpConfig': pulumi.Input.mapInputValue<ClusterGcpConfig, Map<String, dynamic>>(gcpConfig, (value) => value.toMap()),
+      'kafkaVersion': ?kafkaVersion,
       'labels': ?labels,
       'location': location,
       'project': ?project,
@@ -92,6 +97,7 @@ class ClusterArgs {
       clusterId: pulumi.Input.fromValue(map['clusterId'] as String),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gcpConfig: pulumi.Input.fromValue(ClusterGcpConfig.fromMap((map['gcpConfig']! as Map).cast<String, dynamic>())),
+      kafkaVersion: (() { final guardedValue = map['kafkaVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

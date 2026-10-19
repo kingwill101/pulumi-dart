@@ -70,7 +70,7 @@ import 'acl_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -93,7 +93,7 @@ import 'acl_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -101,7 +101,10 @@ import 'acl_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_aclconfig" "basic" {
+/// resource "gcp_discoveryengine_acl_config" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "global"
 ///   idp_config = {
 ///     idp_type = "THIRD_PARTY"
@@ -202,7 +205,7 @@ class AclConfig extends pulumi.CustomResource {
           'gcp:discoveryengine/aclConfig:AclConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     idpConfig = registerOutput<AclConfigIdpConfig?>('idpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AclConfigIdpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');

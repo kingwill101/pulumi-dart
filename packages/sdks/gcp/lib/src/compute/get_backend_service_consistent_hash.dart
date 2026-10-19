@@ -42,7 +42,7 @@ class GetBackendServiceConsistentHash {
     return GetBackendServiceConsistentHash(
       httpCookies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetBackendServiceConsistentHashHttpCooky>(map['httpCookies']!, (value) => GetBackendServiceConsistentHashHttpCooky.fromMap((value as Map).cast<String, dynamic>()))),
       httpHeaderName: pulumi.Input.fromValue(map['httpHeaderName'] as String),
-      minimumRingSize: pulumi.Input.fromValue((map['minimumRingSize'] as num).toInt()),
+      minimumRingSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minimumRingSize'])),
     );
   }
 }

@@ -213,9 +213,9 @@ import 'trigger_transport.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/eventarc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -291,7 +291,7 @@ import 'trigger_transport.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -300,6 +300,9 @@ import 'trigger_transport.dart';
 /// }
 ///
 /// resource "gcp_eventarc_trigger" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "some-trigger"
 ///   location = "us-central1"
 ///   matching_criterias {
@@ -325,17 +328,23 @@ import 'trigger_transport.dart';
 ///   }
 /// }
 /// resource "gcp_pubsub_topic" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "some-topic"
 /// }
 /// resource "gcp_cloudrun_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "some-service"
 ///   location = "us-central1"
 ///   template = {
 ///     spec = {
 ///       containers = [{
-///         "image" = "gcr.io/cloudrun/hello"
-///         "ports" = [{
-///           "containerPort" = 8080
+///         image = "gcr.io/cloudrun/hello"
+///         ports = [{
+///           container_port = 8080
 ///         }]
 ///       }]
 ///       container_concurrency = 50
@@ -562,7 +571,7 @@ class Trigger extends pulumi.CustomResource {
           'gcp:eventarc/trigger:Trigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     channel = registerOutput<String?>('channel');

@@ -146,7 +146,7 @@ import 'cx_environment_version_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -199,7 +199,7 @@ import 'cx_environment_version_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -207,7 +207,10 @@ import 'cx_environment_version_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name               = "dialogflowcx-agent"
 ///   location                   = "global"
 ///   default_language_code      = "en"
@@ -221,17 +224,23 @@ import 'cx_environment_version_config.dart';
 ///     enable_speech_adaptation = true
 ///   }
 /// }
-/// resource "gcp_diagflow_cxversion" "version_1" {
-///   parent       = gcp_diagflow_cxagent.agent.start_flow
+/// resource "gcp_diagflow_cx_version" "version_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.start_flow
 ///   display_name = "1.0.0"
 ///   description  = "version 1.0.0"
 /// }
-/// resource "gcp_diagflow_cxenvironment" "development" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_environment" "development" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "Development"
 ///   description  = "Development Environment"
 ///   version_configs {
-///     version = gcp_diagflow_cxversion.version_1.id
+///     version = gcp_diagflow_cx_version.version_1.id
 ///   }
 /// }
 /// ```
@@ -384,7 +393,7 @@ class CxEnvironment extends pulumi.CustomResource {
           'gcp:diagflow/cxEnvironment:CxEnvironment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

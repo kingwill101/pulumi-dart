@@ -217,7 +217,7 @@ import 'region_target_https_proxy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -313,7 +313,7 @@ import 'region_target_https_proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -324,45 +324,60 @@ import 'region_target_https_proxy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regiontargethttpsproxy" "default" {
+/// resource "gcp_compute_region_target_https_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region           = "us-central1"
 ///   name             = "test-proxy"
-///   url_map          = gcp_compute_regionurlmap.default.id
-///   ssl_certificates = [gcp_compute_regionsslcertificate.default.id]
+///   url_map          = gcp_compute_region_url_map.default.id
+///   ssl_certificates = [gcp_compute_region_ssl_certificate.default.id]
 /// }
-/// resource "gcp_compute_regionsslcertificate" "default" {
+/// resource "gcp_compute_region_ssl_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region      = "us-central1"
 ///   name        = "my-certificate"
 ///   private_key = file("path/to/private.key")
 ///   certificate = file("path/to/certificate.crt")
 /// }
-/// resource "gcp_compute_regionurlmap" "default" {
+/// resource "gcp_compute_region_url_map" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region          = "us-central1"
 ///   name            = "url-map"
 ///   description     = "a description"
-///   default_service = gcp_compute_regionbackendservice.default.id
+///   default_service = gcp_compute_region_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_regionbackendservice.default.id
+///     default_service = gcp_compute_region_backend_service.default.id
 ///     path_rules {
 ///       paths   = ["/*"]
-///       service = gcp_compute_regionbackendservice.default.id
+///       service = gcp_compute_region_backend_service.default.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_regionbackendservice" "default" {
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region                = "us-central1"
 ///   name                  = "backend-service"
 ///   protocol              = "HTTP"
 ///   load_balancing_scheme = "INTERNAL_MANAGED"
 ///   timeout_sec           = 10
-///   health_checks         = gcp_compute_regionhealthcheck.default.id
+///   health_checks         = gcp_compute_region_health_check.default.id
 /// }
-/// resource "gcp_compute_regionhealthcheck" "default" {
+/// resource "gcp_compute_region_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region = "us-central1"
 ///   name   = "http-health-check"
 ///   http_health_check = {
@@ -738,7 +753,7 @@ import 'region_target_https_proxy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -836,7 +851,7 @@ import 'region_target_https_proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -847,47 +862,62 @@ import 'region_target_https_proxy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regiontargethttpsproxy" "default" {
+/// resource "gcp_compute_region_target_https_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region                      = "us-central1"
 ///   name                        = "test-http-keep-alive-timeout-proxy"
 ///   http_keep_alive_timeout_sec = 600
-///   url_map                     = gcp_compute_regionurlmap.default.id
-///   ssl_certificates            = [gcp_compute_regionsslcertificate.default.id]
+///   url_map                     = gcp_compute_region_url_map.default.id
+///   ssl_certificates            = [gcp_compute_region_ssl_certificate.default.id]
 /// }
-/// resource "gcp_compute_regionsslcertificate" "default" {
+/// resource "gcp_compute_region_ssl_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region      = "us-central1"
 ///   name        = "my-certificate"
 ///   private_key = file("path/to/private.key")
 ///   certificate = file("path/to/certificate.crt")
 /// }
-/// resource "gcp_compute_regionurlmap" "default" {
+/// resource "gcp_compute_region_url_map" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region          = "us-central1"
 ///   name            = "url-map"
 ///   description     = "a description"
-///   default_service = gcp_compute_regionbackendservice.default.id
+///   default_service = gcp_compute_region_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_regionbackendservice.default.id
+///     default_service = gcp_compute_region_backend_service.default.id
 ///     path_rules {
 ///       paths   = ["/*"]
-///       service = gcp_compute_regionbackendservice.default.id
+///       service = gcp_compute_region_backend_service.default.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_regionbackendservice" "default" {
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region                = "us-central1"
 ///   name                  = "backend-service"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "INTERNAL_MANAGED"
-///   health_checks         = gcp_compute_regionhealthcheck.default.id
+///   health_checks         = gcp_compute_region_health_check.default.id
 /// }
-/// resource "gcp_compute_regionhealthcheck" "default" {
+/// resource "gcp_compute_region_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region = "us-central1"
 ///   name   = "http-health-check"
 ///   http_health_check = {
@@ -1388,10 +1418,10 @@ import 'region_target_https_proxy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1547,7 +1577,7 @@ import 'region_target_https_proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1558,17 +1588,23 @@ import 'region_target_https_proxy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_compute_regiontargethttpsproxy" "default" {
+/// resource "gcp_compute_region_target_https_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region            = "us-central1"
 ///   name              = "test-mtls-proxy"
-///   url_map           = gcp_compute_regionurlmap.default.id
-///   ssl_certificates  = [gcp_compute_regionsslcertificate.default.id]
-///   server_tls_policy = gcp_networksecurity_servertlspolicy.default.id
+///   url_map           = gcp_compute_region_url_map.default.id
+///   ssl_certificates  = [gcp_compute_region_ssl_certificate.default.id]
+///   server_tls_policy = gcp_networksecurity_server_tls_policy.default.id
 /// }
-/// resource "gcp_certificatemanager_trustconfig" "default" {
+/// resource "gcp_certificatemanager_trust_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   name        = "my-trust-config"
 ///   description = "sample description for trust config"
@@ -1584,50 +1620,65 @@ import 'region_target_https_proxy_state.dart';
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_networksecurity_servertlspolicy" "default" {
+/// resource "gcp_networksecurity_server_tls_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   name        = "my-tls-policy"
 ///   description = "my description"
 ///   allow_open  = "false"
 ///   mtls_policy = {
 ///     client_validation_mode         = "REJECT_INVALID"
-///     client_validation_trust_config ="projects/${data.gcp_organizations_getproject.project.number}/locations/us-central1/trustConfigs/${gcp_certificatemanager_trustconfig.default.name}"
+///     client_validation_trust_config ="projects/${data.gcp_organizations_project.project.number}/locations/us-central1/trustConfigs/${gcp_certificatemanager_trust_config.default.name}"
 ///   }
 /// }
-/// resource "gcp_compute_regionsslcertificate" "default" {
+/// resource "gcp_compute_region_ssl_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region      = "us-central1"
 ///   name        = "my-certificate"
 ///   private_key = file("path/to/private.key")
 ///   certificate = file("path/to/certificate.crt")
 /// }
-/// resource "gcp_compute_regionurlmap" "default" {
+/// resource "gcp_compute_region_url_map" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region          = "us-central1"
 ///   name            = "url-map"
 ///   description     = "a description"
-///   default_service = gcp_compute_regionbackendservice.default.id
+///   default_service = gcp_compute_region_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_regionbackendservice.default.id
+///     default_service = gcp_compute_region_backend_service.default.id
 ///     path_rules {
 ///       paths   = ["/*"]
-///       service = gcp_compute_regionbackendservice.default.id
+///       service = gcp_compute_region_backend_service.default.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_regionbackendservice" "default" {
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region                = "us-central1"
 ///   name                  = "backend-service"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "INTERNAL_MANAGED"
-///   health_checks         = gcp_compute_regionhealthcheck.default.id
+///   health_checks         = gcp_compute_region_health_check.default.id
 /// }
-/// resource "gcp_compute_regionhealthcheck" "default" {
+/// resource "gcp_compute_region_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region             = "us-central1"
 ///   name               = "http-health-check"
 ///   check_interval_sec = 1
@@ -2013,8 +2064,8 @@ import 'region_target_https_proxy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -2079,7 +2130,7 @@ import 'region_target_https_proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2090,12 +2141,18 @@ import 'region_target_https_proxy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regiontargethttpsproxy" "default" {
+/// resource "gcp_compute_region_target_https_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                             = "target-http-proxy"
-///   url_map                          = gcp_compute_regionurlmap.default.id
+///   url_map                          = gcp_compute_region_url_map.default.id
 ///   certificate_manager_certificates = ["//certificatemanager.googleapis.com/${gcp_certificatemanager_certificate.default.id}"] # [google_certificate_manager_certificate.default.id] is also acceptable
 /// }
 /// resource "gcp_certificatemanager_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-certificate"
 ///   location = "us-central1"
 ///   self_managed = {
@@ -2103,12 +2160,18 @@ import 'region_target_https_proxy_state.dart';
 ///     pem_private_key = file("test-fixtures/private-key.pem")
 ///   }
 /// }
-/// resource "gcp_compute_regionurlmap" "default" {
+/// resource "gcp_compute_region_url_map" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "url-map"
-///   default_service = gcp_compute_regionbackendservice.default.id
+///   default_service = gcp_compute_region_backend_service.default.id
 ///   region          = "us-central1"
 /// }
-/// resource "gcp_compute_regionbackendservice" "default" {
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "backend-service"
 ///   region                = "us-central1"
 ///   protocol              = "HTTPS"
@@ -2325,7 +2388,7 @@ class RegionTargetHttpsProxy extends pulumi.CustomResource {
           'gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     certificateManagerCertificates = registerOutput<List<String>?>('certificateManagerCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     creationTimestamp = registerOutput<String>('creationTimestamp');

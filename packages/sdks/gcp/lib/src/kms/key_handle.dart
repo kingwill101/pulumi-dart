@@ -344,9 +344,9 @@ import 'key_handle_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -485,7 +485,7 @@ import 'key_handle_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -498,13 +498,19 @@ import 'key_handle_state.dart';
 ///
 /// # Create Folder in GCP Organization
 /// resource "gcp_organizations_folder" "autokms_folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "folder-kh"
 ///   parent              = "organizations/123456789"
 ///   deletion_protection = false
 /// }
 /// # Create the key project
 /// resource "gcp_organizations_project" "key_project" {
-///   depends_on      = [gcp_organizations_folder.autokms_folder]
+///   depends_on = [gcp_organizations_folder.autokms_folder]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "key-proj"
 ///   name            = "key-proj"
 ///   folder_id       = gcp_organizations_folder.autokms_folder.folder_id
@@ -513,7 +519,10 @@ import 'key_handle_state.dart';
 /// }
 /// # Create the resource project
 /// resource "gcp_organizations_project" "resource_project" {
-///   depends_on      = [gcp_organizations_folder.autokms_folder]
+///   depends_on = [gcp_organizations_folder.autokms_folder]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "res-proj"
 ///   name            = "res-proj"
 ///   folder_id       = gcp_organizations_folder.autokms_folder.folder_id
@@ -522,51 +531,78 @@ import 'key_handle_state.dart';
 /// }
 /// # Enable the Cloud KMS API
 /// resource "gcp_projects_service" "kms_api_service" {
-///   depends_on                 = [gcp_organizations_project.key_project]
+///   depends_on = [gcp_organizations_project.key_project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service                    = "cloudkms.googleapis.com"
 ///   project                    = gcp_organizations_project.key_project.project_id
 ///   disable_dependent_services = true
 /// }
 /// # Wait delay after enabling APIs
 /// resource "time_sleep" "wait_enable_service_api" {
-///   depends_on      = [gcp_projects_service.kms_api_service]
+///   depends_on = [gcp_projects_service.kms_api_service]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "30s"
 /// }
 /// #Create KMS Service Agent
-/// resource "gcp_projects_serviceidentity" "kms_service_agent" {
+/// resource "gcp_projects_service_identity" "kms_service_agent" {
 ///   depends_on = [time_sleep.wait_enable_service_api]
-///   service    = "cloudkms.googleapis.com"
-///   project    = gcp_organizations_project.key_project.number
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service = "cloudkms.googleapis.com"
+///   project = gcp_organizations_project.key_project.number
 /// }
 /// # Wait delay after creating service agent.
 /// resource "time_sleep" "wait_service_agent" {
-///   depends_on      = [gcp_projects_serviceidentity.kms_service_agent]
+///   depends_on = [gcp_projects_service_identity.kms_service_agent]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "10s"
 /// }
 /// #Grant the KMS Service Agent the Cloud KMS Admin role
-/// resource "gcp_projects_iammember" "autokey_project_admin" {
+/// resource "gcp_projects_i_a_m_member" "autokey_project_admin" {
 ///   depends_on = [time_sleep.wait_service_agent]
-///   project    = gcp_organizations_project.key_project.project_id
-///   role       = "roles/cloudkms.admin"
-///   member     ="serviceAccount:service-${gcp_organizations_project.key_project.number}@gcp-sa-cloudkms.iam.gserviceaccount.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.key_project.project_id
+///   role    = "roles/cloudkms.admin"
+///   member  ="serviceAccount:service-${gcp_organizations_project.key_project.number}@gcp-sa-cloudkms.iam.gserviceaccount.com"
 /// }
 /// # Wait delay after granting IAM permissions
 /// resource "time_sleep" "wait_srv_acc_permissions" {
-///   depends_on      = [gcp_projects_iammember.autokey_project_admin]
+///   depends_on = [gcp_projects_i_a_m_member.autokey_project_admin]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "10s"
 /// }
-/// resource "gcp_kms_autokeyconfig" "autokey_config" {
-///   depends_on  = [time_sleep.wait_srv_acc_permissions]
+/// resource "gcp_kms_autokey_config" "autokey_config" {
+///   depends_on = [time_sleep.wait_srv_acc_permissions]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder      = gcp_organizations_folder.autokms_folder.folder_id
 ///   key_project ="projects/${gcp_organizations_project.key_project.project_id}"
 /// }
 /// # Wait delay for autokey config to take effect
 /// resource "time_sleep" "wait_autokey_config" {
-///   depends_on      = [gcp_kms_autokeyconfig.autokey_config]
+///   depends_on = [gcp_kms_autokey_config.autokey_config]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "10s"
 /// }
-/// resource "gcp_kms_keyhandle" "example-keyhandle" {
-///   depends_on             = [time_sleep.wait_autokey_config]
+/// resource "gcp_kms_key_handle" "example-keyhandle" {
+///   depends_on = [time_sleep.wait_autokey_config]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                = gcp_organizations_project.resource_project.project_id
 ///   name                   = "tf-test-key-handle"
 ///   location               = "global"
@@ -882,7 +918,7 @@ class KeyHandle extends pulumi.CustomResource {
           'gcp:kms/keyHandle:KeyHandle',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     kmsKey = registerOutput<String>('kmsKey');
     location = registerOutput<String>('location');

@@ -56,7 +56,7 @@ import 'hosting_site_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -74,7 +74,7 @@ import 'hosting_site_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -82,7 +82,10 @@ import 'hosting_site_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingsite" "default" {
+/// resource "gcp_firebase_hosting_site" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "site-no-app"
 /// }
@@ -182,7 +185,7 @@ import 'hosting_site_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -208,7 +211,7 @@ import 'hosting_site_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -216,14 +219,20 @@ import 'hosting_site_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_webapp" "default" {
+/// resource "gcp_firebase_web_app" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = "my-project-name"
 ///   display_name = "Test web app for Firebase Hosting"
 /// }
-/// resource "gcp_firebase_hostingsite" "full" {
+/// resource "gcp_firebase_hosting_site" "full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "site-with-app"
-///   app_id  = gcp_firebase_webapp.default.app_id
+///   app_id  = gcp_firebase_web_app.default.app_id
 /// }
 /// ```
 /// ```java
@@ -319,7 +328,7 @@ import 'hosting_site_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -337,7 +346,7 @@ import 'hosting_site_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -345,7 +354,10 @@ import 'hosting_site_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingsite" "default" {
+/// resource "gcp_firebase_hosting_site" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "my-project-name"
 /// }
@@ -450,7 +462,7 @@ class HostingSite extends pulumi.CustomResource {
           'gcp:firebase/hostingSite:HostingSite',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     appId = registerOutput<String?>('appId');
     defaultUrl = registerOutput<String>('defaultUrl');

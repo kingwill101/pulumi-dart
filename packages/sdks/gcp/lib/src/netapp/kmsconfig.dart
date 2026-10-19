@@ -62,7 +62,7 @@ import 'kmsconfig_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -82,7 +82,7 @@ import 'kmsconfig_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -91,6 +91,9 @@ import 'kmsconfig_state.dart';
 /// }
 ///
 /// resource "gcp_netapp_kmsconfig" "kmsConfig" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "kms-test"
 ///   description     = "this is a test description"
 ///   crypto_key_name = "crypto-name"
@@ -203,7 +206,7 @@ class Kmsconfig extends pulumi.CustomResource {
           'gcp:netapp/kmsconfig:Kmsconfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     cryptoKeyName = registerOutput<String>('cryptoKeyName');

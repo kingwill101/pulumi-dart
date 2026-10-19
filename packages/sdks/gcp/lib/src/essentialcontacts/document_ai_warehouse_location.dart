@@ -70,8 +70,8 @@ import 'document_ai_warehouse_location_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/essentialcontacts"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/essentialcontacts"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -97,7 +97,7 @@ import 'document_ai_warehouse_location_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -105,12 +105,15 @@ import 'document_ai_warehouse_location_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_essentialcontacts_documentaiwarehouselocation" "example" {
+/// resource "gcp_essentialcontacts_document_ai_warehouse_location" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                      = "us"
-///   project_number                = data.gcp_organizations_getproject.project.number
+///   project_number                = data.gcp_organizations_project.project.number
 ///   access_control_mode           = "ACL_MODE_DOCUMENT_LEVEL_ACCESS_CONTROL_GCI"
 ///   database_type                 = "DB_INFRA_SPANNER"
 ///   kms_key                       = "dummy_key"
@@ -210,7 +213,7 @@ class DocumentAiWarehouseLocation extends pulumi.CustomResource {
           'gcp:essentialcontacts/documentAiWarehouseLocation:DocumentAiWarehouseLocation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     accessControlMode = registerOutput<String>('accessControlMode');
     databaseType = registerOutput<String>('databaseType');

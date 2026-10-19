@@ -60,7 +60,7 @@ import 'channel_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/eventarc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -80,7 +80,7 @@ import 'channel_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -89,6 +89,9 @@ import 'channel_state.dart';
 /// }
 ///
 /// resource "gcp_eventarc_channel" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = "us-central1"
 ///   name                 = "some-channel"
 ///   crypto_key_name      = "some-key"
@@ -207,7 +210,7 @@ class Channel extends pulumi.CustomResource {
           'gcp:eventarc/channel:Channel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     activationToken = registerOutput<String>('activationToken');

@@ -166,7 +166,7 @@ class GetMetastoreServiceResult {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return guardedValue as String; })(),
       networkConfigs: (() { final guardedValue = map['networkConfigs']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetMetastoreServiceNetworkConfig>(guardedValue, (value) => GetMetastoreServiceNetworkConfig.fromMap((value as Map).cast<String, dynamic>())); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       releaseChannel: (() { final guardedValue = map['releaseChannel']; if (guardedValue == null) return null; return guardedValue as String; })(),

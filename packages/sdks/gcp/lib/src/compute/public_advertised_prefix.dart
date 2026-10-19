@@ -60,7 +60,7 @@ import 'public_advertised_prefix_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -80,7 +80,7 @@ import 'public_advertised_prefix_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -88,7 +88,10 @@ import 'public_advertised_prefix_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_publicadvertisedprefix" "prefixes" {
+/// resource "gcp_compute_public_advertised_prefix" "prefixes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "my-prefix"
 ///   description         = "description"
 ///   dns_verification_ip = "127.127.0.0"
@@ -187,7 +190,7 @@ import 'public_advertised_prefix_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -208,7 +211,7 @@ import 'public_advertised_prefix_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -216,7 +219,10 @@ import 'public_advertised_prefix_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_publicadvertisedprefix" "prefixes" {
+/// resource "gcp_compute_public_advertised_prefix" "prefixes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "my-pap"
 ///   description         = "description"
 ///   dns_verification_ip = "127.127.0.0"
@@ -318,7 +324,7 @@ import 'public_advertised_prefix_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -339,7 +345,7 @@ import 'public_advertised_prefix_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -347,7 +353,10 @@ import 'public_advertised_prefix_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_publicadvertisedprefix" "prefixes" {
+/// resource "gcp_compute_public_advertised_prefix" "prefixes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-pap"
 ///   description      = "description"
 ///   ip_cidr_range    = "2001:db8::/32"
@@ -474,7 +483,7 @@ class PublicAdvertisedPrefix extends pulumi.CustomResource {
           'gcp:compute/publicAdvertisedPrefix:PublicAdvertisedPrefix',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

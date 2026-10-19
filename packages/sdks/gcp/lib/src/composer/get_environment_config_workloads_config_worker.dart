@@ -41,9 +41,9 @@ class GetEnvironmentConfigWorkloadsConfigWorker {
   factory GetEnvironmentConfigWorkloadsConfigWorker.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigWorkloadsConfigWorker(
       cpu: pulumi.Input.fromValue((map['cpu'] as num).toDouble()),
-      maxCount: pulumi.Input.fromValue((map['maxCount'] as num).toInt()),
+      maxCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxCount'])),
       memoryGb: pulumi.Input.fromValue((map['memoryGb'] as num).toDouble()),
-      minCount: pulumi.Input.fromValue((map['minCount'] as num).toInt()),
+      minCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minCount'])),
       storageGb: pulumi.Input.fromValue((map['storageGb'] as num).toDouble()),
     );
   }

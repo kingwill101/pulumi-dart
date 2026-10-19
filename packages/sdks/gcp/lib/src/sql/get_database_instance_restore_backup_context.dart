@@ -30,7 +30,7 @@ class GetDatabaseInstanceRestoreBackupContext {
 
   factory GetDatabaseInstanceRestoreBackupContext.fromMap(Map<String, dynamic> map) {
     return GetDatabaseInstanceRestoreBackupContext(
-      backupRunId: pulumi.Input.fromValue((map['backupRunId'] as num).toInt()),
+      backupRunId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backupRunId'])),
       instanceId: pulumi.Input.fromValue(map['instanceId'] as String),
       project: pulumi.Input.fromValue(map['project'] as String),
     );

@@ -368,11 +368,11 @@ import 'flexible_app_version_vpc_access_connector.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -516,7 +516,7 @@ import 'flexible_app_version_vpc_access_connector.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -525,6 +525,9 @@ import 'flexible_app_version_vpc_access_connector.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "my_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "appeng-flex"
 ///   project_id      = "appeng-flex"
 ///   org_id          = "123456789"
@@ -532,37 +535,58 @@ import 'flexible_app_version_vpc_access_connector.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "gcp_appengine_application" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = gcp_organizations_project.my_project.project_id
 ///   location_id = "us-central"
 /// }
 /// resource "gcp_projects_service" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.my_project.project_id
 ///   service                    = "appengineflex.googleapis.com"
 ///   disable_dependent_services = false
 /// }
 /// resource "gcp_serviceaccount_account" "custom_service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = gcp_projects_service.service.project
 ///   account_id   = "my-account"
 ///   display_name = "Custom Service Account"
 /// }
-/// resource "gcp_projects_iammember" "gae_api" {
+/// resource "gcp_projects_i_a_m_member" "gae_api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_projects_service.service.project
 ///   role    = "roles/compute.networkUser"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.custom_service_account.email}"
 /// }
-/// resource "gcp_projects_iammember" "logs_writer" {
+/// resource "gcp_projects_i_a_m_member" "logs_writer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_projects_service.service.project
 ///   role    = "roles/logging.logWriter"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.custom_service_account.email}"
 /// }
-/// resource "gcp_projects_iammember" "storage_viewer" {
+/// resource "gcp_projects_i_a_m_member" "storage_viewer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_projects_service.service.project
 ///   role    = "roles/storage.objectViewer"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.custom_service_account.email}"
 /// }
-/// resource "gcp_appengine_flexibleappversion" "myapp_v1" {
+/// resource "gcp_appengine_flexible_app_version" "myapp_v1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   version_id = "v1"
-///   project    = gcp_projects_iammember.gae_api.project
+///   project    = gcp_projects_i_a_m_member.gae_api.project
 ///   service    = "default"
 ///   runtime    = "nodejs"
 ///   flexible_runtime_settings = {
@@ -574,7 +598,7 @@ import 'flexible_app_version_vpc_access_connector.dart';
 ///   }
 ///   deployment = {
 ///     zip = {
-///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.object.name}"
 ///     }
 ///   }
 ///   liveness_check = {
@@ -606,14 +630,20 @@ import 'flexible_app_version_vpc_access_connector.dart';
 ///   service_account = gcp_serviceaccount_account.custom_service_account.email
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = gcp_organizations_project.my_project.project_id
 ///   name     = "appengine-static-content"
 ///   location = "US"
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "hello-world.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("./test-fixtures/hello-world.zip")
+///   source = fileasset("./test-fixtures/hello-world.zip")
 /// }
 /// ```
 /// ```java
@@ -995,7 +1025,7 @@ class FlexibleAppVersion extends pulumi.CustomResource {
           'gcp:appengine/flexibleAppVersion:FlexibleAppVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     apiConfig = registerOutput<FlexibleAppVersionApiConfig?>('apiConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionApiConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     automaticScaling = registerOutput<FlexibleAppVersionAutomaticScaling?>('automaticScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FlexibleAppVersionAutomaticScaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });

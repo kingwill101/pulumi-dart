@@ -32,8 +32,8 @@ class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
   factory PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth.fromMap(Map<String, dynamic> map) {
     return PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth(
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
-      dayOffset: (() { final guardedValue = map['dayOffset']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      weekOrdinal: pulumi.Input.fromValue((map['weekOrdinal'] as num).toInt()),
+      dayOffset: (() { final guardedValue = map['dayOffset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      weekOrdinal: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['weekOrdinal'])),
     );
   }
 }

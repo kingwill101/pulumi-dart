@@ -107,8 +107,8 @@ import 'tag_binding_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -153,7 +153,7 @@ import 'tag_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -162,24 +162,36 @@ import 'tag_binding_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "project_id"
 ///   name            = "project_id"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
-/// resource "gcp_tags_tagkey" "key" {
+/// resource "gcp_tags_tag_key" "key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent      = "organizations/123456789"
 ///   short_name  = "keyname"
 ///   description = "For keyname resources."
 /// }
-/// resource "gcp_tags_tagvalue" "value" {
-///   parent      = gcp_tags_tagkey.key.id
+/// resource "gcp_tags_tag_value" "value" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent      = gcp_tags_tag_key.key.id
 ///   short_name  = "valuename"
 ///   description = "For valuename resources."
 /// }
-/// resource "gcp_tags_tagbinding" "binding" {
+/// resource "gcp_tags_tag_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent    ="//cloudresourcemanager.googleapis.com/projects/${gcp_organizations_project.project.number}"
-///   tag_value = gcp_tags_tagvalue.value.id
+///   tag_value = gcp_tags_tag_value.value.id
 /// }
 /// ```
 /// ```java
@@ -345,8 +357,8 @@ import 'tag_binding_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -386,7 +398,7 @@ import 'tag_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -395,20 +407,29 @@ import 'tag_binding_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "project_id"
 ///   name            = "project_id"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
-/// resource "gcp_tags_tagkey" "key" {
+/// resource "gcp_tags_tag_key" "key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent               = "organizations/123456789"
 ///   short_name           = "keyname"
 ///   description          = "For keyname resources."
 ///   allowed_values_regex = "^[a-z]+$"
 /// }
-/// resource "gcp_tags_tagbinding" "binding" {
+/// resource "gcp_tags_tag_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent    ="//cloudresourcemanager.googleapis.com/projects/${gcp_organizations_project.project.number}"
-///   tag_value ="${gcp_tags_tagkey.key.namespaced_name}/test-value"
+///   tag_value ="${gcp_tags_tag_key.key.namespaced_name}/test-value"
 /// }
 /// ```
 /// ```java
@@ -523,7 +544,7 @@ class TagBinding extends pulumi.CustomResource {
           'gcp:tags/tagBinding:TagBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     this.name = registerOutput<String>('name');

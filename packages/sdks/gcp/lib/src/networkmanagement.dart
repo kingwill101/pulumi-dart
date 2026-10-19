@@ -21,6 +21,9 @@ export 'networkmanagement/get_connectivity_tests_connectivity_test_source_app_en
 export 'networkmanagement/get_connectivity_tests_connectivity_test_source_cloud_function.dart';
 export 'networkmanagement/get_connectivity_tests_connectivity_test_source_cloud_run_revision.dart';
 export 'networkmanagement/get_connectivity_tests_result.dart';
+export 'networkmanagement/network_monitoring_provider.dart';
+export 'networkmanagement/network_monitoring_provider_args.dart';
+export 'networkmanagement/network_monitoring_provider_state.dart';
 export 'networkmanagement/organization_vpc_flow_logs_config.dart';
 export 'networkmanagement/organization_vpc_flow_logs_config_args.dart';
 export 'networkmanagement/organization_vpc_flow_logs_config_state.dart';

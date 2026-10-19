@@ -197,10 +197,10 @@ import 'project_access_policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -276,7 +276,7 @@ import 'project_access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -288,6 +288,9 @@ import 'project_access_policy_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "ap-project-"
 ///   name            = "ap-project-"
 ///   org_id          = "123456789"
@@ -295,31 +298,43 @@ import 'project_access_policy_state.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "gcp_projects_service" "iam_api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project            = gcp_organizations_project.project.project_id
 ///   service            = "iam.googleapis.com"
 ///   disable_on_destroy = false
 /// }
 /// resource "time_sleep" "wait_for_project_propagation" {
-///   depends_on      = [gcp_projects_service.iam_api]
+///   depends_on = [gcp_projects_service.iam_api]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "30s"
 /// }
 /// resource "gcp_serviceaccount_account" "test_sa" {
-///   depends_on   = [time_sleep.wait_for_project_propagation]
+///   depends_on = [time_sleep.wait_for_project_propagation]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "svc-acc-"
 ///   display_name = "Test Service Account for Access Policy"
 ///   project      = gcp_organizations_project.project.project_id
 /// }
-/// resource "gcp_iam_projectaccesspolicy" "example" {
-///   depends_on       = [time_sleep.wait_for_project_propagation, gcp_serviceaccount_account.test_sa]
+/// resource "gcp_iam_project_access_policy" "example" {
+///   depends_on = [time_sleep.wait_for_project_propagation, gcp_serviceaccount_account.test_sa]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = gcp_organizations_project.project.project_id
 ///   location         = "global"
 ///   access_policy_id = "my-project-policy-"
 ///   details = {
 ///     rules = [{
-///       "effect"     = "ALLOW"
-///       "principals" = ["principal://iam.googleapis.com/projects/-/serviceAccounts/${gcp_serviceaccount_account.test_sa.email}"]
-///       "operation" = {
-///         "permissions" = ["eventarc.googleapis.com/messageBuses.publish"]
+///       effect     = "ALLOW"
+///       principals = ["principal://iam.googleapis.com/projects/-/serviceAccounts/${gcp_serviceaccount_account.test_sa.email}"]
+///       operation = {
+///         permissions = ["eventarc.googleapis.com/messageBuses.publish"]
 ///       }
 ///     }]
 ///   }
@@ -544,7 +559,7 @@ class ProjectAccessPolicy extends pulumi.CustomResource {
           'gcp:iam/projectAccessPolicy:ProjectAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

@@ -31,8 +31,8 @@ import 'batch_state_history.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const exampleBatchSpark = new gcp.dataproc.Batch("example_batch_spark", {
-///     batchId: "tf-test-batch_29225",
-///     location: "us-central1",
+///     batchId: "tf-test-batch_94690",
+///     location: "us-east1",
 ///     labels: {
 ///         batch_test: "terraform",
 ///     },
@@ -61,8 +61,8 @@ import 'batch_state_history.dart';
 /// import pulumi_gcp as gcp
 ///
 /// example_batch_spark = gcp.dataproc.Batch("example_batch_spark",
-///     batch_id="tf-test-batch_29225",
-///     location="us-central1",
+///     batch_id="tf-test-batch_94690",
+///     location="us-east1",
 ///     labels={
 ///         "batch_test": "terraform",
 ///     },
@@ -95,8 +95,8 @@ import 'batch_state_history.dart';
 /// {
 ///     var exampleBatchSpark = new Gcp.Dataproc.Batch("example_batch_spark", new()
 ///     {
-///         BatchId = "tf-test-batch_29225",
-///         Location = "us-central1",
+///         BatchId = "tf-test-batch_94690",
+///         Location = "us-east1",
 ///         Labels =
 ///         {
 ///             { "batch_test", "terraform" },
@@ -141,15 +141,15 @@ import 'batch_state_history.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dataproc.NewBatch(ctx, "example_batch_spark", &dataproc.BatchArgs{
-/// 			BatchId:  pulumi.String("tf-test-batch_29225"),
-/// 			Location: pulumi.String("us-central1"),
+/// 			BatchId:  pulumi.String("tf-test-batch_94690"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			Labels: pulumi.StringMap{
 /// 				"batch_test": pulumi.String("terraform"),
 /// 			},
@@ -186,7 +186,7 @@ import 'batch_state_history.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -195,8 +195,11 @@ import 'batch_state_history.dart';
 /// }
 ///
 /// resource "gcp_dataproc_batch" "example_batch_spark" {
-///   batch_id = "tf-test-batch_29225"
-///   location = "us-central1"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   batch_id = "tf-test-batch_94690"
+///   location = "us-east1"
 ///   labels = {
 ///     "batch_test" = "terraform"
 ///   }
@@ -246,8 +249,8 @@ import 'batch_state_history.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleBatchSpark = new Batch("exampleBatchSpark", BatchArgs.builder()
-///             .batchId("tf-test-batch_29225")
-///             .location("us-central1")
+///             .batchId("tf-test-batch_94690")
+///             .location("us-east1")
 ///             .labels(Map.of("batch_test", "terraform"))
 ///             .runtimeConfig(BatchRuntimeConfigArgs.builder()
 ///                 .properties(Map.ofEntries(
@@ -278,8 +281,8 @@ import 'batch_state_history.dart';
 ///     type: gcp:dataproc:Batch
 ///     name: example_batch_spark
 ///     properties:
-///       batchId: tf-test-batch_29225
-///       location: us-central1
+///       batchId: tf-test-batch_94690
+///       location: us-east1
 ///       labels:
 ///         batch_test: terraform
 ///       runtimeConfig:
@@ -323,7 +326,7 @@ import 'batch_state_history.dart';
 /// });
 /// const ms = new gcp.dataproc.MetastoreService("ms", {
 ///     serviceId: "dataproc-batch",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     port: 9080,
 ///     tier: "DEVELOPER",
 ///     maintenanceWindow: {
@@ -336,7 +339,7 @@ import 'batch_state_history.dart';
 /// });
 /// const basic = new gcp.dataproc.Cluster("basic", {
 ///     name: "dataproc-batch",
-///     region: "us-central1",
+///     region: "us-east1",
 ///     clusterConfig: {
 ///         softwareConfig: {
 ///             overrideProperties: {
@@ -349,8 +352,9 @@ import 'batch_state_history.dart';
 ///         },
 ///         masterConfig: {
 ///             numInstances: 1,
-///             machineType: "e2-standard-2",
+///             machineType: "n4-standard-2",
 ///             diskConfig: {
+///                 bootDiskType: "hyperdisk-balanced",
 ///                 bootDiskSizeGb: 35,
 ///             },
 ///         },
@@ -361,7 +365,7 @@ import 'batch_state_history.dart';
 /// });
 /// const exampleBatchSpark = new gcp.dataproc.Batch("example_batch_spark", {
 ///     batchId: "dataproc-batch",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     labels: {
 ///         batch_test: "terraform",
 ///     },
@@ -417,7 +421,7 @@ import 'batch_state_history.dart';
 ///     member=f"serviceAccount:service-{project.number}@dataproc-accounts.iam.gserviceaccount.com")
 /// ms = gcp.dataproc.MetastoreService("ms",
 ///     service_id="dataproc-batch",
-///     location="us-central1",
+///     location="us-east1",
 ///     port=9080,
 ///     tier="DEVELOPER",
 ///     maintenance_window={
@@ -429,7 +433,7 @@ import 'batch_state_history.dart';
 ///     })
 /// basic = gcp.dataproc.Cluster("basic",
 ///     name="dataproc-batch",
-///     region="us-central1",
+///     region="us-east1",
 ///     cluster_config={
 ///         "software_config": {
 ///             "override_properties": {
@@ -442,8 +446,9 @@ import 'batch_state_history.dart';
 ///         },
 ///         "master_config": {
 ///             "num_instances": 1,
-///             "machine_type": "e2-standard-2",
+///             "machine_type": "n4-standard-2",
 ///             "disk_config": {
+///                 "boot_disk_type": "hyperdisk-balanced",
 ///                 "boot_disk_size_gb": 35,
 ///             },
 ///         },
@@ -453,7 +458,7 @@ import 'batch_state_history.dart';
 ///     })
 /// example_batch_spark = gcp.dataproc.Batch("example_batch_spark",
 ///     batch_id="dataproc-batch",
-///     location="us-central1",
+///     location="us-east1",
 ///     labels={
 ///         "batch_test": "terraform",
 ///     },
@@ -520,7 +525,7 @@ import 'batch_state_history.dart';
 ///     var ms = new Gcp.Dataproc.MetastoreService("ms", new()
 ///     {
 ///         ServiceId = "dataproc-batch",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         Port = 9080,
 ///         Tier = "DEVELOPER",
 ///         MaintenanceWindow = new Gcp.Dataproc.Inputs.MetastoreServiceMaintenanceWindowArgs
@@ -537,7 +542,7 @@ import 'batch_state_history.dart';
 ///     var basic = new Gcp.Dataproc.Cluster("basic", new()
 ///     {
 ///         Name = "dataproc-batch",
-///         Region = "us-central1",
+///         Region = "us-east1",
 ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
 ///         {
 ///             SoftwareConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigSoftwareConfigArgs
@@ -555,9 +560,10 @@ import 'batch_state_history.dart';
 ///             MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
 ///             {
 ///                 NumInstances = 1,
-///                 MachineType = "e2-standard-2",
+///                 MachineType = "n4-standard-2",
 ///                 DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigDiskConfigArgs
 ///                 {
+///                     BootDiskType = "hyperdisk-balanced",
 ///                     BootDiskSizeGb = 35,
 ///                 },
 ///             },
@@ -571,7 +577,7 @@ import 'batch_state_history.dart';
 ///     var exampleBatchSpark = new Gcp.Dataproc.Batch("example_batch_spark", new()
 ///     {
 ///         BatchId = "dataproc-batch",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         Labels =
 ///         {
 ///             { "batch_test", "terraform" },
@@ -640,10 +646,10 @@ import 'batch_state_history.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -676,7 +682,7 @@ import 'batch_state_history.dart';
 /// 		}
 /// 		ms, err := dataproc.NewMetastoreService(ctx, "ms", &dataproc.MetastoreServiceArgs{
 /// 			ServiceId: pulumi.String("dataproc-batch"),
-/// 			Location:  pulumi.String("us-central1"),
+/// 			Location:  pulumi.String("us-east1"),
 /// 			Port:      pulumi.Int(9080),
 /// 			Tier:      pulumi.String("DEVELOPER"),
 /// 			MaintenanceWindow: &dataproc.MetastoreServiceMaintenanceWindowArgs{
@@ -692,7 +698,7 @@ import 'batch_state_history.dart';
 /// 		}
 /// 		basic, err := dataproc.NewCluster(ctx, "basic", &dataproc.ClusterArgs{
 /// 			Name:   pulumi.String("dataproc-batch"),
-/// 			Region: pulumi.String("us-central1"),
+/// 			Region: pulumi.String("us-east1"),
 /// 			ClusterConfig: &dataproc.ClusterClusterConfigArgs{
 /// 				SoftwareConfig: &dataproc.ClusterClusterConfigSoftwareConfigArgs{
 /// 					OverrideProperties: pulumi.StringMap{
@@ -707,8 +713,9 @@ import 'batch_state_history.dart';
 /// 				},
 /// 				MasterConfig: &dataproc.ClusterClusterConfigMasterConfigArgs{
 /// 					NumInstances: pulumi.Int(1),
-/// 					MachineType:  pulumi.String("e2-standard-2"),
+/// 					MachineType:  pulumi.String("n4-standard-2"),
 /// 					DiskConfig: &dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs{
+/// 						BootDiskType:   pulumi.String("hyperdisk-balanced"),
 /// 						BootDiskSizeGb: pulumi.Int(35),
 /// 					},
 /// 				},
@@ -722,7 +729,7 @@ import 'batch_state_history.dart';
 /// 		}
 /// 		_, err = dataproc.NewBatch(ctx, "example_batch_spark", &dataproc.BatchArgs{
 /// 			BatchId:  pulumi.String("dataproc-batch"),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			Labels: pulumi.StringMap{
 /// 				"batch_test": pulumi.String("terraform"),
 /// 			},
@@ -774,7 +781,7 @@ import 'batch_state_history.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -782,15 +789,18 @@ import 'batch_state_history.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
-/// data "gcp_storage_getprojectserviceaccount" "gcsAccount" {
+/// data "gcp_storage_project_service_account" "gcsAccount" {
 /// }
 ///
 /// resource "gcp_dataproc_batch" "example_batch_spark" {
-///   depends_on = [gcp_kms_cryptokeyiammember.crypto_key_member_1]
-///   batch_id   = "dataproc-batch"
-///   location   = "us-central1"
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.crypto_key_member_1]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   batch_id = "dataproc-batch"
+///   location = "us-east1"
 ///   labels = {
 ///     "batch_test" = "terraform"
 ///   }
@@ -807,14 +817,14 @@ import 'batch_state_history.dart';
 ///       network_tags    = ["tag1"]
 ///       kms_key         = "example-key"
 ///       network_uri     = "default"
-///       service_account ="${data.gcp_organizations_getproject.project.number}-compute@developer.gserviceaccount.com"
+///       service_account ="${data.gcp_organizations_project.project.number}-compute@developer.gserviceaccount.com"
 ///       staging_bucket  = gcp_storage_bucket.bucket.name
 ///       authentication_config = {
 ///         user_workload_authentication_type = "SERVICE_ACCOUNT"
 ///       }
 ///     }
 ///     peripherals_config = {
-///       metastore_service = gcp_dataproc_metastoreservice.ms.name
+///       metastore_service = gcp_dataproc_metastore_service.ms.name
 ///       spark_history_server_config = {
 ///         dataproc_cluster = gcp_dataproc_cluster.basic.id
 ///       }
@@ -827,19 +837,28 @@ import 'batch_state_history.dart';
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   uniform_bucket_level_access = true
 ///   name                        = "dataproc-bucket"
 ///   location                    = "US"
 ///   force_destroy               = true
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key_member_1" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key_member_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "example-key"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@dataproc-accounts.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.project.number}@dataproc-accounts.iam.gserviceaccount.com"
 /// }
 /// resource "gcp_dataproc_cluster" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "dataproc-batch"
-///   region = "us-central1"
+///   region = "us-east1"
 ///   cluster_config = {
 ///     software_config = {
 ///       override_properties = {
@@ -852,19 +871,23 @@ import 'batch_state_history.dart';
 ///     }
 ///     master_config = {
 ///       num_instances = 1
-///       machine_type  = "e2-standard-2"
+///       machine_type  = "n4-standard-2"
 ///       disk_config = {
+///         boot_disk_type    = "hyperdisk-balanced"
 ///         boot_disk_size_gb = 35
 ///       }
 ///     }
 ///     metastore_config = {
-///       dataproc_metastore_service = gcp_dataproc_metastoreservice.ms.name
+///       dataproc_metastore_service = gcp_dataproc_metastore_service.ms.name
 ///     }
 ///   }
 /// }
-/// resource "gcp_dataproc_metastoreservice" "ms" {
+/// resource "gcp_dataproc_metastore_service" "ms" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id = "dataproc-batch"
-///   location   = "us-central1"
+///   location   = "us-east1"
 ///   port       = 9080
 ///   tier       = "DEVELOPER"
 ///   maintenance_window = {
@@ -946,7 +969,7 @@ import 'batch_state_history.dart';
 ///
 ///         var ms = new MetastoreService("ms", MetastoreServiceArgs.builder()
 ///             .serviceId("dataproc-batch")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .port(9080)
 ///             .tier("DEVELOPER")
 ///             .maintenanceWindow(MetastoreServiceMaintenanceWindowArgs.builder()
@@ -960,7 +983,7 @@ import 'batch_state_history.dart';
 ///
 ///         var basic = new Cluster("basic", ClusterArgs.builder()
 ///             .name("dataproc-batch")
-///             .region("us-central1")
+///             .region("us-east1")
 ///             .clusterConfig(ClusterClusterConfigArgs.builder()
 ///                 .softwareConfig(ClusterClusterConfigSoftwareConfigArgs.builder()
 ///                     .overrideProperties(Map.ofEntries(
@@ -973,8 +996,9 @@ import 'batch_state_history.dart';
 ///                     .build())
 ///                 .masterConfig(ClusterClusterConfigMasterConfigArgs.builder()
 ///                     .numInstances(1)
-///                     .machineType("e2-standard-2")
+///                     .machineType("n4-standard-2")
 ///                     .diskConfig(ClusterClusterConfigMasterConfigDiskConfigArgs.builder()
+///                         .bootDiskType("hyperdisk-balanced")
 ///                         .bootDiskSizeGb(35)
 ///                         .build())
 ///                     .build())
@@ -986,7 +1010,7 @@ import 'batch_state_history.dart';
 ///
 ///         var exampleBatchSpark = new Batch("exampleBatchSpark", BatchArgs.builder()
 ///             .batchId("dataproc-batch")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .labels(Map.of("batch_test", "terraform"))
 ///             .runtimeConfig(BatchRuntimeConfigArgs.builder()
 ///                 .properties(Map.ofEntries(
@@ -1033,7 +1057,7 @@ import 'batch_state_history.dart';
 ///     name: example_batch_spark
 ///     properties:
 ///       batchId: dataproc-batch
-///       location: us-central1
+///       location: us-east1
 ///       labels:
 ///         batch_test: terraform
 ///       runtimeConfig:
@@ -1083,7 +1107,7 @@ import 'batch_state_history.dart';
 ///     type: gcp:dataproc:Cluster
 ///     properties:
 ///       name: dataproc-batch
-///       region: us-central1
+///       region: us-east1
 ///       clusterConfig:
 ///         softwareConfig:
 ///           overrideProperties:
@@ -1093,8 +1117,9 @@ import 'batch_state_history.dart';
 ///           enableHttpPortAccess: true
 ///         masterConfig:
 ///           numInstances: 1
-///           machineType: e2-standard-2
+///           machineType: n4-standard-2
 ///           diskConfig:
+///             bootDiskType: hyperdisk-balanced
 ///             bootDiskSizeGb: 35
 ///         metastoreConfig:
 ///           dataprocMetastoreService: ${ms.name}
@@ -1102,7 +1127,7 @@ import 'batch_state_history.dart';
 ///     type: gcp:dataproc:MetastoreService
 ///     properties:
 ///       serviceId: dataproc-batch
-///       location: us-central1
+///       location: us-east1
 ///       port: 9080
 ///       tier: DEVELOPER
 ///       maintenanceWindow:
@@ -1130,8 +1155,8 @@ import 'batch_state_history.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const exampleBatchSparsql = new gcp.dataproc.Batch("example_batch_sparsql", {
-///     batchId: "tf-test-batch_40798",
-///     location: "us-central1",
+///     batchId: "tf-test-batch_29947",
+///     location: "us-east1",
 ///     runtimeConfig: {
 ///         properties: {
 ///             "spark.dynamicAllocation.enabled": "false",
@@ -1157,8 +1182,8 @@ import 'batch_state_history.dart';
 /// import pulumi_gcp as gcp
 ///
 /// example_batch_sparsql = gcp.dataproc.Batch("example_batch_sparsql",
-///     batch_id="tf-test-batch_40798",
-///     location="us-central1",
+///     batch_id="tf-test-batch_29947",
+///     location="us-east1",
 ///     runtime_config={
 ///         "properties": {
 ///             "spark.dynamicAllocation.enabled": "false",
@@ -1188,8 +1213,8 @@ import 'batch_state_history.dart';
 /// {
 ///     var exampleBatchSparsql = new Gcp.Dataproc.Batch("example_batch_sparsql", new()
 ///     {
-///         BatchId = "tf-test-batch_40798",
-///         Location = "us-central1",
+///         BatchId = "tf-test-batch_29947",
+///         Location = "us-east1",
 ///         RuntimeConfig = new Gcp.Dataproc.Inputs.BatchRuntimeConfigArgs
 ///         {
 ///             Properties =
@@ -1225,15 +1250,15 @@ import 'batch_state_history.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dataproc.NewBatch(ctx, "example_batch_sparsql", &dataproc.BatchArgs{
-/// 			BatchId:  pulumi.String("tf-test-batch_40798"),
-/// 			Location: pulumi.String("us-central1"),
+/// 			BatchId:  pulumi.String("tf-test-batch_29947"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			RuntimeConfig: &dataproc.BatchRuntimeConfigArgs{
 /// 				Properties: pulumi.StringMap{
 /// 					"spark.dynamicAllocation.enabled": pulumi.String("false"),
@@ -1263,7 +1288,7 @@ import 'batch_state_history.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1272,8 +1297,11 @@ import 'batch_state_history.dart';
 /// }
 ///
 /// resource "gcp_dataproc_batch" "example_batch_sparsql" {
-///   batch_id = "tf-test-batch_40798"
-///   location = "us-central1"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   batch_id = "tf-test-batch_29947"
+///   location = "us-east1"
 ///   runtime_config = {
 ///     properties = {
 ///       "spark.dynamicAllocation.enabled" = "false"
@@ -1320,8 +1348,8 @@ import 'batch_state_history.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleBatchSparsql = new Batch("exampleBatchSparsql", BatchArgs.builder()
-///             .batchId("tf-test-batch_40798")
-///             .location("us-central1")
+///             .batchId("tf-test-batch_29947")
+///             .location("us-east1")
 ///             .runtimeConfig(BatchRuntimeConfigArgs.builder()
 ///                 .properties(Map.ofEntries(
 ///                     Map.entry("spark.dynamicAllocation.enabled", "false"),
@@ -1349,8 +1377,8 @@ import 'batch_state_history.dart';
 ///     type: gcp:dataproc:Batch
 ///     name: example_batch_sparsql
 ///     properties:
-///       batchId: tf-test-batch_40798
-///       location: us-central1
+///       batchId: tf-test-batch_29947
+///       location: us-east1
 ///       runtimeConfig:
 ///         properties:
 ///           spark.dynamicAllocation.enabled: 'false'
@@ -1375,8 +1403,8 @@ import 'batch_state_history.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const exampleBatchPyspark = new gcp.dataproc.Batch("example_batch_pyspark", {
-///     batchId: "tf-test-batch_82591",
-///     location: "us-central1",
+///     batchId: "tf-test-batch_28257",
+///     location: "us-east1",
 ///     runtimeConfig: {
 ///         properties: {
 ///             "spark.dynamicAllocation.enabled": "false",
@@ -1389,16 +1417,16 @@ import 'batch_state_history.dart';
 ///         },
 ///     },
 ///     pysparkBatch: {
-///         mainPythonFileUri: "https://storage.googleapis.com/terraform-batches/test_util.py",
+///         mainPythonFileUri: "https://storage.googleapis.com/terraform-serverless/test_util.py",
 ///         args: ["10"],
 ///         jarFileUris: ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
 ///         pythonFileUris: ["gs://dataproc-examples/pyspark/hello-world/hello-world.py"],
 ///         archiveUris: [
-///             "https://storage.googleapis.com/terraform-batches/animals.txt.tar.gz#unpacked",
-///             "https://storage.googleapis.com/terraform-batches/animals.txt.jar",
-///             "https://storage.googleapis.com/terraform-batches/animals.txt",
+///             "https://storage.googleapis.com/terraform-serverless/animals.txt.tar.gz#unpacked",
+///             "https://storage.googleapis.com/terraform-serverless/animals.txt.jar",
+///             "https://storage.googleapis.com/terraform-serverless/animals.txt",
 ///         ],
-///         fileUris: ["https://storage.googleapis.com/terraform-batches/people.txt"],
+///         fileUris: ["https://storage.googleapis.com/terraform-serverless/people.txt"],
 ///     },
 /// });
 /// ```
@@ -1407,8 +1435,8 @@ import 'batch_state_history.dart';
 /// import pulumi_gcp as gcp
 ///
 /// example_batch_pyspark = gcp.dataproc.Batch("example_batch_pyspark",
-///     batch_id="tf-test-batch_82591",
-///     location="us-central1",
+///     batch_id="tf-test-batch_28257",
+///     location="us-east1",
 ///     runtime_config={
 ///         "properties": {
 ///             "spark.dynamicAllocation.enabled": "false",
@@ -1421,16 +1449,16 @@ import 'batch_state_history.dart';
 ///         },
 ///     },
 ///     pyspark_batch={
-///         "main_python_file_uri": "https://storage.googleapis.com/terraform-batches/test_util.py",
+///         "main_python_file_uri": "https://storage.googleapis.com/terraform-serverless/test_util.py",
 ///         "args": ["10"],
 ///         "jar_file_uris": ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
 ///         "python_file_uris": ["gs://dataproc-examples/pyspark/hello-world/hello-world.py"],
 ///         "archive_uris": [
-///             "https://storage.googleapis.com/terraform-batches/animals.txt.tar.gz#unpacked",
-///             "https://storage.googleapis.com/terraform-batches/animals.txt.jar",
-///             "https://storage.googleapis.com/terraform-batches/animals.txt",
+///             "https://storage.googleapis.com/terraform-serverless/animals.txt.tar.gz#unpacked",
+///             "https://storage.googleapis.com/terraform-serverless/animals.txt.jar",
+///             "https://storage.googleapis.com/terraform-serverless/animals.txt",
 ///         ],
-///         "file_uris": ["https://storage.googleapis.com/terraform-batches/people.txt"],
+///         "file_uris": ["https://storage.googleapis.com/terraform-serverless/people.txt"],
 ///     })
 /// ```
 /// ```csharp
@@ -1443,8 +1471,8 @@ import 'batch_state_history.dart';
 /// {
 ///     var exampleBatchPyspark = new Gcp.Dataproc.Batch("example_batch_pyspark", new()
 ///     {
-///         BatchId = "tf-test-batch_82591",
-///         Location = "us-central1",
+///         BatchId = "tf-test-batch_28257",
+///         Location = "us-east1",
 ///         RuntimeConfig = new Gcp.Dataproc.Inputs.BatchRuntimeConfigArgs
 ///         {
 ///             Properties =
@@ -1462,7 +1490,7 @@ import 'batch_state_history.dart';
 ///         },
 ///         PysparkBatch = new Gcp.Dataproc.Inputs.BatchPysparkBatchArgs
 ///         {
-///             MainPythonFileUri = "https://storage.googleapis.com/terraform-batches/test_util.py",
+///             MainPythonFileUri = "https://storage.googleapis.com/terraform-serverless/test_util.py",
 ///             Args = new[]
 ///             {
 ///                 "10",
@@ -1477,13 +1505,13 @@ import 'batch_state_history.dart';
 ///             },
 ///             ArchiveUris = new[]
 ///             {
-///                 "https://storage.googleapis.com/terraform-batches/animals.txt.tar.gz#unpacked",
-///                 "https://storage.googleapis.com/terraform-batches/animals.txt.jar",
-///                 "https://storage.googleapis.com/terraform-batches/animals.txt",
+///                 "https://storage.googleapis.com/terraform-serverless/animals.txt.tar.gz#unpacked",
+///                 "https://storage.googleapis.com/terraform-serverless/animals.txt.jar",
+///                 "https://storage.googleapis.com/terraform-serverless/animals.txt",
 ///             },
 ///             FileUris = new[]
 ///             {
-///                 "https://storage.googleapis.com/terraform-batches/people.txt",
+///                 "https://storage.googleapis.com/terraform-serverless/people.txt",
 ///             },
 ///         },
 ///     });
@@ -1494,15 +1522,15 @@ import 'batch_state_history.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dataproc.NewBatch(ctx, "example_batch_pyspark", &dataproc.BatchArgs{
-/// 			BatchId:  pulumi.String("tf-test-batch_82591"),
-/// 			Location: pulumi.String("us-central1"),
+/// 			BatchId:  pulumi.String("tf-test-batch_28257"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			RuntimeConfig: &dataproc.BatchRuntimeConfigArgs{
 /// 				Properties: pulumi.StringMap{
 /// 					"spark.dynamicAllocation.enabled": pulumi.String("false"),
@@ -1515,7 +1543,7 @@ import 'batch_state_history.dart';
 /// 				},
 /// 			},
 /// 			PysparkBatch: &dataproc.BatchPysparkBatchArgs{
-/// 				MainPythonFileUri: pulumi.String("https://storage.googleapis.com/terraform-batches/test_util.py"),
+/// 				MainPythonFileUri: pulumi.String("https://storage.googleapis.com/terraform-serverless/test_util.py"),
 /// 				Args: pulumi.StringArray{
 /// 					pulumi.String("10"),
 /// 				},
@@ -1526,12 +1554,12 @@ import 'batch_state_history.dart';
 /// 					pulumi.String("gs://dataproc-examples/pyspark/hello-world/hello-world.py"),
 /// 				},
 /// 				ArchiveUris: pulumi.StringArray{
-/// 					pulumi.String("https://storage.googleapis.com/terraform-batches/animals.txt.tar.gz#unpacked"),
-/// 					pulumi.String("https://storage.googleapis.com/terraform-batches/animals.txt.jar"),
-/// 					pulumi.String("https://storage.googleapis.com/terraform-batches/animals.txt"),
+/// 					pulumi.String("https://storage.googleapis.com/terraform-serverless/animals.txt.tar.gz#unpacked"),
+/// 					pulumi.String("https://storage.googleapis.com/terraform-serverless/animals.txt.jar"),
+/// 					pulumi.String("https://storage.googleapis.com/terraform-serverless/animals.txt"),
 /// 				},
 /// 				FileUris: pulumi.StringArray{
-/// 					pulumi.String("https://storage.googleapis.com/terraform-batches/people.txt"),
+/// 					pulumi.String("https://storage.googleapis.com/terraform-serverless/people.txt"),
 /// 				},
 /// 			},
 /// 		})
@@ -1543,7 +1571,7 @@ import 'batch_state_history.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1552,8 +1580,11 @@ import 'batch_state_history.dart';
 /// }
 ///
 /// resource "gcp_dataproc_batch" "example_batch_pyspark" {
-///   batch_id = "tf-test-batch_82591"
-///   location = "us-central1"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   batch_id = "tf-test-batch_28257"
+///   location = "us-east1"
 ///   runtime_config = {
 ///     properties = {
 ///       "spark.dynamicAllocation.enabled" = "false"
@@ -1566,12 +1597,12 @@ import 'batch_state_history.dart';
 ///     }
 ///   }
 ///   pyspark_batch = {
-///     main_python_file_uri = "https://storage.googleapis.com/terraform-batches/test_util.py"
+///     main_python_file_uri = "https://storage.googleapis.com/terraform-serverless/test_util.py"
 ///     args                 = ["10"]
 ///     jar_file_uris        = ["file:///usr/lib/spark/examples/jars/spark-examples.jar"]
 ///     python_file_uris     = ["gs://dataproc-examples/pyspark/hello-world/hello-world.py"]
-///     archive_uris         = ["https://storage.googleapis.com/terraform-batches/animals.txt.tar.gz#unpacked", "https://storage.googleapis.com/terraform-batches/animals.txt.jar", "https://storage.googleapis.com/terraform-batches/animals.txt"]
-///     file_uris            = ["https://storage.googleapis.com/terraform-batches/people.txt"]
+///     archive_uris         = ["https://storage.googleapis.com/terraform-serverless/animals.txt.tar.gz#unpacked", "https://storage.googleapis.com/terraform-serverless/animals.txt.jar", "https://storage.googleapis.com/terraform-serverless/animals.txt"]
+///     file_uris            = ["https://storage.googleapis.com/terraform-serverless/people.txt"]
 ///   }
 /// }
 /// ```
@@ -1601,8 +1632,8 @@ import 'batch_state_history.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleBatchPyspark = new Batch("exampleBatchPyspark", BatchArgs.builder()
-///             .batchId("tf-test-batch_82591")
-///             .location("us-central1")
+///             .batchId("tf-test-batch_28257")
+///             .location("us-east1")
 ///             .runtimeConfig(BatchRuntimeConfigArgs.builder()
 ///                 .properties(Map.ofEntries(
 ///                     Map.entry("spark.dynamicAllocation.enabled", "false"),
@@ -1615,15 +1646,15 @@ import 'batch_state_history.dart';
 ///                     .build())
 ///                 .build())
 ///             .pysparkBatch(BatchPysparkBatchArgs.builder()
-///                 .mainPythonFileUri("https://storage.googleapis.com/terraform-batches/test_util.py")
+///                 .mainPythonFileUri("https://storage.googleapis.com/terraform-serverless/test_util.py")
 ///                 .args("10")
 ///                 .jarFileUris("file:///usr/lib/spark/examples/jars/spark-examples.jar")
 ///                 .pythonFileUris("gs://dataproc-examples/pyspark/hello-world/hello-world.py")
 ///                 .archiveUris(
-///                     "https://storage.googleapis.com/terraform-batches/animals.txt.tar.gz#unpacked",
-///                     "https://storage.googleapis.com/terraform-batches/animals.txt.jar",
-///                     "https://storage.googleapis.com/terraform-batches/animals.txt")
-///                 .fileUris("https://storage.googleapis.com/terraform-batches/people.txt")
+///                     "https://storage.googleapis.com/terraform-serverless/animals.txt.tar.gz#unpacked",
+///                     "https://storage.googleapis.com/terraform-serverless/animals.txt.jar",
+///                     "https://storage.googleapis.com/terraform-serverless/animals.txt")
+///                 .fileUris("https://storage.googleapis.com/terraform-serverless/people.txt")
 ///                 .build())
 ///             .build());
 ///
@@ -1636,8 +1667,8 @@ import 'batch_state_history.dart';
 ///     type: gcp:dataproc:Batch
 ///     name: example_batch_pyspark
 ///     properties:
-///       batchId: tf-test-batch_82591
-///       location: us-central1
+///       batchId: tf-test-batch_28257
+///       location: us-east1
 ///       runtimeConfig:
 ///         properties:
 ///           spark.dynamicAllocation.enabled: 'false'
@@ -1646,7 +1677,7 @@ import 'batch_state_history.dart';
 ///         executionConfig:
 ///           subnetworkUri: default
 ///       pysparkBatch:
-///         mainPythonFileUri: https://storage.googleapis.com/terraform-batches/test_util.py
+///         mainPythonFileUri: https://storage.googleapis.com/terraform-serverless/test_util.py
 ///         args:
 ///           - '10'
 ///         jarFileUris:
@@ -1654,11 +1685,11 @@ import 'batch_state_history.dart';
 ///         pythonFileUris:
 ///           - gs://dataproc-examples/pyspark/hello-world/hello-world.py
 ///         archiveUris:
-///           - https://storage.googleapis.com/terraform-batches/animals.txt.tar.gz#unpacked
-///           - https://storage.googleapis.com/terraform-batches/animals.txt.jar
-///           - https://storage.googleapis.com/terraform-batches/animals.txt
+///           - https://storage.googleapis.com/terraform-serverless/animals.txt.tar.gz#unpacked
+///           - https://storage.googleapis.com/terraform-serverless/animals.txt.jar
+///           - https://storage.googleapis.com/terraform-serverless/animals.txt
 ///         fileUris:
-///           - https://storage.googleapis.com/terraform-batches/people.txt
+///           - https://storage.googleapis.com/terraform-serverless/people.txt
 /// ```
 ///
 /// ### Dataproc Batch Sparkr
@@ -1670,8 +1701,8 @@ import 'batch_state_history.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const exampleBatchSparkr = new gcp.dataproc.Batch("example_batch_sparkr", {
-///     batchId: "tf-test-batch_24243",
-///     location: "us-central1",
+///     batchId: "tf-test-batch_49175",
+///     location: "us-east1",
 ///     labels: {
 ///         batch_test: "terraform",
 ///     },
@@ -1689,8 +1720,8 @@ import 'batch_state_history.dart';
 ///         },
 ///     },
 ///     sparkRBatch: {
-///         mainRFileUri: "https://storage.googleapis.com/terraform-batches/spark-r-flights.r",
-///         args: ["https://storage.googleapis.com/terraform-batches/flights.csv"],
+///         mainRFileUri: "https://storage.googleapis.com/terraform-serverless/spark-r-flights.r",
+///         args: ["https://storage.googleapis.com/terraform-serverless/flights.csv"],
 ///     },
 /// });
 /// ```
@@ -1699,8 +1730,8 @@ import 'batch_state_history.dart';
 /// import pulumi_gcp as gcp
 ///
 /// example_batch_sparkr = gcp.dataproc.Batch("example_batch_sparkr",
-///     batch_id="tf-test-batch_24243",
-///     location="us-central1",
+///     batch_id="tf-test-batch_49175",
+///     location="us-east1",
 ///     labels={
 ///         "batch_test": "terraform",
 ///     },
@@ -1718,8 +1749,8 @@ import 'batch_state_history.dart';
 ///         },
 ///     },
 ///     spark_r_batch={
-///         "main_r_file_uri": "https://storage.googleapis.com/terraform-batches/spark-r-flights.r",
-///         "args": ["https://storage.googleapis.com/terraform-batches/flights.csv"],
+///         "main_r_file_uri": "https://storage.googleapis.com/terraform-serverless/spark-r-flights.r",
+///         "args": ["https://storage.googleapis.com/terraform-serverless/flights.csv"],
 ///     })
 /// ```
 /// ```csharp
@@ -1732,8 +1763,8 @@ import 'batch_state_history.dart';
 /// {
 ///     var exampleBatchSparkr = new Gcp.Dataproc.Batch("example_batch_sparkr", new()
 ///     {
-///         BatchId = "tf-test-batch_24243",
-///         Location = "us-central1",
+///         BatchId = "tf-test-batch_49175",
+///         Location = "us-east1",
 ///         Labels =
 ///         {
 ///             { "batch_test", "terraform" },
@@ -1760,10 +1791,10 @@ import 'batch_state_history.dart';
 ///         },
 ///         SparkRBatch = new Gcp.Dataproc.Inputs.BatchSparkRBatchArgs
 ///         {
-///             MainRFileUri = "https://storage.googleapis.com/terraform-batches/spark-r-flights.r",
+///             MainRFileUri = "https://storage.googleapis.com/terraform-serverless/spark-r-flights.r",
 ///             Args = new[]
 ///             {
-///                 "https://storage.googleapis.com/terraform-batches/flights.csv",
+///                 "https://storage.googleapis.com/terraform-serverless/flights.csv",
 ///             },
 ///         },
 ///     });
@@ -1774,15 +1805,15 @@ import 'batch_state_history.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dataproc.NewBatch(ctx, "example_batch_sparkr", &dataproc.BatchArgs{
-/// 			BatchId:  pulumi.String("tf-test-batch_24243"),
-/// 			Location: pulumi.String("us-central1"),
+/// 			BatchId:  pulumi.String("tf-test-batch_49175"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			Labels: pulumi.StringMap{
 /// 				"batch_test": pulumi.String("terraform"),
 /// 			},
@@ -1802,9 +1833,9 @@ import 'batch_state_history.dart';
 /// 				},
 /// 			},
 /// 			SparkRBatch: &dataproc.BatchSparkRBatchArgs{
-/// 				MainRFileUri: pulumi.String("https://storage.googleapis.com/terraform-batches/spark-r-flights.r"),
+/// 				MainRFileUri: pulumi.String("https://storage.googleapis.com/terraform-serverless/spark-r-flights.r"),
 /// 				Args: pulumi.StringArray{
-/// 					pulumi.String("https://storage.googleapis.com/terraform-batches/flights.csv"),
+/// 					pulumi.String("https://storage.googleapis.com/terraform-serverless/flights.csv"),
 /// 				},
 /// 			},
 /// 		})
@@ -1816,7 +1847,7 @@ import 'batch_state_history.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1825,8 +1856,11 @@ import 'batch_state_history.dart';
 /// }
 ///
 /// resource "gcp_dataproc_batch" "example_batch_sparkr" {
-///   batch_id = "tf-test-batch_24243"
-///   location = "us-central1"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   batch_id = "tf-test-batch_49175"
+///   location = "us-east1"
 ///   labels = {
 ///     "batch_test" = "terraform"
 ///   }
@@ -1844,8 +1878,8 @@ import 'batch_state_history.dart';
 ///     }
 ///   }
 ///   spark_r_batch = {
-///     main_r_file_uri = "https://storage.googleapis.com/terraform-batches/spark-r-flights.r"
-///     args            = ["https://storage.googleapis.com/terraform-batches/flights.csv"]
+///     main_r_file_uri = "https://storage.googleapis.com/terraform-serverless/spark-r-flights.r"
+///     args            = ["https://storage.googleapis.com/terraform-serverless/flights.csv"]
 ///   }
 /// }
 /// ```
@@ -1875,8 +1909,8 @@ import 'batch_state_history.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleBatchSparkr = new Batch("exampleBatchSparkr", BatchArgs.builder()
-///             .batchId("tf-test-batch_24243")
-///             .location("us-central1")
+///             .batchId("tf-test-batch_49175")
+///             .location("us-east1")
 ///             .labels(Map.of("batch_test", "terraform"))
 ///             .runtimeConfig(BatchRuntimeConfigArgs.builder()
 ///                 .properties(Map.ofEntries(
@@ -1892,8 +1926,8 @@ import 'batch_state_history.dart';
 ///                     .build())
 ///                 .build())
 ///             .sparkRBatch(BatchSparkRBatchArgs.builder()
-///                 .mainRFileUri("https://storage.googleapis.com/terraform-batches/spark-r-flights.r")
-///                 .args("https://storage.googleapis.com/terraform-batches/flights.csv")
+///                 .mainRFileUri("https://storage.googleapis.com/terraform-serverless/spark-r-flights.r")
+///                 .args("https://storage.googleapis.com/terraform-serverless/flights.csv")
 ///                 .build())
 ///             .build());
 ///
@@ -1906,8 +1940,8 @@ import 'batch_state_history.dart';
 ///     type: gcp:dataproc:Batch
 ///     name: example_batch_sparkr
 ///     properties:
-///       batchId: tf-test-batch_24243
-///       location: us-central1
+///       batchId: tf-test-batch_49175
+///       location: us-east1
 ///       labels:
 ///         batch_test: terraform
 ///       runtimeConfig:
@@ -1921,9 +1955,9 @@ import 'batch_state_history.dart';
 ///           networkTags:
 ///             - tag1
 ///       sparkRBatch:
-///         mainRFileUri: https://storage.googleapis.com/terraform-batches/spark-r-flights.r
+///         mainRFileUri: https://storage.googleapis.com/terraform-serverless/spark-r-flights.r
 ///         args:
-///           - https://storage.googleapis.com/terraform-batches/flights.csv
+///           - https://storage.googleapis.com/terraform-serverless/flights.csv
 /// ```
 ///
 /// ### Dataproc Batch Autotuning
@@ -1935,8 +1969,8 @@ import 'batch_state_history.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const exampleBatchAutotuning = new gcp.dataproc.Batch("example_batch_autotuning", {
-///     batchId: "tf-test-batch_7495",
-///     location: "us-central1",
+///     batchId: "tf-test-batch_79411",
+///     location: "us-east1",
 ///     labels: {
 ///         batch_test: "terraform",
 ///     },
@@ -1973,8 +2007,8 @@ import 'batch_state_history.dart';
 /// import pulumi_gcp as gcp
 ///
 /// example_batch_autotuning = gcp.dataproc.Batch("example_batch_autotuning",
-///     batch_id="tf-test-batch_7495",
-///     location="us-central1",
+///     batch_id="tf-test-batch_79411",
+///     location="us-east1",
 ///     labels={
 ///         "batch_test": "terraform",
 ///     },
@@ -2015,8 +2049,8 @@ import 'batch_state_history.dart';
 /// {
 ///     var exampleBatchAutotuning = new Gcp.Dataproc.Batch("example_batch_autotuning", new()
 ///     {
-///         BatchId = "tf-test-batch_7495",
-///         Location = "us-central1",
+///         BatchId = "tf-test-batch_79411",
+///         Location = "us-east1",
 ///         Labels =
 ///         {
 ///             { "batch_test", "terraform" },
@@ -2068,15 +2102,15 @@ import 'batch_state_history.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dataproc.NewBatch(ctx, "example_batch_autotuning", &dataproc.BatchArgs{
-/// 			BatchId:  pulumi.String("tf-test-batch_7495"),
-/// 			Location: pulumi.String("us-central1"),
+/// 			BatchId:  pulumi.String("tf-test-batch_79411"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			Labels: pulumi.StringMap{
 /// 				"batch_test": pulumi.String("terraform"),
 /// 			},
@@ -2119,7 +2153,7 @@ import 'batch_state_history.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2128,8 +2162,11 @@ import 'batch_state_history.dart';
 /// }
 ///
 /// resource "gcp_dataproc_batch" "example_batch_autotuning" {
-///   batch_id = "tf-test-batch_7495"
-///   location = "us-central1"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   batch_id = "tf-test-batch_79411"
+///   location = "us-east1"
 ///   labels = {
 ///     "batch_test" = "terraform"
 ///   }
@@ -2184,8 +2221,8 @@ import 'batch_state_history.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var exampleBatchAutotuning = new Batch("exampleBatchAutotuning", BatchArgs.builder()
-///             .batchId("tf-test-batch_7495")
-///             .location("us-central1")
+///             .batchId("tf-test-batch_79411")
+///             .location("us-east1")
 ///             .labels(Map.of("batch_test", "terraform"))
 ///             .runtimeConfig(BatchRuntimeConfigArgs.builder()
 ///                 .version("2.2")
@@ -2223,8 +2260,8 @@ import 'batch_state_history.dart';
 ///     type: gcp:dataproc:Batch
 ///     name: example_batch_autotuning
 ///     properties:
-///       batchId: tf-test-batch_7495
-///       location: us-central1
+///       batchId: tf-test-batch_79411
+///       location: us-east1
 ///       labels:
 ///         batch_test: terraform
 ///       runtimeConfig:
@@ -2348,7 +2385,7 @@ class Batch extends pulumi.CustomResource {
           'gcp:dataproc/batch:Batch',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     batchId = registerOutput<String?>('batchId');

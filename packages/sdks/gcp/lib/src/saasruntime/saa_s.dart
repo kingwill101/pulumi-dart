@@ -79,7 +79,7 @@ import 'saa_sstate.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/saasruntime"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/saasruntime"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -105,7 +105,7 @@ import 'saa_sstate.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -113,7 +113,10 @@ import 'saa_sstate.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_saasruntime_saas" "example" {
+/// resource "gcp_saasruntime_saa_s" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   saas_id  = "test-saas"
 ///   location = "global"
 ///   locations {
@@ -261,7 +264,7 @@ class SaaS extends pulumi.CustomResource {
           'gcp:saasruntime/saaS:SaaS',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

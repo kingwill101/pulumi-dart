@@ -44,6 +44,9 @@ class GetSecretsSecret {
   final pulumi.Input<List<GetSecretsSecretRotation>> rotations;
   /// This must be unique within the project.
   final pulumi.Input<String> secretId;
+  /// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+  /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+  final pulumi.Input<String> secretType;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -75,6 +78,7 @@ class GetSecretsSecret {
   /// [replications] The replication policy of the secret data attached to the Secret.
   /// [rotations] The rotation time and period for a Secret.
   /// [secretId] This must be unique within the project.
+  /// [secretType] This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
   /// [tags] A map of resource manager tags.
   /// [topics] A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
   /// [ttl] The TTL for the Secret.
@@ -95,6 +99,7 @@ class GetSecretsSecret {
     required this.replications,
     required this.rotations,
     required this.secretId,
+    required this.secretType,
     required this.tags,
     required this.topics,
     required this.ttl,
@@ -118,6 +123,7 @@ class GetSecretsSecret {
       'replications': pulumi.Input.mapInputValue<List<GetSecretsSecretReplication>, List<Map<String, dynamic>>>(replications, (value) => pulumi.Input.encodeList<GetSecretsSecretReplication, Map<String, dynamic>>(value, (value) => value.toMap())),
       'rotations': pulumi.Input.mapInputValue<List<GetSecretsSecretRotation>, List<Map<String, dynamic>>>(rotations, (value) => pulumi.Input.encodeList<GetSecretsSecretRotation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'secretId': secretId,
+      'secretType': secretType,
       'tags': tags,
       'topics': pulumi.Input.mapInputValue<List<GetSecretsSecretTopic>, List<Map<String, dynamic>>>(topics, (value) => pulumi.Input.encodeList<GetSecretsSecretTopic, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ttl': ttl,
@@ -142,6 +148,7 @@ class GetSecretsSecret {
       replications: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSecretsSecretReplication>(map['replications']!, (value) => GetSecretsSecretReplication.fromMap((value as Map).cast<String, dynamic>()))),
       rotations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSecretsSecretRotation>(map['rotations']!, (value) => GetSecretsSecretRotation.fromMap((value as Map).cast<String, dynamic>()))),
       secretId: pulumi.Input.fromValue(map['secretId'] as String),
+      secretType: pulumi.Input.fromValue(map['secretType'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
       topics: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSecretsSecretTopic>(map['topics']!, (value) => GetSecretsSecretTopic.fromMap((value as Map).cast<String, dynamic>()))),
       ttl: pulumi.Input.fromValue(map['ttl'] as String),

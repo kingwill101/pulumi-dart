@@ -153,8 +153,8 @@ import 'tcp_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -211,7 +211,7 @@ import 'tcp_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -219,18 +219,27 @@ import 'tcp_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-backend-service"
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "backend-service-health-check"
 ///   tcp_health_check = {
 ///     port = 80
 ///   }
 /// }
-/// resource "gcp_networkservices_tcproute" "default" {
+/// resource "gcp_networkservices_tcp_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-tcp-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -243,8 +252,8 @@ import 'tcp_route_state.dart';
 ///     }
 ///     action = {
 ///       destinations = [{
-///         "serviceName" = gcp_compute_backendservice.default.id
-///         "weight"      = 1
+///         service_name = gcp_compute_backend_service.default.id
+///         weight       = 1
 ///       }]
 ///       original_destination = false
 ///     }
@@ -476,8 +485,8 @@ import 'tcp_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -529,7 +538,7 @@ import 'tcp_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -537,18 +546,27 @@ import 'tcp_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-backend-service"
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "backend-service-health-check"
 ///   tcp_health_check = {
 ///     port = 80
 ///   }
 /// }
-/// resource "gcp_networkservices_tcproute" "default" {
+/// resource "gcp_networkservices_tcp_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-tcp-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -557,8 +575,8 @@ import 'tcp_route_state.dart';
 ///   rules {
 ///     action = {
 ///       destinations = [{
-///         "serviceName" = gcp_compute_backendservice.default.id
-///         "weight"      = 1
+///         service_name = gcp_compute_backend_service.default.id
+///         weight       = 1
 ///       }]
 ///       original_destination = false
 ///       idle_timeout         = "60s"
@@ -827,8 +845,8 @@ import 'tcp_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -898,7 +916,7 @@ import 'tcp_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -906,25 +924,37 @@ import 'tcp_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-backend-service"
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "backend-service-health-check"
 ///   tcp_health_check = {
 ///     port = 80
 ///   }
 /// }
 /// resource "gcp_networkservices_mesh" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-tcp-route"
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
 ///   description = "my description"
 /// }
-/// resource "gcp_networkservices_tcproute" "default" {
+/// resource "gcp_networkservices_tcp_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-tcp-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -938,8 +968,8 @@ import 'tcp_route_state.dart';
 ///     }
 ///     action = {
 ///       destinations = [{
-///         "serviceName" = gcp_compute_backendservice.default.id
-///         "weight"      = 1
+///         service_name = gcp_compute_backend_service.default.id
+///         weight       = 1
 ///       }]
 ///       original_destination = false
 ///     }
@@ -1244,8 +1274,8 @@ import 'tcp_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1320,7 +1350,7 @@ import 'tcp_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1328,18 +1358,27 @@ import 'tcp_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-backend-service"
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "backend-service-health-check"
 ///   tcp_health_check = {
 ///     port = 80
 ///   }
 /// }
 /// resource "gcp_networkservices_gateway" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-tcp-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -1349,7 +1388,10 @@ import 'tcp_route_state.dart';
 ///   type        = "OPEN_MESH"
 ///   ports       = [443]
 /// }
-/// resource "gcp_networkservices_tcproute" "default" {
+/// resource "gcp_networkservices_tcp_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-tcp-route"
 ///   labels = {
 ///     "foo" = "bar"
@@ -1363,8 +1405,8 @@ import 'tcp_route_state.dart';
 ///     }
 ///     action = {
 ///       destinations = [{
-///         "serviceName" = gcp_compute_backendservice.default.id
-///         "weight"      = 1
+///         service_name = gcp_compute_backend_service.default.id
+///         weight       = 1
 ///       }]
 ///       original_destination = false
 ///     }
@@ -1567,7 +1609,7 @@ class TcpRoute extends pulumi.CustomResource {
           'gcp:networkservices/tcpRoute:TcpRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

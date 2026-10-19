@@ -77,7 +77,7 @@ import 'security_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -101,7 +101,7 @@ import 'security_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -109,7 +109,10 @@ import 'security_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_ces_securitysettings" "security_settings" {
+/// resource "gcp_ces_security_settings" "security_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us"
 ///   endpoint_control_policy = {
 ///     enforcement_scope = "ALWAYS"
@@ -214,7 +217,7 @@ class SecuritySettings extends pulumi.CustomResource {
           'gcp:ces/securitySettings:SecuritySettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     endpointControlPolicy = registerOutput<SecuritySettingsEndpointControlPolicy?>('endpointControlPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecuritySettingsEndpointControlPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

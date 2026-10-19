@@ -125,8 +125,8 @@ import 'get_versions_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -162,7 +162,7 @@ import 'get_versions_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -170,21 +170,27 @@ import 'get_versions_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getdockerimage" "myImage" {
+/// data "gcp_artifactregistry_docker_image" "myImage" {
 ///   location      = gcp_artifactregistry_repository.my_repo.location
 ///   repository_id = gcp_artifactregistry_repository.my_repo.repository_id
 ///   image_name    = "my-image:my-tag"
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "my_repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-west1"
 ///   repository_id = "my-repository"
 ///   format        = "DOCKER"
 /// }
 /// resource "gcp_cloudrunv2_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   template = {
 ///     containers = [{
-///       "image" = data.gcp_artifactregistry_getdockerimage.myImage.self_link
+///       image = data.gcp_artifactregistry_docker_image.myImage.self_link
 ///     }]
 ///   }
 /// }
@@ -332,7 +338,7 @@ pulumi.Output<GetDockerImageResult> getDockerImageOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -350,7 +356,7 @@ pulumi.Output<GetDockerImageResult> getDockerImageOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -358,7 +364,7 @@ pulumi.Output<GetDockerImageResult> getDockerImageOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getdockerimages" "myImages" {
+/// data "gcp_artifactregistry_docker_images" "myImages" {
 ///   location      = "us-central1"
 ///   repository_id = "example-repo"
 /// }
@@ -506,7 +512,7 @@ pulumi.Output<GetFileResult> getFileOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -521,7 +527,7 @@ pulumi.Output<GetFileResult> getFileOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -529,7 +535,7 @@ pulumi.Output<GetFileResult> getFileOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getlocations" "available" {
+/// data "gcp_artifactregistry_locations" "available" {
 /// }
 /// ```
 /// ```java
@@ -632,7 +638,7 @@ pulumi.Output<GetFileResult> getFileOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -663,7 +669,7 @@ pulumi.Output<GetFileResult> getFileOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -671,16 +677,22 @@ pulumi.Output<GetFileResult> getFileOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getlocations" "available" {
+/// data "gcp_artifactregistry_locations" "available" {
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "repo_one" {
-///   location      = data.gcp_artifactregistry_getlocations.available.locations[0]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location      = data.gcp_artifactregistry_locations.available.locations[0]
 ///   repository_id = "repo-one"
 ///   format        = "apt"
 /// }
 /// resource "gcp_artifactregistry_repository" "repo_two" {
-///   location      = data.gcp_artifactregistry_getlocations.available.locations[1]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location      = data.gcp_artifactregistry_locations.available.locations[1]
 ///   repository_id = "repo-two"
 ///   format        = "apt"
 /// }
@@ -780,7 +792,7 @@ pulumi.Output<GetLocationsResult> getLocationsOutput(
 ///
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -788,19 +800,22 @@ pulumi.Output<GetLocationsResult> getLocationsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getmavenartifact" "latest" {
+/// data "gcp_artifactregistry_maven_artifact" "latest" {
 ///   location      = gcp_artifactregistry_repository.maven_repo.location
 ///   repository_id = gcp_artifactregistry_repository.maven_repo.repository_id
 ///   group_id      = "com.example"
 ///   artifact_id   = "my-artifact"
 /// }
-/// data "gcp_artifactregistry_getmavenartifact" "withVersion" {
+/// data "gcp_artifactregistry_maven_artifact" "withVersion" {
 ///   location      = gcp_artifactregistry_repository.maven_repo.location
 ///   repository_id = gcp_artifactregistry_repository.maven_repo.repository_id
 ///   artifact_name = "my-artifact:1.0.0"
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "maven_repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "my-maven-repo"
 ///   format        = "MAVEN"
@@ -901,7 +916,7 @@ pulumi.Output<GetMavenArtifactResult> getMavenArtifactOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -919,7 +934,7 @@ pulumi.Output<GetMavenArtifactResult> getMavenArtifactOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -927,7 +942,7 @@ pulumi.Output<GetMavenArtifactResult> getMavenArtifactOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getmavenartifacts" "myArtifacts" {
+/// data "gcp_artifactregistry_maven_artifacts" "myArtifacts" {
 ///   location      = "us-central1"
 ///   repository_id = "example-repo"
 /// }
@@ -1071,7 +1086,7 @@ pulumi.Output<GetMavenArtifactsResult> getMavenArtifactsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1100,7 +1115,7 @@ pulumi.Output<GetMavenArtifactsResult> getMavenArtifactsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1108,18 +1123,21 @@ pulumi.Output<GetMavenArtifactsResult> getMavenArtifactsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getnpmpackage" "latest" {
+/// data "gcp_artifactregistry_npm_package" "latest" {
 ///   location      = gcp_artifactregistry_repository.npm_repo.location
 ///   repository_id = gcp_artifactregistry_repository.npm_repo.repository_id
 ///   package_name  = "example-pkg"
 /// }
-/// data "gcp_artifactregistry_getnpmpackage" "withVersion" {
+/// data "gcp_artifactregistry_npm_package" "withVersion" {
 ///   location      = gcp_artifactregistry_repository.npm_repo.location
 ///   repository_id = gcp_artifactregistry_repository.npm_repo.repository_id
 ///   package_name  = "example-pkg:1.0.0"
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "npm_repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "my-npm-repo"
 ///   format        = "NPM"
@@ -1263,7 +1281,7 @@ pulumi.Output<GetNpmPackageResult> getNpmPackageOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1281,7 +1299,7 @@ pulumi.Output<GetNpmPackageResult> getNpmPackageOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1289,7 +1307,7 @@ pulumi.Output<GetNpmPackageResult> getNpmPackageOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getnpmpackages" "myPackages" {
+/// data "gcp_artifactregistry_npm_packages" "myPackages" {
 ///   location      = "us-central1"
 ///   repository_id = "example-repo"
 /// }
@@ -1418,7 +1436,10 @@ pulumi.Output<GetNpmPackagesResult> getNpmPackagesOutput(
 /// }
 /// ```
 /// ```hcl
-/// resource "google_artifactregistrypackage" "my_package" {
+/// resource "google_artifact_registry_package" "my_package" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-west1"
 ///   repository_id = "my-repository"
 /// }
@@ -1530,7 +1551,7 @@ pulumi.Output<GetPackageResult> getPackageOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1548,7 +1569,7 @@ pulumi.Output<GetPackageResult> getPackageOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1556,7 +1577,7 @@ pulumi.Output<GetPackageResult> getPackageOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getpackages" "myImages" {
+/// data "gcp_artifactregistry_packages" "myImages" {
 ///   location      = "us-central1"
 ///   repository_id = "example-repo"
 /// }
@@ -1700,7 +1721,7 @@ pulumi.Output<GetPackagesResult> getPackagesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1729,7 +1750,7 @@ pulumi.Output<GetPackagesResult> getPackagesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1737,18 +1758,21 @@ pulumi.Output<GetPackagesResult> getPackagesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getpythonpackage" "latest" {
+/// data "gcp_artifactregistry_python_package" "latest" {
 ///   location      = gcp_artifactregistry_repository.python_repo.location
 ///   repository_id = gcp_artifactregistry_repository.python_repo.repository_id
 ///   package_name  = "example_pkg"
 /// }
-/// data "gcp_artifactregistry_getpythonpackage" "withVersion" {
+/// data "gcp_artifactregistry_python_package" "withVersion" {
 ///   location      = gcp_artifactregistry_repository.python_repo.location
 ///   repository_id = gcp_artifactregistry_repository.python_repo.repository_id
 ///   package_name  = "example_pkg:1.0.0"
 /// }
 ///
 /// resource "gcp_artifactregistry_repository" "python_repo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   repository_id = "my-python-repo"
 ///   format        = "PYTHON"
@@ -1892,7 +1916,7 @@ pulumi.Output<GetPythonPackageResult> getPythonPackageOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1910,7 +1934,7 @@ pulumi.Output<GetPythonPackageResult> getPythonPackageOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1918,7 +1942,7 @@ pulumi.Output<GetPythonPackageResult> getPythonPackageOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getpythonpackages" "myPackages" {
+/// data "gcp_artifactregistry_python_packages" "myPackages" {
 ///   location      = "us-central1"
 ///   repository_id = "example-repo"
 /// }
@@ -2028,7 +2052,7 @@ pulumi.Output<GetPythonPackagesResult> getPythonPackagesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2046,7 +2070,7 @@ pulumi.Output<GetPythonPackagesResult> getPythonPackagesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2054,7 +2078,7 @@ pulumi.Output<GetPythonPackagesResult> getPythonPackagesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getrepositories" "example" {
+/// data "gcp_artifactregistry_repositories" "example" {
 ///   location = "us-central1"
 ///   project  = "my-project"
 /// }
@@ -2166,7 +2190,7 @@ pulumi.Output<GetRepositoriesResult> getRepositoriesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2184,7 +2208,7 @@ pulumi.Output<GetRepositoriesResult> getRepositoriesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2192,7 +2216,7 @@ pulumi.Output<GetRepositoriesResult> getRepositoriesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getrepository" "my-repo" {
+/// data "gcp_artifactregistry_repository" "my-repo" {
 ///   location      = "us-central1"
 ///   repository_id = "my-repository"
 /// }
@@ -2306,7 +2330,7 @@ pulumi.Output<GetRepositoryResult> getRepositoryOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2325,7 +2349,7 @@ pulumi.Output<GetRepositoryResult> getRepositoryOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2333,7 +2357,7 @@ pulumi.Output<GetRepositoryResult> getRepositoryOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getrepositoryiampolicy" "policy" {
+/// data "gcp_artifactregistry_repository_iam_policy" "policy" {
 ///   project    = my-repo.project
 ///   location   = my-repo.location
 ///   repository = my-repo.name
@@ -2411,7 +2435,7 @@ pulumi.Output<GetRepositoryIamPolicyResult> getRepositoryIamPolicyOutput(
 ///
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2419,7 +2443,7 @@ pulumi.Output<GetRepositoryIamPolicyResult> getRepositoryIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_gettags" "myTags" {
+/// data "gcp_artifactregistry_tags" "myTags" {
 ///   location      = "us-central1"
 ///   repository_id = "example-repo"
 ///   package_name  = "example-package"
@@ -2509,7 +2533,7 @@ pulumi.Output<GetTagResult> getTagOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2528,7 +2552,7 @@ pulumi.Output<GetTagResult> getTagOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2536,7 +2560,7 @@ pulumi.Output<GetTagResult> getTagOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_gettags" "myTags" {
+/// data "gcp_artifactregistry_tags" "myTags" {
 ///   location      = "us-central1"
 ///   repository_id = "example-repo"
 ///   package_name  = "example-package"
@@ -2614,7 +2638,7 @@ pulumi.Output<GetTagsResult> getTagsOutput(
 ///
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2622,7 +2646,7 @@ pulumi.Output<GetTagsResult> getTagsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getversions" "myVersions" {
+/// data "gcp_artifactregistry_versions" "myVersions" {
 ///   location      = "us-central1"
 ///   repository_id = "example-repo"
 ///   package_name  = "example-package"
@@ -2712,7 +2736,7 @@ pulumi.Output<GetVersionResult> getVersionOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/artifactregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/artifactregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2731,7 +2755,7 @@ pulumi.Output<GetVersionResult> getVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2739,7 +2763,7 @@ pulumi.Output<GetVersionResult> getVersionOutput(
 ///   }
 /// }
 ///
-/// data "gcp_artifactregistry_getversions" "myVersions" {
+/// data "gcp_artifactregistry_versions" "myVersions" {
 ///   location      = "us-central1"
 ///   repository_id = "example-repo"
 ///   package_name  = "example-package"

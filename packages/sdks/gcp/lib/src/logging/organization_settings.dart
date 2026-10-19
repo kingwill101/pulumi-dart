@@ -94,8 +94,8 @@ import 'organization_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -131,7 +131,7 @@ import 'organization_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -139,21 +139,27 @@ import 'organization_settings_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_logging_getorganizationsettings" "settings" {
+/// data "gcp_logging_organization_settings" "settings" {
 ///   organization = "123456789"
 /// }
 ///
-/// resource "gcp_logging_organizationsettings" "example" {
-///   depends_on           = [gcp_kms_cryptokeyiammember.iam]
+/// resource "gcp_logging_organization_settings" "example" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.iam]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disable_default_sink = true
 ///   kms_key_name         = "kms-key"
 ///   organization         = "123456789"
 ///   storage_location     = "us-central1"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "iam" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "kms-key"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:${data.gcp_logging_getorganizationsettings.settings.kms_service_account_id}"
+///   member        ="serviceAccount:${data.gcp_logging_organization_settings.settings.kms_service_account_id}"
 /// }
 /// ```
 /// ```java
@@ -273,7 +279,7 @@ class OrganizationSettings extends pulumi.CustomResource {
           'gcp:logging/organizationSettings:OrganizationSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     disableDefaultSink = registerOutput<bool>('disableDefaultSink');
     kmsKeyName = registerOutput<String>('kmsKeyName');

@@ -107,8 +107,8 @@ import 'multicast_domain_activation_traffic_spec.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -147,7 +147,7 @@ import 'multicast_domain_activation_traffic_spec.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -156,11 +156,17 @@ import 'multicast_domain_activation_traffic_spec.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test-network-mda"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networkservices_multicastdomain" "multicast_domain" {
-///   depends_on          = [gcp_compute_network.network]
+/// resource "gcp_networkservices_multicast_domain" "multicast_domain" {
+///   depends_on = [gcp_compute_network.network]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_domain_id = "test-domain-mda"
 ///   location            = "global"
 ///   admin_network       = gcp_compute_network.network.id
@@ -168,10 +174,13 @@ import 'multicast_domain_activation_traffic_spec.dart';
 ///     connection_type = "SAME_VPC"
 ///   }
 /// }
-/// resource "gcp_networkservices_multicastdomainactivation" "mda_test" {
+/// resource "gcp_networkservices_multicast_domain_activation" "mda_test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_domain_activation_id = "test-domain-activation-mda"
 ///   location                       = "us-central1-b"
-///   multicast_domain               = gcp_networkservices_multicastdomain.multicast_domain.id
+///   multicast_domain               = gcp_networkservices_multicast_domain.multicast_domain.id
 /// }
 /// ```
 /// ```java
@@ -353,7 +362,7 @@ class MulticastDomainActivation extends pulumi.CustomResource {
           'gcp:networkservices/multicastDomainActivation:MulticastDomainActivation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     adminNetwork = registerOutput<String>('adminNetwork');

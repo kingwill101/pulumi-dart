@@ -27,8 +27,8 @@ class GetBackendBucketCdnPolicyNegativeCachingPolicy {
 
   factory GetBackendBucketCdnPolicyNegativeCachingPolicy.fromMap(Map<String, dynamic> map) {
     return GetBackendBucketCdnPolicyNegativeCachingPolicy(
-      code: pulumi.Input.fromValue((map['code'] as num).toInt()),
-      ttl: pulumi.Input.fromValue((map['ttl'] as num).toInt()),
+      code: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['code'])),
+      ttl: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ttl'])),
     );
   }
 }

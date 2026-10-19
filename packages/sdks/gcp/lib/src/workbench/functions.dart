@@ -47,7 +47,7 @@ import 'get_instance_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workbench"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workbench"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -66,7 +66,7 @@ import 'get_instance_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -74,7 +74,7 @@ import 'get_instance_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_workbench_getinstanceiampolicy" "policy" {
+/// data "gcp_workbench_instance_iam_policy" "policy" {
 ///   project  = instance.project
 ///   location = instance.location
 ///   name     = instance.name

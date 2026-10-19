@@ -272,8 +272,8 @@ import 'notebook_execution_workbench_runtime.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -371,7 +371,7 @@ import 'notebook_execution_workbench_runtime.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -382,7 +382,10 @@ import 'notebook_execution_workbench_runtime.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_colab_runtimetemplate" "my_runtime_template" {
+/// resource "gcp_colab_runtime_template" "my_runtime_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "runtime-template-name"
 ///   display_name = "Runtime template"
 ///   location     = "us-central1"
@@ -394,19 +397,61 @@ import 'notebook_execution_workbench_runtime.dart';
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "output_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_bucket"
 ///   location                    = "US"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_colab_notebookexecution" "notebook-execution" {
-///   depends_on   = [gcp_colab_runtimetemplate.my_runtime_template, gcp_storage_bucket.output_bucket]
+/// resource "gcp_colab_notebook_execution" "notebook-execution" {
+///   depends_on = [gcp_colab_runtime_template.my_runtime_template, gcp_storage_bucket.output_bucket]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Notebook execution basic"
 ///   location     = "us-central1"
 ///   direct_notebook_source = {
-///     content = base64encode("    {\n      \\\"cells\\\": [\n        {\n          \\\"cell_type\\\": \\\"code\\\",\n          \\\"execution_count\\\": null,\n          \\\"metadata\\\": {},\n          \\\"outputs\\\": [],\n          \\\"source\\\": [\n            \\\"print(\\\\\\\"Hello, World!\\\\\\\")\\\"\n          ]\n        }\n      ],\n      \\\"metadata\\\": {\n        \\\"kernelspec\\\": {\n          \\\"display_name\\\": \\\"Python 3\\\",\n          \\\"language\\\": \\\"python\\\",\n          \\\"name\\\": \\\"python3\\\"\n        },\n        \\\"language_info\\\": {\n          \\\"codemirror_mode\\\": {\n            \\\"name\\\": \\\"ipython\\\",\n            \\\"version\\\": 3\n          },\n          \\\"file_extension\\\": \\\".py\\\",\n          \\\"mimetype\\\": \\\"text/x-python\\\",\n          \\\"name\\\": \\\"python\\\",\n          \\\"nbconvert_exporter\\\": \\\"python\\\",\n          \\\"pygments_lexer\\\": \\\"ipython3\\\",\n          \\\"version\\\": \\\"3.8.5\\\"\n        }\n      },\n      \\\"nbformat\\\": 4,\n      \\\"nbformat_minor\\\": 4\n    }\n")
+///     content = base64encode(<<EOT
+///     {
+///       \"cells\": [
+///         {
+///           \"cell_type\": \"code\",
+///           \"execution_count\": null,
+///           \"metadata\": {},
+///           \"outputs\": [],
+///           \"source\": [
+///             \"print(\\\"Hello, World!\\\")\"
+///           ]
+///         }
+///       ],
+///       \"metadata\": {
+///         \"kernelspec\": {
+///           \"display_name\": \"Python 3\",
+///           \"language\": \"python\",
+///           \"name\": \"python3\"
+///         },
+///         \"language_info\": {
+///           \"codemirror_mode\": {
+///             \"name\": \"ipython\",
+///             \"version\": 3
+///           },
+///           \"file_extension\": \".py\",
+///           \"mimetype\": \"text/x-python\",
+///           \"name\": \"python\",
+///           \"nbconvert_exporter\": \"python\",
+///           \"pygments_lexer\": \"ipython3\",
+///           \"version\": \"3.8.5\"
+///         }
+///       },
+///       \"nbformat\": 4,
+///       \"nbformat_minor\": 4
+///     }
+/// EOT
+/// )
 ///   }
-///   notebook_runtime_template_resource_name ="projects/${gcp_colab_runtimetemplate.my_runtime_template.project}/locations/${gcp_colab_runtimetemplate.my_runtime_template.location}/notebookRuntimeTemplates/${gcp_colab_runtimetemplate.my_runtime_template.name}"
+///   notebook_runtime_template_resource_name ="projects/${gcp_colab_runtime_template.my_runtime_template.project}/locations/${gcp_colab_runtime_template.my_runtime_template.location}/notebookRuntimeTemplates/${gcp_colab_runtime_template.my_runtime_template.name}"
 ///   gcs_output_uri                          ="gs://${gcp_storage_bucket.output_bucket.name}"
 ///   service_account                         = "my@service-account.com"
 /// }
@@ -894,9 +939,9 @@ import 'notebook_execution_workbench_runtime.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1010,7 +1055,7 @@ import 'notebook_execution_workbench_runtime.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1022,27 +1067,75 @@ import 'notebook_execution_workbench_runtime.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "my_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "colab-test-default"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "my_subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "colab-test-default"
 ///   network       = gcp_compute_network.my_network.id
 ///   region        = "us-central1"
 ///   ip_cidr_range = "10.0.1.0/24"
 /// }
 /// resource "gcp_storage_bucket" "output_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_bucket"
 ///   location                    = "US"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_colab_notebookexecution" "notebook-execution" {
-///   depends_on   = [gcp_storage_bucket.output_bucket]
+/// resource "gcp_colab_notebook_execution" "notebook-execution" {
+///   depends_on = [gcp_storage_bucket.output_bucket]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Notebook execution basic"
 ///   location     = "us-central1"
 ///   direct_notebook_source = {
-///     content = base64encode("    {\n      \\\"cells\\\": [\n        {\n          \\\"cell_type\\\": \\\"code\\\",\n          \\\"execution_count\\\": null,\n          \\\"metadata\\\": {},\n          \\\"outputs\\\": [],\n          \\\"source\\\": [\n            \\\"print(\\\\\\\"Hello, World!\\\\\\\")\\\"\n          ]\n        }\n      ],\n      \\\"metadata\\\": {\n        \\\"kernelspec\\\": {\n          \\\"display_name\\\": \\\"Python 3\\\",\n          \\\"language\\\": \\\"python\\\",\n          \\\"name\\\": \\\"python3\\\"\n        },\n        \\\"language_info\\\": {\n          \\\"codemirror_mode\\\": {\n            \\\"name\\\": \\\"ipython\\\",\n            \\\"version\\\": 3\n          },\n          \\\"file_extension\\\": \\\".py\\\",\n          \\\"mimetype\\\": \\\"text/x-python\\\",\n          \\\"name\\\": \\\"python\\\",\n          \\\"nbconvert_exporter\\\": \\\"python\\\",\n          \\\"pygments_lexer\\\": \\\"ipython3\\\",\n          \\\"version\\\": \\\"3.8.5\\\"\n        }\n      },\n      \\\"nbformat\\\": 4,\n      \\\"nbformat_minor\\\": 4\n    }\n")
+///     content = base64encode(<<EOT
+///     {
+///       \"cells\": [
+///         {
+///           \"cell_type\": \"code\",
+///           \"execution_count\": null,
+///           \"metadata\": {},
+///           \"outputs\": [],
+///           \"source\": [
+///             \"print(\\\"Hello, World!\\\")\"
+///           ]
+///         }
+///       ],
+///       \"metadata\": {
+///         \"kernelspec\": {
+///           \"display_name\": \"Python 3\",
+///           \"language\": \"python\",
+///           \"name\": \"python3\"
+///         },
+///         \"language_info\": {
+///           \"codemirror_mode\": {
+///             \"name\": \"ipython\",
+///             \"version\": 3
+///           },
+///           \"file_extension\": \".py\",
+///           \"mimetype\": \"text/x-python\",
+///           \"name\": \"python\",
+///           \"nbconvert_exporter\": \"python\",
+///           \"pygments_lexer\": \"ipython3\",
+///           \"version\": \"3.8.5\"
+///         }
+///       },
+///       \"nbformat\": 4,
+///       \"nbformat_minor\": 4
+///     }
+/// EOT
+/// )
 ///   }
 ///   custom_environment_spec = {
 ///     machine_spec = {
@@ -1537,8 +1630,8 @@ import 'notebook_execution_workbench_runtime.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1630,7 +1723,7 @@ import 'notebook_execution_workbench_runtime.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1642,17 +1735,59 @@ import 'notebook_execution_workbench_runtime.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "output_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_bucket"
 ///   location                    = "US"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_colab_notebookexecution" "notebook-execution" {
-///   depends_on   = [gcp_storage_bucket.output_bucket]
+/// resource "gcp_colab_notebook_execution" "notebook-execution" {
+///   depends_on = [gcp_storage_bucket.output_bucket]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Notebook execution workbench runtime vm"
 ///   location     = "us-central1"
 ///   direct_notebook_source = {
-///     content = base64encode("    {\n      \\\"cells\\\": [\n        {\n          \\\"cell_type\\\": \\\"code\\\",\n          \\\"execution_count\\\": null,\n          \\\"metadata\\\": {},\n          \\\"outputs\\\": [],\n          \\\"source\\\": [\n            \\\"print(\\\\\\\"Hello, World!\\\\\\\")\\\"\n          ]\n        }\n      ],\n      \\\"metadata\\\": {\n        \\\"kernelspec\\\": {\n          \\\"display_name\\\": \\\"Python 3\\\",\n          \\\"language\\\": \\\"python\\\",\n          \\\"name\\\": \\\"python3\\\"\n        },\n        \\\"language_info\\\": {\n          \\\"codemirror_mode\\\": {\n            \\\"name\\\": \\\"ipython\\\",\n            \\\"version\\\": 3\n          },\n          \\\"file_extension\\\": \\\".py\\\",\n          \\\"mimetype\\\": \\\"text/x-python\\\",\n          \\\"name\\\": \\\"python\\\",\n          \\\"nbconvert_exporter\\\": \\\"python\\\",\n          \\\"pygments_lexer\\\": \\\"ipython3\\\",\n          \\\"version\\\": \\\"3.8.5\\\"\n        }\n      },\n      \\\"nbformat\\\": 4,\n      \\\"nbformat_minor\\\": 4\n    }\n")
+///     content = base64encode(<<EOT
+///     {
+///       \"cells\": [
+///         {
+///           \"cell_type\": \"code\",
+///           \"execution_count\": null,
+///           \"metadata\": {},
+///           \"outputs\": [],
+///           \"source\": [
+///             \"print(\\\"Hello, World!\\\")\"
+///           ]
+///         }
+///       ],
+///       \"metadata\": {
+///         \"kernelspec\": {
+///           \"display_name\": \"Python 3\",
+///           \"language\": \"python\",
+///           \"name\": \"python3\"
+///         },
+///         \"language_info\": {
+///           \"codemirror_mode\": {
+///             \"name\": \"ipython\",
+///             \"version\": 3
+///           },
+///           \"file_extension\": \".py\",
+///           \"mimetype\": \"text/x-python\",
+///           \"name\": \"python\",
+///           \"nbconvert_exporter\": \"python\",
+///           \"pygments_lexer\": \"ipython3\",
+///           \"version\": \"3.8.5\"
+///         }
+///       },
+///       \"nbformat\": 4,
+///       \"nbformat_minor\": 4
+///     }
+/// EOT
+/// )
 ///   }
 ///   custom_environment_spec = {
 ///     machine_spec = {
@@ -2099,8 +2234,8 @@ import 'notebook_execution_workbench_runtime.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -2192,7 +2327,7 @@ import 'notebook_execution_workbench_runtime.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2204,17 +2339,59 @@ import 'notebook_execution_workbench_runtime.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "output_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_bucket"
 ///   location                    = "US"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_colab_notebookexecution" "notebook-execution" {
-///   depends_on   = [gcp_storage_bucket.output_bucket]
+/// resource "gcp_colab_notebook_execution" "notebook-execution" {
+///   depends_on = [gcp_storage_bucket.output_bucket]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Notebook execution workbench runtime vm name"
 ///   location     = "us-central1"
 ///   direct_notebook_source = {
-///     content = base64encode("    {\n      \\\"cells\\\": [\n        {\n          \\\"cell_type\\\": \\\"code\\\",\n          \\\"execution_count\\\": null,\n          \\\"metadata\\\": {},\n          \\\"outputs\\\": [],\n          \\\"source\\\": [\n            \\\"print(\\\\\\\"Hello, World!\\\\\\\")\\\"\n          ]\n        }\n      ],\n      \\\"metadata\\\": {\n        \\\"kernelspec\\\": {\n          \\\"display_name\\\": \\\"Python 3\\\",\n          \\\"language\\\": \\\"python\\\",\n          \\\"name\\\": \\\"python3\\\"\n        },\n        \\\"language_info\\\": {\n          \\\"codemirror_mode\\\": {\n            \\\"name\\\": \\\"ipython\\\",\n            \\\"version\\\": 3\n          },\n          \\\"file_extension\\\": \\\".py\\\",\n          \\\"mimetype\\\": \\\"text/x-python\\\",\n          \\\"name\\\": \\\"python\\\",\n          \\\"nbconvert_exporter\\\": \\\"python\\\",\n          \\\"pygments_lexer\\\": \\\"ipython3\\\",\n          \\\"version\\\": \\\"3.8.5\\\"\n        }\n      },\n      \\\"nbformat\\\": 4,\n      \\\"nbformat_minor\\\": 4\n    }\n")
+///     content = base64encode(<<EOT
+///     {
+///       \"cells\": [
+///         {
+///           \"cell_type\": \"code\",
+///           \"execution_count\": null,
+///           \"metadata\": {},
+///           \"outputs\": [],
+///           \"source\": [
+///             \"print(\\\"Hello, World!\\\")\"
+///           ]
+///         }
+///       ],
+///       \"metadata\": {
+///         \"kernelspec\": {
+///           \"display_name\": \"Python 3\",
+///           \"language\": \"python\",
+///           \"name\": \"python3\"
+///         },
+///         \"language_info\": {
+///           \"codemirror_mode\": {
+///             \"name\": \"ipython\",
+///             \"version\": 3
+///           },
+///           \"file_extension\": \".py\",
+///           \"mimetype\": \"text/x-python\",
+///           \"name\": \"python\",
+///           \"nbconvert_exporter\": \"python\",
+///           \"pygments_lexer\": \"ipython3\",
+///           \"version\": \"3.8.5\"
+///         }
+///       },
+///       \"nbformat\": 4,
+///       \"nbformat_minor\": 4
+///     }
+/// EOT
+/// )
 ///   }
 ///   custom_environment_spec = {
 ///     machine_spec = {
@@ -2697,8 +2874,8 @@ import 'notebook_execution_workbench_runtime.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2805,7 +2982,7 @@ import 'notebook_execution_workbench_runtime.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2813,7 +2990,10 @@ import 'notebook_execution_workbench_runtime.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_colab_runtimetemplate" "my_runtime_template" {
+/// resource "gcp_colab_runtime_template" "my_runtime_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "runtime-template-name"
 ///   display_name = "Runtime template"
 ///   location     = "us-central1"
@@ -2825,29 +3005,74 @@ import 'notebook_execution_workbench_runtime.dart';
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "output_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_bucket"
 ///   location                    = "US"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "notebook" {
+/// resource "gcp_storage_bucket_object" "notebook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "hello_world.ipynb"
 ///   bucket  = gcp_storage_bucket.output_bucket.name
-///   content = "    {\n      \\\"cells\\\": [\n        {\n          \\\"cell_type\\\": \\\"code\\\",\n          \\\"execution_count\\\": null,\n          \\\"metadata\\\": {},\n          \\\"outputs\\\": [],\n          \\\"source\\\": [\n            \\\"print(\\\\\\\"Hello, World!\\\\\\\")\\\"\n          ]\n        }\n      ],\n      \\\"metadata\\\": {\n        \\\"kernelspec\\\": {\n          \\\"display_name\\\": \\\"Python 3\\\",\n          \\\"language\\\": \\\"python\\\",\n          \\\"name\\\": \\\"python3\\\"\n        },\n        \\\"language_info\\\": {\n          \\\"codemirror_mode\\\": {\n            \\\"name\\\": \\\"ipython\\\",\n            \\\"version\\\": 3\n          },\n          \\\"file_extension\\\": \\\".py\\\",\n          \\\"mimetype\\\": \\\"text/x-python\\\",\n          \\\"name\\\": \\\"python\\\",\n          \\\"nbconvert_exporter\\\": \\\"python\\\",\n          \\\"pygments_lexer\\\": \\\"ipython3\\\",\n          \\\"version\\\": \\\"3.8.5\\\"\n        }\n      },\n      \\\"nbformat\\\": 4,\n      \\\"nbformat_minor\\\": 4\n    }\n"
+///   content = <<EOF
+///     {
+///       \"cells\": [
+///         {
+///           \"cell_type\": \"code\",
+///           \"execution_count\": null,
+///           \"metadata\": {},
+///           \"outputs\": [],
+///           \"source\": [
+///             \"print(\\\"Hello, World!\\\")\"
+///           ]
+///         }
+///       ],
+///       \"metadata\": {
+///         \"kernelspec\": {
+///           \"display_name\": \"Python 3\",
+///           \"language\": \"python\",
+///           \"name\": \"python3\"
+///         },
+///         \"language_info\": {
+///           \"codemirror_mode\": {
+///             \"name\": \"ipython\",
+///             \"version\": 3
+///           },
+///           \"file_extension\": \".py\",
+///           \"mimetype\": \"text/x-python\",
+///           \"name\": \"python\",
+///           \"nbconvert_exporter\": \"python\",
+///           \"pygments_lexer\": \"ipython3\",
+///           \"version\": \"3.8.5\"
+///         }
+///       },
+///       \"nbformat\": 4,
+///       \"nbformat_minor\": 4
+///     }
+/// EOF
+///
 /// }
-/// resource "gcp_colab_notebookexecution" "notebook-execution" {
-///   depends_on                = [gcp_storage_bucketobject.notebook, gcp_storage_bucket.output_bucket, gcp_colab_runtimetemplate.my_runtime_template]
+/// resource "gcp_colab_notebook_execution" "notebook-execution" {
+///   depends_on = [gcp_storage_bucket_object.notebook, gcp_storage_bucket.output_bucket, gcp_colab_runtime_template.my_runtime_template]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   notebook_execution_job_id = "colab-notebook-execution"
 ///   display_name              = "Notebook execution full"
 ///   location                  = "us-central1"
 ///   execution_timeout         = "86400s"
 ///   gcs_notebook_source = {
-///     uri        ="gs://${gcp_storage_bucketobject.notebook.bucket}/${gcp_storage_bucketobject.notebook.name}"
-///     generation = gcp_storage_bucketobject.notebook.generation
+///     uri        ="gs://${gcp_storage_bucket_object.notebook.bucket}/${gcp_storage_bucket_object.notebook.name}"
+///     generation = gcp_storage_bucket_object.notebook.generation
 ///   }
 ///   service_account                         = "my@service-account.com"
 ///   gcs_output_uri                          ="gs://${gcp_storage_bucket.output_bucket.name}"
-///   notebook_runtime_template_resource_name ="projects/${gcp_colab_runtimetemplate.my_runtime_template.project}/locations/${gcp_colab_runtimetemplate.my_runtime_template.location}/notebookRuntimeTemplates/${gcp_colab_runtimetemplate.my_runtime_template.name}"
+///   notebook_runtime_template_resource_name ="projects/${gcp_colab_runtime_template.my_runtime_template.project}/locations/${gcp_colab_runtime_template.my_runtime_template.location}/notebookRuntimeTemplates/${gcp_colab_runtime_template.my_runtime_template.name}"
 /// }
 /// ```
 /// ```java
@@ -3314,10 +3539,10 @@ import 'notebook_execution_workbench_runtime.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3421,7 +3646,7 @@ import 'notebook_execution_workbench_runtime.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3429,7 +3654,10 @@ import 'notebook_execution_workbench_runtime.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_colab_runtimetemplate" "my_runtime_template" {
+/// resource "gcp_colab_runtime_template" "my_runtime_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "runtime-template-name"
 ///   display_name = "Runtime template"
 ///   location     = "us-central1"
@@ -3441,25 +3669,37 @@ import 'notebook_execution_workbench_runtime.dart';
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "output_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_bucket"
 ///   location                    = "US"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
 /// resource "gcp_secretmanager_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret_version" {
+/// resource "gcp_secretmanager_secret_version" "secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret.id
 ///   secret_data = "secret-data"
 /// }
 /// resource "gcp_dataform_repository" "dataform_repository" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                       = "dataform-repository"
 ///   display_name                               = "dataform_repository"
-///   npmrc_environment_variables_secret_version = gcp_secretmanager_secretversion.secret_version.id
+///   npmrc_environment_variables_secret_version = gcp_secretmanager_secret_version.secret_version.id
 ///   kms_key_name                               = "my-crypto-key"
 ///   labels = {
 ///     "label_foo1" = "label-bar1"
@@ -3467,7 +3707,7 @@ import 'notebook_execution_workbench_runtime.dart';
 ///   git_remote_settings = {
 ///     url                                 = "https://github.com/OWNER/REPOSITORY.git"
 ///     default_branch                      = "main"
-///     authentication_token_secret_version = gcp_secretmanager_secretversion.secret_version.id
+///     authentication_token_secret_version = gcp_secretmanager_secret_version.secret_version.id
 ///   }
 ///   workspace_compilation_overrides = {
 ///     default_database = "database"
@@ -3475,15 +3715,18 @@ import 'notebook_execution_workbench_runtime.dart';
 ///     table_prefix     = "prefix_"
 ///   }
 /// }
-/// resource "gcp_colab_notebookexecution" "notebook-execution" {
-///   depends_on   = [gcp_colab_runtimetemplate.my_runtime_template, gcp_storage_bucket.output_bucket, gcp_secretmanager_secretversion.secret_version, gcp_dataform_repository.dataform_repository, gcp_secretmanager_secret.secret]
+/// resource "gcp_colab_notebook_execution" "notebook-execution" {
+///   depends_on = [gcp_colab_runtime_template.my_runtime_template, gcp_storage_bucket.output_bucket, gcp_secretmanager_secret_version.secret_version, gcp_dataform_repository.dataform_repository, gcp_secretmanager_secret.secret]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Notebook execution Dataform"
 ///   location     = "us-central1"
 ///   dataform_repository_source = {
 ///     commit_sha                        = "randomsha123"
-///     dataform_repository_resource_name ="projects/${gcp_colab_runtimetemplate.my_runtime_template.project}/locations/${gcp_colab_runtimetemplate.my_runtime_template.location}/repositories/${gcp_dataform_repository.dataform_repository.name}"
+///     dataform_repository_resource_name ="projects/${gcp_colab_runtime_template.my_runtime_template.project}/locations/${gcp_colab_runtime_template.my_runtime_template.location}/repositories/${gcp_dataform_repository.dataform_repository.name}"
 ///   }
-///   notebook_runtime_template_resource_name ="projects/${gcp_colab_runtimetemplate.my_runtime_template.project}/locations/${gcp_colab_runtimetemplate.my_runtime_template.location}/notebookRuntimeTemplates/${gcp_colab_runtimetemplate.my_runtime_template.name}"
+///   notebook_runtime_template_resource_name ="projects/${gcp_colab_runtime_template.my_runtime_template.project}/locations/${gcp_colab_runtime_template.my_runtime_template.location}/notebookRuntimeTemplates/${gcp_colab_runtime_template.my_runtime_template.name}"
 ///   gcs_output_uri                          ="gs://${gcp_storage_bucket.output_bucket.name}"
 ///   service_account                         = "my@service-account.com"
 /// }
@@ -3752,7 +3995,7 @@ class NotebookExecution extends pulumi.CustomResource {
           'gcp:colab/notebookExecution:NotebookExecution',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     customEnvironmentSpec = registerOutput<NotebookExecutionCustomEnvironmentSpec?>('customEnvironmentSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionCustomEnvironmentSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataformRepositorySource = registerOutput<NotebookExecutionDataformRepositorySource?>('dataformRepositorySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NotebookExecutionDataformRepositorySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });

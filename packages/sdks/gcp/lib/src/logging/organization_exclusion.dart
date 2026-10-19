@@ -56,7 +56,7 @@ import 'organization_exclusion_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -76,7 +76,7 @@ import 'organization_exclusion_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -84,7 +84,10 @@ import 'organization_exclusion_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_organizationexclusion" "my-exclusion" {
+/// resource "gcp_logging_organization_exclusion" "my-exclusion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-instance-debug-exclusion"
 ///   org_id      = "123456789"
 ///   description = "Exclude GCE instance debug logs"
@@ -173,7 +176,7 @@ class OrganizationExclusion extends pulumi.CustomResource {
           'gcp:logging/organizationExclusion:OrganizationExclusion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     disabled = registerOutput<bool?>('disabled');

@@ -30,9 +30,9 @@ class AiFeatureOnlineStoreBigtableAutoScaling {
 
   factory AiFeatureOnlineStoreBigtableAutoScaling.fromMap(Map<String, dynamic> map) {
     return AiFeatureOnlineStoreBigtableAutoScaling(
-      cpuUtilizationTarget: (() { final guardedValue = map['cpuUtilizationTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxNodeCount: pulumi.Input.fromValue((map['maxNodeCount'] as num).toInt()),
-      minNodeCount: pulumi.Input.fromValue((map['minNodeCount'] as num).toInt()),
+      cpuUtilizationTarget: (() { final guardedValue = map['cpuUtilizationTarget']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNodeCount'])),
+      minNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNodeCount'])),
     );
   }
 }

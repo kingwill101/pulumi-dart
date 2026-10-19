@@ -123,8 +123,8 @@ import 'app_check_recaptcha_enterprise_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -172,7 +172,7 @@ import 'app_check_recaptcha_enterprise_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -185,25 +185,37 @@ import 'app_check_recaptcha_enterprise_config_state.dart';
 ///
 /// # Enables the reCAPTCHA Enterprise API
 /// resource "gcp_projects_service" "recaptcha_enterprise" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "recaptchaenterprise.googleapis.com"
 /// }
-/// resource "gcp_firebase_webapp" "default" {
+/// resource "gcp_firebase_web_app" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = "my-project-name"
 ///   display_name = "Web App for reCAPTCHA Enterprise"
 /// }
 /// # It takes a while for App Check to recognize the new app
 /// # If your app already exists, you don't have to wait 30 seconds.
 /// resource "time_sleep" "wait_30s" {
-///   depends_on      = [gcp_firebase_webapp.default]
+///   depends_on = [gcp_firebase_web_app.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "30s"
 /// }
-/// resource "gcp_firebase_appcheckrecaptchaenterpriseconfig" "default" {
+/// resource "gcp_firebase_app_check_recaptcha_enterprise_config" "default" {
 ///   depends_on = [time_sleep.wait_30s]
-///   project    = "my-project-name"
-///   app_id     = gcp_firebase_webapp.default.app_id
-///   site_key   = "6LdpMXIpAAAAANkwWQPgEdjEhal7ugkH9RK9ytuw"
-///   token_ttl  = "7200s"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project   = "my-project-name"
+///   app_id    = gcp_firebase_web_app.default.app_id
+///   site_key  = "6LdpMXIpAAAAANkwWQPgEdjEhal7ugkH9RK9ytuw"
+///   token_ttl = "7200s"
 /// }
 /// ```
 /// ```java
@@ -348,7 +360,7 @@ class AppCheckRecaptchaEnterpriseConfig extends pulumi.CustomResource {
           'gcp:firebase/appCheckRecaptchaEnterpriseConfig:AppCheckRecaptchaEnterpriseConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     appId = registerOutput<String>('appId');
     this.name = registerOutput<String>('name');

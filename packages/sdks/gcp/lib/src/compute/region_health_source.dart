@@ -123,7 +123,7 @@ import 'region_health_source_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -171,7 +171,7 @@ import 'region_health_source_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -179,30 +179,42 @@ import 'region_health_source_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionhealthaggregationpolicy" "hap" {
+/// resource "gcp_compute_region_health_aggregation_policy" "hap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-health-source-hap"
 ///   description = "health aggregation policy for health source"
 ///   region      = "us-central1"
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-health-source-hc"
 ///   http_health_check = {
 ///     port = 80
 ///   }
 /// }
-/// resource "gcp_compute_regionbackendservice" "default" {
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "test-health-source-bs"
 ///   region                = "us-central1"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 ///   load_balancing_scheme = "INTERNAL"
 /// }
-/// resource "gcp_compute_regionhealthsource" "example_test_health_source" {
+/// resource "gcp_compute_region_health_source" "example_test_health_source" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "test-health-source"
 ///   description               = "Example health source basic"
 ///   region                    = "us-central1"
 ///   source_type               = "BACKEND_SERVICE"
-///   sources                   = gcp_compute_regionbackendservice.default.id
-///   health_aggregation_policy = gcp_compute_regionhealthaggregationpolicy.hap.id
+///   sources                   = gcp_compute_region_backend_service.default.id
+///   health_aggregation_policy = gcp_compute_region_health_aggregation_policy.hap.id
 /// }
 /// ```
 /// ```java
@@ -382,7 +394,7 @@ class RegionHealthSource extends pulumi.CustomResource {
           'gcp:compute/regionHealthSource:RegionHealthSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

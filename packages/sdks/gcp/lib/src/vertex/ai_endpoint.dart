@@ -237,12 +237,12 @@ import 'ai_endpoint_state.dart';
 /// 	"encoding/json"
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -339,7 +339,7 @@ import 'ai_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -347,11 +347,14 @@ import 'ai_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aiendpoint" "endpoint" {
-///   depends_on   = [gcp_servicenetworking_connection.vertex_vpc_connection]
+/// resource "gcp_vertex_ai_endpoint" "endpoint" {
+///   depends_on = [gcp_servicenetworking_connection.vertex_vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "endpoint-name"
 ///   display_name = "sample-endpoint"
 ///   description  = "A sample vertex endpoint"
@@ -360,13 +363,13 @@ import 'ai_endpoint_state.dart';
 ///   labels = {
 ///     "label-one" = "value-one"
 ///   }
-///   network ="projects/${data.gcp_organizations_getproject.project.number}/global/networks/${gcp_compute_network.vertex_network.name}"
+///   network ="projects/${data.gcp_organizations_project.project.number}/global/networks/${gcp_compute_network.vertex_network.name}"
 ///   encryption_spec = {
 ///     kms_key_name = "kms-name"
 ///   }
 ///   predict_request_response_logging_config = {
 ///     bigquery_destination = {
-///       output_uri ="bq://${data.gcp_organizations_getproject.project.project_id}.${gcp_bigquery_dataset.bq_dataset.dataset_id}.request_response_logging"
+///       output_uri ="bq://${data.gcp_organizations_project.project.project_id}.${gcp_bigquery_dataset.bq_dataset.dataset_id}.request_response_logging"
 ///     }
 ///     enabled       = true
 ///     sampling_rate = 0.1
@@ -376,11 +379,17 @@ import 'ai_endpoint_state.dart';
 ///   })
 /// }
 /// resource "gcp_servicenetworking_connection" "vertex_vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.vertex_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.vertex_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.vertex_range.name]
 /// }
-/// resource "gcp_compute_globaladdress" "vertex_range" {
+/// resource "gcp_compute_global_address" "vertex_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "address-name"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -388,14 +397,23 @@ import 'ai_endpoint_state.dart';
 ///   network       = gcp_compute_network.vertex_network.id
 /// }
 /// resource "gcp_compute_network" "vertex_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "network-name"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "kms-name"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com"
 /// }
 /// resource "gcp_bigquery_dataset" "bq_dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id                 = "some_dataset"
 ///   friendly_name              = "logging dataset"
 ///   description                = "This is a dataset that requests are logged to"
@@ -584,10 +602,10 @@ import 'ai_endpoint_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// const _default = new gcp.compute.Network("default", {name: "psc-network-_13786"});
+/// const _default = new gcp.compute.Network("default", {name: "psc-network-_78545"});
 /// const project = gcp.organizations.getProject({});
 /// const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
-///     name: "endpoint-name_29040",
+///     name: "endpoint-name",
 ///     displayName: "sample-endpoint",
 ///     description: "A sample vertex endpoint",
 ///     location: "us-central1",
@@ -609,10 +627,10 @@ import 'ai_endpoint_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// default = gcp.compute.Network("default", name="psc-network-_13786")
+/// default = gcp.compute.Network("default", name="psc-network-_78545")
 /// project = gcp.organizations.get_project()
 /// endpoint = gcp.vertex.AiEndpoint("endpoint",
-///     name="endpoint-name_29040",
+///     name="endpoint-name",
 ///     display_name="sample-endpoint",
 ///     description="A sample vertex endpoint",
 ///     location="us-central1",
@@ -639,14 +657,14 @@ import 'ai_endpoint_state.dart';
 /// {
 ///     var @default = new Gcp.Compute.Network("default", new()
 ///     {
-///         Name = "psc-network-_13786",
+///         Name = "psc-network-_78545",
 ///     });
 ///
 ///     var project = Gcp.Organizations.GetProject.Invoke();
 ///
 ///     var endpoint = new Gcp.Vertex.AiEndpoint("endpoint", new()
 ///     {
-///         Name = "endpoint-name_29040",
+///         Name = "endpoint-name",
 ///         DisplayName = "sample-endpoint",
 ///         Description = "A sample vertex endpoint",
 ///         Location = "us-central1",
@@ -679,16 +697,16 @@ import 'ai_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
-/// 			Name: pulumi.String("psc-network-_13786"),
+/// 			Name: pulumi.String("psc-network-_78545"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -698,7 +716,7 @@ import 'ai_endpoint_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-/// 			Name:        pulumi.String("endpoint-name_29040"),
+/// 			Name:        pulumi.String("endpoint-name"),
 /// 			DisplayName: pulumi.String("sample-endpoint"),
 /// 			Description: pulumi.String("A sample vertex endpoint"),
 /// 			Location:    pulumi.String("us-central1"),
@@ -727,7 +745,7 @@ import 'ai_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -735,14 +753,20 @@ import 'ai_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
-///   name = "psc-network-_13786"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name = "psc-network-_78545"
 /// }
-/// resource "gcp_vertex_aiendpoint" "endpoint" {
-///   name         = "endpoint-name_29040"
+/// resource "gcp_vertex_ai_endpoint" "endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         = "endpoint-name"
 ///   display_name = "sample-endpoint"
 ///   description  = "A sample vertex endpoint"
 ///   location     = "us-central1"
@@ -752,10 +776,10 @@ import 'ai_endpoint_state.dart';
 ///   }
 ///   private_service_connect_config = {
 ///     enable_private_service_connect = true
-///     project_allowlists             = [data.gcp_organizations_getproject.project.project_id]
+///     project_allowlists             = [data.gcp_organizations_project.project.project_id]
 ///     psc_automation_configs = [{
-///       "projectId" = data.gcp_organizations_getproject.project.project_id
-///       "network"   = gcp_compute_network.default.id
+///       project_id = data.gcp_organizations_project.project.project_id
+///       network    = gcp_compute_network.default.id
 ///     }]
 ///   }
 /// }
@@ -788,14 +812,14 @@ import 'ai_endpoint_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var default_ = new Network("default", NetworkArgs.builder()
-///             .name("psc-network-_13786")
+///             .name("psc-network-_78545")
 ///             .build());
 ///
 ///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
 ///             .build());
 ///
 ///         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
-///             .name("endpoint-name_29040")
+///             .name("endpoint-name")
 ///             .displayName("sample-endpoint")
 ///             .description("A sample vertex endpoint")
 ///             .location("us-central1")
@@ -819,11 +843,11 @@ import 'ai_endpoint_state.dart';
 ///   default:
 ///     type: gcp:compute:Network
 ///     properties:
-///       name: psc-network-_13786
+///       name: psc-network-_78545
 ///   endpoint:
 ///     type: gcp:vertex:AiEndpoint
 ///     properties:
-///       name: endpoint-name_29040
+///       name: endpoint-name
 ///       displayName: sample-endpoint
 ///       description: A sample vertex endpoint
 ///       location: us-central1
@@ -853,7 +877,7 @@ import 'ai_endpoint_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const endpoint = new gcp.vertex.AiEndpoint("endpoint", {
-///     name: "endpoint-name_78181",
+///     name: "endpoint-name",
 ///     displayName: "sample-endpoint",
 ///     description: "A sample vertex endpoint",
 ///     location: "us-central1",
@@ -870,7 +894,7 @@ import 'ai_endpoint_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// endpoint = gcp.vertex.AiEndpoint("endpoint",
-///     name="endpoint-name_78181",
+///     name="endpoint-name",
 ///     display_name="sample-endpoint",
 ///     description="A sample vertex endpoint",
 ///     location="us-central1",
@@ -891,7 +915,7 @@ import 'ai_endpoint_state.dart';
 /// {
 ///     var endpoint = new Gcp.Vertex.AiEndpoint("endpoint", new()
 ///     {
-///         Name = "endpoint-name_78181",
+///         Name = "endpoint-name",
 ///         DisplayName = "sample-endpoint",
 ///         Description = "A sample vertex endpoint",
 ///         Location = "us-central1",
@@ -911,15 +935,15 @@ import 'ai_endpoint_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := vertex.NewAiEndpoint(ctx, "endpoint", &vertex.AiEndpointArgs{
-/// 			Name:        pulumi.String("endpoint-name_78181"),
+/// 			Name:        pulumi.String("endpoint-name"),
 /// 			DisplayName: pulumi.String("sample-endpoint"),
 /// 			Description: pulumi.String("A sample vertex endpoint"),
 /// 			Location:    pulumi.String("us-central1"),
@@ -941,7 +965,7 @@ import 'ai_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -949,11 +973,14 @@ import 'ai_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aiendpoint" "endpoint" {
-///   name         = "endpoint-name_78181"
+/// resource "gcp_vertex_ai_endpoint" "endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         = "endpoint-name"
 ///   display_name = "sample-endpoint"
 ///   description  = "A sample vertex endpoint"
 ///   location     = "us-central1"
@@ -988,7 +1015,7 @@ import 'ai_endpoint_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var endpoint = new AiEndpoint("endpoint", AiEndpointArgs.builder()
-///             .name("endpoint-name_78181")
+///             .name("endpoint-name")
 ///             .displayName("sample-endpoint")
 ///             .description("A sample vertex endpoint")
 ///             .location("us-central1")
@@ -1008,7 +1035,7 @@ import 'ai_endpoint_state.dart';
 ///   endpoint:
 ///     type: gcp:vertex:AiEndpoint
 ///     properties:
-///       name: endpoint-name_78181
+///       name: endpoint-name
 ///       displayName: sample-endpoint
 ///       description: A sample vertex endpoint
 ///       location: us-central1
@@ -1117,7 +1144,7 @@ class AiEndpoint extends pulumi.CustomResource {
           'gcp:vertex/aiEndpoint:AiEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

@@ -37,7 +37,7 @@ import 'packet_mirroring_state.dart';
 ///     machineType: "e2-medium",
 ///     bootDisk: {
 ///         initializeParams: {
-///             image: "debian-cloud/debian-11",
+///             image: "debian-cloud/debian-13",
 ///         },
 ///     },
 /// });
@@ -111,7 +111,7 @@ import 'packet_mirroring_state.dart';
 ///     machine_type="e2-medium",
 ///     boot_disk={
 ///         "initialize_params": {
-///             "image": "debian-cloud/debian-11",
+///             "image": "debian-cloud/debian-13",
 ///         },
 ///     })
 /// default_subnetwork = gcp.compute.Subnetwork("default",
@@ -196,7 +196,7 @@ import 'packet_mirroring_state.dart';
 ///         {
 ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
 ///             {
-///                 Image = "debian-cloud/debian-11",
+///                 Image = "debian-cloud/debian-13",
 ///             },
 ///         },
 ///     });
@@ -298,7 +298,7 @@ import 'packet_mirroring_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -323,7 +323,7 @@ import 'packet_mirroring_state.dart';
 /// 			MachineType: pulumi.String("e2-medium"),
 /// 			BootDisk: &compute.InstanceBootDiskArgs{
 /// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-/// 					Image: pulumi.String("debian-cloud/debian-11"),
+/// 					Image: pulumi.String("debian-cloud/debian-13"),
 /// 				},
 /// 			},
 /// 		})
@@ -415,7 +415,7 @@ import 'packet_mirroring_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -424,6 +424,9 @@ import 'packet_mirroring_state.dart';
 /// }
 ///
 /// resource "gcp_compute_instance" "mirror" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -433,23 +436,35 @@ import 'packet_mirroring_state.dart';
 ///   machine_type = "e2-medium"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = "debian-cloud/debian-11"
+///       image = "debian-cloud/debian-13"
 ///     }
 ///   }
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-network"
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnetwork"
 ///   network       = gcp_compute_network.default.id
 ///   ip_cidr_range = "10.2.0.0/16"
 /// }
-/// resource "gcp_compute_regionbackendservice" "default" {
+/// resource "gcp_compute_region_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-service"
-///   health_checks = gcp_compute_healthcheck.default.id
+///   health_checks = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-healthcheck"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
@@ -457,19 +472,25 @@ import 'packet_mirroring_state.dart';
 ///     port = "80"
 ///   }
 /// }
-/// resource "gcp_compute_forwardingrule" "default" {
-///   depends_on             = [gcp_compute_subnetwork.default]
+/// resource "gcp_compute_forwarding_rule" "default" {
+///   depends_on = [gcp_compute_subnetwork.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "my-ilb"
 ///   is_mirroring_collector = true
 ///   ip_protocol            = "TCP"
 ///   load_balancing_scheme  = "INTERNAL"
-///   backend_service        = gcp_compute_regionbackendservice.default.id
+///   backend_service        = gcp_compute_region_backend_service.default.id
 ///   all_ports              = true
 ///   network                = gcp_compute_network.default.id
 ///   subnetwork             = gcp_compute_subnetwork.default.id
 ///   network_tier           = "PREMIUM"
 /// }
-/// resource "gcp_compute_packetmirroring" "foobar" {
+/// resource "gcp_compute_packet_mirroring" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-mirroring"
 ///   description = "bar"
 ///   enable      = "TRUE"
@@ -477,15 +498,15 @@ import 'packet_mirroring_state.dart';
 ///     url = gcp_compute_network.default.id
 ///   }
 ///   collector_ilb = {
-///     url = gcp_compute_forwardingrule.default.id
+///     url = gcp_compute_forwarding_rule.default.id
 ///   }
 ///   mirrored_resources = {
 ///     tags = ["foo"]
 ///     instances = [{
-///       "url" = gcp_compute_instance.mirror.id
+///       url = gcp_compute_instance.mirror.id
 ///     }]
 ///     subnetworks = [{
-///       "url" = gcp_compute_subnetwork.default.id
+///       url = gcp_compute_subnetwork.default.id
 ///     }]
 ///   }
 ///   filter = {
@@ -554,7 +575,7 @@ import 'packet_mirroring_state.dart';
 ///             .machineType("e2-medium")
 ///             .bootDisk(InstanceBootDiskArgs.builder()
 ///                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-///                     .image("debian-cloud/debian-11")
+///                     .image("debian-cloud/debian-13")
 ///                     .build())
 ///                 .build())
 ///             .build());
@@ -635,7 +656,7 @@ import 'packet_mirroring_state.dart';
 ///       machineType: e2-medium
 ///       bootDisk:
 ///         initializeParams:
-///           image: debian-cloud/debian-11
+///           image: debian-cloud/debian-13
 ///   default:
 ///     type: gcp:compute:Network
 ///     properties:
@@ -778,7 +799,7 @@ class PacketMirroring extends pulumi.CustomResource {
           'gcp:compute/packetMirroring:PacketMirroring',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     collectorIlb = registerOutput<PacketMirroringCollectorIlb>('collectorIlb', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PacketMirroringCollectorIlb.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -84,8 +84,8 @@ import 'job_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -118,7 +118,7 @@ import 'job_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -126,18 +126,21 @@ import 'job_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/editor"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_jobiampolicy" "editor" {
+/// resource "gcp_dataproc_job_i_a_m_policy" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "your-project"
 ///   region      = "your-region"
 ///   job_id      = "your-dataproc-job"
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -248,7 +251,7 @@ import 'job_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -269,7 +272,7 @@ import 'job_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -277,7 +280,10 @@ import 'job_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_jobiambinding" "editor" {
+/// resource "gcp_dataproc_job_i_a_m_binding" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_id  = "your-dataproc-job"
 ///   role    = "roles/editor"
 ///   members = ["user:jane@example.com"]
@@ -368,7 +374,7 @@ import 'job_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -387,7 +393,7 @@ import 'job_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -395,7 +401,10 @@ import 'job_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_jobiammember" "editor" {
+/// resource "gcp_dataproc_job_i_a_m_member" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_id = "your-dataproc-job"
 ///   role   = "roles/editor"
 ///   member = "user:jane@example.com"
@@ -513,8 +522,8 @@ import 'job_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -547,7 +556,7 @@ import 'job_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -555,18 +564,21 @@ import 'job_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/editor"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_jobiampolicy" "editor" {
+/// resource "gcp_dataproc_job_i_a_m_policy" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "your-project"
 ///   region      = "your-region"
 ///   job_id      = "your-dataproc-job"
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -677,7 +689,7 @@ import 'job_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -698,7 +710,7 @@ import 'job_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -706,7 +718,10 @@ import 'job_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_jobiambinding" "editor" {
+/// resource "gcp_dataproc_job_i_a_m_binding" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_id  = "your-dataproc-job"
 ///   role    = "roles/editor"
 ///   members = ["user:jane@example.com"]
@@ -797,7 +812,7 @@ import 'job_iambinding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -816,7 +831,7 @@ import 'job_iambinding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -824,7 +839,10 @@ import 'job_iambinding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataproc_jobiammember" "editor" {
+/// resource "gcp_dataproc_job_i_a_m_member" "editor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   job_id = "your-dataproc-job"
 ///   role   = "roles/editor"
 ///   member = "user:jane@example.com"
@@ -914,7 +932,7 @@ class JobIAMBinding extends pulumi.CustomResource {
           'gcp:dataproc/jobIAMBinding:JobIAMBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     condition = registerOutput<JobIAMBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobIAMBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

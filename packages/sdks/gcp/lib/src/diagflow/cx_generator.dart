@@ -132,7 +132,7 @@ import 'cx_generator_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -176,7 +176,7 @@ import 'cx_generator_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -184,7 +184,10 @@ import 'cx_generator_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name             = "dialogflowcx-agent-fucntion"
 ///   location                 = "global"
 ///   default_language_code    = "en"
@@ -192,8 +195,11 @@ import 'cx_generator_state.dart';
 ///   time_zone                = "America/New_York"
 ///   description              = "Example description."
 /// }
-/// resource "gcp_diagflow_cxgenerator" "generator" {
-///   parent        = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_generator" "generator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent        = gcp_diagflow_cx_agent.agent.id
 ///   language_code = "fr"
 ///   display_name  = "TF Prompt generator"
 ///   llm_model_settings = {
@@ -354,7 +360,7 @@ class CxGenerator extends pulumi.CustomResource {
           'gcp:diagflow/cxGenerator:CxGenerator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');

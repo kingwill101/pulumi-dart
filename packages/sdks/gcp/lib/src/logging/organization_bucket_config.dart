@@ -81,8 +81,8 @@ import 'organization_bucket_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -114,7 +114,7 @@ import 'organization_bucket_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -122,12 +122,15 @@ import 'organization_bucket_config_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getorganization" "default" {
+/// data "gcp_organizations_organization" "default" {
 ///   organization = "123456789"
 /// }
 ///
-/// resource "gcp_logging_organizationbucketconfig" "basic" {
-///   organization   = data.gcp_organizations_getorganization.default.organization
+/// resource "gcp_logging_organization_bucket_config" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   organization   = data.gcp_organizations_organization.default.organization
 ///   location       = "global"
 ///   retention_days = 30
 ///   bucket_id      = "_Default"
@@ -251,7 +254,7 @@ class OrganizationBucketConfig extends pulumi.CustomResource {
           'gcp:logging/organizationBucketConfig:OrganizationBucketConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<OrganizationBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

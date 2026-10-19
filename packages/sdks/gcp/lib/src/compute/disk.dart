@@ -33,6 +33,9 @@ import 'disk_state.dart';
 ///
 ///
 ///
+/// &gt; **Note:**  All arguments marked as write-only values will not be stored in the state: `disk_encryption_key.raw_key_wo`, `disk_encryption_key.rsa_encrypted_key_wo`.
+/// Read more about Write-only Arguments.
+///
 /// ## Example Usage
 ///
 /// ### Disk Basic
@@ -47,7 +50,7 @@ import 'disk_state.dart';
 ///     name: "test-disk",
 ///     type: "pd-ssd",
 ///     zone: "us-central1-a",
-///     image: "debian-11-bullseye-v20220719",
+///     image: "debian-13-trixie-v20260827",
 ///     labels: {
 ///         environment: "dev",
 ///     },
@@ -62,7 +65,7 @@ import 'disk_state.dart';
 ///     name="test-disk",
 ///     type="pd-ssd",
 ///     zone="us-central1-a",
-///     image="debian-11-bullseye-v20220719",
+///     image="debian-13-trixie-v20260827",
 ///     labels={
 ///         "environment": "dev",
 ///     },
@@ -81,7 +84,7 @@ import 'disk_state.dart';
 ///         Name = "test-disk",
 ///         Type = "pd-ssd",
 ///         Zone = "us-central1-a",
-///         Image = "debian-11-bullseye-v20220719",
+///         Image = "debian-13-trixie-v20260827",
 ///         Labels =
 ///         {
 ///             { "environment", "dev" },
@@ -95,7 +98,7 @@ import 'disk_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -105,7 +108,7 @@ import 'disk_state.dart';
 /// 			Name:  pulumi.String("test-disk"),
 /// 			Type:  pulumi.String("pd-ssd"),
 /// 			Zone:  pulumi.String("us-central1-a"),
-/// 			Image: pulumi.String("debian-11-bullseye-v20220719"),
+/// 			Image: pulumi.String("debian-13-trixie-v20260827"),
 /// 			Labels: pulumi.StringMap{
 /// 				"environment": pulumi.String("dev"),
 /// 			},
@@ -119,7 +122,7 @@ import 'disk_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -128,10 +131,13 @@ import 'disk_state.dart';
 /// }
 ///
 /// resource "gcp_compute_disk" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "test-disk"
 ///   type  = "pd-ssd"
 ///   zone  = "us-central1-a"
-///   image = "debian-11-bullseye-v20220719"
+///   image = "debian-13-trixie-v20260827"
 ///   labels = {
 ///     "environment" = "dev"
 ///   }
@@ -163,7 +169,7 @@ import 'disk_state.dart';
 ///             .name("test-disk")
 ///             .type("pd-ssd")
 ///             .zone("us-central1-a")
-///             .image("debian-11-bullseye-v20220719")
+///             .image("debian-13-trixie-v20260827")
 ///             .labels(Map.of("environment", "dev"))
 ///             .physicalBlockSizeBytes(4096)
 ///             .build());
@@ -179,10 +185,348 @@ import 'disk_state.dart';
 ///       name: test-disk
 ///       type: pd-ssd
 ///       zone: us-central1-a
-///       image: debian-11-bullseye-v20220719
+///       image: debian-13-trixie-v20260827
 ///       labels:
 ///         environment: dev
 ///       physicalBlockSizeBytes: 4096
+/// ```
+///
+/// ### Disk Basic Wo
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.compute.Disk("default", {
+///     name: "test-disk",
+///     type: "pd-ssd",
+///     zone: "us-central1-a",
+///     image: "debian-13-trixie-v20260827",
+///     labels: {
+///         environment: "dev",
+///     },
+///     physicalBlockSizeBytes: 4096,
+///     diskEncryptionKey: {
+///         rawKeyWo: "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=",
+///         rawKeyWoVersion: "1",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.Disk("default",
+///     name="test-disk",
+///     type="pd-ssd",
+///     zone="us-central1-a",
+///     image="debian-13-trixie-v20260827",
+///     labels={
+///         "environment": "dev",
+///     },
+///     physical_block_size_bytes=4096,
+///     disk_encryption_key={
+///         "raw_key_wo": "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=",
+///         "raw_key_wo_version": "1",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.Compute.Disk("default", new()
+///     {
+///         Name = "test-disk",
+///         Type = "pd-ssd",
+///         Zone = "us-central1-a",
+///         Image = "debian-13-trixie-v20260827",
+///         Labels =
+///         {
+///             { "environment", "dev" },
+///         },
+///         PhysicalBlockSizeBytes = 4096,
+///         DiskEncryptionKey = new Gcp.Compute.Inputs.DiskDiskEncryptionKeyArgs
+///         {
+///             RawKeyWo = "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=",
+///             RawKeyWoVersion = "1",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewDisk(ctx, "default", &compute.DiskArgs{
+/// 			Name:  pulumi.String("test-disk"),
+/// 			Type:  pulumi.String("pd-ssd"),
+/// 			Zone:  pulumi.String("us-central1-a"),
+/// 			Image: pulumi.String("debian-13-trixie-v20260827"),
+/// 			Labels: pulumi.StringMap{
+/// 				"environment": pulumi.String("dev"),
+/// 			},
+/// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
+/// 			DiskEncryptionKey: &compute.DiskDiskEncryptionKeyArgs{
+/// 				RawKeyWo:        pulumi.String("SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="),
+/// 				RawKeyWoVersion: pulumi.String("1"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_disk" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name  = "test-disk"
+///   type  = "pd-ssd"
+///   zone  = "us-central1-a"
+///   image = "debian-13-trixie-v20260827"
+///   labels = {
+///     "environment" = "dev"
+///   }
+///   physical_block_size_bytes = 4096
+///   disk_encryption_key = {
+///     raw_key_wo         = "SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0="
+///     raw_key_wo_version = 1
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.Disk;
+/// import com.pulumi.gcp.compute.DiskArgs;
+/// import com.pulumi.gcp.compute.inputs.DiskDiskEncryptionKeyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new Disk("default", DiskArgs.builder()
+///             .name("test-disk")
+///             .type("pd-ssd")
+///             .zone("us-central1-a")
+///             .image("debian-13-trixie-v20260827")
+///             .labels(Map.of("environment", "dev"))
+///             .physicalBlockSizeBytes(4096)
+///             .diskEncryptionKey(DiskDiskEncryptionKeyArgs.builder()
+///                 .rawKeyWo("SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=")
+///                 .rawKeyWoVersion("1")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:compute:Disk
+///     properties:
+///       name: test-disk
+///       type: pd-ssd
+///       zone: us-central1-a
+///       image: debian-13-trixie-v20260827
+///       labels:
+///         environment: dev
+///       physicalBlockSizeBytes: 4096
+///       diskEncryptionKey:
+///         rawKeyWo: SGVsbG8gZnJvbSBHb29nbGUgQ2xvdWQgUGxhdGZvcm0=
+///         rawKeyWoVersion: 1
+/// ```
+///
+/// ### Disk Rsa Encrypted Key Wo
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const _default = new gcp.compute.Disk("default", {
+///     name: "test-disk",
+///     type: "pd-ssd",
+///     zone: "us-central1-a",
+///     image: "debian-13-trixie-v20260827",
+///     diskEncryptionKey: {
+///         rsaEncryptedKeyWo: "fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg==",
+///         rsaEncryptedKeyWoVersion: "1",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// default = gcp.compute.Disk("default",
+///     name="test-disk",
+///     type="pd-ssd",
+///     zone="us-central1-a",
+///     image="debian-13-trixie-v20260827",
+///     disk_encryption_key={
+///         "rsa_encrypted_key_wo": "fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg==",
+///         "rsa_encrypted_key_wo_version": "1",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var @default = new Gcp.Compute.Disk("default", new()
+///     {
+///         Name = "test-disk",
+///         Type = "pd-ssd",
+///         Zone = "us-central1-a",
+///         Image = "debian-13-trixie-v20260827",
+///         DiskEncryptionKey = new Gcp.Compute.Inputs.DiskDiskEncryptionKeyArgs
+///         {
+///             RsaEncryptedKeyWo = "fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg==",
+///             RsaEncryptedKeyWoVersion = "1",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := compute.NewDisk(ctx, "default", &compute.DiskArgs{
+/// 			Name:  pulumi.String("test-disk"),
+/// 			Type:  pulumi.String("pd-ssd"),
+/// 			Zone:  pulumi.String("us-central1-a"),
+/// 			Image: pulumi.String("debian-13-trixie-v20260827"),
+/// 			DiskEncryptionKey: &compute.DiskDiskEncryptionKeyArgs{
+/// 				RsaEncryptedKeyWo:        pulumi.String("fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg=="),
+/// 				RsaEncryptedKeyWoVersion: pulumi.String("1"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_compute_disk" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name  = "test-disk"
+///   type  = "pd-ssd"
+///   zone  = "us-central1-a"
+///   image = "debian-13-trixie-v20260827"
+///   disk_encryption_key = {
+///     rsa_encrypted_key_wo         = "fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg=="
+///     rsa_encrypted_key_wo_version = 1
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.compute.Disk;
+/// import com.pulumi.gcp.compute.DiskArgs;
+/// import com.pulumi.gcp.compute.inputs.DiskDiskEncryptionKeyArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var default_ = new Disk("default", DiskArgs.builder()
+///             .name("test-disk")
+///             .type("pd-ssd")
+///             .zone("us-central1-a")
+///             .image("debian-13-trixie-v20260827")
+///             .diskEncryptionKey(DiskDiskEncryptionKeyArgs.builder()
+///                 .rsaEncryptedKeyWo("fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg==")
+///                 .rsaEncryptedKeyWoVersion("1")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   default:
+///     type: gcp:compute:Disk
+///     properties:
+///       name: test-disk
+///       type: pd-ssd
+///       zone: us-central1-a
+///       image: debian-13-trixie-v20260827
+///       diskEncryptionKey:
+///         rsaEncryptedKeyWo: fB6BS8tJGhGVDZDjGt1pwUo2wyNbkzNxgH1avfOtiwB9X6oPG94gWgenygitnsYJyKjdOJ7DyXLmxwQOSmnCYCUBWdKCSssyLV5907HL2mb5TfqmgHk5JcArI/t6QADZWiuGtR+XVXqiLa5B9usxFT2BTmbHvSKfkpJ7McCNc/3U0PQR8euFRZ9i75o/w+pLHFMJ05IX3JB0zHbXMV173PjObiV3ItSJm2j3mp5XKabRGSA5rmfMnHIAMz6stGhcuom6+bMri2u/axmPsdxmC6MeWkCkCmPjaKsVz1+uQUNCJkAnzesluhoD+R6VjFDm4WI7yYabu4MOOAOTaQXdEg==
+///         rsaEncryptedKeyWoVersion: 1
 /// ```
 ///
 /// ### Disk Async
@@ -261,7 +605,7 @@ import 'disk_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -293,7 +637,7 @@ import 'disk_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -302,12 +646,18 @@ import 'disk_state.dart';
 /// }
 ///
 /// resource "gcp_compute_disk" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "async-test-disk"
 ///   type                      = "pd-ssd"
 ///   zone                      = "us-central1-a"
 ///   physical_block_size_bytes = 4096
 /// }
 /// resource "gcp_compute_disk" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "async-secondary-test-disk"
 ///   type = "pd-ssd"
 ///   zone = "us-east1-c"
@@ -479,7 +829,7 @@ import 'disk_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -516,7 +866,7 @@ import 'disk_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -525,6 +875,9 @@ import 'disk_state.dart';
 /// }
 ///
 /// resource "gcp_compute_disk" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-disk-features"
 ///   type = "pd-ssd"
 ///   zone = "us-central1-a"
@@ -666,6 +1019,8 @@ class Disk extends pulumi.CustomResource {
   /// If you do not provide an encryption key when creating the disk, then
   /// the disk will be encrypted using an automatically generated key and
   /// you do not need to provide a key to use the disk later.
+  /// ~&gt;**NOTE** Only changing `kmsKeySelfLink` between Cloud KMS keys is
+  /// done in place; other changes to this block recreate the disk.
   /// Structure is documented below.
   late final pulumi.Output<DiskDiskEncryptionKey?> diskEncryptionKey;
   /// The unique identifier for the resource. This identifier is defined by the server.
@@ -856,7 +1211,7 @@ class Disk extends pulumi.CustomResource {
           'gcp:compute/disk:Disk',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accessMode = registerOutput<String>('accessMode');

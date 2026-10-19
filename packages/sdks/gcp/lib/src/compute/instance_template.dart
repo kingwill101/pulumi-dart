@@ -274,8 +274,8 @@ import 'instance_template_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -373,7 +373,7 @@ import 'instance_template_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -381,16 +381,22 @@ import 'instance_template_workload_identity_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "myImage" {
+/// data "gcp_compute_image" "myImage" {
 ///   family  = "debian-11"
 ///   project = "debian-cloud"
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "service-account-id"
 ///   display_name = "Service Account"
 /// }
-/// resource "gcp_compute_instancetemplate" "default" {
+/// resource "gcp_compute_instance_template" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "appserver-template"
 ///   description = "This template is used to create app server instances."
 ///   tags        = ["foo", "bar"]
@@ -408,7 +414,7 @@ import 'instance_template_workload_identity_config.dart';
 ///     source_image      = "debian-cloud/debian-11"
 ///     auto_delete       = true
 ///     boot              = true
-///     resource_policies = gcp_compute_resourcepolicy.daily_backup.id
+///     resource_policies = gcp_compute_resource_policy.daily_backup.id
 ///   }
 ///   disks {
 ///     source      = gcp_compute_disk.foobar.name
@@ -430,13 +436,19 @@ import 'instance_template_workload_identity_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_disk" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "existing-disk"
-///   image = data.gcp_compute_getimage.myImage.self_link
+///   image = data.gcp_compute_image.myImage.self_link
 ///   size  = 10
 ///   type  = "pd-ssd"
 ///   zone  = "us-central1-a"
 /// }
-/// resource "gcp_compute_resourcepolicy" "daily_backup" {
+/// resource "gcp_compute_resource_policy" "daily_backup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "every-day-4am"
 ///   region = "us-central1"
 ///   snapshot_schedule_policy = {
@@ -882,7 +894,7 @@ import 'instance_template_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -979,7 +991,7 @@ import 'instance_template_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -987,20 +999,23 @@ import 'instance_template_workload_identity_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getdefaultserviceaccount" "default" {
+/// data "gcp_compute_default_service_account" "default" {
 /// }
-/// data "gcp_compute_getimage" "myImage" {
+/// data "gcp_compute_image" "myImage" {
 ///   family  = "debian-11"
 ///   project = "debian-cloud"
 /// }
 ///
-/// resource "gcp_compute_instancetemplate" "foobar" {
+/// resource "gcp_compute_instance_template" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "appserver-template"
 ///   machine_type   = "e2-medium"
 ///   can_ip_forward = false
 ///   tags           = ["foo", "bar"]
 ///   disks {
-///     source_image = data.gcp_compute_getimage.myImage.self_link
+///     source_image = data.gcp_compute_image.myImage.self_link
 ///     auto_delete  = true
 ///     boot         = true
 ///   }
@@ -1012,13 +1027,49 @@ import 'instance_template_workload_identity_config.dart';
 ///     automatic_restart = true
 ///   }
 ///   metadata = {
-///     "gce-software-declaration" = "{\n  \\\"softwareRecipes\\\": [{\n    \\\"name\\\": \\\"install-gce-service-proxy-agent\\\",\n    \\\"desired_state\\\": \\\"INSTALLED\\\",\n    \\\"installSteps\\\": [{\n      \\\"scriptRun\\\": {\n        \\\"script\\\": \\\"#! /bin/bash\\\nZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\\\nexport SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\\\nsudo gsutil cp   gs://gce-service-proxy-\\\"$ZONE\\\"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   \\\"$SERVICE_PROXY_AGENT_DIRECTORY\\\"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     \\\"$SERVICE_PROXY_AGENT_DIRECTORY\\\"\\\nsudo tar -xzf \\\"$SERVICE_PROXY_AGENT_DIRECTORY\\\"/service-proxy-agent-0.2.tgz -C \\\"$SERVICE_PROXY_AGENT_DIRECTORY\\\"\\\n\\\"$SERVICE_PROXY_AGENT_DIRECTORY\\\"/service-proxy-agent/service-proxy-agent-bootstrap.sh\\\"\n      }\n    }]\n  }]\n}\n"
-///     "gce-service-proxy"        = "{\n  \\\"api-version\\\": \\\"0.2\\\",\n  \\\"proxy-spec\\\": {\n    \\\"proxy-port\\\": 15001,\n    \\\"network\\\": \\\"my-network\\\",\n    \\\"tracing\\\": \\\"ON\\\",\n    \\\"access-log\\\": \\\"/var/log/envoy/access.log\\\"\n  }\n  \\\"service\\\": {\n    \\\"serving-ports\\\": [80, 81]\n  },\n \\\"labels\\\": {\n   \\\"app_name\\\": \\\"bookserver_app\\\",\n   \\\"app_version\\\": \\\"STABLE\\\"\n  }\n}\n"
+///     "gce-software-declaration" = <<-EOF
+/// {
+///   \"softwareRecipes\": [{
+///     \"name\": \"install-gce-service-proxy-agent\",
+///     \"desired_state\": \"INSTALLED\",
+///     \"installSteps\": [{
+///       \"scriptRun\": {
+///         \"script\": \"#! /bin/bash\
+/// ZONE=$(curl --silent http://metadata.google.internal/computeMetadata/v1/instance/zone -H Metadata-Flavor:Google | cut -d/ -f4 )\
+/// export SERVICE_PROXY_AGENT_DIRECTORY=$(mktemp -d)\
+/// sudo gsutil cp   gs://gce-service-proxy-\"$ZONE\"/service-proxy-agent/releases/service-proxy-agent-0.2.tgz   \"$SERVICE_PROXY_AGENT_DIRECTORY\"   || sudo gsutil cp     gs://gce-service-proxy/service-proxy-agent/releases/service-proxy-agent-0.2.tgz     \"$SERVICE_PROXY_AGENT_DIRECTORY\"\
+/// sudo tar -xzf \"$SERVICE_PROXY_AGENT_DIRECTORY\"/service-proxy-agent-0.2.tgz -C \"$SERVICE_PROXY_AGENT_DIRECTORY\"\
+/// \"$SERVICE_PROXY_AGENT_DIRECTORY\"/service-proxy-agent/service-proxy-agent-bootstrap.sh\"
+///       }
+///     }]
+///   }]
+/// }
+/// EOF
+///
+///     "gce-service-proxy"        = <<-EOF
+/// {
+///   \"api-version\": \"0.2\",
+///   \"proxy-spec\": {
+///     \"proxy-port\": 15001,
+///     \"network\": \"my-network\",
+///     \"tracing\": \"ON\",
+///     \"access-log\": \"/var/log/envoy/access.log\"
+///   }
+///   \"service\": {
+///     \"serving-ports\": [80, 81]
+///   },
+///  \"labels\": {
+///    \"app_name\": \"bookserver_app\",
+///    \"app_version\": \"STABLE\"
+///   }
+/// }
+/// EOF
+///
 ///     "enable-guest-attributes"  = "true"
 ///     "enable-osconfig"          = "true"
 ///   }
 ///   service_account = {
-///     email  = data.gcp_compute_getdefaultserviceaccount.default.email
+///     email  = data.gcp_compute_default_service_account.default.email
 ///     scopes = ["cloud-platform"]
 ///   }
 ///   labels = {
@@ -1331,8 +1382,8 @@ import 'instance_template_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1382,7 +1433,7 @@ import 'instance_template_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1391,10 +1442,16 @@ import 'instance_template_workload_identity_config.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "my-custom-sa"
 ///   display_name = "Custom SA for VM Instance"
 /// }
-/// resource "gcp_compute_instancetemplate" "confidential_instance_template" {
+/// resource "gcp_compute_instance_template" "confidential_instance_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -1590,7 +1647,7 @@ import 'instance_template_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1621,7 +1678,7 @@ import 'instance_template_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1629,17 +1686,20 @@ import 'instance_template_workload_identity_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "myImage" {
+/// data "gcp_compute_image" "myImage" {
 ///   family  = "debian-11"
 ///   project = "debian-cloud"
 /// }
 ///
-/// resource "gcp_compute_instancetemplate" "instance_template" {
+/// resource "gcp_compute_instance_template" "instance_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name_prefix  = "instance-template-"
 ///   machine_type = "e2-medium"
 ///   region       = "us-central1"
 ///   disks {
-///     source_image = data.gcp_compute_getimage.myImage.self_link
+///     source_image = data.gcp_compute_image.myImage.self_link
 ///   }
 /// }
 /// ```
@@ -1763,7 +1823,7 @@ import 'instance_template_workload_identity_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1787,7 +1847,7 @@ import 'instance_template_workload_identity_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1795,7 +1855,10 @@ import 'instance_template_workload_identity_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_instancetemplate" "instance_template" {
+/// resource "gcp_compute_instance_template" "instance_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name_prefix  = "instance-template-"
 ///   machine_type = "e2-medium"
 ///   region       = "us-central1"
@@ -2004,7 +2067,7 @@ class InstanceTemplate extends pulumi.CustomResource {
           'gcp:compute/instanceTemplate:InstanceTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     advancedMachineFeatures = registerOutput<InstanceTemplateAdvancedMachineFeatures?>('advancedMachineFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceTemplateAdvancedMachineFeatures.fromMap((guardedValue as Map).cast<String, dynamic>()); });

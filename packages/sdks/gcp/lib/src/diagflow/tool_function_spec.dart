@@ -1,0 +1,41 @@
+// ignore_for_file: unused_element, unnecessary_cast
+
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+class ToolFunctionSpec {
+  /// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+  /// This input is a JSON object that contains the function's parameters as properties of the object.
+  final pulumi.Input<String?>? inputSchema;
+  /// Optional. The method type of the function. If not specified, the default value is GET.
+  /// Possible values are: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`.
+  final pulumi.Input<String?>? methodType;
+  /// Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+  /// This output is a JSON object that contains the function's parameters as properties of the object.
+  final pulumi.Input<String?>? outputSchema;
+
+  /// Creates a new [ToolFunctionSpec].
+  /// [inputSchema] Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
+  /// [methodType] Optional. The method type of the function. If not specified, the default value is GET.
+  /// [outputSchema] Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
+  const ToolFunctionSpec({
+    this.inputSchema,
+    this.methodType,
+    this.outputSchema,
+  });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'inputSchema': ?inputSchema,
+      'methodType': ?methodType,
+      'outputSchema': ?outputSchema,
+    };
+  }
+
+  factory ToolFunctionSpec.fromMap(Map<String, dynamic> map) {
+    return ToolFunctionSpec(
+      inputSchema: (() { final guardedValue = map['inputSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      methodType: (() { final guardedValue = map['methodType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      outputSchema: (() { final guardedValue = map['outputSchema']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+    );
+  }
+}

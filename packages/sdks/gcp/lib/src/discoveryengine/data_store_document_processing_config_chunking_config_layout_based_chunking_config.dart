@@ -27,7 +27,7 @@ class DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig {
 
   factory DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig.fromMap(Map<String, dynamic> map) {
     return DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig(
-      chunkSize: (() { final guardedValue = map['chunkSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      chunkSize: (() { final guardedValue = map['chunkSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       includeAncestorHeadings: (() { final guardedValue = map['includeAncestorHeadings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

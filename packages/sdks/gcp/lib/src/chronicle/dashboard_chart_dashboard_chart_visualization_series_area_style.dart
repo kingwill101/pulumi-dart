@@ -51,12 +51,12 @@ class DashboardChartDashboardChartVisualizationSeriesAreaStyle {
   factory DashboardChartDashboardChartVisualizationSeriesAreaStyle.fromMap(Map<String, dynamic> map) {
     return DashboardChartDashboardChartVisualizationSeriesAreaStyle(
       color: (() { final guardedValue = map['color']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      opacity: (() { final guardedValue = map['opacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      opacity: (() { final guardedValue = map['opacity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       origin: (() { final guardedValue = map['origin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      shadowBlur: (() { final guardedValue = map['shadowBlur']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      shadowBlur: (() { final guardedValue = map['shadowBlur']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       shadowColor: (() { final guardedValue = map['shadowColor']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      shadowOffsetX: (() { final guardedValue = map['shadowOffsetX']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      shadowOffsetY: (() { final guardedValue = map['shadowOffsetY']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      shadowOffsetX: (() { final guardedValue = map['shadowOffsetX']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      shadowOffsetY: (() { final guardedValue = map['shadowOffsetY']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

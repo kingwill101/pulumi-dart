@@ -28,8 +28,8 @@ class AlertPolicyConditionConditionSqlHourly {
 
   factory AlertPolicyConditionConditionSqlHourly.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlHourly(
-      minuteOffset: (() { final guardedValue = map['minuteOffset']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      periodicity: pulumi.Input.fromValue((map['periodicity'] as num).toInt()),
+      minuteOffset: (() { final guardedValue = map['minuteOffset']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      periodicity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['periodicity'])),
     );
   }
 }

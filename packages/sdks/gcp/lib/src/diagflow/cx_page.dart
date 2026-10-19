@@ -2540,9 +2540,9 @@ import 'cx_page_transition_route.dart';
 /// 	"encoding/json"
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3451,7 +3451,7 @@ import 'cx_page_transition_route.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3459,10 +3459,13 @@ import 'cx_page_transition_route.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name               = "dialogflowcx-agent"
 ///   location                   = "global"
 ///   default_language_code      = "en"
@@ -3476,54 +3479,69 @@ import 'cx_page_transition_route.dart';
 ///     enable_speech_adaptation = true
 ///   }
 /// }
-/// resource "gcp_diagflow_cxpage" "basic_page" {
-///   parent       = gcp_diagflow_cxagent.agent.start_flow
+/// resource "gcp_diagflow_cx_page" "basic_page" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.start_flow
 ///   display_name = "MyPage"
 ///   entry_fulfillment = {
 ///     messages = [{
-///       "channel" = "some-channel"
-///       "text" = {
-///         "texts" = ["Welcome to page"]
+///       channel = "some-channel"
+///       text = {
+///         texts = ["Welcome to page"]
 ///       }
 ///       }, {
-///       "payload" = "        {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n"
+///       payload = <<EOF
+///         {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+/// EOF
+///
 ///       }, {
-///       "conversationSuccess" = {
-///         "metadata" = "          {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///       conversation_success = {
+///         metadata = <<EOF
+///           {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///       }
 ///       }, {
-///       "outputAudioText" = {
-///         "text" = "some output text"
+///       output_audio_text = {
+///         text = "some output text"
 ///       }
 ///       }, {
-///       "outputAudioText" = {
-///         "ssml" = "          <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n"
+///       output_audio_text = {
+///         ssml = <<EOF
+///           <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+/// EOF
+///
 ///       }
 ///       }, {
-///       "liveAgentHandoff" = {
-///         "metadata" = "          {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///       live_agent_handoff = {
+///         metadata = <<EOF
+///           {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///       }
 ///       }, {
-///       "playAudio" = {
-///         "audioUri" = "http://example.com/some-audio-file.mp3"
+///       play_audio = {
+///         audio_uri = "http://example.com/some-audio-file.mp3"
 ///       }
 ///       }, {
-///       "telephonyTransferCall" = {
-///         "phoneNumber" = "1-234-567-8901"
+///       telephony_transfer_call = {
+///         phone_number = "1-234-567-8901"
 ///       }
 ///     }]
 ///     set_parameter_actions = [{
-///       "parameter" = "some-param"
-///       "value"     = "123.45"
+///       parameter = "some-param"
+///       value     = "123.45"
 ///       }, {
-///       "parameter" = "another-param"
-///       "value"     = jsonencode("abc")
+///       parameter = "another-param"
+///       value     = jsonencode("abc")
 ///       }, {
-///       "parameter" = "other-param"
-///       "value"     = jsonencode(["foo"])
+///       parameter = "other-param"
+///       value     = jsonencode(["foo"])
 ///     }]
 ///     conditional_cases = [{
-///       "cases" = jsonencode([{
+///       cases = jsonencode([{
 ///         "condition" = "$sys.func.RAND() < 0.5"
 ///         "caseContent" = [{
 ///           "message" = {
@@ -3561,49 +3579,61 @@ import 'cx_page_transition_route.dart';
 ///     trigger_fulfillment = {
 ///       return_partial_responses = true
 ///       messages = [{
-///         "channel" = "some-channel"
-///         "text" = {
-///           "texts" = ["Some text"]
+///         channel = "some-channel"
+///         text = {
+///           texts = ["Some text"]
 ///         }
 ///         }, {
-///         "payload" = "          {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n"
+///         payload = <<EOF
+///           {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+/// EOF
+///
 ///         }, {
-///         "conversationSuccess" = {
-///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         conversation_success = {
+///           metadata = <<EOF
+///             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///         }
 ///         }, {
-///         "outputAudioText" = {
-///           "text" = "some output text"
+///         output_audio_text = {
+///           text = "some output text"
 ///         }
 ///         }, {
-///         "outputAudioText" = {
-///           "ssml" = "            <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n"
+///         output_audio_text = {
+///           ssml = <<EOF
+///             <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+/// EOF
+///
 ///         }
 ///         }, {
-///         "liveAgentHandoff" = {
-///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         live_agent_handoff = {
+///           metadata = <<EOF
+///             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///         }
 ///         }, {
-///         "playAudio" = {
-///           "audioUri" = "http://example.com/some-audio-file.mp3"
+///         play_audio = {
+///           audio_uri = "http://example.com/some-audio-file.mp3"
 ///         }
 ///         }, {
-///         "telephonyTransferCall" = {
-///           "phoneNumber" = "1-234-567-8901"
+///         telephony_transfer_call = {
+///           phone_number = "1-234-567-8901"
 ///         }
 ///       }]
 ///       set_parameter_actions = [{
-///         "parameter" = "some-param"
-///         "value"     = "123.45"
+///         parameter = "some-param"
+///         value     = "123.45"
 ///         }, {
-///         "parameter" = "another-param"
-///         "value"     = jsonencode("abc")
+///         parameter = "another-param"
+///         value     = jsonencode("abc")
 ///         }, {
-///         "parameter" = "other-param"
-///         "value"     = jsonencode(["foo"])
+///         parameter = "other-param"
+///         value     = jsonencode(["foo"])
 ///       }]
 ///       conditional_cases = [{
-///         "cases" = jsonencode([{
+///         cases = jsonencode([{
 ///           "condition" = "$sys.func.RAND() < 0.5"
 ///           "caseContent" = [{
 ///             "message" = {
@@ -3639,55 +3669,67 @@ import 'cx_page_transition_route.dart';
 ///   }
 ///   form = {
 ///     parameters = [{
-///       "displayName"  = "param1"
-///       "entityType"   = "projects/-/locations/-/agents/-/entityTypes/sys.date"
-///       "defaultValue" = jsonencode("2000-01-01")
-///       "fillBehavior" = {
-///         "initialPromptFulfillment" = {
-///           "messages" = [{
-///             "channel" = "some-channel"
-///             "text" = {
-///               "texts" = ["Please provide param1"]
+///       display_name  = "param1"
+///       entity_type   = "projects/-/locations/-/agents/-/entityTypes/sys.date"
+///       default_value = jsonencode("2000-01-01")
+///       fill_behavior = {
+///         initial_prompt_fulfillment = {
+///           messages = [{
+///             channel = "some-channel"
+///             text = {
+///               texts = ["Please provide param1"]
 ///             }
 ///             }, {
-///             "payload" = "              {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n"
+///             payload = <<EOF
+///               {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+/// EOF
+///
 ///             }, {
-///             "conversationSuccess" = {
-///               "metadata" = "                {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///             conversation_success = {
+///               metadata = <<EOF
+///                 {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///             }
 ///             }, {
-///             "outputAudioText" = {
-///               "text" = "some output text"
+///             output_audio_text = {
+///               text = "some output text"
 ///             }
 ///             }, {
-///             "outputAudioText" = {
-///               "ssml" = "                <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n"
+///             output_audio_text = {
+///               ssml = <<EOF
+///                 <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+/// EOF
+///
 ///             }
 ///             }, {
-///             "liveAgentHandoff" = {
-///               "metadata" = "                {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///             live_agent_handoff = {
+///               metadata = <<EOF
+///                 {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///             }
 ///             }, {
-///             "playAudio" = {
-///               "audioUri" = "http://example.com/some-audio-file.mp3"
+///             play_audio = {
+///               audio_uri = "http://example.com/some-audio-file.mp3"
 ///             }
 ///             }, {
-///             "telephonyTransferCall" = {
-///               "phoneNumber" = "1-234-567-8901"
+///             telephony_transfer_call = {
+///               phone_number = "1-234-567-8901"
 ///             }
 ///           }]
-///           "setParameterActions" = [{
-///             "parameter" = "some-param"
-///             "value"     = "123.45"
+///           set_parameter_actions = [{
+///             parameter = "some-param"
+///             value     = "123.45"
 ///             }, {
-///             "parameter" = "another-param"
-///             "value"     = jsonencode("abc")
+///             parameter = "another-param"
+///             value     = jsonencode("abc")
 ///             }, {
-///             "parameter" = "other-param"
-///             "value"     = jsonencode(["foo"])
+///             parameter = "other-param"
+///             value     = jsonencode(["foo"])
 ///           }]
-///           "conditionalCases" = [{
-///             "cases" = jsonencode([{
+///           conditional_cases = [{
+///             cases = jsonencode([{
 ///               "condition" = "$sys.func.RAND() < 0.5"
 ///               "caseContent" = [{
 ///                 "message" = {
@@ -3720,56 +3762,68 @@ import 'cx_page_transition_route.dart';
 ///             }])
 ///           }]
 ///         }
-///         "repromptEventHandlers" = [{
-///           "event" = "sys.no-match-1"
-///           "triggerFulfillment" = {
-///             "returnPartialResponses" = true
-///             "webhook"                = gcp_diagflow_cxwebhook.my_webhook.id
-///             "tag"                    = "some-tag"
-///             "messages" = [{
-///               "channel" = "some-channel"
-///               "text" = {
-///                 "texts" = ["Please provide param1"]
+///         reprompt_event_handlers = [{
+///           event = "sys.no-match-1"
+///           trigger_fulfillment = {
+///             return_partial_responses = true
+///             webhook                  = gcp_diagflow_cx_webhook.my_webhook.id
+///             tag                      = "some-tag"
+///             messages = [{
+///               channel = "some-channel"
+///               text = {
+///                 texts = ["Please provide param1"]
 ///               }
 ///               }, {
-///               "payload" = "                {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n"
+///               payload = <<EOF
+///                 {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+/// EOF
+///
 ///               }, {
-///               "conversationSuccess" = {
-///                 "metadata" = "                  {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///               conversation_success = {
+///                 metadata = <<EOF
+///                   {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///               }
 ///               }, {
-///               "outputAudioText" = {
-///                 "text" = "some output text"
+///               output_audio_text = {
+///                 text = "some output text"
 ///               }
 ///               }, {
-///               "outputAudioText" = {
-///                 "ssml" = "                  <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n"
+///               output_audio_text = {
+///                 ssml = <<EOF
+///                   <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+/// EOF
+///
 ///               }
 ///               }, {
-///               "liveAgentHandoff" = {
-///                 "metadata" = "                  {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///               live_agent_handoff = {
+///                 metadata = <<EOF
+///                   {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///               }
 ///               }, {
-///               "playAudio" = {
-///                 "audioUri" = "http://example.com/some-audio-file.mp3"
+///               play_audio = {
+///                 audio_uri = "http://example.com/some-audio-file.mp3"
 ///               }
 ///               }, {
-///               "telephonyTransferCall" = {
-///                 "phoneNumber" = "1-234-567-8901"
+///               telephony_transfer_call = {
+///                 phone_number = "1-234-567-8901"
 ///               }
 ///             }]
-///             "setParameterActions" = [{
-///               "parameter" = "some-param"
-///               "value"     = "123.45"
+///             set_parameter_actions = [{
+///               parameter = "some-param"
+///               value     = "123.45"
 ///               }, {
-///               "parameter" = "another-param"
-///               "value"     = jsonencode("abc")
+///               parameter = "another-param"
+///               value     = jsonencode("abc")
 ///               }, {
-///               "parameter" = "other-param"
-///               "value"     = jsonencode(["foo"])
+///               parameter = "other-param"
+///               value     = jsonencode(["foo"])
 ///             }]
-///             "conditionalCases" = [{
-///               "cases" = jsonencode([{
+///             conditional_cases = [{
+///               cases = jsonencode([{
 ///                 "condition" = "$sys.func.RAND() < 0.5"
 ///                 "caseContent" = [{
 ///                   "message" = {
@@ -3803,20 +3857,20 @@ import 'cx_page_transition_route.dart';
 ///             }]
 ///           }
 ///           }, {
-///           "event"      = "sys.no-match-2"
-///           "targetFlow" = gcp_diagflow_cxagent.agent.start_flow
+///           event       = "sys.no-match-2"
+///           target_flow = gcp_diagflow_cx_agent.agent.start_flow
 ///           }, {
-///           "event"      = "sys.no-match-3"
-///           "targetPage" = gcp_diagflow_cxpage.my_page2.id
+///           event       = "sys.no-match-3"
+///           target_page = gcp_diagflow_cx_page.my_page2.id
 ///         }]
 ///       }
-///       "required" = "true"
-///       "redact"   = "true"
-///       "advancedSettings" = {
-///         "dtmfSettings" = {
-///           "enabled"     = true
-///           "maxDigits"   = 1
-///           "finishDigit" = "#"
+///       required = "true"
+///       redact   = "true"
+///       advanced_settings = {
+///         dtmf_settings = {
+///           enabled      = true
+///           max_digits   = 1
+///           finish_digit = "#"
 ///         }
 ///       }
 ///     }]
@@ -3825,49 +3879,61 @@ import 'cx_page_transition_route.dart';
 ///     condition = "$page.params.status = 'FINAL'"
 ///     trigger_fulfillment = {
 ///       messages = [{
-///         "channel" = "some-channel"
-///         "text" = {
-///           "texts" = ["information completed, navigating to page 2"]
+///         channel = "some-channel"
+///         text = {
+///           texts = ["information completed, navigating to page 2"]
 ///         }
 ///         }, {
-///         "payload" = "          {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n"
+///         payload = <<EOF
+///           {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+/// EOF
+///
 ///         }, {
-///         "conversationSuccess" = {
-///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         conversation_success = {
+///           metadata = <<EOF
+///             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///         }
 ///         }, {
-///         "outputAudioText" = {
-///           "text" = "some output text"
+///         output_audio_text = {
+///           text = "some output text"
 ///         }
 ///         }, {
-///         "outputAudioText" = {
-///           "ssml" = "            <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n"
+///         output_audio_text = {
+///           ssml = <<EOF
+///             <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+/// EOF
+///
 ///         }
 ///         }, {
-///         "liveAgentHandoff" = {
-///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         live_agent_handoff = {
+///           metadata = <<EOF
+///             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///         }
 ///         }, {
-///         "playAudio" = {
-///           "audioUri" = "http://example.com/some-audio-file.mp3"
+///         play_audio = {
+///           audio_uri = "http://example.com/some-audio-file.mp3"
 ///         }
 ///         }, {
-///         "telephonyTransferCall" = {
-///           "phoneNumber" = "1-234-567-8901"
+///         telephony_transfer_call = {
+///           phone_number = "1-234-567-8901"
 ///         }
 ///       }]
 ///       set_parameter_actions = [{
-///         "parameter" = "some-param"
-///         "value"     = "123.45"
+///         parameter = "some-param"
+///         value     = "123.45"
 ///         }, {
-///         "parameter" = "another-param"
-///         "value"     = jsonencode("abc")
+///         parameter = "another-param"
+///         value     = jsonencode("abc")
 ///         }, {
-///         "parameter" = "other-param"
-///         "value"     = jsonencode(["foo"])
+///         parameter = "other-param"
+///         value     = jsonencode(["foo"])
 ///       }]
 ///       conditional_cases = [{
-///         "cases" = jsonencode([{
+///         cases = jsonencode([{
 ///           "condition" = "$sys.func.RAND() < 0.5"
 ///           "caseContent" = [{
 ///             "message" = {
@@ -3900,7 +3966,7 @@ import 'cx_page_transition_route.dart';
 ///         }])
 ///       }]
 ///     }
-///     target_page = gcp_diagflow_cxpage.my_page2.id
+///     target_page = gcp_diagflow_cx_page.my_page2.id
 ///   }
 ///   advanced_settings = {
 ///     dtmf_settings = {
@@ -3913,49 +3979,61 @@ import 'cx_page_transition_route.dart';
 ///     enabled = true
 ///     trigger_fulfillment = {
 ///       messages = [{
-///         "channel"           = "some-channel"
-///         "knowledgeInfoCard" = {}
+///         channel             = "some-channel"
+///         knowledge_info_card = {}
 ///         }, {
-///         "channel" = "some-channel"
-///         "text" = {
-///           "texts" = ["information completed, navigating to page 2"]
+///         channel = "some-channel"
+///         text = {
+///           texts = ["information completed, navigating to page 2"]
 ///         }
 ///         }, {
-///         "payload" = "          {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n"
+///         payload = <<EOF
+///           {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+/// EOF
+///
 ///         }, {
-///         "conversationSuccess" = {
-///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         conversation_success = {
+///           metadata = <<EOF
+///             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///         }
 ///         }, {
-///         "outputAudioText" = {
-///           "text" = "some output text"
+///         output_audio_text = {
+///           text = "some output text"
 ///         }
 ///         }, {
-///         "outputAudioText" = {
-///           "ssml" = "            <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n"
+///         output_audio_text = {
+///           ssml = <<EOF
+///             <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+/// EOF
+///
 ///         }
 ///         }, {
-///         "liveAgentHandoff" = {
-///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         live_agent_handoff = {
+///           metadata = <<EOF
+///             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///         }
 ///         }, {
-///         "playAudio" = {
-///           "audioUri" = "http://example.com/some-audio-file.mp3"
+///         play_audio = {
+///           audio_uri = "http://example.com/some-audio-file.mp3"
 ///         }
 ///         }, {
-///         "telephonyTransferCall" = {
-///           "phoneNumber" = "1-234-567-8902"
+///         telephony_transfer_call = {
+///           phone_number = "1-234-567-8902"
 ///         }
 ///       }]
-///       webhook                  = gcp_diagflow_cxwebhook.my_webhook.id
+///       webhook                  = gcp_diagflow_cx_webhook.my_webhook.id
 ///       return_partial_responses = true
 ///       tag                      = "some-tag"
 ///       set_parameter_actions = [{
-///         "parameter" = "some-param"
-///         "value"     = "123.45"
+///         parameter = "some-param"
+///         value     = "123.45"
 ///       }]
 ///       conditional_cases = [{
-///         "cases" = jsonencode([{
+///         cases = jsonencode([{
 ///           "condition" = "$sys.func.RAND() < 0.5"
 ///           "caseContent" = [{
 ///             "message" = {
@@ -4001,26 +4079,35 @@ import 'cx_page_transition_route.dart';
 ///       enable_generative_fallback = true
 ///     }
 ///     data_store_connections = [{
-///       "dataStoreType"          = "PUBLIC_WEB"
-///       "dataStore"              ="projects/${data.gcp_organizations_getproject.project.number}/locations/${gcp_diagflow_cxagent.agent.location}/collections/default_collection/dataStores/datastore-page-full"
-///       "documentProcessingMode" = "CHUNKS"
+///       data_store_type          = "PUBLIC_WEB"
+///       data_store               ="projects/${data.gcp_organizations_project.project.number}/locations/${gcp_diagflow_cx_agent.agent.location}/collections/default_collection/dataStores/datastore-page-full"
+///       document_processing_mode = "CHUNKS"
 ///     }]
-///     target_page = gcp_diagflow_cxpage.my_page2.id
+///     target_page = gcp_diagflow_cx_page.my_page2.id
 ///   }
 /// }
-/// resource "gcp_diagflow_cxpage" "my_page2" {
-///   parent       = gcp_diagflow_cxagent.agent.start_flow
+/// resource "gcp_diagflow_cx_page" "my_page2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.start_flow
 ///   display_name = "MyPage2"
 /// }
-/// resource "gcp_discoveryengine_datastore" "my_datastore" {
+/// resource "gcp_discoveryengine_data_store" "my_datastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "global"
 ///   data_store_id     = "datastore-page-full"
 ///   display_name      = "datastore-page-full"
 ///   industry_vertical = "GENERIC"
 ///   content_config    = "NO_CONTENT"
 /// }
-/// resource "gcp_diagflow_cxwebhook" "my_webhook" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_webhook" "my_webhook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "MyWebhook"
 ///   generic_web_service = {
 ///     uri = "https://example.com"
@@ -5404,7 +5491,7 @@ class CxPage extends pulumi.CustomResource {
           'gcp:diagflow/cxPage:CxPage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     advancedSettings = registerOutput<CxPageAdvancedSettings?>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxPageAdvancedSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

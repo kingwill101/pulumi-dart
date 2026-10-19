@@ -6,6 +6,7 @@ import 'query_template_state.dart';
 /// Represents a BigQuery Query Template within a Data Exchange.
 /// This resource defines a reusable SQL routine (e.g., a TVF) that can be
 /// shared or executed via the Data Exchange.
+/// &gt; **Note:** Approving a Query Template is not supported by Terraform. The approve flow includes steps that can only be performed through the Google Cloud console UI. You can still create a Query Template (e.g. a TVF) and add it as a listing to a Data Clean Room via Terraform, but the final approval must be done manually.
 ///
 ///
 /// To get more information about QueryTemplate, see:
@@ -121,8 +122,8 @@ import 'query_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -166,7 +167,7 @@ import 'query_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -174,10 +175,13 @@ import 'query_template_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientopeniduserinfo" "me" {
+/// data "gcp_organizations_client_open_id_user_info" "me" {
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "querytemplate" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "querytemplate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "My Audience Data Exchange"
 ///   data_exchange_id = "my_data_exchange"
 ///   description      = "example of query template"
@@ -186,13 +190,16 @@ import 'query_template_state.dart';
 ///     dcr_exchange_config = {}
 ///   }
 /// }
-/// resource "gcp_bigqueryanalyticshub_querytemplate" "querytemplate" {
+/// resource "gcp_bigqueryanalyticshub_query_template" "querytemplate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "us"
-///   data_exchange_id  = gcp_bigqueryanalyticshub_dataexchange.querytemplate.data_exchange_id
+///   data_exchange_id  = gcp_bigqueryanalyticshub_data_exchange.querytemplate.data_exchange_id
 ///   query_template_id = "my_query_template"
 ///   display_name      = "my_query_template"
 ///   description       = "example of query template"
-///   primary_contact   = data.gcp_organizations_getclientopeniduserinfo.me.email
+///   primary_contact   = data.gcp_organizations_client_open_id_user_info.me.email
 ///   documentation     = "This TVF takes a table t1 as input and returns all columns. Useful for basic data pass-through."
 ///   routine = {
 ///     routine_type    = "TABLE_VALUED_FUNCTION"
@@ -365,7 +372,7 @@ class QueryTemplate extends pulumi.CustomResource {
           'gcp:bigqueryanalyticshub/queryTemplate:QueryTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     dataExchangeId = registerOutput<String>('dataExchangeId');

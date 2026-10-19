@@ -76,8 +76,8 @@ import 'interconnect_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -103,7 +103,7 @@ import 'interconnect_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -111,15 +111,18 @@ import 'interconnect_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_compute_interconnect" "example-interconnect" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-interconnect"
 ///   customer_name        = "example_customer"
 ///   interconnect_type    = "DEDICATED"
 ///   link_type            = "LINK_TYPE_ETHERNET_10G_LR"
-///   location             ="https://www.googleapis.com/compute/v1/projects/${data.gcp_organizations_getproject.project.project_id}/global/interconnectLocations/iad-zone1-1"
+///   location             ="https://www.googleapis.com/compute/v1/projects/${data.gcp_organizations_project.project.project_id}/global/interconnectLocations/iad-zone1-1"
 ///   requested_link_count = 1
 /// }
 /// ```
@@ -362,7 +365,7 @@ class Interconnect extends pulumi.CustomResource {
           'gcp:compute/interconnect:Interconnect',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     aaiEnabled = registerOutput<bool?>('aaiEnabled');

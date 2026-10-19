@@ -213,7 +213,7 @@ import 'vmware_node_pool_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkeonprem"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkeonprem"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -287,7 +287,7 @@ import 'vmware_node_pool_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -295,7 +295,10 @@ import 'vmware_node_pool_status.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gkeonprem_vmwarecluster" "default-basic" {
+/// resource "gcp_gkeonprem_v_mware_cluster" "default-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "my-cluster"
 ///   location                 = "us-west1"
 ///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
@@ -320,21 +323,24 @@ import 'vmware_node_pool_status.dart';
 ///     }
 ///     metal_lb_config = {
 ///       address_pools = [{
-///         "pool"         = "ingress-ip"
-///         "manualAssign" = "true"
-///         "addresses"    = ["10.251.135.19"]
+///         pool          = "ingress-ip"
+///         manual_assign = "true"
+///         addresses     = ["10.251.135.19"]
 ///         }, {
-///         "pool"         = "lb-test-ip"
-///         "manualAssign" = "true"
-///         "addresses"    = ["10.251.135.19"]
+///         pool          = "lb-test-ip"
+///         manual_assign = "true"
+///         addresses     = ["10.251.135.19"]
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_gkeonprem_vmwarenodepool" "nodepool-basic" {
+/// resource "gcp_gkeonprem_v_mware_node_pool" "nodepool-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "my-nodepool"
 ///   location       = "us-west1"
-///   vmware_cluster = gcp_gkeonprem_vmwarecluster.default-basic.name
+///   vmware_cluster = gcp_gkeonprem_v_mware_cluster.default-basic.name
 ///   config = {
 ///     replicas             = 3
 ///     image_type           = "ubuntu_containerd"
@@ -798,7 +804,7 @@ import 'vmware_node_pool_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkeonprem"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkeonprem"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -911,7 +917,7 @@ import 'vmware_node_pool_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -919,7 +925,10 @@ import 'vmware_node_pool_status.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gkeonprem_vmwarecluster" "default-full" {
+/// resource "gcp_gkeonprem_v_mware_cluster" "default-full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "my-cluster"
 ///   location                 = "us-west1"
 ///   admin_cluster_membership = "projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"
@@ -944,21 +953,24 @@ import 'vmware_node_pool_status.dart';
 ///     }
 ///     metal_lb_config = {
 ///       address_pools = [{
-///         "pool"         = "ingress-ip"
-///         "manualAssign" = "true"
-///         "addresses"    = ["10.251.135.19"]
+///         pool          = "ingress-ip"
+///         manual_assign = "true"
+///         addresses     = ["10.251.135.19"]
 ///         }, {
-///         "pool"         = "lb-test-ip"
-///         "manualAssign" = "true"
-///         "addresses"    = ["10.251.135.19"]
+///         pool          = "lb-test-ip"
+///         manual_assign = "true"
+///         addresses     = ["10.251.135.19"]
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_gkeonprem_vmwarenodepool" "nodepool-full" {
+/// resource "gcp_gkeonprem_v_mware_node_pool" "nodepool-full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "my-nodepool"
 ///   location        = "us-west1"
-///   vmware_cluster  = gcp_gkeonprem_vmwarecluster.default-full.name
+///   vmware_cluster  = gcp_gkeonprem_v_mware_cluster.default-full.name
 ///   on_prem_version = "1.33.0-gke.35"
 ///   annotations     = {}
 ///   config = {
@@ -969,22 +981,22 @@ import 'vmware_node_pool_status.dart';
 ///     image             = "image"
 ///     boot_disk_size_gb = 10
 ///     taints = [{
-///       "key"   = "key"
-///       "value" = "value"
+///       key   = "key"
+///       value = "value"
 ///       }, {
-///       "key"    = "key"
-///       "value"  = "value"
-///       "effect" = "NO_SCHEDULE"
+///       key    = "key"
+///       value  = "value"
+///       effect = "NO_SCHEDULE"
 ///     }]
 ///     labels = {}
 ///     vsphere_config = {
 ///       datastore = "test-datastore"
 ///       tags = [{
-///         "category" = "test-category-1"
-///         "tag"      = "tag-1"
+///         category = "test-category-1"
+///         tag      = "tag-1"
 ///         }, {
-///         "category" = "test-category-2"
-///         "tag"      = "tag-2"
+///         category = "test-category-2"
+///         tag      = "tag-2"
 ///       }]
 ///       host_groups = ["host1", "host2"]
 ///     }
@@ -1288,7 +1300,7 @@ class VMwareNodePool extends pulumi.CustomResource {
           'gcp:gkeonprem/vMwareNodePool:VMwareNodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     config = registerOutput<VMwareNodePoolConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VMwareNodePoolConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -130,8 +130,8 @@ import 'volume_snapshot_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -181,7 +181,7 @@ import 'volume_snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -189,27 +189,36 @@ import 'volume_snapshot_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "default" {
+/// data "gcp_compute_network" "default" {
 ///   name = "test-network"
 /// }
 ///
-/// resource "gcp_netapp_storagepool" "default" {
+/// resource "gcp_netapp_storage_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "test-pool"
 ///   location      = "us-west2"
 ///   service_level = "PREMIUM"
 ///   capacity_gib  = 2048
-///   network       = data.gcp_compute_getnetwork.default.id
+///   network       = data.gcp_compute_network.default.id
 /// }
 /// resource "gcp_netapp_volume" "default" {
-///   location     = gcp_netapp_storagepool.default.location
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location     = gcp_netapp_storage_pool.default.location
 ///   name         = "test-volume"
 ///   capacity_gib = 100
 ///   share_name   = "test-volume"
-///   storage_pool = gcp_netapp_storagepool.default.name
+///   storage_pool = gcp_netapp_storage_pool.default.name
 ///   protocols    = ["NFSV3"]
 /// }
-/// resource "gcp_netapp_volumesnapshot" "test_snapshot" {
-///   depends_on  = [gcp_netapp_volume.default]
+/// resource "gcp_netapp_volume_snapshot" "test_snapshot" {
+///   depends_on = [gcp_netapp_volume.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = gcp_netapp_volume.default.location
 ///   volume_name = gcp_netapp_volume.default.name
 ///   name        = "testvolumesnap"
@@ -376,7 +385,7 @@ class VolumeSnapshot extends pulumi.CustomResource {
           'gcp:netapp/volumeSnapshot:VolumeSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

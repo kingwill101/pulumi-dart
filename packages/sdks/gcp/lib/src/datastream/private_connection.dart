@@ -90,8 +90,8 @@ import 'private_connection_vpc_peering_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -123,7 +123,7 @@ import 'private_connection_vpc_peering_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -131,7 +131,10 @@ import 'private_connection_vpc_peering_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datastream_privateconnection" "default" {
+/// resource "gcp_datastream_private_connection" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Connection profile"
 ///   location              = "us-central1"
 ///   private_connection_id = "my-connection"
@@ -144,6 +147,9 @@ import 'private_connection_vpc_peering_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-network"
 /// }
 /// ```
@@ -286,8 +292,8 @@ import 'private_connection_vpc_peering_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -320,7 +326,7 @@ import 'private_connection_vpc_peering_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -328,7 +334,10 @@ import 'private_connection_vpc_peering_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datastream_privateconnection" "default" {
+/// resource "gcp_datastream_private_connection" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Connection profile"
 ///   location              = "us-central1"
 ///   private_connection_id = "my-connection"
@@ -342,6 +351,9 @@ import 'private_connection_vpc_peering_config.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-network"
 /// }
 /// ```
@@ -530,8 +542,8 @@ import 'private_connection_vpc_peering_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -584,7 +596,7 @@ import 'private_connection_vpc_peering_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -592,7 +604,10 @@ import 'private_connection_vpc_peering_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_datastream_privateconnection" "default" {
+/// resource "gcp_datastream_private_connection" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Connection profile"
 ///   location              = "us-west1"
 ///   private_connection_id = "my-connection"
@@ -600,10 +615,13 @@ import 'private_connection_vpc_peering_config.dart';
 ///     "key" = "value"
 ///   }
 ///   psc_interface_config = {
-///     network_attachment = gcp_compute_networkattachment.default.id
+///     network_attachment = gcp_compute_network_attachment.default.id
 ///   }
 /// }
-/// resource "gcp_compute_networkattachment" "default" {
+/// resource "gcp_compute_network_attachment" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-network-attachment"
 ///   region                = "us-west1"
 ///   description           = "basic network attachment description"
@@ -611,10 +629,16 @@ import 'private_connection_vpc_peering_config.dart';
 ///   subnetworks           = [gcp_compute_subnetwork.default.self_link]
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-subnetwork"
 ///   region        = "us-west1"
 ///   network       = gcp_compute_network.default.id
@@ -796,7 +820,7 @@ class PrivateConnection extends pulumi.CustomResource {
           'gcp:datastream/privateConnection:PrivateConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createWithoutValidation = registerOutput<bool?>('createWithoutValidation');

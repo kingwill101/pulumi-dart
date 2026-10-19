@@ -65,7 +65,7 @@ import 'get_ai_reasoning_engine_query_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -84,7 +84,7 @@ import 'get_ai_reasoning_engine_query_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -92,7 +92,7 @@ import 'get_ai_reasoning_engine_query_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_vertex_getaiendpointiampolicy" "policy" {
+/// data "gcp_vertex_ai_endpoint_iam_policy" "policy" {
 ///   project  = endpoint.project
 ///   location = endpoint.location
 ///   endpoint = endpoint.name
@@ -208,7 +208,7 @@ pulumi.Output<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -226,7 +226,7 @@ pulumi.Output<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -234,7 +234,7 @@ pulumi.Output<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_vertex_getaifeaturegroupiampolicy" "policy" {
+/// data "gcp_vertex_ai_feature_group_iam_policy" "policy" {
 ///   region        = featureGroup.region
 ///   feature_group = featureGroup.name
 /// }
@@ -350,7 +350,7 @@ pulumi.Output<GetAiFeatureGroupIamPolicyResult> getAiFeatureGroupIamPolicyOutput
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -369,7 +369,7 @@ pulumi.Output<GetAiFeatureGroupIamPolicyResult> getAiFeatureGroupIamPolicyOutput
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -377,7 +377,7 @@ pulumi.Output<GetAiFeatureGroupIamPolicyResult> getAiFeatureGroupIamPolicyOutput
 ///   }
 /// }
 ///
-/// data "gcp_vertex_getaifeatureonlinestorefeatureviewiampolicy" "policy" {
+/// data "gcp_vertex_ai_feature_online_store_featureview_iam_policy" "policy" {
 ///   region               = featureview.region
 ///   feature_online_store = featureview.featureOnlineStore
 ///   feature_view         = featureview.name
@@ -493,7 +493,7 @@ pulumi.Output<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult> getAiFeatureOnl
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -511,7 +511,7 @@ pulumi.Output<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult> getAiFeatureOnl
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -519,7 +519,7 @@ pulumi.Output<GetAiFeatureOnlineStoreFeatureviewIamPolicyResult> getAiFeatureOnl
 ///   }
 /// }
 ///
-/// data "gcp_vertex_getaifeatureonlinestoreiampolicy" "policy" {
+/// data "gcp_vertex_ai_feature_online_store_iam_policy" "policy" {
 ///   region               = featureOnlineStore.region
 ///   feature_online_store = featureOnlineStore.name
 /// }
@@ -632,7 +632,7 @@ pulumi.Output<GetAiFeatureOnlineStoreIamPolicyResult> getAiFeatureOnlineStoreIam
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -650,7 +650,7 @@ pulumi.Output<GetAiFeatureOnlineStoreIamPolicyResult> getAiFeatureOnlineStoreIam
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -658,7 +658,7 @@ pulumi.Output<GetAiFeatureOnlineStoreIamPolicyResult> getAiFeatureOnlineStoreIam
 ///   }
 /// }
 ///
-/// data "gcp_vertex_getaifeaturestoreentitytypeiampolicy" "policy" {
+/// data "gcp_vertex_ai_featurestore_entitytype_iam_policy" "policy" {
 ///   featurestore = entity.featurestore
 ///   entitytype   = entity.name
 /// }
@@ -774,7 +774,7 @@ pulumi.Output<GetAiFeaturestoreEntitytypeIamPolicyResult> getAiFeaturestoreEntit
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -793,7 +793,7 @@ pulumi.Output<GetAiFeaturestoreEntitytypeIamPolicyResult> getAiFeaturestoreEntit
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -801,7 +801,7 @@ pulumi.Output<GetAiFeaturestoreEntitytypeIamPolicyResult> getAiFeaturestoreEntit
 ///   }
 /// }
 ///
-/// data "gcp_vertex_getaifeaturestoreiampolicy" "policy" {
+/// data "gcp_vertex_ai_featurestore_iam_policy" "policy" {
 ///   project      = featurestore.project
 ///   region       = featurestore.region
 ///   featurestore = featurestore.name
@@ -945,7 +945,7 @@ pulumi.Output<GetAiIndexResult> getAiIndexOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -964,7 +964,7 @@ pulumi.Output<GetAiIndexResult> getAiIndexOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -972,7 +972,7 @@ pulumi.Output<GetAiIndexResult> getAiIndexOutput(
 ///   }
 /// }
 ///
-/// data "gcp_vertex_getaireasoningengineiampolicy" "policy" {
+/// data "gcp_vertex_ai_reasoning_engine_iam_policy" "policy" {
 ///   project          = reasoningEngine.project
 ///   region           = reasoningEngine.region
 ///   reasoning_engine = reasoningEngine.name
@@ -1055,7 +1055,7 @@ pulumi.Output<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicy
 /// import * as std from "@pulumi/std";
 ///
 /// const defaultAiReasoningEngine = new gcp.vertex.AiReasoningEngine("default", {
-///     displayName: "vertex-mds-_91657",
+///     displayName: "vertex-mds-_75303",
 ///     description: "Retrieves tenant project number",
 ///     region: "us-central1",
 ///     spec: {
@@ -1084,7 +1084,7 @@ pulumi.Output<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicy
 /// import pulumi_std as std
 ///
 /// default_ai_reasoning_engine = gcp.vertex.AiReasoningEngine("default",
-///     display_name="vertex-mds-_91657",
+///     display_name="vertex-mds-_75303",
 ///     description="Retrieves tenant project number",
 ///     region="us-central1",
 ///     spec={
@@ -1113,7 +1113,7 @@ pulumi.Output<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicy
 /// {
 ///     var defaultAiReasoningEngine = new Gcp.Vertex.AiReasoningEngine("default", new()
 ///     {
-///         DisplayName = "vertex-mds-_91657",
+///         DisplayName = "vertex-mds-_75303",
 ///         Description = "Retrieves tenant project number",
 ///         Region = "us-central1",
 ///         Spec = new Gcp.Vertex.Inputs.AiReasoningEngineSpecArgs
@@ -1149,7 +1149,7 @@ pulumi.Output<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicy
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1163,7 +1163,7 @@ pulumi.Output<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicy
 /// 			return err
 /// 		}
 /// 		defaultAiReasoningEngine, err := vertex.NewAiReasoningEngine(ctx, "default", &vertex.AiReasoningEngineArgs{
-/// 			DisplayName: pulumi.String("vertex-mds-_91657"),
+/// 			DisplayName: pulumi.String("vertex-mds-_75303"),
 /// 			Description: pulumi.String("Retrieves tenant project number"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			Spec: &vertex.AiReasoningEngineSpecArgs{
@@ -1191,7 +1191,7 @@ pulumi.Output<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicy
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1202,14 +1202,17 @@ pulumi.Output<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicy
 ///   }
 /// }
 ///
-/// data "gcp_vertex_getaireasoningenginequery" "default" {
-///   reasoning_engine_id = gcp_vertex_aireasoningengine.default.name
+/// data "gcp_vertex_ai_reasoning_engine_query" "default" {
+///   reasoning_engine_id = gcp_vertex_ai_reasoning_engine.default.name
 ///   region              = "us-central1"
 ///   class_method        = "query"
 /// }
 ///
-/// resource "gcp_vertex_aireasoningengine" "default" {
-///   display_name = "vertex-mds-_91657"
+/// resource "gcp_vertex_ai_reasoning_engine" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   display_name = "vertex-mds-_75303"
 ///   description  = "Retrieves tenant project number"
 ///   region       = "us-central1"
 ///   spec = {
@@ -1255,7 +1258,7 @@ pulumi.Output<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicy
 ///
 ///     public static void stack(Context ctx) {
 ///         var defaultAiReasoningEngine = new AiReasoningEngine("defaultAiReasoningEngine", AiReasoningEngineArgs.builder()
-///             .displayName("vertex-mds-_91657")
+///             .displayName("vertex-mds-_75303")
 ///             .description("Retrieves tenant project number")
 ///             .region("us-central1")
 ///             .spec(AiReasoningEngineSpecArgs.builder()
@@ -1288,7 +1291,7 @@ pulumi.Output<GetAiReasoningEngineIamPolicyResult> getAiReasoningEngineIamPolicy
 ///     type: gcp:vertex:AiReasoningEngine
 ///     name: default
 ///     properties:
-///       displayName: vertex-mds-_91657
+///       displayName: vertex-mds-_75303
 ///       description: Retrieves tenant project number
 ///       region: us-central1
 ///       spec:

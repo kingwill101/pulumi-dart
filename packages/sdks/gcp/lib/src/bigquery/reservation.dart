@@ -88,7 +88,7 @@ import 'reservation_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -116,7 +116,7 @@ import 'reservation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -125,6 +125,9 @@ import 'reservation_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_reservation" "reservation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "my-reservation"
 ///   location          = "us-west2"
 ///   slot_capacity     = 0
@@ -356,7 +359,7 @@ class Reservation extends pulumi.CustomResource {
           'gcp:bigquery/reservation:Reservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoscale = registerOutput<ReservationAutoscale?>('autoscale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>()); });

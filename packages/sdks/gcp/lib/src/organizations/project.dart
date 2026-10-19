@@ -67,7 +67,7 @@ import 'project_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -86,7 +86,7 @@ import 'project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -95,6 +95,9 @@ import 'project_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "my_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "My Project"
 ///   project_id = "your-project-id"
 ///   org_id     = "1234567"
@@ -198,7 +201,7 @@ import 'project_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -224,7 +227,7 @@ import 'project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -233,11 +236,17 @@ import 'project_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "my_project-in-a-folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "My Project"
 ///   project_id = "your-project-id"
 ///   folder_id  = gcp_organizations_folder.department1.name
 /// }
 /// resource "gcp_organizations_folder" "department1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Department 1"
 ///   parent       = "organizations/1234567"
 /// }
@@ -349,7 +358,7 @@ import 'project_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -371,7 +380,7 @@ import 'project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -380,6 +389,9 @@ import 'project_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "my_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "My Project"
 ///   project_id = "your-project-id"
 ///   org_id     = "1234567"
@@ -506,7 +518,7 @@ class Project extends pulumi.CustomResource {
           'gcp:organizations/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoCreateNetwork = registerOutput<bool?>('autoCreateNetwork');

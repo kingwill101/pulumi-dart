@@ -70,7 +70,7 @@ pulumi.Output<GetServiceConsumersIamPolicyResult> getServiceConsumersIamPolicyOu
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/endpoints"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/endpoints"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -87,7 +87,7 @@ pulumi.Output<GetServiceConsumersIamPolicyResult> getServiceConsumersIamPolicyOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -95,7 +95,7 @@ pulumi.Output<GetServiceConsumersIamPolicyResult> getServiceConsumersIamPolicyOu
 ///   }
 /// }
 ///
-/// data "gcp_endpoints_getserviceiampolicy" "policy" {
+/// data "gcp_endpoints_service_iam_policy" "policy" {
 ///   service_name = endpointsService.serviceName
 /// }
 /// ```

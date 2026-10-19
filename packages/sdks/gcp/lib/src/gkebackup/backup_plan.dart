@@ -26,8 +26,11 @@ import 'backup_plan_state.dart';
 ///
 /// const primary = new gcp.container.Cluster("primary", {
 ///     name: "basic-cluster",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     initialNodeCount: 1,
+///     nodeConfig: {
+///         machineType: "n4-standard-2",
+///     },
 ///     workloadIdentityConfig: {
 ///         workloadPool: "my-project-name.svc.id.goog",
 ///     },
@@ -43,7 +46,7 @@ import 'backup_plan_state.dart';
 /// const basic = new gcp.gkebackup.BackupPlan("basic", {
 ///     name: "basic-plan",
 ///     cluster: primary.id,
-///     location: "us-central1",
+///     location: "us-east1",
 ///     backupConfig: {
 ///         includeVolumeData: true,
 ///         includeSecrets: true,
@@ -57,8 +60,11 @@ import 'backup_plan_state.dart';
 ///
 /// primary = gcp.container.Cluster("primary",
 ///     name="basic-cluster",
-///     location="us-central1",
+///     location="us-east1",
 ///     initial_node_count=1,
+///     node_config={
+///         "machine_type": "n4-standard-2",
+///     },
 ///     workload_identity_config={
 ///         "workload_pool": "my-project-name.svc.id.goog",
 ///     },
@@ -73,7 +79,7 @@ import 'backup_plan_state.dart';
 /// basic = gcp.gkebackup.BackupPlan("basic",
 ///     name="basic-plan",
 ///     cluster=primary.id,
-///     location="us-central1",
+///     location="us-east1",
 ///     backup_config={
 ///         "include_volume_data": True,
 ///         "include_secrets": True,
@@ -91,8 +97,12 @@ import 'backup_plan_state.dart';
 ///     var primary = new Gcp.Container.Cluster("primary", new()
 ///     {
 ///         Name = "basic-cluster",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         InitialNodeCount = 1,
+///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+///         {
+///             MachineType = "n4-standard-2",
+///         },
 ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
 ///         {
 ///             WorkloadPool = "my-project-name.svc.id.goog",
@@ -113,7 +123,7 @@ import 'backup_plan_state.dart';
 ///     {
 ///         Name = "basic-plan",
 ///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
 ///         {
 ///             IncludeVolumeData = true,
@@ -128,8 +138,8 @@ import 'backup_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -137,8 +147,11 @@ import 'backup_plan_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 /// 			Name:             pulumi.String("basic-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
+/// 			Location:         pulumi.String("us-east1"),
 /// 			InitialNodeCount: pulumi.Int(1),
+/// 			NodeConfig: &container.ClusterNodeConfigArgs{
+/// 				MachineType: pulumi.String("n4-standard-2"),
+/// 			},
 /// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 /// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 /// 			},
@@ -157,7 +170,7 @@ import 'backup_plan_state.dart';
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "basic", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("basic-plan"),
 /// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
 /// 				IncludeSecrets:    pulumi.Bool(true),
@@ -172,7 +185,7 @@ import 'backup_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -181,9 +194,15 @@ import 'backup_plan_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "basic-cluster"
-///   location           = "us-central1"
+///   location           = "us-east1"
 ///   initial_node_count = 1
+///   node_config = {
+///     machine_type = "n4-standard-2"
+///   }
 ///   workload_identity_config = {
 ///     workload_pool = "my-project-name.svc.id.goog"
 ///   }
@@ -196,10 +215,13 @@ import 'backup_plan_state.dart';
 ///   network             = "default"
 ///   subnetwork          = "default"
 /// }
-/// resource "gcp_gkebackup_backupplan" "basic" {
+/// resource "gcp_gkebackup_backup_plan" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "basic-plan"
 ///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   location = "us-east1"
 ///   backup_config = {
 ///     include_volume_data = true
 ///     include_secrets     = true
@@ -215,6 +237,7 @@ import 'backup_plan_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.Cluster;
 /// import com.pulumi.gcp.container.ClusterArgs;
+/// import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -236,8 +259,11 @@ import 'backup_plan_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var primary = new Cluster("primary", ClusterArgs.builder()
 ///             .name("basic-cluster")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .initialNodeCount(1)
+///             .nodeConfig(ClusterNodeConfigArgs.builder()
+///                 .machineType("n4-standard-2")
+///                 .build())
 ///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
 ///                 .workloadPool("my-project-name.svc.id.goog")
 ///                 .build())
@@ -254,7 +280,7 @@ import 'backup_plan_state.dart';
 ///         var basic = new BackupPlan("basic", BackupPlanArgs.builder()
 ///             .name("basic-plan")
 ///             .cluster(primary.id())
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .backupConfig(BackupPlanBackupConfigArgs.builder()
 ///                 .includeVolumeData(true)
 ///                 .includeSecrets(true)
@@ -271,8 +297,10 @@ import 'backup_plan_state.dart';
 ///     type: gcp:container:Cluster
 ///     properties:
 ///       name: basic-cluster
-///       location: us-central1
+///       location: us-east1
 ///       initialNodeCount: 1
+///       nodeConfig:
+///         machineType: n4-standard-2
 ///       workloadIdentityConfig:
 ///         workloadPool: my-project-name.svc.id.goog
 ///       addonsConfig:
@@ -286,7 +314,7 @@ import 'backup_plan_state.dart';
 ///     properties:
 ///       name: basic-plan
 ///       cluster: ${primary.id}
-///       location: us-central1
+///       location: us-east1
 ///       backupConfig:
 ///         includeVolumeData: true
 ///         includeSecrets: true
@@ -303,7 +331,7 @@ import 'backup_plan_state.dart';
 ///
 /// const primary = new gcp.container.Cluster("primary", {
 ///     name: "autopilot-cluster",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     enableAutopilot: true,
 ///     ipAllocationPolicy: {},
 ///     releaseChannel: {
@@ -321,7 +349,7 @@ import 'backup_plan_state.dart';
 /// const autopilot = new gcp.gkebackup.BackupPlan("autopilot", {
 ///     name: "autopilot-plan",
 ///     cluster: primary.id,
-///     location: "us-central1",
+///     location: "us-east1",
 ///     backupConfig: {
 ///         includeVolumeData: true,
 ///         includeSecrets: true,
@@ -335,7 +363,7 @@ import 'backup_plan_state.dart';
 ///
 /// primary = gcp.container.Cluster("primary",
 ///     name="autopilot-cluster",
-///     location="us-central1",
+///     location="us-east1",
 ///     enable_autopilot=True,
 ///     ip_allocation_policy={},
 ///     release_channel={
@@ -352,7 +380,7 @@ import 'backup_plan_state.dart';
 /// autopilot = gcp.gkebackup.BackupPlan("autopilot",
 ///     name="autopilot-plan",
 ///     cluster=primary.id,
-///     location="us-central1",
+///     location="us-east1",
 ///     backup_config={
 ///         "include_volume_data": True,
 ///         "include_secrets": True,
@@ -370,7 +398,7 @@ import 'backup_plan_state.dart';
 ///     var primary = new Gcp.Container.Cluster("primary", new()
 ///     {
 ///         Name = "autopilot-cluster",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         EnableAutopilot = true,
 ///         IpAllocationPolicy = new() { },
 ///         ReleaseChannel = new Gcp.Container.Inputs.ClusterReleaseChannelArgs
@@ -393,7 +421,7 @@ import 'backup_plan_state.dart';
 ///     {
 ///         Name = "autopilot-plan",
 ///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
 ///         {
 ///             IncludeVolumeData = true,
@@ -408,8 +436,8 @@ import 'backup_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -417,7 +445,7 @@ import 'backup_plan_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 /// 			Name:               pulumi.String("autopilot-cluster"),
-/// 			Location:           pulumi.String("us-central1"),
+/// 			Location:           pulumi.String("us-east1"),
 /// 			EnableAutopilot:    pulumi.Bool(true),
 /// 			IpAllocationPolicy: &container.ClusterIpAllocationPolicyArgs{},
 /// 			ReleaseChannel: &container.ClusterReleaseChannelArgs{
@@ -438,7 +466,7 @@ import 'backup_plan_state.dart';
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "autopilot", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("autopilot-plan"),
 /// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
 /// 				IncludeSecrets:    pulumi.Bool(true),
@@ -453,7 +481,7 @@ import 'backup_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -462,8 +490,11 @@ import 'backup_plan_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "autopilot-cluster"
-///   location             = "us-central1"
+///   location             = "us-east1"
 ///   enable_autopilot     = true
 ///   ip_allocation_policy = {}
 ///   release_channel = {
@@ -478,10 +509,13 @@ import 'backup_plan_state.dart';
 ///   network             = "default"
 ///   subnetwork          = "default"
 /// }
-/// resource "gcp_gkebackup_backupplan" "autopilot" {
+/// resource "gcp_gkebackup_backup_plan" "autopilot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "autopilot-plan"
 ///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   location = "us-east1"
 ///   backup_config = {
 ///     include_volume_data = true
 ///     include_secrets     = true
@@ -519,7 +553,7 @@ import 'backup_plan_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var primary = new Cluster("primary", ClusterArgs.builder()
 ///             .name("autopilot-cluster")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .enableAutopilot(true)
 ///             .ipAllocationPolicy(ClusterIpAllocationPolicyArgs.builder()
 ///                 .build())
@@ -539,7 +573,7 @@ import 'backup_plan_state.dart';
 ///         var autopilot = new BackupPlan("autopilot", BackupPlanArgs.builder()
 ///             .name("autopilot-plan")
 ///             .cluster(primary.id())
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .backupConfig(BackupPlanBackupConfigArgs.builder()
 ///                 .includeVolumeData(true)
 ///                 .includeSecrets(true)
@@ -556,7 +590,7 @@ import 'backup_plan_state.dart';
 ///     type: gcp:container:Cluster
 ///     properties:
 ///       name: autopilot-cluster
-///       location: us-central1
+///       location: us-east1
 ///       enableAutopilot: true
 ///       ipAllocationPolicy: {}
 ///       releaseChannel:
@@ -572,7 +606,7 @@ import 'backup_plan_state.dart';
 ///     properties:
 ///       name: autopilot-plan
 ///       cluster: ${primary.id}
-///       location: us-central1
+///       location: us-east1
 ///       backupConfig:
 ///         includeVolumeData: true
 ///         includeSecrets: true
@@ -589,8 +623,11 @@ import 'backup_plan_state.dart';
 ///
 /// const primary = new gcp.container.Cluster("primary", {
 ///     name: "cmek-cluster",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     initialNodeCount: 1,
+///     nodeConfig: {
+///         machineType: "n4-standard-2",
+///     },
 ///     workloadIdentityConfig: {
 ///         workloadPool: "my-project-name.svc.id.goog",
 ///     },
@@ -605,7 +642,7 @@ import 'backup_plan_state.dart';
 /// });
 /// const keyRing = new gcp.kms.KeyRing("key_ring", {
 ///     name: "backup-key",
-///     location: "us-central1",
+///     location: "us-east1",
 /// });
 /// const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
 ///     name: "backup-key",
@@ -614,7 +651,7 @@ import 'backup_plan_state.dart';
 /// const cmek = new gcp.gkebackup.BackupPlan("cmek", {
 ///     name: "cmek-plan",
 ///     cluster: primary.id,
-///     location: "us-central1",
+///     location: "us-east1",
 ///     backupConfig: {
 ///         includeVolumeData: true,
 ///         includeSecrets: true,
@@ -636,8 +673,11 @@ import 'backup_plan_state.dart';
 ///
 /// primary = gcp.container.Cluster("primary",
 ///     name="cmek-cluster",
-///     location="us-central1",
+///     location="us-east1",
 ///     initial_node_count=1,
+///     node_config={
+///         "machine_type": "n4-standard-2",
+///     },
 ///     workload_identity_config={
 ///         "workload_pool": "my-project-name.svc.id.goog",
 ///     },
@@ -651,14 +691,14 @@ import 'backup_plan_state.dart';
 ///     subnetwork="default")
 /// key_ring = gcp.kms.KeyRing("key_ring",
 ///     name="backup-key",
-///     location="us-central1")
+///     location="us-east1")
 /// crypto_key = gcp.kms.CryptoKey("crypto_key",
 ///     name="backup-key",
 ///     key_ring=key_ring.id)
 /// cmek = gcp.gkebackup.BackupPlan("cmek",
 ///     name="cmek-plan",
 ///     cluster=primary.id,
-///     location="us-central1",
+///     location="us-east1",
 ///     backup_config={
 ///         "include_volume_data": True,
 ///         "include_secrets": True,
@@ -684,8 +724,12 @@ import 'backup_plan_state.dart';
 ///     var primary = new Gcp.Container.Cluster("primary", new()
 ///     {
 ///         Name = "cmek-cluster",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         InitialNodeCount = 1,
+///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+///         {
+///             MachineType = "n4-standard-2",
+///         },
 ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
 ///         {
 ///             WorkloadPool = "my-project-name.svc.id.goog",
@@ -705,7 +749,7 @@ import 'backup_plan_state.dart';
 ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
 ///     {
 ///         Name = "backup-key",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///     });
 ///
 ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
@@ -718,7 +762,7 @@ import 'backup_plan_state.dart';
 ///     {
 ///         Name = "cmek-plan",
 ///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
 ///         {
 ///             IncludeVolumeData = true,
@@ -744,9 +788,9 @@ import 'backup_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -754,8 +798,11 @@ import 'backup_plan_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 /// 			Name:             pulumi.String("cmek-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
+/// 			Location:         pulumi.String("us-east1"),
 /// 			InitialNodeCount: pulumi.Int(1),
+/// 			NodeConfig: &container.ClusterNodeConfigArgs{
+/// 				MachineType: pulumi.String("n4-standard-2"),
+/// 			},
 /// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 /// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 /// 			},
@@ -773,7 +820,7 @@ import 'backup_plan_state.dart';
 /// 		}
 /// 		keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
 /// 			Name:     pulumi.String("backup-key"),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Location: pulumi.String("us-east1"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -788,7 +835,7 @@ import 'backup_plan_state.dart';
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "cmek", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("cmek-plan"),
 /// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
 /// 				IncludeSecrets:    pulumi.Bool(true),
@@ -811,7 +858,7 @@ import 'backup_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -820,9 +867,15 @@ import 'backup_plan_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "cmek-cluster"
-///   location           = "us-central1"
+///   location           = "us-east1"
 ///   initial_node_count = 1
+///   node_config = {
+///     machine_type = "n4-standard-2"
+///   }
 ///   workload_identity_config = {
 ///     workload_pool = "my-project-name.svc.id.goog"
 ///   }
@@ -835,10 +888,13 @@ import 'backup_plan_state.dart';
 ///   network             = "default"
 ///   subnetwork          = "default"
 /// }
-/// resource "gcp_gkebackup_backupplan" "cmek" {
+/// resource "gcp_gkebackup_backup_plan" "cmek" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cmek-plan"
 ///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   location = "us-east1"
 ///   backup_config = {
 ///     include_volume_data = true
 ///     include_secrets     = true
@@ -846,17 +902,23 @@ import 'backup_plan_state.dart';
 ///       namespaces = ["default", "test"]
 ///     }
 ///     encryption_key = {
-///       gcp_kms_encryption_key = gcp_kms_cryptokey.crypto_key.id
+///       gcp_kms_encryption_key = gcp_kms_crypto_key.crypto_key.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_kms_cryptokey" "crypto_key" {
+/// resource "gcp_kms_crypto_key" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "backup-key"
-///   key_ring = gcp_kms_keyring.key_ring.id
+///   key_ring = gcp_kms_key_ring.key_ring.id
 /// }
-/// resource "gcp_kms_keyring" "key_ring" {
+/// resource "gcp_kms_key_ring" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "backup-key"
-///   location = "us-central1"
+///   location = "us-east1"
 /// }
 /// ```
 /// ```java
@@ -867,6 +929,7 @@ import 'backup_plan_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.Cluster;
 /// import com.pulumi.gcp.container.ClusterArgs;
+/// import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -894,8 +957,11 @@ import 'backup_plan_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var primary = new Cluster("primary", ClusterArgs.builder()
 ///             .name("cmek-cluster")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .initialNodeCount(1)
+///             .nodeConfig(ClusterNodeConfigArgs.builder()
+///                 .machineType("n4-standard-2")
+///                 .build())
 ///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
 ///                 .workloadPool("my-project-name.svc.id.goog")
 ///                 .build())
@@ -911,7 +977,7 @@ import 'backup_plan_state.dart';
 ///
 ///         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
 ///             .name("backup-key")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .build());
 ///
 ///         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
@@ -922,7 +988,7 @@ import 'backup_plan_state.dart';
 ///         var cmek = new BackupPlan("cmek", BackupPlanArgs.builder()
 ///             .name("cmek-plan")
 ///             .cluster(primary.id())
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .backupConfig(BackupPlanBackupConfigArgs.builder()
 ///                 .includeVolumeData(true)
 ///                 .includeSecrets(true)
@@ -946,8 +1012,10 @@ import 'backup_plan_state.dart';
 ///     type: gcp:container:Cluster
 ///     properties:
 ///       name: cmek-cluster
-///       location: us-central1
+///       location: us-east1
 ///       initialNodeCount: 1
+///       nodeConfig:
+///         machineType: n4-standard-2
 ///       workloadIdentityConfig:
 ///         workloadPool: my-project-name.svc.id.goog
 ///       addonsConfig:
@@ -961,7 +1029,7 @@ import 'backup_plan_state.dart';
 ///     properties:
 ///       name: cmek-plan
 ///       cluster: ${primary.id}
-///       location: us-central1
+///       location: us-east1
 ///       backupConfig:
 ///         includeVolumeData: true
 ///         includeSecrets: true
@@ -982,7 +1050,7 @@ import 'backup_plan_state.dart';
 ///     name: key_ring
 ///     properties:
 ///       name: backup-key
-///       location: us-central1
+///       location: us-east1
 /// ```
 ///
 /// ### Gkebackup Backupplan Nslabels
@@ -995,8 +1063,11 @@ import 'backup_plan_state.dart';
 ///
 /// const primary = new gcp.container.Cluster("primary", {
 ///     name: "nslabels-cluster",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     initialNodeCount: 1,
+///     nodeConfig: {
+///         machineType: "n4-standard-2",
+///     },
 ///     workloadIdentityConfig: {
 ///         workloadPool: "my-project-name.svc.id.goog",
 ///     },
@@ -1012,7 +1083,7 @@ import 'backup_plan_state.dart';
 /// const nslabels = new gcp.gkebackup.BackupPlan("nslabels", {
 ///     name: "nslabels-plan",
 ///     cluster: primary.id,
-///     location: "us-central1",
+///     location: "us-east1",
 ///     backupConfig: {
 ///         includeVolumeData: true,
 ///         includeSecrets: true,
@@ -1031,8 +1102,11 @@ import 'backup_plan_state.dart';
 ///
 /// primary = gcp.container.Cluster("primary",
 ///     name="nslabels-cluster",
-///     location="us-central1",
+///     location="us-east1",
 ///     initial_node_count=1,
+///     node_config={
+///         "machine_type": "n4-standard-2",
+///     },
 ///     workload_identity_config={
 ///         "workload_pool": "my-project-name.svc.id.goog",
 ///     },
@@ -1047,7 +1121,7 @@ import 'backup_plan_state.dart';
 /// nslabels = gcp.gkebackup.BackupPlan("nslabels",
 ///     name="nslabels-plan",
 ///     cluster=primary.id,
-///     location="us-central1",
+///     location="us-east1",
 ///     backup_config={
 ///         "include_volume_data": True,
 ///         "include_secrets": True,
@@ -1070,8 +1144,12 @@ import 'backup_plan_state.dart';
 ///     var primary = new Gcp.Container.Cluster("primary", new()
 ///     {
 ///         Name = "nslabels-cluster",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         InitialNodeCount = 1,
+///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+///         {
+///             MachineType = "n4-standard-2",
+///         },
 ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
 ///         {
 ///             WorkloadPool = "my-project-name.svc.id.goog",
@@ -1092,7 +1170,7 @@ import 'backup_plan_state.dart';
 ///     {
 ///         Name = "nslabels-plan",
 ///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         BackupConfig = new Gcp.GkeBackup.Inputs.BackupPlanBackupConfigArgs
 ///         {
 ///             IncludeVolumeData = true,
@@ -1117,8 +1195,8 @@ import 'backup_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1126,8 +1204,11 @@ import 'backup_plan_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 /// 			Name:             pulumi.String("nslabels-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
+/// 			Location:         pulumi.String("us-east1"),
 /// 			InitialNodeCount: pulumi.Int(1),
+/// 			NodeConfig: &container.ClusterNodeConfigArgs{
+/// 				MachineType: pulumi.String("n4-standard-2"),
+/// 			},
 /// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 /// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 /// 			},
@@ -1146,7 +1227,7 @@ import 'backup_plan_state.dart';
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "nslabels", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("nslabels-plan"),
 /// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			BackupConfig: &gkebackup.BackupPlanBackupConfigArgs{
 /// 				IncludeVolumeData: pulumi.Bool(true),
 /// 				IncludeSecrets:    pulumi.Bool(true),
@@ -1168,7 +1249,7 @@ import 'backup_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1177,9 +1258,15 @@ import 'backup_plan_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "nslabels-cluster"
-///   location           = "us-central1"
+///   location           = "us-east1"
 ///   initial_node_count = 1
+///   node_config = {
+///     machine_type = "n4-standard-2"
+///   }
 ///   workload_identity_config = {
 ///     workload_pool = "my-project-name.svc.id.goog"
 ///   }
@@ -1192,17 +1279,20 @@ import 'backup_plan_state.dart';
 ///   network             = "default"
 ///   subnetwork          = "default"
 /// }
-/// resource "gcp_gkebackup_backupplan" "nslabels" {
+/// resource "gcp_gkebackup_backup_plan" "nslabels" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "nslabels-plan"
 ///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   location = "us-east1"
 ///   backup_config = {
 ///     include_volume_data = true
 ///     include_secrets     = true
 ///     selected_namespace_labels = {
 ///       resource_labels = [{
-///         "key"   = "key1"
-///         "value" = "value1"
+///         key   = "key1"
+///         value = "value1"
 ///       }]
 ///     }
 ///   }
@@ -1216,6 +1306,7 @@ import 'backup_plan_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.Cluster;
 /// import com.pulumi.gcp.container.ClusterArgs;
+/// import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -1239,8 +1330,11 @@ import 'backup_plan_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var primary = new Cluster("primary", ClusterArgs.builder()
 ///             .name("nslabels-cluster")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .initialNodeCount(1)
+///             .nodeConfig(ClusterNodeConfigArgs.builder()
+///                 .machineType("n4-standard-2")
+///                 .build())
 ///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
 ///                 .workloadPool("my-project-name.svc.id.goog")
 ///                 .build())
@@ -1257,7 +1351,7 @@ import 'backup_plan_state.dart';
 ///         var nslabels = new BackupPlan("nslabels", BackupPlanArgs.builder()
 ///             .name("nslabels-plan")
 ///             .cluster(primary.id())
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .backupConfig(BackupPlanBackupConfigArgs.builder()
 ///                 .includeVolumeData(true)
 ///                 .includeSecrets(true)
@@ -1279,8 +1373,10 @@ import 'backup_plan_state.dart';
 ///     type: gcp:container:Cluster
 ///     properties:
 ///       name: nslabels-cluster
-///       location: us-central1
+///       location: us-east1
 ///       initialNodeCount: 1
+///       nodeConfig:
+///         machineType: n4-standard-2
 ///       workloadIdentityConfig:
 ///         workloadPool: my-project-name.svc.id.goog
 ///       addonsConfig:
@@ -1294,7 +1390,7 @@ import 'backup_plan_state.dart';
 ///     properties:
 ///       name: nslabels-plan
 ///       cluster: ${primary.id}
-///       location: us-central1
+///       location: us-east1
 ///       backupConfig:
 ///         includeVolumeData: true
 ///         includeSecrets: true
@@ -1314,8 +1410,11 @@ import 'backup_plan_state.dart';
 ///
 /// const primary = new gcp.container.Cluster("primary", {
 ///     name: "full-cluster",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     initialNodeCount: 1,
+///     nodeConfig: {
+///         machineType: "n4-standard-2",
+///     },
 ///     workloadIdentityConfig: {
 ///         workloadPool: "my-project-name.svc.id.goog",
 ///     },
@@ -1331,7 +1430,7 @@ import 'backup_plan_state.dart';
 /// const full = new gcp.gkebackup.BackupPlan("full", {
 ///     name: "full-plan",
 ///     cluster: primary.id,
-///     location: "us-central1",
+///     location: "us-east1",
 ///     retentionPolicy: {
 ///         backupDeleteLockDays: 30,
 ///         backupRetainDays: 180,
@@ -1363,8 +1462,11 @@ import 'backup_plan_state.dart';
 ///
 /// primary = gcp.container.Cluster("primary",
 ///     name="full-cluster",
-///     location="us-central1",
+///     location="us-east1",
 ///     initial_node_count=1,
+///     node_config={
+///         "machine_type": "n4-standard-2",
+///     },
 ///     workload_identity_config={
 ///         "workload_pool": "my-project-name.svc.id.goog",
 ///     },
@@ -1379,7 +1481,7 @@ import 'backup_plan_state.dart';
 /// full = gcp.gkebackup.BackupPlan("full",
 ///     name="full-plan",
 ///     cluster=primary.id,
-///     location="us-central1",
+///     location="us-east1",
 ///     retention_policy={
 ///         "backup_delete_lock_days": 30,
 ///         "backup_retain_days": 180,
@@ -1415,8 +1517,12 @@ import 'backup_plan_state.dart';
 ///     var primary = new Gcp.Container.Cluster("primary", new()
 ///     {
 ///         Name = "full-cluster",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         InitialNodeCount = 1,
+///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+///         {
+///             MachineType = "n4-standard-2",
+///         },
 ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
 ///         {
 ///             WorkloadPool = "my-project-name.svc.id.goog",
@@ -1437,7 +1543,7 @@ import 'backup_plan_state.dart';
 ///     {
 ///         Name = "full-plan",
 ///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         RetentionPolicy = new Gcp.GkeBackup.Inputs.BackupPlanRetentionPolicyArgs
 ///         {
 ///             BackupDeleteLockDays = 30,
@@ -1476,8 +1582,8 @@ import 'backup_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1485,8 +1591,11 @@ import 'backup_plan_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 /// 			Name:             pulumi.String("full-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
+/// 			Location:         pulumi.String("us-east1"),
 /// 			InitialNodeCount: pulumi.Int(1),
+/// 			NodeConfig: &container.ClusterNodeConfigArgs{
+/// 				MachineType: pulumi.String("n4-standard-2"),
+/// 			},
 /// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 /// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 /// 			},
@@ -1505,7 +1614,7 @@ import 'backup_plan_state.dart';
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "full", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("full-plan"),
 /// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 /// 				BackupDeleteLockDays: pulumi.Int(30),
 /// 				BackupRetainDays:     pulumi.Int(180),
@@ -1538,7 +1647,7 @@ import 'backup_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1547,9 +1656,15 @@ import 'backup_plan_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "full-cluster"
-///   location           = "us-central1"
+///   location           = "us-east1"
 ///   initial_node_count = 1
+///   node_config = {
+///     machine_type = "n4-standard-2"
+///   }
 ///   workload_identity_config = {
 ///     workload_pool = "my-project-name.svc.id.goog"
 ///   }
@@ -1562,10 +1677,13 @@ import 'backup_plan_state.dart';
 ///   network             = "default"
 ///   subnetwork          = "default"
 /// }
-/// resource "gcp_gkebackup_backupplan" "full" {
+/// resource "gcp_gkebackup_backup_plan" "full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "full-plan"
 ///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   location = "us-east1"
 ///   retention_policy = {
 ///     backup_delete_lock_days = 30
 ///     backup_retain_days      = 180
@@ -1578,11 +1696,11 @@ import 'backup_plan_state.dart';
 ///     include_secrets     = true
 ///     selected_applications = {
 ///       namespaced_names = [{
-///         "name"      = "app1"
-///         "namespace" = "ns1"
+///         name      = "app1"
+///         namespace = "ns1"
 ///         }, {
-///         "name"      = "app2"
-///         "namespace" = "ns2"
+///         name      = "app2"
+///         namespace = "ns2"
 ///       }]
 ///     }
 ///   }
@@ -1596,6 +1714,7 @@ import 'backup_plan_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.Cluster;
 /// import com.pulumi.gcp.container.ClusterArgs;
+/// import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -1621,8 +1740,11 @@ import 'backup_plan_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var primary = new Cluster("primary", ClusterArgs.builder()
 ///             .name("full-cluster")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .initialNodeCount(1)
+///             .nodeConfig(ClusterNodeConfigArgs.builder()
+///                 .machineType("n4-standard-2")
+///                 .build())
 ///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
 ///                 .workloadPool("my-project-name.svc.id.goog")
 ///                 .build())
@@ -1639,7 +1761,7 @@ import 'backup_plan_state.dart';
 ///         var full = new BackupPlan("full", BackupPlanArgs.builder()
 ///             .name("full-plan")
 ///             .cluster(primary.id())
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
 ///                 .backupDeleteLockDays(30)
 ///                 .backupRetainDays(180)
@@ -1673,8 +1795,10 @@ import 'backup_plan_state.dart';
 ///     type: gcp:container:Cluster
 ///     properties:
 ///       name: full-cluster
-///       location: us-central1
+///       location: us-east1
 ///       initialNodeCount: 1
+///       nodeConfig:
+///         machineType: n4-standard-2
 ///       workloadIdentityConfig:
 ///         workloadPool: my-project-name.svc.id.goog
 ///       addonsConfig:
@@ -1688,7 +1812,7 @@ import 'backup_plan_state.dart';
 ///     properties:
 ///       name: full-plan
 ///       cluster: ${primary.id}
-///       location: us-central1
+///       location: us-east1
 ///       retentionPolicy:
 ///         backupDeleteLockDays: 30
 ///         backupRetainDays: 180
@@ -1715,8 +1839,11 @@ import 'backup_plan_state.dart';
 ///
 /// const primary = new gcp.container.Cluster("primary", {
 ///     name: "permissive-cluster",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     initialNodeCount: 1,
+///     nodeConfig: {
+///         machineType: "n4-standard-2",
+///     },
 ///     workloadIdentityConfig: {
 ///         workloadPool: "my-project-name.svc.id.goog",
 ///     },
@@ -1732,7 +1859,7 @@ import 'backup_plan_state.dart';
 /// const permissive = new gcp.gkebackup.BackupPlan("permissive", {
 ///     name: "permissive-plan",
 ///     cluster: primary.id,
-///     location: "us-central1",
+///     location: "us-east1",
 ///     retentionPolicy: {
 ///         backupDeleteLockDays: 30,
 ///         backupRetainDays: 180,
@@ -1765,8 +1892,11 @@ import 'backup_plan_state.dart';
 ///
 /// primary = gcp.container.Cluster("primary",
 ///     name="permissive-cluster",
-///     location="us-central1",
+///     location="us-east1",
 ///     initial_node_count=1,
+///     node_config={
+///         "machine_type": "n4-standard-2",
+///     },
 ///     workload_identity_config={
 ///         "workload_pool": "my-project-name.svc.id.goog",
 ///     },
@@ -1781,7 +1911,7 @@ import 'backup_plan_state.dart';
 /// permissive = gcp.gkebackup.BackupPlan("permissive",
 ///     name="permissive-plan",
 ///     cluster=primary.id,
-///     location="us-central1",
+///     location="us-east1",
 ///     retention_policy={
 ///         "backup_delete_lock_days": 30,
 ///         "backup_retain_days": 180,
@@ -1818,8 +1948,12 @@ import 'backup_plan_state.dart';
 ///     var primary = new Gcp.Container.Cluster("primary", new()
 ///     {
 ///         Name = "permissive-cluster",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         InitialNodeCount = 1,
+///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+///         {
+///             MachineType = "n4-standard-2",
+///         },
 ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
 ///         {
 ///             WorkloadPool = "my-project-name.svc.id.goog",
@@ -1840,7 +1974,7 @@ import 'backup_plan_state.dart';
 ///     {
 ///         Name = "permissive-plan",
 ///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         RetentionPolicy = new Gcp.GkeBackup.Inputs.BackupPlanRetentionPolicyArgs
 ///         {
 ///             BackupDeleteLockDays = 30,
@@ -1880,8 +2014,8 @@ import 'backup_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1889,8 +2023,11 @@ import 'backup_plan_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 /// 			Name:             pulumi.String("permissive-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
+/// 			Location:         pulumi.String("us-east1"),
 /// 			InitialNodeCount: pulumi.Int(1),
+/// 			NodeConfig: &container.ClusterNodeConfigArgs{
+/// 				MachineType: pulumi.String("n4-standard-2"),
+/// 			},
 /// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 /// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 /// 			},
@@ -1909,7 +2046,7 @@ import 'backup_plan_state.dart';
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "permissive", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("permissive-plan"),
 /// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 /// 				BackupDeleteLockDays: pulumi.Int(30),
 /// 				BackupRetainDays:     pulumi.Int(180),
@@ -1943,7 +2080,7 @@ import 'backup_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1952,9 +2089,15 @@ import 'backup_plan_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "permissive-cluster"
-///   location           = "us-central1"
+///   location           = "us-east1"
 ///   initial_node_count = 1
+///   node_config = {
+///     machine_type = "n4-standard-2"
+///   }
 ///   workload_identity_config = {
 ///     workload_pool = "my-project-name.svc.id.goog"
 ///   }
@@ -1967,10 +2110,13 @@ import 'backup_plan_state.dart';
 ///   network             = "default"
 ///   subnetwork          = "default"
 /// }
-/// resource "gcp_gkebackup_backupplan" "permissive" {
+/// resource "gcp_gkebackup_backup_plan" "permissive" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "permissive-plan"
 ///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   location = "us-east1"
 ///   retention_policy = {
 ///     backup_delete_lock_days = 30
 ///     backup_retain_days      = 180
@@ -1984,11 +2130,11 @@ import 'backup_plan_state.dart';
 ///     permissive_mode     = true
 ///     selected_applications = {
 ///       namespaced_names = [{
-///         "name"      = "app1"
-///         "namespace" = "ns1"
+///         name      = "app1"
+///         namespace = "ns1"
 ///         }, {
-///         "name"      = "app2"
-///         "namespace" = "ns2"
+///         name      = "app2"
+///         namespace = "ns2"
 ///       }]
 ///     }
 ///   }
@@ -2002,6 +2148,7 @@ import 'backup_plan_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.Cluster;
 /// import com.pulumi.gcp.container.ClusterArgs;
+/// import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -2027,8 +2174,11 @@ import 'backup_plan_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var primary = new Cluster("primary", ClusterArgs.builder()
 ///             .name("permissive-cluster")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .initialNodeCount(1)
+///             .nodeConfig(ClusterNodeConfigArgs.builder()
+///                 .machineType("n4-standard-2")
+///                 .build())
 ///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
 ///                 .workloadPool("my-project-name.svc.id.goog")
 ///                 .build())
@@ -2045,7 +2195,7 @@ import 'backup_plan_state.dart';
 ///         var permissive = new BackupPlan("permissive", BackupPlanArgs.builder()
 ///             .name("permissive-plan")
 ///             .cluster(primary.id())
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
 ///                 .backupDeleteLockDays(30)
 ///                 .backupRetainDays(180)
@@ -2080,8 +2230,10 @@ import 'backup_plan_state.dart';
 ///     type: gcp:container:Cluster
 ///     properties:
 ///       name: permissive-cluster
-///       location: us-central1
+///       location: us-east1
 ///       initialNodeCount: 1
+///       nodeConfig:
+///         machineType: n4-standard-2
 ///       workloadIdentityConfig:
 ///         workloadPool: my-project-name.svc.id.goog
 ///       addonsConfig:
@@ -2095,7 +2247,7 @@ import 'backup_plan_state.dart';
 ///     properties:
 ///       name: permissive-plan
 ///       cluster: ${primary.id}
-///       location: us-central1
+///       location: us-east1
 ///       retentionPolicy:
 ///         backupDeleteLockDays: 30
 ///         backupRetainDays: 180
@@ -2123,8 +2275,11 @@ import 'backup_plan_state.dart';
 ///
 /// const primary = new gcp.container.Cluster("primary", {
 ///     name: "rpo-daily-cluster",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     initialNodeCount: 1,
+///     nodeConfig: {
+///         machineType: "n4-standard-2",
+///     },
 ///     workloadIdentityConfig: {
 ///         workloadPool: "my-project-name.svc.id.goog",
 ///     },
@@ -2140,7 +2295,7 @@ import 'backup_plan_state.dart';
 /// const rpoDailyWindow = new gcp.gkebackup.BackupPlan("rpo_daily_window", {
 ///     name: "rpo-daily-window",
 ///     cluster: primary.id,
-///     location: "us-central1",
+///     location: "us-east1",
 ///     retentionPolicy: {
 ///         backupDeleteLockDays: 30,
 ///         backupRetainDays: 180,
@@ -2187,8 +2342,11 @@ import 'backup_plan_state.dart';
 ///
 /// primary = gcp.container.Cluster("primary",
 ///     name="rpo-daily-cluster",
-///     location="us-central1",
+///     location="us-east1",
 ///     initial_node_count=1,
+///     node_config={
+///         "machine_type": "n4-standard-2",
+///     },
 ///     workload_identity_config={
 ///         "workload_pool": "my-project-name.svc.id.goog",
 ///     },
@@ -2203,7 +2361,7 @@ import 'backup_plan_state.dart';
 /// rpo_daily_window = gcp.gkebackup.BackupPlan("rpo_daily_window",
 ///     name="rpo-daily-window",
 ///     cluster=primary.id,
-///     location="us-central1",
+///     location="us-east1",
 ///     retention_policy={
 ///         "backup_delete_lock_days": 30,
 ///         "backup_retain_days": 180,
@@ -2254,8 +2412,12 @@ import 'backup_plan_state.dart';
 ///     var primary = new Gcp.Container.Cluster("primary", new()
 ///     {
 ///         Name = "rpo-daily-cluster",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         InitialNodeCount = 1,
+///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+///         {
+///             MachineType = "n4-standard-2",
+///         },
 ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
 ///         {
 ///             WorkloadPool = "my-project-name.svc.id.goog",
@@ -2276,7 +2438,7 @@ import 'backup_plan_state.dart';
 ///     {
 ///         Name = "rpo-daily-window",
 ///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         RetentionPolicy = new Gcp.GkeBackup.Inputs.BackupPlanRetentionPolicyArgs
 ///         {
 ///             BackupDeleteLockDays = 30,
@@ -2333,8 +2495,8 @@ import 'backup_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2342,8 +2504,11 @@ import 'backup_plan_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 /// 			Name:             pulumi.String("rpo-daily-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
+/// 			Location:         pulumi.String("us-east1"),
 /// 			InitialNodeCount: pulumi.Int(1),
+/// 			NodeConfig: &container.ClusterNodeConfigArgs{
+/// 				MachineType: pulumi.String("n4-standard-2"),
+/// 			},
 /// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 /// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 /// 			},
@@ -2362,7 +2527,7 @@ import 'backup_plan_state.dart';
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "rpo_daily_window", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("rpo-daily-window"),
 /// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 /// 				BackupDeleteLockDays: pulumi.Int(30),
 /// 				BackupRetainDays:     pulumi.Int(180),
@@ -2410,7 +2575,7 @@ import 'backup_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2419,9 +2584,15 @@ import 'backup_plan_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "rpo-daily-cluster"
-///   location           = "us-central1"
+///   location           = "us-east1"
 ///   initial_node_count = 1
+///   node_config = {
+///     machine_type = "n4-standard-2"
+///   }
 ///   workload_identity_config = {
 ///     workload_pool = "my-project-name.svc.id.goog"
 ///   }
@@ -2434,10 +2605,13 @@ import 'backup_plan_state.dart';
 ///   network             = "default"
 ///   subnetwork          = "default"
 /// }
-/// resource "gcp_gkebackup_backupplan" "rpo_daily_window" {
+/// resource "gcp_gkebackup_backup_plan" "rpo_daily_window" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rpo-daily-window"
 ///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   location = "us-east1"
 ///   retention_policy = {
 ///     backup_delete_lock_days = 30
 ///     backup_retain_days      = 180
@@ -2447,23 +2621,23 @@ import 'backup_plan_state.dart';
 ///     rpo_config = {
 ///       target_rpo_minutes = 1440
 ///       exclusion_windows = [{
-///         "startTime" = {
-///           "hours" = 12
+///         start_time = {
+///           hours = 12
 ///         }
-///         "duration" = "7200s"
-///         "daily"    = true
+///         duration = "7200s"
+///         daily    = true
 ///         }, {
-///         "startTime" = {
-///           "hours"   = 8
-///           "minutes" = 40
-///           "seconds" = 1
-///           "nanos"   = 100
+///         start_time = {
+///           hours   = 8
+///           minutes = 40
+///           seconds = 1
+///           nanos   = 100
 ///         }
-///         "duration" = "3600s"
-///         "singleOccurrenceDate" = {
-///           "year"  = 2024
-///           "month" = 3
-///           "day"   = 16
+///         duration = "3600s"
+///         single_occurrence_date = {
+///           year  = 2024
+///           month = 3
+///           day   = 16
 ///         }
 ///       }]
 ///     }
@@ -2483,6 +2657,7 @@ import 'backup_plan_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.Cluster;
 /// import com.pulumi.gcp.container.ClusterArgs;
+/// import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -2510,8 +2685,11 @@ import 'backup_plan_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var primary = new Cluster("primary", ClusterArgs.builder()
 ///             .name("rpo-daily-cluster")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .initialNodeCount(1)
+///             .nodeConfig(ClusterNodeConfigArgs.builder()
+///                 .machineType("n4-standard-2")
+///                 .build())
 ///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
 ///                 .workloadPool("my-project-name.svc.id.goog")
 ///                 .build())
@@ -2528,7 +2706,7 @@ import 'backup_plan_state.dart';
 ///         var rpoDailyWindow = new BackupPlan("rpoDailyWindow", BackupPlanArgs.builder()
 ///             .name("rpo-daily-window")
 ///             .cluster(primary.id())
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
 ///                 .backupDeleteLockDays(30)
 ///                 .backupRetainDays(180)
@@ -2577,8 +2755,10 @@ import 'backup_plan_state.dart';
 ///     type: gcp:container:Cluster
 ///     properties:
 ///       name: rpo-daily-cluster
-///       location: us-central1
+///       location: us-east1
 ///       initialNodeCount: 1
+///       nodeConfig:
+///         machineType: n4-standard-2
 ///       workloadIdentityConfig:
 ///         workloadPool: my-project-name.svc.id.goog
 ///       addonsConfig:
@@ -2593,7 +2773,7 @@ import 'backup_plan_state.dart';
 ///     properties:
 ///       name: rpo-daily-window
 ///       cluster: ${primary.id}
-///       location: us-central1
+///       location: us-east1
 ///       retentionPolicy:
 ///         backupDeleteLockDays: 30
 ///         backupRetainDays: 180
@@ -2632,8 +2812,11 @@ import 'backup_plan_state.dart';
 ///
 /// const primary = new gcp.container.Cluster("primary", {
 ///     name: "rpo-weekly-cluster",
-///     location: "us-central1",
+///     location: "us-east1",
 ///     initialNodeCount: 1,
+///     nodeConfig: {
+///         machineType: "n4-standard-2",
+///     },
 ///     workloadIdentityConfig: {
 ///         workloadPool: "my-project-name.svc.id.goog",
 ///     },
@@ -2649,7 +2832,7 @@ import 'backup_plan_state.dart';
 /// const rpoWeeklyWindow = new gcp.gkebackup.BackupPlan("rpo_weekly_window", {
 ///     name: "rpo-weekly-window",
 ///     cluster: primary.id,
-///     location: "us-central1",
+///     location: "us-east1",
 ///     retentionPolicy: {
 ///         backupDeleteLockDays: 30,
 ///         backupRetainDays: 180,
@@ -2711,8 +2894,11 @@ import 'backup_plan_state.dart';
 ///
 /// primary = gcp.container.Cluster("primary",
 ///     name="rpo-weekly-cluster",
-///     location="us-central1",
+///     location="us-east1",
 ///     initial_node_count=1,
+///     node_config={
+///         "machine_type": "n4-standard-2",
+///     },
 ///     workload_identity_config={
 ///         "workload_pool": "my-project-name.svc.id.goog",
 ///     },
@@ -2727,7 +2913,7 @@ import 'backup_plan_state.dart';
 /// rpo_weekly_window = gcp.gkebackup.BackupPlan("rpo_weekly_window",
 ///     name="rpo-weekly-window",
 ///     cluster=primary.id,
-///     location="us-central1",
+///     location="us-east1",
 ///     retention_policy={
 ///         "backup_delete_lock_days": 30,
 ///         "backup_retain_days": 180,
@@ -2793,8 +2979,12 @@ import 'backup_plan_state.dart';
 ///     var primary = new Gcp.Container.Cluster("primary", new()
 ///     {
 ///         Name = "rpo-weekly-cluster",
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         InitialNodeCount = 1,
+///         NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+///         {
+///             MachineType = "n4-standard-2",
+///         },
 ///         WorkloadIdentityConfig = new Gcp.Container.Inputs.ClusterWorkloadIdentityConfigArgs
 ///         {
 ///             WorkloadPool = "my-project-name.svc.id.goog",
@@ -2815,7 +3005,7 @@ import 'backup_plan_state.dart';
 ///     {
 ///         Name = "rpo-weekly-window",
 ///         Cluster = primary.Id,
-///         Location = "us-central1",
+///         Location = "us-east1",
 ///         RetentionPolicy = new Gcp.GkeBackup.Inputs.BackupPlanRetentionPolicyArgs
 ///         {
 ///             BackupDeleteLockDays = 30,
@@ -2892,8 +3082,8 @@ import 'backup_plan_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkebackup"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkebackup"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2901,8 +3091,11 @@ import 'backup_plan_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 /// 			Name:             pulumi.String("rpo-weekly-cluster"),
-/// 			Location:         pulumi.String("us-central1"),
+/// 			Location:         pulumi.String("us-east1"),
 /// 			InitialNodeCount: pulumi.Int(1),
+/// 			NodeConfig: &container.ClusterNodeConfigArgs{
+/// 				MachineType: pulumi.String("n4-standard-2"),
+/// 			},
 /// 			WorkloadIdentityConfig: &container.ClusterWorkloadIdentityConfigArgs{
 /// 				WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 /// 			},
@@ -2921,7 +3114,7 @@ import 'backup_plan_state.dart';
 /// 		_, err = gkebackup.NewBackupPlan(ctx, "rpo_weekly_window", &gkebackup.BackupPlanArgs{
 /// 			Name:     pulumi.String("rpo-weekly-window"),
 /// 			Cluster:  primary.ID().ToIDOutput().ToStringOutput(),
-/// 			Location: pulumi.String("us-central1"),
+/// 			Location: pulumi.String("us-east1"),
 /// 			RetentionPolicy: &gkebackup.BackupPlanRetentionPolicyArgs{
 /// 				BackupDeleteLockDays: pulumi.Int(30),
 /// 				BackupRetainDays:     pulumi.Int(180),
@@ -2984,7 +3177,7 @@ import 'backup_plan_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2993,9 +3186,15 @@ import 'backup_plan_state.dart';
 /// }
 ///
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "rpo-weekly-cluster"
-///   location           = "us-central1"
+///   location           = "us-east1"
 ///   initial_node_count = 1
+///   node_config = {
+///     machine_type = "n4-standard-2"
+///   }
 ///   workload_identity_config = {
 ///     workload_pool = "my-project-name.svc.id.goog"
 ///   }
@@ -3008,10 +3207,13 @@ import 'backup_plan_state.dart';
 ///   network             = "default"
 ///   subnetwork          = "default"
 /// }
-/// resource "gcp_gkebackup_backupplan" "rpo_weekly_window" {
+/// resource "gcp_gkebackup_backup_plan" "rpo_weekly_window" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rpo-weekly-window"
 ///   cluster  = gcp_container_cluster.primary.id
-///   location = "us-central1"
+///   location = "us-east1"
 ///   retention_policy = {
 ///     backup_delete_lock_days = 30
 ///     backup_retain_days      = 180
@@ -3021,34 +3223,34 @@ import 'backup_plan_state.dart';
 ///     rpo_config = {
 ///       target_rpo_minutes = 1440
 ///       exclusion_windows = [{
-///         "startTime" = {
-///           "hours"   = 1
-///           "minutes" = 23
+///         start_time = {
+///           hours   = 1
+///           minutes = 23
 ///         }
-///         "duration" = "1800s"
-///         "daysOfWeek" = {
-///           "daysOfWeeks" = ["MONDAY", "THURSDAY"]
-///         }
-///         }, {
-///         "startTime" = {
-///           "hours" = 12
-///         }
-///         "duration" = "3600s"
-///         "singleOccurrenceDate" = {
-///           "year"  = 2024
-///           "month" = 3
-///           "day"   = 17
+///         duration = "1800s"
+///         days_of_week = {
+///           days_of_weeks = ["MONDAY", "THURSDAY"]
 ///         }
 ///         }, {
-///         "startTime" = {
-///           "hours"   = 8
-///           "minutes" = 40
+///         start_time = {
+///           hours = 12
 ///         }
-///         "duration" = "600s"
-///         "singleOccurrenceDate" = {
-///           "year"  = 2024
-///           "month" = 3
-///           "day"   = 18
+///         duration = "3600s"
+///         single_occurrence_date = {
+///           year  = 2024
+///           month = 3
+///           day   = 17
+///         }
+///         }, {
+///         start_time = {
+///           hours   = 8
+///           minutes = 40
+///         }
+///         duration = "600s"
+///         single_occurrence_date = {
+///           year  = 2024
+///           month = 3
+///           day   = 18
 ///         }
 ///       }]
 ///     }
@@ -3068,6 +3270,7 @@ import 'backup_plan_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.container.Cluster;
 /// import com.pulumi.gcp.container.ClusterArgs;
+/// import com.pulumi.gcp.container.inputs.ClusterNodeConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterWorkloadIdentityConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigArgs;
 /// import com.pulumi.gcp.container.inputs.ClusterAddonsConfigGkeBackupAgentConfigArgs;
@@ -3096,8 +3299,11 @@ import 'backup_plan_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var primary = new Cluster("primary", ClusterArgs.builder()
 ///             .name("rpo-weekly-cluster")
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .initialNodeCount(1)
+///             .nodeConfig(ClusterNodeConfigArgs.builder()
+///                 .machineType("n4-standard-2")
+///                 .build())
 ///             .workloadIdentityConfig(ClusterWorkloadIdentityConfigArgs.builder()
 ///                 .workloadPool("my-project-name.svc.id.goog")
 ///                 .build())
@@ -3114,7 +3320,7 @@ import 'backup_plan_state.dart';
 ///         var rpoWeeklyWindow = new BackupPlan("rpoWeeklyWindow", BackupPlanArgs.builder()
 ///             .name("rpo-weekly-window")
 ///             .cluster(primary.id())
-///             .location("us-central1")
+///             .location("us-east1")
 ///             .retentionPolicy(BackupPlanRetentionPolicyArgs.builder()
 ///                 .backupDeleteLockDays(30)
 ///                 .backupRetainDays(180)
@@ -3177,8 +3383,10 @@ import 'backup_plan_state.dart';
 ///     type: gcp:container:Cluster
 ///     properties:
 ///       name: rpo-weekly-cluster
-///       location: us-central1
+///       location: us-east1
 ///       initialNodeCount: 1
+///       nodeConfig:
+///         machineType: n4-standard-2
 ///       workloadIdentityConfig:
 ///         workloadPool: my-project-name.svc.id.goog
 ///       addonsConfig:
@@ -3193,7 +3401,7 @@ import 'backup_plan_state.dart';
 ///     properties:
 ///       name: rpo-weekly-window
 ///       cluster: ${primary.id}
-///       location: us-central1
+///       location: us-east1
 ///       retentionPolicy:
 ///         backupDeleteLockDays: 30
 ///         backupRetainDays: 180
@@ -3323,7 +3531,7 @@ class BackupPlan extends pulumi.CustomResource {
           'gcp:gkebackup/backupPlan:BackupPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backupConfig = registerOutput<BackupPlanBackupConfig?>('backupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackupPlanBackupConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

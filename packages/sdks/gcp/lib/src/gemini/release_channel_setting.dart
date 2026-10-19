@@ -62,7 +62,7 @@ import 'release_channel_setting_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gemini"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gemini"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -84,7 +84,7 @@ import 'release_channel_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -92,7 +92,10 @@ import 'release_channel_setting_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gemini_releasechannelsetting" "example" {
+/// resource "gcp_gemini_release_channel_setting" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   release_channel_setting_id = "ls1-tf"
 ///   location                   = "global"
 ///   labels = {
@@ -210,7 +213,7 @@ class ReleaseChannelSetting extends pulumi.CustomResource {
           'gcp:gemini/releaseChannelSetting:ReleaseChannelSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

@@ -48,7 +48,7 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicy {
 
   factory URLMapPathMatcherPathRuleRouteActionRetryPolicy.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherPathRuleRouteActionRetryPolicy(
-      numRetries: (() { final guardedValue = map['numRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      numRetries: (() { final guardedValue = map['numRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       perTryTimeout: (() { final guardedValue = map['perTryTimeout']; if (guardedValue == null) return null; return pulumi.Input.fromValue(URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       retryConditions: (() { final guardedValue = map['retryConditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
     );

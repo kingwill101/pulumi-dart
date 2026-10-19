@@ -79,7 +79,7 @@ import 'network_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -108,7 +108,7 @@ import 'network_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -117,12 +117,18 @@ import 'network_policy_state.dart';
 /// }
 ///
 /// resource "gcp_vmwareengine_network" "network-policy-nw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "sample-network"
 ///   location    = "global"
 ///   type        = "STANDARD"
 ///   description = "VMwareEngine standard network sample"
 /// }
-/// resource "gcp_vmwareengine_networkpolicy" "vmw-engine-network-policy" {
+/// resource "gcp_vmwareengine_network_policy" "vmw-engine-network-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-west1"
 ///   name                  = "sample-network-policy"
 ///   edge_services_cidr    = "192.168.30.0/26"
@@ -276,7 +282,7 @@ import 'network_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -312,7 +318,7 @@ import 'network_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -321,12 +327,18 @@ import 'network_policy_state.dart';
 /// }
 ///
 /// resource "gcp_vmwareengine_network" "network-policy-nw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "sample-network"
 ///   location    = "global"
 ///   type        = "STANDARD"
 ///   description = "VMwareEngine standard network sample"
 /// }
-/// resource "gcp_vmwareengine_networkpolicy" "vmw-engine-network-policy" {
+/// resource "gcp_vmwareengine_network_policy" "vmw-engine-network-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-west1"
 ///   name                  = "sample-network-policy"
 ///   edge_services_cidr    = "192.168.30.0/26"
@@ -489,7 +501,7 @@ class NetworkPolicy extends pulumi.CustomResource {
           'gcp:vmwareengine/networkPolicy:NetworkPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

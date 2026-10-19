@@ -207,9 +207,9 @@ import 'connect_cluster_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/managedkafka"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -288,7 +288,7 @@ import 'connect_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -296,17 +296,23 @@ import 'connect_cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_compute_subnetwork" "mkc_secondary_subnet" {
-///   project       = data.gcp_organizations_getproject.project.project_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project       = data.gcp_organizations_project.project.project_id
 ///   name          = "my-secondary-subnetwork"
 ///   ip_cidr_range = "10.3.0.0/16"
 ///   region        = "us-central1"
 ///   network       = "default"
 /// }
 /// resource "gcp_managedkafka_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id = "my-cluster"
 ///   location   = "us-central1"
 ///   capacity_config = {
@@ -316,14 +322,17 @@ import 'connect_cluster_state.dart';
 ///   gcp_config = {
 ///     access_config = {
 ///       network_configs = [{
-///         "subnet" ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/subnetworks/default"
+///         subnet ="projects/${data.gcp_organizations_project.project.number}/regions/us-central1/subnetworks/default"
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_managedkafka_connectcluster" "example" {
+/// resource "gcp_managedkafka_connect_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   connect_cluster_id = "my-connect-cluster"
-///   kafka_cluster      ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1/clusters/${gcp_managedkafka_cluster.cluster.cluster_id}"
+///   kafka_cluster      ="projects/${data.gcp_organizations_project.project.project_id}/locations/us-central1/clusters/${gcp_managedkafka_cluster.cluster.cluster_id}"
 ///   location           = "us-central1"
 ///   capacity_config = {
 ///     vcpu_count   = 12
@@ -332,9 +341,9 @@ import 'connect_cluster_state.dart';
 ///   gcp_config = {
 ///     access_config = {
 ///       network_configs = [{
-///         "primarySubnet"     ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/subnetworks/default"
-///         "additionalSubnets" = [gcp_compute_subnetwork.mkc_secondary_subnet.id]
-///         "dnsDomainNames"    = ["${gcp_managedkafka_cluster.cluster.cluster_id}.us-central1.managedkafka.${data.gcp_organizations_getproject.project.project_id}.cloud.goog"]
+///         primary_subnet     ="projects/${data.gcp_organizations_project.project.number}/regions/us-central1/subnetworks/default"
+///         additional_subnets = [gcp_compute_subnetwork.mkc_secondary_subnet.id]
+///         dns_domain_names   = ["${gcp_managedkafka_cluster.cluster.cluster_id}.us-central1.managedkafka.${data.gcp_organizations_project.project.project_id}.cloud.goog"]
 ///       }]
 ///     }
 ///   }
@@ -547,7 +556,7 @@ class ConnectCluster extends pulumi.CustomResource {
           'gcp:managedkafka/connectCluster:ConnectCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     capacityConfig = registerOutput<ConnectClusterCapacityConfig>('capacityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectClusterCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

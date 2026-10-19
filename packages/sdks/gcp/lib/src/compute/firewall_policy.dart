@@ -59,7 +59,7 @@ import 'firewall_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -78,7 +78,7 @@ import 'firewall_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -86,7 +86,10 @@ import 'firewall_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_firewallpolicy" "default" {
+/// resource "gcp_compute_firewall_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent      = "organizations/123456789"
 ///   short_name  = "my-policy"
 ///   description = "Example Resource"
@@ -190,7 +193,7 @@ class FirewallPolicy extends pulumi.CustomResource {
           'gcp:compute/firewallPolicy:FirewallPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -160,10 +160,10 @@ import 'agent_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -228,7 +228,7 @@ import 'agent_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -237,25 +237,40 @@ import 'agent_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "agent_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "my-project"
 ///   name            = "my-project"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "gcp_projects_service" "agent_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.agent_project.project_id
 ///   service                    = "dialogflow.googleapis.com"
 ///   disable_dependent_services = false
 /// }
 /// resource "gcp_serviceaccount_account" "dialogflow_service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "my-account"
 /// }
-/// resource "gcp_projects_iammember" "agent_create" {
+/// resource "gcp_projects_i_a_m_member" "agent_create" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_projects_service.agent_project.project
 ///   role    = "roles/dialogflow.admin"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.dialogflow_service_account.email}"
 /// }
 /// resource "gcp_diagflow_agent" "full_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                  = gcp_organizations_project.agent_project.project_id
 ///   display_name             = "dialogflow-agent"
 ///   default_language_code    = "en"
@@ -479,7 +494,7 @@ class Agent extends pulumi.CustomResource {
           'gcp:diagflow/agent:Agent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     apiVersion = registerOutput<String>('apiVersion');
     avatarUri = registerOutput<String?>('avatarUri');

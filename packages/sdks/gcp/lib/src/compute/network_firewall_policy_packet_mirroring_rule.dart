@@ -273,10 +273,10 @@ import 'network_firewall_policy_packet_mirroring_rule_target_secure_tag.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -397,7 +397,7 @@ import 'network_firewall_policy_packet_mirroring_rule_target_secure_tag.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -405,63 +405,87 @@ import 'network_firewall_policy_packet_mirroring_rule_target_secure_tag.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "fw-network"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_compute_networkfirewallpolicy" "basic_network_firewall_policy" {
+/// resource "gcp_compute_network_firewall_policy" "basic_network_firewall_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fw-policy"
 ///   description = "Sample global network firewall policy"
 ///   project     = "my-project-name"
 /// }
-/// resource "gcp_compute_networkfirewallpolicypacketmirroringrule" "primary" {
+/// resource "gcp_compute_network_firewall_policy_packet_mirroring_rule" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   action          = "mirror"
 ///   description     = "This is a simple packet mirroring rule description"
 ///   direction       = "INGRESS"
 ///   disabled        = false
-///   firewall_policy = gcp_compute_networkfirewallpolicy.basic_network_firewall_policy.id
+///   firewall_policy = gcp_compute_network_firewall_policy.basic_network_firewall_policy.id
 ///   priority        = 1000
 ///   rule_name       = "test-rule"
 ///   match = {
 ///     src_ip_ranges = ["10.100.0.1/32"]
 ///     layer4_configs = [{
-///       "ipProtocol" = "all"
+///       ip_protocol = "all"
 ///     }]
 ///   }
-///   security_profile_group ="//networksecurity.googleapis.com/${gcp_networksecurity_securityprofilegroup.security_profile_group_1.id}"
+///   security_profile_group ="//networksecurity.googleapis.com/${gcp_networksecurity_security_profile_group.security_profile_group_1.id}"
 ///   target_secure_tags {
-///     name ="tagValues/${gcp_tags_tagvalue.secure_tag_value_1.name}"
+///     name ="tagValues/${gcp_tags_tag_value.secure_tag_value_1.name}"
 ///   }
 /// }
-/// resource "gcp_networksecurity_mirroringdeploymentgroup" "default" {
+/// resource "gcp_networksecurity_mirroring_deployment_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_deployment_group_id = "deployment-group"
 ///   location                      = "global"
 ///   network                       = gcp_compute_network.default.id
 /// }
-/// resource "gcp_networksecurity_mirroringendpointgroup" "default" {
+/// resource "gcp_networksecurity_mirroring_endpoint_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   mirroring_endpoint_group_id = "endpoint-group"
 ///   location                    = "global"
-///   mirroring_deployment_group  = gcp_networksecurity_mirroringdeploymentgroup.default.id
+///   mirroring_deployment_group  = gcp_networksecurity_mirroring_deployment_group.default.id
 /// }
-/// resource "gcp_networksecurity_securityprofile" "default" {
+/// resource "gcp_networksecurity_security_profile" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "sec-profile"
 ///   parent      = "organizations/123456789"
 ///   description = "my description"
 ///   type        = "CUSTOM_MIRRORING"
 ///   custom_mirroring_profile = {
-///     mirroring_endpoint_group = gcp_networksecurity_mirroringendpointgroup.default.id
+///     mirroring_endpoint_group = gcp_networksecurity_mirroring_endpoint_group.default.id
 ///   }
 /// }
-/// resource "gcp_networksecurity_securityprofilegroup" "security_profile_group_1" {
+/// resource "gcp_networksecurity_security_profile_group" "security_profile_group_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "sec-profile-group"
 ///   parent                   = "organizations/123456789"
 ///   description              = "my description"
-///   custom_mirroring_profile = gcp_networksecurity_securityprofile.default.id
+///   custom_mirroring_profile = gcp_networksecurity_security_profile.default.id
 /// }
-/// resource "gcp_tags_tagkey" "secure_tag_key_1" {
+/// resource "gcp_tags_tag_key" "secure_tag_key_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Test tag key description"
 ///   parent      = "organizations/123456789"
 ///   purpose     = "GCE_FIREWALL"
@@ -470,9 +494,12 @@ import 'network_firewall_policy_packet_mirroring_rule_target_secure_tag.dart';
 ///     "network" ="my-project-name/${gcp_compute_network.default.name}"
 ///   }
 /// }
-/// resource "gcp_tags_tagvalue" "secure_tag_value_1" {
+/// resource "gcp_tags_tag_value" "secure_tag_value_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Test tag value description."
-///   parent      = gcp_tags_tagkey.secure_tag_key_1.id
+///   parent      = gcp_tags_tag_key.secure_tag_key_1.id
 ///   short_name  = "tag-value"
 /// }
 /// ```
@@ -768,7 +795,7 @@ class NetworkFirewallPolicyPacketMirroringRule extends pulumi.CustomResource {
           'gcp:compute/networkFirewallPolicyPacketMirroringRule:NetworkFirewallPolicyPacketMirroringRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     creationTimestamp = registerOutput<String>('creationTimestamp');

@@ -118,7 +118,7 @@ class ClusterClusterConfigSecurityConfigKerberosConfig {
       kmsKeyUri: pulumi.Input.fromValue(map['kmsKeyUri'] as String),
       realm: (() { final guardedValue = map['realm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       rootPrincipalPasswordUri: pulumi.Input.fromValue(map['rootPrincipalPasswordUri'] as String),
-      tgtLifetimeHours: (() { final guardedValue = map['tgtLifetimeHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      tgtLifetimeHours: (() { final guardedValue = map['tgtLifetimeHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       truststorePasswordUri: (() { final guardedValue = map['truststorePasswordUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       truststoreUri: (() { final guardedValue = map['truststoreUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

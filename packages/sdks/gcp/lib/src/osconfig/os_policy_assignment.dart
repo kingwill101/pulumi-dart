@@ -335,7 +335,7 @@ import 'os_policy_assignment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/osconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -446,7 +446,7 @@ import 'os_policy_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -454,22 +454,25 @@ import 'os_policy_assignment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_osconfig_ospolicyassignment" "primary" {
+/// resource "gcp_osconfig_os_policy_assignment" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_filter = {
 ///     all = false
 ///     exclusion_labels = [{
-///       "labels" = {
+///       labels = {
 ///         "label-two" = "value-two"
 ///       }
 ///     }]
 ///     inclusion_labels = [{
-///       "labels" = {
+///       labels = {
 ///         "label-one" = "value-one"
 ///       }
 ///     }]
 ///     inventories = [{
-///       "osShortName" = "centos"
-///       "osVersion"   = "8.*"
+///       os_short_name = "centos"
+///       os_version    = "8.*"
 ///     }]
 ///   }
 ///   location = "us-central1-a"
@@ -797,7 +800,7 @@ class OsPolicyAssignment extends pulumi.CustomResource {
           'gcp:osconfig/osPolicyAssignment:OsPolicyAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     baseline = registerOutput<bool>('baseline');
     deleted = registerOutput<bool>('deleted');

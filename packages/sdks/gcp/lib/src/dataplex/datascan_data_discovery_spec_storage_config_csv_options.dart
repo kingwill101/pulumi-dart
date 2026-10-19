@@ -42,7 +42,7 @@ class DatascanDataDiscoverySpecStorageConfigCsvOptions {
     return DatascanDataDiscoverySpecStorageConfigCsvOptions(
       delimiter: (() { final guardedValue = map['delimiter']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       encoding: (() { final guardedValue = map['encoding']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      headerRows: (() { final guardedValue = map['headerRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      headerRows: (() { final guardedValue = map['headerRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       quote: (() { final guardedValue = map['quote']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       typeInferenceDisabled: (() { final guardedValue = map['typeInferenceDisabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

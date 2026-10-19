@@ -294,8 +294,8 @@ import 'data_exchange_subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -400,7 +400,7 @@ import 'data_exchange_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -408,7 +408,10 @@ import 'data_exchange_subscription_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "subscription" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us"
 ///   data_exchange_id = "my_test_dataexchange"
 ///   display_name     = "my_test_dataexchange"
@@ -418,20 +421,48 @@ import 'data_exchange_subscription_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "listing_src_dataset"
 ///   friendly_name = "listing_src_dataset"
 ///   description   = "Dataset for Listing"
 ///   location      = "us"
 /// }
 /// resource "gcp_bigquery_table" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   table_id            = "listing_src_table"
 ///   dataset_id          = gcp_bigquery_dataset.subscription.dataset_id
-///   schema              = "[\n  {\n    \\\"name\\\": \\\"name\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"post_abbr\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"date\\\",\n    \\\"type\\\": \\\"DATE\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  }\n]\n"
+///   schema              = <<EOF
+/// [
+///   {
+///     \"name\": \"name\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\"
+///   },
+///   {
+///     \"name\": \"post_abbr\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\"
+///   },
+///   {
+///     \"name\": \"date\",
+///     \"type\": \"DATE\",
+///     \"mode\": \"NULLABLE\"
+///   }
+/// ]
+/// EOF
+///
 /// }
 /// resource "gcp_bigqueryanalyticshub_listing" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us"
-///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.subscription.data_exchange_id
+///   data_exchange_id = gcp_bigqueryanalyticshub_data_exchange.subscription.data_exchange_id
 ///   listing_id       = "my_test_listing"
 ///   display_name     = "my_test_listing"
 ///   description      = "Test Listing"
@@ -441,16 +472,19 @@ import 'data_exchange_subscription_state.dart';
 ///   bigquery_dataset = {
 ///     dataset = gcp_bigquery_dataset.subscription.id
 ///     selected_resources = [{
-///       "table" = gcp_bigquery_table.subscription.id
+///       table = gcp_bigquery_table.subscription.id
 ///     }]
 ///   }
 /// }
-/// resource "gcp_bigqueryanalyticshub_dataexchangesubscription" "subscription" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange_subscription" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                = gcp_bigquery_dataset.subscription.project
 ///   location               = "us"
-///   data_exchange_project  = gcp_bigqueryanalyticshub_dataexchange.subscription.project
-///   data_exchange_location = gcp_bigqueryanalyticshub_dataexchange.subscription.location
-///   data_exchange_id       = gcp_bigqueryanalyticshub_dataexchange.subscription.data_exchange_id
+///   data_exchange_project  = gcp_bigqueryanalyticshub_data_exchange.subscription.project
+///   data_exchange_location = gcp_bigqueryanalyticshub_data_exchange.subscription.location
+///   data_exchange_id       = gcp_bigqueryanalyticshub_data_exchange.subscription.data_exchange_id
 ///   subscription_id        = "my_subscription_id"
 ///   subscriber_contact     = "testuser@example.com"
 ///   destination_dataset = {
@@ -765,7 +799,7 @@ class DataExchangeSubscription extends pulumi.CustomResource {
           'gcp:bigqueryanalyticshub/dataExchangeSubscription:DataExchangeSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     dataExchange = registerOutput<String>('dataExchange');

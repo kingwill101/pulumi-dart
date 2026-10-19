@@ -86,8 +86,8 @@ import 'consent_store_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -119,7 +119,7 @@ import 'consent_store_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -127,17 +127,20 @@ import 'consent_store_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_consentstoreiampolicy" "policy" {
+/// resource "gcp_healthcare_consent_store_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset          = my-consent.dataset
 ///   consent_store_id = my-consent.name
-///   policy_data      = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data      = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -249,7 +252,7 @@ import 'consent_store_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -271,7 +274,7 @@ import 'consent_store_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -279,7 +282,10 @@ import 'consent_store_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_consentstoreiambinding" "binding" {
+/// resource "gcp_healthcare_consent_store_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset          = my-consent.dataset
 ///   consent_store_id = my-consent.name
 ///   role             = "roles/viewer"
@@ -376,7 +382,7 @@ import 'consent_store_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -396,7 +402,7 @@ import 'consent_store_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -404,7 +410,10 @@ import 'consent_store_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_consentstoreiammember" "member" {
+/// resource "gcp_healthcare_consent_store_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset          = my-consent.dataset
 ///   consent_store_id = my-consent.name
 ///   role             = "roles/viewer"
@@ -545,8 +554,8 @@ import 'consent_store_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -578,7 +587,7 @@ import 'consent_store_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -586,17 +595,20 @@ import 'consent_store_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_consentstoreiampolicy" "policy" {
+/// resource "gcp_healthcare_consent_store_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset          = my-consent.dataset
 ///   consent_store_id = my-consent.name
-///   policy_data      = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data      = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -708,7 +720,7 @@ import 'consent_store_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -730,7 +742,7 @@ import 'consent_store_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -738,7 +750,10 @@ import 'consent_store_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_consentstoreiambinding" "binding" {
+/// resource "gcp_healthcare_consent_store_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset          = my-consent.dataset
 ///   consent_store_id = my-consent.name
 ///   role             = "roles/viewer"
@@ -835,7 +850,7 @@ import 'consent_store_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -855,7 +870,7 @@ import 'consent_store_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -863,7 +878,10 @@ import 'consent_store_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_consentstoreiammember" "member" {
+/// resource "gcp_healthcare_consent_store_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset          = my-consent.dataset
 ///   consent_store_id = my-consent.name
 ///   role             = "roles/viewer"
@@ -981,7 +999,7 @@ class ConsentStoreIamBinding extends pulumi.CustomResource {
           'gcp:healthcare/consentStoreIamBinding:ConsentStoreIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     condition = registerOutput<ConsentStoreIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConsentStoreIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consentStoreId = registerOutput<String>('consentStoreId');

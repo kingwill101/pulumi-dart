@@ -30,8 +30,8 @@ class LakeAssetStatus {
 
   factory LakeAssetStatus.fromMap(Map<String, dynamic> map) {
     return LakeAssetStatus(
-      activeAssets: (() { final guardedValue = map['activeAssets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      securityPolicyApplyingAssets: (() { final guardedValue = map['securityPolicyApplyingAssets']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      activeAssets: (() { final guardedValue = map['activeAssets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      securityPolicyApplyingAssets: (() { final guardedValue = map['securityPolicyApplyingAssets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

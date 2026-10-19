@@ -62,7 +62,7 @@ class GetDatabaseInstanceSettingBackupConfiguration {
       location: pulumi.Input.fromValue(map['location'] as String),
       pointInTimeRecoveryEnabled: pulumi.Input.fromValue(map['pointInTimeRecoveryEnabled'] as bool),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
-      transactionLogRetentionDays: pulumi.Input.fromValue((map['transactionLogRetentionDays'] as num).toInt()),
+      transactionLogRetentionDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['transactionLogRetentionDays'])),
     );
   }
 }

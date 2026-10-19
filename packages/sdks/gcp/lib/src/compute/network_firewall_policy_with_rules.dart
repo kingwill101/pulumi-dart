@@ -469,10 +469,10 @@ import 'network_firewall_policy_with_rules_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -652,7 +652,7 @@ import 'network_firewall_policy_with_rules_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -660,10 +660,13 @@ import 'network_firewall_policy_with_rules_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_compute_networkfirewallpolicywithrules" "primary" {
+/// resource "gcp_compute_network_firewall_policy_with_rules" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fw-policy"
 ///   description = "Terraform test"
 ///   rules {
@@ -677,14 +680,14 @@ import 'network_firewall_policy_with_rules_state.dart';
 ///       dest_fqdns                = ["www.yyy.com", "www.zzz.com"]
 ///       dest_region_codes         = ["HK", "IN"]
 ///       dest_threat_intelligences = ["iplist-search-engines-crawlers", "iplist-tor-exit-nodes"]
-///       dest_address_groups       = [gcp_networksecurity_addressgroup.address_group_1.id]
+///       dest_address_groups       = [gcp_networksecurity_address_group.address_group_1.id]
 ///       layer4_configs = [{
-///         "ipProtocol" = "tcp"
-///         "ports"      = [8080, 7070]
+///         ip_protocol = "tcp"
+///         ports       = [8080, 7070]
 ///       }]
 ///     }
 ///     target_secure_tags {
-///       name = gcp_tags_tagvalue.secure_tag_value_1.id
+///       name = gcp_tags_tag_value.secure_tag_value_1.id
 ///     }
 ///   }
 ///   rules {
@@ -699,12 +702,12 @@ import 'network_firewall_policy_with_rules_state.dart';
 ///       src_fqdns                = ["www.abc.com", "www.def.com"]
 ///       src_region_codes         = ["US", "CA"]
 ///       src_threat_intelligences = ["iplist-known-malicious-ips", "iplist-public-clouds"]
-///       src_address_groups       = [gcp_networksecurity_addressgroup.address_group_1.id]
+///       src_address_groups       = [gcp_networksecurity_address_group.address_group_1.id]
 ///       src_secure_tags = [{
-///         "name" = gcp_tags_tagvalue.secure_tag_value_1.id
+///         name = gcp_tags_tag_value.secure_tag_value_1.id
 ///       }]
 ///       layer4_configs = [{
-///         "ipProtocol" = "udp"
+///         ip_protocol = "udp"
 ///       }]
 ///     }
 ///   }
@@ -716,46 +719,61 @@ import 'network_firewall_policy_with_rules_state.dart';
 ///     action                  = "apply_security_profile_group"
 ///     direction               = "INGRESS"
 ///     target_service_accounts = ["test@google.com"]
-///     security_profile_group  ="//networksecurity.googleapis.com/${gcp_networksecurity_securityprofilegroup.security_profile_group_1.id}"
+///     security_profile_group  ="//networksecurity.googleapis.com/${gcp_networksecurity_security_profile_group.security_profile_group_1.id}"
 ///     tls_inspect             = true
 ///     match = {
 ///       src_ip_ranges = ["0.0.0.0/0"]
 ///       layer4_configs = [{
-///         "ipProtocol" = "tcp"
+///         ip_protocol = "tcp"
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_networksecurity_addressgroup" "address_group_1" {
+/// resource "gcp_networksecurity_address_group" "address_group_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "address-group"
-///   parent      = data.gcp_organizations_getproject.project.id
+///   parent      = data.gcp_organizations_project.project.id
 ///   description = "Global address group"
 ///   location    = "global"
 ///   items       = ["208.80.154.224/32"]
 ///   type        = "IPV4"
 ///   capacity    = 100
 /// }
-/// resource "gcp_tags_tagkey" "secure_tag_key_1" {
+/// resource "gcp_tags_tag_key" "secure_tag_key_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Tag key"
-///   parent      = data.gcp_organizations_getproject.project.id
+///   parent      = data.gcp_organizations_project.project.id
 ///   purpose     = "GCE_FIREWALL"
 ///   short_name  = "tag-key"
 ///   purpose_data = {
-///     "network" ="${data.gcp_organizations_getproject.project.name}/default"
+///     "network" ="${data.gcp_organizations_project.project.name}/default"
 ///   }
 /// }
-/// resource "gcp_tags_tagvalue" "secure_tag_value_1" {
+/// resource "gcp_tags_tag_value" "secure_tag_value_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Tag value"
-///   parent      = gcp_tags_tagkey.secure_tag_key_1.id
+///   parent      = gcp_tags_tag_key.secure_tag_key_1.id
 ///   short_name  = "tag-value"
 /// }
-/// resource "gcp_networksecurity_securityprofilegroup" "security_profile_group_1" {
+/// resource "gcp_networksecurity_security_profile_group" "security_profile_group_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "spg"
 ///   parent                    = "organizations/123456789"
 ///   description               = "my description"
-///   threat_prevention_profile = gcp_networksecurity_securityprofile.security_profile_1.id
+///   threat_prevention_profile = gcp_networksecurity_security_profile.security_profile_1.id
 /// }
-/// resource "gcp_networksecurity_securityprofile" "security_profile_1" {
+/// resource "gcp_networksecurity_security_profile" "security_profile_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "sp"
 ///   type     = "THREAT_PREVENTION"
 ///   parent   = "organizations/123456789"
@@ -1121,7 +1139,7 @@ class NetworkFirewallPolicyWithRules extends pulumi.CustomResource {
           'gcp:compute/networkFirewallPolicyWithRules:NetworkFirewallPolicyWithRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

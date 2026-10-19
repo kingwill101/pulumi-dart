@@ -21,6 +21,10 @@ class AppVersionSnapshotAgentRemoteDialogflowAgent {
   /// parameters names to be sent to the Dialogflow agent as input.
   final pulumi.Input<Map<String, String>?>? inputVariableMapping;
   /// (Output)
+  /// The name of the variable that contains the language code to be used for
+  /// the Dialogflow session.
+  final pulumi.Input<String?>? languageCodeVariable;
+  /// (Output)
   /// The mapping of the Dialogflow session parameters names to the app
   /// variables names to be sent back to the CES agent after the Dialogflow
   /// agent execution ends.
@@ -31,12 +35,14 @@ class AppVersionSnapshotAgentRemoteDialogflowAgent {
   /// [environmentId] (Output)
   /// [flowId] (Output)
   /// [inputVariableMapping] (Output)
+  /// [languageCodeVariable] (Output)
   /// [outputVariableMapping] (Output)
   const AppVersionSnapshotAgentRemoteDialogflowAgent({
     this.agent,
     this.environmentId,
     this.flowId,
     this.inputVariableMapping,
+    this.languageCodeVariable,
     this.outputVariableMapping,
   });
 
@@ -46,6 +52,7 @@ class AppVersionSnapshotAgentRemoteDialogflowAgent {
       'environmentId': ?environmentId,
       'flowId': ?flowId,
       'inputVariableMapping': ?inputVariableMapping,
+      'languageCodeVariable': ?languageCodeVariable,
       'outputVariableMapping': ?outputVariableMapping,
     };
   }
@@ -56,6 +63,7 @@ class AppVersionSnapshotAgentRemoteDialogflowAgent {
       environmentId: (() { final guardedValue = map['environmentId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       flowId: (() { final guardedValue = map['flowId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       inputVariableMapping: (() { final guardedValue = map['inputVariableMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      languageCodeVariable: (() { final guardedValue = map['languageCodeVariable']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       outputVariableMapping: (() { final guardedValue = map['outputVariableMapping']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }

@@ -49,7 +49,7 @@ import 'global_address_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -66,7 +66,7 @@ import 'global_address_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -74,7 +74,10 @@ import 'global_address_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_globaladdress" "default" {
+/// resource "gcp_compute_global_address" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "global-appserver-ip"
 /// }
 /// ```
@@ -177,7 +180,7 @@ import 'global_address_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -205,7 +208,7 @@ import 'global_address_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -213,7 +216,10 @@ import 'global_address_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_globaladdress" "default" {
+/// resource "gcp_compute_global_address" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "global-psconnect-ip"
 ///   address_type = "INTERNAL"
 ///   purpose      = "PRIVATE_SERVICE_CONNECT"
@@ -221,6 +227,9 @@ import 'global_address_state.dart';
 ///   address      = "100.100.100.105"
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network-name"
 ///   auto_create_subnetworks = false
 /// }
@@ -376,7 +385,7 @@ class GlobalAddress extends pulumi.CustomResource {
           'gcp:compute/globalAddress:GlobalAddress',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     address = registerOutput<String>('address');

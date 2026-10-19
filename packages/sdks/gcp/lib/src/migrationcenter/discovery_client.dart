@@ -120,8 +120,8 @@ import 'discovery_client_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/migrationcenter"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/migrationcenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -170,7 +170,7 @@ import 'discovery_client_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -179,19 +179,31 @@ import 'discovery_client_state.dart';
 /// }
 ///
 /// resource "gcp_migrationcenter_source" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location  = "us-central1"
 ///   source_id = "source-test"
 ///   type      = "SOURCE_TYPE_DISCOVERY_CLIENT"
 /// }
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "sa-test"
 ///   display_name = "Service Account for Discovery Client"
 /// }
 /// resource "gcp_serviceaccount_account" "default_2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "sa-test-two"
 ///   display_name = "Second Service Account for Discovery Client"
 /// }
-/// resource "gcp_migrationcenter_discoveryclient" "default" {
+/// resource "gcp_migrationcenter_discovery_client" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "us-central1"
 ///   discovery_client_id = "discovery-client-test"
 ///   source              = gcp_migrationcenter_source.default.id
@@ -401,7 +413,7 @@ class DiscoveryClient extends pulumi.CustomResource {
           'gcp:migrationcenter/discoveryClient:DiscoveryClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

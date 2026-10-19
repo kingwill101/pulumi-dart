@@ -71,7 +71,7 @@ import 'topic_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -92,7 +92,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -101,6 +101,9 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 ///   labels = {
 ///     "foo" = "bar"
@@ -216,8 +219,8 @@ import 'topic_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -249,7 +252,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -258,14 +261,23 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-topic"
-///   kms_key_name = gcp_kms_cryptokey.crypto_key.id
+///   kms_key_name = gcp_kms_crypto_key.crypto_key.id
 /// }
-/// resource "gcp_kms_cryptokey" "crypto_key" {
+/// resource "gcp_kms_crypto_key" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-key"
-///   key_ring = gcp_kms_keyring.key_ring.id
+///   key_ring = gcp_kms_key_ring.key_ring.id
 /// }
-/// resource "gcp_kms_keyring" "key_ring" {
+/// resource "gcp_kms_key_ring" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-keyring"
 ///   location = "global"
 /// }
@@ -388,7 +400,7 @@ import 'topic_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -411,7 +423,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -420,6 +432,9 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 ///   message_storage_policy = {
 ///     allowed_persistence_regions = ["europe-west3"]
@@ -596,7 +611,7 @@ import 'topic_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -643,7 +658,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -652,13 +667,19 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_schema" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example"
 ///   type       = "AVRO"
 ///   definition = "{\n  \"type\" : \"record\",\n  \"name\" : \"Avro\",\n  \"fields\" : [\n    {\n      \"name\" : \"StringField\",\n      \"type\" : \"string\"\n    },\n    {\n      \"name\" : \"IntField\",\n      \"type\" : \"int\"\n    }\n  ]\n}\n"
 /// }
 /// resource "gcp_pubsub_topic" "example" {
 ///   depends_on = [gcp_pubsub_schema.example]
-///   name       = "example-topic"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name = "example-topic"
 ///   schema_settings = {
 ///     schema            = "projects/my-project-name/schemas/example"
 ///     encoding          = "JSON"
@@ -829,7 +850,7 @@ import 'topic_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -854,7 +875,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -863,6 +884,9 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 ///   ingestion_data_source_settings = {
 ///     aws_kinesis = {
@@ -1007,7 +1031,7 @@ import 'topic_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1037,7 +1061,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1046,6 +1070,9 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 ///   ingestion_data_source_settings = {
 ///     cloud_storage = {
@@ -1197,7 +1224,7 @@ import 'topic_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1225,7 +1252,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1234,6 +1261,9 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 ///   ingestion_data_source_settings = {
 ///     azure_event_hubs = {
@@ -1370,7 +1400,7 @@ import 'topic_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1395,7 +1425,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1404,6 +1434,9 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 ///   ingestion_data_source_settings = {
 ///     aws_msk = {
@@ -1534,7 +1567,7 @@ import 'topic_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1560,7 +1593,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1569,6 +1602,9 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 ///   ingestion_data_source_settings = {
 ///     confluent_cloud = {
@@ -1708,7 +1744,7 @@ import 'topic_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1733,7 +1769,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1742,11 +1778,20 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 ///   message_transforms {
 ///     javascript_udf = {
 ///       function_name = "isYearEven"
-///       code          = "function isYearEven(message, metadata) {\n  const data = JSON.parse(message.data);\n  return message.year %2 === 0;\n}\n"
+///       code          = <<EOF
+/// function isYearEven(message, metadata) {
+///   const data = JSON.parse(message.data);
+///   return message.year %2 === 0;
+/// }
+/// EOF
+///
 ///     }
 ///   }
 /// }
@@ -1943,7 +1988,7 @@ import 'topic_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1987,7 +2032,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1996,17 +2041,33 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-topic"
 ///   message_transforms {
 ///     javascript_udf = {
 ///       function_name = "redactSSN"
-///       code          = "function redactSSN(message, metadata) {\n  const data = JSON.parse(message.data);\n  delete data['ssn'];\n  message.data = JSON.stringify(data);\n  return message;\n}\n"
+///       code          = <<EOF
+/// function redactSSN(message, metadata) {
+///   const data = JSON.parse(message.data);
+///   delete data['ssn'];
+///   message.data = JSON.stringify(data);
+///   return message;
+/// }
+/// EOF
+///
 ///     }
 ///   }
 ///   message_transforms {
 ///     javascript_udf = {
 ///       function_name = "otherFunc"
-///       code          = "function otherFunc(message, metadata) {\n  return null;\n}\n"
+///       code          = <<EOF
+/// function otherFunc(message, metadata) {
+///   return null;
+/// }
+/// EOF
+///
 ///     }
 ///   }
 ///   message_transforms {
@@ -2198,9 +2259,9 @@ import 'topic_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2245,7 +2306,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2253,24 +2314,36 @@ import 'topic_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_pubsub_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example-topic"
-///   project = data.gcp_organizations_getproject.project.project_id
+///   project = data.gcp_organizations_project.project.project_id
 /// }
-/// resource "gcp_tags_tagkey" "tag_key" {
-///   parent     = data.gcp_organizations_getproject.project.id
+/// resource "gcp_tags_tag_key" "tag_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent     = data.gcp_organizations_project.project.id
 ///   short_name = "tag_key"
 /// }
-/// resource "gcp_tags_tagvalue" "tag_value" {
-///   parent     = gcp_tags_tagkey.tag_key.id
+/// resource "gcp_tags_tag_value" "tag_value" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent     = gcp_tags_tag_key.tag_key.id
 ///   short_name = "tag_value"
 /// }
-/// resource "gcp_tags_tagbinding" "binding" {
-///   parent    ="//pubsub.googleapis.com/projects/${data.gcp_organizations_getproject.project.number}/topics/${gcp_pubsub_topic.example.name}"
-///   tag_value = gcp_tags_tagvalue.tag_value.id
+/// resource "gcp_tags_tag_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent    ="//pubsub.googleapis.com/projects/${data.gcp_organizations_project.project.number}/topics/${gcp_pubsub_topic.example.name}"
+///   tag_value = gcp_tags_tag_value.tag_value.id
 /// }
 /// ```
 /// ```java
@@ -2496,9 +2569,9 @@ import 'topic_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -2556,7 +2629,7 @@ import 'topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2568,21 +2641,33 @@ import 'topic_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "gemini_query_service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "example-sa"
 ///   display_name = "Gemini Query Service Account"
 /// }
-/// resource "gcp_projects_iammember" "gemini_inference_get" {
+/// resource "gcp_projects_i_a_m_member" "gemini_inference_get" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/aiplatform.user"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.gemini_query_service_account.email}"
 /// }
 /// resource "time_sleep" "wait_120_seconds" {
-///   depends_on      = [gcp_projects_iammember.gemini_inference_get]
+///   depends_on = [gcp_projects_i_a_m_member.gemini_inference_get]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
 /// resource "gcp_pubsub_topic" "example" {
 ///   depends_on = [time_sleep.wait_120_seconds]
-///   name       = "example-topic"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name = "example-topic"
 ///   message_transforms {
 ///     ai_inference = {
 ///       endpoint = "projects/my-project-name/locations/us-central1/publishers/google/models/gemini-2.5-flash"
@@ -2793,7 +2878,7 @@ class Topic extends pulumi.CustomResource {
           'gcp:pubsub/topic:Topic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -67,7 +67,7 @@ import 'document_ai_processor_default_version_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/essentialcontacts"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/essentialcontacts"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -95,7 +95,7 @@ import 'document_ai_processor_default_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -103,14 +103,20 @@ import 'document_ai_processor_default_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_essentialcontacts_documentaiprocessor" "processor" {
+/// resource "gcp_essentialcontacts_document_ai_processor" "processor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   display_name = "test-processor"
 ///   type         = "OCR_PROCESSOR"
 /// }
-/// resource "gcp_essentialcontacts_documentaiprocessordefaultversion" "processor" {
-///   processor = gcp_essentialcontacts_documentaiprocessor.processor.id
-///   version   ="${gcp_essentialcontacts_documentaiprocessor.processor.id}/processorVersions/stable"
+/// resource "gcp_essentialcontacts_document_ai_processor_default_version" "processor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   processor = gcp_essentialcontacts_document_ai_processor.processor.id
+///   version   ="${gcp_essentialcontacts_document_ai_processor.processor.id}/processorVersions/stable"
 /// }
 /// ```
 /// ```java
@@ -198,7 +204,7 @@ class DocumentAiProcessorDefaultVersion extends pulumi.CustomResource {
           'gcp:essentialcontacts/documentAiProcessorDefaultVersion:DocumentAiProcessorDefaultVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     processor = registerOutput<String>('processor');
     version = registerOutput<String>('version');

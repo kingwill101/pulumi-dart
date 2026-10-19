@@ -59,7 +59,7 @@ import 'get_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudidentity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -78,7 +78,7 @@ import 'get_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -86,7 +86,7 @@ import 'get_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_cloudidentity_getgrouplookup" "group" {
+/// data "gcp_cloudidentity_group_lookup" "group" {
 ///   group_key = {
 ///     id = "my-group@example.com"
 ///   }
@@ -205,7 +205,7 @@ pulumi.Output<GetGroupLookupResult> getGroupLookupOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudidentity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -222,7 +222,7 @@ pulumi.Output<GetGroupLookupResult> getGroupLookupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -230,7 +230,7 @@ pulumi.Output<GetGroupLookupResult> getGroupLookupOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudidentity_getgroupmemberships" "members" {
+/// data "gcp_cloudidentity_group_memberships" "members" {
 ///   group = "groups/123eab45c6defghi"
 /// }
 /// ```
@@ -340,7 +340,7 @@ pulumi.Output<GetGroupMembershipsResult> getGroupMembershipsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudidentity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -357,7 +357,7 @@ pulumi.Output<GetGroupMembershipsResult> getGroupMembershipsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -365,7 +365,7 @@ pulumi.Output<GetGroupMembershipsResult> getGroupMembershipsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudidentity_getgrouptransitivememberships" "members" {
+/// data "gcp_cloudidentity_group_transitive_memberships" "members" {
 ///   group = "groups/123eab45c6defghi"
 /// }
 /// ```
@@ -471,7 +471,7 @@ pulumi.Output<GetGroupTransitiveMembershipsResult> getGroupTransitiveMemberships
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudidentity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -488,7 +488,7 @@ pulumi.Output<GetGroupTransitiveMembershipsResult> getGroupTransitiveMemberships
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -496,7 +496,7 @@ pulumi.Output<GetGroupTransitiveMembershipsResult> getGroupTransitiveMemberships
 ///   }
 /// }
 ///
-/// data "gcp_cloudidentity_getgroups" "groups" {
+/// data "gcp_cloudidentity_groups" "groups" {
 ///   parent = "customers/A01b123xz"
 /// }
 /// ```
@@ -622,7 +622,7 @@ pulumi.Output<GetGroupsResult> getGroupsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudidentity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -645,7 +645,7 @@ pulumi.Output<GetGroupsResult> getGroupsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -653,41 +653,41 @@ pulumi.Output<GetGroupsResult> getGroupsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudidentity_getpolicies" "all" {
+/// data "gcp_cloudidentity_policies" "all" {
 /// }
 ///
 /// // The name of the first policy in the list of policies
 /// output "firstPolicyName" {
-///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].name
+///   value = data.gcp_cloudidentity_policies.all.policies[0].name
 /// }
 /// // The customer to whom the first policy belongs to. This will always be the
 /// // same across multiple policies as well.
 /// output "firstPolicyCustomer" {
-///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].customer
+///   value = data.gcp_cloudidentity_policies.all.policies[0].customer
 /// }
 /// // The CEL query of the first policy
 /// output "policyQueryQuery" {
-///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].policy_queries[0].query
+///   value = data.gcp_cloudidentity_policies.all.policies[0].policy_queries[0].query
 /// }
 /// // The org unit the first policy applies to
 /// output "policyQueryOrgUnit" {
-///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].policy_queries[0].org_unit
+///   value = data.gcp_cloudidentity_policies.all.policies[0].policy_queries[0].org_unit
 /// }
 /// // The group the first policy applies to
 /// output "policyQueryGroup" {
-///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].policy_queries[0].group
+///   value = data.gcp_cloudidentity_policies.all.policies[0].policy_queries[0].group
 /// }
 /// // The sort order of the first policy
 /// output "policyQuerySortOrder" {
-///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].policy_queries[0].sort_order
+///   value = data.gcp_cloudidentity_policies.all.policies[0].policy_queries[0].sort_order
 /// }
 /// // The setting of the first policy as a JSON string
 /// output "policySetting" {
-///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].setting
+///   value = data.gcp_cloudidentity_policies.all.policies[0].setting
 /// }
 /// // The type of policy - ADMIN/SYSTEM
 /// output "policyType" {
-///   value = data.gcp_cloudidentity_getpolicies.all.policies[0].type
+///   value = data.gcp_cloudidentity_policies.all.policies[0].type
 /// }
 /// ```
 /// ```java
@@ -835,7 +835,7 @@ pulumi.Output<GetPoliciesResult> getPoliciesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudidentity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -858,7 +858,7 @@ pulumi.Output<GetPoliciesResult> getPoliciesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -866,33 +866,33 @@ pulumi.Output<GetPoliciesResult> getPoliciesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudidentity_getpolicy" "test" {
+/// data "gcp_cloudidentity_policy" "test" {
 ///   name = "policies/{policy_id}"
 /// }
 ///
 /// // The customer the policy belongs to
 /// output "policyCustomer" {
-///   value = data.gcp_cloudidentity_getpolicy.test.customer
+///   value = data.gcp_cloudidentity_policy.test.customer
 /// }
 /// // The CEL query of the policy
 /// output "policyQueryQuery" {
-///   value = data.gcp_cloudidentity_getpolicy.test.policy_queries[0].query
+///   value = data.gcp_cloudidentity_policy.test.policy_queries[0].query
 /// }
 /// // The org unit the policy applies to
 /// output "policyQueryOrgUnit" {
-///   value = data.gcp_cloudidentity_getpolicy.test.policy_queries[0].org_unit
+///   value = data.gcp_cloudidentity_policy.test.policy_queries[0].org_unit
 /// }
 /// // The group the policy applies to
 /// output "policyQueryGroup" {
-///   value = data.gcp_cloudidentity_getpolicy.test.policy_queries[0].group
+///   value = data.gcp_cloudidentity_policy.test.policy_queries[0].group
 /// }
 /// // The sort order of the policy
 /// output "policyQuerySortOrder" {
-///   value = data.gcp_cloudidentity_getpolicy.test.policy_queries[0].sort_order
+///   value = data.gcp_cloudidentity_policy.test.policy_queries[0].sort_order
 /// }
 /// // The setting of the policy as a JSON string
 /// output "policySetting" {
-///   value = data.gcp_cloudidentity_getpolicy.test.setting
+///   value = data.gcp_cloudidentity_policy.test.setting
 /// }
 /// ```
 /// ```java

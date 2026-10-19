@@ -200,7 +200,7 @@ import 'table_view.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -269,7 +269,7 @@ import 'table_view.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -278,6 +278,9 @@ import 'table_view.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id                  = "foo"
 ///   friendly_name               = "test"
 ///   description                 = "This is a test description"
@@ -288,6 +291,9 @@ import 'table_view.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_table" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = gcp_bigquery_dataset.default.dataset_id
 ///   table_id   = "bar"
 ///   time_partitioning = {
@@ -296,9 +302,28 @@ import 'table_view.dart';
 ///   labels = {
 ///     "env" = "default"
 ///   }
-///   schema = "[\n  {\n    \\\"name\\\": \\\"permalink\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"description\\\": \\\"The Permalink\\\"\n  },\n  {\n    \\\"name\\\": \\\"state\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"description\\\": \\\"State where the head office is located\\\"\n  }\n]\n"
+///   schema = <<EOF
+/// [
+///   {
+///     \"name\": \"permalink\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\",
+///     \"description\": \"The Permalink\"
+///   },
+///   {
+///     \"name\": \"state\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\",
+///     \"description\": \"State where the head office is located\"
+///   }
+/// ]
+/// EOF
+///
 /// }
 /// resource "gcp_bigquery_table" "sheet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = gcp_bigquery_dataset.default.dataset_id
 ///   table_id   = "sheet"
 ///   external_data_configuration = {
@@ -593,7 +618,7 @@ class Table extends pulumi.CustomResource {
           'gcp:bigquery/table:Table',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     biglakeConfiguration = registerOutput<TableBiglakeConfiguration?>('biglakeConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TableBiglakeConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

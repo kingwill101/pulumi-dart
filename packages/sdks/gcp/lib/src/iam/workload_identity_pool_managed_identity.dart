@@ -85,7 +85,7 @@ import 'workload_identity_pool_managed_identity_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -118,7 +118,7 @@ import 'workload_identity_pool_managed_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -126,17 +126,26 @@ import 'workload_identity_pool_managed_identity_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "pool" {
+/// resource "gcp_iam_workload_identity_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 ///   mode                      = "TRUST_DOMAIN"
 /// }
-/// resource "gcp_iam_workloadidentitypoolnamespace" "ns" {
-///   workload_identity_pool_id           = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+/// resource "gcp_iam_workload_identity_pool_namespace" "ns" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workload_identity_pool_id           = gcp_iam_workload_identity_pool.pool.workload_identity_pool_id
 ///   workload_identity_pool_namespace_id = "example-namespace"
 /// }
-/// resource "gcp_iam_workloadidentitypoolmanagedidentity" "example" {
-///   workload_identity_pool_id                  = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
-///   workload_identity_pool_namespace_id        = gcp_iam_workloadidentitypoolnamespace.ns.workload_identity_pool_namespace_id
+/// resource "gcp_iam_workload_identity_pool_managed_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workload_identity_pool_id                  = gcp_iam_workload_identity_pool.pool.workload_identity_pool_id
+///   workload_identity_pool_namespace_id        = gcp_iam_workload_identity_pool_namespace.ns.workload_identity_pool_namespace_id
 ///   workload_identity_pool_managed_identity_id = "example-managed-identity"
 /// }
 /// ```
@@ -307,7 +316,7 @@ import 'workload_identity_pool_managed_identity_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -350,7 +359,7 @@ import 'workload_identity_pool_managed_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -358,17 +367,26 @@ import 'workload_identity_pool_managed_identity_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_iam_workloadidentitypool" "pool" {
+/// resource "gcp_iam_workload_identity_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workload_identity_pool_id = "example-pool"
 ///   mode                      = "TRUST_DOMAIN"
 /// }
-/// resource "gcp_iam_workloadidentitypoolnamespace" "ns" {
-///   workload_identity_pool_id           = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
+/// resource "gcp_iam_workload_identity_pool_namespace" "ns" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workload_identity_pool_id           = gcp_iam_workload_identity_pool.pool.workload_identity_pool_id
 ///   workload_identity_pool_namespace_id = "example-namespace"
 /// }
-/// resource "gcp_iam_workloadidentitypoolmanagedidentity" "example" {
-///   workload_identity_pool_id                  = gcp_iam_workloadidentitypool.pool.workload_identity_pool_id
-///   workload_identity_pool_namespace_id        = gcp_iam_workloadidentitypoolnamespace.ns.workload_identity_pool_namespace_id
+/// resource "gcp_iam_workload_identity_pool_managed_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workload_identity_pool_id                  = gcp_iam_workload_identity_pool.pool.workload_identity_pool_id
+///   workload_identity_pool_namespace_id        = gcp_iam_workload_identity_pool_namespace.ns.workload_identity_pool_namespace_id
 ///   workload_identity_pool_managed_identity_id = "example-managed-identity"
 ///   description                                = "Example Managed Identity in a Workload Identity Pool Namespace"
 ///   disabled                                   = true
@@ -538,7 +556,7 @@ class WorkloadIdentityPoolManagedIdentity extends pulumi.CustomResource {
           'gcp:iam/workloadIdentityPoolManagedIdentity:WorkloadIdentityPoolManagedIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     attestationRules = registerOutput<List<WorkloadIdentityPoolManagedIdentityAttestationRule>?>('attestationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkloadIdentityPoolManagedIdentityAttestationRule>(guardedValue, (value) => WorkloadIdentityPoolManagedIdentityAttestationRule.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -66,7 +66,7 @@ import 'environment_api_revision_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -88,7 +88,7 @@ import 'environment_api_revision_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -96,7 +96,10 @@ import 'environment_api_revision_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_apigee_environmentapirevisiondeployment" "proxy_deployment_basic" {
+/// resource "gcp_apigee_environment_api_revision_deployment" "proxy_deployment_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id            = "my-org"
 ///   environment       = "dev"
 ///   api               = "hello-proxy"
@@ -210,7 +213,7 @@ class EnvironmentApiRevisionDeployment extends pulumi.CustomResource {
           'gcp:apigee/environmentApiRevisionDeployment:EnvironmentApiRevisionDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     api = registerOutput<String>('api');
     basepaths = registerOutput<List<String>>('basepaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

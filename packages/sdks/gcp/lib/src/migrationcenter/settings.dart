@@ -94,7 +94,7 @@ import 'settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/migrationcenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/migrationcenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -129,7 +129,7 @@ import 'settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -138,11 +138,17 @@ import 'settings_state.dart';
 /// }
 ///
 /// resource "gcp_migrationcenter_settings" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-central1"
 ///   disable_cloud_logging = true
-///   preference_set        = gcp_migrationcenter_preferenceset.default.id
+///   preference_set        = gcp_migrationcenter_preference_set.default.id
 /// }
-/// resource "gcp_migrationcenter_preferenceset" "default" {
+/// resource "gcp_migrationcenter_preference_set" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "us-central1"
 ///   preference_set_id = "pref-set-test"
 ///   description       = "Terraform integration test description"
@@ -277,7 +283,7 @@ class Settings extends pulumi.CustomResource {
           'gcp:migrationcenter/settings:Settings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disableCloudLogging = registerOutput<bool?>('disableCloudLogging');

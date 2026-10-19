@@ -69,7 +69,7 @@ import 'backup_vault_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -91,7 +91,7 @@ import 'backup_vault_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -99,7 +99,10 @@ import 'backup_vault_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_netapp_backupvault" "test_backup_vault" {
+/// resource "gcp_netapp_backup_vault" "test_backup_vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-backup-vault"
 ///   location    = "us-west1"
 ///   description = "Terraform created vault"
@@ -237,7 +240,7 @@ class BackupVault extends pulumi.CustomResource {
           'gcp:netapp/backupVault:BackupVault',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backupRegion = registerOutput<String?>('backupRegion');

@@ -48,8 +48,8 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride {
   factory GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride.fromMap(Map<String, dynamic> map) {
     return GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverride(
       autoscalingLimits: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit>(map['autoscalingLimits']!, (value) => GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimit.fromMap((value as Map).cast<String, dynamic>()))),
-      autoscalingTargetHighPriorityCpuUtilizationPercent: pulumi.Input.fromValue((map['autoscalingTargetHighPriorityCpuUtilizationPercent'] as num).toInt()),
-      autoscalingTargetTotalCpuUtilizationPercent: pulumi.Input.fromValue((map['autoscalingTargetTotalCpuUtilizationPercent'] as num).toInt()),
+      autoscalingTargetHighPriorityCpuUtilizationPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['autoscalingTargetHighPriorityCpuUtilizationPercent'])),
+      autoscalingTargetTotalCpuUtilizationPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['autoscalingTargetTotalCpuUtilizationPercent'])),
       disableHighPriorityCpuAutoscaling: pulumi.Input.fromValue(map['disableHighPriorityCpuAutoscaling'] as bool),
       disableTotalCpuAutoscaling: pulumi.Input.fromValue(map['disableTotalCpuAutoscaling'] as bool),
     );

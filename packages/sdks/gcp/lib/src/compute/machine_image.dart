@@ -34,7 +34,7 @@ import 'machine_image_state.dart';
 ///     machineType: "e2-medium",
 ///     bootDisk: {
 ///         initializeParams: {
-///             image: "debian-cloud/debian-11",
+///             image: "debian-cloud/debian-13",
 ///         },
 ///     },
 ///     networkInterfaces: [{
@@ -55,7 +55,7 @@ import 'machine_image_state.dart';
 ///     machine_type="e2-medium",
 ///     boot_disk={
 ///         "initialize_params": {
-///             "image": "debian-cloud/debian-11",
+///             "image": "debian-cloud/debian-13",
 ///         },
 ///     },
 ///     network_interfaces=[{
@@ -81,7 +81,7 @@ import 'machine_image_state.dart';
 ///         {
 ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
 ///             {
-///                 Image = "debian-cloud/debian-11",
+///                 Image = "debian-cloud/debian-13",
 ///             },
 ///         },
 ///         NetworkInterfaces = new[]
@@ -105,7 +105,7 @@ import 'machine_image_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -116,7 +116,7 @@ import 'machine_image_state.dart';
 /// 			MachineType: pulumi.String("e2-medium"),
 /// 			BootDisk: &compute.InstanceBootDiskArgs{
 /// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-/// 					Image: pulumi.String("debian-cloud/debian-11"),
+/// 					Image: pulumi.String("debian-cloud/debian-13"),
 /// 				},
 /// 			},
 /// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
@@ -140,7 +140,7 @@ import 'machine_image_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -149,18 +149,24 @@ import 'machine_image_state.dart';
 /// }
 ///
 /// resource "gcp_compute_instance" "vm" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-vm"
 ///   machine_type = "e2-medium"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = "debian-cloud/debian-11"
+///       image = "debian-cloud/debian-13"
 ///     }
 ///   }
 ///   network_interfaces {
 ///     network = "default"
 ///   }
 /// }
-/// resource "gcp_compute_machineimage" "image" {
+/// resource "gcp_compute_machine_image" "image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "my-image"
 ///   source_instance = gcp_compute_instance.vm.self_link
 /// }
@@ -196,7 +202,7 @@ import 'machine_image_state.dart';
 ///             .machineType("e2-medium")
 ///             .bootDisk(InstanceBootDiskArgs.builder()
 ///                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-///                     .image("debian-cloud/debian-11")
+///                     .image("debian-cloud/debian-13")
 ///                     .build())
 ///                 .build())
 ///             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -221,7 +227,7 @@ import 'machine_image_state.dart';
 ///       machineType: e2-medium
 ///       bootDisk:
 ///         initializeParams:
-///           image: debian-cloud/debian-11
+///           image: debian-cloud/debian-13
 ///       networkInterfaces:
 ///         - network: default
 ///   image:
@@ -244,7 +250,7 @@ import 'machine_image_state.dart';
 ///     machineType: "e2-medium",
 ///     bootDisk: {
 ///         initializeParams: {
-///             image: "debian-cloud/debian-11",
+///             image: "debian-cloud/debian-13",
 ///         },
 ///     },
 ///     networkInterfaces: [{
@@ -276,7 +282,7 @@ import 'machine_image_state.dart';
 ///     machine_type="e2-medium",
 ///     boot_disk={
 ///         "initialize_params": {
-///             "image": "debian-cloud/debian-11",
+///             "image": "debian-cloud/debian-13",
 ///         },
 ///     },
 ///     network_interfaces=[{
@@ -311,7 +317,7 @@ import 'machine_image_state.dart';
 ///         {
 ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
 ///             {
-///                 Image = "debian-cloud/debian-11",
+///                 Image = "debian-cloud/debian-13",
 ///             },
 ///         },
 ///         NetworkInterfaces = new[]
@@ -351,8 +357,8 @@ import 'machine_image_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -363,7 +369,7 @@ import 'machine_image_state.dart';
 /// 			MachineType: pulumi.String("e2-medium"),
 /// 			BootDisk: &compute.InstanceBootDiskArgs{
 /// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-/// 					Image: pulumi.String("debian-cloud/debian-11"),
+/// 					Image: pulumi.String("debian-cloud/debian-13"),
 /// 				},
 /// 			},
 /// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
@@ -404,7 +410,7 @@ import 'machine_image_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -413,29 +419,41 @@ import 'machine_image_state.dart';
 /// }
 ///
 /// resource "gcp_compute_instance" "vm" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-vm"
 ///   machine_type = "e2-medium"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = "debian-cloud/debian-11"
+///       image = "debian-cloud/debian-13"
 ///     }
 ///   }
 ///   network_interfaces {
 ///     network = "default"
 ///   }
 /// }
-/// resource "gcp_compute_machineimage" "image" {
+/// resource "gcp_compute_machine_image" "image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "my-image"
 ///   source_instance = gcp_compute_instance.vm.self_link
 ///   machine_image_encryption_key = {
-///     kms_key_name = gcp_kms_cryptokey.crypto_key.id
+///     kms_key_name = gcp_kms_crypto_key.crypto_key.id
 ///   }
 /// }
-/// resource "gcp_kms_cryptokey" "crypto_key" {
+/// resource "gcp_kms_crypto_key" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "key"
-///   key_ring = gcp_kms_keyring.key_ring.id
+///   key_ring = gcp_kms_key_ring.key_ring.id
 /// }
-/// resource "gcp_kms_keyring" "key_ring" {
+/// resource "gcp_kms_key_ring" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "keyring"
 ///   location = "us"
 /// }
@@ -476,7 +494,7 @@ import 'machine_image_state.dart';
 ///             .machineType("e2-medium")
 ///             .bootDisk(InstanceBootDiskArgs.builder()
 ///                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-///                     .image("debian-cloud/debian-11")
+///                     .image("debian-cloud/debian-13")
 ///                     .build())
 ///                 .build())
 ///             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -514,7 +532,7 @@ import 'machine_image_state.dart';
 ///       machineType: e2-medium
 ///       bootDisk:
 ///         initializeParams:
-///           image: debian-cloud/debian-11
+///           image: debian-cloud/debian-13
 ///       networkInterfaces:
 ///         - network: default
 ///   image:
@@ -560,7 +578,7 @@ import 'machine_image_state.dart';
 ///     machineType: "e2-medium",
 ///     bootDisk: {
 ///         initializeParams: {
-///             image: "debian-cloud/debian-11",
+///             image: "debian-cloud/debian-13",
 ///         },
 ///     },
 ///     networkInterfaces: [{
@@ -593,7 +611,7 @@ import 'machine_image_state.dart';
 ///     machine_type="e2-medium",
 ///     boot_disk={
 ///         "initialize_params": {
-///             "image": "debian-cloud/debian-11",
+///             "image": "debian-cloud/debian-13",
 ///         },
 ///     },
 ///     network_interfaces=[{
@@ -642,7 +660,7 @@ import 'machine_image_state.dart';
 ///         {
 ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
 ///             {
-///                 Image = "debian-cloud/debian-11",
+///                 Image = "debian-cloud/debian-13",
 ///             },
 ///         },
 ///         NetworkInterfaces = new[]
@@ -678,9 +696,9 @@ import 'machine_image_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -709,7 +727,7 @@ import 'machine_image_state.dart';
 /// 			MachineType: pulumi.String("e2-medium"),
 /// 			BootDisk: &compute.InstanceBootDiskArgs{
 /// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
-/// 					Image: pulumi.String("debian-cloud/debian-11"),
+/// 					Image: pulumi.String("debian-cloud/debian-13"),
 /// 				},
 /// 			},
 /// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
@@ -728,7 +746,7 @@ import 'machine_image_state.dart';
 /// 				ResourceManagerTags: pulumi.StringMap(pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]pulumi.ID, error) {
 /// 					tagKey1Id := _args[0].(pulumi.ID)
 /// 					tagValue1Id := _args[1].(pulumi.ID)
-/// 					return map[string]pulumi.ID(pulumi.String(tagKey1Id).ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
+/// 					return map[string]pulumi.ID(tagKey1Id.ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
 /// 						return map[string]pulumi.ID{
 /// 							__convert: tagValue1Id,
 /// 						}, nil
@@ -744,7 +762,7 @@ import 'machine_image_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -752,35 +770,47 @@ import 'machine_image_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_tags_tagkey" "tag_key1" {
-///   parent     ="projects/${data.gcp_organizations_getproject.project.number}"
+/// resource "gcp_tags_tag_key" "tag_key1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent     ="projects/${data.gcp_organizations_project.project.number}"
 ///   short_name = "tagkey"
 /// }
-/// resource "gcp_tags_tagvalue" "tag_value1" {
-///   parent     = gcp_tags_tagkey.tag_key1.id
+/// resource "gcp_tags_tag_value" "tag_value1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent     = gcp_tags_tag_key.tag_key1.id
 ///   short_name = "tagvalue"
 /// }
 /// resource "gcp_compute_instance" "vm" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-vm"
 ///   machine_type = "e2-medium"
 ///   boot_disk = {
 ///     initialize_params = {
-///       image = "debian-cloud/debian-11"
+///       image = "debian-cloud/debian-13"
 ///     }
 ///   }
 ///   network_interfaces {
 ///     network = "default"
 ///   }
 /// }
-/// resource "gcp_compute_machineimage" "image" {
+/// resource "gcp_compute_machine_image" "image" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "my-image"
 ///   source_instance = gcp_compute_instance.vm.self_link
 ///   params = {
 ///     resource_manager_tags = {
-///       gcp_tags_tagkey.tag_key1.id = gcp_tags_tagvalue.tag_value1.id
+///       gcp_tags_tag_key.tag_key1.id = gcp_tags_tag_value.tag_value1.id
 ///     }
 ///   }
 /// }
@@ -836,7 +866,7 @@ import 'machine_image_state.dart';
 ///             .machineType("e2-medium")
 ///             .bootDisk(InstanceBootDiskArgs.builder()
 ///                 .initializeParams(InstanceBootDiskInitializeParamsArgs.builder()
-///                     .image("debian-cloud/debian-11")
+///                     .image("debian-cloud/debian-13")
 ///                     .build())
 ///                 .build())
 ///             .networkInterfaces(InstanceNetworkInterfaceArgs.builder()
@@ -880,7 +910,7 @@ import 'machine_image_state.dart';
 ///       machineType: e2-medium
 ///       bootDisk:
 ///         initializeParams:
-///           image: debian-cloud/debian-11
+///           image: debian-cloud/debian-13
 ///       networkInterfaces:
 ///         - network: default
 ///   image:
@@ -961,7 +991,7 @@ class MachineImage extends pulumi.CustomResource {
           'gcp:compute/machineImage:MachineImage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

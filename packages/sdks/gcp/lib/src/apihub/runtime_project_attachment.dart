@@ -214,9 +214,9 @@ import 'runtime_project_attachment_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apihub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apihub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -303,7 +303,7 @@ import 'runtime_project_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -315,6 +315,9 @@ import 'runtime_project_attachment_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "host_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "h-ah-proj"
 ///   project_id      = "h-ah-proj"
 ///   org_id          = "123456789"
@@ -322,23 +325,35 @@ import 'runtime_project_attachment_state.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "time_sleep" "wait_60_seconds" {
-///   depends_on      = [gcp_organizations_project.host_project]
+///   depends_on = [gcp_organizations_project.host_project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "60s"
 /// }
 /// # Enable API hub API on host project
 /// resource "gcp_projects_service" "apihub_service" {
 ///   depends_on = [time_sleep.wait_60_seconds]
-///   project    = gcp_organizations_project.host_project.project_id
-///   service    = "apihub.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.host_project.project_id
+///   service = "apihub.googleapis.com"
 /// }
-/// resource "gcp_apihub_hostprojectregistration" "host_project_reg" {
-///   depends_on                   = [gcp_projects_service.apihub_service]
+/// resource "gcp_apihub_host_project_registration" "host_project_reg" {
+///   depends_on = [gcp_projects_service.apihub_service]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                      = gcp_organizations_project.host_project.project_id
 ///   location                     = "asia-south1"
 ///   host_project_registration_id = gcp_organizations_project.host_project.project_id
 ///   gcp_project                  ="projects/${gcp_organizations_project.host_project.project_id}"
 /// }
 /// resource "gcp_organizations_project" "runtime_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "r-ah-proj"
 ///   project_id      = "r-ah-proj"
 ///   org_id          = "123456789"
@@ -348,11 +363,17 @@ import 'runtime_project_attachment_state.dart';
 /// # Enable API hub API on runtime project
 /// resource "gcp_projects_service" "apihub_service_runtime" {
 ///   depends_on = [time_sleep.wait_60_seconds]
-///   project    = gcp_organizations_project.runtime_project.project_id
-///   service    = "apihub.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.runtime_project.project_id
+///   service = "apihub.googleapis.com"
 /// }
-/// resource "gcp_apihub_runtimeprojectattachment" "apihub_runtime_project_attachment" {
-///   depends_on                    = [gcp_apihub_hostprojectregistration.host_project_reg, gcp_projects_service.apihub_service_runtime]
+/// resource "gcp_apihub_runtime_project_attachment" "apihub_runtime_project_attachment" {
+///   depends_on = [gcp_apihub_host_project_registration.host_project_reg, gcp_projects_service.apihub_service_runtime]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                       = gcp_organizations_project.host_project.project_id
 ///   location                      = "asia-south1"
 ///   runtime_project_attachment_id = gcp_organizations_project.runtime_project.project_id
@@ -580,7 +601,7 @@ class RuntimeProjectAttachment extends pulumi.CustomResource {
           'gcp:apihub/runtimeProjectAttachment:RuntimeProjectAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

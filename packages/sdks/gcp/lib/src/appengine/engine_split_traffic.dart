@@ -246,8 +246,8 @@ import 'engine_split_traffic_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -324,7 +324,7 @@ import 'engine_split_traffic_state.dart';
 /// 				Allocations: pulumi.StringMap(pulumi.All(liveappV1.VersionId, liveappV2.VersionId).ApplyT(func(_args []interface{}) (map[string]float64, error) {
 /// 					liveappV1VersionId := _args[0].(*string)
 /// 					liveappV2VersionId := _args[1].(*string)
-/// 					return map[string]float64(pulumi.All(pulumi.String(liveappV1VersionId), pulumi.String(liveappV2VersionId)).ApplyT(func(_args []interface{}) (map[string]float64, error) {
+/// 					return map[string]float64(pulumi.All(liveappV1VersionId, liveappV2VersionId).ApplyT(func(_args []interface{}) (map[string]float64, error) {
 /// 						__convert := _args[0].(string)
 /// 						__convert1 := _args[1].(string)
 /// 						return map[string]float64{
@@ -343,7 +343,7 @@ import 'engine_split_traffic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -352,15 +352,24 @@ import 'engine_split_traffic_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "appengine-static-content"
 ///   location = "US"
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "hello-world.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("./test-fixtures/hello-world.zip")
+///   source = fileasset("./test-fixtures/hello-world.zip")
 /// }
-/// resource "gcp_appengine_standardappversion" "liveapp_v1" {
+/// resource "gcp_appengine_standard_app_version" "liveapp_v1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   version_id                = "v1"
 ///   service                   = "liveapp"
 ///   delete_service_on_destroy = true
@@ -370,14 +379,17 @@ import 'engine_split_traffic_state.dart';
 ///   }
 ///   deployment = {
 ///     zip = {
-///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.object.name}"
 ///     }
 ///   }
 ///   env_variables = {
 ///     "port" = "8080"
 ///   }
 /// }
-/// resource "gcp_appengine_standardappversion" "liveapp_v2" {
+/// resource "gcp_appengine_standard_app_version" "liveapp_v2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   version_id      = "v2"
 ///   service         = "liveapp"
 ///   noop_on_destroy = true
@@ -387,21 +399,24 @@ import 'engine_split_traffic_state.dart';
 ///   }
 ///   deployment = {
 ///     zip = {
-///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.object.name}"
 ///     }
 ///   }
 ///   env_variables = {
 ///     "port" = "8080"
 ///   }
 /// }
-/// resource "gcp_appengine_enginesplittraffic" "liveapp" {
-///   service         = gcp_appengine_standardappversion.liveapp_v2.service
+/// resource "gcp_appengine_engine_split_traffic" "liveapp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service         = gcp_appengine_standard_app_version.liveapp_v2.service
 ///   migrate_traffic = false
 ///   split = {
 ///     shard_by = "IP"
 ///     allocations = {
-///       gcp_appengine_standardappversion.liveapp_v1.version_id = 0.75
-///       gcp_appengine_standardappversion.liveapp_v2.version_id = 0.25
+///       gcp_appengine_standard_app_version.liveapp_v1.version_id = 0.75
+///       gcp_appengine_standard_app_version.liveapp_v2.version_id = 0.25
 ///     }
 ///   }
 /// }
@@ -609,7 +624,7 @@ class EngineSplitTraffic extends pulumi.CustomResource {
           'gcp:appengine/engineSplitTraffic:EngineSplitTraffic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     migrateTraffic = registerOutput<bool?>('migrateTraffic');
     project = registerOutput<String>('project');

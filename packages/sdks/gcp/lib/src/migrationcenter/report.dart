@@ -117,7 +117,7 @@ import 'report_summary.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/migrationcenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/migrationcenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -166,7 +166,7 @@ import 'report_summary.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -175,25 +175,37 @@ import 'report_summary.dart';
 /// }
 ///
 /// resource "gcp_migrationcenter_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   group_id = "group-test"
 /// }
-/// resource "gcp_migrationcenter_preferenceset" "default" {
+/// resource "gcp_migrationcenter_preference_set" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "us-central1"
 ///   preference_set_id = "pref-set-test"
 /// }
-/// resource "gcp_migrationcenter_reportconfig" "default" {
+/// resource "gcp_migrationcenter_report_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us-central1"
 ///   report_config_id = "report-config-test"
 ///   group_preferenceset_assignments {
 ///     group          = gcp_migrationcenter_group.default.id
-///     preference_set = gcp_migrationcenter_preferenceset.default.id
+///     preference_set = gcp_migrationcenter_preference_set.default.id
 ///   }
 /// }
 /// resource "gcp_migrationcenter_report" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   report_id     = "report-test"
-///   report_config = gcp_migrationcenter_reportconfig.default.report_config_id
+///   report_config = gcp_migrationcenter_report_config.default.report_config_id
 ///   type          = "TOTAL_COST_OF_OWNERSHIP"
 ///   description   = "Terraform integration test description"
 ///   display_name  = "Terraform integration test display"
@@ -367,7 +379,7 @@ class Report extends pulumi.CustomResource {
           'gcp:migrationcenter/report:Report',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

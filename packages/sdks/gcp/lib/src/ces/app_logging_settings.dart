@@ -5,6 +5,7 @@ import 'app_logging_settings_audio_recording_config.dart';
 import 'app_logging_settings_bigquery_export_settings.dart';
 import 'app_logging_settings_cloud_logging_settings.dart';
 import 'app_logging_settings_conversation_logging_settings.dart';
+import 'app_logging_settings_metric_analysis_settings.dart';
 import 'app_logging_settings_redaction_config.dart';
 
 class AppLoggingSettings {
@@ -20,6 +21,10 @@ class AppLoggingSettings {
   /// Settings to describe the conversation logging behaviors for the app.
   /// Structure is documented below.
   final pulumi.Input<AppLoggingSettingsConversationLoggingSettings?>? conversationLoggingSettings;
+  /// Settings to describe the conversation data collection behaviors for the LLM
+  /// analysis pipeline for the app.
+  /// Structure is documented below.
+  final pulumi.Input<AppLoggingSettingsMetricAnalysisSettings?>? metricAnalysisSettings;
   /// Configuration to instruct how sensitive data should be handled.
   /// Structure is documented below.
   final pulumi.Input<AppLoggingSettingsRedactionConfig?>? redactionConfig;
@@ -29,12 +34,14 @@ class AppLoggingSettings {
   /// [bigqueryExportSettings] Settings to describe the BigQuery export behaviors for the app.
   /// [cloudLoggingSettings] Settings to describe the Cloud Logging behaviors for the app.
   /// [conversationLoggingSettings] Settings to describe the conversation logging behaviors for the app.
+  /// [metricAnalysisSettings] Settings to describe the conversation data collection behaviors for the LLM
   /// [redactionConfig] Configuration to instruct how sensitive data should be handled.
   const AppLoggingSettings({
     this.audioRecordingConfig,
     this.bigqueryExportSettings,
     this.cloudLoggingSettings,
     this.conversationLoggingSettings,
+    this.metricAnalysisSettings,
     this.redactionConfig,
   });
 
@@ -44,6 +51,7 @@ class AppLoggingSettings {
       'bigqueryExportSettings': ?pulumi.Input.mapOptionalInputValue<AppLoggingSettingsBigqueryExportSettings, Map<String, dynamic>>(bigqueryExportSettings, (value) => value.toMap()),
       'cloudLoggingSettings': ?pulumi.Input.mapOptionalInputValue<AppLoggingSettingsCloudLoggingSettings, Map<String, dynamic>>(cloudLoggingSettings, (value) => value.toMap()),
       'conversationLoggingSettings': ?pulumi.Input.mapOptionalInputValue<AppLoggingSettingsConversationLoggingSettings, Map<String, dynamic>>(conversationLoggingSettings, (value) => value.toMap()),
+      'metricAnalysisSettings': ?pulumi.Input.mapOptionalInputValue<AppLoggingSettingsMetricAnalysisSettings, Map<String, dynamic>>(metricAnalysisSettings, (value) => value.toMap()),
       'redactionConfig': ?pulumi.Input.mapOptionalInputValue<AppLoggingSettingsRedactionConfig, Map<String, dynamic>>(redactionConfig, (value) => value.toMap()),
     };
   }
@@ -54,6 +62,7 @@ class AppLoggingSettings {
       bigqueryExportSettings: (() { final guardedValue = map['bigqueryExportSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppLoggingSettingsBigqueryExportSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cloudLoggingSettings: (() { final guardedValue = map['cloudLoggingSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppLoggingSettingsCloudLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       conversationLoggingSettings: (() { final guardedValue = map['conversationLoggingSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppLoggingSettingsConversationLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      metricAnalysisSettings: (() { final guardedValue = map['metricAnalysisSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppLoggingSettingsMetricAnalysisSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       redactionConfig: (() { final guardedValue = map['redactionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppLoggingSettingsRedactionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

@@ -42,7 +42,7 @@ class FhirStoreStreamConfigBigqueryDestinationSchemaConfig {
   factory FhirStoreStreamConfigBigqueryDestinationSchemaConfig.fromMap(Map<String, dynamic> map) {
     return FhirStoreStreamConfigBigqueryDestinationSchemaConfig(
       lastUpdatedPartitionConfig: (() { final guardedValue = map['lastUpdatedPartitionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      recursiveStructureDepth: pulumi.Input.fromValue((map['recursiveStructureDepth'] as num).toInt()),
+      recursiveStructureDepth: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['recursiveStructureDepth'])),
       schemaType: (() { final guardedValue = map['schemaType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

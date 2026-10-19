@@ -124,7 +124,7 @@ class SloArgs {
       goal: pulumi.Input.fromValue((map['goal'] as num).toDouble()),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       requestBasedSli: (() { final guardedValue = map['requestBasedSli']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SloRequestBasedSli.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      rollingPeriodDays: (() { final guardedValue = map['rollingPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      rollingPeriodDays: (() { final guardedValue = map['rollingPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       service: pulumi.Input.fromValue(map['service'] as String),
       sloId: (() { final guardedValue = map['sloId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       userLabels: (() { final guardedValue = map['userLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

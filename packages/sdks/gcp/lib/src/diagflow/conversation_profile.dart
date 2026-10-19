@@ -112,7 +112,7 @@ import 'conversation_profile_tts_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -149,7 +149,7 @@ import 'conversation_profile_tts_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -158,11 +158,17 @@ import 'conversation_profile_tts_config.dart';
 /// }
 ///
 /// resource "gcp_diagflow_agent" "basic_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "example_agent"
 ///   default_language_code = "en"
 ///   time_zone             = "America/New_York"
 /// }
-/// resource "gcp_diagflow_conversationprofile" "basic_profile" {
+/// resource "gcp_diagflow_conversation_profile" "basic_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "dialogflow-profile"
 ///   location     = "global"
 ///   automated_agent_config = {
@@ -309,8 +315,8 @@ import 'conversation_profile_tts_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -338,7 +344,7 @@ import 'conversation_profile_tts_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -346,7 +352,10 @@ import 'conversation_profile_tts_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_conversationprofile" "recognition_result_notification_profile" {
+/// resource "gcp_diagflow_conversation_profile" "recognition_result_notification_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "dialogflow-profile"
 ///   location     = "global"
 ///   new_recognition_result_notification_config = {
@@ -355,6 +364,9 @@ import 'conversation_profile_tts_config.dart';
 ///   }
 /// }
 /// resource "gcp_pubsub_topic" "recognition_result_notification_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "recognition-result-notification"
 /// }
 /// ```
@@ -512,8 +524,8 @@ import 'conversation_profile_tts_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -551,7 +563,7 @@ import 'conversation_profile_tts_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -559,7 +571,10 @@ import 'conversation_profile_tts_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_conversationprofile" "bidi_profile" {
+/// resource "gcp_diagflow_conversation_profile" "bidi_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name       = "dialogflow-profile-bidi"
 ///   location           = "europe-west1"
 ///   language_code      = "en-US"
@@ -573,6 +588,9 @@ import 'conversation_profile_tts_config.dart';
 ///   }
 /// }
 /// resource "gcp_ces_app" "ces_app_for_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   display_name = "my-app"
@@ -744,7 +762,7 @@ class ConversationProfile extends pulumi.CustomResource {
           'gcp:diagflow/conversationProfile:ConversationProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     automatedAgentConfig = registerOutput<ConversationProfileAutomatedAgentConfig?>('automatedAgentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConversationProfileAutomatedAgentConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

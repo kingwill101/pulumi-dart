@@ -4,8 +4,6 @@ import 'organization_settings_state.dart';
 
 /// Manages Cloud Observability settings for an organization.
 ///
-/// &gt; **Warning:** This resource is in beta, and should be used with the terraform-provider-google-beta provider.
-/// See Provider Versions for more details on beta resources.
 ///
 ///
 /// ## Example Usage
@@ -122,8 +120,8 @@ import 'organization_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/observability"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/observability"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -171,7 +169,7 @@ import 'organization_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -182,24 +180,33 @@ import 'organization_settings_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_observability_getorganizationsettings" "settingsData" {
+/// data "gcp_observability_organization_settings" "settingsData" {
 ///   organization = "123456789"
 ///   location     = "us"
 /// }
 ///
 /// # Add a delay to allow the service account to propagate
 /// resource "time_sleep" "wait_for_sa_propagation" {
-///   depends_on      = [data.gcp_observability_getorganizationsettings.settingsData]
+///   depends_on = [data.gcp_observability_organization_settings.settingsData]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "90s"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "iam" {
-///   depends_on    = [time_sleep.wait_for_sa_propagation]
+/// resource "gcp_kms_crypto_key_i_a_m_member" "iam" {
+///   depends_on = [time_sleep.wait_for_sa_propagation]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "example-key"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:${data.gcp_observability_getorganizationsettings.settingsData.service_account_id}"
+///   member        ="serviceAccount:${data.gcp_observability_organization_settings.settingsData.service_account_id}"
 /// }
-/// resource "gcp_observability_organizationsettings" "primary" {
-///   depends_on   = [gcp_kms_cryptokeyiammember.iam]
+/// resource "gcp_observability_organization_settings" "primary" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.iam]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   organization = "123456789"
 ///   kms_key_name = "example-key"
@@ -358,7 +365,7 @@ import 'organization_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/observability"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/observability"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -384,7 +391,7 @@ import 'organization_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -392,12 +399,15 @@ import 'organization_settings_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_observability_getorganizationsettings" "settingsData" {
+/// data "gcp_observability_organization_settings" "settingsData" {
 ///   organization = "123456789"
 ///   location     = "global"
 /// }
 ///
-/// resource "gcp_observability_organizationsettings" "primary_global" {
+/// resource "gcp_observability_organization_settings" "primary_global" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "global"
 ///   organization             = "123456789"
 ///   default_storage_location = "us"
@@ -499,7 +509,7 @@ class OrganizationSettings extends pulumi.CustomResource {
           'gcp:observability/organizationSettings:OrganizationSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     defaultStorageLocation = registerOutput<String?>('defaultStorageLocation');
     kmsKeyName = registerOutput<String?>('kmsKeyName');

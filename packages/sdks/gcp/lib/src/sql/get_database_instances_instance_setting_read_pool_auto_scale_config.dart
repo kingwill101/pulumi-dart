@@ -53,10 +53,10 @@ class GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig {
     return GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfig(
       disableScaleIn: pulumi.Input.fromValue(map['disableScaleIn'] as bool),
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      maxNodeCount: pulumi.Input.fromValue((map['maxNodeCount'] as num).toInt()),
-      minNodeCount: pulumi.Input.fromValue((map['minNodeCount'] as num).toInt()),
-      scaleInCooldownSeconds: pulumi.Input.fromValue((map['scaleInCooldownSeconds'] as num).toInt()),
-      scaleOutCooldownSeconds: pulumi.Input.fromValue((map['scaleOutCooldownSeconds'] as num).toInt()),
+      maxNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNodeCount'])),
+      minNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNodeCount'])),
+      scaleInCooldownSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scaleInCooldownSeconds'])),
+      scaleOutCooldownSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scaleOutCooldownSeconds'])),
       targetMetrics: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric>(map['targetMetrics']!, (value) => GetDatabaseInstancesInstanceSettingReadPoolAutoScaleConfigTargetMetric.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

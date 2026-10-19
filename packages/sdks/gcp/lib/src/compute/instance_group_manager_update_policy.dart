@@ -61,11 +61,11 @@ class InstanceGroupManagerUpdatePolicy {
 
   factory InstanceGroupManagerUpdatePolicy.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerUpdatePolicy(
-      maxSurgeFixed: (() { final guardedValue = map['maxSurgeFixed']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxSurgePercent: (() { final guardedValue = map['maxSurgePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxUnavailableFixed: (() { final guardedValue = map['maxUnavailableFixed']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      maxUnavailablePercent: (() { final guardedValue = map['maxUnavailablePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      minReadySec: (() { final guardedValue = map['minReadySec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxSurgeFixed: (() { final guardedValue = map['maxSurgeFixed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxSurgePercent: (() { final guardedValue = map['maxSurgePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxUnavailableFixed: (() { final guardedValue = map['maxUnavailableFixed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxUnavailablePercent: (() { final guardedValue = map['maxUnavailablePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minReadySec: (() { final guardedValue = map['minReadySec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       minimalAction: pulumi.Input.fromValue(map['minimalAction'] as String),
       mostDisruptiveAllowedAction: (() { final guardedValue = map['mostDisruptiveAllowedAction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       replacementMethod: (() { final guardedValue = map['replacementMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

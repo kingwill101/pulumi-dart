@@ -132,7 +132,7 @@ class InstanceArgs {
       memcacheVersion: (() { final guardedValue = map['memcacheVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nodeConfig: pulumi.Input.fromValue(InstanceNodeConfig.fromMap((map['nodeConfig']! as Map).cast<String, dynamic>())),
-      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
+      nodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodeCount'])),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       reservedIpRangeIds: (() { final guardedValue = map['reservedIpRangeIds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

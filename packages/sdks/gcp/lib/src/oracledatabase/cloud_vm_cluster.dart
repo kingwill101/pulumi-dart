@@ -152,8 +152,8 @@ import 'cloud_vm_cluster_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -209,7 +209,7 @@ import 'cloud_vm_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -217,18 +217,21 @@ import 'cloud_vm_cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "default" {
+/// data "gcp_compute_network" "default" {
 ///   name    = "new"
 ///   project = "my-project"
 /// }
 ///
-/// resource "gcp_oracledatabase_cloudvmcluster" "my_vmcluster" {
+/// resource "gcp_oracledatabase_cloud_vm_cluster" "my_vmcluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_vm_cluster_id    = "my-instance"
 ///   display_name           = "my-instance displayname"
 ///   location               = "us-east4"
 ///   project                = "my-project"
-///   exadata_infrastructure = gcp_oracledatabase_cloudexadatainfrastructure.cloudExadataInfrastructures.id
-///   network                = data.gcp_compute_getnetwork.default.id
+///   exadata_infrastructure = gcp_oracledatabase_cloud_exadata_infrastructure.cloudExadataInfrastructures.id
+///   network                = data.gcp_compute_network.default.id
 ///   cidr                   = "10.5.0.0/24"
 ///   backup_subnet_cidr     = "10.6.0.0/24"
 ///   properties = {
@@ -240,7 +243,10 @@ import 'cloud_vm_cluster_state.dart';
 ///   }
 ///   deletion_protection = "true"
 /// }
-/// resource "gcp_oracledatabase_cloudexadatainfrastructure" "cloudExadataInfrastructures" {
+/// resource "gcp_oracledatabase_cloud_exadata_infrastructure" "cloudExadataInfrastructures" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_exadata_infrastructure_id = "my-exadata"
 ///   display_name                    = "my-exadata displayname"
 ///   location                        = "us-east4"
@@ -488,7 +494,7 @@ import 'cloud_vm_cluster_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -537,7 +543,7 @@ import 'cloud_vm_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -545,12 +551,15 @@ import 'cloud_vm_cluster_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_cloudvmcluster" "my_vmcluster" {
+/// resource "gcp_oracledatabase_cloud_vm_cluster" "my_vmcluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_vm_cluster_id    = "my-instance"
 ///   display_name           = "my-instance displayname"
 ///   location               = "europe-west2"
 ///   project                = "my-project"
-///   exadata_infrastructure = gcp_oracledatabase_cloudexadatainfrastructure.cloudExadataInfrastructures.id
+///   exadata_infrastructure = gcp_oracledatabase_cloud_exadata_infrastructure.cloudExadataInfrastructures.id
 ///   odb_network            = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork"
 ///   odb_subnet             = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-odbsubnet"
 ///   backup_odb_subnet      = "projects/my-project/locations/europe-west2/odbNetworks/my-odbnetwork/odbSubnets/my-backup-odbsubnet"
@@ -563,7 +572,10 @@ import 'cloud_vm_cluster_state.dart';
 ///   }
 ///   deletion_protection = "true"
 /// }
-/// resource "gcp_oracledatabase_cloudexadatainfrastructure" "cloudExadataInfrastructures" {
+/// resource "gcp_oracledatabase_cloud_exadata_infrastructure" "cloudExadataInfrastructures" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_exadata_infrastructure_id = "my-exadata"
 ///   display_name                    = "my-exadata displayname"
 ///   location                        = "europe-west2"
@@ -900,8 +912,8 @@ import 'cloud_vm_cluster_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -990,7 +1002,7 @@ import 'cloud_vm_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -998,23 +1010,26 @@ import 'cloud_vm_cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "default" {
+/// data "gcp_compute_network" "default" {
 ///   name    = "new"
 ///   project = "my-project"
 /// }
-/// data "gcp_oracledatabase_getdbservers" "mydbserver" {
+/// data "gcp_oracledatabase_db_servers" "mydbserver" {
 ///   location                     = "us-east4"
 ///   project                      = "my-project"
-///   cloud_exadata_infrastructure = gcp_oracledatabase_cloudexadatainfrastructure.cloudExadataInfrastructures.cloud_exadata_infrastructure_id
+///   cloud_exadata_infrastructure = gcp_oracledatabase_cloud_exadata_infrastructure.cloudExadataInfrastructures.cloud_exadata_infrastructure_id
 /// }
 ///
-/// resource "gcp_oracledatabase_cloudvmcluster" "my_vmcluster" {
+/// resource "gcp_oracledatabase_cloud_vm_cluster" "my_vmcluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_vm_cluster_id    = "my-instance"
 ///   display_name           = "my-instance displayname"
 ///   location               = "us-east4"
 ///   project                = "my-project"
-///   exadata_infrastructure = gcp_oracledatabase_cloudexadatainfrastructure.cloudExadataInfrastructures.id
-///   network                = data.gcp_compute_getnetwork.default.id
+///   exadata_infrastructure = gcp_oracledatabase_cloud_exadata_infrastructure.cloudExadataInfrastructures.id
+///   network                = data.gcp_compute_network.default.id
 ///   cidr                   = "10.5.0.0/24"
 ///   backup_subnet_cidr     = "10.6.0.0/24"
 ///   labels = {
@@ -1032,7 +1047,7 @@ import 'cloud_vm_cluster_state.dart';
 ///     ocpu_count               = "4.0"
 ///     data_storage_size_tb     = 2
 ///     db_node_storage_size_gb  = 120
-///     db_server_ocids          = [data.gcp_oracledatabase_getdbservers.mydbserver.db_servers[0].properties[0].ocid, data.gcp_oracledatabase_getdbservers.mydbserver.db_servers[1].properties[0].ocid]
+///     db_server_ocids          = [data.gcp_oracledatabase_db_servers.mydbserver.db_servers[0].properties[0].ocid, data.gcp_oracledatabase_db_servers.mydbserver.db_servers[1].properties[0].ocid]
 ///     disk_redundancy          = "HIGH"
 ///     sparse_diskgroup_enabled = false
 ///     local_backup_enabled     = false
@@ -1047,7 +1062,10 @@ import 'cloud_vm_cluster_state.dart';
 ///   }
 ///   deletion_protection = "true"
 /// }
-/// resource "gcp_oracledatabase_cloudexadatainfrastructure" "cloudExadataInfrastructures" {
+/// resource "gcp_oracledatabase_cloud_exadata_infrastructure" "cloudExadataInfrastructures" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_exadata_infrastructure_id = "my-exadata"
 ///   display_name                    = "my-exadata displayname"
 ///   location                        = "us-east4"
@@ -1481,8 +1499,8 @@ import 'cloud_vm_cluster_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1583,7 +1601,7 @@ import 'cloud_vm_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1591,27 +1609,30 @@ import 'cloud_vm_cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "default" {
+/// data "gcp_compute_network" "default" {
 ///   name    = "new"
 ///   project = "my-project"
 /// }
-/// data "gcp_oracledatabase_getdbservers" "dbServers" {
+/// data "gcp_oracledatabase_db_servers" "dbServers" {
 ///   location                     = "us-east4"
 ///   project                      = "my-project"
-///   cloud_exadata_infrastructure = gcp_oracledatabase_cloudexadatainfrastructure.infra.cloud_exadata_infrastructure_id
+///   cloud_exadata_infrastructure = gcp_oracledatabase_cloud_exadata_infrastructure.infra.cloud_exadata_infrastructure_id
 /// }
 ///
-/// resource "gcp_oracledatabase_cloudvmcluster" "my_vmcluster" {
-///   depends_on                = [gcp_oracledatabase_cloudexadatainfrastructureexascaleconfig.exascale_config]
+/// resource "gcp_oracledatabase_cloud_vm_cluster" "my_vmcluster" {
+///   depends_on = [gcp_oracledatabase_cloud_exadata_infrastructure_exascale_config.exascale_config]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_vm_cluster_id       = "my-instance"
 ///   display_name              = "my-instance displayname"
 ///   location                  = "us-east4"
 ///   project                   = "my-project"
-///   exadata_infrastructure    = gcp_oracledatabase_cloudexadatainfrastructure.infra.id
-///   network                   = data.gcp_compute_getnetwork.default.id
+///   exadata_infrastructure    = gcp_oracledatabase_cloud_exadata_infrastructure.infra.id
+///   network                   = data.gcp_compute_network.default.id
 ///   cidr                      = "10.5.0.0/24"
 ///   backup_subnet_cidr        = "10.6.0.0/24"
-///   exascale_db_storage_vault = gcp_oracledatabase_exascaledbstoragevault.vault.name
+///   exascale_db_storage_vault = gcp_oracledatabase_exascale_db_storage_vault.vault.name
 ///   properties = {
 ///     license_type            = "LICENSE_INCLUDED"
 ///     ssh_public_keys         = ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCz1X2744t+6vRLmE5u6nHi6/QWh8bQDgHmd+OIxRQIGA/IWUtCs2FnaCNZcqvZkaeyjk5v0lTA/n+9jvO42Ipib53athrfVG8gRt8fzPL66C6ZqHq+6zZophhrCdfJh/0G4x9xJh5gdMprlaCR1P8yAaVvhBQSKGc4SiIkyMNBcHJ5YTtMQMTfxaB4G1sHZ6SDAY9a6Cq/zNjDwfPapWLsiP4mRhE5SSjJX6l6EYbkm0JeLQg+AbJiNEPvrvDp1wtTxzlPJtIivthmLMThFxK7+DkrYFuLvN5AHUdo9KTDLvHtDCvV70r8v0gafsrKkM/OE9Jtzoo0e1N/5K/ZdyFRbAkFT4QSF3nwpbmBWLf2Evg//YyEuxnz4CwPqFST2mucnrCCGCVWp1vnHZ0y30nM35njLOmWdRDFy5l27pKUTwLp02y3UYiiZyP7d3/u5pKiN4vC27VuvzprSdJxWoAvluOiDeRh+/oeQDowxoT/Oop8DzB9uJmjktXw8jyMW2+Rpg+ENQqeNgF1OGlEzypaWiRskEFlkpLb4v/s3ZDYkL1oW0Nv/J8LTjTOTEaYt2Udjoe9x2xWiGnQixhdChWuG+MaoWffzUgx1tsVj/DBXijR5DjkPkrA1GA98zd3q8GKEaAdcDenJjHhNYSd4+rE9pIsnYn7fo5X/tFfcQH1XQ== nobody@google.com"]
@@ -1620,12 +1641,15 @@ import 'cloud_vm_cluster_state.dart';
 ///     hostname_prefix         = "hostname1"
 ///     memory_size_gb          = 60
 ///     db_node_storage_size_gb = 120
-///     db_server_ocids         = [data.gcp_oracledatabase_getdbservers.dbServers.db_servers[0].properties[0].ocid, data.gcp_oracledatabase_getdbservers.dbServers.db_servers[1].properties[0].ocid]
+///     db_server_ocids         = [data.gcp_oracledatabase_db_servers.dbServers.db_servers[0].properties[0].ocid, data.gcp_oracledatabase_db_servers.dbServers.db_servers[1].properties[0].ocid]
 ///   }
 ///   # Required fields for Exascale-based VM Clusters:
 ///   deletion_protection = "true"
 /// }
-/// resource "gcp_oracledatabase_cloudexadatainfrastructure" "infra" {
+/// resource "gcp_oracledatabase_cloud_exadata_infrastructure" "infra" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cloud_exadata_infrastructure_id = "my-exadata"
 ///   display_name                    = "my-exadata displayname"
 ///   location                        = "us-east4"
@@ -1637,19 +1661,25 @@ import 'cloud_vm_cluster_state.dart';
 ///   }
 ///   deletion_protection = "true"
 /// }
-/// resource "gcp_oracledatabase_cloudexadatainfrastructureexascaleconfig" "exascale_config" {
-///   cloud_exadata_infrastructure = gcp_oracledatabase_cloudexadatainfrastructure.infra.cloud_exadata_infrastructure_id
+/// resource "gcp_oracledatabase_cloud_exadata_infrastructure_exascale_config" "exascale_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cloud_exadata_infrastructure = gcp_oracledatabase_cloud_exadata_infrastructure.infra.cloud_exadata_infrastructure_id
 ///   location                     = "us-east4"
 ///   project                      = "my-project"
 ///   total_storage_size_gb        = 10240
 /// }
-/// resource "gcp_oracledatabase_exascaledbstoragevault" "vault" {
-///   depends_on                   = [gcp_oracledatabase_cloudexadatainfrastructureexascaleconfig.exascale_config]
+/// resource "gcp_oracledatabase_exascale_db_storage_vault" "vault" {
+///   depends_on = [gcp_oracledatabase_cloud_exadata_infrastructure_exascale_config.exascale_config]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   exascale_db_storage_vault_id = "my-vault"
 ///   display_name                 = "my-vault displayname"
 ///   location                     = "us-east4"
 ///   project                      = "my-project"
-///   exadata_infrastructure       = gcp_oracledatabase_cloudexadatainfrastructure.infra.name
+///   exadata_infrastructure       = gcp_oracledatabase_cloud_exadata_infrastructure.infra.name
 ///   properties = {
 ///     exascale_db_storage_details = {
 ///       total_size_gbs = 2048
@@ -1958,7 +1988,7 @@ class CloudVmCluster extends pulumi.CustomResource {
           'gcp:oracledatabase/cloudVmCluster:CloudVmCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     backupOdbSubnet = registerOutput<String>('backupOdbSubnet');

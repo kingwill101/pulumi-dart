@@ -84,8 +84,8 @@ import 'bucket_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -116,7 +116,7 @@ import 'bucket_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -124,16 +124,19 @@ import 'bucket_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/storage.admin"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_storage_bucketiampolicy" "policy" {
+/// resource "gcp_storage_bucket_i_a_m_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket      = default.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -275,8 +278,8 @@ import 'bucket_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -312,7 +315,7 @@ import 'bucket_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -320,7 +323,7 @@ import 'bucket_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/storage.admin"
 ///     members = ["user:jane@example.com"]
@@ -332,9 +335,12 @@ import 'bucket_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_bucketiampolicy" "policy" {
+/// resource "gcp_storage_bucket_i_a_m_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket      = default.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -450,7 +456,7 @@ import 'bucket_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -471,7 +477,7 @@ import 'bucket_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -479,7 +485,10 @@ import 'bucket_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_bucketiambinding" "binding" {
+/// resource "gcp_storage_bucket_i_a_m_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket  = default.name
 ///   role    = "roles/storage.admin"
 ///   members = ["user:jane@example.com"]
@@ -589,7 +598,7 @@ import 'bucket_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -615,7 +624,7 @@ import 'bucket_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -623,7 +632,10 @@ import 'bucket_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_bucketiambinding" "binding" {
+/// resource "gcp_storage_bucket_i_a_m_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket  = default.name
 ///   role    = "roles/storage.admin"
 ///   members = ["user:jane@example.com"]
@@ -728,7 +740,7 @@ import 'bucket_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -747,7 +759,7 @@ import 'bucket_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -755,7 +767,10 @@ import 'bucket_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_bucketiammember" "member" {
+/// resource "gcp_storage_bucket_i_a_m_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = default.name
 ///   role   = "roles/storage.admin"
 ///   member = "user:jane@example.com"
@@ -861,7 +876,7 @@ import 'bucket_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -885,7 +900,7 @@ import 'bucket_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -893,7 +908,10 @@ import 'bucket_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_bucketiammember" "member" {
+/// resource "gcp_storage_bucket_i_a_m_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = default.name
 ///   role   = "roles/storage.admin"
 ///   member = "user:jane@example.com"
@@ -1042,8 +1060,8 @@ import 'bucket_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1074,7 +1092,7 @@ import 'bucket_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1082,16 +1100,19 @@ import 'bucket_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/storage.admin"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_storage_bucketiampolicy" "policy" {
+/// resource "gcp_storage_bucket_i_a_m_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket      = default.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -1233,8 +1254,8 @@ import 'bucket_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1270,7 +1291,7 @@ import 'bucket_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1278,7 +1299,7 @@ import 'bucket_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/storage.admin"
 ///     members = ["user:jane@example.com"]
@@ -1290,9 +1311,12 @@ import 'bucket_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_bucketiampolicy" "policy" {
+/// resource "gcp_storage_bucket_i_a_m_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket      = default.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -1408,7 +1432,7 @@ import 'bucket_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1429,7 +1453,7 @@ import 'bucket_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1437,7 +1461,10 @@ import 'bucket_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_bucketiambinding" "binding" {
+/// resource "gcp_storage_bucket_i_a_m_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket  = default.name
 ///   role    = "roles/storage.admin"
 ///   members = ["user:jane@example.com"]
@@ -1547,7 +1574,7 @@ import 'bucket_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1573,7 +1600,7 @@ import 'bucket_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1581,7 +1608,10 @@ import 'bucket_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_bucketiambinding" "binding" {
+/// resource "gcp_storage_bucket_i_a_m_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket  = default.name
 ///   role    = "roles/storage.admin"
 ///   members = ["user:jane@example.com"]
@@ -1686,7 +1716,7 @@ import 'bucket_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1705,7 +1735,7 @@ import 'bucket_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1713,7 +1743,10 @@ import 'bucket_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_bucketiammember" "member" {
+/// resource "gcp_storage_bucket_i_a_m_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = default.name
 ///   role   = "roles/storage.admin"
 ///   member = "user:jane@example.com"
@@ -1819,7 +1852,7 @@ import 'bucket_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1843,7 +1876,7 @@ import 'bucket_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1851,7 +1884,10 @@ import 'bucket_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_storage_bucketiammember" "member" {
+/// resource "gcp_storage_bucket_i_a_m_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket = default.name
 ///   role   = "roles/storage.admin"
 ///   member = "user:jane@example.com"
@@ -1911,36 +1947,6 @@ import 'bucket_iampolicy_state.dart';
 ///         description: Expiring at midnight of 2019-12-31
 ///         expression: request.time < timestamp("2020-01-01T00:00:00Z")
 /// ```
-///
-///
-/// ## Import
-///
-/// For all import syntaxes, the "resource in question" can take any of the following forms:
-///
-/// * b/{{name}}
-/// * {{name}}
-///
-/// Any variables not passed in the import command will be taken from the provider configuration.
-///
-/// Cloud Storage bucket IAM resources can be imported using the resource identifiers, role, and member.
-///
-/// IAM member imports use space-delimited identifiers: the resource in question, the role, and the member identity, e.g.
-/// ```sh
-/// $ terraform import google_storage_bucket_iam_member.editor "b/{{bucket}} roles/storage.objectViewer user:jane@example.com"
-/// ```
-///
-/// IAM binding imports use space-delimited identifiers: the resource in question and the role, e.g.
-/// ```sh
-/// $ terraform import google_storage_bucket_iam_binding.editor "b/{{bucket}} roles/storage.objectViewer"
-/// ```
-///
-/// IAM policy imports use the identifier of the resource in question, e.g.
-/// ```sh
-/// $ pulumi import gcp:storage/bucketIAMPolicy:BucketIAMPolicy editor b/{{bucket}}
-/// ```
-///
-/// &gt; **Custom Roles** If you're importing a IAM resource with a custom role, make sure to use the
-/// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 class BucketIAMPolicy extends pulumi.CustomResource {
   /// Used to find the parent resource to bind the IAM policy to
   late final pulumi.Output<String> bucket;
@@ -1962,7 +1968,7 @@ class BucketIAMPolicy extends pulumi.CustomResource {
           'gcp:storage/bucketIAMPolicy:BucketIAMPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     etag = registerOutput<String>('etag');

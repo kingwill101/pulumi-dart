@@ -196,7 +196,7 @@ import 'cx_playbook_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -212,22 +212,22 @@ import 'cx_playbook_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal([]map[string]string{
-/// 			{
+/// 		tmpJSON0, err := json.Marshal([]interface{}{
+/// 			map[string]string{
 /// 				"text": "step 1 1",
 /// 			},
-/// 			{
+/// 			map[string]interface{}{
 /// 				"text": "step 1 2",
-/// 				"steps": []map[string]string{
-/// 					{
+/// 				"steps": []interface{}{
+/// 					map[string]string{
 /// 						"text": "step 1 2 1",
 /// 					},
-/// 					{
+/// 					map[string]string{
 /// 						"text": "step 1 2 2",
 /// 					},
 /// 				},
 /// 			},
-/// 			{
+/// 			map[string]string{
 /// 				"text": "step 1 3",
 /// 			},
 /// 		})
@@ -263,7 +263,7 @@ import 'cx_playbook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -271,22 +271,28 @@ import 'cx_playbook_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "dialogflowcx-agent-basic"
 ///   location              = "global"
 ///   default_language_code = "en"
 ///   time_zone             = "America/New_York"
 ///   description           = "Example description."
 /// }
-/// resource "gcp_diagflow_cxplaybook" "my-playbook" {
-///   parent        = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_playbook" "my-playbook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent        = gcp_diagflow_cx_agent.agent.id
 ///   display_name  = "Example Display Name"
 ///   goal          = "Example Goal"
 ///   playbook_type = "ROUTINE"
 ///   instruction = {
 ///     steps = [{
-///       "text" = "step 1"
-///       "steps" = jsonencode([{
+///       text = "step 1"
+///       steps = jsonencode([{
 ///         "text" = "step 1 1"
 ///         }, {
 ///         "text" = "step 1 2"
@@ -299,9 +305,9 @@ import 'cx_playbook_state.dart';
 ///         "text" = "step 1 3"
 ///       }])
 ///       }, {
-///       "text" = "step 2"
+///       text = "step 2"
 ///       }, {
-///       "text" = "step 3"
+///       text = "step 3"
 ///     }]
 ///   }
 /// }
@@ -715,8 +721,8 @@ import 'cx_playbook_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -775,22 +781,22 @@ import 'cx_playbook_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		tmpJSON0, err := json.Marshal([]map[string]string{
-/// 			{
+/// 		tmpJSON0, err := json.Marshal([]interface{}{
+/// 			map[string]string{
 /// 				"text": "step 1 1",
 /// 			},
-/// 			{
+/// 			map[string]interface{}{
 /// 				"text": "step 1 2",
-/// 				"steps": []map[string]string{
-/// 					{
+/// 				"steps": []interface{}{
+/// 					map[string]string{
 /// 						"text": "step 1 2 1",
 /// 					},
-/// 					{
+/// 					map[string]string{
 /// 						"text": "step 1 2 2",
 /// 					},
 /// 				},
 /// 			},
-/// 			{
+/// 			map[string]string{
 /// 				"text": "step 1 3",
 /// 			},
 /// 		})
@@ -833,7 +839,7 @@ import 'cx_playbook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -841,7 +847,10 @@ import 'cx_playbook_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "dialogflowcx-agent"
 ///   location              = "global"
 ///   default_language_code = "en"
@@ -849,24 +858,36 @@ import 'cx_playbook_state.dart';
 ///   description           = "Example description."
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "dialogflowcx-bucket"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_diagflow_cxwebhook" "my_webhook" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_webhook" "my_webhook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "MyWebhook"
 ///   generic_web_service = {
 ///     uri = "https://example.com"
 ///   }
 /// }
-/// resource "gcp_diagflow_cxtool" "my_tool" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_tool" "my_tool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "Example Tool"
 ///   description  = "Example Description"
 /// }
-/// resource "gcp_diagflow_cxgenerator" "my_generator" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_generator" "my_generator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "TF Prompt generator"
 ///   llm_model_settings = {
 ///     model       = "gemini-2.0-flash-001"
@@ -879,15 +900,18 @@ import 'cx_playbook_state.dart';
 ///     temperature = 0.55
 ///   }
 /// }
-/// resource "gcp_diagflow_cxplaybook" "my-playbook" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_playbook" "my-playbook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "Playbook Example with Fulfillment"
 ///   goal         = "Example Goal"
 ///   instruction = {
 ///     guidelines = "Example Guidelines"
 ///     steps = [{
-///       "text" = "step 1"
-///       "steps" = jsonencode([{
+///       text = "step 1"
+///       steps = jsonencode([{
 ///         "text" = "step 1 1"
 ///         }, {
 ///         "text" = "step 1 2"
@@ -900,16 +924,16 @@ import 'cx_playbook_state.dart';
 ///         "text" = "step 1 3"
 ///       }])
 ///       }, {
-///       "text" = "step 2"
+///       text = "step 2"
 ///       }, {
-///       "text" = "step 3"
+///       text = "step 3"
 ///     }]
 ///   }
 ///   llm_model_settings = {
 ///     model       = "gemini-2.0-flash-001"
 ///     prompt_text = "Return me some great results"
 ///   }
-///   referenced_tools = [gcp_diagflow_cxtool.my_tool.id]
+///   referenced_tools = [gcp_diagflow_cx_tool.my_tool.id]
 /// }
 /// ```
 /// ```java
@@ -1181,7 +1205,7 @@ class CxPlaybook extends pulumi.CustomResource {
           'gcp:diagflow/cxPlaybook:CxPlaybook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

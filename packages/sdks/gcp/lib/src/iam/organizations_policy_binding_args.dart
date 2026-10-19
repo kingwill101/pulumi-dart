@@ -37,6 +37,7 @@ class OrganizationsPolicyBindingArgs {
   /// The exact variables and functions that may be referenced within an expression are
   /// determined by the service that evaluates it. See the service documentation for
   /// additional information.
+  /// Conditions are currently only supported when the bound policy is a principal access boundary policy.
   /// Structure is documented below.
   final pulumi.Input<OrganizationsPolicyBindingCondition?>? condition;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
@@ -61,6 +62,8 @@ class OrganizationsPolicyBindingArgs {
   /// to the policy kind) - The input policy kind   Possible values:  POLICY_KIND_UNSPECIFIED PRINCIPAL_ACCESS_BOUNDARY ACCESS
   final pulumi.Input<String?>? policyKind;
   /// Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
+  /// Exactly one of `principalSet` (for principal access boundary policy bindings) or
+  /// `resource` (for access policy bindings) must be set.
   /// Structure is documented below.
   final pulumi.Input<OrganizationsPolicyBindingTarget> target;
 

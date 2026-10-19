@@ -84,7 +84,7 @@ import 'enterprise_key_web_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/recaptcha"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -112,7 +112,7 @@ import 'enterprise_key_web_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -120,7 +120,10 @@ import 'enterprise_key_web_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_recaptcha_enterprisekey" "primary" {
+/// resource "gcp_recaptcha_enterprise_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "display-name-one"
 ///   android_settings = {
 ///     allow_all_package_names = true
@@ -263,7 +266,7 @@ import 'enterprise_key_web_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/recaptcha"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -291,7 +294,7 @@ import 'enterprise_key_web_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -299,7 +302,10 @@ import 'enterprise_key_web_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_recaptcha_enterprisekey" "primary" {
+/// resource "gcp_recaptcha_enterprise_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "display-name-one"
 ///   ios_settings = {
 ///     allow_all_bundle_ids = true
@@ -425,7 +431,7 @@ import 'enterprise_key_web_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/recaptcha"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -448,7 +454,7 @@ import 'enterprise_key_web_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -456,7 +462,10 @@ import 'enterprise_key_web_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_recaptcha_enterprisekey" "primary" {
+/// resource "gcp_recaptcha_enterprise_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "display-name-one"
 ///   project      = "my-project-name"
 ///   web_settings = {
@@ -610,7 +619,7 @@ import 'enterprise_key_web_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/recaptcha"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -645,7 +654,7 @@ import 'enterprise_key_web_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -653,7 +662,10 @@ import 'enterprise_key_web_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_recaptcha_enterprisekey" "primary" {
+/// resource "gcp_recaptcha_enterprise_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "display-name-one"
 ///   project      = "my-project-name"
 ///   testing_options = {
@@ -826,7 +838,7 @@ import 'enterprise_key_web_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/recaptcha"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -857,7 +869,7 @@ import 'enterprise_key_web_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -865,7 +877,10 @@ import 'enterprise_key_web_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_recaptcha_enterprisekey" "primary" {
+/// resource "gcp_recaptcha_enterprise_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "display-name-one"
 ///   project      = "my-project-name"
 ///   testing_options = {
@@ -1023,7 +1038,7 @@ import 'enterprise_key_web_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/recaptcha"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/recaptcha"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1053,7 +1068,7 @@ import 'enterprise_key_web_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1061,7 +1076,10 @@ import 'enterprise_key_web_settings.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_recaptcha_enterprisekey" "primary" {
+/// resource "gcp_recaptcha_enterprise_key" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "display-name-one"
 ///   project      = "my-project-name"
 ///   testing_options = {
@@ -1205,7 +1223,7 @@ class EnterpriseKey extends pulumi.CustomResource {
           'gcp:recaptcha/enterpriseKey:EnterpriseKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     androidSettings = registerOutput<EnterpriseKeyAndroidSettings?>('androidSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnterpriseKeyAndroidSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

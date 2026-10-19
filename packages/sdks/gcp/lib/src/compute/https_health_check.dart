@@ -67,7 +67,7 @@ import 'https_health_check_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -87,7 +87,7 @@ import 'https_health_check_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -95,7 +95,10 @@ import 'https_health_check_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_httpshealthcheck" "default" {
+/// resource "gcp_compute_https_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "authentication-health-check"
 ///   request_path       = "/health_check"
 ///   timeout_sec        = 1
@@ -223,7 +226,7 @@ class HttpsHealthCheck extends pulumi.CustomResource {
           'gcp:compute/httpsHealthCheck:HttpsHealthCheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     checkIntervalSec = registerOutput<int?>('checkIntervalSec');
     creationTimestamp = registerOutput<String>('creationTimestamp');

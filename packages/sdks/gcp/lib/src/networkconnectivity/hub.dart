@@ -65,7 +65,7 @@ import 'hub_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -86,7 +86,7 @@ import 'hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -95,6 +95,9 @@ import 'hub_state.dart';
 /// }
 ///
 /// resource "gcp_networkconnectivity_hub" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "basic"
 ///   description = "A sample hub"
 ///   labels = {
@@ -187,7 +190,7 @@ import 'hub_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -206,7 +209,7 @@ import 'hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -215,6 +218,9 @@ import 'hub_state.dart';
 /// }
 ///
 /// resource "gcp_networkconnectivity_hub" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "basic"
 ///   description = "A sample hub with Private Service Connect transitivity is enabled"
 ///   export_psc  = true
@@ -311,7 +317,7 @@ import 'hub_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -332,7 +338,7 @@ import 'hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -341,6 +347,9 @@ import 'hub_state.dart';
 /// }
 ///
 /// resource "gcp_networkconnectivity_hub" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "mesh"
 ///   description = "A sample mesh hub"
 ///   labels = {
@@ -443,7 +452,7 @@ import 'hub_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -465,7 +474,7 @@ import 'hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -474,6 +483,9 @@ import 'hub_state.dart';
 /// }
 ///
 /// resource "gcp_networkconnectivity_hub" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "star"
 ///   description = "A sample star hub"
 ///   labels = {
@@ -582,7 +594,7 @@ import 'hub_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -605,7 +617,7 @@ import 'hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -614,6 +626,9 @@ import 'hub_state.dart';
 /// }
 ///
 /// resource "gcp_networkconnectivity_hub" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "policy"
 ///   description     = "A sample hub with PRESET policy_mode and STAR topology"
 ///   policy_mode     = "PRESET"
@@ -741,7 +756,7 @@ class Hub extends pulumi.CustomResource {
           'gcp:networkconnectivity/hub:Hub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

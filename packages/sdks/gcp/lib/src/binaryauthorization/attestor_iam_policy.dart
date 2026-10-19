@@ -85,8 +85,8 @@ import 'attestor_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/binaryauthorization"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/binaryauthorization"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -118,7 +118,7 @@ import 'attestor_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -126,17 +126,20 @@ import 'attestor_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_binaryauthorization_attestoriampolicy" "policy" {
+/// resource "gcp_binaryauthorization_attestor_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = attestor.project
 ///   attestor    = attestor.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -248,7 +251,7 @@ import 'attestor_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/binaryauthorization"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/binaryauthorization"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -270,7 +273,7 @@ import 'attestor_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -278,7 +281,10 @@ import 'attestor_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_binaryauthorization_attestoriambinding" "binding" {
+/// resource "gcp_binaryauthorization_attestor_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = attestor.project
 ///   attestor = attestor.name
 ///   role     = "roles/viewer"
@@ -375,7 +381,7 @@ import 'attestor_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/binaryauthorization"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/binaryauthorization"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -395,7 +401,7 @@ import 'attestor_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -403,7 +409,10 @@ import 'attestor_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_binaryauthorization_attestoriammember" "member" {
+/// resource "gcp_binaryauthorization_attestor_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = attestor.project
 ///   attestor = attestor.name
 ///   role     = "roles/viewer"
@@ -543,8 +552,8 @@ import 'attestor_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/binaryauthorization"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/binaryauthorization"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -576,7 +585,7 @@ import 'attestor_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -584,17 +593,20 @@ import 'attestor_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_binaryauthorization_attestoriampolicy" "policy" {
+/// resource "gcp_binaryauthorization_attestor_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = attestor.project
 ///   attestor    = attestor.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -706,7 +718,7 @@ import 'attestor_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/binaryauthorization"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/binaryauthorization"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -728,7 +740,7 @@ import 'attestor_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -736,7 +748,10 @@ import 'attestor_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_binaryauthorization_attestoriambinding" "binding" {
+/// resource "gcp_binaryauthorization_attestor_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = attestor.project
 ///   attestor = attestor.name
 ///   role     = "roles/viewer"
@@ -833,7 +848,7 @@ import 'attestor_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/binaryauthorization"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/binaryauthorization"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -853,7 +868,7 @@ import 'attestor_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -861,7 +876,10 @@ import 'attestor_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_binaryauthorization_attestoriammember" "member" {
+/// resource "gcp_binaryauthorization_attestor_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = attestor.project
 ///   attestor = attestor.name
 ///   role     = "roles/viewer"
@@ -964,7 +982,7 @@ class AttestorIamPolicy extends pulumi.CustomResource {
           'gcp:binaryauthorization/attestorIamPolicy:AttestorIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     attestor = registerOutput<String>('attestor');
     etag = registerOutput<String>('etag');

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_args.dart';
+import 'environment_dynamic_parameter.dart';
 import 'environment_state.dart';
 
 /// An environment is logical container for different networks or customers that are managed by the SOC or MSSP. This is useful for SOCs who provide services to several different networks, customers or business units within the organization. The Platform comes with a predefined environment named Default Environment.
@@ -32,6 +33,14 @@ import 'environment_state.dart';
 ///     aliasesJson: JSON.stringify([]),
 ///     dataAccessScopesJson: JSON.stringify([]),
 ///     retentionDuration: 3,
+///     base64Image: "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJljYPjPUA8AA4EBf4abPZ0AAAAASUVORK5CYII=",
+///     dynamicParameters: [{
+///         dynamicParameterId: 123,
+///         value: "value1",
+///     }],
+///     instanceUri: "https://test.backstory.chronicle.security?foo=bar",
+///     parallelInstance: "projects/my-project-name/locations/us/instances/00000000-0000-0000-0000-000000000001",
+///     weight: 1,
 ///     deletionProtection: false,
 /// });
 /// ```
@@ -51,6 +60,14 @@ import 'environment_state.dart';
 ///     aliases_json=json.dumps([]),
 ///     data_access_scopes_json=json.dumps([]),
 ///     retention_duration=3,
+///     base64_image="iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJljYPjPUA8AA4EBf4abPZ0AAAAASUVORK5CYII=",
+///     dynamic_parameters=[{
+///         "dynamic_parameter_id": 123,
+///         "value": "value1",
+///     }],
+///     instance_uri="https://test.backstory.chronicle.security?foo=bar",
+///     parallel_instance="projects/my-project-name/locations/us/instances/00000000-0000-0000-0000-000000000001",
+///     weight=1,
 ///     deletion_protection=False)
 /// ```
 /// ```csharp
@@ -78,6 +95,18 @@ import 'environment_state.dart';
 ///         {
 ///         }),
 ///         RetentionDuration = 3,
+///         Base64Image = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJljYPjPUA8AA4EBf4abPZ0AAAAASUVORK5CYII=",
+///         DynamicParameters = new[]
+///         {
+///             new Gcp.Chronicle.Inputs.EnvironmentDynamicParameterArgs
+///             {
+///                 DynamicParameterId = 123,
+///                 Value = "value1",
+///             },
+///         },
+///         InstanceUri = "https://test.backstory.chronicle.security?foo=bar",
+///         ParallelInstance = "projects/my-project-name/locations/us/instances/00000000-0000-0000-0000-000000000001",
+///         Weight = 1,
 ///         DeletionProtection = false,
 ///     });
 ///
@@ -89,7 +118,7 @@ import 'environment_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -116,7 +145,17 @@ import 'environment_state.dart';
 /// 			AliasesJson:          pulumi.String(json0),
 /// 			DataAccessScopesJson: pulumi.String(json1),
 /// 			RetentionDuration:    pulumi.Int(3),
-/// 			DeletionProtection:   pulumi.Bool(false),
+/// 			Base64Image:          pulumi.String("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJljYPjPUA8AA4EBf4abPZ0AAAAASUVORK5CYII="),
+/// 			DynamicParameters: chronicle.EnvironmentDynamicParameterArray{
+/// 				&chronicle.EnvironmentDynamicParameterArgs{
+/// 					DynamicParameterId: pulumi.Int(123),
+/// 					Value:              pulumi.String("value1"),
+/// 				},
+/// 			},
+/// 			InstanceUri:        pulumi.String("https://test.backstory.chronicle.security?foo=bar"),
+/// 			ParallelInstance:   pulumi.String("projects/my-project-name/locations/us/instances/00000000-0000-0000-0000-000000000001"),
+/// 			Weight:             pulumi.Int(1),
+/// 			DeletionProtection: pulumi.Bool(false),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -126,7 +165,7 @@ import 'environment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -135,6 +174,9 @@ import 'environment_state.dart';
 /// }
 ///
 /// resource "gcp_chronicle_environment" "sample" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                = "us"
 ///   instance                = "00000000-0000-0000-0000-000000000000"
 ///   display_name            = "MyEnvironment"
@@ -145,7 +187,15 @@ import 'environment_state.dart';
 ///   aliases_json            = jsonencode([])
 ///   data_access_scopes_json = jsonencode([])
 ///   retention_duration      = 3
-///   deletion_protection     = false
+///   base64_image            = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJljYPjPUA8AA4EBf4abPZ0AAAAASUVORK5CYII="
+///   dynamic_parameters {
+///     dynamic_parameter_id = 123
+///     value                = "value1"
+///   }
+///   instance_uri        = "https://test.backstory.chronicle.security?foo=bar"
+///   parallel_instance   = "projects/my-project-name/locations/us/instances/00000000-0000-0000-0000-000000000001"
+///   weight              = 1
+///   deletion_protection = false
 /// }
 /// ```
 /// ```java
@@ -156,6 +206,7 @@ import 'environment_state.dart';
 /// import com.pulumi.core.Output;
 /// import com.pulumi.gcp.chronicle.Environment;
 /// import com.pulumi.gcp.chronicle.EnvironmentArgs;
+/// import com.pulumi.gcp.chronicle.inputs.EnvironmentDynamicParameterArgs;
 /// import static com.pulumi.codegen.internal.Serialization.*;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
@@ -185,6 +236,14 @@ import 'environment_state.dart';
 ///                 jsonArray(
 ///                 )))
 ///             .retentionDuration(3)
+///             .base64Image("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJljYPjPUA8AA4EBf4abPZ0AAAAASUVORK5CYII=")
+///             .dynamicParameters(EnvironmentDynamicParameterArgs.builder()
+///                 .dynamicParameterId(123)
+///                 .value("value1")
+///                 .build())
+///             .instanceUri("https://test.backstory.chronicle.security?foo=bar")
+///             .parallelInstance("projects/my-project-name/locations/us/instances/00000000-0000-0000-0000-000000000001")
+///             .weight(1)
 ///             .deletionProtection(false)
 ///             .build());
 ///
@@ -208,6 +267,13 @@ import 'environment_state.dart';
 ///       dataAccessScopesJson:
 ///         fn::toJSON: []
 ///       retentionDuration: 3
+///       base64Image: iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABHNCSVQICAgIfAhkiAAAAA1JREFUCJljYPjPUA8AA4EBf4abPZ0AAAAASUVORK5CYII=
+///       dynamicParameters:
+///         - dynamicParameterId: 123
+///           value: value1
+///       instanceUri: https://test.backstory.chronicle.security?foo=bar
+///       parallelInstance: projects/my-project-name/locations/us/instances/00000000-0000-0000-0000-000000000001
+///       weight: 1
 ///       deletionProtection: false
 /// ```
 ///
@@ -231,6 +297,8 @@ import 'environment_state.dart';
 class Environment extends pulumi.CustomResource {
   /// Environment nicknames.
   late final pulumi.Output<String?> aliasesJson;
+  /// Environment icon.
+  late final pulumi.Output<String?> base64Image;
   /// MAX_NAME_LENGTH = 256
   /// Name of the contact for the environment.
   late final pulumi.Output<String> contact;
@@ -257,21 +325,38 @@ class Environment extends pulumi.CustomResource {
   /// Name of the environment
   /// MAX_NAME_LENGTH = 256
   late final pulumi.Output<String> displayName;
+  /// Additional custom properties for enriching the environment.
+  /// Structure is documented below.
+  late final pulumi.Output<List<EnvironmentDynamicParameter>?> dynamicParameters;
   /// Id of the environment record.
   late final pulumi.Output<String> environmentId;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> instance;
+  /// URL of the environment. Used to route UI links to the correct SIEM instance
+  /// when making cross-SecOps requests from SOAR.
+  late final pulumi.Output<String?> instanceUri;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   late final pulumi.Output<String> location;
   /// Identifier. The unique name(ID) of the Environment.
   /// Format:
   /// projects/{project}/locations/{location}/instances/{instance}/environments/{environment}
   late final pulumi.Output<String> name;
+  /// The optional parallel SIEM instance used as a data source. Used to route
+  /// API requests to the correct SIEM instance when making cross-SecOps requests
+  /// from SOAR. For most customers, this is not required, since the parent
+  /// instance is used as the data source by default.
+  /// Format:
+  /// projects/{project}/locations/{location}/instances/{instance}
+  late final pulumi.Output<String?> parallelInstance;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
   /// Environment data retention in months.
   late final pulumi.Output<int> retentionDuration;
+  /// The weight of the environment, enabling customers to control distribution
+  /// of resources between the separate environments in a single instance of
+  /// Chronicle SOAR.
+  late final pulumi.Output<int?> weight;
 
   /// Creates a new [Environment].
   /// [name] The Pulumi resource name.
@@ -285,9 +370,10 @@ class Environment extends pulumi.CustomResource {
           'gcp:chronicle/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     aliasesJson = registerOutput<String?>('aliasesJson');
+    base64Image = registerOutput<String?>('base64Image');
     contact = registerOutput<String>('contact');
     contactEmails = registerOutput<String>('contactEmails');
     contactPhone = registerOutput<String>('contactPhone');
@@ -296,12 +382,16 @@ class Environment extends pulumi.CustomResource {
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
+    dynamicParameters = registerOutput<List<EnvironmentDynamicParameter>?>('dynamicParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentDynamicParameter>(guardedValue, (value) => EnvironmentDynamicParameter.fromMap((value as Map).cast<String, dynamic>())); });
     environmentId = registerOutput<String>('environmentId');
     instance = registerOutput<String>('instance');
+    instanceUri = registerOutput<String?>('instanceUri');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
+    parallelInstance = registerOutput<String?>('parallelInstance');
     project = registerOutput<String>('project');
     retentionDuration = registerOutput<int>('retentionDuration');
+    weight = registerOutput<int?>('weight');
   }
 
   /// Gets an existing [Environment] resource's state with the given [name] and [id].
@@ -329,6 +419,7 @@ class Environment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     aliasesJson = registerOutput<String?>('aliasesJson');
+    base64Image = registerOutput<String?>('base64Image');
     contact = registerOutput<String>('contact');
     contactEmails = registerOutput<String>('contactEmails');
     contactPhone = registerOutput<String>('contactPhone');
@@ -337,12 +428,16 @@ class Environment extends pulumi.CustomResource {
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
+    dynamicParameters = registerOutput<List<EnvironmentDynamicParameter>?>('dynamicParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentDynamicParameter>(guardedValue, (value) => EnvironmentDynamicParameter.fromMap((value as Map).cast<String, dynamic>())); });
     environmentId = registerOutput<String>('environmentId');
     instance = registerOutput<String>('instance');
+    instanceUri = registerOutput<String?>('instanceUri');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
+    parallelInstance = registerOutput<String?>('parallelInstance');
     project = registerOutput<String>('project');
     retentionDuration = registerOutput<int>('retentionDuration');
+    weight = registerOutput<int?>('weight');
   }
 
   /// Creates a typed reference to an existing [Environment] resource.
@@ -355,6 +450,7 @@ class Environment extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     aliasesJson = registerOutput<String?>('aliasesJson');
+    base64Image = registerOutput<String?>('base64Image');
     contact = registerOutput<String>('contact');
     contactEmails = registerOutput<String>('contactEmails');
     contactPhone = registerOutput<String>('contactPhone');
@@ -363,11 +459,15 @@ class Environment extends pulumi.CustomResource {
     deletionProtection = registerOutput<bool?>('deletionProtection');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
+    dynamicParameters = registerOutput<List<EnvironmentDynamicParameter>?>('dynamicParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EnvironmentDynamicParameter>(guardedValue, (value) => EnvironmentDynamicParameter.fromMap((value as Map).cast<String, dynamic>())); });
     environmentId = registerOutput<String>('environmentId');
     instance = registerOutput<String>('instance');
+    instanceUri = registerOutput<String?>('instanceUri');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
+    parallelInstance = registerOutput<String?>('parallelInstance');
     project = registerOutput<String>('project');
     retentionDuration = registerOutput<int>('retentionDuration');
+    weight = registerOutput<int?>('weight');
   }
 }

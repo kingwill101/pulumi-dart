@@ -213,9 +213,9 @@ import 'rollout_sequence_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -295,7 +295,7 @@ import 'rollout_sequence_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -307,6 +307,9 @@ import 'rollout_sequence_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "rs-project"
 ///   name            = "rs-project"
 ///   org_id          = "123456789"
@@ -314,21 +317,33 @@ import 'rollout_sequence_state.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "gcp_projects_service" "gkehub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.project.project_id
 ///   service = "gkehub.googleapis.com"
 /// }
 /// // wait for API enablement
 /// resource "time_sleep" "wait_120_seconds" {
-///   depends_on      = [gcp_projects_service.gkehub]
+///   depends_on = [gcp_projects_service.gkehub]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
 /// resource "gcp_gkehub_fleet" "default" {
-///   depends_on   = [time_sleep.wait_120_seconds]
+///   depends_on = [time_sleep.wait_120_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "rs-fleet"
 ///   project      = gcp_organizations_project.project.project_id
 /// }
-/// resource "gcp_gkehub_rolloutsequence" "rollout_sequence" {
-///   depends_on          = [gcp_gkehub_fleet.default]
+/// resource "gcp_gkehub_rollout_sequence" "rollout_sequence" {
+///   depends_on = [gcp_gkehub_fleet.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project             = gcp_organizations_project.project.project_id
 ///   rollout_sequence_id = "rs-basic"
 ///   display_name        = "Basic Rollout Sequence"
@@ -721,9 +736,9 @@ import 'rollout_sequence_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -815,7 +830,7 @@ import 'rollout_sequence_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -827,6 +842,9 @@ import 'rollout_sequence_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "rs-project"
 ///   name            = "rs-project"
 ///   org_id          = "123456789"
@@ -834,21 +852,33 @@ import 'rollout_sequence_state.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "gcp_projects_service" "gkehub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.project.project_id
 ///   service = "gkehub.googleapis.com"
 /// }
 /// // wait for API enablement
 /// resource "time_sleep" "wait_120_seconds" {
-///   depends_on      = [gcp_projects_service.gkehub]
+///   depends_on = [gcp_projects_service.gkehub]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
 /// resource "gcp_gkehub_fleet" "default" {
-///   depends_on   = [time_sleep.wait_120_seconds]
+///   depends_on = [time_sleep.wait_120_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "rs-fleet"
 ///   project      = gcp_organizations_project.project.project_id
 /// }
-/// resource "gcp_gkehub_rolloutsequence" "rollout_sequence" {
-///   depends_on          = [gcp_gkehub_fleet.default]
+/// resource "gcp_gkehub_rollout_sequence" "rollout_sequence" {
+///   depends_on = [gcp_gkehub_fleet.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project             = gcp_organizations_project.project.project_id
 ///   rollout_sequence_id = "rs-basic"
 ///   display_name        = "Modified Rollout Sequence"
@@ -1093,7 +1123,7 @@ import 'rollout_sequence_state.dart';
 ///         channel: "REGULAR",
 ///     },
 ///     resourceLabels: {
-///         rs_test_cluster: "tf-test-_89239",
+///         rs_test_cluster: "tf-test-_90221",
 ///     },
 ///     fleet: {
 ///         project: project.number,
@@ -1107,7 +1137,7 @@ import 'rollout_sequence_state.dart';
 ///     displayName: "User Triggered Rollout Sequence",
 ///     minControlPlaneVersion: versions.apply(versions => versions.releaseChannelLatestVersion?.REGULAR),
 ///     ignoredClustersSelector: {
-///         labelSelector: "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')",
+///         labelSelector: "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_88987')",
 ///     },
 ///     stages: [{
 ///         fleetProjects: [pulumi.interpolate`projects/${project.projectId}`],
@@ -1166,7 +1196,7 @@ import 'rollout_sequence_state.dart';
 ///         "channel": "REGULAR",
 ///     },
 ///     resource_labels={
-///         "rs_test_cluster": "tf-test-_89239",
+///         "rs_test_cluster": "tf-test-_90221",
 ///     },
 ///     fleet={
 ///         "project": project.number,
@@ -1178,7 +1208,7 @@ import 'rollout_sequence_state.dart';
 ///     display_name="User Triggered Rollout Sequence",
 ///     min_control_plane_version=versions.release_channel_latest_version["REGULAR"],
 ///     ignored_clusters_selector={
-///         "label_selector": "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')",
+///         "label_selector": "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_88987')",
 ///     },
 ///     stages=[{
 ///         "fleet_projects": [project.project_id.apply(lambda project_id: f"projects/{project_id}")],
@@ -1285,7 +1315,7 @@ import 'rollout_sequence_state.dart';
 ///         },
 ///         ResourceLabels =
 ///         {
-///             { "rs_test_cluster", "tf-test-_89239" },
+///             { "rs_test_cluster", "tf-test-_90221" },
 ///         },
 ///         Fleet = new Gcp.Container.Inputs.ClusterFleetArgs
 ///         {
@@ -1307,7 +1337,7 @@ import 'rollout_sequence_state.dart';
 ///         MinControlPlaneVersion = versions.Apply(getEngineVersionsResult => getEngineVersionsResult.ReleaseChannelLatestVersion?.REGULAR),
 ///         IgnoredClustersSelector = new Gcp.GkeHub.Inputs.RolloutSequenceIgnoredClustersSelectorArgs
 ///         {
-///             LabelSelector = "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')",
+///             LabelSelector = "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_88987')",
 ///         },
 ///         Stages = new[]
 ///         {
@@ -1343,10 +1373,10 @@ import 'rollout_sequence_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -1427,7 +1457,7 @@ import 'rollout_sequence_state.dart';
 /// 				Channel: pulumi.String("REGULAR"),
 /// 			},
 /// 			ResourceLabels: pulumi.StringMap{
-/// 				"rs_test_cluster": pulumi.String("tf-test-_89239"),
+/// 				"rs_test_cluster": pulumi.String("tf-test-_90221"),
 /// 			},
 /// 			Fleet: &container.ClusterFleetArgs{
 /// 				Project: project.Number,
@@ -1446,7 +1476,7 @@ import 'rollout_sequence_state.dart';
 /// 				return &versions.ReleaseChannelLatestVersion.REGULAR, nil
 /// 			}).(pulumi.StringPtrOutput),
 /// 			IgnoredClustersSelector: &gkehub.RolloutSequenceIgnoredClustersSelectorArgs{
-/// 				LabelSelector: pulumi.String("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')"),
+/// 				LabelSelector: pulumi.String("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_88987')"),
 /// 			},
 /// 			Stages: gkehub.RolloutSequenceStageArray{
 /// 				&gkehub.RolloutSequenceStageArgs{
@@ -1474,7 +1504,7 @@ import 'rollout_sequence_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1485,12 +1515,15 @@ import 'rollout_sequence_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_container_getengineversions" "versions" {
+/// data "gcp_container_engine_versions" "versions" {
 ///   location = "us-central1-a"
 ///   project  = gcp_organizations_project.project.project_id
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "rs-project"
 ///   name            = "rs-project"
 ///   org_id          = "123456789"
@@ -1499,56 +1532,77 @@ import 'rollout_sequence_state.dart';
 /// }
 /// // Enable APIs in a deterministic order to avoid inconsistent VCR recordings
 /// resource "gcp_projects_service" "gkehub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.project.project_id
 ///   service = "gkehub.googleapis.com"
 /// }
 /// resource "gcp_projects_service" "container" {
 ///   depends_on = [gcp_projects_service.gkehub]
-///   project    = gcp_organizations_project.project.project_id
-///   service    = "container.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.project.project_id
+///   service = "container.googleapis.com"
 /// }
 /// resource "gcp_projects_service" "compute" {
 ///   depends_on = [gcp_projects_service.container]
-///   project    = gcp_organizations_project.project.project_id
-///   service    = "compute.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.project.project_id
+///   service = "compute.googleapis.com"
 /// }
 /// // wait for API enablement
 /// resource "time_sleep" "wait_120_seconds" {
-///   depends_on      = [gcp_projects_service.compute]
+///   depends_on = [gcp_projects_service.compute]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
 /// resource "gcp_gkehub_fleet" "default" {
-///   depends_on   = [time_sleep.wait_120_seconds]
+///   depends_on = [time_sleep.wait_120_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "rs-fleet"
 ///   project      = gcp_organizations_project.project.project_id
 /// }
 /// resource "gcp_container_cluster" "primary" {
-///   depends_on          = [gcp_gkehub_fleet.default]
+///   depends_on = [gcp_gkehub_fleet.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project             = gcp_organizations_project.project.project_id
 ///   name                = "rs-cluster"
 ///   location            = "us-central1-a"
 ///   initial_node_count  = 1
-///   min_master_version  = data.gcp_container_getengineversions.versions.release_channel_default_version["REGULAR"]
-///   node_version        = data.gcp_container_getengineversions.versions.release_channel_default_version["REGULAR"]
+///   min_master_version  = data.gcp_container_engine_versions.versions.release_channel_default_version["REGULAR"]
+///   node_version        = data.gcp_container_engine_versions.versions.release_channel_default_version["REGULAR"]
 ///   deletion_protection = false
 ///   release_channel = {
 ///     channel = "REGULAR"
 ///   }
 ///   resource_labels = {
-///     "rs_test_cluster" = "tf-test-_89239"
+///     "rs_test_cluster" = "tf-test-_90221"
 ///   }
 ///   fleet = {
 ///     project = gcp_organizations_project.project.number
 ///   }
 /// }
-/// resource "gcp_gkehub_rolloutsequence" "rollout_sequence" {
-///   depends_on                = [gcp_container_cluster.primary]
+/// resource "gcp_gkehub_rollout_sequence" "rollout_sequence" {
+///   depends_on = [gcp_container_cluster.primary]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                   = gcp_organizations_project.project.project_id
 ///   rollout_sequence_id       = "rs-user-triggered"
 ///   display_name              = "User Triggered Rollout Sequence"
-///   min_control_plane_version = data.gcp_container_getengineversions.versions.release_channel_latest_version["REGULAR"]
+///   min_control_plane_version = data.gcp_container_engine_versions.versions.release_channel_latest_version["REGULAR"]
 ///   ignored_clusters_selector = {
-///     label_selector = "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')"
+///     label_selector = "!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_88987')"
 ///   }
 ///   stages {
 ///     fleet_projects = ["projects/${gcp_organizations_project.project.project_id}"]
@@ -1659,7 +1713,7 @@ import 'rollout_sequence_state.dart';
 ///             .releaseChannel(ClusterReleaseChannelArgs.builder()
 ///                 .channel("REGULAR")
 ///                 .build())
-///             .resourceLabels(Map.of("rs_test_cluster", "tf-test-_89239"))
+///             .resourceLabels(Map.of("rs_test_cluster", "tf-test-_90221"))
 ///             .fleet(ClusterFleetArgs.builder()
 ///                 .project(project.number())
 ///                 .build())
@@ -1673,7 +1727,7 @@ import 'rollout_sequence_state.dart';
 ///             .displayName("User Triggered Rollout Sequence")
 ///             .minControlPlaneVersion(versions.applyValue(_versions -> _versions.releaseChannelLatestVersion().get("REGULAR")))
 ///             .ignoredClustersSelector(RolloutSequenceIgnoredClustersSelectorArgs.builder()
-///                 .labelSelector("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_41898')")
+///                 .labelSelector("!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == 'tf-test-_88987')")
 ///                 .build())
 ///             .stages(RolloutSequenceStageArgs.builder()
 ///                 .fleetProjects(project.projectId().applyValue(_projectId -> String.format("projects/%s", _projectId)))
@@ -1753,7 +1807,7 @@ import 'rollout_sequence_state.dart';
 ///       releaseChannel:
 ///         channel: REGULAR
 ///       resourceLabels:
-///         rs_test_cluster: tf-test-_89239
+///         rs_test_cluster: tf-test-_90221
 ///       fleet:
 ///         project: ${project.number}
 ///     options:
@@ -1768,7 +1822,7 @@ import 'rollout_sequence_state.dart';
 ///       displayName: User Triggered Rollout Sequence
 ///       minControlPlaneVersion: ${versions.releaseChannelLatestVersion.REGULAR}
 ///       ignoredClustersSelector:
-///         labelSelector: '!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == ''tf-test-_41898'')'
+///         labelSelector: '!(has(resource.labels.rs_test_cluster) && resource.labels.rs_test_cluster == ''tf-test-_88987'')'
 ///       stages:
 ///         - fleetProjects:
 ///             - projects/${project.projectId}
@@ -1888,7 +1942,7 @@ class RolloutSequence extends pulumi.CustomResource {
           'gcp:gkehub/rolloutSequence:RolloutSequence',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoUpgradeConfig = registerOutput<RolloutSequenceAutoUpgradeConfig?>('autoUpgradeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RolloutSequenceAutoUpgradeConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

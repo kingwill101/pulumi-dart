@@ -1,6 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'region_url_map_path_matcher_route_rule_route_action_url_rewrite_regex_rewrite.dart';
 
 class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
   /// Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
@@ -20,15 +21,22 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
   /// At least one non-empty routeRules[].matchRules[].path_template_match is required.
   /// Only one of pathPrefixRewrite or pathTemplateRewrite may be specified.
   final pulumi.Input<String?>? pathTemplateRewrite;
+  /// The regex rewrite to be applied to the URL. Only one of
+  /// pathPrefixRewrite, pathTemplateRewrite, or regexRewrite may be
+  /// specified.
+  /// Structure is documented below.
+  final pulumi.Input<RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite?>? regexRewrite;
 
   /// Creates a new [RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite].
   /// [hostRewrite] Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite.
   /// [pathPrefixRewrite] Before forwarding the request to the selected backend service, the matching portion of the request's path is replaced by pathPrefixRewrite.
   /// [pathTemplateRewrite] If specified, the pattern rewrites the URL path (based on the :path header) using the HTTP template syntax.
+  /// [regexRewrite] The regex rewrite to be applied to the URL. Only one of
   const RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite({
     this.hostRewrite,
     this.pathPrefixRewrite,
     this.pathTemplateRewrite,
+    this.regexRewrite,
   });
 
   Map<String, dynamic> toMap() {
@@ -36,6 +44,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
       'hostRewrite': ?hostRewrite,
       'pathPrefixRewrite': ?pathPrefixRewrite,
       'pathTemplateRewrite': ?pathTemplateRewrite,
+      'regexRewrite': ?pulumi.Input.mapOptionalInputValue<RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite, Map<String, dynamic>>(regexRewrite, (value) => value.toMap()),
     };
   }
 
@@ -44,6 +53,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewrite {
       hostRewrite: (() { final guardedValue = map['hostRewrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pathPrefixRewrite: (() { final guardedValue = map['pathPrefixRewrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pathTemplateRewrite: (() { final guardedValue = map['pathTemplateRewrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      regexRewrite: (() { final guardedValue = map['regexRewrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RegionUrlMapPathMatcherRouteRuleRouteActionUrlRewriteRegexRewrite.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

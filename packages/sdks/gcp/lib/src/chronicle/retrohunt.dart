@@ -33,13 +33,13 @@ import 'retrohunt_state.dart';
 /// const example = new gcp.chronicle.Retrohunt("example", {
 ///     location: "us",
 ///     instance: "00000000-0000-0000-0000-000000000000",
-///     rule: pulumi.all([std.split({
+///     rule: Promise.all([std.split({
 ///         separator: "/",
 ///         text: googleChronicleRule["my-rule"].name,
 ///     }), std.split({
 ///         separator: "/",
 ///         text: googleChronicleRule["my-rule"].name,
-///     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]).apply(x =>String(x)),
+///     }).then(invoke => invoke.result.length)]).then(([invoke, length]) => invoke.result[length - 1]),
 ///     processInterval: {
 ///         startTime: "2025-01-01T00:00:00Z",
 ///         endTime: "2025-01-01T12:00:00Z",
@@ -59,9 +59,9 @@ import 'retrohunt_state.dart';
 /// example = gcp.chronicle.Retrohunt("example",
 ///     location="us",
 ///     instance="00000000-0000-0000-0000-000000000000",
-///     rule=len(std.split(separator="/",
-///         text=google_chronicle_rule["my-rule"]["name"]).result).apply(lambda length: std.split(separator="/",
-///         text=google_chronicle_rule["my-rule"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
+///     rule=std.split(separator="/",
+///         text=google_chronicle_rule["my-rule"]["name"]).result[len(std.split(separator="/",
+///         text=google_chronicle_rule["my-rule"]["name"]).result) - 1.apply(lambda x: int(x))],
 ///     process_interval={
 ///         "start_time": "2025-01-01T00:00:00Z",
 ///         "end_time": "2025-01-01T12:00:00Z",
@@ -97,12 +97,12 @@ import 'retrohunt_state.dart';
 ///         {
 ///             Separator = "/",
 ///             Text = googleChronicleRule.My_rule.Name,
-///         }).Apply(invoke => invoke.Result).Length()).Apply(values =>
+///         }).Apply(invoke => invoke.Result.Length)).Apply(values =>
 ///         {
 ///             var invoke = values.Item1;
 ///             var length = values.Item2;
 ///             return invoke.Result[(int)(length - 1)];
-///         }).Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+///         }),
 ///         ProcessInterval = new Gcp.Chronicle.Inputs.RetrohuntProcessIntervalArgs
 ///         {
 ///             StartTime = "2025-01-01T00:00:00Z",
@@ -116,54 +116,54 @@ import 'retrohunt_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := chronicle.NewRule(ctx, "my-rule", &chronicle.RuleArgs{
-/// Location: pulumi.String("us"),
-/// Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
-/// DeletionPolicy: pulumi.String("FORCE"),
-/// Text: pulumi.String("rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// invokeSplit, err := std.Split(ctx, &std.SplitArgs{
-/// Separator: "/",
-/// Text: googleChronicleRule.MyRule.Name,
-/// }, nil)
-/// if err != nil {
-/// return err
-/// }
-/// invokeSplit1, err := std.Split(ctx, &std.SplitArgs{
-/// Separator: "/",
-/// Text: googleChronicleRule.MyRule.Name,
-/// }, nil)
-/// if err != nil {
-/// return err
-/// }
-/// _, err = chronicle.NewRetrohunt(ctx, "example", &chronicle.RetrohuntArgs{
-/// Location: pulumi.String("us"),
-/// Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
-/// Rule: pulumi.String(len(invokeSplit.Result).ApplyT(func(length int) (pulumi.Any, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(pulumi.AnyOutput)),
-/// ProcessInterval: &chronicle.RetrohuntProcessIntervalArgs{
-/// StartTime: pulumi.String("2025-01-01T00:00:00Z"),
-/// EndTime: pulumi.String("2025-01-01T12:00:00Z"),
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := chronicle.NewRule(ctx, "my-rule", &chronicle.RuleArgs{
+/// 			Location:       pulumi.String("us"),
+/// 			Instance:       pulumi.String("00000000-0000-0000-0000-000000000000"),
+/// 			DeletionPolicy: pulumi.String("FORCE"),
+/// 			Text:           pulumi.String("rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeSplit, err := std.Split(ctx, &std.SplitArgs{
+/// 			Separator: "/",
+/// 			Text:      googleChronicleRule.MyRule.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeSplit1, err := std.Split(ctx, &std.SplitArgs{
+/// 			Separator: "/",
+/// 			Text:      googleChronicleRule.MyRule.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = chronicle.NewRetrohunt(ctx, "example", &chronicle.RetrohuntArgs{
+/// 			Location: pulumi.String("us"),
+/// 			Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
+/// 			Rule:     pulumi.String(invokeSplit.Result[pulumi.Int(len(invokeSplit1.Result)-1)]),
+/// 			ProcessInterval: &chronicle.RetrohuntProcessIntervalArgs{
+/// 				StartTime: pulumi.String("2025-01-01T00:00:00Z"),
+/// 				EndTime:   pulumi.String("2025-01-01T12:00:00Z"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -175,12 +175,21 @@ import 'retrohunt_state.dart';
 /// }
 ///
 /// resource "gcp_chronicle_rule" "my-rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us"
 ///   instance        = "00000000-0000-0000-0000-000000000000"
 ///   deletion_policy = "FORCE"
-///   text            = "rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }\n"
+///   text            = <<-EOT
+/// rule test_rule { meta: events:  $userid = $e.principal.user.userid  match: $userid over 10m condition: $e }
+/// EOT
+///
 /// }
 /// resource "gcp_chronicle_retrohunt" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us"
 ///   instance = "00000000-0000-0000-0000-000000000000"
 ///   rule     = element(split("/", googleChronicleRule.my-rule.name), length(split("/", googleChronicleRule.my-rule.name)) - 1)
@@ -228,13 +237,13 @@ import 'retrohunt_state.dart';
 ///         var example = new Retrohunt("example", RetrohuntArgs.builder()
 ///             .location("us")
 ///             .instance("00000000-0000-0000-0000-000000000000")
-///             .rule(((String) StdFunctions.split(SplitArgs.builder()
+///             .rule(StdFunctions.split(SplitArgs.builder()
 ///                 .separator("/")
 ///                 .text(googleChronicleRule.get("my-rule").get("name"))
-///                 .build()).result().size().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
+///                 .build()).result()[StdFunctions.split(SplitArgs.builder()
 ///                 .separator("/")
 ///                 .text(googleChronicleRule.get("my-rule").get("name"))
-///                 .build()).result()[_length - 1])))
+///                 .build()).result().size() - 1])
 ///             .processInterval(RetrohuntProcessIntervalArgs.builder()
 ///                 .startTime("2025-01-01T00:00:00Z")
 ///                 .endTime("2025-01-01T12:00:00Z")
@@ -316,7 +325,7 @@ class Retrohunt extends pulumi.CustomResource {
           'gcp:chronicle/retrohunt:Retrohunt',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     retrohuntId = registerOutput<String>('RetrohuntId');
     executionIntervals = registerOutput<List<RetrohuntExecutionInterval>>('executionIntervals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RetrohuntExecutionInterval>(guardedValue, (value) => RetrohuntExecutionInterval.fromMap((value as Map).cast<String, dynamic>())); });

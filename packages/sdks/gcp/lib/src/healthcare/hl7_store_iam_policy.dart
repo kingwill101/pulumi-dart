@@ -80,8 +80,8 @@ import 'hl7_store_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -112,7 +112,7 @@ import 'hl7_store_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -120,16 +120,19 @@ import 'hl7_store_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/editor"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_hl7storeiampolicy" "hl7_v2_store" {
+/// resource "gcp_healthcare_hl7_store_iam_policy" "hl7_v2_store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hl7_v2_store_id = "your-hl7-v2-store-id"
-///   policy_data     = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data     = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -237,7 +240,7 @@ import 'hl7_store_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -258,7 +261,7 @@ import 'hl7_store_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -266,7 +269,10 @@ import 'hl7_store_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_hl7storeiambinding" "hl7_v2_store" {
+/// resource "gcp_healthcare_hl7_store_iam_binding" "hl7_v2_store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hl7_v2_store_id = "your-hl7-v2-store-id"
 ///   role            = "roles/editor"
 ///   members         = ["user:jane@example.com"]
@@ -358,7 +364,7 @@ import 'hl7_store_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -377,7 +383,7 @@ import 'hl7_store_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -385,7 +391,10 @@ import 'hl7_store_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_hl7storeiammember" "hl7_v2_store" {
+/// resource "gcp_healthcare_hl7_store_iam_member" "hl7_v2_store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hl7_v2_store_id = "your-hl7-v2-store-id"
 ///   role            = "roles/editor"
 ///   member          = "user:jane@example.com"
@@ -479,7 +488,7 @@ import 'hl7_store_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -500,7 +509,7 @@ import 'hl7_store_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -508,7 +517,10 @@ import 'hl7_store_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_hl7storeiambinding" "hl7_v2_store" {
+/// resource "gcp_healthcare_hl7_store_iam_binding" "hl7_v2_store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hl7_v2_store_id = "your-hl7-v2-store-id"
 ///   role            = "roles/editor"
 ///   members         = ["user:jane@example.com"]
@@ -600,7 +612,7 @@ import 'hl7_store_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -619,7 +631,7 @@ import 'hl7_store_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -627,7 +639,10 @@ import 'hl7_store_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_hl7storeiammember" "hl7_v2_store" {
+/// resource "gcp_healthcare_hl7_store_iam_member" "hl7_v2_store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hl7_v2_store_id = "your-hl7-v2-store-id"
 ///   role            = "roles/editor"
 ///   member          = "user:jane@example.com"
@@ -703,7 +718,7 @@ class Hl7StoreIamPolicy extends pulumi.CustomResource {
           'gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     hl7V2StoreId = registerOutput<String>('hl7V2StoreId');

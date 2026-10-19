@@ -14,6 +14,8 @@ class GetInstanceNetworkInterface {
   final pulumi.Input<List<GetInstanceNetworkInterfaceAliasIpRange>> aliasIpRanges;
   /// An array of IPv6 alias IP ranges for this network interface.
   final pulumi.Input<List<GetInstanceNetworkInterfaceAliasIpv6Range>> aliasIpv6Ranges;
+  /// If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
+  final pulumi.Input<bool> enableVpcScopedDns;
   /// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
   final pulumi.Input<String> igmpQuery;
   /// The prefix length of the primary internal IPv6 range.
@@ -55,6 +57,7 @@ class GetInstanceNetworkInterface {
   /// [accessConfigs] Access configurations, i.e. IPs via which this
   /// [aliasIpRanges] An array of alias IP ranges for this network interface. Structure documented below.
   /// [aliasIpv6Ranges] An array of IPv6 alias IP ranges for this network interface.
+  /// [enableVpcScopedDns] If true, DNS resolution will be enabled over this interface. Only valid with `networkAttachment`.
   /// [igmpQuery] Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
   /// [internalIpv6PrefixLength] The prefix length of the primary internal IPv6 range.
   /// [ipv6AccessConfigs] An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
@@ -77,6 +80,7 @@ class GetInstanceNetworkInterface {
     required this.accessConfigs,
     required this.aliasIpRanges,
     required this.aliasIpv6Ranges,
+    required this.enableVpcScopedDns,
     required this.igmpQuery,
     required this.internalIpv6PrefixLength,
     required this.ipv6AccessConfigs,
@@ -102,6 +106,7 @@ class GetInstanceNetworkInterface {
       'accessConfigs': pulumi.Input.mapInputValue<List<GetInstanceNetworkInterfaceAccessConfig>, List<Map<String, dynamic>>>(accessConfigs, (value) => pulumi.Input.encodeList<GetInstanceNetworkInterfaceAccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'aliasIpRanges': pulumi.Input.mapInputValue<List<GetInstanceNetworkInterfaceAliasIpRange>, List<Map<String, dynamic>>>(aliasIpRanges, (value) => pulumi.Input.encodeList<GetInstanceNetworkInterfaceAliasIpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'aliasIpv6Ranges': pulumi.Input.mapInputValue<List<GetInstanceNetworkInterfaceAliasIpv6Range>, List<Map<String, dynamic>>>(aliasIpv6Ranges, (value) => pulumi.Input.encodeList<GetInstanceNetworkInterfaceAliasIpv6Range, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'enableVpcScopedDns': enableVpcScopedDns,
       'igmpQuery': igmpQuery,
       'internalIpv6PrefixLength': internalIpv6PrefixLength,
       'ipv6AccessConfigs': pulumi.Input.mapInputValue<List<GetInstanceNetworkInterfaceIpv6AccessConfig>, List<Map<String, dynamic>>>(ipv6AccessConfigs, (value) => pulumi.Input.encodeList<GetInstanceNetworkInterfaceIpv6AccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -128,8 +133,9 @@ class GetInstanceNetworkInterface {
       accessConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceNetworkInterfaceAccessConfig>(map['accessConfigs']!, (value) => GetInstanceNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>()))),
       aliasIpRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceNetworkInterfaceAliasIpRange>(map['aliasIpRanges']!, (value) => GetInstanceNetworkInterfaceAliasIpRange.fromMap((value as Map).cast<String, dynamic>()))),
       aliasIpv6Ranges: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceNetworkInterfaceAliasIpv6Range>(map['aliasIpv6Ranges']!, (value) => GetInstanceNetworkInterfaceAliasIpv6Range.fromMap((value as Map).cast<String, dynamic>()))),
+      enableVpcScopedDns: pulumi.Input.fromValue(map['enableVpcScopedDns'] as bool),
       igmpQuery: pulumi.Input.fromValue(map['igmpQuery'] as String),
-      internalIpv6PrefixLength: pulumi.Input.fromValue((map['internalIpv6PrefixLength'] as num).toInt()),
+      internalIpv6PrefixLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['internalIpv6PrefixLength'])),
       ipv6AccessConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<GetInstanceNetworkInterfaceIpv6AccessConfig>(map['ipv6AccessConfigs']!, (value) => GetInstanceNetworkInterfaceIpv6AccessConfig.fromMap((value as Map).cast<String, dynamic>()))),
       ipv6AccessType: pulumi.Input.fromValue(map['ipv6AccessType'] as String),
       ipv6Address: pulumi.Input.fromValue(map['ipv6Address'] as String),
@@ -140,12 +146,12 @@ class GetInstanceNetworkInterface {
       networkIp: pulumi.Input.fromValue(map['networkIp'] as String),
       nicType: pulumi.Input.fromValue(map['nicType'] as String),
       parentNicName: pulumi.Input.fromValue(map['parentNicName'] as String),
-      queueCount: pulumi.Input.fromValue((map['queueCount'] as num).toInt()),
+      queueCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['queueCount'])),
       securityPolicy: pulumi.Input.fromValue(map['securityPolicy'] as String),
       stackType: pulumi.Input.fromValue(map['stackType'] as String),
       subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
       subnetworkProject: pulumi.Input.fromValue(map['subnetworkProject'] as String),
-      vlan: pulumi.Input.fromValue((map['vlan'] as num).toInt()),
+      vlan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vlan'])),
     );
   }
 }

@@ -17,14 +17,14 @@ import 'glossary_term_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const termTestId = new gcp.dataplex.Glossary("term_test_id", {
-///     glossaryId: "tf-test-glossary_49547",
+///     glossaryId: "tf-test-glossary_40472",
 ///     location: "us-central1",
 /// });
 /// const termTestIdGlossaryTerm = new gcp.dataplex.GlossaryTerm("term_test_id", {
 ///     parent: pulumi.interpolate`projects/${termTestId.project}/locations/us-central1/glossaries/${termTestId.glossaryId}`,
 ///     glossaryId: termTestId.glossaryId,
 ///     location: "us-central1",
-///     termId: "tf-test-term-basic_48675",
+///     termId: "tf-test-term-basic_44339",
 /// });
 /// ```
 /// ```python
@@ -32,7 +32,7 @@ import 'glossary_term_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// term_test_id = gcp.dataplex.Glossary("term_test_id",
-///     glossary_id="tf-test-glossary_49547",
+///     glossary_id="tf-test-glossary_40472",
 ///     location="us-central1")
 /// term_test_id_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id",
 ///     parent=pulumi.Output.all(
@@ -42,7 +42,7 @@ import 'glossary_term_state.dart';
 /// ,
 ///     glossary_id=term_test_id.glossary_id,
 ///     location="us-central1",
-///     term_id="tf-test-term-basic_48675")
+///     term_id="tf-test-term-basic_44339")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -54,7 +54,7 @@ import 'glossary_term_state.dart';
 /// {
 ///     var termTestId = new Gcp.DataPlex.Glossary("term_test_id", new()
 ///     {
-///         GlossaryId = "tf-test-glossary_49547",
+///         GlossaryId = "tf-test-glossary_40472",
 ///         Location = "us-central1",
 ///     });
 ///
@@ -68,7 +68,7 @@ import 'glossary_term_state.dart';
 ///         }),
 ///         GlossaryId = termTestId.GlossaryId,
 ///         Location = "us-central1",
-///         TermId = "tf-test-term-basic_48675",
+///         TermId = "tf-test-term-basic_44339",
 ///     });
 ///
 /// });
@@ -79,14 +79,14 @@ import 'glossary_term_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		termTestId, err := dataplex.NewGlossary(ctx, "term_test_id", &dataplex.GlossaryArgs{
-/// 			GlossaryId: pulumi.String("tf-test-glossary_49547"),
+/// 			GlossaryId: pulumi.String("tf-test-glossary_40472"),
 /// 			Location:   pulumi.String("us-central1"),
 /// 		})
 /// 		if err != nil {
@@ -100,7 +100,7 @@ import 'glossary_term_state.dart';
 /// 			}).(pulumi.StringOutput),
 /// 			GlossaryId: termTestId.GlossaryId,
 /// 			Location:   pulumi.String("us-central1"),
-/// 			TermId:     pulumi.String("tf-test-term-basic_48675"),
+/// 			TermId:     pulumi.String("tf-test-term-basic_44339"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -110,7 +110,7 @@ import 'glossary_term_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -119,14 +119,20 @@ import 'glossary_term_state.dart';
 /// }
 ///
 /// resource "gcp_dataplex_glossary" "term_test_id" {
-///   glossary_id = "tf-test-glossary_49547"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   glossary_id = "tf-test-glossary_40472"
 ///   location    = "us-central1"
 /// }
-/// resource "gcp_dataplex_glossaryterm" "term_test_id" {
+/// resource "gcp_dataplex_glossary_term" "term_test_id" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent      ="projects/${gcp_dataplex_glossary.term_test_id.project}/locations/us-central1/glossaries/${gcp_dataplex_glossary.term_test_id.glossary_id}"
 ///   glossary_id = gcp_dataplex_glossary.term_test_id.glossary_id
 ///   location    = "us-central1"
-///   term_id     = "tf-test-term-basic_48675"
+///   term_id     = "tf-test-term-basic_44339"
 /// }
 /// ```
 /// ```java
@@ -153,7 +159,7 @@ import 'glossary_term_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var termTestId = new Glossary("termTestId", GlossaryArgs.builder()
-///             .glossaryId("tf-test-glossary_49547")
+///             .glossaryId("tf-test-glossary_40472")
 ///             .location("us-central1")
 ///             .build());
 ///
@@ -165,7 +171,7 @@ import 'glossary_term_state.dart';
 ///             }))
 ///             .glossaryId(termTestId.glossaryId())
 ///             .location("us-central1")
-///             .termId("tf-test-term-basic_48675")
+///             .termId("tf-test-term-basic_44339")
 ///             .build());
 ///
 ///     }
@@ -177,7 +183,7 @@ import 'glossary_term_state.dart';
 ///     type: gcp:dataplex:Glossary
 ///     name: term_test_id
 ///     properties:
-///       glossaryId: tf-test-glossary_49547
+///       glossaryId: tf-test-glossary_40472
 ///       location: us-central1
 ///   termTestIdGlossaryTerm:
 ///     type: gcp:dataplex:GlossaryTerm
@@ -186,7 +192,7 @@ import 'glossary_term_state.dart';
 ///       parent: projects/${termTestId.project}/locations/us-central1/glossaries/${termTestId.glossaryId}
 ///       glossaryId: ${termTestId.glossaryId}
 ///       location: us-central1
-///       termId: tf-test-term-basic_48675
+///       termId: tf-test-term-basic_44339
 /// ```
 ///
 /// ### Dataplex Glossary Term Full
@@ -198,14 +204,14 @@ import 'glossary_term_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const termTestIdFull = new gcp.dataplex.Glossary("term_test_id_full", {
-///     glossaryId: "tf-test-glossary_42702",
+///     glossaryId: "tf-test-glossary_34599",
 ///     location: "us-central1",
 /// });
 /// const termTestIdFullGlossaryTerm = new gcp.dataplex.GlossaryTerm("term_test_id_full", {
 ///     parent: pulumi.interpolate`projects/${termTestIdFull.project}/locations/us-central1/glossaries/${termTestIdFull.glossaryId}`,
 ///     glossaryId: termTestIdFull.glossaryId,
 ///     location: "us-central1",
-///     termId: "tf-test-term-full_37426",
+///     termId: "tf-test-term-full_79513",
 ///     labels: {
 ///         tag: "test-tf",
 ///     },
@@ -218,7 +224,7 @@ import 'glossary_term_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// term_test_id_full = gcp.dataplex.Glossary("term_test_id_full",
-///     glossary_id="tf-test-glossary_42702",
+///     glossary_id="tf-test-glossary_34599",
 ///     location="us-central1")
 /// term_test_id_full_glossary_term = gcp.dataplex.GlossaryTerm("term_test_id_full",
 ///     parent=pulumi.Output.all(
@@ -228,7 +234,7 @@ import 'glossary_term_state.dart';
 /// ,
 ///     glossary_id=term_test_id_full.glossary_id,
 ///     location="us-central1",
-///     term_id="tf-test-term-full_37426",
+///     term_id="tf-test-term-full_79513",
 ///     labels={
 ///         "tag": "test-tf",
 ///     },
@@ -245,7 +251,7 @@ import 'glossary_term_state.dart';
 /// {
 ///     var termTestIdFull = new Gcp.DataPlex.Glossary("term_test_id_full", new()
 ///     {
-///         GlossaryId = "tf-test-glossary_42702",
+///         GlossaryId = "tf-test-glossary_34599",
 ///         Location = "us-central1",
 ///     });
 ///
@@ -259,7 +265,7 @@ import 'glossary_term_state.dart';
 ///         }),
 ///         GlossaryId = termTestIdFull.GlossaryId,
 ///         Location = "us-central1",
-///         TermId = "tf-test-term-full_37426",
+///         TermId = "tf-test-term-full_79513",
 ///         Labels =
 ///         {
 ///             { "tag", "test-tf" },
@@ -276,14 +282,14 @@ import 'glossary_term_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		termTestIdFull, err := dataplex.NewGlossary(ctx, "term_test_id_full", &dataplex.GlossaryArgs{
-/// 			GlossaryId: pulumi.String("tf-test-glossary_42702"),
+/// 			GlossaryId: pulumi.String("tf-test-glossary_34599"),
 /// 			Location:   pulumi.String("us-central1"),
 /// 		})
 /// 		if err != nil {
@@ -297,7 +303,7 @@ import 'glossary_term_state.dart';
 /// 			}).(pulumi.StringOutput),
 /// 			GlossaryId: termTestIdFull.GlossaryId,
 /// 			Location:   pulumi.String("us-central1"),
-/// 			TermId:     pulumi.String("tf-test-term-full_37426"),
+/// 			TermId:     pulumi.String("tf-test-term-full_79513"),
 /// 			Labels: pulumi.StringMap{
 /// 				"tag": pulumi.String("test-tf"),
 /// 			},
@@ -312,7 +318,7 @@ import 'glossary_term_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -321,14 +327,20 @@ import 'glossary_term_state.dart';
 /// }
 ///
 /// resource "gcp_dataplex_glossary" "term_test_id_full" {
-///   glossary_id = "tf-test-glossary_42702"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   glossary_id = "tf-test-glossary_34599"
 ///   location    = "us-central1"
 /// }
-/// resource "gcp_dataplex_glossaryterm" "term_test_id_full" {
+/// resource "gcp_dataplex_glossary_term" "term_test_id_full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent      ="projects/${gcp_dataplex_glossary.term_test_id_full.project}/locations/us-central1/glossaries/${gcp_dataplex_glossary.term_test_id_full.glossary_id}"
 ///   glossary_id = gcp_dataplex_glossary.term_test_id_full.glossary_id
 ///   location    = "us-central1"
-///   term_id     = "tf-test-term-full_37426"
+///   term_id     = "tf-test-term-full_79513"
 ///   labels = {
 ///     "tag" = "test-tf"
 ///   }
@@ -360,7 +372,7 @@ import 'glossary_term_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var termTestIdFull = new Glossary("termTestIdFull", GlossaryArgs.builder()
-///             .glossaryId("tf-test-glossary_42702")
+///             .glossaryId("tf-test-glossary_34599")
 ///             .location("us-central1")
 ///             .build());
 ///
@@ -372,7 +384,7 @@ import 'glossary_term_state.dart';
 ///             }))
 ///             .glossaryId(termTestIdFull.glossaryId())
 ///             .location("us-central1")
-///             .termId("tf-test-term-full_37426")
+///             .termId("tf-test-term-full_79513")
 ///             .labels(Map.of("tag", "test-tf"))
 ///             .displayName("terraform term")
 ///             .description("term created by Terraform")
@@ -387,7 +399,7 @@ import 'glossary_term_state.dart';
 ///     type: gcp:dataplex:Glossary
 ///     name: term_test_id_full
 ///     properties:
-///       glossaryId: tf-test-glossary_42702
+///       glossaryId: tf-test-glossary_34599
 ///       location: us-central1
 ///   termTestIdFullGlossaryTerm:
 ///     type: gcp:dataplex:GlossaryTerm
@@ -396,7 +408,7 @@ import 'glossary_term_state.dart';
 ///       parent: projects/${termTestIdFull.project}/locations/us-central1/glossaries/${termTestIdFull.glossaryId}
 ///       glossaryId: ${termTestIdFull.glossaryId}
 ///       location: us-central1
-///       termId: tf-test-term-full_37426
+///       termId: tf-test-term-full_79513
 ///       labels:
 ///         tag: test-tf
 ///       displayName: terraform term
@@ -474,7 +486,7 @@ class GlossaryTerm extends pulumi.CustomResource {
           'gcp:dataplex/glossaryTerm:GlossaryTerm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

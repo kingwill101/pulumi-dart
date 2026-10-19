@@ -38,7 +38,7 @@ class GetTableMaterializedView {
       allowNonIncrementalDefinition: pulumi.Input.fromValue(map['allowNonIncrementalDefinition'] as bool),
       enableRefresh: pulumi.Input.fromValue(map['enableRefresh'] as bool),
       query: pulumi.Input.fromValue(map['query'] as String),
-      refreshIntervalMs: pulumi.Input.fromValue((map['refreshIntervalMs'] as num).toInt()),
+      refreshIntervalMs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['refreshIntervalMs'])),
     );
   }
 }

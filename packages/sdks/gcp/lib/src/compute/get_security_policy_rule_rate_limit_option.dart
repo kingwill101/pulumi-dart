@@ -64,7 +64,7 @@ class GetSecurityPolicyRuleRateLimitOption {
 
   factory GetSecurityPolicyRuleRateLimitOption.fromMap(Map<String, dynamic> map) {
     return GetSecurityPolicyRuleRateLimitOption(
-      banDurationSec: pulumi.Input.fromValue((map['banDurationSec'] as num).toInt()),
+      banDurationSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['banDurationSec'])),
       banThresholds: pulumi.Input.fromValue(pulumi.Input.decodeList<GetSecurityPolicyRuleRateLimitOptionBanThreshold>(map['banThresholds']!, (value) => GetSecurityPolicyRuleRateLimitOptionBanThreshold.fromMap((value as Map).cast<String, dynamic>()))),
       conformAction: pulumi.Input.fromValue(map['conformAction'] as String),
       enforceOnKey: pulumi.Input.fromValue(map['enforceOnKey'] as String),

@@ -117,8 +117,8 @@ import 'listing_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -160,7 +160,7 @@ import 'listing_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -168,15 +168,21 @@ import 'listing_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
 ///   data_exchange_id = "my_data_exchange"
 ///   display_name     = "my_data_exchange"
 ///   description      = "example data exchange"
 /// }
 /// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
-///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.listing.data_exchange_id
+///   data_exchange_id = gcp_bigqueryanalyticshub_data_exchange.listing.data_exchange_id
 ///   listing_id       = "my_listing"
 ///   display_name     = "my_listing"
 ///   description      = "example data exchange"
@@ -185,6 +191,9 @@ import 'listing_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "my_listing"
 ///   friendly_name = "my_listing"
 ///   description   = "example data exchange"
@@ -386,8 +395,8 @@ import 'listing_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -433,7 +442,7 @@ import 'listing_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -441,15 +450,21 @@ import 'listing_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
 ///   data_exchange_id = "my_data_exchange"
 ///   display_name     = "my_data_exchange"
 ///   description      = "example data exchange"
 /// }
 /// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
-///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.listing.data_exchange_id
+///   data_exchange_id = gcp_bigqueryanalyticshub_data_exchange.listing.data_exchange_id
 ///   listing_id       = "my_listing"
 ///   display_name     = "my_listing"
 ///   description      = "example data exchange"
@@ -462,6 +477,9 @@ import 'listing_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "my_listing"
 ///   friendly_name = "my_listing"
 ///   description   = "example data exchange"
@@ -761,8 +779,8 @@ import 'listing_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -841,7 +859,7 @@ import 'listing_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -849,7 +867,10 @@ import 'listing_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
 ///   data_exchange_id = "dcr_data_exchange"
 ///   display_name     = "dcr_data_exchange"
@@ -859,15 +880,18 @@ import 'listing_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
-///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.listing.data_exchange_id
+///   data_exchange_id = gcp_bigqueryanalyticshub_data_exchange.listing.data_exchange_id
 ///   listing_id       = "dcr_listing"
 ///   display_name     = "dcr_listing"
 ///   description      = "example dcr data exchange"
 ///   bigquery_dataset = {
 ///     dataset = gcp_bigquery_dataset.listing.id
 ///     selected_resources = [{
-///       "table" = gcp_bigquery_table.listing.id
+///       table = gcp_bigquery_table.listing.id
 ///     }]
 ///   }
 ///   restricted_export_config = {
@@ -875,16 +899,41 @@ import 'listing_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "dcr_listing"
 ///   friendly_name = "dcr_listing"
 ///   description   = "example dcr data exchange"
 ///   location      = "US"
 /// }
 /// resource "gcp_bigquery_table" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   table_id            = "dcr_listing"
 ///   dataset_id          = gcp_bigquery_dataset.listing.dataset_id
-///   schema              = "[\n  {\n    \\\"name\\\": \\\"name\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"post_abbr\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  },\n  {\n    \\\"name\\\": \\\"date\\\",\n    \\\"type\\\": \\\"DATE\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\"\n  }\n]\n"
+///   schema              = <<EOF
+/// [
+///   {
+///     \"name\": \"name\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\"
+///   },
+///   {
+///     \"name\": \"post_abbr\",
+///     \"type\": \"STRING\",
+///     \"mode\": \"NULLABLE\"
+///   },
+///   {
+///     \"name\": \"date\",
+///     \"type\": \"DATE\",
+///     \"mode\": \"NULLABLE\"
+///   }
+/// ]
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -1144,8 +1193,8 @@ import 'listing_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1188,7 +1237,7 @@ import 'listing_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1196,15 +1245,21 @@ import 'listing_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing_log_email" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "listing_log_email" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
 ///   data_exchange_id = "tf_test_log_email_de"
 ///   display_name     = "tf_test_log_email_de"
 ///   description      = "Example for log email test"
 /// }
 /// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                            = "US"
-///   data_exchange_id                    = gcp_bigqueryanalyticshub_dataexchange.listing_log_email.data_exchange_id
+///   data_exchange_id                    = gcp_bigqueryanalyticshub_data_exchange.listing_log_email.data_exchange_id
 ///   listing_id                          = "tf_test_log_email_listing"
 ///   display_name                        = "tf_test_log_email_listing"
 ///   description                         = "Example for log email test"
@@ -1214,6 +1269,9 @@ import 'listing_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "listing_log_email" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "tf_test_log_email_ds"
 ///   friendly_name = "tf_test_log_email_ds"
 ///   description   = "Example for log email test"
@@ -1405,8 +1463,8 @@ import 'listing_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1449,7 +1507,7 @@ import 'listing_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1457,18 +1515,27 @@ import 'listing_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
 ///   data_exchange_id = "tf_test_pubsub_data_exchange"
 ///   display_name     = "tf_test_pubsub_data_exchange"
 ///   description      = "Example for pubsub topic source"
 /// }
 /// resource "gcp_pubsub_topic" "tf_test_pubsub_topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test_pubsub"
 /// }
 /// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
-///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.listing.data_exchange_id
+///   data_exchange_id = gcp_bigqueryanalyticshub_data_exchange.listing.data_exchange_id
 ///   listing_id       = "tf_test_pubsub_listing"
 ///   display_name     = "tf_test_pubsub_listing"
 ///   description      = "Example for pubsub topic source"
@@ -1779,8 +1846,8 @@ import 'listing_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1873,7 +1940,7 @@ import 'listing_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1881,7 +1948,10 @@ import 'listing_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "dcr_data_exchange_example" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "dcr_data_exchange_example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us"
 ///   data_exchange_id = "tf_test_data_exchange"
 ///   display_name     = "tf_test_data_exchange"
@@ -1891,18 +1961,27 @@ import 'listing_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "tf_test_dataset"
 ///   friendly_name = "tf_test_dataset"
 ///   description   = "Example for listing with routine"
 ///   location      = "us"
 /// }
 /// resource "gcp_bigquery_routine" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id      = gcp_bigquery_dataset.listing.dataset_id
 ///   routine_id      = "tf_test_routine"
 ///   routine_type    = "TABLE_VALUED_FUNCTION"
 ///   language        = "SQL"
 ///   description     = "A DCR routine example."
-///   definition_body = "SELECT 1 + value AS value\n"
+///   definition_body = <<-EOS
+/// SELECT 1 + value AS value
+/// EOS
+///
 ///   arguments {
 ///     name          = "value"
 ///     argument_kind = "FIXED_TYPE"
@@ -1920,15 +1999,18 @@ import 'listing_state.dart';
 ///   })
 /// }
 /// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
-///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.dcr_data_exchange_example.data_exchange_id
+///   data_exchange_id = gcp_bigqueryanalyticshub_data_exchange.dcr_data_exchange_example.data_exchange_id
 ///   listing_id       = "tf_test_listing_routine"
 ///   display_name     = "tf_test_listing_routine"
 ///   description      = "Example for listing with routine"
 ///   bigquery_dataset = {
 ///     dataset = gcp_bigquery_dataset.listing.id
 ///     selected_resources = [{
-///       "routine" = gcp_bigquery_routine.listing.id
+///       routine = gcp_bigquery_routine.listing.id
 ///     }]
 ///   }
 ///   restricted_export_config = {
@@ -2202,8 +2284,8 @@ import 'listing_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2248,7 +2330,7 @@ import 'listing_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2256,7 +2338,10 @@ import 'listing_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
 ///   data_exchange_id = "my_data_exchange"
 ///   display_name     = "my_data_exchange"
@@ -2264,8 +2349,11 @@ import 'listing_state.dart';
 ///   discovery_type   = "DISCOVERY_TYPE_PUBLIC"
 /// }
 /// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                    = "US"
-///   data_exchange_id            = gcp_bigqueryanalyticshub_dataexchange.listing.data_exchange_id
+///   data_exchange_id            = gcp_bigqueryanalyticshub_data_exchange.listing.data_exchange_id
 ///   listing_id                  = "my_listing"
 ///   display_name                = "my_listing"
 ///   description                 = "example public listing"
@@ -2276,6 +2364,9 @@ import 'listing_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "my_listing"
 ///   friendly_name = "my_listing"
 ///   description   = "example public listing"
@@ -2473,8 +2564,8 @@ import 'listing_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2517,7 +2608,7 @@ import 'listing_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2525,15 +2616,21 @@ import 'listing_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
 ///   data_exchange_id = "my_data_exchange"
 ///   display_name     = "my_data_exchange"
 ///   description      = "example data exchange"
 /// }
 /// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "US"
-///   data_exchange_id  = gcp_bigqueryanalyticshub_dataexchange.listing.data_exchange_id
+///   data_exchange_id  = gcp_bigqueryanalyticshub_data_exchange.listing.data_exchange_id
 ///   listing_id        = "my_listing"
 ///   display_name      = "my_listing"
 ///   description       = "example data exchange"
@@ -2543,6 +2640,9 @@ import 'listing_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "my_listing"
 ///   friendly_name = "my_listing"
 ///   description   = "example data exchange"
@@ -2714,7 +2814,7 @@ import 'listing_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2748,7 +2848,7 @@ import 'listing_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2756,14 +2856,20 @@ import 'listing_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "listing" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us"
 ///   data_exchange_id = "my_data_exchange"
 ///   display_name     = "my_data_exchange"
 /// }
 /// resource "gcp_bigqueryanalyticshub_listing" "listing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us"
-///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.listing.data_exchange_id
+///   data_exchange_id = gcp_bigqueryanalyticshub_data_exchange.listing.data_exchange_id
 ///   listing_id       = "my_listing"
 ///   display_name     = "my_listing"
 ///   bigquery_dataset = {
@@ -2930,7 +3036,7 @@ class Listing extends pulumi.CustomResource {
           'gcp:bigqueryanalyticshub/listing:Listing',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     allowOnlyMetadataSharing = registerOutput<bool?>('allowOnlyMetadataSharing');
     bigqueryDataset = registerOutput<ListingBigqueryDataset?>('bigqueryDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingBigqueryDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });

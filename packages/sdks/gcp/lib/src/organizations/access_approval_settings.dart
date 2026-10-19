@@ -93,7 +93,7 @@ import 'access_approval_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -123,7 +123,7 @@ import 'access_approval_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -131,7 +131,10 @@ import 'access_approval_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_organizations_accessapprovalsettings" "organization_access_approval" {
+/// resource "gcp_organizations_access_approval_settings" "organization_access_approval" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization_id     = "123456789"
 ///   notification_emails = ["testuser@example.com", "example.user@example.com"]
 ///   enrolled_services {
@@ -357,9 +360,9 @@ import 'access_approval_settings_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accessapproval"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accessapproval"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -429,7 +432,7 @@ import 'access_approval_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -437,41 +440,56 @@ import 'access_approval_settings_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_accessapproval_getorganizationserviceaccount" "serviceAccount" {
+/// data "gcp_accessapproval_organization_service_account" "serviceAccount" {
 ///   organization_id = "123456789"
 /// }
-/// data "gcp_kms_getkmscryptokeyversion" "cryptoKeyVersion" {
-///   crypto_key = gcp_kms_cryptokey.crypto_key.id
+/// data "gcp_kms_k_m_s_crypto_key_version" "cryptoKeyVersion" {
+///   crypto_key = gcp_kms_crypto_key.crypto_key.id
 /// }
 ///
 /// resource "gcp_organizations_project" "my_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "My Project"
 ///   project_id      = "your-project-id"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
-/// resource "gcp_kms_keyring" "key_ring" {
+/// resource "gcp_kms_key_ring" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "key-ring"
 ///   location = "global"
 ///   project  = gcp_organizations_project.my_project.project_id
 /// }
-/// resource "gcp_kms_cryptokey" "crypto_key" {
+/// resource "gcp_kms_crypto_key" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "crypto-key"
-///   key_ring = gcp_kms_keyring.key_ring.id
+///   key_ring = gcp_kms_key_ring.key_ring.id
 ///   purpose  = "ASYMMETRIC_SIGN"
 ///   version_template = {
 ///     algorithm = "EC_SIGN_P384_SHA384"
 ///   }
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "iam" {
-///   crypto_key_id = gcp_kms_cryptokey.crypto_key.id
+/// resource "gcp_kms_crypto_key_i_a_m_member" "iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = gcp_kms_crypto_key.crypto_key.id
 ///   role          = "roles/cloudkms.signerVerifier"
-///   member        ="serviceAccount:${data.gcp_accessapproval_getorganizationserviceaccount.serviceAccount.account_email}"
+///   member        ="serviceAccount:${data.gcp_accessapproval_organization_service_account.serviceAccount.account_email}"
 /// }
-/// resource "gcp_organizations_accessapprovalsettings" "organization_access_approval" {
-///   depends_on         = [gcp_kms_cryptokeyiammember.iam]
+/// resource "gcp_organizations_access_approval_settings" "organization_access_approval" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.iam]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization_id    = "123456789"
-///   active_key_version = data.gcp_kms_getkmscryptokeyversion.cryptoKeyVersion.name
+///   active_key_version = data.gcp_kms_k_m_s_crypto_key_version.cryptoKeyVersion.name
 ///   enrolled_services {
 ///     cloud_product = "all"
 ///   }
@@ -679,7 +697,7 @@ class AccessApprovalSettings extends pulumi.CustomResource {
           'gcp:organizations/accessApprovalSettings:AccessApprovalSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     activeKeyVersion = registerOutput<String?>('activeKeyVersion');
     ancestorHasActiveKeyVersion = registerOutput<bool>('ancestorHasActiveKeyVersion');

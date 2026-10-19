@@ -99,7 +99,7 @@ import 'auth_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/applicationintegration"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/applicationintegration"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -133,7 +133,7 @@ import 'auth_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -142,10 +142,16 @@ import 'auth_config_state.dart';
 /// }
 ///
 /// resource "gcp_applicationintegration_client" "client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-west1"
 /// }
-/// resource "gcp_applicationintegration_authconfig" "basic_example" {
-///   depends_on   = [gcp_applicationintegration_client.client]
+/// resource "gcp_applicationintegration_auth_config" "basic_example" {
+///   depends_on = [gcp_applicationintegration_client.client]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-west1"
 ///   display_name = "test-authconfig"
 ///   description  = "Test auth config created via terraform"
@@ -317,7 +323,7 @@ class AuthConfig extends pulumi.CustomResource {
           'gcp:applicationintegration/authConfig:AuthConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     certificateId = registerOutput<String>('certificateId');
     clientCertificate = registerOutput<AuthConfigClientCertificate?>('clientCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AuthConfigClientCertificate.fromMap((guardedValue as Map).cast<String, dynamic>()); });

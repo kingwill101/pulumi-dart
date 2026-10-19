@@ -13,6 +13,8 @@ class InstanceFromMachineImageNetworkInterface {
   final pulumi.Input<List<InstanceFromMachineImageNetworkInterfaceAliasIpRange>?>? aliasIpRanges;
   /// An array of IPv6 alias IP ranges for this network interface.
   final pulumi.Input<List<InstanceFromMachineImageNetworkInterfaceAliasIpv6Range>?>? aliasIpv6Ranges;
+  /// If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
+  final pulumi.Input<bool?>? enableVpcScopedDns;
   /// Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
   final pulumi.Input<String?>? igmpQuery;
   /// The prefix length of the primary internal IPv6 range.
@@ -55,6 +57,7 @@ class InstanceFromMachineImageNetworkInterface {
   /// [accessConfigs] Access configurations, i.e. IPs via which this instance can be accessed via the Internet.
   /// [aliasIpRanges] An array of alias IP ranges for this network interface.
   /// [aliasIpv6Ranges] An array of IPv6 alias IP ranges for this network interface.
+  /// [enableVpcScopedDns] If true, DNS resolution will be enabled over this interface. Only valid with network_attachment.
   /// [igmpQuery] Indicates whether igmp query is enabled on the network interface or not. If enabled, also indicates the version of IGMP supported.
   /// [internalIpv6PrefixLength] The prefix length of the primary internal IPv6 range.
   /// [ipv6AccessConfigs] An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
@@ -77,6 +80,7 @@ class InstanceFromMachineImageNetworkInterface {
     this.accessConfigs,
     this.aliasIpRanges,
     this.aliasIpv6Ranges,
+    this.enableVpcScopedDns,
     this.igmpQuery,
     this.internalIpv6PrefixLength,
     this.ipv6AccessConfigs,
@@ -102,6 +106,7 @@ class InstanceFromMachineImageNetworkInterface {
       'accessConfigs': ?pulumi.Input.mapOptionalInputValue<List<InstanceFromMachineImageNetworkInterfaceAccessConfig>, List<Map<String, dynamic>>>(accessConfigs, (value) => pulumi.Input.encodeList<InstanceFromMachineImageNetworkInterfaceAccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
       'aliasIpRanges': ?pulumi.Input.mapOptionalInputValue<List<InstanceFromMachineImageNetworkInterfaceAliasIpRange>, List<Map<String, dynamic>>>(aliasIpRanges, (value) => pulumi.Input.encodeList<InstanceFromMachineImageNetworkInterfaceAliasIpRange, Map<String, dynamic>>(value, (value) => value.toMap())),
       'aliasIpv6Ranges': ?pulumi.Input.mapOptionalInputValue<List<InstanceFromMachineImageNetworkInterfaceAliasIpv6Range>, List<Map<String, dynamic>>>(aliasIpv6Ranges, (value) => pulumi.Input.encodeList<InstanceFromMachineImageNetworkInterfaceAliasIpv6Range, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'enableVpcScopedDns': ?enableVpcScopedDns,
       'igmpQuery': ?igmpQuery,
       'internalIpv6PrefixLength': ?internalIpv6PrefixLength,
       'ipv6AccessConfigs': ?pulumi.Input.mapOptionalInputValue<List<InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig>, List<Map<String, dynamic>>>(ipv6AccessConfigs, (value) => pulumi.Input.encodeList<InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -128,8 +133,9 @@ class InstanceFromMachineImageNetworkInterface {
       accessConfigs: (() { final guardedValue = map['accessConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceFromMachineImageNetworkInterfaceAccessConfig>(guardedValue, (value) => InstanceFromMachineImageNetworkInterfaceAccessConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       aliasIpRanges: (() { final guardedValue = map['aliasIpRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceFromMachineImageNetworkInterfaceAliasIpRange>(guardedValue, (value) => InstanceFromMachineImageNetworkInterfaceAliasIpRange.fromMap((value as Map).cast<String, dynamic>()))); })(),
       aliasIpv6Ranges: (() { final guardedValue = map['aliasIpv6Ranges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceFromMachineImageNetworkInterfaceAliasIpv6Range>(guardedValue, (value) => InstanceFromMachineImageNetworkInterfaceAliasIpv6Range.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      enableVpcScopedDns: (() { final guardedValue = map['enableVpcScopedDns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       igmpQuery: (() { final guardedValue = map['igmpQuery']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      internalIpv6PrefixLength: (() { final guardedValue = map['internalIpv6PrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      internalIpv6PrefixLength: (() { final guardedValue = map['internalIpv6PrefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipv6AccessConfigs: (() { final guardedValue = map['ipv6AccessConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig>(guardedValue, (value) => InstanceFromMachineImageNetworkInterfaceIpv6AccessConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       ipv6AccessType: (() { final guardedValue = map['ipv6AccessType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ipv6Address: (() { final guardedValue = map['ipv6Address']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -140,12 +146,12 @@ class InstanceFromMachineImageNetworkInterface {
       networkIp: (() { final guardedValue = map['networkIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       nicType: (() { final guardedValue = map['nicType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       parentNicName: (() { final guardedValue = map['parentNicName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      queueCount: (() { final guardedValue = map['queueCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      queueCount: (() { final guardedValue = map['queueCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       securityPolicy: (() { final guardedValue = map['securityPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       stackType: (() { final guardedValue = map['stackType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetworkProject: (() { final guardedValue = map['subnetworkProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      vlan: (() { final guardedValue = map['vlan']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

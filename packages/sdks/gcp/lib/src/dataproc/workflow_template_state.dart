@@ -36,7 +36,7 @@ class WorkflowTemplateState {
   final pulumi.Input<String?>? name;
   /// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
   final pulumi.Input<List<WorkflowTemplateParameter>?>? parameters;
-  /// (Required) WorkflowTemplate scheduling information.
+  /// WorkflowTemplate scheduling information. Structure is documented below.
   final pulumi.Input<WorkflowTemplatePlacement?>? placement;
   /// The project for the resource
   final pulumi.Input<String?>? project;
@@ -58,7 +58,7 @@ class WorkflowTemplateState {
   /// [location] The location for the resource
   /// [name] (Required) The resource name of the workflow template, as described in https://docs.cloud.google.com/apis/design/resource_names. * For `projects.regions.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/regions/{region}/workflowTemplates/{template_id}` * For `projects.locations.workflowTemplates`, the resource name of the template has the following format: `projects/{project_id}/locations/{location}/workflowTemplates/{template_id}`
   /// [parameters] Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-  /// [placement] (Required) WorkflowTemplate scheduling information.
+  /// [placement] WorkflowTemplate scheduling information. Structure is documented below.
   /// [project] The project for the resource
   /// [pulumiLabels] The combination of labels configured directly on the resource and default labels configured on the provider.
   /// [updateTime] Output only. The time template was last updated.
@@ -117,7 +117,7 @@ class WorkflowTemplateState {
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

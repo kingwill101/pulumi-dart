@@ -387,9 +387,10 @@ class ClusterArgs {
   /// The name or selfLink of the Google Compute Engine
   /// subnetwork in which the cluster's instances are launched.
   final pulumi.Input<String?>? subnetwork;
-  /// TPU configuration for the cluster.
+  /// ) Configuration for Cloud TPU in this cluster.
+  /// Structure is documented below.
   final pulumi.Input<ClusterTpuConfig?>? tpuConfig;
-  /// The custom keys configuration of the cluster Structure is documented below.
+  /// The custom keys configuration of the cluster. Structure is documented below.
   final pulumi.Input<ClusterUserManagedKeysConfig?>? userManagedKeysConfig;
   /// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
   /// Structure is documented below.
@@ -490,8 +491,8 @@ class ClusterArgs {
   /// [serviceExternalIpsConfig] Structure is documented below.
   /// [skipNodePoolRefresh] Whether to skip refreshing the GKE cluster's inline node pool list during read operations. Setting this to `true` prevents the provider from querying GKE API for node pools, resolving long plan times on clusters with a large number of node pools. **Warning:** When enabled, the cluster's `nodePool` attribute in the Terraform state will remain empty (`[]`), even if node pools exist externally. This flag cannot be set to `true` if you define inline `nodePool` blocks in your configuration; doing so will result in a validation error during plan.
   /// [subnetwork] The name or selfLink of the Google Compute Engine
-  /// [tpuConfig] TPU configuration for the cluster.
-  /// [userManagedKeysConfig] The custom keys configuration of the cluster Structure is documented below.
+  /// [tpuConfig] ) Configuration for Cloud TPU in this cluster.
+  /// [userManagedKeysConfig] The custom keys configuration of the cluster. Structure is documented below.
   /// [verticalPodAutoscaling] Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
   /// [workloadAltsConfig] )
   /// [workloadIdentityConfig] Workload Identity allows Kubernetes service accounts to act as a user-managed
@@ -705,7 +706,7 @@ class ClusterArgs {
       databaseEncryption: (() { final guardedValue = map['databaseEncryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterDatabaseEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       datapathProvider: (() { final guardedValue = map['datapathProvider']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataplaneOptimizationMode: (() { final guardedValue = map['dataplaneOptimizationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      defaultMaxPodsPerNode: (() { final guardedValue = map['defaultMaxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      defaultMaxPodsPerNode: (() { final guardedValue = map['defaultMaxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       defaultSnatStatus: (() { final guardedValue = map['defaultSnatStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterDefaultSnatStatus.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -731,7 +732,7 @@ class ClusterArgs {
       identityServiceConfig: (() { final guardedValue = map['identityServiceConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterIdentityServiceConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ignoreNodeCountChanges: (() { final guardedValue = map['ignoreNodeCountChanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       inTransitEncryptionConfig: (() { final guardedValue = map['inTransitEncryptionConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ipAllocationPolicy: (() { final guardedValue = map['ipAllocationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterIpAllocationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loggingConfig: (() { final guardedValue = map['loggingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterLoggingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

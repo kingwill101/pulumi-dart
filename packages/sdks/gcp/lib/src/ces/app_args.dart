@@ -5,12 +5,14 @@ import 'app_audio_processing_config.dart';
 import 'app_client_certificate_settings.dart';
 import 'app_data_store_settings.dart';
 import 'app_default_channel_profile.dart';
+import 'app_error_handling_settings.dart';
 import 'app_evaluation_metrics_thresholds.dart';
 import 'app_language_settings.dart';
 import 'app_logging_settings.dart';
 import 'app_model_settings.dart';
 import 'app_time_zone_settings.dart';
 import 'app_variable_declaration.dart';
+import 'app_vpc_sc_settings.dart';
 
 /// {@template pulumi_ces_app_app_args_doc}
 /// The set of arguments for App.
@@ -46,6 +48,9 @@ class AppArgs {
   final pulumi.Input<String?>? description;
   /// Display name of the app.
   final pulumi.Input<String> displayName;
+  /// Settings to describe how errors should be handled in the app.
+  /// Structure is documented below.
+  final pulumi.Input<AppErrorHandlingSettings?>? errorHandlingSettings;
   /// Threshold settings for metrics in an Evaluation.
   /// Structure is documented below.
   final pulumi.Input<AppEvaluationMetricsThresholds?>? evaluationMetricsThresholds;
@@ -62,6 +67,9 @@ class AppArgs {
   final pulumi.Input<AppLanguageSettings?>? languageSettings;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String> location;
+  /// Indicates whether the app is locked for changes. If the app is locked,
+  /// modifications to the app resources will be rejected.
+  final pulumi.Input<bool?>? locked;
   /// Settings to describe the logging behaviors for the app.
   /// Structure is documented below.
   final pulumi.Input<AppLoggingSettings?>? loggingSettings;
@@ -88,6 +96,9 @@ class AppArgs {
   /// The declarations of the variables.
   /// Structure is documented below.
   final pulumi.Input<List<AppVariableDeclaration>?>? variableDeclarations;
+  /// VPC-SC settings for the app.
+  /// Structure is documented below.
+  final pulumi.Input<AppVpcScSettings?>? vpcScSettings;
 
   /// Creates a new [AppArgs].
   /// [appId] The ID to use for the app, which will become the final component of
@@ -98,11 +109,13 @@ class AppArgs {
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] Human-readable description of the app.
   /// [displayName] Display name of the app.
+  /// [errorHandlingSettings] Settings to describe how errors should be handled in the app.
   /// [evaluationMetricsThresholds] Threshold settings for metrics in an Evaluation.
   /// [globalInstruction] Instructions for all the agents in the app.
   /// [guardrails] List of guardrails for the app.
   /// [languageSettings] Language settings of the app.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
+  /// [locked] Indicates whether the app is locked for changes. If the app is locked,
   /// [loggingSettings] Settings to describe the logging behaviors for the app.
   /// [metadata] Metadata about the app. This field can be used to store additional
   /// [modelSettings] Model settings contains various configurations for the LLM model.
@@ -112,6 +125,7 @@ class AppArgs {
   /// [timeZoneSettings] TimeZone settings of the app.
   /// [toolExecutionMode] The tool execution mode for the app.
   /// [variableDeclarations] The declarations of the variables.
+  /// [vpcScSettings] VPC-SC settings for the app.
   const AppArgs({
     required this.appId,
     this.audioProcessingConfig,
@@ -121,11 +135,13 @@ class AppArgs {
     this.deletionPolicy,
     this.description,
     required this.displayName,
+    this.errorHandlingSettings,
     this.evaluationMetricsThresholds,
     this.globalInstruction,
     this.guardrails,
     this.languageSettings,
     required this.location,
+    this.locked,
     this.loggingSettings,
     this.metadata,
     this.modelSettings,
@@ -135,6 +151,7 @@ class AppArgs {
     this.timeZoneSettings,
     this.toolExecutionMode,
     this.variableDeclarations,
+    this.vpcScSettings,
   });
 
   Map<String, dynamic> toMap() {
@@ -147,11 +164,13 @@ class AppArgs {
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'displayName': displayName,
+      'errorHandlingSettings': ?pulumi.Input.mapOptionalInputValue<AppErrorHandlingSettings, Map<String, dynamic>>(errorHandlingSettings, (value) => value.toMap()),
       'evaluationMetricsThresholds': ?pulumi.Input.mapOptionalInputValue<AppEvaluationMetricsThresholds, Map<String, dynamic>>(evaluationMetricsThresholds, (value) => value.toMap()),
       'globalInstruction': ?globalInstruction,
       'guardrails': ?guardrails,
       'languageSettings': ?pulumi.Input.mapOptionalInputValue<AppLanguageSettings, Map<String, dynamic>>(languageSettings, (value) => value.toMap()),
       'location': location,
+      'locked': ?locked,
       'loggingSettings': ?pulumi.Input.mapOptionalInputValue<AppLoggingSettings, Map<String, dynamic>>(loggingSettings, (value) => value.toMap()),
       'metadata': ?metadata,
       'modelSettings': ?pulumi.Input.mapOptionalInputValue<AppModelSettings, Map<String, dynamic>>(modelSettings, (value) => value.toMap()),
@@ -161,6 +180,7 @@ class AppArgs {
       'timeZoneSettings': ?pulumi.Input.mapOptionalInputValue<AppTimeZoneSettings, Map<String, dynamic>>(timeZoneSettings, (value) => value.toMap()),
       'toolExecutionMode': ?toolExecutionMode,
       'variableDeclarations': ?pulumi.Input.mapOptionalInputValue<List<AppVariableDeclaration>, List<Map<String, dynamic>>>(variableDeclarations, (value) => pulumi.Input.encodeList<AppVariableDeclaration, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'vpcScSettings': ?pulumi.Input.mapOptionalInputValue<AppVpcScSettings, Map<String, dynamic>>(vpcScSettings, (value) => value.toMap()),
     };
   }
 
@@ -174,11 +194,13 @@ class AppArgs {
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
+      errorHandlingSettings: (() { final guardedValue = map['errorHandlingSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppErrorHandlingSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       evaluationMetricsThresholds: (() { final guardedValue = map['evaluationMetricsThresholds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppEvaluationMetricsThresholds.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       globalInstruction: (() { final guardedValue = map['globalInstruction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       guardrails: (() { final guardedValue = map['guardrails']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       languageSettings: (() { final guardedValue = map['languageSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppLanguageSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
+      locked: (() { final guardedValue = map['locked']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       loggingSettings: (() { final guardedValue = map['loggingSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppLoggingSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       metadata: (() { final guardedValue = map['metadata']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       modelSettings: (() { final guardedValue = map['modelSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppModelSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -188,6 +210,7 @@ class AppArgs {
       timeZoneSettings: (() { final guardedValue = map['timeZoneSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppTimeZoneSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       toolExecutionMode: (() { final guardedValue = map['toolExecutionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       variableDeclarations: (() { final guardedValue = map['variableDeclarations']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AppVariableDeclaration>(guardedValue, (value) => AppVariableDeclaration.fromMap((value as Map).cast<String, dynamic>()))); })(),
+      vpcScSettings: (() { final guardedValue = map['vpcScSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppVpcScSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

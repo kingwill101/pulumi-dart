@@ -149,12 +149,12 @@ class HealthCheckArgs {
 
   factory HealthCheckArgs.fromMap(Map<String, dynamic> map) {
     return HealthCheckArgs(
-      checkIntervalSec: (() { final guardedValue = map['checkIntervalSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      checkIntervalSec: (() { final guardedValue = map['checkIntervalSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       grpcHealthCheck: (() { final guardedValue = map['grpcHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckGrpcHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       grpcTlsHealthCheck: (() { final guardedValue = map['grpcTlsHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckGrpcTlsHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      healthyThreshold: (() { final guardedValue = map['healthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      healthyThreshold: (() { final guardedValue = map['healthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       http2HealthCheck: (() { final guardedValue = map['http2HealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckHttp2HealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       httpHealthCheck: (() { final guardedValue = map['httpHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckHttpHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       httpsHealthCheck: (() { final guardedValue = map['httpsHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckHttpsHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
@@ -164,8 +164,8 @@ class HealthCheckArgs {
       sourceRegions: (() { final guardedValue = map['sourceRegions']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       sslHealthCheck: (() { final guardedValue = map['sslHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckSslHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tcpHealthCheck: (() { final guardedValue = map['tcpHealthCheck']; if (guardedValue == null) return null; return pulumi.Input.fromValue(HealthCheckTcpHealthCheck.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      unhealthyThreshold: (() { final guardedValue = map['unhealthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      unhealthyThreshold: (() { final guardedValue = map['unhealthyThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

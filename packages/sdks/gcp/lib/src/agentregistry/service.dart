@@ -85,7 +85,7 @@ import 'service_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agentregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -114,7 +114,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -123,6 +123,9 @@ import 'service_state.dart';
 /// }
 ///
 /// resource "gcp_agentregistry_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-central1"
 ///   service_id   = "service"
 ///   description  = "My basic agent registry service"
@@ -268,7 +271,7 @@ import 'service_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agentregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -298,7 +301,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -307,6 +310,9 @@ import 'service_state.dart';
 /// }
 ///
 /// resource "gcp_agentregistry_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-central1"
 ///   service_id   = "service"
 ///   description  = "My MCP agent registry service"
@@ -448,7 +454,7 @@ class Service extends pulumi.CustomResource {
           'gcp:agentregistry/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     agentSpec = registerOutput<ServiceAgentSpec?>('agentSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAgentSpec.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

@@ -76,7 +76,7 @@ import 'service_identity_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -102,7 +102,7 @@ import 'service_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -110,14 +110,20 @@ import 'service_identity_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_organizations_serviceidentity" "osconfig_sa" {
+/// resource "gcp_organizations_service_identity" "osconfig_sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   organization = "123456789"
 ///   service      = "osconfig.googleapis.com"
 /// }
-/// resource "gcp_organizations_iammember" "admin" {
+/// resource "gcp_organizations_i_a_m_member" "admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id = "123456789"
 ///   role   = "roles/osconfig.serviceAgent"
-///   member = gcp_organizations_serviceidentity.osconfig_sa.member
+///   member = gcp_organizations_service_identity.osconfig_sa.member
 /// }
 /// ```
 /// ```java
@@ -201,7 +207,7 @@ class ServiceIdentity extends pulumi.CustomResource {
           'gcp:organizations/serviceIdentity:ServiceIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     email = registerOutput<String>('email');
     member = registerOutput<String>('member');

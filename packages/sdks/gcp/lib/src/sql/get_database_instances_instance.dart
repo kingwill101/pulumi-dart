@@ -35,6 +35,8 @@ class GetDatabaseInstancesInstance {
   final pulumi.Input<String> dnsName;
   /// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
   final pulumi.Input<List<GetDatabaseInstancesInstanceDnsName>> dnsNames;
+  /// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on Zonal C4A PG and MySQL instances.
+  final pulumi.Input<bool> encryptionConfidentialMode;
   final pulumi.Input<String> encryptionKeyName;
   /// Whether to enforce the new SQL network architecture.
   final pulumi.Input<bool> enforceNewSqlNetworkArchitecture;
@@ -101,6 +103,7 @@ class GetDatabaseInstancesInstance {
   /// [deletionProtection] Used to block Terraform from deleting a SQL Instance. Defaults to true.
   /// [dnsName] The instance-level dns name of the instance for PSC instances or public IP CAS instances.
   /// [dnsNames] The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
+  /// [encryptionConfidentialMode] Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on Zonal C4A PG and MySQL instances.
   /// [encryptionKeyName] Required.
   /// [enforceNewSqlNetworkArchitecture] Whether to enforce the new SQL network architecture.
   /// [finalBackupDescription] The description of final backup if instance enable create final backup during instance deletion.
@@ -140,6 +143,7 @@ class GetDatabaseInstancesInstance {
     required this.deletionProtection,
     required this.dnsName,
     required this.dnsNames,
+    required this.encryptionConfidentialMode,
     required this.encryptionKeyName,
     required this.enforceNewSqlNetworkArchitecture,
     required this.finalBackupDescription,
@@ -182,6 +186,7 @@ class GetDatabaseInstancesInstance {
       'deletionProtection': deletionProtection,
       'dnsName': dnsName,
       'dnsNames': pulumi.Input.mapInputValue<List<GetDatabaseInstancesInstanceDnsName>, List<Map<String, dynamic>>>(dnsNames, (value) => pulumi.Input.encodeList<GetDatabaseInstancesInstanceDnsName, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'encryptionConfidentialMode': encryptionConfidentialMode,
       'encryptionKeyName': encryptionKeyName,
       'enforceNewSqlNetworkArchitecture': enforceNewSqlNetworkArchitecture,
       'finalBackupDescription': finalBackupDescription,
@@ -225,6 +230,7 @@ class GetDatabaseInstancesInstance {
       deletionProtection: pulumi.Input.fromValue(map['deletionProtection'] as bool),
       dnsName: pulumi.Input.fromValue(map['dnsName'] as String),
       dnsNames: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstancesInstanceDnsName>(map['dnsNames']!, (value) => GetDatabaseInstancesInstanceDnsName.fromMap((value as Map).cast<String, dynamic>()))),
+      encryptionConfidentialMode: pulumi.Input.fromValue(map['encryptionConfidentialMode'] as bool),
       encryptionKeyName: pulumi.Input.fromValue(map['encryptionKeyName'] as String),
       enforceNewSqlNetworkArchitecture: pulumi.Input.fromValue(map['enforceNewSqlNetworkArchitecture'] as bool),
       finalBackupDescription: pulumi.Input.fromValue(map['finalBackupDescription'] as String),
@@ -235,7 +241,7 @@ class GetDatabaseInstancesInstance {
       maintenanceVersion: pulumi.Input.fromValue(map['maintenanceVersion'] as String),
       masterInstanceName: pulumi.Input.fromValue(map['masterInstanceName'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
-      nodeCount: pulumi.Input.fromValue((map['nodeCount'] as num).toInt()),
+      nodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodeCount'])),
       pointInTimeRestoreContexts: pulumi.Input.fromValue(pulumi.Input.decodeList<GetDatabaseInstancesInstancePointInTimeRestoreContext>(map['pointInTimeRestoreContexts']!, (value) => GetDatabaseInstancesInstancePointInTimeRestoreContext.fromMap((value as Map).cast<String, dynamic>()))),
       privateIpAddress: pulumi.Input.fromValue(map['privateIpAddress'] as String),
       project: pulumi.Input.fromValue(map['project'] as String),

@@ -30,7 +30,7 @@ class MetricBucketOptionsLinearBuckets {
 
   factory MetricBucketOptionsLinearBuckets.fromMap(Map<String, dynamic> map) {
     return MetricBucketOptionsLinearBuckets(
-      numFiniteBuckets: pulumi.Input.fromValue((map['numFiniteBuckets'] as num).toInt()),
+      numFiniteBuckets: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numFiniteBuckets'])),
       offset: pulumi.Input.fromValue((map['offset'] as num).toDouble()),
       width: pulumi.Input.fromValue((map['width'] as num).toDouble()),
     );

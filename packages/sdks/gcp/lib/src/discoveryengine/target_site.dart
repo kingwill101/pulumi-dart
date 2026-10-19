@@ -98,7 +98,7 @@ import 'target_site_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -134,7 +134,7 @@ import 'target_site_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -142,14 +142,20 @@ import 'target_site_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_targetsite" "basic" {
-///   location             = gcp_discoveryengine_datastore.basic.location
-///   data_store_id        = gcp_discoveryengine_datastore.basic.data_store_id
+/// resource "gcp_discoveryengine_target_site" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location             = gcp_discoveryengine_data_store.basic.location
+///   data_store_id        = gcp_discoveryengine_data_store.basic.data_store_id
 ///   provided_uri_pattern = "cloud.google.com/docs/*"
 ///   type                 = "INCLUDE"
 ///   exact_match          = false
 /// }
-/// resource "gcp_discoveryengine_datastore" "basic" {
+/// resource "gcp_discoveryengine_data_store" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                     = "global"
 ///   data_store_id                = "data-store-id"
 ///   display_name                 = "tf-test-basic-site-search-datastore"
@@ -314,7 +320,7 @@ import 'target_site_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -350,7 +356,7 @@ import 'target_site_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -358,14 +364,20 @@ import 'target_site_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_targetsite" "advanced" {
-///   location             = gcp_discoveryengine_datastore.advanced.location
-///   data_store_id        = gcp_discoveryengine_datastore.advanced.data_store_id
+/// resource "gcp_discoveryengine_target_site" "advanced" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location             = gcp_discoveryengine_data_store.advanced.location
+///   data_store_id        = gcp_discoveryengine_data_store.advanced.data_store_id
 ///   provided_uri_pattern = "cloud.google.com/docs/*"
 ///   type                 = "INCLUDE"
 ///   exact_match          = false
 /// }
-/// resource "gcp_discoveryengine_datastore" "advanced" {
+/// resource "gcp_discoveryengine_data_store" "advanced" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                     = "global"
 ///   data_store_id                = "data-store-id"
 ///   display_name                 = "tf-test-advanced-site-search-datastore"
@@ -526,7 +538,7 @@ class TargetSite extends pulumi.CustomResource {
           'gcp:discoveryengine/targetSite:TargetSite',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     dataStoreId = registerOutput<String>('dataStoreId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

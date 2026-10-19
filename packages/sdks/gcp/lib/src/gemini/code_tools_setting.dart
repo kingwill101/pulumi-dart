@@ -98,7 +98,7 @@ import 'code_tools_setting_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gemini"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gemini"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -133,7 +133,7 @@ import 'code_tools_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -141,7 +141,10 @@ import 'code_tools_setting_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gemini_codetoolssetting" "example" {
+/// resource "gcp_gemini_code_tools_setting" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   code_tools_setting_id = "ls1-tf"
 ///   location              = "global"
 ///   labels = {
@@ -284,7 +287,7 @@ class CodeToolsSetting extends pulumi.CustomResource {
           'gcp:gemini/codeToolsSetting:CodeToolsSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     codeToolsSettingId = registerOutput<String>('codeToolsSettingId');

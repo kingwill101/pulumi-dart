@@ -71,7 +71,7 @@ import 'v2_vm_symptom.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tpu"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -94,7 +94,7 @@ import 'v2_vm_symptom.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -102,10 +102,13 @@ import 'v2_vm_symptom.dart';
 ///   }
 /// }
 ///
-/// data "gcp_tpu_getv2runtimeversions" "available" {
+/// data "gcp_tpu_v2_runtime_versions" "available" {
 /// }
 ///
-/// resource "gcp_tpu_v2vm" "tpu" {
+/// resource "gcp_tpu_v2_vm" "tpu" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "test-tpu"
 ///   zone            = "us-central1-c"
 ///   runtime_version = "tpu-vm-tf-2.13.0"
@@ -188,7 +191,7 @@ import 'v2_vm_symptom.dart';
 /// });
 /// const disk = new gcp.compute.Disk("disk", {
 ///     name: "tpu-disk",
-///     image: "debian-cloud/debian-11",
+///     image: "debian-cloud/debian-13",
 ///     size: 10,
 ///     type: "pd-ssd",
 ///     zone: "us-central1-c",
@@ -260,7 +263,7 @@ import 'v2_vm_symptom.dart';
 ///     display_name="Test TPU VM")
 /// disk = gcp.compute.Disk("disk",
 ///     name="tpu-disk",
-///     image="debian-cloud/debian-11",
+///     image="debian-cloud/debian-13",
 ///     size=10,
 ///     type="pd-ssd",
 ///     zone="us-central1-c")
@@ -344,7 +347,7 @@ import 'v2_vm_symptom.dart';
 ///     var disk = new Gcp.Compute.Disk("disk", new()
 ///     {
 ///         Name = "tpu-disk",
-///         Image = "debian-cloud/debian-11",
+///         Image = "debian-cloud/debian-13",
 ///         Size = 10,
 ///         Type = "pd-ssd",
 ///         Zone = "us-central1-c",
@@ -433,9 +436,9 @@ import 'v2_vm_symptom.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tpu"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tpu"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -475,7 +478,7 @@ import 'v2_vm_symptom.dart';
 /// 		}
 /// 		disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
 /// 			Name:  pulumi.String("tpu-disk"),
-/// 			Image: pulumi.String("debian-cloud/debian-11"),
+/// 			Image: pulumi.String("debian-cloud/debian-13"),
 /// 			Size:  pulumi.Int(10),
 /// 			Type:  pulumi.String("pd-ssd"),
 /// 			Zone:  pulumi.String("us-central1-c"),
@@ -548,7 +551,7 @@ import 'v2_vm_symptom.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -559,13 +562,16 @@ import 'v2_vm_symptom.dart';
 ///   }
 /// }
 ///
-/// data "gcp_tpu_getv2runtimeversions" "available" {
+/// data "gcp_tpu_v2_runtime_versions" "available" {
 /// }
-/// data "gcp_tpu_getv2acceleratortypes" "availableGetV2AcceleratorTypes" {
+/// data "gcp_tpu_v2_accelerator_types" "availableGetV2AcceleratorTypes" {
 /// }
 ///
-/// resource "gcp_tpu_v2vm" "tpu" {
-///   depends_on      = [time_sleep.wait_60_seconds]
+/// resource "gcp_tpu_v2_vm" "tpu" {
+///   depends_on = [time_sleep.wait_60_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "test-tpu"
 ///   zone            = "us-central1-c"
 ///   description     = "Text description of the TPU."
@@ -606,29 +612,44 @@ import 'v2_vm_symptom.dart';
 ///   tags = ["foo"]
 /// }
 /// resource "gcp_compute_subnetwork" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "tpu-subnet"
 ///   ip_cidr_range = "10.0.0.0/16"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.network.id
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "tpu-net"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_serviceaccount_account" "sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "tpu-sa"
 ///   display_name = "Test TPU VM"
 /// }
 /// resource "gcp_compute_disk" "disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "tpu-disk"
-///   image = "debian-cloud/debian-11"
+///   image = "debian-cloud/debian-13"
 ///   size  = 10
 ///   type  = "pd-ssd"
 ///   zone  = "us-central1-c"
 /// }
 /// # Wait after service account creation to limit eventual consistency errors.
 /// resource "time_sleep" "wait_60_seconds" {
-///   depends_on      = [gcp_serviceaccount_account.sa]
+///   depends_on = [gcp_serviceaccount_account.sa]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "60s"
 /// }
 /// ```
@@ -698,7 +719,7 @@ import 'v2_vm_symptom.dart';
 ///
 ///         var disk = new Disk("disk", DiskArgs.builder()
 ///             .name("tpu-disk")
-///             .image("debian-cloud/debian-11")
+///             .image("debian-cloud/debian-13")
 ///             .size(10)
 ///             .type("pd-ssd")
 ///             .zone("us-central1-c")
@@ -814,7 +835,7 @@ import 'v2_vm_symptom.dart';
 ///     type: gcp:compute:Disk
 ///     properties:
 ///       name: tpu-disk
-///       image: debian-cloud/debian-11
+///       image: debian-cloud/debian-13
 ///       size: 10
 ///       type: pd-ssd
 ///       zone: us-central1-c
@@ -955,7 +976,7 @@ class V2Vm extends pulumi.CustomResource {
           'gcp:tpu/v2Vm:V2Vm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     acceleratorConfig = registerOutput<V2VmAcceleratorConfig>('acceleratorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return V2VmAcceleratorConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

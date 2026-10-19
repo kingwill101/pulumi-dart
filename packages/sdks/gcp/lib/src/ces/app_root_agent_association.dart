@@ -133,7 +133,7 @@ import 'app_root_agent_association_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -181,7 +181,7 @@ import 'app_root_agent_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -190,6 +190,9 @@ import 'app_root_agent_association_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "eu"
 ///   app_id       = "app-id"
 ///   display_name = "Example App app-id"
@@ -203,6 +206,9 @@ import 'app_root_agent_association_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = gcp_ces_app.app.location
 ///   app          = gcp_ces_app.app.app_id
 ///   agent_id     = "agent-id"
@@ -210,7 +216,10 @@ import 'app_root_agent_association_state.dart';
 ///   instruction  = "You are a helpful assistant."
 ///   llm_agent    = {}
 /// }
-/// resource "gcp_ces_approotagentassociation" "association" {
+/// resource "gcp_ces_app_root_agent_association" "association" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = gcp_ces_app.app.location
 ///   app_id   = gcp_ces_app.app.app_id
 ///   agent_id = gcp_ces_agent.agent.agent_id
@@ -357,7 +366,7 @@ class AppRootAgentAssociation extends pulumi.CustomResource {
           'gcp:ces/appRootAgentAssociation:AppRootAgentAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
     appId = registerOutput<String>('appId');

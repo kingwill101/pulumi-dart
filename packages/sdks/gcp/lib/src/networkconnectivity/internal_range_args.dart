@@ -134,7 +134,7 @@ class InternalRangeArgs {
       network: pulumi.Input.fromValue(map['network'] as String),
       overlaps: (() { final guardedValue = map['overlaps']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       peering: pulumi.Input.fromValue(map['peering'] as String),
-      prefixLength: (() { final guardedValue = map['prefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      prefixLength: (() { final guardedValue = map['prefixLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetCidrRanges: (() { final guardedValue = map['targetCidrRanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       usage: pulumi.Input.fromValue(map['usage'] as String),

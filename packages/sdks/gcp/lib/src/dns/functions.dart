@@ -91,7 +91,7 @@ import 'get_record_sets_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -119,7 +119,7 @@ import 'get_record_sets_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -127,11 +127,14 @@ import 'get_record_sets_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_dns_getkeys" "fooDnsKeys" {
-///   managed_zone = gcp_dns_managedzone.foo.id
+/// data "gcp_dns_keys" "fooDnsKeys" {
+///   managed_zone = gcp_dns_managed_zone.foo.id
 /// }
 ///
-/// resource "gcp_dns_managedzone" "foo" {
+/// resource "gcp_dns_managed_zone" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "foobar"
 ///   dns_name = "foo.bar."
 ///   dnssec_config = {
@@ -140,7 +143,7 @@ import 'get_record_sets_result.dart';
 ///   }
 /// }
 /// output "fooDnsDsRecord" {
-///   value = data.gcp_dns_getkeys.fooDnsKeys.key_signing_keys[0].ds_record
+///   value = data.gcp_dns_keys.fooDnsKeys.key_signing_keys[0].ds_record
 /// }
 /// ```
 /// ```java
@@ -294,7 +297,7 @@ pulumi.Output<GetKeysResult> getKeysOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -323,7 +326,7 @@ pulumi.Output<GetKeysResult> getKeysOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -331,15 +334,18 @@ pulumi.Output<GetKeysResult> getKeysOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dns_getmanagedzone" "envDnsZone" {
+/// data "gcp_dns_managed_zone" "envDnsZone" {
 ///   name = "qa-zone"
 /// }
 ///
-/// resource "gcp_dns_recordset" "dns" {
-///   name         ="my-address.${data.gcp_dns_getmanagedzone.envDnsZone.dns_name}"
+/// resource "gcp_dns_record_set" "dns" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name         ="my-address.${data.gcp_dns_managed_zone.envDnsZone.dns_name}"
 ///   type         = "TXT"
 ///   ttl          = 300
-///   managed_zone = data.gcp_dns_getmanagedzone.envDnsZone.name
+///   managed_zone = data.gcp_dns_managed_zone.envDnsZone.name
 ///   rrdatas      = ["test"]
 /// }
 /// ```
@@ -467,7 +473,7 @@ pulumi.Output<GetManagedZoneResult> getManagedZoneOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -485,7 +491,7 @@ pulumi.Output<GetManagedZoneResult> getManagedZoneOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -493,7 +499,7 @@ pulumi.Output<GetManagedZoneResult> getManagedZoneOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dns_getmanagedzoneiampolicy" "policy" {
+/// data "gcp_dns_managed_zone_iam_policy" "policy" {
 ///   project      = default.project
 ///   managed_zone = default.name
 /// }
@@ -602,7 +608,7 @@ pulumi.Output<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -619,7 +625,7 @@ pulumi.Output<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -627,7 +633,7 @@ pulumi.Output<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dns_getmanagedzones" "zones" {
+/// data "gcp_dns_managed_zones" "zones" {
 ///   project = "my-project-id"
 /// }
 /// ```
@@ -752,7 +758,7 @@ pulumi.Output<GetManagedZonesResult> getManagedZonesOutput(
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -777,7 +783,7 @@ pulumi.Output<GetManagedZonesResult> getManagedZonesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -785,12 +791,12 @@ pulumi.Output<GetManagedZonesResult> getManagedZonesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dns_getmanagedzone" "sample" {
+/// data "gcp_dns_managed_zone" "sample" {
 ///   name = "sample-zone"
 /// }
-/// data "gcp_dns_getrecordset" "rs" {
-///   managed_zone = data.gcp_dns_getmanagedzone.sample.name
-///   name         ="my-record.${data.gcp_dns_getmanagedzone.sample.dns_name}"
+/// data "gcp_dns_record_set" "rs" {
+///   managed_zone = data.gcp_dns_managed_zone.sample.name
+///   name         ="my-record.${data.gcp_dns_managed_zone.sample.dns_name}"
 ///   type         = "A"
 /// }
 /// ```
@@ -927,7 +933,7 @@ pulumi.Output<GetRecordSetResult> getRecordSetOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -951,7 +957,7 @@ pulumi.Output<GetRecordSetResult> getRecordSetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -959,11 +965,11 @@ pulumi.Output<GetRecordSetResult> getRecordSetOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dns_getmanagedzone" "envDnsZone" {
+/// data "gcp_dns_managed_zone" "envDnsZone" {
 ///   name = "my-zone-name"
 /// }
-/// data "gcp_dns_getrecordsets" "example" {
-///   managed_zone = data.gcp_dns_getmanagedzone.envDnsZone.name
+/// data "gcp_dns_record_sets" "example" {
+///   managed_zone = data.gcp_dns_managed_zone.envDnsZone.name
 ///   type         = "A"
 /// }
 /// ```

@@ -194,7 +194,7 @@ import 'vpngateway_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -276,7 +276,7 @@ import 'vpngateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -284,49 +284,73 @@ import 'vpngateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_vpngateway" "target_gateway" {
+/// resource "gcp_compute_v_p_n_gateway" "target_gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "vpn-1"
 ///   network = gcp_compute_network.network1.id
 /// }
 /// resource "gcp_compute_network" "network1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "network-1"
 /// }
 /// resource "gcp_compute_address" "vpn_static_ip" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "vpn-static-ip"
 /// }
-/// resource "gcp_compute_forwardingrule" "fr_esp" {
+/// resource "gcp_compute_forwarding_rule" "fr_esp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fr-esp"
 ///   ip_protocol = "ESP"
 ///   ip_address  = gcp_compute_address.vpn_static_ip.address
-///   target      = gcp_compute_vpngateway.target_gateway.id
+///   target      = gcp_compute_v_p_n_gateway.target_gateway.id
 /// }
-/// resource "gcp_compute_forwardingrule" "fr_udp500" {
+/// resource "gcp_compute_forwarding_rule" "fr_udp500" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fr-udp500"
 ///   ip_protocol = "UDP"
 ///   port_range  = "500"
 ///   ip_address  = gcp_compute_address.vpn_static_ip.address
-///   target      = gcp_compute_vpngateway.target_gateway.id
+///   target      = gcp_compute_v_p_n_gateway.target_gateway.id
 /// }
-/// resource "gcp_compute_forwardingrule" "fr_udp4500" {
+/// resource "gcp_compute_forwarding_rule" "fr_udp4500" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fr-udp4500"
 ///   ip_protocol = "UDP"
 ///   port_range  = "4500"
 ///   ip_address  = gcp_compute_address.vpn_static_ip.address
-///   target      = gcp_compute_vpngateway.target_gateway.id
+///   target      = gcp_compute_v_p_n_gateway.target_gateway.id
 /// }
-/// resource "gcp_compute_vpntunnel" "tunnel1" {
-///   depends_on         = [gcp_compute_forwardingrule.fr_esp, gcp_compute_forwardingrule.fr_udp500, gcp_compute_forwardingrule.fr_udp4500]
+/// resource "gcp_compute_v_p_n_tunnel" "tunnel1" {
+///   depends_on = [gcp_compute_forwarding_rule.fr_esp, gcp_compute_forwarding_rule.fr_udp500, gcp_compute_forwarding_rule.fr_udp4500]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tunnel1"
 ///   peer_ip            = "15.0.0.120"
 ///   shared_secret      = "a secret message"
-///   target_vpn_gateway = gcp_compute_vpngateway.target_gateway.id
+///   target_vpn_gateway = gcp_compute_v_p_n_gateway.target_gateway.id
 /// }
 /// resource "gcp_compute_route" "route1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "route1"
 ///   network             = gcp_compute_network.network1.name
 ///   dest_range          = "15.0.0.0/24"
 ///   priority            = 1000
-///   next_hop_vpn_tunnel = gcp_compute_vpntunnel.tunnel1.id
+///   next_hop_vpn_tunnel = gcp_compute_v_p_n_tunnel.tunnel1.id
 /// }
 /// ```
 /// ```java
@@ -719,9 +743,9 @@ import 'vpngateway_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -758,7 +782,7 @@ import 'vpngateway_state.dart';
 /// 				ResourceManagerTags: pulumi.StringMap(pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]pulumi.ID, error) {
 /// 					tagKey1Id := _args[0].(pulumi.ID)
 /// 					tagValue1Id := _args[1].(pulumi.ID)
-/// 					return map[string]pulumi.ID(pulumi.String(tagKey1Id).ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
+/// 					return map[string]pulumi.ID(tagKey1Id.ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
 /// 						return map[string]pulumi.ID{
 /// 							__convert: tagValue1Id,
 /// 						}, nil
@@ -832,7 +856,7 @@ import 'vpngateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -840,65 +864,95 @@ import 'vpngateway_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_compute_vpngateway" "target_gateway_tags" {
+/// resource "gcp_compute_v_p_n_gateway" "target_gateway_tags" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "vpn-1"
 ///   network = gcp_compute_network.network1.id
 ///   params = {
 ///     resource_manager_tags = {
-///       gcp_tags_tagkey.tag_key1.id = gcp_tags_tagvalue.tag_value1.id
+///       gcp_tags_tag_key.tag_key1.id = gcp_tags_tag_value.tag_value1.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_tags_tagkey" "tag_key1" {
+/// resource "gcp_tags_tag_key" "tag_key1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent     = "organizations/123456789"
 ///   short_name = "tagkey"
 /// }
-/// resource "gcp_tags_tagvalue" "tag_value1" {
-///   parent     = gcp_tags_tagkey.tag_key1.id
+/// resource "gcp_tags_tag_value" "tag_value1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent     = gcp_tags_tag_key.tag_key1.id
 ///   short_name = "tagvalue"
 /// }
 /// resource "gcp_compute_network" "network1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "network-1"
 /// }
 /// resource "gcp_compute_address" "vpn_static_ip" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "vpn-static-ip"
 /// }
-/// resource "gcp_compute_forwardingrule" "fr_esp" {
+/// resource "gcp_compute_forwarding_rule" "fr_esp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fr-esp"
 ///   ip_protocol = "ESP"
 ///   ip_address  = gcp_compute_address.vpn_static_ip.address
-///   target      = gcp_compute_vpngateway.target_gateway_tags.id
+///   target      = gcp_compute_v_p_n_gateway.target_gateway_tags.id
 /// }
-/// resource "gcp_compute_forwardingrule" "fr_udp500" {
+/// resource "gcp_compute_forwarding_rule" "fr_udp500" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fr-udp500"
 ///   ip_protocol = "UDP"
 ///   port_range  = "500"
 ///   ip_address  = gcp_compute_address.vpn_static_ip.address
-///   target      = gcp_compute_vpngateway.target_gateway_tags.id
+///   target      = gcp_compute_v_p_n_gateway.target_gateway_tags.id
 /// }
-/// resource "gcp_compute_forwardingrule" "fr_udp4500" {
+/// resource "gcp_compute_forwarding_rule" "fr_udp4500" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "fr-udp4500"
 ///   ip_protocol = "UDP"
 ///   port_range  = "4500"
 ///   ip_address  = gcp_compute_address.vpn_static_ip.address
-///   target      = gcp_compute_vpngateway.target_gateway_tags.id
+///   target      = gcp_compute_v_p_n_gateway.target_gateway_tags.id
 /// }
-/// resource "gcp_compute_vpntunnel" "tunnel1" {
-///   depends_on         = [gcp_compute_forwardingrule.fr_esp, gcp_compute_forwardingrule.fr_udp500, gcp_compute_forwardingrule.fr_udp4500]
+/// resource "gcp_compute_v_p_n_tunnel" "tunnel1" {
+///   depends_on = [gcp_compute_forwarding_rule.fr_esp, gcp_compute_forwarding_rule.fr_udp500, gcp_compute_forwarding_rule.fr_udp4500]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tunnel1"
 ///   peer_ip            = "15.0.0.120"
 ///   shared_secret      = "a secret message"
-///   target_vpn_gateway = gcp_compute_vpngateway.target_gateway_tags.id
+///   target_vpn_gateway = gcp_compute_v_p_n_gateway.target_gateway_tags.id
 /// }
 /// resource "gcp_compute_route" "route1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "route1"
 ///   network             = gcp_compute_network.network1.name
 ///   dest_range          = "15.0.0.0/24"
 ///   priority            = 1000
-///   next_hop_vpn_tunnel = gcp_compute_vpntunnel.tunnel1.id
+///   next_hop_vpn_tunnel = gcp_compute_v_p_n_tunnel.tunnel1.id
 /// }
 /// ```
 /// ```java
@@ -1170,7 +1224,7 @@ class VPNGateway extends pulumi.CustomResource {
           'gcp:compute/vPNGateway:VPNGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -60,7 +60,7 @@ import 'taxonomy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -81,7 +81,7 @@ import 'taxonomy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -90,6 +90,9 @@ import 'taxonomy_state.dart';
 /// }
 ///
 /// resource "gcp_datacatalog_taxonomy" "basic_taxonomy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name           = "my_taxonomy"
 ///   description            = "A collection of policy tags"
 ///   activated_policy_types = ["FINE_GRAINED_ACCESS_CONTROL"]
@@ -193,7 +196,7 @@ class Taxonomy extends pulumi.CustomResource {
           'gcp:datacatalog/taxonomy:Taxonomy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     activatedPolicyTypes = registerOutput<List<String>?>('activatedPolicyTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

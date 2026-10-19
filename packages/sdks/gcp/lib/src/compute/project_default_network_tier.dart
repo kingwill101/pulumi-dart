@@ -43,7 +43,7 @@ import 'project_default_network_tier_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -60,7 +60,7 @@ import 'project_default_network_tier_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -68,7 +68,10 @@ import 'project_default_network_tier_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_projectdefaultnetworktier" "default" {
+/// resource "gcp_compute_project_default_network_tier" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_tier = "PREMIUM"
 /// }
 /// ```
@@ -143,7 +146,7 @@ class ProjectDefaultNetworkTier extends pulumi.CustomResource {
           'gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     networkTier = registerOutput<String>('networkTier');
     project = registerOutput<String>('project');

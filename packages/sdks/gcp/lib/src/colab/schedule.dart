@@ -313,8 +313,8 @@ import 'schedule_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -425,7 +425,7 @@ import 'schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -433,7 +433,10 @@ import 'schedule_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_colab_runtimetemplate" "my_runtime_template" {
+/// resource "gcp_colab_runtime_template" "my_runtime_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "runtime-template"
 ///   display_name = "Runtime template"
 ///   location     = "us-central1"
@@ -445,18 +448,63 @@ import 'schedule_state.dart';
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "output_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_bucket"
 ///   location                    = "US"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "notebook" {
+/// resource "gcp_storage_bucket_object" "notebook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "hello_world.ipynb"
 ///   bucket  = gcp_storage_bucket.output_bucket.name
-///   content = "    {\n      \\\"cells\\\": [\n        {\n          \\\"cell_type\\\": \\\"code\\\",\n          \\\"execution_count\\\": null,\n          \\\"metadata\\\": {},\n          \\\"outputs\\\": [],\n          \\\"source\\\": [\n            \\\"print(\\\\\\\"Hello, World!\\\\\\\")\\\"\n          ]\n        }\n      ],\n      \\\"metadata\\\": {\n        \\\"kernelspec\\\": {\n          \\\"display_name\\\": \\\"Python 3\\\",\n          \\\"language\\\": \\\"python\\\",\n          \\\"name\\\": \\\"python3\\\"\n        },\n        \\\"language_info\\\": {\n          \\\"codemirror_mode\\\": {\n            \\\"name\\\": \\\"ipython\\\",\n            \\\"version\\\": 3\n          },\n          \\\"file_extension\\\": \\\".py\\\",\n          \\\"mimetype\\\": \\\"text/x-python\\\",\n          \\\"name\\\": \\\"python\\\",\n          \\\"nbconvert_exporter\\\": \\\"python\\\",\n          \\\"pygments_lexer\\\": \\\"ipython3\\\",\n          \\\"version\\\": \\\"3.8.5\\\"\n        }\n      },\n      \\\"nbformat\\\": 4,\n      \\\"nbformat_minor\\\": 4\n    }\n"
+///   content = <<EOF
+///     {
+///       \"cells\": [
+///         {
+///           \"cell_type\": \"code\",
+///           \"execution_count\": null,
+///           \"metadata\": {},
+///           \"outputs\": [],
+///           \"source\": [
+///             \"print(\\\"Hello, World!\\\")\"
+///           ]
+///         }
+///       ],
+///       \"metadata\": {
+///         \"kernelspec\": {
+///           \"display_name\": \"Python 3\",
+///           \"language\": \"python\",
+///           \"name\": \"python3\"
+///         },
+///         \"language_info\": {
+///           \"codemirror_mode\": {
+///             \"name\": \"ipython\",
+///             \"version\": 3
+///           },
+///           \"file_extension\": \".py\",
+///           \"mimetype\": \"text/x-python\",
+///           \"name\": \"python\",
+///           \"nbconvert_exporter\": \"python\",
+///           \"pygments_lexer\": \"ipython3\",
+///           \"version\": \"3.8.5\"
+///         }
+///       },
+///       \"nbformat\": 4,
+///       \"nbformat_minor\": 4
+///     }
+/// EOF
+///
 /// }
 /// resource "gcp_colab_schedule" "schedule" {
-///   depends_on               = [gcp_colab_runtimetemplate.my_runtime_template, gcp_storage_bucket.output_bucket]
+///   depends_on = [gcp_colab_runtime_template.my_runtime_template, gcp_storage_bucket.output_bucket]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name             = "basic-schedule"
 ///   location                 = "us-west1"
 ///   max_concurrent_run_count = 2
@@ -465,10 +513,10 @@ import 'schedule_state.dart';
 ///     notebook_execution_job = {
 ///       display_name = "Notebook execution"
 ///       gcs_notebook_source = {
-///         uri        ="gs://${gcp_storage_bucketobject.notebook.bucket}/${gcp_storage_bucketobject.notebook.name}"
-///         generation = gcp_storage_bucketobject.notebook.generation
+///         uri        ="gs://${gcp_storage_bucket_object.notebook.bucket}/${gcp_storage_bucket_object.notebook.name}"
+///         generation = gcp_storage_bucket_object.notebook.generation
 ///       }
-///       notebook_runtime_template_resource_name ="projects/${gcp_colab_runtimetemplate.my_runtime_template.project}/locations/${gcp_colab_runtimetemplate.my_runtime_template.location}/notebookRuntimeTemplates/${gcp_colab_runtimetemplate.my_runtime_template.name}"
+///       notebook_runtime_template_resource_name ="projects/${gcp_colab_runtime_template.my_runtime_template.project}/locations/${gcp_colab_runtime_template.my_runtime_template.location}/notebookRuntimeTemplates/${gcp_colab_runtime_template.my_runtime_template.name}"
 ///       gcs_output_uri                          ="gs://${gcp_storage_bucket.output_bucket.name}"
 ///       service_account                         = "my@service-account.com"
 ///     }
@@ -986,8 +1034,8 @@ import 'schedule_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1099,7 +1147,7 @@ import 'schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1107,7 +1155,10 @@ import 'schedule_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_colab_runtimetemplate" "my_runtime_template" {
+/// resource "gcp_colab_runtime_template" "my_runtime_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "runtime-template"
 ///   display_name = "Runtime template"
 ///   location     = "us-central1"
@@ -1119,18 +1170,63 @@ import 'schedule_state.dart';
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "output_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_bucket"
 ///   location                    = "US"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "notebook" {
+/// resource "gcp_storage_bucket_object" "notebook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "hello_world.ipynb"
 ///   bucket  = gcp_storage_bucket.output_bucket.name
-///   content = "    {\n      \\\"cells\\\": [\n        {\n          \\\"cell_type\\\": \\\"code\\\",\n          \\\"execution_count\\\": null,\n          \\\"metadata\\\": {},\n          \\\"outputs\\\": [],\n          \\\"source\\\": [\n            \\\"print(\\\\\\\"Hello, World!\\\\\\\")\\\"\n          ]\n        }\n      ],\n      \\\"metadata\\\": {\n        \\\"kernelspec\\\": {\n          \\\"display_name\\\": \\\"Python 3\\\",\n          \\\"language\\\": \\\"python\\\",\n          \\\"name\\\": \\\"python3\\\"\n        },\n        \\\"language_info\\\": {\n          \\\"codemirror_mode\\\": {\n            \\\"name\\\": \\\"ipython\\\",\n            \\\"version\\\": 3\n          },\n          \\\"file_extension\\\": \\\".py\\\",\n          \\\"mimetype\\\": \\\"text/x-python\\\",\n          \\\"name\\\": \\\"python\\\",\n          \\\"nbconvert_exporter\\\": \\\"python\\\",\n          \\\"pygments_lexer\\\": \\\"ipython3\\\",\n          \\\"version\\\": \\\"3.8.5\\\"\n        }\n      },\n      \\\"nbformat\\\": 4,\n      \\\"nbformat_minor\\\": 4\n    }\n"
+///   content = <<EOF
+///     {
+///       \"cells\": [
+///         {
+///           \"cell_type\": \"code\",
+///           \"execution_count\": null,
+///           \"metadata\": {},
+///           \"outputs\": [],
+///           \"source\": [
+///             \"print(\\\"Hello, World!\\\")\"
+///           ]
+///         }
+///       ],
+///       \"metadata\": {
+///         \"kernelspec\": {
+///           \"display_name\": \"Python 3\",
+///           \"language\": \"python\",
+///           \"name\": \"python3\"
+///         },
+///         \"language_info\": {
+///           \"codemirror_mode\": {
+///             \"name\": \"ipython\",
+///             \"version\": 3
+///           },
+///           \"file_extension\": \".py\",
+///           \"mimetype\": \"text/x-python\",
+///           \"name\": \"python\",
+///           \"nbconvert_exporter\": \"python\",
+///           \"pygments_lexer\": \"ipython3\",
+///           \"version\": \"3.8.5\"
+///         }
+///       },
+///       \"nbformat\": 4,
+///       \"nbformat_minor\": 4
+///     }
+/// EOF
+///
 /// }
 /// resource "gcp_colab_schedule" "schedule" {
-///   depends_on               = [gcp_colab_runtimetemplate.my_runtime_template, gcp_storage_bucket.output_bucket]
+///   depends_on = [gcp_colab_runtime_template.my_runtime_template, gcp_storage_bucket.output_bucket]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name             = "paused-schedule"
 ///   location                 = "us-west1"
 ///   max_concurrent_run_count = 2
@@ -1140,10 +1236,10 @@ import 'schedule_state.dart';
 ///     notebook_execution_job = {
 ///       display_name = "Notebook execution"
 ///       gcs_notebook_source = {
-///         uri        ="gs://${gcp_storage_bucketobject.notebook.bucket}/${gcp_storage_bucketobject.notebook.name}"
-///         generation = gcp_storage_bucketobject.notebook.generation
+///         uri        ="gs://${gcp_storage_bucket_object.notebook.bucket}/${gcp_storage_bucket_object.notebook.name}"
+///         generation = gcp_storage_bucket_object.notebook.generation
 ///       }
-///       notebook_runtime_template_resource_name ="projects/${gcp_colab_runtimetemplate.my_runtime_template.project}/locations/${gcp_colab_runtimetemplate.my_runtime_template.location}/notebookRuntimeTemplates/${gcp_colab_runtimetemplate.my_runtime_template.name}"
+///       notebook_runtime_template_resource_name ="projects/${gcp_colab_runtime_template.my_runtime_template.project}/locations/${gcp_colab_runtime_template.my_runtime_template.location}/notebookRuntimeTemplates/${gcp_colab_runtime_template.my_runtime_template.name}"
 ///       gcs_output_uri                          ="gs://${gcp_storage_bucket.output_bucket.name}"
 ///       service_account                         = "my@service-account.com"
 ///     }
@@ -1651,10 +1747,10 @@ import 'schedule_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1767,7 +1863,7 @@ import 'schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1775,7 +1871,10 @@ import 'schedule_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_colab_runtimetemplate" "my_runtime_template" {
+/// resource "gcp_colab_runtime_template" "my_runtime_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "runtime-template"
 ///   display_name = "Runtime template"
 ///   location     = "us-central1"
@@ -1787,25 +1886,37 @@ import 'schedule_state.dart';
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "output_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_bucket"
 ///   location                    = "US"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
 /// resource "gcp_secretmanager_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret_version" {
+/// resource "gcp_secretmanager_secret_version" "secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret.id
 ///   secret_data = "secret-data"
 /// }
 /// resource "gcp_dataform_repository" "dataform_repository" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                       = "dataform-repository"
 ///   display_name                               = "dataform_repository"
-///   npmrc_environment_variables_secret_version = gcp_secretmanager_secretversion.secret_version.id
+///   npmrc_environment_variables_secret_version = gcp_secretmanager_secret_version.secret_version.id
 ///   kms_key_name                               = "my-key"
 ///   labels = {
 ///     "label_foo1" = "label-bar1"
@@ -1813,7 +1924,7 @@ import 'schedule_state.dart';
 ///   git_remote_settings = {
 ///     url                                 = "https://github.com/OWNER/REPOSITORY.git"
 ///     default_branch                      = "main"
-///     authentication_token_secret_version = gcp_secretmanager_secretversion.secret_version.id
+///     authentication_token_secret_version = gcp_secretmanager_secret_version.secret_version.id
 ///   }
 ///   workspace_compilation_overrides = {
 ///     default_database = "database"
@@ -1822,7 +1933,10 @@ import 'schedule_state.dart';
 ///   }
 /// }
 /// resource "gcp_colab_schedule" "schedule" {
-///   depends_on               = [gcp_colab_runtimetemplate.my_runtime_template, gcp_storage_bucket.output_bucket, gcp_secretmanager_secretversion.secret_version, gcp_dataform_repository.dataform_repository]
+///   depends_on = [gcp_colab_runtime_template.my_runtime_template, gcp_storage_bucket.output_bucket, gcp_secretmanager_secret_version.secret_version, gcp_dataform_repository.dataform_repository]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name             = "full-schedule"
 ///   location                 = "us-west1"
 ///   allow_queueing           = true
@@ -1840,7 +1954,7 @@ import 'schedule_state.dart';
 ///         commit_sha                        = "randomsha123"
 ///         dataform_repository_resource_name ="projects/my-project-name/locations/us-west1/repositories/${gcp_dataform_repository.dataform_repository.name}"
 ///       }
-///       notebook_runtime_template_resource_name ="projects/${gcp_colab_runtimetemplate.my_runtime_template.project}/locations/${gcp_colab_runtimetemplate.my_runtime_template.location}/notebookRuntimeTemplates/${gcp_colab_runtimetemplate.my_runtime_template.name}"
+///       notebook_runtime_template_resource_name ="projects/${gcp_colab_runtime_template.my_runtime_template.project}/locations/${gcp_colab_runtime_template.my_runtime_template.location}/notebookRuntimeTemplates/${gcp_colab_runtime_template.my_runtime_template.name}"
 ///       gcs_output_uri                          ="gs://${gcp_storage_bucket.output_bucket.name}"
 ///       service_account                         = "my@service-account.com"
 ///     }
@@ -2412,10 +2526,10 @@ import 'schedule_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2550,7 +2664,7 @@ import 'schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2558,46 +2672,97 @@ import 'schedule_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_bucket"
 ///   location                    = "us-central1"
 ///   uniform_bucket_level_access = true
 ///   force_destroy               = true
 /// }
-/// resource "gcp_storage_bucketobject" "notebook" {
+/// resource "gcp_storage_bucket_object" "notebook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "hello_world.ipynb"
 ///   bucket  = gcp_storage_bucket.bucket.name
-///   content = "    {\n      \\\"cells\\\": [\n        {\n          \\\"cell_type\\\": \\\"code\\\",\n          \\\"execution_count\\\": null,\n          \\\"metadata\\\": {},\n          \\\"outputs\\\": [],\n          \\\"source\\\": [\n            \\\"print(\\\\\\\"Hello, World!\\\\\\\")\\\"\n          ]\n        }\n      ],\n      \\\"metadata\\\": {\n        \\\"kernelspec\\\": {\n          \\\"display_name\\\": \\\"Python 3\\\",\n          \\\"language\\\": \\\"python\\\",\n          \\\"name\\\": \\\"python3\\\"\n        },\n        \\\"language_info\\\": {\n          \\\"codemirror_mode\\\": {\n            \\\"name\\\": \\\"ipython\\\",\n            \\\"version\\\": 3\n          },\n          \\\"file_extension\\\": \\\".py\\\",\n          \\\"mimetype\\\": \\\"text/x-python\\\",\n          \\\"name\\\": \\\"python\\\",\n          \\\"nbconvert_exporter\\\": \\\"python\\\",\n          \\\"pygments_lexer\\\": \\\"ipython3\\\",\n          \\\"version\\\": \\\"3.8.5\\\"\n        }\n      },\n      \\\"nbformat\\\": 4,\n      \\\"nbformat_minor\\\": 4\n    }\n"
+///   content = <<EOF
+///     {
+///       \"cells\": [
+///         {
+///           \"cell_type\": \"code\",
+///           \"execution_count\": null,
+///           \"metadata\": {},
+///           \"outputs\": [],
+///           \"source\": [
+///             \"print(\\\"Hello, World!\\\")\"
+///           ]
+///         }
+///       ],
+///       \"metadata\": {
+///         \"kernelspec\": {
+///           \"display_name\": \"Python 3\",
+///           \"language\": \"python\",
+///           \"name\": \"python3\"
+///         },
+///         \"language_info\": {
+///           \"codemirror_mode\": {
+///             \"name\": \"ipython\",
+///             \"version\": 3
+///           },
+///           \"file_extension\": \".py\",
+///           \"mimetype\": \"text/x-python\",
+///           \"name\": \"python\",
+///           \"nbconvert_exporter\": \"python\",
+///           \"pygments_lexer\": \"ipython3\",
+///           \"version\": \"3.8.5\"
+///         }
+///       },
+///       \"nbformat\": 4,
+///       \"nbformat_minor\": 4
+///     }
+/// EOF
+///
 /// }
 /// resource "gcp_compute_network" "my_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "colab-test-default"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "my_subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "colab-test-default"
 ///   network       = gcp_compute_network.my_network.id
 ///   region        = "us-central1"
 ///   ip_cidr_range = "10.0.1.0/24"
 /// }
 /// resource "gcp_colab_schedule" "schedule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name             = "full-notebook-schedule"
 ///   location                 = "us-central1"
 ///   max_concurrent_run_count = 2
 ///   cron                     = "*/5 * * * *"
 ///   start_time               = "2030-01-01T00:00:00Z"
 ///   create_notebook_execution_job_request = {
-///     parent ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1"
+///     parent ="projects/${data.gcp_organizations_project.project.project_id}/locations/us-central1"
 ///     notebook_execution_job = {
 ///       display_name    = "test-notebook-execution-job"
 ///       gcs_output_uri  ="gs://${gcp_storage_bucket.bucket.name}"
 ///       service_account = "my@service-account.com"
 ///       kernel_name     = "python3"
 ///       gcs_notebook_source = {
-///         uri        ="gs://${gcp_storage_bucketobject.notebook.bucket}/${gcp_storage_bucketobject.notebook.name}"
-///         generation = gcp_storage_bucketobject.notebook.generation
+///         uri        ="gs://${gcp_storage_bucket_object.notebook.bucket}/${gcp_storage_bucket_object.notebook.name}"
+///         generation = gcp_storage_bucket_object.notebook.generation
 ///       }
 ///       custom_environment_spec = {
 ///         machine_spec = {
@@ -3140,10 +3305,10 @@ import 'schedule_state.dart';
 /// 	"encoding/json"
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/colab"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/colab"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3243,7 +3408,7 @@ import 'schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3251,20 +3416,29 @@ import 'schedule_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "pipeline-job"
 ///   location                    = "us-central1"
 ///   uniform_bucket_level_access = true
 ///   force_destroy               = true
 /// }
 /// resource "gcp_compute_network" "my_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "colab-test-default"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_colab_schedule" "schedule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name                    = "test-schedule"
 ///   location                        = "us-central1"
 ///   max_concurrent_run_count        = 2
@@ -3275,12 +3449,12 @@ import 'schedule_state.dart';
 ///   start_time                      = "2030-01-01T00:00:00Z"
 ///   end_time                        = "2030-01-02T00:00:00Z"
 ///   create_pipeline_job_request = {
-///     parent ="projects/${data.gcp_organizations_getproject.project.project_id}/locations/us-central1"
+///     parent ="projects/${data.gcp_organizations_project.project.project_id}/locations/us-central1"
 ///     pipeline_job = {
 ///       display_name          = "test-pipeline-job"
 ///       preflight_validations = true
 ///       network               = gcp_compute_network.my_network.id
-///       service_account       ="${data.gcp_organizations_getproject.project.number}-compute@developer.gserviceaccount.com"
+///       service_account       ="${data.gcp_organizations_project.project.number}-compute@developer.gserviceaccount.com"
 ///       template_uri          = "https://us-kfp.pkg.dev/proj/repo/template/v1"
 ///       reserved_ip_ranges    = ["vertex-ai-ip-range"]
 ///       labels = {
@@ -3290,11 +3464,11 @@ import 'schedule_state.dart';
 ///         kms_key_name = "my-key"
 ///       }
 ///       psc_interface_config = {
-///         network_attachment ="projects/${data.gcp_organizations_getproject.project.project_id}/regions/us-central1/networkAttachments/my-attachment"
+///         network_attachment ="projects/${data.gcp_organizations_project.project.project_id}/regions/us-central1/networkAttachments/my-attachment"
 ///         dns_peering_configs = [{
-///           "domain"        = "my-internal-domain.corp."
-///           "targetNetwork" = gcp_compute_network.my_network.id
-///           "targetProject" = data.gcp_organizations_getproject.project.project_id
+///           domain         = "my-internal-domain.corp."
+///           target_network = gcp_compute_network.my_network.id
+///           target_project = data.gcp_organizations_project.project.project_id
 ///         }]
 ///       }
 ///       pipeline_spec = jsonencode({
@@ -3583,7 +3757,7 @@ class Schedule extends pulumi.CustomResource {
           'gcp:colab/schedule:Schedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     allowQueueing = registerOutput<bool?>('allowQueueing');
     catchUp = registerOutput<bool>('catchUp');

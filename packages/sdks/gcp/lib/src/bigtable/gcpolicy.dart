@@ -142,7 +142,7 @@ import 'gcpolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -195,7 +195,7 @@ import 'gcpolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -204,6 +204,9 @@ import 'gcpolicy_state.dart';
 /// }
 ///
 /// resource "gcp_bigtable_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "tf-instance"
 ///   clusters {
 ///     cluster_id   = "tf-instance-cluster"
@@ -212,18 +215,33 @@ import 'gcpolicy_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigtable_table" "table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "tf-table"
 ///   instance_name = gcp_bigtable_instance.instance.name
 ///   column_families {
 ///     family = "name"
 ///   }
 /// }
-/// resource "gcp_bigtable_gcpolicy" "policy" {
+/// resource "gcp_bigtable_g_c_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_name   = gcp_bigtable_instance.instance.name
 ///   table           = gcp_bigtable_table.table.name
 ///   column_family   = "name"
 ///   deletion_policy = "ABANDON"
-///   gc_rules        = "  {\n    \\\"rules\\\": [\n      {\n        \\\"max_age\\\": \\\"168h\\\"\n      }\n    ]\n  }\n"
+///   gc_rules        = <<EOF
+///   {
+///     \"rules\": [
+///       {
+///         \"max_age\": \"168h\"
+///       }
+///     ]
+///   }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -406,7 +424,7 @@ import 'gcpolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -438,7 +456,7 @@ import 'gcpolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -446,12 +464,28 @@ import 'gcpolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigtable_gcpolicy" "policy" {
+/// resource "gcp_bigtable_g_c_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_name   = instance.name
 ///   table           = table.name
 ///   column_family   = "name"
 ///   deletion_policy = "ABANDON"
-///   gc_rules        = "  {\n    \\\"mode\\\": \\\"union\\\",\n    \\\"rules\\\": [\n      {\n        \\\"max_age\\\": \\\"168h\\\"\n      },\n      {\n        \\\"max_version\\\": 10\n      }\n    ]\n  }\n"
+///   gc_rules        = <<EOF
+///   {
+///     \"mode\": \"union\",
+///     \"rules\": [
+///       {
+///         \"max_age\": \"168h\"
+///       },
+///       {
+///         \"max_version\": 10
+///       }
+///     ]
+///   }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -685,7 +719,7 @@ import 'gcpolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -751,7 +785,7 @@ import 'gcpolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -760,6 +794,9 @@ import 'gcpolicy_state.dart';
 /// }
 ///
 /// resource "gcp_bigtable_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "instance_name"
 ///   clusters {
 ///     cluster_id = "cid"
@@ -769,18 +806,45 @@ import 'gcpolicy_state.dart';
 ///   deletion_protection = false
 /// }
 /// resource "gcp_bigtable_table" "table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "your-table"
 ///   instance_name = gcp_bigtable_instance.instance.id
 ///   column_families {
 ///     family = "cf1"
 ///   }
 /// }
-/// resource "gcp_bigtable_gcpolicy" "policy" {
+/// resource "gcp_bigtable_g_c_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_name   = gcp_bigtable_instance.instance.id
 ///   table           = gcp_bigtable_table.table.name
 ///   column_family   = "cf1"
 ///   deletion_policy = "ABANDON"
-///   gc_rules        = "  {\n    \\\"mode\\\": \\\"union\\\",\n    \\\"rules\\\": [\n      {\n        \\\"max_age\\\": \\\"10h\\\"\n      },\n      {\n        \\\"mode\\\": \\\"intersection\\\",\n        \\\"rules\\\": [\n          {\n            \\\"max_age\\\": \\\"2h\\\"\n          },\n          {\n            \\\"max_version\\\": 2\n          }\n        ]\n      }\n    ]\n  }\n"
+///   gc_rules        = <<EOF
+///   {
+///     \"mode\": \"union\",
+///     \"rules\": [
+///       {
+///         \"max_age\": \"10h\"
+///       },
+///       {
+///         \"mode\": \"intersection\",
+///         \"rules\": [
+///           {
+///             \"max_age\": \"2h\"
+///           },
+///           {
+///             \"max_version\": 2
+///           }
+///         ]
+///       }
+///     ]
+///   }
+/// EOF
+///
 /// }
 /// ```
 /// ```java
@@ -960,7 +1024,7 @@ class GCPolicy extends pulumi.CustomResource {
           'gcp:bigtable/gCPolicy:GCPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     columnFamily = registerOutput<String>('columnFamily');
     deletionPolicy = registerOutput<String>('deletionPolicy');

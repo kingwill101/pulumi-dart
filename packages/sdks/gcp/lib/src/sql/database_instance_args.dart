@@ -44,6 +44,8 @@ class DatabaseInstanceArgs {
   ///
   /// &gt; **NOTE:** This flag only protects instances from deletion within Pulumi. To protect your instances from accidental deletion across all surfaces (API, gcloud, Cloud Console and Pulumi), use the API flag `settings.deletion_protection_enabled`.
   final pulumi.Input<bool?>? deletionProtection;
+  /// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+  final pulumi.Input<bool?>? encryptionConfidentialMode;
   /// The full path to the encryption key used for the CMEK disk encryption.  Setting
   /// up disk encryption currently requires manual steps outside of this provider.
   /// The provided key must be in the same region as the SQL instance.  In order
@@ -123,6 +125,7 @@ class DatabaseInstanceArgs {
   /// [databaseVersion] The MySQL, PostgreSQL or
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to "DELETE".
   /// [deletionProtection] Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+  /// [encryptionConfidentialMode] Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
   /// [encryptionKeyName] The full path to the encryption key used for the CMEK disk encryption.  Setting
   /// [enforceNewSqlNetworkArchitecture] Whether to enforce the new SQL network architecture.
   /// [finalBackupDescription] The description of final backup. Only set this field when `final_backup_config.enabled` is true.
@@ -150,6 +153,7 @@ class DatabaseInstanceArgs {
     required this.databaseVersion,
     this.deletionPolicy,
     this.deletionProtection,
+    this.encryptionConfidentialMode,
     this.encryptionKeyName,
     this.enforceNewSqlNetworkArchitecture,
     this.finalBackupDescription,
@@ -180,6 +184,7 @@ class DatabaseInstanceArgs {
       'databaseVersion': databaseVersion,
       'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
+      'encryptionConfidentialMode': ?encryptionConfidentialMode,
       'encryptionKeyName': ?encryptionKeyName,
       'enforceNewSqlNetworkArchitecture': ?enforceNewSqlNetworkArchitecture,
       'finalBackupDescription': ?finalBackupDescription,
@@ -211,6 +216,7 @@ class DatabaseInstanceArgs {
       databaseVersion: pulumi.Input.fromValue(map['databaseVersion'] as String),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      encryptionConfidentialMode: (() { final guardedValue = map['encryptionConfidentialMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       encryptionKeyName: (() { final guardedValue = map['encryptionKeyName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       enforceNewSqlNetworkArchitecture: (() { final guardedValue = map['enforceNewSqlNetworkArchitecture']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       finalBackupDescription: (() { final guardedValue = map['finalBackupDescription']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -219,7 +225,7 @@ class DatabaseInstanceArgs {
       maintenanceVersion: (() { final guardedValue = map['maintenanceVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       masterInstanceName: (() { final guardedValue = map['masterInstanceName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       pointInTimeRestoreContext: (() { final guardedValue = map['pointInTimeRestoreContext']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseInstancePointInTimeRestoreContext.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

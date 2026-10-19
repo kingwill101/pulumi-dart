@@ -28,7 +28,16 @@ class RegionalSecretVersionArgs {
   final pulumi.Input<String> secret;
   /// The secret data. Must be no larger than 64KiB.
   /// **Note**: This property is sensitive and will not be displayed in the plan.
-  final pulumi.Input<String> secretData;
+  final pulumi.Input<String?>? secretData;
+  /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  /// (Optional, Write-Only)
+  /// The secret data. Must be no larger than 64KiB.
+  /// **Note**: This property is write-only and will not be read from the API.
+  ///
+  /// &gt; **Note:** One of `secretData` or `secretDataWo` can only be set.
+  final pulumi.Input<String?>? secretDataWo;
+  /// Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
+  final pulumi.Input<String?>? secretDataWoVersion;
 
   /// Creates a new [RegionalSecretVersionArgs].
   /// [deletionPolicy] The deletion policy for the secret version. Setting `ABANDON` allows the resource
@@ -36,12 +45,16 @@ class RegionalSecretVersionArgs {
   /// [isSecretDataBase64] If set to 'true', the secret data is expected to be base64-encoded string and would be sent as is.
   /// [secret] Secret Manager regional secret resource.
   /// [secretData] The secret data. Must be no larger than 64KiB.
+  /// [secretDataWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+  /// [secretDataWoVersion] Triggers update of `secretDataWo` write-only. Increment this value when an update to `secretDataWo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   const RegionalSecretVersionArgs({
     this.deletionPolicy,
     this.enabled,
     this.isSecretDataBase64,
     required this.secret,
-    required this.secretData,
+    this.secretData,
+    this.secretDataWo,
+    this.secretDataWoVersion,
   });
 
   Map<String, dynamic> toMap() {
@@ -50,7 +63,9 @@ class RegionalSecretVersionArgs {
       'enabled': ?enabled,
       'isSecretDataBase64': ?isSecretDataBase64,
       'secret': secret,
-      'secretData': secretData,
+      'secretData': ?secretData,
+      'secretDataWo': ?secretDataWo,
+      'secretDataWoVersion': ?secretDataWoVersion,
     };
   }
 
@@ -60,7 +75,9 @@ class RegionalSecretVersionArgs {
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isSecretDataBase64: (() { final guardedValue = map['isSecretDataBase64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       secret: pulumi.Input.fromValue(map['secret'] as String),
-      secretData: pulumi.Input.fromValue(map['secretData'] as String),
+      secretData: (() { final guardedValue = map['secretData']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretDataWo: (() { final guardedValue = map['secretDataWo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      secretDataWoVersion: (() { final guardedValue = map['secretDataWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

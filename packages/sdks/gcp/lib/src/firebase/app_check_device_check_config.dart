@@ -127,7 +127,7 @@ import 'app_check_device_check_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
@@ -177,7 +177,7 @@ import 'app_check_device_check_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -191,7 +191,10 @@ import 'app_check_device_check_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_appleapp" "default" {
+/// resource "gcp_firebase_apple_app" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = "my-project-name"
 ///   display_name = "Apple app"
 ///   bundle_id    = "bundle.id.devicecheck"
@@ -200,13 +203,19 @@ import 'app_check_device_check_config_state.dart';
 /// # It takes a while for App Check to recognize the new app
 /// # If your app already exists, you don't have to wait 30 seconds.
 /// resource "time_sleep" "wait_30s" {
-///   depends_on      = [gcp_firebase_appleapp.default]
+///   depends_on = [gcp_firebase_apple_app.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "30s"
 /// }
-/// resource "gcp_firebase_appcheckdevicecheckconfig" "default" {
-///   depends_on  = [time_sleep.wait_30s]
+/// resource "gcp_firebase_app_check_device_check_config" "default" {
+///   depends_on = [time_sleep.wait_30s]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
-///   app_id      = gcp_firebase_appleapp.default.app_id
+///   app_id      = gcp_firebase_apple_app.default.app_id
 ///   token_ttl   = "7200s"
 ///   key_id      = "Key ID"
 ///   private_key = file("path/to/private-key.p8")
@@ -359,7 +368,7 @@ class AppCheckDeviceCheckConfig extends pulumi.CustomResource {
           'gcp:firebase/appCheckDeviceCheckConfig:AppCheckDeviceCheckConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['privateKey'],
         ) {
     appId = registerOutput<String>('appId');

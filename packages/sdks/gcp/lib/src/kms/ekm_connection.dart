@@ -90,7 +90,7 @@ import 'ekm_connection_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -120,7 +120,7 @@ import 'ekm_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -128,7 +128,10 @@ import 'ekm_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_ekmconnection" "example-ekmconnection" {
+/// resource "gcp_kms_ekm_connection" "example-ekmconnection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "ekmconnection_example"
 ///   location            = "us-central1"
 ///   key_management_mode = "MANUAL"
@@ -248,7 +251,7 @@ class EkmConnection extends pulumi.CustomResource {
           'gcp:kms/ekmConnection:EkmConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     cryptoSpacePath = registerOutput<String>('cryptoSpacePath');

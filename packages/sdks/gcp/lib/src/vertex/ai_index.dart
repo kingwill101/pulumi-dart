@@ -209,10 +209,10 @@ import 'ai_index_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -289,7 +289,7 @@ import 'ai_index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -297,28 +297,47 @@ import 'ai_index_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_projects_serviceidentity" "vertexai_sa" {
+/// resource "gcp_projects_service_identity" "vertexai_sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service = "aiplatform.googleapis.com"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "vertex-ai-index-test"
 ///   location                    = "us-central1"
 ///   uniform_bucket_level_access = true
 /// }
 /// # The sample data comes from the following link:
 /// # https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
-/// resource "gcp_storage_bucketobject" "data" {
+/// resource "gcp_storage_bucket_object" "data" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "contents/data.json"
 ///   bucket  = gcp_storage_bucket.bucket.name
-///   content = "{\\\"id\\\": \\\"42\\\", \\\"embedding\\\": [0.5, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"cat\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"feline\\\"]}]}\n{\\\"id\\\": \\\"43\\\", \\\"embedding\\\": [0.6, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"dog\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"canine\\\"]}]}\n"
+///   content = <<EOF
+/// {\"id\": \"42\", \"embedding\": [0.5, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"cat\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"feline\"]}]}
+/// {\"id\": \"43\", \"embedding\": [0.6, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"dog\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"canine\"]}]}
+/// EOF
+///
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "vertexai_encrypterdecrypter" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "vertexai_encrypterdecrypter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "kms-name"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        = gcp_projects_serviceidentity.vertexai_sa.member
+///   member        = gcp_projects_service_identity.vertexai_sa.member
 /// }
-/// resource "gcp_vertex_aiindex" "index" {
-///   depends_on = [gcp_kms_cryptokeyiammember.vertexai_encrypterdecrypter]
+/// resource "gcp_vertex_ai_index" "index" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.vertexai_encrypterdecrypter]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -638,8 +657,8 @@ import 'ai_index_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -694,7 +713,7 @@ import 'ai_index_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -703,18 +722,31 @@ import 'ai_index_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "vertex-ai-index-test"
 ///   location                    = "us-central1"
 ///   uniform_bucket_level_access = true
 /// }
 /// # The sample data comes from the following link:
 /// # https://cloud.google.com/vertex-ai/docs/matching-engine/filtering#specify-namespaces-tokens
-/// resource "gcp_storage_bucketobject" "data" {
+/// resource "gcp_storage_bucket_object" "data" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "contents/data.json"
 ///   bucket  = gcp_storage_bucket.bucket.name
-///   content = "{\\\"id\\\": \\\"42\\\", \\\"embedding\\\": [0.5, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"cat\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"feline\\\"]}]}\n{\\\"id\\\": \\\"43\\\", \\\"embedding\\\": [0.6, 1.0], \\\"restricts\\\": [{\\\"namespace\\\": \\\"class\\\", \\\"allow\\\": [\\\"dog\\\", \\\"pet\\\"]},{\\\"namespace\\\": \\\"category\\\", \\\"allow\\\": [\\\"canine\\\"]}]}\n"
+///   content = <<EOF
+/// {\"id\": \"42\", \"embedding\": [0.5, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"cat\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"feline\"]}]}
+/// {\"id\": \"43\", \"embedding\": [0.6, 1.0], \"restricts\": [{\"namespace\": \"class\", \"allow\": [\"dog\", \"pet\"]},{\"namespace\": \"category\", \"allow\": [\"canine\"]}]}
+/// EOF
+///
 /// }
-/// resource "gcp_vertex_aiindex" "index" {
+/// resource "gcp_vertex_ai_index" "index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -930,7 +962,7 @@ class AiIndex extends pulumi.CustomResource {
           'gcp:vertex/aiIndex:AiIndex',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

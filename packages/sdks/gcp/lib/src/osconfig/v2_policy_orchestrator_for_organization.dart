@@ -212,7 +212,7 @@ import 'v2_policy_orchestrator_for_organization_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/osconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -284,7 +284,7 @@ import 'v2_policy_orchestrator_for_organization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -292,7 +292,10 @@ import 'v2_policy_orchestrator_for_organization_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_osconfig_v2policyorchestratorfororganization" "policy_orchestrator_for_organization" {
+/// resource "gcp_osconfig_v2_policy_orchestrator_for_organization" "policy_orchestrator_for_organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_orchestrator_id = "po-org"
 ///   organization_id        = "123456789"
 ///   state                  = "ACTIVE"
@@ -301,22 +304,22 @@ import 'v2_policy_orchestrator_for_organization_state.dart';
 ///     id = "test-orchestrated-resource-org"
 ///     os_policy_assignment_v1_payload = {
 ///       os_policies = [{
-///         "id"   = "test-os-policy-org"
-///         "mode" = "VALIDATION"
-///         "resourceGroups" = [{
-///           "resources" = [{
-///             "id" = "resource-tf"
-///             "file" = {
-///               "content" = "file-content-tf"
-///               "path"    = "file-path-tf-1"
-///               "state"   = "PRESENT"
+///         id   = "test-os-policy-org"
+///         mode = "VALIDATION"
+///         resource_groups = [{
+///           resources = [{
+///             id = "resource-tf"
+///             file = {
+///               content = "file-content-tf"
+///               path    = "file-path-tf-1"
+///               state   = "PRESENT"
 ///             }
 ///           }]
 ///         }]
 ///       }]
 ///       instance_filter = {
 ///         inventories = [{
-///           "osShortName" = "windows-10"
+///           os_short_name = "windows-10"
 ///         }]
 ///       }
 ///       rollout = {
@@ -332,8 +335,8 @@ import 'v2_policy_orchestrator_for_organization_state.dart';
 ///   }
 ///   orchestration_scope = {
 ///     selectors = [{
-///       "locationSelector" = {
-///         "includedLocations" = [""]
+///       location_selector = {
+///         included_locations = [""]
 ///       }
 ///     }]
 ///   }
@@ -560,7 +563,7 @@ class V2PolicyOrchestratorForOrganization extends pulumi.CustomResource {
           'gcp:osconfig/v2PolicyOrchestratorForOrganization:V2PolicyOrchestratorForOrganization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     action = registerOutput<String>('action');

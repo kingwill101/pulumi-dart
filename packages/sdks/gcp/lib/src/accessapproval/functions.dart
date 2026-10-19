@@ -66,8 +66,8 @@ import 'get_project_service_account_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accessapproval"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accessapproval"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -92,7 +92,7 @@ import 'get_project_service_account_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -100,14 +100,17 @@ import 'get_project_service_account_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_accessapproval_getfolderserviceaccount" "serviceAccount" {
+/// data "gcp_accessapproval_folder_service_account" "serviceAccount" {
 ///   folder_id = "my-folder"
 /// }
 ///
-/// resource "gcp_kms_cryptokeyiammember" "iam" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = cryptoKey.id
 ///   role          = "roles/cloudkms.signerVerifier"
-///   member        ="serviceAccount:${data.gcp_accessapproval_getfolderserviceaccount.serviceAccount.account_email}"
+///   member        ="serviceAccount:${data.gcp_accessapproval_folder_service_account.serviceAccount.account_email}"
 /// }
 /// ```
 /// ```java
@@ -247,8 +250,8 @@ pulumi.Output<GetFolderServiceAccountResult> getFolderServiceAccountOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accessapproval"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accessapproval"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -273,7 +276,7 @@ pulumi.Output<GetFolderServiceAccountResult> getFolderServiceAccountOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -281,14 +284,17 @@ pulumi.Output<GetFolderServiceAccountResult> getFolderServiceAccountOutput(
 ///   }
 /// }
 ///
-/// data "gcp_accessapproval_getorganizationserviceaccount" "serviceAccount" {
+/// data "gcp_accessapproval_organization_service_account" "serviceAccount" {
 ///   organization_id = "my-organization"
 /// }
 ///
-/// resource "gcp_kms_cryptokeyiammember" "iam" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = cryptoKey.id
 ///   role          = "roles/cloudkms.signerVerifier"
-///   member        ="serviceAccount:${data.gcp_accessapproval_getorganizationserviceaccount.serviceAccount.account_email}"
+///   member        ="serviceAccount:${data.gcp_accessapproval_organization_service_account.serviceAccount.account_email}"
 /// }
 /// ```
 /// ```java
@@ -428,8 +434,8 @@ pulumi.Output<GetOrganizationServiceAccountResult> getOrganizationServiceAccount
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accessapproval"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accessapproval"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -454,7 +460,7 @@ pulumi.Output<GetOrganizationServiceAccountResult> getOrganizationServiceAccount
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -462,14 +468,17 @@ pulumi.Output<GetOrganizationServiceAccountResult> getOrganizationServiceAccount
 ///   }
 /// }
 ///
-/// data "gcp_accessapproval_getprojectserviceaccount" "serviceAccount" {
+/// data "gcp_accessapproval_project_service_account" "serviceAccount" {
 ///   project_id = "my-project"
 /// }
 ///
-/// resource "gcp_kms_cryptokeyiammember" "iam" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = cryptoKey.id
 ///   role          = "roles/cloudkms.signerVerifier"
-///   member        ="serviceAccount:${data.gcp_accessapproval_getprojectserviceaccount.serviceAccount.account_email}"
+///   member        ="serviceAccount:${data.gcp_accessapproval_project_service_account.serviceAccount.account_email}"
 /// }
 /// ```
 /// ```java
