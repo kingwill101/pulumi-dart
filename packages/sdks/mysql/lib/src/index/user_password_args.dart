@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_user_password_user_password_args_doc}
 class UserPasswordArgs {
   /// The source host of the user. Defaults to `localhost`.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// Either a base-64 encoded PGP public key, or a keybase username in the form `keybase:some_person_that_exists`.
   final pulumi.Input<String> pgpKey;
   /// The IAM user to associate with this access key.
