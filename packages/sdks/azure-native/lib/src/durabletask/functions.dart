@@ -10,9 +10,9 @@ import 'get_task_hub_result.dart';
 
 /// Get a Retention Policy
 ///
-/// Uses Azure REST API version 2025-04-01-preview.
+/// Uses Azure REST API version 2026-02-01.
 ///
-/// Other available API versions: 2025-11-01, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2025-04-01-preview, 2025-11-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_durabletask_get_retention_policy_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetRetentionPolicyResult> getRetentionPolicy(
@@ -41,9 +41,9 @@ pulumi.Output<GetRetentionPolicyResult> getRetentionPolicyOutput(
 
 /// Get a Scheduler
 ///
-/// Uses Azure REST API version 2024-10-01-preview.
+/// Uses Azure REST API version 2026-02-01.
 ///
-/// Other available API versions: 2025-04-01-preview, 2025-11-01, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-10-01-preview, 2025-04-01-preview, 2025-11-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_durabletask_get_scheduler_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetSchedulerResult> getScheduler(
@@ -103,9 +103,9 @@ pulumi.Output<GetSchedulerPrivateEndpointConnectionResult> getSchedulerPrivateEn
 
 /// Get a Task Hub
 ///
-/// Uses Azure REST API version 2024-10-01-preview.
+/// Uses Azure REST API version 2026-02-01.
 ///
-/// Other available API versions: 2025-04-01-preview, 2025-11-01, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
+/// Other available API versions: 2024-10-01-preview, 2025-04-01-preview, 2025-11-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.
 /// [args] Arguments passed to this invoke. {@macro pulumi_durabletask_get_task_hub_args_doc}
 /// [options] Invoke options controlling this call.
 Future<GetTaskHubResult> getTaskHub(
