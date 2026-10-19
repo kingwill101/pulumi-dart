@@ -74,7 +74,7 @@ import 'user_flow_attribute_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -82,7 +82,10 @@ import 'user_flow_attribute_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_userflowattribute" "example" {
+/// resource "azuread_user_flow_attribute" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Hobby"
 ///   description  = "Your hobby"
 ///   data_type    = "string"
@@ -160,7 +163,7 @@ class UserFlowAttribute extends pulumi.CustomResource {
           'azuread:index/userFlowAttribute:UserFlowAttribute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     attributeType = registerOutput<String>('attributeType');
     dataType = registerOutput<String>('dataType');
@@ -173,11 +176,12 @@ class UserFlowAttribute extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserFlowAttributeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserFlowAttribute._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -191,6 +195,21 @@ class UserFlowAttribute extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    attributeType = registerOutput<String>('attributeType');
+    dataType = registerOutput<String>('dataType');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+  }
+
+  /// Creates a typed reference to an existing [UserFlowAttribute] resource.
+  UserFlowAttribute.reference(String urn)
+    : super(
+        'azuread:index/userFlowAttribute:UserFlowAttribute',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     attributeType = registerOutput<String>('attributeType');
     dataType = registerOutput<String>('dataType');
     description = registerOutput<String>('description');

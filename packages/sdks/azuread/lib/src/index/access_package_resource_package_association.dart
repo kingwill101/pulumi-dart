@@ -147,8 +147,8 @@ import 'access_package_resource_package_association_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewAccessPackageResourcePackageAssociation(ctx, "example", &azuread.AccessPackageResourcePackageAssociationArgs{
-/// 			AccessPackageId:              exampleAccessPackage.ID(),
-/// 			CatalogResourceAssociationId: exampleAccessPackageResourceCatalogAssociation.ID(),
+/// 			AccessPackageId:              exampleAccessPackage.ID().ToIDOutput().ToStringOutput(),
+/// 			CatalogResourceAssociationId: exampleAccessPackageResourceCatalogAssociation.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -158,7 +158,7 @@ import 'access_package_resource_package_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -167,26 +167,41 @@ import 'access_package_resource_package_association_state.dart';
 /// }
 ///
 /// resource "azuread_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "example-group"
 ///   security_enabled = true
 /// }
-/// resource "azuread_accesspackagecatalog" "example" {
+/// resource "azuread_access_package_catalog" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example-catalog"
 ///   description  = "Example catalog"
 /// }
-/// resource "azuread_accesspackageresourcecatalogassociation" "example" {
+/// resource "azuread_access_package_resource_catalog_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   catalog_id             = exampleCatalog.id
 ///   resource_origin_id     = exampleGroup.objectId
 ///   resource_origin_system = "AadGroup"
 /// }
-/// resource "azuread_accesspackage" "example" {
+/// resource "azuread_access_package" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example-package"
 ///   description  = "Example Package"
 ///   catalog_id   = exampleCatalog.id
 /// }
-/// resource "azuread_accesspackageresourcepackageassociation" "example" {
-///   access_package_id               = azuread_accesspackage.example.id
-///   catalog_resource_association_id = azuread_accesspackageresourcecatalogassociation.example.id
+/// resource "azuread_access_package_resource_package_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_package_id               = azuread_access_package.example.id
+///   catalog_resource_association_id = azuread_access_package_resource_catalog_association.example.id
 /// }
 /// ```
 /// ```java
@@ -229,15 +244,15 @@ import 'access_package_resource_package_association_state.dart';
 ///             .build());
 ///
 ///         var exampleAccessPackageResourceCatalogAssociation = new AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation", AccessPackageResourceCatalogAssociationArgs.builder()
-///             .catalogId(exampleCatalog.id())
-///             .resourceOriginId(exampleGroup.objectId())
+///             .catalogId(exampleCatalog.get("id"))
+///             .resourceOriginId(exampleGroup.get("objectId"))
 ///             .resourceOriginSystem("AadGroup")
 ///             .build());
 ///
 ///         var exampleAccessPackage = new AccessPackage("exampleAccessPackage", AccessPackageArgs.builder()
 ///             .displayName("example-package")
 ///             .description("Example Package")
-///             .catalogId(exampleCatalog.id())
+///             .catalogId(exampleCatalog.get("id"))
 ///             .build());
 ///
 ///         var exampleAccessPackageResourcePackageAssociation = new AccessPackageResourcePackageAssociation("exampleAccessPackageResourcePackageAssociation", AccessPackageResourcePackageAssociationArgs.builder()
@@ -313,7 +328,7 @@ class AccessPackageResourcePackageAssociation extends pulumi.CustomResource {
           'azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     accessPackageId = registerOutput<String>('accessPackageId');
     accessType = registerOutput<String?>('accessType');
@@ -325,11 +340,12 @@ class AccessPackageResourcePackageAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPackageResourcePackageAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPackageResourcePackageAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -343,6 +359,20 @@ class AccessPackageResourcePackageAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    accessPackageId = registerOutput<String>('accessPackageId');
+    accessType = registerOutput<String?>('accessType');
+    catalogResourceAssociationId = registerOutput<String>('catalogResourceAssociationId');
+  }
+
+  /// Creates a typed reference to an existing [AccessPackageResourcePackageAssociation] resource.
+  AccessPackageResourcePackageAssociation.reference(String urn)
+    : super(
+        'azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPackageId = registerOutput<String>('accessPackageId');
     accessType = registerOutput<String?>('accessType');
     catalogResourceAssociationId = registerOutput<String>('catalogResourceAssociationId');

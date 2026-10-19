@@ -76,7 +76,7 @@ import 'application_fallback_public_client_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationFallbackPublicClient(ctx, "example", &azuread.ApplicationFallbackPublicClientArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			Enabled:       pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -87,7 +87,7 @@ import 'application_fallback_public_client_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -95,11 +95,17 @@ import 'application_fallback_public_client_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_applicationregistration" "example" {
+/// resource "azuread_application_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_applicationfallbackpublicclient" "example" {
-///   application_id = azuread_applicationregistration.example.id
+/// resource "azuread_application_fallback_public_client" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_id = azuread_application_registration.example.id
 ///   enabled        = true
 /// }
 /// ```
@@ -180,7 +186,7 @@ class ApplicationFallbackPublicClient extends pulumi.CustomResource {
           'azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     enabled = registerOutput<bool?>('enabled');
@@ -191,11 +197,12 @@ class ApplicationFallbackPublicClient extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationFallbackPublicClientState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationFallbackPublicClient._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -209,6 +216,19 @@ class ApplicationFallbackPublicClient extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    applicationId = registerOutput<String>('applicationId');
+    enabled = registerOutput<bool?>('enabled');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationFallbackPublicClient] resource.
+  ApplicationFallbackPublicClient.reference(String urn)
+    : super(
+        'azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationId = registerOutput<String>('applicationId');
     enabled = registerOutput<bool?>('enabled');
   }

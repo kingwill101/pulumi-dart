@@ -114,7 +114,7 @@ import 'access_package_catalog_role_assignment_state.dart';
 /// 		_, err = azuread.NewAccessPackageCatalogRoleAssignment(ctx, "example", &azuread.AccessPackageCatalogRoleAssignmentArgs{
 /// 			RoleId:            pulumi.String(exampleGetAccessPackageCatalogRole.ObjectId),
 /// 			PrincipalObjectId: pulumi.String(example.ObjectId),
-/// 			CatalogId:         exampleAccessPackageCatalog.ID(),
+/// 			CatalogId:         exampleAccessPackageCatalog.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -124,7 +124,7 @@ import 'access_package_catalog_role_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -132,21 +132,27 @@ import 'access_package_catalog_role_assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getuser" "example" {
+/// data "azuread_user" "example" {
 ///   user_principal_name = "jdoe@example.com"
 /// }
-/// data "azuread_getaccesspackagecatalogrole" "exampleGetAccessPackageCatalogRole" {
+/// data "azuread_access_package_catalog_role" "exampleGetAccessPackageCatalogRole" {
 ///   display_name = "Catalog owner"
 /// }
 ///
-/// resource "azuread_accesspackagecatalog" "example" {
+/// resource "azuread_access_package_catalog" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example-access-package-catalog"
 ///   description  = "Example access package catalog"
 /// }
-/// resource "azuread_accesspackagecatalogroleassignment" "example" {
-///   role_id             = data.azuread_getaccesspackagecatalogrole.exampleGetAccessPackageCatalogRole.object_id
-///   principal_object_id = data.azuread_getuser.example.object_id
-///   catalog_id          = azuread_accesspackagecatalog.example.id
+/// resource "azuread_access_package_catalog_role_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   role_id             = data.azuread_access_package_catalog_role.exampleGetAccessPackageCatalogRole.object_id
+///   principal_object_id = data.azuread_user.example.object_id
+///   catalog_id          = azuread_access_package_catalog.example.id
 /// }
 /// ```
 /// ```java
@@ -253,7 +259,7 @@ class AccessPackageCatalogRoleAssignment extends pulumi.CustomResource {
           'azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     principalObjectId = registerOutput<String>('principalObjectId');
@@ -265,11 +271,12 @@ class AccessPackageCatalogRoleAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPackageCatalogRoleAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPackageCatalogRoleAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -283,6 +290,20 @@ class AccessPackageCatalogRoleAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    catalogId = registerOutput<String>('catalogId');
+    principalObjectId = registerOutput<String>('principalObjectId');
+    roleId = registerOutput<String>('roleId');
+  }
+
+  /// Creates a typed reference to an existing [AccessPackageCatalogRoleAssignment] resource.
+  AccessPackageCatalogRoleAssignment.reference(String urn)
+    : super(
+        'azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     catalogId = registerOutput<String>('catalogId');
     principalObjectId = registerOutput<String>('principalObjectId');
     roleId = registerOutput<String>('roleId');

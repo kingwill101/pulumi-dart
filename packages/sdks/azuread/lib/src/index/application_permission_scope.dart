@@ -111,7 +111,7 @@ import 'application_permission_scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -122,12 +122,21 @@ import 'application_permission_scope_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_applicationregistration" "example" {
+/// resource "azuread_application_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
 /// resource "random_uuid" "example_administer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "azuread_applicationpermissionscope" "example" {
+/// resource "azuread_application_permission_scope" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id             = test.id
 ///   scope_id                   = random_uuid.example_administer.id
 ///   value                      = "administer"
@@ -166,8 +175,8 @@ import 'application_permission_scope_state.dart';
 ///         var exampleAdminister = new Uuid("exampleAdminister");
 ///
 ///         var exampleApplicationPermissionScope = new ApplicationPermissionScope("exampleApplicationPermissionScope", ApplicationPermissionScopeArgs.builder()
-///             .applicationId(test.id())
-///             .scopeId(exampleAdminister.id())
+///             .applicationId(test.get("id"))
+///             .scopeId(exampleAdminister.get("id"))
 ///             .value("administer")
 ///             .adminConsentDescription("Administer the application")
 ///             .adminConsentDisplayName("Administer")
@@ -253,7 +262,7 @@ import 'application_permission_scope_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationPermissionScope(ctx, "example", &azuread.ApplicationPermissionScopeArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -263,7 +272,7 @@ import 'application_permission_scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -272,9 +281,15 @@ import 'application_permission_scope_state.dart';
 /// }
 ///
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_applicationpermissionscope" "example" {
+/// resource "azuread_application_permission_scope" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = azuread_application.example.id
 /// }
 /// ```
@@ -367,7 +382,7 @@ class ApplicationPermissionScope extends pulumi.CustomResource {
           'azuread:index/applicationPermissionScope:ApplicationPermissionScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     adminConsentDescription = registerOutput<String>('adminConsentDescription');
     adminConsentDisplayName = registerOutput<String>('adminConsentDisplayName');
@@ -384,11 +399,12 @@ class ApplicationPermissionScope extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationPermissionScopeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationPermissionScope._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -402,6 +418,25 @@ class ApplicationPermissionScope extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    adminConsentDescription = registerOutput<String>('adminConsentDescription');
+    adminConsentDisplayName = registerOutput<String>('adminConsentDisplayName');
+    applicationId = registerOutput<String>('applicationId');
+    scopeId = registerOutput<String>('scopeId');
+    type = registerOutput<String?>('type');
+    userConsentDescription = registerOutput<String?>('userConsentDescription');
+    userConsentDisplayName = registerOutput<String?>('userConsentDisplayName');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationPermissionScope] resource.
+  ApplicationPermissionScope.reference(String urn)
+    : super(
+        'azuread:index/applicationPermissionScope:ApplicationPermissionScope',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     adminConsentDescription = registerOutput<String>('adminConsentDescription');
     adminConsentDisplayName = registerOutput<String>('adminConsentDisplayName');
     applicationId = registerOutput<String>('applicationId');

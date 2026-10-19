@@ -110,7 +110,7 @@ import 'service_principal_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewServicePrincipalCertificate(ctx, "example", &azuread.ServicePrincipalCertificateArgs{
-/// 			ServicePrincipalId: exampleServicePrincipal.ID(),
+/// 			ServicePrincipalId: exampleServicePrincipal.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:               pulumi.String("AsymmetricX509Cert"),
 /// 			Value:              pulumi.String(invokeFile.Result),
 /// 			EndDate:            pulumi.String("2021-05-01T01:02:03Z"),
@@ -123,7 +123,7 @@ import 'service_principal_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -135,13 +135,22 @@ import 'service_principal_certificate_state.dart';
 /// }
 ///
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_serviceprincipal" "example" {
+/// resource "azuread_service_principal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_id = azuread_application.example.client_id
 /// }
-/// resource "azuread_serviceprincipalcertificate" "example" {
-///   service_principal_id = azuread_serviceprincipal.example.id
+/// resource "azuread_service_principal_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_principal_id = azuread_service_principal.example.id
 ///   type                 = "AsymmetricX509Cert"
 ///   value                = file("cert.pem")
 ///   end_date             = "2021-05-01T01:02:03Z"
@@ -317,7 +326,7 @@ import 'service_principal_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		invokeBase64encode, err := std.Base64encode(ctx, &std.Base64encodeArgs{
-/// 			Input: std.File(ctx, &std.FileArgs{
+/// 			Input: std.File(ctx, std.FileArgs{
 /// 				Input: "cert.der",
 /// 			}, nil).Result,
 /// 		}, nil)
@@ -325,7 +334,7 @@ import 'service_principal_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewServicePrincipalCertificate(ctx, "example", &azuread.ServicePrincipalCertificateArgs{
-/// 			ServicePrincipalId: exampleServicePrincipal.ID(),
+/// 			ServicePrincipalId: exampleServicePrincipal.ID().ToIDOutput().ToStringOutput(),
 /// 			Type:               pulumi.String("AsymmetricX509Cert"),
 /// 			Encoding:           pulumi.String("base64"),
 /// 			Value:              pulumi.String(invokeBase64encode.Result),
@@ -339,7 +348,7 @@ import 'service_principal_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -351,13 +360,22 @@ import 'service_principal_certificate_state.dart';
 /// }
 ///
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_serviceprincipal" "example" {
+/// resource "azuread_service_principal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_id = azuread_application.example.client_id
 /// }
-/// resource "azuread_serviceprincipalcertificate" "example" {
-///   service_principal_id = azuread_serviceprincipal.example.id
+/// resource "azuread_service_principal_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service_principal_id = azuread_service_principal.example.id
 ///   type                 = "AsymmetricX509Cert"
 ///   encoding             = "base64"
 ///   value                = base64encode(file("cert.der"))
@@ -491,7 +509,8 @@ class ServicePrincipalCertificate extends pulumi.CustomResource {
           'azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
+          additionalSecretOutputs: const ['value'],
         ) {
     encoding = registerOutput<String?>('encoding');
     endDate = registerOutput<String>('endDate');
@@ -500,7 +519,7 @@ class ServicePrincipalCertificate extends pulumi.CustomResource {
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
     startDate = registerOutput<String>('startDate');
     type = registerOutput<String?>('type');
-    value = registerOutput<String>('value');
+    value = registerOutput<String>('value', isSecret: true);
   }
 
   /// Gets an existing [ServicePrincipalCertificate] resource's state with the given [name] and [id].
@@ -508,11 +527,12 @@ class ServicePrincipalCertificate extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServicePrincipalCertificateState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServicePrincipalCertificate._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -533,6 +553,26 @@ class ServicePrincipalCertificate extends pulumi.CustomResource {
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
     startDate = registerOutput<String>('startDate');
     type = registerOutput<String?>('type');
-    value = registerOutput<String>('value');
+    value = registerOutput<String>('value', isSecret: true);
+  }
+
+  /// Creates a typed reference to an existing [ServicePrincipalCertificate] resource.
+  ServicePrincipalCertificate.reference(String urn)
+    : super(
+        'azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['value'],
+        isResourceReference: true,
+      ) {
+    encoding = registerOutput<String?>('encoding');
+    endDate = registerOutput<String>('endDate');
+    endDateRelative = registerOutput<String?>('endDateRelative');
+    keyId = registerOutput<String>('keyId');
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
+    startDate = registerOutput<String>('startDate');
+    type = registerOutput<String?>('type');
+    value = registerOutput<String>('value', isSecret: true);
   }
 }

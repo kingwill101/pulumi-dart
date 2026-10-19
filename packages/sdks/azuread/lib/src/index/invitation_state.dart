@@ -6,19 +6,19 @@ import 'invitation_message.dart';
 /// Input properties used for looking up and filtering Invitation resources.
 class InvitationState {
   /// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
-  final pulumi.Input<InvitationMessage>? message;
+  final pulumi.Input<InvitationMessage?>? message;
   /// The URL the user can use to redeem their invitation.
-  final pulumi.Input<String>? redeemUrl;
+  final pulumi.Input<String?>? redeemUrl;
   /// The URL that the user should be redirected to once the invitation is redeemed.
-  final pulumi.Input<String>? redirectUrl;
+  final pulumi.Input<String?>? redirectUrl;
   /// The display name of the user being invited.
-  final pulumi.Input<String>? userDisplayName;
+  final pulumi.Input<String?>? userDisplayName;
   /// The email address of the user being invited.
-  final pulumi.Input<String>? userEmailAddress;
+  final pulumi.Input<String?>? userEmailAddress;
   /// Object ID of the invited user.
-  final pulumi.Input<String>? userId;
+  final pulumi.Input<String?>? userId;
   /// The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
-  final pulumi.Input<String>? userType;
+  final pulumi.Input<String?>? userType;
 
   /// Creates a new [InvitationState].
   /// [message] A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.

@@ -12,16 +12,16 @@ import 'group_role_management_policy_notification_rules.dart';
 /// {@macro pulumi_index_group_role_management_policy_group_role_management_policy_args_doc}
 class GroupRoleManagementPolicyArgs {
   /// An `activationRules` block as defined below.
-  final pulumi.Input<GroupRoleManagementPolicyActivationRules>? activationRules;
+  final pulumi.Input<GroupRoleManagementPolicyActivationRules?>? activationRules;
   /// An `activeAssignmentRules` block as defined below.
-  final pulumi.Input<GroupRoleManagementPolicyActiveAssignmentRules>? activeAssignmentRules;
+  final pulumi.Input<GroupRoleManagementPolicyActiveAssignmentRules?>? activeAssignmentRules;
   /// An `eligibleAssignmentRules` block as defined below.
-  final pulumi.Input<GroupRoleManagementPolicyEligibleAssignmentRules>? eligibleAssignmentRules;
+  final pulumi.Input<GroupRoleManagementPolicyEligibleAssignmentRules?>? eligibleAssignmentRules;
   /// The ID of the Azure AD group for which the policy applies.
   final pulumi.Input<String> groupId;
   /// A `notificationRules` block as defined below.
-  final pulumi.Input<GroupRoleManagementPolicyNotificationRules>? notificationRules;
-  /// The type of assignment this policy coveres. Can be either `member` or `owner`.
+  final pulumi.Input<GroupRoleManagementPolicyNotificationRules?>? notificationRules;
+  /// The type of assignment this policy covers. Can be either `member` or `owner`.
   final pulumi.Input<String> roleId;
 
   /// Creates a new [GroupRoleManagementPolicyArgs].
@@ -30,7 +30,7 @@ class GroupRoleManagementPolicyArgs {
   /// [eligibleAssignmentRules] An `eligibleAssignmentRules` block as defined below.
   /// [groupId] The ID of the Azure AD group for which the policy applies.
   /// [notificationRules] A `notificationRules` block as defined below.
-  /// [roleId] The type of assignment this policy coveres. Can be either `member` or `owner`.
+  /// [roleId] The type of assignment this policy covers. Can be either `member` or `owner`.
   const GroupRoleManagementPolicyArgs({
     this.activationRules,
     this.activeAssignmentRules,

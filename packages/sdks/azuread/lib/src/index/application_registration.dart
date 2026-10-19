@@ -100,7 +100,7 @@ import 'application_registration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -108,7 +108,10 @@ import 'application_registration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_applicationregistration" "example" {
+/// resource "azuread_application_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "Example Application"
 ///   description           = "My example application"
 ///   sign_in_audience      = "AzureADMyOrg"
@@ -232,13 +235,13 @@ class ApplicationRegistration extends pulumi.CustomResource {
           'azuread:index/applicationRegistration:ApplicationRegistration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     clientId = registerOutput<String>('clientId');
     description = registerOutput<String?>('description');
     disabledByMicrosoft = registerOutput<String>('disabledByMicrosoft');
     displayName = registerOutput<String>('displayName');
-    groupMembershipClaims = registerOutput<List<String>?>('groupMembershipClaims');
+    groupMembershipClaims = registerOutput<List<String>?>('groupMembershipClaims', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     homepageUrl = registerOutput<String?>('homepageUrl');
     implicitAccessTokenIssuanceEnabled = registerOutput<bool?>('implicitAccessTokenIssuanceEnabled');
     implicitIdTokenIssuanceEnabled = registerOutput<bool?>('implicitIdTokenIssuanceEnabled');
@@ -260,11 +263,12 @@ class ApplicationRegistration extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationRegistrationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationRegistration._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -282,7 +286,37 @@ class ApplicationRegistration extends pulumi.CustomResource {
     description = registerOutput<String?>('description');
     disabledByMicrosoft = registerOutput<String>('disabledByMicrosoft');
     displayName = registerOutput<String>('displayName');
-    groupMembershipClaims = registerOutput<List<String>?>('groupMembershipClaims');
+    groupMembershipClaims = registerOutput<List<String>?>('groupMembershipClaims', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    homepageUrl = registerOutput<String?>('homepageUrl');
+    implicitAccessTokenIssuanceEnabled = registerOutput<bool?>('implicitAccessTokenIssuanceEnabled');
+    implicitIdTokenIssuanceEnabled = registerOutput<bool?>('implicitIdTokenIssuanceEnabled');
+    logoutUrl = registerOutput<String?>('logoutUrl');
+    marketingUrl = registerOutput<String?>('marketingUrl');
+    notes = registerOutput<String?>('notes');
+    objectId = registerOutput<String>('objectId');
+    privacyStatementUrl = registerOutput<String?>('privacyStatementUrl');
+    publisherDomain = registerOutput<String>('publisherDomain');
+    requestedAccessTokenVersion = registerOutput<int?>('requestedAccessTokenVersion');
+    serviceManagementReference = registerOutput<String?>('serviceManagementReference');
+    signInAudience = registerOutput<String?>('signInAudience');
+    supportUrl = registerOutput<String?>('supportUrl');
+    termsOfServiceUrl = registerOutput<String?>('termsOfServiceUrl');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationRegistration] resource.
+  ApplicationRegistration.reference(String urn)
+    : super(
+        'azuread:index/applicationRegistration:ApplicationRegistration',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clientId = registerOutput<String>('clientId');
+    description = registerOutput<String?>('description');
+    disabledByMicrosoft = registerOutput<String>('disabledByMicrosoft');
+    displayName = registerOutput<String>('displayName');
+    groupMembershipClaims = registerOutput<List<String>?>('groupMembershipClaims', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     homepageUrl = registerOutput<String?>('homepageUrl');
     implicitAccessTokenIssuanceEnabled = registerOutput<bool?>('implicitAccessTokenIssuanceEnabled');
     implicitIdTokenIssuanceEnabled = registerOutput<bool?>('implicitIdTokenIssuanceEnabled');

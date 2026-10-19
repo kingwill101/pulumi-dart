@@ -100,7 +100,7 @@ import 'directory_role_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -108,16 +108,22 @@ import 'directory_role_member_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getuser" "example" {
+/// data "azuread_user" "example" {
 ///   user_principal_name = "jdoe@example.com"
 /// }
 ///
-/// resource "azuread_directoryrole" "example" {
+/// resource "azuread_directory_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Security administrator"
 /// }
-/// resource "azuread_directoryrolemember" "example" {
-///   role_object_id   = azuread_directoryrole.example.object_id
-///   member_object_id = data.azuread_getuser.example.object_id
+/// resource "azuread_directory_role_member" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   role_object_id   = azuread_directory_role.example.object_id
+///   member_object_id = data.azuread_user.example.object_id
 /// }
 /// ```
 /// ```java
@@ -210,7 +216,7 @@ class DirectoryRoleMember extends pulumi.CustomResource {
           'azuread:index/directoryRoleMember:DirectoryRoleMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     memberObjectId = registerOutput<String?>('memberObjectId');
     roleObjectId = registerOutput<String?>('roleObjectId');
@@ -221,11 +227,12 @@ class DirectoryRoleMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DirectoryRoleMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DirectoryRoleMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -239,6 +246,19 @@ class DirectoryRoleMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    memberObjectId = registerOutput<String?>('memberObjectId');
+    roleObjectId = registerOutput<String?>('roleObjectId');
+  }
+
+  /// Creates a typed reference to an existing [DirectoryRoleMember] resource.
+  DirectoryRoleMember.reference(String urn)
+    : super(
+        'azuread:index/directoryRoleMember:DirectoryRoleMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     memberObjectId = registerOutput<String?>('memberObjectId');
     roleObjectId = registerOutput<String?>('roleObjectId');
   }

@@ -5,19 +5,19 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering ApplicationFederatedIdentityCredential resources.
 class ApplicationFederatedIdentityCredentialState {
   /// The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
-  final pulumi.Input<String>? applicationId;
+  final pulumi.Input<String?>? applicationId;
   /// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
-  final pulumi.Input<List<String>>? audiences;
+  final pulumi.Input<List<String>?>? audiences;
   /// A UUID used to uniquely identify this federated identity credential.
-  final pulumi.Input<String>? credentialId;
+  final pulumi.Input<String?>? credentialId;
   /// A description for the federated identity credential.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A unique display name for the federated identity credential. Changing this forces a new resource to be created.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
-  final pulumi.Input<String>? issuer;
+  final pulumi.Input<String?>? issuer;
   /// The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
-  final pulumi.Input<String>? subject;
+  final pulumi.Input<String?>? subject;
 
   /// Creates a new [ApplicationFederatedIdentityCredentialState].
   /// [applicationId] The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.

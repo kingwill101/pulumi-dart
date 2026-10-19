@@ -6,13 +6,13 @@ import 'get_directory_roles_role.dart';
 /// Result data returned by getDirectoryRoles.
 class GetDirectoryRolesResult {
   /// The provider-assigned unique ID for this managed resource.
-  final String id;
+  final String? id;
   /// The object IDs of the roles.
-  final List<String> objectIds;
+  final List<String>? objectIds;
   /// A list of users. Each `role` object provides the attributes documented below.
-  final List<GetDirectoryRolesRole> roles;
+  final List<GetDirectoryRolesRole>? roles;
   /// The template IDs of the roles.
-  final List<String> templateIds;
+  final List<String>? templateIds;
 
   /// Creates a new [GetDirectoryRolesResult].
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -20,27 +20,27 @@ class GetDirectoryRolesResult {
   /// [roles] A list of users. Each `role` object provides the attributes documented below.
   /// [templateIds] The template IDs of the roles.
   const GetDirectoryRolesResult({
-    required this.id,
-    required this.objectIds,
-    required this.roles,
-    required this.templateIds,
+    this.id,
+    this.objectIds,
+    this.roles,
+    this.templateIds,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
-      'objectIds': objectIds,
-      'roles': pulumi.Input.encodeList<GetDirectoryRolesRole, Map<String, dynamic>>(roles, (value) => value.toMap()),
-      'templateIds': templateIds,
+      'id': ?id,
+      'objectIds': ?objectIds,
+      'roles': ?(() { final guardedValue = roles; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetDirectoryRolesRole, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'templateIds': ?templateIds,
     };
   }
 
   factory GetDirectoryRolesResult.fromMap(Map<String, dynamic> map) {
     return GetDirectoryRolesResult(
-      id: map['id'] as String,
-      objectIds: (map['objectIds'] as List).cast<String>(),
-      roles: pulumi.Input.decodeList<GetDirectoryRolesRole>(map['roles']!, (value) => GetDirectoryRolesRole.fromMap((value as Map).cast<String, dynamic>())),
-      templateIds: (map['templateIds'] as List).cast<String>(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      objectIds: (() { final guardedValue = map['objectIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      roles: (() { final guardedValue = map['roles']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetDirectoryRolesRole>(guardedValue, (value) => GetDirectoryRolesRole.fromMap((value as Map).cast<String, dynamic>())); })(),
+      templateIds: (() { final guardedValue = map['templateIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }
 }

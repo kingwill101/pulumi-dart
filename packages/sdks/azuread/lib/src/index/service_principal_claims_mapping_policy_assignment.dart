@@ -70,7 +70,7 @@ import 'service_principal_claims_mapping_policy_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -78,7 +78,10 @@ import 'service_principal_claims_mapping_policy_assignment_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_serviceprincipalclaimsmappingpolicyassignment" "app" {
+/// resource "azuread_service_principal_claims_mapping_policy_assignment" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   claims_mapping_policy_id = myPolicy.id
 ///   service_principal_id     = myPrincipal.id
 /// }
@@ -105,8 +108,8 @@ import 'service_principal_claims_mapping_policy_assignment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var app = new ServicePrincipalClaimsMappingPolicyAssignment("app", ServicePrincipalClaimsMappingPolicyAssignmentArgs.builder()
-///             .claimsMappingPolicyId(myPolicy.id())
-///             .servicePrincipalId(myPrincipal.id())
+///             .claimsMappingPolicyId(myPolicy.get("id"))
+///             .servicePrincipalId(myPrincipal.get("id"))
 ///             .build());
 ///
 ///     }
@@ -147,7 +150,7 @@ class ServicePrincipalClaimsMappingPolicyAssignment extends pulumi.CustomResourc
           'azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     claimsMappingPolicyId = registerOutput<String>('claimsMappingPolicyId');
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
@@ -158,11 +161,12 @@ class ServicePrincipalClaimsMappingPolicyAssignment extends pulumi.CustomResourc
     String name,
     pulumi.Input<String> id, {
     ServicePrincipalClaimsMappingPolicyAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ServicePrincipalClaimsMappingPolicyAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -176,6 +180,19 @@ class ServicePrincipalClaimsMappingPolicyAssignment extends pulumi.CustomResourc
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    claimsMappingPolicyId = registerOutput<String>('claimsMappingPolicyId');
+    servicePrincipalId = registerOutput<String>('servicePrincipalId');
+  }
+
+  /// Creates a typed reference to an existing [ServicePrincipalClaimsMappingPolicyAssignment] resource.
+  ServicePrincipalClaimsMappingPolicyAssignment.reference(String urn)
+    : super(
+        'azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     claimsMappingPolicyId = registerOutput<String>('claimsMappingPolicyId');
     servicePrincipalId = registerOutput<String>('servicePrincipalId');
   }

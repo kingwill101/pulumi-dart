@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ServicePrincipalFeatureTag {
   /// Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
-  final pulumi.Input<bool>? customSingleSignOn;
+  final pulumi.Input<bool?>? customSingleSignOn;
   /// Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
-  final pulumi.Input<bool>? enterprise;
+  final pulumi.Input<bool?>? enterprise;
   /// Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
-  final pulumi.Input<bool>? gallery;
+  final pulumi.Input<bool?>? gallery;
   /// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
-  final pulumi.Input<bool>? hide;
+  final pulumi.Input<bool?>? hide;
 
   /// Creates a new [ServicePrincipalFeatureTag].
   /// [customSingleSignOn] Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.

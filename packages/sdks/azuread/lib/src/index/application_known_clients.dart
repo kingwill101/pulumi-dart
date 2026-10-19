@@ -92,7 +92,7 @@ import 'application_known_clients_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationKnownClients(ctx, "example", &azuread.ApplicationKnownClientsArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			KnownClientIds: pulumi.StringArray{
 /// 				client.ClientId,
 /// 			},
@@ -105,7 +105,7 @@ import 'application_known_clients_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -113,15 +113,24 @@ import 'application_known_clients_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_applicationregistration" "example" {
+/// resource "azuread_application_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_applicationregistration" "client" {
+/// resource "azuread_application_registration" "client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example client"
 /// }
-/// resource "azuread_applicationknownclients" "example" {
-///   application_id   = azuread_applicationregistration.example.id
-///   known_client_ids = [azuread_applicationregistration.client.client_id]
+/// resource "azuread_application_known_clients" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_id   = azuread_application_registration.example.id
+///   known_client_ids = [azuread_application_registration.client.client_id]
 /// }
 /// ```
 /// ```java
@@ -208,10 +217,10 @@ class ApplicationKnownClients extends pulumi.CustomResource {
           'azuread:index/applicationKnownClients:ApplicationKnownClients',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
-    knownClientIds = registerOutput<List<String>>('knownClientIds');
+    knownClientIds = registerOutput<List<String>>('knownClientIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ApplicationKnownClients] resource's state with the given [name] and [id].
@@ -219,11 +228,12 @@ class ApplicationKnownClients extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationKnownClientsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationKnownClients._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -238,6 +248,19 @@ class ApplicationKnownClients extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     applicationId = registerOutput<String>('applicationId');
-    knownClientIds = registerOutput<List<String>>('knownClientIds');
+    knownClientIds = registerOutput<List<String>>('knownClientIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ApplicationKnownClients] resource.
+  ApplicationKnownClients.reference(String urn)
+    : super(
+        'azuread:index/applicationKnownClients:ApplicationKnownClients',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    knownClientIds = registerOutput<List<String>>('knownClientIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'access_package_assignment_policy_approval_settings.dart';
 import 'access_package_assignment_policy_args.dart';
 import 'access_package_assignment_policy_assignment_review_settings.dart';
+import 'access_package_assignment_policy_question.dart';
 import 'access_package_assignment_policy_requestor_settings.dart';
 import 'access_package_assignment_policy_state.dart';
 
@@ -215,7 +216,7 @@ import 'access_package_assignment_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		exampleAccessPackage, err := azuread.NewAccessPackage(ctx, "example", &azuread.AccessPackageArgs{
-/// 			CatalogId:   exampleAccessPackageCatalog.ID(),
+/// 			CatalogId:   exampleAccessPackageCatalog.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName: pulumi.String("access-package"),
 /// 			Description: pulumi.String("Access Package"),
 /// 		})
@@ -223,7 +224,7 @@ import 'access_package_assignment_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewAccessPackageAssignmentPolicy(ctx, "example", &azuread.AccessPackageAssignmentPolicyArgs{
-/// 			AccessPackageId: exampleAccessPackage.ID(),
+/// 			AccessPackageId: exampleAccessPackage.ID().ToIDOutput().ToStringOutput(),
 /// 			DisplayName:     pulumi.String("assignment-policy"),
 /// 			Description:     pulumi.String("My assignment policy"),
 /// 			DurationInDays:  pulumi.Int(90),
@@ -267,7 +268,7 @@ import 'access_package_assignment_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -276,20 +277,32 @@ import 'access_package_assignment_policy_state.dart';
 /// }
 ///
 /// resource "azuread_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "group-name"
 ///   security_enabled = true
 /// }
-/// resource "azuread_accesspackagecatalog" "example" {
+/// resource "azuread_access_package_catalog" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example-catalog"
 ///   description  = "Example catalog"
 /// }
-/// resource "azuread_accesspackage" "example" {
-///   catalog_id   = azuread_accesspackagecatalog.example.id
+/// resource "azuread_access_package" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   catalog_id   = azuread_access_package_catalog.example.id
 ///   display_name = "access-package"
 ///   description  = "Access Package"
 /// }
-/// resource "azuread_accesspackageassignmentpolicy" "example" {
-///   access_package_id = azuread_accesspackage.example.id
+/// resource "azuread_access_package_assignment_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   access_package_id = azuread_access_package.example.id
 ///   display_name      = "assignment-policy"
 ///   description       = "My assignment policy"
 ///   duration_in_days  = 90
@@ -299,10 +312,10 @@ import 'access_package_assignment_policy_state.dart';
 ///   approval_settings = {
 ///     approval_required = true
 ///     approval_stages = [{
-///       "approvalTimeoutInDays" = 14
-///       "primaryApprovers" = [{
-///         "objectId"    = azuread_group.example.object_id
-///         "subjectType" = "groupMembers"
+///       approval_timeout_in_days = 14
+///       primary_approvers = [{
+///         object_id    = azuread_group.example.object_id
+///         subject_type = "groupMembers"
 ///       }]
 ///     }]
 ///   }
@@ -479,7 +492,7 @@ class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
   /// Whether users will be able to request extension of their access to this package before their access expires.
   late final pulumi.Output<bool?> extensionEnabled;
   /// One or more `question` blocks for the requestor, as documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> questions;
+  late final pulumi.Output<List<AccessPackageAssignmentPolicyQuestion>?> questions;
   /// A `requestorSettings` block to configure the users who can request access, as documented below.
   late final pulumi.Output<AccessPackageAssignmentPolicyRequestorSettings?> requestorSettings;
 
@@ -495,7 +508,7 @@ class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
           'azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     accessPackageId = registerOutput<String>('accessPackageId');
     approvalSettings = registerOutput<AccessPackageAssignmentPolicyApprovalSettings?>('approvalSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPackageAssignmentPolicyApprovalSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -505,7 +518,7 @@ class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
     durationInDays = registerOutput<int?>('durationInDays');
     expirationDate = registerOutput<String?>('expirationDate');
     extensionEnabled = registerOutput<bool?>('extensionEnabled');
-    questions = registerOutput<List<Map<String, dynamic>>?>('questions');
+    questions = registerOutput<List<AccessPackageAssignmentPolicyQuestion>?>('questions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestion>(guardedValue, (value) => AccessPackageAssignmentPolicyQuestion.fromMap((value as Map).cast<String, dynamic>())); });
     requestorSettings = registerOutput<AccessPackageAssignmentPolicyRequestorSettings?>('requestorSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPackageAssignmentPolicyRequestorSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 
@@ -514,11 +527,12 @@ class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPackageAssignmentPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPackageAssignmentPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -540,7 +554,28 @@ class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
     durationInDays = registerOutput<int?>('durationInDays');
     expirationDate = registerOutput<String?>('expirationDate');
     extensionEnabled = registerOutput<bool?>('extensionEnabled');
-    questions = registerOutput<List<Map<String, dynamic>>?>('questions');
+    questions = registerOutput<List<AccessPackageAssignmentPolicyQuestion>?>('questions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestion>(guardedValue, (value) => AccessPackageAssignmentPolicyQuestion.fromMap((value as Map).cast<String, dynamic>())); });
+    requestorSettings = registerOutput<AccessPackageAssignmentPolicyRequestorSettings?>('requestorSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPackageAssignmentPolicyRequestorSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AccessPackageAssignmentPolicy] resource.
+  AccessPackageAssignmentPolicy.reference(String urn)
+    : super(
+        'azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accessPackageId = registerOutput<String>('accessPackageId');
+    approvalSettings = registerOutput<AccessPackageAssignmentPolicyApprovalSettings?>('approvalSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPackageAssignmentPolicyApprovalSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    assignmentReviewSettings = registerOutput<AccessPackageAssignmentPolicyAssignmentReviewSettings?>('assignmentReviewSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPackageAssignmentPolicyAssignmentReviewSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    durationInDays = registerOutput<int?>('durationInDays');
+    expirationDate = registerOutput<String?>('expirationDate');
+    extensionEnabled = registerOutput<bool?>('extensionEnabled');
+    questions = registerOutput<List<AccessPackageAssignmentPolicyQuestion>?>('questions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessPackageAssignmentPolicyQuestion>(guardedValue, (value) => AccessPackageAssignmentPolicyQuestion.fromMap((value as Map).cast<String, dynamic>())); });
     requestorSettings = registerOutput<AccessPackageAssignmentPolicyRequestorSettings?>('requestorSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessPackageAssignmentPolicyRequestorSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

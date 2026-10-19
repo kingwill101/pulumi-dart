@@ -6,17 +6,17 @@ import 'group_role_management_policy_notification_rules_eligible_activations.dar
 import 'group_role_management_policy_notification_rules_eligible_assignments.dart';
 
 class GroupRoleManagementPolicyNotificationRules {
-  /// A `notificationTarget` block as defined below to configure notfications on active role assignments.
-  final pulumi.Input<GroupRoleManagementPolicyNotificationRulesActiveAssignments>? activeAssignments;
+  /// A `notificationTarget` block as defined below to configure notifications on active role assignments.
+  final pulumi.Input<GroupRoleManagementPolicyNotificationRulesActiveAssignments?>? activeAssignments;
   /// A `notificationTarget` block as defined below for configuring notifications on activation of eligible role.
-  final pulumi.Input<GroupRoleManagementPolicyNotificationRulesEligibleActivations>? eligibleActivations;
+  final pulumi.Input<GroupRoleManagementPolicyNotificationRulesEligibleActivations?>? eligibleActivations;
   /// A `notificationTarget` block as defined below to configure notification on eligible role assignments.
   ///
   /// At least one `notificationTarget` block must be provided.
-  final pulumi.Input<GroupRoleManagementPolicyNotificationRulesEligibleAssignments>? eligibleAssignments;
+  final pulumi.Input<GroupRoleManagementPolicyNotificationRulesEligibleAssignments?>? eligibleAssignments;
 
   /// Creates a new [GroupRoleManagementPolicyNotificationRules].
-  /// [activeAssignments] A `notificationTarget` block as defined below to configure notfications on active role assignments.
+  /// [activeAssignments] A `notificationTarget` block as defined below to configure notifications on active role assignments.
   /// [eligibleActivations] A `notificationTarget` block as defined below for configuring notifications on activation of eligible role.
   /// [eligibleAssignments] A `notificationTarget` block as defined below to configure notification on eligible role assignments.
   const GroupRoleManagementPolicyNotificationRules({

@@ -5,11 +5,11 @@ import 'access_package_assignment_policy_requestor_settings_requestor.dart';
 
 class AccessPackageAssignmentPolicyRequestorSettings {
   /// A block specifying the users who are allowed to request on this policy, as documented below.
-  final pulumi.Input<List<AccessPackageAssignmentPolicyRequestorSettingsRequestor>>? requestors;
+  final pulumi.Input<List<AccessPackageAssignmentPolicyRequestorSettingsRequestor>?>? requestors;
   /// Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
-  final pulumi.Input<bool>? requestsAccepted;
+  final pulumi.Input<bool?>? requestsAccepted;
   /// Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
-  final pulumi.Input<String>? scopeType;
+  final pulumi.Input<String?>? scopeType;
 
   /// Creates a new [AccessPackageAssignmentPolicyRequestorSettings].
   /// [requestors] A block specifying the users who are allowed to request on this policy, as documented below.

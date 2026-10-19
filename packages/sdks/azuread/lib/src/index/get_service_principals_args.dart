@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_service_principals_get_service_principals_args_doc}
 class GetServicePrincipalsArgs {
   /// A list of client IDs of the applications associated with the service principals.
-  final pulumi.Input<List<String>>? clientIds;
+  final pulumi.Input<List<String>?>? clientIds;
   /// A list of display names of the applications associated with the service principals.
-  final pulumi.Input<List<String>>? displayNames;
+  final pulumi.Input<List<String>?>? displayNames;
   /// Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
-  final pulumi.Input<bool>? ignoreMissing;
+  final pulumi.Input<bool?>? ignoreMissing;
   /// The object IDs of the service principals.
-  final pulumi.Input<List<String>>? objectIds;
+  final pulumi.Input<List<String>?>? objectIds;
   /// When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
   ///
   /// &gt; Either `returnAll`, or one of `clientIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
-  final pulumi.Input<bool>? returnAll;
+  final pulumi.Input<bool?>? returnAll;
 
   /// Creates a new [GetServicePrincipalsArgs].
   /// [clientIds] A list of client IDs of the applications associated with the service principals.

@@ -16,7 +16,7 @@ class ServicePrincipalDelegatedPermissionGrantArgs {
   /// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
   ///
   /// &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
-  final pulumi.Input<String>? userObjectId;
+  final pulumi.Input<String?>? userObjectId;
 
   /// Creates a new [ServicePrincipalDelegatedPermissionGrantArgs].
   /// [claimValues] A set of claim values for delegated permission scopes which should be included in access tokens for the resource.

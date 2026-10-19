@@ -103,7 +103,7 @@ import 'application_app_role_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationAppRole(ctx, "example_administer", &azuread.ApplicationAppRoleArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleId:        exampleAdministrator.Id,
 /// 			AllowedMemberTypes: pulumi.StringArray{
 /// 				pulumi.String("User"),
@@ -120,7 +120,7 @@ import 'application_app_role_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -131,13 +131,22 @@ import 'application_app_role_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_applicationregistration" "example" {
+/// resource "azuread_application_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
 /// resource "random_uuid" "example_administrator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "azuread_applicationapprole" "example_administer" {
-///   application_id       = azuread_applicationregistration.example.id
+/// resource "azuread_application_app_role" "example_administer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   application_id       = azuread_application_registration.example.id
 ///   role_id              = random_uuid.example_administrator.id
 ///   allowed_member_types = ["User"]
 ///   description          = "My role description"
@@ -177,7 +186,7 @@ import 'application_app_role_state.dart';
 ///
 ///         var exampleAdminister = new ApplicationAppRole("exampleAdminister", ApplicationAppRoleArgs.builder()
 ///             .applicationId(example.id())
-///             .roleId(exampleAdministrator.id())
+///             .roleId(exampleAdministrator.get("id"))
 ///             .allowedMemberTypes("User")
 ///             .description("My role description")
 ///             .displayName("Administer")
@@ -266,7 +275,7 @@ import 'application_app_role_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationAppRole(ctx, "example_administer", &azuread.ApplicationAppRoleArgs{
-/// 			ApplicationId: example.ID(),
+/// 			ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -276,7 +285,7 @@ import 'application_app_role_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -285,9 +294,15 @@ import 'application_app_role_state.dart';
 /// }
 ///
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azuread_applicationapprole" "example_administer" {
+/// resource "azuread_application_app_role" "example_administer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = azuread_application.example.id
 /// }
 /// ```
@@ -376,9 +391,9 @@ class ApplicationAppRoleResource extends pulumi.CustomResource {
           'azuread:index/applicationAppRole:ApplicationAppRole',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
-    allowedMemberTypes = registerOutput<List<String>>('allowedMemberTypes');
+    allowedMemberTypes = registerOutput<List<String>>('allowedMemberTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     applicationId = registerOutput<String>('applicationId');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
@@ -391,11 +406,12 @@ class ApplicationAppRoleResource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationAppRoleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationAppRoleResource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -409,7 +425,24 @@ class ApplicationAppRoleResource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    allowedMemberTypes = registerOutput<List<String>>('allowedMemberTypes');
+    allowedMemberTypes = registerOutput<List<String>>('allowedMemberTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    applicationId = registerOutput<String>('applicationId');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    roleId = registerOutput<String>('roleId');
+    value = registerOutput<String?>('value');
+  }
+
+  /// Creates a typed reference to an existing [ApplicationAppRoleResource] resource.
+  ApplicationAppRoleResource.reference(String urn)
+    : super(
+        'azuread:index/applicationAppRole:ApplicationAppRole',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allowedMemberTypes = registerOutput<List<String>>('allowedMemberTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     applicationId = registerOutput<String>('applicationId');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');

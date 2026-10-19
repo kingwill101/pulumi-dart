@@ -100,7 +100,7 @@ import 'group_without_members_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -108,12 +108,15 @@ import 'group_without_members_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getclientconfig" "current" {
+/// data "azuread_client_config" "current" {
 /// }
 ///
-/// resource "azuread_groupwithoutmembers" "example" {
+/// resource "azuread_group_without_members" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "example"
-///   owners           = [data.azuread_getclientconfig.current.object_id]
+///   owners           = [data.azuread_client_config.current.object_id]
 ///   security_enabled = true
 /// }
 /// ```
@@ -295,7 +298,7 @@ import 'group_without_members_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -303,22 +306,28 @@ import 'group_without_members_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getclientconfig" "current" {
+/// data "azuread_client_config" "current" {
 /// }
 ///
 /// resource "azuread_user" "group_owner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_principal_name = "example-group-owner@example.com"
 ///   display_name        = "Group Owner"
 ///   mail_nickname       = "example-group-owner"
 ///   password            = "SecretP@sswd99!"
 /// }
-/// resource "azuread_groupwithoutmembers" "example" {
+/// resource "azuread_group_without_members" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "example"
 ///   mail_enabled     = true
 ///   mail_nickname    = "ExampleGroup"
 ///   security_enabled = true
 ///   types            = ["Unified"]
-///   owners           = [data.azuread_getclientconfig.current.object_id, azuread_user.group_owner.object_id]
+///   owners           = [data.azuread_client_config.current.object_id, azuread_user.group_owner.object_id]
 /// }
 /// ```
 /// ```java
@@ -499,7 +508,7 @@ import 'group_without_members_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -507,12 +516,15 @@ import 'group_without_members_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getclientconfig" "current" {
+/// data "azuread_client_config" "current" {
 /// }
 ///
-/// resource "azuread_groupwithoutmembers" "example" {
+/// resource "azuread_group_without_members" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "MyGroup"
-///   owners           = [data.azuread_getclientconfig.current.object_id]
+///   owners           = [data.azuread_client_config.current.object_id]
 ///   security_enabled = true
 ///   types            = ["DynamicMembership"]
 ///   dynamic_membership = {
@@ -679,12 +691,12 @@ class GroupWithoutMembers extends pulumi.CustomResource {
           'azuread:index/groupWithoutMembers:GroupWithoutMembers',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
-    administrativeUnitIds = registerOutput<List<String>?>('administrativeUnitIds');
+    administrativeUnitIds = registerOutput<List<String>?>('administrativeUnitIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     assignableToRole = registerOutput<bool?>('assignableToRole');
     autoSubscribeNewMembers = registerOutput<bool>('autoSubscribeNewMembers');
-    behaviors = registerOutput<List<String>?>('behaviors');
+    behaviors = registerOutput<List<String>?>('behaviors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     dynamicMembership = registerOutput<GroupWithoutMembersDynamicMembership?>('dynamicMembership', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupWithoutMembersDynamicMembership.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -701,14 +713,14 @@ class GroupWithoutMembers extends pulumi.CustomResource {
     onpremisesSamAccountName = registerOutput<String>('onpremisesSamAccountName');
     onpremisesSecurityIdentifier = registerOutput<String>('onpremisesSecurityIdentifier');
     onpremisesSyncEnabled = registerOutput<bool>('onpremisesSyncEnabled');
-    owners = registerOutput<List<String>>('owners');
+    owners = registerOutput<List<String>>('owners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     preferredLanguage = registerOutput<String>('preferredLanguage');
     preventDuplicateNames = registerOutput<bool?>('preventDuplicateNames');
-    provisioningOptions = registerOutput<List<String>?>('provisioningOptions');
-    proxyAddresses = registerOutput<List<String>>('proxyAddresses');
+    provisioningOptions = registerOutput<List<String>?>('provisioningOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    proxyAddresses = registerOutput<List<String>>('proxyAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     securityEnabled = registerOutput<bool?>('securityEnabled');
     theme = registerOutput<String?>('theme');
-    types = registerOutput<List<String>?>('types');
+    types = registerOutput<List<String>?>('types', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     visibility = registerOutput<String>('visibility');
     writebackEnabled = registerOutput<bool?>('writebackEnabled');
   }
@@ -718,11 +730,12 @@ class GroupWithoutMembers extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupWithoutMembersState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GroupWithoutMembers._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -736,10 +749,10 @@ class GroupWithoutMembers extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    administrativeUnitIds = registerOutput<List<String>?>('administrativeUnitIds');
+    administrativeUnitIds = registerOutput<List<String>?>('administrativeUnitIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     assignableToRole = registerOutput<bool?>('assignableToRole');
     autoSubscribeNewMembers = registerOutput<bool>('autoSubscribeNewMembers');
-    behaviors = registerOutput<List<String>?>('behaviors');
+    behaviors = registerOutput<List<String>?>('behaviors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');
     dynamicMembership = registerOutput<GroupWithoutMembersDynamicMembership?>('dynamicMembership', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupWithoutMembersDynamicMembership.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -756,14 +769,55 @@ class GroupWithoutMembers extends pulumi.CustomResource {
     onpremisesSamAccountName = registerOutput<String>('onpremisesSamAccountName');
     onpremisesSecurityIdentifier = registerOutput<String>('onpremisesSecurityIdentifier');
     onpremisesSyncEnabled = registerOutput<bool>('onpremisesSyncEnabled');
-    owners = registerOutput<List<String>>('owners');
+    owners = registerOutput<List<String>>('owners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     preferredLanguage = registerOutput<String>('preferredLanguage');
     preventDuplicateNames = registerOutput<bool?>('preventDuplicateNames');
-    provisioningOptions = registerOutput<List<String>?>('provisioningOptions');
-    proxyAddresses = registerOutput<List<String>>('proxyAddresses');
+    provisioningOptions = registerOutput<List<String>?>('provisioningOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    proxyAddresses = registerOutput<List<String>>('proxyAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     securityEnabled = registerOutput<bool?>('securityEnabled');
     theme = registerOutput<String?>('theme');
-    types = registerOutput<List<String>?>('types');
+    types = registerOutput<List<String>?>('types', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    visibility = registerOutput<String>('visibility');
+    writebackEnabled = registerOutput<bool?>('writebackEnabled');
+  }
+
+  /// Creates a typed reference to an existing [GroupWithoutMembers] resource.
+  GroupWithoutMembers.reference(String urn)
+    : super(
+        'azuread:index/groupWithoutMembers:GroupWithoutMembers',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    administrativeUnitIds = registerOutput<List<String>?>('administrativeUnitIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    assignableToRole = registerOutput<bool?>('assignableToRole');
+    autoSubscribeNewMembers = registerOutput<bool>('autoSubscribeNewMembers');
+    behaviors = registerOutput<List<String>?>('behaviors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String?>('description');
+    displayName = registerOutput<String>('displayName');
+    dynamicMembership = registerOutput<GroupWithoutMembersDynamicMembership?>('dynamicMembership', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupWithoutMembersDynamicMembership.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    externalSendersAllowed = registerOutput<bool>('externalSendersAllowed');
+    hideFromAddressLists = registerOutput<bool>('hideFromAddressLists');
+    hideFromOutlookClients = registerOutput<bool>('hideFromOutlookClients');
+    mail = registerOutput<String>('mail');
+    mailEnabled = registerOutput<bool?>('mailEnabled');
+    mailNickname = registerOutput<String>('mailNickname');
+    objectId = registerOutput<String>('objectId');
+    onpremisesDomainName = registerOutput<String>('onpremisesDomainName');
+    onpremisesGroupType = registerOutput<String>('onpremisesGroupType');
+    onpremisesNetbiosName = registerOutput<String>('onpremisesNetbiosName');
+    onpremisesSamAccountName = registerOutput<String>('onpremisesSamAccountName');
+    onpremisesSecurityIdentifier = registerOutput<String>('onpremisesSecurityIdentifier');
+    onpremisesSyncEnabled = registerOutput<bool>('onpremisesSyncEnabled');
+    owners = registerOutput<List<String>>('owners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    preferredLanguage = registerOutput<String>('preferredLanguage');
+    preventDuplicateNames = registerOutput<bool?>('preventDuplicateNames');
+    provisioningOptions = registerOutput<List<String>?>('provisioningOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    proxyAddresses = registerOutput<List<String>>('proxyAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    securityEnabled = registerOutput<bool?>('securityEnabled');
+    theme = registerOutput<String?>('theme');
+    types = registerOutput<List<String>?>('types', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     visibility = registerOutput<String>('visibility');
     writebackEnabled = registerOutput<bool?>('writebackEnabled');
   }

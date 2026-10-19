@@ -109,7 +109,7 @@ import 'group_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -117,17 +117,23 @@ import 'group_member_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getuser" "example" {
+/// data "azuread_user" "example" {
 ///   user_principal_name = "jdoe@example.com"
 /// }
 ///
 /// resource "azuread_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "my_group"
 ///   security_enabled = true
 /// }
-/// resource "azuread_groupmember" "example" {
+/// resource "azuread_group_member" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_object_id  = azuread_group.example.object_id
-///   member_object_id = data.azuread_getuser.example.object_id
+///   member_object_id = data.azuread_user.example.object_id
 /// }
 /// ```
 /// ```java
@@ -222,7 +228,7 @@ class GroupMember extends pulumi.CustomResource {
           'azuread:index/groupMember:GroupMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     groupObjectId = registerOutput<String>('groupObjectId');
     memberObjectId = registerOutput<String>('memberObjectId');
@@ -233,11 +239,12 @@ class GroupMember extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupMemberState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GroupMember._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -251,6 +258,19 @@ class GroupMember extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    groupObjectId = registerOutput<String>('groupObjectId');
+    memberObjectId = registerOutput<String>('memberObjectId');
+  }
+
+  /// Creates a typed reference to an existing [GroupMember] resource.
+  GroupMember.reference(String urn)
+    : super(
+        'azuread:index/groupMember:GroupMember',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     groupObjectId = registerOutput<String>('groupObjectId');
     memberObjectId = registerOutput<String>('memberObjectId');
   }

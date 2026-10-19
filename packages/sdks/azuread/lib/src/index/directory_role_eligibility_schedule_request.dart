@@ -106,7 +106,7 @@ import 'directory_role_eligibility_schedule_request_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -114,16 +114,22 @@ import 'directory_role_eligibility_schedule_request_state.dart';
 ///   }
 /// }
 ///
-/// data "azuread_getuser" "example" {
+/// data "azuread_user" "example" {
 ///   user_principal_name = "jdoe@example.com"
 /// }
 ///
-/// resource "azuread_directoryrole" "example" {
+/// resource "azuread_directory_role" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Application Administrator"
 /// }
-/// resource "azuread_directoryroleeligibilityschedulerequest" "example" {
-///   role_definition_id = azuread_directoryrole.example.template_id
-///   principal_id       = data.azuread_getuser.example.object_id
+/// resource "azuread_directory_role_eligibility_schedule_request" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   role_definition_id = azuread_directory_role.example.template_id
+///   principal_id       = data.azuread_user.example.object_id
 ///   directory_scope_id = "/"
 ///   justification      = "Example"
 /// }
@@ -226,7 +232,7 @@ class DirectoryRoleEligibilityScheduleRequest extends pulumi.CustomResource {
           'azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     directoryScopeId = registerOutput<String>('directoryScopeId');
     justification = registerOutput<String>('justification');
@@ -239,11 +245,12 @@ class DirectoryRoleEligibilityScheduleRequest extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DirectoryRoleEligibilityScheduleRequestState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DirectoryRoleEligibilityScheduleRequest._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -257,6 +264,21 @@ class DirectoryRoleEligibilityScheduleRequest extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    directoryScopeId = registerOutput<String>('directoryScopeId');
+    justification = registerOutput<String>('justification');
+    principalId = registerOutput<String>('principalId');
+    roleDefinitionId = registerOutput<String>('roleDefinitionId');
+  }
+
+  /// Creates a typed reference to an existing [DirectoryRoleEligibilityScheduleRequest] resource.
+  DirectoryRoleEligibilityScheduleRequest.reference(String urn)
+    : super(
+        'azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     directoryScopeId = registerOutput<String>('directoryScopeId');
     justification = registerOutput<String>('justification');
     principalId = registerOutput<String>('principalId');

@@ -115,7 +115,7 @@ import 'access_package_resource_catalog_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -124,14 +124,23 @@ import 'access_package_resource_catalog_association_state.dart';
 /// }
 ///
 /// resource "azuread_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "example-group"
 ///   security_enabled = true
 /// }
-/// resource "azuread_accesspackagecatalog" "example" {
+/// resource "azuread_access_package_catalog" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example-catalog"
 ///   description  = "Example catalog"
 /// }
-/// resource "azuread_accesspackageresourcecatalogassociation" "example" {
+/// resource "azuread_access_package_resource_catalog_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   catalog_id             = exampleCatalog.id
 ///   resource_origin_id     = exampleGroup.objectId
 ///   resource_origin_system = "AadGroup"
@@ -173,8 +182,8 @@ import 'access_package_resource_catalog_association_state.dart';
 ///             .build());
 ///
 ///         var exampleAccessPackageResourceCatalogAssociation = new AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation", AccessPackageResourceCatalogAssociationArgs.builder()
-///             .catalogId(exampleCatalog.id())
-///             .resourceOriginId(exampleGroup.objectId())
+///             .catalogId(exampleCatalog.get("id"))
+///             .resourceOriginId(exampleGroup.get("objectId"))
 ///             .resourceOriginSystem("AadGroup")
 ///             .build());
 ///
@@ -233,7 +242,7 @@ class AccessPackageResourceCatalogAssociation extends pulumi.CustomResource {
           'azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     catalogId = registerOutput<String>('catalogId');
     resourceOriginId = registerOutput<String>('resourceOriginId');
@@ -245,11 +254,12 @@ class AccessPackageResourceCatalogAssociation extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     AccessPackageResourceCatalogAssociationState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return AccessPackageResourceCatalogAssociation._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -263,6 +273,20 @@ class AccessPackageResourceCatalogAssociation extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    catalogId = registerOutput<String>('catalogId');
+    resourceOriginId = registerOutput<String>('resourceOriginId');
+    resourceOriginSystem = registerOutput<String>('resourceOriginSystem');
+  }
+
+  /// Creates a typed reference to an existing [AccessPackageResourceCatalogAssociation] resource.
+  AccessPackageResourceCatalogAssociation.reference(String urn)
+    : super(
+        'azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     catalogId = registerOutput<String>('catalogId');
     resourceOriginId = registerOutput<String>('resourceOriginId');
     resourceOriginSystem = registerOutput<String>('resourceOriginSystem');

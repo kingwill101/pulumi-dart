@@ -3,11 +3,11 @@
 import 'package:pulumi_azuread/index.dart' as module_index;
 import 'package:pulumi_azuread/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final AccessPackage = module_index.AccessPackage.new;
   final AccessPackageArgs = module_index.AccessPackageArgs.new;
   final AccessPackageAssignmentPolicy = module_index.AccessPackageAssignmentPolicy.new;
@@ -170,8 +170,16 @@ class _IndexModuleNamespace {
   final ApplicationWebImplicitGrantArgs = module_index.ApplicationWebImplicitGrant.new;
   final AuthenticationStrengthPolicy = module_index.AuthenticationStrengthPolicy.new;
   final AuthenticationStrengthPolicyArgs = module_index.AuthenticationStrengthPolicyArgs.new;
+  final AuthenticationStrengthPolicyFido2CombinationConfiguration = module_index.AuthenticationStrengthPolicyFido2CombinationConfiguration.new;
+  final AuthenticationStrengthPolicyFido2CombinationConfigurationArgs = module_index.AuthenticationStrengthPolicyFido2CombinationConfigurationArgs.new;
+  final AuthenticationStrengthPolicyFido2CombinationConfigurationState = module_index.AuthenticationStrengthPolicyFido2CombinationConfigurationState.new;
+  final AuthenticationStrengthPolicyFido2CombinationConfigurationStateArgs = module_index.AuthenticationStrengthPolicyFido2CombinationConfigurationState.new;
   final AuthenticationStrengthPolicyState = module_index.AuthenticationStrengthPolicyState.new;
   final AuthenticationStrengthPolicyStateArgs = module_index.AuthenticationStrengthPolicyState.new;
+  final AuthenticationStrengthPolicyX509CombinationConfiguration = module_index.AuthenticationStrengthPolicyX509CombinationConfiguration.new;
+  final AuthenticationStrengthPolicyX509CombinationConfigurationArgs = module_index.AuthenticationStrengthPolicyX509CombinationConfigurationArgs.new;
+  final AuthenticationStrengthPolicyX509CombinationConfigurationState = module_index.AuthenticationStrengthPolicyX509CombinationConfigurationState.new;
+  final AuthenticationStrengthPolicyX509CombinationConfigurationStateArgs = module_index.AuthenticationStrengthPolicyX509CombinationConfigurationState.new;
   final ClaimsMappingPolicy = module_index.ClaimsMappingPolicy.new;
   final ClaimsMappingPolicyArgs = module_index.ClaimsMappingPolicyArgs.new;
   final ClaimsMappingPolicyState = module_index.ClaimsMappingPolicyState.new;
@@ -282,6 +290,11 @@ class _IndexModuleNamespace {
   final GetApplicationWebArgs = module_index.GetApplicationWeb.new;
   final GetApplicationWebImplicitGrant = module_index.GetApplicationWebImplicitGrant.new;
   final GetApplicationWebImplicitGrantArgs = module_index.GetApplicationWebImplicitGrant.new;
+  final GetAuthenticationStrengthPolicyArgs = module_index.GetAuthenticationStrengthPolicyArgs.new;
+  final GetAuthenticationStrengthPolicyCombinationConfiguration = module_index.GetAuthenticationStrengthPolicyCombinationConfiguration.new;
+  final GetAuthenticationStrengthPolicyCombinationConfigurationArgs = module_index.GetAuthenticationStrengthPolicyCombinationConfiguration.new;
+  final GetAuthenticationStrengthPolicyResult = module_index.GetAuthenticationStrengthPolicyResult.new;
+  final GetAuthenticationStrengthPolicyResultArgs = module_index.GetAuthenticationStrengthPolicyResult.new;
   final GetClientConfigResult = module_index.GetClientConfigResult.new;
   final GetClientConfigResultArgs = module_index.GetClientConfigResult.new;
   final GetDirectoryObjectArgs = module_index.GetDirectoryObjectArgs.new;
@@ -309,6 +322,8 @@ class _IndexModuleNamespace {
   final GetGroupRoleManagementPolicyResult = module_index.GetGroupRoleManagementPolicyResult.new;
   final GetGroupRoleManagementPolicyResultArgs = module_index.GetGroupRoleManagementPolicyResult.new;
   final GetGroupsArgs = module_index.GetGroupsArgs.new;
+  final GetGroupsGroup = module_index.GetGroupsGroup.new;
+  final GetGroupsGroupArgs = module_index.GetGroupsGroup.new;
   final GetGroupsResult = module_index.GetGroupsResult.new;
   final GetGroupsResultArgs = module_index.GetGroupsResult.new;
   final GetNamedLocationArgs = module_index.GetNamedLocationArgs.new;
@@ -348,6 +363,10 @@ class _IndexModuleNamespace {
   final GroupArgs = module_index.GroupArgs.new;
   final GroupDynamicMembership = module_index.GroupDynamicMembership.new;
   final GroupDynamicMembershipArgs = module_index.GroupDynamicMembership.new;
+  final GroupLicense = module_index.GroupLicense.new;
+  final GroupLicenseArgs = module_index.GroupLicenseArgs.new;
+  final GroupLicenseState = module_index.GroupLicenseState.new;
+  final GroupLicenseStateArgs = module_index.GroupLicenseState.new;
   final GroupMember = module_index.GroupMember.new;
   final GroupMemberArgs = module_index.GroupMemberArgs.new;
   final GroupMemberState = module_index.GroupMemberState.new;
@@ -482,32 +501,58 @@ class _IndexModuleNamespace {
   final UserFlowAttributeArgs = module_index.UserFlowAttributeArgs.new;
   final UserFlowAttributeState = module_index.UserFlowAttributeState.new;
   final UserFlowAttributeStateArgs = module_index.UserFlowAttributeState.new;
+  final UserLicense = module_index.UserLicense.new;
+  final UserLicenseArgs = module_index.UserLicenseArgs.new;
+  final UserLicenseState = module_index.UserLicenseState.new;
+  final UserLicenseStateArgs = module_index.UserLicenseState.new;
   final UserState = module_index.UserState.new;
   final UserStateArgs = module_index.UserState.new;
   final getAccessPackage = module_index.getAccessPackage;
   final getAccessPackageCatalog = module_index.getAccessPackageCatalog;
+  final getAccessPackageCatalogOutput = module_index.getAccessPackageCatalogOutput;
   final getAccessPackageCatalogRole = module_index.getAccessPackageCatalogRole;
+  final getAccessPackageCatalogRoleOutput = module_index.getAccessPackageCatalogRoleOutput;
+  final getAccessPackageOutput = module_index.getAccessPackageOutput;
   final getAdministrativeUnit = module_index.getAdministrativeUnit;
+  final getAdministrativeUnitOutput = module_index.getAdministrativeUnitOutput;
   final getApplication = module_index.getApplication;
+  final getApplicationOutput = module_index.getApplicationOutput;
   final getApplicationPublishedAppIds = module_index.getApplicationPublishedAppIds;
+  final getApplicationPublishedAppIdsOutput = module_index.getApplicationPublishedAppIdsOutput;
   final getApplicationTemplate = module_index.getApplicationTemplate;
+  final getApplicationTemplateOutput = module_index.getApplicationTemplateOutput;
+  final getAuthenticationStrengthPolicy = module_index.getAuthenticationStrengthPolicy;
+  final getAuthenticationStrengthPolicyOutput = module_index.getAuthenticationStrengthPolicyOutput;
   final getClientConfig = module_index.getClientConfig;
+  final getClientConfigOutput = module_index.getClientConfigOutput;
   final getDirectoryObject = module_index.getDirectoryObject;
+  final getDirectoryObjectOutput = module_index.getDirectoryObjectOutput;
   final getDirectoryRoleTemplates = module_index.getDirectoryRoleTemplates;
+  final getDirectoryRoleTemplatesOutput = module_index.getDirectoryRoleTemplatesOutput;
   final getDirectoryRoles = module_index.getDirectoryRoles;
+  final getDirectoryRolesOutput = module_index.getDirectoryRolesOutput;
   final getDomains = module_index.getDomains;
+  final getDomainsOutput = module_index.getDomainsOutput;
   final getGroup = module_index.getGroup;
+  final getGroupOutput = module_index.getGroupOutput;
   final getGroupRoleManagementPolicy = module_index.getGroupRoleManagementPolicy;
+  final getGroupRoleManagementPolicyOutput = module_index.getGroupRoleManagementPolicyOutput;
   final getGroups = module_index.getGroups;
+  final getGroupsOutput = module_index.getGroupsOutput;
   final getNamedLocation = module_index.getNamedLocation;
+  final getNamedLocationOutput = module_index.getNamedLocationOutput;
   final getServicePrincipal = module_index.getServicePrincipal;
+  final getServicePrincipalOutput = module_index.getServicePrincipalOutput;
   final getServicePrincipals = module_index.getServicePrincipals;
+  final getServicePrincipalsOutput = module_index.getServicePrincipalsOutput;
   final getUser = module_index.getUser;
+  final getUserOutput = module_index.getUserOutput;
   final getUsers = module_index.getUsers;
+  final getUsersOutput = module_index.getUsersOutput;
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Azuread = module_providers.ProviderProvider.new;
   final AzureadArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;
@@ -517,4 +562,5 @@ class _ProvidersModuleNamespace {
   final TerraformConfigResult = module_providers.TerraformConfigResult.new;
   final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;
   final terraformConfig = module_providers.terraformConfig;
+  final terraformConfigOutput = module_providers.terraformConfigOutput;
 }

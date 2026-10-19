@@ -171,7 +171,7 @@ import 'group_role_management_policy_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewGroupRoleManagementPolicy(ctx, "example", &azuread.GroupRoleManagementPolicyArgs{
-/// 			GroupId: example.ID(),
+/// 			GroupId: example.ID().ToIDOutput().ToStringOutput(),
 /// 			RoleId:  pulumi.String("member"),
 /// 			ActiveAssignmentRules: &azuread.GroupRoleManagementPolicyActiveAssignmentRulesArgs{
 /// 				ExpireAfter: pulumi.String("P365D"),
@@ -200,7 +200,7 @@ import 'group_role_management_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -209,16 +209,25 @@ import 'group_role_management_policy_state.dart';
 /// }
 ///
 /// resource "azuread_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "group-name"
 ///   security_enabled = true
 /// }
 /// resource "azuread_user" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user_principal_name = "jdoe@example.com"
 ///   display_name        = "J. Doe"
 ///   mail_nickname       = "jdoe"
 ///   password            = "SecretP@sswd99!"
 /// }
-/// resource "azuread_grouprolemanagementpolicy" "example" {
+/// resource "azuread_group_role_management_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group_id = azuread_group.example.id
 ///   role_id  = "member"
 ///   active_assignment_rules = {
@@ -358,7 +367,7 @@ class GroupRoleManagementPolicy extends pulumi.CustomResource {
   late final pulumi.Output<String> groupId;
   /// A `notificationRules` block as defined below.
   late final pulumi.Output<GroupRoleManagementPolicyNotificationRules> notificationRules;
-  /// The type of assignment this policy coveres. Can be either `member` or `owner`.
+  /// The type of assignment this policy covers. Can be either `member` or `owner`.
   late final pulumi.Output<String> roleId;
 
   /// Creates a new [GroupRoleManagementPolicy].
@@ -373,7 +382,7 @@ class GroupRoleManagementPolicy extends pulumi.CustomResource {
           'azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     activationRules = registerOutput<GroupRoleManagementPolicyActivationRules>('activationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyActivationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     activeAssignmentRules = registerOutput<GroupRoleManagementPolicyActiveAssignmentRules>('activeAssignmentRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyActiveAssignmentRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -390,11 +399,12 @@ class GroupRoleManagementPolicy extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GroupRoleManagementPolicyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return GroupRoleManagementPolicy._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -408,6 +418,25 @@ class GroupRoleManagementPolicy extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    activationRules = registerOutput<GroupRoleManagementPolicyActivationRules>('activationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyActivationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    activeAssignmentRules = registerOutput<GroupRoleManagementPolicyActiveAssignmentRules>('activeAssignmentRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyActiveAssignmentRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    eligibleAssignmentRules = registerOutput<GroupRoleManagementPolicyEligibleAssignmentRules>('eligibleAssignmentRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyEligibleAssignmentRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    groupId = registerOutput<String>('groupId');
+    notificationRules = registerOutput<GroupRoleManagementPolicyNotificationRules>('notificationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyNotificationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    roleId = registerOutput<String>('roleId');
+  }
+
+  /// Creates a typed reference to an existing [GroupRoleManagementPolicy] resource.
+  GroupRoleManagementPolicy.reference(String urn)
+    : super(
+        'azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     activationRules = registerOutput<GroupRoleManagementPolicyActivationRules>('activationRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyActivationRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     activeAssignmentRules = registerOutput<GroupRoleManagementPolicyActiveAssignmentRules>('activeAssignmentRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupRoleManagementPolicyActiveAssignmentRules.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');

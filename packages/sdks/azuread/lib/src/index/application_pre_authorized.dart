@@ -195,7 +195,7 @@ import 'application_pre_authorized_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = azuread.NewApplicationPreAuthorized(ctx, "example", &azuread.ApplicationPreAuthorizedArgs{
-/// 			ApplicationId:      authorizer.ID(),
+/// 			ApplicationId:      authorizer.ID().ToIDOutput().ToStringOutput(),
 /// 			AuthorizedClientId: authorized.ClientId,
 /// 			PermissionIds: pulumi.StringArray{
 /// 				pulumi.String("00000000-0000-0000-0000-000000000000"),
@@ -210,7 +210,7 @@ import 'application_pre_authorized_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azuread = {
 ///       source = "pulumi/azuread"
@@ -218,34 +218,43 @@ import 'application_pre_authorized_state.dart';
 ///   }
 /// }
 ///
-/// resource "azuread_applicationregistration" "authorized" {
+/// resource "azuread_application_registration" "authorized" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example-authorized-app"
 /// }
 /// resource "azuread_application" "authorizer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example-authorizing-app"
 ///   api = {
 ///     oauth2_permission_scopes = [{
-///       "adminConsentDescription" = "Administer the application"
-///       "adminConsentDisplayName" = "Administer"
-///       "enabled"                 = true
-///       "id"                      = "00000000-0000-0000-0000-000000000000"
-///       "type"                    = "Admin"
-///       "value"                   = "administer"
+///       admin_consent_description  = "Administer the application"
+///       admin_consent_display_name = "Administer"
+///       enabled                    = true
+///       id                         = "00000000-0000-0000-0000-000000000000"
+///       type                       = "Admin"
+///       value                      = "administer"
 ///       }, {
-///       "adminConsentDescription" = "Access the application"
-///       "adminConsentDisplayName" = "Access"
-///       "enabled"                 = true
-///       "id"                      = "11111111-1111-1111-1111-111111111111"
-///       "type"                    = "User"
-///       "userConsentDescription"  = "Access the application"
-///       "userConsentDisplayName"  = "Access"
-///       "value"                   = "user_impersonation"
+///       admin_consent_description  = "Access the application"
+///       admin_consent_display_name = "Access"
+///       enabled                    = true
+///       id                         = "11111111-1111-1111-1111-111111111111"
+///       type                       = "User"
+///       user_consent_description   = "Access the application"
+///       user_consent_display_name  = "Access"
+///       value                      = "user_impersonation"
 ///     }]
 ///   }
 /// }
-/// resource "azuread_applicationpreauthorized" "example" {
+/// resource "azuread_application_pre_authorized" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id       = azuread_application.authorizer.id
-///   authorized_client_id = azuread_applicationregistration.authorized.client_id
+///   authorized_client_id = azuread_application_registration.authorized.client_id
 ///   permission_ids       = ["00000000-0000-0000-0000-000000000000", "11111111-1111-1111-1111-111111111111"]
 /// }
 /// ```
@@ -382,11 +391,11 @@ class ApplicationPreAuthorized extends pulumi.CustomResource {
           'azuread:index/applicationPreAuthorized:ApplicationPreAuthorized',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '6.11.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     authorizedClientId = registerOutput<String>('authorizedClientId');
-    permissionIds = registerOutput<List<String>>('permissionIds');
+    permissionIds = registerOutput<List<String>>('permissionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [ApplicationPreAuthorized] resource's state with the given [name] and [id].
@@ -394,11 +403,12 @@ class ApplicationPreAuthorized extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ApplicationPreAuthorizedState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ApplicationPreAuthorized._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -414,6 +424,20 @@ class ApplicationPreAuthorized extends pulumi.CustomResource {
         ) {
     applicationId = registerOutput<String>('applicationId');
     authorizedClientId = registerOutput<String>('authorizedClientId');
-    permissionIds = registerOutput<List<String>>('permissionIds');
+    permissionIds = registerOutput<List<String>>('permissionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ApplicationPreAuthorized] resource.
+  ApplicationPreAuthorized.reference(String urn)
+    : super(
+        'azuread:index/applicationPreAuthorized:ApplicationPreAuthorized',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    applicationId = registerOutput<String>('applicationId');
+    authorizedClientId = registerOutput<String>('authorizedClientId');
+    permissionIds = registerOutput<List<String>>('permissionIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }
