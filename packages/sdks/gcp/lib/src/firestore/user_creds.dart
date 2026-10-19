@@ -89,7 +89,7 @@ import 'user_creds_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -120,7 +120,7 @@ import 'user_creds_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -129,6 +129,9 @@ import 'user_creds_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id-mongodb-compatible"
 ///   location_id             = "nam5"
@@ -137,7 +140,10 @@ import 'user_creds_state.dart';
 ///   delete_protection_state = "DELETE_PROTECTION_DISABLED"
 ///   deletion_policy         = "DELETE"
 /// }
-/// resource "gcp_firestore_usercreds" "my-user-creds" {
+/// resource "gcp_firestore_user_creds" "my-user-creds" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = "my-project-name"
 ///   database = gcp_firestore_database.database.name
 ///   name     = "my-username"
@@ -313,8 +319,8 @@ import 'user_creds_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firestore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firestore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -362,7 +368,7 @@ import 'user_creds_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -371,6 +377,9 @@ import 'user_creds_state.dart';
 /// }
 ///
 /// resource "gcp_firestore_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                 = "my-project-name"
 ///   name                    = "database-id-mongodb-compatible"
 ///   location_id             = "nam5"
@@ -379,21 +388,30 @@ import 'user_creds_state.dart';
 ///   delete_protection_state = "DELETE_PROTECTION_DISABLED"
 ///   deletion_policy         = "DELETE"
 /// }
-/// resource "gcp_firestore_usercreds" "my-user-creds" {
+/// resource "gcp_firestore_user_creds" "my-user-creds" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = "my-project-name"
 ///   database = gcp_firestore_database.database.name
 ///   name     = "my-username"
 /// }
 /// resource "gcp_secretmanager_secret" "my-fs-user-creds-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project   = "my-project-name"
 ///   secret_id = "my-fs-user-creds-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "my-fs-user-creds-secret-version" {
+/// resource "gcp_secretmanager_secret_version" "my-fs-user-creds-secret-version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.my-fs-user-creds-secret.id
-///   secret_data = gcp_firestore_usercreds.my-user-creds.secure_password
+///   secret_data = gcp_firestore_user_creds.my-user-creds.secure_password
 /// }
 /// ```
 /// ```java
@@ -551,7 +569,7 @@ class UserCreds extends pulumi.CustomResource {
           'gcp:firestore/userCreds:UserCreds',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['securePassword'],
         ) {
     createTime = registerOutput<String>('createTime');

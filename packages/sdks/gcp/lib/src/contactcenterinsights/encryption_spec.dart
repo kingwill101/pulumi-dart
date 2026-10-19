@@ -267,10 +267,10 @@ import 'encryption_spec_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/contactcenterinsights"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/contactcenterinsights"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
@@ -377,7 +377,7 @@ import 'encryption_spec_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -392,6 +392,9 @@ import 'encryption_spec_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "my-proj"
 ///   name            = "my-proj"
 ///   org_id          = "123456789"
@@ -399,49 +402,76 @@ import 'encryption_spec_state.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "gcp_projects_service" "cloudkms" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.project.project_id
 ///   service = "cloudkms.googleapis.com"
 /// }
 /// resource "gcp_projects_service" "contactcenterinsights" {
 ///   depends_on = [gcp_projects_service.cloudkms]
-///   project    = gcp_organizations_project.project.project_id
-///   service    = "contactcenterinsights.googleapis.com"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.project.project_id
+///   service = "contactcenterinsights.googleapis.com"
 /// }
 /// resource "time_sleep" "wait_enable_service_api" {
-///   depends_on      = [gcp_projects_service.cloudkms, gcp_projects_service.contactcenterinsights]
+///   depends_on = [gcp_projects_service.cloudkms, gcp_projects_service.contactcenterinsights]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "30s"
 /// }
-/// resource "gcp_projects_serviceidentity" "gcp_sa" {
+/// resource "gcp_projects_service_identity" "gcp_sa" {
 ///   depends_on = [time_sleep.wait_enable_service_api]
-///   service    = "contactcenterinsights.googleapis.com"
-///   project    = gcp_organizations_project.project.project_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service = "contactcenterinsights.googleapis.com"
+///   project = gcp_organizations_project.project.project_id
 /// }
 /// resource "time_sleep" "wait_create_sa" {
-///   depends_on      = [gcp_projects_serviceidentity.gcp_sa]
+///   depends_on = [gcp_projects_service_identity.gcp_sa]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "30s"
 /// }
-/// resource "gcp_kms_keyring" "keyring" {
+/// resource "gcp_kms_key_ring" "keyring" {
 ///   depends_on = [time_sleep.wait_enable_service_api]
-///   name       = "my-keyring"
-///   location   = "us-east1"
-///   project    = gcp_organizations_project.project.project_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "my-keyring"
+///   location = "us-east1"
+///   project  = gcp_organizations_project.project.project_id
 /// }
-/// resource "gcp_kms_cryptokey" "key" {
+/// resource "gcp_kms_crypto_key" "key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-key"
-///   key_ring = gcp_kms_keyring.keyring.id
+///   key_ring = gcp_kms_key_ring.keyring.id
 ///   purpose  = "ENCRYPT_DECRYPT"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
-///   depends_on    = [time_sleep.wait_create_sa]
-///   crypto_key_id = gcp_kms_cryptokey.key.id
-///   member        = replace(gcp_projects_serviceidentity.gcp_sa.member, "@gcp-sa-contactcenterinsights.iam", "@gcp-sa-ccai-cmek.iam")
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key" {
+///   depends_on = [time_sleep.wait_create_sa]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = gcp_kms_crypto_key.key.id
+///   member        = replace(gcp_projects_service_identity.gcp_sa.member, "@gcp-sa-contactcenterinsights.iam", "@gcp-sa-ccai-cmek.iam")
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
 /// }
-/// resource "gcp_contactcenterinsights_encryptionspec" "my-encryption-spec" {
-///   depends_on = [gcp_kms_cryptokeyiammember.crypto_key]
-///   project    = gcp_organizations_project.project.project_id
-///   location   = "us-east1"
-///   kms_key    = gcp_kms_cryptokey.key.id
+/// resource "gcp_contactcenterinsights_encryption_spec" "my-encryption-spec" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.crypto_key]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project  = gcp_organizations_project.project.project_id
+///   location = "us-east1"
+///   kms_key  = gcp_kms_crypto_key.key.id
 /// }
 /// ```
 /// ```java
@@ -693,7 +723,7 @@ class EncryptionSpec extends pulumi.CustomResource {
           'gcp:contactcenterinsights/encryptionSpec:EncryptionSpec',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     kmsKey = registerOutput<String>('kmsKey');
     location = registerOutput<String>('location');

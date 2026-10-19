@@ -39,7 +39,7 @@ class ClusterNodePool {
   ///
   /// - - -
   final pulumi.Input<String?>? name;
-  /// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+  /// Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
   final pulumi.Input<String?>? namePrefix;
   /// Configuration for
   /// [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Structure is documented below
@@ -81,7 +81,7 @@ class ClusterNodePool {
   /// [management] Node management configuration, wherein auto-repair and auto-upgrade is configured.
   /// [maxPodsPerNode] The maximum number of pods per node in this node pool. Note that this does not work on node pools which are "route-based" - that is, node pools belonging to clusters that do not have IP Aliasing enabled.
   /// [name] The name of the cluster, unique within the project and
-  /// [namePrefix] Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name.
+  /// [namePrefix] Creates a unique name for the node pool beginning with the specified prefix. Conflicts with name. Max length is 31 characters. Prefixes with lengths longer than 14 characters will use a shortened UUID that will be more prone to collisions.
   /// [networkConfig] Configuration for
   /// [nodeConfig] The node configuration of the pool. Structure is documented below.
   /// [nodeCount] The number of nodes per instance group. This field can be used to update the number of nodes per instance group but should not be used alongside autoscaling.
@@ -141,17 +141,17 @@ class ClusterNodePool {
     return ClusterNodePool(
       autoscaling: (() { final guardedValue = map['autoscaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ignoreNodeCountChanges: (() { final guardedValue = map['ignoreNodeCountChanges']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       instanceGroupUrls: (() { final guardedValue = map['instanceGroupUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       maintenancePolicies: (() { final guardedValue = map['maintenancePolicies']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterNodePoolMaintenancePolicy>(guardedValue, (value) => ClusterNodePoolMaintenancePolicy.fromMap((value as Map).cast<String, dynamic>()))); })(),
       managedInstanceGroupUrls: (() { final guardedValue = map['managedInstanceGroupUrls']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       management: (() { final guardedValue = map['management']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolManagement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxPodsPerNode: (() { final guardedValue = map['maxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxPodsPerNode: (() { final guardedValue = map['maxPodsPerNode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       namePrefix: (() { final guardedValue = map['namePrefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolNetworkConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       nodeConfig: (() { final guardedValue = map['nodeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      nodeCount: (() { final guardedValue = map['nodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nodeDrainConfigs: (() { final guardedValue = map['nodeDrainConfigs']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ClusterNodePoolNodeDrainConfig>(guardedValue, (value) => ClusterNodePoolNodeDrainConfig.fromMap((value as Map).cast<String, dynamic>()))); })(),
       nodeLocations: (() { final guardedValue = map['nodeLocations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       placementPolicy: (() { final guardedValue = map['placementPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ClusterNodePoolPlacementPolicy.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -340,8 +340,8 @@ import 'transfer_job_transfer_spec.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -460,7 +460,7 @@ import 'transfer_job_transfer_spec.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -468,32 +468,47 @@ import 'transfer_job_transfer_spec.dart';
 ///   }
 /// }
 ///
-/// data "gcp_storage_gettransferprojectserviceaccount" "default" {
+/// data "gcp_storage_transfer_project_service_account" "default" {
 ///   project = project
 /// }
 ///
 /// resource "gcp_storage_bucket" "s3-backup-bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          ="${awsS3Bucket}-backup"
 ///   storage_class = "NEARLINE"
 ///   project       = project
 ///   location      = "US"
 /// }
-/// resource "gcp_storage_bucketiammember" "s3-backup-bucket" {
+/// resource "gcp_storage_bucket_i_a_m_member" "s3-backup-bucket" {
 ///   depends_on = [gcp_storage_bucket.s3-backup-bucket]
-///   bucket     = gcp_storage_bucket.s3-backup-bucket.name
-///   role       = "roles/storage.admin"
-///   member     ="serviceAccount:${data.gcp_storage_gettransferprojectserviceaccount.default.email}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bucket = gcp_storage_bucket.s3-backup-bucket.name
+///   role   = "roles/storage.admin"
+///   member ="serviceAccount:${data.gcp_storage_transfer_project_service_account.default.email}"
 /// }
 /// resource "gcp_pubsub_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = pubsubTopicName
 /// }
-/// resource "gcp_pubsub_topiciammember" "notification_config" {
+/// resource "gcp_pubsub_topic_i_a_m_member" "notification_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   topic  = gcp_pubsub_topic.topic.id
 ///   role   = "roles/pubsub.publisher"
-///   member ="serviceAccount:${data.gcp_storage_gettransferprojectserviceaccount.default.email}"
+///   member ="serviceAccount:${data.gcp_storage_transfer_project_service_account.default.email}"
 /// }
-/// resource "gcp_storage_transferjob" "s3-bucket-nightly-backup" {
-///   depends_on  = [gcp_storage_bucketiammember.s3-backup-bucket, gcp_pubsub_topiciammember.notification_config]
+/// resource "gcp_storage_transfer_job" "s3-bucket-nightly-backup" {
+///   depends_on = [gcp_storage_bucket_i_a_m_member.s3-backup-bucket, gcp_pubsub_topic_i_a_m_member.notification_config]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Nightly backup of S3 bucket"
 ///   project     = project
 ///   transfer_spec = {
@@ -840,7 +855,7 @@ class TransferJob extends pulumi.CustomResource {
           'gcp:storage/transferJob:TransferJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     creationTime = registerOutput<String>('creationTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

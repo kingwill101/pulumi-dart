@@ -330,7 +330,7 @@ import 'external_vpn_gateway_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -471,7 +471,7 @@ import 'external_vpn_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -479,12 +479,18 @@ import 'external_vpn_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_havpngateway" "ha_gateway" {
+/// resource "gcp_compute_ha_vpn_gateway" "ha_gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region  = "us-central1"
 ///   name    = "ha-vpn"
 ///   network = gcp_compute_network.network.id
 /// }
-/// resource "gcp_compute_externalvpngateway" "external_gateway" {
+/// resource "gcp_compute_external_vpn_gateway" "external_gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "external-gateway"
 ///   redundancy_type = "SINGLE_IP_INTERNALLY_REDUNDANT"
 ///   description     = "An externally managed VPN gateway"
@@ -494,80 +500,110 @@ import 'external_vpn_gateway_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-1"
 ///   routing_mode            = "GLOBAL"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "network_subnet1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "ha-vpn-subnet-1"
 ///   ip_cidr_range = "10.0.1.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.network.id
 /// }
 /// resource "gcp_compute_subnetwork" "network_subnet2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "ha-vpn-subnet-2"
 ///   ip_cidr_range = "10.0.2.0/24"
 ///   region        = "us-west1"
 ///   network       = gcp_compute_network.network.id
 /// }
 /// resource "gcp_compute_router" "router1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "ha-vpn-router1"
 ///   network = gcp_compute_network.network.name
 ///   bgp = {
 ///     asn = 64514
 ///   }
 /// }
-/// resource "gcp_compute_vpntunnel" "tunnel1" {
+/// resource "gcp_compute_v_p_n_tunnel" "tunnel1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "ha-vpn-tunnel1"
 ///   region                          = "us-central1"
-///   vpn_gateway                     = gcp_compute_havpngateway.ha_gateway.id
-///   peer_external_gateway           = gcp_compute_externalvpngateway.external_gateway.id
+///   vpn_gateway                     = gcp_compute_ha_vpn_gateway.ha_gateway.id
+///   peer_external_gateway           = gcp_compute_external_vpn_gateway.external_gateway.id
 ///   peer_external_gateway_interface = 0
 ///   shared_secret                   = "a secret message"
 ///   router                          = gcp_compute_router.router1.id
 ///   vpn_gateway_interface           = 0
 /// }
-/// resource "gcp_compute_vpntunnel" "tunnel2" {
+/// resource "gcp_compute_v_p_n_tunnel" "tunnel2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "ha-vpn-tunnel2"
 ///   region                          = "us-central1"
-///   vpn_gateway                     = gcp_compute_havpngateway.ha_gateway.id
-///   peer_external_gateway           = gcp_compute_externalvpngateway.external_gateway.id
+///   vpn_gateway                     = gcp_compute_ha_vpn_gateway.ha_gateway.id
+///   peer_external_gateway           = gcp_compute_external_vpn_gateway.external_gateway.id
 ///   peer_external_gateway_interface = 0
 ///   shared_secret                   = "a secret message"
 ///   router                          =" ${gcp_compute_router.router1.id}"
 ///   vpn_gateway_interface           = 1
 /// }
-/// resource "gcp_compute_routerinterface" "router1_interface1" {
+/// resource "gcp_compute_router_interface" "router1_interface1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "router1-interface1"
 ///   router     = gcp_compute_router.router1.name
 ///   region     = "us-central1"
 ///   ip_range   = "169.254.0.1/30"
-///   vpn_tunnel = gcp_compute_vpntunnel.tunnel1.name
+///   vpn_tunnel = gcp_compute_v_p_n_tunnel.tunnel1.name
 /// }
-/// resource "gcp_compute_routerpeer" "router1_peer1" {
+/// resource "gcp_compute_router_peer" "router1_peer1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "router1-peer1"
 ///   router                    = gcp_compute_router.router1.name
 ///   region                    = "us-central1"
 ///   peer_ip_address           = "169.254.0.2"
 ///   peer_asn                  = 64515
 ///   advertised_route_priority = 100
-///   interface                 = gcp_compute_routerinterface.router1_interface1.name
+///   interface                 = gcp_compute_router_interface.router1_interface1.name
 /// }
-/// resource "gcp_compute_routerinterface" "router1_interface2" {
+/// resource "gcp_compute_router_interface" "router1_interface2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "router1-interface2"
 ///   router     = gcp_compute_router.router1.name
 ///   region     = "us-central1"
 ///   ip_range   = "169.254.1.1/30"
-///   vpn_tunnel = gcp_compute_vpntunnel.tunnel2.name
+///   vpn_tunnel = gcp_compute_v_p_n_tunnel.tunnel2.name
 /// }
-/// resource "gcp_compute_routerpeer" "router1_peer2" {
+/// resource "gcp_compute_router_peer" "router1_peer2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "router1-peer2"
 ///   router                    = gcp_compute_router.router1.name
 ///   region                    = "us-central1"
 ///   peer_ip_address           = "169.254.1.2"
 ///   peer_asn                  = 64515
 ///   advertised_route_priority = 100
-///   interface                 = gcp_compute_routerinterface.router1_interface2.name
+///   interface                 = gcp_compute_router_interface.router1_interface2.name
 /// }
 /// ```
 /// ```java
@@ -898,7 +934,7 @@ class ExternalVpnGateway extends pulumi.CustomResource {
           'gcp:compute/externalVpnGateway:ExternalVpnGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

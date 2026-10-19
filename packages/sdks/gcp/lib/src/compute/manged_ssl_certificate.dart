@@ -57,6 +57,7 @@ import 'manged_ssl_certificate_state.dart';
 ///     portName: "http",
 ///     protocol: "HTTP",
 ///     timeoutSec: 10,
+///     loadBalancingScheme: "EXTERNAL",
 ///     healthChecks: defaultHttpHealthCheck.id,
 /// });
 /// const defaultURLMap = new gcp.compute.URLMap("default", {
@@ -85,6 +86,7 @@ import 'manged_ssl_certificate_state.dart';
 ///     name: "forwarding-rule",
 ///     target: defaultTargetHttpsProxy.id,
 ///     portRange: "443",
+///     loadBalancingScheme: "EXTERNAL",
 /// });
 /// ```
 /// ```python
@@ -106,6 +108,7 @@ import 'manged_ssl_certificate_state.dart';
 ///     port_name="http",
 ///     protocol="HTTP",
 ///     timeout_sec=10,
+///     load_balancing_scheme="EXTERNAL",
 ///     health_checks=default_http_health_check.id)
 /// default_url_map = gcp.compute.URLMap("default",
 ///     name="url-map",
@@ -130,7 +133,8 @@ import 'manged_ssl_certificate_state.dart';
 /// default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("default",
 ///     name="forwarding-rule",
 ///     target=default_target_https_proxy.id,
-///     port_range="443")
+///     port_range="443",
+///     load_balancing_scheme="EXTERNAL")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -166,6 +170,7 @@ import 'manged_ssl_certificate_state.dart';
 ///         PortName = "http",
 ///         Protocol = "HTTP",
 ///         TimeoutSec = 10,
+///         LoadBalancingScheme = "EXTERNAL",
 ///         HealthChecks = defaultHttpHealthCheck.Id,
 ///     });
 ///
@@ -221,6 +226,7 @@ import 'manged_ssl_certificate_state.dart';
 ///         Name = "forwarding-rule",
 ///         Target = defaultTargetHttpsProxy.Id,
 ///         PortRange = "443",
+///         LoadBalancingScheme = "EXTERNAL",
 ///     });
 ///
 /// });
@@ -229,7 +235,7 @@ import 'manged_ssl_certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -256,11 +262,12 @@ import 'manged_ssl_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("backend-service"),
-/// 			PortName:     pulumi.String("http"),
-/// 			Protocol:     pulumi.String("HTTP"),
-/// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                pulumi.String("backend-service"),
+/// 			PortName:            pulumi.String("http"),
+/// 			Protocol:            pulumi.String("HTTP"),
+/// 			TimeoutSec:          pulumi.Int(10),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+/// 			HealthChecks:        defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -306,9 +313,10 @@ import 'manged_ssl_certificate_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewGlobalForwardingRule(ctx, "default", &compute.GlobalForwardingRuleArgs{
-/// 			Name:      pulumi.String("forwarding-rule"),
-/// 			Target:    defaultTargetHttpsProxy.ID().ToIDOutput().ToStringOutput(),
-/// 			PortRange: pulumi.String("443"),
+/// 			Name:                pulumi.String("forwarding-rule"),
+/// 			Target:              defaultTargetHttpsProxy.ID().ToIDOutput().ToStringOutput(),
+/// 			PortRange:           pulumi.String("443"),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -318,7 +326,7 @@ import 'manged_ssl_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -326,51 +334,71 @@ import 'manged_ssl_certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_managedsslcertificate" "default" {
+/// resource "gcp_compute_managed_ssl_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-cert"
 ///   managed = {
 ///     domains = ["sslcert.tf-test.club."]
 ///   }
 /// }
-/// resource "gcp_compute_targethttpsproxy" "default" {
+/// resource "gcp_compute_target_https_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "test-proxy"
-///   url_map          = gcp_compute_urlmap.default.id
-///   ssl_certificates = [gcp_compute_managedsslcertificate.default.id]
+///   url_map          = gcp_compute_u_r_l_map.default.id
+///   ssl_certificates = [gcp_compute_managed_ssl_certificate.default.id]
 /// }
-/// resource "gcp_compute_urlmap" "default" {
+/// resource "gcp_compute_u_r_l_map" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "url-map"
 ///   description     = "a description"
-///   default_service = gcp_compute_backendservice.default.id
+///   default_service = gcp_compute_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["sslcert.tf-test.club"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.default.id
+///     default_service = gcp_compute_backend_service.default.id
 ///     path_rules {
 ///       paths   = ["/*"]
-///       service = gcp_compute_backendservice.default.id
+///       service = gcp_compute_backend_service.default.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "default" {
-///   name          = "backend-service"
-///   port_name     = "http"
-///   protocol      = "HTTP"
-///   timeout_sec   = 10
-///   health_checks = gcp_compute_httphealthcheck.default.id
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "backend-service"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL"
+///   health_checks         = gcp_compute_http_health_check.default.id
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_http_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "http-health-check"
 ///   request_path       = "/"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
 /// }
-/// resource "gcp_compute_globalforwardingrule" "default" {
-///   name       = "forwarding-rule"
-///   target     = gcp_compute_targethttpsproxy.default.id
-///   port_range = 443
+/// resource "gcp_compute_global_forwarding_rule" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "forwarding-rule"
+///   target                = gcp_compute_target_https_proxy.default.id
+///   port_range            = 443
+///   load_balancing_scheme = "EXTERNAL"
 /// }
 /// ```
 /// ```java
@@ -427,6 +455,7 @@ import 'manged_ssl_certificate_state.dart';
 ///             .portName("http")
 ///             .protocol("HTTP")
 ///             .timeoutSec(10)
+///             .loadBalancingScheme("EXTERNAL")
 ///             .healthChecks(defaultHttpHealthCheck.id())
 ///             .build());
 ///
@@ -458,6 +487,7 @@ import 'manged_ssl_certificate_state.dart';
 ///             .name("forwarding-rule")
 ///             .target(defaultTargetHttpsProxy.id())
 ///             .portRange("443")
+///             .loadBalancingScheme("EXTERNAL")
 ///             .build());
 ///
 ///     }
@@ -506,6 +536,7 @@ import 'manged_ssl_certificate_state.dart';
 ///       portName: http
 ///       protocol: HTTP
 ///       timeoutSec: 10
+///       loadBalancingScheme: EXTERNAL
 ///       healthChecks: ${defaultHttpHealthCheck.id}
 ///   defaultHttpHealthCheck:
 ///     type: gcp:compute:HttpHealthCheck
@@ -522,6 +553,7 @@ import 'manged_ssl_certificate_state.dart';
 ///       name: forwarding-rule
 ///       target: ${defaultTargetHttpsProxy.id}
 ///       portRange: 443
+///       loadBalancingScheme: EXTERNAL
 /// ```
 ///
 /// ## Import
@@ -594,7 +626,7 @@ class MangedSslCertificate extends pulumi.CustomResource {
           'gcp:compute/mangedSslCertificate:MangedSslCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     certificateId = registerOutput<int>('certificateId');
     creationTimestamp = registerOutput<String>('creationTimestamp');

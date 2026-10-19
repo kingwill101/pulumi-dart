@@ -382,9 +382,9 @@ import 'v2_policy_orchestrator_for_folder_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/folder"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/osconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/folder"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/osconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -530,7 +530,7 @@ import 'v2_policy_orchestrator_for_folder_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -542,46 +542,73 @@ import 'v2_policy_orchestrator_for_folder_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "my_folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "po-folder"
 ///   parent              = "organizations/123456789"
 ///   deletion_protection = false
 /// }
-/// resource "gcp_folder_serviceidentity" "osconfig_sa" {
+/// resource "gcp_folder_service_identity" "osconfig_sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder  = gcp_organizations_folder.my_folder.folder_id
 ///   service = "osconfig.googleapis.com"
 /// }
-/// resource "gcp_folder_serviceidentity" "ripple_sa" {
+/// resource "gcp_folder_service_identity" "ripple_sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder  = gcp_organizations_folder.my_folder.folder_id
 ///   service = "progressiverollout.googleapis.com"
 /// }
 /// resource "time_sleep" "wait_30_sec" {
-///   depends_on      = [gcp_folder_serviceidentity.osconfig_sa, gcp_folder_serviceidentity.ripple_sa]
+///   depends_on = [gcp_folder_service_identity.osconfig_sa, gcp_folder_service_identity.ripple_sa]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "30s"
 /// }
-/// resource "gcp_folder_iammember" "iam_osconfig_service_agent" {
+/// resource "gcp_folder_i_a_m_member" "iam_osconfig_service_agent" {
 ///   depends_on = [time_sleep.wait_30_sec]
-///   folder     = gcp_organizations_folder.my_folder.folder_id
-///   role       = "roles/osconfig.serviceAgent"
-///   member     = gcp_folder_serviceidentity.osconfig_sa.member
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   folder = gcp_organizations_folder.my_folder.folder_id
+///   role   = "roles/osconfig.serviceAgent"
+///   member = gcp_folder_service_identity.osconfig_sa.member
 /// }
-/// resource "gcp_folder_iammember" "iam_osconfig_rollout_service_agent" {
-///   depends_on = [gcp_folder_iammember.iam_osconfig_service_agent]
-///   folder     = gcp_organizations_folder.my_folder.folder_id
-///   role       = "roles/osconfig.rolloutServiceAgent"
-///   member     ="serviceAccount:service-folder-${gcp_organizations_folder.my_folder.folder_id}@gcp-sa-osconfig-rollout.iam.gserviceaccount.com"
+/// resource "gcp_folder_i_a_m_member" "iam_osconfig_rollout_service_agent" {
+///   depends_on = [gcp_folder_i_a_m_member.iam_osconfig_service_agent]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   folder = gcp_organizations_folder.my_folder.folder_id
+///   role   = "roles/osconfig.rolloutServiceAgent"
+///   member ="serviceAccount:service-folder-${gcp_organizations_folder.my_folder.folder_id}@gcp-sa-osconfig-rollout.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_folder_iammember" "iam_progressiverollout_service_agent" {
-///   depends_on = [gcp_folder_iammember.iam_osconfig_rollout_service_agent]
-///   folder     = gcp_organizations_folder.my_folder.folder_id
-///   role       = "roles/progressiverollout.serviceAgent"
-///   member     = gcp_folder_serviceidentity.ripple_sa.member
+/// resource "gcp_folder_i_a_m_member" "iam_progressiverollout_service_agent" {
+///   depends_on = [gcp_folder_i_a_m_member.iam_osconfig_rollout_service_agent]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   folder = gcp_organizations_folder.my_folder.folder_id
+///   role   = "roles/progressiverollout.serviceAgent"
+///   member = gcp_folder_service_identity.ripple_sa.member
 /// }
 /// resource "time_sleep" "wait_3_min" {
-///   depends_on      = [gcp_folder_iammember.iam_progressiverollout_service_agent]
+///   depends_on = [gcp_folder_i_a_m_member.iam_progressiverollout_service_agent]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "180s"
 /// }
-/// resource "gcp_osconfig_v2policyorchestratorforfolder" "policy_orchestrator_for_folder" {
-///   depends_on             = [time_sleep.wait_3_min]
+/// resource "gcp_osconfig_v2_policy_orchestrator_for_folder" "policy_orchestrator_for_folder" {
+///   depends_on = [time_sleep.wait_3_min]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   policy_orchestrator_id = "po-folder"
 ///   folder_id              = gcp_organizations_folder.my_folder.folder_id
 ///   state                  = "ACTIVE"
@@ -590,22 +617,22 @@ import 'v2_policy_orchestrator_for_folder_state.dart';
 ///     id = "test-orchestrated-resource-folder"
 ///     os_policy_assignment_v1_payload = {
 ///       os_policies = [{
-///         "id"   = "test-os-policy-folder"
-///         "mode" = "VALIDATION"
-///         "resourceGroups" = [{
-///           "resources" = [{
-///             "id" = "resource-tf"
-///             "file" = {
-///               "content" = "file-content-tf"
-///               "path"    = "file-path-tf-1"
-///               "state"   = "PRESENT"
+///         id   = "test-os-policy-folder"
+///         mode = "VALIDATION"
+///         resource_groups = [{
+///           resources = [{
+///             id = "resource-tf"
+///             file = {
+///               content = "file-content-tf"
+///               path    = "file-path-tf-1"
+///               state   = "PRESENT"
 ///             }
 ///           }]
 ///         }]
 ///       }]
 ///       instance_filter = {
 ///         inventories = [{
-///           "osShortName" = "windows-10"
+///           os_short_name = "windows-10"
 ///         }]
 ///       }
 ///       rollout = {
@@ -621,8 +648,8 @@ import 'v2_policy_orchestrator_for_folder_state.dart';
 ///   }
 ///   orchestration_scope = {
 ///     selectors = [{
-///       "locationSelector" = {
-///         "includedLocations" = [""]
+///       location_selector = {
+///         included_locations = [""]
 ///       }
 ///     }]
 ///   }
@@ -980,7 +1007,7 @@ class V2PolicyOrchestratorForFolder extends pulumi.CustomResource {
           'gcp:osconfig/v2PolicyOrchestratorForFolder:V2PolicyOrchestratorForFolder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     action = registerOutput<String>('action');

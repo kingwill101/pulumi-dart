@@ -46,6 +46,9 @@ class GetRegionalSecretsSecret {
   final pulumi.Input<List<GetRegionalSecretsSecretRotation>> rotations;
   /// The unique name of the resource.
   final pulumi.Input<String> secretId;
+  /// This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
+  /// For secret of type UNSPECIFIED, the SecretVersions can be of any type.
+  final pulumi.Input<String> secretType;
   /// A map of resource manager tags.
   /// Resource manager tag keys and values have the same definition as resource manager tags.
   /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
@@ -77,6 +80,7 @@ class GetRegionalSecretsSecret {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [rotations] The rotation time and period for a regional secret.
   /// [secretId] The unique name of the resource.
+  /// [secretType] This defines the type of the secret. Enforces certain structural requirements on the SecretVersions.
   /// [tags] A map of resource manager tags.
   /// [topics] A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the regional secret or its versions.
   /// [ttl] The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
@@ -98,6 +102,7 @@ class GetRegionalSecretsSecret {
     required this.pulumiLabels,
     required this.rotations,
     required this.secretId,
+    required this.secretType,
     required this.tags,
     required this.topics,
     required this.ttl,
@@ -122,6 +127,7 @@ class GetRegionalSecretsSecret {
       'pulumiLabels': pulumiLabels,
       'rotations': pulumi.Input.mapInputValue<List<GetRegionalSecretsSecretRotation>, List<Map<String, dynamic>>>(rotations, (value) => pulumi.Input.encodeList<GetRegionalSecretsSecretRotation, Map<String, dynamic>>(value, (value) => value.toMap())),
       'secretId': secretId,
+      'secretType': secretType,
       'tags': tags,
       'topics': pulumi.Input.mapInputValue<List<GetRegionalSecretsSecretTopic>, List<Map<String, dynamic>>>(topics, (value) => pulumi.Input.encodeList<GetRegionalSecretsSecretTopic, Map<String, dynamic>>(value, (value) => value.toMap())),
       'ttl': ttl,
@@ -147,6 +153,7 @@ class GetRegionalSecretsSecret {
       pulumiLabels: pulumi.Input.fromValue((map['pulumiLabels'] as Map).cast<String, String>()),
       rotations: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionalSecretsSecretRotation>(map['rotations']!, (value) => GetRegionalSecretsSecretRotation.fromMap((value as Map).cast<String, dynamic>()))),
       secretId: pulumi.Input.fromValue(map['secretId'] as String),
+      secretType: pulumi.Input.fromValue(map['secretType'] as String),
       tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
       topics: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionalSecretsSecretTopic>(map['topics']!, (value) => GetRegionalSecretsSecretTopic.fromMap((value as Map).cast<String, dynamic>()))),
       ttl: pulumi.Input.fromValue(map['ttl'] as String),

@@ -38,13 +38,13 @@ import 'findings_refinement_deployment_state.dart';
 /// const example = new gcp.chronicle.FindingsRefinementDeployment("example", {
 ///     location: "us",
 ///     instance: "00000000-0000-0000-0000-000000000000",
-///     findingsRefinement: pulumi.all([std.split({
+///     findingsRefinement: Promise.all([std.split({
 ///         separator: "/",
 ///         text: googleChronicleFindingsRefinement["my-findings-refinement"].name,
 ///     }), std.split({
 ///         separator: "/",
 ///         text: googleChronicleFindingsRefinement["my-findings-refinement"].name,
-///     }).then(invoke => invoke.result).length]).apply(([invoke, length]) => invoke.result[length - 1]).apply(x =>String(x)),
+///     }).then(invoke => invoke.result.length)]).then(([invoke, length]) => invoke.result[length - 1]),
 ///     enabled: true,
 ///     archived: false,
 /// });
@@ -68,9 +68,9 @@ import 'findings_refinement_deployment_state.dart';
 /// example = gcp.chronicle.FindingsRefinementDeployment("example",
 ///     location="us",
 ///     instance="00000000-0000-0000-0000-000000000000",
-///     findings_refinement=len(std.split(separator="/",
-///         text=google_chronicle_findings_refinement["my-findings-refinement"]["name"]).result).apply(lambda length: std.split(separator="/",
-///         text=google_chronicle_findings_refinement["my-findings-refinement"]["name"]).result[int(length - 1)]).apply(lambda x: str(x)),
+///     findings_refinement=std.split(separator="/",
+///         text=google_chronicle_findings_refinement["my-findings-refinement"]["name"]).result[len(std.split(separator="/",
+///         text=google_chronicle_findings_refinement["my-findings-refinement"]["name"]).result) - 1.apply(lambda x: int(x))],
 ///     enabled=True,
 ///     archived=False)
 /// ```
@@ -113,12 +113,12 @@ import 'findings_refinement_deployment_state.dart';
 ///         {
 ///             Separator = "/",
 ///             Text = googleChronicleFindingsRefinement.My_findings_refinement.Name,
-///         }).Apply(invoke => invoke.Result).Length()).Apply(values =>
+///         }).Apply(invoke => invoke.Result.Length)).Apply(values =>
 ///         {
 ///             var invoke = values.Item1;
 ///             var length = values.Item2;
 ///             return invoke.Result[(int)(length - 1)];
-///         }).Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+///         }),
 ///         Enabled = true,
 ///         Archived = false,
 ///     });
@@ -129,60 +129,60 @@ import 'findings_refinement_deployment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/chronicle"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/chronicle"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
+///
 /// func main() {
-/// pulumi.Run(func(ctx *pulumi.Context) error {
-/// _, err := chronicle.NewFindingsRefinement(ctx, "my-findings-refinement", &chronicle.FindingsRefinementArgs{
-/// Location: pulumi.String("us"),
-/// Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
-/// DisplayName: pulumi.String("findings_refinement_display_name"),
-/// Type: pulumi.String("DETECTION_EXCLUSION"),
-/// Query: pulumi.String("network.dns.response = true"),
-/// OutcomeFilters: chronicle.FindingsRefinementOutcomeFilterArray{
-/// &chronicle.FindingsRefinementOutcomeFilterArgs{
-/// OutcomeVariable: pulumi.String("risk_score"),
-/// OutcomeFilterOperator: pulumi.String("EQUAL"),
-/// OutcomeValue: pulumi.String("value"),
-/// },
-/// },
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// invokeSplit, err := std.Split(ctx, &std.SplitArgs{
-/// Separator: "/",
-/// Text: googleChronicleFindingsRefinement.MyFindingsRefinement.Name,
-/// }, nil)
-/// if err != nil {
-/// return err
-/// }
-/// invokeSplit1, err := std.Split(ctx, &std.SplitArgs{
-/// Separator: "/",
-/// Text: googleChronicleFindingsRefinement.MyFindingsRefinement.Name,
-/// }, nil)
-/// if err != nil {
-/// return err
-/// }
-/// _, err = chronicle.NewFindingsRefinementDeployment(ctx, "example", &chronicle.FindingsRefinementDeploymentArgs{
-/// Location: pulumi.String("us"),
-/// Instance: pulumi.String("00000000-0000-0000-0000-000000000000"),
-/// FindingsRefinement: pulumi.String(len(invokeSplit.Result).ApplyT(func(length int) (pulumi.Any, error) {
-/// %!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference)).(pulumi.AnyOutput)),
-/// Enabled: pulumi.Bool(true),
-/// Archived: pulumi.Bool(false),
-/// })
-/// if err != nil {
-/// return err
-/// }
-/// return nil
-/// })
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		_, err := chronicle.NewFindingsRefinement(ctx, "my-findings-refinement", &chronicle.FindingsRefinementArgs{
+/// 			Location:    pulumi.String("us"),
+/// 			Instance:    pulumi.String("00000000-0000-0000-0000-000000000000"),
+/// 			DisplayName: pulumi.String("findings_refinement_display_name"),
+/// 			Type:        pulumi.String("DETECTION_EXCLUSION"),
+/// 			Query:       pulumi.String("network.dns.response = true"),
+/// 			OutcomeFilters: chronicle.FindingsRefinementOutcomeFilterArray{
+/// 				&chronicle.FindingsRefinementOutcomeFilterArgs{
+/// 					OutcomeVariable:       pulumi.String("risk_score"),
+/// 					OutcomeFilterOperator: pulumi.String("EQUAL"),
+/// 					OutcomeValue:          pulumi.String("value"),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeSplit, err := std.Split(ctx, &std.SplitArgs{
+/// 			Separator: "/",
+/// 			Text:      googleChronicleFindingsRefinement.MyFindingsRefinement.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		invokeSplit1, err := std.Split(ctx, &std.SplitArgs{
+/// 			Separator: "/",
+/// 			Text:      googleChronicleFindingsRefinement.MyFindingsRefinement.Name,
+/// 		}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = chronicle.NewFindingsRefinementDeployment(ctx, "example", &chronicle.FindingsRefinementDeploymentArgs{
+/// 			Location:           pulumi.String("us"),
+/// 			Instance:           pulumi.String("00000000-0000-0000-0000-000000000000"),
+/// 			FindingsRefinement: pulumi.String(invokeSplit.Result[pulumi.Int(len(invokeSplit1.Result)-1)]),
+/// 			Enabled:            pulumi.Bool(true),
+/// 			Archived:           pulumi.Bool(false),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -193,7 +193,10 @@ import 'findings_refinement_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_chronicle_findingsrefinement" "my-findings-refinement" {
+/// resource "gcp_chronicle_findings_refinement" "my-findings-refinement" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   instance     = "00000000-0000-0000-0000-000000000000"
 ///   display_name = "findings_refinement_display_name"
@@ -205,7 +208,10 @@ import 'findings_refinement_deployment_state.dart';
 ///     outcome_value           = "value"
 ///   }
 /// }
-/// resource "gcp_chronicle_findingsrefinementdeployment" "example" {
+/// resource "gcp_chronicle_findings_refinement_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "us"
 ///   instance            = "00000000-0000-0000-0000-000000000000"
 ///   findings_refinement = element(split("/", googleChronicleFindingsRefinement.my-findings-refinement.name), length(split("/", googleChronicleFindingsRefinement.my-findings-refinement.name)) - 1)
@@ -255,13 +261,13 @@ import 'findings_refinement_deployment_state.dart';
 ///         var example = new FindingsRefinementDeployment("example", FindingsRefinementDeploymentArgs.builder()
 ///             .location("us")
 ///             .instance("00000000-0000-0000-0000-000000000000")
-///             .findingsRefinement(((String) StdFunctions.split(SplitArgs.builder()
+///             .findingsRefinement(StdFunctions.split(SplitArgs.builder()
 ///                 .separator("/")
 ///                 .text(googleChronicleFindingsRefinement.get("my-findings-refinement").get("name"))
-///                 .build()).result().size().applyValue(_length -> StdFunctions.split(SplitArgs.builder()
+///                 .build()).result()[StdFunctions.split(SplitArgs.builder()
 ///                 .separator("/")
 ///                 .text(googleChronicleFindingsRefinement.get("my-findings-refinement").get("name"))
-///                 .build()).result()[_length - 1])))
+///                 .build()).result().size() - 1])
 ///             .enabled(true)
 ///             .archived(false)
 ///             .build());
@@ -326,7 +332,7 @@ class FindingsRefinementDeployment extends pulumi.CustomResource {
           'gcp:chronicle/findingsRefinementDeployment:FindingsRefinementDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     archived = registerOutput<bool?>('archived');
     detectionExclusionApplication = registerOutput<FindingsRefinementDeploymentDetectionExclusionApplication?>('detectionExclusionApplication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FindingsRefinementDeploymentDetectionExclusionApplication.fromMap((guardedValue as Map).cast<String, dynamic>()); });

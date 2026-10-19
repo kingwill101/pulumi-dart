@@ -29,7 +29,7 @@ class AlertPolicyConditionConditionAbsentTrigger {
 
   factory AlertPolicyConditionConditionAbsentTrigger.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionAbsentTrigger(
-      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      count: (() { final guardedValue = map['count']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       percent: (() { final guardedValue = map['percent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }

@@ -88,8 +88,8 @@ import 'connection_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -122,7 +122,7 @@ import 'connection_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -130,18 +130,21 @@ import 'connection_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_connectioniampolicy" "policy" {
+/// resource "gcp_bigquery_connection_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = connection.project
 ///   location      = connection.location
 ///   connection_id = connection.connectionId
-///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data   = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -258,7 +261,7 @@ import 'connection_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -281,7 +284,7 @@ import 'connection_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -289,7 +292,10 @@ import 'connection_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_connectioniambinding" "binding" {
+/// resource "gcp_bigquery_connection_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = connection.project
 ///   location      = connection.location
 ///   connection_id = connection.connectionId
@@ -392,7 +398,7 @@ import 'connection_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -413,7 +419,7 @@ import 'connection_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -421,7 +427,10 @@ import 'connection_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_connectioniammember" "member" {
+/// resource "gcp_bigquery_connection_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = connection.project
 ///   location      = connection.location
 ///   connection_id = connection.connectionId
@@ -567,8 +576,8 @@ import 'connection_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -601,7 +610,7 @@ import 'connection_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -609,18 +618,21 @@ import 'connection_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_connectioniampolicy" "policy" {
+/// resource "gcp_bigquery_connection_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = connection.project
 ///   location      = connection.location
 ///   connection_id = connection.connectionId
-///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data   = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -737,7 +749,7 @@ import 'connection_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -760,7 +772,7 @@ import 'connection_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -768,7 +780,10 @@ import 'connection_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_connectioniambinding" "binding" {
+/// resource "gcp_bigquery_connection_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = connection.project
 ///   location      = connection.location
 ///   connection_id = connection.connectionId
@@ -871,7 +886,7 @@ import 'connection_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -892,7 +907,7 @@ import 'connection_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -900,7 +915,10 @@ import 'connection_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigquery_connectioniammember" "member" {
+/// resource "gcp_bigquery_connection_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = connection.project
 ///   location      = connection.location
 ///   connection_id = connection.connectionId
@@ -1017,7 +1035,7 @@ class ConnectionIamPolicy extends pulumi.CustomResource {
           'gcp:bigquery/connectionIamPolicy:ConnectionIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     connectionId = registerOutput<String>('connectionId');
     etag = registerOutput<String>('etag');

@@ -14,11 +14,15 @@ class AiLogicConfigState {
   /// management without updating or deleting the resource in the API.
   /// When set to "DELETE", deleting the resource is allowed.
   final pulumi.Input<String?>? deletionPolicy;
+  /// (Optional, Deprecated)
   /// Configuration for using the Gemini Developer API via Firebase AI Logic.
-  /// When using the Gemini Developer API via Firebase AI Logic, a separate Gemini
-  /// API key is stored in this configuration *on the server* so that you do
-  /// **not** add your Gemini API key directly into your app's codebase.
+  /// Firebase AI Logic now uses a Google-managed service account to authenticate
+  /// requests to the Gemini Developer API and no longer requires an API key.
+  /// Values provided here may be silently ignored on input, and may be omitted in
+  /// responses.
   /// Structure is documented below.
+  ///
+  /// &gt; **Warning:** `generativeLanguageConfig` is deprecated and will be removed in a future major release. Firebase AI Logic now uses a Google-managed service account to authenticate requests to the Gemini Developer API and no longer requires an API key.
   final pulumi.Input<AiLogicConfigGenerativeLanguageConfig?>? generativeLanguageConfig;
   /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   final pulumi.Input<String?>? location;
@@ -39,7 +43,7 @@ class AiLogicConfigState {
 
   /// Creates a new [AiLogicConfigState].
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
-  /// [generativeLanguageConfig] Configuration for using the Gemini Developer API via Firebase AI Logic.
+  /// [generativeLanguageConfig] (Optional, Deprecated)
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [name] Identifier. The resource name of the config.
   /// [project] The ID of the project in which the resource belongs.

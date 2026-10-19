@@ -80,8 +80,8 @@ import 'dataset_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -112,7 +112,7 @@ import 'dataset_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -120,16 +120,19 @@ import 'dataset_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/editor"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_datasetiampolicy" "dataset" {
+/// resource "gcp_healthcare_dataset_iam_policy" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id  = "your-dataset-id"
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -236,7 +239,7 @@ import 'dataset_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -257,7 +260,7 @@ import 'dataset_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -265,7 +268,10 @@ import 'dataset_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_datasetiambinding" "dataset" {
+/// resource "gcp_healthcare_dataset_iam_binding" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "your-dataset-id"
 ///   role       = "roles/editor"
 ///   members    = ["user:jane@example.com"]
@@ -356,7 +362,7 @@ import 'dataset_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -375,7 +381,7 @@ import 'dataset_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -383,7 +389,10 @@ import 'dataset_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_datasetiammember" "dataset" {
+/// resource "gcp_healthcare_dataset_iam_member" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "your-dataset-id"
 ///   role       = "roles/editor"
 ///   member     = "user:jane@example.com"
@@ -476,7 +485,7 @@ import 'dataset_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -497,7 +506,7 @@ import 'dataset_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -505,7 +514,10 @@ import 'dataset_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_datasetiambinding" "dataset" {
+/// resource "gcp_healthcare_dataset_iam_binding" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "your-dataset-id"
 ///   role       = "roles/editor"
 ///   members    = ["user:jane@example.com"]
@@ -596,7 +608,7 @@ import 'dataset_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -615,7 +627,7 @@ import 'dataset_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -623,7 +635,10 @@ import 'dataset_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_datasetiammember" "dataset" {
+/// resource "gcp_healthcare_dataset_iam_member" "dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id = "your-dataset-id"
 ///   role       = "roles/editor"
 ///   member     = "user:jane@example.com"
@@ -698,7 +713,7 @@ class DatasetIamPolicy extends pulumi.CustomResource {
           'gcp:healthcare/datasetIamPolicy:DatasetIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     datasetId = registerOutput<String>('datasetId');
     etag = registerOutput<String>('etag');

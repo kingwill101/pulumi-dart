@@ -61,7 +61,7 @@ class WorkflowArgs {
   final pulumi.Input<String?>? serviceAccount;
   /// Workflow code to be executed. The size limit is 128KB.
   /// &gt; **Warning:** This field is currently optional but **will become REQUIRED** in version 8.0.0 of the provider to align with API constraints.
-  final pulumi.Input<String?>? sourceContents;
+  final pulumi.Input<String> sourceContents;
   /// A map of resource manager tags. Resource manager tag keys and values have the same definition
   /// as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in
   /// the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
@@ -98,7 +98,7 @@ class WorkflowArgs {
     this.project,
     this.region,
     this.serviceAccount,
-    this.sourceContents,
+    required this.sourceContents,
     this.tags,
     this.userEnvVars,
   });
@@ -117,7 +117,7 @@ class WorkflowArgs {
       'project': ?project,
       'region': ?region,
       'serviceAccount': ?serviceAccount,
-      'sourceContents': ?sourceContents,
+      'sourceContents': sourceContents,
       'tags': ?tags,
       'userEnvVars': ?userEnvVars,
     };
@@ -137,7 +137,7 @@ class WorkflowArgs {
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sourceContents: (() { final guardedValue = map['sourceContents']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      sourceContents: pulumi.Input.fromValue(map['sourceContents'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       userEnvVars: (() { final guardedValue = map['userEnvVars']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );

@@ -72,7 +72,7 @@ import 'note_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/containeranalysis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/containeranalysis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -94,7 +94,7 @@ import 'note_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -103,6 +103,9 @@ import 'note_state.dart';
 /// }
 ///
 /// resource "gcp_containeranalysis_note" "note" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "attestor-note"
 ///   attestation_authority = {
 ///     hint = {
@@ -251,7 +254,7 @@ import 'note_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/containeranalysis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/containeranalysis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -285,7 +288,7 @@ import 'note_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -294,6 +297,9 @@ import 'note_state.dart';
 /// }
 ///
 /// resource "gcp_containeranalysis_note" "note" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "attestor-note"
 ///   short_description = "test note"
 ///   long_description  = "a longer description of test note"
@@ -448,7 +454,7 @@ class Note extends pulumi.CustomResource {
           'gcp:containeranalysis/note:Note',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     attestationAuthority = registerOutput<NoteAttestationAuthority>('attestationAuthority', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NoteAttestationAuthority.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

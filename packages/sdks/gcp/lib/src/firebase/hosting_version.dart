@@ -109,7 +109,7 @@ import 'hosting_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -150,7 +150,7 @@ import 'hosting_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -158,23 +158,32 @@ import 'hosting_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingsite" "default" {
+/// resource "gcp_firebase_hosting_site" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "site-id"
 /// }
-/// resource "gcp_firebase_hostingversion" "default" {
-///   site_id = gcp_firebase_hostingsite.default.site_id
+/// resource "gcp_firebase_hosting_version" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id = gcp_firebase_hosting_site.default.site_id
 ///   config = {
 ///     redirects = [{
-///       "glob"       = "/google/**"
-///       "statusCode" = 302
-///       "location"   = "https://www.google.com"
+///       glob        = "/google/**"
+///       status_code = 302
+///       location    = "https://www.google.com"
 ///     }]
 ///   }
 /// }
-/// resource "gcp_firebase_hostingrelease" "default" {
-///   site_id      = gcp_firebase_hostingsite.default.site_id
-///   version_name = gcp_firebase_hostingversion.default.name
+/// resource "gcp_firebase_hosting_release" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id      = gcp_firebase_hosting_site.default.site_id
+///   version_name = gcp_firebase_hosting_version.default.name
 ///   message      = "Redirect to Google"
 /// }
 /// ```
@@ -353,7 +362,7 @@ import 'hosting_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -395,7 +404,7 @@ import 'hosting_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -403,24 +412,33 @@ import 'hosting_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingsite" "default" {
+/// resource "gcp_firebase_hosting_site" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "site-id"
 /// }
-/// resource "gcp_firebase_hostingversion" "default" {
-///   site_id = gcp_firebase_hostingsite.default.site_id
+/// resource "gcp_firebase_hosting_version" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id = gcp_firebase_hosting_site.default.site_id
 ///   config = {
 ///     headers = [{
-///       "glob" = "/headers/**"
-///       "headers" = {
+///       glob = "/headers/**"
+///       headers = {
 ///         "my-header" = "my-value"
 ///       }
 ///     }]
 ///   }
 /// }
-/// resource "gcp_firebase_hostingrelease" "default" {
-///   site_id      = gcp_firebase_hostingsite.default.site_id
-///   version_name = gcp_firebase_hostingversion.default.name
+/// resource "gcp_firebase_hosting_release" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id      = gcp_firebase_hosting_site.default.site_id
+///   version_name = gcp_firebase_hosting_version.default.name
 ///   message      = "With custom headers"
 /// }
 /// ```
@@ -598,7 +616,7 @@ import 'hosting_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -640,7 +658,7 @@ import 'hosting_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -648,24 +666,33 @@ import 'hosting_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingsite" "default" {
+/// resource "gcp_firebase_hosting_site" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "site-id"
 /// }
-/// resource "gcp_firebase_hostingversion" "default" {
-///   site_id = gcp_firebase_hostingsite.default.site_id
+/// resource "gcp_firebase_hosting_version" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id = gcp_firebase_hosting_site.default.site_id
 ///   config = {
 ///     headers = [{
-///       "regex" = "^~/headers$"
-///       "headers" = {
+///       regex = "^~/headers$"
+///       headers = {
 ///         "my-header" = "my-value"
 ///       }
 ///     }]
 ///   }
 /// }
-/// resource "gcp_firebase_hostingrelease" "default" {
-///   site_id      = gcp_firebase_hostingsite.default.site_id
-///   version_name = gcp_firebase_hostingversion.default.name
+/// resource "gcp_firebase_hosting_release" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id      = gcp_firebase_hosting_site.default.site_id
+///   version_name = gcp_firebase_hosting_version.default.name
 ///   message      = "With custom headers"
 /// }
 /// ```
@@ -836,7 +863,7 @@ import 'hosting_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -876,7 +903,7 @@ import 'hosting_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -884,22 +911,31 @@ import 'hosting_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingsite" "default" {
+/// resource "gcp_firebase_hosting_site" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "site-id"
 /// }
-/// resource "gcp_firebase_hostingversion" "default" {
-///   site_id = gcp_firebase_hostingsite.default.site_id
+/// resource "gcp_firebase_hosting_version" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id = gcp_firebase_hosting_site.default.site_id
 ///   config = {
 ///     rewrites = [{
-///       "glob" = "**"
-///       "path" = "/index.html"
+///       glob = "**"
+///       path = "/index.html"
 ///     }]
 ///   }
 /// }
-/// resource "gcp_firebase_hostingrelease" "default" {
-///   site_id      = gcp_firebase_hostingsite.default.site_id
-///   version_name = gcp_firebase_hostingversion.default.name
+/// resource "gcp_firebase_hosting_release" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id      = gcp_firebase_hosting_site.default.site_id
+///   version_name = gcp_firebase_hosting_version.default.name
 ///   message      = "Path Rewrite"
 /// }
 /// ```
@@ -1121,8 +1157,8 @@ import 'hosting_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrunv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrunv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1182,7 +1218,7 @@ import 'hosting_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1190,37 +1226,49 @@ import 'hosting_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingsite" "default" {
+/// resource "gcp_firebase_hosting_site" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "site-id"
 /// }
 /// resource "gcp_cloudrunv2_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project  = "my-project-name"
 ///   name     = "cloud-run-service-via-hosting"
 ///   location = "us-central1"
 ///   ingress  = "INGRESS_TRAFFIC_ALL"
 ///   template = {
 ///     containers = [{
-///       "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///       image = "us-docker.pkg.dev/cloudrun/container/hello"
 ///     }]
 ///   }
 ///   deletion_protection = true
 /// }
-/// resource "gcp_firebase_hostingversion" "default" {
-///   site_id = gcp_firebase_hostingsite.default.site_id
+/// resource "gcp_firebase_hosting_version" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id = gcp_firebase_hosting_site.default.site_id
 ///   config = {
 ///     rewrites = [{
-///       "glob" = "/hello/**"
-///       "run" = {
-///         "serviceId" = gcp_cloudrunv2_service.default.name
-///         "region"    = gcp_cloudrunv2_service.default.location
+///       glob = "/hello/**"
+///       run = {
+///         service_id = gcp_cloudrunv2_service.default.name
+///         region     = gcp_cloudrunv2_service.default.location
 ///       }
 ///     }]
 ///   }
 /// }
-/// resource "gcp_firebase_hostingrelease" "default" {
-///   site_id      = gcp_firebase_hostingsite.default.site_id
-///   version_name = gcp_firebase_hostingversion.default.name
+/// resource "gcp_firebase_hosting_release" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id      = gcp_firebase_hosting_site.default.site_id
+///   version_name = gcp_firebase_hosting_version.default.name
 ///   message      = "Cloud Run Integration"
 /// }
 /// ```
@@ -1528,9 +1576,9 @@ import 'hosting_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctionsv2"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctionsv2"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1611,7 +1659,7 @@ import 'hosting_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1619,22 +1667,34 @@ import 'hosting_version_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_hostingsite" "default" {
+/// resource "gcp_firebase_hosting_site" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   site_id = "site-id"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                     = "my-project-name"
 ///   name                        = "site-id-function-source"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "function-source.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("function-source.zip")
+///   source = fileasset("function-source.zip")
 /// }
 /// resource "gcp_cloudfunctionsv2_function" "function" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   name        = "cloud-function-via-hosting"
 ///   location    = "us-central1"
@@ -1645,7 +1705,7 @@ import 'hosting_version_state.dart';
 ///     source = {
 ///       storage_source = {
 ///         bucket = gcp_storage_bucket.bucket.name
-///         object = gcp_storage_bucketobject.object.name
+///         object = gcp_storage_bucket_object.object.name
 ///       }
 ///     }
 ///   }
@@ -1655,18 +1715,24 @@ import 'hosting_version_state.dart';
 ///     timeout_seconds    = 60
 ///   }
 /// }
-/// resource "gcp_firebase_hostingversion" "default" {
-///   site_id = gcp_firebase_hostingsite.default.site_id
+/// resource "gcp_firebase_hosting_version" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id = gcp_firebase_hosting_site.default.site_id
 ///   config = {
 ///     rewrites = [{
-///       "glob"     = "/hello/**"
-///       "function" = gcp_cloudfunctionsv2_function.function.name
+///       glob     = "/hello/**"
+///       function = gcp_cloudfunctionsv2_function.function.name
 ///     }]
 ///   }
 /// }
-/// resource "gcp_firebase_hostingrelease" "default" {
-///   site_id      = gcp_firebase_hostingsite.default.site_id
-///   version_name = gcp_firebase_hostingversion.default.name
+/// resource "gcp_firebase_hosting_release" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   site_id      = gcp_firebase_hosting_site.default.site_id
+///   version_name = gcp_firebase_hosting_version.default.name
 ///   message      = "Cloud Functions Integration"
 /// }
 /// ```
@@ -1863,7 +1929,7 @@ class HostingVersion extends pulumi.CustomResource {
           'gcp:firebase/hostingVersion:HostingVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     config = registerOutput<HostingVersionConfig?>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HostingVersionConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

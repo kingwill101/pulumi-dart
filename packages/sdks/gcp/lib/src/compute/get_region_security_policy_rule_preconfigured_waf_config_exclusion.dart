@@ -1,12 +1,15 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'get_region_security_policy_rule_preconfigured_waf_config_exclusion_request_body.dart';
 import 'get_region_security_policy_rule_preconfigured_waf_config_exclusion_request_cooky.dart';
 import 'get_region_security_policy_rule_preconfigured_waf_config_exclusion_request_header.dart';
 import 'get_region_security_policy_rule_preconfigured_waf_config_exclusion_request_query_param.dart';
 import 'get_region_security_policy_rule_preconfigured_waf_config_exclusion_request_uri.dart';
 
 class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
+  /// A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
+  final pulumi.Input<List<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody>> requestBodies;
   /// Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
   final pulumi.Input<List<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky>> requestCookies;
   /// Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
@@ -24,6 +27,7 @@ class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
   final pulumi.Input<String> targetRuleSet;
 
   /// Creates a new [GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion].
+  /// [requestBodies] A list of request body fields to be excluded from inspection during preconfigured WAF evaluation.
   /// [requestCookies] Request cookie whose value will be excluded from inspection during preconfigured WAF evaluation.
   /// [requestHeaders] Request header whose value will be excluded from inspection during preconfigured WAF evaluation.
   /// [requestQueryParams] Request query parameter whose value will be excluded from inspection during preconfigured WAF evaluation.
@@ -31,6 +35,7 @@ class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
   /// [targetRuleIds] A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
   /// [targetRuleSet] Target WAF rule set to apply the preconfigured WAF exclusion.
   const GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion({
+    required this.requestBodies,
     required this.requestCookies,
     required this.requestHeaders,
     required this.requestQueryParams,
@@ -41,6 +46,7 @@ class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'requestBodies': pulumi.Input.mapInputValue<List<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody>, List<Map<String, dynamic>>>(requestBodies, (value) => pulumi.Input.encodeList<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody, Map<String, dynamic>>(value, (value) => value.toMap())),
       'requestCookies': pulumi.Input.mapInputValue<List<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky>, List<Map<String, dynamic>>>(requestCookies, (value) => pulumi.Input.encodeList<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky, Map<String, dynamic>>(value, (value) => value.toMap())),
       'requestHeaders': pulumi.Input.mapInputValue<List<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader>, List<Map<String, dynamic>>>(requestHeaders, (value) => pulumi.Input.encodeList<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader, Map<String, dynamic>>(value, (value) => value.toMap())),
       'requestQueryParams': pulumi.Input.mapInputValue<List<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam>, List<Map<String, dynamic>>>(requestQueryParams, (value) => pulumi.Input.encodeList<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam, Map<String, dynamic>>(value, (value) => value.toMap())),
@@ -52,6 +58,7 @@ class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
 
   factory GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion.fromMap(Map<String, dynamic> map) {
     return GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion(
+      requestBodies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody>(map['requestBodies']!, (value) => GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestBody.fromMap((value as Map).cast<String, dynamic>()))),
       requestCookies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky>(map['requestCookies']!, (value) => GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky.fromMap((value as Map).cast<String, dynamic>()))),
       requestHeaders: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader>(map['requestHeaders']!, (value) => GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader.fromMap((value as Map).cast<String, dynamic>()))),
       requestQueryParams: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam>(map['requestQueryParams']!, (value) => GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam.fromMap((value as Map).cast<String, dynamic>()))),

@@ -423,7 +423,7 @@ import 'prevention_inspect_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -557,7 +557,7 @@ import 'prevention_inspect_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -565,73 +565,76 @@ import 'prevention_inspect_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventioninspecttemplate" "basic" {
+/// resource "gcp_dataloss_prevention_inspect_template" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "My description"
 ///   display_name = "display_name"
 ///   inspect_config = {
 ///     info_types = [{
-///       "name" = "EMAIL_ADDRESS"
+///       name = "EMAIL_ADDRESS"
 ///       }, {
-///       "name" = "PERSON_NAME"
+///       name = "PERSON_NAME"
 ///       }, {
-///       "name" = "LAST_NAME"
+///       name = "LAST_NAME"
 ///       }, {
-///       "name" = "DOMAIN_NAME"
+///       name = "DOMAIN_NAME"
 ///       }, {
-///       "name" = "PHONE_NUMBER"
+///       name = "PHONE_NUMBER"
 ///       }, {
-///       "name" = "FIRST_NAME"
+///       name = "FIRST_NAME"
 ///     }]
 ///     min_likelihood = "UNLIKELY"
 ///     rule_sets = [{
-///       "infoTypes" = [{
-///         "name" = "EMAIL_ADDRESS"
+///       info_types = [{
+///         name = "EMAIL_ADDRESS"
 ///       }]
-///       "rules" = [{
-///         "exclusionRule" = {
-///           "regex" = {
-///             "pattern" = ".+@example.com"
+///       rules = [{
+///         exclusion_rule = {
+///           regex = {
+///             pattern = ".+@example.com"
 ///           }
-///           "matchingType" = "MATCHING_TYPE_FULL_MATCH"
+///           matching_type = "MATCHING_TYPE_FULL_MATCH"
 ///         }
 ///       }]
 ///       }, {
-///       "infoTypes" = [{
-///         "name" = "EMAIL_ADDRESS"
+///       info_types = [{
+///         name = "EMAIL_ADDRESS"
 ///         }, {
-///         "name" = "DOMAIN_NAME"
+///         name = "DOMAIN_NAME"
 ///         }, {
-///         "name" = "PHONE_NUMBER"
+///         name = "PHONE_NUMBER"
 ///         }, {
-///         "name" = "PERSON_NAME"
+///         name = "PERSON_NAME"
 ///         }, {
-///         "name" = "FIRST_NAME"
+///         name = "FIRST_NAME"
 ///       }]
-///       "rules" = [{
-///         "exclusionRule" = {
-///           "dictionary" = {
-///             "wordList" = {
-///               "words" = ["TEST"]
+///       rules = [{
+///         exclusion_rule = {
+///           dictionary = {
+///             word_list = {
+///               words = ["TEST"]
 ///             }
 ///           }
-///           "matchingType" = "MATCHING_TYPE_PARTIAL_MATCH"
+///           matching_type = "MATCHING_TYPE_PARTIAL_MATCH"
 ///         }
 ///       }]
 ///       }, {
-///       "infoTypes" = [{
-///         "name" = "PERSON_NAME"
+///       info_types = [{
+///         name = "PERSON_NAME"
 ///       }]
-///       "rules" = [{
-///         "hotwordRule" = {
-///           "hotwordRegex" = {
-///             "pattern" = "patient"
+///       rules = [{
+///         hotword_rule = {
+///           hotword_regex = {
+///             pattern = "patient"
 ///           }
-///           "proximity" = {
-///             "windowBefore" = 50
+///           proximity = {
+///             window_before = 50
 ///           }
-///           "likelihoodAdjustment" = {
-///             "fixedLikelihood" = "VERY_LIKELY"
+///           likelihood_adjustment = {
+///             fixed_likelihood = "VERY_LIKELY"
 ///           }
 ///         }
 ///       }]
@@ -640,14 +643,14 @@ import 'prevention_inspect_template_state.dart';
 ///       max_findings_per_item    = 10
 ///       max_findings_per_request = 50
 ///       max_findings_per_info_types = [{
-///         "maxFindings" = "75"
-///         "infoType" = {
-///           "name" = "PERSON_NAME"
+///         max_findings = "75"
+///         info_type = {
+///           name = "PERSON_NAME"
 ///         }
 ///         }, {
-///         "maxFindings" = "80"
-///         "infoType" = {
-///           "name" = "LAST_NAME"
+///         max_findings = "80"
+///         info_type = {
+///           name = "LAST_NAME"
 ///         }
 ///       }]
 ///     }
@@ -1096,7 +1099,7 @@ import 'prevention_inspect_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1179,7 +1182,7 @@ import 'prevention_inspect_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1187,50 +1190,53 @@ import 'prevention_inspect_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventioninspecttemplate" "custom" {
+/// resource "gcp_dataloss_prevention_inspect_template" "custom" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "My description"
 ///   display_name = "display_name"
 ///   inspect_config = {
 ///     custom_info_types = [{
-///       "infoType" = {
-///         "name" = "MY_CUSTOM_TYPE"
+///       info_type = {
+///         name = "MY_CUSTOM_TYPE"
 ///       }
-///       "likelihood" = "UNLIKELY"
-///       "regex" = {
-///         "pattern" = "test*"
+///       likelihood = "UNLIKELY"
+///       regex = {
+///         pattern = "test*"
 ///       }
 ///     }]
 ///     info_types = [{
-///       "name" = "EMAIL_ADDRESS"
+///       name = "EMAIL_ADDRESS"
 ///     }]
 ///     min_likelihood = "UNLIKELY"
 ///     rule_sets = [{
-///       "infoTypes" = [{
-///         "name" = "EMAIL_ADDRESS"
+///       info_types = [{
+///         name = "EMAIL_ADDRESS"
 ///       }]
-///       "rules" = [{
-///         "exclusionRule" = {
-///           "regex" = {
-///             "pattern" = ".+@example.com"
+///       rules = [{
+///         exclusion_rule = {
+///           regex = {
+///             pattern = ".+@example.com"
 ///           }
-///           "matchingType" = "MATCHING_TYPE_FULL_MATCH"
+///           matching_type = "MATCHING_TYPE_FULL_MATCH"
 ///         }
 ///       }]
 ///       }, {
-///       "infoTypes" = [{
-///         "name" = "MY_CUSTOM_TYPE"
+///       info_types = [{
+///         name = "MY_CUSTOM_TYPE"
 ///       }]
-///       "rules" = [{
-///         "hotwordRule" = {
-///           "hotwordRegex" = {
-///             "pattern" = "example*"
+///       rules = [{
+///         hotword_rule = {
+///           hotword_regex = {
+///             pattern = "example*"
 ///           }
-///           "proximity" = {
-///             "windowBefore" = 50
+///           proximity = {
+///             window_before = 50
 ///           }
-///           "likelihoodAdjustment" = {
-///             "fixedLikelihood" = "VERY_LIKELY"
+///           likelihood_adjustment = {
+///             fixed_likelihood = "VERY_LIKELY"
 ///           }
 ///         }
 ///       }]
@@ -1609,7 +1615,7 @@ import 'prevention_inspect_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1690,7 +1696,7 @@ import 'prevention_inspect_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1698,48 +1704,51 @@ import 'prevention_inspect_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventioninspecttemplate" "custom_type_surrogate" {
+/// resource "gcp_dataloss_prevention_inspect_template" "custom_type_surrogate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = "projects/my-project-name"
 ///   description  = "My description"
 ///   display_name = "display_name"
 ///   inspect_config = {
 ///     custom_info_types = [{
-///       "infoType" = {
-///         "name" = "MY_CUSTOM_TYPE"
+///       info_type = {
+///         name = "MY_CUSTOM_TYPE"
 ///       }
-///       "likelihood"    = "UNLIKELY"
-///       "surrogateType" = {}
+///       likelihood     = "UNLIKELY"
+///       surrogate_type = {}
 ///     }]
 ///     info_types = [{
-///       "name" = "EMAIL_ADDRESS"
+///       name = "EMAIL_ADDRESS"
 ///     }]
 ///     min_likelihood = "UNLIKELY"
 ///     rule_sets = [{
-///       "infoTypes" = [{
-///         "name" = "EMAIL_ADDRESS"
+///       info_types = [{
+///         name = "EMAIL_ADDRESS"
 ///       }]
-///       "rules" = [{
-///         "exclusionRule" = {
-///           "regex" = {
-///             "pattern" = ".+@example.com"
+///       rules = [{
+///         exclusion_rule = {
+///           regex = {
+///             pattern = ".+@example.com"
 ///           }
-///           "matchingType" = "MATCHING_TYPE_FULL_MATCH"
+///           matching_type = "MATCHING_TYPE_FULL_MATCH"
 ///         }
 ///       }]
 ///       }, {
-///       "infoTypes" = [{
-///         "name" = "MY_CUSTOM_TYPE"
+///       info_types = [{
+///         name = "MY_CUSTOM_TYPE"
 ///       }]
-///       "rules" = [{
-///         "hotwordRule" = {
-///           "hotwordRegex" = {
-///             "pattern" = "example*"
+///       rules = [{
+///         hotword_rule = {
+///           hotword_regex = {
+///             pattern = "example*"
 ///           }
-///           "proximity" = {
-///             "windowBefore" = 50
+///           proximity = {
+///             window_before = 50
 ///           }
-///           "likelihoodAdjustment" = {
-///             "fixedLikelihood" = "VERY_LIKELY"
+///           likelihood_adjustment = {
+///             fixed_likelihood = "VERY_LIKELY"
 ///           }
 ///         }
 ///       }]
@@ -1988,7 +1997,7 @@ import 'prevention_inspect_template_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataloss"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataloss"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2025,7 +2034,7 @@ import 'prevention_inspect_template_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2033,20 +2042,23 @@ import 'prevention_inspect_template_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_dataloss_preventioninspecttemplate" "max_infotype_per_finding_default" {
+/// resource "gcp_dataloss_prevention_inspect_template" "max_infotype_per_finding_default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = "projects/my-project-name"
 ///   inspect_config = {
 ///     info_types = [{
-///       "name" = "EMAIL_ADDRESS"
+///       name = "EMAIL_ADDRESS"
 ///       }, {
-///       "name" = "PERSON_NAME"
+///       name = "PERSON_NAME"
 ///     }]
 ///     min_likelihood = "UNLIKELY"
 ///     limits = {
 ///       max_findings_per_request = 333
 ///       max_findings_per_item    = 222
 ///       max_findings_per_info_types = [{
-///         "maxFindings" = 111
+///         max_findings = 111
 ///       }]
 ///     }
 ///   }
@@ -2178,7 +2190,7 @@ class PreventionInspectTemplate extends pulumi.CustomResource {
           'gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     allowLimitedAvailabilityInfoTypes = registerOutput<bool?>('allowLimitedAvailabilityInfoTypes');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -62,7 +62,7 @@ import 'global_network_endpoint_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -81,7 +81,7 @@ import 'global_network_endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -89,7 +89,10 @@ import 'global_network_endpoint_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_globalnetworkendpointgroup" "neg" {
+/// resource "gcp_compute_global_network_endpoint_group" "neg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-lb-neg"
 ///   default_port          = "90"
 ///   network_endpoint_type = "INTERNET_FQDN_PORT"
@@ -179,7 +182,7 @@ import 'global_network_endpoint_group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -198,7 +201,7 @@ import 'global_network_endpoint_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -206,7 +209,10 @@ import 'global_network_endpoint_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_globalnetworkendpointgroup" "neg" {
+/// resource "gcp_compute_global_network_endpoint_group" "neg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-lb-neg"
 ///   network_endpoint_type = "INTERNET_IP_PORT"
 ///   default_port          = 90
@@ -312,7 +318,7 @@ class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
           'gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     defaultPort = registerOutput<int?>('defaultPort');
     deletionPolicy = registerOutput<String>('deletionPolicy');

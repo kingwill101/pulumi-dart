@@ -162,7 +162,7 @@ import 'provision_script_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -225,7 +225,7 @@ import 'provision_script_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -233,15 +233,18 @@ import 'provision_script_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "my-instance"
 ///   database_version = "POSTGRES_17"
 ///   settings = {
 ///     tier            = "db-perf-optimized-N-2"
 ///     data_api_access = "ALLOW_DATA_API"
 ///     database_flags = [{
-///       "name"  = "cloudsql.iam_authentication"
-///       "value" = "on"
+///       name  = "cloudsql.iam_authentication"
+///       value = "on"
 ///     }]
 ///   }
 ///   root_password = "changeme"
@@ -252,19 +255,28 @@ import 'provision_script_state.dart';
 /// # instance is Postgres, please trim the ".gserviceaccount.com" suffix to
 /// # avoid exceeding the username length limit.
 /// resource "gcp_sql_user" "iam_user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "account-used-to-apply-this-config@example.com"
-///   instance       = gcp_sql_databaseinstance.instance.name
+///   instance       = gcp_sql_database_instance.instance.name
 ///   type           = "CLOUD_IAM_USER"
 ///   database_roles = ["cloudsqlsuperuser"]
 /// }
 /// resource "gcp_sql_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-database"
-///   instance = gcp_sql_databaseinstance.instance.name
+///   instance = gcp_sql_database_instance.instance.name
 /// }
-/// resource "gcp_sql_provisionscript" "table" {
-///   depends_on  = [gcp_sql_user.iam_user]
+/// resource "gcp_sql_provision_script" "table" {
+///   depends_on = [gcp_sql_user.iam_user]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   script      = "CREATE TABLE IF NOT EXISTS table1 ( col VARCHAR(16) NOT NULL );"
-///   instance    = gcp_sql_databaseinstance.instance.name
+///   instance    = gcp_sql_database_instance.instance.name
 ///   database    = gcp_sql_database.database.name
 ///   description = "sql script to create tables"
 /// }
@@ -441,7 +453,7 @@ class ProvisionScript extends pulumi.CustomResource {
           'gcp:sql/provisionScript:ProvisionScript',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     database = registerOutput<String?>('database');
     deletionPolicy = registerOutput<String?>('deletionPolicy');

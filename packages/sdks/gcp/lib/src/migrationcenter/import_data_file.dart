@@ -91,7 +91,7 @@ import 'import_data_file_upload_file_info.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/migrationcenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/migrationcenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -128,7 +128,7 @@ import 'import_data_file_upload_file_info.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -137,18 +137,27 @@ import 'import_data_file_upload_file_info.dart';
 /// }
 ///
 /// resource "gcp_migrationcenter_source" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location  = "us-central1"
 ///   source_id = "source-test"
 ///   type      = "SOURCE_TYPE_CUSTOM"
 /// }
-/// resource "gcp_migrationcenter_importjob" "default" {
+/// resource "gcp_migrationcenter_import_job" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   import_job_id = "import-job-test"
 ///   asset_source  = gcp_migrationcenter_source.default.id
 /// }
-/// resource "gcp_migrationcenter_importdatafile" "default" {
+/// resource "gcp_migrationcenter_import_data_file" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = "us-central1"
-///   import_job          = gcp_migrationcenter_importjob.default.import_job_id
+///   import_job          = gcp_migrationcenter_import_job.default.import_job_id
 ///   import_data_file_id = "import-data-file-test"
 ///   display_name        = "Terraform integration test display"
 ///   format              = "IMPORT_JOB_FORMAT_RVTOOLS_XLSX"
@@ -297,7 +306,7 @@ class ImportDataFile extends pulumi.CustomResource {
           'gcp:migrationcenter/importDataFile:ImportDataFile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

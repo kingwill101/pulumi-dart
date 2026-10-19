@@ -402,8 +402,8 @@ import 'cx_agent_text_to_speech_settings.dart';
 /// 	"encoding/json"
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -536,7 +536,7 @@ import 'cx_agent_text_to_speech_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -545,11 +545,17 @@ import 'cx_agent_text_to_speech_settings.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "dialogflowcx-bucket"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_diagflow_cxagent" "full_agent" {
+/// resource "gcp_diagflow_cx_agent" "full_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name               = "dialogflowcx-agent"
 ///   location                   = "global"
 ///   default_language_code      = "en"
@@ -622,7 +628,28 @@ import 'cx_agent_text_to_speech_settings.dart';
 ///   client_certificate_settings = {
 ///     passphrase      = "projects/example-proj/secrets/example-secret/versions/example-version"
 ///     private_key     = "projects/example-proj/secrets/example-secret/versions/example-version"
-///     ssl_certificate = "-----BEGIN CERTIFICATE-----\nMIIDdDCCAlygAwIBAgIJANg0gKeB5LKmMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYD\nVQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5j\naXNjbzEZMBcGA1UECgwQR2l0SHViLCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50\nIFRlYW0xGTAXBgNVBAMMEGdvdnN0YWNrLmdpdGh1Yi5pbzAeFw0yMDA1MDUxNzM2\nMzVaFw0zMDA1MDMxNzM2MzVaMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2Fs\naWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzEZMBcGA1UECgwQR2l0SHVi\nLCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50IFRlYW0xGTAXBgNVBAMMEGdvdnN0\nYWNrLmdpdGh1Yi5pbzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK5P\n4d9qWZPjZ2eA4eYV2Q8Z3Zp4g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\ng8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\ng8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\ng8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\ng8e6g8e6g8e6g8e6g8e6AgMBAAGjggEaMIIBFjAdBgNVHQ4EFgQUCneA9H8fC+tC\ng8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\ng8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\ng8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\ng8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6\n-----END CERTIFICATE-----\n"
+///     ssl_certificate = <<EOT
+/// -----BEGIN CERTIFICATE-----
+/// MIIDdDCCAlygAwIBAgIJANg0gKeB5LKmMA0GCSqGSIb3DQEBCwUAMIGSMQswCQYD
+/// VQQGEwJVUzETMBEGA1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5j
+/// aXNjbzEZMBcGA1UECgwQR2l0SHViLCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50
+/// IFRlYW0xGTAXBgNVBAMMEGdvdnN0YWNrLmdpdGh1Yi5pbzAeFw0yMDA1MDUxNzM2
+/// MzVaFw0zMDA1MDMxNzM2MzVaMIGSMQswCQYDVQQGEwJVUzETMBEGA1UECAwKQ2Fs
+/// aWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzEZMBcGA1UECgwQR2l0SHVi
+/// LCBJbmMuMRkwFwYDVQQLDBBHb3Zlcm5tZW50IFRlYW0xGTAXBgNVBAMMEGdvdnN0
+/// YWNrLmdpdGh1Yi5pbzCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAK5P
+/// 4d9qWZPjZ2eA4eYV2Q8Z3Zp4g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+/// g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+/// g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+/// g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+/// g8e6g8e6g8e6g8e6g8e6AgMBAAGjggEaMIIBFjAdBgNVHQ4EFgQUCneA9H8fC+tC
+/// g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+/// g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+/// g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+/// g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6g8e6
+/// -----END CERTIFICATE-----
+/// EOT
+///
 ///   }
 ///   personalization_settings = {
 ///     default_end_user_metadata = "{\"example-key\": \"example-value\"}"
@@ -998,7 +1025,7 @@ class CxAgent extends pulumi.CustomResource {
           'gcp:diagflow/cxAgent:CxAgent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     advancedSettings = registerOutput<CxAgentAdvancedSettings>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentAdvancedSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     answerFeedbackSettings = registerOutput<CxAgentAnswerFeedbackSettings?>('answerFeedbackSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxAgentAnswerFeedbackSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

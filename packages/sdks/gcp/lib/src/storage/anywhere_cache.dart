@@ -96,7 +96,7 @@ import 'anywhere_cache_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -133,7 +133,7 @@ import 'anywhere_cache_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -145,18 +145,27 @@ import 'anywhere_cache_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "bucket-name"
 ///   location = "US"
 /// }
 /// resource "time_sleep" "destroy_wait_5000_seconds" {
-///   depends_on       = [gcp_storage_bucket.bucket]
+///   depends_on = [gcp_storage_bucket.bucket]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destroy_duration = "5000s"
 /// }
-/// resource "gcp_storage_anywherecache" "cache" {
+/// resource "gcp_storage_anywhere_cache" "cache" {
 ///   depends_on = [time_sleep.destroy_wait_5000_seconds]
-///   bucket     = gcp_storage_bucket.bucket.name
-///   zone       = "us-central1-f"
-///   ttl        = "3601s"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bucket = gcp_storage_bucket.bucket.name
+///   zone   = "us-central1-f"
+///   ttl    = "3601s"
 /// }
 /// ```
 /// ```java
@@ -295,7 +304,7 @@ class AnywhereCache extends pulumi.CustomResource {
           'gcp:storage/anywhereCache:AnywhereCache',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     admissionPolicy = registerOutput<String?>('admissionPolicy');
     anywhereCacheId = registerOutput<String>('anywhereCacheId');

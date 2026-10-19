@@ -81,7 +81,7 @@ import 'default_object_aclstate.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -109,7 +109,7 @@ import 'default_object_aclstate.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -118,10 +118,16 @@ import 'default_object_aclstate.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "image-store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "image-store-bucket"
 ///   location = "EU"
 /// }
-/// resource "gcp_storage_defaultobjectacl" "image-store-default-acl" {
+/// resource "gcp_storage_default_object_a_c_l" "image-store-default-acl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket        = gcp_storage_bucket.image-store.name
 ///   role_entities = ["OWNER:user-my.email@gmail.com", "READER:group-mygroup"]
 /// }
@@ -211,7 +217,7 @@ class DefaultObjectACL extends pulumi.CustomResource {
           'gcp:storage/defaultObjectACL:DefaultObjectACL',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -26,7 +26,7 @@ import 'gateway_advertised_route_state.dart';
 ///     autoCreateSubnetworks: false,
 /// });
 /// const subnetwork = new gcp.compute.Subnetwork("subnetwork", {
-///     name: "tf-test-subnet_48153",
+///     name: "tf-test-subnet_31660",
 ///     ipCidrRange: "10.0.0.0/28",
 ///     region: "us-central1",
 ///     network: network.selfLink,
@@ -76,7 +76,7 @@ import 'gateway_advertised_route_state.dart';
 ///     name="net-spoke",
 ///     auto_create_subnetworks=False)
 /// subnetwork = gcp.compute.Subnetwork("subnetwork",
-///     name="tf-test-subnet_48153",
+///     name="tf-test-subnet_31660",
 ///     ip_cidr_range="10.0.0.0/28",
 ///     region="us-central1",
 ///     network=network.self_link)
@@ -130,7 +130,7 @@ import 'gateway_advertised_route_state.dart';
 ///
 ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
 ///     {
-///         Name = "tf-test-subnet_48153",
+///         Name = "tf-test-subnet_31660",
 ///         IpCidrRange = "10.0.0.0/28",
 ///         Region = "us-central1",
 ///         Network = network.SelfLink,
@@ -192,8 +192,8 @@ import 'gateway_advertised_route_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -207,7 +207,7 @@ import 'gateway_advertised_route_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = compute.NewSubnetwork(ctx, "subnetwork", &compute.SubnetworkArgs{
-/// 			Name:        pulumi.String("tf-test-subnet_48153"),
+/// 			Name:        pulumi.String("tf-test-subnet_31660"),
 /// 			IpCidrRange: pulumi.String("10.0.0.0/28"),
 /// 			Region:      pulumi.String("us-central1"),
 /// 			Network:     network.SelfLink,
@@ -267,7 +267,7 @@ import 'gateway_advertised_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -276,16 +276,25 @@ import 'gateway_advertised_route_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "net-spoke"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnetwork" {
-///   name          = "tf-test-subnet_48153"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name          = "tf-test-subnet_31660"
 ///   ip_cidr_range = "10.0.0.0/28"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.network.self_link
 /// }
 /// resource "gcp_networkconnectivity_hub" "basic_hub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "hub"
 ///   description = "A sample hub"
 ///   labels = {
@@ -294,6 +303,9 @@ import 'gateway_advertised_route_state.dart';
 ///   preset_topology = "HYBRID_INSPECTION"
 /// }
 /// resource "gcp_networkconnectivity_spoke" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "spoke-name"
 ///   location    = "us-central1"
 ///   description = "A sample spoke of type Gateway"
@@ -303,13 +315,16 @@ import 'gateway_advertised_route_state.dart';
 ///   hub = gcp_networkconnectivity_hub.basic_hub.id
 ///   gateway = {
 ///     ip_range_reservations = [{
-///       "ipRange" = "10.0.0.0/23"
+///       ip_range = "10.0.0.0/23"
 ///     }]
 ///     capacity = "CAPACITY_1_GBPS"
 ///   }
 ///   group = "gateways"
 /// }
-/// resource "gcp_networkconnectivity_gatewayadvertisedroute" "default" {
+/// resource "gcp_networkconnectivity_gateway_advertised_route" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   spoke    = gcp_networkconnectivity_spoke.primary.name
 ///   location = "us-central1"
 ///   name     = "gateway-advertised-route-name"
@@ -359,7 +374,7 @@ import 'gateway_advertised_route_state.dart';
 ///             .build());
 ///
 ///         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
-///             .name("tf-test-subnet_48153")
+///             .name("tf-test-subnet_31660")
 ///             .ipCidrRange("10.0.0.0/28")
 ///             .region("us-central1")
 ///             .network(network.selfLink())
@@ -411,7 +426,7 @@ import 'gateway_advertised_route_state.dart';
 ///   subnetwork:
 ///     type: gcp:compute:Subnetwork
 ///     properties:
-///       name: tf-test-subnet_48153
+///       name: tf-test-subnet_31660
 ///       ipCidrRange: 10.0.0.0/28
 ///       region: us-central1
 ///       network: ${network.selfLink}
@@ -529,7 +544,7 @@ class GatewayAdvertisedRoute extends pulumi.CustomResource {
           'gcp:networkconnectivity/gatewayAdvertisedRoute:GatewayAdvertisedRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

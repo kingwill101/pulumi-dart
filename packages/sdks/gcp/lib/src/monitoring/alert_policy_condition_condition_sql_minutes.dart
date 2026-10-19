@@ -21,7 +21,7 @@ class AlertPolicyConditionConditionSqlMinutes {
 
   factory AlertPolicyConditionConditionSqlMinutes.fromMap(Map<String, dynamic> map) {
     return AlertPolicyConditionConditionSqlMinutes(
-      periodicity: pulumi.Input.fromValue((map['periodicity'] as num).toInt()),
+      periodicity: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['periodicity'])),
     );
   }
 }

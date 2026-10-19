@@ -115,9 +115,9 @@ import 'vpc_flow_logs_config_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkmanagement"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkmanagement"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -168,7 +168,7 @@ import 'vpc_flow_logs_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -176,25 +176,37 @@ import 'vpc_flow_logs_config_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_networkmanagement_vpcflowlogsconfig" "interconnect-test" {
+/// resource "gcp_networkmanagement_vpc_flow_logs_config" "interconnect-test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_flow_logs_config_id = "basic-interconnect-test-id"
 ///   location                = "global"
-///   interconnect_attachment ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-east4/interconnectAttachments/${gcp_compute_interconnectattachment.attachment.name}"
+///   interconnect_attachment ="projects/${data.gcp_organizations_project.project.number}/regions/us-east4/interconnectAttachments/${gcp_compute_interconnect_attachment.attachment.name}"
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "basic-interconnect-test-network"
 /// }
 /// resource "gcp_compute_router" "router" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "basic-interconnect-test-router"
 ///   network = gcp_compute_network.network.name
 ///   bgp = {
 ///     asn = 16550
 ///   }
 /// }
-/// resource "gcp_compute_interconnectattachment" "attachment" {
+/// resource "gcp_compute_interconnect_attachment" "attachment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "basic-interconnect-test-id"
 ///   edge_availability_domain = "AVAILABILITY_DOMAIN_1"
 ///   type                     = "PARTNER"
@@ -503,9 +515,9 @@ import 'vpc_flow_logs_config_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkmanagement"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkmanagement"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -601,7 +613,7 @@ import 'vpc_flow_logs_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -609,57 +621,84 @@ import 'vpc_flow_logs_config_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_networkmanagement_vpcflowlogsconfig" "vpn-test" {
+/// resource "gcp_networkmanagement_vpc_flow_logs_config" "vpn-test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_flow_logs_config_id = "basic-test-id"
 ///   location                = "global"
-///   vpn_tunnel              ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/vpnTunnels/${gcp_compute_vpntunnel.tunnel.name}"
+///   vpn_tunnel              ="projects/${data.gcp_organizations_project.project.number}/regions/us-central1/vpnTunnels/${gcp_compute_v_p_n_tunnel.tunnel.name}"
 /// }
-/// resource "gcp_compute_vpntunnel" "tunnel" {
-///   depends_on         = [gcp_compute_forwardingrule.fr_esp, gcp_compute_forwardingrule.fr_udp500, gcp_compute_forwardingrule.fr_udp4500]
+/// resource "gcp_compute_v_p_n_tunnel" "tunnel" {
+///   depends_on = [gcp_compute_forwarding_rule.fr_esp, gcp_compute_forwarding_rule.fr_udp500, gcp_compute_forwarding_rule.fr_udp4500]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "basic-test-tunnel"
 ///   peer_ip            = "15.0.0.120"
 ///   shared_secret      = "a secret message"
-///   target_vpn_gateway = gcp_compute_vpngateway.target_gateway.id
+///   target_vpn_gateway = gcp_compute_v_p_n_gateway.target_gateway.id
 /// }
-/// resource "gcp_compute_vpngateway" "target_gateway" {
+/// resource "gcp_compute_v_p_n_gateway" "target_gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "basic-test-gateway"
 ///   network = gcp_compute_network.network.id
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "basic-test-network"
 /// }
 /// resource "gcp_compute_address" "vpn_static_ip" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "basic-test-address"
 /// }
-/// resource "gcp_compute_forwardingrule" "fr_esp" {
+/// resource "gcp_compute_forwarding_rule" "fr_esp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "basic-test-fresp"
 ///   ip_protocol = "ESP"
 ///   ip_address  = gcp_compute_address.vpn_static_ip.address
-///   target      = gcp_compute_vpngateway.target_gateway.id
+///   target      = gcp_compute_v_p_n_gateway.target_gateway.id
 /// }
-/// resource "gcp_compute_forwardingrule" "fr_udp500" {
+/// resource "gcp_compute_forwarding_rule" "fr_udp500" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "basic-test-fr500"
 ///   ip_protocol = "UDP"
 ///   port_range  = "500"
 ///   ip_address  = gcp_compute_address.vpn_static_ip.address
-///   target      = gcp_compute_vpngateway.target_gateway.id
+///   target      = gcp_compute_v_p_n_gateway.target_gateway.id
 /// }
-/// resource "gcp_compute_forwardingrule" "fr_udp4500" {
+/// resource "gcp_compute_forwarding_rule" "fr_udp4500" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "basic-test-fr4500"
 ///   ip_protocol = "UDP"
 ///   port_range  = "4500"
 ///   ip_address  = gcp_compute_address.vpn_static_ip.address
-///   target      = gcp_compute_vpngateway.target_gateway.id
+///   target      = gcp_compute_v_p_n_gateway.target_gateway.id
 /// }
 /// resource "gcp_compute_route" "route" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "basic-test-route"
 ///   network             = gcp_compute_network.network.name
 ///   dest_range          = "15.0.0.0/24"
 ///   priority            = 1000
-///   next_hop_vpn_tunnel = gcp_compute_vpntunnel.tunnel.id
+///   next_hop_vpn_tunnel = gcp_compute_v_p_n_tunnel.tunnel.id
 /// }
 /// ```
 /// ```java
@@ -904,9 +943,9 @@ import 'vpc_flow_logs_config_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkmanagement"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkmanagement"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -937,7 +976,7 @@ import 'vpc_flow_logs_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -945,15 +984,21 @@ import 'vpc_flow_logs_config_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_networkmanagement_vpcflowlogsconfig" "network-test" {
+/// resource "gcp_networkmanagement_vpc_flow_logs_config" "network-test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_flow_logs_config_id = "basic-network-test-id"
 ///   location                = "global"
-///   network                 ="projects/${data.gcp_organizations_getproject.project.number}/global/networks/${gcp_compute_network.network.name}"
+///   network                 ="projects/${data.gcp_organizations_project.project.number}/global/networks/${gcp_compute_network.network.name}"
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "basic-network-test-network"
 /// }
 /// ```
@@ -1104,9 +1149,9 @@ import 'vpc_flow_logs_config_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkmanagement"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkmanagement"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1147,7 +1192,7 @@ import 'vpc_flow_logs_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1155,19 +1200,28 @@ import 'vpc_flow_logs_config_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_networkmanagement_vpcflowlogsconfig" "subnet-test" {
+/// resource "gcp_networkmanagement_vpc_flow_logs_config" "subnet-test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vpc_flow_logs_config_id = "basic-subnet-test-id"
 ///   location                = "global"
-///   subnet                  ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/subnetworks/${gcp_compute_subnetwork.subnetwork.name}"
+///   subnet                  ="projects/${data.gcp_organizations_project.project.number}/regions/us-central1/subnetworks/${gcp_compute_subnetwork.subnetwork.name}"
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "basic-subnet-test-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "basic-subnet-test-subnetwork"
 ///   ip_cidr_range = "10.2.0.0/16"
 ///   region        = "us-central1"
@@ -1354,7 +1408,7 @@ class VpcFlowLogsConfig extends pulumi.CustomResource {
           'gcp:networkmanagement/vpcFlowLogsConfig:VpcFlowLogsConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     aggregationInterval = registerOutput<String>('aggregationInterval');

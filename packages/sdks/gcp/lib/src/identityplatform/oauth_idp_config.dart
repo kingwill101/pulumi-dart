@@ -79,7 +79,7 @@ import 'oauth_idp_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/identityplatform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/identityplatform"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -105,7 +105,7 @@ import 'oauth_idp_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -113,7 +113,10 @@ import 'oauth_idp_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_identityplatform_oauthidpconfig" "oauth_idp_config" {
+/// resource "gcp_identityplatform_oauth_idp_config" "oauth_idp_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "oidc.oauth-idp-config"
 ///   display_name  = "Display Name"
 ///   client_id     = "client-id"
@@ -239,7 +242,7 @@ class OauthIdpConfig extends pulumi.CustomResource {
           'gcp:identityplatform/oauthIdpConfig:OauthIdpConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     clientId = registerOutput<String>('clientId');
     clientSecret = registerOutput<String?>('clientSecret');

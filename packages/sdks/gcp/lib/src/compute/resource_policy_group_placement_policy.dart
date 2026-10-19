@@ -54,12 +54,12 @@ class ResourcePolicyGroupPlacementPolicy {
 
   factory ResourcePolicyGroupPlacementPolicy.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyGroupPlacementPolicy(
-      availabilityDomainCount: (() { final guardedValue = map['availabilityDomainCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      availabilityDomainCount: (() { final guardedValue = map['availabilityDomainCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       collocation: (() { final guardedValue = map['collocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gpuTopology: (() { final guardedValue = map['gpuTopology']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxDistance: (() { final guardedValue = map['maxDistance']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxDistance: (() { final guardedValue = map['maxDistance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       tpuTopology: (() { final guardedValue = map['tpuTopology']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vmCount: (() { final guardedValue = map['vmCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      vmCount: (() { final guardedValue = map['vmCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -22,8 +22,8 @@ import 'project_info_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const project = new gcp.organizations.Project("project", {
-///     projectId: "tf-test_22811",
-///     name: "tf-test_91042",
+///     projectId: "tf-test_91042",
+///     name: "tf-test_72490",
 ///     orgId: "123456789",
 ///     deletionPolicy: "DELETE",
 /// });
@@ -37,8 +37,8 @@ import 'project_info_state.dart';
 /// import pulumi_gcp as gcp
 ///
 /// project = gcp.organizations.Project("project",
-///     project_id="tf-test_22811",
-///     name="tf-test_91042",
+///     project_id="tf-test_91042",
+///     name="tf-test_72490",
 ///     org_id="123456789",
 ///     deletion_policy="DELETE")
 /// default = gcp.billing.ProjectInfo("default",
@@ -55,8 +55,8 @@ import 'project_info_state.dart';
 /// {
 ///     var project = new Gcp.Organizations.Project("project", new()
 ///     {
-///         ProjectId = "tf-test_22811",
-///         Name = "tf-test_91042",
+///         ProjectId = "tf-test_91042",
+///         Name = "tf-test_72490",
 ///         OrgId = "123456789",
 ///         DeletionPolicy = "DELETE",
 ///     });
@@ -73,16 +73,16 @@ import 'project_info_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/billing"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/billing"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-/// 			ProjectId:      pulumi.String("tf-test_22811"),
-/// 			Name:           pulumi.String("tf-test_91042"),
+/// 			ProjectId:      pulumi.String("tf-test_91042"),
+/// 			Name:           pulumi.String("tf-test_72490"),
 /// 			OrgId:          pulumi.String("123456789"),
 /// 			DeletionPolicy: pulumi.String("DELETE"),
 /// 		})
@@ -101,7 +101,7 @@ import 'project_info_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -110,12 +110,18 @@ import 'project_info_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
-///   project_id      = "tf-test_22811"
-///   name            = "tf-test_91042"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project_id      = "tf-test_91042"
+///   name            = "tf-test_72490"
 ///   org_id          = "123456789"
 ///   deletion_policy = "DELETE"
 /// }
-/// resource "gcp_billing_projectinfo" "default" {
+/// resource "gcp_billing_project_info" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project         = gcp_organizations_project.project.project_id
 ///   billing_account = "000000-0000000-0000000-000000"
 /// }
@@ -144,8 +150,8 @@ import 'project_info_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var project = new Project("project", ProjectArgs.builder()
-///             .projectId("tf-test_22811")
-///             .name("tf-test_91042")
+///             .projectId("tf-test_91042")
+///             .name("tf-test_72490")
 ///             .orgId("123456789")
 ///             .deletionPolicy("DELETE")
 ///             .build());
@@ -163,8 +169,8 @@ import 'project_info_state.dart';
 ///   project:
 ///     type: gcp:organizations:Project
 ///     properties:
-///       projectId: tf-test_22811
-///       name: tf-test_91042
+///       projectId: tf-test_91042
+///       name: tf-test_72490
 ///       orgId: '123456789'
 ///       deletionPolicy: DELETE
 ///   default:
@@ -217,7 +223,7 @@ class ProjectInfo extends pulumi.CustomResource {
           'gcp:billing/projectInfo:ProjectInfo',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     billingAccount = registerOutput<String>('billingAccount');
     deletionPolicy = registerOutput<String>('deletionPolicy');

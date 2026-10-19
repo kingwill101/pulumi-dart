@@ -83,7 +83,7 @@ import 'custom_service_telemetry.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -108,7 +108,7 @@ import 'custom_service_telemetry.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -116,7 +116,10 @@ import 'custom_service_telemetry.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_customservice" "custom" {
+/// resource "gcp_monitoring_custom_service" "custom" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id   = "custom-srv"
 ///   display_name = "My Custom Service custom-srv"
 ///   telemetry = {
@@ -238,7 +241,7 @@ class CustomService extends pulumi.CustomResource {
           'gcp:monitoring/customService:CustomService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');

@@ -7,7 +7,7 @@ class GetRegionBackendServiceBackend {
   /// Specifies the balancing mode for this backend.
   ///
   /// See the [Backend Services Overview](https://cloud.google.com/load-balancing/docs/backend-service#balancing-mode)
-  /// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS"]
+  /// for an explanation of load balancing modes. Default value: "UTILIZATION" Possible values: ["UTILIZATION", "RATE", "CONNECTION", "CUSTOM_METRICS", "IN_FLIGHT"]
   final pulumi.Input<String> balancingMode;
   /// A multiplier applied to the group's maximum servicing capacity
   /// (based on UTILIZATION, RATE or CONNECTION).
@@ -183,13 +183,13 @@ class GetRegionBackendServiceBackend {
       description: pulumi.Input.fromValue(map['description'] as String),
       failover: pulumi.Input.fromValue(map['failover'] as bool),
       group: pulumi.Input.fromValue(map['group'] as String),
-      maxConnections: pulumi.Input.fromValue((map['maxConnections'] as num).toInt()),
-      maxConnectionsPerEndpoint: pulumi.Input.fromValue((map['maxConnectionsPerEndpoint'] as num).toInt()),
-      maxConnectionsPerInstance: pulumi.Input.fromValue((map['maxConnectionsPerInstance'] as num).toInt()),
-      maxInFlightRequests: pulumi.Input.fromValue((map['maxInFlightRequests'] as num).toInt()),
-      maxInFlightRequestsPerEndpoint: pulumi.Input.fromValue((map['maxInFlightRequestsPerEndpoint'] as num).toInt()),
-      maxInFlightRequestsPerInstance: pulumi.Input.fromValue((map['maxInFlightRequestsPerInstance'] as num).toInt()),
-      maxRate: pulumi.Input.fromValue((map['maxRate'] as num).toInt()),
+      maxConnections: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConnections'])),
+      maxConnectionsPerEndpoint: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConnectionsPerEndpoint'])),
+      maxConnectionsPerInstance: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConnectionsPerInstance'])),
+      maxInFlightRequests: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInFlightRequests'])),
+      maxInFlightRequestsPerEndpoint: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInFlightRequestsPerEndpoint'])),
+      maxInFlightRequestsPerInstance: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxInFlightRequestsPerInstance'])),
+      maxRate: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRate'])),
       maxRatePerEndpoint: pulumi.Input.fromValue((map['maxRatePerEndpoint'] as num).toDouble()),
       maxRatePerInstance: pulumi.Input.fromValue((map['maxRatePerInstance'] as num).toDouble()),
       maxUtilization: pulumi.Input.fromValue((map['maxUtilization'] as num).toDouble()),

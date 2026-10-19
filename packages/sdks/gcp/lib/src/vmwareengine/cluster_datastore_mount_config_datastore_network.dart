@@ -48,8 +48,8 @@ class ClusterDatastoreMountConfigDatastoreNetwork {
 
   factory ClusterDatastoreMountConfigDatastoreNetwork.fromMap(Map<String, dynamic> map) {
     return ClusterDatastoreMountConfigDatastoreNetwork(
-      connectionCount: (() { final guardedValue = map['connectionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      connectionCount: (() { final guardedValue = map['connectionCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      mtu: (() { final guardedValue = map['mtu']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       networkPeering: (() { final guardedValue = map['networkPeering']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnet: pulumi.Input.fromValue(map['subnet'] as String),
     );

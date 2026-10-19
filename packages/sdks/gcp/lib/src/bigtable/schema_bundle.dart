@@ -135,7 +135,7 @@ import 'schema_bundle_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigtable"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigtable"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -191,7 +191,7 @@ import 'schema_bundle_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -203,6 +203,9 @@ import 'schema_bundle_state.dart';
 /// }
 ///
 /// resource "gcp_bigtable_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "bt-instance"
 ///   clusters {
 ///     cluster_id   = "cluster-1"
@@ -213,13 +216,19 @@ import 'schema_bundle_state.dart';
 ///   deletion_protection = false
 /// }
 /// resource "gcp_bigtable_table" "table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "bt-table"
 ///   instance_name = gcp_bigtable_instance.instance.name
 ///   column_families {
 ///     family = "CF"
 ///   }
 /// }
-/// resource "gcp_bigtable_schemabundle" "schema_bundle" {
+/// resource "gcp_bigtable_schema_bundle" "schema_bundle" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   schema_bundle_id = "bt-schema-bundle"
 ///   instance         = gcp_bigtable_instance.instance.name
 ///   table            = gcp_bigtable_table.table.name
@@ -387,7 +396,7 @@ class SchemaBundle extends pulumi.CustomResource {
           'gcp:bigtable/schemaBundle:SchemaBundle',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     etag = registerOutput<String>('etag');

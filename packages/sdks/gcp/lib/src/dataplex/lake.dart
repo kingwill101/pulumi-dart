@@ -68,7 +68,7 @@ import 'lake_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataplex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataplex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -92,7 +92,7 @@ import 'lake_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -101,6 +101,9 @@ import 'lake_state.dart';
 /// }
 ///
 /// resource "gcp_dataplex_lake" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-west1"
 ///   name         = "lake"
 ///   description  = "Lake for DCL"
@@ -234,7 +237,7 @@ class Lake extends pulumi.CustomResource {
           'gcp:dataplex/lake:Lake',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     assetStatuses = registerOutput<List<LakeAssetStatus>>('assetStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LakeAssetStatus>(guardedValue, (value) => LakeAssetStatus.fromMap((value as Map).cast<String, dynamic>())); });

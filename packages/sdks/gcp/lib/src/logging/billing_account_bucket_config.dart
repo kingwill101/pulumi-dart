@@ -65,8 +65,8 @@ import 'billing_account_bucket_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -92,7 +92,7 @@ import 'billing_account_bucket_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -100,12 +100,15 @@ import 'billing_account_bucket_config_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getbillingaccount" "default" {
+/// data "gcp_organizations_billing_account" "default" {
 ///   billing_account = "00AA00-000AAA-00AA0A"
 /// }
 ///
-/// resource "gcp_logging_billingaccountbucketconfig" "basic" {
-///   billing_account = data.gcp_organizations_getbillingaccount.default.billing_account
+/// resource "gcp_logging_billing_account_bucket_config" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   billing_account = data.gcp_organizations_billing_account.default.billing_account
 ///   location        = "global"
 ///   retention_days  = 30
 ///   bucket_id       = "_Default"
@@ -228,7 +231,7 @@ import 'billing_account_bucket_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -254,7 +257,7 @@ import 'billing_account_bucket_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -262,7 +265,10 @@ import 'billing_account_bucket_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_billingaccountbucketconfig" "example-billing-account-bucket-index-configs" {
+/// resource "gcp_logging_billing_account_bucket_config" "example-billing-account-bucket-index-configs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   folder         = default.billingAccount
 ///   location       = "global"
 ///   retention_days = 30
@@ -375,7 +381,7 @@ class BillingAccountBucketConfig extends pulumi.CustomResource {
           'gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     billingAccount = registerOutput<String>('billingAccount');
     bucketId = registerOutput<String>('bucketId');

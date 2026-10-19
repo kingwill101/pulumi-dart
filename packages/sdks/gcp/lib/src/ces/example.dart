@@ -110,6 +110,7 @@ import 'example_state.dart';
 ///                     data: std.base64encode({
 ///                         input: "This is some fake image binary data.",
 ///                     }).then(invoke => invoke.result),
+///                     altText: "alt text",
 ///                 },
 ///             },
 ///             {
@@ -271,6 +272,7 @@ import 'example_state.dart';
 ///                 "image": {
 ///                     "mime_type": "image/png",
 ///                     "data": std.base64encode(input="This is some fake image binary data.").result,
+///                     "alt_text": "alt text",
 ///                 },
 ///             },
 ///             {
@@ -496,6 +498,7 @@ import 'example_state.dart';
 ///                             {
 ///                                 Input = "This is some fake image binary data.",
 ///                             }).Apply(invoke => invoke.Result),
+///                             AltText = "alt text",
 ///                         },
 ///                     },
 ///                     new Gcp.Ces.Inputs.ExampleMessageChunkArgs
@@ -607,7 +610,7 @@ import 'example_state.dart';
 /// 	"encoding/json"
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -776,6 +779,7 @@ import 'example_state.dart';
 /// 							Image: &ces.ExampleMessageChunkImageArgs{
 /// 								MimeType: pulumi.String("image/png"),
 /// 								Data:     pulumi.String(invokeBase64encode.Result),
+/// 								AltText:  pulumi.String("alt text"),
 /// 							},
 /// 						},
 /// 						&ces.ExampleMessageChunkArgs{
@@ -851,7 +855,7 @@ import 'example_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -863,6 +867,9 @@ import 'example_state.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "my-app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   display_name = "my-app"
 ///   app_id       = "app-id"
@@ -871,6 +878,9 @@ import 'example_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_tool" "ces_tool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us"
 ///   app            = gcp_ces_app.my-app.app_id
 ///   tool_id        = "tool-1"
@@ -881,17 +891,30 @@ import 'example_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_toolset" "ces_toolset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   toolset_id   = "toolset-id"
 ///   location     = "us"
 ///   app          = gcp_ces_app.my-app.app_id
 ///   display_name = "Basic toolset display name"
 ///   open_api_toolset = {
-///     open_api_schema       = "openapi: 3.0.0\ninfo:\n    title: My Sample API\n    version: 1.0.0\n    description: A simple API example\nservers:\n    - url: https://api.example.com/v1\npaths: {}\n"
+///     open_api_schema       = <<-EOT
+/// openapi: 3.0.0
+/// info:
+///     title: My Sample API
+///     version: 1.0.0
+///     description: A simple API example
+/// servers:
+///     - url: https://api.example.com/v1
+/// paths: {}
+/// EOT
+///
 ///     ignore_unknown_fields = false
 ///     tls_config = {
 ///       ca_certs = [{
-///         "displayName" = "example"
-///         "cert"        = "ZXhhbXBsZQ=="
+///         display_name = "example"
+///         cert         = "ZXhhbXBsZQ=="
 ///       }]
 ///     }
 ///     service_directory_config = {
@@ -903,6 +926,9 @@ import 'example_state.dart';
 ///   }
 /// }
 /// resource "gcp_ces_agent" "ces_base_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_id     = "base-agent-id"
 ///   location     = "us"
 ///   app          = gcp_ces_app.my-app.app_id
@@ -915,6 +941,9 @@ import 'example_state.dart';
 ///   llm_agent = {}
 /// }
 /// resource "gcp_ces_agent" "ces_child_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   agent_id     = "child-agent-id"
 ///   location     = "us"
 ///   app          = gcp_ces_app.my-app.app_id
@@ -927,6 +956,9 @@ import 'example_state.dart';
 ///   llm_agent = {}
 /// }
 /// resource "gcp_ces_example" "my-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us"
 ///   display_name = "my-example"
 ///   app          = gcp_ces_app.my-app.name
@@ -943,6 +975,7 @@ import 'example_state.dart';
 ///       image = {
 ///         mime_type = "image/png"
 ///         data      = base64encode("This is some fake image binary data.")
+///         alt_text  = "alt text"
 ///       }
 ///     }
 ///     chunks {
@@ -1163,6 +1196,7 @@ import 'example_state.dart';
 ///                             .data(StdFunctions.base64encode(Base64encodeArgs.builder()
 ///                                 .input("This is some fake image binary data.")
 ///                                 .build()).result())
+///                             .altText("alt text")
 ///                             .build())
 ///                         .build(),
 ///                     ExampleMessageChunkArgs.builder()
@@ -1345,6 +1379,7 @@ import 'example_state.dart';
 ///                     arguments:
 ///                       input: This is some fake image binary data.
 ///                     return: result
+///                 altText: alt text
 ///             - text: text_data
 ///             - toolCall:
 ///                 args:
@@ -1457,7 +1492,7 @@ class Example extends pulumi.CustomResource {
           'gcp:ces/example:Example',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     app = registerOutput<String>('app');
     createTime = registerOutput<String>('createTime');

@@ -5,14 +5,14 @@ import 'workflow_template_placement_cluster_selector.dart';
 import 'workflow_template_placement_managed_cluster.dart';
 
 class WorkflowTemplatePlacement {
-  /// A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
+  /// A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
   final pulumi.Input<WorkflowTemplatePlacementClusterSelector?>? clusterSelector;
-  /// A cluster that is managed by the workflow.
+  /// A cluster that is managed by the workflow. Structure is documented below.
   final pulumi.Input<WorkflowTemplatePlacementManagedCluster?>? managedCluster;
 
   /// Creates a new [WorkflowTemplatePlacement].
-  /// [clusterSelector] A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted.
-  /// [managedCluster] A cluster that is managed by the workflow.
+  /// [clusterSelector] A selector that chooses target cluster for jobs based on metadata. The selector is evaluated at the time each job is submitted. Structure is documented below.
+  /// [managedCluster] A cluster that is managed by the workflow. Structure is documented below.
   const WorkflowTemplatePlacement({
     this.clusterSelector,
     this.managedCluster,

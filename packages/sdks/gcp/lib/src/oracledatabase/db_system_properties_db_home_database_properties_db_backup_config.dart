@@ -99,7 +99,7 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig {
       autoIncrementalBackupWindow: (() { final guardedValue = map['autoIncrementalBackupWindow']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       backupDeletionPolicy: (() { final guardedValue = map['backupDeletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       backupDestinationDetails: (() { final guardedValue = map['backupDestinationDetails']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail>(guardedValue, (value) => DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfigBackupDestinationDetail.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      retentionPeriodDays: (() { final guardedValue = map['retentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retentionPeriodDays: (() { final guardedValue = map['retentionPeriodDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -25,7 +25,7 @@ class AssetsExportJobPerformanceData {
 
   factory AssetsExportJobPerformanceData.fromMap(Map<String, dynamic> map) {
     return AssetsExportJobPerformanceData(
-      maxDays: (() { final guardedValue = map['maxDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxDays: (() { final guardedValue = map['maxDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

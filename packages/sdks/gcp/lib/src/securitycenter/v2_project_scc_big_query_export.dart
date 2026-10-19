@@ -109,8 +109,8 @@ import 'v2_project_scc_big_query_export_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -147,7 +147,7 @@ import 'v2_project_scc_big_query_export_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -156,6 +156,9 @@ import 'v2_project_scc_big_query_export_state.dart';
 /// }
 ///
 /// resource "gcp_bigquery_dataset" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id                      = "my_dataset_id"
 ///   friendly_name                   = "test"
 ///   description                     = "This is a test description"
@@ -166,7 +169,10 @@ import 'v2_project_scc_big_query_export_state.dart';
 ///     "env" = "default"
 ///   }
 /// }
-/// resource "gcp_securitycenter_v2projectsccbigqueryexport" "custom_big_query_export_config" {
+/// resource "gcp_securitycenter_v2_project_scc_big_query_export" "custom_big_query_export_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "my-export"
 ///   big_query_export_id = "my-export"
 ///   project             = "my-project-name"
@@ -336,7 +342,7 @@ class V2ProjectSccBigQueryExport extends pulumi.CustomResource {
           'gcp:securitycenter/v2ProjectSccBigQueryExport:V2ProjectSccBigQueryExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');

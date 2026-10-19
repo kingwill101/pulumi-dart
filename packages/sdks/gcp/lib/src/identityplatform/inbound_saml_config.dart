@@ -105,7 +105,7 @@ import 'inbound_saml_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/identityplatform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/identityplatform"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -144,7 +144,7 @@ import 'inbound_saml_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -155,7 +155,10 @@ import 'inbound_saml_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_identityplatform_inboundsamlconfig" "saml_config" {
+/// resource "gcp_identityplatform_inbound_saml_config" "saml_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "saml.tf-config"
 ///   display_name = "Display Name"
 ///   idp_config = {
@@ -163,7 +166,7 @@ import 'inbound_saml_config_state.dart';
 ///     sign_request  = true
 ///     sso_url       = "https://example.com"
 ///     idp_certificates = [{
-///       "x509Certificate" = file("test-fixtures/rsa_cert.pem")
+///       x509_certificate = file("test-fixtures/rsa_cert.pem")
 ///     }]
 ///   }
 ///   sp_config = {
@@ -300,7 +303,7 @@ class InboundSamlConfig extends pulumi.CustomResource {
           'gcp:identityplatform/inboundSamlConfig:InboundSamlConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');

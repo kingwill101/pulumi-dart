@@ -56,7 +56,7 @@ import 'billing_account_exclusion_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -76,7 +76,7 @@ import 'billing_account_exclusion_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -84,7 +84,10 @@ import 'billing_account_exclusion_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_billingaccountexclusion" "my-exclusion" {
+/// resource "gcp_logging_billing_account_exclusion" "my-exclusion" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "my-instance-debug-exclusion"
 ///   billing_account = "ABCDEF-012345-GHIJKL"
 ///   description     = "Exclude GCE instance debug logs"
@@ -173,7 +176,7 @@ class BillingAccountExclusion extends pulumi.CustomResource {
           'gcp:logging/billingAccountExclusion:BillingAccountExclusion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     billingAccount = registerOutput<String>('billingAccount');
     description = registerOutput<String?>('description');

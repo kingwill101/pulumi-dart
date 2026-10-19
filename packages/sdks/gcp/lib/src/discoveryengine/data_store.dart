@@ -79,7 +79,7 @@ import 'data_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -105,7 +105,7 @@ import 'data_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -113,7 +113,10 @@ import 'data_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_datastore" "basic" {
+/// resource "gcp_discoveryengine_data_store" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                     = "global"
 ///   data_store_id                = "data-store-id"
 ///   display_name                 = "tf-test-structured-datastore"
@@ -240,7 +243,7 @@ import 'data_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -267,7 +270,7 @@ import 'data_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -275,7 +278,10 @@ import 'data_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_datastore" "kms_key_name" {
+/// resource "gcp_discoveryengine_data_store" "kms_key_name" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                     = "us"
 ///   data_store_id                = "data-store-id"
 ///   display_name                 = "tf-test-structured-datastore"
@@ -440,7 +446,7 @@ import 'data_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -478,7 +484,7 @@ import 'data_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -486,7 +492,10 @@ import 'data_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_datastore" "document_processing_config" {
+/// resource "gcp_discoveryengine_data_store" "document_processing_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                    = "global"
 ///   data_store_id               = "data-store-id"
 ///   display_name                = "tf-test-structured-datastore"
@@ -499,9 +508,9 @@ import 'data_store_state.dart';
 ///       digital_parsing_config = {}
 ///     }
 ///     parsing_config_overrides = [{
-///       "fileType" = "pdf"
-///       "ocrParsingConfig" = {
-///         "useNativeText" = true
+///       file_type = "pdf"
+///       ocr_parsing_config = {
+///         use_native_text = true
 ///       }
 ///     }]
 ///   }
@@ -656,7 +665,7 @@ import 'data_store_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -686,7 +695,7 @@ import 'data_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -694,7 +703,10 @@ import 'data_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_datastore" "advanced_site_search_config" {
+/// resource "gcp_discoveryengine_data_store" "advanced_site_search_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                     = "global"
 ///   data_store_id                = "data-store-id"
 ///   display_name                 = "tf-test-advanced-site-search-config-datastore"
@@ -868,7 +880,7 @@ class DataStore extends pulumi.CustomResource {
           'gcp:discoveryengine/dataStore:DataStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     aclEnabled = registerOutput<bool?>('aclEnabled');
     advancedSiteSearchConfig = registerOutput<DataStoreAdvancedSiteSearchConfig>('advancedSiteSearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DataStoreAdvancedSiteSearchConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -61,7 +61,7 @@ import 'data_exchange_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -81,7 +81,7 @@ import 'data_exchange_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -89,7 +89,10 @@ import 'data_exchange_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "data_exchange" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "data_exchange" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
 ///   data_exchange_id = "my_data_exchange"
 ///   display_name     = "my_data_exchange"
@@ -196,7 +199,7 @@ import 'data_exchange_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -219,7 +222,7 @@ import 'data_exchange_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -227,7 +230,10 @@ import 'data_exchange_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "data_exchange" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "data_exchange" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
 ///   data_exchange_id = "dcr_data_exchange"
 ///   display_name     = "dcr_data_exchange"
@@ -338,7 +344,7 @@ import 'data_exchange_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -359,7 +365,7 @@ import 'data_exchange_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -367,7 +373,10 @@ import 'data_exchange_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "data_exchange" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "data_exchange" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                            = "US"
 ///   data_exchange_id                    = "tf_test_log_email_data_exchange"
 ///   display_name                        = "tf_test_log_email_data_exchange"
@@ -470,7 +479,7 @@ import 'data_exchange_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -491,7 +500,7 @@ import 'data_exchange_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -499,7 +508,10 @@ import 'data_exchange_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "data_exchange" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "data_exchange" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
 ///   data_exchange_id = "public_data_exchange"
 ///   display_name     = "public_data_exchange"
@@ -623,7 +635,7 @@ class DataExchange extends pulumi.CustomResource {
           'gcp:bigqueryanalyticshub/dataExchange:DataExchange',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     dataExchangeId = registerOutput<String>('dataExchangeId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

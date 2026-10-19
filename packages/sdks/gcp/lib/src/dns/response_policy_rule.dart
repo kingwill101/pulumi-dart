@@ -151,8 +151,8 @@ import 'response_policy_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -211,7 +211,7 @@ import 'response_policy_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -220,14 +220,23 @@ import 'response_policy_rule_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-1"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_network" "network-2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network-2"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_dns_responsepolicy" "response-policy" {
+/// resource "gcp_dns_response_policy" "response-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   response_policy_name = "example-response-policy"
 ///   networks {
 ///     network_url = gcp_compute_network.network-1.id
@@ -236,16 +245,19 @@ import 'response_policy_rule_state.dart';
 ///     network_url = gcp_compute_network.network-2.id
 ///   }
 /// }
-/// resource "gcp_dns_responsepolicyrule" "example-response-policy-rule" {
-///   response_policy = gcp_dns_responsepolicy.response-policy.response_policy_name
+/// resource "gcp_dns_response_policy_rule" "example-response-policy-rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   response_policy = gcp_dns_response_policy.response-policy.response_policy_name
 ///   rule_name       = "example-rule"
 ///   dns_name        = "dns.example.com."
 ///   local_data = {
 ///     local_datas = [{
-///       "name"    = "dns.example.com."
-///       "type"    = "A"
-///       "ttl"     = 300
-///       "rrdatas" = ["192.0.2.91"]
+///       name    = "dns.example.com."
+///       type    = "A"
+///       ttl     = 300
+///       rrdatas = ["192.0.2.91"]
 ///     }]
 ///   }
 /// }
@@ -404,7 +416,7 @@ class ResponsePolicyRule extends pulumi.CustomResource {
           'gcp:dns/responsePolicyRule:ResponsePolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     behavior = registerOutput<String?>('behavior');
     deletionPolicy = registerOutput<String>('deletionPolicy');

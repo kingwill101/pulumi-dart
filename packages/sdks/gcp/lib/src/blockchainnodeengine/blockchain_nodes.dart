@@ -114,7 +114,7 @@ import 'blockchain_nodes_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/blockchainnodeengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/blockchainnodeengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -150,7 +150,7 @@ import 'blockchain_nodes_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -158,7 +158,10 @@ import 'blockchain_nodes_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_blockchainnodeengine_blockchainnodes" "default_node" {
+/// resource "gcp_blockchainnodeengine_blockchain_nodes" "default_node" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location           = "us-central1"
 ///   blockchain_type    = "ETHEREUM"
 ///   blockchain_node_id = "blockchain_basic_node"
@@ -357,7 +360,7 @@ import 'blockchain_nodes_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/blockchainnodeengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/blockchainnodeengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -396,7 +399,7 @@ import 'blockchain_nodes_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -404,7 +407,10 @@ import 'blockchain_nodes_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_blockchainnodeengine_blockchainnodes" "default_node_geth" {
+/// resource "gcp_blockchainnodeengine_blockchain_nodes" "default_node_geth" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location           = "us-central1"
 ///   blockchain_type    = "ETHEREUM"
 ///   blockchain_node_id = "blockchain_geth_node"
@@ -592,7 +598,7 @@ import 'blockchain_nodes_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/blockchainnodeengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/blockchainnodeengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -625,7 +631,7 @@ import 'blockchain_nodes_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -633,7 +639,10 @@ import 'blockchain_nodes_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_blockchainnodeengine_blockchainnodes" "default_node_beacon_fee" {
+/// resource "gcp_blockchainnodeengine_blockchain_nodes" "default_node_beacon_fee" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location           = "us-central1"
 ///   blockchain_type    = "ETHEREUM"
 ///   blockchain_node_id = "beacon_fee_node"
@@ -789,7 +798,7 @@ class BlockchainNodes extends pulumi.CustomResource {
           'gcp:blockchainnodeengine/blockchainNodes:BlockchainNodes',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     blockchainNodeId = registerOutput<String>('blockchainNodeId');

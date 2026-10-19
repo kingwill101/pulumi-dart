@@ -160,7 +160,7 @@ import 'external_address_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -221,7 +221,7 @@ import 'external_address_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -230,12 +230,18 @@ import 'external_address_state.dart';
 /// }
 ///
 /// resource "gcp_vmwareengine_network" "external-address-nw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "pc-nw"
 ///   location    = "global"
 ///   type        = "STANDARD"
 ///   description = "PC network description."
 /// }
-/// resource "gcp_vmwareengine_privatecloud" "external-address-pc" {
+/// resource "gcp_vmwareengine_private_cloud" "external-address-pc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-west1-a"
 ///   name        = "sample-pc"
 ///   description = "Sample test PC."
@@ -246,21 +252,27 @@ import 'external_address_state.dart';
 ///   management_cluster = {
 ///     cluster_id = "sample-mgmt-cluster"
 ///     node_type_configs = [{
-///       "nodeTypeId" = "standard-72"
-///       "nodeCount"  = 3
+///       node_type_id = "standard-72"
+///       node_count   = 3
 ///     }]
 ///   }
 /// }
-/// resource "gcp_vmwareengine_networkpolicy" "external-address-np" {
+/// resource "gcp_vmwareengine_network_policy" "external-address-np" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-west1"
 ///   name                  = "sample-np"
 ///   edge_services_cidr    = "192.168.30.0/26"
 ///   vmware_engine_network = gcp_vmwareengine_network.external-address-nw.id
 /// }
-/// resource "gcp_vmwareengine_externaladdress" "vmw-engine-external-address" {
-///   depends_on  = [gcp_vmwareengine_networkpolicy.external-address-np]
+/// resource "gcp_vmwareengine_external_address" "vmw-engine-external-address" {
+///   depends_on = [gcp_vmwareengine_network_policy.external-address-np]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "sample-external-address"
-///   parent      = gcp_vmwareengine_privatecloud.external-address-pc.id
+///   parent      = gcp_vmwareengine_private_cloud.external-address-pc.id
 ///   internal_ip = "192.168.0.66"
 ///   description = "Sample description."
 /// }
@@ -439,7 +451,7 @@ class ExternalAddress extends pulumi.CustomResource {
           'gcp:vmwareengine/externalAddress:ExternalAddress',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

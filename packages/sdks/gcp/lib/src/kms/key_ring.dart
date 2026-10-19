@@ -58,7 +58,7 @@ import 'key_ring_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -76,7 +76,7 @@ import 'key_ring_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -84,7 +84,10 @@ import 'key_ring_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyring" "example-keyring" {
+/// resource "gcp_kms_key_ring" "example-keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "keyring-example"
 ///   location = "global"
 /// }
@@ -166,7 +169,7 @@ class KeyRing extends pulumi.CustomResource {
           'gcp:kms/keyRing:KeyRing',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

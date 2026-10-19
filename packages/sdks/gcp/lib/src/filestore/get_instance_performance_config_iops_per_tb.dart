@@ -24,7 +24,7 @@ class GetInstancePerformanceConfigIopsPerTb {
 
   factory GetInstancePerformanceConfigIopsPerTb.fromMap(Map<String, dynamic> map) {
     return GetInstancePerformanceConfigIopsPerTb(
-      maxIopsPerTb: pulumi.Input.fromValue((map['maxIopsPerTb'] as num).toInt()),
+      maxIopsPerTb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxIopsPerTb'])),
     );
   }
 }

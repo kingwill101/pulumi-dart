@@ -56,7 +56,7 @@ import 'get_token_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/siteverification"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/siteverification"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -75,7 +75,7 @@ import 'get_token_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -83,7 +83,7 @@ import 'get_token_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_siteverification_gettoken" "example" {
+/// data "gcp_siteverification_token" "example" {
 ///   type                = "SITE"
 ///   identifier          = "https://www.example.com"
 ///   verification_method = "META"
@@ -173,7 +173,7 @@ import 'get_token_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/siteverification"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/siteverification"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -192,7 +192,7 @@ import 'get_token_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -200,7 +200,7 @@ import 'get_token_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_siteverification_gettoken" "example" {
+/// data "gcp_siteverification_token" "example" {
 ///   type                = "INET_DOMAIN"
 ///   identifier          = "www.example.com"
 ///   verification_method = "DNS_TXT"

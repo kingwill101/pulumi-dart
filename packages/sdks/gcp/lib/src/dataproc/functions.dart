@@ -61,7 +61,7 @@ import 'get_metastore_table_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -80,7 +80,7 @@ import 'get_metastore_table_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -88,7 +88,7 @@ import 'get_metastore_table_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_dataproc_getautoscalingpolicyiampolicy" "policy" {
+/// data "gcp_dataproc_autoscaling_policy_iam_policy" "policy" {
 ///   project   = basic.project
 ///   location  = basic.location
 ///   policy_id = basic.policyId
@@ -201,7 +201,7 @@ pulumi.Output<GetAutoscalingPolicyIamPolicyResult> getAutoscalingPolicyIamPolicy
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -219,7 +219,7 @@ pulumi.Output<GetAutoscalingPolicyIamPolicyResult> getAutoscalingPolicyIamPolicy
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -227,7 +227,7 @@ pulumi.Output<GetAutoscalingPolicyIamPolicyResult> getAutoscalingPolicyIamPolicy
 ///   }
 /// }
 ///
-/// data "gcp_dataproc_getclusteriampolicy" "policy" {
+/// data "gcp_dataproc_cluster_iam_policy" "policy" {
 ///   cluster = cluster.name
 ///   region  = "us-central1"
 /// }
@@ -337,7 +337,7 @@ pulumi.Output<GetClusterIamPolicyResult> getClusterIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -355,7 +355,7 @@ pulumi.Output<GetClusterIamPolicyResult> getClusterIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -363,7 +363,7 @@ pulumi.Output<GetClusterIamPolicyResult> getClusterIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dataproc_getjobiampolicy" "policy" {
+/// data "gcp_dataproc_job_iam_policy" "policy" {
 ///   job_id = pyspark.reference[0].jobId
 ///   region = "us-central1"
 /// }
@@ -480,7 +480,7 @@ pulumi.Output<GetJobIamPolicyResult> getJobIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -500,7 +500,7 @@ pulumi.Output<GetJobIamPolicyResult> getJobIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -508,7 +508,7 @@ pulumi.Output<GetJobIamPolicyResult> getJobIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dataproc_getmetastoredatabaseiampolicy" "policy" {
+/// data "gcp_dataproc_metastore_database_iam_policy" "policy" {
 ///   project    = dpmsService.project
 ///   location   = dpmsService.location
 ///   service_id = dpmsService.serviceId
@@ -628,7 +628,7 @@ pulumi.Output<GetMetastoreDatabaseIamPolicyResult> getMetastoreDatabaseIamPolicy
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -647,7 +647,7 @@ pulumi.Output<GetMetastoreDatabaseIamPolicyResult> getMetastoreDatabaseIamPolicy
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -655,7 +655,7 @@ pulumi.Output<GetMetastoreDatabaseIamPolicyResult> getMetastoreDatabaseIamPolicy
 ///   }
 /// }
 ///
-/// data "gcp_dataproc_getmetastorefederationiampolicy" "policy" {
+/// data "gcp_dataproc_metastore_federation_iam_policy" "policy" {
 ///   project       = default.project
 ///   location      = default.location
 ///   federation_id = default.federationId
@@ -768,7 +768,7 @@ pulumi.Output<GetMetastoreFederationIamPolicyResult> getMetastoreFederationIamPo
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -786,7 +786,7 @@ pulumi.Output<GetMetastoreFederationIamPolicyResult> getMetastoreFederationIamPo
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -794,7 +794,7 @@ pulumi.Output<GetMetastoreFederationIamPolicyResult> getMetastoreFederationIamPo
 ///   }
 /// }
 ///
-/// data "gcp_dataproc_getmetastoreservice" "foo" {
+/// data "gcp_dataproc_metastore_service" "foo" {
 ///   service_id = "foo-bar"
 ///   location   = "global"
 /// }
@@ -908,7 +908,7 @@ pulumi.Output<GetMetastoreServiceResult> getMetastoreServiceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -927,7 +927,7 @@ pulumi.Output<GetMetastoreServiceResult> getMetastoreServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -935,7 +935,7 @@ pulumi.Output<GetMetastoreServiceResult> getMetastoreServiceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_dataproc_getmetastoreserviceiampolicy" "policy" {
+/// data "gcp_dataproc_metastore_service_iam_policy" "policy" {
 ///   project    = default.project
 ///   location   = default.location
 ///   service_id = default.serviceId
@@ -1058,7 +1058,7 @@ pulumi.Output<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicyOu
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataproc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataproc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1079,7 +1079,7 @@ pulumi.Output<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicyOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1087,7 +1087,7 @@ pulumi.Output<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicyOu
 ///   }
 /// }
 ///
-/// data "gcp_dataproc_getmetastoretableiampolicy" "policy" {
+/// data "gcp_dataproc_metastore_table_iam_policy" "policy" {
 ///   project     = dpmsService.project
 ///   location    = dpmsService.location
 ///   service_id  = dpmsService.serviceId

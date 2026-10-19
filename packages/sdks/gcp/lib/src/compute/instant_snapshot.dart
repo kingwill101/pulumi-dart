@@ -80,7 +80,7 @@ import 'instant_snapshot_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -107,7 +107,7 @@ import 'instant_snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -116,11 +116,17 @@ import 'instant_snapshot_state.dart';
 /// }
 ///
 /// resource "gcp_compute_disk" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example-disk"
 ///   type = "pd-ssd"
 ///   size = 10
 /// }
-/// resource "gcp_compute_instantsnapshot" "default" {
+/// resource "gcp_compute_instant_snapshot" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "instant-snapshot"
 ///   zone        = "us-central1-a"
 ///   source_disk = gcp_compute_disk.foo.self_link
@@ -260,7 +266,7 @@ class InstantSnapshot extends pulumi.CustomResource {
           'gcp:compute/instantSnapshot:InstantSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');

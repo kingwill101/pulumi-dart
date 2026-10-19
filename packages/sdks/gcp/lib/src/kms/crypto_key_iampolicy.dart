@@ -104,8 +104,8 @@ import 'crypto_key_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -151,7 +151,7 @@ import 'crypto_key_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -159,25 +159,34 @@ import 'crypto_key_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/cloudkms.cryptoKeyEncrypter"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_kms_keyring" "keyring" {
+/// resource "gcp_kms_key_ring" "keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "keyring-example"
 ///   location = "global"
 /// }
-/// resource "gcp_kms_cryptokey" "key" {
+/// resource "gcp_kms_crypto_key" "key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "crypto-key-example"
-///   key_ring        = gcp_kms_keyring.keyring.id
+///   key_ring        = gcp_kms_key_ring.keyring.id
 ///   rotation_period = "7776000s"
 /// }
-/// resource "gcp_kms_cryptokeyiampolicy" "crypto_key" {
-///   crypto_key_id = gcp_kms_cryptokey.key.id
-///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
+/// resource "gcp_kms_crypto_key_i_a_m_policy" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = gcp_kms_crypto_key.key.id
+///   policy_data   = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -333,7 +342,7 @@ import 'crypto_key_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -362,7 +371,7 @@ import 'crypto_key_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -370,7 +379,7 @@ import 'crypto_key_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/cloudkms.cryptoKeyEncrypter"
 ///     members = ["user:jane@example.com"]
@@ -481,7 +490,7 @@ import 'crypto_key_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -502,7 +511,7 @@ import 'crypto_key_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -510,7 +519,10 @@ import 'crypto_key_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_cryptokeyiambinding" "crypto_key" {
+/// resource "gcp_kms_crypto_key_i_a_m_binding" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypter"
 ///   members       = ["user:jane@example.com"]
@@ -621,7 +633,7 @@ import 'crypto_key_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -647,7 +659,7 @@ import 'crypto_key_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -655,7 +667,10 @@ import 'crypto_key_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_cryptokeyiambinding" "crypto_key" {
+/// resource "gcp_kms_crypto_key_i_a_m_binding" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypter"
 ///   members       = ["user:jane@example.com"]
@@ -760,7 +775,7 @@ import 'crypto_key_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -779,7 +794,7 @@ import 'crypto_key_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -787,7 +802,10 @@ import 'crypto_key_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypter"
 ///   member        = "user:jane@example.com"
@@ -894,7 +912,7 @@ import 'crypto_key_iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -918,7 +936,7 @@ import 'crypto_key_iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -926,7 +944,10 @@ import 'crypto_key_iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypter"
 ///   member        = "user:jane@example.com"
@@ -1014,7 +1035,7 @@ class CryptoKeyIAMPolicy extends pulumi.CustomResource {
           'gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     cryptoKeyId = registerOutput<String>('cryptoKeyId');
     etag = registerOutput<String>('etag');

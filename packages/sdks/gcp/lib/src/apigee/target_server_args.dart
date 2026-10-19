@@ -79,7 +79,7 @@ class TargetServerArgs {
       host: pulumi.Input.fromValue(map['host'] as String),
       isEnabled: (() { final guardedValue = map['isEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       protocol: (() { final guardedValue = map['protocol']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sSlInfo: (() { final guardedValue = map['sSlInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(TargetServerSSlInfo.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );

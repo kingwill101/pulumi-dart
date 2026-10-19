@@ -70,7 +70,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -92,7 +92,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -101,6 +101,9 @@ import 'instance_workforce_identity_federation_config.dart';
 /// }
 ///
 /// resource "gcp_securesourcemanager_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   instance_id = "my-instance"
 ///   labels = {
@@ -228,9 +231,9 @@ import 'instance_workforce_identity_federation_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -264,7 +267,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -272,16 +275,22 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key_binding" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key_binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "my-key"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"
 /// }
 /// resource "gcp_securesourcemanager_instance" "default" {
-///   depends_on      = [gcp_kms_cryptokeyiammember.crypto_key_binding]
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.crypto_key_binding]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   instance_id     = "my-instance"
 ///   kms_key         = "my-key"
@@ -617,9 +626,9 @@ import 'instance_workforce_identity_federation_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -717,7 +726,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -728,10 +737,13 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_certificateauthority_capool" "ca_pool" {
+/// resource "gcp_certificateauthority_ca_pool" "ca_pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "ca-pool"
 ///   location = "us-central1"
 ///   tier     = "ENTERPRISE"
@@ -741,7 +753,10 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   }
 /// }
 /// resource "gcp_certificateauthority_authority" "root_ca" {
-///   pool                     = gcp_certificateauthority_capool.ca_pool.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   pool                     = gcp_certificateauthority_ca_pool.ca_pool.name
 ///   certificate_authority_id = "root-ca"
 ///   location                 = "us-central1"
 ///   config = {
@@ -773,24 +788,33 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   ignore_active_certificates_on_deletion = true
 ///   skip_grace_period                      = true
 /// }
-/// resource "gcp_certificateauthority_capooliambinding" "ca_pool_binding" {
-///   ca_pool = gcp_certificateauthority_capool.ca_pool.id
+/// resource "gcp_certificateauthority_ca_pool_iam_binding" "ca_pool_binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ca_pool = gcp_certificateauthority_ca_pool.ca_pool.id
 ///   role    = "roles/privateca.certificateRequester"
-///   members = ["serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"]
+///   members = ["serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"]
 /// }
 /// resource "gcp_securesourcemanager_instance" "default" {
-///   depends_on  = [gcp_certificateauthority_authority.root_ca, time_sleep.wait_120_seconds]
+///   depends_on = [gcp_certificateauthority_authority.root_ca, time_sleep.wait_120_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "my-instance"
 ///   location    = "us-central1"
 ///   private_config = {
 ///     is_private = true
-///     ca_pool    = gcp_certificateauthority_capool.ca_pool.id
+///     ca_pool    = gcp_certificateauthority_ca_pool.ca_pool.id
 ///   }
 ///   deletion_policy = "PREVENT"
 /// }
 /// # ca pool IAM permissions can take time to propagate
 /// resource "time_sleep" "wait_120_seconds" {
-///   depends_on      = [gcp_certificateauthority_capooliambinding.ca_pool_binding]
+///   depends_on = [gcp_certificateauthority_ca_pool_iam_binding.ca_pool_binding]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
 /// ```
@@ -1264,9 +1288,9 @@ import 'instance_workforce_identity_federation_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -1370,7 +1394,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1381,10 +1405,13 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_certificateauthority_capool" "ca_pool" {
+/// resource "gcp_certificateauthority_ca_pool" "ca_pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "ca-pool"
 ///   location = "us-central1"
 ///   tier     = "ENTERPRISE"
@@ -1394,7 +1421,10 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   }
 /// }
 /// resource "gcp_certificateauthority_authority" "root_ca" {
-///   pool                     = gcp_certificateauthority_capool.ca_pool.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   pool                     = gcp_certificateauthority_ca_pool.ca_pool.name
 ///   certificate_authority_id = "root-ca"
 ///   location                 = "us-central1"
 ///   config = {
@@ -1426,18 +1456,24 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   ignore_active_certificates_on_deletion = true
 ///   skip_grace_period                      = true
 /// }
-/// resource "gcp_certificateauthority_capooliambinding" "ca_pool_binding" {
-///   ca_pool = gcp_certificateauthority_capool.ca_pool.id
+/// resource "gcp_certificateauthority_ca_pool_iam_binding" "ca_pool_binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ca_pool = gcp_certificateauthority_ca_pool.ca_pool.id
 ///   role    = "roles/privateca.certificateRequester"
-///   members = ["serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"]
+///   members = ["serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"]
 /// }
 /// resource "gcp_securesourcemanager_instance" "default" {
-///   depends_on  = [gcp_certificateauthority_authority.root_ca, time_sleep.wait_120_seconds]
+///   depends_on = [gcp_certificateauthority_authority.root_ca, time_sleep.wait_120_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "my-instance"
 ///   location    = "us-central1"
 ///   private_config = {
 ///     is_private = true
-///     ca_pool    = gcp_certificateauthority_capool.ca_pool.id
+///     ca_pool    = gcp_certificateauthority_ca_pool.ca_pool.id
 ///     custom_host_config = {
 ///       api      = "api.example.com"
 ///       git_http = "git-http.example.com"
@@ -1449,7 +1485,10 @@ import 'instance_workforce_identity_federation_config.dart';
 /// }
 /// # ca pool IAM permissions can take time to propagate
 /// resource "time_sleep" "wait_120_seconds" {
-///   depends_on      = [gcp_certificateauthority_capooliambinding.ca_pool_binding]
+///   depends_on = [gcp_certificateauthority_ca_pool_iam_binding.ca_pool_binding]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
 /// ```
@@ -2217,11 +2256,11 @@ import 'instance_workforce_identity_federation_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -2457,7 +2496,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2468,10 +2507,13 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_certificateauthority_capool" "ca_pool" {
+/// resource "gcp_certificateauthority_ca_pool" "ca_pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "ca-pool"
 ///   location = "us-central1"
 ///   tier     = "ENTERPRISE"
@@ -2481,7 +2523,10 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   }
 /// }
 /// resource "gcp_certificateauthority_authority" "root_ca" {
-///   pool                     = gcp_certificateauthority_capool.ca_pool.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   pool                     = gcp_certificateauthority_ca_pool.ca_pool.name
 ///   certificate_authority_id = "root-ca"
 ///   location                 = "us-central1"
 ///   config = {
@@ -2513,40 +2558,58 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   ignore_active_certificates_on_deletion = true
 ///   skip_grace_period                      = true
 /// }
-/// resource "gcp_certificateauthority_capooliambinding" "ca_pool_binding" {
-///   ca_pool = gcp_certificateauthority_capool.ca_pool.id
+/// resource "gcp_certificateauthority_ca_pool_iam_binding" "ca_pool_binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ca_pool = gcp_certificateauthority_ca_pool.ca_pool.id
 ///   role    = "roles/privateca.certificateRequester"
-///   members = ["serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"]
+///   members = ["serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"]
 /// }
 /// // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
 /// resource "gcp_securesourcemanager_instance" "default" {
-///   depends_on  = [gcp_certificateauthority_authority.root_ca, time_sleep.wait_120_seconds]
+///   depends_on = [gcp_certificateauthority_authority.root_ca, time_sleep.wait_120_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "my-instance"
 ///   location    = "us-central1"
 ///   private_config = {
 ///     is_private = true
-///     ca_pool    = gcp_certificateauthority_capool.ca_pool.id
+///     ca_pool    = gcp_certificateauthority_ca_pool.ca_pool.id
 ///   }
 ///   deletion_policy = "PREVENT"
 /// }
 /// # ca pool IAM permissions can take time to propagate
 /// resource "time_sleep" "wait_120_seconds" {
-///   depends_on      = [gcp_certificateauthority_capooliambinding.ca_pool_binding]
+///   depends_on = [gcp_certificateauthority_ca_pool_iam_binding.ca_pool_binding]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
 /// // Connect SSM private instance with L4 proxy ILB.
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "my-subnet"
 ///   region                   = "us-central1"
 ///   network                  = gcp_compute_network.network.id
 ///   ip_cidr_range            = "10.0.1.0/24"
 ///   private_ip_google_access = true
 /// }
-/// resource "gcp_compute_regionnetworkendpointgroup" "psc_neg" {
+/// resource "gcp_compute_region_network_endpoint_group" "psc_neg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-neg"
 ///   region                = "us-central1"
 ///   network_endpoint_type = "PRIVATE_SERVICE_CONNECT"
@@ -2554,18 +2617,24 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   network               = gcp_compute_network.network.id
 ///   subnetwork            = gcp_compute_subnetwork.subnet.id
 /// }
-/// resource "gcp_compute_regionbackendservice" "backend_service" {
+/// resource "gcp_compute_region_backend_service" "backend_service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "my-backend-service"
 ///   region                = "us-central1"
 ///   protocol              = "TCP"
 ///   load_balancing_scheme = "INTERNAL_MANAGED"
 ///   backends {
-///     group           = gcp_compute_regionnetworkendpointgroup.psc_neg.id
+///     group           = gcp_compute_region_network_endpoint_group.psc_neg.id
 ///     balancing_mode  = "UTILIZATION"
 ///     capacity_scaler = 1
 ///   }
 /// }
 /// resource "gcp_compute_subnetwork" "proxy_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-proxy-subnet"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.network.id
@@ -2573,53 +2642,71 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   purpose       = "REGIONAL_MANAGED_PROXY"
 ///   role          = "ACTIVE"
 /// }
-/// resource "gcp_compute_regiontargettcpproxy" "target_proxy" {
+/// resource "gcp_compute_region_target_tcp_proxy" "target_proxy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "my-target-proxy"
 ///   region          = "us-central1"
-///   backend_service = gcp_compute_regionbackendservice.backend_service.id
+///   backend_service = gcp_compute_region_backend_service.backend_service.id
 /// }
-/// resource "gcp_compute_forwardingrule" "fw_rule_target_proxy" {
-///   depends_on            = [gcp_compute_subnetwork.proxy_subnet]
+/// resource "gcp_compute_forwarding_rule" "fw_rule_target_proxy" {
+///   depends_on = [gcp_compute_subnetwork.proxy_subnet]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "fw-rule-target-proxy"
 ///   region                = "us-central1"
 ///   load_balancing_scheme = "INTERNAL_MANAGED"
 ///   ip_protocol           = "TCP"
 ///   port_range            = "443"
-///   target                = gcp_compute_regiontargettcpproxy.target_proxy.id
+///   target                = gcp_compute_region_target_tcp_proxy.target_proxy.id
 ///   network               = gcp_compute_network.network.id
 ///   subnetwork            = gcp_compute_subnetwork.subnet.id
 ///   network_tier          = "PREMIUM"
 /// }
-/// resource "gcp_dns_managedzone" "private_zone" {
+/// resource "gcp_dns_managed_zone" "private_zone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "my-dns-zone"
 ///   dns_name   = "p.sourcemanager.dev."
 ///   visibility = "private"
 ///   private_visibility_config = {
 ///     networks = [{
-///       "networkUrl" = gcp_compute_network.network.id
+///       network_url = gcp_compute_network.network.id
 ///     }]
 ///   }
 /// }
-/// resource "gcp_dns_recordset" "ssm_instance_html_record" {
+/// resource "gcp_dns_record_set" "ssm_instance_html_record" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         ="${gcp_securesourcemanager_instance.default.host_configs[0].html}."
 ///   type         = "A"
 ///   ttl          = 300
-///   managed_zone = gcp_dns_managedzone.private_zone.name
-///   rrdatas      = [gcp_compute_forwardingrule.fw_rule_target_proxy.ip_address]
+///   managed_zone = gcp_dns_managed_zone.private_zone.name
+///   rrdatas      = [gcp_compute_forwarding_rule.fw_rule_target_proxy.ip_address]
 /// }
-/// resource "gcp_dns_recordset" "ssm_instance_api_record" {
+/// resource "gcp_dns_record_set" "ssm_instance_api_record" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         ="${gcp_securesourcemanager_instance.default.host_configs[0].api}."
 ///   type         = "A"
 ///   ttl          = 300
-///   managed_zone = gcp_dns_managedzone.private_zone.name
-///   rrdatas      = [gcp_compute_forwardingrule.fw_rule_target_proxy.ip_address]
+///   managed_zone = gcp_dns_managed_zone.private_zone.name
+///   rrdatas      = [gcp_compute_forwarding_rule.fw_rule_target_proxy.ip_address]
 /// }
-/// resource "gcp_dns_recordset" "ssm_instance_git_record" {
+/// resource "gcp_dns_record_set" "ssm_instance_git_record" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         ="${gcp_securesourcemanager_instance.default.host_configs[0].git_http}."
 ///   type         = "A"
 ///   ttl          = 300
-///   managed_zone = gcp_dns_managedzone.private_zone.name
-///   rrdatas      = [gcp_compute_forwardingrule.fw_rule_target_proxy.ip_address]
+///   managed_zone = gcp_dns_managed_zone.private_zone.name
+///   rrdatas      = [gcp_compute_forwarding_rule.fw_rule_target_proxy.ip_address]
 /// }
 /// ```
 /// ```java
@@ -3503,11 +3590,11 @@ import 'instance_workforce_identity_federation_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -3702,7 +3789,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3713,10 +3800,13 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_certificateauthority_capool" "ca_pool" {
+/// resource "gcp_certificateauthority_ca_pool" "ca_pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "ca-pool"
 ///   location = "us-central1"
 ///   tier     = "ENTERPRISE"
@@ -3726,7 +3816,10 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   }
 /// }
 /// resource "gcp_certificateauthority_authority" "root_ca" {
-///   pool                     = gcp_certificateauthority_capool.ca_pool.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   pool                     = gcp_certificateauthority_ca_pool.ca_pool.name
 ///   certificate_authority_id = "root-ca"
 ///   location                 = "us-central1"
 ///   config = {
@@ -3758,33 +3851,48 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   ignore_active_certificates_on_deletion = true
 ///   skip_grace_period                      = true
 /// }
-/// resource "gcp_certificateauthority_capooliambinding" "ca_pool_binding" {
-///   ca_pool = gcp_certificateauthority_capool.ca_pool.id
+/// resource "gcp_certificateauthority_ca_pool_iam_binding" "ca_pool_binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ca_pool = gcp_certificateauthority_ca_pool.ca_pool.id
 ///   role    = "roles/privateca.certificateRequester"
-///   members = ["serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"]
+///   members = ["serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com"]
 /// }
 /// // See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
 /// resource "gcp_securesourcemanager_instance" "default" {
-///   depends_on  = [gcp_certificateauthority_authority.root_ca, time_sleep.wait_120_seconds]
+///   depends_on = [gcp_certificateauthority_authority.root_ca, time_sleep.wait_120_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = "my-instance"
 ///   location    = "us-central1"
 ///   private_config = {
 ///     is_private = true
-///     ca_pool    = gcp_certificateauthority_capool.ca_pool.id
+///     ca_pool    = gcp_certificateauthority_ca_pool.ca_pool.id
 ///   }
 ///   deletion_policy = "PREVENT"
 /// }
 /// # ca pool IAM permissions can take time to propagate
 /// resource "time_sleep" "wait_120_seconds" {
-///   depends_on      = [gcp_certificateauthority_capooliambinding.ca_pool_binding]
+///   depends_on = [gcp_certificateauthority_ca_pool_iam_binding.ca_pool_binding]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "120s"
 /// }
 /// // Connect SSM private instance with endpoint.
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "my-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "my-subnet"
 ///   region                   = "us-central1"
 ///   network                  = gcp_compute_network.network.id
@@ -3792,13 +3900,19 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   private_ip_google_access = true
 /// }
 /// resource "gcp_compute_address" "address" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-address"
 ///   region       = "us-central1"
 ///   address      = "10.0.60.100"
 ///   address_type = "INTERNAL"
 ///   subnetwork   = gcp_compute_subnetwork.subnet.id
 /// }
-/// resource "gcp_compute_forwardingrule" "fw_rule_service_attachment" {
+/// resource "gcp_compute_forwarding_rule" "fw_rule_service_attachment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "fw-rule-service-attachment"
 ///   region                = "us-central1"
 ///   load_balancing_scheme = ""
@@ -3806,36 +3920,48 @@ import 'instance_workforce_identity_federation_config.dart';
 ///   network               = gcp_compute_network.network.id
 ///   target                = gcp_securesourcemanager_instance.default.private_config.http_service_attachment
 /// }
-/// resource "gcp_dns_managedzone" "private_zone" {
+/// resource "gcp_dns_managed_zone" "private_zone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "my-dns-zone"
 ///   dns_name   = "p.sourcemanager.dev."
 ///   visibility = "private"
 ///   private_visibility_config = {
 ///     networks = [{
-///       "networkUrl" = gcp_compute_network.network.id
+///       network_url = gcp_compute_network.network.id
 ///     }]
 ///   }
 /// }
-/// resource "gcp_dns_recordset" "ssm_instance_html_record" {
+/// resource "gcp_dns_record_set" "ssm_instance_html_record" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         ="${gcp_securesourcemanager_instance.default.host_configs[0].html}."
 ///   type         = "A"
 ///   ttl          = 300
-///   managed_zone = gcp_dns_managedzone.private_zone.name
-///   rrdatas      = [gcp_compute_forwardingrule.fw_rule_service_attachment.ip_address]
+///   managed_zone = gcp_dns_managed_zone.private_zone.name
+///   rrdatas      = [gcp_compute_forwarding_rule.fw_rule_service_attachment.ip_address]
 /// }
-/// resource "gcp_dns_recordset" "ssm_instance_api_record" {
+/// resource "gcp_dns_record_set" "ssm_instance_api_record" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         ="${gcp_securesourcemanager_instance.default.host_configs[0].api}."
 ///   type         = "A"
 ///   ttl          = 300
-///   managed_zone = gcp_dns_managedzone.private_zone.name
-///   rrdatas      = [gcp_compute_forwardingrule.fw_rule_service_attachment.ip_address]
+///   managed_zone = gcp_dns_managed_zone.private_zone.name
+///   rrdatas      = [gcp_compute_forwarding_rule.fw_rule_service_attachment.ip_address]
 /// }
-/// resource "gcp_dns_recordset" "ssm_instance_git_record" {
+/// resource "gcp_dns_record_set" "ssm_instance_git_record" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         ="${gcp_securesourcemanager_instance.default.host_configs[0].git_http}."
 ///   type         = "A"
 ///   ttl          = 300
-///   managed_zone = gcp_dns_managedzone.private_zone.name
-///   rrdatas      = [gcp_compute_forwardingrule.fw_rule_service_attachment.ip_address]
+///   managed_zone = gcp_dns_managed_zone.private_zone.name
+///   rrdatas      = [gcp_compute_forwarding_rule.fw_rule_service_attachment.ip_address]
 /// }
 /// ```
 /// ```java
@@ -4241,7 +4367,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securesourcemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securesourcemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4263,7 +4389,7 @@ import 'instance_workforce_identity_federation_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4272,6 +4398,9 @@ import 'instance_workforce_identity_federation_config.dart';
 /// }
 ///
 /// resource "gcp_securesourcemanager_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   instance_id = "my-instance"
 ///   workforce_identity_federation_config = {
@@ -4405,7 +4534,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:securesourcemanager/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

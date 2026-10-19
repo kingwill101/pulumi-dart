@@ -122,9 +122,9 @@ import 'v2_folder_scc_big_query_export_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -168,7 +168,7 @@ import 'v2_folder_scc_big_query_export_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -177,11 +177,17 @@ import 'v2_folder_scc_big_query_export_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_folder" "folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent              = "organizations/123456789"
 ///   display_name        = "folder-name"
 ///   deletion_protection = false
 /// }
 /// resource "gcp_bigquery_dataset" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id                      = "my_dataset_id"
 ///   friendly_name                   = "test"
 ///   description                     = "This is a test description"
@@ -192,7 +198,10 @@ import 'v2_folder_scc_big_query_export_state.dart';
 ///     "env" = "default"
 ///   }
 /// }
-/// resource "gcp_securitycenter_v2foldersccbigqueryexport" "custom_big_query_export_config" {
+/// resource "gcp_securitycenter_v2_folder_scc_big_query_export" "custom_big_query_export_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   big_query_export_id = "my-export"
 ///   folder              = gcp_organizations_folder.folder.folder_id
 ///   dataset             = gcp_bigquery_dataset.default.id
@@ -373,7 +382,7 @@ class V2FolderSccBigQueryExport extends pulumi.CustomResource {
           'gcp:securitycenter/v2FolderSccBigQueryExport:V2FolderSccBigQueryExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');

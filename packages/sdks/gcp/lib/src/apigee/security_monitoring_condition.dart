@@ -195,10 +195,10 @@ import 'security_monitoring_condition_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -281,7 +281,7 @@ import 'security_monitoring_condition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -289,13 +289,19 @@ import 'security_monitoring_condition_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientconfig" "current" {
+/// data "gcp_organizations_client_config" "current" {
 /// }
 ///
 /// resource "gcp_compute_network" "apigee_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "apigee-network"
 /// }
-/// resource "gcp_compute_globaladdress" "apigee_range" {
+/// resource "gcp_compute_global_address" "apigee_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "apigee-range"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -303,23 +309,35 @@ import 'security_monitoring_condition_state.dart';
 ///   network       = gcp_compute_network.apigee_network.id
 /// }
 /// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.apigee_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.apigee_range.name]
 /// }
 /// resource "gcp_apigee_organization" "apigee_org" {
-///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   depends_on = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analytics_region   = "us-central1"
-///   project_id         = data.gcp_organizations_getclientconfig.current.project
+///   project_id         = data.gcp_organizations_client_config.current.project
 ///   authorized_network = gcp_compute_network.apigee_network.id
 /// }
 /// resource "gcp_apigee_environment" "env" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-environment"
 ///   description  = "Apigee Environment"
 ///   display_name = "environment-1"
 ///   org_id       = gcp_apigee_organization.apigee_org.id
 /// }
-/// resource "gcp_apigee_addonsconfig" "apigee_org_security_addons_config" {
+/// resource "gcp_apigee_addons_config" "apigee_org_security_addons_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org = gcp_apigee_organization.apigee_org.name
 ///   addons_config = {
 ///     api_security_config = {
@@ -327,8 +345,11 @@ import 'security_monitoring_condition_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_apigee_securitymonitoringcondition" "security_monitoring_condition" {
-///   depends_on            = [gcp_apigee_addonsconfig.apigee_org_security_addons_config]
+/// resource "gcp_apigee_security_monitoring_condition" "security_monitoring_condition" {
+///   depends_on = [gcp_apigee_addons_config.apigee_org_security_addons_config]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   condition_id          = "my-condition"
 ///   org_id                = gcp_apigee_organization.apigee_org.id
 ///   profile               = "google-default"
@@ -558,7 +579,7 @@ class SecurityMonitoringCondition extends pulumi.CustomResource {
           'gcp:apigee/securityMonitoringCondition:SecurityMonitoringCondition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     conditionId = registerOutput<String>('conditionId');
     createTime = registerOutput<String>('createTime');

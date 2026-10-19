@@ -89,11 +89,11 @@ class GetEnvironmentConfigNodeConfig {
     return GetEnvironmentConfigNodeConfig(
       composerInternalIpv4CidrBlock: pulumi.Input.fromValue(map['composerInternalIpv4CidrBlock'] as String),
       composerNetworkAttachment: pulumi.Input.fromValue(map['composerNetworkAttachment'] as String),
-      diskSizeGb: pulumi.Input.fromValue((map['diskSizeGb'] as num).toInt()),
+      diskSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeGb'])),
       enableIpMasqAgent: pulumi.Input.fromValue(map['enableIpMasqAgent'] as bool),
       ipAllocationPolicies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetEnvironmentConfigNodeConfigIpAllocationPolicy>(map['ipAllocationPolicies']!, (value) => GetEnvironmentConfigNodeConfigIpAllocationPolicy.fromMap((value as Map).cast<String, dynamic>()))),
       machineType: pulumi.Input.fromValue(map['machineType'] as String),
-      maxPodsPerNode: pulumi.Input.fromValue((map['maxPodsPerNode'] as num).toInt()),
+      maxPodsPerNode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPodsPerNode'])),
       network: pulumi.Input.fromValue(map['network'] as String),
       oauthScopes: pulumi.Input.fromValue((map['oauthScopes'] as List).cast<String>()),
       serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),

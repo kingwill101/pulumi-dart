@@ -119,7 +119,7 @@ import 'enrollment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/eventarc"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -164,7 +164,7 @@ import 'enrollment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -173,6 +173,9 @@ import 'enrollment_state.dart';
 /// }
 ///
 /// resource "gcp_eventarc_enrollment" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location      = "us-central1"
 ///   enrollment_id = "some-enrollment"
 ///   message_bus   = primaryGoogleEventarcMessageBus.id
@@ -180,6 +183,9 @@ import 'enrollment_state.dart';
 ///   cel_match     = "message.type == 'google.cloud.dataflow.job.v1beta3.statusChanged'"
 /// }
 /// resource "gcp_eventarc_pipeline" "pipeline" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   pipeline_id = "some-pipeline"
 ///   destinations {
@@ -191,7 +197,10 @@ import 'enrollment_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_eventarc_messagebus" "message_bus" {
+/// resource "gcp_eventarc_message_bus" "message_bus" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location       = "us-central1"
 ///   message_bus_id = "some-message-bus"
 /// }
@@ -368,7 +377,7 @@ class Enrollment extends pulumi.CustomResource {
           'gcp:eventarc/enrollment:Enrollment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

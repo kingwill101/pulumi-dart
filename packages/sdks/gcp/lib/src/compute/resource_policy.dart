@@ -84,7 +84,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -110,7 +110,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -118,7 +118,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "foo" {
+/// resource "gcp_compute_resource_policy" "foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "us-central1"
 ///   snapshot_schedule_policy = {
@@ -289,7 +292,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -326,7 +329,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -334,7 +337,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "bar" {
+/// resource "gcp_compute_resource_policy" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "us-central1"
 ///   snapshot_schedule_policy = {
@@ -485,7 +491,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -507,7 +513,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -515,7 +521,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "baz" {
+/// resource "gcp_compute_resource_policy" "baz" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "us-central1"
 ///   group_placement_policy = {
@@ -627,7 +636,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -650,7 +659,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -658,7 +667,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "baz" {
+/// resource "gcp_compute_resource_policy" "baz" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "us-central1"
 ///   group_placement_policy = {
@@ -790,7 +802,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -818,7 +830,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -826,7 +838,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "hourly" {
+/// resource "gcp_compute_resource_policy" "hourly" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "gce-policy"
 ///   region      = "us-central1"
 ///   description = "Start and stop instances"
@@ -1009,7 +1024,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1048,7 +1063,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1056,7 +1071,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "hourly" {
+/// resource "gcp_compute_resource_policy" "hourly" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "gce-policy"
 ///   region      = "us-central1"
 ///   description = "chain name snapshot"
@@ -1210,7 +1228,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1231,7 +1249,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1239,7 +1257,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "cgroup" {
+/// resource "gcp_compute_resource_policy" "cgroup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "europe-west1"
 ///   disk_consistency_group_policy = {
@@ -1342,7 +1363,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1363,7 +1384,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1371,7 +1392,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "bar" {
+/// resource "gcp_compute_resource_policy" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "europe-west1"
 ///   workload_policy = {
@@ -1477,7 +1501,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1499,7 +1523,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1507,7 +1531,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "bar" {
+/// resource "gcp_compute_resource_policy" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "europe-west1"
 ///   workload_policy = {
@@ -1619,7 +1646,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1642,7 +1669,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1650,7 +1677,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "bar" {
+/// resource "gcp_compute_resource_policy" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "europe-west1"
 ///   workload_policy = {
@@ -1762,7 +1792,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1784,7 +1814,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1792,7 +1822,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "bar" {
+/// resource "gcp_compute_resource_policy" "bar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "europe-west1"
 ///   workload_policy = {
@@ -1901,7 +1934,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1923,7 +1956,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1931,7 +1964,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "baz" {
+/// resource "gcp_compute_resource_policy" "baz" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "europe-west9"
 ///   group_placement_policy = {
@@ -2043,7 +2079,7 @@ import 'resource_policy_workload_policy.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2066,7 +2102,7 @@ import 'resource_policy_workload_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2074,7 +2110,10 @@ import 'resource_policy_workload_policy.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_resourcepolicy" "baz" {
+/// resource "gcp_compute_resource_policy" "baz" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "gce-policy"
 ///   region = "us-central1"
 ///   group_placement_policy = {
@@ -2204,7 +2243,7 @@ class ResourcePolicy extends pulumi.CustomResource {
           'gcp:compute/resourcePolicy:ResourcePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

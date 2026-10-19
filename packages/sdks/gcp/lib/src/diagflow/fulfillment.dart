@@ -107,7 +107,7 @@ import 'fulfillment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -143,7 +143,7 @@ import 'fulfillment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -152,12 +152,18 @@ import 'fulfillment_state.dart';
 /// }
 ///
 /// resource "gcp_diagflow_agent" "basic_agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "example_agent"
 ///   default_language_code = "en"
 ///   time_zone             = "America/New_York"
 /// }
 /// resource "gcp_diagflow_fulfillment" "basic_fulfillment" {
-///   depends_on   = [gcp_diagflow_agent.basic_agent]
+///   depends_on = [gcp_diagflow_agent.basic_agent]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "basic-fulfillment"
 ///   enabled      = true
 ///   generic_web_service = {
@@ -293,7 +299,7 @@ class Fulfillment extends pulumi.CustomResource {
           'gcp:diagflow/fulfillment:Fulfillment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String>('displayName');

@@ -127,7 +127,7 @@ import 'domain_mapping_status.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -170,7 +170,7 @@ import 'domain_mapping_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -179,6 +179,9 @@ import 'domain_mapping_status.dart';
 /// }
 ///
 /// resource "gcp_cloudrun_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "cloudrun-srv"
 ///   location = "us-central1"
 ///   metadata = {
@@ -187,12 +190,15 @@ import 'domain_mapping_status.dart';
 ///   template = {
 ///     spec = {
 ///       containers = [{
-///         "image" = "us-docker.pkg.dev/cloudrun/container/hello"
+///         image = "us-docker.pkg.dev/cloudrun/container/hello"
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_cloudrun_domainmapping" "default" {
+/// resource "gcp_cloudrun_domain_mapping" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   name     = "verified-domain.com"
 ///   metadata = {
@@ -340,7 +346,7 @@ class DomainMapping extends pulumi.CustomResource {
           'gcp:cloudrun/domainMapping:DomainMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     location = registerOutput<String>('location');

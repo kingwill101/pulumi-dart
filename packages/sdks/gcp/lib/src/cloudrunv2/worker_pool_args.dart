@@ -25,12 +25,6 @@ class WorkerPoolArgs {
   final pulumi.Input<String?>? client;
   /// Arbitrary version identifier for the API client.
   final pulumi.Input<String?>? clientVersion;
-  /// (Optional, Deprecated)
-  /// One or more custom audiences that you want this worker pool to support. Specify each custom audience as the full URL in a string. The custom audiences are encoded in the token and used to authenticate requests.
-  /// For more information, see https://cloud.google.com/run/docs/configuring/custom-audiences.
-  ///
-  /// &gt; **Warning:** `customAudiences` is deprecated since it is not applicable to WorkerPool resource and will be removed in a future major release.
-  final pulumi.Input<List<String>?>? customAudiences;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -81,7 +75,6 @@ class WorkerPoolArgs {
   /// [binaryAuthorization] Settings for the Binary Authorization feature.
   /// [client] Arbitrary identifier for the API client.
   /// [clientVersion] Arbitrary version identifier for the API client.
-  /// [customAudiences] (Optional, Deprecated)
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [deletionProtection] Whether Terraform will be prevented from destroying the service. Defaults to true.
   /// [description] User-provided description of the WorkerPool. This field currently has a 512-character limit.
@@ -98,7 +91,6 @@ class WorkerPoolArgs {
     this.binaryAuthorization,
     this.client,
     this.clientVersion,
-    this.customAudiences,
     this.deletionPolicy,
     this.deletionProtection,
     this.description,
@@ -118,7 +110,6 @@ class WorkerPoolArgs {
       'binaryAuthorization': ?pulumi.Input.mapOptionalInputValue<WorkerPoolBinaryAuthorization, Map<String, dynamic>>(binaryAuthorization, (value) => value.toMap()),
       'client': ?client,
       'clientVersion': ?clientVersion,
-      'customAudiences': ?customAudiences,
       'deletionPolicy': ?deletionPolicy,
       'deletionProtection': ?deletionProtection,
       'description': ?description,
@@ -139,7 +130,6 @@ class WorkerPoolArgs {
       binaryAuthorization: (() { final guardedValue = map['binaryAuthorization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WorkerPoolBinaryAuthorization.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       client: (() { final guardedValue = map['client']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientVersion: (() { final guardedValue = map['clientVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      customAudiences: (() { final guardedValue = map['customAudiences']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionProtection: (() { final guardedValue = map['deletionProtection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

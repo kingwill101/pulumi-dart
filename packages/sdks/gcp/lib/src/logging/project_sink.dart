@@ -67,7 +67,7 @@ import 'project_sink_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -87,7 +87,7 @@ import 'project_sink_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -95,7 +95,10 @@ import 'project_sink_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_projectsink" "my-sink" {
+/// resource "gcp_logging_project_sink" "my-sink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "my-pubsub-instance-sink"
 ///   destination            = "pubsub.googleapis.com/projects/my-project/topics/instance-activity"
 ///   filter                 = "resource.type = gce_instance AND severity >= WARNING"
@@ -298,10 +301,10 @@ import 'project_sink_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -368,7 +371,7 @@ import 'project_sink_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -378,6 +381,9 @@ import 'project_sink_state.dart';
 ///
 /// # Our logged compute instance
 /// resource "gcp_compute_instance" "my-logged-instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -394,11 +400,17 @@ import 'project_sink_state.dart';
 /// }
 /// # A gcs bucket to store logs in
 /// resource "gcp_storage_bucket" "gcs-bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-unique-logging-bucket"
 ///   location = "US"
 /// }
 /// # Our sink; this logs all activity related to our "my-logged-instance" instance
-/// resource "gcp_logging_projectsink" "instance-sink" {
+/// resource "gcp_logging_project_sink" "instance-sink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "my-instance-sink"
 ///   description            = "some explanation on what this is"
 ///   destination            ="storage.googleapis.com/${gcp_storage_bucket.gcs-bucket.name}"
@@ -406,10 +418,13 @@ import 'project_sink_state.dart';
 ///   unique_writer_identity = true
 /// }
 /// # Because our sink uses a unique_writer, we must grant that writer access to the bucket.
-/// resource "gcp_projects_iambinding" "gcs-bucket-writer" {
+/// resource "gcp_projects_i_a_m_binding" "gcs-bucket-writer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "your-project-id"
 ///   role    = "roles/storage.objectCreator"
-///   members = [gcp_logging_projectsink.instance-sink.writer_identity]
+///   members = [gcp_logging_project_sink.instance-sink.writer_identity]
 /// }
 /// ```
 /// ```java
@@ -622,9 +637,9 @@ import 'project_sink_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -665,7 +680,7 @@ import 'project_sink_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -674,12 +689,18 @@ import 'project_sink_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "custom-sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = "other-project-id"
 ///   account_id   = "gce-log-bucket-sink"
 ///   display_name = "gce-log-bucket-sink"
 /// }
 /// # Create a sink that uses user-managed service account
-/// resource "gcp_logging_projectsink" "my-sink" {
+/// resource "gcp_logging_project_sink" "my-sink" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "other-project-log-bucket-sink"
 ///   destination            = "logging.googleapis.com/projects/other-project-id/locations/global/buckets/gce-logs"
 ///   filter                 = "resource.type = gce_instance AND severity >= WARNING"
@@ -688,7 +709,10 @@ import 'project_sink_state.dart';
 ///   custom_writer_identity = gcp_serviceaccount_account.custom-sa.email
 /// }
 /// # grant writer access to the user-managed service account
-/// resource "gcp_projects_iammember" "custom-sa-logbucket-binding" {
+/// resource "gcp_projects_i_a_m_member" "custom-sa-logbucket-binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "destination-project-id"
 ///   role    = "roles/logging.bucketWriter"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.custom-sa.email}"
@@ -858,7 +882,7 @@ import 'project_sink_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -889,7 +913,7 @@ import 'project_sink_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -897,7 +921,10 @@ import 'project_sink_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_projectsink" "log-bucket" {
+/// resource "gcp_logging_project_sink" "log-bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-logging-sink"
 ///   destination = "logging.googleapis.com/projects/my-project/locations/global/buckets/_Default"
 ///   exclusions {
@@ -1048,7 +1075,7 @@ class ProjectSink extends pulumi.CustomResource {
           'gcp:logging/projectSink:ProjectSink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     bigqueryOptions = registerOutput<ProjectSinkBigqueryOptions>('bigqueryOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectSinkBigqueryOptions.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customWriterIdentity = registerOutput<String?>('customWriterIdentity');

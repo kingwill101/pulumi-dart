@@ -194,9 +194,9 @@ import 'repository_workspace_compilation_overrides.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/secretmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/secretmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -272,7 +272,7 @@ import 'repository_workspace_compilation_overrides.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -281,34 +281,52 @@ import 'repository_workspace_compilation_overrides.dart';
 /// }
 ///
 /// resource "gcp_secretmanager_secret" "secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret_id = "my-secret"
 ///   replication = {
 ///     auto = {}
 ///   }
 /// }
-/// resource "gcp_secretmanager_secretversion" "secret_version" {
+/// resource "gcp_secretmanager_secret_version" "secret_version" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   secret      = gcp_secretmanager_secret.secret.id
 ///   secret_data = "secret-data"
 /// }
-/// resource "gcp_kms_keyring" "keyring" {
+/// resource "gcp_kms_key_ring" "keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-key-ring"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_kms_cryptokey" "example_key" {
+/// resource "gcp_kms_crypto_key" "example_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-crypto-key-name"
-///   key_ring = gcp_kms_keyring.keyring.id
+///   key_ring = gcp_kms_key_ring.keyring.id
 /// }
-/// resource "gcp_kms_cryptokeyiambinding" "crypto_key_binding" {
-///   crypto_key_id = gcp_kms_cryptokey.example_key.id
+/// resource "gcp_kms_crypto_key_i_a_m_binding" "crypto_key_binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = gcp_kms_crypto_key.example_key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
 ///   members       = ["serviceAccount:service-${project.number}@gcp-sa-dataform.iam.gserviceaccount.com"]
 /// }
 /// resource "gcp_dataform_repository" "dataform_repository" {
-///   depends_on                                 = [gcp_kms_cryptokeyiambinding.crypto_key_binding]
+///   depends_on = [gcp_kms_crypto_key_i_a_m_binding.crypto_key_binding]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                       = "dataform_repository"
 ///   display_name                               = "dataform_repository"
-///   npmrc_environment_variables_secret_version = gcp_secretmanager_secretversion.secret_version.id
-///   kms_key_name                               = gcp_kms_cryptokey.example_key.id
+///   npmrc_environment_variables_secret_version = gcp_secretmanager_secret_version.secret_version.id
+///   kms_key_name                               = gcp_kms_crypto_key.example_key.id
 ///   deletion_policy                            = "FORCE"
 ///   labels = {
 ///     "label_foo1" = "label-bar1"
@@ -316,7 +334,7 @@ import 'repository_workspace_compilation_overrides.dart';
 ///   git_remote_settings = {
 ///     url                                 = "https://github.com/OWNER/REPOSITORY.git"
 ///     default_branch                      = "main"
-///     authentication_token_secret_version = gcp_secretmanager_secretversion.secret_version.id
+///     authentication_token_secret_version = gcp_secretmanager_secret_version.secret_version.id
 ///   }
 ///   workspace_compilation_overrides = {
 ///     default_database = "database"
@@ -547,7 +565,7 @@ class Repository extends pulumi.CustomResource {
           'gcp:dataform/repository:Repository',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

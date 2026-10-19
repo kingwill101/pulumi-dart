@@ -30,6 +30,12 @@ import 'fleet_state.dart';
 ///             mode: "DISABLED",
 ///             vulnerabilityMode: "VULNERABILITY_DISABLED",
 ///         },
+///         compliancePostureConfig: {
+///             mode: "ENABLED",
+///         },
+///     },
+///     labels: {
+///         env: "prod",
 ///     },
 /// });
 /// ```
@@ -44,6 +50,12 @@ import 'fleet_state.dart';
 ///             "mode": "DISABLED",
 ///             "vulnerability_mode": "VULNERABILITY_DISABLED",
 ///         },
+///         "compliance_posture_config": {
+///             "mode": "ENABLED",
+///         },
+///     },
+///     labels={
+///         "env": "prod",
 ///     })
 /// ```
 /// ```csharp
@@ -64,6 +76,14 @@ import 'fleet_state.dart';
 ///                 Mode = "DISABLED",
 ///                 VulnerabilityMode = "VULNERABILITY_DISABLED",
 ///             },
+///             CompliancePostureConfig = new Gcp.GkeHub.Inputs.FleetDefaultClusterConfigCompliancePostureConfigArgs
+///             {
+///                 Mode = "ENABLED",
+///             },
+///         },
+///         Labels =
+///         {
+///             { "env", "prod" },
 ///         },
 ///     });
 ///
@@ -73,7 +93,7 @@ import 'fleet_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -86,6 +106,12 @@ import 'fleet_state.dart';
 /// 					Mode:              pulumi.String("DISABLED"),
 /// 					VulnerabilityMode: pulumi.String("VULNERABILITY_DISABLED"),
 /// 				},
+/// 				CompliancePostureConfig: &gkehub.FleetDefaultClusterConfigCompliancePostureConfigArgs{
+/// 					Mode: pulumi.String("ENABLED"),
+/// 				},
+/// 			},
+/// 			Labels: pulumi.StringMap{
+/// 				"env": pulumi.String("prod"),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -96,7 +122,7 @@ import 'fleet_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -105,12 +131,21 @@ import 'fleet_state.dart';
 /// }
 ///
 /// resource "gcp_gkehub_fleet" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "my production fleet"
 ///   default_cluster_config = {
 ///     security_posture_config = {
 ///       mode               = "DISABLED"
 ///       vulnerability_mode = "VULNERABILITY_DISABLED"
 ///     }
+///     compliance_posture_config = {
+///       mode = "ENABLED"
+///     }
+///   }
+///   labels = {
+///     "env" = "prod"
 ///   }
 /// }
 /// ```
@@ -124,6 +159,7 @@ import 'fleet_state.dart';
 /// import com.pulumi.gcp.gkehub.FleetArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FleetDefaultClusterConfigArgs;
 /// import com.pulumi.gcp.gkehub.inputs.FleetDefaultClusterConfigSecurityPostureConfigArgs;
+/// import com.pulumi.gcp.gkehub.inputs.FleetDefaultClusterConfigCompliancePostureConfigArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -144,7 +180,11 @@ import 'fleet_state.dart';
 ///                     .mode("DISABLED")
 ///                     .vulnerabilityMode("VULNERABILITY_DISABLED")
 ///                     .build())
+///                 .compliancePostureConfig(FleetDefaultClusterConfigCompliancePostureConfigArgs.builder()
+///                     .mode("ENABLED")
+///                     .build())
 ///                 .build())
+///             .labels(Map.of("env", "prod"))
 ///             .build());
 ///
 ///     }
@@ -160,6 +200,10 @@ import 'fleet_state.dart';
 ///         securityPostureConfig:
 ///           mode: DISABLED
 ///           vulnerabilityMode: VULNERABILITY_DISABLED
+///         compliancePostureConfig:
+///           mode: ENABLED
+///       labels:
+///         env: prod
 /// ```
 ///
 ///
@@ -195,9 +239,19 @@ class Fleet extends pulumi.CustomResource {
   /// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
   /// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
   late final pulumi.Output<String?> displayName;
+  /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  late final pulumi.Output<Map<String, String>> effectiveLabels;
+  /// Labels for this Fleet.
+  ///
+  /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+  /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+  late final pulumi.Output<Map<String, String>?> labels;
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// The combination of labels configured directly on the resource
+  /// and default labels configured on the provider.
+  late final pulumi.Output<Map<String, String>> pulumiLabels;
   /// The state of the fleet resource.
   /// Structure is documented below.
   late final pulumi.Output<List<FleetState>> states;
@@ -220,14 +274,18 @@ class Fleet extends pulumi.CustomResource {
           'gcp:gkehub/fleet:Fleet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');
     defaultClusterConfig = registerOutput<FleetDefaultClusterConfig?>('defaultClusterConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FleetDefaultClusterConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     states = registerOutput<List<FleetState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetState>(guardedValue, (value) => FleetState.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -262,7 +320,10 @@ class Fleet extends pulumi.CustomResource {
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     states = registerOutput<List<FleetState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetState>(guardedValue, (value) => FleetState.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
@@ -275,6 +336,7 @@ class Fleet extends pulumi.CustomResource {
         pulumi.parseUrn(urn).urnName,
         const <String, pulumi.Input<dynamic>>{},
         pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         isResourceReference: true,
       ) {
     createTime = registerOutput<String>('createTime');
@@ -282,7 +344,10 @@ class Fleet extends pulumi.CustomResource {
     deleteTime = registerOutput<String>('deleteTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');
+    effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     project = registerOutput<String>('project');
+    pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     states = registerOutput<List<FleetState>>('states', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FleetState>(guardedValue, (value) => FleetState.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');

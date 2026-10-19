@@ -78,7 +78,7 @@ import 'iamcustom_role_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -103,7 +103,7 @@ import 'iamcustom_role_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -111,7 +111,10 @@ import 'iamcustom_role_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_organizations_iamcustomrole" "my-custom-role" {
+/// resource "gcp_organizations_i_a_m_custom_role" "my-custom-role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_id     = "myCustomRole"
 ///   org_id      = "123456789"
 ///   title       = "My Custom Role"
@@ -216,7 +219,7 @@ class IAMCustomRole extends pulumi.CustomResource {
           'gcp:organizations/iAMCustomRole:IAMCustomRole',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deleted = registerOutput<bool>('deleted');
     deletionPolicy = registerOutput<String>('deletionPolicy');

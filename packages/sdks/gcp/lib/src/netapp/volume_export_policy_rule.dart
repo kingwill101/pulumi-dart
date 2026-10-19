@@ -86,7 +86,7 @@ class VolumeExportPolicyRule {
     return VolumeExportPolicyRule(
       accessType: (() { final guardedValue = map['accessType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       allowedClients: (() { final guardedValue = map['allowedClients']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      anonUid: (() { final guardedValue = map['anonUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      anonUid: (() { final guardedValue = map['anonUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       hasRootAccess: (() { final guardedValue = map['hasRootAccess']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kerberos5ReadOnly: (() { final guardedValue = map['kerberos5ReadOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       kerberos5ReadWrite: (() { final guardedValue = map['kerberos5ReadWrite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

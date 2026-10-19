@@ -27,7 +27,7 @@ class UptimeCheckConfigHttpCheckAcceptedResponseStatusCode {
   factory UptimeCheckConfigHttpCheckAcceptedResponseStatusCode.fromMap(Map<String, dynamic> map) {
     return UptimeCheckConfigHttpCheckAcceptedResponseStatusCode(
       statusClass: (() { final guardedValue = map['statusClass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      statusValue: (() { final guardedValue = map['statusValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      statusValue: (() { final guardedValue = map['statusValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

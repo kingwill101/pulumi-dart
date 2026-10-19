@@ -27,7 +27,7 @@ import 'autoscaler_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const debian9 = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("default", {
@@ -87,7 +87,7 @@ import 'autoscaler_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// debian9 = gcp.compute.get_image(family="debian-11",
+/// debian9 = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// default_instance_template = gcp.compute.InstanceTemplate("default",
 ///     name="my-instance-template",
@@ -149,7 +149,7 @@ import 'autoscaler_state.dart';
 /// {
 ///     var debian9 = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -245,14 +245,14 @@ import 'autoscaler_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		debian9, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -339,7 +339,7 @@ import 'autoscaler_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -347,34 +347,40 @@ import 'autoscaler_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "debian9" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "debian9" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
 /// resource "gcp_compute_autoscaler" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-autoscaler"
 ///   zone   = "us-central1-f"
-///   target = gcp_compute_instancegroupmanager.default.id
+///   target = gcp_compute_instance_group_manager.default.id
 ///   autoscaling_policy = {
 ///     max_replicas         = 5
 ///     min_replicas         = 1
 ///     cooldown_period      = 60
 ///     stabilization_period = 300
 ///     metrics = [{
-///       "name"                     = "pubsub.googleapis.com/subscription/num_undelivered_messages"
-///       "filter"                   = "resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription"
-///       "singleInstanceAssignment" = 65535
+///       name                       = "pubsub.googleapis.com/subscription/num_undelivered_messages"
+///       filter                     = "resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription"
+///       single_instance_assignment = 65535
 ///     }]
 ///   }
 /// }
-/// resource "gcp_compute_instancetemplate" "default" {
+/// resource "gcp_compute_instance_template" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "my-instance-template"
 ///   machine_type   = "e2-medium"
 ///   can_ip_forward = false
 ///   tags           = ["foo", "bar"]
 ///   disks {
-///     source_image = data.gcp_compute_getimage.debian9.id
+///     source_image = data.gcp_compute_image.debian9.id
 ///   }
 ///   network_interfaces {
 ///     network = "default"
@@ -386,17 +392,23 @@ import 'autoscaler_state.dart';
 ///     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
 ///   }
 /// }
-/// resource "gcp_compute_targetpool" "default" {
+/// resource "gcp_compute_target_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-target-pool"
 /// }
-/// resource "gcp_compute_instancegroupmanager" "default" {
+/// resource "gcp_compute_instance_group_manager" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-igm"
 ///   zone = "us-central1-f"
 ///   versions {
-///     instance_template = gcp_compute_instancetemplate.default.id
+///     instance_template = gcp_compute_instance_template.default.id
 ///     name              = "primary"
 ///   }
-///   target_pools       = [gcp_compute_targetpool.default.id]
+///   target_pools       = [gcp_compute_target_pool.default.id]
 ///   base_instance_name = "autoscaler-sample"
 /// }
 /// ```
@@ -436,7 +448,7 @@ import 'autoscaler_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -557,7 +569,7 @@ import 'autoscaler_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -570,7 +582,7 @@ import 'autoscaler_state.dart';
 /// import * as gcp from "@pulumi/gcp";
 ///
 /// const debian9 = gcp.compute.getImage({
-///     family: "debian-11",
+///     family: "debian-13",
 ///     project: "debian-cloud",
 /// });
 /// const foobarInstanceTemplate = new gcp.compute.InstanceTemplate("foobar", {
@@ -628,7 +640,7 @@ import 'autoscaler_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// debian9 = gcp.compute.get_image(family="debian-11",
+/// debian9 = gcp.compute.get_image(family="debian-13",
 ///     project="debian-cloud")
 /// foobar_instance_template = gcp.compute.InstanceTemplate("foobar",
 ///     name="my-instance-template",
@@ -688,7 +700,7 @@ import 'autoscaler_state.dart';
 /// {
 ///     var debian9 = Gcp.Compute.GetImage.Invoke(new()
 ///     {
-///         Family = "debian-11",
+///         Family = "debian-13",
 ///         Project = "debian-cloud",
 ///     });
 ///
@@ -779,14 +791,14 @@ import 'autoscaler_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		debian9, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
-/// 			Family:  pulumi.StringRef("debian-11"),
+/// 			Family:  pulumi.StringRef("debian-13"),
 /// 			Project: pulumi.StringRef("debian-cloud"),
 /// 		}, nil)
 /// 		if err != nil {
@@ -869,7 +881,7 @@ import 'autoscaler_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -877,15 +889,18 @@ import 'autoscaler_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getimage" "debian9" {
-///   family  = "debian-11"
+/// data "gcp_compute_image" "debian9" {
+///   family  = "debian-13"
 ///   project = "debian-cloud"
 /// }
 ///
 /// resource "gcp_compute_autoscaler" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-autoscaler"
 ///   zone   = "us-central1-f"
-///   target = gcp_compute_instancegroupmanager.foobar.id
+///   target = gcp_compute_instance_group_manager.foobar.id
 ///   autoscaling_policy = {
 ///     max_replicas         = 5
 ///     min_replicas         = 1
@@ -896,13 +911,16 @@ import 'autoscaler_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_instancetemplate" "foobar" {
+/// resource "gcp_compute_instance_template" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "my-instance-template"
 ///   machine_type   = "e2-medium"
 ///   can_ip_forward = false
 ///   tags           = ["foo", "bar"]
 ///   disks {
-///     source_image = data.gcp_compute_getimage.debian9.id
+///     source_image = data.gcp_compute_image.debian9.id
 ///   }
 ///   network_interfaces {
 ///     network = "default"
@@ -914,17 +932,23 @@ import 'autoscaler_state.dart';
 ///     scopes = ["userinfo-email", "compute-ro", "storage-ro"]
 ///   }
 /// }
-/// resource "gcp_compute_targetpool" "foobar" {
+/// resource "gcp_compute_target_pool" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-target-pool"
 /// }
-/// resource "gcp_compute_instancegroupmanager" "foobar" {
+/// resource "gcp_compute_instance_group_manager" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-igm"
 ///   zone = "us-central1-f"
 ///   versions {
-///     instance_template = gcp_compute_instancetemplate.foobar.id
+///     instance_template = gcp_compute_instance_template.foobar.id
 ///     name              = "primary"
 ///   }
-///   target_pools       = [gcp_compute_targetpool.foobar.id]
+///   target_pools       = [gcp_compute_target_pool.foobar.id]
 ///   base_instance_name = "foobar"
 /// }
 /// ```
@@ -964,7 +988,7 @@ import 'autoscaler_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var debian9 = ComputeFunctions.getImage(GetImageArgs.builder()
-///             .family("debian-11")
+///             .family("debian-13")
 ///             .project("debian-cloud")
 ///             .build());
 ///
@@ -1081,7 +1105,7 @@ import 'autoscaler_state.dart';
 ///     fn::invoke:
 ///       function: gcp:compute:getImage
 ///       arguments:
-///         family: debian-11
+///         family: debian-13
 ///         project: debian-cloud
 /// ```
 ///
@@ -1151,7 +1175,7 @@ class Autoscaler extends pulumi.CustomResource {
           'gcp:compute/autoscaler:Autoscaler',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     autoscalingPolicy = registerOutput<AutoscalerAutoscalingPolicy>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalerAutoscalingPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');

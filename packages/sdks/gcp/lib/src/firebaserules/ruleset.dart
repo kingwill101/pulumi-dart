@@ -74,7 +74,7 @@ import 'ruleset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebaserules"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebaserules"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -101,7 +101,7 @@ import 'ruleset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -110,11 +110,14 @@ import 'ruleset_state.dart';
 /// }
 ///
 /// resource "gcp_firebaserules_ruleset" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source = {
 ///     files = [{
-///       "content"     = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }"
-///       "name"        = "firestore.rules"
-///       "fingerprint" = ""
+///       content     = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }"
+///       name        = "firestore.rules"
+///       fingerprint = ""
 ///     }]
 ///     language = ""
 ///   }
@@ -233,7 +236,7 @@ import 'ruleset_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebaserules"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebaserules"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -258,7 +261,7 @@ import 'ruleset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -267,10 +270,13 @@ import 'ruleset_state.dart';
 /// }
 ///
 /// resource "gcp_firebaserules_ruleset" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source = {
 ///     files = [{
-///       "content" = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }"
-///       "name"    = "firestore.rules"
+///       content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }"
+///       name    = "firestore.rules"
 ///     }]
 ///   }
 ///   project = "my-project-name"
@@ -371,7 +377,7 @@ class Ruleset extends pulumi.CustomResource {
           'gcp:firebaserules/ruleset:Ruleset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -20,7 +20,7 @@ class ServiceLbPoliciesFailoverConfig {
 
   factory ServiceLbPoliciesFailoverConfig.fromMap(Map<String, dynamic> map) {
     return ServiceLbPoliciesFailoverConfig(
-      failoverHealthThreshold: pulumi.Input.fromValue((map['failoverHealthThreshold'] as num).toInt()),
+      failoverHealthThreshold: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['failoverHealthThreshold'])),
     );
   }
 }

@@ -28,7 +28,7 @@ class InternalRangeAllocationOptions {
   factory InternalRangeAllocationOptions.fromMap(Map<String, dynamic> map) {
     return InternalRangeAllocationOptions(
       allocationStrategy: (() { final guardedValue = map['allocationStrategy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      firstAvailableRangesLookupSize: (() { final guardedValue = map['firstAvailableRangesLookupSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      firstAvailableRangesLookupSize: (() { final guardedValue = map['firstAvailableRangesLookupSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

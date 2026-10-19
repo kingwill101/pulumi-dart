@@ -116,9 +116,9 @@ import 'message_bus_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/eventarc"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/eventarc"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -167,7 +167,7 @@ import 'message_bus_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -175,28 +175,34 @@ import 'message_bus_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "testProject" {
+/// data "gcp_organizations_project" "testProject" {
 ///   project_id = "my-project-name"
 /// }
-/// data "gcp_kms_getkmskeyring" "testKeyRing" {
+/// data "gcp_kms_k_m_s_key_ring" "testKeyRing" {
 ///   name     = "keyring"
 ///   location = "us-central1"
 /// }
-/// data "gcp_kms_getkmscryptokey" "key" {
+/// data "gcp_kms_k_m_s_crypto_key" "key" {
 ///   name     = "key"
-///   key_ring = data.gcp_kms_getkmskeyring.testKeyRing.id
+///   key_ring = data.gcp_kms_k_m_s_key_ring.testKeyRing.id
 /// }
 ///
-/// resource "gcp_kms_cryptokeyiammember" "key_member" {
-///   crypto_key_id = data.gcp_kms_getkmscryptokey.key.id
+/// resource "gcp_kms_crypto_key_i_a_m_member" "key_member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = data.gcp_kms_k_m_s_crypto_key.key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.testProject.number}@gcp-sa-eventarc.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.testProject.number}@gcp-sa-eventarc.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_eventarc_messagebus" "primary" {
-///   depends_on      = [gcp_kms_cryptokeyiammember.key_member]
+/// resource "gcp_eventarc_message_bus" "primary" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.key_member]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-central1"
 ///   message_bus_id  = "some-message-bus"
-///   crypto_key_name = data.gcp_kms_getkmscryptokey.key.id
+///   crypto_key_name = data.gcp_kms_k_m_s_crypto_key.key.id
 /// }
 /// ```
 /// ```java
@@ -383,7 +389,7 @@ class MessageBus extends pulumi.CustomResource {
           'gcp:eventarc/messageBus:MessageBus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

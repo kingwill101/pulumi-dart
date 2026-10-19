@@ -34,6 +34,10 @@ class GetRegionalParametersParameter {
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   final pulumi.Input<Map<String, String>> pulumiLabels;
+  /// A map of resource manager tags.
+  /// Resource manager tag keys and values have the same definition as resource manager tags.
+  /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+  final pulumi.Input<Map<String, String>> tags;
   /// The time at which the regional parameter was updated.
   final pulumi.Input<String> updateTime;
 
@@ -50,6 +54,7 @@ class GetRegionalParametersParameter {
   /// [policyMembers] An object containing a unique resource identity tied to the regional parameter. Structure is documented below.
   /// [project] The ID of the project.
   /// [pulumiLabels] The combination of labels configured directly on the resource
+  /// [tags] A map of resource manager tags.
   /// [updateTime] The time at which the regional parameter was updated.
   const GetRegionalParametersParameter({
     required this.createTime,
@@ -64,6 +69,7 @@ class GetRegionalParametersParameter {
     required this.policyMembers,
     required this.project,
     required this.pulumiLabels,
+    required this.tags,
     required this.updateTime,
   });
 
@@ -81,6 +87,7 @@ class GetRegionalParametersParameter {
       'policyMembers': pulumi.Input.mapInputValue<List<GetRegionalParametersParameterPolicyMember>, List<Map<String, dynamic>>>(policyMembers, (value) => pulumi.Input.encodeList<GetRegionalParametersParameterPolicyMember, Map<String, dynamic>>(value, (value) => value.toMap())),
       'project': project,
       'pulumiLabels': pulumiLabels,
+      'tags': tags,
       'updateTime': updateTime,
     };
   }
@@ -99,6 +106,7 @@ class GetRegionalParametersParameter {
       policyMembers: pulumi.Input.fromValue(pulumi.Input.decodeList<GetRegionalParametersParameterPolicyMember>(map['policyMembers']!, (value) => GetRegionalParametersParameterPolicyMember.fromMap((value as Map).cast<String, dynamic>()))),
       project: pulumi.Input.fromValue(map['project'] as String),
       pulumiLabels: pulumi.Input.fromValue((map['pulumiLabels'] as Map).cast<String, String>()),
+      tags: pulumi.Input.fromValue((map['tags'] as Map).cast<String, String>()),
       updateTime: pulumi.Input.fromValue(map['updateTime'] as String),
     );
   }

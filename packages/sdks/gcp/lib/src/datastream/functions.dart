@@ -50,7 +50,7 @@ import 'get_static_ips_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datastream"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datastream"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -69,7 +69,7 @@ import 'get_static_ips_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -77,13 +77,13 @@ import 'get_static_ips_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_datastream_getstaticips" "datastreamIps" {
+/// data "gcp_datastream_static_ips" "datastreamIps" {
 ///   location = "us-west1"
 ///   project  = "my-project"
 /// }
 ///
 /// output "ipList" {
-///   value = data.gcp_datastream_getstaticips.datastreamIps.static_ips
+///   value = data.gcp_datastream_static_ips.datastreamIps.static_ips
 /// }
 /// ```
 /// ```java

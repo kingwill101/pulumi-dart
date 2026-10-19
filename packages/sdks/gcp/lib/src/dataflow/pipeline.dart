@@ -194,8 +194,8 @@ import 'pipeline_workload.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -259,7 +259,7 @@ import 'pipeline_workload.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -268,10 +268,16 @@ import 'pipeline_workload.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "my-account"
 ///   display_name = "Service Account"
 /// }
 /// resource "gcp_dataflow_pipeline" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-pipeline"
 ///   display_name = "my-pipeline"
 ///   type         = "PIPELINE_TYPE_BATCH"
@@ -516,7 +522,7 @@ class Pipeline extends pulumi.CustomResource {
           'gcp:dataflow/pipeline:Pipeline',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

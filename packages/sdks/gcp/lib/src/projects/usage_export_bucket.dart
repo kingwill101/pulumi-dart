@@ -54,7 +54,7 @@ import 'usage_export_bucket_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -72,7 +72,7 @@ import 'usage_export_bucket_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -80,7 +80,10 @@ import 'usage_export_bucket_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_projects_usageexportbucket" "usage_export" {
+/// resource "gcp_projects_usage_export_bucket" "usage_export" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "development-project"
 ///   bucket_name = "usage-tracking-bucket"
 /// }
@@ -166,7 +169,7 @@ class UsageExportBucket extends pulumi.CustomResource {
           'gcp:projects/usageExportBucket:UsageExportBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     bucketName = registerOutput<String>('bucketName');
     deletionPolicy = registerOutput<String>('deletionPolicy');

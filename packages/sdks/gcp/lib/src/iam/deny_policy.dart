@@ -203,9 +203,9 @@ import 'deny_policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/iam"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/iam"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -284,7 +284,7 @@ import 'deny_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -296,13 +296,19 @@ import 'deny_policy_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "my-project"
 ///   name            = "my-project"
 ///   org_id          = "123456789"
 ///   billing_account = "000000-0000000-0000000-000000"
 ///   deletion_policy = "DELETE"
 /// }
-/// resource "gcp_iam_denypolicy" "example" {
+/// resource "gcp_iam_deny_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent       = urlencode("cloudresourcemanager.googleapis.com/projects/${gcp_organizations_project.project.project_id}")
 ///   name         = "my-deny-policy"
 ///   display_name = "A deny rule"
@@ -331,6 +337,9 @@ import 'deny_policy_state.dart';
 ///   }
 /// }
 /// resource "gcp_serviceaccount_account" "test-account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "svc-acc"
 ///   display_name = "Test Service Account"
 ///   project      = gcp_organizations_project.project.project_id
@@ -510,7 +519,7 @@ class DenyPolicy extends pulumi.CustomResource {
           'gcp:iam/denyPolicy:DenyPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     displayName = registerOutput<String?>('displayName');

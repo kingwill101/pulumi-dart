@@ -94,7 +94,7 @@ import 'generic_service_telemetry.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/monitoring"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/monitoring"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -122,7 +122,7 @@ import 'generic_service_telemetry.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -130,7 +130,10 @@ import 'generic_service_telemetry.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_monitoring_genericservice" "my_service" {
+/// resource "gcp_monitoring_generic_service" "my_service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id   = "my-service"
 ///   display_name = "My Service my-service"
 ///   user_labels = {
@@ -264,7 +267,7 @@ class GenericService extends pulumi.CustomResource {
           'gcp:monitoring/genericService:GenericService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     basicService = registerOutput<GenericServiceBasicService?>('basicService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GenericServiceBasicService.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -107,8 +107,8 @@ import 'service_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicedirectory"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicedirectory"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -148,7 +148,7 @@ import 'service_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -157,10 +157,16 @@ import 'service_binding_state.dart';
 /// }
 ///
 /// resource "gcp_servicedirectory_namespace" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   namespace_id = "my-namespace"
 ///   location     = "us-central1"
 /// }
 /// resource "gcp_servicedirectory_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_id = "my-service"
 ///   namespace  = gcp_servicedirectory_namespace.default.id
 ///   metadata = {
@@ -168,7 +174,10 @@ import 'service_binding_state.dart';
 ///     "region" = "us-central1"
 ///   }
 /// }
-/// resource "gcp_networkservices_servicebinding" "default" {
+/// resource "gcp_networkservices_service_binding" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-service-binding"
 ///   labels = {
 ///     "foo" = "bar"
@@ -314,7 +323,7 @@ class ServiceBinding extends pulumi.CustomResource {
           'gcp:networkservices/serviceBinding:ServiceBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

@@ -139,7 +139,7 @@ import 'certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -187,7 +187,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -196,6 +196,9 @@ import 'certificate_state.dart';
 /// }
 ///
 /// resource "gcp_certificatemanager_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "dns-cert"
 ///   description = "The default cert"
 ///   scope       = "EDGE_CACHE"
@@ -203,16 +206,22 @@ import 'certificate_state.dart';
 ///     "env" = "test"
 ///   }
 ///   managed = {
-///     domains            = [gcp_certificatemanager_dnsauthorization.instance.domain, gcp_certificatemanager_dnsauthorization.instance2.domain]
-///     dns_authorizations = [gcp_certificatemanager_dnsauthorization.instance.id, gcp_certificatemanager_dnsauthorization.instance2.id]
+///     domains            = [gcp_certificatemanager_dns_authorization.instance.domain, gcp_certificatemanager_dns_authorization.instance2.domain]
+///     dns_authorizations = [gcp_certificatemanager_dns_authorization.instance.id, gcp_certificatemanager_dns_authorization.instance2.id]
 ///   }
 /// }
-/// resource "gcp_certificatemanager_dnsauthorization" "instance" {
+/// resource "gcp_certificatemanager_dns_authorization" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "dns-auth"
 ///   description = "The default dnss"
 ///   domain      = "subdomain.hashicorptest.com"
 /// }
-/// resource "gcp_certificatemanager_dnsauthorization" "instance2" {
+/// resource "gcp_certificatemanager_dns_authorization" "instance2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "dns-auth2"
 ///   description = "The default dnss"
 ///   domain      = "subdomain2.hashicorptest.com"
@@ -552,8 +561,8 @@ import 'certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -645,7 +654,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -654,36 +663,48 @@ import 'certificate_state.dart';
 /// }
 ///
 /// resource "gcp_certificatemanager_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "issuance-config-cert"
 ///   description = "The default cert"
 ///   scope       = "EDGE_CACHE"
 ///   managed = {
 ///     domains         = ["terraform.subdomain1.com"]
-///     issuance_config = gcp_certificatemanager_certificateissuanceconfig.issuanceconfig.id
+///     issuance_config = gcp_certificatemanager_certificate_issuance_config.issuanceconfig.id
 ///   }
 /// }
 /// # creating certificate_issuance_config to use it in the managed certificate
-/// resource "gcp_certificatemanager_certificateissuanceconfig" "issuanceconfig" {
-///   depends_on  = [gcp_certificateauthority_authority.ca_authority]
+/// resource "gcp_certificatemanager_certificate_issuance_config" "issuanceconfig" {
+///   depends_on = [gcp_certificateauthority_authority.ca_authority]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "issuance-config"
 ///   description = "sample description for the certificate issuanceConfigs"
 ///   certificate_authority_config = {
 ///     certificate_authority_service_config = {
-///       ca_pool = gcp_certificateauthority_capool.pool.id
+///       ca_pool = gcp_certificateauthority_ca_pool.pool.id
 ///     }
 ///   }
 ///   lifetime                   = "1814400s"
 ///   rotation_window_percentage = 34
 ///   key_algorithm              = "ECDSA_P256"
 /// }
-/// resource "gcp_certificateauthority_capool" "pool" {
+/// resource "gcp_certificateauthority_ca_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "ca-pool"
 ///   location = "us-central1"
 ///   tier     = "ENTERPRISE"
 /// }
 /// resource "gcp_certificateauthority_authority" "ca_authority" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "us-central1"
-///   pool                     = gcp_certificateauthority_capool.pool.name
+///   pool                     = gcp_certificateauthority_ca_pool.pool.name
 ///   certificate_authority_id = "ca-authority"
 ///   config = {
 ///     subject_config = {
@@ -965,7 +986,7 @@ import 'certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1001,7 +1022,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1013,6 +1034,9 @@ import 'certificate_state.dart';
 /// }
 ///
 /// resource "gcp_certificatemanager_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "self-managed-cert"
 ///   description = "Global cert"
 ///   scope       = "ALL_REGIONS"
@@ -1185,7 +1209,7 @@ import 'certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1238,7 +1262,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1250,6 +1274,9 @@ import 'certificate_state.dart';
 /// }
 ///
 /// resource "gcp_certificatemanager_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "self-managed-cert"
 ///   description = "Global cert"
 ///   scope       = "ALL_REGIONS"
@@ -1388,7 +1415,7 @@ import 'certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1424,7 +1451,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1436,6 +1463,9 @@ import 'certificate_state.dart';
 /// }
 ///
 /// resource "gcp_certificatemanager_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "self-managed-cert"
 ///   description = "Regional cert"
 ///   location    = "us-central1"
@@ -1758,8 +1788,8 @@ import 'certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1851,7 +1881,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1860,36 +1890,48 @@ import 'certificate_state.dart';
 /// }
 ///
 /// resource "gcp_certificatemanager_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "issuance-config-cert"
 ///   description = "sample google managed all_regions certificate with issuance config for terraform"
 ///   scope       = "ALL_REGIONS"
 ///   managed = {
 ///     domains         = ["terraform.subdomain1.com"]
-///     issuance_config = gcp_certificatemanager_certificateissuanceconfig.issuanceconfig.id
+///     issuance_config = gcp_certificatemanager_certificate_issuance_config.issuanceconfig.id
 ///   }
 /// }
 /// # creating certificate_issuance_config to use it in the managed certificate
-/// resource "gcp_certificatemanager_certificateissuanceconfig" "issuanceconfig" {
-///   depends_on  = [gcp_certificateauthority_authority.ca_authority]
+/// resource "gcp_certificatemanager_certificate_issuance_config" "issuanceconfig" {
+///   depends_on = [gcp_certificateauthority_authority.ca_authority]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "issuance-config"
 ///   description = "sample description for the certificate issuanceConfigs"
 ///   certificate_authority_config = {
 ///     certificate_authority_service_config = {
-///       ca_pool = gcp_certificateauthority_capool.pool.id
+///       ca_pool = gcp_certificateauthority_ca_pool.pool.id
 ///     }
 ///   }
 ///   lifetime                   = "1814400s"
 ///   rotation_window_percentage = 34
 ///   key_algorithm              = "ECDSA_P256"
 /// }
-/// resource "gcp_certificateauthority_capool" "pool" {
+/// resource "gcp_certificateauthority_ca_pool" "pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "ca-pool"
 ///   location = "us-central1"
 ///   tier     = "ENTERPRISE"
 /// }
 /// resource "gcp_certificateauthority_authority" "ca_authority" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                 = "us-central1"
-///   pool                     = gcp_certificateauthority_capool.pool.name
+///   pool                     = gcp_certificateauthority_ca_pool.pool.name
 ///   certificate_authority_id = "ca-authority"
 ///   config = {
 ///     subject_config = {
@@ -2210,7 +2252,7 @@ import 'certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2255,7 +2297,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2264,20 +2306,29 @@ import 'certificate_state.dart';
 /// }
 ///
 /// resource "gcp_certificatemanager_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "dns-cert"
 ///   description = "The default cert"
 ///   scope       = "ALL_REGIONS"
 ///   managed = {
-///     domains            = [gcp_certificatemanager_dnsauthorization.instance.domain, gcp_certificatemanager_dnsauthorization.instance2.domain]
-///     dns_authorizations = [gcp_certificatemanager_dnsauthorization.instance.id, gcp_certificatemanager_dnsauthorization.instance2.id]
+///     domains            = [gcp_certificatemanager_dns_authorization.instance.domain, gcp_certificatemanager_dns_authorization.instance2.domain]
+///     dns_authorizations = [gcp_certificatemanager_dns_authorization.instance.id, gcp_certificatemanager_dns_authorization.instance2.id]
 ///   }
 /// }
-/// resource "gcp_certificatemanager_dnsauthorization" "instance" {
+/// resource "gcp_certificatemanager_dns_authorization" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "dns-auth"
 ///   description = "The default dnss"
 ///   domain      = "subdomain.hashicorptest.com"
 /// }
-/// resource "gcp_certificatemanager_dnsauthorization" "instance2" {
+/// resource "gcp_certificatemanager_dns_authorization" "instance2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "dns-auth2"
 ///   description = "The default dnss"
 ///   domain      = "subdomain2.hashicorptest.com"
@@ -2447,7 +2498,7 @@ import 'certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2483,7 +2534,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2492,15 +2543,21 @@ import 'certificate_state.dart';
 /// }
 ///
 /// resource "gcp_certificatemanager_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "dns-cert"
 ///   description = "regional managed certs"
 ///   location    = "us-central1"
 ///   managed = {
-///     domains            = [gcp_certificatemanager_dnsauthorization.instance.domain]
-///     dns_authorizations = [gcp_certificatemanager_dnsauthorization.instance.id]
+///     domains            = [gcp_certificatemanager_dns_authorization.instance.domain]
+///     dns_authorizations = [gcp_certificatemanager_dns_authorization.instance.id]
 ///   }
 /// }
-/// resource "gcp_certificatemanager_dnsauthorization" "instance" {
+/// resource "gcp_certificatemanager_dns_authorization" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "dns-auth"
 ///   location    = "us-central1"
 ///   description = "The default dnss"
@@ -2643,7 +2700,7 @@ import 'certificate_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -2679,7 +2736,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2691,6 +2748,9 @@ import 'certificate_state.dart';
 /// }
 ///
 /// resource "gcp_certificatemanager_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "client-auth-cert"
 ///   description = "Global cert"
 ///   scope       = "CLIENT_AUTH"
@@ -2847,7 +2907,7 @@ class Certificate extends pulumi.CustomResource {
           'gcp:certificatemanager/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

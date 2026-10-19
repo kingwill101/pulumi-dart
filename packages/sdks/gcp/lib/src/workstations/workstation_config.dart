@@ -249,9 +249,9 @@ import 'workstation_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -328,7 +328,7 @@ import 'workstation_config_state.dart';
 /// 					VmTags: pulumi.StringMap(pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]pulumi.ID, error) {
 /// 						tagKey1Id := _args[0].(pulumi.ID)
 /// 						tagValue1Id := _args[1].(pulumi.ID)
-/// 						return map[string]pulumi.ID(pulumi.String(tagKey1Id).ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
+/// 						return map[string]pulumi.ID(tagKey1Id.ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
 /// 							return map[string]pulumi.ID{
 /// 								__convert: tagValue1Id,
 /// 							}, nil
@@ -345,7 +345,7 @@ import 'workstation_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -353,25 +353,40 @@ import 'workstation_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_tags_tagkey" "tag_key1" {
+/// resource "gcp_tags_tag_key" "tag_key1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent     = "organizations/123456789"
 ///   short_name = "keyname"
 /// }
-/// resource "gcp_tags_tagvalue" "tag_value1" {
-///   parent     = gcp_tags_tagkey.tag_key1.id
+/// resource "gcp_tags_tag_value" "tag_value1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent     = gcp_tags_tag_key.tag_key1.id
 ///   short_name = "valuename"
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "workstation-cluster"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "workstation-cluster"
 ///   ip_cidr_range = "10.0.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.name
 /// }
-/// resource "gcp_workstations_workstationcluster" "default" {
+/// resource "gcp_workstations_workstation_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_cluster_id = "workstation-cluster"
 ///   network                = gcp_compute_network.default.id
 ///   subnetwork             = gcp_compute_subnetwork.default.id
@@ -383,9 +398,12 @@ import 'workstation_config_state.dart';
 ///     "label-one" = "value-one"
 ///   }
 /// }
-/// resource "gcp_workstations_workstationconfig" "default" {
+/// resource "gcp_workstations_workstation_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_config_id  = "workstation-config"
-///   workstation_cluster_id = gcp_workstations_workstationcluster.default.workstation_cluster_id
+///   workstation_cluster_id = gcp_workstations_workstation_cluster.default.workstation_cluster_id
 ///   location               = "us-central1"
 ///   idle_timeout           = "600s"
 ///   running_timeout        = "21600s"
@@ -404,7 +422,7 @@ import 'workstation_config_state.dart';
 ///       disable_public_ip_addresses = true
 ///       disable_ssh                 = false
 ///       vm_tags = {
-///         gcp_tags_tagkey.tag_key1.id = gcp_tags_tagvalue.tag_value1.id
+///         gcp_tags_tag_key.tag_key1.id = gcp_tags_tag_value.tag_value1.id
 ///       }
 ///     }
 ///   }
@@ -734,8 +752,8 @@ import 'workstation_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -800,7 +818,7 @@ import 'workstation_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -809,16 +827,25 @@ import 'workstation_config_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "workstation-cluster"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "workstation-cluster"
 ///   ip_cidr_range = "10.0.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.name
 /// }
-/// resource "gcp_workstations_workstationcluster" "default" {
+/// resource "gcp_workstations_workstation_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_cluster_id = "workstation-cluster"
 ///   network                = gcp_compute_network.default.id
 ///   subnetwork             = gcp_compute_subnetwork.default.id
@@ -830,9 +857,12 @@ import 'workstation_config_state.dart';
 ///     "label-one" = "value-one"
 ///   }
 /// }
-/// resource "gcp_workstations_workstationconfig" "default" {
+/// resource "gcp_workstations_workstation_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_config_id  = "workstation-config"
-///   workstation_cluster_id = gcp_workstations_workstationcluster.default.workstation_cluster_id
+///   workstation_cluster_id = gcp_workstations_workstation_cluster.default.workstation_cluster_id
 ///   location               = "us-central1"
 ///   host = {
 ///     gce_instance = {
@@ -1114,8 +1144,8 @@ import 'workstation_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1174,7 +1204,7 @@ import 'workstation_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1183,24 +1213,36 @@ import 'workstation_config_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "workstation-cluster"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "workstation-cluster"
 ///   ip_cidr_range = "10.0.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.name
 /// }
-/// resource "gcp_workstations_workstationcluster" "default" {
+/// resource "gcp_workstations_workstation_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_cluster_id = "workstation-cluster"
 ///   network                = gcp_compute_network.default.id
 ///   subnetwork             = gcp_compute_subnetwork.default.id
 ///   location               = "us-central1"
 /// }
-/// resource "gcp_workstations_workstationconfig" "default" {
+/// resource "gcp_workstations_workstation_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_config_id  = "workstation-config"
-///   workstation_cluster_id = gcp_workstations_workstationcluster.default.workstation_cluster_id
+///   workstation_cluster_id = gcp_workstations_workstation_cluster.default.workstation_cluster_id
 ///   location               = "us-central1"
 ///   host = {
 ///     gce_instance = {
@@ -1558,9 +1600,9 @@ import 'workstation_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1634,7 +1676,7 @@ import 'workstation_config_state.dart';
 /// 					VmTags: pulumi.StringMap(pulumi.All(tagKey1.ID(), tagValue1.ID()).ApplyT(func(_args []interface{}) (map[string]pulumi.ID, error) {
 /// 						tagKey1Id := _args[0].(pulumi.ID)
 /// 						tagValue1Id := _args[1].(pulumi.ID)
-/// 						return map[string]pulumi.ID(pulumi.String(tagKey1Id).ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
+/// 						return map[string]pulumi.ID(tagKey1Id.ApplyT(func(__convert string) (map[string]pulumi.ID, error) {
 /// 							return map[string]pulumi.ID{
 /// 								__convert: tagValue1Id,
 /// 							}, nil
@@ -1661,7 +1703,7 @@ import 'workstation_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1669,44 +1711,68 @@ import 'workstation_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_tags_tagkey" "tag_key1" {
+/// resource "gcp_tags_tag_key" "tag_key1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent     = "organizations/0123456789"
 ///   short_name = "keyname"
 /// }
-/// resource "gcp_tags_tagvalue" "tag_value1" {
-///   parent     = gcp_tags_tagkey.tag_key1.id
+/// resource "gcp_tags_tag_value" "tag_value1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent     = gcp_tags_tag_key.tag_key1.id
 ///   short_name = "valuename"
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "workstation-cluster"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "workstation-cluster"
 ///   ip_cidr_range = "10.0.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.name
 /// }
 /// resource "gcp_compute_disk" "my_source_disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "workstation-config-source-disk"
 ///   size = 10
 ///   type = "pd-ssd"
 ///   zone = "us-central1-a"
 /// }
 /// resource "gcp_compute_snapshot" "my_source_snapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "workstation-config-source-snapshot"
 ///   source_disk = gcp_compute_disk.my_source_disk.name
 ///   zone        = "us-central1-a"
 /// }
-/// resource "gcp_workstations_workstationcluster" "default" {
+/// resource "gcp_workstations_workstation_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_cluster_id = "workstation-cluster"
 ///   network                = gcp_compute_network.default.id
 ///   subnetwork             = gcp_compute_subnetwork.default.id
 ///   location               = "us-central1"
 /// }
-/// resource "gcp_workstations_workstationconfig" "default" {
+/// resource "gcp_workstations_workstation_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_config_id  = "workstation-config"
-///   workstation_cluster_id = gcp_workstations_workstationcluster.default.workstation_cluster_id
+///   workstation_cluster_id = gcp_workstations_workstation_cluster.default.workstation_cluster_id
 ///   location               = "us-central1"
 ///   host = {
 ///     gce_instance = {
@@ -1714,7 +1780,7 @@ import 'workstation_config_state.dart';
 ///       boot_disk_size_gb           = 35
 ///       disable_public_ip_addresses = true
 ///       vm_tags = {
-///         gcp_tags_tagkey.tag_key1.id = gcp_tags_tagvalue.tag_value1.id
+///         gcp_tags_tag_key.tag_key1.id = gcp_tags_tag_value.tag_value1.id
 ///       }
 ///     }
 ///   }
@@ -2093,8 +2159,8 @@ import 'workstation_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2166,7 +2232,7 @@ import 'workstation_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2175,16 +2241,25 @@ import 'workstation_config_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "workstation-cluster"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "workstation-cluster"
 ///   ip_cidr_range = "10.0.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.name
 /// }
-/// resource "gcp_workstations_workstationcluster" "default" {
+/// resource "gcp_workstations_workstation_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_cluster_id = "workstation-cluster"
 ///   network                = gcp_compute_network.default.id
 ///   subnetwork             = gcp_compute_subnetwork.default.id
@@ -2196,9 +2271,12 @@ import 'workstation_config_state.dart';
 ///     "label-one" = "value-one"
 ///   }
 /// }
-/// resource "gcp_workstations_workstationconfig" "default" {
+/// resource "gcp_workstations_workstation_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_config_id  = "workstation-config"
-///   workstation_cluster_id = gcp_workstations_workstationcluster.default.workstation_cluster_id
+///   workstation_cluster_id = gcp_workstations_workstation_cluster.default.workstation_cluster_id
 ///   location               = "us-central1"
 ///   host = {
 ///     gce_instance = {
@@ -2511,8 +2589,8 @@ import 'workstation_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2582,7 +2660,7 @@ import 'workstation_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2591,36 +2669,54 @@ import 'workstation_config_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "workstation-cluster"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "workstation-cluster"
 ///   ip_cidr_range = "10.0.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.name
 /// }
 /// resource "gcp_compute_disk" "my_source_disk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "workstation-config"
 ///   size = 10
 ///   type = "pd-ssd"
 ///   zone = "us-central1-a"
 /// }
 /// resource "gcp_compute_snapshot" "my_source_snapshot" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "workstation-config"
 ///   source_disk = gcp_compute_disk.my_source_disk.name
 ///   zone        = "us-central1-a"
 /// }
-/// resource "gcp_workstations_workstationcluster" "default" {
+/// resource "gcp_workstations_workstation_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_cluster_id = "workstation-cluster"
 ///   network                = gcp_compute_network.default.id
 ///   subnetwork             = gcp_compute_subnetwork.default.id
 ///   location               = "us-central1"
 /// }
-/// resource "gcp_workstations_workstationconfig" "default" {
+/// resource "gcp_workstations_workstation_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_config_id  = "workstation-config"
-///   workstation_cluster_id = gcp_workstations_workstationcluster.default.workstation_cluster_id
-///   location               = gcp_workstations_workstationcluster.default.location
+///   workstation_cluster_id = gcp_workstations_workstation_cluster.default.workstation_cluster_id
+///   location               = gcp_workstations_workstation_cluster.default.location
 ///   persistent_directories {
 ///     mount_path = "/home"
 ///     gce_pd = {
@@ -2914,8 +3010,8 @@ import 'workstation_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2976,7 +3072,7 @@ import 'workstation_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2985,16 +3081,25 @@ import 'workstation_config_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "workstation-cluster"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "workstation-cluster"
 ///   ip_cidr_range = "10.0.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.name
 /// }
-/// resource "gcp_workstations_workstationcluster" "default" {
+/// resource "gcp_workstations_workstation_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_cluster_id = "workstation-cluster"
 ///   network                = gcp_compute_network.default.id
 ///   subnetwork             = gcp_compute_subnetwork.default.id
@@ -3006,9 +3111,12 @@ import 'workstation_config_state.dart';
 ///     "label-one" = "value-one"
 ///   }
 /// }
-/// resource "gcp_workstations_workstationconfig" "default" {
+/// resource "gcp_workstations_workstation_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_config_id  = "workstation-config"
-///   workstation_cluster_id = gcp_workstations_workstationcluster.default.workstation_cluster_id
+///   workstation_cluster_id = gcp_workstations_workstation_cluster.default.workstation_cluster_id
 ///   location               = "us-central1"
 ///   host = {
 ///     gce_instance = {
@@ -3292,8 +3400,8 @@ import 'workstation_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3356,7 +3464,7 @@ import 'workstation_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3365,16 +3473,25 @@ import 'workstation_config_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "workstation-cluster"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "workstation-cluster"
 ///   ip_cidr_range = "10.0.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.name
 /// }
-/// resource "gcp_workstations_workstationcluster" "default" {
+/// resource "gcp_workstations_workstation_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_cluster_id = "workstation-cluster"
 ///   network                = gcp_compute_network.default.id
 ///   subnetwork             = gcp_compute_subnetwork.default.id
@@ -3386,9 +3503,12 @@ import 'workstation_config_state.dart';
 ///     "label-one" = "value-one"
 ///   }
 /// }
-/// resource "gcp_workstations_workstationconfig" "default" {
+/// resource "gcp_workstations_workstation_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_config_id  = "workstation-config"
-///   workstation_cluster_id = gcp_workstations_workstationcluster.default.workstation_cluster_id
+///   workstation_cluster_id = gcp_workstations_workstation_cluster.default.workstation_cluster_id
 ///   location               = "us-central1"
 ///   host = {
 ///     gce_instance = {
@@ -3396,8 +3516,8 @@ import 'workstation_config_state.dart';
 ///       boot_disk_size_gb           = 35
 ///       disable_public_ip_addresses = true
 ///       accelerators = [{
-///         "type"  = "nvidia-tesla-t4"
-///         "count" = "1"
+///         type  = "nvidia-tesla-t4"
+///         count = "1"
 ///       }]
 ///     }
 ///   }
@@ -3714,8 +3834,8 @@ import 'workstation_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3791,7 +3911,7 @@ import 'workstation_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3800,16 +3920,25 @@ import 'workstation_config_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "workstation-cluster"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "workstation-cluster"
 ///   ip_cidr_range = "10.0.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.name
 /// }
-/// resource "gcp_workstations_workstationcluster" "default" {
+/// resource "gcp_workstations_workstation_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_cluster_id = "workstation-cluster"
 ///   network                = gcp_compute_network.default.id
 ///   subnetwork             = gcp_compute_subnetwork.default.id
@@ -3821,9 +3950,12 @@ import 'workstation_config_state.dart';
 ///     "label-one" = "value-one"
 ///   }
 /// }
-/// resource "gcp_workstations_workstationconfig" "default" {
+/// resource "gcp_workstations_workstation_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_config_id  = "workstation-config"
-///   workstation_cluster_id = gcp_workstations_workstationcluster.default.workstation_cluster_id
+///   workstation_cluster_id = gcp_workstations_workstation_cluster.default.workstation_cluster_id
 ///   location               = "us-central1"
 ///   host = {
 ///     gce_instance = {
@@ -3831,18 +3963,18 @@ import 'workstation_config_state.dart';
 ///       boot_disk_size_gb           = 35
 ///       disable_public_ip_addresses = true
 ///       boost_configs = [{
-///         "id"          = "boost-1"
-///         "machineType" = "n1-standard-2"
-///         "accelerators" = [{
-///           "type"  = "nvidia-tesla-t4"
-///           "count" = "1"
+///         id           = "boost-1"
+///         machine_type = "n1-standard-2"
+///         accelerators = [{
+///           type  = "nvidia-tesla-t4"
+///           count = "1"
 ///         }]
 ///         }, {
-///         "id"                         = "boost-2"
-///         "machineType"                = "n1-standard-2"
-///         "poolSize"                   = 2
-///         "bootDiskSizeGb"             = 30
-///         "enableNestedVirtualization" = true
+///         id                           = "boost-2"
+///         machine_type                 = "n1-standard-2"
+///         pool_size                    = 2
+///         boot_disk_size_gb            = 30
+///         enable_nested_virtualization = true
 ///       }]
 ///     }
 ///   }
@@ -4187,10 +4319,10 @@ import 'workstation_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4276,7 +4408,7 @@ import 'workstation_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4285,16 +4417,25 @@ import 'workstation_config_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "workstation-cluster"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "workstation-cluster"
 ///   ip_cidr_range = "10.0.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.name
 /// }
-/// resource "gcp_workstations_workstationcluster" "default" {
+/// resource "gcp_workstations_workstation_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_cluster_id = "workstation-cluster"
 ///   network                = gcp_compute_network.default.id
 ///   subnetwork             = gcp_compute_subnetwork.default.id
@@ -4306,21 +4447,33 @@ import 'workstation_config_state.dart';
 ///     "label-one" = "value-one"
 ///   }
 /// }
-/// resource "gcp_kms_keyring" "default" {
+/// resource "gcp_kms_key_ring" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "workstation-cluster"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_kms_cryptokey" "default" {
+/// resource "gcp_kms_crypto_key" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "workstation-cluster"
-///   key_ring = gcp_kms_keyring.default.id
+///   key_ring = gcp_kms_key_ring.default.id
 /// }
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "my-account"
 ///   display_name = "Service Account"
 /// }
-/// resource "gcp_workstations_workstationconfig" "default" {
+/// resource "gcp_workstations_workstation_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_config_id  = "workstation-config"
-///   workstation_cluster_id = gcp_workstations_workstationcluster.default.workstation_cluster_id
+///   workstation_cluster_id = gcp_workstations_workstation_cluster.default.workstation_cluster_id
 ///   location               = "us-central1"
 ///   host = {
 ///     gce_instance = {
@@ -4334,7 +4487,7 @@ import 'workstation_config_state.dart';
 ///     }
 ///   }
 ///   encryption_key = {
-///     kms_key                 = gcp_kms_cryptokey.default.id
+///     kms_key                 = gcp_kms_crypto_key.default.id
 ///     kms_key_service_account = gcp_serviceaccount_account.default.email
 ///   }
 /// }
@@ -4685,8 +4838,8 @@ import 'workstation_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4757,7 +4910,7 @@ import 'workstation_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4766,16 +4919,25 @@ import 'workstation_config_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "workstation-cluster"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "workstation-cluster"
 ///   ip_cidr_range = "10.0.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.name
 /// }
-/// resource "gcp_workstations_workstationcluster" "default" {
+/// resource "gcp_workstations_workstation_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_cluster_id = "workstation-cluster"
 ///   network                = gcp_compute_network.default.id
 ///   subnetwork             = gcp_compute_subnetwork.default.id
@@ -4787,9 +4949,12 @@ import 'workstation_config_state.dart';
 ///     "label-one" = "value-one"
 ///   }
 /// }
-/// resource "gcp_workstations_workstationconfig" "default" {
+/// resource "gcp_workstations_workstation_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_config_id  = "workstation-config"
-///   workstation_cluster_id = gcp_workstations_workstationcluster.default.workstation_cluster_id
+///   workstation_cluster_id = gcp_workstations_workstation_cluster.default.workstation_cluster_id
 ///   location               = "us-central1"
 ///   host = {
 ///     gce_instance = {
@@ -5064,8 +5229,8 @@ import 'workstation_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/workstations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/workstations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5118,7 +5283,7 @@ import 'workstation_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5127,24 +5292,36 @@ import 'workstation_config_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "workstation-cluster"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "workstation-cluster"
 ///   ip_cidr_range = "10.0.0.0/24"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.default.name
 /// }
-/// resource "gcp_workstations_workstationcluster" "default" {
+/// resource "gcp_workstations_workstation_cluster" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_cluster_id = "workstation-cluster"
 ///   network                = gcp_compute_network.default.id
 ///   subnetwork             = gcp_compute_subnetwork.default.id
 ///   location               = "us-central1"
 /// }
-/// resource "gcp_workstations_workstationconfig" "default" {
+/// resource "gcp_workstations_workstation_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workstation_config_id  = "workstation-config"
-///   workstation_cluster_id = gcp_workstations_workstationcluster.default.workstation_cluster_id
+///   workstation_cluster_id = gcp_workstations_workstation_cluster.default.workstation_cluster_id
 ///   location               = "us-central1"
 ///   idle_timeout           = "600s"
 ///   idle_action            = "SUSPEND"
@@ -5385,7 +5562,7 @@ class WorkstationConfig extends pulumi.CustomResource {
           'gcp:workstations/workstationConfig:WorkstationConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     allowedPorts = registerOutput<List<WorkstationConfigAllowedPort>>('allowedPorts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkstationConfigAllowedPort>(guardedValue, (value) => WorkstationConfigAllowedPort.fromMap((value as Map).cast<String, dynamic>())); });

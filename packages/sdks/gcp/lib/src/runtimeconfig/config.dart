@@ -55,7 +55,7 @@ import 'config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/runtimeconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/runtimeconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -73,7 +73,7 @@ import 'config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -82,6 +82,9 @@ import 'config_state.dart';
 /// }
 ///
 /// resource "gcp_runtimeconfig_config" "my-runtime-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-service-runtime-config"
 ///   description = "Runtime configuration values for my service"
 /// }
@@ -172,7 +175,7 @@ class Config extends pulumi.CustomResource {
           'gcp:runtimeconfig/config:Config',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

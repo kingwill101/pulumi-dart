@@ -91,7 +91,7 @@ import 'generator_summarization_context.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -120,7 +120,7 @@ import 'generator_summarization_context.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -129,6 +129,9 @@ import 'generator_summarization_context.dart';
 /// }
 ///
 /// resource "gcp_diagflow_generator" "summarization_basic_generator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "global"
 ///   description = "A v4.0 summarization generator."
 ///   inference_parameter = {
@@ -265,7 +268,7 @@ class Generator extends pulumi.CustomResource {
           'gcp:diagflow/generator:Generator',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     description = registerOutput<String?>('description');

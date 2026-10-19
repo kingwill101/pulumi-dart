@@ -125,7 +125,7 @@ import 'firewall_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -165,7 +165,7 @@ import 'firewall_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -174,6 +174,9 @@ import 'firewall_state.dart';
 /// }
 ///
 /// resource "gcp_compute_firewall" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "test-firewall"
 ///   network = gcp_compute_network.default.name
 ///   allows {
@@ -186,6 +189,9 @@ import 'firewall_state.dart';
 ///   source_tags = ["web"]
 /// }
 /// resource "gcp_compute_network" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-network"
 /// }
 /// ```
@@ -348,7 +354,7 @@ import 'firewall_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -384,7 +390,7 @@ import 'firewall_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -393,6 +399,9 @@ import 'firewall_state.dart';
 /// }
 ///
 /// resource "gcp_compute_firewall" "rules" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
 ///   name        = "my-firewall-rule"
 ///   network     = "default"
@@ -611,7 +620,7 @@ class Firewall extends pulumi.CustomResource {
           'gcp:compute/firewall:Firewall',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     allows = registerOutput<List<FirewallAllow>?>('allows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallAllow>(guardedValue, (value) => FirewallAllow.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');

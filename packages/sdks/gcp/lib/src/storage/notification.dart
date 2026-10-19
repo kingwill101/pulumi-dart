@@ -143,8 +143,8 @@ import 'notification_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -201,7 +201,7 @@ import 'notification_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -209,11 +209,14 @@ import 'notification_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_storage_getprojectserviceaccount" "gcsAccount" {
+/// data "gcp_storage_project_service_account" "gcsAccount" {
 /// }
 ///
 /// resource "gcp_storage_notification" "notification" {
-///   depends_on     = [gcp_pubsub_topiciambinding.binding]
+///   depends_on = [gcp_pubsub_topic_i_a_m_binding.binding]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   bucket         = gcp_storage_bucket.bucket.name
 ///   payload_format = "JSON_API_V1"
 ///   topic          = gcp_pubsub_topic.topic.id
@@ -222,17 +225,26 @@ import 'notification_state.dart';
 ///     "new-attribute" = "new-attribute-value"
 ///   }
 /// }
-/// resource "gcp_pubsub_topiciambinding" "binding" {
+/// resource "gcp_pubsub_topic_i_a_m_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   topic   = gcp_pubsub_topic.topic.id
 ///   role    = "roles/pubsub.publisher"
-///   members = ["serviceAccount:${data.gcp_storage_getprojectserviceaccount.gcsAccount.email_address}"]
+///   members = ["serviceAccount:${data.gcp_storage_project_service_account.gcsAccount.email_address}"]
 /// }
 /// // End enabling notifications
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "default_bucket"
 ///   location = "US"
 /// }
 /// resource "gcp_pubsub_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "default_topic"
 /// }
 /// // Enable notifications by giving the correct IAM permission to the unique service account.
@@ -391,7 +403,7 @@ class Notification extends pulumi.CustomResource {
           'gcp:storage/notification:Notification',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     bucket = registerOutput<String>('bucket');
     customAttributes = registerOutput<Map<String, String>?>('customAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

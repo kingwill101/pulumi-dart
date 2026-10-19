@@ -201,9 +201,9 @@ import 'occurence_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/binaryauthorization"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/containeranalysis"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/binaryauthorization"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/containeranalysis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -292,7 +292,7 @@ import 'occurence_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -303,32 +303,38 @@ import 'occurence_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_kms_getkmskeyring" "keyring" {
+/// data "gcp_kms_k_m_s_key_ring" "keyring" {
 ///   name     = "my-key-ring"
 ///   location = "global"
 /// }
-/// data "gcp_kms_getkmscryptokey" "crypto-key" {
+/// data "gcp_kms_k_m_s_crypto_key" "crypto-key" {
 ///   name     = "my-key"
-///   key_ring = data.gcp_kms_getkmskeyring.keyring.id
+///   key_ring = data.gcp_kms_k_m_s_key_ring.keyring.id
 /// }
-/// data "gcp_kms_getkmscryptokeyversion" "version" {
-///   crypto_key = data.gcp_kms_getkmscryptokey.crypto-key.id
+/// data "gcp_kms_k_m_s_crypto_key_version" "version" {
+///   crypto_key = data.gcp_kms_k_m_s_crypto_key.crypto-key.id
 /// }
 ///
 /// resource "gcp_binaryauthorization_attestor" "attestor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "attestor"
 ///   attestation_authority_note = {
 ///     note_reference = gcp_containeranalysis_note.note.name
 ///     public_keys = [{
-///       "id" = data.gcp_kms_getkmscryptokeyversion.version.id
-///       "pkixPublicKey" = {
-///         "publicKeyPem"       = data.gcp_kms_getkmscryptokeyversion.version.public_keys[0].pem
-///         "signatureAlgorithm" = data.gcp_kms_getkmscryptokeyversion.version.public_keys[0].algorithm
+///       id = data.gcp_kms_k_m_s_crypto_key_version.version.id
+///       pkix_public_key = {
+///         public_key_pem      = data.gcp_kms_k_m_s_crypto_key_version.version.public_keys[0].pem
+///         signature_algorithm = data.gcp_kms_k_m_s_crypto_key_version.version.public_keys[0].algorithm
 ///       }
 ///     }]
 ///   }
 /// }
 /// resource "gcp_containeranalysis_note" "note" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "attestation-note"
 ///   attestation_authority = {
 ///     hint = {
@@ -337,13 +343,16 @@ import 'occurence_state.dart';
 ///   }
 /// }
 /// resource "gcp_containeranalysis_occurence" "occurrence" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_uri = "gcr.io/my-project/my-image"
 ///   note_name    = gcp_containeranalysis_note.note.id
 ///   attestation = {
 ///     serialized_payload = filebase64("path/to/my/payload.json")
 ///     signatures = [{
-///       "publicKeyId"       = data.gcp_kms_getkmscryptokeyversion.version.id
-///       "serializedPayload" = filebase64("path/to/my/payload.json.sig")
+///       public_key_id      = data.gcp_kms_k_m_s_crypto_key_version.version.id
+///       serialized_payload = filebase64("path/to/my/payload.json.sig")
 ///     }]
 ///   }
 /// }
@@ -573,7 +582,7 @@ class Occurence extends pulumi.CustomResource {
           'gcp:containeranalysis/occurence:Occurence',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     attestation = registerOutput<OccurenceAttestation>('attestation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OccurenceAttestation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

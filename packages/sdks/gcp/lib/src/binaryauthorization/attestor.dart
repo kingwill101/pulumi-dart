@@ -147,8 +147,8 @@ import 'attestor_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/binaryauthorization"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/containeranalysis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/binaryauthorization"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/containeranalysis"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -199,7 +199,7 @@ import 'attestor_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -208,15 +208,38 @@ import 'attestor_state.dart';
 /// }
 ///
 /// resource "gcp_binaryauthorization_attestor" "attestor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-attestor"
 ///   attestation_authority_note = {
 ///     note_reference = gcp_containeranalysis_note.note.name
 ///     public_keys = [{
-///       "asciiArmoredPgpPublicKey" = "mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl\nbB7Iu2ezkECNzoEeU7WxUe8a61pMCh9cisS9H5mB2K2uM4Jnf8tgFeXn3akJDVo0\noR1IC+Dp9mXbRSK3MAvKkOwWlG99sx3uEdvmeBRHBOO+grchLx24EThXFOyP9Fk6\nV39j6xMjw4aggLD15B4V0v9JqBDdJiIYFzszZDL6pJwZrzcP0z8JO4rTZd+f64bD\nMpj52j/pQfA8lZHOaAgb1OrthLdMrBAjoDjArV4Ek7vSbrcgYWcI6BhsQrFoxKdX\n83TZKai55ZCfCLIskwUIzA1NLVwyzCS+fSN/ABEBAAG0KCJUZXN0IEF0dGVzdG9y\nIiA8ZGFuYWhvZmZtYW5AZ29vZ2xlLmNvbT6JAU4EEwEIADgWIQRfWkqHt6hpTA1L\nuY060eeM4dc66AUCW0/R2gIbLwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAKCRA6\n0eeM4dc66HdpCAC4ot3b0OyxPb0Ip+WT2U0PbpTBPJklesuwpIrM4Lh0N+1nVRLC\n51WSmVbM8BiAFhLbN9LpdHhds1kUrHF7+wWAjdR8sqAj9otc6HGRM/3qfa2qgh+U\nWTEk/3us/rYSi7T7TkMuutRMIa1IkR13uKiW56csEMnbOQpn9rDqwIr5R8nlZP5h\nMAU9vdm1DIv567meMqTaVZgR3w7bck2P49AO8lO5ERFpVkErtu/98y+rUy9d789l\n+OPuS1NGnxI1YKsNaWJF4uJVuvQuZ1twrhCbGNtVorO2U12+cEq+YtUxj7kmdOC1\nqoIRW6y0+UlAc+MbqfL0ziHDOAmcqz1GnROg\n=6Bvm\n"
+///       ascii_armored_pgp_public_key = <<EOF
+/// mQENBFtP0doBCADF+joTiXWKVuP8kJt3fgpBSjT9h8ezMfKA4aXZctYLx5wslWQl
+/// bB7Iu2ezkECNzoEeU7WxUe8a61pMCh9cisS9H5mB2K2uM4Jnf8tgFeXn3akJDVo0
+/// oR1IC+Dp9mXbRSK3MAvKkOwWlG99sx3uEdvmeBRHBOO+grchLx24EThXFOyP9Fk6
+/// V39j6xMjw4aggLD15B4V0v9JqBDdJiIYFzszZDL6pJwZrzcP0z8JO4rTZd+f64bD
+/// Mpj52j/pQfA8lZHOaAgb1OrthLdMrBAjoDjArV4Ek7vSbrcgYWcI6BhsQrFoxKdX
+/// 83TZKai55ZCfCLIskwUIzA1NLVwyzCS+fSN/ABEBAAG0KCJUZXN0IEF0dGVzdG9y
+/// IiA8ZGFuYWhvZmZtYW5AZ29vZ2xlLmNvbT6JAU4EEwEIADgWIQRfWkqHt6hpTA1L
+/// uY060eeM4dc66AUCW0/R2gIbLwULCQgHAgYVCgkICwIEFgIDAQIeAQIXgAAKCRA6
+/// 0eeM4dc66HdpCAC4ot3b0OyxPb0Ip+WT2U0PbpTBPJklesuwpIrM4Lh0N+1nVRLC
+/// 51WSmVbM8BiAFhLbN9LpdHhds1kUrHF7+wWAjdR8sqAj9otc6HGRM/3qfa2qgh+U
+/// WTEk/3us/rYSi7T7TkMuutRMIa1IkR13uKiW56csEMnbOQpn9rDqwIr5R8nlZP5h
+/// MAU9vdm1DIv567meMqTaVZgR3w7bck2P49AO8lO5ERFpVkErtu/98y+rUy9d789l
+/// +OPuS1NGnxI1YKsNaWJF4uJVuvQuZ1twrhCbGNtVorO2U12+cEq+YtUxj7kmdOC1
+/// qoIRW6y0+UlAc+MbqfL0ziHDOAmcqz1GnROg
+/// =6Bvm
+/// EOF
+///
 ///     }]
 ///   }
 /// }
 /// resource "gcp_containeranalysis_note" "note" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-attestor-note"
 ///   attestation_authority = {
 ///     hint = {
@@ -473,9 +496,9 @@ import 'attestor_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/binaryauthorization"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/containeranalysis"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/binaryauthorization"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/containeranalysis"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -540,7 +563,7 @@ import 'attestor_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -548,24 +571,30 @@ import 'attestor_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_kms_getkmscryptokeyversion" "version" {
-///   crypto_key = gcp_kms_cryptokey.crypto-key.id
+/// data "gcp_kms_k_m_s_crypto_key_version" "version" {
+///   crypto_key = gcp_kms_crypto_key.crypto-key.id
 /// }
 ///
 /// resource "gcp_binaryauthorization_attestor" "attestor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-attestor"
 ///   attestation_authority_note = {
 ///     note_reference = gcp_containeranalysis_note.note.name
 ///     public_keys = [{
-///       "id" = data.gcp_kms_getkmscryptokeyversion.version.id
-///       "pkixPublicKey" = {
-///         "publicKeyPem"       = data.gcp_kms_getkmscryptokeyversion.version.public_keys[0].pem
-///         "signatureAlgorithm" = data.gcp_kms_getkmscryptokeyversion.version.public_keys[0].algorithm
+///       id = data.gcp_kms_k_m_s_crypto_key_version.version.id
+///       pkix_public_key = {
+///         public_key_pem      = data.gcp_kms_k_m_s_crypto_key_version.version.public_keys[0].pem
+///         signature_algorithm = data.gcp_kms_k_m_s_crypto_key_version.version.public_keys[0].algorithm
 ///       }
 ///     }]
 ///   }
 /// }
 /// resource "gcp_containeranalysis_note" "note" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-attestor-note"
 ///   attestation_authority = {
 ///     hint = {
@@ -573,15 +602,21 @@ import 'attestor_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_kms_cryptokey" "crypto-key" {
+/// resource "gcp_kms_crypto_key" "crypto-key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-attestor-key"
-///   key_ring = gcp_kms_keyring.keyring.id
+///   key_ring = gcp_kms_key_ring.keyring.id
 ///   purpose  = "ASYMMETRIC_SIGN"
 ///   version_template = {
 ///     algorithm = "RSA_SIGN_PKCS1_4096_SHA512"
 ///   }
 /// }
-/// resource "gcp_kms_keyring" "keyring" {
+/// resource "gcp_kms_key_ring" "keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-attestor-key-ring"
 ///   location = "global"
 /// }
@@ -755,7 +790,7 @@ class Attestor extends pulumi.CustomResource {
           'gcp:binaryauthorization/attestor:Attestor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     attestationAuthorityNote = registerOutput<AttestorAttestationAuthorityNote>('attestationAuthorityNote', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AttestorAttestationAuthorityNote.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

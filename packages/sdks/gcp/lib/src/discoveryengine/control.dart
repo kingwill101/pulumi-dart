@@ -160,7 +160,7 @@ import 'control_synonyms_action.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -219,7 +219,7 @@ import 'control_synonyms_action.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -227,7 +227,10 @@ import 'control_synonyms_action.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_discoveryengine_datastore" "basic" {
+/// resource "gcp_discoveryengine_data_store" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                    = "global"
 ///   data_store_id               = "data-store-id"
 ///   display_name                = "tf-test-datastore"
@@ -236,19 +239,25 @@ import 'control_synonyms_action.dart';
 ///   solution_types              = ["SOLUTION_TYPE_SEARCH"]
 ///   create_advanced_site_search = false
 /// }
-/// resource "gcp_discoveryengine_searchengine" "basic" {
+/// resource "gcp_discoveryengine_search_engine" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   engine_id            = "engine-id"
 ///   collection_id        = "default_collection"
-///   location             = gcp_discoveryengine_datastore.basic.location
+///   location             = gcp_discoveryengine_data_store.basic.location
 ///   display_name         = "tf-test-engine"
-///   data_store_ids       = [gcp_discoveryengine_datastore.basic.data_store_id]
+///   data_store_ids       = [gcp_discoveryengine_data_store.basic.data_store_id]
 ///   industry_vertical    = "GENERIC"
 ///   app_type             = "APP_TYPE_INTRANET"
 ///   search_engine_config = {}
 /// }
 /// resource "gcp_discoveryengine_control" "basic" {
-///   location      = gcp_discoveryengine_searchengine.basic.location
-///   engine_id     = gcp_discoveryengine_searchengine.basic.engine_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location      = gcp_discoveryengine_search_engine.basic.location
+///   engine_id     = gcp_discoveryengine_search_engine.basic.engine_id
 ///   control_id    = "control-id"
 ///   display_name  = "tf-test-control"
 ///   solution_type = "SOLUTION_TYPE_SEARCH"
@@ -449,7 +458,7 @@ class Control extends pulumi.CustomResource {
           'gcp:discoveryengine/control:Control',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     boostAction = registerOutput<ControlBoostAction?>('boostAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ControlBoostAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     collectionId = registerOutput<String?>('collectionId');

@@ -25,11 +25,6 @@ class ClientArgs {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   final pulumi.Input<String?>? project;
-  /// (Optional, Deprecated)
-  /// User input run-as service account, if empty, will bring up a new default service account.
-  ///
-  /// &gt; **Warning:** `runAsServiceAccount` is deprecated and will be removed in a future major release.
-  final pulumi.Input<String?>? runAsServiceAccount;
 
   /// Creates a new [ClientArgs].
   /// [cloudKmsConfig] Cloud KMS config for AuthModule to encrypt/decrypt credentials.
@@ -37,14 +32,12 @@ class ClientArgs {
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [location] Location in which client needs to be provisioned.
   /// [project] The ID of the project in which the resource belongs.
-  /// [runAsServiceAccount] (Optional, Deprecated)
   const ClientArgs({
     this.cloudKmsConfig,
     this.createSampleIntegrations,
     this.deletionPolicy,
     required this.location,
     this.project,
-    this.runAsServiceAccount,
   });
 
   Map<String, dynamic> toMap() {
@@ -54,7 +47,6 @@ class ClientArgs {
       'deletionPolicy': ?deletionPolicy,
       'location': location,
       'project': ?project,
-      'runAsServiceAccount': ?runAsServiceAccount,
     };
   }
 
@@ -65,7 +57,6 @@ class ClientArgs {
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: pulumi.Input.fromValue(map['location'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      runAsServiceAccount: (() { final guardedValue = map['runAsServiceAccount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }
 }

@@ -58,7 +58,7 @@ import 'organization_security_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -77,7 +77,7 @@ import 'organization_security_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -85,7 +85,10 @@ import 'organization_security_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_organizationsecuritypolicy" "policy" {
+/// resource "gcp_compute_organization_security_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   short_name = "my-short-name"
 ///   parent     = "organizations/123456789"
 ///   type       = "CLOUD_ARMOR"
@@ -210,7 +213,7 @@ import 'organization_security_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -242,7 +245,7 @@ import 'organization_security_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -250,7 +253,10 @@ import 'organization_security_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_organizationsecuritypolicy" "policy" {
+/// resource "gcp_compute_organization_security_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   short_name = "security-policy"
 ///   parent     = "organizations/123456789"
 ///   type       = "CLOUD_ARMOR"
@@ -382,7 +388,7 @@ class OrganizationSecurityPolicy extends pulumi.CustomResource {
           'gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     advancedOptionsConfig = registerOutput<OrganizationSecurityPolicyAdvancedOptionsConfig?>('advancedOptionsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrganizationSecurityPolicyAdvancedOptionsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

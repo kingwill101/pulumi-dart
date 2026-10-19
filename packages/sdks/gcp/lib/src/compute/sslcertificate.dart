@@ -105,7 +105,7 @@ class SSLCertificate extends pulumi.CustomResource {
           'gcp:compute/sSLCertificate:SSLCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['certificate', 'privateKey', 'privateKeyWo'],
         ) {
     certificate = registerOutput<String>('certificate', isSecret: true);

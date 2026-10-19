@@ -85,7 +85,7 @@ import 'ca_pool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -111,7 +111,7 @@ import 'ca_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -119,7 +119,10 @@ import 'ca_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_certificateauthority_capool" "default" {
+/// resource "gcp_certificateauthority_ca_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-pool"
 ///   location = "us-central1"
 ///   tier     = "ENTERPRISE"
@@ -677,9 +680,9 @@ import 'ca_pool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -844,7 +847,7 @@ import 'ca_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -852,19 +855,28 @@ import 'ca_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_projects_serviceidentity" "privateca_sa" {
+/// resource "gcp_projects_service_identity" "privateca_sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service = "privateca.googleapis.com"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "privateca_sa_keyuser_encrypterdecrypter" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "privateca_sa_keyuser_encrypterdecrypter" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        = gcp_projects_serviceidentity.privateca_sa.member
+///   member        = gcp_projects_service_identity.privateca_sa.member
 /// }
-/// resource "gcp_certificateauthority_capool" "default" {
-///   depends_on = [gcp_kms_cryptokeyiammember.privateca_sa_keyuser_encrypterdecrypter]
-///   name       = "my-pool"
-///   location   = "us-central1"
-///   tier       = "ENTERPRISE"
+/// resource "gcp_certificateauthority_ca_pool" "default" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.privateca_sa_keyuser_encrypterdecrypter]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "my-pool"
+///   location = "us-central1"
+///   tier     = "ENTERPRISE"
 ///   publishing_options = {
 ///     publish_ca_cert = false
 ///     publish_crl     = true
@@ -878,13 +890,13 @@ import 'ca_pool_state.dart';
 ///   }
 ///   issuance_policy = {
 ///     allowed_key_types = [{
-///       "ellipticCurve" = {
-///         "signatureAlgorithm" = "ECDSA_P256"
+///       elliptic_curve = {
+///         signature_algorithm = "ECDSA_P256"
 ///       }
 ///       }, {
-///       "rsa" = {
-///         "minModulusSize" = 5
-///         "maxModulusSize" = 10
+///       rsa = {
+///         min_modulus_size = 5
+///         max_modulus_size = 10
 ///       }
 ///     }]
 ///     backdate_duration = "3600s"
@@ -904,16 +916,16 @@ import 'ca_pool_state.dart';
 ///     baseline_values = {
 ///       aia_ocsp_servers = ["example.com"]
 ///       additional_extensions = [{
-///         "critical" = true
-///         "value"    = "asdf"
-///         "objectId" = {
-///           "objectIdPaths" = [1, 7]
+///         critical = true
+///         value    = "asdf"
+///         object_id = {
+///           object_id_paths = [1, 7]
 ///         }
 ///       }]
 ///       policy_ids = [{
-///         "objectIdPaths" = [1, 5]
+///         object_id_paths = [1, 5]
 ///         }, {
-///         "objectIdPaths" = [1, 5, 7]
+///         object_id_paths = [1, 5, 7]
 ///       }]
 ///       ca_options = {
 ///         is_ca                  = true
@@ -1315,7 +1327,7 @@ class CaPool extends pulumi.CustomResource {
           'gcp:certificateauthority/caPool:CaPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

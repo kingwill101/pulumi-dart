@@ -182,7 +182,7 @@ import 'bucket_website.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -240,7 +240,7 @@ import 'bucket_website.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -249,6 +249,9 @@ import 'bucket_website.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "static-site" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "image-store.com"
 ///   location                    = "EU"
 ///   force_destroy               = true
@@ -473,7 +476,7 @@ import 'bucket_website.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -510,7 +513,7 @@ import 'bucket_website.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -519,6 +522,9 @@ import 'bucket_website.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "auto-expire" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "auto-expiring-bucket"
 ///   location      = "US"
 ///   force_destroy = true
@@ -687,7 +693,7 @@ import 'bucket_website.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -717,7 +723,7 @@ import 'bucket_website.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -726,6 +732,9 @@ import 'bucket_website.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "no-age-enabled" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "no-age-enabled-bucket"
 ///   location      = "US"
 ///   force_destroy = true
@@ -845,7 +854,7 @@ import 'bucket_website.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -865,7 +874,7 @@ import 'bucket_website.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -874,6 +883,9 @@ import 'bucket_website.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "no-public-access" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "no-public-access-bucket"
 ///   location                 = "US"
 ///   force_destroy            = true
@@ -976,7 +988,7 @@ import 'bucket_website.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -998,7 +1010,7 @@ import 'bucket_website.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1007,6 +1019,9 @@ import 'bucket_website.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "hns-enabled" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "hns-enabled-bucket"
 ///   location      = "US"
 ///   force_destroy = true
@@ -1135,7 +1150,7 @@ import 'bucket_website.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1163,7 +1178,7 @@ import 'bucket_website.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1172,6 +1187,9 @@ import 'bucket_website.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "hns-enabled" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "hns-enabled-bucket"
 ///   location      = "US"
 ///   force_destroy = true
@@ -1313,7 +1331,7 @@ import 'bucket_website.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1341,7 +1359,7 @@ import 'bucket_website.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1350,6 +1368,9 @@ import 'bucket_website.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "hns-enabled" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "hns-enabled-bucket"
 ///   location      = "US"
 ///   force_destroy = true
@@ -1497,7 +1518,7 @@ import 'bucket_website.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1527,7 +1548,7 @@ import 'bucket_website.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1536,6 +1557,9 @@ import 'bucket_website.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "hns-enabled" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "hns-enabled-bucket"
 ///   location      = "US"
 ///   force_destroy = true
@@ -1680,7 +1704,7 @@ import 'bucket_website.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1707,7 +1731,7 @@ import 'bucket_website.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1716,6 +1740,9 @@ import 'bucket_website.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "zonal_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "US-CENTRAL1"
 ///   custom_placement_config = {
 ///     data_locations = ["US-CENTRAL1-B"]
@@ -1866,7 +1893,7 @@ class Bucket extends pulumi.CustomResource {
           'gcp:storage/bucket:Bucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoclass = registerOutput<BucketAutoclass?>('autoclass', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BucketAutoclass.fromMap((guardedValue as Map).cast<String, dynamic>()); });

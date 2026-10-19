@@ -240,7 +240,7 @@ import 'tag_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -324,7 +324,7 @@ import 'tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -333,15 +333,24 @@ import 'tag_state.dart';
 /// }
 ///
 /// resource "gcp_datacatalog_entry" "entry" {
-///   entry_group           = gcp_datacatalog_entrygroup.entry_group.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   entry_group           = gcp_datacatalog_entry_group.entry_group.id
 ///   entry_id              = "my_entry"
 ///   user_specified_type   = "my_custom_type"
 ///   user_specified_system = "SomethingExternal"
 /// }
-/// resource "gcp_datacatalog_entrygroup" "entry_group" {
+/// resource "gcp_datacatalog_entry_group" "entry_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   entry_group_id = "my_entry_group"
 /// }
-/// resource "gcp_datacatalog_tagtemplate" "tag_template" {
+/// resource "gcp_datacatalog_tag_template" "tag_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tag_template_id = "my_template"
 ///   region          = "us-central1"
 ///   display_name    = "Demo Tag Template"
@@ -366,11 +375,11 @@ import 'tag_state.dart';
 ///     type = {
 ///       enum_type = {
 ///         allowed_values = [{
-///           "displayName" = "EMAIL"
+///           display_name = "EMAIL"
 ///           }, {
-///           "displayName" = "SOCIAL SECURITY NUMBER"
+///           display_name = "SOCIAL SECURITY NUMBER"
 ///           }, {
-///           "displayName" = "NONE"
+///           display_name = "NONE"
 ///         }]
 ///       }
 ///     }
@@ -378,8 +387,11 @@ import 'tag_state.dart';
 ///   force_delete = "false"
 /// }
 /// resource "gcp_datacatalog_tag" "basic_tag" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent   = gcp_datacatalog_entry.entry.id
-///   template = gcp_datacatalog_tagtemplate.tag_template.id
+///   template = gcp_datacatalog_tag_template.tag_template.id
 ///   fields {
 ///     field_name   = "source"
 ///     string_value = "my-string"
@@ -774,7 +786,7 @@ import 'tag_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -867,7 +879,7 @@ import 'tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -876,21 +888,33 @@ import 'tag_state.dart';
 /// }
 ///
 /// resource "gcp_datacatalog_entry" "first_entry" {
-///   entry_group           = gcp_datacatalog_entrygroup.entry_group.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   entry_group           = gcp_datacatalog_entry_group.entry_group.id
 ///   entry_id              = "first_entry"
 ///   user_specified_type   = "my_custom_type"
 ///   user_specified_system = "SomethingExternal"
 /// }
 /// resource "gcp_datacatalog_entry" "second_entry" {
-///   entry_group           = gcp_datacatalog_entrygroup.entry_group.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   entry_group           = gcp_datacatalog_entry_group.entry_group.id
 ///   entry_id              = "second_entry"
 ///   user_specified_type   = "another_custom_type"
 ///   user_specified_system = "SomethingElseExternal"
 /// }
-/// resource "gcp_datacatalog_entrygroup" "entry_group" {
+/// resource "gcp_datacatalog_entry_group" "entry_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   entry_group_id = "my_entry_group"
 /// }
-/// resource "gcp_datacatalog_tagtemplate" "tag_template" {
+/// resource "gcp_datacatalog_tag_template" "tag_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tag_template_id = "my_template"
 ///   region          = "us-central1"
 ///   display_name    = "Demo Tag Template"
@@ -915,11 +939,11 @@ import 'tag_state.dart';
 ///     type = {
 ///       enum_type = {
 ///         allowed_values = [{
-///           "displayName" = "EMAIL"
+///           display_name = "EMAIL"
 ///           }, {
-///           "displayName" = "SOCIAL SECURITY NUMBER"
+///           display_name = "SOCIAL SECURITY NUMBER"
 ///           }, {
-///           "displayName" = "NONE"
+///           display_name = "NONE"
 ///         }]
 ///       }
 ///     }
@@ -927,8 +951,11 @@ import 'tag_state.dart';
 ///   force_delete = "false"
 /// }
 /// resource "gcp_datacatalog_tag" "entry_group_tag" {
-///   parent   = gcp_datacatalog_entrygroup.entry_group.id
-///   template = gcp_datacatalog_tagtemplate.tag_template.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent   = gcp_datacatalog_entry_group.entry_group.id
+///   template = gcp_datacatalog_tag_template.tag_template.id
 ///   fields {
 ///     field_name   = "source"
 ///     string_value = "my-string"
@@ -1513,7 +1540,7 @@ import 'tag_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datacatalog"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datacatalog"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1661,7 +1688,7 @@ import 'tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1670,16 +1697,63 @@ import 'tag_state.dart';
 /// }
 ///
 /// resource "gcp_datacatalog_entry" "entry" {
-///   entry_group           = gcp_datacatalog_entrygroup.entry_group.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   entry_group           = gcp_datacatalog_entry_group.entry_group.id
 ///   entry_id              = "my_entry"
 ///   user_specified_type   = "my_custom_type"
 ///   user_specified_system = "SomethingExternal"
-///   schema                = "{\n  \\\"columns\\\": [\n    {\n      \\\"column\\\": \\\"first_name\\\",\n      \\\"description\\\": \\\"First name\\\",\n      \\\"mode\\\": \\\"REQUIRED\\\",\n      \\\"type\\\": \\\"STRING\\\"\n    },\n    {\n      \\\"column\\\": \\\"last_name\\\",\n      \\\"description\\\": \\\"Last name\\\",\n      \\\"mode\\\": \\\"REQUIRED\\\",\n      \\\"type\\\": \\\"STRING\\\"\n    },\n    {\n      \\\"column\\\": \\\"address\\\",\n      \\\"description\\\": \\\"Address\\\",\n      \\\"mode\\\": \\\"REPEATED\\\",\n      \\\"subcolumns\\\": [\n        {\n          \\\"column\\\": \\\"city\\\",\n          \\\"description\\\": \\\"City\\\",\n          \\\"mode\\\": \\\"NULLABLE\\\",\n          \\\"type\\\": \\\"STRING\\\"\n        },\n        {\n          \\\"column\\\": \\\"state\\\",\n          \\\"description\\\": \\\"State\\\",\n          \\\"mode\\\": \\\"NULLABLE\\\",\n          \\\"type\\\": \\\"STRING\\\"\n        }\n      ],\n      \\\"type\\\": \\\"RECORD\\\"\n    }\n  ]\n}\n"
+///   schema                = <<EOF
+/// {
+///   \"columns\": [
+///     {
+///       \"column\": \"first_name\",
+///       \"description\": \"First name\",
+///       \"mode\": \"REQUIRED\",
+///       \"type\": \"STRING\"
+///     },
+///     {
+///       \"column\": \"last_name\",
+///       \"description\": \"Last name\",
+///       \"mode\": \"REQUIRED\",
+///       \"type\": \"STRING\"
+///     },
+///     {
+///       \"column\": \"address\",
+///       \"description\": \"Address\",
+///       \"mode\": \"REPEATED\",
+///       \"subcolumns\": [
+///         {
+///           \"column\": \"city\",
+///           \"description\": \"City\",
+///           \"mode\": \"NULLABLE\",
+///           \"type\": \"STRING\"
+///         },
+///         {
+///           \"column\": \"state\",
+///           \"description\": \"State\",
+///           \"mode\": \"NULLABLE\",
+///           \"type\": \"STRING\"
+///         }
+///       ],
+///       \"type\": \"RECORD\"
+///     }
+///   ]
 /// }
-/// resource "gcp_datacatalog_entrygroup" "entry_group" {
+/// EOF
+///
+/// }
+/// resource "gcp_datacatalog_entry_group" "entry_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   entry_group_id = "my_entry_group"
 /// }
-/// resource "gcp_datacatalog_tagtemplate" "tag_template" {
+/// resource "gcp_datacatalog_tag_template" "tag_template" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   tag_template_id = "my_template"
 ///   region          = "us-central1"
 ///   display_name    = "Demo Tag Template"
@@ -1704,11 +1778,11 @@ import 'tag_state.dart';
 ///     type = {
 ///       enum_type = {
 ///         allowed_values = [{
-///           "displayName" = "EMAIL"
+///           display_name = "EMAIL"
 ///           }, {
-///           "displayName" = "SOCIAL SECURITY NUMBER"
+///           display_name = "SOCIAL SECURITY NUMBER"
 ///           }, {
-///           "displayName" = "NONE"
+///           display_name = "NONE"
 ///         }]
 ///       }
 ///     }
@@ -1716,8 +1790,11 @@ import 'tag_state.dart';
 ///   force_delete = "false"
 /// }
 /// resource "gcp_datacatalog_tag" "basic_tag" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent   = gcp_datacatalog_entry.entry.id
-///   template = gcp_datacatalog_tagtemplate.tag_template.id
+///   template = gcp_datacatalog_tag_template.tag_template.id
 ///   fields {
 ///     field_name   = "source"
 ///     string_value = "my-string"
@@ -1733,8 +1810,11 @@ import 'tag_state.dart';
 ///   column = "address"
 /// }
 /// resource "gcp_datacatalog_tag" "second-tag" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent   = gcp_datacatalog_entry.entry.id
-///   template = gcp_datacatalog_tagtemplate.tag_template.id
+///   template = gcp_datacatalog_tag_template.tag_template.id
 ///   fields {
 ///     field_name   = "source"
 ///     string_value = "my-string"
@@ -2066,7 +2146,7 @@ class Tag extends pulumi.CustomResource {
           'gcp:datacatalog/tag:Tag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     column = registerOutput<String?>('column');
     deletionPolicy = registerOutput<String>('deletionPolicy');

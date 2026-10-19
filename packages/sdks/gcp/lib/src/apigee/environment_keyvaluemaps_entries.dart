@@ -242,10 +242,10 @@ import 'environment_keyvaluemaps_entries_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -346,7 +346,7 @@ import 'environment_keyvaluemaps_entries_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -354,13 +354,19 @@ import 'environment_keyvaluemaps_entries_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getclientconfig" "current" {
+/// data "gcp_organizations_client_config" "current" {
 /// }
 ///
 /// resource "gcp_compute_network" "apigee_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "apigee-network"
 /// }
-/// resource "gcp_compute_globaladdress" "apigee_range" {
+/// resource "gcp_compute_global_address" "apigee_range" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "apigee-range"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -368,39 +374,60 @@ import 'environment_keyvaluemaps_entries_state.dart';
 ///   network       = gcp_compute_network.apigee_network.id
 /// }
 /// resource "gcp_servicenetworking_connection" "apigee_vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.apigee_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.apigee_range.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.apigee_range.name]
 /// }
 /// resource "gcp_apigee_organization" "apigee_org" {
-///   depends_on         = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   depends_on = [gcp_servicenetworking_connection.apigee_vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analytics_region   = "us-central1"
-///   project_id         = data.gcp_organizations_getclientconfig.current.project
+///   project_id         = data.gcp_organizations_client_config.current.project
 ///   authorized_network = gcp_compute_network.apigee_network.id
 /// }
 /// resource "gcp_apigee_environment" "apigee_environment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id       = gcp_apigee_organization.apigee_org.id
 ///   name         = "tf-test-env"
 ///   description  = "Apigee Environment"
 ///   display_name = "Apigee Environment"
 /// }
 /// resource "gcp_apigee_instance" "apigee_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tf-test-instance"
 ///   location = "us-central1"
 ///   org_id   = gcp_apigee_organization.apigee_org.id
 /// }
-/// resource "gcp_apigee_instanceattachment" "apigee_instance_attachment" {
+/// resource "gcp_apigee_instance_attachment" "apigee_instance_attachment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id = gcp_apigee_instance.apigee_instance.id
 ///   environment = gcp_apigee_environment.apigee_environment.name
 /// }
-/// resource "gcp_apigee_environmentkeyvaluemaps" "apigee_environment_keyvaluemaps" {
-///   depends_on = [gcp_apigee_organization.apigee_org, gcp_apigee_environment.apigee_environment, gcp_apigee_instance.apigee_instance, gcp_apigee_instanceattachment.apigee_instance_attachment]
-///   env_id     = createApigeeEnvironment.id
-///   name       = "tf-test-env-kvms"
+/// resource "gcp_apigee_environment_keyvaluemaps" "apigee_environment_keyvaluemaps" {
+///   depends_on = [gcp_apigee_organization.apigee_org, gcp_apigee_environment.apigee_environment, gcp_apigee_instance.apigee_instance, gcp_apigee_instance_attachment.apigee_instance_attachment]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   env_id = createApigeeEnvironment.id
+///   name   = "tf-test-env-kvms"
 /// }
-/// resource "gcp_apigee_environmentkeyvaluemapsentries" "apigee_environment_keyvaluemaps_entries" {
-///   depends_on         = [gcp_apigee_organization.apigee_org, gcp_apigee_environment.apigee_environment, gcp_apigee_instance.apigee_instance, gcp_apigee_instanceattachment.apigee_instance_attachment, gcp_apigee_environmentkeyvaluemaps.apigee_environment_keyvaluemaps]
-///   env_keyvaluemap_id = gcp_apigee_environmentkeyvaluemaps.apigee_environment_keyvaluemaps.id
+/// resource "gcp_apigee_environment_keyvaluemaps_entries" "apigee_environment_keyvaluemaps_entries" {
+///   depends_on = [gcp_apigee_organization.apigee_org, gcp_apigee_environment.apigee_environment, gcp_apigee_instance.apigee_instance, gcp_apigee_instance_attachment.apigee_instance_attachment, gcp_apigee_environment_keyvaluemaps.apigee_environment_keyvaluemaps]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   env_keyvaluemap_id = gcp_apigee_environment_keyvaluemaps.apigee_environment_keyvaluemaps.id
 ///   name               = "testName"
 ///   value              = "testValue"
 /// }
@@ -648,7 +675,7 @@ class EnvironmentKeyvaluemapsEntries extends pulumi.CustomResource {
           'gcp:apigee/environmentKeyvaluemapsEntries:EnvironmentKeyvaluemapsEntries',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     envKeyvaluemapId = registerOutput<String>('envKeyvaluemapId');

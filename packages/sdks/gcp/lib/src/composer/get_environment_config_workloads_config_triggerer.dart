@@ -30,7 +30,7 @@ class GetEnvironmentConfigWorkloadsConfigTriggerer {
 
   factory GetEnvironmentConfigWorkloadsConfigTriggerer.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentConfigWorkloadsConfigTriggerer(
-      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
       cpu: pulumi.Input.fromValue((map['cpu'] as num).toDouble()),
       memoryGb: pulumi.Input.fromValue((map['memoryGb'] as num).toDouble()),
     );

@@ -210,7 +210,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -282,7 +282,7 @@ import 'toolset_tool_fake_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -291,6 +291,9 @@ import 'toolset_tool_fake_config.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_toolset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -306,17 +309,30 @@ import 'toolset_tool_fake_config.dart';
 ///   }
 /// }
 /// resource "gcp_ces_toolset" "ces_toolset_openapi_service_account_auth_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   toolset_id   = "toolset1"
 ///   location     = "us"
 ///   app          = gcp_ces_app.ces_app_for_toolset.app_id
 ///   display_name = "Basic toolset display name"
 ///   open_api_toolset = {
-///     open_api_schema       = "openapi: 3.0.0\ninfo:\n  title: My Sample API\n  version: 1.0.0\n  description: A simple API example\nservers:\n  - url: https://api.example.com/v1\npaths: {}\n"
+///     open_api_schema       = <<-EOT
+/// openapi: 3.0.0
+/// info:
+///   title: My Sample API
+///   version: 1.0.0
+///   description: A simple API example
+/// servers:
+///   - url: https://api.example.com/v1
+/// paths: {}
+/// EOT
+///
 ///     ignore_unknown_fields = false
 ///     tls_config = {
 ///       ca_certs = [{
-///         "displayName" = "example"
-///         "cert"        = "ZXhhbXBsZQ=="
+///         display_name = "example"
+///         cert         = "ZXhhbXBsZQ=="
 ///       }]
 ///     }
 ///     service_directory_config = {
@@ -676,7 +692,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -751,7 +767,7 @@ import 'toolset_tool_fake_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -760,6 +776,9 @@ import 'toolset_tool_fake_config.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_toolset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -775,17 +794,30 @@ import 'toolset_tool_fake_config.dart';
 ///   }
 /// }
 /// resource "gcp_ces_toolset" "ces_toolset_openapi_oauth_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   toolset_id   = "toolset1"
 ///   location     = "us"
 ///   app          = gcp_ces_app.ces_app_for_toolset.app_id
 ///   display_name = "Basic toolset display name"
 ///   open_api_toolset = {
-///     open_api_schema       = "openapi: 3.0.0\ninfo:\n  title: My Sample API\n  version: 1.0.0\n  description: A simple API example\nservers:\n  - url: https://api.example.com/v1\npaths: {}\n"
+///     open_api_schema       = <<-EOT
+/// openapi: 3.0.0
+/// info:
+///   title: My Sample API
+///   version: 1.0.0
+///   description: A simple API example
+/// servers:
+///   - url: https://api.example.com/v1
+/// paths: {}
+/// EOT
+///
 ///     ignore_unknown_fields = false
 ///     tls_config = {
 ///       ca_certs = [{
-///         "displayName" = "example"
-///         "cert"        = "ZXhhbXBsZQ=="
+///         display_name = "example"
+///         cert         = "ZXhhbXBsZQ=="
 ///       }]
 ///     }
 ///     service_directory_config = {
@@ -1132,7 +1164,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1199,7 +1231,7 @@ import 'toolset_tool_fake_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1208,6 +1240,9 @@ import 'toolset_tool_fake_config.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_toolset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -1223,17 +1258,30 @@ import 'toolset_tool_fake_config.dart';
 ///   }
 /// }
 /// resource "gcp_ces_toolset" "ces_toolset_openapi_service_agent_id_token_auth_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   toolset_id   = "toolset1"
 ///   location     = "us"
 ///   app          = gcp_ces_app.ces_app_for_toolset.app_id
 ///   display_name = "Basic toolset display name"
 ///   open_api_toolset = {
-///     open_api_schema       = "openapi: 3.0.0\ninfo:\n  title: My Sample API\n  version: 1.0.0\n  description: A simple API example\nservers:\n  - url: https://api.example.com/v1\npaths: {}\n"
+///     open_api_schema       = <<-EOT
+/// openapi: 3.0.0
+/// info:
+///   title: My Sample API
+///   version: 1.0.0
+///   description: A simple API example
+/// servers:
+///   - url: https://api.example.com/v1
+/// paths: {}
+/// EOT
+///
 ///     ignore_unknown_fields = false
 ///     tls_config = {
 ///       ca_certs = [{
-///         "displayName" = "example"
-///         "cert"        = "ZXhhbXBsZQ=="
+///         display_name = "example"
+///         cert         = "ZXhhbXBsZQ=="
 ///       }]
 ///     }
 ///     service_directory_config = {
@@ -1582,7 +1630,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1655,7 +1703,7 @@ import 'toolset_tool_fake_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1664,6 +1712,9 @@ import 'toolset_tool_fake_config.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_toolset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -1679,6 +1730,9 @@ import 'toolset_tool_fake_config.dart';
 ///   }
 /// }
 /// resource "gcp_ces_toolset" "ces_toolset_openapi_api_key_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   toolset_id     = "toolset1"
 ///   location       = "us"
 ///   app            = gcp_ces_app.ces_app_for_toolset.app_id
@@ -1686,12 +1740,22 @@ import 'toolset_tool_fake_config.dart';
 ///   description    = "Test description"
 ///   execution_type = "SYNCHRONOUS"
 ///   open_api_toolset = {
-///     open_api_schema       = "openapi: 3.0.0\ninfo:\n  title: My Sample API\n  version: 1.0.0\n  description: A simple API example\nservers:\n  - url: https://api.example.com/v1\npaths: {}\n"
+///     open_api_schema       = <<-EOT
+/// openapi: 3.0.0
+/// info:
+///   title: My Sample API
+///   version: 1.0.0
+///   description: A simple API example
+/// servers:
+///   - url: https://api.example.com/v1
+/// paths: {}
+/// EOT
+///
 ///     ignore_unknown_fields = false
 ///     tls_config = {
 ///       ca_certs = [{
-///         "displayName" = "example"
-///         "cert"        = "ZXhhbXBsZQ=="
+///         display_name = "example"
+///         cert         = "ZXhhbXBsZQ=="
 ///       }]
 ///     }
 ///     service_directory_config = {
@@ -2042,7 +2106,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2111,7 +2175,7 @@ import 'toolset_tool_fake_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2120,6 +2184,9 @@ import 'toolset_tool_fake_config.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_toolset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -2135,17 +2202,30 @@ import 'toolset_tool_fake_config.dart';
 ///   }
 /// }
 /// resource "gcp_ces_toolset" "ces_toolset_bearer_token_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   toolset_id   = "toolset1"
 ///   location     = "us"
 ///   app          = gcp_ces_app.ces_app_for_toolset.app_id
 ///   display_name = "Basic toolset display name"
 ///   open_api_toolset = {
-///     open_api_schema       = "openapi: 3.0.0\ninfo:\n  title: My Sample API\n  version: 1.0.0\n  description: A simple API example\nservers:\n  - url: https://api.example.com/v1\npaths: {}\n"
+///     open_api_schema       = <<-EOT
+/// openapi: 3.0.0
+/// info:
+///   title: My Sample API
+///   version: 1.0.0
+///   description: A simple API example
+/// servers:
+///   - url: https://api.example.com/v1
+/// paths: {}
+/// EOT
+///
 ///     ignore_unknown_fields = false
 ///     tls_config = {
 ///       ca_certs = [{
-///         "displayName" = "example"
-///         "cert"        = "ZXhhbXBsZQ=="
+///         display_name = "example"
+///         cert         = "ZXhhbXBsZQ=="
 ///       }]
 ///     }
 ///     service_directory_config = {
@@ -2465,7 +2545,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2528,7 +2608,7 @@ import 'toolset_tool_fake_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2537,6 +2617,9 @@ import 'toolset_tool_fake_config.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_toolset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -2552,6 +2635,9 @@ import 'toolset_tool_fake_config.dart';
 ///   }
 /// }
 /// resource "gcp_ces_toolset" "ces_toolset_mcp_service_account_auth_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   toolset_id   = "toolset1"
 ///   location     = "us"
 ///   app          = gcp_ces_app.ces_app_for_toolset.app_id
@@ -2560,8 +2646,8 @@ import 'toolset_tool_fake_config.dart';
 ///     server_address = "https://api.example.com/mcp/"
 ///     tls_config = {
 ///       ca_certs = [{
-///         "displayName" = "example"
-///         "cert"        = "ZXhhbXBsZQ=="
+///         display_name = "example"
+///         cert         = "ZXhhbXBsZQ=="
 ///       }]
 ///     }
 ///     service_directory_config = {
@@ -2875,7 +2961,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2941,7 +3027,7 @@ import 'toolset_tool_fake_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2950,6 +3036,9 @@ import 'toolset_tool_fake_config.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_toolset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -2965,6 +3054,9 @@ import 'toolset_tool_fake_config.dart';
 ///   }
 /// }
 /// resource "gcp_ces_toolset" "ces_toolset_mcp_oauth_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   toolset_id   = "toolset1"
 ///   location     = "us"
 ///   app          = gcp_ces_app.ces_app_for_toolset.app_id
@@ -2973,8 +3065,8 @@ import 'toolset_tool_fake_config.dart';
 ///     server_address = "https://api.example.com/mcp/"
 ///     tls_config = {
 ///       ca_certs = [{
-///         "displayName" = "example"
-///         "cert"        = "ZXhhbXBsZQ=="
+///         display_name = "example"
+///         cert         = "ZXhhbXBsZQ=="
 ///       }]
 ///     }
 ///     service_directory_config = {
@@ -3165,6 +3257,11 @@ import 'toolset_tool_fake_config.dart';
 ///         apiAuthentication: {
 ///             serviceAgentIdTokenAuthConfig: {},
 ///         },
+///         toolOverrides: [{
+///             tool: "my-tool",
+///             nameOverride: "my_tool_override",
+///             descriptionOverride: "A tool description override",
+///         }],
 ///     },
 /// });
 /// ```
@@ -3211,6 +3308,11 @@ import 'toolset_tool_fake_config.dart';
 ///         "api_authentication": {
 ///             "service_agent_id_token_auth_config": {},
 ///         },
+///         "tool_overrides": [{
+///             "tool": "my-tool",
+///             "name_override": "my_tool_override",
+///             "description_override": "A tool description override",
+///         }],
 ///     })
 /// ```
 /// ```csharp
@@ -3276,6 +3378,15 @@ import 'toolset_tool_fake_config.dart';
 ///             {
 ///                 ServiceAgentIdTokenAuthConfig = null,
 ///             },
+///             ToolOverrides = new[]
+///             {
+///                 new Gcp.Ces.Inputs.ToolsetMcpToolsetToolOverrideArgs
+///                 {
+///                     Tool = "my-tool",
+///                     NameOverride = "my_tool_override",
+///                     DescriptionOverride = "A tool description override",
+///                 },
+///             },
 ///         },
 ///     });
 ///
@@ -3285,7 +3396,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3336,6 +3447,13 @@ import 'toolset_tool_fake_config.dart';
 /// 				ApiAuthentication: &ces.ToolsetMcpToolsetApiAuthenticationArgs{
 /// 					ServiceAgentIdTokenAuthConfig: &ces.ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs{},
 /// 				},
+/// 				ToolOverrides: ces.ToolsetMcpToolsetToolOverrideArray{
+/// 					&ces.ToolsetMcpToolsetToolOverrideArgs{
+/// 						Tool:                pulumi.String("my-tool"),
+/// 						NameOverride:        pulumi.String("my_tool_override"),
+/// 						DescriptionOverride: pulumi.String("A tool description override"),
+/// 					},
+/// 				},
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -3346,7 +3464,7 @@ import 'toolset_tool_fake_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3355,6 +3473,9 @@ import 'toolset_tool_fake_config.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_toolset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -3370,6 +3491,9 @@ import 'toolset_tool_fake_config.dart';
 ///   }
 /// }
 /// resource "gcp_ces_toolset" "ces_toolset_mcp_service_agent_id_token_auth_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   toolset_id   = "toolset1"
 ///   location     = "us"
 ///   app          = gcp_ces_app.ces_app_for_toolset.app_id
@@ -3381,8 +3505,8 @@ import 'toolset_tool_fake_config.dart';
 ///     }
 ///     tls_config = {
 ///       ca_certs = [{
-///         "displayName" = "example"
-///         "cert"        = "ZXhhbXBsZQ=="
+///         display_name = "example"
+///         cert         = "ZXhhbXBsZQ=="
 ///       }]
 ///     }
 ///     service_directory_config = {
@@ -3391,6 +3515,11 @@ import 'toolset_tool_fake_config.dart';
 ///     api_authentication = {
 ///       service_agent_id_token_auth_config = {}
 ///     }
+///     tool_overrides = [{
+///       tool                 = "my-tool"
+///       name_override        = "my_tool_override"
+///       description_override = "A tool description override"
+///     }]
 ///   }
 /// }
 /// ```
@@ -3412,6 +3541,7 @@ import 'toolset_tool_fake_config.dart';
 /// import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetServiceDirectoryConfigArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationArgs;
 /// import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs;
+/// import com.pulumi.gcp.ces.inputs.ToolsetMcpToolsetToolOverrideArgs;
 /// import java.util.ArrayList;
 /// import java.util.Arrays;
 /// import java.util.Map;
@@ -3464,6 +3594,11 @@ import 'toolset_tool_fake_config.dart';
 ///                     .serviceAgentIdTokenAuthConfig(ToolsetMcpToolsetApiAuthenticationServiceAgentIdTokenAuthConfigArgs.builder()
 ///                         .build())
 ///                     .build())
+///                 .toolOverrides(ToolsetMcpToolsetToolOverrideArgs.builder()
+///                     .tool("my-tool")
+///                     .nameOverride("my_tool_override")
+///                     .descriptionOverride("A tool description override")
+///                     .build())
 ///                 .build())
 ///             .build());
 ///
@@ -3509,6 +3644,10 @@ import 'toolset_tool_fake_config.dart';
 ///           service: projects/example/locations/us/namespaces/namespace/services/service
 ///         apiAuthentication:
 ///           serviceAgentIdTokenAuthConfig: {}
+///         toolOverrides:
+///           - tool: my-tool
+///             nameOverride: my_tool_override
+///             descriptionOverride: A tool description override
 /// ```
 ///
 /// ### Ces Toolset Mcp Api Key Config
@@ -3688,7 +3827,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3752,7 +3891,7 @@ import 'toolset_tool_fake_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3761,6 +3900,9 @@ import 'toolset_tool_fake_config.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_toolset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -3776,6 +3918,9 @@ import 'toolset_tool_fake_config.dart';
 ///   }
 /// }
 /// resource "gcp_ces_toolset" "ces_toolset_mcp_api_key_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   toolset_id     = "toolset1"
 ///   location       = "us"
 ///   app            = gcp_ces_app.ces_app_for_toolset.app_id
@@ -3786,8 +3931,8 @@ import 'toolset_tool_fake_config.dart';
 ///     server_address = "https://api.example.com/mcp/"
 ///     tls_config = {
 ///       ca_certs = [{
-///         "displayName" = "example"
-///         "cert"        = "ZXhhbXBsZQ=="
+///         display_name = "example"
+///         cert         = "ZXhhbXBsZQ=="
 ///       }]
 ///     }
 ///     service_directory_config = {
@@ -4092,7 +4237,7 @@ import 'toolset_tool_fake_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/ces"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/ces"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4152,7 +4297,7 @@ import 'toolset_tool_fake_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4161,6 +4306,9 @@ import 'toolset_tool_fake_config.dart';
 /// }
 ///
 /// resource "gcp_ces_app" "ces_app_for_toolset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_id       = "app-id"
 ///   location     = "us"
 ///   description  = "App used as parent for CES Toolset example"
@@ -4176,6 +4324,9 @@ import 'toolset_tool_fake_config.dart';
 ///   }
 /// }
 /// resource "gcp_ces_toolset" "ces_toolset_mcp_bearer_token_config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   toolset_id   = "toolset1"
 ///   location     = "us"
 ///   app          = gcp_ces_app.ces_app_for_toolset.app_id
@@ -4184,8 +4335,8 @@ import 'toolset_tool_fake_config.dart';
 ///     server_address = "https://api.example.com/mcp/"
 ///     tls_config = {
 ///       ca_certs = [{
-///         "displayName" = "example"
-///         "cert"        = "ZXhhbXBsZQ=="
+///         display_name = "example"
+///         cert         = "ZXhhbXBsZQ=="
 ///       }]
 ///     }
 ///     service_directory_config = {
@@ -4402,7 +4553,7 @@ class Toolset extends pulumi.CustomResource {
           'gcp:ces/toolset:Toolset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     app = registerOutput<String>('app');
     connectorToolset = registerOutput<ToolsetConnectorToolset?>('connectorToolset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ToolsetConnectorToolset.fromMap((guardedValue as Map).cast<String, dynamic>()); });

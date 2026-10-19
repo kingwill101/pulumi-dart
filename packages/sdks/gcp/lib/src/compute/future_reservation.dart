@@ -117,7 +117,7 @@ import 'future_reservation_time_window.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -149,7 +149,7 @@ import 'future_reservation_time_window.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -157,7 +157,10 @@ import 'future_reservation_time_window.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_futurereservation" "gce_future_reservation" {
+/// resource "gcp_compute_future_reservation" "gce_future_reservation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                  = "gce-future-reservation"
 ///   project                               = "my-project-name"
 ///   zone                                  = "us-central1-a"
@@ -369,7 +372,7 @@ import 'future_reservation_time_window.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -413,7 +416,7 @@ import 'future_reservation_time_window.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -421,7 +424,10 @@ import 'future_reservation_time_window.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_futurereservation" "gce_future_reservation" {
+/// resource "gcp_compute_future_reservation" "gce_future_reservation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                  = "gce-future-reservation-aggregate-reservation"
 ///   project                               = "my-project-name"
 ///   zone                                  = "us-central1-a"
@@ -436,14 +442,14 @@ import 'future_reservation_time_window.dart';
 ///     vm_family     = "VM_FAMILY_CLOUD_TPU_DEVICE_CT3"
 ///     workload_type = "UNSPECIFIED"
 ///     reserved_resources = [{
-///       "accelerator" = {
-///         "acceleratorCount" = 32
-///         "acceleratorType"  = "projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3"
+///       accelerator = {
+///         accelerator_count = 32
+///         accelerator_type  = "projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3"
 ///       }
 ///       }, {
-///       "accelerator" = {
-///         "acceleratorCount" = 2
-///         "acceleratorType"  = "projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3"
+///       accelerator = {
+///         accelerator_count = 2
+///         accelerator_type  = "projects/my-project-name/zones/us-central1-a/acceleratorTypes/ct3"
 ///       }
 ///     }]
 ///   }
@@ -641,7 +647,7 @@ class FutureReservation extends pulumi.CustomResource {
           'gcp:compute/futureReservation:FutureReservation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     aggregateReservation = registerOutput<FutureReservationAggregateReservation?>('aggregateReservation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FutureReservationAggregateReservation.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoCreatedReservationsDeleteTime = registerOutput<String?>('autoCreatedReservationsDeleteTime');

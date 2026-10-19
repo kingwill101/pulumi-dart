@@ -43,7 +43,7 @@ import 'get_v2_organization_source_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -60,7 +60,7 @@ import 'get_v2_organization_source_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -68,7 +68,7 @@ import 'get_v2_organization_source_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_securitycenter_getsourceiampolicy" "policy" {
+/// data "gcp_securitycenter_source_iam_policy" "policy" {
 ///   source = customSource.name
 /// }
 /// ```
@@ -173,7 +173,7 @@ pulumi.Output<GetSourceIamPolicyResult> getSourceIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/securitycenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/securitycenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -190,7 +190,7 @@ pulumi.Output<GetSourceIamPolicyResult> getSourceIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -198,7 +198,7 @@ pulumi.Output<GetSourceIamPolicyResult> getSourceIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_securitycenter_getv2organizationsourceiampolicy" "policy" {
+/// data "gcp_securitycenter_v2_organization_source_iam_policy" "policy" {
 ///   source = customSource.name
 /// }
 /// ```

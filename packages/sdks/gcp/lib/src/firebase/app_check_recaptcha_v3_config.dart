@@ -109,7 +109,7 @@ import 'app_check_recaptcha_v3_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -149,7 +149,7 @@ import 'app_check_recaptcha_v3_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -160,20 +160,29 @@ import 'app_check_recaptcha_v3_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_webapp" "default" {
+/// resource "gcp_firebase_web_app" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = "my-project-name"
 ///   display_name = "Web App for reCAPTCHA V3"
 /// }
 /// # It takes a while for App Check to recognize the new app
 /// # If your app already exists, you don't have to wait 30 seconds.
 /// resource "time_sleep" "wait_30s" {
-///   depends_on      = [gcp_firebase_webapp.default]
+///   depends_on = [gcp_firebase_web_app.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "30s"
 /// }
-/// resource "gcp_firebase_appcheckrecaptchav3config" "default" {
-///   depends_on  = [time_sleep.wait_30s]
+/// resource "gcp_firebase_app_check_recaptcha_v3_config" "default" {
+///   depends_on = [time_sleep.wait_30s]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = "my-project-name"
-///   app_id      = gcp_firebase_webapp.default.app_id
+///   app_id      = gcp_firebase_web_app.default.app_id
 ///   site_secret = "6Lf9YnQpAAAAAC3-MHmdAllTbPwTZxpUw5d34YzX"
 ///   token_ttl   = "7200s"
 /// }
@@ -308,7 +317,7 @@ class AppCheckRecaptchaV3Config extends pulumi.CustomResource {
           'gcp:firebase/appCheckRecaptchaV3Config:AppCheckRecaptchaV3Config',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['siteSecret'],
         ) {
     appId = registerOutput<String>('appId');

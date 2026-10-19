@@ -44,7 +44,7 @@ import 'get_function_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctions"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctions"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -61,7 +61,7 @@ import 'get_function_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -69,7 +69,7 @@ import 'get_function_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_cloudfunctions_getfunction" "my-function" {
+/// data "gcp_cloudfunctions_function" "my-function" {
 ///   name = "function"
 /// }
 /// ```
@@ -180,7 +180,7 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudfunctions"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudfunctions"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -199,7 +199,7 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -207,7 +207,7 @@ pulumi.Output<GetFunctionResult> getFunctionOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudfunctions_getfunctioniampolicy" "policy" {
+/// data "gcp_cloudfunctions_function_iam_policy" "policy" {
 ///   project        = function.project
 ///   region         = function.region
 ///   cloud_function = function.name

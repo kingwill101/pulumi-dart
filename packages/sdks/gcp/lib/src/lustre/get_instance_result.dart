@@ -9,12 +9,14 @@ import 'get_instance_upcoming_maintenance_schedule.dart';
 /// Result data returned by getInstance.
 class GetInstanceResult {
   final List<GetInstanceAccessRulesOption>? accessRulesOptions;
+  final String? availableVersion;
   final String? capacityGib;
   final String? createTime;
   final String? deletionPolicy;
   final String? description;
   final List<GetInstanceDynamicTierOption>? dynamicTierOptions;
   final Map<String, String>? effectiveLabels;
+  final String? effectiveVersion;
   final String? filesystem;
   final bool? gkeSupportEnabled;
   /// The provider-assigned unique ID for this managed resource.
@@ -33,6 +35,7 @@ class GetInstanceResult {
   final Map<String, String>? pulumiLabels;
   final String? state;
   final String? stateReason;
+  final String? targetVersion;
   final String? uid;
   final List<GetInstanceUpcomingMaintenanceSchedule>? upcomingMaintenanceSchedules;
   final String? updateTime;
@@ -40,12 +43,14 @@ class GetInstanceResult {
 
   /// Creates a new [GetInstanceResult].
   /// [accessRulesOptions] Optional.
+  /// [availableVersion] Optional.
   /// [capacityGib] Optional.
   /// [createTime] Optional.
   /// [deletionPolicy] Optional.
   /// [description] Optional.
   /// [dynamicTierOptions] Optional.
   /// [effectiveLabels] Optional.
+  /// [effectiveVersion] Optional.
   /// [filesystem] Optional.
   /// [gkeSupportEnabled] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
@@ -63,18 +68,21 @@ class GetInstanceResult {
   /// [pulumiLabels] Optional.
   /// [state] Optional.
   /// [stateReason] Optional.
+  /// [targetVersion] Optional.
   /// [uid] Optional.
   /// [upcomingMaintenanceSchedules] Optional.
   /// [updateTime] Optional.
   /// [zone] Optional.
   const GetInstanceResult({
     this.accessRulesOptions,
+    this.availableVersion,
     this.capacityGib,
     this.createTime,
     this.deletionPolicy,
     this.description,
     this.dynamicTierOptions,
     this.effectiveLabels,
+    this.effectiveVersion,
     this.filesystem,
     this.gkeSupportEnabled,
     this.id,
@@ -92,6 +100,7 @@ class GetInstanceResult {
     this.pulumiLabels,
     this.state,
     this.stateReason,
+    this.targetVersion,
     this.uid,
     this.upcomingMaintenanceSchedules,
     this.updateTime,
@@ -101,12 +110,14 @@ class GetInstanceResult {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessRulesOptions': ?(() { final guardedValue = accessRulesOptions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceAccessRulesOption, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'availableVersion': ?availableVersion,
       'capacityGib': ?capacityGib,
       'createTime': ?createTime,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'dynamicTierOptions': ?(() { final guardedValue = dynamicTierOptions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceDynamicTierOption, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'effectiveLabels': ?effectiveLabels,
+      'effectiveVersion': ?effectiveVersion,
       'filesystem': ?filesystem,
       'gkeSupportEnabled': ?gkeSupportEnabled,
       'id': ?id,
@@ -124,6 +135,7 @@ class GetInstanceResult {
       'pulumiLabels': ?pulumiLabels,
       'state': ?state,
       'stateReason': ?stateReason,
+      'targetVersion': ?targetVersion,
       'uid': ?uid,
       'upcomingMaintenanceSchedules': ?(() { final guardedValue = upcomingMaintenanceSchedules; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetInstanceUpcomingMaintenanceSchedule, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'updateTime': ?updateTime,
@@ -134,12 +146,14 @@ class GetInstanceResult {
   factory GetInstanceResult.fromMap(Map<String, dynamic> map) {
     return GetInstanceResult(
       accessRulesOptions: (() { final guardedValue = map['accessRulesOptions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceAccessRulesOption>(guardedValue, (value) => GetInstanceAccessRulesOption.fromMap((value as Map).cast<String, dynamic>())); })(),
+      availableVersion: (() { final guardedValue = map['availableVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       capacityGib: (() { final guardedValue = map['capacityGib']; if (guardedValue == null) return null; return guardedValue as String; })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       dynamicTierOptions: (() { final guardedValue = map['dynamicTierOptions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceDynamicTierOption>(guardedValue, (value) => GetInstanceDynamicTierOption.fromMap((value as Map).cast<String, dynamic>())); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      effectiveVersion: (() { final guardedValue = map['effectiveVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       filesystem: (() { final guardedValue = map['filesystem']; if (guardedValue == null) return null; return guardedValue as String; })(),
       gkeSupportEnabled: (() { final guardedValue = map['gkeSupportEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -157,6 +171,7 @@ class GetInstanceResult {
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
       stateReason: (() { final guardedValue = map['stateReason']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      targetVersion: (() { final guardedValue = map['targetVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
       uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       upcomingMaintenanceSchedules: (() { final guardedValue = map['upcomingMaintenanceSchedules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetInstanceUpcomingMaintenanceSchedule>(guardedValue, (value) => GetInstanceUpcomingMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>())); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),

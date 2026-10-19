@@ -149,7 +149,7 @@ import 'group_membership_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudidentity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -200,7 +200,7 @@ import 'group_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -209,6 +209,9 @@ import 'group_membership_state.dart';
 /// }
 ///
 /// resource "gcp_cloudidentity_group" "group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "my-identity-group"
 ///   parent       = "customers/A01b123xz"
 ///   group_key = {
@@ -219,6 +222,9 @@ import 'group_membership_state.dart';
 ///   }
 /// }
 /// resource "gcp_cloudidentity_group" "child-group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "my-identity-group-child"
 ///   parent       = "customers/A01b123xz"
 ///   group_key = {
@@ -228,7 +234,10 @@ import 'group_membership_state.dart';
 ///     "cloudidentity.googleapis.com/groups.discussion_forum" = ""
 ///   }
 /// }
-/// resource "gcp_cloudidentity_groupmembership" "cloud_identity_group_membership_basic" {
+/// resource "gcp_cloudidentity_group_membership" "cloud_identity_group_membership_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group = gcp_cloudidentity_group.group.id
 ///   preferred_member_key = {
 ///     id = gcp_cloudidentity_group.child-group.group_key.id
@@ -434,7 +443,7 @@ import 'group_membership_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudidentity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudidentity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -475,7 +484,7 @@ import 'group_membership_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -484,6 +493,9 @@ import 'group_membership_state.dart';
 /// }
 ///
 /// resource "gcp_cloudidentity_group" "group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "my-identity-group"
 ///   parent       = "customers/A01b123xz"
 ///   group_key = {
@@ -493,7 +505,10 @@ import 'group_membership_state.dart';
 ///     "cloudidentity.googleapis.com/groups.discussion_forum" = ""
 ///   }
 /// }
-/// resource "gcp_cloudidentity_groupmembership" "cloud_identity_group_membership_basic" {
+/// resource "gcp_cloudidentity_group_membership" "cloud_identity_group_membership_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   group = gcp_cloudidentity_group.group.id
 ///   preferred_member_key = {
 ///     id = "cloud_identity_user@example.com"
@@ -638,7 +653,7 @@ class GroupMembership extends pulumi.CustomResource {
           'gcp:cloudidentity/groupMembership:GroupMembership',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createIgnoreAlreadyExists = registerOutput<bool?>('createIgnoreAlreadyExists');
     createTime = registerOutput<String>('createTime');

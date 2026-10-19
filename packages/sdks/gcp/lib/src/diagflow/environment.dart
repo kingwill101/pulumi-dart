@@ -186,9 +186,9 @@ import 'environment_text_to_speech_settings.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -262,7 +262,7 @@ import 'environment_text_to_speech_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -274,6 +274,9 @@ import 'environment_text_to_speech_settings.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "my-proj"
 ///   name            = "my-proj"
 ///   org_id          = "123456789"
@@ -281,27 +284,42 @@ import 'environment_text_to_speech_settings.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "gcp_projects_service" "dialogflow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.project.project_id
 ///   service = "dialogflow.googleapis.com"
 /// }
 /// resource "time_sleep" "wait_enable_service_api" {
-///   depends_on      = [gcp_projects_service.dialogflow]
+///   depends_on = [gcp_projects_service.dialogflow]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "30s"
 /// }
 /// resource "gcp_diagflow_agent" "basic_agent" {
-///   depends_on            = [time_sleep.wait_enable_service_api]
+///   depends_on = [time_sleep.wait_enable_service_api]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name          = "example_agent"
 ///   default_language_code = "en-us"
 ///   time_zone             = "America/New_York"
 ///   project               = gcp_organizations_project.project.project_id
 /// }
 /// resource "gcp_diagflow_version" "version" {
-///   depends_on  = [gcp_diagflow_agent.basic_agent]
+///   depends_on = [gcp_diagflow_agent.basic_agent]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Dialogflow Version"
 ///   parent      ="projects/${gcp_organizations_project.project.project_id}/agent"
 /// }
 /// resource "gcp_diagflow_environment" "basic_environment" {
-///   depends_on    = [gcp_diagflow_agent.basic_agent]
+///   depends_on = [gcp_diagflow_agent.basic_agent]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = gcp_organizations_project.project.project_id
 ///   environmentid = "basic-environment"
 ///   description   = "basic environment"
@@ -507,7 +525,7 @@ class Environment extends pulumi.CustomResource {
           'gcp:diagflow/environment:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     agentVersion = registerOutput<String?>('agentVersion');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -568,10 +568,10 @@ import 'unit_operation_upgrade.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/saasruntime"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/saasruntime"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -791,7 +791,7 @@ import 'unit_operation_upgrade.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -799,33 +799,48 @@ import 'unit_operation_upgrade.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_saasruntime_saas" "example_saas" {
+/// resource "gcp_saasruntime_saa_s" "example_saas" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   saas_id  = "example-saas"
 ///   location = local.location
 ///   locations {
 ///     name = local.location
 ///   }
 /// }
-/// resource "gcp_saasruntime_unitkind" "cluster_unit_kind" {
+/// resource "gcp_saasruntime_unit_kind" "cluster_unit_kind" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = local.location
 ///   unit_kind_id    = "vm-unitkind"
-///   saas            = gcp_saasruntime_saas.example_saas.id
+///   saas            = gcp_saasruntime_saa_s.example_saas.id
 ///   default_release ="projects/my-project-name/locations/${local.location}/releases/example-release"
 /// }
 /// resource "gcp_saasruntime_release" "example_release" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location   = local.location
 ///   release_id = "example-release"
-///   unit_kind  = gcp_saasruntime_unitkind.cluster_unit_kind.id
+///   unit_kind  = gcp_saasruntime_unit_kind.cluster_unit_kind.id
 ///   blueprint = {
 ///     package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"
 ///   }
 /// }
 /// resource "gcp_saasruntime_unit" "example_unit" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location  = local.location
 ///   unit_id   = "example-unit"
-///   unit_kind = gcp_saasruntime_unitkind.cluster_unit_kind.id
+///   unit_kind = gcp_saasruntime_unit_kind.cluster_unit_kind.id
 /// }
 /// resource "gcp_organizations_project" "tenant_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = local.tenantProjectId
 ///   name            = local.tenantProjectId
 ///   billing_account = "000000-0000000-0000000-000000"
@@ -833,36 +848,57 @@ import 'unit_operation_upgrade.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "gcp_projects_service" "saas_services" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                    = gcp_organizations_project.tenant_project.project_id
 ///   service                    = "compute.googleapis.com"
 ///   disable_dependent_services = true
 /// }
 /// resource "gcp_serviceaccount_account" "actuation_service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "actuator"
 ///   display_name = "SaaS Actuation Service Account"
 /// }
-/// resource "gcp_projects_iammember" "tenant_config_admin" {
+/// resource "gcp_projects_i_a_m_member" "tenant_config_admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.tenant_project.project_id
 ///   role    = "roles/config.admin"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.actuation_service_account.email}"
 /// }
-/// resource "gcp_projects_iammember" "tenant_storage_admin" {
+/// resource "gcp_projects_i_a_m_member" "tenant_storage_admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.tenant_project.project_id
 ///   role    = "roles/storage.admin"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.actuation_service_account.email}"
 /// }
-/// resource "gcp_projects_iammember" "tenant_compute_admin" {
+/// resource "gcp_projects_i_a_m_member" "tenant_compute_admin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.tenant_project.project_id
 ///   role    = "roles/compute.admin"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.actuation_service_account.email}"
 /// }
-/// resource "gcp_serviceaccount_iammember" "actuation_token_creator" {
+/// resource "gcp_serviceaccount_i_a_m_member" "actuation_token_creator" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_account_id = gcp_serviceaccount_account.actuation_service_account.name
 ///   role               = "roles/iam.serviceAccountTokenCreator"
 ///   member             = "serviceAccount:service-1111111111111@gcp-sa-saasservicemgmt.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_saasruntime_unitoperation" "provision_unit_operation" {
-///   depends_on          = [gcp_projects_iammember.tenant_config_admin, gcp_projects_iammember.tenant_storage_admin, gcp_projects_iammember.tenant_compute_admin, gcp_serviceaccount_iammember.actuation_token_creator, gcp_projects_service.saas_services]
+/// resource "gcp_saasruntime_unit_operation" "provision_unit_operation" {
+///   depends_on = [gcp_projects_i_a_m_member.tenant_config_admin, gcp_projects_i_a_m_member.tenant_storage_admin, gcp_projects_i_a_m_member.tenant_compute_admin, gcp_serviceaccount_i_a_m_member.actuation_token_creator, gcp_projects_service.saas_services]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = local.location
 ///   unit_operation_id   = "provision-unit-operation"
 ///   unit                = gcp_saasruntime_unit.example_unit.id
@@ -870,25 +906,25 @@ import 'unit_operation_upgrade.dart';
 ///   provision = {
 ///     release = gcp_saasruntime_release.example_release.id
 ///     input_variables = [{
-///       "variable" = "tenant_project_id"
-///       "value"    = gcp_organizations_project.tenant_project.project_id
-///       "type"     = "STRING"
+///       variable = "tenant_project_id"
+///       value    = gcp_organizations_project.tenant_project.project_id
+///       type     = "STRING"
 ///       }, {
-///       "variable" = "tenant_project_number"
-///       "value"    = gcp_organizations_project.tenant_project.number
-///       "type"     = "INT"
+///       variable = "tenant_project_number"
+///       value    = gcp_organizations_project.tenant_project.number
+///       type     = "INT"
 ///       }, {
-///       "variable" = "zone"
-///       "value"    = "us-central1-a"
-///       "type"     = "STRING"
+///       variable = "zone"
+///       value    = "us-central1-a"
+///       type     = "STRING"
 ///       }, {
-///       "variable" = "instance_name"
-///       "value"    = "terraform-test-instance"
-///       "type"     = "STRING"
+///       variable = "instance_name"
+///       value    = "terraform-test-instance"
+///       type     = "STRING"
 ///       }, {
-///       "variable" = "actuation_sa"
-///       "value"    = gcp_serviceaccount_account.actuation_service_account.email
-///       "type"     = "STRING"
+///       variable = "actuation_sa"
+///       value    = gcp_serviceaccount_account.actuation_service_account.email
+///       type     = "STRING"
 ///     }]
 ///   }
 ///   labels = {
@@ -898,8 +934,11 @@ import 'unit_operation_upgrade.dart';
 ///     "annotation-one" = "bar"
 ///   }
 /// }
-/// resource "gcp_saasruntime_unitoperation" "noop_upgrade_unit_operation" {
-///   depends_on          = [gcp_saasruntime_unitoperation.provision_unit_operation]
+/// resource "gcp_saasruntime_unit_operation" "noop_upgrade_unit_operation" {
+///   depends_on = [gcp_saasruntime_unit_operation.provision_unit_operation]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = local.location
 ///   unit_operation_id   = "upgrade-unit-operation"
 ///   unit                = gcp_saasruntime_unit.example_unit.id
@@ -907,30 +946,33 @@ import 'unit_operation_upgrade.dart';
 ///   upgrade = {
 ///     release = gcp_saasruntime_release.example_release.id
 ///     input_variables = [{
-///       "variable" = "tenant_project_id"
-///       "value"    = gcp_organizations_project.tenant_project.project_id
-///       "type"     = "STRING"
+///       variable = "tenant_project_id"
+///       value    = gcp_organizations_project.tenant_project.project_id
+///       type     = "STRING"
 ///       }, {
-///       "variable" = "tenant_project_number"
-///       "value"    = gcp_organizations_project.tenant_project.number
-///       "type"     = "INT"
+///       variable = "tenant_project_number"
+///       value    = gcp_organizations_project.tenant_project.number
+///       type     = "INT"
 ///       }, {
-///       "variable" = "zone"
-///       "value"    = "us-central1-a"
-///       "type"     = "STRING"
+///       variable = "zone"
+///       value    = "us-central1-a"
+///       type     = "STRING"
 ///       }, {
-///       "variable" = "instance_name"
-///       "value"    = "terraform-test-instance"
-///       "type"     = "STRING"
+///       variable = "instance_name"
+///       value    = "terraform-test-instance"
+///       type     = "STRING"
 ///       }, {
-///       "variable" = "actuation_sa"
-///       "value"    = gcp_serviceaccount_account.actuation_service_account.email
-///       "type"     = "STRING"
+///       variable = "actuation_sa"
+///       value    = gcp_serviceaccount_account.actuation_service_account.email
+///       type     = "STRING"
 ///     }]
 ///   }
 /// }
-/// resource "gcp_saasruntime_unitoperation" "deprovision_operation" {
-///   depends_on          = [gcp_saasruntime_unitoperation.noop_upgrade_unit_operation]
+/// resource "gcp_saasruntime_unit_operation" "deprovision_operation" {
+///   depends_on = [gcp_saasruntime_unit_operation.noop_upgrade_unit_operation]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location            = local.location
 ///   unit_operation_id   = "deprovision-unit-operation"
 ///   unit                = gcp_saasruntime_unit.example_unit.id
@@ -1456,7 +1498,7 @@ class UnitOperation extends pulumi.CustomResource {
           'gcp:saasruntime/unitOperation:UnitOperation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

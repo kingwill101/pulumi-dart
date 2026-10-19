@@ -103,7 +103,7 @@ import 'attached_disk_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -139,7 +139,7 @@ import 'attached_disk_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -147,11 +147,17 @@ import 'attached_disk_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_attacheddisk" "default" {
+/// resource "gcp_compute_attached_disk" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disk     = defaultGoogleComputeDisk.id
 ///   instance = gcp_compute_instance.default.id
 /// }
 /// resource "gcp_compute_instance" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "attached-disk-instance"
 ///   machine_type = "e2-medium"
 ///   zone         = "us-west1-a"
@@ -316,7 +322,7 @@ class AttachedDisk extends pulumi.CustomResource {
           'gcp:compute/attachedDisk:AttachedDisk',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     deviceName = registerOutput<String>('deviceName');

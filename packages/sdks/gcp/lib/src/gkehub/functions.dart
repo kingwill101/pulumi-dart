@@ -53,7 +53,7 @@ import 'get_scope_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -71,7 +71,7 @@ import 'get_scope_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -79,7 +79,7 @@ import 'get_scope_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_gkehub_getfeature" "example" {
+/// data "gcp_gkehub_feature" "example" {
 ///   location = "global"
 ///   name     = "servicemesh"
 /// }
@@ -193,7 +193,7 @@ pulumi.Output<GetFeatureResult> getFeatureOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -212,7 +212,7 @@ pulumi.Output<GetFeatureResult> getFeatureOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -220,7 +220,7 @@ pulumi.Output<GetFeatureResult> getFeatureOutput(
 ///   }
 /// }
 ///
-/// data "gcp_gkehub_getfeatureiampolicy" "policy" {
+/// data "gcp_gkehub_feature_iam_policy" "policy" {
 ///   project  = feature.project
 ///   location = feature.location
 ///   name     = feature.name
@@ -336,7 +336,7 @@ pulumi.Output<GetFeatureIamPolicyResult> getFeatureIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -355,7 +355,7 @@ pulumi.Output<GetFeatureIamPolicyResult> getFeatureIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -363,7 +363,7 @@ pulumi.Output<GetFeatureIamPolicyResult> getFeatureIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_gkehub_getmembership" "example" {
+/// data "gcp_gkehub_membership" "example" {
 ///   project       = "my-project-id"
 ///   location      = "global"
 ///   membership_id = "my-membership-id"
@@ -484,7 +484,7 @@ pulumi.Output<GetMembershipResult> getMembershipOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -504,7 +504,7 @@ pulumi.Output<GetMembershipResult> getMembershipOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -512,7 +512,7 @@ pulumi.Output<GetMembershipResult> getMembershipOutput(
 ///   }
 /// }
 ///
-/// data "gcp_gkehub_getmembershipbinding" "example" {
+/// data "gcp_gkehub_membership_binding" "example" {
 ///   location              = "global"
 ///   membership_id         = "my-membership-id"
 ///   membership_binding_id = "my-membership-binding-id"
@@ -632,7 +632,7 @@ pulumi.Output<GetMembershipBindingResult> getMembershipBindingOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -651,7 +651,7 @@ pulumi.Output<GetMembershipBindingResult> getMembershipBindingOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -659,7 +659,7 @@ pulumi.Output<GetMembershipBindingResult> getMembershipBindingOutput(
 ///   }
 /// }
 ///
-/// data "gcp_gkehub_getmembershipiampolicy" "policy" {
+/// data "gcp_gkehub_membership_iam_policy" "policy" {
 ///   project       = membership.project
 ///   location      = membership.location
 ///   membership_id = membership.membershipId
@@ -773,7 +773,7 @@ pulumi.Output<GetMembershipIamPolicyResult> getMembershipIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkehub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkehub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -791,7 +791,7 @@ pulumi.Output<GetMembershipIamPolicyResult> getMembershipIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -799,7 +799,7 @@ pulumi.Output<GetMembershipIamPolicyResult> getMembershipIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_gkehub_getscopeiampolicy" "policy" {
+/// data "gcp_gkehub_scope_iam_policy" "policy" {
 ///   project  = scope.project
 ///   scope_id = scope.scopeId
 /// }

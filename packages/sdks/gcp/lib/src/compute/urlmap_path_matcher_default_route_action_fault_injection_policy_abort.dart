@@ -27,7 +27,7 @@ class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort {
 
   factory URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort.fromMap(Map<String, dynamic> map) {
     return URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyAbort(
-      httpStatus: (() { final guardedValue = map['httpStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      httpStatus: (() { final guardedValue = map['httpStatus']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       percentage: (() { final guardedValue = map['percentage']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }

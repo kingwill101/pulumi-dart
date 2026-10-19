@@ -348,8 +348,8 @@ import 'lb_edge_extension_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -485,7 +485,7 @@ import 'lb_edge_extension_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -494,48 +494,63 @@ import 'lb_edge_extension_state.dart';
 /// }
 ///
 /// # forwarding rule
-/// resource "gcp_compute_globalforwardingrule" "default" {
+/// resource "gcp_compute_global_forwarding_rule" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "elb-forwarding-rule"
-///   target                = gcp_compute_targethttpproxy.default.id
+///   target                = gcp_compute_target_http_proxy.default.id
 ///   port_range            = "80"
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
 ///   network_tier          = "PREMIUM"
 /// }
-/// resource "gcp_compute_targethttpproxy" "default" {
+/// resource "gcp_compute_target_http_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "elb-target-http-proxy"
 ///   description = "a description"
-///   url_map     = gcp_compute_urlmap.default.id
+///   url_map     = gcp_compute_u_r_l_map.default.id
 /// }
-/// resource "gcp_compute_urlmap" "default" {
+/// resource "gcp_compute_u_r_l_map" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "elb-url-map"
 ///   description     = "a description"
-///   default_service = gcp_compute_backendservice.default.id
+///   default_service = gcp_compute_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.default.id
+///     default_service = gcp_compute_backend_service.default.id
 ///     path_rules {
 ///       paths   = ["/*"]
-///       service = gcp_compute_backendservice.default.id
+///       service = gcp_compute_backend_service.default.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "elb-backend-subnet"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
 /// }
-/// resource "gcp_networkservices_lbedgeextension" "default" {
+/// resource "gcp_networkservices_lb_edge_extension" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "elb-edge-ext"
 ///   description           = "my edge extension"
 ///   location              = "global"
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   forwarding_rules      = [gcp_compute_globalforwardingrule.default.self_link]
+///   forwarding_rules      = [gcp_compute_global_forwarding_rule.default.self_link]
 ///   extension_chains {
 ///     name = "chain1"
 ///     match_condition = {
@@ -543,7 +558,7 @@ import 'lb_edge_extension_state.dart';
 ///     }
 ///     extensions {
 ///       name               = "ext11"
-///       service            = gcp_networkservices_wasmplugin.wasm-plugin.id
+///       service            = gcp_networkservices_wasm_plugin.wasm-plugin.id
 ///       fail_open          = false
 ///       supported_events   = ["REQUEST_HEADERS"]
 ///       forward_headers    = ["custom-header"]
@@ -554,7 +569,10 @@ import 'lb_edge_extension_state.dart';
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_networkservices_wasmplugin" "wasm-plugin" {
+/// resource "gcp_networkservices_wasm_plugin" "wasm-plugin" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "elb-wasm-plugin-data"
 ///   description     = "my wasm plugin"
 ///   main_version_id = "v1"
@@ -862,7 +880,7 @@ class LbEdgeExtension extends pulumi.CustomResource {
           'gcp:networkservices/lbEdgeExtension:LbEdgeExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

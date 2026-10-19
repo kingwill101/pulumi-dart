@@ -44,7 +44,7 @@ class EnvironmentAddonsConfig extends pulumi.CustomResource {
           'gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     analyticsEnabled = registerOutput<bool?>('analyticsEnabled');
     envId = registerOutput<String>('envId');

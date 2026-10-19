@@ -133,7 +133,7 @@ import 'region_network_policy_traffic_classification_rule_target_secure_tag.dart
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -181,7 +181,7 @@ import 'region_network_policy_traffic_classification_rule_target_secure_tag.dart
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -189,17 +189,23 @@ import 'region_network_policy_traffic_classification_rule_target_secure_tag.dart
 ///   }
 /// }
 ///
-/// resource "gcp_compute_regionnetworkpolicy" "basic_regional_network_policy" {
+/// resource "gcp_compute_region_network_policy" "basic_regional_network_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "nw-policy"
 ///   description = "Sample regional network firewall policy"
 ///   project     = "my-project-name"
 ///   region      = "us-west1"
 /// }
-/// resource "gcp_compute_regionnetworkpolicytrafficclassificationrule" "primary" {
+/// resource "gcp_compute_region_network_policy_traffic_classification_rule" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rule_name      = "test-rule"
 ///   description    = "This is a simple rule description"
 ///   disabled       = false
-///   network_policy = gcp_compute_regionnetworkpolicy.basic_regional_network_policy.name
+///   network_policy = gcp_compute_region_network_policy.basic_regional_network_policy.name
 ///   priority       = 1000
 ///   region         = "us-west1"
 ///   action = {
@@ -210,7 +216,7 @@ import 'region_network_policy_traffic_classification_rule_target_secure_tag.dart
 ///     src_ip_ranges  = ["10.100.0.1/32"]
 ///     dest_ip_ranges = ["11.100.0.1/32"]
 ///     layer4_configs = [{
-///       "ipProtocol" = "all"
+///       ip_protocol = "all"
 ///     }]
 ///   }
 /// }
@@ -380,7 +386,7 @@ class RegionNetworkPolicyTrafficClassificationRule extends pulumi.CustomResource
           'gcp:compute/regionNetworkPolicyTrafficClassificationRule:RegionNetworkPolicyTrafficClassificationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     action = registerOutput<RegionNetworkPolicyTrafficClassificationRuleAction?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RegionNetworkPolicyTrafficClassificationRuleAction.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');

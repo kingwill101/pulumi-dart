@@ -98,7 +98,7 @@ import 'report_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/migrationcenter"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/migrationcenter"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -138,7 +138,7 @@ import 'report_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -147,21 +147,30 @@ import 'report_config_state.dart';
 /// }
 ///
 /// resource "gcp_migrationcenter_group" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "us-central1"
 ///   group_id = "group-test"
 /// }
-/// resource "gcp_migrationcenter_preferenceset" "default" {
+/// resource "gcp_migrationcenter_preference_set" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "us-central1"
 ///   preference_set_id = "pref-set-test"
 /// }
-/// resource "gcp_migrationcenter_reportconfig" "default" {
+/// resource "gcp_migrationcenter_report_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us-central1"
 ///   report_config_id = "report-config-test"
 ///   description      = "Terraform integration test description"
 ///   display_name     = "Terraform integration test display"
 ///   group_preferenceset_assignments {
 ///     group          = gcp_migrationcenter_group.default.id
-///     preference_set = gcp_migrationcenter_preferenceset.default.id
+///     preference_set = gcp_migrationcenter_preference_set.default.id
 ///   }
 /// }
 /// ```
@@ -303,7 +312,7 @@ class ReportConfig extends pulumi.CustomResource {
           'gcp:migrationcenter/reportConfig:ReportConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -248,9 +248,9 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -342,7 +342,7 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -350,10 +350,13 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aifeatureonlinestore" "featureonlinestore" {
+/// resource "gcp_vertex_ai_feature_online_store" "featureonlinestore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example_feature_view"
 ///   labels = {
 ///     "foo" = "bar"
@@ -368,21 +371,52 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "tf-test-dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "example_feature_view"
 ///   friendly_name = "test"
 ///   description   = "This is a test description"
 ///   location      = "US"
 /// }
 /// resource "gcp_bigquery_table" "tf-test-table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   dataset_id          = gcp_bigquery_dataset.tf-test-dataset.dataset_id
 ///   table_id            = "example_feature_view"
-///   schema              = "  [\n  {\n    \\\"name\\\": \\\"entity_id\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"description\\\": \\\"Test default entity_id\\\"\n  },\n    {\n    \\\"name\\\": \\\"test_entity_column\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"type\\\": \\\"STRING\\\",\n    \\\"description\\\": \\\"test secondary entity column\\\"\n  },\n  {\n    \\\"name\\\": \\\"feature_timestamp\\\",\n    \\\"mode\\\": \\\"NULLABLE\\\",\n    \\\"type\\\": \\\"TIMESTAMP\\\",\n    \\\"description\\\": \\\"Default timestamp value\\\"\n  }\n]\n"
+///   schema              = <<EOF
+///   [
+///   {
+///     \"name\": \"entity_id\",
+///     \"mode\": \"NULLABLE\",
+///     \"type\": \"STRING\",
+///     \"description\": \"Test default entity_id\"
+///   },
+///     {
+///     \"name\": \"test_entity_column\",
+///     \"mode\": \"NULLABLE\",
+///     \"type\": \"STRING\",
+///     \"description\": \"test secondary entity column\"
+///   },
+///   {
+///     \"name\": \"feature_timestamp\",
+///     \"mode\": \"NULLABLE\",
+///     \"type\": \"TIMESTAMP\",
+///     \"description\": \"Default timestamp value\"
+///   }
+/// ]
+/// EOF
+///
 /// }
-/// resource "gcp_vertex_aifeatureonlinestorefeatureview" "featureview" {
+/// resource "gcp_vertex_ai_feature_online_store_featureview" "featureview" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example_feature_view"
 ///   region               = "us-central1"
-///   feature_online_store = gcp_vertex_aifeatureonlinestore.featureonlinestore.name
+///   feature_online_store = gcp_vertex_ai_feature_online_store.featureonlinestore.name
 ///   sync_config = {
 ///     cron = "0 0 * * *"
 ///   }
@@ -870,8 +904,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -991,7 +1025,7 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -999,7 +1033,10 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aifeatureonlinestore" "featureonlinestore" {
+/// resource "gcp_vertex_ai_feature_online_store" "featureonlinestore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example_feature_view_feature_registry"
 ///   labels = {
 ///     "foo" = "bar"
@@ -1014,18 +1051,46 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "sample_dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "example_feature_view_feature_registry"
 ///   friendly_name = "test"
 ///   description   = "This is a test description"
 ///   location      = "US"
 /// }
 /// resource "gcp_bigquery_table" "sample_table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   dataset_id          = gcp_bigquery_dataset.sample_dataset.dataset_id
 ///   table_id            = "example_feature_view_feature_registry"
-///   schema              = "[\n    {\n        \\\"name\\\": \\\"feature_id\\\",\n        \\\"type\\\": \\\"STRING\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    },\n    {\n        \\\"name\\\": \\\"example_feature_view_feature_registry\\\",\n        \\\"type\\\": \\\"STRING\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    },\n    {\n        \\\"name\\\": \\\"feature_timestamp\\\",\n        \\\"type\\\": \\\"TIMESTAMP\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    }\n]\n"
+///   schema              = <<EOF
+/// [
+///     {
+///         \"name\": \"feature_id\",
+///         \"type\": \"STRING\",
+///         \"mode\": \"NULLABLE\"
+///     },
+///     {
+///         \"name\": \"example_feature_view_feature_registry\",
+///         \"type\": \"STRING\",
+///         \"mode\": \"NULLABLE\"
+///     },
+///     {
+///         \"name\": \"feature_timestamp\",
+///         \"type\": \"TIMESTAMP\",
+///         \"mode\": \"NULLABLE\"
+///     }
+/// ]
+/// EOF
+///
 /// }
-/// resource "gcp_vertex_aifeaturegroup" "sample_feature_group" {
+/// resource "gcp_vertex_ai_feature_group" "sample_feature_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example_feature_view_feature_registry"
 ///   description = "A sample feature group"
 ///   region      = "us-central1"
@@ -1039,26 +1104,32 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///     entity_id_columns = ["feature_id"]
 ///   }
 /// }
-/// resource "gcp_vertex_aifeaturegroupfeature" "sample_feature" {
+/// resource "gcp_vertex_ai_feature_group_feature" "sample_feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example_feature_view_feature_registry"
 ///   region        = "us-central1"
-///   feature_group = gcp_vertex_aifeaturegroup.sample_feature_group.name
+///   feature_group = gcp_vertex_ai_feature_group.sample_feature_group.name
 ///   description   = "A sample feature"
 ///   labels = {
 ///     "label-one" = "value-one"
 ///   }
 /// }
-/// resource "gcp_vertex_aifeatureonlinestorefeatureview" "featureview_featureregistry" {
+/// resource "gcp_vertex_ai_feature_online_store_featureview" "featureview_featureregistry" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example_feature_view_feature_registry"
 ///   region               = "us-central1"
-///   feature_online_store = gcp_vertex_aifeatureonlinestore.featureonlinestore.name
+///   feature_online_store = gcp_vertex_ai_feature_online_store.featureonlinestore.name
 ///   sync_config = {
 ///     cron = "0 0 * * *"
 ///   }
 ///   feature_registry_source = {
 ///     feature_groups = [{
-///       "featureGroupId" = gcp_vertex_aifeaturegroup.sample_feature_group.name
-///       "featureIds"     = [gcp_vertex_aifeaturegroupfeature.sample_feature.name]
+///       feature_group_id = gcp_vertex_ai_feature_group.sample_feature_group.name
+///       feature_ids      = [gcp_vertex_ai_feature_group_feature.sample_feature.name]
 ///     }]
 ///   }
 /// }
@@ -1288,8 +1359,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///
 /// const testProject = gcp.organizations.getProject({});
 /// const project = new gcp.organizations.Project("project", {
-///     projectId: "tf-test_79241",
-///     name: "tf-test_57926",
+///     projectId: "tf-test_48234",
+///     name: "tf-test_74065",
 ///     orgId: "123456789",
 ///     billingAccount: "000000-0000000-0000000-000000",
 ///     deletionPolicy: "DELETE",
@@ -1412,8 +1483,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///
 /// test_project = gcp.organizations.get_project()
 /// project = gcp.organizations.Project("project",
-///     project_id="tf-test_79241",
-///     name="tf-test_57926",
+///     project_id="tf-test_48234",
+///     name="tf-test_74065",
 ///     org_id="123456789",
 ///     billing_account="000000-0000000-0000000-000000",
 ///     deletion_policy="DELETE")
@@ -1532,8 +1603,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///
 ///     var project = new Gcp.Organizations.Project("project", new()
 ///     {
-///         ProjectId = "tf-test_79241",
-///         Name = "tf-test_57926",
+///         ProjectId = "tf-test_48234",
+///         Name = "tf-test_74065",
 ///         OrgId = "123456789",
 ///         BillingAccount = "000000-0000000-0000000-000000",
 ///         DeletionPolicy = "DELETE",
@@ -1728,10 +1799,10 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -1743,8 +1814,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// 			return err
 /// 		}
 /// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
-/// 			ProjectId:      pulumi.String("tf-test_79241"),
-/// 			Name:           pulumi.String("tf-test_57926"),
+/// 			ProjectId:      pulumi.String("tf-test_48234"),
+/// 			Name:           pulumi.String("tf-test_74065"),
 /// 			OrgId:          pulumi.String("123456789"),
 /// 			BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 /// 			DeletionPolicy: pulumi.String("DELETE"),
@@ -1912,7 +1983,7 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1923,40 +1994,58 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "testProject" {
+/// data "gcp_organizations_project" "testProject" {
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
-///   project_id      = "tf-test_79241"
-///   name            = "tf-test_57926"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project_id      = "tf-test_48234"
+///   name            = "tf-test_74065"
 ///   org_id          = "123456789"
 ///   billing_account = "000000-0000000-0000000-000000"
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "time_sleep" "wait_60_seconds" {
-///   depends_on      = [gcp_organizations_project.project]
+///   depends_on = [gcp_organizations_project.project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "60s"
 /// }
 /// resource "time_sleep" "wait_30_seconds" {
-///   depends_on      = [gcp_bigquery_datasetiammember.viewer]
+///   depends_on = [gcp_bigquery_dataset_iam_member.viewer]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "30s"
 /// }
 /// resource "gcp_projects_service" "vertexai" {
 ///   depends_on = [time_sleep.wait_60_seconds]
-///   service    = "aiplatform.googleapis.com"
-///   project    = gcp_organizations_project.project.project_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service = "aiplatform.googleapis.com"
+///   project = gcp_organizations_project.project.project_id
 /// }
-/// resource "gcp_bigquery_datasetiammember" "viewer" {
-///   depends_on = [gcp_vertex_aifeatureonlinestore.featureonlinestore]
-///   project    = data.gcp_organizations_getproject.testProject.project_id
+/// resource "gcp_bigquery_dataset_iam_member" "viewer" {
+///   depends_on = [gcp_vertex_ai_feature_online_store.featureonlinestore]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project    = data.gcp_organizations_project.testProject.project_id
 ///   dataset_id = gcp_bigquery_dataset.sample_dataset.dataset_id
 ///   role       = "roles/bigquery.dataViewer"
 ///   member     ="serviceAccount:service-${gcp_organizations_project.project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_vertex_aifeatureonlinestore" "featureonlinestore" {
+/// resource "gcp_vertex_ai_feature_online_store" "featureonlinestore" {
 ///   depends_on = [gcp_projects_service.vertexai]
-///   name       = "example_cross_project_featureview"
-///   project    = gcp_organizations_project.project.project_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name    = "example_cross_project_featureview"
+///   project = gcp_organizations_project.project.project_id
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -1970,18 +2059,46 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "sample_dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "example_cross_project_featureview"
 ///   friendly_name = "test"
 ///   description   = "This is a test description"
 ///   location      = "US"
 /// }
 /// resource "gcp_bigquery_table" "sample_table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   dataset_id          = gcp_bigquery_dataset.sample_dataset.dataset_id
 ///   table_id            = "example_cross_project_featureview"
-///   schema              = "[\n    {\n        \\\"name\\\": \\\"feature_id\\\",\n        \\\"type\\\": \\\"STRING\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    },\n    {\n        \\\"name\\\": \\\"example_cross_project_featureview\\\",\n        \\\"type\\\": \\\"STRING\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    },\n    {\n        \\\"name\\\": \\\"feature_timestamp\\\",\n        \\\"type\\\": \\\"TIMESTAMP\\\",\n        \\\"mode\\\": \\\"NULLABLE\\\"\n    }\n]\n"
+///   schema              = <<EOF
+/// [
+///     {
+///         \"name\": \"feature_id\",
+///         \"type\": \"STRING\",
+///         \"mode\": \"NULLABLE\"
+///     },
+///     {
+///         \"name\": \"example_cross_project_featureview\",
+///         \"type\": \"STRING\",
+///         \"mode\": \"NULLABLE\"
+///     },
+///     {
+///         \"name\": \"feature_timestamp\",
+///         \"type\": \"TIMESTAMP\",
+///         \"mode\": \"NULLABLE\"
+///     }
+/// ]
+/// EOF
+///
 /// }
-/// resource "gcp_vertex_aifeaturegroup" "sample_feature_group" {
+/// resource "gcp_vertex_ai_feature_group" "sample_feature_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example_cross_project_featureview"
 ///   description = "A sample feature group"
 ///   region      = "us-central1"
@@ -1995,30 +2112,36 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///     entity_id_columns = ["feature_id"]
 ///   }
 /// }
-/// resource "gcp_vertex_aifeaturegroupfeature" "sample_feature" {
+/// resource "gcp_vertex_ai_feature_group_feature" "sample_feature" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example_cross_project_featureview"
 ///   region        = "us-central1"
-///   feature_group = gcp_vertex_aifeaturegroup.sample_feature_group.name
+///   feature_group = gcp_vertex_ai_feature_group.sample_feature_group.name
 ///   description   = "A sample feature"
 ///   labels = {
 ///     "label-one" = "value-one"
 ///   }
 /// }
-/// resource "gcp_vertex_aifeatureonlinestorefeatureview" "cross_project_featureview" {
-///   depends_on           = [gcp_projects_service.vertexai, time_sleep.wait_30_seconds]
+/// resource "gcp_vertex_ai_feature_online_store_featureview" "cross_project_featureview" {
+///   depends_on = [gcp_projects_service.vertexai, time_sleep.wait_30_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example_cross_project_featureview"
 ///   project              = gcp_organizations_project.project.project_id
 ///   region               = "us-central1"
-///   feature_online_store = gcp_vertex_aifeatureonlinestore.featureonlinestore.name
+///   feature_online_store = gcp_vertex_ai_feature_online_store.featureonlinestore.name
 ///   sync_config = {
 ///     continuous = true
 ///   }
 ///   feature_registry_source = {
 ///     feature_groups = [{
-///       "featureGroupId" = gcp_vertex_aifeaturegroup.sample_feature_group.name
-///       "featureIds"     = [gcp_vertex_aifeaturegroupfeature.sample_feature.name]
+///       feature_group_id = gcp_vertex_ai_feature_group.sample_feature_group.name
+///       feature_ids      = [gcp_vertex_ai_feature_group_feature.sample_feature.name]
 ///     }]
-///     project_number = data.gcp_organizations_getproject.testProject.number
+///     project_number = data.gcp_organizations_project.testProject.number
 ///   }
 /// }
 /// ```
@@ -2075,8 +2198,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///             .build());
 ///
 ///         var project = new Project("project", ProjectArgs.builder()
-///             .projectId("tf-test_79241")
-///             .name("tf-test_57926")
+///             .projectId("tf-test_48234")
+///             .name("tf-test_74065")
 ///             .orgId("123456789")
 ///             .billingAccount("000000-0000000-0000000-000000")
 ///             .deletionPolicy("DELETE")
@@ -2213,8 +2336,8 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///   project:
 ///     type: gcp:organizations:Project
 ///     properties:
-///       projectId: tf-test_79241
-///       name: tf-test_57926
+///       projectId: tf-test_48234
+///       name: tf-test_74065
 ///       orgId: '123456789'
 ///       billingAccount: 000000-0000000-0000000-000000
 ///       deletionPolicy: DELETE
@@ -2680,9 +2803,9 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2807,7 +2930,7 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2815,10 +2938,13 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_vertex_aifeatureonlinestore" "featureonlinestore" {
+/// resource "gcp_vertex_ai_feature_online_store" "featureonlinestore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example_feature_view_vector_search"
 ///   labels = {
 ///     "foo" = "bar"
@@ -2830,21 +2956,76 @@ import 'ai_feature_online_store_featureview_vector_search_config.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "tf-test-dataset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "example_feature_view_vector_search"
 ///   friendly_name = "test"
 ///   description   = "This is a test description"
 ///   location      = "US"
 /// }
 /// resource "gcp_bigquery_table" "tf-test-table" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   deletion_protection = false
 ///   dataset_id          = gcp_bigquery_dataset.tf-test-dataset.dataset_id
 ///   table_id            = "example_feature_view_vector_search"
-///   schema              = "[\n{\n  \\\"name\\\": \\\"test_primary_id\\\",\n  \\\"mode\\\": \\\"NULLABLE\\\",\n  \\\"type\\\": \\\"STRING\\\",\n  \\\"description\\\": \\\"primary test id\\\"\n},\n{\n  \\\"name\\\": \\\"embedding\\\",\n  \\\"mode\\\": \\\"REPEATED\\\",\n  \\\"type\\\": \\\"FLOAT\\\",\n  \\\"description\\\": \\\"embedding column for primary_id column\\\"\n},\n{\n  \\\"name\\\": \\\"country\\\",\n  \\\"mode\\\": \\\"NULLABLE\\\",\n  \\\"type\\\": \\\"STRING\\\",\n  \\\"description\\\": \\\"country\\\"\n},\n{\n  \\\"name\\\": \\\"test_crowding_column\\\",\n  \\\"mode\\\": \\\"NULLABLE\\\",\n  \\\"type\\\": \\\"INTEGER\\\",\n  \\\"description\\\": \\\"test crowding column\\\"\n},\n{\n  \\\"name\\\": \\\"entity_id\\\",\n  \\\"mode\\\": \\\"NULLABLE\\\",\n  \\\"type\\\": \\\"STRING\\\",\n  \\\"description\\\": \\\"Test default entity_id\\\"\n},\n{\n  \\\"name\\\": \\\"test_entity_column\\\",\n  \\\"mode\\\": \\\"NULLABLE\\\",\n  \\\"type\\\": \\\"STRING\\\",\n  \\\"description\\\": \\\"test secondary entity column\\\"\n},\n{\n  \\\"name\\\": \\\"feature_timestamp\\\",\n  \\\"mode\\\": \\\"NULLABLE\\\",\n  \\\"type\\\": \\\"TIMESTAMP\\\",\n  \\\"description\\\": \\\"Default timestamp value\\\"\n}\n]\n"
+///   schema              = <<EOF
+/// [
+/// {
+///   \"name\": \"test_primary_id\",
+///   \"mode\": \"NULLABLE\",
+///   \"type\": \"STRING\",
+///   \"description\": \"primary test id\"
+/// },
+/// {
+///   \"name\": \"embedding\",
+///   \"mode\": \"REPEATED\",
+///   \"type\": \"FLOAT\",
+///   \"description\": \"embedding column for primary_id column\"
+/// },
+/// {
+///   \"name\": \"country\",
+///   \"mode\": \"NULLABLE\",
+///   \"type\": \"STRING\",
+///   \"description\": \"country\"
+/// },
+/// {
+///   \"name\": \"test_crowding_column\",
+///   \"mode\": \"NULLABLE\",
+///   \"type\": \"INTEGER\",
+///   \"description\": \"test crowding column\"
+/// },
+/// {
+///   \"name\": \"entity_id\",
+///   \"mode\": \"NULLABLE\",
+///   \"type\": \"STRING\",
+///   \"description\": \"Test default entity_id\"
+/// },
+/// {
+///   \"name\": \"test_entity_column\",
+///   \"mode\": \"NULLABLE\",
+///   \"type\": \"STRING\",
+///   \"description\": \"test secondary entity column\"
+/// },
+/// {
+///   \"name\": \"feature_timestamp\",
+///   \"mode\": \"NULLABLE\",
+///   \"type\": \"TIMESTAMP\",
+///   \"description\": \"Default timestamp value\"
 /// }
-/// resource "gcp_vertex_aifeatureonlinestorefeatureview" "featureview_vector_search" {
+/// ]
+/// EOF
+///
+/// }
+/// resource "gcp_vertex_ai_feature_online_store_featureview" "featureview_vector_search" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example_feature_view_vector_search"
 ///   region               = "us-central1"
-///   feature_online_store = gcp_vertex_aifeatureonlinestore.featureonlinestore.name
+///   feature_online_store = gcp_vertex_ai_feature_online_store.featureonlinestore.name
 ///   sync_config = {
 ///     cron = "0 0 * * *"
 ///   }
@@ -3178,7 +3359,7 @@ class AiFeatureOnlineStoreFeatureview extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     bigQuerySource = registerOutput<AiFeatureOnlineStoreFeatureviewBigQuerySource?>('bigQuerySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiFeatureOnlineStoreFeatureviewBigQuerySource.fromMap((guardedValue as Map).cast<String, dynamic>()); });

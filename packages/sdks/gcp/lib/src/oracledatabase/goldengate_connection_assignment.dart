@@ -82,7 +82,7 @@ import 'goldengate_connection_assignment_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/oracledatabase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/oracledatabase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -110,7 +110,7 @@ import 'goldengate_connection_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -118,7 +118,10 @@ import 'goldengate_connection_assignment_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_oracledatabase_goldengateconnectionassignment" "assignment" {
+/// resource "gcp_oracledatabase_goldengate_connection_assignment" "assignment" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   goldengate_connection_assignment_id = "my-assignment"
 ///   display_name                        = "my-assignment"
 ///   location                            = "us-east4"
@@ -257,7 +260,7 @@ class GoldengateConnectionAssignment extends pulumi.CustomResource {
           'gcp:oracledatabase/goldengateConnectionAssignment:GoldengateConnectionAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

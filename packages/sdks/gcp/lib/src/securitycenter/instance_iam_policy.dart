@@ -57,7 +57,7 @@ import 'instance_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datafusion"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -76,7 +76,7 @@ import 'instance_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -85,6 +85,9 @@ import 'instance_iam_policy_state.dart';
 /// }
 ///
 /// resource "gcp_datafusion_instance" "basic_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-instance"
 ///   region = "us-central1"
 ///   type   = "BASIC"
@@ -276,9 +279,9 @@ import 'instance_iam_policy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datafusion"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -340,7 +343,7 @@ import 'instance_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -348,10 +351,13 @@ import 'instance_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_appengine_getdefaultserviceaccount" "default" {
+/// data "gcp_appengine_default_service_account" "default" {
 /// }
 ///
 /// resource "gcp_datafusion_instance" "extended_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "my-instance"
 ///   description                   = "My Data Fusion instance"
 ///   display_name                  = "My Data Fusion instance"
@@ -360,13 +366,13 @@ import 'instance_iam_policy_state.dart';
 ///   enable_stackdriver_logging    = true
 ///   enable_stackdriver_monitoring = true
 ///   private_instance              = true
-///   dataproc_service_account      = data.gcp_appengine_getdefaultserviceaccount.default.email
+///   dataproc_service_account      = data.gcp_appengine_default_service_account.default.email
 ///   labels = {
 ///     "example_key" = "example_value"
 ///   }
 ///   network_config = {
 ///     network       = "default"
-///     ip_allocation ="${gcp_compute_globaladdress.private_ip_alloc.address}/${gcp_compute_globaladdress.private_ip_alloc.prefix_length}"
+///     ip_allocation ="${gcp_compute_global_address.private_ip_alloc.address}/${gcp_compute_global_address.private_ip_alloc.prefix_length}"
 ///   }
 ///   accelerators {
 ///     accelerator_type = "CDC"
@@ -374,9 +380,15 @@ import 'instance_iam_policy_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "datafusion-full-network"
 /// }
-/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+/// resource "gcp_compute_global_address" "private_ip_alloc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "datafusion-ip-alloc"
 ///   address_type  = "INTERNAL"
 ///   purpose       = "VPC_PEERING"
@@ -623,8 +635,8 @@ import 'instance_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datafusion"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -678,7 +690,7 @@ import 'instance_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -687,6 +699,9 @@ import 'instance_iam_policy_state.dart';
 /// }
 ///
 /// resource "gcp_datafusion_instance" "psc_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "psc-instance"
 ///   region           = "us-central1"
 ///   type             = "BASIC"
@@ -694,22 +709,31 @@ import 'instance_iam_policy_state.dart';
 ///   network_config = {
 ///     connection_type = "PRIVATE_SERVICE_CONNECT_INTERFACES"
 ///     private_service_connect_config = {
-///       network_attachment     = gcp_compute_networkattachment.psc.id
+///       network_attachment     = gcp_compute_network_attachment.psc.id
 ///       unreachable_cidr_block = "192.168.0.0/25"
 ///     }
 ///   }
 /// }
 /// resource "gcp_compute_network" "psc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "datafusion-psc-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "psc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "datafusion-psc-subnet"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.psc.id
 ///   ip_cidr_range = "10.0.0.0/16"
 /// }
-/// resource "gcp_compute_networkattachment" "psc" {
+/// resource "gcp_compute_network_attachment" "psc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "datafusion-psc-attachment"
 ///   region                = "us-central1"
 ///   connection_preference = "ACCEPT_AUTOMATIC"
@@ -954,9 +978,9 @@ import 'instance_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1016,7 +1040,7 @@ import 'instance_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1024,36 +1048,51 @@ import 'instance_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_datafusion_instance" "cmek" {
-///   depends_on = [gcp_kms_cryptokeyiammember.crypto_key_member_gcs_sa]
-///   name       = "my-instance"
-///   region     = "us-central1"
-///   type       = "BASIC"
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.crypto_key_member_gcs_sa]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name   = "my-instance"
+///   region = "us-central1"
+///   type   = "BASIC"
 ///   crypto_key_config = {
-///     key_reference = gcp_kms_cryptokey.crypto_key.id
+///     key_reference = gcp_kms_crypto_key.crypto_key.id
 ///   }
 /// }
-/// resource "gcp_kms_cryptokey" "crypto_key" {
+/// resource "gcp_kms_crypto_key" "crypto_key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-instance"
-///   key_ring = gcp_kms_keyring.key_ring.id
+///   key_ring = gcp_kms_key_ring.key_ring.id
 /// }
-/// resource "gcp_kms_keyring" "key_ring" {
+/// resource "gcp_kms_key_ring" "key_ring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-instance"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key_member_cdf_sa" {
-///   crypto_key_id = gcp_kms_cryptokey.crypto_key.id
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key_member_cdf_sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = gcp_kms_crypto_key.crypto_key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gcp-sa-datafusion.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gcp-sa-datafusion.iam.gserviceaccount.com"
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "crypto_key_member_gcs_sa" {
-///   depends_on    = [gcp_kms_cryptokeyiammember.crypto_key_member_cdf_sa]
-///   crypto_key_id = gcp_kms_cryptokey.crypto_key.id
+/// resource "gcp_kms_crypto_key_i_a_m_member" "crypto_key_member_gcs_sa" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.crypto_key_member_cdf_sa]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = gcp_kms_crypto_key.crypto_key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:service-${data.gcp_organizations_getproject.project.number}@gs-project-accounts.iam.gserviceaccount.com"
+///   member        ="serviceAccount:service-${data.gcp_organizations_project.project.number}@gs-project-accounts.iam.gserviceaccount.com"
 /// }
 /// ```
 /// ```java
@@ -1224,7 +1263,7 @@ import 'instance_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datafusion"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1244,7 +1283,7 @@ import 'instance_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1253,6 +1292,9 @@ import 'instance_iam_policy_state.dart';
 /// }
 ///
 /// resource "gcp_datafusion_instance" "enterprise_instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-instance"
 ///   region      = "us-central1"
 ///   type        = "ENTERPRISE"
@@ -1366,8 +1408,8 @@ import 'instance_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1396,7 +1438,7 @@ import 'instance_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1405,6 +1447,9 @@ import 'instance_iam_policy_state.dart';
 /// }
 ///
 /// resource "gcp_datafusion_instance" "event" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-instance"
 ///   region = "us-central1"
 ///   type   = "BASIC"
@@ -1414,6 +1459,9 @@ import 'instance_iam_policy_state.dart';
 ///   }
 /// }
 /// resource "gcp_pubsub_topic" "event" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my-instance"
 /// }
 /// ```
@@ -1523,7 +1571,7 @@ import 'instance_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datafusion"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1543,7 +1591,7 @@ import 'instance_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1552,6 +1600,9 @@ import 'instance_iam_policy_state.dart';
 /// }
 ///
 /// resource "gcp_datafusion_instance" "zone" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "my-instance"
 ///   region = "us-central1"
 ///   zone   = "us-central1-a"
@@ -1650,7 +1701,7 @@ import 'instance_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/datafusion"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/datafusion"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1671,7 +1722,7 @@ import 'instance_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1680,6 +1731,9 @@ import 'instance_iam_policy_state.dart';
 /// }
 ///
 /// resource "gcp_datafusion_instance" "data_fusion_instance_patch_revision" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "my-instance"
 ///   region         = "us-central1"
 ///   type           = "BASIC"
@@ -1774,7 +1828,7 @@ class InstanceIamPolicy extends pulumi.CustomResource {
           'gcp:securitycenter/instanceIamPolicy:InstanceIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     this.name = registerOutput<String>('name');

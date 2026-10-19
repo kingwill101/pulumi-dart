@@ -3,6 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_default_channel_profile_persona_property.dart';
 import 'app_default_channel_profile_web_widget_config.dart';
+import 'app_default_channel_profile_whatsapp_config.dart';
 
 class AppDefaultChannelProfile {
   /// The type of the channel profile.
@@ -28,6 +29,9 @@ class AppDefaultChannelProfile {
   /// Message for configuration for the web widget.
   /// Structure is documented below.
   final pulumi.Input<AppDefaultChannelProfileWebWidgetConfig?>? webWidgetConfig;
+  /// Configuration specific to WhatsApp deployments.
+  /// Structure is documented below.
+  final pulumi.Input<AppDefaultChannelProfileWhatsappConfig?>? whatsappConfig;
 
   /// Creates a new [AppDefaultChannelProfile].
   /// [channelType] The type of the channel profile.
@@ -36,6 +40,7 @@ class AppDefaultChannelProfile {
   /// [personaProperty] Represents the persona property of a channel.
   /// [profileId] The unique identifier of the channel profile.
   /// [webWidgetConfig] Message for configuration for the web widget.
+  /// [whatsappConfig] Configuration specific to WhatsApp deployments.
   const AppDefaultChannelProfile({
     this.channelType,
     this.disableBargeInControl,
@@ -43,6 +48,7 @@ class AppDefaultChannelProfile {
     this.personaProperty,
     this.profileId,
     this.webWidgetConfig,
+    this.whatsappConfig,
   });
 
   Map<String, dynamic> toMap() {
@@ -53,6 +59,7 @@ class AppDefaultChannelProfile {
       'personaProperty': ?pulumi.Input.mapOptionalInputValue<AppDefaultChannelProfilePersonaProperty, Map<String, dynamic>>(personaProperty, (value) => value.toMap()),
       'profileId': ?profileId,
       'webWidgetConfig': ?pulumi.Input.mapOptionalInputValue<AppDefaultChannelProfileWebWidgetConfig, Map<String, dynamic>>(webWidgetConfig, (value) => value.toMap()),
+      'whatsappConfig': ?pulumi.Input.mapOptionalInputValue<AppDefaultChannelProfileWhatsappConfig, Map<String, dynamic>>(whatsappConfig, (value) => value.toMap()),
     };
   }
 
@@ -64,6 +71,7 @@ class AppDefaultChannelProfile {
       personaProperty: (() { final guardedValue = map['personaProperty']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppDefaultChannelProfilePersonaProperty.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       profileId: (() { final guardedValue = map['profileId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       webWidgetConfig: (() { final guardedValue = map['webWidgetConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppDefaultChannelProfileWebWidgetConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      whatsappConfig: (() { final guardedValue = map['whatsappConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AppDefaultChannelProfileWhatsappConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }
 }

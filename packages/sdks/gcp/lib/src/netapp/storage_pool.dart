@@ -42,7 +42,7 @@ import 'storage_pool_state.dart';
 /// import * as pulumi from "@pulumi/pulumi";
 /// import * as gcp from "@pulumi/gcp";
 ///
-/// // Create a network or use datasource to reference existing network
+/// // Create a network or use function to reference existing network
 /// const peeringNetwork = new gcp.compute.Network("peering_network", {name: "test-network"});
 /// // Reserve a CIDR for NetApp Volumes to use
 /// // When using shared-VPCs, this resource needs to be created in host project
@@ -82,7 +82,7 @@ import 'storage_pool_state.dart';
 /// import pulumi
 /// import pulumi_gcp as gcp
 ///
-/// # Create a network or use datasource to reference existing network
+/// # Create a network or use function to reference existing network
 /// peering_network = gcp.compute.Network("peering_network", name="test-network")
 /// # Reserve a CIDR for NetApp Volumes to use
 /// # When using shared-VPCs, this resource needs to be created in host project
@@ -122,7 +122,7 @@ import 'storage_pool_state.dart';
 ///
 /// return await Deployment.RunAsync(() =>
 /// {
-///     // Create a network or use datasource to reference existing network
+///     // Create a network or use function to reference existing network
 ///     var peeringNetwork = new Gcp.Compute.Network("peering_network", new()
 ///     {
 ///         Name = "test-network",
@@ -178,15 +178,15 @@ import 'storage_pool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
 /// func main() {
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
-/// 		// Create a network or use datasource to reference existing network
+/// 		// Create a network or use function to reference existing network
 /// 		peeringNetwork, err := compute.NewNetwork(ctx, "peering_network", &compute.NetworkArgs{
 /// 			Name: pulumi.String("test-network"),
 /// 		})
@@ -245,7 +245,7 @@ import 'storage_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -253,13 +253,19 @@ import 'storage_pool_state.dart';
 ///   }
 /// }
 ///
-/// # Create a network or use datasource to reference existing network
+/// # Create a network or use function to reference existing network
 /// resource "gcp_compute_network" "peering_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "test-network"
 /// }
 /// # Reserve a CIDR for NetApp Volumes to use
 /// # When using shared-VPCs, this resource needs to be created in host project
-/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+/// resource "gcp_compute_global_address" "private_ip_alloc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "test-address"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -269,13 +275,19 @@ import 'storage_pool_state.dart';
 /// # Create a Private Service Access connection
 /// # When using shared-VPCs, this resource needs to be created in host project
 /// resource "gcp_servicenetworking_connection" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.peering_network.id
 ///   service                 = "netapp.servicenetworking.goog"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.private_ip_alloc.name]
 /// }
 /// # Modify the PSA Connection to allow import/export of custom routes
 /// # When using shared-VPCs, this resource needs to be created in host project
-/// resource "gcp_compute_networkpeeringroutesconfig" "route_updates" {
+/// resource "gcp_compute_network_peering_routes_config" "route_updates" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   peering              = gcp_servicenetworking_connection.default.peering
 ///   network              = gcp_compute_network.peering_network.name
 ///   import_custom_routes = true
@@ -283,7 +295,10 @@ import 'storage_pool_state.dart';
 /// }
 /// # Create a storage pool
 /// # Create this resource in the project which is expected to own the volumes
-/// resource "gcp_netapp_storagepool" "test_pool" {
+/// resource "gcp_netapp_storage_pool" "test_pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "test-pool"
 ///   location      = "us-central1"
 ///   service_level = "PREMIUM"
@@ -320,7 +335,7 @@ import 'storage_pool_state.dart';
 ///     }
 ///
 ///     public static void stack(Context ctx) {
-///         // Create a network or use datasource to reference existing network
+///         // Create a network or use function to reference existing network
 ///         var peeringNetwork = new Network("peeringNetwork", NetworkArgs.builder()
 ///             .name("test-network")
 ///             .build());
@@ -367,7 +382,7 @@ import 'storage_pool_state.dart';
 /// ```
 /// ```yaml
 /// resources:
-///   # Create a network or use datasource to reference existing network
+///   # Create a network or use function to reference existing network
 ///   peeringNetwork:
 ///     type: gcp:compute:Network
 ///     name: peering_network
@@ -505,13 +520,6 @@ class StoragePool extends pulumi.CustomResource {
   /// Specifies the replica zone for regional Flex pools. `zone` and `replicaZone` values can be swapped to initiate a
   /// [zone switch](https://cloud.google.com/netapp/volumes/docs/configure-and-use/storage-pools/edit-or-delete-storage-pool#switch_active_and_replica_zones).
   late final pulumi.Output<String?> replicaZone;
-  /// (Optional, Beta, Deprecated)
-  /// The effective scale tier of the storage pool. If `scaleTier` is not
-  /// specified during creation, this defaults to `SCALE_TIER_STANDARD`.
-  /// Possible values are: `SCALE_TIER_UNSPECIFIED`, `SCALE_TIER_STANDARD`, `SCALE_TIER_ENTERPRISE`.
-  ///
-  /// &gt; **Warning:** `scaleTier` is deprecated and will be removed in a future major release. Use `scaleType` instead.
-  late final pulumi.Output<String> scaleTier;
   /// The scale type of the storage pool. Defaults to `SCALE_TYPE_DEFAULT` if not specified.
   /// Possible values are: `SCALE_TYPE_UNSPECIFIED`, `SCALE_TYPE_DEFAULT`, `SCALE_TYPE_SCALEOUT`.
   late final pulumi.Output<String> scaleType;
@@ -548,7 +556,7 @@ class StoragePool extends pulumi.CustomResource {
           'gcp:netapp/storagePool:StoragePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     activeDirectory = registerOutput<String?>('activeDirectory');
@@ -575,7 +583,6 @@ class StoragePool extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     qosType = registerOutput<String>('qosType');
     replicaZone = registerOutput<String?>('replicaZone');
-    scaleTier = registerOutput<String>('scaleTier');
     scaleType = registerOutput<String>('scaleType');
     serviceLevel = registerOutput<String>('serviceLevel');
     totalIops = registerOutput<String>('totalIops');
@@ -634,7 +641,6 @@ class StoragePool extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     qosType = registerOutput<String>('qosType');
     replicaZone = registerOutput<String?>('replicaZone');
-    scaleTier = registerOutput<String>('scaleTier');
     scaleType = registerOutput<String>('scaleType');
     serviceLevel = registerOutput<String>('serviceLevel');
     totalIops = registerOutput<String>('totalIops');
@@ -679,7 +685,6 @@ class StoragePool extends pulumi.CustomResource {
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     qosType = registerOutput<String>('qosType');
     replicaZone = registerOutput<String?>('replicaZone');
-    scaleTier = registerOutput<String>('scaleTier');
     scaleType = registerOutput<String>('scaleType');
     serviceLevel = registerOutput<String>('serviceLevel');
     totalIops = registerOutput<String>('totalIops');

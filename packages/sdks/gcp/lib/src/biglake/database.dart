@@ -137,8 +137,8 @@ import 'database_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/biglake"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/biglake"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -191,7 +191,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -200,26 +200,38 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "gcp_biglake_catalog" "catalog" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my_catalog"
 ///   location = "US"
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "my_bucket"
 ///   location                    = "US"
 ///   force_destroy               = true
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_storage_bucketobject" "metadata_folder" {
+/// resource "gcp_storage_bucket_object" "metadata_folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "metadata/"
 ///   content = " "
 ///   bucket  = gcp_storage_bucket.bucket.name
 /// }
 /// resource "gcp_biglake_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my_database"
 ///   catalog = gcp_biglake_catalog.catalog.id
 ///   type    = "HIVE"
 ///   hive_options = {
-///     location_uri ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.metadata_folder.name}"
+///     location_uri ="gs://${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.metadata_folder.name}"
 ///     parameters = {
 ///       "owner" = "John Doe"
 ///     }
@@ -385,7 +397,7 @@ class Database extends pulumi.CustomResource {
           'gcp:biglake/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     catalog = registerOutput<String>('catalog');
     createTime = registerOutput<String>('createTime');

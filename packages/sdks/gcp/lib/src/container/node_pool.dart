@@ -114,8 +114,8 @@ import 'node_pool_upgrade_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -158,7 +158,7 @@ import 'node_pool_upgrade_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -167,16 +167,25 @@ import 'node_pool_upgrade_settings.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "service-account-id"
 ///   display_name = "Service Account"
 /// }
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "my-gke-cluster"
 ///   location                 = "us-central1"
 ///   remove_default_node_pool = true
 ///   initial_node_count       = 1
 /// }
-/// resource "gcp_container_nodepool" "primary_preemptible_nodes" {
+/// resource "gcp_container_node_pool" "primary_preemptible_nodes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "my-node-pool"
 ///   cluster    = gcp_container_cluster.primary.id
 ///   node_count = 1
@@ -397,8 +406,8 @@ import 'node_pool_upgrade_settings.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -453,7 +462,7 @@ import 'node_pool_upgrade_settings.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -462,10 +471,16 @@ import 'node_pool_upgrade_settings.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "service-account-id"
 ///   display_name = "Service Account"
 /// }
-/// resource "gcp_container_nodepool" "np" {
+/// resource "gcp_container_node_pool" "np" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "my-node-pool"
 ///   cluster = gcp_container_cluster.primary.id
 ///   node_config = {
@@ -475,6 +490,9 @@ import 'node_pool_upgrade_settings.dart';
 ///   }
 /// }
 /// resource "gcp_container_cluster" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "marcellus-wallace"
 ///   location           = "us-central1-a"
 ///   initial_node_count = 3
@@ -483,8 +501,8 @@ import 'node_pool_upgrade_settings.dart';
 ///     service_account = gcp_serviceaccount_account.default.email
 ///     oauth_scopes    = ["https://www.googleapis.com/auth/cloud-platform"]
 ///     guest_accelerators = [{
-///       "type"  = "nvidia-tesla-k80"
-///       "count" = 1
+///       type  = "nvidia-tesla-k80"
+///       count = 1
 ///     }]
 ///   }
 /// }
@@ -651,7 +669,14 @@ class NodePool extends pulumi.CustomResource {
   /// auto-generate a unique name.
   late final pulumi.Output<String> name;
   /// Creates a unique name for the node pool beginning
-  /// with the specified prefix. Conflicts with `name`.
+  /// with the specified prefix. Conflicts with `name`. Max length is 31 characters.
+  /// Prefixes with lengths longer than 14 characters will use a shortened
+  /// UUID that will be more prone to collisions.
+  ///
+  /// Resulting name for a `namePrefix` &lt;= 14 characters:
+  /// `namePrefix` + YYYYmmddHHSSssss + 8 digit incremental counter
+  /// Resulting name for a `namePrefix` 15 - 31 characters:
+  /// `namePrefix` + YYmmdd + 3 digit incremental counter
   late final pulumi.Output<String> namePrefix;
   /// The network configuration of the pool. Such as
   /// configuration for [Adding Pod IP address ranges](https://cloud.google.com/kubernetes-engine/docs/how-to/multi-pod-cidr)) to the node pool. Or enabling private nodes. Structure is
@@ -706,7 +731,7 @@ class NodePool extends pulumi.CustomResource {
           'gcp:container/nodePool:NodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     autoscaling = registerOutput<NodePoolAutoscaling?>('autoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolAutoscaling.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cluster = registerOutput<String>('cluster');

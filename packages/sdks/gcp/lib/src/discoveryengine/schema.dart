@@ -94,7 +94,7 @@ import 'schema_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -129,7 +129,7 @@ import 'schema_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -138,12 +138,18 @@ import 'schema_state.dart';
 /// }
 ///
 /// resource "gcp_discoveryengine_schema" "basic" {
-///   location      = gcp_discoveryengine_datastore.basic.location
-///   data_store_id = gcp_discoveryengine_datastore.basic.data_store_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location      = gcp_discoveryengine_data_store.basic.location
+///   data_store_id = gcp_discoveryengine_data_store.basic.data_store_id
 ///   schema_id     = "schema-id"
 ///   json_schema   = "{\"$schema\":\"https://json-schema.org/draft/2020-12/schema\",\"datetime_detection\":true,\"type\":\"object\",\"geolocation_detection\":true}"
 /// }
-/// resource "gcp_discoveryengine_datastore" "basic" {
+/// resource "gcp_discoveryengine_data_store" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location                     = "global"
 ///   data_store_id                = "data-store-id"
 ///   display_name                 = "tf-test-structured-datastore"
@@ -277,7 +283,7 @@ class Schema extends pulumi.CustomResource {
           'gcp:discoveryengine/schema:Schema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     dataStoreId = registerOutput<String>('dataStoreId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

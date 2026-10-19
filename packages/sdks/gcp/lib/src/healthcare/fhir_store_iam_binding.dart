@@ -81,8 +81,8 @@ import 'fhir_store_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -113,7 +113,7 @@ import 'fhir_store_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -121,16 +121,19 @@ import 'fhir_store_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/editor"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_fhirstoreiampolicy" "fhir_store" {
+/// resource "gcp_healthcare_fhir_store_iam_policy" "fhir_store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fhir_store_id = "your-fhir-store-id"
-///   policy_data   = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data   = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -238,7 +241,7 @@ import 'fhir_store_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -259,7 +262,7 @@ import 'fhir_store_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -267,7 +270,10 @@ import 'fhir_store_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_fhirstoreiambinding" "fhir_store" {
+/// resource "gcp_healthcare_fhir_store_iam_binding" "fhir_store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fhir_store_id = "your-fhir-store-id"
 ///   role          = "roles/editor"
 ///   members       = ["user:jane@example.com"]
@@ -359,7 +365,7 @@ import 'fhir_store_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -378,7 +384,7 @@ import 'fhir_store_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -386,7 +392,10 @@ import 'fhir_store_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_fhirstoreiammember" "fhir_store" {
+/// resource "gcp_healthcare_fhir_store_iam_member" "fhir_store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fhir_store_id = "your-fhir-store-id"
 ///   role          = "roles/editor"
 ///   member        = "user:jane@example.com"
@@ -480,7 +489,7 @@ import 'fhir_store_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -501,7 +510,7 @@ import 'fhir_store_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -509,7 +518,10 @@ import 'fhir_store_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_fhirstoreiambinding" "fhir_store" {
+/// resource "gcp_healthcare_fhir_store_iam_binding" "fhir_store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fhir_store_id = "your-fhir-store-id"
 ///   role          = "roles/editor"
 ///   members       = ["user:jane@example.com"]
@@ -601,7 +613,7 @@ import 'fhir_store_iam_binding_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/healthcare"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/healthcare"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -620,7 +632,7 @@ import 'fhir_store_iam_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -628,7 +640,10 @@ import 'fhir_store_iam_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_healthcare_fhirstoreiammember" "fhir_store" {
+/// resource "gcp_healthcare_fhir_store_iam_member" "fhir_store" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   fhir_store_id = "your-fhir-store-id"
 ///   role          = "roles/editor"
 ///   member        = "user:jane@example.com"
@@ -715,7 +730,7 @@ class FhirStoreIamBinding extends pulumi.CustomResource {
           'gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     condition = registerOutput<FhirStoreIamBindingCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FhirStoreIamBindingCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

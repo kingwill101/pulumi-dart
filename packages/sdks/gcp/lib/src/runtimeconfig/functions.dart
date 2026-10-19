@@ -51,7 +51,7 @@ import 'get_variable_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/runtimeconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/runtimeconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -68,7 +68,7 @@ import 'get_variable_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -76,7 +76,7 @@ import 'get_variable_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_runtimeconfig_getconfig" "run-service" {
+/// data "gcp_runtimeconfig_config" "run-service" {
 ///   name = "my-service"
 /// }
 /// ```
@@ -186,7 +186,7 @@ pulumi.Output<GetConfigResult> getConfigOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/runtimeconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/runtimeconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -204,7 +204,7 @@ pulumi.Output<GetConfigResult> getConfigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -212,7 +212,7 @@ pulumi.Output<GetConfigResult> getConfigOutput(
 ///   }
 /// }
 ///
-/// data "gcp_runtimeconfig_getconfigiampolicy" "policy" {
+/// data "gcp_runtimeconfig_config_iam_policy" "policy" {
 ///   project = config.project
 ///   config  = config.name
 /// }
@@ -329,7 +329,7 @@ pulumi.Output<GetConfigIamPolicyResult> getConfigIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/runtimeconfig"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/runtimeconfig"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -347,7 +347,7 @@ pulumi.Output<GetConfigIamPolicyResult> getConfigIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -355,7 +355,7 @@ pulumi.Output<GetConfigIamPolicyResult> getConfigIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_runtimeconfig_getvariable" "run-service" {
+/// data "gcp_runtimeconfig_variable" "run-service" {
 ///   parent = "my-service"
 ///   name   = "prod-variables/hostname"
 /// }

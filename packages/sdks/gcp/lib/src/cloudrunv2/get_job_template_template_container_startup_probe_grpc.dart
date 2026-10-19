@@ -28,7 +28,7 @@ class GetJobTemplateTemplateContainerStartupProbeGrpc {
 
   factory GetJobTemplateTemplateContainerStartupProbeGrpc.fromMap(Map<String, dynamic> map) {
     return GetJobTemplateTemplateContainerStartupProbeGrpc(
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       service: pulumi.Input.fromValue(map['service'] as String),
     );
   }

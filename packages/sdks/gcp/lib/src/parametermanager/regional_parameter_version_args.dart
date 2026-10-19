@@ -7,6 +7,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_parametermanager_regional_parameter_version_regional_parameter_version_args_doc}
 class RegionalParameterVersionArgs {
+  /// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+  final pulumi.Input<String?>? dataCrc32c;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -25,12 +27,14 @@ class RegionalParameterVersionArgs {
   final pulumi.Input<String> parameterVersionId;
 
   /// Creates a new [RegionalParameterVersionArgs].
+  /// [dataCrc32c] The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [disabled] The current state of Regional Parameter Version. This field is only applicable for updating Regional Parameter Version.
   /// [parameter] Parameter Manager Regional Parameter resource.
   /// [parameterData] The Regional Parameter data.
   /// [parameterVersionId] Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
   const RegionalParameterVersionArgs({
+    this.dataCrc32c,
     this.deletionPolicy,
     this.disabled,
     required this.parameter,
@@ -40,6 +44,7 @@ class RegionalParameterVersionArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      'dataCrc32c': ?dataCrc32c,
       'deletionPolicy': ?deletionPolicy,
       'disabled': ?disabled,
       'parameter': parameter,
@@ -50,6 +55,7 @@ class RegionalParameterVersionArgs {
 
   factory RegionalParameterVersionArgs.fromMap(Map<String, dynamic> map) {
     return RegionalParameterVersionArgs(
+      dataCrc32c: (() { final guardedValue = map['dataCrc32c']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       disabled: (() { final guardedValue = map['disabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       parameter: pulumi.Input.fromValue(map['parameter'] as String),

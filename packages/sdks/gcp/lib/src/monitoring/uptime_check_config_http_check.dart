@@ -105,7 +105,7 @@ class UptimeCheckConfigHttpCheck {
       maskHeaders: (() { final guardedValue = map['maskHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       pingConfig: (() { final guardedValue = map['pingConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UptimeCheckConfigHttpCheckPingConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       requestMethod: (() { final guardedValue = map['requestMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       serviceAgentAuthentication: (() { final guardedValue = map['serviceAgentAuthentication']; if (guardedValue == null) return null; return pulumi.Input.fromValue(UptimeCheckConfigHttpCheckServiceAgentAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       useSsl: (() { final guardedValue = map['useSsl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

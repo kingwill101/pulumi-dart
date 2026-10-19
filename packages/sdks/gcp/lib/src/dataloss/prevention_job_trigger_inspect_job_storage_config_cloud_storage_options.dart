@@ -55,11 +55,11 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions {
 
   factory PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions.fromMap(Map<String, dynamic> map) {
     return PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions(
-      bytesLimitPerFile: (() { final guardedValue = map['bytesLimitPerFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      bytesLimitPerFilePercent: (() { final guardedValue = map['bytesLimitPerFilePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      bytesLimitPerFile: (() { final guardedValue = map['bytesLimitPerFile']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      bytesLimitPerFilePercent: (() { final guardedValue = map['bytesLimitPerFilePercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       fileSet: pulumi.Input.fromValue(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet.fromMap((map['fileSet']! as Map).cast<String, dynamic>())),
       fileTypes: (() { final guardedValue = map['fileTypes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
-      filesLimitPercent: (() { final guardedValue = map['filesLimitPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      filesLimitPercent: (() { final guardedValue = map['filesLimitPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sampleMethod: (() { final guardedValue = map['sampleMethod']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

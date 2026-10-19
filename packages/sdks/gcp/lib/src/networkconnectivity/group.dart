@@ -111,7 +111,7 @@ import 'group_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -149,7 +149,7 @@ import 'group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -158,6 +158,9 @@ import 'group_state.dart';
 /// }
 ///
 /// resource "gcp_networkconnectivity_hub" "basic_hub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "network-connectivity-hub1"
 ///   description = "A sample hub"
 ///   labels = {
@@ -165,6 +168,9 @@ import 'group_state.dart';
 ///   }
 /// }
 /// resource "gcp_networkconnectivity_group" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   hub  = gcp_networkconnectivity_hub.basic_hub.id
 ///   name = "default"
 ///   labels = {
@@ -315,7 +321,7 @@ class Group extends pulumi.CustomResource {
           'gcp:networkconnectivity/group:Group',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     autoAccept = registerOutput<GroupAutoAccept?>('autoAccept', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GroupAutoAccept.fromMap((guardedValue as Map).cast<String, dynamic>()); });

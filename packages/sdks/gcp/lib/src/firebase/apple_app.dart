@@ -59,7 +59,7 @@ import 'apple_app_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -78,7 +78,7 @@ import 'apple_app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -86,7 +86,10 @@ import 'apple_app_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_appleapp" "default" {
+/// resource "gcp_firebase_apple_app" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = "my-project-name"
 ///   display_name = "Display Name Basic"
 ///   bundle_id    = "apple.app.12345"
@@ -221,8 +224,8 @@ import 'apple_app_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -259,7 +262,7 @@ import 'apple_app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -267,15 +270,21 @@ import 'apple_app_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_appleapp" "full" {
+/// resource "gcp_firebase_apple_app" "full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = "my-project-name"
 ///   display_name = "Display Name Full"
 ///   bundle_id    = "apple.app.12345"
 ///   app_store_id = "12345"
 ///   team_id      = "9987654321"
-///   api_key_id   = gcp_projects_apikey.apple.uid
+///   api_key_id   = gcp_projects_api_key.apple.uid
 /// }
-/// resource "gcp_projects_apikey" "apple" {
+/// resource "gcp_projects_api_key" "apple" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "api-key"
 ///   display_name = "Display Name Full"
 ///   project      = "my-project-name"
@@ -420,7 +429,7 @@ class AppleApp extends pulumi.CustomResource {
           'gcp:firebase/appleApp:AppleApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     apiKeyId = registerOutput<String>('apiKeyId');
     appId = registerOutput<String>('appId');

@@ -139,7 +139,7 @@ import 'network_peering_routes_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -195,7 +195,7 @@ import 'network_peering_routes_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -203,15 +203,21 @@ import 'network_peering_routes_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_networkpeeringroutesconfig" "peering_primary_routes" {
-///   peering                             = gcp_compute_networkpeering.peering_primary.name
+/// resource "gcp_compute_network_peering_routes_config" "peering_primary_routes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   peering                             = gcp_compute_network_peering.peering_primary.name
 ///   network                             = gcp_compute_network.network_primary.name
 ///   import_custom_routes                = true
 ///   export_custom_routes                = true
 ///   import_subnet_routes_with_public_ip = true
 ///   export_subnet_routes_with_public_ip = true
 /// }
-/// resource "gcp_compute_networkpeering" "peering_primary" {
+/// resource "gcp_compute_network_peering" "peering_primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                = "primary-peering"
 ///   network                             = gcp_compute_network.network_primary.id
 ///   peer_network                        = gcp_compute_network.network_secondary.id
@@ -220,16 +226,25 @@ import 'network_peering_routes_config_state.dart';
 ///   import_subnet_routes_with_public_ip = true
 ///   export_subnet_routes_with_public_ip = true
 /// }
-/// resource "gcp_compute_networkpeering" "peering_secondary" {
+/// resource "gcp_compute_network_peering" "peering_secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "secondary-peering"
 ///   network      = gcp_compute_network.network_secondary.id
 ///   peer_network = gcp_compute_network.network_primary.id
 /// }
 /// resource "gcp_compute_network" "network_primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "primary-network"
 ///   auto_create_subnetworks = "false"
 /// }
 /// resource "gcp_compute_network" "network_secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "secondary-network"
 ///   auto_create_subnetworks = "false"
 /// }
@@ -558,8 +573,8 @@ import 'network_peering_routes_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -654,7 +669,7 @@ import 'network_peering_routes_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -662,33 +677,51 @@ import 'network_peering_routes_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_networkpeeringroutesconfig" "peering_gke_routes" {
-///   peering              = gcp_compute_networkpeering.peering_gke_to_workload.name
+/// resource "gcp_compute_network_peering_routes_config" "peering_gke_routes" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   peering              = gcp_compute_network_peering.peering_gke_to_workload.name
 ///   network              = gcp_compute_network.gke_network.name
 ///   import_custom_routes = true
 ///   export_custom_routes = true
 /// }
-/// resource "gcp_compute_networkpeering" "peering_gke_to_workload" {
+/// resource "gcp_compute_network_peering" "peering_gke_to_workload" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "peering-gke-to-workload"
 ///   network              = gcp_compute_network.gke_network.id
 ///   peer_network         = gcp_compute_network.workload_network.id
 ///   import_custom_routes = true
 ///   export_custom_routes = true
 /// }
-/// resource "gcp_compute_networkpeering" "peering_workload_to_gke" {
+/// resource "gcp_compute_network_peering" "peering_workload_to_gke" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "peering-workload-to-gke"
 ///   network      = gcp_compute_network.workload_network.id
 ///   peer_network = gcp_compute_network.gke_network.id
 /// }
 /// resource "gcp_compute_network" "gke_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "gke-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_network" "workload_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "workload-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "gke_subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "gke-subnetwork"
 ///   region                   = "us-central1"
 ///   network                  = gcp_compute_network.gke_network.name
@@ -704,6 +737,9 @@ import 'network_peering_routes_config_state.dart';
 ///   }
 /// }
 /// resource "gcp_container_cluster" "gke_cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "gke-cluster"
 ///   location           = "us-central1-a"
 ///   initial_node_count = 1
@@ -940,7 +976,7 @@ class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
           'gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     exportCustomRoutes = registerOutput<bool>('exportCustomRoutes');
     exportSubnetRoutesWithPublicIp = registerOutput<bool>('exportSubnetRoutesWithPublicIp');

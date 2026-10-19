@@ -44,7 +44,7 @@ import 'get_attestor_iam_policy_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/binaryauthorization"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/binaryauthorization"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -62,7 +62,7 @@ import 'get_attestor_iam_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -70,7 +70,7 @@ import 'get_attestor_iam_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_binaryauthorization_getattestoriampolicy" "policy" {
+/// data "gcp_binaryauthorization_attestor_iam_policy" "policy" {
 ///   project  = attestor.project
 ///   attestor = attestor.name
 /// }

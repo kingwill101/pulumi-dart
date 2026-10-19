@@ -199,7 +199,7 @@ import 'vmware_admin_cluster_vcenter.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkeonprem"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkeonprem"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -261,7 +261,7 @@ import 'vmware_admin_cluster_vcenter.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -269,7 +269,10 @@ import 'vmware_admin_cluster_vcenter.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gkeonprem_vmwareadmincluster" "admin-cluster-basic" {
+/// resource "gcp_gkeonprem_vmware_admin_cluster" "admin-cluster-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "basic"
 ///   location                     = "us-west1"
 ///   description                  = "test admin cluster"
@@ -797,7 +800,7 @@ import 'vmware_admin_cluster_vcenter.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkeonprem"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkeonprem"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -924,7 +927,7 @@ import 'vmware_admin_cluster_vcenter.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -932,7 +935,10 @@ import 'vmware_admin_cluster_vcenter.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gkeonprem_vmwareadmincluster" "admin-cluster-full" {
+/// resource "gcp_gkeonprem_vmware_admin_cluster" "admin-cluster-full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "full"
 ///   location                     = "us-west1"
 ///   description                  = "test admin cluster"
@@ -958,8 +964,8 @@ import 'vmware_admin_cluster_vcenter.dart';
 ///       control_plane_ip_block = {
 ///         gateway = "10.0.0.3"
 ///         ips = [{
-///           "hostname" = "hostname"
-///           "ip"       = "10.0.0.4"
+///           hostname = "hostname"
+///           ip       = "10.0.0.4"
 ///         }]
 ///         netmask = "10.0.0.3/32"
 ///       }
@@ -971,12 +977,12 @@ import 'vmware_admin_cluster_vcenter.dart';
 ///     }
 ///     static_ip_config = {
 ///       ip_blocks = [{
-///         "gateway" = "10.0.0.1"
-///         "ips" = [{
-///           "hostname" = "hostname"
-///           "ip"       = "10.0.0.2"
+///         gateway = "10.0.0.1"
+///         ips = [{
+///           hostname = "hostname"
+///           ip       = "10.0.0.2"
 ///         }]
-///         "netmask" = "10.0.0.3/32"
+///         netmask = "10.0.0.3/32"
 ///       }]
 ///     }
 ///     vcenter_network = "test-vcenter-network"
@@ -1009,7 +1015,7 @@ import 'vmware_admin_cluster_vcenter.dart';
 ///   }
 ///   authorization = {
 ///     viewer_users = [{
-///       "username" = "user1@gmail.com"
+///       username = "user1@gmail.com"
 ///     }]
 ///   }
 ///   auto_repair_config = {
@@ -1439,7 +1445,7 @@ import 'vmware_admin_cluster_vcenter.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/gkeonprem"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/gkeonprem"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1504,7 +1510,7 @@ import 'vmware_admin_cluster_vcenter.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1512,7 +1518,10 @@ import 'vmware_admin_cluster_vcenter.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_gkeonprem_vmwareadmincluster" "admin-cluster-metallb" {
+/// resource "gcp_gkeonprem_vmware_admin_cluster" "admin-cluster-metallb" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "metallb"
 ///   location                     = "us-west1"
 ///   description                  = "test admin cluster"
@@ -1818,7 +1827,7 @@ class VmwareAdminCluster extends pulumi.CustomResource {
           'gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     addonNode = registerOutput<VmwareAdminClusterAddonNode>('addonNode', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareAdminClusterAddonNode.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

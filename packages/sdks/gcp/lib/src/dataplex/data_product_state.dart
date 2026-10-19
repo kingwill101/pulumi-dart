@@ -130,7 +130,7 @@ class DataProductState {
     return DataProductState(
       accessApprovalConfig: (() { final guardedValue = map['accessApprovalConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DataProductAccessApprovalConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       accessGroups: (() { final guardedValue = map['accessGroups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DataProductAccessGroup>(guardedValue, (value) => DataProductAccessGroup.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      assetCount: (() { final guardedValue = map['assetCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      assetCount: (() { final guardedValue = map['assetCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dataProductId: (() { final guardedValue = map['dataProductId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

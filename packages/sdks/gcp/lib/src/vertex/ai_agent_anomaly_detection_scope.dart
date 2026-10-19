@@ -100,9 +100,9 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -141,7 +141,7 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -149,22 +149,28 @@ import 'ai_agent_anomaly_detection_scope_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_logging_projectbucketconfig" "aad-log-bucket" {
-///   project          = data.gcp_organizations_getproject.project.project_id
+/// resource "gcp_logging_project_bucket_config" "aad-log-bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project          = data.gcp_organizations_project.project.project_id
 ///   location         = "us"
 ///   retention_days   = 30
 ///   bucket_id        = "aad-log-bucket"
 ///   enable_analytics = true
 /// }
-/// resource "gcp_vertex_aiagentanomalydetectionscope" "scope" {
+/// resource "gcp_vertex_ai_agent_anomaly_detection_scope" "scope" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region                           = "us"
 ///   agent_anomaly_detection_scope_id = "agent-anomaly-detection-scope"
 ///   display_name                     = "Basic AAD scope"
-///   log_buckets                      = [gcp_logging_projectbucketconfig.aad-log-bucket.id]
-///   observability_buckets            = ["projects/${data.gcp_organizations_getproject.project.project_id}/locations/us/buckets/_Trace/datasets/Spans"]
+///   log_buckets                      = [gcp_logging_project_bucket_config.aad-log-bucket.id]
+///   observability_buckets            = ["projects/${data.gcp_organizations_project.project.project_id}/locations/us/buckets/_Trace/datasets/Spans"]
 /// }
 /// ```
 /// ```java
@@ -304,7 +310,7 @@ class AiAgentAnomalyDetectionScope extends pulumi.CustomResource {
           'gcp:vertex/aiAgentAnomalyDetectionScope:AiAgentAnomalyDetectionScope',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     agentAnomalyDetectionScopeId = registerOutput<String>('agentAnomalyDetectionScopeId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

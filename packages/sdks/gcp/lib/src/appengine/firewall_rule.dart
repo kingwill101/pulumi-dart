@@ -127,8 +127,8 @@ import 'firewall_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -177,7 +177,7 @@ import 'firewall_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -189,6 +189,9 @@ import 'firewall_rule_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "my_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "tf-test-project"
 ///   project_id      = "ae-project"
 ///   org_id          = "123456789"
@@ -196,16 +199,25 @@ import 'firewall_rule_state.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "gcp_appengine_application" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project     = gcp_organizations_project.my_project.project_id
 ///   location_id = "us-central"
 /// }
 /// # Wait for 5 minutes seconds to ensure IAM permission propagation completes
 /// resource "time_sleep" "wait_300_seconds" {
-///   depends_on      = [gcp_appengine_application.app]
+///   depends_on = [gcp_appengine_application.app]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "300s"
 /// }
-/// resource "gcp_appengine_firewallrule" "rule" {
-///   depends_on   = [time_sleep.wait_300_seconds]
+/// resource "gcp_appengine_firewall_rule" "rule" {
+///   depends_on = [time_sleep.wait_300_seconds]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = gcp_appengine_application.app.project
 ///   priority     = 1000
 ///   action       = "ALLOW"
@@ -363,7 +375,7 @@ class FirewallRule extends pulumi.CustomResource {
           'gcp:appengine/firewallRule:FirewallRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     deletionPolicy = registerOutput<String>('deletionPolicy');

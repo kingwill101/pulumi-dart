@@ -62,7 +62,7 @@ class NodePoolNodeConfig {
   final pulumi.Input<List<NodePoolNodeConfigGuestAccelerator>?>? guestAccelerators;
   /// Enable or disable gvnic in the node pool.
   final pulumi.Input<NodePoolNodeConfigGvnic?>? gvnic;
-  /// The maintenance policy for the hosts on which the GKE VMs run on.
+  /// ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
   final pulumi.Input<NodePoolNodeConfigHostMaintenancePolicy?>? hostMaintenancePolicy;
   /// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
   final pulumi.Input<String?>? imageType;
@@ -145,7 +145,7 @@ class NodePoolNodeConfig {
   /// [gpudirectStrategy] The type of GPUDirect strategy to enable on the node.
   /// [guestAccelerators] List of the type and count of accelerator cards attached to the instance.
   /// [gvnic] Enable or disable gvnic in the node pool.
-  /// [hostMaintenancePolicy] The maintenance policy for the hosts on which the GKE VMs run on.
+  /// [hostMaintenancePolicy] ) The maintenance policy for the hosts on which the GKE VMs run on. Structure is documented below.
   /// [imageType] The image type to use for this node. Note that for a given image type, the latest version of it will be used.
   /// [kubeletConfig] Node kubelet configs. Structure is documented below.
   /// [labels] The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node.
@@ -290,7 +290,7 @@ class NodePoolNodeConfig {
       bootDiskKmsKey: (() { final guardedValue = map['bootDiskKmsKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       confidentialNodes: (() { final guardedValue = map['confidentialNodes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfigConfidentialNodes.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       containerdConfig: (() { final guardedValue = map['containerdConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfigContainerdConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       diskType: (() { final guardedValue = map['diskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveTaints: (() { final guardedValue = map['effectiveTaints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<NodePoolNodeConfigEffectiveTaint>(guardedValue, (value) => NodePoolNodeConfigEffectiveTaint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       enableConfidentialStorage: (() { final guardedValue = map['enableConfidentialStorage']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
@@ -308,7 +308,7 @@ class NodePoolNodeConfig {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       linuxNodeConfig: (() { final guardedValue = map['linuxNodeConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfigLinuxNodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       localNvmeSsdBlockConfig: (() { final guardedValue = map['localNvmeSsdBlockConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodePoolNodeConfigLocalNvmeSsdBlockConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      localSsdCount: (() { final guardedValue = map['localSsdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      localSsdCount: (() { final guardedValue = map['localSsdCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       localSsdEncryptionMode: (() { final guardedValue = map['localSsdEncryptionMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       loggingVariant: (() { final guardedValue = map['loggingVariant']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

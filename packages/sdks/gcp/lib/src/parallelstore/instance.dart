@@ -149,9 +149,9 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parallelstore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parallelstore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -210,7 +210,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -219,7 +219,10 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "gcp_parallelstore_instance" "instance" {
-///   depends_on             = [gcp_servicenetworking_connection.default]
+///   depends_on = [gcp_servicenetworking_connection.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id            = "instance"
 ///   location               = "us-central1-a"
 ///   description            = "test instance"
@@ -233,12 +236,18 @@ import 'instance_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network"
 ///   auto_create_subnetworks = true
 ///   mtu                     = 8896
 /// }
 /// # Create an IP address
-/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+/// resource "gcp_compute_global_address" "private_ip_alloc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "address"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -247,9 +256,12 @@ import 'instance_state.dart';
 /// }
 /// # Create a private connection
 /// resource "gcp_servicenetworking_connection" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.private_ip_alloc.name]
 /// }
 /// ```
 /// ```java
@@ -504,9 +516,9 @@ import 'instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parallelstore"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parallelstore"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -565,7 +577,7 @@ import 'instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -574,7 +586,10 @@ import 'instance_state.dart';
 /// }
 ///
 /// resource "gcp_parallelstore_instance" "instance" {
-///   depends_on             = [gcp_servicenetworking_connection.default]
+///   depends_on = [gcp_servicenetworking_connection.default]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   instance_id            = "instance"
 ///   location               = "us-central1-a"
 ///   description            = "test instance"
@@ -588,12 +603,18 @@ import 'instance_state.dart';
 ///   }
 /// }
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "network"
 ///   auto_create_subnetworks = true
 ///   mtu                     = 8896
 /// }
 /// # Create an IP address
-/// resource "gcp_compute_globaladdress" "private_ip_alloc" {
+/// resource "gcp_compute_global_address" "private_ip_alloc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "address"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -602,9 +623,12 @@ import 'instance_state.dart';
 /// }
 /// # Create a private connection
 /// resource "gcp_servicenetworking_connection" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_alloc.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.private_ip_alloc.name]
 /// }
 /// ```
 /// ```java
@@ -857,7 +881,7 @@ class Instance extends pulumi.CustomResource {
           'gcp:parallelstore/instance:Instance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     accessPoints = registerOutput<List<String>>('accessPoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

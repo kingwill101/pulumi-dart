@@ -110,7 +110,7 @@ import 'user_workloads_secret_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/composer"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -160,7 +160,7 @@ import 'user_workloads_secret_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -172,6 +172,9 @@ import 'user_workloads_secret_state.dart';
 /// }
 ///
 /// resource "gcp_composer_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name    = "example-environment"
 ///   project = "example-project"
 ///   region  = "us-central1"
@@ -181,7 +184,10 @@ import 'user_workloads_secret_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_composer_userworkloadssecret" "example" {
+/// resource "gcp_composer_user_workloads_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example-secret"
 ///   project     = "example-project"
 ///   region      = "us-central1"
@@ -338,7 +344,7 @@ class UserWorkloadsSecret extends pulumi.CustomResource {
           'gcp:composer/userWorkloadsSecret:UserWorkloadsSecret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['data'],
         ) {
     data = registerOutput<Map<String, String>?>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);

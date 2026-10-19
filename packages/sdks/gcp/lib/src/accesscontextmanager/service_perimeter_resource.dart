@@ -112,7 +112,7 @@ import 'service_perimeter_resource_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -154,7 +154,7 @@ import 'service_perimeter_resource_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -162,19 +162,28 @@ import 'service_perimeter_resource_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_accesscontextmanager_serviceperimeterresource" "service-perimeter-resource" {
-///   perimeter_name = gcp_accesscontextmanager_serviceperimeter.service-perimeter-resource.name
+/// resource "gcp_accesscontextmanager_service_perimeter_resource" "service-perimeter-resource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   perimeter_name = gcp_accesscontextmanager_service_perimeter.service-perimeter-resource.name
 ///   resource       = "projects/987654321"
 /// }
-/// resource "gcp_accesscontextmanager_serviceperimeter" "service-perimeter-resource" {
-///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
-///   name   ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/servicePerimeters/restrict_all"
+/// resource "gcp_accesscontextmanager_service_perimeter" "service-perimeter-resource" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent ="accessPolicies/${gcp_accesscontextmanager_access_policy.access-policy.name}"
+///   name   ="accessPolicies/${gcp_accesscontextmanager_access_policy.access-policy.name}/servicePerimeters/restrict_all"
 ///   title  = "restrict_all"
 ///   status = {
 ///     restricted_services = ["storage.googleapis.com"]
 ///   }
 /// }
-/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+/// resource "gcp_accesscontextmanager_access_policy" "access-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = "organizations/123456789"
 ///   title  = "my policy"
 /// }
@@ -295,7 +304,7 @@ class ServicePerimeterResource extends pulumi.CustomResource {
           'gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     deletionPolicy = registerOutput<String>('deletionPolicy');

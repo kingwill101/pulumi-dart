@@ -64,7 +64,7 @@ import 'parameter_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -89,7 +89,7 @@ import 'parameter_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -98,9 +98,15 @@ import 'parameter_version_state.dart';
 /// }
 ///
 /// resource "gcp_parametermanager_parameter" "parameter-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameter_id = "parameter"
 /// }
-/// resource "gcp_parametermanager_parameterversion" "parameter-version-basic" {
+/// resource "gcp_parametermanager_parameter_version" "parameter-version-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameter            = gcp_parametermanager_parameter.parameter-basic.id
 ///   parameter_version_id = "parameter_version"
 ///   parameter_data       = "app-parameter-version-data"
@@ -227,7 +233,7 @@ import 'parameter_version_state.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -261,7 +267,7 @@ import 'parameter_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -270,10 +276,16 @@ import 'parameter_version_state.dart';
 /// }
 ///
 /// resource "gcp_parametermanager_parameter" "parameter-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameter_id = "parameter"
 ///   format       = "JSON"
 /// }
-/// resource "gcp_parametermanager_parameterversion" "parameter-version-with-json-format" {
+/// resource "gcp_parametermanager_parameter_version" "parameter-version-with-json-format" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameter            = gcp_parametermanager_parameter.parameter-basic.id
 ///   parameter_version_id = "parameter_version"
 ///   parameter_data = jsonencode({
@@ -403,8 +415,8 @@ import 'parameter_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -434,7 +446,7 @@ import 'parameter_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -442,14 +454,20 @@ import 'parameter_version_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_parametermanager_parameter" "parameter-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameter_id = "parameter"
 ///   kms_key      = "kms-key"
 /// }
-/// resource "gcp_parametermanager_parameterversion" "parameter-version-with-kms-key" {
+/// resource "gcp_parametermanager_parameter_version" "parameter-version-with-kms-key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameter            = gcp_parametermanager_parameter.parameter-basic.id
 ///   parameter_version_id = "parameter_version"
 ///   parameter_data       = "app-parameter-version-data"
@@ -582,7 +600,7 @@ import 'parameter_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -615,7 +633,7 @@ import 'parameter_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -627,10 +645,16 @@ import 'parameter_version_state.dart';
 /// }
 ///
 /// resource "gcp_parametermanager_parameter" "parameter-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameter_id = "parameter"
 ///   format       = "JSON"
 /// }
-/// resource "gcp_parametermanager_parameterversion" "parameter-version-with-json-format-with-file" {
+/// resource "gcp_parametermanager_parameter_version" "parameter-version-with-json-format-with-file" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameter            = gcp_parametermanager_parameter.parameter-basic.id
 ///   parameter_version_id = "parameter_version"
 ///   parameter_data       = file("parameter-json-data.json")
@@ -762,7 +786,7 @@ import 'parameter_version_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -795,7 +819,7 @@ import 'parameter_version_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -807,10 +831,16 @@ import 'parameter_version_state.dart';
 /// }
 ///
 /// resource "gcp_parametermanager_parameter" "parameter-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameter_id = "parameter"
 ///   format       = "YAML"
 /// }
-/// resource "gcp_parametermanager_parameterversion" "parameter-version-with-yaml-format-with-file" {
+/// resource "gcp_parametermanager_parameter_version" "parameter-version-with-yaml-format-with-file" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parameter            = gcp_parametermanager_parameter.parameter-basic.id
 ///   parameter_version_id = "parameter_version"
 ///   parameter_data       = file("parameter-yaml-data.yaml")
@@ -877,6 +907,162 @@ import 'parameter_version_state.dart';
 ///           return: result
 /// ```
 ///
+/// ### Parameter Version With Data Crc32c
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const parameter_basic = new gcp.parametermanager.Parameter("parameter-basic", {parameterId: "parameter"});
+/// const parameter_version_with_data_crc32c = new gcp.parametermanager.ParameterVersion("parameter-version-with-data-crc32c", {
+///     parameter: parameter_basic.id,
+///     parameterVersionId: "parameter_version",
+///     parameterData: "app-parameter-version-data",
+///     dataCrc32c: "3931523681",
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// parameter_basic = gcp.parametermanager.Parameter("parameter-basic", parameter_id="parameter")
+/// parameter_version_with_data_crc32c = gcp.parametermanager.ParameterVersion("parameter-version-with-data-crc32c",
+///     parameter=parameter_basic.id,
+///     parameter_version_id="parameter_version",
+///     parameter_data="app-parameter-version-data",
+///     data_crc32c="3931523681")
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var parameter_basic = new Gcp.ParameterManager.Parameter("parameter-basic", new()
+///     {
+///         ParameterId = "parameter",
+///     });
+///
+///     var parameter_version_with_data_crc32c = new Gcp.ParameterManager.ParameterVersion("parameter-version-with-data-crc32c", new()
+///     {
+///         Parameter = parameter_basic.Id,
+///         ParameterVersionId = "parameter_version",
+///         ParameterData = "app-parameter-version-data",
+///         DataCrc32c = "3931523681",
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/parametermanager"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		parameter_basic, err := parametermanager.NewParameter(ctx, "parameter-basic", &parametermanager.ParameterArgs{
+/// 			ParameterId: pulumi.String("parameter"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = parametermanager.NewParameterVersion(ctx, "parameter-version-with-data-crc32c", &parametermanager.ParameterVersionArgs{
+/// 			Parameter:          parameter_basic.ID().ToIDOutput().ToStringOutput(),
+/// 			ParameterVersionId: pulumi.String("parameter_version"),
+/// 			ParameterData:      pulumi.String("app-parameter-version-data"),
+/// 			DataCrc32c:         pulumi.String("3931523681"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_parametermanager_parameter" "parameter-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parameter_id = "parameter"
+/// }
+/// resource "gcp_parametermanager_parameter_version" "parameter-version-with-data-crc32c" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parameter            = gcp_parametermanager_parameter.parameter-basic.id
+///   parameter_version_id = "parameter_version"
+///   parameter_data       = "app-parameter-version-data"
+///   data_crc32c          = "3931523681"
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.parametermanager.Parameter;
+/// import com.pulumi.gcp.parametermanager.ParameterArgs;
+/// import com.pulumi.gcp.parametermanager.ParameterVersion;
+/// import com.pulumi.gcp.parametermanager.ParameterVersionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var parameter_basic = new Parameter("parameter-basic", ParameterArgs.builder()
+///             .parameterId("parameter")
+///             .build());
+///
+///         var parameter_version_with_data_crc32c = new ParameterVersion("parameter-version-with-data-crc32c", ParameterVersionArgs.builder()
+///             .parameter(parameter_basic.id())
+///             .parameterVersionId("parameter_version")
+///             .parameterData("app-parameter-version-data")
+///             .dataCrc32c("3931523681")
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   parameter-basic:
+///     type: gcp:parametermanager:Parameter
+///     properties:
+///       parameterId: parameter
+///   parameter-version-with-data-crc32c:
+///     type: gcp:parametermanager:ParameterVersion
+///     properties:
+///       parameter: ${["parameter-basic"].id}
+///       parameterVersionId: parameter_version
+///       parameterData: app-parameter-version-data
+///       dataCrc32c: '3931523681'
+/// ```
+///
 ///
 /// ## Import
 ///
@@ -893,6 +1079,8 @@ import 'parameter_version_state.dart';
 class ParameterVersion extends pulumi.CustomResource {
   /// The time at which the Parameter Version was created.
   late final pulumi.Output<String> createTime;
+  /// The integrity checksum of the payload. If provided, the server will verify that the checksum matches the payload. If not provided, the server will generate the checksum.
+  late final pulumi.Output<String> dataCrc32c;
   /// Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// When a 'terraform destroy' or 'pulumi up' would delete the resource,
   /// the command will fail if this field is set to "PREVENT" in Terraform state.
@@ -930,10 +1118,11 @@ class ParameterVersion extends pulumi.CustomResource {
           'gcp:parametermanager/parameterVersion:ParameterVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['parameterData'],
         ) {
     createTime = registerOutput<String>('createTime');
+    dataCrc32c = registerOutput<String>('dataCrc32c');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
@@ -969,6 +1158,7 @@ class ParameterVersion extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createTime = registerOutput<String>('createTime');
+    dataCrc32c = registerOutput<String>('dataCrc32c');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     kmsKeyVersion = registerOutput<String>('kmsKeyVersion');
@@ -990,6 +1180,7 @@ class ParameterVersion extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     createTime = registerOutput<String>('createTime');
+    dataCrc32c = registerOutput<String>('dataCrc32c');
     deletionPolicy = registerOutput<String>('deletionPolicy');
     disabled = registerOutput<bool?>('disabled');
     kmsKeyVersion = registerOutput<String>('kmsKeyVersion');

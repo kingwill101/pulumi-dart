@@ -67,9 +67,9 @@ class InstanceObservabilityConfig {
     return InstanceObservabilityConfig(
       assistiveExperiencesEnabled: (() { final guardedValue = map['assistiveExperiencesEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enabled: (() { final guardedValue = map['enabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxQueryStringLength: (() { final guardedValue = map['maxQueryStringLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxQueryStringLength: (() { final guardedValue = map['maxQueryStringLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       preserveComments: (() { final guardedValue = map['preserveComments']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      queryPlansPerMinute: (() { final guardedValue = map['queryPlansPerMinute']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      queryPlansPerMinute: (() { final guardedValue = map['queryPlansPerMinute']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       recordApplicationTags: (() { final guardedValue = map['recordApplicationTags']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       trackActiveQueries: (() { final guardedValue = map['trackActiveQueries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       trackClientAddress: (() { final guardedValue = map['trackClientAddress']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

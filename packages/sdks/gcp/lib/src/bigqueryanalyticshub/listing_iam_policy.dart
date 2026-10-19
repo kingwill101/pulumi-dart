@@ -91,8 +91,8 @@ import 'listing_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -126,7 +126,7 @@ import 'listing_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -134,19 +134,22 @@ import 'listing_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_listingiampolicy" "policy" {
+/// resource "gcp_bigqueryanalyticshub_listing_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = listing.project
 ///   location         = listing.location
 ///   data_exchange_id = listing.dataExchangeId
 ///   listing_id       = listing.listingId
-///   policy_data      = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data      = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -268,7 +271,7 @@ import 'listing_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -292,7 +295,7 @@ import 'listing_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -300,7 +303,10 @@ import 'listing_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_listingiambinding" "binding" {
+/// resource "gcp_bigqueryanalyticshub_listing_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = listing.project
 ///   location         = listing.location
 ///   data_exchange_id = listing.dataExchangeId
@@ -409,7 +415,7 @@ import 'listing_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -431,7 +437,7 @@ import 'listing_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -439,7 +445,10 @@ import 'listing_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_listingiammember" "member" {
+/// resource "gcp_bigqueryanalyticshub_listing_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = listing.project
 ///   location         = listing.location
 ///   data_exchange_id = listing.dataExchangeId
@@ -591,8 +600,8 @@ import 'listing_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -626,7 +635,7 @@ import 'listing_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -634,19 +643,22 @@ import 'listing_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_listingiampolicy" "policy" {
+/// resource "gcp_bigqueryanalyticshub_listing_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = listing.project
 ///   location         = listing.location
 ///   data_exchange_id = listing.dataExchangeId
 ///   listing_id       = listing.listingId
-///   policy_data      = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data      = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -768,7 +780,7 @@ import 'listing_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -792,7 +804,7 @@ import 'listing_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -800,7 +812,10 @@ import 'listing_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_listingiambinding" "binding" {
+/// resource "gcp_bigqueryanalyticshub_listing_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = listing.project
 ///   location         = listing.location
 ///   data_exchange_id = listing.dataExchangeId
@@ -909,7 +924,7 @@ import 'listing_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -931,7 +946,7 @@ import 'listing_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -939,7 +954,10 @@ import 'listing_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_listingiammember" "member" {
+/// resource "gcp_bigqueryanalyticshub_listing_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = listing.project
 ///   location         = listing.location
 ///   data_exchange_id = listing.dataExchangeId
@@ -1056,7 +1074,7 @@ class ListingIamPolicy extends pulumi.CustomResource {
           'gcp:bigqueryanalyticshub/listingIamPolicy:ListingIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     dataExchangeId = registerOutput<String>('dataExchangeId');
     etag = registerOutput<String>('etag');

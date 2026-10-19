@@ -45,7 +45,7 @@ import 'get_service_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -60,7 +60,7 @@ import 'get_service_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -68,7 +68,7 @@ import 'get_service_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_cloudrun_getlocations" "available" {
+/// data "gcp_cloudrun_locations" "available" {
 /// }
 /// ```
 /// ```java
@@ -176,7 +176,7 @@ pulumi.Output<GetLocationsResult> getLocationsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -194,7 +194,7 @@ pulumi.Output<GetLocationsResult> getLocationsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -202,7 +202,7 @@ pulumi.Output<GetLocationsResult> getLocationsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudrun_getservice" "default" {
+/// data "gcp_cloudrun_service" "default" {
 ///   location = defaultGoogleCloudRunService.location
 ///   name     = defaultGoogleCloudRunService.name
 /// }
@@ -316,7 +316,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -335,7 +335,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -343,7 +343,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 ///   }
 /// }
 ///
-/// data "gcp_cloudrun_getserviceiampolicy" "policy" {
+/// data "gcp_cloudrun_service_iam_policy" "policy" {
 ///   location = default.location
 ///   project  = default.project
 ///   service  = default.name

@@ -58,7 +58,7 @@ import 'template_template_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/modelarmor"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -78,7 +78,7 @@ import 'template_template_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -87,6 +87,9 @@ import 'template_template_metadata.dart';
 /// }
 ///
 /// resource "gcp_modelarmor_template" "template-basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "us-central1"
 ///   template_id       = "modelarmor1"
 ///   filter_config     = {}
@@ -267,7 +270,7 @@ import 'template_template_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/modelarmor"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -312,7 +315,7 @@ import 'template_template_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -321,13 +324,16 @@ import 'template_template_metadata.dart';
 /// }
 ///
 /// resource "gcp_modelarmor_template" "template-filter-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   template_id = "modelarmor2"
 ///   filter_config = {
 ///     rai_settings = {
 ///       rai_filters = [{
-///         "filterType"      = "HATE_SPEECH"
-///         "confidenceLevel" = "HIGH"
+///         filter_type      = "HATE_SPEECH"
+///         confidence_level = "HIGH"
 ///       }]
 ///     }
 ///     sdp_settings = {
@@ -560,7 +566,7 @@ import 'template_template_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/modelarmor"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -604,7 +610,7 @@ import 'template_template_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -613,13 +619,16 @@ import 'template_template_metadata.dart';
 /// }
 ///
 /// resource "gcp_modelarmor_template" "template-template-metadata" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   template_id = "modelarmor3"
 ///   filter_config = {
 ///     rai_settings = {
 ///       rai_filters = [{
-///         "filterType"      = "HARASSMENT"
-///         "confidenceLevel" = "MEDIUM_AND_ABOVE"
+///         filter_type      = "HARASSMENT"
+///         confidence_level = "MEDIUM_AND_ABOVE"
 ///       }]
 ///     }
 ///   }
@@ -815,7 +824,7 @@ import 'template_template_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/modelarmor"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -848,7 +857,7 @@ import 'template_template_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -857,13 +866,16 @@ import 'template_template_metadata.dart';
 /// }
 ///
 /// resource "gcp_modelarmor_template" "template-filter-version-selector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   template_id = "modelarmor5"
 ///   filter_config = {
 ///     rai_settings = {
 ///       rai_filters = [{
-///         "filterType"      = "HATE_SPEECH"
-///         "confidenceLevel" = "HIGH"
+///         filter_type      = "HATE_SPEECH"
+///         confidence_level = "HIGH"
 ///       }]
 ///     }
 ///   }
@@ -1056,7 +1068,7 @@ import 'template_template_metadata.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/modelarmor"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/modelarmor"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1098,7 +1110,7 @@ import 'template_template_metadata.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1107,6 +1119,9 @@ import 'template_template_metadata.dart';
 /// }
 ///
 /// resource "gcp_modelarmor_template" "template-label-advanced-config" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-central1"
 ///   template_id = "modelarmor4"
 ///   labels = {
@@ -1115,8 +1130,8 @@ import 'template_template_metadata.dart';
 ///   filter_config = {
 ///     rai_settings = {
 ///       rai_filters = [{
-///         "filterType"      = "DANGEROUS"
-///         "confidenceLevel" = "MEDIUM_AND_ABOVE"
+///         filter_type      = "DANGEROUS"
+///         confidence_level = "MEDIUM_AND_ABOVE"
 ///       }]
 ///     }
 ///     sdp_settings = {
@@ -1280,7 +1295,7 @@ class Template extends pulumi.CustomResource {
           'gcp:modelarmor/template:Template',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

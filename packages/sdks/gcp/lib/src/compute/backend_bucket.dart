@@ -81,8 +81,8 @@ import 'backend_bucket_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -109,7 +109,7 @@ import 'backend_bucket_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -117,13 +117,19 @@ import 'backend_bucket_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendbucket" "image_backend" {
+/// resource "gcp_compute_backend_bucket" "image_backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "image-backend-bucket"
 ///   description = "Contains beautiful images"
 ///   bucket_name = gcp_storage_bucket.image_bucket.name
 ///   enable_cdn  = true
 /// }
 /// resource "gcp_storage_bucket" "image_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "image-store-bucket"
 ///   location = "EU"
 /// }
@@ -263,8 +269,8 @@ import 'backend_bucket_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -300,7 +306,7 @@ import 'backend_bucket_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -308,18 +314,27 @@ import 'backend_bucket_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendbucket" "image_backend" {
+/// resource "gcp_compute_backend_bucket" "image_backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "image-backend-bucket"
 ///   description          = "Contains beautiful images"
 ///   bucket_name          = gcp_storage_bucket.image_backend.name
 ///   enable_cdn           = true
-///   edge_security_policy = gcp_compute_securitypolicy.policy.id
+///   edge_security_policy = gcp_compute_security_policy.policy.id
 /// }
 /// resource "gcp_storage_bucket" "image_backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "image-store-bucket"
 ///   location = "EU"
 /// }
-/// resource "gcp_compute_securitypolicy" "policy" {
+/// resource "gcp_compute_security_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "image-store-bucket"
 ///   description = "basic security policy"
 ///   type        = "CLOUD_ARMOR_EDGE"
@@ -477,8 +492,8 @@ import 'backend_bucket_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -512,7 +527,7 @@ import 'backend_bucket_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -520,7 +535,10 @@ import 'backend_bucket_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendbucket" "image_backend" {
+/// resource "gcp_compute_backend_bucket" "image_backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "image-backend-bucket"
 ///   description = "Contains beautiful images"
 ///   bucket_name = gcp_storage_bucket.image_bucket.name
@@ -532,6 +550,9 @@ import 'backend_bucket_state.dart';
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "image_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "image-backend-bucket"
 ///   location = "EU"
 /// }
@@ -683,8 +704,8 @@ import 'backend_bucket_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -718,7 +739,7 @@ import 'backend_bucket_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -726,7 +747,10 @@ import 'backend_bucket_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_backendbucket" "image_backend" {
+/// resource "gcp_compute_backend_bucket" "image_backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "image-backend-bucket"
 ///   description = "Contains beautiful images"
 ///   bucket_name = gcp_storage_bucket.image_bucket.name
@@ -738,6 +762,9 @@ import 'backend_bucket_state.dart';
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "image_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "image-backend-bucket"
 ///   location = "EU"
 /// }
@@ -888,7 +915,7 @@ class BackendBucket extends pulumi.CustomResource {
           'gcp:compute/backendBucket:BackendBucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     bucketName = registerOutput<String>('bucketName');
     cdnPolicy = registerOutput<BackendBucketCdnPolicy>('cdnPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BackendBucketCdnPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

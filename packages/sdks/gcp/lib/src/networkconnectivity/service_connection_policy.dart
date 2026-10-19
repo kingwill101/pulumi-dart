@@ -114,8 +114,8 @@ import 'service_connection_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkconnectivity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkconnectivity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -158,7 +158,7 @@ import 'service_connection_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -167,16 +167,25 @@ import 'service_connection_policy_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "producer_net" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "producer-net"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "producer_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "producer-subnet"
 ///   ip_cidr_range = "10.0.0.0/16"
 ///   region        = "us-central1"
 ///   network       = gcp_compute_network.producer_net.id
 /// }
-/// resource "gcp_networkconnectivity_serviceconnectionpolicy" "default" {
+/// resource "gcp_networkconnectivity_service_connection_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "my-network-connectivity-policy"
 ///   location      = "us-central1"
 ///   service_class = "my-basic-service-class"
@@ -348,7 +357,7 @@ class ServiceConnectionPolicy extends pulumi.CustomResource {
           'gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

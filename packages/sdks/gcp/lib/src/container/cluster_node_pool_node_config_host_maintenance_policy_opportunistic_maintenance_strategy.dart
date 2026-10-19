@@ -31,7 +31,7 @@ class ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStra
   factory ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy.fromMap(Map<String, dynamic> map) {
     return ClusterNodePoolNodeConfigHostMaintenancePolicyOpportunisticMaintenanceStrategy(
       maintenanceAvailabilityWindow: pulumi.Input.fromValue(map['maintenanceAvailabilityWindow'] as String),
-      minNodesPerPool: pulumi.Input.fromValue((map['minNodesPerPool'] as num).toInt()),
+      minNodesPerPool: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNodesPerPool'])),
       nodeIdleTimeWindow: pulumi.Input.fromValue(map['nodeIdleTimeWindow'] as String),
     );
   }

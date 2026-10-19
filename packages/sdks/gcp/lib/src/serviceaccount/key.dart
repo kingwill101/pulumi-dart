@@ -67,7 +67,7 @@ import 'key_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -92,7 +92,7 @@ import 'key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -101,10 +101,16 @@ import 'key_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "myaccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "myaccount"
 ///   display_name = "My Service Account"
 /// }
 /// resource "gcp_serviceaccount_key" "mykey" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_account_id = gcp_serviceaccount_account.myaccount.name
 ///   public_key_type    = "TYPE_X509_PEM_FILE"
 /// }
@@ -173,7 +179,7 @@ import 'key_state.dart';
 ///     accountId: "myaccount",
 ///     displayName: "My Service Account",
 /// });
-/// // note this requires the terraform to be run regularly
+/// // note this requires the pulumi to be run regularly
 /// const mykeyRotation = new time.Rotating("mykey_rotation", {rotationDays: 30});
 /// const mykey = new gcp.serviceaccount.Key("mykey", {
 ///     serviceAccountId: myaccount.name,
@@ -190,7 +196,7 @@ import 'key_state.dart';
 /// myaccount = gcp.serviceaccount.Account("myaccount",
 ///     account_id="myaccount",
 ///     display_name="My Service Account")
-/// # note this requires the terraform to be run regularly
+/// # note this requires the pulumi to be run regularly
 /// mykey_rotation = time.Rotating("mykey_rotation", rotation_days=30)
 /// mykey = gcp.serviceaccount.Key("mykey",
 ///     service_account_id=myaccount.name,
@@ -213,7 +219,7 @@ import 'key_state.dart';
 ///         DisplayName = "My Service Account",
 ///     });
 ///
-///     // note this requires the terraform to be run regularly
+///     // note this requires the pulumi to be run regularly
 ///     var mykeyRotation = new Time.Rotating("mykey_rotation", new()
 ///     {
 ///         RotationDays = 30,
@@ -234,7 +240,7 @@ import 'key_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -248,7 +254,7 @@ import 'key_state.dart';
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		// note this requires the terraform to be run regularly
+/// 		// note this requires the pulumi to be run regularly
 /// 		mykeyRotation, err := time.NewRotating(ctx, "mykey_rotation", &time.RotatingArgs{
 /// 			RotationDays: pulumi.Int(30),
 /// 		})
@@ -269,7 +275,7 @@ import 'key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -281,14 +287,23 @@ import 'key_state.dart';
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "myaccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "myaccount"
 ///   display_name = "My Service Account"
 /// }
-/// # note this requires the terraform to be run regularly
+/// # note this requires the pulumi to be run regularly
 /// resource "time_rotating" "mykey_rotation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   rotation_days = 30
 /// }
 /// resource "gcp_serviceaccount_key" "mykey" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_account_id = gcp_serviceaccount_account.myaccount.name
 ///   keepers = {
 ///     "rotation_time" = time_rotating.mykey_rotation.rotation_rfc3339
@@ -325,7 +340,7 @@ import 'key_state.dart';
 ///             .displayName("My Service Account")
 ///             .build());
 ///
-///         // note this requires the terraform to be run regularly
+///         // note this requires the pulumi to be run regularly
 ///         var mykeyRotation = new Rotating("mykeyRotation", RotatingArgs.builder()
 ///             .rotationDays(30)
 ///             .build());
@@ -345,7 +360,7 @@ import 'key_state.dart';
 ///     properties:
 ///       accountId: myaccount
 ///       displayName: My Service Account
-///   # note this requires the terraform to be run regularly
+///   # note this requires the pulumi to be run regularly
 ///   mykeyRotation:
 ///     type: time:Rotating
 ///     name: mykey_rotation
@@ -455,7 +470,7 @@ import 'key_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -498,7 +513,7 @@ import 'key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -515,13 +530,22 @@ import 'key_state.dart';
 /// # Workload Identity is the recommended way of accessing Google Cloud APIs from pods.
 /// # https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 /// resource "gcp_serviceaccount_account" "myaccount" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "myaccount"
 ///   display_name = "My Service Account"
 /// }
 /// resource "gcp_serviceaccount_key" "mykey" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_account_id = gcp_serviceaccount_account.myaccount.name
 /// }
 /// resource "kubernetes_secret" "google-application-credentials" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = [{
 ///     "name" = "google-application-credentials"
 ///   }]
@@ -662,7 +686,7 @@ class Key extends pulumi.CustomResource {
           'gcp:serviceaccount/key:Key',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['privateKey'],
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');

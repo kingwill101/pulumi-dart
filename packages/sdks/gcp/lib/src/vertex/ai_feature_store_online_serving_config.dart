@@ -27,7 +27,7 @@ class AiFeatureStoreOnlineServingConfig {
 
   factory AiFeatureStoreOnlineServingConfig.fromMap(Map<String, dynamic> map) {
     return AiFeatureStoreOnlineServingConfig(
-      fixedNodeCount: (() { final guardedValue = map['fixedNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      fixedNodeCount: (() { final guardedValue = map['fixedNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       scaling: (() { final guardedValue = map['scaling']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AiFeatureStoreOnlineServingConfigScaling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

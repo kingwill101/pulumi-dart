@@ -213,8 +213,8 @@ import 'volume_replication_transfer_stat.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/netapp"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/netapp"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -290,7 +290,7 @@ import 'volume_replication_transfer_stat.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -298,43 +298,55 @@ import 'volume_replication_transfer_stat.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getnetwork" "default" {
+/// data "gcp_compute_network" "default" {
 ///   name = "test-network"
 /// }
 ///
-/// resource "gcp_netapp_storagepool" "source_pool" {
+/// resource "gcp_netapp_storage_pool" "source_pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "source-pool"
 ///   location      = "us-central1"
 ///   service_level = "PREMIUM"
 ///   capacity_gib  = 2048
-///   network       = data.gcp_compute_getnetwork.default.id
+///   network       = data.gcp_compute_network.default.id
 /// }
-/// resource "gcp_netapp_storagepool" "destination_pool" {
+/// resource "gcp_netapp_storage_pool" "destination_pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "destination-pool"
 ///   location           = "us-west2"
 ///   service_level      = "PREMIUM"
 ///   capacity_gib       = 2048
-///   network            = data.gcp_compute_getnetwork.default.id
+///   network            = data.gcp_compute_network.default.id
 ///   allow_auto_tiering = true
 /// }
 /// resource "gcp_netapp_volume" "source_volume" {
-///   location        = gcp_netapp_storagepool.source_pool.location
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location        = gcp_netapp_storage_pool.source_pool.location
 ///   name            = "source-volume"
 ///   capacity_gib    = 100
 ///   share_name      = "source-volume"
-///   storage_pool    = gcp_netapp_storagepool.source_pool.name
+///   storage_pool    = gcp_netapp_storage_pool.source_pool.name
 ///   protocols       = ["NFSV3"]
 ///   deletion_policy = "FORCE"
 /// }
-/// resource "gcp_netapp_volumereplication" "test_replication" {
-///   depends_on           = [gcp_netapp_volume.source_volume]
+/// resource "gcp_netapp_volume_replication" "test_replication" {
+///   depends_on = [gcp_netapp_volume.source_volume]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location             = gcp_netapp_volume.source_volume.location
 ///   volume_name          = gcp_netapp_volume.source_volume.name
 ///   name                 = "test-replication"
 ///   replication_schedule = "EVERY_10_MINUTES"
 ///   description          = "This is a replication resource"
 ///   destination_volume_parameters = {
-///     storage_pool = gcp_netapp_storagepool.destination_pool.id
+///     storage_pool = gcp_netapp_storage_pool.destination_pool.id
 ///     volume_id    = "destination-volume"
 ///     share_name   = "source-volume"
 ///     description  = "This is a replicated volume"
@@ -619,7 +631,7 @@ class VolumeReplication extends pulumi.CustomResource {
           'gcp:netapp/volumeReplication:VolumeReplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

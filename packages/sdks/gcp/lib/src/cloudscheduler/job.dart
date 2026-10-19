@@ -90,8 +90,8 @@ import 'job_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudscheduler"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudscheduler"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -127,7 +127,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -139,9 +139,15 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "gcp_pubsub_topic" "topic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "job-topic"
 /// }
 /// resource "gcp_cloudscheduler_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-job"
 ///   description = "test job"
 ///   schedule    = "*/2 * * * *"
@@ -312,7 +318,7 @@ import 'job_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudscheduler"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudscheduler"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -351,7 +357,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -363,6 +369,9 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "gcp_cloudscheduler_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "test-job"
 ///   description      = "test http job"
 ///   schedule         = "*/8 * * * *"
@@ -550,7 +559,7 @@ import 'job_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudscheduler"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudscheduler"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -590,7 +599,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -602,6 +611,9 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "gcp_cloudscheduler_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   paused           = true
 ///   name             = "test-job"
 ///   description      = "test http job with updated fields"
@@ -793,7 +805,7 @@ import 'job_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudscheduler"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudscheduler"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -829,7 +841,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -838,6 +850,9 @@ import 'job_state.dart';
 /// }
 ///
 /// resource "gcp_cloudscheduler_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "test-job"
 ///   schedule         = "*/4 * * * *"
 ///   description      = "test app engine job"
@@ -1011,8 +1026,8 @@ import 'job_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudscheduler"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudscheduler"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1044,7 +1059,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1052,10 +1067,13 @@ import 'job_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getdefaultserviceaccount" "default" {
+/// data "gcp_compute_default_service_account" "default" {
 /// }
 ///
 /// resource "gcp_cloudscheduler_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "test-job"
 ///   description      = "test http job"
 ///   schedule         = "*/8 * * * *"
@@ -1065,7 +1083,7 @@ import 'job_state.dart';
 ///     http_method = "GET"
 ///     uri         = "https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs"
 ///     oauth_token = {
-///       service_account_email = data.gcp_compute_getdefaultserviceaccount.default.email
+///       service_account_email = data.gcp_compute_default_service_account.default.email
 ///     }
 ///   }
 /// }
@@ -1215,8 +1233,8 @@ import 'job_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudscheduler"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudscheduler"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1248,7 +1266,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1256,10 +1274,13 @@ import 'job_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_compute_getdefaultserviceaccount" "default" {
+/// data "gcp_compute_default_service_account" "default" {
 /// }
 ///
 /// resource "gcp_cloudscheduler_job" "job" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "test-job"
 ///   description      = "test http job"
 ///   schedule         = "*/8 * * * *"
@@ -1269,7 +1290,7 @@ import 'job_state.dart';
 ///     http_method = "GET"
 ///     uri         = "https://example.com/ping"
 ///     oidc_token = {
-///       service_account_email = data.gcp_compute_getdefaultserviceaccount.default.email
+///       service_account_email = data.gcp_compute_default_service_account.default.email
 ///     }
 ///   }
 /// }
@@ -1430,7 +1451,7 @@ class Job extends pulumi.CustomResource {
           'gcp:cloudscheduler/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     appEngineHttpTarget = registerOutput<JobAppEngineHttpTarget?>('appEngineHttpTarget', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobAppEngineHttpTarget.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     attemptDeadline = registerOutput<String?>('attemptDeadline');

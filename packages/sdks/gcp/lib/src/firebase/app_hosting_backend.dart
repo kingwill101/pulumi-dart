@@ -123,9 +123,9 @@ import 'app_hosting_backend_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -174,7 +174,7 @@ import 'app_hosting_backend_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -182,8 +182,11 @@ import 'app_hosting_backend_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_apphostingbackend" "example" {
-///   depends_on       = [gcp_projects_service.fah]
+/// resource "gcp_firebase_app_hosting_backend" "example" {
+///   depends_on = [gcp_projects_service.fah]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   location         = "us-central1"
 ///   backend_id       = "mini"
@@ -193,17 +196,26 @@ import 'app_hosting_backend_state.dart';
 /// }
 /// ### Include these blocks only once per project if you are starting from scratch ###
 /// resource "gcp_serviceaccount_account" "service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                      = "my-project-name"
 ///   account_id                   = "firebase-app-hosting-compute"
 ///   display_name                 = "Firebase App Hosting compute service account"
 ///   create_ignore_already_exists = true
 /// }
-/// resource "gcp_projects_iammember" "app_hosting_sa_runner" {
+/// resource "gcp_projects_i_a_m_member" "app_hosting_sa_runner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/firebaseapphosting.computeRunner"
 ///   member  = gcp_serviceaccount_account.service_account.member
 /// }
 /// resource "gcp_projects_service" "fah" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "firebaseapphosting.googleapis.com"
 /// }
@@ -477,9 +489,9 @@ import 'app_hosting_backend_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -552,7 +564,7 @@ import 'app_hosting_backend_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -560,8 +572,11 @@ import 'app_hosting_backend_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_apphostingbackend" "example" {
-///   depends_on       = [gcp_projects_service.fah]
+/// resource "gcp_firebase_app_hosting_backend" "example" {
+///   depends_on = [gcp_projects_service.fah]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   location         = "us-central1"
 ///   backend_id       = "full"
@@ -579,27 +594,42 @@ import 'app_hosting_backend_state.dart';
 /// }
 /// ### Include these blocks only once per project if you are starting from scratch ###
 /// resource "gcp_serviceaccount_account" "service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                      = "my-project-name"
 ///   account_id                   = "firebase-app-hosting-compute"
 ///   display_name                 = "Firebase App Hosting compute service account"
 ///   create_ignore_already_exists = true
 /// }
-/// resource "gcp_projects_iammember" "app_hosting_sa_developerconnect" {
+/// resource "gcp_projects_i_a_m_member" "app_hosting_sa_developerconnect" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/developerconnect.readTokenAccessor"
 ///   member  = gcp_serviceaccount_account.service_account.member
 /// }
-/// resource "gcp_projects_iammember" "app_hosting_sa_adminsdk" {
+/// resource "gcp_projects_i_a_m_member" "app_hosting_sa_adminsdk" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/firebase.sdkAdminServiceAgent"
 ///   member  = gcp_serviceaccount_account.service_account.member
 /// }
-/// resource "gcp_projects_iammember" "app_hosting_sa_runner" {
+/// resource "gcp_projects_i_a_m_member" "app_hosting_sa_runner" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/firebaseapphosting.computeRunner"
 ///   member  = gcp_serviceaccount_account.service_account.member
 /// }
 /// resource "gcp_projects_service" "fah" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "firebaseapphosting.googleapis.com"
 /// }
@@ -931,9 +961,9 @@ import 'app_hosting_backend_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/developerconnect"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/firebase"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/developerconnect"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/firebase"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1008,7 +1038,7 @@ import 'app_hosting_backend_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1016,7 +1046,10 @@ import 'app_hosting_backend_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_firebase_apphostingbackend" "example" {
+/// resource "gcp_firebase_app_hosting_backend" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "my-project-name"
 ///   location         = "us-central1"
 ///   backend_id       = "my-backend-gh"
@@ -1032,11 +1065,14 @@ import 'app_hosting_backend_state.dart';
 ///     "key" = "value"
 ///   }
 ///   codebase = {
-///     repository     = gcp_developerconnect_gitrepositorylink.my-repository.name
+///     repository     = gcp_developerconnect_git_repository_link.my-repository.name
 ///     root_directory = "/"
 ///   }
 /// }
-/// resource "gcp_developerconnect_gitrepositorylink" "my-repository" {
+/// resource "gcp_developerconnect_git_repository_link" "my-repository" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project                = "my-project-name"
 ///   location               = "us-central1"
 ///   git_repository_link_id = "my-repo"
@@ -1044,19 +1080,28 @@ import 'app_hosting_backend_state.dart';
 ///   clone_uri              = "https://github.com/myuser/myrepo.git"
 /// }
 /// ### Include these blocks only once per project if you are starting from scratch ###
-/// resource "gcp_projects_serviceidentity" "devconnect-p4sa" {
+/// resource "gcp_projects_service_identity" "devconnect-p4sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   service = "developerconnect.googleapis.com"
 /// }
-/// resource "gcp_projects_iammember" "devconnect-secret" {
+/// resource "gcp_projects_i_a_m_member" "devconnect-secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "my-project-name"
 ///   role    = "roles/secretmanager.admin"
-///   member  = gcp_projects_serviceidentity.devconnect-p4sa.member
+///   member  = gcp_projects_service_identity.devconnect-p4sa.member
 /// }
 /// ###
 /// ### Include these blocks only once per Github account ###
 /// resource "gcp_developerconnect_connection" "my-connection" {
-///   depends_on    = [gcp_projects_iammember.devconnect-secret]
+///   depends_on = [gcp_projects_i_a_m_member.devconnect-secret]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project       = "my-project-name"
 ///   location      = "us-central1"
 ///   connection_id = "tf-test-connection-new"
@@ -1316,7 +1361,7 @@ class AppHostingBackend extends pulumi.CustomResource {
           'gcp:firebase/appHostingBackend:AppHostingBackend',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

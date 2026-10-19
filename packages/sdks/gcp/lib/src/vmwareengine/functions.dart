@@ -64,7 +64,7 @@ import 'get_vcenter_credentials_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -81,7 +81,7 @@ import 'get_vcenter_credentials_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -89,7 +89,7 @@ import 'get_vcenter_credentials_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_vmwareengine_getannouncements" "ds" {
+/// data "gcp_vmwareengine_announcements" "ds" {
 ///   parent = "projects/my-project/locations/us-west1-a"
 /// }
 /// ```
@@ -199,7 +199,7 @@ pulumi.Output<GetAnnouncementsResult> getAnnouncementsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -217,7 +217,7 @@ pulumi.Output<GetAnnouncementsResult> getAnnouncementsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -225,7 +225,7 @@ pulumi.Output<GetAnnouncementsResult> getAnnouncementsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_vmwareengine_getcluster" "myCluster" {
+/// data "gcp_vmwareengine_cluster" "myCluster" {
 ///   name   = "my-cluster"
 ///   parent = "project/locations/us-west1-a/privateClouds/my-cloud"
 /// }
@@ -337,7 +337,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -355,7 +355,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -363,7 +363,7 @@ pulumi.Output<GetClusterResult> getClusterOutput(
 ///   }
 /// }
 ///
-/// data "gcp_vmwareengine_getdatastore" "default" {
+/// data "gcp_vmwareengine_datastore" "default" {
 ///   location = exampleThirdparty.location
 ///   name     = exampleThirdparty.name
 /// }
@@ -476,7 +476,7 @@ pulumi.Output<GetDatastoreResult> getDatastoreOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -494,7 +494,7 @@ pulumi.Output<GetDatastoreResult> getDatastoreOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -502,7 +502,7 @@ pulumi.Output<GetDatastoreResult> getDatastoreOutput(
 ///   }
 /// }
 ///
-/// data "gcp_vmwareengine_getexternalaccessrule" "myExternalAccessRule" {
+/// data "gcp_vmwareengine_external_access_rule" "myExternalAccessRule" {
 ///   name   = "my-external-access-rule"
 ///   parent = "project/my-project/locations/us-west1-a/networkPolicies/my-network-policy"
 /// }
@@ -615,7 +615,7 @@ pulumi.Output<GetExternalAccessRuleResult> getExternalAccessRuleOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -633,7 +633,7 @@ pulumi.Output<GetExternalAccessRuleResult> getExternalAccessRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -641,7 +641,7 @@ pulumi.Output<GetExternalAccessRuleResult> getExternalAccessRuleOutput(
 ///   }
 /// }
 ///
-/// data "gcp_vmwareengine_getexternaladdress" "myExternalAddress" {
+/// data "gcp_vmwareengine_external_address" "myExternalAddress" {
 ///   name   = "my-external-address"
 ///   parent = "project/my-project/locations/us-west1-a/privateClouds/my-cloud"
 /// }
@@ -754,7 +754,7 @@ pulumi.Output<GetExternalAddressResult> getExternalAddressOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -772,7 +772,7 @@ pulumi.Output<GetExternalAddressResult> getExternalAddressOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -780,7 +780,7 @@ pulumi.Output<GetExternalAddressResult> getExternalAddressOutput(
 ///   }
 /// }
 ///
-/// data "gcp_vmwareengine_getnetwork" "myNw" {
+/// data "gcp_vmwareengine_network" "myNw" {
 ///   name     = "us-central1-default"
 ///   location = "us-central1"
 /// }
@@ -890,7 +890,7 @@ pulumi.Output<GetNetworkResult> getNetworkOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -907,7 +907,7 @@ pulumi.Output<GetNetworkResult> getNetworkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -915,7 +915,7 @@ pulumi.Output<GetNetworkResult> getNetworkOutput(
 ///   }
 /// }
 ///
-/// data "gcp_vmwareengine_getnetworkpeering" "myNetworkPeering" {
+/// data "gcp_vmwareengine_network_peering" "myNetworkPeering" {
 ///   name = "my-network-peering"
 /// }
 /// ```
@@ -1025,7 +1025,7 @@ pulumi.Output<GetNetworkPeeringResult> getNetworkPeeringOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1043,7 +1043,7 @@ pulumi.Output<GetNetworkPeeringResult> getNetworkPeeringOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1051,7 +1051,7 @@ pulumi.Output<GetNetworkPeeringResult> getNetworkPeeringOutput(
 ///   }
 /// }
 ///
-/// data "gcp_vmwareengine_getnetworkpolicy" "myNetworkPolicy" {
+/// data "gcp_vmwareengine_network_policy" "myNetworkPolicy" {
 ///   name     = "my-network-policy"
 ///   location = "us-central1"
 /// }
@@ -1161,7 +1161,7 @@ pulumi.Output<GetNetworkPolicyResult> getNetworkPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1178,7 +1178,7 @@ pulumi.Output<GetNetworkPolicyResult> getNetworkPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1186,7 +1186,7 @@ pulumi.Output<GetNetworkPolicyResult> getNetworkPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_vmwareengine_getnsxcredentials" "ds" {
+/// data "gcp_vmwareengine_nsx_credentials" "ds" {
 ///   parent = "projects/my-project/locations/us-west1-a/privateClouds/my-cloud"
 /// }
 /// ```
@@ -1296,7 +1296,7 @@ pulumi.Output<GetNsxCredentialsResult> getNsxCredentialsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1314,7 +1314,7 @@ pulumi.Output<GetNsxCredentialsResult> getNsxCredentialsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1322,7 +1322,7 @@ pulumi.Output<GetNsxCredentialsResult> getNsxCredentialsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_vmwareengine_getprivatecloud" "myPc" {
+/// data "gcp_vmwareengine_private_cloud" "myPc" {
 ///   name     = "my-pc"
 ///   location = "us-central1-a"
 /// }
@@ -1435,7 +1435,7 @@ pulumi.Output<GetPrivateCloudResult> getPrivateCloudOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1453,7 +1453,7 @@ pulumi.Output<GetPrivateCloudResult> getPrivateCloudOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1461,7 +1461,7 @@ pulumi.Output<GetPrivateCloudResult> getPrivateCloudOutput(
 ///   }
 /// }
 ///
-/// data "gcp_vmwareengine_getsubnet" "mySubnet" {
+/// data "gcp_vmwareengine_subnet" "mySubnet" {
 ///   name   = "service-1"
 ///   parent = "project/my-project/locations/us-west1-a/privateClouds/my-cloud"
 /// }
@@ -1568,7 +1568,7 @@ pulumi.Output<GetSubnetResult> getSubnetOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1585,7 +1585,7 @@ pulumi.Output<GetSubnetResult> getSubnetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1593,7 +1593,7 @@ pulumi.Output<GetSubnetResult> getSubnetOutput(
 ///   }
 /// }
 ///
-/// data "gcp_vmwareengine_getupgrades" "ds" {
+/// data "gcp_vmwareengine_upgrades" "ds" {
 ///   parent = "projects/my-project/locations/us-west1-a/privateClouds/my-cloud"
 /// }
 /// ```
@@ -1700,7 +1700,7 @@ pulumi.Output<GetUpgradesResult> getUpgradesOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1717,7 +1717,7 @@ pulumi.Output<GetUpgradesResult> getUpgradesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1725,7 +1725,7 @@ pulumi.Output<GetUpgradesResult> getUpgradesOutput(
 ///   }
 /// }
 ///
-/// data "gcp_vmwareengine_getvcentercredentials" "ds" {
+/// data "gcp_vmwareengine_vcenter_credentials" "ds" {
 ///   parent = "projects/my-project/locations/us-west1-a/privateClouds/my-cloud"
 /// }
 /// ```

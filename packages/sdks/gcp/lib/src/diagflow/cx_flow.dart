@@ -268,7 +268,7 @@ import 'cx_flow_transition_route.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -359,7 +359,7 @@ import 'cx_flow_transition_route.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -367,7 +367,10 @@ import 'cx_flow_transition_route.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name               = "dialogflowcx-agent"
 ///   location                   = "global"
 ///   default_language_code      = "en"
@@ -381,8 +384,11 @@ import 'cx_flow_transition_route.dart';
 ///     enable_speech_adaptation = true
 ///   }
 /// }
-/// resource "gcp_diagflow_cxflow" "basic_flow" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_flow" "basic_flow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "MyFlow"
 ///   description  = "Test Flow"
 ///   nlu_settings = {
@@ -394,8 +400,8 @@ import 'cx_flow_transition_route.dart';
 ///     trigger_fulfillment = {
 ///       return_partial_responses = false
 ///       messages = [{
-///         "text" = {
-///           "texts" = ["I didn't get that. Can you say it again?"]
+///         text = {
+///           texts = ["I didn't get that. Can you say it again?"]
 ///         }
 ///       }]
 ///     }
@@ -405,8 +411,8 @@ import 'cx_flow_transition_route.dart';
 ///     trigger_fulfillment = {
 ///       return_partial_responses = false
 ///       messages = [{
-///         "text" = {
-///           "texts" = ["Sorry, could you say that again?"]
+///         text = {
+///           texts = ["Sorry, could you say that again?"]
 ///         }
 ///       }]
 ///     }
@@ -416,8 +422,8 @@ import 'cx_flow_transition_route.dart';
 ///     trigger_fulfillment = {
 ///       return_partial_responses = false
 ///       messages = [{
-///         "text" = {
-///           "texts" = ["One more time?"]
+///         text = {
+///           texts = ["One more time?"]
 ///         }
 ///       }]
 ///     }
@@ -2121,10 +2127,10 @@ import 'cx_flow_transition_route.dart';
 /// 	"encoding/json"
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/diagflow"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/discoveryengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/diagflow"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/discoveryengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2679,7 +2685,7 @@ import 'cx_flow_transition_route.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2687,10 +2693,13 @@ import 'cx_flow_transition_route.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_diagflow_cxagent" "agent" {
+/// resource "gcp_diagflow_cx_agent" "agent" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name               = "dialogflowcx-agent"
 ///   location                   = "global"
 ///   default_language_code      = "en"
@@ -2705,12 +2714,18 @@ import 'cx_flow_transition_route.dart';
 ///   }
 /// }
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "dialogflowcx-bucket"
 ///   location                    = "US"
 ///   uniform_bucket_level_access = true
 /// }
-/// resource "gcp_diagflow_cxflow" "basic_flow" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_flow" "basic_flow" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "MyFlow"
 ///   description  = "Test Flow"
 ///   nlu_settings = {
@@ -2722,8 +2737,8 @@ import 'cx_flow_transition_route.dart';
 ///     trigger_fulfillment = {
 ///       return_partial_responses = false
 ///       messages = [{
-///         "text" = {
-///           "texts" = ["I didn't get that. Can you say it again?"]
+///         text = {
+///           texts = ["I didn't get that. Can you say it again?"]
 ///         }
 ///       }]
 ///     }
@@ -2733,8 +2748,8 @@ import 'cx_flow_transition_route.dart';
 ///     trigger_fulfillment = {
 ///       return_partial_responses = false
 ///       messages = [{
-///         "text" = {
-///           "texts" = ["Sorry, could you say that again?"]
+///         text = {
+///           texts = ["Sorry, could you say that again?"]
 ///         }
 ///       }]
 ///     }
@@ -2744,8 +2759,8 @@ import 'cx_flow_transition_route.dart';
 ///     trigger_fulfillment = {
 ///       return_partial_responses = false
 ///       messages = [{
-///         "text" = {
-///           "texts" = ["One more time?"]
+///         text = {
+///           texts = ["One more time?"]
 ///         }
 ///       }]
 ///     }
@@ -2755,49 +2770,61 @@ import 'cx_flow_transition_route.dart';
 ///     trigger_fulfillment = {
 ///       return_partial_responses = true
 ///       messages = [{
-///         "channel" = "some-channel"
-///         "text" = {
-///           "texts" = ["Some text"]
+///         channel = "some-channel"
+///         text = {
+///           texts = ["Some text"]
 ///         }
 ///         }, {
-///         "payload" = "          {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n"
+///         payload = <<EOF
+///           {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+/// EOF
+///
 ///         }, {
-///         "conversationSuccess" = {
-///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         conversation_success = {
+///           metadata = <<EOF
+///             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///         }
 ///         }, {
-///         "outputAudioText" = {
-///           "text" = "some output text"
+///         output_audio_text = {
+///           text = "some output text"
 ///         }
 ///         }, {
-///         "outputAudioText" = {
-///           "ssml" = "            <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n"
+///         output_audio_text = {
+///           ssml = <<EOF
+///             <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+/// EOF
+///
 ///         }
 ///         }, {
-///         "liveAgentHandoff" = {
-///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         live_agent_handoff = {
+///           metadata = <<EOF
+///             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///         }
 ///         }, {
-///         "playAudio" = {
-///           "audioUri" = "http://example.com/some-audio-file.mp3"
+///         play_audio = {
+///           audio_uri = "http://example.com/some-audio-file.mp3"
 ///         }
 ///         }, {
-///         "telephonyTransferCall" = {
-///           "phoneNumber" = "1-234-567-8901"
+///         telephony_transfer_call = {
+///           phone_number = "1-234-567-8901"
 ///         }
 ///       }]
 ///       set_parameter_actions = [{
-///         "parameter" = "some-param"
-///         "value"     = "123.45"
+///         parameter = "some-param"
+///         value     = "123.45"
 ///         }, {
-///         "parameter" = "another-param"
-///         "value"     = jsonencode("abc")
+///         parameter = "another-param"
+///         value     = jsonencode("abc")
 ///         }, {
-///         "parameter" = "other-param"
-///         "value"     = jsonencode(["foo"])
+///         parameter = "other-param"
+///         value     = jsonencode(["foo"])
 ///       }]
 ///       conditional_cases = [{
-///         "cases" = jsonencode([{
+///         cases = jsonencode([{
 ///           "condition" = "$sys.func.RAND() < 0.5"
 ///           "caseContent" = [{
 ///             "message" = {
@@ -2837,49 +2864,61 @@ import 'cx_flow_transition_route.dart';
 ///     trigger_fulfillment = {
 ///       return_partial_responses = true
 ///       messages = [{
-///         "channel" = "some-channel"
-///         "text" = {
-///           "texts" = ["Some text"]
+///         channel = "some-channel"
+///         text = {
+///           texts = ["Some text"]
 ///         }
 ///         }, {
-///         "payload" = "          {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n"
+///         payload = <<EOF
+///           {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+/// EOF
+///
 ///         }, {
-///         "conversationSuccess" = {
-///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         conversation_success = {
+///           metadata = <<EOF
+///             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///         }
 ///         }, {
-///         "outputAudioText" = {
-///           "text" = "some output text"
+///         output_audio_text = {
+///           text = "some output text"
 ///         }
 ///         }, {
-///         "outputAudioText" = {
-///           "ssml" = "            <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n"
+///         output_audio_text = {
+///           ssml = <<EOF
+///             <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+/// EOF
+///
 ///         }
 ///         }, {
-///         "liveAgentHandoff" = {
-///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         live_agent_handoff = {
+///           metadata = <<EOF
+///             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///         }
 ///         }, {
-///         "playAudio" = {
-///           "audioUri" = "http://example.com/some-audio-file.mp3"
+///         play_audio = {
+///           audio_uri = "http://example.com/some-audio-file.mp3"
 ///         }
 ///         }, {
-///         "telephonyTransferCall" = {
-///           "phoneNumber" = "1-234-567-8901"
+///         telephony_transfer_call = {
+///           phone_number = "1-234-567-8901"
 ///         }
 ///       }]
 ///       set_parameter_actions = [{
-///         "parameter" = "some-param"
-///         "value"     = "123.45"
+///         parameter = "some-param"
+///         value     = "123.45"
 ///         }, {
-///         "parameter" = "another-param"
-///         "value"     = jsonencode("abc")
+///         parameter = "another-param"
+///         value     = jsonencode("abc")
 ///         }, {
-///         "parameter" = "other-param"
-///         "value"     = jsonencode(["foo"])
+///         parameter = "other-param"
+///         value     = jsonencode(["foo"])
 ///       }]
 ///       conditional_cases = [{
-///         "cases" = jsonencode([{
+///         cases = jsonencode([{
 ///           "condition" = "$sys.func.RAND() < 0.5"
 ///           "caseContent" = [{
 ///             "message" = {
@@ -2912,7 +2951,7 @@ import 'cx_flow_transition_route.dart';
 ///         }])
 ///       }]
 ///     }
-///     target_flow = gcp_diagflow_cxagent.agent.start_flow
+///     target_flow = gcp_diagflow_cx_agent.agent.start_flow
 ///   }
 ///   advanced_settings = {
 ///     audio_export_gcs_destination = {
@@ -2943,46 +2982,58 @@ import 'cx_flow_transition_route.dart';
 ///     enabled = true
 ///     trigger_fulfillment = {
 ///       messages = [{
-///         "channel" = "some-channel"
-///         "text" = {
-///           "texts" = ["information completed, navigating to page 2"]
+///         channel = "some-channel"
+///         text = {
+///           texts = ["information completed, navigating to page 2"]
 ///         }
 ///         }, {
-///         "payload" = "          {\\\"some-key\\\": \\\"some-value\\\", \\\"other-key\\\": [\\\"other-value\\\"]}\n"
+///         payload = <<EOF
+///           {\"some-key\": \"some-value\", \"other-key\": [\"other-value\"]}
+/// EOF
+///
 ///         }, {
-///         "conversationSuccess" = {
-///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         conversation_success = {
+///           metadata = <<EOF
+///             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///         }
 ///         }, {
-///         "outputAudioText" = {
-///           "text" = "some output text"
+///         output_audio_text = {
+///           text = "some output text"
 ///         }
 ///         }, {
-///         "outputAudioText" = {
-///           "ssml" = "            <speak>Some example <say-as interpret-as=\\\"characters\\\">SSML XML</say-as></speak>\n"
+///         output_audio_text = {
+///           ssml = <<EOF
+///             <speak>Some example <say-as interpret-as=\"characters\">SSML XML</say-as></speak>
+/// EOF
+///
 ///         }
 ///         }, {
-///         "liveAgentHandoff" = {
-///           "metadata" = "            {\\\"some-metadata-key\\\": \\\"some-value\\\", \\\"other-metadata-key\\\": 1234}\n"
+///         live_agent_handoff = {
+///           metadata = <<EOF
+///             {\"some-metadata-key\": \"some-value\", \"other-metadata-key\": 1234}
+/// EOF
+///
 ///         }
 ///         }, {
-///         "playAudio" = {
-///           "audioUri" = "http://example.com/some-audio-file.mp3"
+///         play_audio = {
+///           audio_uri = "http://example.com/some-audio-file.mp3"
 ///         }
 ///         }, {
-///         "telephonyTransferCall" = {
-///           "phoneNumber" = "1-234-567-8902"
+///         telephony_transfer_call = {
+///           phone_number = "1-234-567-8902"
 ///         }
 ///       }]
-///       webhook                  = gcp_diagflow_cxwebhook.my_webhook.id
+///       webhook                  = gcp_diagflow_cx_webhook.my_webhook.id
 ///       return_partial_responses = true
 ///       tag                      = "some-tag"
 ///       set_parameter_actions = [{
-///         "parameter" = "some-param"
-///         "value"     = "123.45"
+///         parameter = "some-param"
+///         value     = "123.45"
 ///       }]
 ///       conditional_cases = [{
-///         "cases" = jsonencode([{
+///         cases = jsonencode([{
 ///           "condition" = "$sys.func.RAND() < 0.5"
 ///           "caseContent" = [{
 ///             "message" = {
@@ -3028,14 +3079,17 @@ import 'cx_flow_transition_route.dart';
 ///       enable_generative_fallback = true
 ///     }
 ///     data_store_connections = [{
-///       "dataStoreType"          = "UNSTRUCTURED"
-///       "dataStore"              ="projects/${data.gcp_organizations_getproject.project.number}/locations/${gcp_diagflow_cxagent.agent.location}/collections/default_collection/dataStores/${gcp_discoveryengine_datastore.my_datastore.data_store_id}"
-///       "documentProcessingMode" = "DOCUMENTS"
+///       data_store_type          = "UNSTRUCTURED"
+///       data_store               ="projects/${data.gcp_organizations_project.project.number}/locations/${gcp_diagflow_cx_agent.agent.location}/collections/default_collection/dataStores/${gcp_discoveryengine_data_store.my_datastore.data_store_id}"
+///       document_processing_mode = "DOCUMENTS"
 ///     }]
-///     target_flow = gcp_diagflow_cxagent.agent.start_flow
+///     target_flow = gcp_diagflow_cx_agent.agent.start_flow
 ///   }
 /// }
-/// resource "gcp_discoveryengine_datastore" "my_datastore" {
+/// resource "gcp_discoveryengine_data_store" "my_datastore" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location          = "global"
 ///   data_store_id     = "datastore-flow-full"
 ///   display_name      = "datastore-flow-full"
@@ -3043,8 +3097,11 @@ import 'cx_flow_transition_route.dart';
 ///   content_config    = "NO_CONTENT"
 ///   solution_types    = ["SOLUTION_TYPE_CHAT"]
 /// }
-/// resource "gcp_diagflow_cxwebhook" "my_webhook" {
-///   parent       = gcp_diagflow_cxagent.agent.id
+/// resource "gcp_diagflow_cx_webhook" "my_webhook" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent       = gcp_diagflow_cx_agent.agent.id
 ///   display_name = "MyWebhook"
 ///   generic_web_service = {
 ///     uri = "https://example.com"
@@ -3961,7 +4018,7 @@ class CxFlow extends pulumi.CustomResource {
           'gcp:diagflow/cxFlow:CxFlow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     advancedSettings = registerOutput<CxFlowAdvancedSettings?>('advancedSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CxFlowAdvancedSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

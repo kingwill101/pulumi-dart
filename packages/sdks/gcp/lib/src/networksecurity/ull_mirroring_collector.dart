@@ -193,8 +193,8 @@ import 'ull_mirroring_collector_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -276,7 +276,7 @@ import 'ull_mirroring_collector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -285,49 +285,70 @@ import 'ull_mirroring_collector_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-network"
 ///   auto_create_subnetworks = false
 /// }
 /// resource "gcp_compute_subnetwork" "subnetwork" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "example-subnet"
 ///   region        = "us-south1"
 ///   ip_cidr_range = "10.1.0.0/16"
 ///   network       = gcp_compute_network.network.name
 /// }
-/// resource "gcp_compute_regionhealthcheck" "health_check" {
+/// resource "gcp_compute_region_health_check" "health_check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example-hc"
 ///   region = "us-south1"
 ///   http_health_check = {
 ///     port = 80
 ///   }
 /// }
-/// resource "gcp_compute_regionbackendservice" "backend_service" {
+/// resource "gcp_compute_region_backend_service" "backend_service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-bs"
 ///   region                = "us-south1"
-///   health_checks         = gcp_compute_regionhealthcheck.health_check.id
+///   health_checks         = gcp_compute_region_health_check.health_check.id
 ///   protocol              = "UDP"
 ///   load_balancing_scheme = "INTERNAL"
 /// }
-/// resource "gcp_compute_forwardingrule" "forwarding_rule" {
+/// resource "gcp_compute_forwarding_rule" "forwarding_rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-fwr"
 ///   region                 = "us-south1"
 ///   network                = gcp_compute_network.network.name
 ///   subnetwork             = gcp_compute_subnetwork.subnetwork.name
-///   backend_service        = gcp_compute_regionbackendservice.backend_service.id
+///   backend_service        = gcp_compute_region_backend_service.backend_service.id
 ///   load_balancing_scheme  = "INTERNAL"
 ///   ports                  = [6081]
 ///   ip_protocol            = "UDP"
 ///   is_mirroring_collector = true
 /// }
-/// resource "gcp_networksecurity_ullmirroringengine" "ull_mirroring_engine" {
+/// resource "gcp_networksecurity_ull_mirroring_engine" "ull_mirroring_engine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ull_mirroring_engine_id = "example-ull-eng"
 ///   location                = "us-south1-d"
 /// }
-/// resource "gcp_networksecurity_ullmirroringcollector" "default" {
+/// resource "gcp_networksecurity_ull_mirroring_collector" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   ull_mirroring_collector_id = "example-ull-col"
 ///   location                   = "us-south1-d"
-///   forwarding_rule            = gcp_compute_forwardingrule.forwarding_rule.id
-///   engine                     = gcp_networksecurity_ullmirroringengine.ull_mirroring_engine.id
+///   forwarding_rule            = gcp_compute_forwarding_rule.forwarding_rule.id
+///   engine                     = gcp_networksecurity_ull_mirroring_engine.ull_mirroring_engine.id
 ///   labels = {
 ///     "foo" = "bar"
 ///   }
@@ -568,7 +589,7 @@ class UllMirroringCollector extends pulumi.CustomResource {
           'gcp:networksecurity/ullMirroringCollector:UllMirroringCollector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

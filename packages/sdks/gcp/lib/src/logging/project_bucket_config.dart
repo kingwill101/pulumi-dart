@@ -72,8 +72,8 @@ import 'project_bucket_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -101,7 +101,7 @@ import 'project_bucket_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -110,11 +110,17 @@ import 'project_bucket_config_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id = "your-project-id"
 ///   name       = "your-project-id"
 ///   org_id     = "123456789"
 /// }
-/// resource "gcp_logging_projectbucketconfig" "basic" {
+/// resource "gcp_logging_project_bucket_config" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = gcp_organizations_project.default.project_id
 ///   location       = "global"
 ///   retention_days = 30
@@ -224,7 +230,7 @@ import 'project_bucket_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -244,7 +250,7 @@ import 'project_bucket_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -252,7 +258,10 @@ import 'project_bucket_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_projectbucketconfig" "basic" {
+/// resource "gcp_logging_project_bucket_config" "basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = "project_id"
 ///   location       = "global"
 ///   retention_days = 30
@@ -351,7 +360,7 @@ import 'project_bucket_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -372,7 +381,7 @@ import 'project_bucket_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -380,7 +389,10 @@ import 'project_bucket_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_projectbucketconfig" "analytics-enabled-bucket" {
+/// resource "gcp_logging_project_bucket_config" "analytics-enabled-bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project          = "project_id"
 ///   location         = "global"
 ///   retention_days   = 30
@@ -555,8 +567,8 @@ import 'project_bucket_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -612,7 +624,7 @@ import 'project_bucket_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -620,32 +632,44 @@ import 'project_bucket_config_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_logging_getprojectcmeksettings" "cmekSettings" {
+/// data "gcp_logging_project_cmek_settings" "cmekSettings" {
 ///   project = "project_id"
 /// }
 ///
-/// resource "gcp_kms_keyring" "keyring" {
+/// resource "gcp_kms_key_ring" "keyring" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "keyring-example"
 ///   location = "us-central1"
 /// }
-/// resource "gcp_kms_cryptokey" "key" {
+/// resource "gcp_kms_crypto_key" "key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "crypto-key-example"
-///   key_ring        = gcp_kms_keyring.keyring.id
+///   key_ring        = gcp_kms_key_ring.keyring.id
 ///   rotation_period = "7776000s"
 /// }
-/// resource "gcp_kms_cryptokeyiambinding" "crypto_key_binding" {
-///   crypto_key_id = gcp_kms_cryptokey.key.id
+/// resource "gcp_kms_crypto_key_i_a_m_binding" "crypto_key_binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   crypto_key_id = gcp_kms_crypto_key.key.id
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   members       = ["serviceAccount:${data.gcp_logging_getprojectcmeksettings.cmekSettings.service_account_id}"]
+///   members       = ["serviceAccount:${data.gcp_logging_project_cmek_settings.cmekSettings.service_account_id}"]
 /// }
-/// resource "gcp_logging_projectbucketconfig" "example-project-bucket-cmek-settings" {
-///   depends_on     = [gcp_kms_cryptokeyiambinding.crypto_key_binding]
+/// resource "gcp_logging_project_bucket_config" "example-project-bucket-cmek-settings" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_binding.crypto_key_binding]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = "project_id"
 ///   location       = "us-central1"
 ///   retention_days = 30
 ///   bucket_id      = "custom-bucket"
 ///   cmek_settings = {
-///     kms_key_name = gcp_kms_cryptokey.key.id
+///     kms_key_name = gcp_kms_crypto_key.key.id
 ///   }
 /// }
 /// ```
@@ -820,7 +844,7 @@ import 'project_bucket_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -846,7 +870,7 @@ import 'project_bucket_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -854,7 +878,10 @@ import 'project_bucket_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_logging_projectbucketconfig" "example-project-bucket-index-configs" {
+/// resource "gcp_logging_project_bucket_config" "example-project-bucket-index-configs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project        = "project_id"
 ///   location       = "global"
 ///   retention_days = 30
@@ -971,7 +998,7 @@ class ProjectBucketConfig extends pulumi.CustomResource {
           'gcp:logging/projectBucketConfig:ProjectBucketConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     bucketId = registerOutput<String>('bucketId');
     cmekSettings = registerOutput<ProjectBucketConfigCmekSettings?>('cmekSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectBucketConfigCmekSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });

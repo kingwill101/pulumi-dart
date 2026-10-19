@@ -35,7 +35,7 @@ class GetServiceTraffic {
 
   factory GetServiceTraffic.fromMap(Map<String, dynamic> map) {
     return GetServiceTraffic(
-      percent: pulumi.Input.fromValue((map['percent'] as num).toInt()),
+      percent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['percent'])),
       revision: pulumi.Input.fromValue(map['revision'] as String),
       tag: pulumi.Input.fromValue(map['tag'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),

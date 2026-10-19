@@ -78,7 +78,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -100,7 +100,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -108,7 +108,10 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "main-instance"
 ///   database_version = "POSTGRES_15"
 ///   region           = "us-central1"
@@ -291,7 +294,7 @@ import 'database_instance_state.dart';
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -304,6 +307,12 @@ import 'database_instance_state.dart';
 ///
 /// resource "gcp_compute_instance" "apps" {
 ///   count = 8
+///   pulumi {
+///     name ="apps-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network_interfaces {
 ///     access_configs {
 ///     }
@@ -318,9 +327,15 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 /// resource "random_id" "db_name_suffix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   byte_length = 4
 /// }
-/// resource "gcp_sql_databaseinstance" "postgres" {
+/// resource "gcp_sql_database_instance" "postgres" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             ="postgres-instance-${random_id.db_name_suffix.hex}"
 ///   database_version = "POSTGRES_15"
 ///   settings = {
@@ -480,9 +495,9 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/servicenetworking"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/servicenetworking"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -544,7 +559,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -556,9 +571,15 @@ import 'database_instance_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "private_network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "private-network"
 /// }
-/// resource "gcp_compute_globaladdress" "private_ip_address" {
+/// resource "gcp_compute_global_address" "private_ip_address" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "private-ip-address"
 ///   purpose       = "VPC_PEERING"
 ///   address_type  = "INTERNAL"
@@ -566,15 +587,24 @@ import 'database_instance_state.dart';
 ///   network       = gcp_compute_network.private_network.id
 /// }
 /// resource "gcp_servicenetworking_connection" "private_vpc_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   network                 = gcp_compute_network.private_network.id
 ///   service                 = "servicenetworking.googleapis.com"
-///   reserved_peering_ranges = [gcp_compute_globaladdress.private_ip_address.name]
+///   reserved_peering_ranges = [gcp_compute_global_address.private_ip_address.name]
 /// }
 /// resource "random_id" "db_name_suffix" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   byte_length = 4
 /// }
-/// resource "gcp_sql_databaseinstance" "instance" {
-///   depends_on       = [gcp_servicenetworking_connection.private_vpc_connection]
+/// resource "gcp_sql_database_instance" "instance" {
+///   depends_on = [gcp_servicenetworking_connection.private_vpc_connection]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             ="private-instance-${random_id.db_name_suffix.hex}"
 ///   region           = "us-central1"
 ///   database_version = "MYSQL_5_7"
@@ -771,7 +801,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -796,7 +826,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -804,7 +834,10 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "enterprise-plus-main-instance"
 ///   database_version = "MYSQL_8_0_31"
 ///   settings = {
@@ -953,7 +986,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -987,7 +1020,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -995,7 +1028,10 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "mcp-enabled-main-instance"
 ///   region           = "us-central1"
 ///   database_version = "POSTGRES_16"
@@ -1003,10 +1039,10 @@ import 'database_instance_state.dart';
 ///     tier    = "db-perf-optimized-N-2"
 ///     edition = "ENTERPRISE_PLUS"
 ///     connection_pool_configs = [{
-///       "connectionPoolingEnabled" = true
-///       "flags" = [{
-///         "name"  = "max_client_connections"
-///         "value" = "1980"
+///       connection_pooling_enabled = true
+///       flags = [{
+///         name  = "max_client_connections"
+///         value = "1980"
 ///       }]
 ///     }]
 ///   }
@@ -1170,7 +1206,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1207,7 +1243,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1215,15 +1251,18 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "psc-enabled-main-instance"
 ///   database_version = "MYSQL_8_0"
 ///   settings = {
 ///     tier = "db-f1-micro"
 ///     ip_configuration = {
 ///       psc_configs = [{
-///         "pscEnabled"              = true
-///         "allowedConsumerProjects" = ["allowed-consumer-project-name"]
+///         psc_enabled               = true
+///         allowed_consumer_projects = ["allowed-consumer-project-name"]
 ///       }]
 ///       ipv4_enabled = false
 ///     }
@@ -1416,7 +1455,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1459,7 +1498,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1467,18 +1506,21 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "psc-enabled-main-instance"
 ///   database_version = "MYSQL_8_0"
 ///   settings = {
 ///     tier = "db-f1-micro"
 ///     ip_configuration = {
 ///       psc_configs = [{
-///         "pscEnabled"              = true
-///         "allowedConsumerProjects" = ["allowed-consumer-project-name"]
-///         "pscAutoConnections" = [{
-///           "consumerNetwork"          = "network-name"
-///           "consumerServiceProjectId" = "project-id"
+///         psc_enabled               = true
+///         allowed_consumer_projects = ["allowed-consumer-project-name"]
+///         psc_auto_connections = [{
+///           consumer_network            = "network-name"
+///           consumer_service_project_id = "project-id"
 ///         }]
 ///       }]
 ///       ipv4_enabled = false
@@ -1667,7 +1709,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1705,7 +1747,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1713,16 +1755,19 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "main" {
+/// resource "gcp_sql_database_instance" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "psc-enabled-main-instance"
 ///   database_version = "MYSQL_8_0"
 ///   settings = {
 ///     tier = "db-f1-micro"
 ///     ip_configuration = {
 ///       psc_configs = [{
-///         "pscEnabled"              = true
-///         "allowedConsumerProjects" = ["allowed-consumer-project-name"]
-///         "networkAttachmentUri"    = "network-attachment-uri"
+///         psc_enabled               = true
+///         allowed_consumer_projects = ["allowed-consumer-project-name"]
+///         network_attachment_uri    = "network-attachment-uri"
 ///       }]
 ///       ipv4_enabled = false
 ///     }
@@ -1873,7 +1918,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1899,7 +1944,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1907,7 +1952,10 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "main-instance"
 ///   database_version = "MYSQL_8_0"
 ///   settings = {
@@ -2055,7 +2103,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2085,7 +2133,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2093,7 +2141,10 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "main-instance"
 ///   database_version = "MYSQL_8_0"
 ///   settings = {
@@ -2256,7 +2307,7 @@ import 'database_instance_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/sql"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/sql"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2287,7 +2338,7 @@ import 'database_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2295,7 +2346,10 @@ import 'database_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_sql_databaseinstance" "instance" {
+/// resource "gcp_sql_database_instance" "instance" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "main-instance"
 ///   database_version = "MYSQL_8_0"
 ///   settings = {
@@ -2477,6 +2531,8 @@ class DatabaseInstance extends pulumi.CustomResource {
   late final pulumi.Output<String> dnsName;
   /// The list of DNS names used by this instance. Different connection types for an instance may have different DNS names. DNS names can apply to an individual instance or a cluster of instances.
   late final pulumi.Output<List<DatabaseInstanceDnsName>> dnsNames;
+  /// Enables Confidential Mode on Hyperdisk storage for enhanced security. Only supported on C4A instances.
+  late final pulumi.Output<bool> encryptionConfidentialMode;
   /// The full path to the encryption key used for the CMEK disk encryption.  Setting
   /// up disk encryption currently requires manual steps outside of this provider.
   /// The provided key must be in the same region as the SQL instance.  In order
@@ -2577,7 +2633,7 @@ class DatabaseInstance extends pulumi.CustomResource {
           'gcp:sql/databaseInstance:DatabaseInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['replicaConfiguration', 'rootPassword', 'rootPasswordWo', 'serverCaCerts'],
         ) {
     availableMaintenanceVersions = registerOutput<List<String>>('availableMaintenanceVersions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
@@ -2589,6 +2645,7 @@ class DatabaseInstance extends pulumi.CustomResource {
     deletionProtection = registerOutput<bool?>('deletionProtection');
     dnsName = registerOutput<String>('dnsName');
     dnsNames = registerOutput<List<DatabaseInstanceDnsName>>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceDnsName>(guardedValue, (value) => DatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())); });
+    encryptionConfidentialMode = registerOutput<bool>('encryptionConfidentialMode');
     encryptionKeyName = registerOutput<String>('encryptionKeyName');
     enforceNewSqlNetworkArchitecture = registerOutput<bool>('enforceNewSqlNetworkArchitecture');
     finalBackupDescription = registerOutput<String?>('finalBackupDescription');
@@ -2653,6 +2710,7 @@ class DatabaseInstance extends pulumi.CustomResource {
     deletionProtection = registerOutput<bool?>('deletionProtection');
     dnsName = registerOutput<String>('dnsName');
     dnsNames = registerOutput<List<DatabaseInstanceDnsName>>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceDnsName>(guardedValue, (value) => DatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())); });
+    encryptionConfidentialMode = registerOutput<bool>('encryptionConfidentialMode');
     encryptionKeyName = registerOutput<String>('encryptionKeyName');
     enforceNewSqlNetworkArchitecture = registerOutput<bool>('enforceNewSqlNetworkArchitecture');
     finalBackupDescription = registerOutput<String?>('finalBackupDescription');
@@ -2703,6 +2761,7 @@ class DatabaseInstance extends pulumi.CustomResource {
     deletionProtection = registerOutput<bool?>('deletionProtection');
     dnsName = registerOutput<String>('dnsName');
     dnsNames = registerOutput<List<DatabaseInstanceDnsName>>('dnsNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DatabaseInstanceDnsName>(guardedValue, (value) => DatabaseInstanceDnsName.fromMap((value as Map).cast<String, dynamic>())); });
+    encryptionConfidentialMode = registerOutput<bool>('encryptionConfidentialMode');
     encryptionKeyName = registerOutput<String>('encryptionKeyName');
     enforceNewSqlNetworkArchitecture = registerOutput<bool>('enforceNewSqlNetworkArchitecture');
     finalBackupDescription = registerOutput<String?>('finalBackupDescription');

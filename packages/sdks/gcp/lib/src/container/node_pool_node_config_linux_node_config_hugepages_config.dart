@@ -25,8 +25,8 @@ class NodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
 
   factory NodePoolNodeConfigLinuxNodeConfigHugepagesConfig.fromMap(Map<String, dynamic> map) {
     return NodePoolNodeConfigLinuxNodeConfigHugepagesConfig(
-      hugepageSize1g: (() { final guardedValue = map['hugepageSize1g']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      hugepageSize2m: (() { final guardedValue = map['hugepageSize2m']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      hugepageSize1g: (() { final guardedValue = map['hugepageSize1g']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      hugepageSize2m: (() { final guardedValue = map['hugepageSize2m']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

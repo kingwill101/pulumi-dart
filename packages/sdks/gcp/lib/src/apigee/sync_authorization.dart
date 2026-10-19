@@ -157,10 +157,10 @@ import 'sync_authorization_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/apigee"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/apigee"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -228,7 +228,7 @@ import 'sync_authorization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -237,6 +237,9 @@ import 'sync_authorization_state.dart';
 /// }
 ///
 /// resource "gcp_organizations_project" "project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "my-project"
 ///   name            = "my-project"
 ///   org_id          = "123456789"
@@ -244,26 +247,41 @@ import 'sync_authorization_state.dart';
 ///   deletion_policy = "DELETE"
 /// }
 /// resource "gcp_projects_service" "apigee" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.project.project_id
 ///   service = "apigee.googleapis.com"
 /// }
 /// resource "gcp_apigee_organization" "apigee_org" {
-///   depends_on       = [gcp_projects_service.apigee]
+///   depends_on = [gcp_projects_service.apigee]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   analytics_region = "us-central1"
 ///   project_id       = gcp_organizations_project.project.project_id
 ///   runtime_type     = "HYBRID"
 /// }
 /// resource "gcp_serviceaccount_account" "service_account" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "my-account"
 ///   display_name = "Service Account"
 /// }
-/// resource "gcp_projects_iammember" "synchronizer-iam" {
+/// resource "gcp_projects_i_a_m_member" "synchronizer-iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = gcp_organizations_project.project.project_id
 ///   role    = "roles/apigee.synchronizerManager"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.service_account.email}"
 /// }
-/// resource "gcp_apigee_syncauthorization" "apigee_sync_authorization" {
-///   depends_on = [gcp_projects_iammember.synchronizer-iam]
+/// resource "gcp_apigee_sync_authorization" "apigee_sync_authorization" {
+///   depends_on = [gcp_projects_i_a_m_member.synchronizer-iam]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = gcp_apigee_organization.apigee_org.name
 ///   identities = ["serviceAccount:${gcp_serviceaccount_account.service_account.email}"]
 /// }
@@ -430,7 +448,7 @@ class SyncAuthorization extends pulumi.CustomResource {
           'gcp:apigee/syncAuthorization:SyncAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     identities = registerOutput<List<String>>('identities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

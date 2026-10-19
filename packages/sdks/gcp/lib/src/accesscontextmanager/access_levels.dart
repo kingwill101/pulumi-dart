@@ -220,7 +220,7 @@ import 'access_levels_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/accesscontextmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/accesscontextmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -298,7 +298,7 @@ import 'access_levels_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -306,40 +306,46 @@ import 'access_levels_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_accesscontextmanager_accesslevels" "access-levels" {
-///   parent ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}"
+/// resource "gcp_accesscontextmanager_access_levels" "access-levels" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   parent ="accessPolicies/${gcp_accesscontextmanager_access_policy.access-policy.name}"
 ///   access_levels {
-///     name  ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/accessLevels/chromeos_no_lock"
+///     name  ="accessPolicies/${gcp_accesscontextmanager_access_policy.access-policy.name}/accessLevels/chromeos_no_lock"
 ///     title = "chromeos_no_lock"
 ///     basic = {
 ///       conditions = [{
-///         "devicePolicy" = {
-///           "requireScreenLock" = true
-///           "osConstraints" = [{
-///             "osType" = "DESKTOP_CHROME_OS"
+///         device_policy = {
+///           require_screen_lock = true
+///           os_constraints = [{
+///             os_type = "DESKTOP_CHROME_OS"
 ///           }]
 ///         }
-///         "regions" = ["CH", "IT", "US"]
+///         regions = ["CH", "IT", "US"]
 ///       }]
 ///     }
 ///   }
 ///   access_levels {
-///     name  ="accessPolicies/${gcp_accesscontextmanager_accesspolicy.access-policy.name}/accessLevels/mac_no_lock"
+///     name  ="accessPolicies/${gcp_accesscontextmanager_access_policy.access-policy.name}/accessLevels/mac_no_lock"
 ///     title = "mac_no_lock"
 ///     basic = {
 ///       conditions = [{
-///         "devicePolicy" = {
-///           "requireScreenLock" = true
-///           "osConstraints" = [{
-///             "osType" = "DESKTOP_MAC"
+///         device_policy = {
+///           require_screen_lock = true
+///           os_constraints = [{
+///             os_type = "DESKTOP_MAC"
 ///           }]
 ///         }
-///         "regions" = ["CH", "IT", "US"]
+///         regions = ["CH", "IT", "US"]
 ///       }]
 ///     }
 ///   }
 /// }
-/// resource "gcp_accesscontextmanager_accesspolicy" "access-policy" {
+/// resource "gcp_accesscontextmanager_access_policy" "access-policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent = "organizations/123456789"
 ///   title  = "my policy"
 /// }
@@ -501,7 +507,7 @@ class AccessLevels extends pulumi.CustomResource {
           'gcp:accesscontextmanager/accessLevels:AccessLevels',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     accessLevels = registerOutput<List<AccessLevelsAccessLevel>?>('accessLevels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AccessLevelsAccessLevel>(guardedValue, (value) => AccessLevelsAccessLevel.fromMap((value as Map).cast<String, dynamic>())); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

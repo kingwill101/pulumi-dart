@@ -50,6 +50,7 @@ class GetServiceResult {
   final Map<String, String>? pulumiLabels;
   final bool? reconciling;
   final List<GetServiceScaling>? scalings;
+  final bool? sshEnabled;
   final Map<String, String>? tags;
   final List<GetServiceTemplate>? templates;
   final List<GetServiceTerminalCondition>? terminalConditions;
@@ -97,6 +98,7 @@ class GetServiceResult {
   /// [pulumiLabels] Optional.
   /// [reconciling] Optional.
   /// [scalings] Optional.
+  /// [sshEnabled] Optional.
   /// [tags] Optional.
   /// [templates] Optional.
   /// [terminalConditions] Optional.
@@ -143,6 +145,7 @@ class GetServiceResult {
     this.pulumiLabels,
     this.reconciling,
     this.scalings,
+    this.sshEnabled,
     this.tags,
     this.templates,
     this.terminalConditions,
@@ -192,6 +195,7 @@ class GetServiceResult {
       'pulumiLabels': ?pulumiLabels,
       'reconciling': ?reconciling,
       'scalings': ?(() { final guardedValue = scalings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceScaling, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'sshEnabled': ?sshEnabled,
       'tags': ?tags,
       'templates': ?(() { final guardedValue = templates; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceTemplate, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'terminalConditions': ?(() { final guardedValue = terminalConditions; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetServiceTerminalCondition, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
@@ -242,6 +246,7 @@ class GetServiceResult {
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       scalings: (() { final guardedValue = map['scalings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceScaling>(guardedValue, (value) => GetServiceScaling.fromMap((value as Map).cast<String, dynamic>())); })(),
+      sshEnabled: (() { final guardedValue = map['sshEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
       templates: (() { final guardedValue = map['templates']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceTemplate>(guardedValue, (value) => GetServiceTemplate.fromMap((value as Map).cast<String, dynamic>())); })(),
       terminalConditions: (() { final guardedValue = map['terminalConditions']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetServiceTerminalCondition>(guardedValue, (value) => GetServiceTerminalCondition.fromMap((value as Map).cast<String, dynamic>())); })(),

@@ -8,6 +8,8 @@ class InstanceAdvancedMachineFeatures {
   /// Whether to enable UEFI networking for instance creation.
   final pulumi.Input<bool?>? enableUefiNetworking;
   /// [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+  ///
+  /// &gt; **Note:** Early 8.X.0 provider versions dropped an explicitly configured `STANDARD` value when creating the resource. On affected resources the diff stays suppressed, so Terraform reports no changes. For `gcp.compute.Instance`, apply once with another level (`ENHANCED` or `ARCHITECTURAL`) and then again with `STANDARD`; this requires `allowStoppingForUpdate`. For instance templates the field is `ForceNew`, so use `pulumi up -replace=...` instead.
   final pulumi.Input<String?>? performanceMonitoringUnit;
   /// The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
   final pulumi.Input<int?>? threadsPerCore;
@@ -48,9 +50,9 @@ class InstanceAdvancedMachineFeatures {
       enableNestedVirtualization: (() { final guardedValue = map['enableNestedVirtualization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       enableUefiNetworking: (() { final guardedValue = map['enableUefiNetworking']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       performanceMonitoringUnit: (() { final guardedValue = map['performanceMonitoringUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      threadsPerCore: (() { final guardedValue = map['threadsPerCore']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      threadsPerCore: (() { final guardedValue = map['threadsPerCore']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       turboMode: (() { final guardedValue = map['turboMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      visibleCoreCount: (() { final guardedValue = map['visibleCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      visibleCoreCount: (() { final guardedValue = map['visibleCoreCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

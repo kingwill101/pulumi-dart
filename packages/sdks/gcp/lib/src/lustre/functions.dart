@@ -8,7 +8,7 @@ import 'get_instance_result.dart';
 ///
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -16,7 +16,7 @@ import 'get_instance_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_lustre_getinstance" "instance" {
+/// data "gcp_lustre_instance" "instance" {
 ///   name = "my-instance"
 ///   zone = "us-central1-a"
 /// }

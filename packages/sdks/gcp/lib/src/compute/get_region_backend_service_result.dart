@@ -57,6 +57,7 @@ class GetRegionBackendServiceResult {
   final String? region;
   final String? securityPolicy;
   final String? selfLink;
+  final String? serviceLbPolicy;
   final String? sessionAffinity;
   final List<GetRegionBackendServiceStrongSessionAffinityCooky>? strongSessionAffinityCookies;
   final List<GetRegionBackendServiceSubsetting>? subsettings;
@@ -99,6 +100,7 @@ class GetRegionBackendServiceResult {
   /// [region] Optional.
   /// [securityPolicy] Optional.
   /// [selfLink] Optional.
+  /// [serviceLbPolicy] Optional.
   /// [sessionAffinity] Optional.
   /// [strongSessionAffinityCookies] Optional.
   /// [subsettings] Optional.
@@ -140,6 +142,7 @@ class GetRegionBackendServiceResult {
     this.region,
     this.securityPolicy,
     this.selfLink,
+    this.serviceLbPolicy,
     this.sessionAffinity,
     this.strongSessionAffinityCookies,
     this.subsettings,
@@ -184,6 +187,7 @@ class GetRegionBackendServiceResult {
       'region': ?region,
       'securityPolicy': ?securityPolicy,
       'selfLink': ?selfLink,
+      'serviceLbPolicy': ?serviceLbPolicy,
       'sessionAffinity': ?sessionAffinity,
       'strongSessionAffinityCookies': ?(() { final guardedValue = strongSessionAffinityCookies; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceStrongSessionAffinityCooky, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
       'subsettings': ?(() { final guardedValue = subsettings; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetRegionBackendServiceSubsetting, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
@@ -194,11 +198,11 @@ class GetRegionBackendServiceResult {
 
   factory GetRegionBackendServiceResult.fromMap(Map<String, dynamic> map) {
     return GetRegionBackendServiceResult(
-      affinityCookieTtlSec: (() { final guardedValue = map['affinityCookieTtlSec']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      affinityCookieTtlSec: (() { final guardedValue = map['affinityCookieTtlSec']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       backends: (() { final guardedValue = map['backends']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceBackend>(guardedValue, (value) => GetRegionBackendServiceBackend.fromMap((value as Map).cast<String, dynamic>())); })(),
       cdnPolicies: (() { final guardedValue = map['cdnPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceCdnPolicy>(guardedValue, (value) => GetRegionBackendServiceCdnPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       circuitBreakers: (() { final guardedValue = map['circuitBreakers']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceCircuitBreaker>(guardedValue, (value) => GetRegionBackendServiceCircuitBreaker.fromMap((value as Map).cast<String, dynamic>())); })(),
-      connectionDrainingTimeoutSec: (() { final guardedValue = map['connectionDrainingTimeoutSec']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      connectionDrainingTimeoutSec: (() { final guardedValue = map['connectionDrainingTimeoutSec']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       connectionTrackingPolicies: (() { final guardedValue = map['connectionTrackingPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceConnectionTrackingPolicy>(guardedValue, (value) => GetRegionBackendServiceConnectionTrackingPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       consistentHashes: (() { final guardedValue = map['consistentHashes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceConsistentHash>(guardedValue, (value) => GetRegionBackendServiceConsistentHash.fromMap((value as Map).cast<String, dynamic>())); })(),
       creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
@@ -209,7 +213,7 @@ class GetRegionBackendServiceResult {
       enableCdn: (() { final guardedValue = map['enableCdn']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       failoverPolicies: (() { final guardedValue = map['failoverPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceFailoverPolicy>(guardedValue, (value) => GetRegionBackendServiceFailoverPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       fingerprint: (() { final guardedValue = map['fingerprint']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      generatedId: (() { final guardedValue = map['generatedId']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      generatedId: (() { final guardedValue = map['generatedId']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       haPolicies: (() { final guardedValue = map['haPolicies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceHaPolicy>(guardedValue, (value) => GetRegionBackendServiceHaPolicy.fromMap((value as Map).cast<String, dynamic>())); })(),
       healthChecks: (() { final guardedValue = map['healthChecks']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
       iaps: (() { final guardedValue = map['iaps']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceIap>(guardedValue, (value) => GetRegionBackendServiceIap.fromMap((value as Map).cast<String, dynamic>())); })(),
@@ -229,10 +233,11 @@ class GetRegionBackendServiceResult {
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
       securityPolicy: (() { final guardedValue = map['securityPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceLbPolicy: (() { final guardedValue = map['serviceLbPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
       sessionAffinity: (() { final guardedValue = map['sessionAffinity']; if (guardedValue == null) return null; return guardedValue as String; })(),
       strongSessionAffinityCookies: (() { final guardedValue = map['strongSessionAffinityCookies']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceStrongSessionAffinityCooky>(guardedValue, (value) => GetRegionBackendServiceStrongSessionAffinityCooky.fromMap((value as Map).cast<String, dynamic>())); })(),
       subsettings: (() { final guardedValue = map['subsettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceSubsetting>(guardedValue, (value) => GetRegionBackendServiceSubsetting.fromMap((value as Map).cast<String, dynamic>())); })(),
-      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      timeoutSec: (() { final guardedValue = map['timeoutSec']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       tlsSettings: (() { final guardedValue = map['tlsSettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetRegionBackendServiceTlsSetting>(guardedValue, (value) => GetRegionBackendServiceTlsSetting.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

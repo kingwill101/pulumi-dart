@@ -112,9 +112,9 @@ import 'folder_settings_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -157,7 +157,7 @@ import 'folder_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -165,26 +165,35 @@ import 'folder_settings_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_logging_getfoldersettings" "settings" {
+/// data "gcp_logging_folder_settings" "settings" {
 ///   folder = gcp_organizations_folder.my_folder.folder_id
 /// }
 ///
-/// resource "gcp_logging_foldersettings" "example" {
-///   depends_on           = [gcp_kms_cryptokeyiammember.iam]
+/// resource "gcp_logging_folder_settings" "example" {
+///   depends_on = [gcp_kms_crypto_key_i_a_m_member.iam]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   disable_default_sink = true
 ///   folder               = gcp_organizations_folder.my_folder.folder_id
 ///   kms_key_name         = "kms-key"
 ///   storage_location     = "us-central1"
 /// }
 /// resource "gcp_organizations_folder" "my_folder" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name        = "folder-name"
 ///   parent              = "organizations/123456789"
 ///   deletion_protection = false
 /// }
-/// resource "gcp_kms_cryptokeyiammember" "iam" {
+/// resource "gcp_kms_crypto_key_i_a_m_member" "iam" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   crypto_key_id = "kms-key"
 ///   role          = "roles/cloudkms.cryptoKeyEncrypterDecrypter"
-///   member        ="serviceAccount:${data.gcp_logging_getfoldersettings.settings.kms_service_account_id}"
+///   member        ="serviceAccount:${data.gcp_logging_folder_settings.settings.kms_service_account_id}"
 /// }
 /// ```
 /// ```java
@@ -319,7 +328,7 @@ class FolderSettings extends pulumi.CustomResource {
           'gcp:logging/folderSettings:FolderSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     disableDefaultSink = registerOutput<bool>('disableDefaultSink');
     folder = registerOutput<String>('folder');

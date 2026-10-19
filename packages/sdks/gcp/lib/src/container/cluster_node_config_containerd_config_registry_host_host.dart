@@ -6,29 +6,31 @@ import 'cluster_node_config_containerd_config_registry_host_host_client.dart';
 import 'cluster_node_config_containerd_config_registry_host_host_header.dart';
 
 class ClusterNodeConfigContainerdConfigRegistryHostHost {
-  /// Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
+  /// Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
   final pulumi.Input<List<String>?>? capabilities;
-  /// Configures the registry host certificate.
+  /// Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
   final pulumi.Input<List<ClusterNodeConfigContainerdConfigRegistryHostHostCa>?>? cas;
-  /// Configures the registry host client certificate and key.
+  /// Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
+  ///
+  /// Example:
   final pulumi.Input<List<ClusterNodeConfigContainerdConfigRegistryHostHostClient>?>? clients;
   /// Specifies the maximum duration allowed for a connection attempt to complete.
   final pulumi.Input<String?>? dialTimeout;
-  /// Configures the registry host headers.
+  /// Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
   final pulumi.Input<List<ClusterNodeConfigContainerdConfigRegistryHostHostHeader>?>? headers;
   /// Configures the registry host/mirror.
   final pulumi.Input<String> host;
-  /// Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+  /// Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
   final pulumi.Input<bool?>? overridePath;
 
   /// Creates a new [ClusterNodeConfigContainerdConfigRegistryHostHost].
-  /// [capabilities] Represent the capabilities of the registry host, specifying what operations a host is capable of performing.
-  /// [cas] Configures the registry host certificate.
-  /// [clients] Configures the registry host client certificate and key.
+  /// [capabilities] Represent the capabilities of the registry host, specifying what operations a host is capable of performing. Valid values include `HOST_CAPABILITY_PULL`, `HOST_CAPABILITY_RESOLVE`, `HOST_CAPABILITY_PUSH`.
+  /// [cas] Configures the registry host certificate. Contains `gcpSecretManagerSecretUri` (Optional).
+  /// [clients] Configures the registry host client certificate and key. Contains `cert` (Required) with `gcpSecretManagerSecretUri` (Optional) and `key` (Optional) with `gcpSecretManagerSecretUri` (Optional).
   /// [dialTimeout] Specifies the maximum duration allowed for a connection attempt to complete.
-  /// [headers] Configures the registry host headers.
+  /// [headers] Configures the registry host headers. Each header contains `key` (Required, string) and `value` (Required, list of strings).
   /// [host] Configures the registry host/mirror.
-  /// [overridePath] Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
+  /// [overridePath] Indicates the host's API root endpoint is defined in the URL path rather than by the API specification.
   const ClusterNodeConfigContainerdConfigRegistryHostHost({
     this.capabilities,
     this.cas,

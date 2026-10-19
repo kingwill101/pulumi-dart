@@ -79,7 +79,7 @@ import 'shared_vpchost_project_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -113,7 +113,7 @@ import 'shared_vpchost_project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -122,17 +122,26 @@ import 'shared_vpchost_project_state.dart';
 /// }
 ///
 /// # A host project provides network resources to associated service projects.
-/// resource "gcp_compute_sharedvpchostproject" "host" {
+/// resource "gcp_compute_shared_v_p_c_host_project" "host" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project = "host-project-id"
 /// }
 /// # A service project gains access to network resources provided by its
 /// # associated host project.
-/// resource "gcp_compute_sharedvpcserviceproject" "service1" {
-///   host_project    = gcp_compute_sharedvpchostproject.host.project
+/// resource "gcp_compute_shared_v_p_c_service_project" "service1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   host_project    = gcp_compute_shared_v_p_c_host_project.host.project
 ///   service_project = "service-project-id-1"
 /// }
-/// resource "gcp_compute_sharedvpcserviceproject" "service2" {
-///   host_project    = gcp_compute_sharedvpchostproject.host.project
+/// resource "gcp_compute_shared_v_p_c_service_project" "service2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   host_project    = gcp_compute_shared_v_p_c_host_project.host.project
 ///   service_project = "service-project-id-2"
 /// }
 /// ```
@@ -237,7 +246,7 @@ class SharedVPCHostProject extends pulumi.CustomResource {
           'gcp:compute/sharedVPCHostProject:SharedVPCHostProject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     project = registerOutput<String>('project');

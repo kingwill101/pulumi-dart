@@ -33,7 +33,7 @@ class RegionBackendServiceSubsetting {
   factory RegionBackendServiceSubsetting.fromMap(Map<String, dynamic> map) {
     return RegionBackendServiceSubsetting(
       policy: pulumi.Input.fromValue(map['policy'] as String),
-      subsetSize: (() { final guardedValue = map['subsetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      subsetSize: (() { final guardedValue = map['subsetSize']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

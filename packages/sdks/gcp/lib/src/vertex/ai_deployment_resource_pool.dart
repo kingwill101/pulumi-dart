@@ -99,7 +99,7 @@ import 'ai_deployment_resource_pool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -132,7 +132,7 @@ import 'ai_deployment_resource_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -140,7 +140,10 @@ import 'ai_deployment_resource_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aideploymentresourcepool" "deployment_resource_pool" {
+/// resource "gcp_vertex_ai_deployment_resource_pool" "deployment_resource_pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region = "us-central1"
 ///   name   = "example-deployment-resource-pool"
 ///   dedicated_resources = {
@@ -152,8 +155,8 @@ import 'ai_deployment_resource_pool_state.dart';
 ///     min_replica_count = 1
 ///     max_replica_count = 2
 ///     autoscaling_metric_specs = [{
-///       "metricName" = "aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle"
-///       "target"     = 60
+///       metric_name = "aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle"
+///       target      = 60
 ///     }]
 ///   }
 /// }
@@ -275,7 +278,7 @@ class AiDeploymentResourcePool extends pulumi.CustomResource {
           'gcp:vertex/aiDeploymentResourcePool:AiDeploymentResourcePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     dedicatedResources = registerOutput<AiDeploymentResourcePoolDedicatedResources?>('dedicatedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AiDeploymentResourcePoolDedicatedResources.fromMap((guardedValue as Map).cast<String, dynamic>()); });

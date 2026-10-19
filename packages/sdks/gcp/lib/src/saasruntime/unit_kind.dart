@@ -144,7 +144,7 @@ import 'unit_kind_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/saasruntime"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/saasruntime"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -201,7 +201,7 @@ import 'unit_kind_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -209,32 +209,44 @@ import 'unit_kind_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_saasruntime_saas" "example_saas" {
+/// resource "gcp_saasruntime_saa_s" "example_saas" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   saas_id  = "example-saas"
 ///   location = "us-east1"
 ///   locations {
 ///     name = "us-east1"
 ///   }
 /// }
-/// resource "gcp_saasruntime_unitkind" "cluster_unit_kind" {
+/// resource "gcp_saasruntime_unit_kind" "cluster_unit_kind" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location        = "us-east1"
 ///   unit_kind_id    = "cluster-unitkind"
-///   saas            = gcp_saasruntime_saas.example_saas.id
+///   saas            = gcp_saasruntime_saa_s.example_saas.id
 ///   default_release = "projects/my-project-name/locations/us-east1/releases/example-release"
 /// }
-/// resource "gcp_saasruntime_unitkind" "example" {
+/// resource "gcp_saasruntime_unit_kind" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location     = "us-east1"
 ///   unit_kind_id = "app-unitkind"
-///   saas         = gcp_saasruntime_saas.example_saas.id
+///   saas         = gcp_saasruntime_saa_s.example_saas.id
 ///   dependencies {
-///     unit_kind = gcp_saasruntime_unitkind.cluster_unit_kind.id
+///     unit_kind = gcp_saasruntime_unit_kind.cluster_unit_kind.id
 ///     alias     = "cluster"
 ///   }
 /// }
 /// resource "gcp_saasruntime_release" "example_release" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location   = "us-east1"
 ///   release_id = "example-release"
-///   unit_kind  = gcp_saasruntime_unitkind.cluster_unit_kind.id
+///   unit_kind  = gcp_saasruntime_unit_kind.cluster_unit_kind.id
 ///   blueprint = {
 ///     package = "us-central1-docker.pkg.dev/ci-test-project-188019/test-repo/tf-test-easysaas-alpha-image@sha256:7992fdbaeaf998ecd31a7f937bb26e38a781ecf49b24857a6176c1e9bfc299ee"
 ///   }
@@ -449,7 +461,7 @@ class UnitKind extends pulumi.CustomResource {
           'gcp:saasruntime/unitKind:UnitKind',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     annotations = registerOutput<Map<String, String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

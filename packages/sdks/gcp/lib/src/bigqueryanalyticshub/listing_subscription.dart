@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'listing_subscription_args.dart';
 import 'listing_subscription_commercial_info.dart';
 import 'listing_subscription_destination_dataset.dart';
+import 'listing_subscription_destination_pubsub_subscription.dart';
 import 'listing_subscription_linked_dataset_map.dart';
 import 'listing_subscription_linked_resource.dart';
 import 'listing_subscription_state.dart';
@@ -172,8 +173,8 @@ import 'listing_subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigquery"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigquery"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -235,7 +236,7 @@ import 'listing_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -243,15 +244,21 @@ import 'listing_subscription_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "subscription" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
 ///   data_exchange_id = "my_data_exchange"
 ///   display_name     = "my_data_exchange"
 ///   description      = "Test Description"
 /// }
 /// resource "gcp_bigqueryanalyticshub_listing" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
-///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.subscription.data_exchange_id
+///   data_exchange_id = gcp_bigqueryanalyticshub_data_exchange.subscription.data_exchange_id
 ///   listing_id       = "my_listing"
 ///   display_name     = "my_listing"
 ///   description      = "Test Description"
@@ -260,14 +267,20 @@ import 'listing_subscription_state.dart';
 ///   }
 /// }
 /// resource "gcp_bigquery_dataset" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   dataset_id    = "my_listing"
 ///   friendly_name = "my_listing"
 ///   description   = "Test Description"
 ///   location      = "US"
 /// }
-/// resource "gcp_bigqueryanalyticshub_listingsubscription" "subscription" {
+/// resource "gcp_bigqueryanalyticshub_listing_subscription" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "US"
-///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.subscription.data_exchange_id
+///   data_exchange_id = gcp_bigqueryanalyticshub_data_exchange.subscription.data_exchange_id
 ///   listing_id       = gcp_bigqueryanalyticshub_listing.subscription.listing_id
 ///   destination_dataset = {
 ///     description   = "A test subscription"
@@ -527,7 +540,7 @@ import 'listing_subscription_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -579,7 +592,7 @@ import 'listing_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -587,14 +600,20 @@ import 'listing_subscription_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_bigqueryanalyticshub_dataexchange" "subscription" {
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us"
 ///   data_exchange_id = "my_data_exchange"
 ///   display_name     = "my_data_exchange"
 /// }
 /// resource "gcp_bigqueryanalyticshub_listing" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us"
-///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.subscription.data_exchange_id
+///   data_exchange_id = gcp_bigqueryanalyticshub_data_exchange.subscription.data_exchange_id
 ///   listing_id       = "my_listing"
 ///   display_name     = "my_listing"
 ///   bigquery_dataset = {
@@ -602,14 +621,17 @@ import 'listing_subscription_state.dart';
 ///     replica_locations = ["eu"]
 ///   }
 /// }
-/// resource "gcp_bigqueryanalyticshub_listingsubscription" "subscription" {
+/// resource "gcp_bigqueryanalyticshub_listing_subscription" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location         = "us"
-///   data_exchange_id = gcp_bigqueryanalyticshub_dataexchange.subscription.data_exchange_id
+///   data_exchange_id = gcp_bigqueryanalyticshub_data_exchange.subscription.data_exchange_id
 ///   listing_id       = gcp_bigqueryanalyticshub_listing.subscription.listing_id
 ///   destination_dataset = {
 ///     location = "us"
 ///     dataset_reference = {
-///       project_id = gcp_bigqueryanalyticshub_dataexchange.subscription.project
+///       project_id = gcp_bigqueryanalyticshub_data_exchange.subscription.project
 ///       dataset_id = "destination_dataset"
 ///     }
 ///     replica_locations = ["eu"]
@@ -714,6 +736,335 @@ import 'listing_subscription_state.dart';
 ///           - eu
 /// ```
 ///
+/// ### Bigquery Analyticshub Listing Subscription Pubsub
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const subscription = new gcp.bigqueryanalyticshub.DataExchange("subscription", {
+///     location: "US",
+///     dataExchangeId: "my_data_exchange",
+///     displayName: "my_data_exchange",
+///     description: "example pubsub listing subscription",
+/// });
+/// const subscriptionTopic = new gcp.pubsub.Topic("subscription", {name: "my_pubsub_topic"});
+/// const subscriptionListing = new gcp.bigqueryanalyticshub.Listing("subscription", {
+///     location: "US",
+///     dataExchangeId: subscription.dataExchangeId,
+///     listingId: "my_listing",
+///     displayName: "my_listing",
+///     description: "example pubsub listing subscription",
+///     pubsubTopic: {
+///         topic: subscriptionTopic.id,
+///     },
+/// });
+/// const subscriptionListingSubscription = new gcp.bigqueryanalyticshub.ListingSubscription("subscription", {
+///     location: "US",
+///     dataExchangeId: subscription.dataExchangeId,
+///     listingId: subscriptionListing.listingId,
+///     destinationPubsubSubscription: {
+///         pubsubSubscription: {
+///             name: pulumi.interpolate`projects/${subscriptionTopic.project}/subscriptions/my_pubsub_subscription`,
+///         },
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// subscription = gcp.bigqueryanalyticshub.DataExchange("subscription",
+///     location="US",
+///     data_exchange_id="my_data_exchange",
+///     display_name="my_data_exchange",
+///     description="example pubsub listing subscription")
+/// subscription_topic = gcp.pubsub.Topic("subscription", name="my_pubsub_topic")
+/// subscription_listing = gcp.bigqueryanalyticshub.Listing("subscription",
+///     location="US",
+///     data_exchange_id=subscription.data_exchange_id,
+///     listing_id="my_listing",
+///     display_name="my_listing",
+///     description="example pubsub listing subscription",
+///     pubsub_topic={
+///         "topic": subscription_topic.id,
+///     })
+/// subscription_listing_subscription = gcp.bigqueryanalyticshub.ListingSubscription("subscription",
+///     location="US",
+///     data_exchange_id=subscription.data_exchange_id,
+///     listing_id=subscription_listing.listing_id,
+///     destination_pubsub_subscription={
+///         "pubsub_subscription": {
+///             "name": subscription_topic.project.apply(lambda project: f"projects/{project}/subscriptions/my_pubsub_subscription"),
+///         },
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var subscription = new Gcp.BigQueryAnalyticsHub.DataExchange("subscription", new()
+///     {
+///         Location = "US",
+///         DataExchangeId = "my_data_exchange",
+///         DisplayName = "my_data_exchange",
+///         Description = "example pubsub listing subscription",
+///     });
+///
+///     var subscriptionTopic = new Gcp.PubSub.Topic("subscription", new()
+///     {
+///         Name = "my_pubsub_topic",
+///     });
+///
+///     var subscriptionListing = new Gcp.BigQueryAnalyticsHub.Listing("subscription", new()
+///     {
+///         Location = "US",
+///         DataExchangeId = subscription.DataExchangeId,
+///         ListingId = "my_listing",
+///         DisplayName = "my_listing",
+///         Description = "example pubsub listing subscription",
+///         PubsubTopic = new Gcp.BigQueryAnalyticsHub.Inputs.ListingPubsubTopicArgs
+///         {
+///             Topic = subscriptionTopic.Id,
+///         },
+///     });
+///
+///     var subscriptionListingSubscription = new Gcp.BigQueryAnalyticsHub.ListingSubscription("subscription", new()
+///     {
+///         Location = "US",
+///         DataExchangeId = subscription.DataExchangeId,
+///         ListingId = subscriptionListing.ListingId,
+///         DestinationPubsubSubscription = new Gcp.BigQueryAnalyticsHub.Inputs.ListingSubscriptionDestinationPubsubSubscriptionArgs
+///         {
+///             PubsubSubscription = new Gcp.BigQueryAnalyticsHub.Inputs.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs
+///             {
+///                 Name = subscriptionTopic.Project.Apply(project => $"projects/{project}/subscriptions/my_pubsub_subscription"),
+///             },
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"fmt"
+///
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/bigqueryanalyticshub"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/pubsub"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		subscription, err := bigqueryanalyticshub.NewDataExchange(ctx, "subscription", &bigqueryanalyticshub.DataExchangeArgs{
+/// 			Location:       pulumi.String("US"),
+/// 			DataExchangeId: pulumi.String("my_data_exchange"),
+/// 			DisplayName:    pulumi.String("my_data_exchange"),
+/// 			Description:    pulumi.String("example pubsub listing subscription"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		subscriptionTopic, err := pubsub.NewTopic(ctx, "subscription", &pubsub.TopicArgs{
+/// 			Name: pulumi.String("my_pubsub_topic"),
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		subscriptionListing, err := bigqueryanalyticshub.NewListing(ctx, "subscription", &bigqueryanalyticshub.ListingArgs{
+/// 			Location:       pulumi.String("US"),
+/// 			DataExchangeId: subscription.DataExchangeId,
+/// 			ListingId:      pulumi.String("my_listing"),
+/// 			DisplayName:    pulumi.String("my_listing"),
+/// 			Description:    pulumi.String("example pubsub listing subscription"),
+/// 			PubsubTopic: &bigqueryanalyticshub.ListingPubsubTopicArgs{
+/// 				Topic: subscriptionTopic.ID().ToIDOutput().ToStringOutput(),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = bigqueryanalyticshub.NewListingSubscription(ctx, "subscription", &bigqueryanalyticshub.ListingSubscriptionArgs{
+/// 			Location:       pulumi.String("US"),
+/// 			DataExchangeId: subscription.DataExchangeId,
+/// 			ListingId:      subscriptionListing.ListingId,
+/// 			DestinationPubsubSubscription: &bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionArgs{
+/// 				PubsubSubscription: &bigqueryanalyticshub.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs{
+/// 					Name: subscriptionTopic.Project.ApplyT(func(project string) (string, error) {
+/// 						return fmt.Sprintf("projects/%v/subscriptions/my_pubsub_subscription", project), nil
+/// 					}).(pulumi.StringOutput),
+/// 				},
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// resource "gcp_bigqueryanalyticshub_data_exchange" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location         = "US"
+///   data_exchange_id = "my_data_exchange"
+///   display_name     = "my_data_exchange"
+///   description      = "example pubsub listing subscription"
+/// }
+/// resource "gcp_pubsub_topic" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name = "my_pubsub_topic"
+/// }
+/// resource "gcp_bigqueryanalyticshub_listing" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location         = "US"
+///   data_exchange_id = gcp_bigqueryanalyticshub_data_exchange.subscription.data_exchange_id
+///   listing_id       = "my_listing"
+///   display_name     = "my_listing"
+///   description      = "example pubsub listing subscription"
+///   pubsub_topic = {
+///     topic = gcp_pubsub_topic.subscription.id
+///   }
+/// }
+/// resource "gcp_bigqueryanalyticshub_listing_subscription" "subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location         = "US"
+///   data_exchange_id = gcp_bigqueryanalyticshub_data_exchange.subscription.data_exchange_id
+///   listing_id       = gcp_bigqueryanalyticshub_listing.subscription.listing_id
+///   destination_pubsub_subscription = {
+///     pubsub_subscription = {
+///       name ="projects/${gcp_pubsub_topic.subscription.project}/subscriptions/my_pubsub_subscription"
+///     }
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
+/// import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
+/// import com.pulumi.gcp.pubsub.Topic;
+/// import com.pulumi.gcp.pubsub.TopicArgs;
+/// import com.pulumi.gcp.bigqueryanalyticshub.Listing;
+/// import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
+/// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingPubsubTopicArgs;
+/// import com.pulumi.gcp.bigqueryanalyticshub.ListingSubscription;
+/// import com.pulumi.gcp.bigqueryanalyticshub.ListingSubscriptionArgs;
+/// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionDestinationPubsubSubscriptionArgs;
+/// import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         var subscription = new DataExchange("subscription", DataExchangeArgs.builder()
+///             .location("US")
+///             .dataExchangeId("my_data_exchange")
+///             .displayName("my_data_exchange")
+///             .description("example pubsub listing subscription")
+///             .build());
+///
+///         var subscriptionTopic = new Topic("subscriptionTopic", TopicArgs.builder()
+///             .name("my_pubsub_topic")
+///             .build());
+///
+///         var subscriptionListing = new Listing("subscriptionListing", ListingArgs.builder()
+///             .location("US")
+///             .dataExchangeId(subscription.dataExchangeId())
+///             .listingId("my_listing")
+///             .displayName("my_listing")
+///             .description("example pubsub listing subscription")
+///             .pubsubTopic(ListingPubsubTopicArgs.builder()
+///                 .topic(subscriptionTopic.id())
+///                 .build())
+///             .build());
+///
+///         var subscriptionListingSubscription = new ListingSubscription("subscriptionListingSubscription", ListingSubscriptionArgs.builder()
+///             .location("US")
+///             .dataExchangeId(subscription.dataExchangeId())
+///             .listingId(subscriptionListing.listingId())
+///             .destinationPubsubSubscription(ListingSubscriptionDestinationPubsubSubscriptionArgs.builder()
+///                 .pubsubSubscription(ListingSubscriptionDestinationPubsubSubscriptionPubsubSubscriptionArgs.builder()
+///                     .name(subscriptionTopic.project().applyValue(_project -> String.format("projects/%s/subscriptions/my_pubsub_subscription", _project)))
+///                     .build())
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   subscription:
+///     type: gcp:bigqueryanalyticshub:DataExchange
+///     properties:
+///       location: US
+///       dataExchangeId: my_data_exchange
+///       displayName: my_data_exchange
+///       description: example pubsub listing subscription
+///   subscriptionTopic:
+///     type: gcp:pubsub:Topic
+///     name: subscription
+///     properties:
+///       name: my_pubsub_topic
+///   subscriptionListing:
+///     type: gcp:bigqueryanalyticshub:Listing
+///     name: subscription
+///     properties:
+///       location: US
+///       dataExchangeId: ${subscription.dataExchangeId}
+///       listingId: my_listing
+///       displayName: my_listing
+///       description: example pubsub listing subscription
+///       pubsubTopic:
+///         topic: ${subscriptionTopic.id}
+///   subscriptionListingSubscription:
+///     type: gcp:bigqueryanalyticshub:ListingSubscription
+///     name: subscription
+///     properties:
+///       location: US
+///       dataExchangeId: ${subscription.dataExchangeId}
+///       listingId: ${subscriptionListing.listingId}
+///       destinationPubsubSubscription:
+///         pubsubSubscription:
+///           name: projects/${subscriptionTopic.project}/subscriptions/my_pubsub_subscription
+/// ```
+///
 ///
 /// ## Import
 ///
@@ -748,7 +1099,10 @@ class ListingSubscription extends pulumi.CustomResource {
   late final pulumi.Output<String> deletionPolicy;
   /// The destination dataset for this subscription.
   /// Structure is documented below.
-  late final pulumi.Output<ListingSubscriptionDestinationDataset> destinationDataset;
+  late final pulumi.Output<ListingSubscriptionDestinationDataset?> destinationDataset;
+  /// Destination Pub/Sub subscription to create for the subscriber.
+  /// Structure is documented below.
+  late final pulumi.Output<ListingSubscriptionDestinationPubsubSubscription?> destinationPubsubSubscription;
   /// Timestamp when the subscription was last modified.
   late final pulumi.Output<String> lastModifyTime;
   /// Output only. Map of listing resource names to associated linked resource,
@@ -794,13 +1148,14 @@ class ListingSubscription extends pulumi.CustomResource {
           'gcp:bigqueryanalyticshub/listingSubscription:ListingSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     commercialInfos = registerOutput<List<ListingSubscriptionCommercialInfo>>('commercialInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionCommercialInfo>(guardedValue, (value) => ListingSubscriptionCommercialInfo.fromMap((value as Map).cast<String, dynamic>())); });
     creationTime = registerOutput<String>('creationTime');
     dataExchangeId = registerOutput<String>('dataExchangeId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    destinationDataset = registerOutput<ListingSubscriptionDestinationDataset>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destinationDataset = registerOutput<ListingSubscriptionDestinationDataset?>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destinationPubsubSubscription = registerOutput<ListingSubscriptionDestinationPubsubSubscription?>('destinationPubsubSubscription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingSubscriptionDestinationPubsubSubscription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifyTime = registerOutput<String>('lastModifyTime');
     linkedDatasetMaps = registerOutput<List<ListingSubscriptionLinkedDatasetMap>>('linkedDatasetMaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionLinkedDatasetMap>(guardedValue, (value) => ListingSubscriptionLinkedDatasetMap.fromMap((value as Map).cast<String, dynamic>())); });
     linkedResources = registerOutput<List<ListingSubscriptionLinkedResource>>('linkedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionLinkedResource>(guardedValue, (value) => ListingSubscriptionLinkedResource.fromMap((value as Map).cast<String, dynamic>())); });
@@ -845,7 +1200,8 @@ class ListingSubscription extends pulumi.CustomResource {
     creationTime = registerOutput<String>('creationTime');
     dataExchangeId = registerOutput<String>('dataExchangeId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    destinationDataset = registerOutput<ListingSubscriptionDestinationDataset>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destinationDataset = registerOutput<ListingSubscriptionDestinationDataset?>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destinationPubsubSubscription = registerOutput<ListingSubscriptionDestinationPubsubSubscription?>('destinationPubsubSubscription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingSubscriptionDestinationPubsubSubscription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifyTime = registerOutput<String>('lastModifyTime');
     linkedDatasetMaps = registerOutput<List<ListingSubscriptionLinkedDatasetMap>>('linkedDatasetMaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionLinkedDatasetMap>(guardedValue, (value) => ListingSubscriptionLinkedDatasetMap.fromMap((value as Map).cast<String, dynamic>())); });
     linkedResources = registerOutput<List<ListingSubscriptionLinkedResource>>('linkedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionLinkedResource>(guardedValue, (value) => ListingSubscriptionLinkedResource.fromMap((value as Map).cast<String, dynamic>())); });
@@ -875,7 +1231,8 @@ class ListingSubscription extends pulumi.CustomResource {
     creationTime = registerOutput<String>('creationTime');
     dataExchangeId = registerOutput<String>('dataExchangeId');
     deletionPolicy = registerOutput<String>('deletionPolicy');
-    destinationDataset = registerOutput<ListingSubscriptionDestinationDataset>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destinationDataset = registerOutput<ListingSubscriptionDestinationDataset?>('destinationDataset', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingSubscriptionDestinationDataset.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    destinationPubsubSubscription = registerOutput<ListingSubscriptionDestinationPubsubSubscription?>('destinationPubsubSubscription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ListingSubscriptionDestinationPubsubSubscription.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifyTime = registerOutput<String>('lastModifyTime');
     linkedDatasetMaps = registerOutput<List<ListingSubscriptionLinkedDatasetMap>>('linkedDatasetMaps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionLinkedDatasetMap>(guardedValue, (value) => ListingSubscriptionLinkedDatasetMap.fromMap((value as Map).cast<String, dynamic>())); });
     linkedResources = registerOutput<List<ListingSubscriptionLinkedResource>>('linkedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ListingSubscriptionLinkedResource>(guardedValue, (value) => ListingSubscriptionLinkedResource.fromMap((value as Map).cast<String, dynamic>())); });

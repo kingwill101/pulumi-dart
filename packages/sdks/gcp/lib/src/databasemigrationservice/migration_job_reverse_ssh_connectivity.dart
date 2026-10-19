@@ -40,7 +40,7 @@ class MigrationJobReverseSshConnectivity {
     return MigrationJobReverseSshConnectivity(
       vm: (() { final guardedValue = map['vm']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vmIp: (() { final guardedValue = map['vmIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vmPort: (() { final guardedValue = map['vmPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      vmPort: (() { final guardedValue = map['vmPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       vpc: (() { final guardedValue = map['vpc']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -55,8 +55,8 @@ class GetInstanceFileShareNfsExportOption {
   factory GetInstanceFileShareNfsExportOption.fromMap(Map<String, dynamic> map) {
     return GetInstanceFileShareNfsExportOption(
       accessMode: pulumi.Input.fromValue(map['accessMode'] as String),
-      anonGid: pulumi.Input.fromValue((map['anonGid'] as num).toInt()),
-      anonUid: pulumi.Input.fromValue((map['anonUid'] as num).toInt()),
+      anonGid: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['anonGid'])),
+      anonUid: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['anonUid'])),
       ipRanges: pulumi.Input.fromValue((map['ipRanges'] as List).cast<String>()),
       network: pulumi.Input.fromValue(map['network'] as String),
       squashMode: pulumi.Input.fromValue(map['squashMode'] as String),

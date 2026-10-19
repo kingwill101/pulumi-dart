@@ -47,7 +47,7 @@ import 'get_mcp_server_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agentregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -65,7 +65,7 @@ import 'get_mcp_server_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -73,7 +73,7 @@ import 'get_mcp_server_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_agentregistry_getagent" "default" {
+/// data "gcp_agentregistry_agent" "default" {
 ///   location = "us-central1"
 ///   agent_id = "apphub-00000000-0000-0000-0000-000000000000"
 /// }
@@ -183,7 +183,7 @@ pulumi.Output<GetAgentResult> getAgentOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agentregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -201,7 +201,7 @@ pulumi.Output<GetAgentResult> getAgentOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -209,7 +209,7 @@ pulumi.Output<GetAgentResult> getAgentOutput(
 ///   }
 /// }
 ///
-/// data "gcp_agentregistry_getendpoint" "default" {
+/// data "gcp_agentregistry_endpoint" "default" {
 ///   location    = "us-central1"
 ///   endpoint_id = "apphub-00000000-0000-0000-0000-000000000000"
 /// }
@@ -319,7 +319,7 @@ pulumi.Output<GetEndpointResult> getEndpointOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/agentregistry"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/agentregistry"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -337,7 +337,7 @@ pulumi.Output<GetEndpointResult> getEndpointOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -345,7 +345,7 @@ pulumi.Output<GetEndpointResult> getEndpointOutput(
 ///   }
 /// }
 ///
-/// data "gcp_agentregistry_getmcpserver" "default" {
+/// data "gcp_agentregistry_mcp_server" "default" {
 ///   location      = "us-central1"
 ///   mcp_server_id = "apphub-00000000-0000-0000-0000-000000000000"
 /// }

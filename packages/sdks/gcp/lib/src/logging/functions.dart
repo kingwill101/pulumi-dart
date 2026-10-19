@@ -59,7 +59,7 @@ import 'get_sink_result.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -76,7 +76,7 @@ import 'get_sink_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -84,7 +84,7 @@ import 'get_sink_result.dart';
 ///   }
 /// }
 ///
-/// data "gcp_logging_getfoldersettings" "settings" {
+/// data "gcp_logging_folder_settings" "settings" {
 ///   folder = "my-folder-name"
 /// }
 /// ```
@@ -199,7 +199,7 @@ pulumi.Output<GetFolderSettingsResult> getFolderSettingsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -219,7 +219,7 @@ pulumi.Output<GetFolderSettingsResult> getFolderSettingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -227,7 +227,7 @@ pulumi.Output<GetFolderSettingsResult> getFolderSettingsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_logging_getlogview" "default" {
+/// data "gcp_logging_log_view" "default" {
 ///   parent   = "projects/my-project"
 ///   location = "global"
 ///   bucket   = "_Default"
@@ -350,7 +350,7 @@ pulumi.Output<GetLogViewResult> getLogViewOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -370,7 +370,7 @@ pulumi.Output<GetLogViewResult> getLogViewOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -378,7 +378,7 @@ pulumi.Output<GetLogViewResult> getLogViewOutput(
 ///   }
 /// }
 ///
-/// data "gcp_logging_getlogviewiampolicy" "policy" {
+/// data "gcp_logging_log_view_iam_policy" "policy" {
 ///   parent   = loggingLogView.parent
 ///   location = loggingLogView.location
 ///   bucket   = loggingLogView.bucket
@@ -498,7 +498,7 @@ pulumi.Output<GetLogViewIamPolicyResult> getLogViewIamPolicyOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -515,7 +515,7 @@ pulumi.Output<GetLogViewIamPolicyResult> getLogViewIamPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -523,7 +523,7 @@ pulumi.Output<GetLogViewIamPolicyResult> getLogViewIamPolicyOutput(
 ///   }
 /// }
 ///
-/// data "gcp_logging_getorganizationsettings" "settings" {
+/// data "gcp_logging_organization_settings" "settings" {
 ///   organization = "my-organization-name"
 /// }
 /// ```
@@ -635,7 +635,7 @@ pulumi.Output<GetOrganizationSettingsResult> getOrganizationSettingsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -652,7 +652,7 @@ pulumi.Output<GetOrganizationSettingsResult> getOrganizationSettingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -660,7 +660,7 @@ pulumi.Output<GetOrganizationSettingsResult> getOrganizationSettingsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_logging_getprojectcmeksettings" "cmekSettings" {
+/// data "gcp_logging_project_cmek_settings" "cmekSettings" {
 ///   project = "my-project-name"
 /// }
 /// ```
@@ -771,7 +771,7 @@ pulumi.Output<GetProjectCmekSettingsResult> getProjectCmekSettingsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -788,7 +788,7 @@ pulumi.Output<GetProjectCmekSettingsResult> getProjectCmekSettingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -796,7 +796,7 @@ pulumi.Output<GetProjectCmekSettingsResult> getProjectCmekSettingsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_logging_getprojectsettings" "settings" {
+/// data "gcp_logging_project_settings" "settings" {
 ///   project = "my-project-name"
 /// }
 /// ```
@@ -906,7 +906,7 @@ pulumi.Output<GetProjectSettingsResult> getProjectSettingsOutput(
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/logging"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/logging"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -923,7 +923,7 @@ pulumi.Output<GetProjectSettingsResult> getProjectSettingsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -931,7 +931,7 @@ pulumi.Output<GetProjectSettingsResult> getProjectSettingsOutput(
 ///   }
 /// }
 ///
-/// data "gcp_logging_getsink" "project-sink" {
+/// data "gcp_logging_sink" "project-sink" {
 ///   id = "projects/0123456789/sinks/my-sink-name"
 /// }
 /// ```

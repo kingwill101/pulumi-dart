@@ -41,7 +41,7 @@ class CertificateTemplatePredefinedValuesCaOptions {
   factory CertificateTemplatePredefinedValuesCaOptions.fromMap(Map<String, dynamic> map) {
     return CertificateTemplatePredefinedValuesCaOptions(
       isCa: (() { final guardedValue = map['isCa']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      maxIssuerPathLength: (() { final guardedValue = map['maxIssuerPathLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxIssuerPathLength: (() { final guardedValue = map['maxIssuerPathLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       nullCa: (() { final guardedValue = map['nullCa']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       zeroMaxIssuerPathLength: (() { final guardedValue = map['zeroMaxIssuerPathLength']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );

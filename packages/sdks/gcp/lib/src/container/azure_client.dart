@@ -57,7 +57,7 @@ import 'azure_client_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/container"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/container"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -78,7 +78,7 @@ import 'azure_client_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -86,7 +86,10 @@ import 'azure_client_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_container_azureclient" "primary" {
+/// resource "gcp_container_azure_client" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   application_id = "12345678-1234-1234-1234-123456789111"
 ///   location       = "us-west1"
 ///   name           = "client-name"
@@ -195,7 +198,7 @@ class AzureClient extends pulumi.CustomResource {
           'gcp:container/azureClient:AzureClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     certificate = registerOutput<String>('certificate');

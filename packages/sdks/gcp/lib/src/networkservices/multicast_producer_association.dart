@@ -134,8 +134,8 @@ import 'multicast_producer_association_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networkservices"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networkservices"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -185,7 +185,7 @@ import 'multicast_producer_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -194,11 +194,17 @@ import 'multicast_producer_association_state.dart';
 /// }
 ///
 /// resource "gcp_compute_network" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test-network-mpa"
 ///   auto_create_subnetworks = false
 /// }
-/// resource "gcp_networkservices_multicastdomain" "multicast_domain" {
-///   depends_on          = [gcp_compute_network.network]
+/// resource "gcp_networkservices_multicast_domain" "multicast_domain" {
+///   depends_on = [gcp_compute_network.network]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_domain_id = "test-domain-mpa"
 ///   location            = "global"
 ///   admin_network       = gcp_compute_network.network.id
@@ -206,17 +212,23 @@ import 'multicast_producer_association_state.dart';
 ///     connection_type = "SAME_VPC"
 ///   }
 /// }
-/// resource "gcp_networkservices_multicastdomainactivation" "multicast_domain_activation" {
+/// resource "gcp_networkservices_multicast_domain_activation" "multicast_domain_activation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_domain_activation_id = "test-domain-activation-mpa"
 ///   location                       = "us-central1-b"
-///   multicast_domain               = gcp_networkservices_multicastdomain.multicast_domain.id
+///   multicast_domain               = gcp_networkservices_multicast_domain.multicast_domain.id
 /// }
-/// resource "gcp_networkservices_multicastproducerassociation" "mpa_test" {
-///   depends_on                        = [gcp_compute_network.network]
+/// resource "gcp_networkservices_multicast_producer_association" "mpa_test" {
+///   depends_on = [gcp_compute_network.network]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   multicast_producer_association_id = "test-producer-association-mpa"
 ///   location                          = "us-central1-b"
 ///   network                           = gcp_compute_network.network.id
-///   multicast_domain_activation       = gcp_networkservices_multicastdomainactivation.multicast_domain_activation.id
+///   multicast_domain_activation       = gcp_networkservices_multicast_domain_activation.multicast_domain_activation.id
 /// }
 /// ```
 /// ```java
@@ -415,7 +427,7 @@ class MulticastProducerAssociation extends pulumi.CustomResource {
           'gcp:networkservices/multicastProducerAssociation:MulticastProducerAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
     createTime = registerOutput<String>('createTime');

@@ -23,7 +23,7 @@ import 'folder_state.dart';
 ///
 /// const dataformFolderBasic = new gcp.dataform.Folder("dataform_folder_basic", {
 ///     region: "us-central1",
-///     displayName: "Basic Folder-_89313",
+///     displayName: "Basic Folder-_40289",
 /// });
 /// ```
 /// ```python
@@ -32,7 +32,7 @@ import 'folder_state.dart';
 ///
 /// dataform_folder_basic = gcp.dataform.Folder("dataform_folder_basic",
 ///     region="us-central1",
-///     display_name="Basic Folder-_89313")
+///     display_name="Basic Folder-_40289")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -45,7 +45,7 @@ import 'folder_state.dart';
 ///     var dataformFolderBasic = new Gcp.Dataform.Folder("dataform_folder_basic", new()
 ///     {
 ///         Region = "us-central1",
-///         DisplayName = "Basic Folder-_89313",
+///         DisplayName = "Basic Folder-_40289",
 ///     });
 ///
 /// });
@@ -54,7 +54,7 @@ import 'folder_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataform"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -62,7 +62,7 @@ import 'folder_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		_, err := dataform.NewFolder(ctx, "dataform_folder_basic", &dataform.FolderArgs{
 /// 			Region:      pulumi.String("us-central1"),
-/// 			DisplayName: pulumi.String("Basic Folder-_89313"),
+/// 			DisplayName: pulumi.String("Basic Folder-_40289"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -72,7 +72,7 @@ import 'folder_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -81,8 +81,11 @@ import 'folder_state.dart';
 /// }
 ///
 /// resource "gcp_dataform_folder" "dataform_folder_basic" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region       = "us-central1"
-///   display_name = "Basic Folder-_89313"
+///   display_name = "Basic Folder-_40289"
 /// }
 /// ```
 /// ```java
@@ -108,7 +111,7 @@ import 'folder_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var dataformFolderBasic = new Folder("dataformFolderBasic", FolderArgs.builder()
 ///             .region("us-central1")
-///             .displayName("Basic Folder-_89313")
+///             .displayName("Basic Folder-_40289")
 ///             .build());
 ///
 ///     }
@@ -121,7 +124,7 @@ import 'folder_state.dart';
 ///     name: dataform_folder_basic
 ///     properties:
 ///       region: us-central1
-///       displayName: Basic Folder-_89313
+///       displayName: Basic Folder-_40289
 /// ```
 ///
 /// ### Dataform Folder Full
@@ -134,11 +137,11 @@ import 'folder_state.dart';
 ///
 /// const dataformFolderRoot = new gcp.dataform.Folder("dataform_folder_root", {
 ///     region: "us-central1",
-///     displayName: "Root Folder-_60646",
+///     displayName: "Root Folder-_33395",
 /// });
 /// const dataformFolderFull = new gcp.dataform.Folder("dataform_folder_full", {
 ///     region: "us-central1",
-///     displayName: "Nested Folder-_9394",
+///     displayName: "Nested Folder-_76044",
 ///     containingFolder: dataformFolderRoot.id,
 /// });
 /// ```
@@ -148,10 +151,10 @@ import 'folder_state.dart';
 ///
 /// dataform_folder_root = gcp.dataform.Folder("dataform_folder_root",
 ///     region="us-central1",
-///     display_name="Root Folder-_60646")
+///     display_name="Root Folder-_33395")
 /// dataform_folder_full = gcp.dataform.Folder("dataform_folder_full",
 ///     region="us-central1",
-///     display_name="Nested Folder-_9394",
+///     display_name="Nested Folder-_76044",
 ///     containing_folder=dataform_folder_root.id)
 /// ```
 /// ```csharp
@@ -165,13 +168,13 @@ import 'folder_state.dart';
 ///     var dataformFolderRoot = new Gcp.Dataform.Folder("dataform_folder_root", new()
 ///     {
 ///         Region = "us-central1",
-///         DisplayName = "Root Folder-_60646",
+///         DisplayName = "Root Folder-_33395",
 ///     });
 ///
 ///     var dataformFolderFull = new Gcp.Dataform.Folder("dataform_folder_full", new()
 ///     {
 ///         Region = "us-central1",
-///         DisplayName = "Nested Folder-_9394",
+///         DisplayName = "Nested Folder-_76044",
 ///         ContainingFolder = dataformFolderRoot.Id,
 ///     });
 ///
@@ -181,7 +184,7 @@ import 'folder_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dataform"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dataform"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -189,14 +192,14 @@ import 'folder_state.dart';
 /// 	pulumi.Run(func(ctx *pulumi.Context) error {
 /// 		dataformFolderRoot, err := dataform.NewFolder(ctx, "dataform_folder_root", &dataform.FolderArgs{
 /// 			Region:      pulumi.String("us-central1"),
-/// 			DisplayName: pulumi.String("Root Folder-_60646"),
+/// 			DisplayName: pulumi.String("Root Folder-_33395"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = dataform.NewFolder(ctx, "dataform_folder_full", &dataform.FolderArgs{
 /// 			Region:           pulumi.String("us-central1"),
-/// 			DisplayName:      pulumi.String("Nested Folder-_9394"),
+/// 			DisplayName:      pulumi.String("Nested Folder-_76044"),
 /// 			ContainingFolder: dataformFolderRoot.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
@@ -207,7 +210,7 @@ import 'folder_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -216,12 +219,18 @@ import 'folder_state.dart';
 /// }
 ///
 /// resource "gcp_dataform_folder" "dataform_folder_root" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region       = "us-central1"
-///   display_name = "Root Folder-_60646"
+///   display_name = "Root Folder-_33395"
 /// }
 /// resource "gcp_dataform_folder" "dataform_folder_full" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region            = "us-central1"
-///   display_name      = "Nested Folder-_9394"
+///   display_name      = "Nested Folder-_76044"
 ///   containing_folder = gcp_dataform_folder.dataform_folder_root.id
 /// }
 /// ```
@@ -248,12 +257,12 @@ import 'folder_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var dataformFolderRoot = new Folder("dataformFolderRoot", FolderArgs.builder()
 ///             .region("us-central1")
-///             .displayName("Root Folder-_60646")
+///             .displayName("Root Folder-_33395")
 ///             .build());
 ///
 ///         var dataformFolderFull = new Folder("dataformFolderFull", FolderArgs.builder()
 ///             .region("us-central1")
-///             .displayName("Nested Folder-_9394")
+///             .displayName("Nested Folder-_76044")
 ///             .containingFolder(dataformFolderRoot.id())
 ///             .build());
 ///
@@ -267,13 +276,13 @@ import 'folder_state.dart';
 ///     name: dataform_folder_root
 ///     properties:
 ///       region: us-central1
-///       displayName: Root Folder-_60646
+///       displayName: Root Folder-_33395
 ///   dataformFolderFull:
 ///     type: gcp:dataform:Folder
 ///     name: dataform_folder_full
 ///     properties:
 ///       region: us-central1
-///       displayName: Nested Folder-_9394
+///       displayName: Nested Folder-_76044
 ///       containingFolder: ${dataformFolderRoot.id}
 /// ```
 ///
@@ -333,7 +342,7 @@ class Folder extends pulumi.CustomResource {
           'gcp:dataform/folder:Folder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     containingFolder = registerOutput<String?>('containingFolder');
     deletionPolicy = registerOutput<String>('deletionPolicy');

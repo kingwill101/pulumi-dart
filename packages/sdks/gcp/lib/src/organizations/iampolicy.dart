@@ -92,7 +92,7 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -123,7 +123,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -131,16 +131,19 @@ import 'iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/editor"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_organizations_iampolicy" "organization" {
+/// resource "gcp_organizations_i_a_m_policy" "organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id      = "1234567890"
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -282,7 +285,7 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -318,7 +321,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -326,7 +329,7 @@ import 'iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/editor"
 ///     members = ["user:jane@example.com"]
@@ -338,9 +341,12 @@ import 'iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_organizations_iampolicy" "organization" {
+/// resource "gcp_organizations_i_a_m_policy" "organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id      = "1234567890"
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -459,7 +465,7 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -480,7 +486,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -488,7 +494,10 @@ import 'iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_organizations_iambinding" "organization" {
+/// resource "gcp_organizations_i_a_m_binding" "organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id  = "1234567890"
 ///   role    = "roles/editor"
 ///   members = ["user:jane@example.com"]
@@ -598,7 +607,7 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -624,7 +633,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -632,7 +641,10 @@ import 'iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_organizations_iambinding" "organization" {
+/// resource "gcp_organizations_i_a_m_binding" "organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id  = "1234567890"
 ///   role    = "roles/editor"
 ///   members = ["user:jane@example.com"]
@@ -738,7 +750,7 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -757,7 +769,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -765,7 +777,10 @@ import 'iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_organizations_iammember" "organization" {
+/// resource "gcp_organizations_i_a_m_member" "organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id = "1234567890"
 ///   role   = "roles/editor"
 ///   member = "user:jane@example.com"
@@ -871,7 +886,7 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -895,7 +910,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -903,7 +918,10 @@ import 'iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_organizations_iammember" "organization" {
+/// resource "gcp_organizations_i_a_m_member" "organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id = "1234567890"
 ///   role   = "roles/editor"
 ///   member = "user:jane@example.com"
@@ -1038,7 +1056,7 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1067,7 +1085,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1075,7 +1093,10 @@ import 'iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_organizations_iamauditconfig" "organization" {
+/// resource "gcp_organizations_iam_audit_config" "organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id  = "1234567890"
 ///   service = "allServices"
 ///   audit_log_configs {
@@ -1188,7 +1209,7 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1209,7 +1230,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1217,7 +1238,10 @@ import 'iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_organizations_iambinding" "organization" {
+/// resource "gcp_organizations_i_a_m_binding" "organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id  = "1234567890"
 ///   role    = "roles/editor"
 ///   members = ["user:jane@example.com"]
@@ -1327,7 +1351,7 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1353,7 +1377,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1361,7 +1385,10 @@ import 'iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_organizations_iambinding" "organization" {
+/// resource "gcp_organizations_i_a_m_binding" "organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id  = "1234567890"
 ///   role    = "roles/editor"
 ///   members = ["user:jane@example.com"]
@@ -1467,7 +1494,7 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1486,7 +1513,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1494,7 +1521,10 @@ import 'iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_organizations_iammember" "organization" {
+/// resource "gcp_organizations_i_a_m_member" "organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id = "1234567890"
 ///   role   = "roles/editor"
 ///   member = "user:jane@example.com"
@@ -1600,7 +1630,7 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1624,7 +1654,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1632,7 +1662,10 @@ import 'iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_organizations_iammember" "organization" {
+/// resource "gcp_organizations_i_a_m_member" "organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id = "1234567890"
 ///   role   = "roles/editor"
 ///   member = "user:jane@example.com"
@@ -1767,7 +1800,7 @@ import 'iampolicy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1796,7 +1829,7 @@ import 'iampolicy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1804,7 +1837,10 @@ import 'iampolicy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_organizations_iamauditconfig" "organization" {
+/// resource "gcp_organizations_iam_audit_config" "organization" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   org_id  = "1234567890"
 ///   service = "allServices"
 ///   audit_log_configs {
@@ -1903,7 +1939,7 @@ class IAMPolicy extends pulumi.CustomResource {
           'gcp:organizations/iAMPolicy:IAMPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     orgId = registerOutput<String>('orgId');

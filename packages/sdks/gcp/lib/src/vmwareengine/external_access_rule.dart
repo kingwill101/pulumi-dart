@@ -139,7 +139,7 @@ import 'external_access_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -194,7 +194,7 @@ import 'external_access_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -203,20 +203,29 @@ import 'external_access_rule_state.dart';
 /// }
 ///
 /// resource "gcp_vmwareengine_network" "external-access-rule-nw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "sample-nw"
 ///   location    = "global"
 ///   type        = "STANDARD"
 ///   description = "PC network description."
 /// }
-/// resource "gcp_vmwareengine_networkpolicy" "external-access-rule-np" {
+/// resource "gcp_vmwareengine_network_policy" "external-access-rule-np" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-west1"
 ///   name                  = "sample-np"
 ///   edge_services_cidr    = "192.168.30.0/26"
 ///   vmware_engine_network = gcp_vmwareengine_network.external-access-rule-nw.id
 /// }
-/// resource "gcp_vmwareengine_externalaccessrule" "vmw-engine-external-access-rule" {
+/// resource "gcp_vmwareengine_external_access_rule" "vmw-engine-external-access-rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "sample-external-access-rule"
-///   parent      = gcp_vmwareengine_networkpolicy.external-access-rule-np.id
+///   parent      = gcp_vmwareengine_network_policy.external-access-rule-np.id
 ///   priority    = 101
 ///   action      = "DENY"
 ///   ip_protocol = "TCP"
@@ -524,7 +533,7 @@ import 'external_access_rule_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vmwareengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vmwareengine"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -609,7 +618,7 @@ import 'external_access_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -618,12 +627,18 @@ import 'external_access_rule_state.dart';
 /// }
 ///
 /// resource "gcp_vmwareengine_network" "external-access-rule-nw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "sample-nw"
 ///   location    = "global"
 ///   type        = "STANDARD"
 ///   description = "PC network description."
 /// }
-/// resource "gcp_vmwareengine_privatecloud" "external-access-rule-pc" {
+/// resource "gcp_vmwareengine_private_cloud" "external-access-rule-pc" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = "us-west1-a"
 ///   name        = "sample-pc"
 ///   description = "Sample test PC."
@@ -634,25 +649,34 @@ import 'external_access_rule_state.dart';
 ///   management_cluster = {
 ///     cluster_id = "sample-mgmt-cluster"
 ///     node_type_configs = [{
-///       "nodeTypeId" = "standard-72"
-///       "nodeCount"  = 3
+///       node_type_id = "standard-72"
+///       node_count   = 3
 ///     }]
 ///   }
 /// }
-/// resource "gcp_vmwareengine_networkpolicy" "external-access-rule-np" {
+/// resource "gcp_vmwareengine_network_policy" "external-access-rule-np" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location              = "us-west1"
 ///   name                  = "sample-np"
 ///   edge_services_cidr    = "192.168.30.0/26"
 ///   vmware_engine_network = gcp_vmwareengine_network.external-access-rule-nw.id
 /// }
-/// resource "gcp_vmwareengine_externaladdress" "external-access-rule-ea" {
+/// resource "gcp_vmwareengine_external_address" "external-access-rule-ea" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "sample-ea"
-///   parent      = gcp_vmwareengine_privatecloud.external-access-rule-pc.id
+///   parent      = gcp_vmwareengine_private_cloud.external-access-rule-pc.id
 ///   internal_ip = "192.168.0.65"
 /// }
-/// resource "gcp_vmwareengine_externalaccessrule" "vmw-engine-external-access-rule" {
+/// resource "gcp_vmwareengine_external_access_rule" "vmw-engine-external-access-rule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "sample-external-access-rule"
-///   parent      = gcp_vmwareengine_networkpolicy.external-access-rule-np.id
+///   parent      = gcp_vmwareengine_network_policy.external-access-rule-np.id
 ///   description = "Sample Description"
 ///   priority    = 101
 ///   action      = "ALLOW"
@@ -662,7 +686,7 @@ import 'external_access_rule_state.dart';
 ///   }
 ///   source_ports = ["80"]
 ///   destination_ip_ranges {
-///     external_address = gcp_vmwareengine_externaladdress.external-access-rule-ea.id
+///     external_address = gcp_vmwareengine_external_address.external-access-rule-ea.id
 ///   }
 ///   destination_ports = ["433"]
 /// }
@@ -886,7 +910,7 @@ class ExternalAccessRule extends pulumi.CustomResource {
           'gcp:vmwareengine/externalAccessRule:ExternalAccessRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     createTime = registerOutput<String>('createTime');

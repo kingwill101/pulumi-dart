@@ -196,7 +196,7 @@ import 'entitlement_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/privilegedaccessmanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/privilegedaccessmanager"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -264,7 +264,7 @@ import 'entitlement_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -273,6 +273,9 @@ import 'entitlement_state.dart';
 /// }
 ///
 /// resource "gcp_privilegedaccessmanager_entitlement" "tfentitlement" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   entitlement_id       = "example-entitlement"
 ///   location             = "global"
 ///   max_request_duration = "43200s"
@@ -286,8 +289,8 @@ import 'entitlement_state.dart';
 ///   privileged_access = {
 ///     gcp_iam_access = {
 ///       role_bindings = [{
-///         "role"                = "roles/storage.admin"
-///         "conditionExpression" = "request.time < timestamp(\"2024-04-23T18:30:00.000Z\")"
+///         role                 = "roles/storage.admin"
+///         condition_expression = "request.time < timestamp(\"2024-04-23T18:30:00.000Z\")"
 ///       }]
 ///       resource      = "//cloudresourcemanager.googleapis.com/projects/my-project-name"
 ///       resource_type = "cloudresourcemanager.googleapis.com/Project"
@@ -301,10 +304,10 @@ import 'entitlement_state.dart';
 ///     manual_approvals = {
 ///       require_approver_justification = true
 ///       steps = [{
-///         "approvalsNeeded"         = 1
-///         "approverEmailRecipients" = ["user@example.com"]
-///         "approvers" = {
-///           "principals" = ["group:test@google.com"]
+///         approvals_needed          = 1
+///         approver_email_recipients = ["user@example.com"]
+///         approvers = {
+///           principals = ["group:test@google.com"]
 ///         }
 ///       }]
 ///     }
@@ -499,7 +502,7 @@ class Entitlement extends pulumi.CustomResource {
           'gcp:privilegedaccessmanager/entitlement:entitlement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     additionalNotificationTargets = registerOutput<EntitlementAdditionalNotificationTargets?>('additionalNotificationTargets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementAdditionalNotificationTargets.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     approvalWorkflow = registerOutput<EntitlementApprovalWorkflow?>('approvalWorkflow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EntitlementApprovalWorkflow.fromMap((guardedValue as Map).cast<String, dynamic>()); });

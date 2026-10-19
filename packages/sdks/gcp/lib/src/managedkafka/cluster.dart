@@ -3,6 +3,7 @@ import 'cluster_args.dart';
 import 'cluster_broker_capacity_config.dart';
 import 'cluster_capacity_config.dart';
 import 'cluster_gcp_config.dart';
+import 'cluster_public_cluster_detail.dart';
 import 'cluster_rebalance_config.dart';
 import 'cluster_state.dart';
 import 'cluster_tls_config.dart';
@@ -42,6 +43,7 @@ import 'cluster_tls_config.dart';
 ///     labels: {
 ///         key: "value",
 ///     },
+///     kafkaVersion: "3.7.x",
 /// });
 /// ```
 /// ```python
@@ -68,7 +70,8 @@ import 'cluster_tls_config.dart';
 ///     },
 ///     labels={
 ///         "key": "value",
-///     })
+///     },
+///     kafka_version="3.7.x")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -110,6 +113,7 @@ import 'cluster_tls_config.dart';
 ///         {
 ///             { "key", "value" },
 ///         },
+///         KafkaVersion = "3.7.x",
 ///     });
 ///
 /// });
@@ -118,8 +122,8 @@ import 'cluster_tls_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/managedkafka"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -151,6 +155,7 @@ import 'cluster_tls_config.dart';
 /// 			Labels: pulumi.StringMap{
 /// 				"key": pulumi.String("value"),
 /// 			},
+/// 			KafkaVersion: pulumi.String("3.7.x"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -160,7 +165,7 @@ import 'cluster_tls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -168,10 +173,13 @@ import 'cluster_tls_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_managedkafka_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id = "my-cluster"
 ///   location   = "us-central1"
 ///   capacity_config = {
@@ -181,7 +189,7 @@ import 'cluster_tls_config.dart';
 ///   gcp_config = {
 ///     access_config = {
 ///       network_configs = [{
-///         "subnet" ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/subnetworks/default"
+///         subnet ="projects/${data.gcp_organizations_project.project.number}/regions/us-central1/subnetworks/default"
 ///       }]
 ///     }
 ///   }
@@ -191,6 +199,7 @@ import 'cluster_tls_config.dart';
 ///   labels = {
 ///     "key" = "value"
 ///   }
+///   kafka_version = "3.7.x"
 /// }
 /// ```
 /// ```java
@@ -242,6 +251,7 @@ import 'cluster_tls_config.dart';
 ///                 .mode("AUTO_REBALANCE_ON_SCALE_UP")
 ///                 .build())
 ///             .labels(Map.of("key", "value"))
+///             .kafkaVersion("3.7.x")
 ///             .build());
 ///
 ///     }
@@ -265,6 +275,7 @@ import 'cluster_tls_config.dart';
 ///         mode: AUTO_REBALANCE_ON_SCALE_UP
 ///       labels:
 ///         key: value
+///       kafkaVersion: 3.7.x
 /// variables:
 ///   project:
 ///     fn::invoke:
@@ -416,9 +427,9 @@ import 'cluster_tls_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificateauthority"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificateauthority"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/managedkafka"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -475,7 +486,7 @@ import 'cluster_tls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -483,10 +494,13 @@ import 'cluster_tls_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_managedkafka_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id = "my-cluster"
 ///   location   = "us-central1"
 ///   capacity_config = {
@@ -496,20 +510,23 @@ import 'cluster_tls_config.dart';
 ///   gcp_config = {
 ///     access_config = {
 ///       network_configs = [{
-///         "subnet" ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/subnetworks/default"
+///         subnet ="projects/${data.gcp_organizations_project.project.number}/regions/us-central1/subnetworks/default"
 ///       }]
 ///     }
 ///   }
 ///   tls_config = {
 ///     trust_config = {
 ///       cas_configs = [{
-///         "caPool" = gcp_certificateauthority_capool.ca_pool.id
+///         ca_pool = gcp_certificateauthority_ca_pool.ca_pool.id
 ///       }]
 ///     }
 ///     ssl_principal_mapping_rules = "RULE:pattern/replacement/L,DEFAULT"
 ///   }
 /// }
-/// resource "gcp_certificateauthority_capool" "ca_pool" {
+/// resource "gcp_certificateauthority_ca_pool" "ca_pool" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-ca-pool"
 ///   location = "us-central1"
 ///   tier     = "ENTERPRISE"
@@ -729,9 +746,9 @@ import 'cluster_tls_config.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/managedkafka"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/managedkafka"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -774,7 +791,7 @@ import 'cluster_tls_config.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -782,10 +799,13 @@ import 'cluster_tls_config.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_managedkafka_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id = "my-cluster"
 ///   location   = "us-central1"
 ///   capacity_config = {
@@ -795,14 +815,17 @@ import 'cluster_tls_config.dart';
 ///   gcp_config = {
 ///     access_config = {
 ///       network_configs = [{
-///         "subnet" ="projects/${data.gcp_organizations_getproject.project.number}/regions/us-central1/subnetworks/default"
+///         subnet ="projects/${data.gcp_organizations_project.project.number}/regions/us-central1/subnetworks/default"
 ///       }]
 ///     }
 ///     kms_key = "example-key"
 ///   }
 /// }
-/// resource "gcp_projects_serviceidentity" "kafka_service_identity" {
-///   project = data.gcp_organizations_getproject.project.project_id
+/// resource "gcp_projects_service_identity" "kafka_service_identity" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = data.gcp_organizations_project.project.project_id
 ///   service = "managedkafka.googleapis.com"
 /// }
 /// ```
@@ -891,6 +914,277 @@ import 'cluster_tls_config.dart';
 ///       arguments: {}
 /// ```
 ///
+/// ### Managedkafka Cluster Public
+///
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as gcp from "@pulumi/gcp";
+///
+/// const project = gcp.organizations.getProject({});
+/// const example = new gcp.managedkafka.Cluster("example", {
+///     clusterId: "my-cluster",
+///     location: "us-central1",
+///     capacityConfig: {
+///         vcpuCount: "3",
+///         memoryBytes: "3221225472",
+///     },
+///     gcpConfig: {
+///         accessConfig: {
+///             networkConfigs: [{
+///                 subnet: project.then(project => `projects/${project.number}/regions/us-central1/subnetworks/default`),
+///             }],
+///             publicClusterConfig: {
+///                 allowedSourceIpRanges: ["192.168.1.0/24"],
+///             },
+///         },
+///     },
+///     rebalanceConfig: {
+///         mode: "AUTO_REBALANCE_ON_SCALE_UP",
+///     },
+/// });
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_gcp as gcp
+///
+/// project = gcp.organizations.get_project()
+/// example = gcp.managedkafka.Cluster("example",
+///     cluster_id="my-cluster",
+///     location="us-central1",
+///     capacity_config={
+///         "vcpu_count": "3",
+///         "memory_bytes": "3221225472",
+///     },
+///     gcp_config={
+///         "access_config": {
+///             "network_configs": [{
+///                 "subnet": f"projects/{project.number}/regions/us-central1/subnetworks/default",
+///             }],
+///             "public_cluster_config": {
+///                 "allowed_source_ip_ranges": ["192.168.1.0/24"],
+///             },
+///         },
+///     },
+///     rebalance_config={
+///         "mode": "AUTO_REBALANCE_ON_SCALE_UP",
+///     })
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using Gcp = Pulumi.Gcp;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var project = Gcp.Organizations.GetProject.Invoke();
+///
+///     var example = new Gcp.ManagedKafka.Cluster("example", new()
+///     {
+///         ClusterId = "my-cluster",
+///         Location = "us-central1",
+///         CapacityConfig = new Gcp.ManagedKafka.Inputs.ClusterCapacityConfigArgs
+///         {
+///             VcpuCount = "3",
+///             MemoryBytes = "3221225472",
+///         },
+///         GcpConfig = new Gcp.ManagedKafka.Inputs.ClusterGcpConfigArgs
+///         {
+///             AccessConfig = new Gcp.ManagedKafka.Inputs.ClusterGcpConfigAccessConfigArgs
+///             {
+///                 NetworkConfigs = new[]
+///                 {
+///                     new Gcp.ManagedKafka.Inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs
+///                     {
+///                         Subnet = $"projects/{project.Apply(getProjectResult => getProjectResult.Number)}/regions/us-central1/subnetworks/default",
+///                     },
+///                 },
+///                 PublicClusterConfig = new Gcp.ManagedKafka.Inputs.ClusterGcpConfigAccessConfigPublicClusterConfigArgs
+///                 {
+///                     AllowedSourceIpRanges = new[]
+///                     {
+///                         "192.168.1.0/24",
+///                     },
+///                 },
+///             },
+///         },
+///         RebalanceConfig = new Gcp.ManagedKafka.Inputs.ClusterRebalanceConfigArgs
+///         {
+///             Mode = "AUTO_REBALANCE_ON_SCALE_UP",
+///         },
+///     });
+///
+/// });
+/// ```
+/// ```go
+/// package main
+///
+/// import (
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/managedkafka"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+/// )
+///
+/// func main() {
+/// 	pulumi.Run(func(ctx *pulumi.Context) error {
+/// 		project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		_, err = managedkafka.NewCluster(ctx, "example", &managedkafka.ClusterArgs{
+/// 			ClusterId: pulumi.String("my-cluster"),
+/// 			Location:  pulumi.String("us-central1"),
+/// 			CapacityConfig: &managedkafka.ClusterCapacityConfigArgs{
+/// 				VcpuCount:   pulumi.String("3"),
+/// 				MemoryBytes: pulumi.String("3221225472"),
+/// 			},
+/// 			GcpConfig: &managedkafka.ClusterGcpConfigArgs{
+/// 				AccessConfig: &managedkafka.ClusterGcpConfigAccessConfigArgs{
+/// 					NetworkConfigs: managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArray{
+/// 						&managedkafka.ClusterGcpConfigAccessConfigNetworkConfigArgs{
+/// 							Subnet: pulumi.Sprintf("projects/%v/regions/us-central1/subnetworks/default", project.Number),
+/// 						},
+/// 					},
+/// 					PublicClusterConfig: &managedkafka.ClusterGcpConfigAccessConfigPublicClusterConfigArgs{
+/// 						AllowedSourceIpRanges: pulumi.StringArray{
+/// 							pulumi.String("192.168.1.0/24"),
+/// 						},
+/// 					},
+/// 				},
+/// 			},
+/// 			RebalanceConfig: &managedkafka.ClusterRebalanceConfigArgs{
+/// 				Mode: pulumi.String("AUTO_REBALANCE_ON_SCALE_UP"),
+/// 			},
+/// 		})
+/// 		if err != nil {
+/// 			return err
+/// 		}
+/// 		return nil
+/// 	})
+/// }
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     gcp = {
+///       source = "pulumi/gcp"
+///     }
+///   }
+/// }
+///
+/// data "gcp_organizations_project" "project" {
+/// }
+///
+/// resource "gcp_managedkafka_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id = "my-cluster"
+///   location   = "us-central1"
+///   capacity_config = {
+///     vcpu_count   = 3
+///     memory_bytes = 3221225472
+///   }
+///   gcp_config = {
+///     access_config = {
+///       network_configs = [{
+///         subnet ="projects/${data.gcp_organizations_project.project.number}/regions/us-central1/subnetworks/default"
+///       }]
+///       public_cluster_config = {
+///         allowed_source_ip_ranges = ["192.168.1.0/24"]
+///       }
+///     }
+///   }
+///   rebalance_config = {
+///     mode = "AUTO_REBALANCE_ON_SCALE_UP"
+///   }
+/// }
+/// ```
+/// ```java
+/// package generated_program;
+///
+/// import com.pulumi.Context;
+/// import com.pulumi.Pulumi;
+/// import com.pulumi.core.Output;
+/// import com.pulumi.gcp.organizations.OrganizationsFunctions;
+/// import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+/// import com.pulumi.gcp.managedkafka.Cluster;
+/// import com.pulumi.gcp.managedkafka.ClusterArgs;
+/// import com.pulumi.gcp.managedkafka.inputs.ClusterCapacityConfigArgs;
+/// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigArgs;
+/// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigArgs;
+/// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigNetworkConfigArgs;
+/// import com.pulumi.gcp.managedkafka.inputs.ClusterGcpConfigAccessConfigPublicClusterConfigArgs;
+/// import com.pulumi.gcp.managedkafka.inputs.ClusterRebalanceConfigArgs;
+/// import java.util.ArrayList;
+/// import java.util.Arrays;
+/// import java.util.Map;
+/// import java.io.File;
+/// import java.nio.file.Files;
+/// import java.nio.file.Paths;
+///
+/// public class App {
+///     public static void main(String[] args) {
+///         Pulumi.run(App::stack);
+///     }
+///
+///     public static void stack(Context ctx) {
+///         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+///             .build());
+///
+///         var example = new Cluster("example", ClusterArgs.builder()
+///             .clusterId("my-cluster")
+///             .location("us-central1")
+///             .capacityConfig(ClusterCapacityConfigArgs.builder()
+///                 .vcpuCount("3")
+///                 .memoryBytes("3221225472")
+///                 .build())
+///             .gcpConfig(ClusterGcpConfigArgs.builder()
+///                 .accessConfig(ClusterGcpConfigAccessConfigArgs.builder()
+///                     .networkConfigs(ClusterGcpConfigAccessConfigNetworkConfigArgs.builder()
+///                         .subnet(String.format("projects/%s/regions/us-central1/subnetworks/default", project.number()))
+///                         .build())
+///                     .publicClusterConfig(ClusterGcpConfigAccessConfigPublicClusterConfigArgs.builder()
+///                         .allowedSourceIpRanges("192.168.1.0/24")
+///                         .build())
+///                     .build())
+///                 .build())
+///             .rebalanceConfig(ClusterRebalanceConfigArgs.builder()
+///                 .mode("AUTO_REBALANCE_ON_SCALE_UP")
+///                 .build())
+///             .build());
+///
+///     }
+/// }
+/// ```
+/// ```yaml
+/// resources:
+///   example:
+///     type: gcp:managedkafka:Cluster
+///     properties:
+///       clusterId: my-cluster
+///       location: us-central1
+///       capacityConfig:
+///         vcpuCount: 3
+///         memoryBytes: 3.221225472e+09
+///       gcpConfig:
+///         accessConfig:
+///           networkConfigs:
+///             - subnet: projects/${project.number}/regions/us-central1/subnetworks/default
+///           publicClusterConfig:
+///             allowedSourceIpRanges:
+///               - 192.168.1.0/24
+///       rebalanceConfig:
+///         mode: AUTO_REBALANCE_ON_SCALE_UP
+/// variables:
+///   project:
+///     fn::invoke:
+///       function: gcp:organizations:getProject
+///       arguments: {}
+/// ```
+///
 ///
 /// ## Import
 ///
@@ -909,6 +1203,8 @@ import 'cluster_tls_config.dart';
 /// $ pulumi import gcp:managedkafka/cluster:Cluster default {{location}}/{{cluster_id}}
 /// ```
 class Cluster extends pulumi.CustomResource {
+  /// The bootstrap address of the Kafka cluster. Use port :9092 for SASL connection and :9192 for mTLS connection
+  late final pulumi.Output<String> bootstrapAddress;
   /// Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster.
   /// Structure is documented below.
   late final pulumi.Output<ClusterBrokerCapacityConfig?> brokerCapacityConfig;
@@ -931,6 +1227,8 @@ class Cluster extends pulumi.CustomResource {
   /// Configuration properties for a Kafka cluster deployed to Google Cloud Platform.
   /// Structure is documented below.
   late final pulumi.Output<ClusterGcpConfig> gcpConfig;
+  /// The Apache Kafka version of the cluster (for example, `3.7.x`, `4.3.x`). If not specified during cluster creation, defaults to `3.7.x`.
+  late final pulumi.Output<String> kafkaVersion;
   /// List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
   /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
   /// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
@@ -942,6 +1240,9 @@ class Cluster extends pulumi.CustomResource {
   /// The ID of the project in which the resource belongs.
   /// If it is not provided, the provider project is used.
   late final pulumi.Output<String> project;
+  /// Details of the public cluster feature for the Kafka cluster.
+  /// Structure is documented below.
+  late final pulumi.Output<List<ClusterPublicClusterDetail>> publicClusterDetails;
   /// The combination of labels configured directly on the resource
   /// and default labels configured on the provider.
   late final pulumi.Output<Map<String, String>> pulumiLabels;
@@ -968,9 +1269,10 @@ class Cluster extends pulumi.CustomResource {
           'gcp:managedkafka/cluster:Cluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         ) {
+    bootstrapAddress = registerOutput<String>('bootstrapAddress');
     brokerCapacityConfig = registerOutput<ClusterBrokerCapacityConfig?>('brokerCapacityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterBrokerCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     capacityConfig = registerOutput<ClusterCapacityConfig>('capacityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
@@ -978,10 +1280,12 @@ class Cluster extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     gcpConfig = registerOutput<ClusterGcpConfig>('gcpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterGcpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kafkaVersion = registerOutput<String>('kafkaVersion');
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
+    publicClusterDetails = registerOutput<List<ClusterPublicClusterDetail>>('publicClusterDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterPublicClusterDetail>(guardedValue, (value) => ClusterPublicClusterDetail.fromMap((value as Map).cast<String, dynamic>())); });
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rebalanceConfig = registerOutput<ClusterRebalanceConfig?>('rebalanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRebalanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
@@ -1013,6 +1317,7 @@ class Cluster extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    bootstrapAddress = registerOutput<String>('bootstrapAddress');
     brokerCapacityConfig = registerOutput<ClusterBrokerCapacityConfig?>('brokerCapacityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterBrokerCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     capacityConfig = registerOutput<ClusterCapacityConfig>('capacityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
@@ -1020,10 +1325,12 @@ class Cluster extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     gcpConfig = registerOutput<ClusterGcpConfig>('gcpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterGcpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kafkaVersion = registerOutput<String>('kafkaVersion');
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
+    publicClusterDetails = registerOutput<List<ClusterPublicClusterDetail>>('publicClusterDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterPublicClusterDetail>(guardedValue, (value) => ClusterPublicClusterDetail.fromMap((value as Map).cast<String, dynamic>())); });
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rebalanceConfig = registerOutput<ClusterRebalanceConfig?>('rebalanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRebalanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.state = registerOutput<String>('state');
@@ -1041,6 +1348,7 @@ class Cluster extends pulumi.CustomResource {
           additionalSecretOutputs: const ['effectiveLabels', 'pulumiLabels'],
         isResourceReference: true,
       ) {
+    bootstrapAddress = registerOutput<String>('bootstrapAddress');
     brokerCapacityConfig = registerOutput<ClusterBrokerCapacityConfig?>('brokerCapacityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterBrokerCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     capacityConfig = registerOutput<ClusterCapacityConfig>('capacityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterCapacityConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
@@ -1048,10 +1356,12 @@ class Cluster extends pulumi.CustomResource {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     effectiveLabels = registerOutput<Map<String, String>>('effectiveLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     gcpConfig = registerOutput<ClusterGcpConfig>('gcpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterGcpConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kafkaVersion = registerOutput<String>('kafkaVersion');
     labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
+    publicClusterDetails = registerOutput<List<ClusterPublicClusterDetail>>('publicClusterDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ClusterPublicClusterDetail>(guardedValue, (value) => ClusterPublicClusterDetail.fromMap((value as Map).cast<String, dynamic>())); });
     pulumiLabels = registerOutput<Map<String, String>>('pulumiLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); }, isSecret: true);
     rebalanceConfig = registerOutput<ClusterRebalanceConfig?>('rebalanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ClusterRebalanceConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');

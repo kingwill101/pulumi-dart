@@ -172,13 +172,13 @@ class VPNTunnelArgs {
       cipherSuite: (() { final guardedValue = map['cipherSuite']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VPNTunnelCipherSuite.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ikeVersion: (() { final guardedValue = map['ikeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      ikeVersion: (() { final guardedValue = map['ikeVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       localTrafficSelectors: (() { final guardedValue = map['localTrafficSelectors']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       params: (() { final guardedValue = map['params']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VPNTunnelParams.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       peerExternalGateway: (() { final guardedValue = map['peerExternalGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      peerExternalGatewayInterface: (() { final guardedValue = map['peerExternalGatewayInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      peerExternalGatewayInterface: (() { final guardedValue = map['peerExternalGatewayInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       peerGcpGateway: (() { final guardedValue = map['peerGcpGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       peerIp: (() { final guardedValue = map['peerIp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -190,7 +190,7 @@ class VPNTunnelArgs {
       sharedSecretWoVersion: (() { final guardedValue = map['sharedSecretWoVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetVpnGateway: (() { final guardedValue = map['targetVpnGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       vpnGateway: (() { final guardedValue = map['vpnGateway']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vpnGatewayInterface: (() { final guardedValue = map['vpnGatewayInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      vpnGatewayInterface: (() { final guardedValue = map['vpnGatewayInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -90,8 +90,8 @@ import 'ai_feature_store_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -124,7 +124,7 @@ import 'ai_feature_store_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -132,18 +132,21 @@ import 'ai_feature_store_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aifeaturestoreiampolicy" "policy" {
+/// resource "gcp_vertex_ai_feature_store_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = featurestore.project
 ///   region       = featurestore.region
 ///   featurestore = featurestore.name
-///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data  = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -260,7 +263,7 @@ import 'ai_feature_store_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -283,7 +286,7 @@ import 'ai_feature_store_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -291,7 +294,10 @@ import 'ai_feature_store_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aifeaturestoreiambinding" "binding" {
+/// resource "gcp_vertex_ai_feature_store_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = featurestore.project
 ///   region       = featurestore.region
 ///   featurestore = featurestore.name
@@ -394,7 +400,7 @@ import 'ai_feature_store_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -415,7 +421,7 @@ import 'ai_feature_store_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -423,7 +429,10 @@ import 'ai_feature_store_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aifeaturestoreiammember" "member" {
+/// resource "gcp_vertex_ai_feature_store_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = featurestore.project
 ///   region       = featurestore.region
 ///   featurestore = featurestore.name
@@ -571,8 +580,8 @@ import 'ai_feature_store_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -605,7 +614,7 @@ import 'ai_feature_store_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -613,18 +622,21 @@ import 'ai_feature_store_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aifeaturestoreiampolicy" "policy" {
+/// resource "gcp_vertex_ai_feature_store_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = featurestore.project
 ///   region       = featurestore.region
 ///   featurestore = featurestore.name
-///   policy_data  = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data  = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -741,7 +753,7 @@ import 'ai_feature_store_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -764,7 +776,7 @@ import 'ai_feature_store_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -772,7 +784,10 @@ import 'ai_feature_store_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aifeaturestoreiambinding" "binding" {
+/// resource "gcp_vertex_ai_feature_store_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = featurestore.project
 ///   region       = featurestore.region
 ///   featurestore = featurestore.name
@@ -875,7 +890,7 @@ import 'ai_feature_store_iam_policy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/vertex"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/vertex"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -896,7 +911,7 @@ import 'ai_feature_store_iam_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -904,7 +919,10 @@ import 'ai_feature_store_iam_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_vertex_aifeaturestoreiammember" "member" {
+/// resource "gcp_vertex_ai_feature_store_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project      = featurestore.project
 ///   region       = featurestore.region
 ///   featurestore = featurestore.name
@@ -1015,7 +1033,7 @@ class AiFeatureStoreIamPolicy extends pulumi.CustomResource {
           'gcp:vertex/aiFeatureStoreIamPolicy:AiFeatureStoreIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     etag = registerOutput<String>('etag');
     featurestore = registerOutput<String>('featurestore');

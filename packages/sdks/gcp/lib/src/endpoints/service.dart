@@ -86,7 +86,7 @@ import 'service_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/endpoints"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/endpoints"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -133,7 +133,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -145,11 +145,17 @@ import 'service_state.dart';
 /// }
 ///
 /// resource "gcp_endpoints_service" "openapi_service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_name   = "api-name.endpoints.project-id.cloud.goog"
 ///   project        = "project-id"
 ///   openapi_config = file("openapi_spec.yml")
 /// }
 /// resource "gcp_endpoints_service" "grpc_service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service_name         = "api-name.endpoints.project-id.cloud.goog"
 ///   project              = "project-id"
 ///   grpc_config          = file("service_spec.yml")
@@ -285,7 +291,7 @@ class Service extends pulumi.CustomResource {
           'gcp:endpoints/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     apis = registerOutput<List<ServiceApi>>('apis', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceApi>(guardedValue, (value) => ServiceApi.fromMap((value as Map).cast<String, dynamic>())); });
     configId = registerOutput<String>('configId');

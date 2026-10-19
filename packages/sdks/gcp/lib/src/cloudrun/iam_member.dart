@@ -89,8 +89,8 @@ import 'iam_member_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -123,7 +123,7 @@ import 'iam_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -131,18 +131,21 @@ import 'iam_member_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_cloudrun_iampolicy" "policy" {
+/// resource "gcp_cloudrun_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = default.location
 ///   project     = default.project
 ///   service     = default.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -259,7 +262,7 @@ import 'iam_member_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -282,7 +285,7 @@ import 'iam_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -290,7 +293,10 @@ import 'iam_member_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudrun_iambinding" "binding" {
+/// resource "gcp_cloudrun_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = default.location
 ///   project  = default.project
 ///   service  = default.name
@@ -393,7 +399,7 @@ import 'iam_member_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -414,7 +420,7 @@ import 'iam_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -422,7 +428,10 @@ import 'iam_member_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudrun_iammember" "member" {
+/// resource "gcp_cloudrun_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = default.location
 ///   project  = default.project
 ///   service  = default.name
@@ -568,8 +577,8 @@ import 'iam_member_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -602,7 +611,7 @@ import 'iam_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -610,18 +619,21 @@ import 'iam_member_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getiampolicy" "admin" {
+/// data "gcp_organizations_i_a_m_policy" "admin" {
 ///   bindings {
 ///     role    = "roles/viewer"
 ///     members = ["user:jane@example.com"]
 ///   }
 /// }
 ///
-/// resource "gcp_cloudrun_iampolicy" "policy" {
+/// resource "gcp_cloudrun_iam_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location    = default.location
 ///   project     = default.project
 ///   service     = default.name
-///   policy_data = data.gcp_organizations_getiampolicy.admin.policy_data
+///   policy_data = data.gcp_organizations_i_a_m_policy.admin.policy_data
 /// }
 /// ```
 /// ```java
@@ -738,7 +750,7 @@ import 'iam_member_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -761,7 +773,7 @@ import 'iam_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -769,7 +781,10 @@ import 'iam_member_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudrun_iambinding" "binding" {
+/// resource "gcp_cloudrun_iam_binding" "binding" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = default.location
 ///   project  = default.project
 ///   service  = default.name
@@ -872,7 +887,7 @@ import 'iam_member_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/cloudrun"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/cloudrun"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -893,7 +908,7 @@ import 'iam_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -901,7 +916,10 @@ import 'iam_member_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_cloudrun_iammember" "member" {
+/// resource "gcp_cloudrun_iam_member" "member" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = default.location
 ///   project  = default.project
 ///   service  = default.name
@@ -1027,7 +1045,7 @@ class IamMember extends pulumi.CustomResource {
           'gcp:cloudrun/iamMember:IamMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     condition = registerOutput<IamMemberCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IamMemberCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');

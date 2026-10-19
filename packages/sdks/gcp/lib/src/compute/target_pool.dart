@@ -81,7 +81,7 @@ import 'target_pool_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -112,7 +112,7 @@ import 'target_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -120,12 +120,18 @@ import 'target_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_targetpool" "default" {
+/// resource "gcp_compute_target_pool" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "instance-pool"
 ///   instances     = ["us-central1-a/myinstance1", "us-central1-b/myinstance2"]
-///   health_checks = gcp_compute_httphealthcheck.default.name
+///   health_checks = gcp_compute_http_health_check.default.name
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_http_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "default"
 ///   request_path       = "/"
 ///   check_interval_sec = 1
@@ -269,7 +275,7 @@ class TargetPool extends pulumi.CustomResource {
           'gcp:compute/targetPool:TargetPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     backupPool = registerOutput<String?>('backupPool');
     deletionPolicy = registerOutput<String>('deletionPolicy');

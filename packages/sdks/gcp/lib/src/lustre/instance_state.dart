@@ -12,6 +12,9 @@ class InstanceState {
   /// define the root user squash configuration.
   /// Structure is documented below.
   final pulumi.Input<InstanceAccessRulesOptions?>? accessRulesOptions;
+  /// The version this instance can be upgraded to, if one is available. Empty
+  /// when the instance is already running the newest release.
+  final pulumi.Input<String?>? availableVersion;
   /// The storage capacity of the instance in gibibytes (GiB). Allowed values
   /// are from `9000` to `7632000`, depending on the `perUnitStorageThroughput`.
   /// See [Performance tiers and maximum storage
@@ -34,6 +37,9 @@ class InstanceState {
   final pulumi.Input<InstanceDynamicTierOptions?>? dynamicTierOptions;
   /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   final pulumi.Input<Map<String, String>?>? effectiveLabels;
+  /// The version of Managed Lustre software that this instance is currently
+  /// running.
+  final pulumi.Input<String?>? effectiveVersion;
   /// The filesystem name for this instance. This name is used by client-side
   /// tools, including when mounting the instance. Must be eight characters or
   /// less and can only contain letters and numbers.
@@ -101,6 +107,17 @@ class InstanceState {
   final pulumi.Input<String?>? state;
   /// The reason why the instance is in a certain state (e.g. SUSPENDED).
   final pulumi.Input<String?>? stateReason;
+  /// The version to upgrade this instance to. Set this to the value reported in
+  /// `availableVersion`, or to `latest` to move to the newest version available
+  /// at the time of the upgrade.
+  /// This field cannot be set when the instance is created; new instances are
+  /// always provisioned from the current release. It also cannot be changed in
+  /// the same operation as `capacityGib` or `maintenancePolicy`, and the
+  /// instance must be ACTIVE and outside of the hour preceding a scheduled
+  /// maintenance window.
+  /// The API clears this field once the upgrade finishes, so it always reads
+  /// back as empty on an idle instance.
+  final pulumi.Input<String?>? targetVersion;
   /// Unique ID of the resource.
   /// This is unrelated to the access rules which allow specifying the root
   /// squash uid.
@@ -113,12 +130,14 @@ class InstanceState {
 
   /// Creates a new [InstanceState].
   /// [accessRulesOptions] IP-based access rules for the Managed Lustre instance. These options
+  /// [availableVersion] The version this instance can be upgraded to, if one is available. Empty
   /// [capacityGib] The storage capacity of the instance in gibibytes (GiB). Allowed values
   /// [createTime] Timestamp when the instance was created.
   /// [deletionPolicy] Whether Terraform will be prevented from destroying the resource. Defaults to DELETE.
   /// [description] A user-readable description of the instance.
   /// [dynamicTierOptions] Dynamic tier options for a Managed Lustre instance.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+  /// [effectiveVersion] The version of Managed Lustre software that this instance is currently
   /// [filesystem] The filesystem name for this instance. This name is used by client-side
   /// [gkeSupportEnabled] Indicates whether you want to enable support for GKE clients. By default,
   /// [instanceId] The name of the Managed Lustre instance.
@@ -135,17 +154,20 @@ class InstanceState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [state] The state of the instance.
   /// [stateReason] The reason why the instance is in a certain state (e.g. SUSPENDED).
+  /// [targetVersion] The version to upgrade this instance to. Set this to the value reported in
   /// [uid] Unique ID of the resource.
   /// [upcomingMaintenanceSchedules] Represents a scheduled maintenance event.
   /// [updateTime] Timestamp when the instance was last updated.
   const InstanceState({
     this.accessRulesOptions,
+    this.availableVersion,
     this.capacityGib,
     this.createTime,
     this.deletionPolicy,
     this.description,
     this.dynamicTierOptions,
     this.effectiveLabels,
+    this.effectiveVersion,
     this.filesystem,
     this.gkeSupportEnabled,
     this.instanceId,
@@ -162,6 +184,7 @@ class InstanceState {
     this.pulumiLabels,
     this.state,
     this.stateReason,
+    this.targetVersion,
     this.uid,
     this.upcomingMaintenanceSchedules,
     this.updateTime,
@@ -170,12 +193,14 @@ class InstanceState {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accessRulesOptions': ?pulumi.Input.mapOptionalInputValue<InstanceAccessRulesOptions, Map<String, dynamic>>(accessRulesOptions, (value) => value.toMap()),
+      'availableVersion': ?availableVersion,
       'capacityGib': ?capacityGib,
       'createTime': ?createTime,
       'deletionPolicy': ?deletionPolicy,
       'description': ?description,
       'dynamicTierOptions': ?pulumi.Input.mapOptionalInputValue<InstanceDynamicTierOptions, Map<String, dynamic>>(dynamicTierOptions, (value) => value.toMap()),
       'effectiveLabels': ?effectiveLabels,
+      'effectiveVersion': ?effectiveVersion,
       'filesystem': ?filesystem,
       'gkeSupportEnabled': ?gkeSupportEnabled,
       'instanceId': ?instanceId,
@@ -192,6 +217,7 @@ class InstanceState {
       'pulumiLabels': ?pulumiLabels,
       'state': ?state,
       'stateReason': ?stateReason,
+      'targetVersion': ?targetVersion,
       'uid': ?uid,
       'upcomingMaintenanceSchedules': ?pulumi.Input.mapOptionalInputValue<List<InstanceUpcomingMaintenanceSchedule>, List<Map<String, dynamic>>>(upcomingMaintenanceSchedules, (value) => pulumi.Input.encodeList<InstanceUpcomingMaintenanceSchedule, Map<String, dynamic>>(value, (value) => value.toMap())),
       'updateTime': ?updateTime,
@@ -201,12 +227,14 @@ class InstanceState {
   factory InstanceState.fromMap(Map<String, dynamic> map) {
     return InstanceState(
       accessRulesOptions: (() { final guardedValue = map['accessRulesOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceAccessRulesOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
+      availableVersion: (() { final guardedValue = map['availableVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       capacityGib: (() { final guardedValue = map['capacityGib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deletionPolicy: (() { final guardedValue = map['deletionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dynamicTierOptions: (() { final guardedValue = map['dynamicTierOptions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InstanceDynamicTierOptions.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
+      effectiveVersion: (() { final guardedValue = map['effectiveVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       filesystem: (() { final guardedValue = map['filesystem']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       gkeSupportEnabled: (() { final guardedValue = map['gkeSupportEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       instanceId: (() { final guardedValue = map['instanceId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -223,6 +251,7 @@ class InstanceState {
       pulumiLabels: (() { final guardedValue = map['pulumiLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       stateReason: (() { final guardedValue = map['stateReason']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      targetVersion: (() { final guardedValue = map['targetVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       upcomingMaintenanceSchedules: (() { final guardedValue = map['upcomingMaintenanceSchedules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<InstanceUpcomingMaintenanceSchedule>(guardedValue, (value) => InstanceUpcomingMaintenanceSchedule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -156,8 +156,8 @@ import 'service_network_settings_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/appengine"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/appengine"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -216,7 +216,7 @@ import 'service_network_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -225,15 +225,24 @@ import 'service_network_settings_state.dart';
 /// }
 ///
 /// resource "gcp_storage_bucket" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "appengine-static-content"
 ///   location = "US"
 /// }
-/// resource "gcp_storage_bucketobject" "object" {
+/// resource "gcp_storage_bucket_object" "object" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "hello-world.zip"
 ///   bucket = gcp_storage_bucket.bucket.name
-///   source = fileAsset("./test-fixtures/hello-world.zip")
+///   source = fileasset("./test-fixtures/hello-world.zip")
 /// }
-/// resource "gcp_appengine_standardappversion" "internalapp" {
+/// resource "gcp_appengine_standard_app_version" "internalapp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   version_id                = "v1"
 ///   service                   = "internalapp"
 ///   delete_service_on_destroy = true
@@ -243,15 +252,18 @@ import 'service_network_settings_state.dart';
 ///   }
 ///   deployment = {
 ///     zip = {
-///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucketobject.object.name}"
+///       source_url ="https://storage.googleapis.com/${gcp_storage_bucket.bucket.name}/${gcp_storage_bucket_object.object.name}"
 ///     }
 ///   }
 ///   env_variables = {
 ///     "port" = "8080"
 ///   }
 /// }
-/// resource "gcp_appengine_servicenetworksettings" "internalapp" {
-///   service = gcp_appengine_standardappversion.internalapp.service
+/// resource "gcp_appengine_service_network_settings" "internalapp" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   service = gcp_appengine_standard_app_version.internalapp.service
 ///   network_settings = {
 ///     ingress_traffic_allowed = "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY"
 ///   }
@@ -406,7 +418,7 @@ class ServiceNetworkSettings extends pulumi.CustomResource {
           'gcp:appengine/serviceNetworkSettings:ServiceNetworkSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     networkSettings = registerOutput<ServiceNetworkSettingsNetworkSettings>('networkSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceNetworkSettingsNetworkSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');

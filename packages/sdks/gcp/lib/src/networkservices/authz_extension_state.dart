@@ -24,6 +24,13 @@ class AuthzExtensionState {
   /// * If response headers have not been delivered to the downstream client, a generic 500 error is returned to the client. The error response can be tailored by configuring a custom error response in the load balancer.
   /// * If response headers have been delivered, then the HTTP stream to the downstream client is reset.
   final pulumi.Input<bool?>? failOpen;
+  /// List of the Envoy attributes to forward to the extension server. The attributes
+  /// provided here are included as part of the `ProcessingRequest.attributes` field
+  /// (of type `map`), where the keys are the attribute names. Refer to the
+  /// [documentation](https://cloud.google.com/service-extensions/docs/attributes)
+  /// for the names of attributes that can be forwarded. If omitted, no attributes
+  /// are sent. Each element is a string indicating the attribute name.
+  final pulumi.Input<List<String>?>? forwardAttributes;
   /// List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
   final pulumi.Input<List<String>?>? forwardHeaders;
   /// Set of labels associated with the AuthzExtension resource.
@@ -86,6 +93,7 @@ class AuthzExtensionState {
   /// [description] A human-readable description of the resource.
   /// [effectiveLabels] All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
   /// [failOpen] Determines how the proxy behaves if the call to the extension fails or times out.
+  /// [forwardAttributes] List of the Envoy attributes to forward to the extension server. The attributes
   /// [forwardHeaders] List of the HTTP headers to forward to the extension (from the client). If omitted, all headers are sent. Each element is a string indicating the header name.
   /// [labels] Set of labels associated with the AuthzExtension resource.
   /// [loadBalancingScheme] Required when the service points to a backend service. All backend services and forwarding rules referenced by
@@ -105,6 +113,7 @@ class AuthzExtensionState {
     this.description,
     this.effectiveLabels,
     this.failOpen,
+    this.forwardAttributes,
     this.forwardHeaders,
     this.labels,
     this.loadBalancingScheme,
@@ -127,6 +136,7 @@ class AuthzExtensionState {
       'description': ?description,
       'effectiveLabels': ?effectiveLabels,
       'failOpen': ?failOpen,
+      'forwardAttributes': ?forwardAttributes,
       'forwardHeaders': ?forwardHeaders,
       'labels': ?labels,
       'loadBalancingScheme': ?loadBalancingScheme,
@@ -150,6 +160,7 @@ class AuthzExtensionState {
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       effectiveLabels: (() { final guardedValue = map['effectiveLabels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       failOpen: (() { final guardedValue = map['failOpen']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
+      forwardAttributes: (() { final guardedValue = map['forwardAttributes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       forwardHeaders: (() { final guardedValue = map['forwardHeaders']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       loadBalancingScheme: (() { final guardedValue = map['loadBalancingScheme']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -40,6 +40,7 @@ import 'urlmap_test.dart';
 ///     portName: "http",
 ///     protocol: "HTTP",
 ///     timeoutSec: 10,
+///     loadBalancingScheme: "EXTERNAL",
 ///     healthChecks: _default.id,
 /// });
 /// const staticBucket = new gcp.storage.Bucket("static", {
@@ -110,6 +111,7 @@ import 'urlmap_test.dart';
 ///     port_name="http",
 ///     protocol="HTTP",
 ///     timeout_sec=10,
+///     load_balancing_scheme="EXTERNAL",
 ///     health_checks=default.id)
 /// static_bucket = gcp.storage.Bucket("static",
 ///     name="static-asset-bucket",
@@ -184,6 +186,7 @@ import 'urlmap_test.dart';
 ///         PortName = "http",
 ///         Protocol = "HTTP",
 ///         TimeoutSec = 10,
+///         LoadBalancingScheme = "EXTERNAL",
 ///         HealthChecks = @default.Id,
 ///     });
 ///
@@ -281,8 +284,8 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -298,11 +301,12 @@ import 'urlmap_test.dart';
 /// 			return err
 /// 		}
 /// 		login, err := compute.NewBackendService(ctx, "login", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("login"),
-/// 			PortName:     pulumi.String("http"),
-/// 			Protocol:     pulumi.String("HTTP"),
-/// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: _default.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                pulumi.String("login"),
+/// 			PortName:            pulumi.String("http"),
+/// 			Protocol:            pulumi.String("HTTP"),
+/// 			TimeoutSec:          pulumi.Int(10),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+/// 			HealthChecks:        _default.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -386,7 +390,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -394,10 +398,13 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "a description"
-///   default_service = gcp_compute_backendbucket.static.id
+///   default_service = gcp_compute_backend_bucket.static.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "mysite"
@@ -408,49 +415,62 @@ import 'urlmap_test.dart';
 ///   }
 ///   path_matchers {
 ///     name            = "mysite"
-///     default_service = gcp_compute_backendbucket.static.id
+///     default_service = gcp_compute_backend_bucket.static.id
 ///     path_rules {
 ///       paths   = ["/home"]
-///       service = gcp_compute_backendbucket.static.id
+///       service = gcp_compute_backend_bucket.static.id
 ///     }
 ///     path_rules {
 ///       paths   = ["/login"]
-///       service = gcp_compute_backendservice.login.id
+///       service = gcp_compute_backend_service.login.id
 ///     }
 ///     path_rules {
 ///       paths   = ["/static"]
-///       service = gcp_compute_backendbucket.static.id
+///       service = gcp_compute_backend_bucket.static.id
 ///     }
 ///   }
 ///   path_matchers {
 ///     name            = "otherpaths"
-///     default_service = gcp_compute_backendbucket.static.id
+///     default_service = gcp_compute_backend_bucket.static.id
 ///   }
 ///   tests {
-///     service = gcp_compute_backendbucket.static.id
+///     service = gcp_compute_backend_bucket.static.id
 ///     host    = "example.com"
 ///     path    = "/home"
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "login" {
-///   name          = "login"
-///   port_name     = "http"
-///   protocol      = "HTTP"
-///   timeout_sec   = 10
-///   health_checks = gcp_compute_httphealthcheck.default.id
+/// resource "gcp_compute_backend_service" "login" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "login"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL"
+///   health_checks         = gcp_compute_http_health_check.default.id
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_http_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "health-check"
 ///   request_path       = "/"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
 /// }
-/// resource "gcp_compute_backendbucket" "static" {
+/// resource "gcp_compute_backend_bucket" "static" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "static-asset-backend-bucket"
 ///   bucket_name = gcp_storage_bucket.static.name
 ///   enable_cdn  = true
 /// }
 /// resource "gcp_storage_bucket" "static" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "static-asset-bucket"
 ///   location = "US"
 /// }
@@ -500,6 +520,7 @@ import 'urlmap_test.dart';
 ///             .portName("http")
 ///             .protocol("HTTP")
 ///             .timeoutSec(10)
+///             .loadBalancingScheme("EXTERNAL")
 ///             .healthChecks(default_.id())
 ///             .build());
 ///
@@ -600,6 +621,7 @@ import 'urlmap_test.dart';
 ///       portName: http
 ///       protocol: HTTP
 ///       timeoutSec: 10
+///       loadBalancingScheme: EXTERNAL
 ///       healthChecks: ${default.id}
 ///   default:
 ///     type: gcp:compute:HttpHealthCheck
@@ -937,7 +959,7 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1061,7 +1083,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1069,31 +1091,34 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "a description"
-///   default_service = gcp_compute_backendservice.home.id
+///   default_service = gcp_compute_backend_service.home.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.home.id
+///     default_service = gcp_compute_backend_service.home.id
 ///     route_rules {
 ///       priority = 1
 ///       header_action = {
 ///         request_headers_to_removes = ["RemoveMe2"]
 ///         request_headers_to_adds = [{
-///           "headerName"  = "AddSomethingElse"
-///           "headerValue" = "MyOtherValue"
-///           "replace"     = true
+///           header_name  = "AddSomethingElse"
+///           header_value = "MyOtherValue"
+///           replace      = true
 ///         }]
 ///         response_headers_to_removes = ["RemoveMe3"]
 ///         response_headers_to_adds = [{
-///           "headerName"  = "AddMe"
-///           "headerValue" = "MyValue"
-///           "replace"     = false
+///           header_name  = "AddMe"
+///           header_value = "MyValue"
+///           replace      = false
 ///         }]
 ///       }
 ///       match_rules {
@@ -1126,20 +1151,26 @@ import 'urlmap_test.dart';
 ///     }
 ///   }
 ///   tests {
-///     service = gcp_compute_backendservice.home.id
+///     service = gcp_compute_backend_service.home.id
 ///     host    = "hi.com"
 ///     path    = "/home"
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "home" {
+/// resource "gcp_compute_backend_service" "home" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "home"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -1540,7 +1571,7 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -1621,7 +1652,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1629,17 +1660,20 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "a description"
-///   default_service = gcp_compute_backendservice.home.id
+///   default_service = gcp_compute_backend_service.home.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.home.id
+///     default_service = gcp_compute_backend_service.home.id
 ///     route_rules {
 ///       priority = 1
 ///       match_rules {
@@ -1657,20 +1691,26 @@ import 'urlmap_test.dart';
 ///     }
 ///   }
 ///   tests {
-///     service = gcp_compute_backendservice.home.id
+///     service = gcp_compute_backend_service.home.id
 ///     host    = "hi.com"
 ///     path    = "/home"
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "home" {
+/// resource "gcp_compute_backend_service" "home" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "home"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -2207,7 +2247,7 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -2358,7 +2398,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2366,17 +2406,20 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "a description"
-///   default_service = gcp_compute_backendservice.home.id
+///   default_service = gcp_compute_backend_service.home.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.home.id
+///     default_service = gcp_compute_backend_service.home.id
 ///     path_rules {
 ///       paths = ["/home"]
 ///       route_action = {
@@ -2404,7 +2447,7 @@ import 'urlmap_test.dart';
 ///           }
 ///         }
 ///         request_mirror_policy = {
-///           backend_service = gcp_compute_backendservice.home.id
+///           backend_service = gcp_compute_backend_service.home.id
 ///         }
 ///         retry_policy = {
 ///           num_retries = 4
@@ -2422,20 +2465,20 @@ import 'urlmap_test.dart';
 ///           path_prefix_rewrite = "/v1/api/"
 ///         }
 ///         weighted_backend_services = [{
-///           "backendService" = gcp_compute_backendservice.home.id
-///           "weight"         = 400
-///           "headerAction" = {
-///             "requestHeadersToRemoves" = ["RemoveMe"]
-///             "requestHeadersToAdds" = [{
-///               "headerName"  = "AddMe"
-///               "headerValue" = "MyValue"
-///               "replace"     = true
+///           backend_service = gcp_compute_backend_service.home.id
+///           weight          = 400
+///           header_action = {
+///             request_headers_to_removes = ["RemoveMe"]
+///             request_headers_to_adds = [{
+///               header_name  = "AddMe"
+///               header_value = "MyValue"
+///               replace      = true
 ///             }]
-///             "responseHeadersToRemoves" = ["RemoveMe"]
-///             "responseHeadersToAdds" = [{
-///               "headerName"  = "AddMe"
-///               "headerValue" = "MyValue"
-///               "replace"     = false
+///             response_headers_to_removes = ["RemoveMe"]
+///             response_headers_to_adds = [{
+///               header_name  = "AddMe"
+///               header_value = "MyValue"
+///               replace      = false
 ///             }]
 ///           }
 ///         }]
@@ -2443,20 +2486,26 @@ import 'urlmap_test.dart';
 ///     }
 ///   }
 ///   tests {
-///     service = gcp_compute_backendservice.home.id
+///     service = gcp_compute_backend_service.home.id
 ///     host    = "hi.com"
 ///     path    = "/home"
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "home" {
+/// resource "gcp_compute_backend_service" "home" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "home"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -3004,7 +3053,7 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3125,7 +3174,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3133,17 +3182,20 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "a description"
-///   default_service = gcp_compute_backendservice.home.id
+///   default_service = gcp_compute_backend_service.home.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.home.id
+///     default_service = gcp_compute_backend_service.home.id
 ///     path_rules {
 ///       paths = ["/home"]
 ///       route_action = {
@@ -3158,20 +3210,20 @@ import 'urlmap_test.dart';
 ///           disabled             = false
 ///         }
 ///         weighted_backend_services = [{
-///           "backendService" = gcp_compute_backendservice.home.id
-///           "weight"         = 400
-///           "headerAction" = {
-///             "requestHeadersToRemoves" = ["RemoveMe"]
-///             "requestHeadersToAdds" = [{
-///               "headerName"  = "AddMe"
-///               "headerValue" = "MyValue"
-///               "replace"     = true
+///           backend_service = gcp_compute_backend_service.home.id
+///           weight          = 400
+///           header_action = {
+///             request_headers_to_removes = ["RemoveMe"]
+///             request_headers_to_adds = [{
+///               header_name  = "AddMe"
+///               header_value = "MyValue"
+///               replace      = true
 ///             }]
-///             "responseHeadersToRemoves" = ["RemoveMe"]
-///             "responseHeadersToAdds" = [{
-///               "headerName"  = "AddMe"
-///               "headerValue" = "MyValue"
-///               "replace"     = false
+///             response_headers_to_removes = ["RemoveMe"]
+///             response_headers_to_adds = [{
+///               header_name  = "AddMe"
+///               header_value = "MyValue"
+///               replace      = false
 ///             }]
 ///           }
 ///         }]
@@ -3183,20 +3235,26 @@ import 'urlmap_test.dart';
 ///     }
 ///   }
 ///   tests {
-///     service = gcp_compute_backendservice.home.id
+///     service = gcp_compute_backend_service.home.id
 ///     host    = "hi.com"
 ///     path    = "/home"
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "home" {
+/// resource "gcp_compute_backend_service" "home" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "home"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -3407,6 +3465,7 @@ import 'urlmap_test.dart';
 ///     portName: "http",
 ///     protocol: "HTTP",
 ///     timeoutSec: 10,
+///     loadBalancingScheme: "EXTERNAL",
 ///     healthChecks: defaultHttpHealthCheck.id,
 /// });
 /// const service_a = new gcp.compute.BackendService("service-a", {
@@ -3414,6 +3473,7 @@ import 'urlmap_test.dart';
 ///     portName: "http",
 ///     protocol: "HTTP",
 ///     timeoutSec: 10,
+///     loadBalancingScheme: "EXTERNAL",
 ///     healthChecks: defaultHttpHealthCheck.id,
 /// });
 /// const service_b = new gcp.compute.BackendService("service-b", {
@@ -3421,6 +3481,7 @@ import 'urlmap_test.dart';
 ///     portName: "http",
 ///     protocol: "HTTP",
 ///     timeoutSec: 10,
+///     loadBalancingScheme: "EXTERNAL",
 ///     healthChecks: defaultHttpHealthCheck.id,
 /// });
 /// const urlmap = new gcp.compute.URLMap("urlmap", {
@@ -3477,18 +3538,21 @@ import 'urlmap_test.dart';
 ///     port_name="http",
 ///     protocol="HTTP",
 ///     timeout_sec=10,
+///     load_balancing_scheme="EXTERNAL",
 ///     health_checks=default_http_health_check.id)
 /// service_a = gcp.compute.BackendService("service-a",
 ///     name="service-a",
 ///     port_name="http",
 ///     protocol="HTTP",
 ///     timeout_sec=10,
+///     load_balancing_scheme="EXTERNAL",
 ///     health_checks=default_http_health_check.id)
 /// service_b = gcp.compute.BackendService("service-b",
 ///     name="service-b",
 ///     port_name="http",
 ///     protocol="HTTP",
 ///     timeout_sec=10,
+///     load_balancing_scheme="EXTERNAL",
 ///     health_checks=default_http_health_check.id)
 /// urlmap = gcp.compute.URLMap("urlmap",
 ///     name="urlmap",
@@ -3551,6 +3615,7 @@ import 'urlmap_test.dart';
 ///         PortName = "http",
 ///         Protocol = "HTTP",
 ///         TimeoutSec = 10,
+///         LoadBalancingScheme = "EXTERNAL",
 ///         HealthChecks = defaultHttpHealthCheck.Id,
 ///     });
 ///
@@ -3560,6 +3625,7 @@ import 'urlmap_test.dart';
 ///         PortName = "http",
 ///         Protocol = "HTTP",
 ///         TimeoutSec = 10,
+///         LoadBalancingScheme = "EXTERNAL",
 ///         HealthChecks = defaultHttpHealthCheck.Id,
 ///     });
 ///
@@ -3569,6 +3635,7 @@ import 'urlmap_test.dart';
 ///         PortName = "http",
 ///         Protocol = "HTTP",
 ///         TimeoutSec = 10,
+///         LoadBalancingScheme = "EXTERNAL",
 ///         HealthChecks = defaultHttpHealthCheck.Id,
 ///     });
 ///
@@ -3649,7 +3716,7 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -3665,31 +3732,34 @@ import 'urlmap_test.dart';
 /// 			return err
 /// 		}
 /// 		_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("default"),
-/// 			PortName:     pulumi.String("http"),
-/// 			Protocol:     pulumi.String("HTTP"),
-/// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                pulumi.String("default"),
+/// 			PortName:            pulumi.String("http"),
+/// 			Protocol:            pulumi.String("HTTP"),
+/// 			TimeoutSec:          pulumi.Int(10),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+/// 			HealthChecks:        defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		service_a, err := compute.NewBackendService(ctx, "service-a", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("service-a"),
-/// 			PortName:     pulumi.String("http"),
-/// 			Protocol:     pulumi.String("HTTP"),
-/// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                pulumi.String("service-a"),
+/// 			PortName:            pulumi.String("http"),
+/// 			Protocol:            pulumi.String("HTTP"),
+/// 			TimeoutSec:          pulumi.Int(10),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+/// 			HealthChecks:        defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		service_b, err := compute.NewBackendService(ctx, "service-b", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("service-b"),
-/// 			PortName:     pulumi.String("http"),
-/// 			Protocol:     pulumi.String("HTTP"),
-/// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                pulumi.String("service-b"),
+/// 			PortName:            pulumi.String("http"),
+/// 			Protocol:            pulumi.String("HTTP"),
+/// 			TimeoutSec:          pulumi.Int(10),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+/// 			HealthChecks:        defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -3755,7 +3825,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -3763,20 +3833,23 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "header-based routing example"
-///   default_service = gcp_compute_backendservice.default.id
+///   default_service = gcp_compute_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["*"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.default.id
+///     default_service = gcp_compute_backend_service.default.id
 ///     route_rules {
 ///       priority = 1
-///       service  = gcp_compute_backendservice.service-a.id
+///       service  = gcp_compute_backend_service.service-a.id
 ///       match_rules {
 ///         prefix_match = "/"
 ///         ignore_case  = true
@@ -3788,7 +3861,7 @@ import 'urlmap_test.dart';
 ///     }
 ///     route_rules {
 ///       priority = 2
-///       service  = gcp_compute_backendservice.service-b.id
+///       service  = gcp_compute_backend_service.service-b.id
 ///       match_rules {
 ///         ignore_case  = true
 ///         prefix_match = "/"
@@ -3800,28 +3873,43 @@ import 'urlmap_test.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "default" {
-///   name          = "default"
-///   port_name     = "http"
-///   protocol      = "HTTP"
-///   timeout_sec   = 10
-///   health_checks = gcp_compute_httphealthcheck.default.id
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "default"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL"
+///   health_checks         = gcp_compute_http_health_check.default.id
 /// }
-/// resource "gcp_compute_backendservice" "service-a" {
-///   name          = "service-a"
-///   port_name     = "http"
-///   protocol      = "HTTP"
-///   timeout_sec   = 10
-///   health_checks = gcp_compute_httphealthcheck.default.id
+/// resource "gcp_compute_backend_service" "service-a" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "service-a"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL"
+///   health_checks         = gcp_compute_http_health_check.default.id
 /// }
-/// resource "gcp_compute_backendservice" "service-b" {
-///   name          = "service-b"
-///   port_name     = "http"
-///   protocol      = "HTTP"
-///   timeout_sec   = 10
-///   health_checks = gcp_compute_httphealthcheck.default.id
+/// resource "gcp_compute_backend_service" "service-b" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "service-b"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL"
+///   health_checks         = gcp_compute_http_health_check.default.id
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_http_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "health-check"
 ///   request_path       = "/"
 ///   check_interval_sec = 1
@@ -3870,6 +3958,7 @@ import 'urlmap_test.dart';
 ///             .portName("http")
 ///             .protocol("HTTP")
 ///             .timeoutSec(10)
+///             .loadBalancingScheme("EXTERNAL")
 ///             .healthChecks(defaultHttpHealthCheck.id())
 ///             .build());
 ///
@@ -3878,6 +3967,7 @@ import 'urlmap_test.dart';
 ///             .portName("http")
 ///             .protocol("HTTP")
 ///             .timeoutSec(10)
+///             .loadBalancingScheme("EXTERNAL")
 ///             .healthChecks(defaultHttpHealthCheck.id())
 ///             .build());
 ///
@@ -3886,6 +3976,7 @@ import 'urlmap_test.dart';
 ///             .portName("http")
 ///             .protocol("HTTP")
 ///             .timeoutSec(10)
+///             .loadBalancingScheme("EXTERNAL")
 ///             .healthChecks(defaultHttpHealthCheck.id())
 ///             .build());
 ///
@@ -3970,6 +4061,7 @@ import 'urlmap_test.dart';
 ///       portName: http
 ///       protocol: HTTP
 ///       timeoutSec: 10
+///       loadBalancingScheme: EXTERNAL
 ///       healthChecks: ${defaultHttpHealthCheck.id}
 ///   service-a:
 ///     type: gcp:compute:BackendService
@@ -3978,6 +4070,7 @@ import 'urlmap_test.dart';
 ///       portName: http
 ///       protocol: HTTP
 ///       timeoutSec: 10
+///       loadBalancingScheme: EXTERNAL
 ///       healthChecks: ${defaultHttpHealthCheck.id}
 ///   service-b:
 ///     type: gcp:compute:BackendService
@@ -3986,6 +4079,7 @@ import 'urlmap_test.dart';
 ///       portName: http
 ///       protocol: HTTP
 ///       timeoutSec: 10
+///       loadBalancingScheme: EXTERNAL
 ///       healthChecks: ${defaultHttpHealthCheck.id}
 ///   defaultHttpHealthCheck:
 ///     type: gcp:compute:HttpHealthCheck
@@ -4016,6 +4110,7 @@ import 'urlmap_test.dart';
 ///     portName: "http",
 ///     protocol: "HTTP",
 ///     timeoutSec: 10,
+///     loadBalancingScheme: "EXTERNAL",
 ///     healthChecks: defaultHttpHealthCheck.id,
 /// });
 /// const service_a = new gcp.compute.BackendService("service-a", {
@@ -4023,6 +4118,7 @@ import 'urlmap_test.dart';
 ///     portName: "http",
 ///     protocol: "HTTP",
 ///     timeoutSec: 10,
+///     loadBalancingScheme: "EXTERNAL",
 ///     healthChecks: defaultHttpHealthCheck.id,
 /// });
 /// const service_b = new gcp.compute.BackendService("service-b", {
@@ -4030,6 +4126,7 @@ import 'urlmap_test.dart';
 ///     portName: "http",
 ///     protocol: "HTTP",
 ///     timeoutSec: 10,
+///     loadBalancingScheme: "EXTERNAL",
 ///     healthChecks: defaultHttpHealthCheck.id,
 /// });
 /// const urlmap = new gcp.compute.URLMap("urlmap", {
@@ -4086,18 +4183,21 @@ import 'urlmap_test.dart';
 ///     port_name="http",
 ///     protocol="HTTP",
 ///     timeout_sec=10,
+///     load_balancing_scheme="EXTERNAL",
 ///     health_checks=default_http_health_check.id)
 /// service_a = gcp.compute.BackendService("service-a",
 ///     name="service-a",
 ///     port_name="http",
 ///     protocol="HTTP",
 ///     timeout_sec=10,
+///     load_balancing_scheme="EXTERNAL",
 ///     health_checks=default_http_health_check.id)
 /// service_b = gcp.compute.BackendService("service-b",
 ///     name="service-b",
 ///     port_name="http",
 ///     protocol="HTTP",
 ///     timeout_sec=10,
+///     load_balancing_scheme="EXTERNAL",
 ///     health_checks=default_http_health_check.id)
 /// urlmap = gcp.compute.URLMap("urlmap",
 ///     name="urlmap",
@@ -4160,6 +4260,7 @@ import 'urlmap_test.dart';
 ///         PortName = "http",
 ///         Protocol = "HTTP",
 ///         TimeoutSec = 10,
+///         LoadBalancingScheme = "EXTERNAL",
 ///         HealthChecks = defaultHttpHealthCheck.Id,
 ///     });
 ///
@@ -4169,6 +4270,7 @@ import 'urlmap_test.dart';
 ///         PortName = "http",
 ///         Protocol = "HTTP",
 ///         TimeoutSec = 10,
+///         LoadBalancingScheme = "EXTERNAL",
 ///         HealthChecks = defaultHttpHealthCheck.Id,
 ///     });
 ///
@@ -4178,6 +4280,7 @@ import 'urlmap_test.dart';
 ///         PortName = "http",
 ///         Protocol = "HTTP",
 ///         TimeoutSec = 10,
+///         LoadBalancingScheme = "EXTERNAL",
 ///         HealthChecks = defaultHttpHealthCheck.Id,
 ///     });
 ///
@@ -4258,7 +4361,7 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4274,31 +4377,34 @@ import 'urlmap_test.dart';
 /// 			return err
 /// 		}
 /// 		_default, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("default"),
-/// 			PortName:     pulumi.String("http"),
-/// 			Protocol:     pulumi.String("HTTP"),
-/// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                pulumi.String("default"),
+/// 			PortName:            pulumi.String("http"),
+/// 			Protocol:            pulumi.String("HTTP"),
+/// 			TimeoutSec:          pulumi.Int(10),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+/// 			HealthChecks:        defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		service_a, err := compute.NewBackendService(ctx, "service-a", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("service-a"),
-/// 			PortName:     pulumi.String("http"),
-/// 			Protocol:     pulumi.String("HTTP"),
-/// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                pulumi.String("service-a"),
+/// 			PortName:            pulumi.String("http"),
+/// 			Protocol:            pulumi.String("HTTP"),
+/// 			TimeoutSec:          pulumi.Int(10),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+/// 			HealthChecks:        defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		service_b, err := compute.NewBackendService(ctx, "service-b", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("service-b"),
-/// 			PortName:     pulumi.String("http"),
-/// 			Protocol:     pulumi.String("HTTP"),
-/// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                pulumi.String("service-b"),
+/// 			PortName:            pulumi.String("http"),
+/// 			Protocol:            pulumi.String("HTTP"),
+/// 			TimeoutSec:          pulumi.Int(10),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+/// 			HealthChecks:        defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -4364,7 +4470,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4372,20 +4478,23 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "parameter-based routing example"
-///   default_service = gcp_compute_backendservice.default.id
+///   default_service = gcp_compute_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["*"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.default.id
+///     default_service = gcp_compute_backend_service.default.id
 ///     route_rules {
 ///       priority = 1
-///       service  = gcp_compute_backendservice.service-a.id
+///       service  = gcp_compute_backend_service.service-a.id
 ///       match_rules {
 ///         prefix_match = "/"
 ///         ignore_case  = true
@@ -4397,7 +4506,7 @@ import 'urlmap_test.dart';
 ///     }
 ///     route_rules {
 ///       priority = 2
-///       service  = gcp_compute_backendservice.service-b.id
+///       service  = gcp_compute_backend_service.service-b.id
 ///       match_rules {
 ///         ignore_case  = true
 ///         prefix_match = "/"
@@ -4409,28 +4518,43 @@ import 'urlmap_test.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "default" {
-///   name          = "default"
-///   port_name     = "http"
-///   protocol      = "HTTP"
-///   timeout_sec   = 10
-///   health_checks = gcp_compute_httphealthcheck.default.id
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "default"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL"
+///   health_checks         = gcp_compute_http_health_check.default.id
 /// }
-/// resource "gcp_compute_backendservice" "service-a" {
-///   name          = "service-a"
-///   port_name     = "http"
-///   protocol      = "HTTP"
-///   timeout_sec   = 10
-///   health_checks = gcp_compute_httphealthcheck.default.id
+/// resource "gcp_compute_backend_service" "service-a" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "service-a"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL"
+///   health_checks         = gcp_compute_http_health_check.default.id
 /// }
-/// resource "gcp_compute_backendservice" "service-b" {
-///   name          = "service-b"
-///   port_name     = "http"
-///   protocol      = "HTTP"
-///   timeout_sec   = 10
-///   health_checks = gcp_compute_httphealthcheck.default.id
+/// resource "gcp_compute_backend_service" "service-b" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "service-b"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL"
+///   health_checks         = gcp_compute_http_health_check.default.id
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_http_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "health-check"
 ///   request_path       = "/"
 ///   check_interval_sec = 1
@@ -4479,6 +4603,7 @@ import 'urlmap_test.dart';
 ///             .portName("http")
 ///             .protocol("HTTP")
 ///             .timeoutSec(10)
+///             .loadBalancingScheme("EXTERNAL")
 ///             .healthChecks(defaultHttpHealthCheck.id())
 ///             .build());
 ///
@@ -4487,6 +4612,7 @@ import 'urlmap_test.dart';
 ///             .portName("http")
 ///             .protocol("HTTP")
 ///             .timeoutSec(10)
+///             .loadBalancingScheme("EXTERNAL")
 ///             .healthChecks(defaultHttpHealthCheck.id())
 ///             .build());
 ///
@@ -4495,6 +4621,7 @@ import 'urlmap_test.dart';
 ///             .portName("http")
 ///             .protocol("HTTP")
 ///             .timeoutSec(10)
+///             .loadBalancingScheme("EXTERNAL")
 ///             .healthChecks(defaultHttpHealthCheck.id())
 ///             .build());
 ///
@@ -4579,6 +4706,7 @@ import 'urlmap_test.dart';
 ///       portName: http
 ///       protocol: HTTP
 ///       timeoutSec: 10
+///       loadBalancingScheme: EXTERNAL
 ///       healthChecks: ${defaultHttpHealthCheck.id}
 ///   service-a:
 ///     type: gcp:compute:BackendService
@@ -4587,6 +4715,7 @@ import 'urlmap_test.dart';
 ///       portName: http
 ///       protocol: HTTP
 ///       timeoutSec: 10
+///       loadBalancingScheme: EXTERNAL
 ///       healthChecks: ${defaultHttpHealthCheck.id}
 ///   service-b:
 ///     type: gcp:compute:BackendService
@@ -4595,6 +4724,7 @@ import 'urlmap_test.dart';
 ///       portName: http
 ///       protocol: HTTP
 ///       timeoutSec: 10
+///       loadBalancingScheme: EXTERNAL
 ///       healthChecks: ${defaultHttpHealthCheck.id}
 ///   defaultHttpHealthCheck:
 ///     type: gcp:compute:HttpHealthCheck
@@ -4775,7 +4905,7 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -4845,7 +4975,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -4853,13 +4983,16 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "Test for default route action mirror percent"
-///   default_service = gcp_compute_backendservice.home.id
+///   default_service = gcp_compute_backend_service.home.id
 ///   default_route_action = {
 ///     request_mirror_policy = {
-///       backend_service = gcp_compute_backendservice.mirror.id
+///       backend_service = gcp_compute_backend_service.mirror.id
 ///       mirror_percent  = 50
 ///     }
 ///   }
@@ -4869,26 +5002,35 @@ import 'urlmap_test.dart';
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.home.id
+///     default_service = gcp_compute_backend_service.home.id
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "home" {
+/// resource "gcp_compute_backend_service" "home" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "home"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_backendservice" "mirror" {
+/// resource "gcp_compute_backend_service" "mirror" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "mirror"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -5187,7 +5329,7 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5257,7 +5399,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5265,13 +5407,16 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "Test for default route action mirror percent"
-///   default_service = gcp_compute_backendservice.home.id
+///   default_service = gcp_compute_backend_service.home.id
 ///   default_route_action = {
 ///     request_mirror_policy = {
-///       backend_service = gcp_compute_backendservice.mirror.id
+///       backend_service = gcp_compute_backend_service.mirror.id
 ///       mirror_percent  = 50
 ///     }
 ///   }
@@ -5281,26 +5426,35 @@ import 'urlmap_test.dart';
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.home.id
+///     default_service = gcp_compute_backend_service.home.id
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "home" {
+/// resource "gcp_compute_backend_service" "home" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "home"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_backendservice" "mirror" {
+/// resource "gcp_compute_backend_service" "mirror" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "mirror"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -5582,7 +5736,7 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -5642,7 +5796,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -5650,9 +5804,12 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
-///   default_service = gcp_compute_backendservice.default.id
+///   default_service = gcp_compute_backend_service.default.id
 ///   default_route_action = {
 ///     cache_policy = {
 ///       cache_mode = "CACHE_ALL_STATIC"
@@ -5664,9 +5821,9 @@ import 'urlmap_test.dart';
 ///       }
 ///       negative_caching = true
 ///       negative_caching_policies = [{
-///         "code" = 404
-///         "ttl" = {
-///           "seconds" = "300"
+///         code = 404
+///         ttl = {
+///           seconds = "300"
 ///         }
 ///       }]
 ///       request_coalescing                = true
@@ -5674,13 +5831,19 @@ import 'urlmap_test.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "home"
 ///   protocol              = "HTTP"
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -6321,7 +6484,7 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -6503,7 +6666,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -6511,9 +6674,12 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
-///   default_service = gcp_compute_backendservice.default.id
+///   default_service = gcp_compute_backend_service.default.id
 ///   default_route_action = {
 ///     cache_policy = {
 ///       cache_key_policy = {
@@ -6545,7 +6711,7 @@ import 'urlmap_test.dart';
 ///   }
 ///   path_matchers {
 ///     name            = "main-matcher"
-///     default_service = gcp_compute_backendservice.default.id
+///     default_service = gcp_compute_backend_service.default.id
 ///     default_route_action = {
 ///       cache_policy = {
 ///         cache_mode = "CACHE_ALL_STATIC"
@@ -6554,16 +6720,16 @@ import 'urlmap_test.dart';
 ///         }
 ///         negative_caching = true
 ///         negative_caching_policies = [{
-///           "code" = 404
-///           "ttl" = {
-///             "seconds" = "300"
+///           code = 404
+///           ttl = {
+///             seconds = "300"
 ///           }
 ///         }]
 ///       }
 ///     }
 ///     path_rules {
 ///       paths   = ["/static/*"]
-///       service = gcp_compute_backendservice.default.id
+///       service = gcp_compute_backend_service.default.id
 ///       route_action = {
 ///         cache_policy = {
 ///           cache_mode = "CACHE_ALL_STATIC"
@@ -6583,7 +6749,7 @@ import 'urlmap_test.dart';
 ///   }
 ///   path_matchers {
 ///     name            = "api-matcher"
-///     default_service = gcp_compute_backendservice.default.id
+///     default_service = gcp_compute_backend_service.default.id
 ///     default_route_action = {
 ///       cache_policy = {
 ///         cache_mode = "CACHE_ALL_STATIC"
@@ -6592,10 +6758,10 @@ import 'urlmap_test.dart';
 ///         }
 ///         negative_caching = true
 ///         negative_caching_policies = [{
-///           "code" = 404
-///           "ttl" = {
-///             "seconds" = "300"
-///             "nanos"   = 0
+///           code = 404
+///           ttl = {
+///             seconds = "300"
+///             nanos   = 0
 ///           }
 ///         }]
 ///       }
@@ -6605,7 +6771,7 @@ import 'urlmap_test.dart';
 ///       match_rules {
 ///         prefix_match = "/api/v1"
 ///       }
-///       service = gcp_compute_backendservice.default.id
+///       service = gcp_compute_backend_service.default.id
 ///       route_action = {
 ///         cache_policy = {
 ///           cache_mode = "CACHE_ALL_STATIC"
@@ -6626,13 +6792,19 @@ import 'urlmap_test.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "home"
 ///   protocol              = "HTTP"
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -7112,7 +7284,7 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7182,7 +7354,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -7190,42 +7362,54 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "Test for path matcher default route action mirror percent"
-///   default_service = gcp_compute_backendservice.home.id
+///   default_service = gcp_compute_backend_service.home.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.home.id
+///     default_service = gcp_compute_backend_service.home.id
 ///     default_route_action = {
 ///       request_mirror_policy = {
-///         backend_service = gcp_compute_backendservice.mirror.id
+///         backend_service = gcp_compute_backend_service.mirror.id
 ///         mirror_percent  = 75
 ///       }
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "home" {
+/// resource "gcp_compute_backend_service" "home" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "home"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_backendservice" "mirror" {
+/// resource "gcp_compute_backend_service" "mirror" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "mirror"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -7543,7 +7727,7 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -7621,7 +7805,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -7629,46 +7813,58 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "Test for path rule route action mirror percent"
-///   default_service = gcp_compute_backendservice.home.id
+///   default_service = gcp_compute_backend_service.home.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.home.id
+///     default_service = gcp_compute_backend_service.home.id
 ///     path_rules {
 ///       paths   = ["/home"]
-///       service = gcp_compute_backendservice.home.id
+///       service = gcp_compute_backend_service.home.id
 ///       route_action = {
 ///         request_mirror_policy = {
-///           backend_service = gcp_compute_backendservice.mirror.id
+///           backend_service = gcp_compute_backend_service.mirror.id
 ///           mirror_percent  = 25
 ///         }
 ///       }
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "home" {
+/// resource "gcp_compute_backend_service" "home" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "home"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_backendservice" "mirror" {
+/// resource "gcp_compute_backend_service" "mirror" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "mirror"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -8010,7 +8206,7 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -8084,7 +8280,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -8092,7 +8288,10 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "health-check" {
+/// resource "gcp_compute_health_check" "health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -8100,22 +8299,28 @@ import 'urlmap_test.dart';
 ///     port = "80"
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "backend" {
+/// resource "gcp_compute_backend_service" "backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "backend"
 ///   port_name     = "http"
 ///   protocol      = "HTTP"
 ///   timeout_sec   = 10
-///   health_checks = gcp_compute_healthcheck.health-check.id
+///   health_checks = gcp_compute_health_check.health-check.id
 /// }
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "URL map with test headers"
-///   default_service = gcp_compute_backendservice.backend.id
+///   default_service = gcp_compute_backend_service.backend.id
 ///   tests {
 ///     description = "Test with custom headers"
 ///     host        = "example.com"
 ///     path        = "/"
-///     service     = gcp_compute_backendservice.backend.id
+///     service     = gcp_compute_backend_service.backend.id
 ///     headers {
 ///       name  = "User-Agent"
 ///       value = "TestBot/1.0"
@@ -8129,7 +8334,7 @@ import 'urlmap_test.dart';
 ///     description = "Test with authorization headers"
 ///     host        = "api.example.com"
 ///     path        = "/v1/test"
-///     service     = gcp_compute_backendservice.backend.id
+///     service     = gcp_compute_backend_service.backend.id
 ///     headers {
 ///       name  = "Authorization"
 ///       value = "Bearer token123"
@@ -8292,6 +8497,7 @@ import 'urlmap_test.dart';
 ///     portName: "http",
 ///     protocol: "HTTP",
 ///     timeoutSec: 10,
+///     loadBalancingScheme: "EXTERNAL",
 ///     healthChecks: health_check.id,
 /// });
 /// const urlmap = new gcp.compute.URLMap("urlmap", {
@@ -8340,6 +8546,7 @@ import 'urlmap_test.dart';
 ///     port_name="http",
 ///     protocol="HTTP",
 ///     timeout_sec=10,
+///     load_balancing_scheme="EXTERNAL",
 ///     health_checks=health_check.id)
 /// urlmap = gcp.compute.URLMap("urlmap",
 ///     name="urlmap",
@@ -8395,6 +8602,7 @@ import 'urlmap_test.dart';
 ///         PortName = "http",
 ///         Protocol = "HTTP",
 ///         TimeoutSec = 10,
+///         LoadBalancingScheme = "EXTERNAL",
 ///         HealthChecks = health_check.Id,
 ///     });
 ///
@@ -8446,7 +8654,7 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -8464,11 +8672,12 @@ import 'urlmap_test.dart';
 /// 			return err
 /// 		}
 /// 		backend, err := compute.NewBackendService(ctx, "backend", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("backend"),
-/// 			PortName:     pulumi.String("http"),
-/// 			Protocol:     pulumi.String("HTTP"),
-/// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: health_check.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                pulumi.String("backend"),
+/// 			PortName:            pulumi.String("http"),
+/// 			Protocol:            pulumi.String("HTTP"),
+/// 			TimeoutSec:          pulumi.Int(10),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+/// 			HealthChecks:        health_check.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -8514,7 +8723,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -8522,7 +8731,10 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "health-check" {
+/// resource "gcp_compute_health_check" "health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -8530,22 +8742,29 @@ import 'urlmap_test.dart';
 ///     port = "80"
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "backend" {
-///   name          = "backend"
-///   port_name     = "http"
-///   protocol      = "HTTP"
-///   timeout_sec   = 10
-///   health_checks = gcp_compute_healthcheck.health-check.id
+/// resource "gcp_compute_backend_service" "backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "backend"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL"
+///   health_checks         = gcp_compute_health_check.health-check.id
 /// }
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "URL map with expected output URL tests"
-///   default_service = gcp_compute_backendservice.backend.id
+///   default_service = gcp_compute_backend_service.backend.id
 ///   tests {
 ///     description = "Test with expected output URL"
 ///     host        = "example.com"
 ///     path        = "/"
-///     service     = gcp_compute_backendservice.backend.id
+///     service     = gcp_compute_backend_service.backend.id
 ///     headers {
 ///       name  = "User-Agent"
 ///       value = "TestBot/1.0"
@@ -8556,7 +8775,7 @@ import 'urlmap_test.dart';
 ///     description = "Test API routing with expected output URL"
 ///     host        = "api.example.com"
 ///     path        = "/v1/users"
-///     service     = gcp_compute_backendservice.backend.id
+///     service     = gcp_compute_backend_service.backend.id
 ///     headers {
 ///       name  = "Authorization"
 ///       value = "Bearer token123"
@@ -8607,6 +8826,7 @@ import 'urlmap_test.dart';
 ///             .portName("http")
 ///             .protocol("HTTP")
 ///             .timeoutSec(10)
+///             .loadBalancingScheme("EXTERNAL")
 ///             .healthChecks(health_check.id())
 ///             .build());
 ///
@@ -8659,6 +8879,7 @@ import 'urlmap_test.dart';
 ///       portName: http
 ///       protocol: HTTP
 ///       timeoutSec: 10
+///       loadBalancingScheme: EXTERNAL
 ///       healthChecks: ${["health-check"].id}
 ///   urlmap:
 ///     type: gcp:compute:URLMap
@@ -8933,7 +9154,7 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9029,7 +9250,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -9037,7 +9258,10 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_healthcheck" "health-check" {
+/// resource "gcp_compute_health_check" "health-check" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "health-check"
 ///   timeout_sec        = 1
 ///   check_interval_sec = 1
@@ -9045,24 +9269,30 @@ import 'urlmap_test.dart';
 ///     port = "80"
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "backend" {
+/// resource "gcp_compute_backend_service" "backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "backend"
 ///   port_name     = "http"
 ///   protocol      = "HTTP"
 ///   timeout_sec   = 10
-///   health_checks = gcp_compute_healthcheck.health-check.id
+///   health_checks = gcp_compute_health_check.health-check.id
 /// }
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "URL map with redirect response code tests"
-///   default_service = gcp_compute_backendservice.backend.id
+///   default_service = gcp_compute_backend_service.backend.id
 ///   host_rules {
 ///     hosts        = ["example.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.backend.id
+///     default_service = gcp_compute_backend_service.backend.id
 ///     path_rules {
 ///       paths = ["/redirect/*"]
 ///       url_redirect = {
@@ -9509,8 +9739,8 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -9614,7 +9844,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -9622,22 +9852,25 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "a description"
-///   default_service = gcp_compute_backendbucket.static.id
+///   default_service = gcp_compute_backend_bucket.static.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "mysite"
 ///   }
 ///   path_matchers {
 ///     name            = "mysite"
-///     default_service = gcp_compute_backendbucket.static.id
+///     default_service = gcp_compute_backend_bucket.static.id
 ///     route_rules {
 ///       match_rules {
 ///         path_template_match = "/xyzwebservices/v2/xyz/users/{username=*}/carts/{cartid=**}"
 ///       }
-///       service  = gcp_compute_backendservice.cart-backend.id
+///       service  = gcp_compute_backend_service.cart-backend.id
 ///       priority = 1
 ///       route_action = {
 ///         url_rewrite = {
@@ -9649,39 +9882,54 @@ import 'urlmap_test.dart';
 ///       match_rules {
 ///         path_template_match = "/xyzwebservices/v2/xyz/users/*/accountinfo/*"
 ///       }
-///       service  = gcp_compute_backendservice.user-backend.id
+///       service  = gcp_compute_backend_service.user-backend.id
 ///       priority = 2
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "cart-backend" {
+/// resource "gcp_compute_backend_service" "cart-backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "cart-service"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   health_checks         = gcp_compute_httphealthcheck.default.id
+///   health_checks         = gcp_compute_http_health_check.default.id
 /// }
-/// resource "gcp_compute_backendservice" "user-backend" {
+/// resource "gcp_compute_backend_service" "user-backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "user-service"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   health_checks         = gcp_compute_httphealthcheck.default.id
+///   health_checks         = gcp_compute_http_health_check.default.id
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_http_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "health-check"
 ///   request_path       = "/"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
 /// }
-/// resource "gcp_compute_backendbucket" "static" {
+/// resource "gcp_compute_backend_bucket" "static" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "static-asset-backend-bucket"
 ///   bucket_name = gcp_storage_bucket.static.name
 ///   enable_cdn  = true
 /// }
 /// resource "gcp_storage_bucket" "static" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "static-asset-bucket"
 ///   location = "US"
 /// }
@@ -10157,8 +10405,8 @@ import 'urlmap_test.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/storage"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/storage"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10278,7 +10526,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -10286,17 +10534,20 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "a description"
-///   default_service = gcp_compute_backendservice.example.id
+///   default_service = gcp_compute_backend_service.example.id
 ///   default_custom_error_response_policy = {
 ///     error_response_rules = [{
-///       "matchResponseCodes"   = ["5xx"]
-///       "path"                 = "/internal_error.html"
-///       "overrideResponseCode" = 502
+///       match_response_codes   = ["5xx"]
+///       path                   = "/internal_error.html"
+///       override_response_code = 502
 ///     }]
-///     error_service = gcp_compute_backendbucket.error.id
+///     error_service = gcp_compute_backend_bucket.error.id
 ///   }
 ///   # Catch all 5xx responses
 ///   # Catch all 5xx responses
@@ -10307,53 +10558,65 @@ import 'urlmap_test.dart';
 ///   }
 ///   path_matchers {
 ///     name            = "mysite"
-///     default_service = gcp_compute_backendservice.example.id
+///     default_service = gcp_compute_backend_service.example.id
 ///     default_custom_error_response_policy = {
 ///       error_response_rules = [{
-///         "matchResponseCodes"   = ["4xx", "5xx"]
-///         "path"                 = "/login_error.html"
-///         "overrideResponseCode" = 404
+///         match_response_codes   = ["4xx", "5xx"]
+///         path                   = "/login_error.html"
+///         override_response_code = 404
 ///         }, {
-///         "matchResponseCodes"   = ["503"]
-///         "path"                 = "/bad_gateway.html"
-///         "overrideResponseCode" = 502
+///         match_response_codes   = ["503"]
+///         path                   = "/bad_gateway.html"
+///         override_response_code = 502
 ///       }]
-///       error_service = gcp_compute_backendbucket.error.id
+///       error_service = gcp_compute_backend_bucket.error.id
 ///     }
 ///     path_rules {
 ///       paths   = ["/private/*"]
-///       service = gcp_compute_backendservice.example.id
+///       service = gcp_compute_backend_service.example.id
 ///       custom_error_response_policy = {
 ///         error_response_rules = [{
-///           "matchResponseCodes"   = ["4xx"]
-///           "path"                 = "/login.html"
-///           "overrideResponseCode" = 401
+///           match_response_codes   = ["4xx"]
+///           path                   = "/login.html"
+///           override_response_code = 401
 ///         }]
-///         error_service = gcp_compute_backendbucket.error.id
+///         error_service = gcp_compute_backend_bucket.error.id
 ///       }
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "example" {
+/// resource "gcp_compute_backend_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "login"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   health_checks         = gcp_compute_httphealthcheck.default.id
+///   health_checks         = gcp_compute_http_health_check.default.id
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_http_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "health-check"
 ///   request_path       = "/"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
 /// }
-/// resource "gcp_compute_backendbucket" "error" {
+/// resource "gcp_compute_backend_bucket" "error" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "error-backend-bucket"
 ///   bucket_name = gcp_storage_bucket.error.name
 ///   enable_cdn  = true
 /// }
 /// resource "gcp_storage_bucket" "error" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "static-asset-bucket"
 ///   location = "US"
 /// }
@@ -10814,7 +11077,7 @@ import 'urlmap_test.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -10921,7 +11184,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -10929,20 +11192,23 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "Test for httpFilterConfigs in route rules"
-///   default_service = gcp_compute_backendservice.default.id
+///   default_service = gcp_compute_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.default.id
+///     default_service = gcp_compute_backend_service.default.id
 ///     route_rules {
 ///       priority = 1
-///       service  = gcp_compute_backendservice.service-a.id
+///       service  = gcp_compute_backend_service.service-a.id
 ///       match_rules {
 ///         prefix_match = "/"
 ///         ignore_case  = true
@@ -10967,28 +11233,37 @@ import 'urlmap_test.dart';
 ///     }
 ///   }
 ///   tests {
-///     service = gcp_compute_backendservice.default.id
+///     service = gcp_compute_backend_service.default.id
 ///     host    = "mysite.com"
 ///     path    = "/"
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "default-backend"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_backendservice" "service-a" {
+/// resource "gcp_compute_backend_service" "service-a" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "service-a-backend"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -11538,7 +11813,7 @@ import 'urlmap_test.dart';
 /// import (
 /// 	"encoding/json"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -11687,7 +11962,7 @@ import 'urlmap_test.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -11695,20 +11970,23 @@ import 'urlmap_test.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_urlmap" "urlmap" {
+/// resource "gcp_compute_u_r_l_map" "urlmap" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "urlmap"
 ///   description     = "Test for httpFilterMetadata in route rules"
-///   default_service = gcp_compute_backendservice.default.id
+///   default_service = gcp_compute_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.default.id
+///     default_service = gcp_compute_backend_service.default.id
 ///     route_rules {
 ///       priority = 1
-///       service  = gcp_compute_backendservice.service-a.id
+///       service  = gcp_compute_backend_service.service-a.id
 ///       match_rules {
 ///         prefix_match = "/"
 ///         ignore_case  = true
@@ -11733,7 +12011,7 @@ import 'urlmap_test.dart';
 ///     }
 ///     route_rules {
 ///       priority = 2
-///       service  = gcp_compute_backendservice.service-b.id
+///       service  = gcp_compute_backend_service.service-b.id
 ///       match_rules {
 ///         prefix_match = "/api"
 ///         ignore_case  = true
@@ -11755,36 +12033,48 @@ import 'urlmap_test.dart';
 ///     }
 ///   }
 ///   tests {
-///     service = gcp_compute_backendservice.default.id
+///     service = gcp_compute_backend_service.default.id
 ///     host    = "mysite.com"
 ///     path    = "/"
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "default-backend"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_backendservice" "service-a" {
+/// resource "gcp_compute_backend_service" "service-a" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "service-a-backend"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_backendservice" "service-b" {
+/// resource "gcp_compute_backend_service" "service-b" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "service-b-backend"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "INTERNAL_SELF_MANAGED"
-///   health_checks         = gcp_compute_healthcheck.default.id
+///   health_checks         = gcp_compute_health_check.default.id
 /// }
-/// resource "gcp_compute_healthcheck" "default" {
+/// resource "gcp_compute_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "health-check"
 ///   http_health_check = {
 ///     port = 80
@@ -12118,7 +12408,7 @@ class URLMap extends pulumi.CustomResource {
           'gcp:compute/uRLMap:URLMap',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     defaultCustomErrorResponsePolicy = registerOutput<URLMapDefaultCustomErrorResponsePolicy?>('defaultCustomErrorResponsePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return URLMapDefaultCustomErrorResponsePolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });

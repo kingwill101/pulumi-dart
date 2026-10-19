@@ -150,10 +150,10 @@ import 'user_workloads_config_map_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/composer"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/serviceaccount"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/composer"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/serviceaccount"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -213,7 +213,7 @@ import 'user_workloads_config_map_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -221,22 +221,31 @@ import 'user_workloads_config_map_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
 /// resource "gcp_serviceaccount_account" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id   = "test-sa"
 ///   display_name = "Test Service Account for Composer Environment"
 /// }
-/// resource "gcp_projects_iammember" "composer-worker" {
-///   project = data.gcp_organizations_getproject.project.project_id
+/// resource "gcp_projects_i_a_m_member" "composer-worker" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = data.gcp_organizations_project.project.project_id
 ///   role    = "roles/composer.worker"
 ///   member  ="serviceAccount:${gcp_serviceaccount_account.test.email}"
 /// }
 /// resource "gcp_composer_environment" "environment" {
-///   depends_on = [gcp_projects_iammember.composer-worker]
-///   name       = "test-environment"
-///   region     = "us-central1"
+///   depends_on = [gcp_projects_i_a_m_member.composer-worker]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name   = "test-environment"
+///   region = "us-central1"
 ///   config = {
 ///     software_config = {
 ///       image_version = "composer-3-airflow-2"
@@ -246,7 +255,10 @@ import 'user_workloads_config_map_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "gcp_composer_userworkloadsconfigmap" "config_map" {
+/// resource "gcp_composer_user_workloads_config_map" "config_map" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-config-map"
 ///   region      = "us-central1"
 ///   environment = gcp_composer_environment.environment.name
@@ -421,7 +433,7 @@ class UserWorkloadsConfigMap extends pulumi.CustomResource {
           'gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     data = registerOutput<Map<String, String>?>('data', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     deletionPolicy = registerOutput<String>('deletionPolicy');

@@ -51,7 +51,7 @@ import 'shared_vpcservice_project_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -69,7 +69,7 @@ import 'shared_vpcservice_project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -77,7 +77,10 @@ import 'shared_vpcservice_project_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_sharedvpcserviceproject" "service1" {
+/// resource "gcp_compute_shared_v_p_c_service_project" "service1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   host_project    = "host-project-id"
 ///   service_project = "service-project-id-1"
 /// }
@@ -156,7 +159,7 @@ class SharedVPCServiceProject extends pulumi.CustomResource {
           'gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String?>('deletionPolicy');
     hostProject = registerOutput<String>('hostProject');

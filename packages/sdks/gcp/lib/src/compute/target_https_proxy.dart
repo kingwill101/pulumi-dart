@@ -43,6 +43,7 @@ import 'target_https_proxy_state.dart';
 ///     portName: "http",
 ///     protocol: "HTTP",
 ///     timeoutSec: 10,
+///     loadBalancingScheme: "EXTERNAL",
 ///     healthChecks: defaultHttpHealthCheck.id,
 /// });
 /// const defaultURLMap = new gcp.compute.URLMap("default", {
@@ -87,6 +88,7 @@ import 'target_https_proxy_state.dart';
 ///     port_name="http",
 ///     protocol="HTTP",
 ///     timeout_sec=10,
+///     load_balancing_scheme="EXTERNAL",
 ///     health_checks=default_http_health_check.id)
 /// default_url_map = gcp.compute.URLMap("default",
 ///     name="url-map",
@@ -145,6 +147,7 @@ import 'target_https_proxy_state.dart';
 ///         PortName = "http",
 ///         Protocol = "HTTP",
 ///         TimeoutSec = 10,
+///         LoadBalancingScheme = "EXTERNAL",
 ///         HealthChecks = defaultHttpHealthCheck.Id,
 ///     });
 ///
@@ -201,7 +204,7 @@ import 'target_https_proxy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -238,11 +241,12 @@ import 'target_https_proxy_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("backend-service"),
-/// 			PortName:     pulumi.String("http"),
-/// 			Protocol:     pulumi.String("HTTP"),
-/// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                pulumi.String("backend-service"),
+/// 			PortName:            pulumi.String("http"),
+/// 			Protocol:            pulumi.String("HTTP"),
+/// 			TimeoutSec:          pulumi.Int(10),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+/// 			HealthChecks:        defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -292,7 +296,7 @@ import 'target_https_proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -303,41 +307,57 @@ import 'target_https_proxy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_targethttpsproxy" "default" {
+/// resource "gcp_compute_target_https_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "test-proxy"
-///   url_map          = gcp_compute_urlmap.default.id
-///   ssl_certificates = [gcp_compute_sslcertificate.default.id]
+///   url_map          = gcp_compute_u_r_l_map.default.id
+///   ssl_certificates = [gcp_compute_s_s_l_certificate.default.id]
 /// }
-/// resource "gcp_compute_sslcertificate" "default" {
+/// resource "gcp_compute_s_s_l_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-certificate"
 ///   private_key = file("path/to/private.key")
 ///   certificate = file("path/to/certificate.crt")
 /// }
-/// resource "gcp_compute_urlmap" "default" {
+/// resource "gcp_compute_u_r_l_map" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "url-map"
 ///   description     = "a description"
-///   default_service = gcp_compute_backendservice.default.id
+///   default_service = gcp_compute_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.default.id
+///     default_service = gcp_compute_backend_service.default.id
 ///     path_rules {
 ///       paths   = ["/*"]
-///       service = gcp_compute_backendservice.default.id
+///       service = gcp_compute_backend_service.default.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "default" {
-///   name          = "backend-service"
-///   port_name     = "http"
-///   protocol      = "HTTP"
-///   timeout_sec   = 10
-///   health_checks = gcp_compute_httphealthcheck.default.id
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "backend-service"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL"
+///   health_checks         = gcp_compute_http_health_check.default.id
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_http_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "http-health-check"
 ///   request_path       = "/"
 ///   check_interval_sec = 1
@@ -400,6 +420,7 @@ import 'target_https_proxy_state.dart';
 ///             .portName("http")
 ///             .protocol("HTTP")
 ///             .timeoutSec(10)
+///             .loadBalancingScheme("EXTERNAL")
 ///             .healthChecks(defaultHttpHealthCheck.id())
 ///             .build());
 ///
@@ -482,6 +503,7 @@ import 'target_https_proxy_state.dart';
 ///       portName: http
 ///       protocol: HTTP
 ///       timeoutSec: 10
+///       loadBalancingScheme: EXTERNAL
 ///       healthChecks: ${defaultHttpHealthCheck.id}
 ///   defaultHttpHealthCheck:
 ///     type: gcp:compute:HttpHealthCheck
@@ -686,7 +708,7 @@ import 'target_https_proxy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -779,7 +801,7 @@ import 'target_https_proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -790,43 +812,58 @@ import 'target_https_proxy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_targethttpsproxy" "default" {
+/// resource "gcp_compute_target_https_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "test-http-keep-alive-timeout-proxy"
 ///   http_keep_alive_timeout_sec = 610
-///   url_map                     = gcp_compute_urlmap.default.id
-///   ssl_certificates            = [gcp_compute_sslcertificate.default.id]
+///   url_map                     = gcp_compute_u_r_l_map.default.id
+///   ssl_certificates            = [gcp_compute_s_s_l_certificate.default.id]
 /// }
-/// resource "gcp_compute_sslcertificate" "default" {
+/// resource "gcp_compute_s_s_l_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-certificate"
 ///   private_key = file("path/to/private.key")
 ///   certificate = file("path/to/certificate.crt")
 /// }
-/// resource "gcp_compute_urlmap" "default" {
+/// resource "gcp_compute_u_r_l_map" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "url-map"
 ///   description     = "a description"
-///   default_service = gcp_compute_backendservice.default.id
+///   default_service = gcp_compute_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.default.id
+///     default_service = gcp_compute_backend_service.default.id
 ///     path_rules {
 ///       paths   = ["/*"]
-///       service = gcp_compute_backendservice.default.id
+///       service = gcp_compute_backend_service.default.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "backend-service"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
 ///   timeout_sec           = 10
 ///   load_balancing_scheme = "EXTERNAL_MANAGED"
-///   health_checks         = gcp_compute_httphealthcheck.default.id
+///   health_checks         = gcp_compute_http_health_check.default.id
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_http_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "http-health-check"
 ///   request_path       = "/"
 ///   check_interval_sec = 1
@@ -1046,6 +1083,7 @@ import 'target_https_proxy_state.dart';
 ///     portName: "http",
 ///     protocol: "HTTP",
 ///     timeoutSec: 10,
+///     loadBalancingScheme: "EXTERNAL",
 ///     healthChecks: defaultHttpHealthCheck.id,
 /// });
 /// const defaultURLMap = new gcp.compute.URLMap("default", {
@@ -1116,6 +1154,7 @@ import 'target_https_proxy_state.dart';
 ///     port_name="http",
 ///     protocol="HTTP",
 ///     timeout_sec=10,
+///     load_balancing_scheme="EXTERNAL",
 ///     health_checks=default_http_health_check.id)
 /// default_url_map = gcp.compute.URLMap("default",
 ///     name="url-map",
@@ -1232,6 +1271,7 @@ import 'target_https_proxy_state.dart';
 ///         PortName = "http",
 ///         Protocol = "HTTP",
 ///         TimeoutSec = 10,
+///         LoadBalancingScheme = "EXTERNAL",
 ///         HealthChecks = defaultHttpHealthCheck.Id,
 ///     });
 ///
@@ -1291,10 +1331,10 @@ import 'target_https_proxy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/networksecurity"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/networksecurity"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -1387,11 +1427,12 @@ import 'target_https_proxy_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("backend-service"),
-/// 			PortName:     pulumi.String("http"),
-/// 			Protocol:     pulumi.String("HTTP"),
-/// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                pulumi.String("backend-service"),
+/// 			PortName:            pulumi.String("http"),
+/// 			Protocol:            pulumi.String("HTTP"),
+/// 			TimeoutSec:          pulumi.Int(10),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+/// 			HealthChecks:        defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -1442,7 +1483,7 @@ import 'target_https_proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -1453,16 +1494,22 @@ import 'target_https_proxy_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_organizations_getproject" "project" {
+/// data "gcp_organizations_project" "project" {
 /// }
 ///
-/// resource "gcp_compute_targethttpsproxy" "default" {
+/// resource "gcp_compute_target_https_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "test-mtls-proxy"
-///   url_map           = gcp_compute_urlmap.default.id
-///   ssl_certificates  = [gcp_compute_sslcertificate.default.id]
-///   server_tls_policy = gcp_networksecurity_servertlspolicy.default.id
+///   url_map           = gcp_compute_u_r_l_map.default.id
+///   ssl_certificates  = [gcp_compute_s_s_l_certificate.default.id]
+///   server_tls_policy = gcp_networksecurity_server_tls_policy.default.id
 /// }
-/// resource "gcp_certificatemanager_trustconfig" "default" {
+/// resource "gcp_certificatemanager_trust_config" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-trust-config"
 ///   description = "sample description for the trust config"
 ///   location    = "global"
@@ -1478,46 +1525,62 @@ import 'target_https_proxy_state.dart';
 ///     "foo" = "bar"
 ///   }
 /// }
-/// resource "gcp_networksecurity_servertlspolicy" "default" {
+/// resource "gcp_networksecurity_server_tls_policy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-tls-policy"
 ///   description = "my description"
 ///   location    = "global"
 ///   allow_open  = "false"
 ///   mtls_policy = {
 ///     client_validation_mode         = "ALLOW_INVALID_OR_MISSING_CLIENT_CERT"
-///     client_validation_trust_config ="projects/${data.gcp_organizations_getproject.project.number}/locations/global/trustConfigs/${gcp_certificatemanager_trustconfig.default.name}"
+///     client_validation_trust_config ="projects/${data.gcp_organizations_project.project.number}/locations/global/trustConfigs/${gcp_certificatemanager_trust_config.default.name}"
 ///   }
 /// }
-/// resource "gcp_compute_sslcertificate" "default" {
+/// resource "gcp_compute_s_s_l_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-certificate"
 ///   private_key = file("path/to/private.key")
 ///   certificate = file("path/to/certificate.crt")
 /// }
-/// resource "gcp_compute_urlmap" "default" {
+/// resource "gcp_compute_u_r_l_map" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "url-map"
 ///   description     = "a description"
-///   default_service = gcp_compute_backendservice.default.id
+///   default_service = gcp_compute_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.default.id
+///     default_service = gcp_compute_backend_service.default.id
 ///     path_rules {
 ///       paths   = ["/*"]
-///       service = gcp_compute_backendservice.default.id
+///       service = gcp_compute_backend_service.default.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "default" {
-///   name          = "backend-service"
-///   port_name     = "http"
-///   protocol      = "HTTP"
-///   timeout_sec   = 10
-///   health_checks = gcp_compute_httphealthcheck.default.id
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "backend-service"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL"
+///   health_checks         = gcp_compute_http_health_check.default.id
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_http_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "http-health-check"
 ///   request_path       = "/"
 ///   check_interval_sec = 1
@@ -1623,6 +1686,7 @@ import 'target_https_proxy_state.dart';
 ///             .portName("http")
 ///             .protocol("HTTP")
 ///             .timeoutSec(10)
+///             .loadBalancingScheme("EXTERNAL")
 ///             .healthChecks(defaultHttpHealthCheck.id())
 ///             .build());
 ///
@@ -1742,6 +1806,7 @@ import 'target_https_proxy_state.dart';
 ///       portName: http
 ///       protocol: HTTP
 ///       timeoutSec: 10
+///       loadBalancingScheme: EXTERNAL
 ///       healthChecks: ${defaultHttpHealthCheck.id}
 ///   defaultHttpHealthCheck:
 ///     type: gcp:compute:HttpHealthCheck
@@ -1938,8 +2003,8 @@ import 'target_https_proxy_state.dart';
 /// import (
 /// 	"fmt"
 ///
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/certificatemanager"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/certificatemanager"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -2026,7 +2091,7 @@ import 'target_https_proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2037,12 +2102,18 @@ import 'target_https_proxy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_targethttpsproxy" "default" {
+/// resource "gcp_compute_target_https_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                             = "target-http-proxy"
-///   url_map                          = gcp_compute_urlmap.default.id
+///   url_map                          = gcp_compute_u_r_l_map.default.id
 ///   certificate_manager_certificates = ["//certificatemanager.googleapis.com/${gcp_certificatemanager_certificate.default.id}"] # [google_certificate_manager_certificate.default.id] is also acceptable
 /// }
 /// resource "gcp_certificatemanager_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "my-certificate"
 ///   scope = "ALL_REGIONS"
 ///   self_managed = {
@@ -2050,24 +2121,30 @@ import 'target_https_proxy_state.dart';
 ///     pem_private_key = file("test-fixtures/private-key.pem")
 ///   }
 /// }
-/// resource "gcp_compute_urlmap" "default" {
+/// resource "gcp_compute_u_r_l_map" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "url-map"
 ///   description     = "a description"
-///   default_service = gcp_compute_backendservice.default.id
+///   default_service = gcp_compute_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.default.id
+///     default_service = gcp_compute_backend_service.default.id
 ///     path_rules {
 ///       paths   = ["/*"]
-///       service = gcp_compute_backendservice.default.id
+///       service = gcp_compute_backend_service.default.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "default" {
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "backend-service"
 ///   port_name             = "http"
 ///   protocol              = "HTTP"
@@ -2242,6 +2319,7 @@ import 'target_https_proxy_state.dart';
 ///     portName: "http",
 ///     protocol: "HTTP",
 ///     timeoutSec: 10,
+///     loadBalancingScheme: "EXTERNAL",
 ///     healthChecks: defaultHttpHealthCheck.id,
 /// });
 /// const defaultURLMap = new gcp.compute.URLMap("default", {
@@ -2287,6 +2365,7 @@ import 'target_https_proxy_state.dart';
 ///     port_name="http",
 ///     protocol="HTTP",
 ///     timeout_sec=10,
+///     load_balancing_scheme="EXTERNAL",
 ///     health_checks=default_http_health_check.id)
 /// default_url_map = gcp.compute.URLMap("default",
 ///     name="url-map",
@@ -2346,6 +2425,7 @@ import 'target_https_proxy_state.dart';
 ///         PortName = "http",
 ///         Protocol = "HTTP",
 ///         TimeoutSec = 10,
+///         LoadBalancingScheme = "EXTERNAL",
 ///         HealthChecks = defaultHttpHealthCheck.Id,
 ///     });
 ///
@@ -2406,7 +2486,7 @@ import 'target_https_proxy_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/compute"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/compute"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -2443,11 +2523,12 @@ import 'target_https_proxy_state.dart';
 /// 			return err
 /// 		}
 /// 		defaultBackendService, err := compute.NewBackendService(ctx, "default", &compute.BackendServiceArgs{
-/// 			Name:         pulumi.String("backend-service"),
-/// 			PortName:     pulumi.String("http"),
-/// 			Protocol:     pulumi.String("HTTP"),
-/// 			TimeoutSec:   pulumi.Int(10),
-/// 			HealthChecks: defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
+/// 			Name:                pulumi.String("backend-service"),
+/// 			PortName:            pulumi.String("http"),
+/// 			Protocol:            pulumi.String("HTTP"),
+/// 			TimeoutSec:          pulumi.Int(10),
+/// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+/// 			HealthChecks:        defaultHttpHealthCheck.ID().ToIDOutput().ToStringOutput(),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -2498,7 +2579,7 @@ import 'target_https_proxy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -2509,48 +2590,64 @@ import 'target_https_proxy_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_compute_targethttpsproxy" "default" {
+/// resource "gcp_compute_target_https_proxy" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "test-fingerprint-proxy"
-///   url_map          = gcp_compute_urlmap.default.id
-///   ssl_certificates = [gcp_compute_sslcertificate.default.id]
+///   url_map          = gcp_compute_u_r_l_map.default.id
+///   ssl_certificates = [gcp_compute_s_s_l_certificate.default.id]
 /// }
-/// resource "gcp_compute_sslcertificate" "default" {
+/// resource "gcp_compute_s_s_l_certificate" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-certificate"
 ///   private_key = file("path/to/private.key")
 ///   certificate = file("path/to/certificate.crt")
 /// }
-/// resource "gcp_compute_urlmap" "default" {
+/// resource "gcp_compute_u_r_l_map" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "url-map"
 ///   description     = "a description"
-///   default_service = gcp_compute_backendservice.default.id
+///   default_service = gcp_compute_backend_service.default.id
 ///   host_rules {
 ///     hosts        = ["mysite.com"]
 ///     path_matcher = "allpaths"
 ///   }
 ///   path_matchers {
 ///     name            = "allpaths"
-///     default_service = gcp_compute_backendservice.default.id
+///     default_service = gcp_compute_backend_service.default.id
 ///     path_rules {
 ///       paths   = ["/*"]
-///       service = gcp_compute_backendservice.default.id
+///       service = gcp_compute_backend_service.default.id
 ///     }
 ///   }
 /// }
-/// resource "gcp_compute_backendservice" "default" {
-///   name          = "backend-service"
-///   port_name     = "http"
-///   protocol      = "HTTP"
-///   timeout_sec   = 10
-///   health_checks = gcp_compute_httphealthcheck.default.id
+/// resource "gcp_compute_backend_service" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                  = "backend-service"
+///   port_name             = "http"
+///   protocol              = "HTTP"
+///   timeout_sec           = 10
+///   load_balancing_scheme = "EXTERNAL"
+///   health_checks         = gcp_compute_http_health_check.default.id
 /// }
-/// resource "gcp_compute_httphealthcheck" "default" {
+/// resource "gcp_compute_http_health_check" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "http-health-check"
 ///   request_path       = "/"
 ///   check_interval_sec = 1
 ///   timeout_sec        = 1
 /// }
 /// output "targetHttpsProxyFingerprint" {
-///   value = gcp_compute_targethttpsproxy.default.fingerprint
+///   value = gcp_compute_target_https_proxy.default.fingerprint
 /// }
 /// ```
 /// ```java
@@ -2609,6 +2706,7 @@ import 'target_https_proxy_state.dart';
 ///             .portName("http")
 ///             .protocol("HTTP")
 ///             .timeoutSec(10)
+///             .loadBalancingScheme("EXTERNAL")
 ///             .healthChecks(defaultHttpHealthCheck.id())
 ///             .build());
 ///
@@ -2692,6 +2790,7 @@ import 'target_https_proxy_state.dart';
 ///       portName: http
 ///       protocol: HTTP
 ///       timeoutSec: 10
+///       loadBalancingScheme: EXTERNAL
 ///       healthChecks: ${defaultHttpHealthCheck.id}
 ///   defaultHttpHealthCheck:
 ///     type: gcp:compute:HttpHealthCheck
@@ -2830,7 +2929,7 @@ class TargetHttpsProxy extends pulumi.CustomResource {
           'gcp:compute/targetHttpsProxy:TargetHttpsProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     certificateManagerCertificates = registerOutput<List<String>?>('certificateManagerCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     certificateMap = registerOutput<String?>('certificateMap');

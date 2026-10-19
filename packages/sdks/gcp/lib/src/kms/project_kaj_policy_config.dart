@@ -160,9 +160,9 @@ import 'project_kaj_policy_config_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/kms"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/organizations"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/projects"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/kms"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/organizations"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/projects"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumiverse/pulumi-time/sdk/go/time"
 /// )
@@ -218,7 +218,7 @@ import 'project_kaj_policy_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -231,6 +231,9 @@ import 'project_kaj_policy_config_state.dart';
 ///
 /// # Create a project
 /// resource "gcp_organizations_project" "kms_project" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   project_id      = "my-project"
 ///   name            = "my-project"
 ///   org_id          = "123456789"
@@ -239,18 +242,27 @@ import 'project_kaj_policy_config_state.dart';
 /// }
 /// # Enable the Cloud KMS API.
 /// resource "gcp_projects_service" "kms_api_service" {
-///   depends_on                 = [gcp_organizations_project.kms_project]
+///   depends_on = [gcp_organizations_project.kms_project]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   service                    = "cloudkms.googleapis.com"
 ///   project                    = gcp_organizations_project.kms_project.project_id
 ///   disable_dependent_services = true
 /// }
 /// resource "time_sleep" "wait_enable_service_api" {
-///   depends_on      = [gcp_projects_service.kms_api_service]
+///   depends_on = [gcp_projects_service.kms_api_service]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   create_duration = "30s"
 /// }
-/// resource "gcp_kms_projectkajpolicyconfig" "example" {
+/// resource "gcp_kms_project_kaj_policy_config" "example" {
 ///   depends_on = [time_sleep.wait_enable_service_api]
-///   project    = gcp_organizations_project.kms_project.project_id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   project = gcp_organizations_project.kms_project.project_id
 ///   default_key_access_justification_policy = {
 ///     allowed_access_reasons = ["CUSTOMER_INITIATED_ACCESS", "GOOGLE_INITIATED_SYSTEM_OPERATION"]
 ///   }
@@ -404,7 +416,7 @@ class ProjectKajPolicyConfig extends pulumi.CustomResource {
           'gcp:kms/projectKajPolicyConfig:ProjectKajPolicyConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     defaultKeyAccessJustificationPolicy = registerOutput<ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy?>('defaultKeyAccessJustificationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');

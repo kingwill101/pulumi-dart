@@ -122,8 +122,8 @@ import 'web_resource_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/dns"
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/siteverification"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/dns"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/siteverification"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -166,7 +166,7 @@ import 'web_resource_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -174,26 +174,32 @@ import 'web_resource_state.dart';
 ///   }
 /// }
 ///
-/// data "gcp_siteverification_gettoken" "token" {
+/// data "gcp_siteverification_token" "token" {
 ///   type                = "INET_DOMAIN"
 ///   identifier          = "www.example.com"
 ///   verification_method = "DNS_TXT"
 /// }
 ///
-/// resource "gcp_dns_recordset" "example" {
+/// resource "gcp_dns_record_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   managed_zone = "example.com"
 ///   name         = "www.example.com."
 ///   type         = "TXT"
-///   rrdatas      = [data.gcp_siteverification_gettoken.token.token]
+///   rrdatas      = [data.gcp_siteverification_token.token.token]
 ///   ttl          = 86400
 /// }
-/// resource "gcp_siteverification_webresource" "example" {
-///   depends_on = [gcp_dns_recordset.example]
-///   site = {
-///     type       = data.gcp_siteverification_gettoken.token.type
-///     identifier = data.gcp_siteverification_gettoken.token.identifier
+/// resource "gcp_siteverification_web_resource" "example" {
+///   depends_on = [gcp_dns_record_set.example]
+///   lifecycle {
+///     create_before_destroy = true
 ///   }
-///   verification_method = data.gcp_siteverification_gettoken.token.verification_method
+///   site = {
+///     type       = data.gcp_siteverification_token.token.type
+///     identifier = data.gcp_siteverification_token.token.identifier
+///   }
+///   verification_method = data.gcp_siteverification_token.token.verification_method
 /// }
 /// ```
 /// ```java
@@ -330,7 +336,7 @@ class WebResource extends pulumi.CustomResource {
           'gcp:siteverification/webResource:WebResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     deletionPolicy = registerOutput<String>('deletionPolicy');
     owners = registerOutput<List<String>>('owners', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

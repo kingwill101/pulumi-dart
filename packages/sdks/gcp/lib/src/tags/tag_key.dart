@@ -57,7 +57,7 @@ import 'tag_key_state.dart';
 /// package main
 ///
 /// import (
-/// 	"github.com/pulumi/pulumi-gcp/sdk/v9/go/gcp/tags"
+/// 	"github.com/pulumi/pulumi-gcp/sdk/v10/go/gcp/tags"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
 ///
@@ -76,7 +76,7 @@ import 'tag_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     gcp = {
 ///       source = "pulumi/gcp"
@@ -84,7 +84,10 @@ import 'tag_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "gcp_tags_tagkey" "key" {
+/// resource "gcp_tags_tag_key" "key" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   parent      = "organizations/123456789"
 ///   short_name  = "keyname"
 ///   description = "For keyname resources."
@@ -192,7 +195,7 @@ class TagKey extends pulumi.CustomResource {
           'gcp:tags/tagKey:TagKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '9.36.1').merge(options),
+          pulumi.CustomResourceOptions(version: '10.1.1').merge(options),
         ) {
     allowedValuesRegex = registerOutput<String?>('allowedValuesRegex');
     createTime = registerOutput<String>('createTime');

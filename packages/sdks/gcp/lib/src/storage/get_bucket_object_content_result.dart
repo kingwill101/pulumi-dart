@@ -170,7 +170,7 @@ class GetBucketObjectContentResult {
       detectMd5hash: (() { final guardedValue = map['detectMd5hash']; if (guardedValue == null) return null; return guardedValue as String; })(),
       eventBasedHold: (() { final guardedValue = map['eventBasedHold']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       forceEmptyContentType: (() { final guardedValue = map['forceEmptyContentType']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      generation: (() { final guardedValue = map['generation']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       kmsKeyName: (() { final guardedValue = map['kmsKeyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       md5hash: (() { final guardedValue = map['md5hash']; if (guardedValue == null) return null; return guardedValue as String; })(),
