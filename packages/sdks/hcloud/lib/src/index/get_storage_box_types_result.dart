@@ -5,23 +5,23 @@ import 'get_storage_box_types_storage_box_type.dart';
 
 /// Result data returned by getStorageBoxTypes.
 class GetStorageBoxTypesResult {
-  final List<GetStorageBoxTypesStorageBoxType> storageBoxTypes;
+  final List<GetStorageBoxTypesStorageBoxType>? storageBoxTypes;
 
   /// Creates a new [GetStorageBoxTypesResult].
-  /// [storageBoxTypes] Required.
+  /// [storageBoxTypes] Optional.
   const GetStorageBoxTypesResult({
-    required this.storageBoxTypes,
+    this.storageBoxTypes,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'storageBoxTypes': pulumi.Input.encodeList<GetStorageBoxTypesStorageBoxType, Map<String, dynamic>>(storageBoxTypes, (value) => value.toMap()),
+      'storageBoxTypes': ?(() { final guardedValue = storageBoxTypes; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetStorageBoxTypesStorageBoxType, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetStorageBoxTypesResult.fromMap(Map<String, dynamic> map) {
     return GetStorageBoxTypesResult(
-      storageBoxTypes: pulumi.Input.decodeList<GetStorageBoxTypesStorageBoxType>(map['storageBoxTypes']!, (value) => GetStorageBoxTypesStorageBoxType.fromMap((value as Map).cast<String, dynamic>())),
+      storageBoxTypes: (() { final guardedValue = map['storageBoxTypes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetStorageBoxTypesStorageBoxType>(guardedValue, (value) => GetStorageBoxTypesStorageBoxType.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }

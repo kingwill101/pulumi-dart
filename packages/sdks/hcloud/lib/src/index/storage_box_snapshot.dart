@@ -46,7 +46,7 @@ import 'storage_box_snapshot_state.dart';
 ///
 ///     var backup = new HCloud.StorageBoxSnapshot("backup", new()
 ///     {
-///         StorageBoxId = main.Id,
+///         StorageBoxId = main.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         Description = "Before Tool XYZ Migration",
 ///         Labels =
 ///         {
@@ -60,6 +60,8 @@ import 'storage_box_snapshot_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -71,7 +73,7 @@ import 'storage_box_snapshot_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewStorageBoxSnapshot(ctx, "backup", &hcloud.StorageBoxSnapshotArgs{
-/// 			StorageBoxId: main.ID(),
+/// 			StorageBoxId: main.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			Description:  pulumi.String("Before Tool XYZ Migration"),
 /// 			Labels: pulumi.StringMap{
 /// 				"env": pulumi.String("production"),
@@ -85,7 +87,7 @@ import 'storage_box_snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -93,10 +95,16 @@ import 'storage_box_snapshot_state.dart';
 ///   }
 /// }
 ///
-/// resource "hcloud_storagebox" "main" {
+/// resource "hcloud_storage_box" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "hcloud_storageboxsnapshot" "backup" {
-///   storage_box_id = hcloud_storagebox.main.id
+/// resource "hcloud_storage_box_snapshot" "backup" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_box_id = hcloud_storage_box.main.id
 ///   description    = "Before Tool XYZ Migration"
 ///   labels = {
 ///     "env" = "production"
@@ -181,11 +189,11 @@ class StorageBoxSnapshot extends pulumi.CustomResource {
           'hcloud:index/storageBoxSnapshot:StorageBoxSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.43.1').merge(options),
         ) {
     description = registerOutput<String>('description');
     isAutomatic = registerOutput<bool>('isAutomatic');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     storageBoxId = registerOutput<int>('storageBoxId');
   }
@@ -195,11 +203,12 @@ class StorageBoxSnapshot extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StorageBoxSnapshotState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StorageBoxSnapshot._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -215,7 +224,23 @@ class StorageBoxSnapshot extends pulumi.CustomResource {
         ) {
     description = registerOutput<String>('description');
     isAutomatic = registerOutput<bool>('isAutomatic');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    storageBoxId = registerOutput<int>('storageBoxId');
+  }
+
+  /// Creates a typed reference to an existing [StorageBoxSnapshot] resource.
+  StorageBoxSnapshot.reference(String urn)
+    : super(
+        'hcloud:index/storageBoxSnapshot:StorageBoxSnapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String>('description');
+    isAutomatic = registerOutput<bool>('isAutomatic');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     storageBoxId = registerOutput<int>('storageBoxId');
   }

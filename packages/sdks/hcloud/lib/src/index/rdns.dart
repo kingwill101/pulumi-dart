@@ -95,7 +95,7 @@ import 'rdns_state.dart';
 ///
 ///     var server1Rdns = new HCloud.Rdns("server1", new()
 ///     {
-///         ServerId = server1.Id,
+///         ServerId = server1.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         IpAddress = server1.Ipv4Address,
 ///         DnsPtr = "example.com",
 ///     });
@@ -109,7 +109,7 @@ import 'rdns_state.dart';
 ///
 ///     var primaryIp1Rdns = new HCloud.Rdns("primary_ip1", new()
 ///     {
-///         PrimaryIpId = primaryIp1.Id,
+///         PrimaryIpId = primaryIp1.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         IpAddress = primaryIp1.IpAddress,
 ///         DnsPtr = "example.com",
 ///     });
@@ -123,7 +123,7 @@ import 'rdns_state.dart';
 ///
 ///     var floatingIp1Rdns = new HCloud.Rdns("floating_ip1", new()
 ///     {
-///         FloatingIpId = floatingIp1.Id,
+///         FloatingIpId = floatingIp1.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         IpAddress = floatingIp1.IpAddress,
 ///         DnsPtr = "example.com",
 ///     });
@@ -136,7 +136,7 @@ import 'rdns_state.dart';
 ///
 ///     var loadBalancer1Rdns = new HCloud.Rdns("load_balancer1", new()
 ///     {
-///         LoadBalancerId = loadBalancer1.Id,
+///         LoadBalancerId = loadBalancer1.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         IpAddress = loadBalancer1.Ipv4,
 ///         DnsPtr = "example.com",
 ///     });
@@ -147,6 +147,8 @@ import 'rdns_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -161,7 +163,7 @@ import 'rdns_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewRdns(ctx, "server1", &hcloud.RdnsArgs{
-/// 			ServerId:  server1.ID(),
+/// 			ServerId:  server1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			IpAddress: server1.Ipv4Address,
 /// 			DnsPtr:    pulumi.String("example.com"),
 /// 		})
@@ -177,7 +179,7 @@ import 'rdns_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewRdns(ctx, "primary_ip1", &hcloud.RdnsArgs{
-/// 			PrimaryIpId: primaryIp1.ID(),
+/// 			PrimaryIpId: primaryIp1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			IpAddress:   primaryIp1.IpAddress,
 /// 			DnsPtr:      pulumi.String("example.com"),
 /// 		})
@@ -193,7 +195,7 @@ import 'rdns_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewRdns(ctx, "floating_ip1", &hcloud.RdnsArgs{
-/// 			FloatingIpId: floatingIp1.ID(),
+/// 			FloatingIpId: floatingIp1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			IpAddress:    floatingIp1.IpAddress,
 /// 			DnsPtr:       pulumi.String("example.com"),
 /// 		})
@@ -208,7 +210,7 @@ import 'rdns_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewRdns(ctx, "load_balancer1", &hcloud.RdnsArgs{
-/// 			LoadBalancerId: loadBalancer1.ID(),
+/// 			LoadBalancerId: loadBalancer1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			IpAddress:      loadBalancer1.Ipv4,
 /// 			DnsPtr:         pulumi.String("example.com"),
 /// 		})
@@ -220,7 +222,7 @@ import 'rdns_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -230,40 +232,64 @@ import 'rdns_state.dart';
 ///
 /// // For Servers
 /// resource "hcloud_server" "server1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "server1"
 /// }
 /// resource "hcloud_rdns" "server1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   server_id  = hcloud_server.server1.id
 ///   ip_address = hcloud_server.server1.ipv4_address
 ///   dns_ptr    = "example.com"
 /// }
 /// // For Primary IPs
-/// resource "hcloud_primaryip" "primary_ip1" {
+/// resource "hcloud_primary_ip" "primary_ip1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "primary_ip1"
 ///   type = "ipv4"
 /// }
 /// resource "hcloud_rdns" "primary_ip1" {
-///   primary_ip_id = hcloud_primaryip.primary_ip1.id
-///   ip_address    = hcloud_primaryip.primary_ip1.ip_address
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   primary_ip_id = hcloud_primary_ip.primary_ip1.id
+///   ip_address    = hcloud_primary_ip.primary_ip1.ip_address
 ///   dns_ptr       = "example.com"
 /// }
 /// // For Floating IPs
-/// resource "hcloud_floatingip" "floating_ip1" {
+/// resource "hcloud_floating_ip" "floating_ip1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "floating_ip1"
 ///   type = "ipv4"
 /// }
 /// resource "hcloud_rdns" "floating_ip1" {
-///   floating_ip_id = hcloud_floatingip.floating_ip1.id
-///   ip_address     = hcloud_floatingip.floating_ip1.ip_address
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   floating_ip_id = hcloud_floating_ip.floating_ip1.id
+///   ip_address     = hcloud_floating_ip.floating_ip1.ip_address
 ///   dns_ptr        = "example.com"
 /// }
 /// // For Load Balancers
-/// resource "hcloud_loadbalancer" "load_balancer1" {
+/// resource "hcloud_load_balancer" "load_balancer1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "load_balancer1"
 /// }
 /// resource "hcloud_rdns" "load_balancer1" {
-///   load_balancer_id = hcloud_loadbalancer.load_balancer1.id
-///   ip_address       = hcloud_loadbalancer.load_balancer1.ipv4
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   load_balancer_id = hcloud_load_balancer.load_balancer1.id
+///   ip_address       = hcloud_load_balancer.load_balancer1.ipv4
 ///   dns_ptr          = "example.com"
 /// }
 /// ```
@@ -460,7 +486,7 @@ class Rdns extends pulumi.CustomResource {
           'hcloud:index/rdns:Rdns',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.43.1').merge(options),
         ) {
     dnsPtr = registerOutput<String>('dnsPtr');
     floatingIpId = registerOutput<int?>('floatingIpId');
@@ -475,11 +501,12 @@ class Rdns extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RdnsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Rdns._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -493,6 +520,23 @@ class Rdns extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dnsPtr = registerOutput<String>('dnsPtr');
+    floatingIpId = registerOutput<int?>('floatingIpId');
+    ipAddress = registerOutput<String>('ipAddress');
+    loadBalancerId = registerOutput<int?>('loadBalancerId');
+    primaryIpId = registerOutput<int?>('primaryIpId');
+    serverId = registerOutput<int?>('serverId');
+  }
+
+  /// Creates a typed reference to an existing [Rdns] resource.
+  Rdns.reference(String urn)
+    : super(
+        'hcloud:index/rdns:Rdns',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dnsPtr = registerOutput<String>('dnsPtr');
     floatingIpId = registerOutput<int?>('floatingIpId');
     ipAddress = registerOutput<String>('ipAddress');

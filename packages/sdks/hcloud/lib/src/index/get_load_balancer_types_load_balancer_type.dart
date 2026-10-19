@@ -67,12 +67,12 @@ class GetLoadBalancerTypesLoadBalancerType {
     return GetLoadBalancerTypesLoadBalancerType(
       deprecationAnnounced: pulumi.Input.fromValue(map['deprecationAnnounced'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
-      id: pulumi.Input.fromValue(map['id'] as int),
+      id: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['id'])),
       isDeprecated: pulumi.Input.fromValue(map['isDeprecated'] as bool),
-      maxAssignedCertificates: pulumi.Input.fromValue(map['maxAssignedCertificates'] as int),
-      maxConnections: pulumi.Input.fromValue(map['maxConnections'] as int),
-      maxServices: pulumi.Input.fromValue(map['maxServices'] as int),
-      maxTargets: pulumi.Input.fromValue(map['maxTargets'] as int),
+      maxAssignedCertificates: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxAssignedCertificates'])),
+      maxConnections: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConnections'])),
+      maxServices: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxServices'])),
+      maxTargets: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxTargets'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       unavailableAfter: pulumi.Input.fromValue(map['unavailableAfter'] as String),
     );

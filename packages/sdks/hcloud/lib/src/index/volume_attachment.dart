@@ -68,8 +68,8 @@ import 'volume_attachment_state.dart';
 ///
 ///     var main = new HCloud.VolumeAttachment("main", new()
 ///     {
-///         VolumeId = master.Id,
-///         ServerId = node1.Id,
+///         VolumeId = master.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+///         ServerId = node1.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         Automount = true,
 ///     });
 ///
@@ -79,6 +79,8 @@ import 'volume_attachment_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -102,8 +104,8 @@ import 'volume_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewVolumeAttachment(ctx, "main", &hcloud.VolumeAttachmentArgs{
-/// 			VolumeId:  master.ID(),
-/// 			ServerId:  node1.ID(),
+/// 			VolumeId:  master.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+/// 			ServerId:  node1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			Automount: pulumi.Bool(true),
 /// 		})
 /// 		if err != nil {
@@ -114,7 +116,7 @@ import 'volume_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -122,18 +124,27 @@ import 'volume_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "hcloud_volumeattachment" "main" {
+/// resource "hcloud_volume_attachment" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   volume_id = hcloud_volume.master.id
 ///   server_id = hcloud_server.node1.id
 ///   automount = true
 /// }
 /// resource "hcloud_server" "node1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "node1"
 ///   image       = "debian-12"
 ///   server_type = "cx23"
 ///   location    = "nbg1"
 /// }
 /// resource "hcloud_volume" "master" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   location = "nbg1"
 ///   size     = 10
 /// }
@@ -234,7 +245,7 @@ class VolumeAttachment extends pulumi.CustomResource {
           'hcloud:index/volumeAttachment:VolumeAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.43.1').merge(options),
         ) {
     automount = registerOutput<bool>('automount');
     serverId = registerOutput<int>('serverId');
@@ -246,11 +257,12 @@ class VolumeAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return VolumeAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -264,6 +276,20 @@ class VolumeAttachment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    automount = registerOutput<bool>('automount');
+    serverId = registerOutput<int>('serverId');
+    volumeId = registerOutput<int>('volumeId');
+  }
+
+  /// Creates a typed reference to an existing [VolumeAttachment] resource.
+  VolumeAttachment.reference(String urn)
+    : super(
+        'hcloud:index/volumeAttachment:VolumeAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     automount = registerOutput<bool>('automount');
     serverId = registerOutput<int>('serverId');
     volumeId = registerOutput<int>('volumeId');

@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class ZoneAuthoritativeNameservers {
   /// Authoritative Hetzner nameservers assigned to the Zone.
-  final pulumi.Input<List<String>>? assigneds;
+  final pulumi.Input<List<String>?>? assigneds;
 
   /// Creates a new [ZoneAuthoritativeNameservers].
   /// [assigneds] Authoritative Hetzner nameservers assigned to the Zone.

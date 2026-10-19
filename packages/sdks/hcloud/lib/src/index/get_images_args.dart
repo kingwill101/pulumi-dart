@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_images_get_images_args_doc}
 class GetImagesArgs {
   /// Include deprecated images.
-  final pulumi.Input<bool>? includeDeprecated;
+  final pulumi.Input<bool?>? includeDeprecated;
   /// Sort results by created date.
-  final pulumi.Input<bool>? mostRecent;
+  final pulumi.Input<bool?>? mostRecent;
   /// Filter results by architecture, for example `x86` or `arm`.
-  final pulumi.Input<List<String>>? withArchitectures;
+  final pulumi.Input<List<String>?>? withArchitectures;
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
-  final pulumi.Input<String>? withSelector;
+  final pulumi.Input<String?>? withSelector;
   /// Filter results by statuses, for example `creating` or `available`.
-  final pulumi.Input<List<String>>? withStatuses;
+  final pulumi.Input<List<String>?>? withStatuses;
 
   /// Creates a new [GetImagesArgs].
   /// [includeDeprecated] Include deprecated images.

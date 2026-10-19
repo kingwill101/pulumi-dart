@@ -69,7 +69,7 @@ import 'storage_box_subaccount_state.dart';
 ///
 ///     var teamBadger = new HCloud.StorageBoxSubaccount("team_badger", new()
 ///     {
-///         StorageBoxId = main.Id,
+///         StorageBoxId = main.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         Name = "badger",
 ///         HomeDirectory = "teams/badger/",
 ///         Password = teamBadgerPassword,
@@ -92,6 +92,8 @@ import 'storage_box_subaccount_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -106,7 +108,7 @@ import 'storage_box_subaccount_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewStorageBoxSubaccount(ctx, "team_badger", &hcloud.StorageBoxSubaccountArgs{
-/// 			StorageBoxId:  main.ID(),
+/// 			StorageBoxId:  main.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			Name:          pulumi.String("badger"),
 /// 			HomeDirectory: pulumi.String("teams/badger/"),
 /// 			Password:      pulumi.String(teamBadgerPassword),
@@ -128,7 +130,7 @@ import 'storage_box_subaccount_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -136,10 +138,16 @@ import 'storage_box_subaccount_state.dart';
 ///   }
 /// }
 ///
-/// resource "hcloud_storagebox" "main" {
+/// resource "hcloud_storage_box" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "hcloud_storageboxsubaccount" "team_badger" {
-///   storage_box_id = hcloud_storagebox.main.id
+/// resource "hcloud_storage_box_subaccount" "team_badger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   storage_box_id = hcloud_storage_box.main.id
 ///   name           = "badger"
 ///   home_directory = "teams/badger/"
 ///   password       = var.teamBadgerPassword
@@ -268,14 +276,15 @@ class StorageBoxSubaccount extends pulumi.CustomResource {
           'hcloud:index/storageBoxSubaccount:StorageBoxSubaccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.43.1').merge(options),
+          additionalSecretOutputs: const ['password'],
         ) {
     accessSettings = registerOutput<StorageBoxSubaccountAccessSettings>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageBoxSubaccountAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     homeDirectory = registerOutput<String>('homeDirectory');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     server = registerOutput<String>('server');
     storageBoxId = registerOutput<int>('storageBoxId');
     username = registerOutput<String>('username');
@@ -286,11 +295,12 @@ class StorageBoxSubaccount extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     StorageBoxSubaccountState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return StorageBoxSubaccount._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -307,9 +317,30 @@ class StorageBoxSubaccount extends pulumi.CustomResource {
     accessSettings = registerOutput<StorageBoxSubaccountAccessSettings>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageBoxSubaccountAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     homeDirectory = registerOutput<String>('homeDirectory');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
+    server = registerOutput<String>('server');
+    storageBoxId = registerOutput<int>('storageBoxId');
+    username = registerOutput<String>('username');
+  }
+
+  /// Creates a typed reference to an existing [StorageBoxSubaccount] resource.
+  StorageBoxSubaccount.reference(String urn)
+    : super(
+        'hcloud:index/storageBoxSubaccount:StorageBoxSubaccount',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password'],
+        isResourceReference: true,
+      ) {
+    accessSettings = registerOutput<StorageBoxSubaccountAccessSettings>('accessSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StorageBoxSubaccountAccessSettings.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    homeDirectory = registerOutput<String>('homeDirectory');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
     server = registerOutput<String>('server');
     storageBoxId = registerOutput<int>('storageBoxId');
     username = registerOutput<String>('username');

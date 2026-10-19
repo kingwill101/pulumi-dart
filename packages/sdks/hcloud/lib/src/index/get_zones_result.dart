@@ -6,34 +6,34 @@ import 'get_zones_zone.dart';
 /// Result data returned by getZones.
 class GetZonesResult {
   /// The ID of this resource.
-  final String id;
+  final String? id;
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   final String? withSelector;
-  final List<GetZonesZone> zones;
+  final List<GetZonesZone>? zones;
 
   /// Creates a new [GetZonesResult].
   /// [id] The ID of this resource.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  /// [zones] Required.
+  /// [zones] Optional.
   const GetZonesResult({
-    required this.id,
+    this.id,
     this.withSelector,
-    required this.zones,
+    this.zones,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': ?id,
       'withSelector': ?withSelector,
-      'zones': pulumi.Input.encodeList<GetZonesZone, Map<String, dynamic>>(zones, (value) => value.toMap()),
+      'zones': ?(() { final guardedValue = zones; if (guardedValue == null) return null; return pulumi.Input.encodeList<GetZonesZone, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
     };
   }
 
   factory GetZonesResult.fromMap(Map<String, dynamic> map) {
     return GetZonesResult(
-      id: map['id'] as String,
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      zones: pulumi.Input.decodeList<GetZonesZone>(map['zones']!, (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())),
+      zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZonesZone>(guardedValue, (value) => GetZonesZone.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }
 }
