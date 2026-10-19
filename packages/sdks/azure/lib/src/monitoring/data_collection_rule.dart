@@ -58,7 +58,7 @@ class DataCollectionRule extends pulumi.CustomResource {
           'azure:monitoring/dataCollectionRule:DataCollectionRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     dataCollectionEndpointId = registerOutput<String?>('dataCollectionEndpointId');
     dataFlows = registerOutput<List<DataCollectionRuleDataFlow>>('dataFlows', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataCollectionRuleDataFlow>(guardedValue, (value) => DataCollectionRuleDataFlow.fromMap((value as Map).cast<String, dynamic>())); });

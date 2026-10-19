@@ -137,7 +137,7 @@ import 'flexible_server_database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -145,23 +145,32 @@ import 'flexible_server_database_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_postgresql_flexibleserver" "example" {
+/// resource "azure_postgresql_flexible_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-psqlflexibleserver"
-///   resource_group_name    = azure_core_resourcegroup.example.name
-///   location               = azure_core_resourcegroup.example.location
+///   resource_group_name    = azure_core_resource_group.example.name
+///   location               = azure_core_resource_group.example.location
 ///   version                = "12"
 ///   administrator_login    = "psqladmin"
 ///   administrator_password = "H@Sh1CoR3!"
 ///   storage_mb             = 32768
 ///   sku_name               = "GP_Standard_D4s_v3"
 /// }
-/// resource "azure_postgresql_flexibleserverdatabase" "example" {
+/// resource "azure_postgresql_flexible_server_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "exampledb"
-///   server_id = azure_postgresql_flexibleserver.example.id
+///   server_id = azure_postgresql_flexible_server.example.id
 ///   collation = "en_US.utf8"
 ///   charset   = "UTF8"
 /// }
@@ -283,7 +292,7 @@ class FlexibleServerDatabase extends pulumi.CustomResource {
           'azure:postgresql/flexibleServerDatabase:FlexibleServerDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     charset = registerOutput<String?>('charset');
     collation = registerOutput<String?>('collation');

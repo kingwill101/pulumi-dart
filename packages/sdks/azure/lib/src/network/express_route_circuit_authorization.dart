@@ -157,7 +157,7 @@ import 'express_route_circuit_authorization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -165,14 +165,20 @@ import 'express_route_circuit_authorization_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "exprtTest"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_expressroutecircuit" "example" {
+/// resource "azure_network_express_route_circuit" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "expressRoute1"
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   location              = azure_core_resource_group.example.location
 ///   service_provider_name = "Equinix"
 ///   peering_location      = "Silicon Valley"
 ///   bandwidth_in_mbps     = 50
@@ -185,10 +191,13 @@ import 'express_route_circuit_authorization_state.dart';
 ///     "environment" = "Production"
 ///   }
 /// }
-/// resource "azure_network_expressroutecircuitauthorization" "example" {
+/// resource "azure_network_express_route_circuit_authorization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "exampleERCAuth"
-///   express_route_circuit_name = azure_network_expressroutecircuit.example.name
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   express_route_circuit_name = azure_network_express_route_circuit.example.name
+///   resource_group_name        = azure_core_resource_group.example.name
 /// }
 /// ```
 /// ```java
@@ -317,7 +326,7 @@ class ExpressRouteCircuitAuthorization extends pulumi.CustomResource {
           'azure:network/expressRouteCircuitAuthorization:ExpressRouteCircuitAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['authorizationKey'],
         ) {
     authorizationKey = registerOutput<String>('authorizationKey', isSecret: true);

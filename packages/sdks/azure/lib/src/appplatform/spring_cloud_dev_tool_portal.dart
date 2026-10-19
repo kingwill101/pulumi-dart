@@ -178,7 +178,7 @@ import 'spring_cloud_dev_tool_portal_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -186,27 +186,36 @@ import 'spring_cloud_dev_tool_portal_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appplatform_springcloudservice" "example" {
+/// resource "azure_appplatform_spring_cloud_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "E0"
 /// }
-/// resource "azure_appplatform_springclouddevtoolportal" "example" {
+/// resource "azure_appplatform_spring_cloud_dev_tool_portal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "default"
-///   spring_cloud_service_id       = azure_appplatform_springcloudservice.example.id
+///   spring_cloud_service_id       = azure_appplatform_spring_cloud_service.example.id
 ///   public_network_access_enabled = true
 ///   sso = {
 ///     client_id     = "example id"
 ///     client_secret = "example secret"
-///     metadata_url  ="https://login.microsoftonline.com/${data.azure_core_getclientconfig.current.tenant_id}/v2.0/.well-known/openid-configuration"
+///     metadata_url  ="https://login.microsoftonline.com/${data.azure_core_client_config.current.tenant_id}/v2.0/.well-known/openid-configuration"
 ///     scopes        = ["openid", "profile", "email"]
 ///   }
 ///   application_accelerator_enabled = true
@@ -347,7 +356,7 @@ class SpringCloudDevToolPortal extends pulumi.CustomResource {
           'azure:appplatform/springCloudDevToolPortal:SpringCloudDevToolPortal',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applicationAcceleratorEnabled = registerOutput<bool>('applicationAcceleratorEnabled');
     applicationLiveViewEnabled = registerOutput<bool>('applicationLiveViewEnabled');

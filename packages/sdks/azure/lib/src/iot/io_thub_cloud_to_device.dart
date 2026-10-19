@@ -33,7 +33,7 @@ class IoTHubCloudToDevice {
     return IoTHubCloudToDevice(
       defaultTtl: (() { final guardedValue = map['defaultTtl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       feedbacks: (() { final guardedValue = map['feedbacks']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<IoTHubCloudToDeviceFeedback>(guardedValue, (value) => IoTHubCloudToDeviceFeedback.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxDeliveryCount: (() { final guardedValue = map['maxDeliveryCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

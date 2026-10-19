@@ -190,7 +190,7 @@ import 'flexible_server_active_directory_administratory_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -198,37 +198,49 @@ import 'flexible_server_active_directory_administratory_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_mysql_flexibleserver" "example" {
+/// resource "azure_mysql_flexible_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-mysqlfs"
-///   resource_group_name    = azure_core_resourcegroup.example.name
-///   location               = azure_core_resourcegroup.example.location
+///   resource_group_name    = azure_core_resource_group.example.name
+///   location               = azure_core_resource_group.example.location
 ///   administrator_login    = "_admin_Terraform_892123456789312"
 ///   administrator_password = "QAZwsx123"
 ///   sku_name               = "B_Standard_B1ms"
 ///   zone                   = "2"
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleUAI"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_mysql_flexibleserveractivedirectoryadministratory" "example" {
-///   server_id   = azure_mysql_flexibleserver.example.id
-///   identity_id = azure_authorization_userassignedidentity.example.id
+/// resource "azure_mysql_flexible_server_active_directory_administratory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   server_id   = azure_mysql_flexible_server.example.id
+///   identity_id = azure_authorization_user_assigned_identity.example.id
 ///   login       = "sqladmin"
-///   object_id   = data.azure_core_getclientconfig.current.client_id
-///   tenant_id   = data.azure_core_getclientconfig.current.tenant_id
+///   object_id   = data.azure_core_client_config.current.client_id
+///   tenant_id   = data.azure_core_client_config.current.tenant_id
 /// }
 /// ```
 /// ```java
@@ -382,7 +394,7 @@ class FlexibleServerActiveDirectoryAdministratory extends pulumi.CustomResource 
           'azure:mysql/flexibleServerActiveDirectoryAdministratory:FlexibleServerActiveDirectoryAdministratory',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     identityId = registerOutput<String>('identityId');
     login = registerOutput<String>('login');

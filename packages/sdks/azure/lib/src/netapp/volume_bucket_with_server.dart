@@ -473,7 +473,7 @@ import 'volume_bucket_with_server_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -484,20 +484,29 @@ import 'volume_bucket_with_server_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-delegated"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 ///   delegations {
 ///     name = "netapp"
@@ -508,22 +517,31 @@ import 'volume_bucket_with_server_state.dart';
 ///   }
 /// }
 /// resource "azure_netapp_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-anfaccount"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_netapp_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-anfpool"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_netapp_account.example.name
 ///   service_level       = "Standard"
 ///   size_in_tb          = 4
 /// }
 /// resource "azure_netapp_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-anfvolume"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_netapp_account.example.name
 ///   pool_name           = azure_netapp_pool.example.name
 ///   volume_path         = "example-vol"
@@ -532,12 +550,18 @@ import 'volume_bucket_with_server_state.dart';
 ///   storage_quota_in_gb = 100
 ///   protocols           = ["NFSv3"]
 /// }
-/// resource "tls_privatekey" "bucket" {
+/// resource "tls_private_key" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   algorithm = "RSA"
 ///   rsa_bits  = 2048
 /// }
-/// resource "tls_selfsignedcert" "bucket" {
-///   private_key_pem = tls_privatekey.bucket.privateKeyPem
+/// resource "tls_self_signed_cert" "bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   private_key_pem = tls_private_key.bucket.privateKeyPem
 ///   subject = [{
 ///     "commonName" = "example-bucket.example.internal"
 ///   }]
@@ -545,7 +569,10 @@ import 'volume_bucket_with_server_state.dart';
 ///   validity_period_hours = 8760
 ///   allowed_uses          = ["key_encipherment", "digital_signature", "server_auth"]
 /// }
-/// resource "azure_netapp_volumebucketwithserver" "example" {
+/// resource "azure_netapp_volume_bucket_with_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "example-bucket"
 ///   volume_id = azure_netapp_volume.example.id
 ///   file_system_nfs_user = {
@@ -554,7 +581,7 @@ import 'volume_bucket_with_server_state.dart';
 ///   }
 ///   server = {
 ///     fqdn            = "example-bucket.example.internal"
-///     certificate_pem = base64encode("${tls_selfsignedcert.bucket.certPem}${tls_privatekey.bucket.privateKeyPem}")
+///     certificate_pem = base64encode("${tls_self_signed_cert.bucket.certPem}${tls_private_key.bucket.privateKeyPem}")
 ///   }
 /// }
 /// ```
@@ -663,7 +690,7 @@ import 'volume_bucket_with_server_state.dart';
 ///             .build());
 ///
 ///         var bucketSelfSignedCert = new SelfSignedCert("bucketSelfSignedCert", SelfSignedCertArgs.builder()
-///             .privateKeyPem(bucket.privateKeyPem())
+///             .privateKeyPem(bucket.get("privateKeyPem"))
 ///             .subject(Arrays.asList(Map.of("commonName", "example-bucket.example.internal")))
 ///             .dnsNames(Arrays.asList("example-bucket.example.internal"))
 ///             .validityPeriodHours(8760)
@@ -683,7 +710,7 @@ import 'volume_bucket_with_server_state.dart';
 ///             .server(VolumeBucketWithServerServerArgs.builder()
 ///                 .fqdn("example-bucket.example.internal")
 ///                 .certificatePem(StdFunctions.base64encode(Base64encodeArgs.builder()
-///                     .input(String.format("%s%s", bucketSelfSignedCert.certPem(),bucket.privateKeyPem()))
+///                     .input(String.format("%s%s", bucketSelfSignedCert.get("certPem"),bucket.get("privateKeyPem")))
 ///                     .build()).result())
 ///                 .build())
 ///             .build());
@@ -1681,7 +1708,7 @@ import 'volume_bucket_with_server_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1689,23 +1716,32 @@ import 'volume_bucket_with_server_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-delegated"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 ///   delegations {
 ///     name = "netapp"
@@ -1716,25 +1752,34 @@ import 'volume_bucket_with_server_state.dart';
 ///   }
 /// }
 /// resource "azure_netapp_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-anfaccount"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
 /// resource "azure_netapp_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-anfpool"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_netapp_account.example.name
 ///   service_level       = "Standard"
 ///   size_in_tb          = 4
 /// }
 /// resource "azure_netapp_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-anfvolume"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_netapp_account.example.name
 ///   pool_name           = azure_netapp_pool.example.name
 ///   volume_path         = "example-vol"
@@ -1743,48 +1788,66 @@ import 'volume_bucket_with_server_state.dart';
 ///   storage_quota_in_gb = 100
 ///   protocols           = ["NFSv3"]
 /// }
-/// resource "azure_keyvault_keyvault" "certificate" {
+/// resource "azure_keyvault_key_vault" "certificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-cert-kv"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 ///   soft_delete_retention_days = 7
 /// }
-/// resource "azure_keyvault_keyvault" "credentials" {
+/// resource "azure_keyvault_key_vault" "credentials" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-creds-kv"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 ///   soft_delete_retention_days = 7
 /// }
-/// resource "azure_keyvault_accesspolicy" "deployer_certificate" {
-///   key_vault_id            = azure_keyvault_keyvault.certificate.id
-///   tenant_id               = data.azure_core_getclientconfig.current.tenant_id
-///   object_id               = data.azure_core_getclientconfig.current.object_id
+/// resource "azure_keyvault_access_policy" "deployer_certificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id            = azure_keyvault_key_vault.certificate.id
+///   tenant_id               = data.azure_core_client_config.current.tenant_id
+///   object_id               = data.azure_core_client_config.current.object_id
 ///   certificate_permissions = ["Get", "List", "Create", "Import", "Update", "Delete", "Purge", "Recover"]
 ///   secret_permissions      = ["Get", "List", "Set", "Delete", "Purge", "Recover"]
 /// }
-/// resource "azure_keyvault_accesspolicy" "anf_certificate" {
-///   key_vault_id            = azure_keyvault_keyvault.certificate.id
-///   tenant_id               = data.azure_core_getclientconfig.current.tenant_id
+/// resource "azure_keyvault_access_policy" "anf_certificate" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id            = azure_keyvault_key_vault.certificate.id
+///   tenant_id               = data.azure_core_client_config.current.tenant_id
 ///   object_id               = azure_netapp_account.example.identity.principal_id
 ///   certificate_permissions = ["Get", "List", "Update", "Create", "Import", "ManageContacts", "GetIssuers", "ListIssuers", "SetIssuers", "DeleteIssuers"]
 ///   secret_permissions      = ["Get", "List", "Set", "Delete"]
 /// }
-/// resource "azure_keyvault_accesspolicy" "anf_credentials" {
-///   key_vault_id       = azure_keyvault_keyvault.credentials.id
-///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+/// resource "azure_keyvault_access_policy" "anf_credentials" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id       = azure_keyvault_key_vault.credentials.id
+///   tenant_id          = data.azure_core_client_config.current.tenant_id
 ///   object_id          = azure_netapp_account.example.identity.principal_id
 ///   secret_permissions = ["Get", "List", "Set", "Delete"]
 /// }
 /// resource "azure_keyvault_certificate" "bucket" {
-///   depends_on   = [azure_keyvault_accesspolicy.deployer_certificate]
+///   depends_on = [azure_keyvault_access_policy.deployer_certificate]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-bucket-cert"
-///   key_vault_id = azure_keyvault_keyvault.certificate.id
+///   key_vault_id = azure_keyvault_key_vault.certificate.id
 ///   certificate_policy = {
 ///     issuer_parameters = {
 ///       name = "Self"
@@ -1809,10 +1872,13 @@ import 'volume_bucket_with_server_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_netapp_volumebucketwithserver" "example" {
-///   depends_on = [azure_keyvault_accesspolicy.anf_certificate, azure_keyvault_accesspolicy.anf_credentials]
-///   name       = "example-bucket"
-///   volume_id  = azure_netapp_volume.example.id
+/// resource "azure_netapp_volume_bucket_with_server" "example" {
+///   depends_on = [azure_keyvault_access_policy.anf_certificate, azure_keyvault_access_policy.anf_credentials]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name      = "example-bucket"
+///   volume_id = azure_netapp_volume.example.id
 ///   file_system_nfs_user = {
 ///     group_id = 1000
 ///     user_id  = 1000
@@ -1821,9 +1887,9 @@ import 'volume_bucket_with_server_state.dart';
 ///     fqdn = "example-bucket.example.internal"
 ///   }
 ///   key_vault = {
-///     certificate_key_vault_uri = azure_keyvault_keyvault.certificate.vault_uri
+///     certificate_key_vault_uri = azure_keyvault_key_vault.certificate.vault_uri
 ///     certificate_name          = azure_keyvault_certificate.bucket.name
-///     credentials_key_vault_uri = azure_keyvault_keyvault.credentials.vault_uri
+///     credentials_key_vault_uri = azure_keyvault_key_vault.credentials.vault_uri
 ///     credentials_secret_name   = "example-bucket-creds"
 ///   }
 /// }
@@ -2327,7 +2393,7 @@ class VolumeBucketWithServer extends pulumi.CustomResource {
           'azure:netapp/volumeBucketWithServer:VolumeBucketWithServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     fileSystemCifsUsername = registerOutput<String?>('fileSystemCifsUsername');
     fileSystemNfsUser = registerOutput<VolumeBucketWithServerFileSystemNfsUser?>('fileSystemNfsUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeBucketWithServerFileSystemNfsUser.fromMap((guardedValue as Map).cast<String, dynamic>()); });

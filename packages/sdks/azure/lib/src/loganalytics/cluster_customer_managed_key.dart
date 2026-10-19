@@ -333,7 +333,7 @@ import 'cluster_customer_managed_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -341,31 +341,40 @@ import 'cluster_customer_managed_key_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_loganalytics_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cluster"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "keyvaultkeyexample"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "premium"
 ///   access_policies {
-///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
-///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     tenant_id          = data.azure_core_client_config.current.tenant_id
+///     object_id          = data.azure_core_client_config.current.object_id
 ///     key_permissions    = ["Create", "Get", "GetRotationPolicy"]
 ///     secret_permissions = ["Set"]
 ///   }
@@ -379,13 +388,19 @@ import 'cluster_customer_managed_key_state.dart';
 ///   }
 /// }
 /// resource "azure_keyvault_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "generated-certificate"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 /// }
-/// resource "azure_loganalytics_clustercustomermanagedkey" "example" {
+/// resource "azure_loganalytics_cluster_customer_managed_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   log_analytics_cluster_id = azure_loganalytics_cluster.example.id
 ///   key_vault_key_id         = azure_keyvault_key.example.id
 /// }
@@ -592,7 +607,7 @@ class ClusterCustomerManagedKey extends pulumi.CustomResource {
           'azure:loganalytics/clusterCustomerManagedKey:ClusterCustomerManagedKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     logAnalyticsClusterId = registerOutput<String>('logAnalyticsClusterId');

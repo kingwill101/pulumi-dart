@@ -221,7 +221,7 @@ import 'shared_private_link_resource_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -229,41 +229,53 @@ import 'shared_private_link_resource_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "terraform-webpubsub"
 ///   location = "east us"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplekeyvault"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 ///   soft_delete_retention_days = 7
 ///   access_policies {
-///     tenant_id               = data.azure_core_getclientconfig.current.tenant_id
-///     object_id               = data.azure_core_getclientconfig.current.object_id
+///     tenant_id               = data.azure_core_client_config.current.tenant_id
+///     object_id               = data.azure_core_client_config.current.object_id
 ///     certificate_permissions = ["managecontacts"]
 ///     key_permissions         = ["create"]
 ///     secret_permissions      = ["set"]
 ///   }
 /// }
 /// resource "azure_webpubsub_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-webpubsub"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard_S1"
 ///   capacity            = 1
 /// }
-/// resource "azure_webpubsub_sharedprivatelinkresource" "example" {
+/// resource "azure_webpubsub_shared_private_link_resource" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "tfex-webpubsub-splr"
 ///   web_pubsub_id      = azure_webpubsub_service.example.id
 ///   subresource_name   = "vault"
-///   target_resource_id = azure_keyvault_keyvault.example.id
+///   target_resource_id = azure_keyvault_key_vault.example.id
 /// }
 /// ```
 /// ```java
@@ -433,7 +445,7 @@ class SharedPrivateLinkResource extends pulumi.CustomResource {
           'azure:webpubsub/sharedPrivateLinkResource:SharedPrivateLinkResource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     requestMessage = registerOutput<String?>('requestMessage');

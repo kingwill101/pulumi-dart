@@ -35,10 +35,10 @@ class GetExadataInfrastructureEstimatedPatchingTime {
 
   factory GetExadataInfrastructureEstimatedPatchingTime.fromMap(Map<String, dynamic> map) {
     return GetExadataInfrastructureEstimatedPatchingTime(
-      estimatedDbServerPatchingTime: pulumi.Input.fromValue((map['estimatedDbServerPatchingTime'] as num).toInt()),
-      estimatedNetworkSwitchesPatchingTime: pulumi.Input.fromValue((map['estimatedNetworkSwitchesPatchingTime'] as num).toInt()),
-      estimatedStorageServerPatchingTime: pulumi.Input.fromValue((map['estimatedStorageServerPatchingTime'] as num).toInt()),
-      totalEstimatedPatchingTime: pulumi.Input.fromValue((map['totalEstimatedPatchingTime'] as num).toInt()),
+      estimatedDbServerPatchingTime: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['estimatedDbServerPatchingTime'])),
+      estimatedNetworkSwitchesPatchingTime: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['estimatedNetworkSwitchesPatchingTime'])),
+      estimatedStorageServerPatchingTime: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['estimatedStorageServerPatchingTime'])),
+      totalEstimatedPatchingTime: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalEstimatedPatchingTime'])),
     );
   }
 }

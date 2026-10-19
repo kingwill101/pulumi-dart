@@ -212,7 +212,7 @@ import 'token_password_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -220,32 +220,47 @@ import 'token_password_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resource-group"
 ///   location = "West Europe"
 /// }
 /// resource "azure_containerservice_registry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-registry"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   sku                      = "Basic"
 ///   admin_enabled            = false
 ///   georeplication_locations = ["East US", "West Europe"]
 /// }
-/// resource "azure_containerservice_registryscopemap" "example" {
+/// resource "azure_containerservice_registry_scope_map" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-scope-map"
 ///   container_registry_name = azure_containerservice_registry.example.name
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   actions                 = ["repositories/repo1/content/read", "repositories/repo1/content/write"]
 /// }
-/// resource "azure_containerservice_registrytoken" "example" {
+/// resource "azure_containerservice_registry_token" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "exampletoken"
 ///   container_registry_name = azure_containerservice_registry.example.name
-///   resource_group_name     = azure_core_resourcegroup.example.name
-///   scope_map_id            = azure_containerservice_registryscopemap.example.id
+///   resource_group_name     = azure_core_resource_group.example.name
+///   scope_map_id            = azure_containerservice_registry_scope_map.example.id
 /// }
-/// resource "azure_containerservice_tokenpassword" "example" {
-///   container_registry_token_id = azure_containerservice_registrytoken.example.id
+/// resource "azure_containerservice_token_password" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   container_registry_token_id = azure_containerservice_registry_token.example.id
 ///   password1 = {
 ///     expiry = "2023-03-22T17:57:36+08:00"
 ///   }
@@ -404,7 +419,7 @@ class TokenPassword extends pulumi.CustomResource {
           'azure:containerservice/tokenPassword:TokenPassword',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     containerRegistryTokenId = registerOutput<String>('containerRegistryTokenId');
     password1 = registerOutput<TokenPasswordPassword1>('password1', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TokenPasswordPassword1.fromMap((guardedValue as Map).cast<String, dynamic>()); });

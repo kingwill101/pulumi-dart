@@ -167,7 +167,7 @@ import 'registry_task_schedule_run_now_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -175,17 +175,26 @@ import 'registry_task_schedule_run_now_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_containerservice_registry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-acr"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "Basic"
 /// }
-/// resource "azure_containerservice_registrytask" "example" {
+/// resource "azure_containerservice_registry_task" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-task"
 ///   container_registry_id = azure_containerservice_registry.example.id
 ///   platform = {
@@ -198,8 +207,11 @@ import 'registry_task_schedule_run_now_state.dart';
 ///     image_names          = ["helloworld:{{.Run.ID}}"]
 ///   }
 /// }
-/// resource "azure_containerservice_registrytaskschedulerunnow" "example" {
-///   container_registry_task_id = azure_containerservice_registrytask.example.id
+/// resource "azure_containerservice_registry_task_schedule_run_now" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   container_registry_task_id = azure_containerservice_registry_task.example.id
 /// }
 /// ```
 /// ```java
@@ -323,7 +335,7 @@ class RegistryTaskScheduleRunNow extends pulumi.CustomResource {
           'azure:containerservice/registryTaskScheduleRunNow:RegistryTaskScheduleRunNow',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     containerRegistryTaskId = registerOutput<String>('containerRegistryTaskId');
   }

@@ -387,7 +387,7 @@ import 'account_encryption_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -395,22 +395,31 @@ import 'account_encryption_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "anf-user-assigned-identity"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "anfcmkakv"
-///   location                        = azure_core_resourcegroup.example.location
-///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resource_group.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled      = false
 ///   enabled_for_disk_encryption     = true
 ///   enabled_for_deployment          = true
@@ -420,36 +429,45 @@ import 'account_encryption_state.dart';
 ///   sku_name                        = "standard"
 ///   access_policies {
 ///     tenant_id       = "00000000-0000-0000-0000-000000000000"
-///     object_id       = data.azure_core_getclientconfig.current.object_id
+///     object_id       = data.azure_core_client_config.current.object_id
 ///     key_permissions = ["Get", "Create", "Delete", "WrapKey", "UnwrapKey", "GetRotationPolicy", "SetRotationPolicy"]
 ///   }
 ///   access_policies {
 ///     tenant_id       = "00000000-0000-0000-0000-000000000000"
-///     object_id       = azure_authorization_userassignedidentity.example.principal_id
+///     object_id       = azure_authorization_user_assigned_identity.example.principal_id
 ///     key_permissions = ["Get", "Encrypt", "Decrypt"]
 ///   }
 /// }
 /// resource "azure_keyvault_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "anfencryptionkey"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 /// }
 /// resource "azure_netapp_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "netappaccount"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 /// }
-/// resource "azure_netapp_accountencryption" "example" {
+/// resource "azure_netapp_account_encryption" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   netapp_account_id         = azure_netapp_account.example.id
-///   user_assigned_identity_id = azure_authorization_userassignedidentity.example.id
+///   user_assigned_identity_id = azure_authorization_user_assigned_identity.example.id
 ///   encryption_key            = azure_keyvault_key.example.versionless_id
-///   federated_client_id       = azure_authorization_userassignedidentity.example.client_id
+///   federated_client_id       = azure_authorization_user_assigned_identity.example.client_id
 /// }
 /// ```
 /// ```java
@@ -726,7 +744,7 @@ import 'account_encryption_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -734,7 +752,10 @@ import 'account_encryption_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_netapp_accountencryption" "cross_tenant" {
+/// resource "azure_netapp_account_encryption" "cross_tenant" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   netapp_account_id                  = example.id
 ///   user_assigned_identity_id          = exampleAzurermUserAssignedIdentity.id
 ///   encryption_key                     = "https://keyvault-in-other-tenant.vault.azure.net/keys/encryption-key"
@@ -764,8 +785,8 @@ import 'account_encryption_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var crossTenant = new AccountEncryption("crossTenant", AccountEncryptionArgs.builder()
-///             .netappAccountId(example.id())
-///             .userAssignedIdentityId(exampleAzurermUserAssignedIdentity.id())
+///             .netappAccountId(example.get("id"))
+///             .userAssignedIdentityId(exampleAzurermUserAssignedIdentity.get("id"))
 ///             .encryptionKey("https://keyvault-in-other-tenant.vault.azure.net/keys/encryption-key")
 ///             .federatedClientId("12345678-1234-1234-1234-123456789012")
 ///             .crossTenantKeyVaultResourceId("/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/remote-rg/providers/Microsoft.KeyVault/vaults/keyvault-in-other-tenant")
@@ -828,7 +849,7 @@ class AccountEncryption extends pulumi.CustomResource {
           'azure:netapp/accountEncryption:AccountEncryption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     crossTenantKeyVaultResourceId = registerOutput<String?>('crossTenantKeyVaultResourceId');
     encryptionKey = registerOutput<String>('encryptionKey');

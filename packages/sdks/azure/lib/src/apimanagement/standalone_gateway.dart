@@ -233,7 +233,7 @@ import 'standalone_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -241,20 +241,29 @@ import 'standalone_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.1.0/24"]
 ///   delegations {
 ///     name = "apim-delegation"
@@ -264,10 +273,13 @@ import 'standalone_gateway_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_apimanagement_standalonegateway" "example" {
+/// resource "azure_apimanagement_standalone_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-gateway-flexible"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   location             = azure_core_resourcegroup.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
+///   location             = azure_core_resource_group.example.location
 ///   virtual_network_type = "External"
 ///   backend_subnet_id    = azure_network_subnet.example.id
 ///   sku = {
@@ -441,7 +453,7 @@ class StandaloneGateway extends pulumi.CustomResource {
           'azure:apimanagement/standaloneGateway:StandaloneGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backendSubnetId = registerOutput<String?>('backendSubnetId');
     location = registerOutput<String>('location');

@@ -399,7 +399,7 @@ import 'customer_managed_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -407,53 +407,74 @@ import 'customer_managed_key_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-key-vault"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 ///   purge_protection_enabled   = true
 /// }
 /// resource "azure_keyvault_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "examplekey"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["unwrapKey", "wrapKey"]
 /// }
-/// resource "azure_keyvault_accesspolicy" "current_client_policy" {
-///   key_vault_id       = azure_keyvault_keyvault.example.id
-///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
-///   object_id          = data.azure_core_getclientconfig.current.object_id
+/// resource "azure_keyvault_access_policy" "current_client_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id       = azure_keyvault_key_vault.example.id
+///   tenant_id          = data.azure_core_client_config.current.tenant_id
+///   object_id          = data.azure_core_client_config.current.object_id
 ///   key_permissions    = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "GetRotationPolicy"]
 ///   secret_permissions = ["Delete", "Get", "Set"]
 /// }
 /// resource "azure_datafactory_factory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example_data_factory"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   identity = {
 ///     type         = "SystemAssigned"
 ///     identity_ids = [exampleAzurermUserAssignedIdentity.id]
 ///   }
 /// }
-/// resource "azure_keyvault_accesspolicy" "datafactory" {
-///   key_vault_id       = azure_keyvault_keyvault.example.id
+/// resource "azure_keyvault_access_policy" "datafactory" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id       = azure_keyvault_key_vault.example.id
 ///   tenant_id          = azure_datafactory_factory.example.identity.tenant_id
 ///   object_id          = azure_datafactory_factory.example.identity.principal_id
 ///   key_permissions    = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "GetRotationPolicy", "WrapKey", "UnwrapKey"]
 ///   secret_permissions = ["Delete", "Get", "Set"]
 /// }
-/// resource "azure_datafactory_customermanagedkey" "example" {
+/// resource "azure_datafactory_customer_managed_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   data_factory_id         = azure_datafactory_factory.example.id
 ///   customer_managed_key_id = azure_keyvault_key.example.id
 /// }
@@ -542,7 +563,7 @@ import 'customer_managed_key_state.dart';
 ///             .resourceGroupName(example.name())
 ///             .identity(FactoryIdentityArgs.builder()
 ///                 .type("SystemAssigned")
-///                 .identityIds(exampleAzurermUserAssignedIdentity.id())
+///                 .identityIds(exampleAzurermUserAssignedIdentity.get("id"))
 ///                 .build())
 ///             .build());
 ///
@@ -701,7 +722,7 @@ class CustomerManagedKey extends pulumi.CustomResource {
           'azure:datafactory/customerManagedKey:CustomerManagedKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     customerManagedKeyId = registerOutput<String>('customerManagedKeyId');
     dataFactoryId = registerOutput<String>('dataFactoryId');

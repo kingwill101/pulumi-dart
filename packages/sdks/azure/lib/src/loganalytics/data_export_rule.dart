@@ -170,7 +170,7 @@ import 'data_export_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -178,28 +178,40 @@ import 'data_export_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleworkspace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 ///   retention_in_days   = 30
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestoracc"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_loganalytics_dataexportrule" "example" {
+/// resource "azure_loganalytics_data_export_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "dataExport1"
-///   resource_group_name     = azure_core_resourcegroup.example.name
-///   workspace_resource_id   = azure_operationalinsights_analyticsworkspace.example.id
+///   resource_group_name     = azure_core_resource_group.example.name
+///   workspace_resource_id   = azure_operationalinsights_analytics_workspace.example.id
 ///   destination_resource_id = azure_storage_account.example.id
 ///   table_names             = ["Heartbeat"]
 ///   enabled                 = true
@@ -346,7 +358,7 @@ class DataExportRule extends pulumi.CustomResource {
           'azure:loganalytics/dataExportRule:DataExportRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     destinationResourceId = registerOutput<String>('destinationResourceId');
     enabled = registerOutput<bool?>('enabled');

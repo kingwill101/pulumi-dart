@@ -192,7 +192,7 @@ import 'database_principal_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -200,37 +200,49 @@ import 'database_principal_assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "KustoRG"
 ///   location = "West Europe"
 /// }
 /// resource "azure_kusto_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "kustocluster"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     name     = "Standard_D13_v2"
 ///     capacity = 2
 ///   }
 /// }
 /// resource "azure_kusto_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "KustoDatabase"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   cluster_name        = azure_kusto_cluster.example.name
 ///   hot_cache_period    = "P7D"
 ///   soft_delete_period  = "P31D"
 /// }
-/// resource "azure_kusto_databaseprincipalassignment" "example" {
+/// resource "azure_kusto_database_principal_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "KustoPrincipalAssignment"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   cluster_name        = azure_kusto_cluster.example.name
 ///   database_name       = azure_kusto_database.example.name
-///   tenant_id           = data.azure_core_getclientconfig.current.tenant_id
-///   principal_id        = data.azure_core_getclientconfig.current.client_id
+///   tenant_id           = data.azure_core_client_config.current.tenant_id
+///   principal_id        = data.azure_core_client_config.current.client_id
 ///   principal_type      = "App"
 ///   role                = "Viewer"
 /// }
@@ -399,7 +411,7 @@ class DatabasePrincipalAssignment extends pulumi.CustomResource {
           'azure:kusto/databasePrincipalAssignment:DatabasePrincipalAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     clusterName = registerOutput<String>('clusterName');
     databaseName = registerOutput<String>('databaseName');

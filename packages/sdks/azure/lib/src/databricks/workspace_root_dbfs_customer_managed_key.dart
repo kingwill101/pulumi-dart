@@ -408,7 +408,7 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -416,53 +416,74 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplekeyvault"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "premium"
 ///   purge_protection_enabled   = true
 ///   soft_delete_retention_days = 7
 /// }
 /// resource "azure_keyvault_key" "example" {
-///   depends_on   = [azure_keyvault_accesspolicy.terraform]
+///   depends_on = [azure_keyvault_access_policy.terraform]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-certificate"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 /// }
-/// resource "azure_keyvault_accesspolicy" "terraform" {
-///   key_vault_id    = azure_keyvault_keyvault.example.id
-///   tenant_id       = azure_keyvault_keyvault.example.tenant_id
-///   object_id       = data.azure_core_getclientconfig.current.object_id
+/// resource "azure_keyvault_access_policy" "terraform" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id    = azure_keyvault_key_vault.example.id
+///   tenant_id       = azure_keyvault_key_vault.example.tenant_id
+///   object_id       = data.azure_core_client_config.current.object_id
 ///   key_permissions = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "List", "Decrypt", "Sign", "GetRotationPolicy"]
 /// }
-/// resource "azure_keyvault_accesspolicy" "databricks" {
-///   depends_on      = [azure_databricks_workspace.example]
-///   key_vault_id    = azure_keyvault_keyvault.example.id
+/// resource "azure_keyvault_access_policy" "databricks" {
+///   depends_on = [azure_databricks_workspace.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id    = azure_keyvault_key_vault.example.id
 ///   tenant_id       = azure_databricks_workspace.example.storage_account_identities[0].tenant_id
 ///   object_id       = azure_databricks_workspace.example.storage_account_identities[0].principal_id
 ///   key_permissions = ["Create", "Delete", "Get", "Purge", "Recover", "Update", "List", "Decrypt", "Sign"]
 /// }
 /// resource "azure_databricks_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-workspace"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   sku                          = "premium"
 ///   customer_managed_key_enabled = true
 /// }
-/// resource "azure_databricks_workspacerootdbfscustomermanagedkey" "example" {
-///   depends_on       = [azure_keyvault_accesspolicy.databricks]
+/// resource "azure_databricks_workspace_root_dbfs_customer_managed_key" "example" {
+///   depends_on = [azure_keyvault_access_policy.databricks]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   workspace_id     = azure_databricks_workspace.example.id
 ///   key_vault_key_id = azure_keyvault_key.example.id
 /// }
@@ -561,8 +582,8 @@ import 'workspace_root_dbfs_customer_managed_key_state.dart';
 ///
 ///         var databricks = new AccessPolicy("databricks", AccessPolicyArgs.builder()
 ///             .keyVaultId(exampleKeyVault.id())
-///             .tenantId(exampleWorkspace.storageAccountIdentities().applyValue(_storageAccountIdentities -> _storageAccountIdentities[0].tenantId()))
-///             .objectId(exampleWorkspace.storageAccountIdentities().applyValue(_storageAccountIdentities -> _storageAccountIdentities[0].principalId()))
+///             .tenantId(exampleWorkspace.storageAccountIdentities().applyValue(_storageAccountIdentities -> _storageAccountIdentities.get(0).tenantId()))
+///             .objectId(exampleWorkspace.storageAccountIdentities().applyValue(_storageAccountIdentities -> _storageAccountIdentities.get(0).principalId()))
 ///             .keyPermissions(
 ///                 "Create",
 ///                 "Delete",
@@ -730,7 +751,7 @@ class WorkspaceRootDbfsCustomerManagedKey extends pulumi.CustomResource {
           'azure:databricks/workspaceRootDbfsCustomerManagedKey:WorkspaceRootDbfsCustomerManagedKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     keyVaultId = registerOutput<String?>('keyVaultId');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');

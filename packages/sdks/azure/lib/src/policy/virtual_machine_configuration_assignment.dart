@@ -455,7 +455,7 @@ import 'virtual_machine_configuration_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -463,40 +463,55 @@ import 'virtual_machine_configuration_assignment_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-gca"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "internal"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_network_networkinterface" "example" {
+/// resource "azure_network_network_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nic"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   ip_configurations {
 ///     name                          = "internal"
 ///     subnet_id                     = azure_network_subnet.example.id
 ///     private_ip_address_allocation = "Dynamic"
 ///   }
 /// }
-/// resource "azure_compute_windowsvirtualmachine" "example" {
+/// resource "azure_compute_windows_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "examplevm"
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   location              = azure_core_resource_group.example.location
 ///   size                  = "Standard_D4_v5"
 ///   admin_username        = "adminuser"
 ///   admin_password        = "P@$$w0rd1234!"
-///   network_interface_ids = [azure_network_networkinterface.example.id]
+///   network_interface_ids = [azure_network_network_interface.example.id]
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
@@ -512,35 +527,41 @@ import 'virtual_machine_configuration_assignment_state.dart';
 ///   }
 /// }
 /// resource "azure_compute_extension" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "AzurePolicyforWindows"
-///   virtual_machine_id         = azure_compute_windowsvirtualmachine.example.id
+///   virtual_machine_id         = azure_compute_windows_virtual_machine.example.id
 ///   publisher                  = "Microsoft.GuestConfiguration"
 ///   type                       = "ConfigurationforWindows"
 ///   type_handler_version       = "1.29"
 ///   auto_upgrade_minor_version = "true"
 /// }
-/// resource "azure_policy_virtualmachineconfigurationassignment" "example" {
+/// resource "azure_policy_virtual_machine_configuration_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "AzureWindowsBaseline"
-///   location           = azure_compute_windowsvirtualmachine.example.location
-///   virtual_machine_id = azure_compute_windowsvirtualmachine.example.id
+///   location           = azure_compute_windows_virtual_machine.example.location
+///   virtual_machine_id = azure_compute_windows_virtual_machine.example.id
 ///   configuration = {
 ///     assignment_type = "ApplyAndMonitor"
 ///     version         = "1.*"
 ///     parameters = [{
-///       "name"  = "Minimum Password Length;ExpectedValue"
-///       "value" = "16"
+///       name  = "Minimum Password Length;ExpectedValue"
+///       value = "16"
 ///       }, {
-///       "name"  = "Minimum Password Age;ExpectedValue"
-///       "value" = "0"
+///       name  = "Minimum Password Age;ExpectedValue"
+///       value = "0"
 ///       }, {
-///       "name"  = "Maximum Password Age;ExpectedValue"
-///       "value" = "30,45"
+///       name  = "Maximum Password Age;ExpectedValue"
+///       value = "30,45"
 ///       }, {
-///       "name"  = "Enforce Password History;ExpectedValue"
-///       "value" = "10"
+///       name  = "Enforce Password History;ExpectedValue"
+///       value = "10"
 ///       }, {
-///       "name"  = "Password Must Meet Complexity Requirements;ExpectedValue"
-///       "value" = "1"
+///       name  = "Password Must Meet Complexity Requirements;ExpectedValue"
+///       value = "1"
 ///     }]
 ///   }
 /// }
@@ -808,7 +829,7 @@ class VirtualMachineConfigurationAssignment extends pulumi.CustomResource {
           'azure:policy/virtualMachineConfigurationAssignment:VirtualMachineConfigurationAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     configuration = registerOutput<VirtualMachineConfigurationAssignmentConfiguration>('configuration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VirtualMachineConfigurationAssignmentConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');

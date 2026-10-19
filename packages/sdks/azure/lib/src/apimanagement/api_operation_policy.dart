@@ -219,7 +219,7 @@ import 'api_operation_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -227,39 +227,61 @@ import 'api_operation_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "My Company"
 ///   publisher_email     = "company@terraform.io"
 ///   sku_name            = "Developer_1"
 /// }
 /// resource "azure_apimanagement_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-api"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   api_management_name = azure_apimanagement_service.example.name
 ///   revision            = "1"
 /// }
-/// resource "azure_apimanagement_apioperation" "example" {
+/// resource "azure_apimanagement_api_operation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   operation_id        = "acctest-operation"
 ///   api_name            = azure_apimanagement_api.example.name
 ///   api_management_name = azure_apimanagement_service.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   display_name        = "DELETE Resource"
 ///   method              = "DELETE"
 ///   url_template        = "/resource"
 /// }
-/// resource "azure_apimanagement_apioperationpolicy" "example" {
-///   api_name            = azure_apimanagement_apioperation.example.api_name
-///   api_management_name = azure_apimanagement_apioperation.example.api_management_name
-///   resource_group_name = azure_apimanagement_apioperation.example.resource_group_name
-///   operation_id        = azure_apimanagement_apioperation.example.operation_id
-///   xml_content         = "<policies>\n  <inbound>\n    <find-and-replace from=\\\"xyz\\\" to=\\\"abc\\\" />\n  </inbound>\n</policies>\n"
+/// resource "azure_apimanagement_api_operation_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   api_name            = azure_apimanagement_api_operation.example.api_name
+///   api_management_name = azure_apimanagement_api_operation.example.api_management_name
+///   resource_group_name = azure_apimanagement_api_operation.example.resource_group_name
+///   operation_id        = azure_apimanagement_api_operation.example.operation_id
+///   xml_content         = <<XML
+/// <policies>
+///   <inbound>
+///     <find-and-replace from=\"xyz\" to=\"abc\" />
+///   </inbound>
+/// </policies>
+/// XML
+///
 /// }
 /// ```
 /// ```java
@@ -432,7 +454,7 @@ class ApiOperationPolicy extends pulumi.CustomResource {
           'azure:apimanagement/apiOperationPolicy:ApiOperationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');

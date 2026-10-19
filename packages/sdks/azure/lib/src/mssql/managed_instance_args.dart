@@ -190,12 +190,12 @@ class ManagedInstanceArgs {
       servicePrincipalType: (() { final guardedValue = map['servicePrincipalType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       skuName: pulumi.Input.fromValue(map['skuName'] as String),
       storageAccountType: (() { final guardedValue = map['storageAccountType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      storageIops: (() { final guardedValue = map['storageIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      storageSizeInGb: pulumi.Input.fromValue((map['storageSizeInGb'] as num).toInt()),
+      storageIops: (() { final guardedValue = map['storageIops']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      storageSizeInGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['storageSizeInGb'])),
       subnetId: pulumi.Input.fromValue(map['subnetId'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       timezoneId: (() { final guardedValue = map['timezoneId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      vcores: pulumi.Input.fromValue((map['vcores'] as num).toInt()),
+      vcores: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vcores'])),
       zoneRedundantEnabled: (() { final guardedValue = map['zoneRedundantEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

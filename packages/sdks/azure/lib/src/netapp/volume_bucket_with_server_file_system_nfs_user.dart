@@ -25,8 +25,8 @@ class VolumeBucketWithServerFileSystemNfsUser {
 
   factory VolumeBucketWithServerFileSystemNfsUser.fromMap(Map<String, dynamic> map) {
     return VolumeBucketWithServerFileSystemNfsUser(
-      groupId: pulumi.Input.fromValue((map['groupId'] as num).toInt()),
-      userId: pulumi.Input.fromValue((map['userId'] as num).toInt()),
+      groupId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['groupId'])),
+      userId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['userId'])),
     );
   }
 }

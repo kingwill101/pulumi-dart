@@ -142,7 +142,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -153,19 +153,28 @@ import 'certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_automation_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "account1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Basic"
 /// }
 /// resource "azure_automation_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "certificate1"
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   automation_account_name = azure_automation_account.example.name
 ///   description             = "This is an example certificate"
 ///   base64                  = filebase64("certificate.pfx")
@@ -300,7 +309,7 @@ class Certificate extends pulumi.CustomResource {
           'azure:automation/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['base64'],
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');

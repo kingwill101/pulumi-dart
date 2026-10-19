@@ -66,7 +66,7 @@ class GetFrontdoorOriginGroupResult {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       profileName: (() { final guardedValue = map['profileName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      restoreTrafficTimeToHealedOrNewEndpointInMinutes: (() { final guardedValue = map['restoreTrafficTimeToHealedOrNewEndpointInMinutes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      restoreTrafficTimeToHealedOrNewEndpointInMinutes: (() { final guardedValue = map['restoreTrafficTimeToHealedOrNewEndpointInMinutes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       sessionAffinityEnabled: (() { final guardedValue = map['sessionAffinityEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }

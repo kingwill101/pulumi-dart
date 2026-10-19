@@ -112,7 +112,7 @@ import 'partner_namespace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -120,19 +120,28 @@ import 'partner_namespace_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_eventgrid_partnerregistration" "example" {
+/// resource "azure_eventgrid_partner_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-partner-registration"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_eventgrid_partnernamespace" "example" {
+/// resource "azure_eventgrid_partner_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-partner-namespace"
-///   location                = azure_core_resourcegroup.example.location
-///   resource_group_name     = azure_core_resourcegroup.example.name
-///   partner_registration_id = azure_eventgrid_partnerregistration.example.id
+///   location                = azure_core_resource_group.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
+///   partner_registration_id = azure_eventgrid_partner_registration.example.id
 /// }
 /// ```
 /// ```java
@@ -252,7 +261,7 @@ class PartnerNamespace extends pulumi.CustomResource {
           'azure:eventgrid/partnerNamespace:PartnerNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     endpoint = registerOutput<String>('endpoint');
     inboundIpRules = registerOutput<List<PartnerNamespaceInboundIpRule>?>('inboundIpRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PartnerNamespaceInboundIpRule>(guardedValue, (value) => PartnerNamespaceInboundIpRule.fromMap((value as Map).cast<String, dynamic>())); });

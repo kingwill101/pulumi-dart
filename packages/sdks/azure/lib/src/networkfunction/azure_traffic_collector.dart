@@ -100,7 +100,7 @@ import 'azure_traffic_collector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -108,13 +108,19 @@ import 'azure_traffic_collector_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West US"
 /// }
-/// resource "azure_networkfunction_azuretrafficcollector" "example" {
+/// resource "azure_networkfunction_azure_traffic_collector" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nfatc"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   location            = "West US"
 ///   tags = {
 ///     "key" = "value"
@@ -218,7 +224,7 @@ class AzureTrafficCollector extends pulumi.CustomResource {
           'azure:networkfunction/azureTrafficCollector:AzureTrafficCollector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     collectorPolicyIds = registerOutput<List<String>>('collectorPolicyIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');

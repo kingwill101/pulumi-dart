@@ -154,7 +154,7 @@ import 'metric_alert_state.dart';
 ///                 MetricName = "Transactions",
 ///                 Aggregation = "Total",
 ///                 Operator = "GreaterThan",
-///                 Threshold = 50,
+///                 Threshold = 50.0,
 ///                 Dimensions = new[]
 ///                 {
 ///                     new Azure.Monitoring.Inputs.MetricAlertCriteriaDimensionArgs
@@ -262,7 +262,7 @@ import 'metric_alert_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -270,29 +270,41 @@ import 'metric_alert_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "to_monitor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorageaccount"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_monitoring_actiongroup" "main" {
+/// resource "azure_monitoring_action_group" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-actiongroup"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   short_name          = "exampleact"
 ///   webhook_receivers {
 ///     name        = "callmyapi"
 ///     service_uri = "http://example.com/alert"
 ///   }
 /// }
-/// resource "azure_monitoring_metricalert" "example" {
+/// resource "azure_monitoring_metric_alert" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-metricalert"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   scopes              = [azure_storage_account.to_monitor.id]
 ///   description         = "Action will be triggered when Transactions count is greater than 50."
 ///   criterias {
@@ -308,7 +320,7 @@ import 'metric_alert_state.dart';
 ///     }
 ///   }
 ///   actions {
-///     action_group_id = azure_monitoring_actiongroup.main.id
+///     action_group_id = azure_monitoring_action_group.main.id
 ///   }
 /// }
 /// ```
@@ -511,7 +523,7 @@ class MetricAlert extends pulumi.CustomResource {
           'azure:monitoring/metricAlert:MetricAlert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     actions = registerOutput<List<MetricAlertAction>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MetricAlertAction>(guardedValue, (value) => MetricAlertAction.fromMap((value as Map).cast<String, dynamic>())); });
     applicationInsightsWebTestLocationAvailabilityCriteria = registerOutput<MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria?>('applicationInsightsWebTestLocationAvailabilityCriteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });

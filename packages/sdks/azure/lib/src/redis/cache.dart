@@ -79,7 +79,7 @@ import 'cache_state.dart';
 ///         SkuName = "Standard",
 ///         NonSslPortEnabled = false,
 ///         MinimumTlsVersion = "1.2",
-///         RedisConfiguration = null,
+///         RedisConfiguration = new() { },
 ///     });
 ///
 /// });
@@ -122,7 +122,7 @@ import 'cache_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -130,15 +130,21 @@ import 'cache_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// # NOTE: the Name used for Redis needs to be globally unique
 /// resource "azure_redis_cache" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-cache"
-///   location             = azure_core_resourcegroup.example.location
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resource_group.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   capacity             = 2
 ///   family               = "C"
 ///   sku_name             = "Standard"
@@ -316,7 +322,7 @@ class Cache extends pulumi.CustomResource {
           'azure:redis/cache:Cache',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['primaryAccessKey', 'primaryConnectionString', 'secondaryAccessKey', 'secondaryConnectionString'],
         ) {
     accessKeysAuthenticationEnabled = registerOutput<bool?>('accessKeysAuthenticationEnabled');

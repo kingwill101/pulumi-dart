@@ -174,7 +174,7 @@ import 'managed_hardware_security_module_role_definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -182,7 +182,10 @@ import 'managed_hardware_security_module_role_definition_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_keyvault_managedhardwaresecuritymodule" "example" {
+/// resource "azure_keyvault_managed_hardware_security_module" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
 ///   resource_group_name      = exampleAzurermResourceGroup.name
 ///   location                 = exampleAzurermResourceGroup.location
@@ -195,9 +198,12 @@ import 'managed_hardware_security_module_role_definition_state.dart';
 ///     "securityDomainQuorum"      = 2
 ///   }]
 /// }
-/// resource "azure_keyvault_managedhardwaresecuritymoduleroledefinition" "example" {
+/// resource "azure_keyvault_managed_hardware_security_module_role_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "7d206142-bf01-11ed-80bc-00155d61ee9e"
-///   managed_hsm_id = azure_keyvault_managedhardwaresecuritymodule.example.id
+///   managed_hsm_id = azure_keyvault_managed_hardware_security_module.example.id
 ///   description    = "desc foo"
 ///   permissions {
 ///     data_actions = ["Microsoft.KeyVault/managedHsm/keys/read/action"]
@@ -230,17 +236,17 @@ import 'managed_hardware_security_module_role_definition_state.dart';
 ///     public static void stack(Context ctx) {
 ///         var example = new ManagedHardwareSecurityModule("example", ManagedHardwareSecurityModuleArgs.builder()
 ///             .name("example")
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
-///             .location(exampleAzurermResourceGroup.location())
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
+///             .location(exampleAzurermResourceGroup.get("location"))
 ///             .skuName("Standard_B1")
-///             .tenantId(current.tenantId())
-///             .adminObjectIds(current.objectId())
+///             .tenantId(current.get("tenantId"))
+///             .adminObjectIds(current.get("objectId"))
 ///             .purgeProtectionEnabled(false)
 ///             .activeConfig(Arrays.asList(Map.ofEntries(
 ///                 Map.entry("securityDomainCertificate", Arrays.asList(
-///                     cert[0].id(),
-///                     cert[1].id(),
-///                     cert[2].id())),
+///                     cert[0].get("id"),
+///                     cert[1].get("id"),
+///                     cert[2].get("id"))),
 ///                 Map.entry("securityDomainQuorum", 2)
 ///             )))
 ///             .build());
@@ -324,7 +330,7 @@ class ManagedHardwareSecurityModuleRoleDefinition extends pulumi.CustomResource 
           'azure:keyvault/managedHardwareSecurityModuleRoleDefinition:ManagedHardwareSecurityModuleRoleDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     managedHsmId = registerOutput<String>('managedHsmId');

@@ -207,7 +207,7 @@ import 'output_servicebus_topic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -215,30 +215,42 @@ import 'output_servicebus_topic_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_streamanalytics_getjob" "example" {
+/// data "azure_streamanalytics_job" "example" {
 ///   name                = "example-job"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rg-example"
 ///   location = "West Europe"
 /// }
 /// resource "azure_servicebus_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-namespace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
 /// resource "azure_servicebus_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-topic"
 ///   namespace_id        = azure_servicebus_namespace.example.id
 ///   enable_partitioning = true
 /// }
-/// resource "azure_streamanalytics_outputservicebustopic" "example" {
+/// resource "azure_streamanalytics_output_servicebus_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "service-bus-topic-output"
-///   stream_analytics_job_name = data.azure_streamanalytics_getjob.example.name
-///   resource_group_name       = data.azure_streamanalytics_getjob.example.resource_group_name
+///   stream_analytics_job_name = data.azure_streamanalytics_job.example.name
+///   resource_group_name       = data.azure_streamanalytics_job.example.resource_group_name
 ///   topic_name                = azure_servicebus_topic.example.name
 ///   servicebus_namespace      = azure_servicebus_namespace.example.name
 ///   shared_access_policy_key  = azure_servicebus_namespace.example.default_primary_key
@@ -425,7 +437,7 @@ class OutputServicebusTopic extends pulumi.CustomResource {
           'azure:streamanalytics/outputServicebusTopic:OutputServicebusTopic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['sharedAccessPolicyKey'],
         ) {
     authenticationMode = registerOutput<String?>('authenticationMode');

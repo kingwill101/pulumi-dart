@@ -163,7 +163,7 @@ import 'configuration_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -171,26 +171,38 @@ import 'configuration_key_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appconfiguration_configurationstore" "appconf" {
+/// resource "azure_appconfiguration_configuration_store" "appconf" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "appConf1"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// resource "azure_authorization_assignment" "appconf_dataowner" {
-///   scope                = azure_appconfiguration_configurationstore.appconf.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = azure_appconfiguration_configuration_store.appconf.id
 ///   role_definition_name = "App Configuration Data Owner"
-///   principal_id         = data.azure_core_getclientconfig.current.object_id
+///   principal_id         = data.azure_core_client_config.current.object_id
 /// }
-/// resource "azure_appconfiguration_configurationkey" "test" {
-///   depends_on             = [azure_authorization_assignment.appconf_dataowner]
-///   configuration_store_id = azure_appconfiguration_configurationstore.appconf.id
+/// resource "azure_appconfiguration_configuration_key" "test" {
+///   depends_on = [azure_authorization_assignment.appconf_dataowner]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration_store_id = azure_appconfiguration_configuration_store.appconf.id
 ///   key                    = "appConfKey1"
 ///   label                  = "somelabel"
 ///   value                  = "a test"
@@ -587,7 +599,7 @@ import 'configuration_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -595,45 +607,63 @@ import 'configuration_key_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appconfiguration_configurationstore" "appconf" {
+/// resource "azure_appconfiguration_configuration_store" "appconf" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "appConf1"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_keyvault_keyvault" "kv" {
+/// resource "azure_keyvault_key_vault" "kv" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "kv"
 ///   location                   = testAzurermResourceGroup.location
 ///   resource_group_name        = testAzurermResourceGroup.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "premium"
 ///   soft_delete_retention_days = 7
 ///   access_policies {
-///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
-///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     tenant_id          = data.azure_core_client_config.current.tenant_id
+///     object_id          = data.azure_core_client_config.current.object_id
 ///     key_permissions    = ["Create", "Get"]
 ///     secret_permissions = ["Set", "Get", "Delete", "Purge", "Recover"]
 ///   }
 /// }
 /// resource "azure_keyvault_secret" "kvs" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "kvs"
 ///   value        = "szechuan"
-///   key_vault_id = azure_keyvault_keyvault.kv.id
+///   key_vault_id = azure_keyvault_key_vault.kv.id
 /// }
 /// resource "azure_authorization_assignment" "appconf_dataowner" {
-///   scope                = azure_appconfiguration_configurationstore.appconf.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = azure_appconfiguration_configuration_store.appconf.id
 ///   role_definition_name = "App Configuration Data Owner"
-///   principal_id         = data.azure_core_getclientconfig.current.object_id
+///   principal_id         = data.azure_core_client_config.current.object_id
 /// }
-/// resource "azure_appconfiguration_configurationkey" "test" {
-///   depends_on             = [azure_authorization_assignment.appconf_dataowner]
+/// resource "azure_appconfiguration_configuration_key" "test" {
+///   depends_on = [azure_authorization_assignment.appconf_dataowner]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   configuration_store_id = testAzurermAppConfiguration.id
 ///   key                    = "key1"
 ///   type                   = "vault"
@@ -690,8 +720,8 @@ import 'configuration_key_state.dart';
 ///
 ///         var kv = new KeyVault("kv", KeyVaultArgs.builder()
 ///             .name("kv")
-///             .location(testAzurermResourceGroup.location())
-///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .location(testAzurermResourceGroup.get("location"))
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
 ///             .rbacAuthorizationEnabled(false)
 ///             .tenantId(current.tenantId())
 ///             .skuName("premium")
@@ -724,7 +754,7 @@ import 'configuration_key_state.dart';
 ///             .build());
 ///
 ///         var test = new ConfigurationKey("test", ConfigurationKeyArgs.builder()
-///             .configurationStoreId(testAzurermAppConfiguration.id())
+///             .configurationStoreId(testAzurermAppConfiguration.get("id"))
 ///             .key("key1")
 ///             .type("vault")
 ///             .label("label1")
@@ -856,7 +886,7 @@ class ConfigurationKey extends pulumi.CustomResource {
           'azure:appconfiguration/configurationKey:ConfigurationKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     configurationStoreId = registerOutput<String>('configurationStoreId');
     contentType = registerOutput<String>('contentType');

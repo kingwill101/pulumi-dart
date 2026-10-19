@@ -242,7 +242,7 @@ import 'route_server_bgp_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -250,44 +250,62 @@ import 'route_server_bgp_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vn"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   tags = {
 ///     "environment" = "Production"
 ///   }
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "RouteServerSubnet"
-///   virtual_network_name = azure_network_virtualnetwork.example.name
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   address_prefixes     = ["10.0.1.0/24"]
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-pip"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   allocation_method   = "Static"
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_network_routeserver" "example" {
+/// resource "azure_network_route_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                             = "example-routerserver"
-///   resource_group_name              = azure_core_resourcegroup.example.name
-///   location                         = azure_core_resourcegroup.example.location
+///   resource_group_name              = azure_core_resource_group.example.name
+///   location                         = azure_core_resource_group.example.location
 ///   sku                              = "Standard"
-///   public_ip_address_id             = azure_network_publicip.example.id
+///   public_ip_address_id             = azure_network_public_ip.example.id
 ///   subnet_id                        = azure_network_subnet.example.id
 ///   branch_to_branch_traffic_enabled = true
 /// }
-/// resource "azure_network_routeserverbgpconnection" "example" {
+/// resource "azure_network_route_server_bgp_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example-rs-bgpconnection"
-///   route_server_id = azure_network_routeserver.example.id
+///   route_server_id = azure_network_route_server.example.id
 ///   peer_asn        = 65501
 ///   peer_ip         = "169.254.21.5"
 /// }
@@ -465,7 +483,7 @@ class RouteServerBgpConnection extends pulumi.CustomResource {
           'azure:network/routeServerBgpConnection:RouteServerBgpConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     peerAsn = registerOutput<int>('peerAsn');

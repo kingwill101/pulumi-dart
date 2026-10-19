@@ -132,7 +132,7 @@ import 'data_source_windows_performance_counter_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -140,20 +140,29 @@ import 'data_source_windows_performance_counter_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-law"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 /// }
-/// resource "azure_loganalytics_datasourcewindowsperformancecounter" "example" {
+/// resource "azure_loganalytics_data_source_windows_performance_counter" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-lad-wpc"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   workspace_name      = azure_operationalinsights_analyticsworkspace.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   workspace_name      = azure_operationalinsights_analytics_workspace.example.name
 ///   object_name         = "CPU"
 ///   instance_name       = "*"
 ///   counter_name        = "CPU"
@@ -281,7 +290,7 @@ class DataSourceWindowsPerformanceCounter extends pulumi.CustomResource {
           'azure:loganalytics/dataSourceWindowsPerformanceCounter:DataSourceWindowsPerformanceCounter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     counterName = registerOutput<String>('counterName');
     instanceName = registerOutput<String>('instanceName');

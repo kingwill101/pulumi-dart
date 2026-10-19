@@ -158,7 +158,7 @@ import 'hyperv_network_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -166,28 +166,40 @@ import 'hyperv_network_mapping_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "target" {
+/// resource "azure_core_resource_group" "target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-network-mapping"
 ///   location = "East US"
 /// }
 /// resource "azure_recoveryservices_vault" "vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-recovery-vault"
-///   location            = azure_core_resourcegroup.target.location
-///   resource_group_name = azure_core_resourcegroup.target.name
+///   location            = azure_core_resource_group.target.location
+///   resource_group_name = azure_core_resource_group.target.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_network_virtualnetwork" "target" {
+/// resource "azure_network_virtual_network" "target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "network"
-///   resource_group_name = azure_core_resourcegroup.target.name
+///   resource_group_name = azure_core_resource_group.target.name
 ///   address_spaces      = ["192.168.2.0/24"]
-///   location            = azure_core_resourcegroup.target.location
+///   location            = azure_core_resource_group.target.location
 /// }
-/// resource "azure_siterecovery_hypervnetworkmapping" "recovery-mapping" {
+/// resource "azure_siterecovery_hyperv_network_mapping" "recovery-mapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                              = "recovery-network-mapping"
 ///   recovery_vault_id                                 = azure_recoveryservices_vault.vault.id
 ///   source_system_center_virtual_machine_manager_name = "my-vmm-server"
 ///   source_network_name                               = "my-vmm-network"
-///   target_network_id                                 = azure_network_virtualnetwork.target.id
+///   target_network_id                                 = azure_network_virtual_network.target.id
 /// }
 /// ```
 /// ```java
@@ -319,7 +331,7 @@ class HypervNetworkMapping extends pulumi.CustomResource {
           'azure:siterecovery/hypervNetworkMapping:HypervNetworkMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     recoveryVaultId = registerOutput<String>('recoveryVaultId');

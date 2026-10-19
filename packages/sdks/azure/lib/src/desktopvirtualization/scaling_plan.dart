@@ -53,7 +53,7 @@ class ScalingPlan extends pulumi.CustomResource {
           'azure:desktopvirtualization/scalingPlan:ScalingPlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     exclusionTag = registerOutput<String?>('exclusionTag');

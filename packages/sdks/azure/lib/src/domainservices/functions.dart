@@ -63,7 +63,7 @@ import 'get_service_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -71,7 +71,7 @@ import 'get_service_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_domainservices_getservice" "example" {
+/// data "azure_domainservices_service" "example" {
 ///   name                = "example-aadds"
 ///   resource_group_name = "example-aadds-rg"
 /// }

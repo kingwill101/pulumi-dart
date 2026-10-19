@@ -180,7 +180,7 @@ import 'output_table_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -188,30 +188,42 @@ import 'output_table_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_streamanalytics_getjob" "example" {
+/// data "azure_streamanalytics_job" "example" {
 ///   name                = "example-job"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rg-example"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "exampletable"
 ///   storage_account_name = azure_storage_account.example.name
 /// }
-/// resource "azure_streamanalytics_outputtable" "example" {
+/// resource "azure_streamanalytics_output_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "output-to-storage-table"
-///   stream_analytics_job_name = data.azure_streamanalytics_getjob.example.name
-///   resource_group_name       = data.azure_streamanalytics_getjob.example.resource_group_name
+///   stream_analytics_job_name = data.azure_streamanalytics_job.example.name
+///   resource_group_name       = data.azure_streamanalytics_job.example.resource_group_name
 ///   storage_account_name      = azure_storage_account.example.name
 ///   storage_account_key       = azure_storage_account.example.primary_access_key
 ///   table                     = azure_storage_table.example.name
@@ -381,7 +393,7 @@ class OutputTable extends pulumi.CustomResource {
           'azure:streamanalytics/outputTable:OutputTable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['storageAccountKey'],
         ) {
     batchSize = registerOutput<int>('batchSize');

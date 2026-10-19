@@ -151,7 +151,7 @@ import 'certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -162,23 +162,32 @@ import 'certificate_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_iot_iothub" "example" {
+/// resource "azure_iot_io_t_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku = {
 ///     name     = "B1"
 ///     capacity = "1"
 ///   }
 /// }
 /// resource "azure_iot_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   iothub_name         = azure_iot_iothub.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   iothub_name         = azure_iot_io_t_hub.example.name
 ///   is_verified         = true
 ///   certificate_content = filebase64("example.cer")
 /// }
@@ -304,7 +313,7 @@ class Certificate extends pulumi.CustomResource {
           'azure:iot/certificate:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['certificateContent'],
         ) {
     certificateContent = registerOutput<String>('certificateContent', isSecret: true);

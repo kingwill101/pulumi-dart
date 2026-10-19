@@ -155,7 +155,7 @@ import 'spring_cloud_app_dynamics_application_performance_monitoring_state.dart'
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -163,19 +163,28 @@ import 'spring_cloud_app_dynamics_application_performance_monitoring_state.dart'
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appplatform_springcloudservice" "example" {
+/// resource "azure_appplatform_spring_cloud_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "E0"
 /// }
-/// resource "azure_appplatform_springcloudappdynamicsapplicationperformancemonitoring" "example" {
+/// resource "azure_appplatform_spring_cloud_app_dynamics_application_performance_monitoring" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
-///   spring_cloud_service_id  = azure_appplatform_springcloudservice.example.id
+///   spring_cloud_service_id  = azure_appplatform_spring_cloud_service.example.id
 ///   agent_account_name       = "example-agent-account-name"
 ///   agent_account_access_key = "example-agent-account-access-key"
 ///   controller_host_name     = "example-controller-host-name"
@@ -329,7 +338,7 @@ class SpringCloudAppDynamicsApplicationPerformanceMonitoring extends pulumi.Cust
           'azure:appplatform/springCloudAppDynamicsApplicationPerformanceMonitoring:SpringCloudAppDynamicsApplicationPerformanceMonitoring',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['agentAccountAccessKey', 'agentAccountName'],
         ) {
     agentAccountAccessKey = registerOutput<String>('agentAccountAccessKey', isSecret: true);

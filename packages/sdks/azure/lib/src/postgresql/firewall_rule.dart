@@ -135,7 +135,7 @@ import 'firewall_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -143,21 +143,30 @@ import 'firewall_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "api-rg-pro"
 ///   location = "West Europe"
 /// }
 /// resource "azure_postgresql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-postgre-server"
-///   location                = azure_core_resourcegroup.example.location
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = azure_core_resource_group.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   sku_name                = "GP_Gen5_2"
 ///   version                 = "11"
 ///   ssl_enforcement_enabled = true
 /// }
-/// resource "azure_postgresql_firewallrule" "example" {
+/// resource "azure_postgresql_firewall_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "office"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   server_name         = azure_postgresql_server.example.name
 ///   start_ip_address    = "40.112.8.12"
 ///   end_ip_address      = "40.112.8.12"
@@ -342,7 +351,7 @@ import 'firewall_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -350,15 +359,24 @@ import 'firewall_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "api-rg-pro"
 ///   location = "West Europe"
 /// }
 /// resource "azure_postgresql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "azure_postgresql_firewallrule" "example" {
+/// resource "azure_postgresql_firewall_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "office"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   server_name         = azure_postgresql_server.example.name
 ///   start_ip_address    = "40.112.0.0"
 ///   end_ip_address      = "40.112.255.255"
@@ -468,7 +486,7 @@ class FirewallRule extends pulumi.CustomResource {
           'azure:postgresql/firewallRule:FirewallRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     endIpAddress = registerOutput<String>('endIpAddress');
     this.name = registerOutput<String>('name');

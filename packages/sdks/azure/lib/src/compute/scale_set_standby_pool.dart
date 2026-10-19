@@ -164,7 +164,7 @@ import 'scale_set_standby_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -172,22 +172,31 @@ import 'scale_set_standby_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_compute_orchestratedvirtualmachinescaleset" "example" {
+/// resource "azure_compute_orchestrated_virtual_machine_scale_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-ovmss"
-///   location                    = azure_core_resourcegroup.example.location
-///   resource_group_name         = azure_core_resourcegroup.example.name
+///   location                    = azure_core_resource_group.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
 ///   platform_fault_domain_count = 1
 ///   zones                       = ["1"]
 /// }
-/// resource "azure_compute_scalesetstandbypool" "example" {
+/// resource "azure_compute_scale_set_standby_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                  = "example-spsvmp"
-///   resource_group_name                   = azure_core_resourcegroup.example.name
+///   resource_group_name                   = azure_core_resource_group.example.name
 ///   location                              = "West Europe"
-///   attached_virtual_machine_scale_set_id = azure_compute_orchestratedvirtualmachinescaleset.example.id
+///   attached_virtual_machine_scale_set_id = azure_compute_orchestrated_virtual_machine_scale_set.example.id
 ///   virtual_machine_state                 = "Running"
 ///   elasticity_profile = {
 ///     max_ready_capacity = 10
@@ -329,7 +338,7 @@ class ScaleSetStandbyPool extends pulumi.CustomResource {
           'azure:compute/scaleSetStandbyPool:ScaleSetStandbyPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     attachedVirtualMachineScaleSetId = registerOutput<String>('attachedVirtualMachineScaleSetId');
     elasticityProfile = registerOutput<ScaleSetStandbyPoolElasticityProfile>('elasticityProfile', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetStandbyPoolElasticityProfile.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -316,7 +316,7 @@ import 'automanage_configuration_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -324,41 +324,56 @@ import 'automanage_configuration_assignment_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "westus"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplevnet"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "internal"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_network_networkinterface" "example" {
+/// resource "azure_network_network_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleni"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ip_configurations {
 ///     name                          = "internal"
 ///     subnet_id                     = azure_network_subnet.example.id
 ///     private_ip_address_allocation = "Dynamic"
 ///   }
 /// }
-/// resource "azure_compute_linuxvirtualmachine" "example" {
+/// resource "azure_compute_linux_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "examplevm"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
+///   location                        = azure_core_resource_group.example.location
 ///   size                            = "Standard_D4_v5"
 ///   admin_username                  = "adminuser"
 ///   admin_password                  = "P@$$w0rd1234!"
 ///   disable_password_authentication = false
-///   network_interface_ids           = [azure_network_networkinterface.example.id]
+///   network_interface_ids           = [azure_network_network_interface.example.id]
 ///   os_disk = {
 ///     caching              = "ReadWrite"
 ///     storage_account_type = "Standard_LRS"
@@ -371,12 +386,18 @@ import 'automanage_configuration_assignment_state.dart';
 ///   }
 /// }
 /// resource "azure_automanage_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleconfig"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_compute_automanageconfigurationassignment" "example" {
-///   virtual_machine_id = azure_compute_linuxvirtualmachine.example.id
+/// resource "azure_compute_automanage_configuration_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   virtual_machine_id = azure_compute_linux_virtual_machine.example.id
 ///   configuration_id   = azure_automanage_configuration.example.id
 /// }
 /// ```
@@ -586,7 +607,7 @@ class AutomanageConfigurationAssignment extends pulumi.CustomResource {
           'azure:compute/automanageConfigurationAssignment:AutomanageConfigurationAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     configurationId = registerOutput<String>('configurationId');
     virtualMachineId = registerOutput<String>('virtualMachineId');

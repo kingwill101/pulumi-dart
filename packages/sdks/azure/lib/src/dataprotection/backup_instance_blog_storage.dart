@@ -233,7 +233,7 @@ import 'backup_instance_blog_storage_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -241,21 +241,30 @@ import 'backup_instance_blog_storage_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "storageaccountname"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_dataprotection_backupvault" "example" {
+/// resource "azure_dataprotection_backup_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-backup-vault"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   datastore_type      = "VaultStore"
 ///   redundancy          = "LocallyRedundant"
 ///   identity = {
@@ -263,22 +272,31 @@ import 'backup_instance_blog_storage_state.dart';
 ///   }
 /// }
 /// resource "azure_authorization_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   scope                = azure_storage_account.example.id
 ///   role_definition_name = "Storage Account Backup Contributor"
-///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+///   principal_id         = azure_dataprotection_backup_vault.example.identity.principal_id
 /// }
-/// resource "azure_dataprotection_backuppolicyblobstorage" "example" {
+/// resource "azure_dataprotection_backup_policy_blob_storage" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                   = "example-backup-policy"
-///   vault_id                               = azure_dataprotection_backupvault.example.id
+///   vault_id                               = azure_dataprotection_backup_vault.example.id
 ///   operational_default_retention_duration = "P30D"
 /// }
-/// resource "azure_dataprotection_backupinstanceblogstorage" "example" {
-///   depends_on         = [azure_authorization_assignment.example]
+/// resource "azure_dataprotection_backup_instance_blog_storage" "example" {
+///   depends_on = [azure_authorization_assignment.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-backup-instance"
-///   vault_id           = azure_dataprotection_backupvault.example.id
-///   location           = azure_core_resourcegroup.example.location
+///   vault_id           = azure_dataprotection_backup_vault.example.id
+///   location           = azure_core_resource_group.example.location
 ///   storage_account_id = azure_storage_account.example.id
-///   backup_policy_id   = azure_dataprotection_backuppolicyblobstorage.example.id
+///   backup_policy_id   = azure_dataprotection_backup_policy_blob_storage.example.id
 /// }
 /// ```
 /// ```java
@@ -463,7 +481,7 @@ class BackupInstanceBlogStorage extends pulumi.CustomResource {
           'azure:dataprotection/backupInstanceBlogStorage:BackupInstanceBlogStorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     location = registerOutput<String>('location');

@@ -164,7 +164,7 @@ import 'server_extended_auditing_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -172,26 +172,38 @@ import 'server_extended_auditing_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_mssql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-sqlserver"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   version                      = "12.0"
 ///   administrator_login          = "missadministrator"
 ///   administrator_login_password = "AdminPassword123!"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_mssql_serverextendedauditingpolicy" "example" {
+/// resource "azure_mssql_server_extended_auditing_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   server_id                               = azure_mssql_server.example.id
 ///   storage_endpoint                        = azure_storage_account.example.primary_blob_endpoint
 ///   storage_account_access_key              = azure_storage_account.example.primary_access_key
@@ -748,7 +760,7 @@ import 'server_extended_auditing_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -756,38 +768,53 @@ import 'server_extended_auditing_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "primary" {
+/// data "azure_core_subscription" "primary" {
 /// }
-/// data "azure_core_getclientconfig" "example" {
+/// data "azure_core_client_config" "example" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "virtnetname-1"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                           = "subnetname-1"
-///   resource_group_name                            = azure_core_resourcegroup.example.name
-///   virtual_network_name                           = azure_network_virtualnetwork.example.name
+///   resource_group_name                            = azure_core_resource_group.example.name
+///   virtual_network_name                           = azure_network_virtual_network.example.name
 ///   address_prefixes                               = ["10.0.2.0/24"]
 ///   service_endpoints                              = ["Microsoft.Sql", "Microsoft.Storage"]
 ///   enforce_private_link_endpoint_network_policies = true
 /// }
 /// resource "azure_authorization_assignment" "example" {
-///   scope                = data.azure_core_getsubscription.primary.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = data.azure_core_subscription.primary.id
 ///   role_definition_name = "Storage Blob Data Contributor"
 ///   principal_id         = azure_mssql_server.example.identity.principal_id
 /// }
 /// resource "azure_mssql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-sqlserver"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   version                      = "12.0"
 ///   administrator_login          = "missadministrator"
 ///   administrator_login_password = "AdminPassword123!"
@@ -796,23 +823,32 @@ import 'server_extended_auditing_policy_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azurerm_sqlvirtualnetworkrule" "sqlvnetrule" {
+/// resource "azurerm_sql_virtual_network_rule" "sqlvnetrule" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "sql-vnet-rule"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   server_name         = azure_mssql_server.example.name
 ///   subnet_id           = azure_network_subnet.example.id
 /// }
-/// resource "azurerm_sqlfirewallrule" "example" {
+/// resource "azurerm_sql_firewall_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "FirewallRule1"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   server_name         = azure_mssql_server.example.name
 ///   start_ip_address    = "0.0.0.0"
 ///   end_ip_address      = "0.0.0.0"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "examplesa"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
+///   location                        = azure_core_resource_group.example.location
 ///   account_tier                    = "Standard"
 ///   account_replication_type        = "LRS"
 ///   account_kind                    = "StorageV2"
@@ -827,8 +863,11 @@ import 'server_extended_auditing_policy_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_mssql_serverextendedauditingpolicy" "example" {
-///   depends_on                      = [azure_authorization_assignment.example, azure_storage_account.example]
+/// resource "azure_mssql_server_extended_auditing_policy" "example" {
+///   depends_on = [azure_authorization_assignment.example, azure_storage_account.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_endpoint                = azure_storage_account.example.primary_blob_endpoint
 ///   server_id                       = azure_mssql_server.example.id
 ///   retention_in_days               = 6
@@ -965,7 +1004,7 @@ import 'server_extended_auditing_policy_state.dart';
 ///             .serverId(exampleServer.id())
 ///             .retentionInDays(6)
 ///             .logMonitoringEnabled(false)
-///             .storageAccountSubscriptionId(primaryAzurermSubscription.subscriptionId())
+///             .storageAccountSubscriptionId(primaryAzurermSubscription.get("subscriptionId"))
 ///             .build(), CustomResourceOptions.builder()
 ///                 .dependsOn(
 ///                     exampleAssignment,
@@ -1131,7 +1170,7 @@ class ServerExtendedAuditingPolicy extends pulumi.CustomResource {
           'azure:mssql/serverExtendedAuditingPolicy:ServerExtendedAuditingPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['storageAccountAccessKey', 'storageAccountSubscriptionId'],
         ) {
     auditActionsAndGroups = registerOutput<List<String>>('auditActionsAndGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

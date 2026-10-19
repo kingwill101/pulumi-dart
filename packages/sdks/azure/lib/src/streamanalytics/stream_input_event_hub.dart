@@ -232,7 +232,7 @@ import 'stream_input_event_hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -240,42 +240,57 @@ import 'stream_input_event_hub_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_streamanalytics_getjob" "example" {
+/// data "azure_streamanalytics_job" "example" {
 ///   name                = "example-job"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "example" {
+/// resource "azure_eventhub_event_hub_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-namespace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 ///   capacity            = 1
 /// }
-/// resource "azure_eventhub_eventhub" "example" {
+/// resource "azure_eventhub_event_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-eventhub"
-///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   namespace_id      = azure_eventhub_event_hub_namespace.example.id
 ///   partition_count   = 2
 ///   message_retention = 1
 /// }
-/// resource "azure_eventhub_consumergroup" "example" {
+/// resource "azure_eventhub_consumer_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-consumergroup"
-///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
-///   eventhub_name       = azure_eventhub_eventhub.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   namespace_name      = azure_eventhub_event_hub_namespace.example.name
+///   eventhub_name       = azure_eventhub_event_hub.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_streamanalytics_streaminputeventhub" "example" {
+/// resource "azure_streamanalytics_stream_input_event_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "eventhub-stream-input"
-///   stream_analytics_job_name    = data.azure_streamanalytics_getjob.example.name
-///   resource_group_name          = data.azure_streamanalytics_getjob.example.resource_group_name
-///   eventhub_consumer_group_name = azure_eventhub_consumergroup.example.name
-///   eventhub_name                = azure_eventhub_eventhub.example.name
-///   servicebus_namespace         = azure_eventhub_eventhubnamespace.example.name
-///   shared_access_policy_key     = azure_eventhub_eventhubnamespace.example.default_primary_key
+///   stream_analytics_job_name    = data.azure_streamanalytics_job.example.name
+///   resource_group_name          = data.azure_streamanalytics_job.example.resource_group_name
+///   eventhub_consumer_group_name = azure_eventhub_consumer_group.example.name
+///   eventhub_name                = azure_eventhub_event_hub.example.name
+///   servicebus_namespace         = azure_eventhub_event_hub_namespace.example.name
+///   shared_access_policy_key     = azure_eventhub_event_hub_namespace.example.default_primary_key
 ///   shared_access_policy_name    = "RootManageSharedAccessKey"
 ///   serialization = {
 ///     type     = "Json"
@@ -473,7 +488,7 @@ class StreamInputEventHub extends pulumi.CustomResource {
           'azure:streamanalytics/streamInputEventHub:StreamInputEventHub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['sharedAccessPolicyKey'],
         ) {
     authenticationMode = registerOutput<String?>('authenticationMode');

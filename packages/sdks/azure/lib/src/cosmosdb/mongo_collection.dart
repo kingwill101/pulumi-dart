@@ -155,7 +155,7 @@ import 'mongo_collection_system_index.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -163,21 +163,27 @@ import 'mongo_collection_system_index.dart';
 ///   }
 /// }
 ///
-/// data "azure_cosmosdb_getaccount" "example" {
+/// data "azure_cosmosdb_account" "example" {
 ///   name                = "tfex-cosmosdb-account"
 ///   resource_group_name = "tfex-cosmosdb-account-rg"
 /// }
 ///
-/// resource "azure_cosmosdb_mongodatabase" "example" {
+/// resource "azure_cosmosdb_mongo_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-cosmos-mongo-db"
-///   resource_group_name = data.azure_cosmosdb_getaccount.example.resource_group_name
-///   account_name        = data.azure_cosmosdb_getaccount.example.name
+///   resource_group_name = data.azure_cosmosdb_account.example.resource_group_name
+///   account_name        = data.azure_cosmosdb_account.example.name
 /// }
-/// resource "azure_cosmosdb_mongocollection" "example" {
+/// resource "azure_cosmosdb_mongo_collection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-cosmos-mongo-db"
-///   resource_group_name = data.azure_cosmosdb_getaccount.example.resource_group_name
-///   account_name        = data.azure_cosmosdb_getaccount.example.name
-///   database_name       = azure_cosmosdb_mongodatabase.example.name
+///   resource_group_name = data.azure_cosmosdb_account.example.resource_group_name
+///   account_name        = data.azure_cosmosdb_account.example.name
+///   database_name       = azure_cosmosdb_mongo_database.example.name
 ///   default_ttl_seconds = "777"
 ///   shard_key           = "uniqueKey"
 ///   throughput          = 400
@@ -327,7 +333,7 @@ class MongoCollection extends pulumi.CustomResource {
           'azure:cosmosdb/mongoCollection:MongoCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');

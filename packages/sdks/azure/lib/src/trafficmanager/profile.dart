@@ -185,7 +185,7 @@ import 'profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -197,18 +197,27 @@ import 'profile_state.dart';
 /// }
 ///
 /// resource "random_id" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   keepers = {
 ///     "aziId" = 1
 ///   }
 ///   byte_length = 8
 /// }
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "trafficmanagerProfile"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_trafficmanagerprofile" "example" {
+/// resource "azure_network_traffic_manager_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = random_id.server.hex
-///   resource_group_name    = azure_core_resourcegroup.example.name
+///   resource_group_name    = azure_core_resource_group.example.name
 ///   traffic_routing_method = "Weighted"
 ///   dns_config = {
 ///     relative_name = random_id.server.hex
@@ -265,11 +274,11 @@ import 'profile_state.dart';
 ///             .build());
 ///
 ///         var exampleTrafficManagerProfile = new TrafficManagerProfile("exampleTrafficManagerProfile", TrafficManagerProfileArgs.builder()
-///             .name(server.hex())
+///             .name(server.get("hex"))
 ///             .resourceGroupName(example.name())
 ///             .trafficRoutingMethod("Weighted")
 ///             .dnsConfig(TrafficManagerProfileDnsConfigArgs.builder()
-///                 .relativeName(server.hex())
+///                 .relativeName(server.get("hex"))
 ///                 .ttl(100)
 ///                 .build())
 ///             .monitorConfig(TrafficManagerProfileMonitorConfigArgs.builder()
@@ -377,7 +386,7 @@ class Profile extends pulumi.CustomResource {
           'azure:trafficmanager/profile:Profile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     dnsConfig = registerOutput<ProfileDnsConfig>('dnsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProfileDnsConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     fqdn = registerOutput<String>('fqdn');

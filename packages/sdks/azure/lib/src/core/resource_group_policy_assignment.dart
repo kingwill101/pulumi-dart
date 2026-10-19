@@ -203,7 +203,7 @@ import 'resource_group_policy_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -211,22 +211,41 @@ import 'resource_group_policy_assignment_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_policy_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "only-deploy-in-westeurope"
 ///   policy_type  = "Custom"
 ///   mode         = "All"
 ///   display_name = "my-policy-definition"
 ///   policy_rule  = " {\n    \"if\": {\n      \"not\": {\n        \"field\": \"location\",\n        \"equals\": \"westeurope\"\n      }\n    },\n    \"then\": {\n      \"effect\": \"Deny\"\n    }\n  }\n"
 /// }
-/// resource "azure_core_resourcegrouppolicyassignment" "example" {
+/// resource "azure_core_resource_group_policy_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
-///   resource_group_id    = azure_core_resourcegroup.example.id
+///   resource_group_id    = azure_core_resource_group.example.id
 ///   policy_definition_id = azure_policy_definition.example.id
-///   parameters           = "    {\n      \\\"tagName\\\": {\n        \\\"value\\\": \\\"Business Unit\\\"\n      },\n      \\\"tagValue\\\": {\n        \\\"value\\\": \\\"BU\\\"\n      }\n    }\n"
+///   parameters           = <<PARAMS
+///     {
+///       \"tagName\": {
+///         \"value\": \"Business Unit\"
+///       },
+///       \"tagValue\": {
+///         \"value\": \"BU\"
+///       }
+///     }
+/// PARAMS
+///
 /// }
 /// ```
 /// ```java
@@ -402,7 +421,7 @@ class ResourceGroupPolicyAssignment extends pulumi.CustomResource {
           'azure:core/resourceGroupPolicyAssignment:ResourceGroupPolicyAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

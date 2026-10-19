@@ -78,7 +78,7 @@ import 'get_user_assigned_identity_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -86,11 +86,11 @@ import 'get_user_assigned_identity_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
 /// output "accountId" {
-///   value = data.azure_core_getclientconfig.current.client_id
+///   value = data.azure_core_client_config.current.client_id
 /// }
 /// ```
 /// ```java
@@ -208,7 +208,7 @@ pulumi.Output<GetClientConfigResult> getClientConfigOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -216,7 +216,7 @@ pulumi.Output<GetClientConfigResult> getClientConfigOutput(
 ///   }
 /// }
 ///
-/// data "azure_core_getextendedlocations" "example" {
+/// data "azure_core_extended_locations" "example" {
 ///   location = "West Europe"
 /// }
 /// ```
@@ -337,7 +337,7 @@ pulumi.Output<GetExtendedLocationsResult> getExtendedLocationsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -345,7 +345,7 @@ pulumi.Output<GetExtendedLocationsResult> getExtendedLocationsOutput(
 ///   }
 /// }
 ///
-/// data "azure_core_getlocation" "example" {
+/// data "azure_core_location" "example" {
 ///   location = "West Europe"
 /// }
 /// ```
@@ -473,7 +473,7 @@ pulumi.Output<GetLocationResult> getLocationOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -481,12 +481,12 @@ pulumi.Output<GetLocationResult> getLocationOutput(
 ///   }
 /// }
 ///
-/// data "azure_core_getresourcegroup" "example" {
+/// data "azure_core_resource_group" "example" {
 ///   name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_core_getresourcegroup.example.id
+///   value = data.azure_core_resource_group.example.id
 /// }
 /// ```
 /// ```java
@@ -635,7 +635,7 @@ pulumi.Output<GetResourceGroupResult> getResourceGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -646,16 +646,16 @@ pulumi.Output<GetResourceGroupResult> getResourceGroupOutput(
 ///   }
 /// }
 ///
-/// data "azure_core_getresourcegrouptemplatedeployment" "example" {
+/// data "azure_core_resource_group_template_deployment" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_core_getresourcegrouptemplatedeployment.example.id
+///   value = data.azure_core_resource_group_template_deployment.example.id
 /// }
 /// output "exampleOutput" {
-///   value = jsondecode(data.azure_core_getresourcegrouptemplatedeployment.example.output_content).example_output.value
+///   value = jsondecode(data.azure_core_resource_group_template_deployment.example.output_content).example_output.value
 /// }
 /// ```
 /// ```java
@@ -818,7 +818,7 @@ pulumi.Output<GetResourcesResult> getResourcesOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -826,11 +826,11 @@ pulumi.Output<GetResourcesResult> getResourcesOutput(
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
 /// output "currentSubscriptionDisplayName" {
-///   value = data.azure_core_getsubscription.current.display_name
+///   value = data.azure_core_subscription.current.display_name
 /// }
 /// ```
 /// ```java
@@ -973,7 +973,7 @@ pulumi.Output<GetSubscriptionResult> getSubscriptionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -984,15 +984,15 @@ pulumi.Output<GetSubscriptionResult> getSubscriptionOutput(
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscriptiontemplatedeployment" "example" {
+/// data "azure_core_subscription_template_deployment" "example" {
 ///   name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_core_getsubscriptiontemplatedeployment.example.id
+///   value = data.azure_core_subscription_template_deployment.example.id
 /// }
 /// output "exampleOutput" {
-///   value = jsondecode(data.azure_core_getsubscriptiontemplatedeployment.example.output_content).example_output.value
+///   value = jsondecode(data.azure_core_subscription_template_deployment.example.output_content).example_output.value
 /// }
 /// ```
 /// ```java
@@ -1130,7 +1130,7 @@ pulumi.Output<GetSubscriptionTemplateDeploymentResult> getSubscriptionTemplateDe
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1138,14 +1138,14 @@ pulumi.Output<GetSubscriptionTemplateDeploymentResult> getSubscriptionTemplateDe
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscriptions" "available" {
+/// data "azure_core_subscriptions" "available" {
 /// }
 ///
 /// output "availableSubscriptions" {
-///   value = data.azure_core_getsubscriptions.available.subscriptions
+///   value = data.azure_core_subscriptions.available.subscriptions
 /// }
 /// output "firstAvailableSubscriptionDisplayName" {
-///   value = data.azure_core_getsubscriptions.available.subscriptions[0].display_name
+///   value = data.azure_core_subscriptions.available.subscriptions[0].display_name
 /// }
 /// ```
 /// ```java
@@ -1283,7 +1283,7 @@ pulumi.Output<GetSubscriptionsResult> getSubscriptionsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1291,14 +1291,14 @@ pulumi.Output<GetSubscriptionsResult> getSubscriptionsOutput(
 ///   }
 /// }
 ///
-/// data "azure_core_gettemplatespecversion" "example" {
+/// data "azure_core_template_spec_version" "example" {
 ///   name                = "exampleTemplateSpec"
 ///   resource_group_name = "MyResourceGroup"
 ///   version             = "v1.0.4"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_core_gettemplatespecversion.example.id
+///   value = data.azure_core_template_spec_version.example.id
 /// }
 /// ```
 /// ```java
@@ -1455,7 +1455,7 @@ pulumi.Output<GetTemplateSpecVersionResult> getTemplateSpecVersionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1466,15 +1466,15 @@ pulumi.Output<GetTemplateSpecVersionResult> getTemplateSpecVersionOutput(
 ///   }
 /// }
 ///
-/// data "azure_core_gettenanttemplatedeployment" "example" {
+/// data "azure_core_tenant_template_deployment" "example" {
 ///   name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_core_gettenanttemplatedeployment.example.id
+///   value = data.azure_core_tenant_template_deployment.example.id
 /// }
 /// output "exampleOutput" {
-///   value = jsondecode(data.azure_core_gettenanttemplatedeployment.example.output_content).example_output.value
+///   value = jsondecode(data.azure_core_tenant_template_deployment.example.output_content).example_output.value
 /// }
 /// ```
 /// ```java
@@ -1629,7 +1629,7 @@ pulumi.Output<GetTenantTemplateDeploymentResult> getTenantTemplateDeploymentOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1637,19 +1637,19 @@ pulumi.Output<GetTenantTemplateDeploymentResult> getTenantTemplateDeploymentOutp
 ///   }
 /// }
 ///
-/// data "azure_authorization_getuserassignedidentity" "example" {
+/// data "azure_authorization_user_assigned_identity" "example" {
 ///   name                = "name_of_user_assigned_identity"
 ///   resource_group_name = "name_of_resource_group"
 /// }
 ///
 /// output "uaiClientId" {
-///   value = data.azure_authorization_getuserassignedidentity.example.client_id
+///   value = data.azure_authorization_user_assigned_identity.example.client_id
 /// }
 /// output "uaiPrincipalId" {
-///   value = data.azure_authorization_getuserassignedidentity.example.principal_id
+///   value = data.azure_authorization_user_assigned_identity.example.principal_id
 /// }
 /// output "uaiTenantId" {
-///   value = data.azure_authorization_getuserassignedidentity.example.tenant_id
+///   value = data.azure_authorization_user_assigned_identity.example.tenant_id
 /// }
 /// ```
 /// ```java

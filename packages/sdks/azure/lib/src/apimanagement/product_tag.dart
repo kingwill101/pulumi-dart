@@ -187,7 +187,7 @@ import 'product_tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -195,35 +195,50 @@ import 'product_tag_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "My Company"
 ///   publisher_email     = "company@terraform.io"
 ///   sku_name            = "Developer_1"
 /// }
 /// resource "azure_apimanagement_product" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   product_id            = "test-product"
 ///   api_management_name   = azure_apimanagement_service.example.name
-///   resource_group_name   = azure_core_resourcegroup.example.name
+///   resource_group_name   = azure_core_resource_group.example.name
 ///   display_name          = "Test Product"
 ///   subscription_required = true
 ///   approval_required     = true
 ///   published             = true
 /// }
 /// resource "azure_apimanagement_tag" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_management_id = azure_apimanagement_service.example.id
 ///   name              = "example-tag"
 /// }
-/// resource "azure_apimanagement_producttag" "example" {
+/// resource "azure_apimanagement_product_tag" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_management_product_id = azure_apimanagement_product.example.product_id
 ///   api_management_name       = azure_apimanagement_service.example.name
-///   resource_group_name       = azure_core_resourcegroup.example.name
+///   resource_group_name       = azure_core_resource_group.example.name
 ///   name                      = azure_apimanagement_tag.example.name
 /// }
 /// ```
@@ -376,7 +391,7 @@ class ProductTag extends pulumi.CustomResource {
           'azure:apimanagement/productTag:ProductTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiManagementProductId = registerOutput<String>('apiManagementProductId');

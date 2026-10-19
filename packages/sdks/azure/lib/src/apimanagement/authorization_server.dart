@@ -120,7 +120,7 @@ import 'authorization_server_token_body_parameter.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -128,15 +128,18 @@ import 'authorization_server_token_body_parameter.dart';
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getservice" "example" {
+/// data "azure_apimanagement_service" "example" {
 ///   name                = "search-api"
 ///   resource_group_name = "search-service"
 /// }
 ///
-/// resource "azure_apimanagement_authorizationserver" "example" {
+/// resource "azure_apimanagement_authorization_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "test-server"
-///   api_management_name          = data.azure_apimanagement_getservice.example.name
-///   resource_group_name          = data.azure_apimanagement_getservice.example.resource_group_name
+///   api_management_name          = data.azure_apimanagement_service.example.name
+///   resource_group_name          = data.azure_apimanagement_service.example.resource_group_name
 ///   display_name                 = "Test Server"
 ///   authorization_endpoint       = "https://example.mydomain.com/client/authorize"
 ///   client_id                    = "42424242-4242-4242-4242-424242424242"
@@ -287,7 +290,7 @@ class AuthorizationServer extends pulumi.CustomResource {
           'azure:apimanagement/authorizationServer:AuthorizationServer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['clientSecret', 'resourceOwnerPassword'],
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');

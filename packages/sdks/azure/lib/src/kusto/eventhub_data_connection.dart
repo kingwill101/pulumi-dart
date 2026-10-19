@@ -281,7 +281,7 @@ import 'eventhub_data_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -289,53 +289,74 @@ import 'eventhub_data_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-kusto-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_kusto_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "kustocluster"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     name     = "Standard_D13_v2"
 ///     capacity = 2
 ///   }
 /// }
 /// resource "azure_kusto_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "my-kusto-database"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   cluster_name        = azure_kusto_cluster.cluster.name
 ///   hot_cache_period    = "P7D"
 ///   soft_delete_period  = "P31D"
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "eventhub_ns" {
+/// resource "azure_eventhub_event_hub_namespace" "eventhub_ns" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "my-eventhub-ns"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_eventhub_eventhub" "eventhub" {
+/// resource "azure_eventhub_event_hub" "eventhub" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "my-eventhub"
-///   namespace_id      = azure_eventhub_eventhubnamespace.eventhub_ns.id
+///   namespace_id      = azure_eventhub_event_hub_namespace.eventhub_ns.id
 ///   partition_count   = 1
 ///   message_retention = 1
 /// }
-/// resource "azure_eventhub_consumergroup" "consumer_group" {
+/// resource "azure_eventhub_consumer_group" "consumer_group" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "my-eventhub-consumergroup"
-///   namespace_name      = azure_eventhub_eventhubnamespace.eventhub_ns.name
-///   eventhub_name       = azure_eventhub_eventhub.eventhub.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   namespace_name      = azure_eventhub_event_hub_namespace.eventhub_ns.name
+///   eventhub_name       = azure_eventhub_event_hub.eventhub.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_kusto_eventhubdataconnection" "eventhub_connection" {
+/// resource "azure_kusto_eventhub_data_connection" "eventhub_connection" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "my-kusto-eventhub-data-connection"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   location             = azure_core_resourcegroup.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
+///   location             = azure_core_resource_group.example.location
 ///   cluster_name         = azure_kusto_cluster.cluster.name
 ///   database_name        = azure_kusto_database.database.name
-///   eventhub_id          = azure_eventhub_eventhub.eventhub.id
-///   consumer_group       = azure_eventhub_consumergroup.consumer_group.name
+///   eventhub_id          = azure_eventhub_event_hub.eventhub.id
+///   consumer_group       = azure_eventhub_consumer_group.consumer_group.name
 ///   table_name           = "my-table"
 ///   mapping_rule_name    = "my-table-mapping"
 ///   data_format          = "JSON"
@@ -562,7 +583,7 @@ class EventhubDataConnection extends pulumi.CustomResource {
           'azure:kusto/eventhubDataConnection:EventhubDataConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     clusterName = registerOutput<String>('clusterName');
     compression = registerOutput<String?>('compression');

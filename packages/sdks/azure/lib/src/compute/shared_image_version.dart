@@ -147,7 +147,7 @@ import 'shared_image_version_target_region.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -155,25 +155,28 @@ import 'shared_image_version_target_region.dart';
 ///   }
 /// }
 ///
-/// data "azure_compute_getimage" "existing" {
+/// data "azure_compute_image" "existing" {
 ///   name                = "search-api"
 ///   resource_group_name = "packerimages"
 /// }
-/// data "azure_compute_getsharedimage" "existingGetSharedImage" {
+/// data "azure_compute_shared_image" "existingGetSharedImage" {
 ///   name                = "existing-image"
 ///   gallery_name        = "existing_gallery"
 ///   resource_group_name = "existing-resources"
 /// }
 ///
-/// resource "azure_compute_sharedimageversion" "example" {
+/// resource "azure_compute_shared_image_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "0.0.1"
-///   gallery_name        = data.azure_compute_getsharedimage.existingGetSharedImage.gallery_name
-///   image_name          = data.azure_compute_getsharedimage.existingGetSharedImage.name
-///   resource_group_name = data.azure_compute_getsharedimage.existingGetSharedImage.resource_group_name
-///   location            = data.azure_compute_getsharedimage.existingGetSharedImage.location
-///   managed_image_id    = data.azure_compute_getimage.existing.id
+///   gallery_name        = data.azure_compute_shared_image.existingGetSharedImage.gallery_name
+///   image_name          = data.azure_compute_shared_image.existingGetSharedImage.name
+///   resource_group_name = data.azure_compute_shared_image.existingGetSharedImage.resource_group_name
+///   location            = data.azure_compute_shared_image.existingGetSharedImage.location
+///   managed_image_id    = data.azure_compute_image.existing.id
 ///   target_regions {
-///     name                   = data.azure_compute_getsharedimage.existingGetSharedImage.location
+///     name                   = data.azure_compute_shared_image.existingGetSharedImage.location
 ///     regional_replica_count = 5
 ///     storage_account_type   = "Standard_LRS"
 ///   }
@@ -334,7 +337,7 @@ class SharedImageVersion extends pulumi.CustomResource {
           'azure:compute/sharedImageVersion:SharedImageVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     blobUri = registerOutput<String?>('blobUri');
     deletionOfReplicatedLocationsEnabled = registerOutput<bool?>('deletionOfReplicatedLocationsEnabled');

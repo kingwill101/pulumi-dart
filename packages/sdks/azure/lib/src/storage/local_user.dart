@@ -239,7 +239,7 @@ import 'local_user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -247,24 +247,36 @@ import 'local_user_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "WestEurope"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-account"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_kind             = "StorageV2"
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 ///   is_hns_enabled           = true
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-container"
 ///   storage_account_name = azure_storage_account.example.name
 /// }
-/// resource "azure_storage_localuser" "example" {
+/// resource "azure_storage_local_user" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "user1"
 ///   storage_account_id   = azure_storage_account.example.id
 ///   ssh_key_enabled      = true
@@ -459,7 +471,7 @@ class LocalUser extends pulumi.CustomResource {
           'azure:storage/localUser:LocalUser',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['password', 'sid'],
         ) {
     homeDirectory = registerOutput<String?>('homeDirectory');

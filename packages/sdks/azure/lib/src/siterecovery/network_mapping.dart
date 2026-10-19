@@ -286,7 +286,7 @@ import 'network_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -294,53 +294,77 @@ import 'network_mapping_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "primary" {
+/// resource "azure_core_resource_group" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-network-mapping-primary"
 ///   location = "West US"
 /// }
-/// resource "azure_core_resourcegroup" "secondary" {
+/// resource "azure_core_resource_group" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-network-mapping-secondary"
 ///   location = "East US"
 /// }
 /// resource "azure_recoveryservices_vault" "vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-recovery-vault"
-///   location            = azure_core_resourcegroup.secondary.location
-///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   location            = azure_core_resource_group.secondary.location
+///   resource_group_name = azure_core_resource_group.secondary.name
 ///   sku                 = "Standard"
 /// }
 /// resource "azure_siterecovery_fabric" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "primary-fabric"
-///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   resource_group_name = azure_core_resource_group.secondary.name
 ///   recovery_vault_name = azure_recoveryservices_vault.vault.name
-///   location            = azure_core_resourcegroup.primary.location
+///   location            = azure_core_resource_group.primary.location
 /// }
 /// resource "azure_siterecovery_fabric" "secondary" {
-///   depends_on          = [azure_siterecovery_fabric.primary]
+///   depends_on = [azure_siterecovery_fabric.primary]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "secondary-fabric"
-///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   resource_group_name = azure_core_resource_group.secondary.name
 ///   recovery_vault_name = azure_recoveryservices_vault.vault.name
-///   location            = azure_core_resourcegroup.secondary.location
+///   location            = azure_core_resource_group.secondary.location
 /// }
-/// resource "azure_network_virtualnetwork" "primary" {
+/// resource "azure_network_virtual_network" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "network1"
-///   resource_group_name = azure_core_resourcegroup.primary.name
+///   resource_group_name = azure_core_resource_group.primary.name
 ///   address_spaces      = ["192.168.1.0/24"]
-///   location            = azure_core_resourcegroup.primary.location
+///   location            = azure_core_resource_group.primary.location
 /// }
-/// resource "azure_network_virtualnetwork" "secondary" {
+/// resource "azure_network_virtual_network" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "network2"
-///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   resource_group_name = azure_core_resource_group.secondary.name
 ///   address_spaces      = ["192.168.2.0/24"]
-///   location            = azure_core_resourcegroup.secondary.location
+///   location            = azure_core_resource_group.secondary.location
 /// }
-/// resource "azure_siterecovery_networkmapping" "recovery-mapping" {
+/// resource "azure_siterecovery_network_mapping" "recovery-mapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "recovery-network-mapping-1"
-///   resource_group_name         = azure_core_resourcegroup.secondary.name
+///   resource_group_name         = azure_core_resource_group.secondary.name
 ///   recovery_vault_name         = azure_recoveryservices_vault.vault.name
 ///   source_recovery_fabric_name = "primary-fabric"
 ///   target_recovery_fabric_name = "secondary-fabric"
-///   source_network_id           = azure_network_virtualnetwork.primary.id
-///   target_network_id           = azure_network_virtualnetwork.secondary.id
+///   source_network_id           = azure_network_virtual_network.primary.id
+///   target_network_id           = azure_network_virtual_network.secondary.id
 /// }
 /// ```
 /// ```java
@@ -544,7 +568,7 @@ class NetworkMapping extends pulumi.CustomResource {
           'azure:siterecovery/networkMapping:NetworkMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');

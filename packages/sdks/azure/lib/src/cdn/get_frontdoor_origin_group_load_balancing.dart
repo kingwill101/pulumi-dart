@@ -30,9 +30,9 @@ class GetFrontdoorOriginGroupLoadBalancing {
 
   factory GetFrontdoorOriginGroupLoadBalancing.fromMap(Map<String, dynamic> map) {
     return GetFrontdoorOriginGroupLoadBalancing(
-      additionalLatencyInMilliseconds: pulumi.Input.fromValue((map['additionalLatencyInMilliseconds'] as num).toInt()),
-      sampleSize: pulumi.Input.fromValue((map['sampleSize'] as num).toInt()),
-      successfulSamplesRequired: pulumi.Input.fromValue((map['successfulSamplesRequired'] as num).toInt()),
+      additionalLatencyInMilliseconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['additionalLatencyInMilliseconds'])),
+      sampleSize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sampleSize'])),
+      successfulSamplesRequired: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['successfulSamplesRequired'])),
     );
   }
 }

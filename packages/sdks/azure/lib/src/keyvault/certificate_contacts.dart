@@ -229,7 +229,7 @@ import 'certificate_contacts_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -237,32 +237,44 @@ import 'certificate_contacts_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplekeyvault"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "premium"
 /// }
-/// resource "azure_keyvault_accesspolicy" "example" {
-///   key_vault_id            = azure_keyvault_keyvault.example.id
-///   tenant_id               = data.azure_core_getclientconfig.current.tenant_id
-///   object_id               = data.azure_core_getclientconfig.current.object_id
+/// resource "azure_keyvault_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id            = azure_keyvault_key_vault.example.id
+///   tenant_id               = data.azure_core_client_config.current.tenant_id
+///   object_id               = data.azure_core_client_config.current.object_id
 ///   certificate_permissions = ["ManageContacts"]
 ///   key_permissions         = ["Create"]
 ///   secret_permissions      = ["Set"]
 /// }
-/// resource "azure_keyvault_certificatecontacts" "example" {
-///   depends_on   = [azure_keyvault_accesspolicy.example]
-///   key_vault_id = azure_keyvault_keyvault.example.id
+/// resource "azure_keyvault_certificate_contacts" "example" {
+///   depends_on = [azure_keyvault_access_policy.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   contacts {
 ///     email = "example@example.com"
 ///     name  = "example"
@@ -422,7 +434,7 @@ class CertificateContacts extends pulumi.CustomResource {
           'azure:keyvault/certificateContacts:CertificateContacts',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     contacts = registerOutput<List<CertificateContactsContact>?>('contacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CertificateContactsContact>(guardedValue, (value) => CertificateContactsContact.fromMap((value as Map).cast<String, dynamic>())); });
     keyVaultId = registerOutput<String>('keyVaultId');

@@ -70,7 +70,7 @@ import 'get_private_cloud_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -78,13 +78,13 @@ import 'get_private_cloud_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_avs_getprivatecloud" "example" {
+/// data "azure_avs_private_cloud" "example" {
 ///   name                = "existing-vmware-private-cloud"
 ///   resource_group_name = "existing-resgroup"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_avs_getprivatecloud.example.id
+///   value = data.azure_avs_private_cloud.example.id
 /// }
 /// ```
 /// ```java

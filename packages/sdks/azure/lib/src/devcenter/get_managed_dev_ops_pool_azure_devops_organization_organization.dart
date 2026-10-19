@@ -30,7 +30,7 @@ class GetManagedDevOpsPoolAzureDevopsOrganizationOrganization {
 
   factory GetManagedDevOpsPoolAzureDevopsOrganizationOrganization.fromMap(Map<String, dynamic> map) {
     return GetManagedDevOpsPoolAzureDevopsOrganizationOrganization(
-      parallelism: pulumi.Input.fromValue((map['parallelism'] as num).toInt()),
+      parallelism: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['parallelism'])),
       projects: pulumi.Input.fromValue((map['projects'] as List).cast<String>()),
       url: pulumi.Input.fromValue(map['url'] as String),
     );

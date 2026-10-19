@@ -145,7 +145,7 @@ import 'zone_virtual_network_link_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -153,25 +153,37 @@ import 'zone_virtual_network_link_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_privatedns_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "mydomain.com"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_privatedns_zonevirtualnetworklink" "example" {
+/// resource "azure_privatedns_zone_virtual_network_link" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "test"
-///   resource_group_name   = azure_core_resourcegroup.example.name
+///   resource_group_name   = azure_core_resource_group.example.name
 ///   private_dns_zone_name = azure_privatedns_zone.example.name
-///   virtual_network_id    = azure_network_virtualnetwork.example.id
+///   virtual_network_id    = azure_network_virtual_network.example.id
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test-network"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// ```
 /// ```java
@@ -303,7 +315,7 @@ class ZoneVirtualNetworkLink extends pulumi.CustomResource {
           'azure:privatedns/zoneVirtualNetworkLink:ZoneVirtualNetworkLink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     privateDnsZoneName = registerOutput<String>('privateDnsZoneName');

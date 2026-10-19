@@ -142,7 +142,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -150,23 +150,32 @@ import 'database_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-kusto-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_kusto_cluster" "cluster" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "kustocluster"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     name     = "Standard_D13_v2"
 ///     capacity = 2
 ///   }
 /// }
 /// resource "azure_kusto_database" "database" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "my-kusto-database"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   cluster_name        = azure_kusto_cluster.cluster.name
 ///   hot_cache_period    = "P7D"
 ///   soft_delete_period  = "P31D"
@@ -295,7 +304,7 @@ class Database extends pulumi.CustomResource {
           'azure:kusto/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     clusterName = registerOutput<String>('clusterName');
     hotCachePeriod = registerOutput<String?>('hotCachePeriod');

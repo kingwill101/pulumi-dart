@@ -255,7 +255,7 @@ import 'alert_processing_rule_suppression_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -263,14 +263,20 @@ import 'alert_processing_rule_suppression_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_monitoring_alertprocessingrulesuppression" "example" {
+/// resource "azure_monitoring_alert_processing_rule_suppression" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
 ///   resource_group_name = "example"
-///   scopes              = [azure_core_resourcegroup.example.id]
+///   scopes              = [azure_core_resource_group.example.id]
 ///   condition = {
 ///     target_resource_type = {
 ///       operator = "Equals"
@@ -287,11 +293,11 @@ import 'alert_processing_rule_suppression_state.dart';
 ///     time_zone       = "Pacific Standard Time"
 ///     recurrence = {
 ///       dailies = [{
-///         "startTime" = "17:00:00"
-///         "endTime"   = "09:00:00"
+///         start_time = "17:00:00"
+///         end_time   = "09:00:00"
 ///       }]
 ///       weeklies = [{
-///         "daysOfWeeks" = ["Saturday", "Sunday"]
+///         days_of_weeks = ["Saturday", "Sunday"]
 ///       }]
 ///     }
 ///   }
@@ -461,7 +467,7 @@ class AlertProcessingRuleSuppression extends pulumi.CustomResource {
           'azure:monitoring/alertProcessingRuleSuppression:AlertProcessingRuleSuppression',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     condition = registerOutput<AlertProcessingRuleSuppressionCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AlertProcessingRuleSuppressionCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');

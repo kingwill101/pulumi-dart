@@ -93,7 +93,7 @@ class AutomationRuleArgs {
       expiration: (() { final guardedValue = map['expiration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       logAnalyticsWorkspaceId: pulumi.Input.fromValue(map['logAnalyticsWorkspaceId'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      order: pulumi.Input.fromValue((map['order'] as num).toInt()),
+      order: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['order'])),
       triggersOn: (() { final guardedValue = map['triggersOn']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       triggersWhen: (() { final guardedValue = map['triggersWhen']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

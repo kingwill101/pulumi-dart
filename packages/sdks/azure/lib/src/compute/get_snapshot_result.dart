@@ -72,7 +72,7 @@ class GetSnapshotResult {
   factory GetSnapshotResult.fromMap(Map<String, dynamic> map) {
     return GetSnapshotResult(
       creationOption: (() { final guardedValue = map['creationOption']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       encryptionSettings: (() { final guardedValue = map['encryptionSettings']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetSnapshotEncryptionSetting>(guardedValue, (value) => GetSnapshotEncryptionSetting.fromMap((value as Map).cast<String, dynamic>())); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),

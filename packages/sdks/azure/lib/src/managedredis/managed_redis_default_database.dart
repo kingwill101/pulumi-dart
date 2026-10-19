@@ -89,7 +89,7 @@ class ManagedRedisDefaultDatabase {
       modules: (() { final guardedValue = map['modules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedRedisDefaultDatabaseModule>(guardedValue, (value) => ManagedRedisDefaultDatabaseModule.fromMap((value as Map).cast<String, dynamic>()))); })(),
       persistenceAppendOnlyFileBackupFrequency: (() { final guardedValue = map['persistenceAppendOnlyFileBackupFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       persistenceRedisDatabaseBackupFrequency: (() { final guardedValue = map['persistenceRedisDatabaseBackupFrequency']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       primaryAccessKey: (() { final guardedValue = map['primaryAccessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       secondaryAccessKey: (() { final guardedValue = map['secondaryAccessKey']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

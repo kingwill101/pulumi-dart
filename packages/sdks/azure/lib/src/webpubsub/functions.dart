@@ -109,7 +109,7 @@ import 'get_service_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -117,18 +117,24 @@ import 'get_service_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_webpubsub_getprivatelinkresource" "test" {
+/// data "azure_webpubsub_private_link_resource" "test" {
 ///   web_pubsub_id = azure_webpubsub_service.test.id
 /// }
 ///
-/// resource "azure_core_resourcegroup" "test" {
+/// resource "azure_core_resource_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "terraform-webpubsub"
 ///   location = "east us"
 /// }
 /// resource "azure_webpubsub_service" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-webpubsub"
-///   location            = azure_core_resourcegroup.test.location
-///   resource_group_name = azure_core_resourcegroup.test.name
+///   location            = azure_core_resource_group.test.location
+///   resource_group_name = azure_core_resource_group.test.name
 ///   sku                 = "Standard_S1"
 ///   capacity            = 1
 /// }
@@ -295,7 +301,7 @@ pulumi.Output<GetPrivateLinkResourceResult> getPrivateLinkResourceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -303,7 +309,7 @@ pulumi.Output<GetPrivateLinkResourceResult> getPrivateLinkResourceOutput(
 ///   }
 /// }
 ///
-/// data "azure_webpubsub_getservice" "example" {
+/// data "azure_webpubsub_service" "example" {
 ///   name                = "test-webpubsub"
 ///   resource_group_name = "wps-resource-group"
 /// }

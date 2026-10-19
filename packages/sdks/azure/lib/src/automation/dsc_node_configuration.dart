@@ -246,7 +246,7 @@ import 'dsc_node_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -254,29 +254,64 @@ import 'dsc_node_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_automation_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "account1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Basic"
 /// }
-/// resource "azure_automation_dscconfiguration" "example" {
+/// resource "azure_automation_dsc_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test"
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   automation_account_name = azure_automation_account.example.name
-///   location                = azure_core_resourcegroup.example.location
+///   location                = azure_core_resource_group.example.location
 ///   content_embedded        = "configuration test {}"
 /// }
-/// resource "azure_automation_dscnodeconfiguration" "example" {
-///   depends_on              = [azure_automation_dscconfiguration.example]
+/// resource "azure_automation_dsc_node_configuration" "example" {
+///   depends_on = [azure_automation_dsc_configuration.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test.localhost"
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   automation_account_name = azure_automation_account.example.name
-///   content_embedded        = "instance of MSFT_FileDirectoryConfiguration as $MSFT_FileDirectoryConfiguration1ref\n{\n  ResourceID = \\\"[File]bla\\\";\n  Ensure = \\\"Present\\\";\n  Contents = \\\"bogus Content\\\";\n  DestinationPath = \\\"c:\\\\\\\\bogus.txt\\\";\n  ModuleName = \\\"PSDesiredStateConfiguration\\\";\n  SourceInfo = \\\"::3::9::file\\\";\n  ModuleVersion = \\\"1.0\\\";\n  ConfigurationName = \\\"bla\\\";\n};\ninstance of OMI_ConfigurationDocument\n{\n  Version=\\\"2.0.0\\\";\n  MinimumCompatibleVersion = \\\"1.0.0\\\";\n  CompatibleVersionAdditionalProperties= {\\\"Omi_BaseResource:ConfigurationName\\\"};\n  Author=\\\"bogusAuthor\\\";\n  GenerationDate=\\\"06/15/2018 14:06:24\\\";\n  GenerationHost=\\\"bogusComputer\\\";\n  Name=\\\"test\\\";\n};\n"
+///   content_embedded        = <<mofcontent
+/// instance of MSFT_FileDirectoryConfiguration as $MSFT_FileDirectoryConfiguration1ref
+/// {
+///   ResourceID = \"[File]bla\";
+///   Ensure = \"Present\";
+///   Contents = \"bogus Content\";
+///   DestinationPath = \"c:\\\\bogus.txt\";
+///   ModuleName = \"PSDesiredStateConfiguration\";
+///   SourceInfo = \"::3::9::file\";
+///   ModuleVersion = \"1.0\";
+///   ConfigurationName = \"bla\";
+/// };
+/// instance of OMI_ConfigurationDocument
+/// {
+///   Version=\"2.0.0\";
+///   MinimumCompatibleVersion = \"1.0.0\";
+///   CompatibleVersionAdditionalProperties= {\"Omi_BaseResource:ConfigurationName\"};
+///   Author=\"bogusAuthor\";
+///   GenerationDate=\"06/15/2018 14:06:24\";
+///   GenerationHost=\"bogusComputer\";
+///   Name=\"test\";
+/// };
+/// mofcontent
+///
 /// }
 /// ```
 /// ```java
@@ -457,7 +492,7 @@ class DscNodeConfiguration extends pulumi.CustomResource {
           'azure:automation/dscNodeConfiguration:DscNodeConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     configurationName = registerOutput<String>('configurationName');

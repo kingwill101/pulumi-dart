@@ -48,8 +48,8 @@ class SystemTopicEventSubscriptionWebhookEndpoint {
       activeDirectoryAppIdOrUri: (() { final guardedValue = map['activeDirectoryAppIdOrUri']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       activeDirectoryTenantId: (() { final guardedValue = map['activeDirectoryTenantId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       baseUrl: (() { final guardedValue = map['baseUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxEventsPerBatch: (() { final guardedValue = map['maxEventsPerBatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      preferredBatchSizeInKilobytes: (() { final guardedValue = map['preferredBatchSizeInKilobytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      maxEventsPerBatch: (() { final guardedValue = map['maxEventsPerBatch']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      preferredBatchSizeInKilobytes: (() { final guardedValue = map['preferredBatchSizeInKilobytes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }

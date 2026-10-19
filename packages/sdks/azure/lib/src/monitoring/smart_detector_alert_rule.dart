@@ -176,7 +176,7 @@ import 'smart_detector_alert_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -184,30 +184,42 @@ import 'smart_detector_alert_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appinsights_insights" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-appinsights"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_type    = "web"
 /// }
-/// resource "azure_monitoring_actiongroup" "example" {
+/// resource "azure_monitoring_action_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-action-group"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   short_name          = "example"
 /// }
-/// resource "azure_monitoring_smartdetectoralertrule" "example" {
+/// resource "azure_monitoring_smart_detector_alert_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-smart-detector-alert-rule"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   severity            = "Sev0"
 ///   scope_resource_ids  = [azure_appinsights_insights.example.id]
 ///   frequency           = "PT1M"
 ///   detector_type       = "FailureAnomaliesDetector"
 ///   action_group = {
-///     ids = [azure_monitoring_actiongroup.example.id]
+///     ids = [azure_monitoring_action_group.example.id]
 ///   }
 /// }
 /// ```
@@ -361,7 +373,7 @@ class SmartDetectorAlertRule extends pulumi.CustomResource {
           'azure:monitoring/smartDetectorAlertRule:SmartDetectorAlertRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     actionGroup = registerOutput<SmartDetectorAlertRuleActionGroup>('actionGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SmartDetectorAlertRuleActionGroup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String?>('description');

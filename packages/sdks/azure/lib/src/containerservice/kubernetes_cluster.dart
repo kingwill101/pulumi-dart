@@ -186,7 +186,7 @@ import 'kubernetes_cluster_workload_autoscaler_profile.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -194,14 +194,20 @@ import 'kubernetes_cluster_workload_autoscaler_profile.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_containerservice_kubernetescluster" "example" {
+/// resource "azure_containerservice_kubernetes_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-aks1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   dns_prefix          = "exampleaks1"
 ///   default_node_pool = {
 ///     name       = "default"
@@ -216,10 +222,10 @@ import 'kubernetes_cluster_workload_autoscaler_profile.dart';
 ///   }
 /// }
 /// output "clientCertificate" {
-///   value = azure_containerservice_kubernetescluster.example.kube_configs[0].client_certificate
+///   value = azure_containerservice_kubernetes_cluster.example.kube_configs[0].client_certificate
 /// }
 /// output "kubeConfig" {
-///   value = azure_containerservice_kubernetescluster.example.kube_config_raw
+///   value = azure_containerservice_kubernetes_cluster.example.kube_config_raw
 /// }
 /// ```
 /// ```java
@@ -268,7 +274,7 @@ import 'kubernetes_cluster_workload_autoscaler_profile.dart';
 ///             .tags(Map.of("Environment", "Production"))
 ///             .build());
 ///
-///         ctx.export("clientCertificate", exampleKubernetesCluster.kubeConfigs().applyValue(_kubeConfigs -> _kubeConfigs[0].clientCertificate()));
+///         ctx.export("clientCertificate", exampleKubernetesCluster.kubeConfigs().applyValue(_kubeConfigs -> _kubeConfigs.get(0).clientCertificate()));
 ///         ctx.export("kubeConfig", exampleKubernetesCluster.kubeConfigRaw());
 ///     }
 /// }
@@ -629,7 +635,7 @@ class KubernetesCluster extends pulumi.CustomResource {
   /// }
   /// ```
   /// ```hcl
-  /// pulumi {
+  /// terraform {
   ///   required_providers {
   ///     azure = {
   ///       source = "pulumi/azure"
@@ -637,29 +643,44 @@ class KubernetesCluster extends pulumi.CustomResource {
   ///   }
   /// }
   ///
-  /// resource "azure_core_resourcegroup" "example" {
+  /// resource "azure_core_resource_group" "example" {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   ///   name     = "example"
   ///   location = "West Europe"
   /// }
   /// resource "azure_privatedns_zone" "example" {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   ///   name                = "privatelink.eastus2.azmk8s.io"
-  ///   resource_group_name = azure_core_resourcegroup.example.name
+  ///   resource_group_name = azure_core_resource_group.example.name
   /// }
-  /// resource "azure_authorization_userassignedidentity" "example" {
+  /// resource "azure_authorization_user_assigned_identity" "example" {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   ///   name                = "aks-example-identity"
-  ///   resource_group_name = azure_core_resourcegroup.example.name
-  ///   location            = azure_core_resourcegroup.example.location
+  ///   resource_group_name = azure_core_resource_group.example.name
+  ///   location            = azure_core_resource_group.example.location
   /// }
   /// resource "azure_authorization_assignment" "example" {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   ///   scope                = azure_privatedns_zone.example.id
   ///   role_definition_name = "Private DNS Zone Contributor"
-  ///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+  ///   principal_id         = azure_authorization_user_assigned_identity.example.principal_id
   /// }
-  /// resource "azure_containerservice_kubernetescluster" "example" {
-  ///   depends_on              = [azure_authorization_assignment.example]
+  /// resource "azure_containerservice_kubernetes_cluster" "example" {
+  ///   depends_on = [azure_authorization_assignment.example]
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   ///   name                    = "aksexamplewithprivatednszone1"
-  ///   location                = azure_core_resourcegroup.example.location
-  ///   resource_group_name     = azure_core_resourcegroup.example.name
+  ///   location                = azure_core_resource_group.example.location
+  ///   resource_group_name     = azure_core_resource_group.example.name
   ///   dns_prefix              = "aksexamplednsprefix1"
   ///   private_cluster_enabled = true
   ///   private_dns_zone_id     = azure_privatedns_zone.example.id
@@ -826,7 +847,7 @@ class KubernetesCluster extends pulumi.CustomResource {
           'azure:containerservice/kubernetesCluster:KubernetesCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['kubeAdminConfigRaw', 'kubeAdminConfigs', 'kubeConfigRaw', 'kubeConfigs'],
         ) {
     aciConnectorLinux = registerOutput<KubernetesClusterAciConnectorLinux?>('aciConnectorLinux', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return KubernetesClusterAciConnectorLinux.fromMap((guardedValue as Map).cast<String, dynamic>()); });

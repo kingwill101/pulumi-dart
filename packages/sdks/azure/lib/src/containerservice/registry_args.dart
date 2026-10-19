@@ -157,7 +157,7 @@ class RegistryArgs {
       publicNetworkAccessEnabled: (() { final guardedValue = map['publicNetworkAccessEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       quarantinePolicyEnabled: (() { final guardedValue = map['quarantinePolicyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
-      retentionPolicyInDays: (() { final guardedValue = map['retentionPolicyInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      retentionPolicyInDays: (() { final guardedValue = map['retentionPolicyInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       roleAssignmentMode: (() { final guardedValue = map['roleAssignmentMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sku: pulumi.Input.fromValue(map['sku'] as String),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),

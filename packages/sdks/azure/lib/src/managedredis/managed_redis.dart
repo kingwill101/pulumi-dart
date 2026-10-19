@@ -107,7 +107,7 @@ import 'managed_redis_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -115,14 +115,20 @@ import 'managed_redis_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_managedredis_managedredis" "example" {
+/// resource "azure_managedredis_managed_redis" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-managed-redis"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku_name            = "Balanced_B3"
 ///   default_database = {
 ///     geo_replication_group_name = "myGeoGroup"
@@ -559,7 +565,7 @@ import 'managed_redis_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -567,56 +573,71 @@ import 'managed_redis_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 ///   purge_protection_enabled   = true
 ///   access_policies {
-///     tenant_id       = data.azure_core_getclientconfig.current.tenant_id
-///     object_id       = data.azure_core_getclientconfig.current.object_id
+///     tenant_id       = data.azure_core_client_config.current.tenant_id
+///     object_id       = data.azure_core_client_config.current.object_id
 ///     key_permissions = ["Create", "Delete", "Get", "List", "Purge", "Recover", "Update", "GetRotationPolicy", "SetRotationPolicy"]
 ///   }
 ///   access_policies {
-///     tenant_id       = data.azure_core_getclientconfig.current.tenant_id
-///     object_id       = azure_authorization_userassignedidentity.example.principal_id
+///     tenant_id       = data.azure_core_client_config.current.tenant_id
+///     object_id       = azure_authorization_user_assigned_identity.example.principal_id
 ///     key_permissions = ["Get", "WrapKey", "UnwrapKey"]
 ///   }
 /// }
 /// resource "azure_keyvault_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "managedrediscmk"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["unwrapKey", "wrapKey"]
 /// }
-/// resource "azure_managedredis_managedredis" "example" {
+/// resource "azure_managedredis_managed_redis" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-managed-redis"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku_name            = "Balanced_B3"
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 ///   customer_managed_key = {
 ///     key_vault_key_id          = azure_keyvault_key.example.id
-///     user_assigned_identity_id = azure_authorization_userassignedidentity.example.id
+///     user_assigned_identity_id = azure_authorization_user_assigned_identity.example.id
 ///   }
 ///   default_database = {
 ///     geo_replication_group_name = "myGeoGroup"
@@ -872,7 +893,7 @@ class ManagedRedis extends pulumi.CustomResource {
           'azure:managedredis/managedRedis:ManagedRedis',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     customerManagedKey = registerOutput<ManagedRedisCustomerManagedKey?>('customerManagedKey', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedRedisCustomerManagedKey.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     defaultDatabase = registerOutput<ManagedRedisDefaultDatabase?>('defaultDatabase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedRedisDefaultDatabase.fromMap((guardedValue as Map).cast<String, dynamic>()); });

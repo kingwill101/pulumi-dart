@@ -35,8 +35,8 @@ class SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration 
 
   factory SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration.fromMap(Map<String, dynamic> map) {
     return SingleNodeVirtualInstanceSingleServerConfigurationDiskVolumeConfiguration(
-      numberOfDisks: pulumi.Input.fromValue((map['numberOfDisks'] as num).toInt()),
-      sizeInGb: pulumi.Input.fromValue((map['sizeInGb'] as num).toInt()),
+      numberOfDisks: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberOfDisks'])),
+      sizeInGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeInGb'])),
       skuName: pulumi.Input.fromValue(map['skuName'] as String),
       volumeName: pulumi.Input.fromValue(map['volumeName'] as String),
     );

@@ -213,7 +213,7 @@ import 'mongo_user_definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -221,14 +221,20 @@ import 'mongo_user_definition_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_cosmosdb_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ca"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   offer_type          = "Standard"
 ///   kind                = "MongoDB"
 ///   capabilities {
@@ -241,17 +247,23 @@ import 'mongo_user_definition_state.dart';
 ///     consistency_level = "Strong"
 ///   }
 ///   geo_locations {
-///     location          = azure_core_resourcegroup.example.location
+///     location          = azure_core_resource_group.example.location
 ///     failover_priority = 0
 ///   }
 /// }
-/// resource "azure_cosmosdb_mongodatabase" "example" {
+/// resource "azure_cosmosdb_mongo_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-mongodb"
 ///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
 ///   account_name        = azure_cosmosdb_account.example.name
 /// }
-/// resource "azure_cosmosdb_mongouserdefinition" "example" {
-///   cosmos_mongo_database_id = azure_cosmosdb_mongodatabase.example.id
+/// resource "azure_cosmosdb_mongo_user_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cosmos_mongo_database_id = azure_cosmosdb_mongo_database.example.id
 ///   username                 = "myUserName"
 ///   password                 = "myPassword"
 /// }
@@ -407,7 +419,7 @@ class MongoUserDefinition extends pulumi.CustomResource {
           'azure:cosmosdb/mongoUserDefinition:MongoUserDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     cosmosMongoDatabaseId = registerOutput<String>('cosmosMongoDatabaseId');

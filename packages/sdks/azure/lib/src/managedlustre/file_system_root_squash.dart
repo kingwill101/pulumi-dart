@@ -37,8 +37,8 @@ class FileSystemRootSquash {
     return FileSystemRootSquash(
       mode: pulumi.Input.fromValue(map['mode'] as String),
       noSquashNids: pulumi.Input.fromValue(map['noSquashNids'] as String),
-      squashGid: (() { final guardedValue = map['squashGid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      squashUid: (() { final guardedValue = map['squashUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      squashGid: (() { final guardedValue = map['squashGid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      squashUid: (() { final guardedValue = map['squashUid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

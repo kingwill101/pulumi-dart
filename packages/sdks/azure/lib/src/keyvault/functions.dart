@@ -88,7 +88,7 @@ import 'get_secrets_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -96,12 +96,12 @@ import 'get_secrets_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getaccesspolicy" "contributor" {
+/// data "azure_keyvault_access_policy" "contributor" {
 ///   name = "Key Management"
 /// }
 ///
 /// output "accessPolicyKeyPermissions" {
-///   value = data.azure_keyvault_getaccesspolicy.contributor.key_permissions
+///   value = data.azure_keyvault_access_policy.contributor.key_permissions
 /// }
 /// ```
 /// ```java
@@ -254,7 +254,7 @@ pulumi.Output<GetAccessPolicyResult> getAccessPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -262,17 +262,17 @@ pulumi.Output<GetAccessPolicyResult> getAccessPolicyOutput(
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getkeyvault" "example" {
+/// data "azure_keyvault_key_vault" "example" {
 ///   name                = "examplekv"
 ///   resource_group_name = "some-resource-group"
 /// }
-/// data "azure_keyvault_getcertificate" "exampleGetCertificate" {
+/// data "azure_keyvault_certificate" "exampleGetCertificate" {
 ///   name         = "secret-sauce"
-///   key_vault_id = data.azure_keyvault_getkeyvault.example.id
+///   key_vault_id = data.azure_keyvault_key_vault.example.id
 /// }
 ///
 /// output "certificateThumbprint" {
-///   value = data.azure_keyvault_getcertificate.exampleGetCertificate.thumbprint
+///   value = data.azure_keyvault_certificate.exampleGetCertificate.thumbprint
 /// }
 /// ```
 /// ```java
@@ -441,7 +441,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -449,17 +449,17 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getkeyvault" "example" {
+/// data "azure_keyvault_key_vault" "example" {
 ///   name                = "examplekv"
 ///   resource_group_name = "some-resource-group"
 /// }
-/// data "azure_keyvault_getcertificatedata" "exampleGetCertificateData" {
+/// data "azure_keyvault_certificate_data" "exampleGetCertificateData" {
 ///   name         = "secret-sauce"
-///   key_vault_id = data.azure_keyvault_getkeyvault.example.id
+///   key_vault_id = data.azure_keyvault_key_vault.example.id
 /// }
 ///
 /// output "examplePem" {
-///   value = data.azure_keyvault_getcertificatedata.exampleGetCertificateData.pem
+///   value = data.azure_keyvault_certificate_data.exampleGetCertificateData.pem
 /// }
 /// ```
 /// ```java
@@ -626,7 +626,7 @@ pulumi.Output<GetCertificateDataResult> getCertificateDataOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -634,17 +634,17 @@ pulumi.Output<GetCertificateDataResult> getCertificateDataOutput(
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getkeyvault" "example" {
+/// data "azure_keyvault_key_vault" "example" {
 ///   name                = "mykeyvault"
 ///   resource_group_name = "some-resource-group"
 /// }
-/// data "azure_keyvault_getcertificateissuer" "exampleGetCertificateIssuer" {
+/// data "azure_keyvault_certificate_issuer" "exampleGetCertificateIssuer" {
 ///   name         = "existing"
-///   key_vault_id = data.azure_keyvault_getkeyvault.example.id
+///   key_vault_id = data.azure_keyvault_key_vault.example.id
 /// }
 ///
 /// output "id" {
-///   value = data.azure_keyvault_getcertificateissuer.exampleGetCertificateIssuer.id
+///   value = data.azure_keyvault_certificate_issuer.exampleGetCertificateIssuer.id
 /// }
 /// ```
 /// ```java
@@ -777,7 +777,7 @@ pulumi.Output<GetCertificateIssuerResult> getCertificateIssuerOutput(
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -788,17 +788,17 @@ pulumi.Output<GetCertificateIssuerResult> getCertificateIssuerOutput(
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getcertificates" "example" {
+/// data "azure_keyvault_certificates" "example" {
 ///   key_vault_id = existing.id
 /// }
-/// data "azure_keyvault_getcertificate" "invoke_1" {
-///   for_each     = toset(data.azure_keyvault_getcertificates.example.names)
+/// data "azure_keyvault_certificate" "invoke_1" {
+///   for_each     = toset(data.azure_keyvault_certificates.example.names)
 ///   name         = each.key
 ///   key_vault_id = existing.id
 /// }
 ///
 /// locals {
-///   exampleGetCertificate = {for __key, __value in toset(data.azure_keyvault_getcertificates.example.names) : __key => data.azure_keyvault_getcertificate.invoke_1[__key]}
+///   exampleGetCertificate = {for __key, __value in toset(data.azure_keyvault_certificates.example.names) : __key => data.azure_keyvault_certificate.invoke_1[__key]}
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_keyvault_get_certificates_get_certificates_args_doc}
@@ -920,7 +920,7 @@ pulumi.Output<GetEncryptedValueResult> getEncryptedValueOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -928,13 +928,13 @@ pulumi.Output<GetEncryptedValueResult> getEncryptedValueOutput(
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getkey" "example" {
+/// data "azure_keyvault_key" "example" {
 ///   name         = "secret-sauce"
 ///   key_vault_id = existing.id
 /// }
 ///
 /// output "keyType" {
-///   value = data.azure_keyvault_getkey.example.key_type
+///   value = data.azure_keyvault_key.example.key_type
 /// }
 /// ```
 /// ```java
@@ -960,7 +960,7 @@ pulumi.Output<GetEncryptedValueResult> getEncryptedValueOutput(
 ///     public static void stack(Context ctx) {
 ///         final var example = KeyvaultFunctions.getKey(GetKeyArgs.builder()
 ///             .name("secret-sauce")
-///             .keyVaultId(existing.id())
+///             .keyVaultId(existing.get("id"))
 ///             .build());
 ///
 ///         ctx.export("keyType", example.keyType());
@@ -1070,7 +1070,7 @@ pulumi.Output<GetKeyResult> getKeyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1078,13 +1078,13 @@ pulumi.Output<GetKeyResult> getKeyOutput(
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getkeyvault" "example" {
+/// data "azure_keyvault_key_vault" "example" {
 ///   name                = "mykeyvault"
 ///   resource_group_name = "some-resource-group"
 /// }
 ///
 /// output "vaultUri" {
-///   value = data.azure_keyvault_getkeyvault.example.vault_uri
+///   value = data.azure_keyvault_key_vault.example.vault_uri
 /// }
 /// ```
 /// ```java
@@ -1228,7 +1228,7 @@ pulumi.Output<GetKeyVaultResult> getKeyVaultOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1236,13 +1236,13 @@ pulumi.Output<GetKeyVaultResult> getKeyVaultOutput(
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getmanagedhardwaresecuritymodule" "example" {
+/// data "azure_keyvault_managed_hardware_security_module" "example" {
 ///   name                = "mykeyvaultHsm"
 ///   resource_group_name = "some-resource-group"
 /// }
 ///
 /// output "hsmUri" {
-///   value = data.azure_keyvault_getmanagedhardwaresecuritymodule.example.hsm_uri
+///   value = data.azure_keyvault_managed_hardware_security_module.example.hsm_uri
 /// }
 /// ```
 /// ```java
@@ -1393,7 +1393,7 @@ pulumi.Output<GetManagedHardwareSecurityModuleResult> getManagedHardwareSecurity
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1401,13 +1401,13 @@ pulumi.Output<GetManagedHardwareSecurityModuleResult> getManagedHardwareSecurity
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getmanagedhardwaresecuritymodulekey" "example" {
+/// data "azure_keyvault_managed_hardware_security_module_key" "example" {
 ///   managed_hsm_id = exampleAzurermKeyVaultManagedHardwareSecurityModule.id
 ///   name           = exampleAzurermKeyVaultManagedHardwareSecurityModuleKey.name
 /// }
 ///
 /// output "hsm-key-vesrion" {
-///   value = data.azure_keyvault_getmanagedhardwaresecuritymodulekey.example.version
+///   value = data.azure_keyvault_managed_hardware_security_module_key.example.version
 /// }
 /// ```
 /// ```java
@@ -1432,8 +1432,8 @@ pulumi.Output<GetManagedHardwareSecurityModuleResult> getManagedHardwareSecurity
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = KeyvaultFunctions.getManagedHardwareSecurityModuleKey(GetManagedHardwareSecurityModuleKeyArgs.builder()
-///             .managedHsmId(exampleAzurermKeyVaultManagedHardwareSecurityModule.id())
-///             .name(exampleAzurermKeyVaultManagedHardwareSecurityModuleKey.name())
+///             .managedHsmId(exampleAzurermKeyVaultManagedHardwareSecurityModule.get("id"))
+///             .name(exampleAzurermKeyVaultManagedHardwareSecurityModuleKey.get("name"))
 ///             .build());
 ///
 ///         ctx.export("hsm-key-vesrion", example.version());
@@ -1543,7 +1543,7 @@ pulumi.Output<GetManagedHardwareSecurityModuleKeyResult> getManagedHardwareSecur
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1551,13 +1551,13 @@ pulumi.Output<GetManagedHardwareSecurityModuleKeyResult> getManagedHardwareSecur
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getmanagedhardwaresecuritymoduleroledefinition" "example" {
+/// data "azure_keyvault_managed_hardware_security_module_role_definition" "example" {
 ///   managed_hsm_id = exampleAzurermKeyVaultManagedHardwareSecurityModule.id
 ///   name           = "21dbd100-6940-42c2-9190-5d6cb909625b"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_keyvault_getmanagedhardwaresecuritymoduleroledefinition.example.resource_manager_id
+///   value = data.azure_keyvault_managed_hardware_security_module_role_definition.example.resource_manager_id
 /// }
 /// ```
 /// ```java
@@ -1582,7 +1582,7 @@ pulumi.Output<GetManagedHardwareSecurityModuleKeyResult> getManagedHardwareSecur
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = KeyvaultFunctions.getManagedHardwareSecurityModuleRoleDefinition(GetManagedHardwareSecurityModuleRoleDefinitionArgs.builder()
-///             .managedHsmId(exampleAzurermKeyVaultManagedHardwareSecurityModule.id())
+///             .managedHsmId(exampleAzurermKeyVaultManagedHardwareSecurityModule.get("id"))
 ///             .name("21dbd100-6940-42c2-9190-5d6cb909625b")
 ///             .build());
 ///
@@ -1693,7 +1693,7 @@ pulumi.Output<GetManagedHardwareSecurityModuleRoleDefinitionResult> getManagedHa
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1701,13 +1701,13 @@ pulumi.Output<GetManagedHardwareSecurityModuleRoleDefinitionResult> getManagedHa
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getsecret" "example" {
+/// data "azure_keyvault_secret" "example" {
 ///   name         = "secret-sauce"
 ///   key_vault_id = existing.id
 /// }
 ///
 /// output "secretValue" {
-///   value = data.azure_keyvault_getsecret.example.value
+///   value = data.azure_keyvault_secret.example.value
 /// }
 /// ```
 /// ```java
@@ -1733,7 +1733,7 @@ pulumi.Output<GetManagedHardwareSecurityModuleRoleDefinitionResult> getManagedHa
 ///     public static void stack(Context ctx) {
 ///         final var example = KeyvaultFunctions.getSecret(GetSecretArgs.builder()
 ///             .name("secret-sauce")
-///             .keyVaultId(existing.id())
+///             .keyVaultId(existing.get("id"))
 ///             .build());
 ///
 ///         ctx.export("secretValue", example.value());
@@ -1828,7 +1828,7 @@ pulumi.Output<GetSecretResult> getSecretOutput(
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1839,17 +1839,17 @@ pulumi.Output<GetSecretResult> getSecretOutput(
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getsecrets" "example" {
+/// data "azure_keyvault_secrets" "example" {
 ///   key_vault_id = existing.id
 /// }
-/// data "azure_keyvault_getsecret" "invoke_1" {
-///   for_each     = toset(data.azure_keyvault_getsecrets.example.names)
+/// data "azure_keyvault_secret" "invoke_1" {
+///   for_each     = toset(data.azure_keyvault_secrets.example.names)
 ///   name         = each.key
 ///   key_vault_id = existing.id
 /// }
 ///
 /// locals {
-///   exampleGetSecret = {for __key, __value in toset(data.azure_keyvault_getsecrets.example.names) : __key => data.azure_keyvault_getsecret.invoke_1[__key]}
+///   exampleGetSecret = {for __key, __value in toset(data.azure_keyvault_secrets.example.names) : __key => data.azure_keyvault_secret.invoke_1[__key]}
 /// }
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_keyvault_get_secrets_get_secrets_args_doc}

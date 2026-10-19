@@ -299,7 +299,7 @@ import 'network_manager_connectivity_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -307,52 +307,70 @@ import 'network_manager_connectivity_configuration_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkmanager" "example" {
+/// resource "azure_network_network_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network-manager"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   scope = {
-///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///     subscription_ids = [data.azure_core_subscription.current.id]
 ///   }
 ///   scope_accesses = ["Connectivity", "SecurityAdmin"]
 ///   description    = "example network manager"
 /// }
-/// resource "azure_network_networkmanagernetworkgroup" "example" {
+/// resource "azure_network_network_manager_network_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-group"
-///   network_manager_id = azure_network_networkmanager.example.id
+///   network_manager_id = azure_network_network_manager.example.id
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-net"
-///   location                = azure_core_resourcegroup.example.location
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = azure_core_resource_group.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   address_spaces          = ["10.0.0.0/16"]
 ///   flow_timeout_in_minutes = 10
 /// }
-/// resource "azure_network_networkmanagernetworkgroup" "example2" {
+/// resource "azure_network_network_manager_network_group" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-group2"
-///   network_manager_id = azure_network_networkmanager.example.id
+///   network_manager_id = azure_network_network_manager.example.id
 /// }
-/// resource "azure_network_networkmanagerconnectivityconfiguration" "example" {
+/// resource "azure_network_network_manager_connectivity_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-connectivity-conf"
-///   network_manager_id    = azure_network_networkmanager.example.id
+///   network_manager_id    = azure_network_network_manager.example.id
 ///   connectivity_topology = "HubAndSpoke"
 ///   applies_to_groups {
 ///     group_connectivity = "DirectlyConnected"
-///     network_group_id   = azure_network_networkmanagernetworkgroup.example.id
+///     network_group_id   = azure_network_network_manager_network_group.example.id
 ///   }
 ///   applies_to_groups {
 ///     group_connectivity = "DirectlyConnected"
-///     network_group_id   = azure_network_networkmanagernetworkgroup.example2.id
+///     network_group_id   = azure_network_network_manager_network_group.example2.id
 ///   }
 ///   hub = {
-///     resource_id   = azure_network_virtualnetwork.example.id
+///     resource_id   = azure_network_virtual_network.example.id
 ///     resource_type = "Microsoft.Network/virtualNetworks"
 ///   }
 /// }
@@ -569,7 +587,7 @@ class NetworkManagerConnectivityConfiguration extends pulumi.CustomResource {
           'azure:network/networkManagerConnectivityConfiguration:NetworkManagerConnectivityConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     appliesToGroups = registerOutput<List<NetworkManagerConnectivityConfigurationAppliesToGroup>>('appliesToGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkManagerConnectivityConfigurationAppliesToGroup>(guardedValue, (value) => NetworkManagerConnectivityConfigurationAppliesToGroup.fromMap((value as Map).cast<String, dynamic>())); });
     connectedGroupAddressOverlapEnabled = registerOutput<bool?>('connectedGroupAddressOverlapEnabled');

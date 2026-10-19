@@ -45,7 +45,7 @@ class CertificateCertificatePolicyX509CertificateProperties {
       keyUsages: pulumi.Input.fromValue((map['keyUsages'] as List).cast<String>()),
       subject: pulumi.Input.fromValue(map['subject'] as String),
       subjectAlternativeNames: (() { final guardedValue = map['subjectAlternativeNames']; if (guardedValue == null) return null; return pulumi.Input.fromValue(CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      validityInMonths: pulumi.Input.fromValue((map['validityInMonths'] as num).toInt()),
+      validityInMonths: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['validityInMonths'])),
     );
   }
 }

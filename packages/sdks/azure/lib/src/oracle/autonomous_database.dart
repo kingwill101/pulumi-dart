@@ -82,7 +82,7 @@ import 'autonomous_database_state.dart';
 ///         AutoScalingForStorageEnabled = false,
 ///         VirtualNetworkId = "example",
 ///         AdminPassword = "example",
-///         AutoScalingEnabled = "example",
+///         AutoScalingEnabled = "example" == "true",
 ///         CharacterSet = "example",
 ///         ComputeCount = 1.23456,
 ///         NationalCharacterSet = "example",
@@ -131,7 +131,7 @@ import 'autonomous_database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -139,7 +139,10 @@ import 'autonomous_database_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_oracle_autonomousdatabase" "example" {
+/// resource "azure_oracle_autonomous_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                             = "example"
 ///   resource_group_name              = "example"
 ///   location                         = "West Europe"
@@ -335,7 +338,7 @@ class AutonomousDatabase extends pulumi.CustomResource {
           'azure:oracle/autonomousDatabase:AutonomousDatabase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['adminPassword'],
         ) {
     adminPassword = registerOutput<String>('adminPassword', isSecret: true);

@@ -159,7 +159,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -167,14 +167,20 @@ import 'database_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "api-rg-pro"
 ///   location = "West Europe"
 /// }
 /// resource "azure_postgresql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "postgresql-server-1"
-///   location                     = azure_core_resourcegroup.example.location
-///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resource_group.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
 ///   sku_name                     = "B_Gen5_2"
 ///   storage_mb                   = 5120
 ///   backup_retention_days        = 7
@@ -186,8 +192,11 @@ import 'database_state.dart';
 ///   ssl_enforcement_enabled      = true
 /// }
 /// resource "azure_postgresql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampledb"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   server_name         = azure_postgresql_server.example.name
 ///   charset             = "UTF8"
 ///   collation           = "English_United States.1252"
@@ -322,7 +331,7 @@ class Database extends pulumi.CustomResource {
           'azure:postgresql/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     charset = registerOutput<String>('charset');
     collation = registerOutput<String>('collation');

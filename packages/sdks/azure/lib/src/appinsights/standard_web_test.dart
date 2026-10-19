@@ -143,7 +143,7 @@ import 'standard_web_test_validation_rules.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -151,19 +151,28 @@ import 'standard_web_test_validation_rules.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rg-example"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appinsights_insights" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_type    = "web"
 /// }
-/// resource "azure_appinsights_standardwebtest" "example" {
+/// resource "azure_appinsights_standard_web_test" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-test"
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   location                = "West Europe"
 ///   application_insights_id = azure_appinsights_insights.example.id
 ///   geo_locations           = ["example"]
@@ -312,7 +321,7 @@ class StandardWebTest extends pulumi.CustomResource {
           'azure:appinsights/standardWebTest:StandardWebTest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applicationInsightsId = registerOutput<String>('applicationInsightsId');
     description = registerOutput<String?>('description');

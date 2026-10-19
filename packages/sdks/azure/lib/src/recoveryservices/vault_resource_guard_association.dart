@@ -140,7 +140,7 @@ import 'vault_resource_guard_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -148,23 +148,35 @@ import 'vault_resource_guard_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_dataprotection_resourceguard" "example" {
+/// resource "azure_dataprotection_resource_guard" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-resourceguard"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// resource "azure_recoveryservices_vault" "vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-recovery-vault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 ///   soft_delete_enabled = true
 /// }
-/// resource "azure_recoveryservices_vaultresourceguardassociation" "test" {
+/// resource "azure_recoveryservices_vault_resource_guard_association" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   vault_id          = testAzurermRecoveryServicesVault.id
 ///   resource_guard_id = testAzurermDataProtectionResourceGuard.id
 /// }
@@ -216,8 +228,8 @@ import 'vault_resource_guard_association_state.dart';
 ///             .build());
 ///
 ///         var test = new VaultResourceGuardAssociation("test", VaultResourceGuardAssociationArgs.builder()
-///             .vaultId(testAzurermRecoveryServicesVault.id())
-///             .resourceGuardId(testAzurermDataProtectionResourceGuard.id())
+///             .vaultId(testAzurermRecoveryServicesVault.get("id"))
+///             .resourceGuardId(testAzurermDataProtectionResourceGuard.get("id"))
 ///             .build());
 ///
 ///     }
@@ -278,7 +290,7 @@ class VaultResourceGuardAssociation extends pulumi.CustomResource {
           'azure:recoveryservices/vaultResourceGuardAssociation:VaultResourceGuardAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     resourceGuardId = registerOutput<String>('resourceGuardId');
     vaultId = registerOutput<String>('vaultId');

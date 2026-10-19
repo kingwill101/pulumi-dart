@@ -125,7 +125,7 @@ import 'orchestrated_virtual_machine_scale_set_termination_notification.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -133,14 +133,20 @@ import 'orchestrated_virtual_machine_scale_set_termination_notification.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_compute_orchestratedvirtualmachinescaleset" "example" {
+/// resource "azure_compute_orchestrated_virtual_machine_scale_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-orchestrated-virtual-machine-scale-set"
-///   location                    = azure_core_resourcegroup.example.location
-///   resource_group_name         = azure_core_resourcegroup.example.name
+///   location                    = azure_core_resource_group.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
 ///   platform_fault_domain_count = 1
 ///   sku_name                    = "Standard_B1ls"
 ///   zones                       = ["1"]
@@ -343,7 +349,7 @@ class OrchestratedVirtualMachineScaleSet extends pulumi.CustomResource {
           'azure:compute/orchestratedVirtualMachineScaleSet:OrchestratedVirtualMachineScaleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['userDataBase64'],
         ) {
     additionalCapabilities = registerOutput<OrchestratedVirtualMachineScaleSetAdditionalCapabilities?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OrchestratedVirtualMachineScaleSetAdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -125,7 +125,7 @@ import 'web_app_hybrid_connection_state.dart';
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
 ///         ServicePlanId = exampleServicePlan.Id,
-///         SiteConfig = null,
+///         SiteConfig = new() { },
 ///     });
 ///
 ///     var exampleWebAppHybridConnection = new Azure.AppService.WebAppHybridConnection("example", new()
@@ -208,7 +208,7 @@ import 'web_app_hybrid_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -216,38 +216,56 @@ import 'web_app_hybrid_connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appservice_serviceplan" "example" {
+/// resource "azure_appservice_service_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-plan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   os_type             = "Windows"
 ///   sku_name            = "S1"
 /// }
 /// resource "azure_relay_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-relay"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Standard"
 /// }
-/// resource "azure_relay_hybridconnection" "example" {
+/// resource "azure_relay_hybrid_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "examplerhc1"
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   relay_namespace_name = azure_relay_namespace.example.name
 /// }
-/// resource "azure_appservice_windowswebapp" "example" {
+/// resource "azure_appservice_windows_web_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-web-app"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   service_plan_id     = azure_appservice_serviceplan.example.id
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   service_plan_id     = azure_appservice_service_plan.example.id
 ///   site_config         = {}
 /// }
-/// resource "azure_appservice_webapphybridconnection" "example" {
-///   web_app_id = azure_appservice_windowswebapp.example.id
-///   relay_id   = azure_relay_hybridconnection.example.id
+/// resource "azure_appservice_web_app_hybrid_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   web_app_id = azure_appservice_windows_web_app.example.id
+///   relay_id   = azure_relay_hybrid_connection.example.id
 ///   hostname   = "myhostname.example"
 ///   port       = 8081
 /// }
@@ -430,7 +448,7 @@ class WebAppHybridConnection extends pulumi.CustomResource {
           'azure:appservice/webAppHybridConnection:WebAppHybridConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['sendKeyValue'],
         ) {
     hostname = registerOutput<String>('hostname');

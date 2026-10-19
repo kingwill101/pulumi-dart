@@ -139,7 +139,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -147,26 +147,29 @@ import 'subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getservice" "example" {
+/// data "azure_apimanagement_service" "example" {
 ///   name                = "example-apim"
 ///   resource_group_name = "example-resources"
 /// }
-/// data "azure_apimanagement_getproduct" "exampleGetProduct" {
+/// data "azure_apimanagement_product" "exampleGetProduct" {
 ///   product_id          = "00000000-0000-0000-0000-000000000000"
-///   api_management_name = data.azure_apimanagement_getservice.example.name
-///   resource_group_name = data.azure_apimanagement_getservice.example.resource_group_name
+///   api_management_name = data.azure_apimanagement_service.example.name
+///   resource_group_name = data.azure_apimanagement_service.example.resource_group_name
 /// }
-/// data "azure_apimanagement_getuser" "exampleGetUser" {
+/// data "azure_apimanagement_user" "exampleGetUser" {
 ///   user_id             = "11111111-1111-1111-1111-111111111111"
-///   api_management_name = data.azure_apimanagement_getservice.example.name
-///   resource_group_name = data.azure_apimanagement_getservice.example.resource_group_name
+///   api_management_name = data.azure_apimanagement_service.example.name
+///   resource_group_name = data.azure_apimanagement_service.example.resource_group_name
 /// }
 ///
 /// resource "azure_apimanagement_subscription" "example" {
-///   api_management_name = data.azure_apimanagement_getservice.example.name
-///   resource_group_name = data.azure_apimanagement_getservice.example.resource_group_name
-///   user_id             = data.azure_apimanagement_getuser.exampleGetUser.id
-///   product_id          = data.azure_apimanagement_getproduct.exampleGetProduct.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   api_management_name = data.azure_apimanagement_service.example.name
+///   resource_group_name = data.azure_apimanagement_service.example.resource_group_name
+///   user_id             = data.azure_apimanagement_user.exampleGetUser.id
+///   product_id          = data.azure_apimanagement_product.exampleGetProduct.id
 ///   display_name        = "Parser API"
 /// }
 /// ```
@@ -312,7 +315,7 @@ class Subscription extends pulumi.CustomResource {
           'azure:apimanagement/subscription:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['primaryKey', 'secondaryKey'],
         ) {
     allowTracing = registerOutput<bool?>('allowTracing');

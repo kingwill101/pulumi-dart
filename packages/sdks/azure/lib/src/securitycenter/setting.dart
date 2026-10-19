@@ -66,7 +66,7 @@ import 'setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -75,6 +75,9 @@ import 'setting_state.dart';
 /// }
 ///
 /// resource "azure_securitycenter_setting" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   setting_name = "MCAS"
 ///   enabled      = true
 /// }
@@ -150,7 +153,7 @@ class Setting extends pulumi.CustomResource {
           'azure:securitycenter/setting:Setting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     settingName = registerOutput<String>('settingName');

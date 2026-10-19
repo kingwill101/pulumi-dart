@@ -163,7 +163,7 @@ import 'authorization_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -171,28 +171,40 @@ import 'authorization_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "notificationhub-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_notificationhub_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "myappnamespace"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   namespace_type      = "NotificationHub"
 ///   sku_name            = "Free"
 /// }
 /// resource "azure_notificationhub_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "mynotificationhub"
 ///   namespace_name      = azure_notificationhub_namespace.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_notificationhub_authorizationrule" "example" {
+/// resource "azure_notificationhub_authorization_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "management-auth-rule"
 ///   notification_hub_name = azure_notificationhub_hub.example.name
 ///   namespace_name        = azure_notificationhub_namespace.example.name
-///   resource_group_name   = azure_core_resourcegroup.example.name
+///   resource_group_name   = azure_core_resource_group.example.name
 ///   manage                = true
 ///   send                  = true
 ///   listen                = true
@@ -348,7 +360,7 @@ class AuthorizationRule extends pulumi.CustomResource {
           'azure:notificationhub/authorizationRule:AuthorizationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['primaryAccessKey', 'primaryConnectionString', 'secondaryAccessKey', 'secondaryConnectionString'],
         ) {
     listen = registerOutput<bool?>('listen');

@@ -40,8 +40,8 @@ class ManagedClusterLbRule {
 
   factory ManagedClusterLbRule.fromMap(Map<String, dynamic> map) {
     return ManagedClusterLbRule(
-      backendPort: pulumi.Input.fromValue((map['backendPort'] as num).toInt()),
-      frontendPort: pulumi.Input.fromValue((map['frontendPort'] as num).toInt()),
+      backendPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backendPort'])),
+      frontendPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['frontendPort'])),
       probeProtocol: pulumi.Input.fromValue(map['probeProtocol'] as String),
       probeRequestPath: (() { final guardedValue = map['probeRequestPath']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),

@@ -125,7 +125,7 @@ import 'powershell72_module_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -133,17 +133,26 @@ import 'powershell72_module_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_automation_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "account1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Basic"
 /// }
-/// resource "azure_automation_powershell72module" "example" {
+/// resource "azure_automation_powershell72_module" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "xActiveDirectory"
 ///   automation_account_id = azure_automation_account.example.id
 ///   module_link = {
@@ -262,7 +271,7 @@ class Powershell72Module extends pulumi.CustomResource {
           'azure:automation/powershell72Module:Powershell72Module',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     automationAccountId = registerOutput<String>('automationAccountId');
     moduleLink = registerOutput<Powershell72ModuleModuleLink>('moduleLink', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Powershell72ModuleModuleLink.fromMap((guardedValue as Map).cast<String, dynamic>()); });

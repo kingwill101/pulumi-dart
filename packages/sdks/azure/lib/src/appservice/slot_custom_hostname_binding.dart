@@ -184,7 +184,7 @@ import 'slot_custom_hostname_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -192,33 +192,48 @@ import 'slot_custom_hostname_binding_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "some-resource-group"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "some-app-service-plan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     tier = "Standard"
 ///     size = "S1"
 ///   }
 /// }
-/// resource "azure_appservice_appservice" "example" {
+/// resource "azure_appservice_app_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "some-app-service"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   app_service_plan_id = azure_appservice_plan.example.id
 /// }
 /// resource "azure_appservice_slot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "staging"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   app_service_name    = azure_appservice_appservice.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   app_service_name    = azure_appservice_app_service.example.name
 ///   app_service_plan_id = azure_appservice_plan.example.id
 /// }
-/// resource "azure_appservice_slotcustomhostnamebinding" "example" {
+/// resource "azure_appservice_slot_custom_hostname_binding" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   app_service_slot_id = azure_appservice_slot.example.id
 ///   hostname            = "www.mywebsite.com"
 /// }
@@ -376,7 +391,7 @@ class SlotCustomHostnameBinding extends pulumi.CustomResource {
           'azure:appservice/slotCustomHostnameBinding:SlotCustomHostnameBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     appServiceSlotId = registerOutput<String>('appServiceSlotId');
     hostname = registerOutput<String>('hostname');

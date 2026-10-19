@@ -167,7 +167,7 @@ import 'active_role_assignment_ticket.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -178,20 +178,26 @@ import 'active_role_assignment_ticket.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "primary" {
+/// data "azure_core_subscription" "primary" {
 /// }
-/// data "azure_core_getclientconfig" "example" {
+/// data "azure_core_client_config" "example" {
 /// }
-/// data "azure_authorization_getroledefinition" "exampleGetRoleDefinition" {
+/// data "azure_authorization_role_definition" "exampleGetRoleDefinition" {
 ///   name = "Reader"
 /// }
 ///
 /// resource "time_static" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "azure_pim_activeroleassignment" "example" {
-///   scope              = data.azure_core_getsubscription.primary.id
-///   role_definition_id ="${data.azure_core_getsubscription.primary.id}${data.azure_authorization_getroledefinition.exampleGetRoleDefinition.id}"
-///   principal_id       = data.azure_core_getclientconfig.example.object_id
+/// resource "azure_pim_active_role_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope              = data.azure_core_subscription.primary.id
+///   role_definition_id ="${data.azure_core_subscription.primary.id}${data.azure_authorization_role_definition.exampleGetRoleDefinition.id}"
+///   principal_id       = data.azure_core_client_config.example.object_id
 ///   schedule = {
 ///     start_date_time = time_static.example.rfc3339
 ///     expiration = {
@@ -463,7 +469,7 @@ import 'active_role_assignment_ticket.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -474,21 +480,30 @@ import 'active_role_assignment_ticket.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "example" {
+/// data "azure_core_client_config" "example" {
 /// }
-/// data "azure_authorization_getroledefinition" "exampleGetRoleDefinition" {
+/// data "azure_authorization_role_definition" "exampleGetRoleDefinition" {
 ///   name = "Reader"
 /// }
 ///
 /// resource "azure_management_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "Example-Management-Group"
 /// }
 /// resource "time_static" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "azure_pim_activeroleassignment" "example" {
+/// resource "azure_pim_active_role_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   scope              = azure_management_group.example.id
-///   role_definition_id = data.azure_authorization_getroledefinition.exampleGetRoleDefinition.id
-///   principal_id       = data.azure_core_getclientconfig.example.object_id
+///   role_definition_id = data.azure_authorization_role_definition.exampleGetRoleDefinition.id
+///   principal_id       = data.azure_core_client_config.example.object_id
 ///   schedule = {
 ///     start_date_time = time_static.example.rfc3339
 ///     expiration = {
@@ -646,7 +661,7 @@ class ActiveRoleAssignment extends pulumi.CustomResource {
           'azure:pim/activeRoleAssignment:ActiveRoleAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     justification = registerOutput<String>('justification');
     principalId = registerOutput<String>('principalId');

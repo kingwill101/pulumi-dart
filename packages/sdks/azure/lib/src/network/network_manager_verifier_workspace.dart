@@ -167,7 +167,7 @@ import 'network_manager_verifier_workspace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -175,26 +175,35 @@ import 'network_manager_verifier_workspace_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkmanager" "example" {
+/// resource "azure_network_network_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nm"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   scope = {
-///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///     subscription_ids = [data.azure_core_subscription.current.id]
 ///   }
 ///   scope_accesses = ["Connectivity"]
 /// }
-/// resource "azure_network_networkmanagerverifierworkspace" "example" {
+/// resource "azure_network_network_manager_verifier_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
-///   network_manager_id = azure_network_networkmanager.example.id
-///   location           = azure_core_resourcegroup.example.location
+///   network_manager_id = azure_network_network_manager.example.id
+///   location           = azure_core_resource_group.example.location
 ///   description        = "This is an example verifier workspace"
 ///   tags = {
 ///     "foo" = "bar"
@@ -338,7 +347,7 @@ class NetworkManagerVerifierWorkspace extends pulumi.CustomResource {
           'azure:network/networkManagerVerifierWorkspace:NetworkManagerVerifierWorkspace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     location = registerOutput<String>('location');

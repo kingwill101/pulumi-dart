@@ -240,7 +240,7 @@ import 'resource_group_policy_remediation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -248,27 +248,51 @@ import 'resource_group_policy_remediation_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_policy_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "my-policy-definition"
 ///   policy_type  = "Custom"
 ///   mode         = "All"
 ///   display_name = "my-policy-definition"
 ///   policy_rule  = "    {\n    \"if\": {\n      \"not\": {\n        \"field\": \"location\",\n        \"in\": \"[parameters('allowedLocations')]\"\n      }\n    },\n    \"then\": {\n      \"effect\": \"audit\"\n    }\n  }\n"
-///   parameters   = "    {\n    \\\"allowedLocations\\\": {\n      \\\"type\\\": \\\"Array\\\",\n      \\\"metadata\\\": {\n        \\\"description\\\": \\\"The list of allowed locations for resources.\\\",\n        \\\"displayName\\\": \\\"Allowed locations\\\",\n        \\\"strongType\\\": \\\"location\\\"\n      }\n    }\n  }\n"
+///   parameters   = <<PARAMETERS
+///     {
+///     \"allowedLocations\": {
+///       \"type\": \"Array\",
+///       \"metadata\": {
+///         \"description\": \"The list of allowed locations for resources.\",
+///         \"displayName\": \"Allowed locations\",
+///         \"strongType\": \"location\"
+///       }
+///     }
+///   }
+/// PARAMETERS
+///
 /// }
-/// resource "azure_core_resourcegrouppolicyassignment" "example" {
+/// resource "azure_core_resource_group_policy_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
-///   resource_group_id    = azure_core_resourcegroup.example.id
+///   resource_group_id    = azure_core_resource_group.example.id
 ///   policy_definition_id = azure_policy_definition.example.id
 /// }
-/// resource "azure_core_resourcegrouppolicyremediation" "example" {
+/// resource "azure_core_resource_group_policy_remediation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-policy-remediation"
-///   resource_group_id    = azure_core_resourcegroup.example.id
-///   policy_assignment_id = azure_core_resourcegrouppolicyassignment.example.id
+///   resource_group_id    = azure_core_resource_group.example.id
+///   policy_assignment_id = azure_core_resource_group_policy_assignment.example.id
 ///   location_filters     = ["West Europe"]
 /// }
 /// ```
@@ -455,7 +479,7 @@ class ResourceGroupPolicyRemediation extends pulumi.CustomResource {
           'azure:core/resourceGroupPolicyRemediation:ResourceGroupPolicyRemediation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     failurePercentage = registerOutput<double?>('failurePercentage');
     locationFilters = registerOutput<List<String>?>('locationFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

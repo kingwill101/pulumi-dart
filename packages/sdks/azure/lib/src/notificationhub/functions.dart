@@ -74,7 +74,7 @@ import 'get_namespace_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -82,14 +82,14 @@ import 'get_namespace_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_notificationhub_gethub" "example" {
+/// data "azure_notificationhub_hub" "example" {
 ///   name                = "notification-hub"
 ///   namespace_name      = "namespace-name"
 ///   resource_group_name = "resource-group-name"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_notificationhub_gethub.example.id
+///   value = data.azure_notificationhub_hub.example.id
 /// }
 /// ```
 /// ```java
@@ -235,7 +235,7 @@ pulumi.Output<GetHubResult> getHubOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -243,13 +243,13 @@ pulumi.Output<GetHubResult> getHubOutput(
 ///   }
 /// }
 ///
-/// data "azure_notificationhub_getnamespace" "example" {
+/// data "azure_notificationhub_namespace" "example" {
 ///   name                = "my-namespace"
 ///   resource_group_name = "my-resource-group"
 /// }
 ///
 /// output "servicebusEndpoint" {
-///   value = data.azure_notificationhub_getnamespace.example.servicebus_endpoint
+///   value = data.azure_notificationhub_namespace.example.servicebus_endpoint
 /// }
 /// ```
 /// ```java

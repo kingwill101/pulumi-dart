@@ -61,7 +61,7 @@ import 'get_service_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -69,7 +69,7 @@ import 'get_service_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_signalr_getservice" "example" {
+/// data "azure_signalr_service" "example" {
 ///   name                = "test-signalr"
 ///   resource_group_name = "signalr-resource-group"
 /// }

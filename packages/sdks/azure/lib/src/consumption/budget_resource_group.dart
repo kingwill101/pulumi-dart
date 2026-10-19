@@ -152,7 +152,7 @@ import 'budget_resource_group_time_period.dart';
 ///     {
 ///         Name = "example",
 ///         ResourceGroupId = example.Id,
-///         Amount = 1000,
+///         Amount = 1000.0,
 ///         TimeGrain = "Monthly",
 ///         TimePeriod = new Azure.Consumption.Inputs.BudgetResourceGroupTimePeriodArgs
 ///         {
@@ -314,7 +314,7 @@ import 'budget_resource_group_time_period.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -322,18 +322,27 @@ import 'budget_resource_group_time_period.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "eastus"
 /// }
-/// resource "azure_monitoring_actiongroup" "example" {
+/// resource "azure_monitoring_action_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   short_name          = "example"
 /// }
-/// resource "azure_consumption_budgetresourcegroup" "example" {
+/// resource "azure_consumption_budget_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example"
-///   resource_group_id = azure_core_resourcegroup.example.id
+///   resource_group_id = azure_core_resource_group.example.id
 ///   amount            = 1000
 ///   time_grain        = "Monthly"
 ///   time_period = {
@@ -342,12 +351,12 @@ import 'budget_resource_group_time_period.dart';
 ///   }
 ///   filter = {
 ///     dimensions = [{
-///       "name"   = "ResourceId"
-///       "values" = [azure_monitoring_actiongroup.example.id]
+///       name   = "ResourceId"
+///       values = [azure_monitoring_action_group.example.id]
 ///     }]
 ///     tags = [{
-///       "name"   = "foo"
-///       "values" = ["bar", "baz"]
+///       name   = "foo"
+///       values = ["bar", "baz"]
 ///     }]
 ///   }
 ///   notifications {
@@ -356,7 +365,7 @@ import 'budget_resource_group_time_period.dart';
 ///     operator       = "EqualTo"
 ///     threshold_type = "Forecasted"
 ///     contact_emails = ["foo@example.com", "bar@example.com"]
-///     contact_groups = [azure_monitoring_actiongroup.example.id]
+///     contact_groups = [azure_monitoring_action_group.example.id]
 ///     contact_roles  = ["Owner"]
 ///   }
 ///   notifications {
@@ -554,7 +563,7 @@ class BudgetResourceGroup extends pulumi.CustomResource {
           'azure:consumption/budgetResourceGroup:BudgetResourceGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     amount = registerOutput<double>('amount');
     etag = registerOutput<String>('etag');

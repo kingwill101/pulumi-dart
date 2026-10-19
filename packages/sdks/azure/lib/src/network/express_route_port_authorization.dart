@@ -123,7 +123,7 @@ import 'express_route_port_authorization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -131,22 +131,31 @@ import 'express_route_port_authorization_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "exprtTest"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_expressrouteport" "example" {
+/// resource "azure_network_express_route_port" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "port1"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   peering_location    = "Airtel-Chennai-CLS"
 ///   bandwidth_in_gbps   = 10
 ///   encapsulation       = "Dot1Q"
 /// }
-/// resource "azure_network_expressrouteportauthorization" "example" {
+/// resource "azure_network_express_route_port_authorization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "exampleERCAuth"
-///   express_route_port_name = azure_network_expressrouteport.example.name
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   express_route_port_name = azure_network_express_route_port.example.name
+///   resource_group_name     = azure_core_resource_group.example.name
 /// }
 /// ```
 /// ```java
@@ -262,7 +271,7 @@ class ExpressRoutePortAuthorization extends pulumi.CustomResource {
           'azure:network/expressRoutePortAuthorization:ExpressRoutePortAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['authorizationKey'],
         ) {
     authorizationKey = registerOutput<String>('authorizationKey', isSecret: true);

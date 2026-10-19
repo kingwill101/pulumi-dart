@@ -376,7 +376,7 @@ import 'alert_prometheus_rule_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -384,24 +384,36 @@ import 'alert_prometheus_rule_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_monitoring_actiongroup" "example" {
+/// resource "azure_monitoring_action_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-mag"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   short_name          = "testag"
 /// }
 /// resource "azure_monitoring_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-amw"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_containerservice_kubernetescluster" "example" {
+/// resource "azure_containerservice_kubernetes_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cluster"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   dns_prefix          = "example-aks"
 ///   default_node_pool = {
 ///     name                    = "default"
@@ -413,18 +425,24 @@ import 'alert_prometheus_rule_group_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_monitoring_alertprometheusrulegroup" "example" {
+/// resource "azure_monitoring_alert_prometheus_rule_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-amprg"
 ///   location            = "West Europe"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   cluster_name        = azure_containerservice_kubernetescluster.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   cluster_name        = azure_containerservice_kubernetes_cluster.example.name
 ///   description         = "This is the description of the following rule group"
 ///   rule_group_enabled  = false
 ///   interval            = "PT1M"
 ///   scopes              = [azure_monitoring_workspace.example.id]
 ///   rules {
 ///     enabled    = false
-///     expression = "histogram_quantile(0.99, sum(rate(jobs_duration_seconds_bucket{service=\\\"billing-processing\\\"}[5m])) by (job_type))\n"
+///     expression = <<EOF
+/// histogram_quantile(0.99, sum(rate(jobs_duration_seconds_bucket{service=\"billing-processing\"}[5m])) by (job_type))
+/// EOF
+///
 ///     record     = "job_type:billing_jobs_duration_seconds:99p5m"
 ///     labels = {
 ///       "team" = "prod"
@@ -433,11 +451,14 @@ import 'alert_prometheus_rule_group_state.dart';
 ///   rules {
 ///     alert      = "Billing_Processing_Very_Slow"
 ///     enabled    = true
-///     expression = "histogram_quantile(0.99, sum(rate(jobs_duration_seconds_bucket{service=\\\"billing-processing\\\"}[5m])) by (job_type))\n"
+///     expression = <<EOF
+/// histogram_quantile(0.99, sum(rate(jobs_duration_seconds_bucket{service=\"billing-processing\"}[5m])) by (job_type))
+/// EOF
+///
 ///     for        = "PT5M"
 ///     severity   = 2
 ///     actions {
-///       action_group_id = azure_monitoring_actiongroup.example.id
+///       action_group_id = azure_monitoring_action_group.example.id
 ///     }
 ///     alert_resolution = {
 ///       auto_resolved   = true
@@ -688,7 +709,7 @@ class AlertPrometheusRuleGroup extends pulumi.CustomResource {
           'azure:monitoring/alertPrometheusRuleGroup:AlertPrometheusRuleGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     clusterName = registerOutput<String?>('clusterName');
     description = registerOutput<String?>('description');

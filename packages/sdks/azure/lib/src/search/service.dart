@@ -95,7 +95,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -103,14 +103,20 @@ import 'service_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_search_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-resource"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "standard"
 /// }
 /// ```
@@ -266,7 +272,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -274,14 +280,20 @@ import 'service_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_search_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-resource"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   sku                          = "standard"
 ///   local_authentication_enabled = true
 ///   authentication_failure_mode  = "http403"
@@ -439,7 +451,7 @@ import 'service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -447,14 +459,20 @@ import 'service_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_search_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-resource"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   sku                          = "standard"
 ///   local_authentication_enabled = false
 /// }
@@ -603,7 +621,7 @@ class Service extends pulumi.CustomResource {
           'azure:search/service:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['primaryKey', 'secondaryKey'],
         ) {
     allowedIps = registerOutput<List<String>?>('allowedIps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

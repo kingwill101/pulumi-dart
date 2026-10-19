@@ -25,8 +25,8 @@ class GetLinuxFunctionAppSiteConfigAppServiceLog {
 
   factory GetLinuxFunctionAppSiteConfigAppServiceLog.fromMap(Map<String, dynamic> map) {
     return GetLinuxFunctionAppSiteConfigAppServiceLog(
-      diskQuotaMb: pulumi.Input.fromValue((map['diskQuotaMb'] as num).toInt()),
-      retentionPeriodDays: pulumi.Input.fromValue((map['retentionPeriodDays'] as num).toInt()),
+      diskQuotaMb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskQuotaMb'])),
+      retentionPeriodDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionPeriodDays'])),
     );
   }
 }

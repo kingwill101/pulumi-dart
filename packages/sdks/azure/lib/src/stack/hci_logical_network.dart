@@ -164,7 +164,7 @@ import 'hci_logical_network_subnet.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -172,14 +172,20 @@ import 'hci_logical_network_subnet.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_stack_hcilogicalnetwork" "example" {
+/// resource "azure_stack_hci_logical_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-hci-ln"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   custom_location_id  = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.ExtendedLocation/customLocations/cl1"
 ///   virtual_switch_name = "ConvergedSwitch(managementcompute)"
 ///   dns_servers         = ["10.0.0.7", "10.0.0.8"]
@@ -325,7 +331,7 @@ class HciLogicalNetwork extends pulumi.CustomResource {
           'azure:stack/hciLogicalNetwork:HciLogicalNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     customLocationId = registerOutput<String>('customLocationId');
     dnsServers = registerOutput<List<String>?>('dnsServers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

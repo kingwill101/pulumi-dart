@@ -131,7 +131,7 @@ import 'postgresql_firewall_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -139,22 +139,31 @@ import 'postgresql_firewall_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_cosmosdb_postgresqlcluster" "example" {
+/// resource "azure_cosmosdb_postgresql_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "examplecluster"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
+///   location                        = azure_core_resource_group.example.location
 ///   administrator_login_password    = "H@Sh1CoR3!"
 ///   coordinator_storage_quota_in_mb = 131072
 ///   coordinator_vcore_count         = 2
 ///   node_count                      = 0
 /// }
-/// resource "azure_cosmosdb_postgresqlfirewallrule" "example" {
+/// resource "azure_cosmosdb_postgresql_firewall_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example-firewallrule"
-///   cluster_id       = azure_cosmosdb_postgresqlcluster.example.id
+///   cluster_id       = azure_cosmosdb_postgresql_cluster.example.id
 ///   start_ip_address = "10.0.17.62"
 ///   end_ip_address   = "10.0.17.64"
 /// }
@@ -274,7 +283,7 @@ class PostgresqlFirewallRule extends pulumi.CustomResource {
           'azure:cosmosdb/postgresqlFirewallRule:PostgresqlFirewallRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
     endIpAddress = registerOutput<String>('endIpAddress');

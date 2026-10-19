@@ -142,7 +142,7 @@ import 'get_vpn_server_configuration_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -150,13 +150,13 @@ import 'get_vpn_server_configuration_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_network_getapplicationgateway" "example" {
+/// data "azure_network_application_gateway" "example" {
 ///   name                = "existing-app-gateway"
 ///   resource_group_name = "existing-resources"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_network_getapplicationgateway.example.id
+///   value = data.azure_network_application_gateway.example.id
 /// }
 /// ```
 /// ```java
@@ -300,7 +300,7 @@ pulumi.Output<GetApplicationGatewayResult> getApplicationGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -308,13 +308,13 @@ pulumi.Output<GetApplicationGatewayResult> getApplicationGatewayOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getapplicationsecuritygroup" "example" {
+/// data "azure_network_application_security_group" "example" {
 ///   name                = "tf-appsecuritygroup"
 ///   resource_group_name = "my-resource-group"
 /// }
 ///
 /// output "applicationSecurityGroupId" {
-///   value = data.azure_network_getapplicationsecuritygroup.example.id
+///   value = data.azure_network_application_security_group.example.id
 /// }
 /// ```
 /// ```java
@@ -462,7 +462,7 @@ pulumi.Output<GetApplicationSecurityGroupResult> getApplicationSecurityGroupOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -470,16 +470,16 @@ pulumi.Output<GetApplicationSecurityGroupResult> getApplicationSecurityGroupOutp
 ///   }
 /// }
 ///
-/// data "azure_network_getexpressroutecircuit" "example" {
+/// data "azure_network_express_route_circuit" "example" {
 ///   resource_group_name = exampleAzurermResourceGroup.name
 ///   name                = exampleAzurermExpressRouteCircuit.name
 /// }
 ///
 /// output "expressRouteCircuitId" {
-///   value = data.azure_network_getexpressroutecircuit.example.id
+///   value = data.azure_network_express_route_circuit.example.id
 /// }
 /// output "serviceKey" {
-///   value = data.azure_network_getexpressroutecircuit.example.service_key
+///   value = data.azure_network_express_route_circuit.example.service_key
 /// }
 /// ```
 /// ```java
@@ -504,8 +504,8 @@ pulumi.Output<GetApplicationSecurityGroupResult> getApplicationSecurityGroupOutp
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = NetworkFunctions.getExpressRouteCircuit(GetExpressRouteCircuitArgs.builder()
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
-///             .name(exampleAzurermExpressRouteCircuit.name())
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
+///             .name(exampleAzurermExpressRouteCircuit.get("name"))
 ///             .build());
 ///
 ///         ctx.export("expressRouteCircuitId", example.id());
@@ -625,7 +625,7 @@ pulumi.Output<GetExpressRouteCircuitResult> getExpressRouteCircuitOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -633,13 +633,13 @@ pulumi.Output<GetExpressRouteCircuitResult> getExpressRouteCircuitOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getfirewall" "example" {
+/// data "azure_network_firewall" "example" {
 ///   name                = "firewall1"
 ///   resource_group_name = "firewall-RG"
 /// }
 ///
 /// output "firewallPrivateIp" {
-///   value = data.azure_network_getfirewall.example.ip_configurations[0].private_ip_address
+///   value = data.azure_network_firewall.example.ip_configurations[0].private_ip_address
 /// }
 /// ```
 /// ```java
@@ -783,7 +783,7 @@ pulumi.Output<GetFirewallResult> getFirewallOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -791,13 +791,13 @@ pulumi.Output<GetFirewallResult> getFirewallOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getfirewallpolicy" "example" {
+/// data "azure_network_firewall_policy" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_network_getfirewallpolicy.example.id
+///   value = data.azure_network_firewall_policy.example.id
 /// }
 /// ```
 /// ```java
@@ -941,7 +941,7 @@ pulumi.Output<GetFirewallPolicyResult> getFirewallPolicyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -949,13 +949,13 @@ pulumi.Output<GetFirewallPolicyResult> getFirewallPolicyOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getgatewayconnection" "example" {
+/// data "azure_network_gateway_connection" "example" {
 ///   name                = "production"
 ///   resource_group_name = "networking"
 /// }
 ///
 /// output "virtualNetworkGatewayConnectionId" {
-///   value = data.azure_network_getgatewayconnection.example.id
+///   value = data.azure_network_gateway_connection.example.id
 /// }
 /// ```
 /// ```java
@@ -1099,7 +1099,7 @@ pulumi.Output<GetGatewayConnectionResult> getGatewayConnectionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1107,13 +1107,13 @@ pulumi.Output<GetGatewayConnectionResult> getGatewayConnectionOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getipgroup" "example" {
+/// data "azure_network_ip_group" "example" {
 ///   name                = "example1-ipgroup"
 ///   resource_group_name = "example-rg"
 /// }
 ///
 /// output "cidrs" {
-///   value = data.azure_network_getipgroup.example.cidrs
+///   value = data.azure_network_ip_group.example.cidrs
 /// }
 /// ```
 /// ```java
@@ -1257,7 +1257,7 @@ pulumi.Output<GetIpGroupResult> getIpGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1265,13 +1265,13 @@ pulumi.Output<GetIpGroupResult> getIpGroupOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getipgroups" "example" {
+/// data "azure_network_ip_groups" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "ids" {
-///   value = data.azure_network_getipgroups.example.ids
+///   value = data.azure_network_ip_groups.example.ids
 /// }
 /// ```
 /// ```java
@@ -1415,7 +1415,7 @@ pulumi.Output<GetIpGroupsResult> getIpGroupsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1423,13 +1423,13 @@ pulumi.Output<GetIpGroupsResult> getIpGroupsOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getlocalnetworkgateway" "example" {
+/// data "azure_network_local_network_gateway" "example" {
 ///   name                = "existing-local-network-gateway"
 ///   resource_group_name = "existing-resources"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_network_getlocalnetworkgateway.example.id
+///   value = data.azure_network_local_network_gateway.example.id
 /// }
 /// ```
 /// ```java
@@ -1607,7 +1607,7 @@ pulumi.Output<GetNatGatewayResult> getNatGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1615,13 +1615,13 @@ pulumi.Output<GetNatGatewayResult> getNatGatewayOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getnetworkddosprotectionplan" "example" {
+/// data "azure_network_network_ddos_protection_plan" "example" {
 ///   name                = exampleAzurermNetworkDdosProtectionPlan.name
 ///   resource_group_name = exampleAzurermNetworkDdosProtectionPlan.resourceGroupName
 /// }
 ///
 /// output "ddosProtectionPlanId" {
-///   value = data.azure_network_getnetworkddosprotectionplan.example.id
+///   value = data.azure_network_network_ddos_protection_plan.example.id
 /// }
 /// ```
 /// ```java
@@ -1646,8 +1646,8 @@ pulumi.Output<GetNatGatewayResult> getNatGatewayOutput(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = NetworkFunctions.getNetworkDdosProtectionPlan(GetNetworkDdosProtectionPlanArgs.builder()
-///             .name(exampleAzurermNetworkDdosProtectionPlan.name())
-///             .resourceGroupName(exampleAzurermNetworkDdosProtectionPlan.resourceGroupName())
+///             .name(exampleAzurermNetworkDdosProtectionPlan.get("name"))
+///             .resourceGroupName(exampleAzurermNetworkDdosProtectionPlan.get("resourceGroupName"))
 ///             .build());
 ///
 ///         ctx.export("ddosProtectionPlanId", example.id());
@@ -1765,7 +1765,7 @@ pulumi.Output<GetNetworkDdosProtectionPlanResult> getNetworkDdosProtectionPlanOu
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1773,13 +1773,13 @@ pulumi.Output<GetNetworkDdosProtectionPlanResult> getNetworkDdosProtectionPlanOu
 ///   }
 /// }
 ///
-/// data "azure_network_getnetworkinterface" "example" {
+/// data "azure_network_network_interface" "example" {
 ///   name                = "acctest-nic"
 ///   resource_group_name = "networking"
 /// }
 ///
 /// output "networkInterfaceId" {
-///   value = data.azure_network_getnetworkinterface.example.id
+///   value = data.azure_network_network_interface.example.id
 /// }
 /// ```
 /// ```java
@@ -2005,7 +2005,7 @@ pulumi.Output<GetNetworkInterfaceResult> getNetworkInterfaceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2013,23 +2013,29 @@ pulumi.Output<GetNetworkInterfaceResult> getNetworkInterfaceOutput(
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
-/// data "azure_network_getnetworkmanager" "example" {
-///   name                = azure_network_networkmanager.example.name
-///   resource_group_name = azure_network_networkmanager.example.resource_group_name
+/// data "azure_network_network_manager" "example" {
+///   name                = azure_network_network_manager.example.name
+///   resource_group_name = azure_network_network_manager.example.resource_group_name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkmanager" "example" {
+/// resource "azure_network_network_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network-manager"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   scope = {
-///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///     subscription_ids = [data.azure_core_subscription.current.id]
 ///   }
 ///   scope_accesses = ["Connectivity", "SecurityAdmin"]
 ///   description    = "example network manager"
@@ -2226,7 +2232,7 @@ pulumi.Output<GetNetworkManagerResult> getNetworkManagerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2234,13 +2240,13 @@ pulumi.Output<GetNetworkManagerResult> getNetworkManagerOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getnetworkmanagerconnectivityconfiguration" "example" {
+/// data "azure_network_network_manager_connectivity_configuration" "example" {
 ///   name               = "existing"
 ///   network_manager_id = "TODO"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_network_getnetworkmanagerconnectivityconfiguration.example.id
+///   value = data.azure_network_network_manager_connectivity_configuration.example.id
 /// }
 /// ```
 /// ```java
@@ -2489,7 +2495,7 @@ pulumi.Output<GetNetworkManagerConnectivityConfigurationResult> getNetworkManage
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2497,34 +2503,43 @@ pulumi.Output<GetNetworkManagerConnectivityConfigurationResult> getNetworkManage
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
-/// data "azure_network_getnetworkmanageripampool" "example" {
-///   name               = azure_network_networkmanageripampool.example.name
-///   network_manager_id = azure_network_networkmanager.example.id
+/// data "azure_network_network_manager_ipam_pool" "example" {
+///   name               = azure_network_network_manager_ipam_pool.example.name
+///   network_manager_id = azure_network_network_manager.example.id
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkmanager" "example" {
+/// resource "azure_network_network_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network-manager"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   scope = {
-///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///     subscription_ids = [data.azure_core_subscription.current.id]
 ///   }
 /// }
-/// resource "azure_network_networkmanageripampool" "example" {
+/// resource "azure_network_network_manager_ipam_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-ipam-pool"
 ///   location           = "West Europe"
-///   network_manager_id = azure_network_networkmanager.example.id
+///   network_manager_id = azure_network_network_manager.example.id
 ///   display_name       = "example-pool"
 ///   address_prefixes   = ["10.0.0.0/24"]
 /// }
 /// output "id" {
-///   value = data.azure_network_getnetworkmanageripampool.example.id
+///   value = data.azure_network_network_manager_ipam_pool.example.id
 /// }
 /// ```
 /// ```java
@@ -2835,7 +2850,7 @@ pulumi.Output<GetNetworkManagerIpamPoolResult> getNetworkManagerIpamPoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2843,30 +2858,39 @@ pulumi.Output<GetNetworkManagerIpamPoolResult> getNetworkManagerIpamPoolOutput(
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
-/// data "azure_network_getnetworkmanagernetworkgroup" "example" {
-///   name               = azure_network_networkmanagernetworkgroup.example.name
-///   network_manager_id = azure_network_networkmanager.example.id
+/// data "azure_network_network_manager_network_group" "example" {
+///   name               = azure_network_network_manager_network_group.example.name
+///   network_manager_id = azure_network_network_manager.example.id
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkmanager" "example" {
+/// resource "azure_network_network_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network-manager"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   scope = {
-///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///     subscription_ids = [data.azure_core_subscription.current.id]
 ///   }
 ///   scope_accesses = ["Connectivity", "SecurityAdmin"]
 ///   description    = "example network manager"
 /// }
-/// resource "azure_network_networkmanagernetworkgroup" "example" {
+/// resource "azure_network_network_manager_network_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-group"
-///   network_manager_id = azure_network_networkmanager.example.id
+///   network_manager_id = azure_network_network_manager.example.id
 /// }
 /// ```
 /// ```java
@@ -3073,7 +3097,7 @@ pulumi.Output<GetNetworkManagerNetworkGroupResult> getNetworkManagerNetworkGroup
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -3081,13 +3105,13 @@ pulumi.Output<GetNetworkManagerNetworkGroupResult> getNetworkManagerNetworkGroup
 ///   }
 /// }
 ///
-/// data "azure_network_getnetworksecuritygroup" "example" {
+/// data "azure_network_network_security_group" "example" {
 ///   name                = "example"
 ///   resource_group_name = exampleAzurermResourceGroup.name
 /// }
 ///
 /// output "location" {
-///   value = data.azure_network_getnetworksecuritygroup.example.location
+///   value = data.azure_network_network_security_group.example.location
 /// }
 /// ```
 /// ```java
@@ -3113,7 +3137,7 @@ pulumi.Output<GetNetworkManagerNetworkGroupResult> getNetworkManagerNetworkGroup
 ///     public static void stack(Context ctx) {
 ///         final var example = NetworkFunctions.getNetworkSecurityGroup(GetNetworkSecurityGroupArgs.builder()
 ///             .name("example")
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
 ///             .build());
 ///
 ///         ctx.export("location", example.location());
@@ -3231,7 +3255,7 @@ pulumi.Output<GetNetworkSecurityGroupResult> getNetworkSecurityGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -3239,13 +3263,13 @@ pulumi.Output<GetNetworkSecurityGroupResult> getNetworkSecurityGroupOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getnetworksecurityperimeter" "example" {
+/// data "azure_network_network_security_perimeter" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_network_getnetworksecurityperimeter.example.id
+///   value = data.azure_network_network_security_perimeter.example.id
 /// }
 /// ```
 /// ```java
@@ -3408,7 +3432,7 @@ pulumi.Output<GetNetworkSecurityPerimeterResult> getNetworkSecurityPerimeterOutp
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -3416,17 +3440,17 @@ pulumi.Output<GetNetworkSecurityPerimeterResult> getNetworkSecurityPerimeterOutp
 ///   }
 /// }
 ///
-/// data "azure_network_getnetworksecurityperimeter" "example" {
+/// data "azure_network_network_security_perimeter" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
-/// data "azure_network_getnetworksecurityperimeterprofile" "exampleGetNetworkSecurityPerimeterProfile" {
+/// data "azure_network_network_security_perimeter_profile" "exampleGetNetworkSecurityPerimeterProfile" {
 ///   name                          = "existing"
-///   network_security_perimeter_id = data.azure_network_getnetworksecurityperimeter.example.id
+///   network_security_perimeter_id = data.azure_network_network_security_perimeter.example.id
 /// }
 ///
 /// output "id" {
-///   value = data.azure_network_getnetworksecurityperimeterprofile.exampleGetNetworkSecurityPerimeterProfile.id
+///   value = data.azure_network_network_security_perimeter_profile.exampleGetNetworkSecurityPerimeterProfile.id
 /// }
 /// ```
 /// ```java
@@ -3582,7 +3606,7 @@ pulumi.Output<GetNetworkSecurityPerimeterProfileResult> getNetworkSecurityPerime
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -3590,13 +3614,13 @@ pulumi.Output<GetNetworkSecurityPerimeterProfileResult> getNetworkSecurityPerime
 ///   }
 /// }
 ///
-/// data "azure_network_getnetworkwatcher" "example" {
+/// data "azure_network_network_watcher" "example" {
 ///   name                = exampleAzurermNetworkWatcher.name
 ///   resource_group_name = exampleAzurermResourceGroup.name
 /// }
 ///
 /// output "networkWatcherId" {
-///   value = data.azure_network_getnetworkwatcher.example.id
+///   value = data.azure_network_network_watcher.example.id
 /// }
 /// ```
 /// ```java
@@ -3621,8 +3645,8 @@ pulumi.Output<GetNetworkSecurityPerimeterProfileResult> getNetworkSecurityPerime
 ///
 ///     public static void stack(Context ctx) {
 ///         final var example = NetworkFunctions.getNetworkWatcher(GetNetworkWatcherArgs.builder()
-///             .name(exampleAzurermNetworkWatcher.name())
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
+///             .name(exampleAzurermNetworkWatcher.get("name"))
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
 ///             .build());
 ///
 ///         ctx.export("networkWatcherId", example.id());
@@ -3746,7 +3770,7 @@ pulumi.Output<GetNetworkWatcherResult> getNetworkWatcherOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -3754,16 +3778,16 @@ pulumi.Output<GetNetworkWatcherResult> getNetworkWatcherOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getpublicip" "example" {
+/// data "azure_network_public_i_p" "example" {
 ///   name                = "name_of_public_ip"
 ///   resource_group_name = "name_of_resource_group"
 /// }
 ///
 /// output "domainNameLabel" {
-///   value = data.azure_network_getpublicip.example.domain_name_label
+///   value = data.azure_network_public_i_p.example.domain_name_label
 /// }
 /// output "publicIpAddress" {
-///   value = data.azure_network_getpublicip.example.ip_address
+///   value = data.azure_network_public_i_p.example.ip_address
 /// }
 /// ```
 /// ```java
@@ -4097,7 +4121,7 @@ pulumi.Output<GetNetworkWatcherResult> getNetworkWatcherOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -4105,57 +4129,75 @@ pulumi.Output<GetNetworkWatcherResult> getNetworkWatcherOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getpublicip" "example" {
-///   name                = azure_network_publicip.example.name
-///   resource_group_name = azure_compute_virtualmachine.example.resource_group_name
+/// data "azure_network_public_i_p" "example" {
+///   name                = azure_network_public_ip.example.name
+///   resource_group_name = azure_compute_virtual_machine.example.resource_group_name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test-network"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "acctsub"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "test-pip"
-///   location                = azure_core_resourcegroup.example.location
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = azure_core_resource_group.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   allocation_method       = "Dynamic"
 ///   idle_timeout_in_minutes = 30
 ///   tags = {
 ///     "environment" = "test"
 ///   }
 /// }
-/// resource "azure_network_networkinterface" "example" {
+/// resource "azure_network_network_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test-nic"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ip_configurations {
 ///     name                          = "testconfiguration1"
 ///     subnet_id                     = azure_network_subnet.example.id
 ///     private_ip_address_allocation = "Static"
 ///     private_ip_address            = "10.0.2.5"
-///     public_ip_address_id          = azure_network_publicip.example.id
+///     public_ip_address_id          = azure_network_public_ip.example.id
 ///   }
 /// }
-/// resource "azure_compute_virtualmachine" "example" {
+/// resource "azure_compute_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "test-vm"
-///   location              = azure_core_resourcegroup.example.location
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   network_interface_ids = [azure_network_networkinterface.example.id]
+///   location              = azure_core_resource_group.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   network_interface_ids = [azure_network_network_interface.example.id]
 /// }
 /// output "publicIpAddress" {
-///   value = data.azure_network_getpublicip.example.ip_address
+///   value = data.azure_network_public_i_p.example.ip_address
 /// }
 /// ```
 /// ```java
@@ -4411,7 +4453,7 @@ pulumi.Output<GetPublicIPResult> getPublicIPOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -4419,7 +4461,7 @@ pulumi.Output<GetPublicIPResult> getPublicIPOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getpublicips" "example" {
+/// data "azure_network_public_i_ps" "example" {
 ///   resource_group_name = "pip-test"
 ///   attachment_status   = "Attached"
 /// }
@@ -4564,7 +4606,7 @@ pulumi.Output<GetPublicIPsResult> getPublicIPsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -4572,13 +4614,13 @@ pulumi.Output<GetPublicIPsResult> getPublicIPsOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getpublicipprefix" "example" {
+/// data "azure_network_public_ip_prefix" "example" {
 ///   name                = "name_of_public_ip"
 ///   resource_group_name = "name_of_resource_group"
 /// }
 ///
 /// output "publicIpPrefix" {
-///   value = data.azure_network_getpublicipprefix.example.ip_prefix
+///   value = data.azure_network_public_ip_prefix.example.ip_prefix
 /// }
 /// ```
 /// ```java
@@ -4722,7 +4764,7 @@ pulumi.Output<GetPublicIpPrefixResult> getPublicIpPrefixOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -4730,13 +4772,13 @@ pulumi.Output<GetPublicIpPrefixResult> getPublicIpPrefixOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getroutefilter" "example" {
+/// data "azure_network_route_filter" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_network_getroutefilter.example.id
+///   value = data.azure_network_route_filter.example.id
 /// }
 /// ```
 /// ```java
@@ -4873,7 +4915,7 @@ pulumi.Output<GetRouteFilterResult> getRouteFilterOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -4881,7 +4923,7 @@ pulumi.Output<GetRouteFilterResult> getRouteFilterOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getroutetable" "example" {
+/// data "azure_network_route_table" "example" {
 ///   name                = "myroutetable"
 ///   resource_group_name = "some-resource-group"
 /// }
@@ -5032,7 +5074,7 @@ pulumi.Output<GetRouteTableResult> getRouteTableOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -5040,17 +5082,17 @@ pulumi.Output<GetRouteTableResult> getRouteTableOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getservicetags" "example" {
+/// data "azure_network_service_tags" "example" {
 ///   location        = "westcentralus"
 ///   service         = "AzureKeyVault"
 ///   location_filter = "northeurope"
 /// }
 ///
 /// output "addressPrefixes" {
-///   value = data.azure_network_getservicetags.example.address_prefixes
+///   value = data.azure_network_service_tags.example.address_prefixes
 /// }
 /// output "ipv4Cidrs" {
-///   value = data.azure_network_getservicetags.example.ipv4_cidrs
+///   value = data.azure_network_service_tags.example.ipv4_cidrs
 /// }
 /// ```
 /// ```java
@@ -5202,7 +5244,7 @@ pulumi.Output<GetServiceTagsResult> getServiceTagsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -5210,14 +5252,14 @@ pulumi.Output<GetServiceTagsResult> getServiceTagsOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getsubnet" "example" {
+/// data "azure_network_subnet" "example" {
 ///   name                 = "backend"
 ///   virtual_network_name = "production"
 ///   resource_group_name  = "networking"
 /// }
 ///
 /// output "subnetId" {
-///   value = data.azure_network_getsubnet.example.id
+///   value = data.azure_network_subnet.example.id
 /// }
 /// ```
 /// ```java
@@ -5361,7 +5403,7 @@ pulumi.Output<GetSubnetResult> getSubnetOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -5369,12 +5411,12 @@ pulumi.Output<GetSubnetResult> getSubnetOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_gettrafficmanager" "example" {
+/// data "azure_network_traffic_manager" "example" {
 ///   name = "World"
 /// }
 ///
 /// output "locationCode" {
-///   value = data.azure_network_gettrafficmanager.example.id
+///   value = data.azure_network_traffic_manager.example.id
 /// }
 /// ```
 /// ```java
@@ -5516,7 +5558,7 @@ pulumi.Output<GetTrafficManagerResult> getTrafficManagerOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -5524,13 +5566,13 @@ pulumi.Output<GetTrafficManagerResult> getTrafficManagerOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_gettrafficmanagerprofile" "example" {
+/// data "azure_network_traffic_manager_profile" "example" {
 ///   name                = "test"
 ///   resource_group_name = "test"
 /// }
 ///
 /// output "trafficRoutingMethod" {
-///   value = data.azure_network_gettrafficmanagerprofile.example.traffic_routing_method
+///   value = data.azure_network_traffic_manager_profile.example.traffic_routing_method
 /// }
 /// ```
 /// ```java
@@ -5674,7 +5716,7 @@ pulumi.Output<GetTrafficManagerProfileResult> getTrafficManagerProfileOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -5682,13 +5724,13 @@ pulumi.Output<GetTrafficManagerProfileResult> getTrafficManagerProfileOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getvirtualhub" "example" {
+/// data "azure_network_virtual_hub" "example" {
 ///   name                = "example-hub"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "virtualHubId" {
-///   value = data.azure_network_getvirtualhub.example.id
+///   value = data.azure_network_virtual_hub.example.id
 /// }
 /// ```
 /// ```java
@@ -5836,7 +5878,7 @@ pulumi.Output<GetVirtualHubResult> getVirtualHubOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -5844,14 +5886,14 @@ pulumi.Output<GetVirtualHubResult> getVirtualHubOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getvirtualhubconnection" "example" {
+/// data "azure_network_virtual_hub_connection" "example" {
 ///   name                = "example-connection"
 ///   resource_group_name = "example-resources"
 ///   virtual_hub_name    = "example-hub-name"
 /// }
 ///
 /// output "virtualHubConnectionId" {
-///   value = data.azure_network_getvirtualhubconnection.example.id
+///   value = data.azure_network_virtual_hub_connection.example.id
 /// }
 /// ```
 /// ```java
@@ -6001,7 +6043,7 @@ pulumi.Output<GetVirtualHubConnectionResult> getVirtualHubConnectionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -6009,14 +6051,14 @@ pulumi.Output<GetVirtualHubConnectionResult> getVirtualHubConnectionOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getvirtualhubroutetable" "example" {
+/// data "azure_network_virtual_hub_route_table" "example" {
 ///   name                = "example-hub-route-table"
 ///   resource_group_name = "example-resources"
 ///   virtual_hub_name    = "example-hub-name"
 /// }
 ///
 /// output "virtualHubRouteTableId" {
-///   value = data.azure_network_getvirtualhubroutetable.example.id
+///   value = data.azure_network_virtual_hub_route_table.example.id
 /// }
 /// ```
 /// ```java
@@ -6162,7 +6204,7 @@ pulumi.Output<GetVirtualHubRouteTableResult> getVirtualHubRouteTableOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -6170,13 +6212,13 @@ pulumi.Output<GetVirtualHubRouteTableResult> getVirtualHubRouteTableOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getvirtualnetwork" "example" {
+/// data "azure_network_virtual_network" "example" {
 ///   name                = "production"
 ///   resource_group_name = "networking"
 /// }
 ///
 /// output "virtualNetworkId" {
-///   value = data.azure_network_getvirtualnetwork.example.id
+///   value = data.azure_network_virtual_network.example.id
 /// }
 /// ```
 /// ```java
@@ -6320,7 +6362,7 @@ pulumi.Output<GetVirtualNetworkResult> getVirtualNetworkOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -6328,13 +6370,13 @@ pulumi.Output<GetVirtualNetworkResult> getVirtualNetworkOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getvirtualnetworkgateway" "example" {
+/// data "azure_network_virtual_network_gateway" "example" {
 ///   name                = "production"
 ///   resource_group_name = "networking"
 /// }
 ///
 /// output "virtualNetworkGatewayId" {
-///   value = data.azure_network_getvirtualnetworkgateway.example.id
+///   value = data.azure_network_virtual_network_gateway.example.id
 /// }
 /// ```
 /// ```java
@@ -6497,7 +6539,7 @@ pulumi.Output<GetVirtualNetworkGatewayResult> getVirtualNetworkGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -6505,17 +6547,17 @@ pulumi.Output<GetVirtualNetworkGatewayResult> getVirtualNetworkGatewayOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getvirtualnetwork" "example" {
+/// data "azure_network_virtual_network" "example" {
 ///   name                = "vnet01"
 ///   resource_group_name = "networking"
 /// }
-/// data "azure_network_getvirtualnetworkpeering" "exampleGetVirtualNetworkPeering" {
+/// data "azure_network_virtual_network_peering" "exampleGetVirtualNetworkPeering" {
 ///   name               = "peer-vnet01-to-vnet02"
-///   virtual_network_id = data.azure_network_getvirtualnetwork.example.id
+///   virtual_network_id = data.azure_network_virtual_network.example.id
 /// }
 ///
 /// output "id" {
-///   value = data.azure_network_getvirtualnetworkpeering.exampleGetVirtualNetworkPeering.id
+///   value = data.azure_network_virtual_network_peering.exampleGetVirtualNetworkPeering.id
 /// }
 /// ```
 /// ```java
@@ -6703,7 +6745,7 @@ pulumi.Output<GetVirtualNetworkPeeringResult> getVirtualNetworkPeeringOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -6711,37 +6753,37 @@ pulumi.Output<GetVirtualNetworkPeeringResult> getVirtualNetworkPeeringOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getvirtualwan" "example" {
+/// data "azure_network_virtual_wan" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_network_getvirtualwan.example.id
+///   value = data.azure_network_virtual_wan.example.id
 /// }
 /// output "allowBranchToBranchTraffic" {
-///   value = data.azure_network_getvirtualwan.example.allow_branch_to_branch_traffic
+///   value = data.azure_network_virtual_wan.example.allow_branch_to_branch_traffic
 /// }
 /// output "disableVpnEncryption" {
-///   value = data.azure_network_getvirtualwan.example.disable_vpn_encryption
+///   value = data.azure_network_virtual_wan.example.disable_vpn_encryption
 /// }
 /// output "location" {
-///   value = data.azure_network_getvirtualwan.example.location
+///   value = data.azure_network_virtual_wan.example.location
 /// }
 /// output "office365LocalBreakoutCategory" {
-///   value = data.azure_network_getvirtualwan.example.office365_local_breakout_category
+///   value = data.azure_network_virtual_wan.example.office365_local_breakout_category
 /// }
 /// output "sku" {
-///   value = data.azure_network_getvirtualwan.example.sku
+///   value = data.azure_network_virtual_wan.example.sku
 /// }
 /// output "tags" {
-///   value = data.azure_network_getvirtualwan.example.tags
+///   value = data.azure_network_virtual_wan.example.tags
 /// }
 /// output "virtualHubs" {
-///   value = data.azure_network_getvirtualwan.example.virtualHubs
+///   value = data.azure_network_virtual_wan.example.virtualHubs
 /// }
 /// output "vpnSites" {
-///   value = data.azure_network_getvirtualwan.example.vpnSites
+///   value = data.azure_network_virtual_wan.example.vpnSites
 /// }
 /// ```
 /// ```java
@@ -6901,7 +6943,7 @@ pulumi.Output<GetVirtualWanResult> getVirtualWanOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -6909,13 +6951,13 @@ pulumi.Output<GetVirtualWanResult> getVirtualWanOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getvpngateway" "example" {
+/// data "azure_network_vpn_gateway" "example" {
 ///   name                = "existing-local-vpn_gateway"
 ///   resource_group_name = "existing-vpn_gateway"
 /// }
 ///
 /// output "azurermVpnGatewayId" {
-///   value = data.azure_network_getvpngateway.example.id
+///   value = data.azure_network_vpn_gateway.example.id
 /// }
 /// ```
 /// ```java
@@ -7059,7 +7101,7 @@ pulumi.Output<GetVpnGatewayResult> getVpnGatewayOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -7067,13 +7109,13 @@ pulumi.Output<GetVpnGatewayResult> getVpnGatewayOutput(
 ///   }
 /// }
 ///
-/// data "azure_network_getvpnserverconfiguration" "example" {
+/// data "azure_network_vpn_server_configuration" "example" {
 ///   name                = "existing-local-vpn-server-configuration"
 ///   resource_group_name = "existing-resource-group"
 /// }
 ///
 /// output "azurermVpnServerConfiguration" {
-///   value = data.azure_network_getvpnserverconfiguration.example.id
+///   value = data.azure_network_vpn_server_configuration.example.id
 /// }
 /// ```
 /// ```java

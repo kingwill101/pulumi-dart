@@ -238,7 +238,7 @@ import 'account_network_rules_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -246,34 +246,49 @@ import 'account_network_rules_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 ///   service_endpoints    = ["Microsoft.Storage"]
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "storageaccountname"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "GRS"
 ///   tags = {
 ///     "environment" = "staging"
 ///   }
 /// }
-/// resource "azure_storage_accountnetworkrules" "example" {
+/// resource "azure_storage_account_network_rules" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_account_id         = azure_storage_account.example.id
 ///   default_action             = "Allow"
 ///   ip_rules                   = ["127.0.0.1"]
@@ -453,7 +468,7 @@ class AccountNetworkRulesStorage extends pulumi.CustomResource {
           'azure:storage/accountNetworkRules:AccountNetworkRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     bypasses = registerOutput<List<String>>('bypasses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     defaultAction = registerOutput<String>('defaultAction');

@@ -132,7 +132,7 @@ import 'account_static_website_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -140,21 +140,30 @@ import 'account_static_website_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "storageaccountname"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "GRS"
 ///   tags = {
 ///     "environment" = "staging"
 ///   }
 /// }
-/// resource "azure_storage_accountstaticwebsite" "example" {
+/// resource "azure_storage_account_static_website" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_account_id = azure_storage_account.example.id
 ///   error404_document  = "custom_not_found.html"
 ///   index_document     = "custom_index.html"
@@ -263,7 +272,7 @@ class AccountStaticWebsiteStorage extends pulumi.CustomResource {
           'azure:storage/accountStaticWebsite:AccountStaticWebsite',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     error404Document = registerOutput<String?>('error404Document');
     indexDocument = registerOutput<String?>('indexDocument');

@@ -85,7 +85,7 @@ import 'assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -93,15 +93,18 @@ import 'assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "primary" {
+/// data "azure_core_subscription" "primary" {
 /// }
-/// data "azure_core_getclientconfig" "example" {
+/// data "azure_core_client_config" "example" {
 /// }
 ///
 /// resource "azure_authorization_assignment" "example" {
-///   scope                = data.azure_core_getsubscription.primary.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = data.azure_core_subscription.primary.id
 ///   role_definition_name = "Reader"
-///   principal_id         = data.azure_core_getclientconfig.example.object_id
+///   principal_id         = data.azure_core_client_config.example.object_id
 /// }
 /// ```
 /// ```java
@@ -306,7 +309,7 @@ import 'assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -314,26 +317,32 @@ import 'assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "primary" {
+/// data "azure_core_subscription" "primary" {
 /// }
-/// data "azure_core_getclientconfig" "example" {
+/// data "azure_core_client_config" "example" {
 /// }
 ///
-/// resource "azure_authorization_roledefinition" "example" {
+/// resource "azure_authorization_role_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_definition_id = "00000000-0000-0000-0000-000000000000"
 ///   name               = "my-custom-role-definition"
-///   scope              = data.azure_core_getsubscription.primary.id
+///   scope              = data.azure_core_subscription.primary.id
 ///   permissions {
 ///     actions     = ["Microsoft.Resources/subscriptions/resourceGroups/read"]
 ///     not_actions = []
 ///   }
-///   assignable_scopes = [data.azure_core_getsubscription.primary.id]
+///   assignable_scopes = [data.azure_core_subscription.primary.id]
 /// }
 /// resource "azure_authorization_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "00000000-0000-0000-0000-000000000000"
-///   scope              = data.azure_core_getsubscription.primary.id
-///   role_definition_id = azure_authorization_roledefinition.example.role_definition_resource_id
-///   principal_id       = data.azure_core_getclientconfig.example.object_id
+///   scope              = data.azure_core_subscription.primary.id
+///   role_definition_id = azure_authorization_role_definition.example.role_definition_resource_id
+///   principal_id       = data.azure_core_client_config.example.object_id
 /// }
 /// ```
 /// ```java
@@ -567,7 +576,7 @@ import 'assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -575,26 +584,32 @@ import 'assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "primary" {
+/// data "azure_core_subscription" "primary" {
 /// }
-/// data "azure_core_getclientconfig" "example" {
+/// data "azure_core_client_config" "example" {
 /// }
 ///
-/// resource "azure_authorization_roledefinition" "example" {
+/// resource "azure_authorization_role_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_definition_id = "00000000-0000-0000-0000-000000000000"
 ///   name               = "my-custom-role-definition"
-///   scope              = data.azure_core_getsubscription.primary.id
+///   scope              = data.azure_core_subscription.primary.id
 ///   permissions {
 ///     actions     = ["Microsoft.Resources/subscriptions/resourceGroups/read"]
 ///     not_actions = []
 ///   }
-///   assignable_scopes = [data.azure_core_getsubscription.primary.id]
+///   assignable_scopes = [data.azure_core_subscription.primary.id]
 /// }
 /// resource "azure_authorization_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "00000000-0000-0000-0000-000000000000"
-///   scope              = data.azure_core_getsubscription.primary.id
-///   role_definition_id = azure_authorization_roledefinition.example.role_definition_resource_id
-///   principal_id       = data.azure_core_getclientconfig.example.object_id
+///   scope              = data.azure_core_subscription.primary.id
+///   role_definition_id = azure_authorization_role_definition.example.role_definition_resource_id
+///   principal_id       = data.azure_core_client_config.example.object_id
 /// }
 /// ```
 /// ```java
@@ -844,7 +859,7 @@ import 'assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -852,29 +867,35 @@ import 'assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "primary" {
+/// data "azure_core_subscription" "primary" {
 /// }
-/// data "azure_core_getclientconfig" "example" {
+/// data "azure_core_client_config" "example" {
 /// }
-/// data "azure_management_getgroup" "exampleGetGroup" {
+/// data "azure_management_group" "exampleGetGroup" {
 ///   name = "00000000-0000-0000-0000-000000000000"
 /// }
 ///
-/// resource "azure_authorization_roledefinition" "example" {
+/// resource "azure_authorization_role_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_definition_id = "00000000-0000-0000-0000-000000000000"
 ///   name               = "my-custom-role-definition"
-///   scope              = data.azure_core_getsubscription.primary.id
+///   scope              = data.azure_core_subscription.primary.id
 ///   permissions {
 ///     actions     = ["Microsoft.Resources/subscriptions/resourceGroups/read"]
 ///     not_actions = []
 ///   }
-///   assignable_scopes = [data.azure_core_getsubscription.primary.id]
+///   assignable_scopes = [data.azure_core_subscription.primary.id]
 /// }
 /// resource "azure_authorization_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "00000000-0000-0000-0000-000000000000"
 ///   scope              = primaryAzurermManagementGroup.id
-///   role_definition_id = azure_authorization_roledefinition.example.role_definition_resource_id
-///   principal_id       = data.azure_core_getclientconfig.example.object_id
+///   role_definition_id = azure_authorization_role_definition.example.role_definition_resource_id
+///   principal_id       = data.azure_core_client_config.example.object_id
 /// }
 /// ```
 /// ```java
@@ -927,7 +948,7 @@ import 'assignment_state.dart';
 ///
 ///         var exampleAssignment = new Assignment("exampleAssignment", AssignmentArgs.builder()
 ///             .name("00000000-0000-0000-0000-000000000000")
-///             .scope(primaryAzurermManagementGroup.id())
+///             .scope(primaryAzurermManagementGroup.get("id"))
 ///             .roleDefinitionId(exampleRoleDefinition.roleDefinitionResourceId())
 ///             .principalId(example.objectId())
 ///             .build());
@@ -1193,7 +1214,7 @@ import 'assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1204,28 +1225,32 @@ import 'assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "primary" {
+/// data "azure_core_subscription" "primary" {
 /// }
-/// data "azure_core_getclientconfig" "example" {
+/// data "azure_core_client_config" "example" {
 /// }
-/// data "azure_authorization_getroledefinition" "builtin" {
+/// data "azure_authorization_role_definition" "builtin" {
 ///   name = "Reader"
 /// }
 ///
 /// resource "azure_authorization_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role_definition_name = "Role Based Access Control Administrator"
-///   scope                = data.azure_core_getsubscription.primary.id
-///   principal_id         = data.azure_core_getclientconfig.example.object_id
+///   scope                = data.azure_core_subscription.primary.id
+///   principal_id         = data.azure_core_client_config.example.object_id
 ///   principal_type       = "ServicePrincipal"
 ///   description          = "Role Based Access Control Administrator role assignment with ABAC Condition."
 ///   condition_version    = "2.0"
-///   condition            ="(
+///   condition            = <<-EOT
+/// (
 ///  (
 ///   !(ActionMatches{'Microsoft.Authorization/roleAssignments/write'})
 ///  )
 ///  OR
 ///  (
-///   @Request[Microsoft.Authorization/roleAssignments:RoleDefinitionId] ForAnyOfAnyValues:GuidEquals {${basename(data.azure_authorization_getroledefinition.builtin.role_definition_id)}}
+///   @Request[Microsoft.Authorization/roleAssignments:RoleDefinitionId] ForAnyOfAnyValues:GuidEquals {${basename(data.azure_authorization_role_definition.builtin.role_definition_id)}}
 ///  )
 /// )
 /// AND
@@ -1235,10 +1260,11 @@ import 'assignment_state.dart';
 ///  )
 ///  OR
 ///  (
-///   @Resource[Microsoft.Authorization/roleAssignments:RoleDefinitionId] ForAnyOfAnyValues:GuidEquals {${basename(data.azure_authorization_getroledefinition.builtin.role_definition_id)}}
+///   @Resource[Microsoft.Authorization/roleAssignments:RoleDefinitionId] ForAnyOfAnyValues:GuidEquals {${basename(data.azure_authorization_role_definition.builtin.role_definition_id)}}
 ///  )
 /// )
-/// "
+/// EOT
+///
 /// }
 /// ```
 /// ```java
@@ -1453,7 +1479,7 @@ class Assignment extends pulumi.CustomResource {
           'azure:authorization/assignment:Assignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     condition = registerOutput<String?>('condition');
     conditionVersion = registerOutput<String>('conditionVersion');

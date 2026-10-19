@@ -167,7 +167,7 @@ import 'api_subscription_key_parameter_names.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -175,21 +175,30 @@ import 'api_subscription_key_parameter_names.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "My Company"
 ///   publisher_email     = "company@exmaple.com"
 ///   sku_name            = "Developer_1"
 /// }
 /// resource "azure_apimanagement_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-api"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   api_management_name = azure_apimanagement_service.example.name
 ///   revision            = "1"
 ///   display_name        = "Example API"
@@ -379,7 +388,7 @@ class Api extends pulumi.CustomResource {
           'azure:apimanagement/api:Api',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiType = registerOutput<String>('apiType');

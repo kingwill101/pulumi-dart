@@ -238,7 +238,7 @@ import 'network_manager_management_group_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -246,43 +246,61 @@ import 'network_manager_management_group_connection_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "alt" {
+/// data "azure_core_subscription" "alt" {
 ///   subscription_id = "00000000-0000-0000-0000-000000000000"
 /// }
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
-/// data "azure_core_getclientconfig" "currentGetClientConfig" {
+/// data "azure_core_client_config" "currentGetClientConfig" {
 /// }
 ///
 /// resource "azure_management_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "azure_management_groupsubscriptionassociation" "example" {
+/// resource "azure_management_group_subscription_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   management_group_id = azure_management_group.example.id
-///   subscription_id     = data.azure_core_getsubscription.alt.id
+///   subscription_id     = data.azure_core_subscription.alt.id
 /// }
 /// resource "azure_authorization_assignment" "network_contributor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   scope                = azure_management_group.example.id
 ///   role_definition_name = "Network Contributor"
-///   principal_id         = data.azure_core_getclientconfig.currentGetClientConfig.object_id
+///   principal_id         = data.azure_core_client_config.currentGetClientConfig.object_id
 /// }
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkmanager" "example" {
+/// resource "azure_network_network_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-networkmanager"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   scope = {
-///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///     subscription_ids = [data.azure_core_subscription.current.id]
 ///   }
 ///   scope_accesses = ["SecurityAdmin"]
 /// }
-/// resource "azure_network_networkmanagermanagementgroupconnection" "example" {
-///   depends_on          = [azure_authorization_assignment.network_contributor]
+/// resource "azure_network_network_manager_management_group_connection" "example" {
+///   depends_on = [azure_authorization_assignment.network_contributor]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nmmgc"
 ///   management_group_id = azure_management_group.example.id
-///   network_manager_id  = azure_network_networkmanager.example.id
+///   network_manager_id  = azure_network_network_manager.example.id
 ///   description         = "example"
 /// }
 /// ```
@@ -470,7 +488,7 @@ class NetworkManagerManagementGroupConnection extends pulumi.CustomResource {
           'azure:network/networkManagerManagementGroupConnection:NetworkManagerManagementGroupConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     connectionState = registerOutput<String>('connectionState');
     description = registerOutput<String?>('description');

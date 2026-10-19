@@ -184,7 +184,7 @@ import 'traffic_manager_external_endpoint_subnet.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -192,13 +192,19 @@ import 'traffic_manager_external_endpoint_subnet.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_trafficmanagerprofile" "example" {
+/// resource "azure_network_traffic_manager_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-profile"
-///   resource_group_name    = azure_core_resourcegroup.example.name
+///   resource_group_name    = azure_core_resource_group.example.name
 ///   traffic_routing_method = "Weighted"
 ///   dns_config = {
 ///     relative_name = "example-profile"
@@ -216,9 +222,12 @@ import 'traffic_manager_external_endpoint_subnet.dart';
 ///     "environment" = "Production"
 ///   }
 /// }
-/// resource "azure_network_trafficmanagerexternalendpoint" "example" {
+/// resource "azure_network_traffic_manager_external_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-endpoint"
-///   profile_id           = azure_network_trafficmanagerprofile.example.id
+///   profile_id           = azure_network_traffic_manager_profile.example.id
 ///   always_serve_enabled = true
 ///   weight               = 100
 ///   target               = "www.example.com"
@@ -374,7 +383,7 @@ class TrafficManagerExternalEndpoint extends pulumi.CustomResource {
           'azure:network/trafficManagerExternalEndpoint:TrafficManagerExternalEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     alwaysServeEnabled = registerOutput<bool?>('alwaysServeEnabled');
     customHeaders = registerOutput<List<TrafficManagerExternalEndpointCustomHeader>?>('customHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficManagerExternalEndpointCustomHeader>(guardedValue, (value) => TrafficManagerExternalEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>())); });

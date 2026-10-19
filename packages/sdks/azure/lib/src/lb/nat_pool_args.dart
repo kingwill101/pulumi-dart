@@ -74,12 +74,12 @@ class NatPoolArgs {
 
   factory NatPoolArgs.fromMap(Map<String, dynamic> map) {
     return NatPoolArgs(
-      backendPort: pulumi.Input.fromValue((map['backendPort'] as num).toInt()),
+      backendPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backendPort'])),
       floatingIpEnabled: (() { final guardedValue = map['floatingIpEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       frontendIpConfigurationName: pulumi.Input.fromValue(map['frontendIpConfigurationName'] as String),
-      frontendPortEnd: pulumi.Input.fromValue((map['frontendPortEnd'] as num).toInt()),
-      frontendPortStart: pulumi.Input.fromValue((map['frontendPortStart'] as num).toInt()),
-      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      frontendPortEnd: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['frontendPortEnd'])),
+      frontendPortStart: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['frontendPortStart'])),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       loadbalancerId: pulumi.Input.fromValue(map['loadbalancerId'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),

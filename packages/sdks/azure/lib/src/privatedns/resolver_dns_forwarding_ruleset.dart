@@ -285,7 +285,7 @@ import 'resolver_dns_forwarding_ruleset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -293,20 +293,29 @@ import 'resolver_dns_forwarding_ruleset_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "west europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "outbounddns"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.0.64/28"]
 ///   delegations {
 ///     name = "Microsoft.Network.dnsResolvers"
@@ -317,12 +326,18 @@ import 'resolver_dns_forwarding_ruleset_state.dart';
 ///   }
 /// }
 /// resource "azure_privatedns_resolver" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-resolver"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   virtual_network_id  = azure_network_virtualnetwork.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   virtual_network_id  = azure_network_virtual_network.example.id
 /// }
-/// resource "azure_privatedns_resolveroutboundendpoint" "example" {
+/// resource "azure_privatedns_resolver_outbound_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-endpoint"
 ///   private_dns_resolver_id = azure_privatedns_resolver.example.id
 ///   location                = azure_privatedns_resolver.example.location
@@ -331,11 +346,14 @@ import 'resolver_dns_forwarding_ruleset_state.dart';
 ///     "key" = "value"
 ///   }
 /// }
-/// resource "azure_privatedns_resolverdnsforwardingruleset" "example" {
+/// resource "azure_privatedns_resolver_dns_forwarding_ruleset" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                       = "example-ruleset"
-///   resource_group_name                        = azure_core_resourcegroup.example.name
-///   location                                   = azure_core_resourcegroup.example.location
-///   private_dns_resolver_outbound_endpoint_ids = [azure_privatedns_resolveroutboundendpoint.example.id]
+///   resource_group_name                        = azure_core_resource_group.example.name
+///   location                                   = azure_core_resource_group.example.location
+///   private_dns_resolver_outbound_endpoint_ids = [azure_privatedns_resolver_outbound_endpoint.example.id]
 ///   tags = {
 ///     "key" = "value"
 ///   }
@@ -527,7 +545,7 @@ class ResolverDnsForwardingRuleset extends pulumi.CustomResource {
           'azure:privatedns/resolverDnsForwardingRuleset:ResolverDnsForwardingRuleset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

@@ -17,7 +17,7 @@ class ScaleSetIdentity {
   ///     sku: {
   ///         name: vmSku,
   ///         tier: "Standard",
-  ///         capacity: Number(instanceCount),
+  ///         capacity: instanceCount,
   ///     },
   ///     identity: {
   ///         type: "SystemAssigned",
@@ -43,7 +43,7 @@ class ScaleSetIdentity {
   ///     sku={
   ///         "name": vm_sku,
   ///         "tier": "Standard",
-  ///         "capacity": int(instance_count),
+  ///         "capacity": instance_count,
   ///     },
   ///     identity={
   ///         "type": "SystemAssigned",
@@ -140,7 +140,7 @@ class ScaleSetIdentity {
   /// }
   /// ```
   /// ```hcl
-  /// pulumi {
+  /// terraform {
   ///   required_providers {
   ///     azure = {
   ///       source = "pulumi/azure"
@@ -148,7 +148,10 @@ class ScaleSetIdentity {
   ///   }
   /// }
   ///
-  /// resource "azure_compute_scaleset" "example" {
+  /// resource "azure_compute_scale_set" "example" {
+  ///   lifecycle {
+  ///     create_before_destroy = true
+  ///   }
   ///   name                = "vm-scaleset"
   ///   resource_group_name = exampleAzurermResourceGroup.name
   ///   location            = exampleAzurermResourceGroup.location
@@ -169,7 +172,7 @@ class ScaleSetIdentity {
   ///   }
   /// }
   /// output "principalId" {
-  ///   value = azure_compute_scaleset.example.identity.principal_id
+  ///   value = azure_compute_scale_set.example.identity.principal_id
   /// }
   /// ```
   /// ```java
@@ -198,8 +201,8 @@ class ScaleSetIdentity {
   ///     public static void stack(Context ctx) {
   ///         var example = new ScaleSet("example", ScaleSetArgs.builder()
   ///             .name("vm-scaleset")
-  ///             .resourceGroupName(exampleAzurermResourceGroup.name())
-  ///             .location(exampleAzurermResourceGroup.location())
+  ///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
+  ///             .location(exampleAzurermResourceGroup.get("location"))
   ///             .sku(ScaleSetSkuArgs.builder()
   ///                 .name(vmSku)
   ///                 .tier("Standard")

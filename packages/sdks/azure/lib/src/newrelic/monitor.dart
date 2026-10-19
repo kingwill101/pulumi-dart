@@ -141,7 +141,7 @@ import 'monitor_user.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -149,14 +149,20 @@ import 'monitor_user.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "East US"
 /// }
 /// resource "azure_newrelic_monitor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nrm"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   plan = {
 ///     effective_date = "2023-06-06T00:00:00Z"
 ///   }
@@ -344,7 +350,7 @@ import 'monitor_user.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -352,15 +358,18 @@ import 'monitor_user.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "primary" {
+/// data "azure_core_subscription" "primary" {
 /// }
-/// data "azure_authorization_getroledefinition" "monitoringReader" {
+/// data "azure_authorization_role_definition" "monitoringReader" {
 ///   name = "Monitoring Reader"
 /// }
 ///
 /// resource "azure_authorization_assignment" "example" {
-///   scope              = data.azure_core_getsubscription.primary.id
-///   role_definition_id ="${data.azure_core_getsubscription.primary.id}${data.azure_authorization_getroledefinition.monitoringReader.id}"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope              = data.azure_core_subscription.primary.id
+///   role_definition_id ="${data.azure_core_subscription.primary.id}${data.azure_authorization_role_definition.monitoringReader.id}"
 ///   principal_id       = exampleAzurermNewRelicMonitor.identity[0].principalId
 /// }
 /// ```
@@ -399,7 +408,7 @@ import 'monitor_user.dart';
 ///         var example = new Assignment("example", AssignmentArgs.builder()
 ///             .scope(primary.id())
 ///             .roleDefinitionId(String.format("%s%s", primary.id(),monitoringReader.id()))
-///             .principalId(exampleAzurermNewRelicMonitor.identity()[0].principalId())
+///             .principalId(exampleAzurermNewRelicMonitor.get("identity")[0].get("principalId"))
 ///             .build());
 ///
 ///     }
@@ -482,7 +491,7 @@ class Monitor extends pulumi.CustomResource {
           'azure:newrelic/monitor:Monitor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['ingestionKey'],
         ) {
     accountCreationSource = registerOutput<String?>('accountCreationSource');

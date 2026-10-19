@@ -61,8 +61,8 @@ class VpnGatewayConnectionVpnLinkIpsecPolicy {
       ikeIntegrityAlgorithm: pulumi.Input.fromValue(map['ikeIntegrityAlgorithm'] as String),
       integrityAlgorithm: pulumi.Input.fromValue(map['integrityAlgorithm'] as String),
       pfsGroup: pulumi.Input.fromValue(map['pfsGroup'] as String),
-      saDataSizeKb: pulumi.Input.fromValue((map['saDataSizeKb'] as num).toInt()),
-      saLifetimeSec: pulumi.Input.fromValue((map['saLifetimeSec'] as num).toInt()),
+      saDataSizeKb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['saDataSizeKb'])),
+      saLifetimeSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['saLifetimeSec'])),
     );
   }
 }

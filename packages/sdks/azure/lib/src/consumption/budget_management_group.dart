@@ -139,7 +139,7 @@ import 'budget_management_group_time_period.dart';
 ///     {
 ///         Name = "example",
 ///         ManagementGroupId = example.Id,
-///         Amount = 1000,
+///         Amount = 1000.0,
 ///         TimeGrain = "Monthly",
 ///         TimePeriod = new Azure.Consumption.Inputs.BudgetManagementGroupTimePeriodArgs
 ///         {
@@ -285,7 +285,7 @@ import 'budget_management_group_time_period.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -294,13 +294,22 @@ import 'budget_management_group_time_period.dart';
 /// }
 ///
 /// resource "azure_management_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example"
 /// }
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "eastus"
 /// }
-/// resource "azure_consumption_budgetmanagementgroup" "example" {
+/// resource "azure_consumption_budget_management_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
 ///   management_group_id = azure_management_group.example.id
 ///   amount              = 1000
@@ -311,12 +320,12 @@ import 'budget_management_group_time_period.dart';
 ///   }
 ///   filter = {
 ///     dimensions = [{
-///       "name"   = "ResourceGroupName"
-///       "values" = [azure_core_resourcegroup.example.name]
+///       name   = "ResourceGroupName"
+///       values = [azure_core_resource_group.example.name]
 ///     }]
 ///     tags = [{
-///       "name"   = "foo"
-///       "values" = ["bar", "baz"]
+///       name   = "foo"
+///       values = ["bar", "baz"]
 ///     }]
 ///   }
 ///   notifications {
@@ -511,7 +520,7 @@ class BudgetManagementGroup extends pulumi.CustomResource {
           'azure:consumption/budgetManagementGroup:BudgetManagementGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     amount = registerOutput<double>('amount');
     etag = registerOutput<String>('etag');

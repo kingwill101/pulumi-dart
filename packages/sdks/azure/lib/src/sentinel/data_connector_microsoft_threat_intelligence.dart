@@ -129,7 +129,7 @@ import 'data_connector_microsoft_threat_intelligence_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -137,22 +137,34 @@ import 'data_connector_microsoft_threat_intelligence_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "east us"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-workspace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 /// }
-/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
-///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// resource "azure_sentinel_log_analytics_workspace_onboarding" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workspace_id = azure_operationalinsights_analytics_workspace.example.id
 /// }
-/// resource "azure_sentinel_dataconnectormicrosoftthreatintelligence" "example" {
+/// resource "azure_sentinel_data_connector_microsoft_threat_intelligence" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                         = "example-dc-msti"
-///   log_analytics_workspace_id                   = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+///   log_analytics_workspace_id                   = azure_sentinel_log_analytics_workspace_onboarding.example.workspace_id
 ///   microsoft_emerging_threat_feed_lookback_date = "1970-01-01T00:00:00Z"
 /// }
 /// ```
@@ -269,7 +281,7 @@ class DataConnectorMicrosoftThreatIntelligence extends pulumi.CustomResource {
           'azure:sentinel/dataConnectorMicrosoftThreatIntelligence:DataConnectorMicrosoftThreatIntelligence',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     logAnalyticsWorkspaceId = registerOutput<String>('logAnalyticsWorkspaceId');
     microsoftEmergingThreatFeedLookbackDate = registerOutput<String>('microsoftEmergingThreatFeedLookbackDate');

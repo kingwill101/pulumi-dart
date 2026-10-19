@@ -186,7 +186,7 @@ import 'spring_cloud_app_redis_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -194,32 +194,47 @@ import 'spring_cloud_app_redis_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appplatform_springcloudservice" "example" {
+/// resource "azure_appplatform_spring_cloud_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-springcloud"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_appplatform_springcloudapp" "example" {
+/// resource "azure_appplatform_spring_cloud_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-springcloudapp"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   service_name        = azure_appplatform_springcloudservice.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   service_name        = azure_appplatform_spring_cloud_service.example.name
 /// }
 /// resource "azure_redis_cache" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cache"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   capacity            = 0
 ///   family              = "C"
 ///   sku_name            = "Basic"
 ///   enable_non_ssl_port = true
 /// }
-/// resource "azure_appplatform_springcloudappredisassociation" "example" {
+/// resource "azure_appplatform_spring_cloud_app_redis_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-bind"
-///   spring_cloud_app_id = azure_appplatform_springcloudapp.example.id
+///   spring_cloud_app_id = azure_appplatform_spring_cloud_app.example.id
 ///   redis_cache_id      = azure_redis_cache.example.id
 ///   redis_access_key    = azure_redis_cache.example.primary_access_key
 ///   ssl_enabled         = true
@@ -367,7 +382,7 @@ class SpringCloudAppRedisAssociation extends pulumi.CustomResource {
           'azure:appplatform/springCloudAppRedisAssociation:SpringCloudAppRedisAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     redisAccessKey = registerOutput<String>('redisAccessKey');

@@ -184,7 +184,7 @@ import 'aad_diagnostic_setting_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -192,19 +192,28 @@ import 'aad_diagnostic_setting_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "west europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorageaccount"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_kind             = "StorageV2"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_monitoring_aaddiagnosticsetting" "example" {
+/// resource "azure_monitoring_aad_diagnostic_setting" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "setting1"
 ///   storage_account_id = azure_storage_account.example.id
 ///   enabled_logs {
@@ -357,7 +366,7 @@ class AadDiagnosticSetting extends pulumi.CustomResource {
           'azure:monitoring/aadDiagnosticSetting:AadDiagnosticSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     enabledLogs = registerOutput<List<AadDiagnosticSettingEnabledLog>?>('enabledLogs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AadDiagnosticSettingEnabledLog>(guardedValue, (value) => AadDiagnosticSettingEnabledLog.fromMap((value as Map).cast<String, dynamic>())); });
     eventhubAuthorizationRuleId = registerOutput<String?>('eventhubAuthorizationRuleId');

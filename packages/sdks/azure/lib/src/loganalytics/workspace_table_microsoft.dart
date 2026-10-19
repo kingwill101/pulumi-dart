@@ -114,7 +114,7 @@ import 'workspace_table_microsoft_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -122,19 +122,28 @@ import 'workspace_table_microsoft_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   retention_in_days   = 30
 /// }
-/// resource "azure_loganalytics_workspacetablemicrosoft" "example" {
+/// resource "azure_loganalytics_workspace_table_microsoft" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "AppCenterError"
-///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+///   workspace_id = azure_operationalinsights_analytics_workspace.example.id
 /// }
 /// ```
 /// ```java
@@ -256,7 +265,7 @@ class WorkspaceTableMicrosoft extends pulumi.CustomResource {
           'azure:loganalytics/workspaceTableMicrosoft:WorkspaceTableMicrosoft',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     columns = registerOutput<List<WorkspaceTableMicrosoftColumn>?>('columns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WorkspaceTableMicrosoftColumn>(guardedValue, (value) => WorkspaceTableMicrosoftColumn.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');

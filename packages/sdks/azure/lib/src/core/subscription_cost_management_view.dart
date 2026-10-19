@@ -180,7 +180,7 @@ import 'subscription_cost_management_view_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -188,7 +188,10 @@ import 'subscription_cost_management_view_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_subscriptioncostmanagementview" "example" {
+/// resource "azure_core_subscription_cost_management_view" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   display_name    = "Cost View per Month"
 ///   chart_type      = "StackedColumn"
@@ -199,8 +202,8 @@ import 'subscription_cost_management_view_state.dart';
 ///   dataset = {
 ///     granularity = "Monthly"
 ///     aggregations = [{
-///       "name"       = "totalCost"
-///       "columnName" = "Cost"
+///       name        = "totalCost"
+///       column_name = "Cost"
 ///     }]
 ///   }
 ///   pivots {
@@ -349,7 +352,7 @@ class SubscriptionCostManagementView extends pulumi.CustomResource {
           'azure:core/subscriptionCostManagementView:SubscriptionCostManagementView',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accumulated = registerOutput<bool>('accumulated');
     chartType = registerOutput<String>('chartType');

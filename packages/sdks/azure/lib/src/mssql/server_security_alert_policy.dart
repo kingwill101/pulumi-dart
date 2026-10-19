@@ -191,7 +191,7 @@ import 'server_security_alert_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -199,28 +199,40 @@ import 'server_security_alert_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azurerm_sqlserver" "example" {
+/// resource "azurerm_sql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "mysqlserver"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   version                      = "12.0"
 ///   administrator_login          = "4dm1n157r470r"
 ///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "accteststorageaccount"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "GRS"
 /// }
-/// resource "azure_mssql_serversecurityalertpolicy" "example" {
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   server_name                = azurerm_sqlserver.example.name
+/// resource "azure_mssql_server_security_alert_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name        = azure_core_resource_group.example.name
+///   server_name                = azurerm_sql_server.example.name
 ///   state                      = "Enabled"
 ///   storage_endpoint           = azure_storage_account.example.primary_blob_endpoint
 ///   storage_account_access_key = azure_storage_account.example.primary_access_key
@@ -279,7 +291,7 @@ import 'server_security_alert_policy_state.dart';
 ///
 ///         var exampleServerSecurityAlertPolicy = new ServerSecurityAlertPolicy("exampleServerSecurityAlertPolicy", ServerSecurityAlertPolicyArgs.builder()
 ///             .resourceGroupName(example.name())
-///             .serverName(exampleSqlServer.name())
+///             .serverName(exampleSqlServer.get("name"))
 ///             .state("Enabled")
 ///             .storageEndpoint(exampleAccount.primaryBlobEndpoint())
 ///             .storageAccountAccessKey(exampleAccount.primaryAccessKey())
@@ -386,7 +398,7 @@ class ServerSecurityAlertPolicy extends pulumi.CustomResource {
           'azure:mssql/serverSecurityAlertPolicy:ServerSecurityAlertPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['storageAccountAccessKey'],
         ) {
     disabledAlerts = registerOutput<List<String>?>('disabledAlerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

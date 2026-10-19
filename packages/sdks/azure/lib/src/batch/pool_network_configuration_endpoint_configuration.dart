@@ -41,7 +41,7 @@ class PoolNetworkConfigurationEndpointConfiguration {
 
   factory PoolNetworkConfigurationEndpointConfiguration.fromMap(Map<String, dynamic> map) {
     return PoolNetworkConfigurationEndpointConfiguration(
-      backendPort: pulumi.Input.fromValue((map['backendPort'] as num).toInt()),
+      backendPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backendPort'])),
       frontendPortRange: pulumi.Input.fromValue(map['frontendPortRange'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       networkSecurityGroupRules: (() { final guardedValue = map['networkSecurityGroupRules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule>(guardedValue, (value) => PoolNetworkConfigurationEndpointConfigurationNetworkSecurityGroupRule.fromMap((value as Map).cast<String, dynamic>()))); })(),

@@ -120,7 +120,7 @@ import 'api_schema_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -131,17 +131,20 @@ import 'api_schema_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getapi" "example" {
+/// data "azure_apimanagement_api" "example" {
 ///   name                = "search-api"
 ///   api_management_name = "search-api-management"
 ///   resource_group_name = "search-service"
 ///   revision            = "2"
 /// }
 ///
-/// resource "azure_apimanagement_apischema" "example" {
-///   api_name            = data.azure_apimanagement_getapi.example.name
-///   api_management_name = data.azure_apimanagement_getapi.example.api_management_name
-///   resource_group_name = data.azure_apimanagement_getapi.example.resource_group_name
+/// resource "azure_apimanagement_api_schema" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   api_name            = data.azure_apimanagement_api.example.name
+///   api_management_name = data.azure_apimanagement_api.example.api_management_name
+///   resource_group_name = data.azure_apimanagement_api.example.resource_group_name
 ///   schema_id           = "example-schema"
 ///   content_type        = "application/vnd.ms-azure-apim.xsd+xml"
 ///   value               = file("api_management_api_schema.xml")
@@ -266,7 +269,7 @@ class ApiSchema extends pulumi.CustomResource {
           'azure:apimanagement/apiSchema:ApiSchema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     apiName = registerOutput<String>('apiName');

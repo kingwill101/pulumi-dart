@@ -164,7 +164,7 @@ import 'group_policy_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -173,9 +173,15 @@ import 'group_policy_assignment_state.dart';
 /// }
 ///
 /// resource "azure_management_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Some Management Group"
 /// }
 /// resource "azure_policy_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "only-deploy-in-westeurope"
 ///   policy_type         = "Custom"
 ///   mode                = "All"
@@ -183,7 +189,10 @@ import 'group_policy_assignment_state.dart';
 ///   management_group_id = azure_management_group.example.id
 ///   policy_rule         = " {\n    \"if\": {\n      \"not\": {\n        \"field\": \"location\",\n        \"equals\": \"westeurope\"\n      }\n    },\n    \"then\": {\n      \"effect\": \"Deny\"\n    }\n  }\n"
 /// }
-/// resource "azure_management_grouppolicyassignment" "example" {
+/// resource "azure_management_group_policy_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-policy"
 ///   policy_definition_id = azure_policy_definition.example.id
 ///   management_group_id  = azure_management_group.example.id
@@ -343,7 +352,7 @@ class GroupPolicyAssignment extends pulumi.CustomResource {
           'azure:management/groupPolicyAssignment:GroupPolicyAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

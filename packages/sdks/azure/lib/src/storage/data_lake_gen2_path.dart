@@ -154,7 +154,7 @@ import 'data_lake_gen2_path_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -162,26 +162,38 @@ import 'data_lake_gen2_path_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorageacc"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 ///   account_kind             = "StorageV2"
 ///   is_hns_enabled           = "true"
 /// }
-/// resource "azure_storage_datalakegen2filesystem" "example" {
+/// resource "azure_storage_data_lake_gen2_filesystem" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   storage_account_id = azure_storage_account.example.id
 /// }
-/// resource "azure_storage_datalakegen2path" "example" {
+/// resource "azure_storage_data_lake_gen2_path" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   path               = "example"
-///   filesystem_name    = azure_storage_datalakegen2filesystem.example.name
+///   filesystem_name    = azure_storage_data_lake_gen2_filesystem.example.name
 ///   storage_account_id = azure_storage_account.example.id
 ///   resource           = "directory"
 /// }
@@ -313,7 +325,7 @@ class DataLakeGen2Path extends pulumi.CustomResource {
           'azure:storage/dataLakeGen2Path:DataLakeGen2Path',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     aces = registerOutput<List<DataLakeGen2PathAce>>('aces', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataLakeGen2PathAce>(guardedValue, (value) => DataLakeGen2PathAce.fromMap((value as Map).cast<String, dynamic>())); });
     filesystemName = registerOutput<String>('filesystemName');

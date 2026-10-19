@@ -211,7 +211,7 @@ import 'endpoint_storage_container_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -219,34 +219,49 @@ import 'endpoint_storage_container_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "acctestcont"
 ///   storage_account_name  = azure_storage_account.example.name
 ///   container_access_type = "private"
 /// }
-/// resource "azure_iot_iothub" "example" {
+/// resource "azure_iot_io_t_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku = {
 ///     name     = "S1"
 ///     capacity = "1"
 ///   }
 /// }
-/// resource "azure_iot_endpointstoragecontainer" "example" {
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   iothub_id                  = azure_iot_iothub.example.id
+/// resource "azure_iot_endpoint_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name        = azure_core_resource_group.example.name
+///   iothub_id                  = azure_iot_io_t_hub.example.id
 ///   name                       = "acctest"
 ///   container_name             = "acctestcont"
 ///   connection_string          = azure_storage_account.example.primary_blob_connection_string
@@ -430,7 +445,7 @@ class EndpointStorageContainer extends pulumi.CustomResource {
           'azure:iot/endpointStorageContainer:EndpointStorageContainer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['connectionString'],
         ) {
     authenticationType = registerOutput<String?>('authenticationType');

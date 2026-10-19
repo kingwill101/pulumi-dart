@@ -31,7 +31,7 @@ class FleetUpdateStrategyStage {
 
   factory FleetUpdateStrategyStage.fromMap(Map<String, dynamic> map) {
     return FleetUpdateStrategyStage(
-      afterStageWaitInSeconds: (() { final guardedValue = map['afterStageWaitInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      afterStageWaitInSeconds: (() { final guardedValue = map['afterStageWaitInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       groups: pulumi.Input.fromValue(pulumi.Input.decodeList<FleetUpdateStrategyStageGroup>(map['groups']!, (value) => FleetUpdateStrategyStageGroup.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
     );

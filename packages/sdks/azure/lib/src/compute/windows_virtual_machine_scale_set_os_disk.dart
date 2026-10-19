@@ -73,7 +73,7 @@ class WindowsVirtualMachineScaleSetOsDisk {
       caching: pulumi.Input.fromValue(map['caching'] as String),
       diffDiskSettings: (() { final guardedValue = map['diffDiskSettings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(WindowsVirtualMachineScaleSetOsDiskDiffDiskSettings.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       diskEncryptionSetId: (() { final guardedValue = map['diskEncryptionSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      diskSizeGb: (() { final guardedValue = map['diskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       secureVmDiskEncryptionSetId: (() { final guardedValue = map['secureVmDiskEncryptionSetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       securityEncryptionType: (() { final guardedValue = map['securityEncryptionType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageAccountType: pulumi.Input.fromValue(map['storageAccountType'] as String),

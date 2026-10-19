@@ -164,7 +164,7 @@ import 'cache_access_policy_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -172,17 +172,23 @@ import 'cache_access_policy_assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "test" {
+/// data "azure_core_client_config" "test" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "East US"
 /// }
 /// resource "azure_redis_cache" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   capacity            = 1
 ///   family              = "P"
 ///   sku_name            = "Premium"
@@ -193,11 +199,14 @@ import 'cache_access_policy_assignment_state.dart';
 ///     maxmemory_policy   = "allkeys-lru"
 ///   }
 /// }
-/// resource "azure_redis_cacheaccesspolicyassignment" "example" {
+/// resource "azure_redis_cache_access_policy_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   redis_cache_id     = azure_redis_cache.example.id
 ///   access_policy_name = "Data Contributor"
-///   object_id          = data.azure_core_getclientconfig.test.object_id
+///   object_id          = data.azure_core_client_config.test.object_id
 ///   object_id_alias    = "ServicePrincipal"
 /// }
 /// ```
@@ -338,7 +347,7 @@ class CacheAccessPolicyAssignment extends pulumi.CustomResource {
           'azure:redis/cacheAccessPolicyAssignment:CacheAccessPolicyAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accessPolicyName = registerOutput<String>('accessPolicyName');
     this.name = registerOutput<String>('name');

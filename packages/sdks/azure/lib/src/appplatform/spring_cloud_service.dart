@@ -126,7 +126,7 @@ import 'spring_cloud_service_trace.dart';
 ///         Trace = new Azure.AppPlatform.Inputs.SpringCloudServiceTraceArgs
 ///         {
 ///             ConnectionString = exampleInsights.ConnectionString,
-///             SampleRate = 10,
+///             SampleRate = 10.0,
 ///         },
 ///         Tags =
 ///         {
@@ -193,7 +193,7 @@ import 'spring_cloud_service_trace.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -201,20 +201,29 @@ import 'spring_cloud_service_trace.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appinsights_insights" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tf-test-appinsights"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_type    = "web"
 /// }
-/// resource "azure_appplatform_springcloudservice" "example" {
+/// resource "azure_appplatform_spring_cloud_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-springcloud"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku_name            = "S0"
 ///   config_server_git_setting = {
 ///     uri          = "https://github.com/Azure-Samples/piggymetrics"
@@ -389,7 +398,7 @@ class SpringCloudService extends pulumi.CustomResource {
           'azure:appplatform/springCloudService:SpringCloudService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     buildAgentPoolSize = registerOutput<String?>('buildAgentPoolSize');
     configServerGitSetting = registerOutput<SpringCloudServiceConfigServerGitSetting?>('configServerGitSetting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpringCloudServiceConfigServerGitSetting.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -35,7 +35,7 @@ class SqlDedicatedGatewayArgs {
   factory SqlDedicatedGatewayArgs.fromMap(Map<String, dynamic> map) {
     return SqlDedicatedGatewayArgs(
       cosmosdbAccountId: pulumi.Input.fromValue(map['cosmosdbAccountId'] as String),
-      instanceCount: pulumi.Input.fromValue((map['instanceCount'] as num).toInt()),
+      instanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instanceCount'])),
       instanceSize: pulumi.Input.fromValue(map['instanceSize'] as String),
     );
   }

@@ -51,7 +51,7 @@ class BackendServiceFabricCluster {
       clientCertificateId: (() { final guardedValue = map['clientCertificateId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       clientCertificateThumbprint: (() { final guardedValue = map['clientCertificateThumbprint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       managementEndpoints: pulumi.Input.fromValue((map['managementEndpoints'] as List).cast<String>()),
-      maxPartitionResolutionRetries: pulumi.Input.fromValue((map['maxPartitionResolutionRetries'] as num).toInt()),
+      maxPartitionResolutionRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPartitionResolutionRetries'])),
       serverCertificateThumbprints: (() { final guardedValue = map['serverCertificateThumbprints']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       serverX509Names: (() { final guardedValue = map['serverX509Names']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BackendServiceFabricClusterServerX509Name>(guardedValue, (value) => BackendServiceFabricClusterServerX509Name.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );

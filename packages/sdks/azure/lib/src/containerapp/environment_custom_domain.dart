@@ -167,7 +167,7 @@ import 'environment_custom_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -178,24 +178,36 @@ import 'environment_custom_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acctest-01"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 ///   retention_in_days   = 30
 /// }
 /// resource "azure_containerapp_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "my-environment"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
+///   log_analytics_workspace_id = azure_operationalinsights_analytics_workspace.example.id
 /// }
-/// resource "azure_containerapp_environmentcustomdomain" "example" {
+/// resource "azure_containerapp_environment_custom_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   container_app_environment_id = azure_containerapp_environment.example.id
 ///   certificate_blob_base64      = filebase64("testacc.pfx")
 ///   certificate_password         = "TestAcc"
@@ -341,7 +353,7 @@ class EnvironmentCustomDomain extends pulumi.CustomResource {
           'azure:containerapp/environmentCustomDomain:EnvironmentCustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['certificatePassword'],
         ) {
     certificateBlobBase64 = registerOutput<String>('certificateBlobBase64');

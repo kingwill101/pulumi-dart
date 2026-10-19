@@ -191,7 +191,7 @@ import 'user_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -199,17 +199,23 @@ import 'user_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_mongocluster_mongocluster" "example" {
+/// resource "azure_mongocluster_mongo_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-mc"
-///   resource_group_name    = azure_core_resourcegroup.example.name
-///   location               = azure_core_resourcegroup.example.location
+///   resource_group_name    = azure_core_resource_group.example.name
+///   location               = azure_core_resource_group.example.location
 ///   administrator_username = "adminTerraform"
 ///   administrator_password = "QAZwsx123"
 ///   shard_count            = "1"
@@ -220,8 +226,11 @@ import 'user_state.dart';
 ///   authentication_methods = ["NativeAuth", "MicrosoftEntraID"]
 /// }
 /// resource "azure_mongocluster_user" "example" {
-///   object_id              = data.azure_core_getclientconfig.current.object_id
-///   mongo_cluster_id       = azure_mongocluster_mongocluster.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   object_id              = data.azure_core_client_config.current.object_id
+///   mongo_cluster_id       = azure_mongocluster_mongo_cluster.example.id
 ///   identity_provider_type = "MicrosoftEntraID"
 ///   principal_type         = "servicePrincipal"
 ///   roles {
@@ -375,7 +384,7 @@ class User extends pulumi.CustomResource {
           'azure:mongocluster/user:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     identityProviderType = registerOutput<String>('identityProviderType');
     mongoClusterId = registerOutput<String>('mongoClusterId');

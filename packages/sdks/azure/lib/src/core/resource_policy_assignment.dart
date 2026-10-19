@@ -167,7 +167,7 @@ import 'resource_policy_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -175,21 +175,27 @@ import 'resource_policy_assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_network_getvirtualnetwork" "example" {
+/// data "azure_network_virtual_network" "example" {
 ///   name                = "production"
 ///   resource_group_name = "networking"
 /// }
 ///
 /// resource "azure_policy_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "only-deploy-in-westeurope"
 ///   policy_type  = "Custom"
 ///   mode         = "All"
 ///   display_name = "my-policy-definition"
 ///   policy_rule  = " {\n    \"if\": {\n      \"not\": {\n        \"field\": \"location\",\n        \"equals\": \"westeurope\"\n      }\n    },\n    \"then\": {\n      \"effect\": \"Deny\"\n    }\n  }\n"
 /// }
-/// resource "azure_core_resourcepolicyassignment" "example" {
+/// resource "azure_core_resource_policy_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-policy-assignment"
-///   resource_id          = data.azure_network_getvirtualnetwork.example.id
+///   resource_id          = data.azure_network_virtual_network.example.id
 ///   policy_definition_id = azure_policy_definition.example.id
 /// }
 /// ```
@@ -353,7 +359,7 @@ class ResourcePolicyAssignment extends pulumi.CustomResource {
           'azure:core/resourcePolicyAssignment:ResourcePolicyAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

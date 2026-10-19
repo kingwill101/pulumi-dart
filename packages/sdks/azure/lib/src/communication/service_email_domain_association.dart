@@ -155,7 +155,7 @@ import 'service_email_domain_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -163,28 +163,43 @@ import 'service_email_domain_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "group1"
 ///   location = "West Europe"
 /// }
 /// resource "azure_communication_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "CommunicationService1"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   data_location       = "United States"
 /// }
-/// resource "azure_communication_emailservice" "example" {
+/// resource "azure_communication_email_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "emailCommunicationService1"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   data_location       = "United States"
 /// }
-/// resource "azure_communication_emailservicedomain" "example" {
+/// resource "azure_communication_email_service_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "AzureManagedDomain"
-///   email_service_id  = azure_communication_emailservice.example.id
+///   email_service_id  = azure_communication_email_service.example.id
 ///   domain_management = "AzureManaged"
 /// }
-/// resource "azure_communication_serviceemaildomainassociation" "example" {
+/// resource "azure_communication_service_email_domain_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   communication_service_id = azure_communication_service.example.id
-///   email_service_domain_id  = azure_communication_emailservicedomain.example.id
+///   email_service_domain_id  = azure_communication_email_service_domain.example.id
 /// }
 /// ```
 /// ```java
@@ -316,7 +331,7 @@ class ServiceEmailDomainAssociation extends pulumi.CustomResource {
           'azure:communication/serviceEmailDomainAssociation:ServiceEmailDomainAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     communicationServiceId = registerOutput<String>('communicationServiceId');
     emailServiceDomainId = registerOutput<String>('emailServiceDomainId');

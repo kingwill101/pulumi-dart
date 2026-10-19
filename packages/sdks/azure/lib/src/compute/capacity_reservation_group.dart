@@ -87,7 +87,7 @@ import 'capacity_reservation_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -95,14 +95,20 @@ import 'capacity_reservation_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_compute_capacityreservationgroup" "example" {
+/// resource "azure_compute_capacity_reservation_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-capacity-reservation-group"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// ```
 /// ```java
@@ -197,7 +203,7 @@ class CapacityReservationGroup extends pulumi.CustomResource {
           'azure:compute/capacityReservationGroup:CapacityReservationGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

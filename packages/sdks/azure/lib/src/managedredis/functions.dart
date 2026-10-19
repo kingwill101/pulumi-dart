@@ -78,7 +78,7 @@ import 'get_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -250,7 +250,7 @@ pulumi.Output<GetResult> getOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -258,14 +258,14 @@ pulumi.Output<GetResult> getOutput(
 ///   }
 /// }
 ///
-/// data "azure_managedredis_getaccesspolicyassignment" "example" {
+/// data "azure_managedredis_access_policy_assignment" "example" {
 ///   object_id           = "00000000-0000-0000-0000-000000000000"
 ///   managed_redis_name  = "example-managedredis"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "objectId" {
-///   value = data.azure_managedredis_getaccesspolicyassignment.example.object_id
+///   value = data.azure_managedredis_access_policy_assignment.example.object_id
 /// }
 /// ```
 /// ```java

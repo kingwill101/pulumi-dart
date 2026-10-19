@@ -456,7 +456,7 @@ import 'rules_engine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -464,13 +464,19 @@ import 'rules_engine_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_frontdoor_frontdoor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   backend_pools {
 ///     name                = "exampleBackendBing"
 ///     load_balancing_name = "exampleLoadBalancingSettings1"
@@ -499,7 +505,10 @@ import 'rules_engine_state.dart';
 ///     frontend_endpoints  = ["exampleFrontendEndpoint1"]
 ///   }
 /// }
-/// resource "azure_frontdoor_rulesengine" "example_rules_engine" {
+/// resource "azure_frontdoor_rules_engine" "example_rules_engine" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleRulesEngineConfig1"
 ///   frontdoor_name      = azure_frontdoor_frontdoor.example.name
 ///   resource_group_name = azure_frontdoor_frontdoor.example.resource_group_name
@@ -508,9 +517,9 @@ import 'rules_engine_state.dart';
 ///     priority = 1
 ///     action = {
 ///       response_headers = [{
-///         "headerActionType" = "Append"
-///         "headerName"       = "X-TEST-HEADER"
-///         "value"            = "Append Header Rule"
+///         header_action_type = "Append"
+///         header_name        = "X-TEST-HEADER"
+///         value              = "Append Header Rule"
 ///       }]
 ///     }
 ///   }
@@ -524,13 +533,13 @@ import 'rules_engine_state.dart';
 ///     }
 ///     action = {
 ///       response_headers = [{
-///         "headerActionType" = "Overwrite"
-///         "headerName"       = "Access-Control-Allow-Origin"
-///         "value"            = "*"
+///         header_action_type = "Overwrite"
+///         header_name        = "Access-Control-Allow-Origin"
+///         value              = "*"
 ///         }, {
-///         "headerActionType" = "Overwrite"
-///         "headerName"       = "Access-Control-Allow-Credentials"
-///         "value"            = "true"
+///         header_action_type = "Overwrite"
+///         header_name        = "Access-Control-Allow-Credentials"
+///         value              = "true"
 ///       }]
 ///     }
 ///   }
@@ -760,7 +769,7 @@ class RulesEngine extends pulumi.CustomResource {
           'azure:frontdoor/rulesEngine:RulesEngine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     enabled = registerOutput<bool?>('enabled');
     frontdoorName = registerOutput<String>('frontdoorName');

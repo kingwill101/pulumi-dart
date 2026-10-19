@@ -143,7 +143,7 @@ import 'firewall_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -151,14 +151,20 @@ import 'firewall_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_mongocluster_mongocluster" "example" {
+/// resource "azure_mongocluster_mongo_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-mongocluster"
-///   resource_group_name    = azure_core_resourcegroup.example.name
-///   location               = azure_core_resourcegroup.example.location
+///   resource_group_name    = azure_core_resource_group.example.name
+///   location               = azure_core_resource_group.example.location
 ///   administrator_username = "adminuser"
 ///   administrator_password = "P@ssw0rd1234!"
 ///   shard_count            = 1
@@ -167,9 +173,12 @@ import 'firewall_rule_state.dart';
 ///   storage_size_in_gb     = 32
 ///   version                = "7.0"
 /// }
-/// resource "azure_mongocluster_firewallrule" "example" {
+/// resource "azure_mongocluster_firewall_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example-firewall-rule"
-///   mongo_cluster_id = azure_mongocluster_mongocluster.example.id
+///   mongo_cluster_id = azure_mongocluster_mongo_cluster.example.id
 ///   start_ip_address = "10.0.0.1"
 ///   end_ip_address   = "10.0.0.255"
 /// }
@@ -295,7 +304,7 @@ class FirewallRule extends pulumi.CustomResource {
           'azure:mongocluster/firewallRule:FirewallRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     endIpAddress = registerOutput<String>('endIpAddress');
     mongoClusterId = registerOutput<String>('mongoClusterId');

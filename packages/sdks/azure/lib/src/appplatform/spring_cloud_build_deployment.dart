@@ -182,7 +182,7 @@ import 'spring_cloud_build_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -190,24 +190,36 @@ import 'spring_cloud_build_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appplatform_springcloudservice" "example" {
+/// resource "azure_appplatform_spring_cloud_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "E0"
 /// }
-/// resource "azure_appplatform_springcloudapp" "example" {
+/// resource "azure_appplatform_spring_cloud_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_appplatform_springcloudservice.example.resource_group_name
-///   service_name        = azure_appplatform_springcloudservice.example.name
+///   resource_group_name = azure_appplatform_spring_cloud_service.example.resource_group_name
+///   service_name        = azure_appplatform_spring_cloud_service.example.name
 /// }
-/// resource "azure_appplatform_springcloudbuilddeployment" "example" {
+/// resource "azure_appplatform_spring_cloud_build_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   spring_cloud_app_id = azure_appplatform_springcloudapp.example.id
+///   spring_cloud_app_id = azure_appplatform_spring_cloud_app.example.id
 ///   build_result_id     = "<default>"
 ///   instance_count      = 2
 ///   environment_variables = {
@@ -360,7 +372,7 @@ class SpringCloudBuildDeployment extends pulumi.CustomResource {
           'azure:appplatform/springCloudBuildDeployment:SpringCloudBuildDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     addonJson = registerOutput<String>('addonJson');
     applicationPerformanceMonitoringIds = registerOutput<List<String>?>('applicationPerformanceMonitoringIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

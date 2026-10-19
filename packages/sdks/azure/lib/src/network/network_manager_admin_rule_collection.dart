@@ -203,7 +203,7 @@ import 'network_manager_admin_rule_collection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -211,35 +211,50 @@ import 'network_manager_admin_rule_collection_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkmanager" "example" {
+/// resource "azure_network_network_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network-manager"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   scope = {
-///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///     subscription_ids = [data.azure_core_subscription.current.id]
 ///   }
 ///   scope_accesses = ["Connectivity", "SecurityAdmin"]
 ///   description    = "example network manager"
 /// }
-/// resource "azure_network_networkmanagernetworkgroup" "example" {
+/// resource "azure_network_network_manager_network_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-network-group"
-///   network_manager_id = azure_network_networkmanager.example.id
+///   network_manager_id = azure_network_network_manager.example.id
 /// }
-/// resource "azure_network_networkmanagersecurityadminconfiguration" "example" {
+/// resource "azure_network_network_manager_security_admin_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-admin-conf"
-///   network_manager_id = azure_network_networkmanager.example.id
+///   network_manager_id = azure_network_network_manager.example.id
 /// }
-/// resource "azure_network_networkmanageradminrulecollection" "example" {
+/// resource "azure_network_network_manager_admin_rule_collection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example-admin-rule-collection"
-///   security_admin_configuration_id = azure_network_networkmanagersecurityadminconfiguration.example.id
-///   network_group_ids               = [azure_network_networkmanagernetworkgroup.example.id]
+///   security_admin_configuration_id = azure_network_network_manager_security_admin_configuration.example.id
+///   network_group_ids               = [azure_network_network_manager_network_group.example.id]
 /// }
 /// ```
 /// ```java
@@ -399,7 +414,7 @@ class NetworkManagerAdminRuleCollection extends pulumi.CustomResource {
           'azure:network/networkManagerAdminRuleCollection:NetworkManagerAdminRuleCollection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     this.name = registerOutput<String>('name');

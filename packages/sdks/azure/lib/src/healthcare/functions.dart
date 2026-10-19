@@ -76,7 +76,7 @@ import 'get_workspace_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -84,13 +84,13 @@ import 'get_workspace_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_healthcare_getdicomservice" "example" {
+/// data "azure_healthcare_dicom_service" "example" {
 ///   name         = "example-healthcare_dicom_service"
 ///   workspace_id = exampleAzurermHealthcareWorkspace.id
 /// }
 ///
 /// output "azurermHealthcareDicomService" {
-///   value = data.azure_healthcare_getdicomservice.example.id
+///   value = data.azure_healthcare_dicom_service.example.id
 /// }
 /// ```
 /// ```java
@@ -116,7 +116,7 @@ import 'get_workspace_result.dart';
 ///     public static void stack(Context ctx) {
 ///         final var example = HealthcareFunctions.getDicomService(GetDicomServiceArgs.builder()
 ///             .name("example-healthcare_dicom_service")
-///             .workspaceId(exampleAzurermHealthcareWorkspace.id())
+///             .workspaceId(exampleAzurermHealthcareWorkspace.get("id"))
 ///             .build());
 ///
 ///         ctx.export("azurermHealthcareDicomService", example.id());
@@ -261,7 +261,7 @@ pulumi.Output<GetFhirServiceResult> getFhirServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -269,13 +269,13 @@ pulumi.Output<GetFhirServiceResult> getFhirServiceOutput(
 ///   }
 /// }
 ///
-/// data "azure_healthcare_getmedtechservice" "example" {
+/// data "azure_healthcare_medtech_service" "example" {
 ///   name         = "tfexmedtech"
 ///   workspace_id = "tfexwks"
 /// }
 ///
 /// output "azurermHealthcareMedtechServiceId" {
-///   value = data.azure_healthcare_getmedtechservice.example.id
+///   value = data.azure_healthcare_medtech_service.example.id
 /// }
 /// ```
 /// ```java
@@ -423,7 +423,7 @@ pulumi.Output<GetMedtechServiceResult> getMedtechServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -431,14 +431,14 @@ pulumi.Output<GetMedtechServiceResult> getMedtechServiceOutput(
 ///   }
 /// }
 ///
-/// data "azure_healthcare_getservice" "example" {
+/// data "azure_healthcare_service" "example" {
 ///   name                = "example-healthcare_service"
 ///   resource_group_name = "example-resources"
 ///   location            = "westus2"
 /// }
 ///
 /// output "healthcareServiceId" {
-///   value = data.azure_healthcare_getservice.example.id
+///   value = data.azure_healthcare_service.example.id
 /// }
 /// ```
 /// ```java
@@ -584,7 +584,7 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -592,13 +592,13 @@ pulumi.Output<GetServiceResult> getServiceOutput(
 ///   }
 /// }
 ///
-/// data "azure_healthcare_getworkspace" "example" {
+/// data "azure_healthcare_workspace" "example" {
 ///   name                = "example-healthcare_service"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "healthcareWorkspaceId" {
-///   value = data.azure_healthcare_getworkspace.example.id
+///   value = data.azure_healthcare_workspace.example.id
 /// }
 /// ```
 /// ```java

@@ -68,7 +68,7 @@ import 'get_workspace_table_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_workspace_table_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_loganalytics_getworkspacetable" "example" {
+/// data "azure_loganalytics_workspace_table" "example" {
 ///   name         = "InsightsMetrics"
 ///   workspace_id = exampleAzurermLogAnalyticsWorkspace.id
 /// }
 ///
 /// output "retentionInDays" {
-///   value = data.azure_loganalytics_getworkspacetable.example.retention_in_days
+///   value = data.azure_loganalytics_workspace_table.example.retention_in_days
 /// }
 /// ```
 /// ```java
@@ -108,7 +108,7 @@ import 'get_workspace_table_result.dart';
 ///     public static void stack(Context ctx) {
 ///         final var example = LoganalyticsFunctions.getWorkspaceTable(GetWorkspaceTableArgs.builder()
 ///             .name("InsightsMetrics")
-///             .workspaceId(exampleAzurermLogAnalyticsWorkspace.id())
+///             .workspaceId(exampleAzurermLogAnalyticsWorkspace.get("id"))
 ///             .build());
 ///
 ///         ctx.export("retentionInDays", example.retentionInDays());

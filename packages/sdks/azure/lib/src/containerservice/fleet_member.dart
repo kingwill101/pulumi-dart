@@ -100,7 +100,7 @@ import 'fleet_member_state.dart';
 ///         DefaultNodePool = new Azure.ContainerService.Inputs.KubernetesClusterDefaultNodePoolArgs
 ///         {
 ///             Name = "example-value",
-///             NodeCount = "example-value",
+///             NodeCount = int.Parse("example-value", System.Globalization.CultureInfo.InvariantCulture),
 ///             VmSize = "example-value",
 ///             UpgradeSettings = new Azure.ContainerService.Inputs.KubernetesClusterDefaultNodePoolUpgradeSettingsArgs
 ///             {
@@ -188,7 +188,7 @@ import 'fleet_member_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -196,10 +196,13 @@ import 'fleet_member_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_containerservice_kubernetescluster" "example" {
+/// resource "azure_containerservice_kubernetes_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   dns_prefix          = "acctestaksexample"
 ///   default_node_pool = {
 ///     name       = "example-value"
@@ -213,18 +216,27 @@ import 'fleet_member_state.dart';
 ///     type = "example-value"
 ///   }
 /// }
-/// resource "azure_containerservice_kubernetesfleetmanager" "example" {
+/// resource "azure_containerservice_kubernetes_fleet_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_containerservice_fleetmember" "example" {
-///   kubernetes_cluster_id = azure_containerservice_kubernetescluster.example.id
-///   kubernetes_fleet_id   = azure_containerservice_kubernetesfleetmanager.example.id
+/// resource "azure_containerservice_fleet_member" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   kubernetes_cluster_id = azure_containerservice_kubernetes_cluster.example.id
+///   kubernetes_fleet_id   = azure_containerservice_kubernetes_fleet_manager.example.id
 ///   name                  = "example"
 /// }
 /// ```
@@ -370,7 +382,7 @@ class FleetMember extends pulumi.CustomResource {
           'azure:containerservice/fleetMember:FleetMember',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     group = registerOutput<String?>('group');
     kubernetesClusterId = registerOutput<String>('kubernetesClusterId');

@@ -63,7 +63,7 @@ import 'portal_tenant_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -71,7 +71,10 @@ import 'portal_tenant_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_portaltenantconfiguration" "example" {
+/// resource "azure_core_portal_tenant_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   private_markdown_storage_enforced = true
 /// }
 /// ```
@@ -144,7 +147,7 @@ class PortalTenantConfiguration extends pulumi.CustomResource {
           'azure:core/portalTenantConfiguration:PortalTenantConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     privateMarkdownStorageEnforced = registerOutput<bool>('privateMarkdownStorageEnforced');
   }

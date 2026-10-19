@@ -32,7 +32,7 @@ class GetCachePatchSchedule {
     return GetCachePatchSchedule(
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
       maintenanceWindow: pulumi.Input.fromValue(map['maintenanceWindow'] as String),
-      startHourUtc: pulumi.Input.fromValue((map['startHourUtc'] as num).toInt()),
+      startHourUtc: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startHourUtc'])),
     );
   }
 }

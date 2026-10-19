@@ -78,8 +78,8 @@ class FluxConfigurationGitRepository {
       referenceValue: pulumi.Input.fromValue(map['referenceValue'] as String),
       sshKnownHostsBase64: (() { final guardedValue = map['sshKnownHostsBase64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sshPrivateKeyBase64: (() { final guardedValue = map['sshPrivateKeyBase64']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      syncIntervalInSeconds: (() { final guardedValue = map['syncIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      syncIntervalInSeconds: (() { final guardedValue = map['syncIntervalInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      timeoutInSeconds: (() { final guardedValue = map['timeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       url: pulumi.Input.fromValue(map['url'] as String),
     );
   }

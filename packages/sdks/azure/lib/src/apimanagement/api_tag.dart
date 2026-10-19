@@ -147,7 +147,7 @@ import 'api_tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -155,26 +155,38 @@ import 'api_tag_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getservice" "example" {
+/// data "azure_apimanagement_service" "example" {
 ///   name                = "example-apim"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-api"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   api_management_name = data.azure_apimanagement_getservice.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   api_management_name = data.azure_apimanagement_service.example.name
 ///   revision            = "1"
 /// }
 /// resource "azure_apimanagement_tag" "example" {
-///   api_management_id = data.azure_apimanagement_getservice.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   api_management_id = data.azure_apimanagement_service.example.id
 ///   name              = "example-tag"
 /// }
-/// resource "azure_apimanagement_apitag" "example" {
+/// resource "azure_apimanagement_api_tag" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_id = azure_apimanagement_api.example.id
 ///   name   = azure_apimanagement_tag.example.name
 /// }
@@ -308,7 +320,7 @@ class ApiTag extends pulumi.CustomResource {
           'azure:apimanagement/apiTag:ApiTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     this.name = registerOutput<String>('name');

@@ -137,7 +137,7 @@ import 'automatic_cluster_web_app_routing_ingress.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -145,14 +145,20 @@ import 'automatic_cluster_web_app_routing_ingress.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_containerservice_automaticcluster" "example" {
+/// resource "azure_containerservice_automatic_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-aks1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
@@ -161,10 +167,10 @@ import 'automatic_cluster_web_app_routing_ingress.dart';
 ///   }
 /// }
 /// output "clientCertificate" {
-///   value = azure_containerservice_automaticcluster.example.kube_configs[0].client_certificate
+///   value = azure_containerservice_automatic_cluster.example.kube_configs[0].client_certificate
 /// }
 /// output "kubeConfig" {
-///   value = azure_containerservice_automaticcluster.example.kube_config_raw
+///   value = azure_containerservice_automatic_cluster.example.kube_config_raw
 /// }
 /// ```
 /// ```java
@@ -206,7 +212,7 @@ import 'automatic_cluster_web_app_routing_ingress.dart';
 ///             .tags(Map.of("Environment", "Production"))
 ///             .build());
 ///
-///         ctx.export("clientCertificate", exampleAutomaticCluster.kubeConfigs().applyValue(_kubeConfigs -> _kubeConfigs[0].clientCertificate()));
+///         ctx.export("clientCertificate", exampleAutomaticCluster.kubeConfigs().applyValue(_kubeConfigs -> _kubeConfigs.get(0).clientCertificate()));
 ///         ctx.export("kubeConfig", exampleAutomaticCluster.kubeConfigRaw());
 ///     }
 /// }
@@ -592,7 +598,7 @@ import 'automatic_cluster_web_app_routing_ingress.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -600,26 +606,38 @@ import 'automatic_cluster_web_app_routing_ingress.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
 ///   address_spaces      = ["10.1.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "node" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-node-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.1.0.0/24"]
 /// }
 /// resource "azure_network_subnet" "api" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-api-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.1.1.0/24"]
 ///   delegations {
 ///     name = "aks-delegation"
@@ -630,32 +648,44 @@ import 'automatic_cluster_web_app_routing_ingress.dart';
 ///   }
 /// }
 /// resource "azure_network_subnet" "systemnode" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-systemnode-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.1.2.0/24"]
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example_identity"
 /// }
 /// resource "azure_authorization_assignment" "network" {
-///   scope                = azure_network_virtualnetwork.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = azure_network_virtual_network.example.id
 ///   role_definition_name = "Network Contributor"
-///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+///   principal_id         = azure_authorization_user_assigned_identity.example.principal_id
 /// }
-/// resource "azure_containerservice_automaticcluster" "example" {
+/// resource "azure_containerservice_automatic_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-aks"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   hosted_system = {
 ///     node_subnet_id        = azure_network_subnet.node.id
 ///     system_node_subnet_id = azure_network_subnet.systemnode.id
 ///   }
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 ///   api_server_access = {
 ///     subnet_id = azure_network_subnet.api.id
@@ -912,7 +942,7 @@ class AutomaticCluster extends pulumi.CustomResource {
           'azure:containerservice/automaticCluster:AutomaticCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['kubeConfigRaw', 'kubeConfigs'],
         ) {
     apiServerAccess = registerOutput<AutomaticClusterApiServerAccess?>('apiServerAccess', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutomaticClusterApiServerAccess.fromMap((guardedValue as Map).cast<String, dynamic>()); });

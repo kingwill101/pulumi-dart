@@ -312,7 +312,7 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -320,57 +320,78 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "test"
 ///   location = "West US"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "GatewaySubnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.1.0/24"]
 /// }
-/// resource "azure_network_localnetworkgateway" "onpremise" {
+/// resource "azure_network_local_network_gateway" "onpremise" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "onpremise"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   gateway_address     = "168.62.225.23"
 ///   address_spaces      = ["10.1.1.0/24"]
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Dynamic"
 /// }
-/// resource "azure_network_virtualnetworkgateway" "example" {
+/// resource "azure_network_virtual_network_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   type                = "Vpn"
 ///   vpn_type            = "RouteBased"
 ///   active_active       = false
 ///   bgp_enabled         = false
 ///   sku                 = "Basic"
 ///   ip_configurations {
-///     public_ip_address_id          = azure_network_publicip.example.id
+///     public_ip_address_id          = azure_network_public_ip.example.id
 ///     private_ip_address_allocation = "Dynamic"
 ///     subnet_id                     = azure_network_subnet.example.id
 ///   }
 /// }
-/// resource "azure_network_virtualnetworkgatewayconnection" "onpremise" {
+/// resource "azure_network_virtual_network_gateway_connection" "onpremise" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "onpremise"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   type                       = "IPsec"
-///   virtual_network_gateway_id = azure_network_virtualnetworkgateway.example.id
-///   local_network_gateway_id   = azure_network_localnetworkgateway.onpremise.id
+///   virtual_network_gateway_id = azure_network_virtual_network_gateway.example.id
+///   local_network_gateway_id   = azure_network_local_network_gateway.onpremise.id
 ///   shared_key                 = "4-v3ry-53cr37-1p53c-5h4r3d-k3y"
 /// }
 /// ```
@@ -1017,7 +1038,7 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1025,92 +1046,128 @@ import 'virtual_network_gateway_connection_traffic_selector_policy.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "us" {
+/// resource "azure_core_resource_group" "us" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "us"
 ///   location = "East US"
 /// }
-/// resource "azure_network_virtualnetwork" "us" {
+/// resource "azure_network_virtual_network" "us" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "us"
-///   location            = azure_core_resourcegroup.us.location
-///   resource_group_name = azure_core_resourcegroup.us.name
+///   location            = azure_core_resource_group.us.location
+///   resource_group_name = azure_core_resource_group.us.name
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "us_gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "GatewaySubnet"
-///   resource_group_name  = azure_core_resourcegroup.us.name
-///   virtual_network_name = azure_network_virtualnetwork.us.name
+///   resource_group_name  = azure_core_resource_group.us.name
+///   virtual_network_name = azure_network_virtual_network.us.name
 ///   address_prefixes     = ["10.0.1.0/24"]
 /// }
-/// resource "azure_network_publicip" "us" {
+/// resource "azure_network_public_ip" "us" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "us"
-///   location            = azure_core_resourcegroup.us.location
-///   resource_group_name = azure_core_resourcegroup.us.name
+///   location            = azure_core_resource_group.us.location
+///   resource_group_name = azure_core_resource_group.us.name
 ///   allocation_method   = "Dynamic"
 /// }
-/// resource "azure_network_virtualnetworkgateway" "us" {
+/// resource "azure_network_virtual_network_gateway" "us" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "us-gateway"
-///   location            = azure_core_resourcegroup.us.location
-///   resource_group_name = azure_core_resourcegroup.us.name
+///   location            = azure_core_resource_group.us.location
+///   resource_group_name = azure_core_resource_group.us.name
 ///   type                = "Vpn"
 ///   vpn_type            = "RouteBased"
 ///   sku                 = "Basic"
 ///   ip_configurations {
-///     public_ip_address_id          = azure_network_publicip.us.id
+///     public_ip_address_id          = azure_network_public_ip.us.id
 ///     private_ip_address_allocation = "Dynamic"
 ///     subnet_id                     = azure_network_subnet.us_gateway.id
 ///   }
 /// }
-/// resource "azure_core_resourcegroup" "europe" {
+/// resource "azure_core_resource_group" "europe" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "europe"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "europe" {
+/// resource "azure_network_virtual_network" "europe" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "europe"
-///   location            = azure_core_resourcegroup.europe.location
-///   resource_group_name = azure_core_resourcegroup.europe.name
+///   location            = azure_core_resource_group.europe.location
+///   resource_group_name = azure_core_resource_group.europe.name
 ///   address_spaces      = ["10.1.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "europe_gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "GatewaySubnet"
-///   resource_group_name  = azure_core_resourcegroup.europe.name
-///   virtual_network_name = azure_network_virtualnetwork.europe.name
+///   resource_group_name  = azure_core_resource_group.europe.name
+///   virtual_network_name = azure_network_virtual_network.europe.name
 ///   address_prefixes     = ["10.1.1.0/24"]
 /// }
-/// resource "azure_network_publicip" "europe" {
+/// resource "azure_network_public_ip" "europe" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "europe"
-///   location            = azure_core_resourcegroup.europe.location
-///   resource_group_name = azure_core_resourcegroup.europe.name
+///   location            = azure_core_resource_group.europe.location
+///   resource_group_name = azure_core_resource_group.europe.name
 ///   allocation_method   = "Dynamic"
 /// }
-/// resource "azure_network_virtualnetworkgateway" "europe" {
+/// resource "azure_network_virtual_network_gateway" "europe" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "europe-gateway"
-///   location            = azure_core_resourcegroup.europe.location
-///   resource_group_name = azure_core_resourcegroup.europe.name
+///   location            = azure_core_resource_group.europe.location
+///   resource_group_name = azure_core_resource_group.europe.name
 ///   type                = "Vpn"
 ///   vpn_type            = "RouteBased"
 ///   sku                 = "Basic"
 ///   ip_configurations {
-///     public_ip_address_id          = azure_network_publicip.europe.id
+///     public_ip_address_id          = azure_network_public_ip.europe.id
 ///     private_ip_address_allocation = "Dynamic"
 ///     subnet_id                     = azure_network_subnet.europe_gateway.id
 ///   }
 /// }
-/// resource "azure_network_virtualnetworkgatewayconnection" "us_to_europe" {
+/// resource "azure_network_virtual_network_gateway_connection" "us_to_europe" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "us-to-europe"
-///   location                        = azure_core_resourcegroup.us.location
-///   resource_group_name             = azure_core_resourcegroup.us.name
+///   location                        = azure_core_resource_group.us.location
+///   resource_group_name             = azure_core_resource_group.us.name
 ///   type                            = "Vnet2Vnet"
-///   virtual_network_gateway_id      = azure_network_virtualnetworkgateway.us.id
-///   peer_virtual_network_gateway_id = azure_network_virtualnetworkgateway.europe.id
+///   virtual_network_gateway_id      = azure_network_virtual_network_gateway.us.id
+///   peer_virtual_network_gateway_id = azure_network_virtual_network_gateway.europe.id
 ///   shared_key                      = "4-v3ry-53cr37-1p53c-5h4r3d-k3y"
 /// }
-/// resource "azure_network_virtualnetworkgatewayconnection" "europe_to_us" {
+/// resource "azure_network_virtual_network_gateway_connection" "europe_to_us" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "europe-to-us"
-///   location                        = azure_core_resourcegroup.europe.location
-///   resource_group_name             = azure_core_resourcegroup.europe.name
+///   location                        = azure_core_resource_group.europe.location
+///   resource_group_name             = azure_core_resource_group.europe.name
 ///   type                            = "Vnet2Vnet"
-///   virtual_network_gateway_id      = azure_network_virtualnetworkgateway.europe.id
-///   peer_virtual_network_gateway_id = azure_network_virtualnetworkgateway.us.id
+///   virtual_network_gateway_id      = azure_network_virtual_network_gateway.europe.id
+///   peer_virtual_network_gateway_id = azure_network_virtual_network_gateway.us.id
 ///   shared_key                      = "4-v3ry-53cr37-1p53c-5h4r3d-k3y"
 /// }
 /// ```
@@ -1452,7 +1509,7 @@ class VirtualNetworkGatewayConnection extends pulumi.CustomResource {
           'azure:network/virtualNetworkGatewayConnection:VirtualNetworkGatewayConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['authorizationKey', 'sharedKey'],
         ) {
     authorizationKey = registerOutput<String?>('authorizationKey', isSecret: true);

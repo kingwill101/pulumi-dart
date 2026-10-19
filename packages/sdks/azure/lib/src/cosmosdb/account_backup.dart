@@ -44,8 +44,8 @@ class AccountBackup {
 
   factory AccountBackup.fromMap(Map<String, dynamic> map) {
     return AccountBackup(
-      intervalInMinutes: (() { final guardedValue = map['intervalInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      retentionInHours: (() { final guardedValue = map['retentionInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      intervalInMinutes: (() { final guardedValue = map['intervalInMinutes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      retentionInHours: (() { final guardedValue = map['retentionInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       storageRedundancy: (() { final guardedValue = map['storageRedundancy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tier: (() { final guardedValue = map['tier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       type: pulumi.Input.fromValue(map['type'] as String),

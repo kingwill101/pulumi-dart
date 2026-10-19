@@ -83,7 +83,7 @@ import 'resource_anchor_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -91,13 +91,19 @@ import 'resource_anchor_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "eastus"
 /// }
-/// resource "azure_oracle_resourceanchor" "example" {
+/// resource "azure_oracle_resource_anchor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// ```
 /// ```java
@@ -190,7 +196,7 @@ class ResourceAnchor extends pulumi.CustomResource {
           'azure:oracle/resourceAnchor:ResourceAnchor',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     linkedCompartmentId = registerOutput<String>('linkedCompartmentId');
     location = registerOutput<String>('location');

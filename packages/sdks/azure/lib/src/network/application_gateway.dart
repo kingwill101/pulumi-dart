@@ -476,7 +476,7 @@ import 'application_gateway_waf_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -484,32 +484,47 @@ import 'application_gateway_waf_configuration.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   address_spaces      = ["10.254.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.254.0.0/24"]
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-pip"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   allocation_method   = "Static"
 /// }
-/// resource "azure_network_applicationgateway" "network" {
+/// resource "azure_network_application_gateway" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-appgateway"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku = {
 ///     name     = "Standard_v2"
 ///     tier     = "Standard_v2"
@@ -525,7 +540,7 @@ import 'application_gateway_waf_configuration.dart';
 ///   }
 ///   frontend_ip_configurations {
 ///     name                 = local.frontendIpConfigurationName
-///     public_ip_address_id = azure_network_publicip.example.id
+///     public_ip_address_id = azure_network_public_ip.example.id
 ///   }
 ///   backend_address_pools {
 ///     name = local.backendAddressPoolName
@@ -554,25 +569,25 @@ import 'application_gateway_waf_configuration.dart';
 ///   }
 /// }
 /// locals {
-///   backendAddressPoolName ="${azure_network_virtualnetwork.example.name}-beap"
+///   backendAddressPoolName ="${azure_network_virtual_network.example.name}-beap"
 /// }
 /// locals {
-///   frontendPortName ="${azure_network_virtualnetwork.example.name}-feport"
+///   frontendPortName ="${azure_network_virtual_network.example.name}-feport"
 /// }
 /// locals {
-///   frontendIpConfigurationName ="${azure_network_virtualnetwork.example.name}-feip"
+///   frontendIpConfigurationName ="${azure_network_virtual_network.example.name}-feip"
 /// }
 /// locals {
-///   httpSettingName ="${azure_network_virtualnetwork.example.name}-be-htst"
+///   httpSettingName ="${azure_network_virtual_network.example.name}-be-htst"
 /// }
 /// locals {
-///   listenerName ="${azure_network_virtualnetwork.example.name}-httplstn"
+///   listenerName ="${azure_network_virtual_network.example.name}-httplstn"
 /// }
 /// locals {
-///   requestRoutingRuleName ="${azure_network_virtualnetwork.example.name}-rqrt"
+///   requestRoutingRuleName ="${azure_network_virtual_network.example.name}-rqrt"
 /// }
 /// locals {
-///   redirectConfigurationName ="${azure_network_virtualnetwork.example.name}-rdrcfg"
+///   redirectConfigurationName ="${azure_network_virtual_network.example.name}-rdrcfg"
 /// }
 /// ```
 /// ```java
@@ -904,7 +919,7 @@ class ApplicationGateway extends pulumi.CustomResource {
           'azure:network/applicationGateway:ApplicationGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     authenticationCertificates = registerOutput<List<ApplicationGatewayAuthenticationCertificate>?>('authenticationCertificates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApplicationGatewayAuthenticationCertificate>(guardedValue, (value) => ApplicationGatewayAuthenticationCertificate.fromMap((value as Map).cast<String, dynamic>())); });
     autoscaleConfiguration = registerOutput<ApplicationGatewayAutoscaleConfiguration?>('autoscaleConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApplicationGatewayAutoscaleConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });

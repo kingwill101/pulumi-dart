@@ -99,7 +99,7 @@ import 'scheduled_action_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -107,7 +107,10 @@ import 'scheduled_action_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_costmanagement_scheduledaction" "example" {
+/// resource "azure_costmanagement_scheduled_action" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "examplescheduledaction"
 ///   display_name         = "Report Last 6 Months"
 ///   view_id              = "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.CostManagement/views/ms:CostByService"
@@ -232,7 +235,7 @@ class ScheduledAction extends pulumi.CustomResource {
           'azure:costmanagement/scheduledAction:ScheduledAction',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     dayOfMonth = registerOutput<int?>('dayOfMonth');
     daysOfWeeks = registerOutput<List<String>?>('daysOfWeeks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

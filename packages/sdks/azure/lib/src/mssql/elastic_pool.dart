@@ -107,7 +107,7 @@ import 'elastic_pool_state.dart';
 ///         Location = example.Location,
 ///         ServerName = exampleServer.Name,
 ///         LicenseType = "LicenseIncluded",
-///         MaxSizeGb = 756,
+///         MaxSizeGb = 756.0,
 ///         Sku = new Azure.MSSql.Inputs.ElasticPoolSkuArgs
 ///         {
 ///             Name = "BasicPool",
@@ -118,7 +118,7 @@ import 'elastic_pool_state.dart';
 ///         PerDatabaseSettings = new Azure.MSSql.Inputs.ElasticPoolPerDatabaseSettingsArgs
 ///         {
 ///             MinCapacity = 0.25,
-///             MaxCapacity = 4,
+///             MaxCapacity = 4.0,
 ///         },
 ///     });
 ///
@@ -179,7 +179,7 @@ import 'elastic_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -187,22 +187,31 @@ import 'elastic_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-resource-group"
 ///   location = "West Europe"
 /// }
 /// resource "azure_mssql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "my-sql-server"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   version                      = "12.0"
 ///   administrator_login          = "4dm1n157r470r"
 ///   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
 /// }
-/// resource "azure_mssql_elasticpool" "example" {
+/// resource "azure_mssql_elastic_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test-epool"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   server_name         = azure_mssql_server.example.name
 ///   license_type        = "LicenseIncluded"
 ///   max_size_gb         = 756
@@ -385,7 +394,7 @@ class ElasticPool extends pulumi.CustomResource {
           'azure:mssql/elasticPool:ElasticPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     enclaveType = registerOutput<String>('enclaveType');
     highAvailabilityReplicaCount = registerOutput<int>('highAvailabilityReplicaCount');

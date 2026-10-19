@@ -96,7 +96,7 @@ import 'elasticsearch_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -104,14 +104,20 @@ import 'elasticsearch_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "test" {
+/// resource "azure_core_resource_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_elasticcloud_elasticsearch" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-elasticsearch"
-///   resource_group_name         = azure_core_resourcegroup.test.name
-///   location                    = azure_core_resourcegroup.test.location
+///   resource_group_name         = azure_core_resource_group.test.name
+///   location                    = azure_core_resource_group.test.location
 ///   sku_name                    = "ess-consumption-2024_Monthly"
 ///   elastic_cloud_email_address = "user@example.com"
 /// }
@@ -234,7 +240,7 @@ class Elasticsearch extends pulumi.CustomResource {
           'azure:elasticcloud/elasticsearch:Elasticsearch',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     elasticCloudDeploymentId = registerOutput<String>('elasticCloudDeploymentId');
     elasticCloudEmailAddress = registerOutput<String>('elasticCloudEmailAddress');

@@ -81,7 +81,7 @@ class ProductArgs {
       published: pulumi.Input.fromValue(map['published'] as bool),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       subscriptionRequired: (() { final guardedValue = map['subscriptionRequired']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      subscriptionsLimit: (() { final guardedValue = map['subscriptionsLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      subscriptionsLimit: (() { final guardedValue = map['subscriptionsLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       terms: (() { final guardedValue = map['terms']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -93,7 +93,7 @@ class ServiceState {
       configurationExportStorageAccountName: (() { final guardedValue = map['configurationExportStorageAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       corsConfiguration: (() { final guardedValue = map['corsConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceCorsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cosmosdbKeyVaultKeyVersionlessId: (() { final guardedValue = map['cosmosdbKeyVaultKeyVersionlessId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      cosmosdbThroughput: (() { final guardedValue = map['cosmosdbThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      cosmosdbThroughput: (() { final guardedValue = map['cosmosdbThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       identity: (() { final guardedValue = map['identity']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ServiceIdentity.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

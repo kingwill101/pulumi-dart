@@ -154,7 +154,7 @@ import 'connection_service_principal_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -165,26 +165,35 @@ import 'connection_service_principal_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "example" {
+/// data "azure_core_client_config" "example" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "resourceGroup-example"
 ///   location = "West Europe"
 /// }
 /// resource "azure_automation_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "account-example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Basic"
 /// }
-/// resource "azure_automation_connectionserviceprincipal" "example" {
+/// resource "azure_automation_connection_service_principal" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "connection-example"
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   automation_account_name = azure_automation_account.example.name
 ///   application_id          = "00000000-0000-0000-0000-000000000000"
-///   tenant_id               = data.azure_core_getclientconfig.example.tenant_id
-///   subscription_id         = data.azure_core_getclientconfig.example.subscription_id
+///   tenant_id               = data.azure_core_client_config.example.tenant_id
+///   subscription_id         = data.azure_core_client_config.example.subscription_id
 ///   certificate_thumbprint  = file("automation_certificate_test.thumb")
 /// }
 /// ```
@@ -329,7 +338,7 @@ class ConnectionServicePrincipal extends pulumi.CustomResource {
           'azure:automation/connectionServicePrincipal:ConnectionServicePrincipal',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     automationAccountName = registerOutput<String>('automationAccountName');

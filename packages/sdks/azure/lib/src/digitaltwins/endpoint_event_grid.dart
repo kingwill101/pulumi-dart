@@ -144,7 +144,7 @@ import 'endpoint_event_grid_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -152,21 +152,33 @@ import 'endpoint_event_grid_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example_resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_digitaltwins_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-DT"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// resource "azure_eventgrid_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-topic"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_digitaltwins_endpointeventgrid" "example" {
+/// resource "azure_digitaltwins_endpoint_event_grid" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                 = "example-EG"
 ///   digital_twins_id                     = azure_digitaltwins_instance.example.id
 ///   eventgrid_topic_endpoint             = azure_eventgrid_topic.example.endpoint
@@ -302,7 +314,7 @@ class EndpointEventGrid extends pulumi.CustomResource {
           'azure:digitaltwins/endpointEventGrid:EndpointEventGrid',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret');
     digitalTwinsId = registerOutput<String>('digitalTwinsId');

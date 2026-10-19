@@ -91,7 +91,7 @@ import 'job_schedule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -99,7 +99,10 @@ import 'job_schedule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_automation_jobschedule" "example" {
+/// resource "azure_automation_job_schedule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name     = "tf-rgr-automation"
 ///   automation_account_name = "tf-automation-account"
 ///   schedule_name           = "hour"
@@ -206,7 +209,7 @@ class JobSchedule extends pulumi.CustomResource {
           'azure:automation/jobSchedule:JobSchedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     jobScheduleId = registerOutput<String>('jobScheduleId');

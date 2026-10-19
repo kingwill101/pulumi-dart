@@ -148,7 +148,7 @@ import 'vpn_site_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -156,20 +156,29 @@ import 'vpn_site_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualwan" "example" {
+/// resource "azure_network_virtual_wan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vwan"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_network_vpnsite" "example" {
+/// resource "azure_network_vpn_site" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "site1"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   virtual_wan_id      = azure_network_virtual_wan.example.id
 ///   address_cidrs       = ["10.0.0.0/24"]
 ///   links {
 ///     name       = "link1"
@@ -309,7 +318,7 @@ class VpnSite extends pulumi.CustomResource {
           'azure:network/vpnSite:VpnSite',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     addressCidrs = registerOutput<List<String>?>('addressCidrs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deviceModel = registerOutput<String?>('deviceModel');

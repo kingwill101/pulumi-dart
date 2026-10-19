@@ -325,7 +325,7 @@ import 'linux_virtual_machine_termination_notification.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -336,39 +336,54 @@ import 'linux_virtual_machine_termination_notification.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "internal"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_network_networkinterface" "example" {
+/// resource "azure_network_network_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nic"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ip_configurations {
 ///     name                          = "internal"
 ///     subnet_id                     = azure_network_subnet.example.id
 ///     private_ip_address_allocation = "Dynamic"
 ///   }
 /// }
-/// resource "azure_compute_linuxvirtualmachine" "example" {
+/// resource "azure_compute_linux_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-machine"
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   location              = azure_core_resource_group.example.location
 ///   size                  = "Standard_D4_v5"
 ///   admin_username        = "adminuser"
-///   network_interface_ids = [azure_network_networkinterface.example.id]
+///   network_interface_ids = [azure_network_network_interface.example.id]
 ///   admin_ssh_keys {
 ///     username   = "adminuser"
 ///     public_key = file("~/.ssh/id_rsa.pub")
@@ -723,7 +738,7 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
           'azure:compute/linuxVirtualMachine:LinuxVirtualMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['adminPassword', 'customData'],
         ) {
     additionalCapabilities = registerOutput<LinuxVirtualMachineAdditionalCapabilities?>('additionalCapabilities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LinuxVirtualMachineAdditionalCapabilities.fromMap((guardedValue as Map).cast<String, dynamic>()); });

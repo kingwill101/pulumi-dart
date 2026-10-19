@@ -31,7 +31,7 @@ class AccessPolicyAssignment extends pulumi.CustomResource {
           'azure:managedredis/accessPolicyAssignment:AccessPolicyAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     managedRedisId = registerOutput<String>('managedRedisId');
     objectId = registerOutput<String>('objectId');

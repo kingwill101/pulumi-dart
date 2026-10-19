@@ -127,7 +127,7 @@ import 'ledger_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -135,21 +135,27 @@ import 'ledger_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_confidentialledger_ledger" "ledger" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ledger"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   ledger_type         = "Private"
 ///   azuread_based_service_principals {
-///     principal_id     = data.azure_core_getclientconfig.current.object_id
-///     tenant_id        = data.azure_core_getclientconfig.current.tenant_id
+///     principal_id     = data.azure_core_client_config.current.object_id
+///     tenant_id        = data.azure_core_client_config.current.tenant_id
 ///     ledger_role_name = "Administrator"
 ///   }
 /// }
@@ -273,7 +279,7 @@ class Ledger extends pulumi.CustomResource {
           'azure:confidentialledger/ledger:Ledger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     azureadBasedServicePrincipals = registerOutput<List<LedgerAzureadBasedServicePrincipal>>('azureadBasedServicePrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LedgerAzureadBasedServicePrincipal>(guardedValue, (value) => LedgerAzureadBasedServicePrincipal.fromMap((value as Map).cast<String, dynamic>())); });
     certificateBasedSecurityPrincipals = registerOutput<List<LedgerCertificateBasedSecurityPrincipal>?>('certificateBasedSecurityPrincipals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<LedgerCertificateBasedSecurityPrincipal>(guardedValue, (value) => LedgerCertificateBasedSecurityPrincipal.fromMap((value as Map).cast<String, dynamic>())); });

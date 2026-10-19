@@ -185,7 +185,7 @@ import 'grafana_managed_private_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -193,27 +193,39 @@ import 'grafana_managed_private_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "Canada Central"
 /// }
 /// resource "azure_monitoring_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "example-mamw"
-///   resource_group_name           = azure_core_resourcegroup.example.name
-///   location                      = azure_core_resourcegroup.example.location
+///   resource_group_name           = azure_core_resource_group.example.name
+///   location                      = azure_core_resource_group.example.location
 ///   public_network_access_enabled = false
 /// }
 /// resource "azure_dashboard_grafana" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "example-dg"
-///   resource_group_name           = azure_core_resourcegroup.example.name
-///   location                      = azure_core_resourcegroup.example.location
+///   resource_group_name           = azure_core_resource_group.example.name
+///   location                      = azure_core_resource_group.example.location
 ///   grafana_major_version         = 12
 ///   public_network_access_enabled = false
 ///   azure_monitor_workspace_integrations {
 ///     resource_id = azure_monitoring_workspace.example.id
 ///   }
 /// }
-/// resource "azure_dashboard_grafanamanagedprivateendpoint" "example" {
+/// resource "azure_dashboard_grafana_managed_private_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   grafana_id                   = azure_dashboard_grafana.example.id
 ///   name                         = "example-mpe"
 ///   location                     = azure_dashboard_grafana.example.location
@@ -371,7 +383,7 @@ class GrafanaManagedPrivateEndpoint extends pulumi.CustomResource {
           'azure:dashboard/grafanaManagedPrivateEndpoint:GrafanaManagedPrivateEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     grafanaId = registerOutput<String>('grafanaId');
     groupIds = registerOutput<List<String>?>('groupIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -233,7 +233,7 @@ import 'activity_log_alert_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -241,13 +241,19 @@ import 'activity_log_alert_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_monitoring_actiongroup" "main" {
+/// resource "azure_monitoring_action_group" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-actiongroup"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   short_name          = "p0action"
 ///   webhook_receivers {
 ///     name        = "callmyapi"
@@ -255,17 +261,23 @@ import 'activity_log_alert_state.dart';
 ///   }
 /// }
 /// resource "azure_storage_account" "to_monitor" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "GRS"
 /// }
-/// resource "azure_monitoring_activitylogalert" "main" {
+/// resource "azure_monitoring_activity_log_alert" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-activitylogalert"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   scopes              = [azure_core_resourcegroup.example.id]
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   scopes              = [azure_core_resource_group.example.id]
 ///   description         = "This alert will monitor a specific storage account updates."
 ///   criteria = {
 ///     resource_id    = azure_storage_account.to_monitor.id
@@ -273,7 +285,7 @@ import 'activity_log_alert_state.dart';
 ///     category       = "Recommendation"
 ///   }
 ///   actions {
-///     action_group_id = azure_monitoring_actiongroup.main.id
+///     action_group_id = azure_monitoring_action_group.main.id
 ///     webhook_properties = {
 ///       "from" = "source"
 ///     }
@@ -445,7 +457,7 @@ class ActivityLogAlert extends pulumi.CustomResource {
           'azure:monitoring/activityLogAlert:ActivityLogAlert',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     actions = registerOutput<List<ActivityLogAlertAction>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ActivityLogAlertAction>(guardedValue, (value) => ActivityLogAlertAction.fromMap((value as Map).cast<String, dynamic>())); });
     criteria = registerOutput<ActivityLogAlertCriteria>('criteria', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActivityLogAlertCriteria.fromMap((guardedValue as Map).cast<String, dynamic>()); });

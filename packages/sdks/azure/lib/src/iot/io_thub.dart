@@ -517,7 +517,7 @@ import 'io_thub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -525,45 +525,66 @@ import 'io_thub_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorage"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "examplecontainer"
 ///   storage_account_name  = azure_storage_account.example.name
 ///   container_access_type = "private"
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "example" {
+/// resource "azure_eventhub_event_hub_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-namespace"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "Basic"
 /// }
-/// resource "azure_eventhub_eventhub" "example" {
+/// resource "azure_eventhub_event_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-eventhub"
-///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   namespace_id      = azure_eventhub_event_hub_namespace.example.id
 ///   partition_count   = 2
 ///   message_retention = 1
 /// }
-/// resource "azure_eventhub_authorizationrule" "example" {
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
-///   eventhub_name       = azure_eventhub_eventhub.example.name
+/// resource "azure_eventhub_authorization_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name = azure_core_resource_group.example.name
+///   namespace_name      = azure_eventhub_event_hub_namespace.example.name
+///   eventhub_name       = azure_eventhub_event_hub.example.name
 ///   name                = "acctest"
 ///   send                = true
 /// }
-/// resource "azure_iot_iothub" "example" {
+/// resource "azure_iot_io_t_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "Example-IoTHub"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   local_authentication_enabled = false
 ///   sku = {
 ///     name     = "S1"
@@ -581,7 +602,7 @@ import 'io_thub_state.dart';
 ///   }
 ///   endpoints {
 ///     type              = "AzureIotHub.EventHub"
-///     connection_string = azure_eventhub_authorizationrule.example.primary_connection_string
+///     connection_string = azure_eventhub_authorization_rule.example.primary_connection_string
 ///     name              = "export2"
 ///   }
 ///   routes {
@@ -607,9 +628,9 @@ import 'io_thub_state.dart';
 ///     max_delivery_count = 30
 ///     default_ttl        = "PT1H"
 ///     feedbacks = [{
-///       "timeToLive"       = "PT1H10M"
-///       "maxDeliveryCount" = 15
-///       "lockDuration"     = "PT30S"
+///       time_to_live       = "PT1H10M"
+///       max_delivery_count = 15
+///       lock_duration      = "PT30S"
 ///     }]
 ///   }
 ///   tags = {
@@ -929,7 +950,7 @@ class IoTHub extends pulumi.CustomResource {
           'azure:iot/ioTHub:IoTHub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     cloudToDevice = registerOutput<IoTHubCloudToDevice>('cloudToDevice', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IoTHubCloudToDevice.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpoints = registerOutput<List<IoTHubEndpoint>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<IoTHubEndpoint>(guardedValue, (value) => IoTHubEndpoint.fromMap((value as Map).cast<String, dynamic>())); });

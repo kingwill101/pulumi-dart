@@ -142,7 +142,7 @@ import 'data_connector_aws_s3_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -150,22 +150,34 @@ import 'data_connector_aws_s3_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-workspace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 /// }
-/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
-///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// resource "azure_sentinel_log_analytics_workspace_onboarding" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workspace_id = azure_operationalinsights_analytics_workspace.example.id
 /// }
-/// resource "azure_sentinel_dataconnectorawss3" "example" {
+/// resource "azure_sentinel_data_connector_aws_s3" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example"
-///   log_analytics_workspace_id = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+///   log_analytics_workspace_id = azure_sentinel_log_analytics_workspace_onboarding.example.workspace_id
 ///   aws_role_arn               = "arn:aws:iam::000000000000:role/role1"
 ///   destination_table          = "AWSGuardDuty"
 ///   sqs_urls                   = ["https://sqs.us-east-1.amazonaws.com/000000000000/example"]
@@ -289,7 +301,7 @@ class DataConnectorAwsS3 extends pulumi.CustomResource {
           'azure:sentinel/dataConnectorAwsS3:DataConnectorAwsS3',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     awsRoleArn = registerOutput<String>('awsRoleArn');
     destinationTable = registerOutput<String>('destinationTable');

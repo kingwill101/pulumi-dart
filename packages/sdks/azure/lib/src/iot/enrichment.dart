@@ -301,7 +301,7 @@ import 'enrichment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -309,26 +309,38 @@ import 'enrichment_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorageaccount"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example"
 ///   storage_account_name  = azure_storage_account.example.name
 ///   container_access_type = "private"
 /// }
-/// resource "azure_iot_iothub" "example" {
+/// resource "azure_iot_io_t_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleIothub"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku = {
 ///     name     = "S1"
 ///     capacity = "1"
@@ -337,9 +349,12 @@ import 'enrichment_state.dart';
 ///     "purpose" = "testing"
 ///   }
 /// }
-/// resource "azure_iot_endpointstoragecontainer" "example" {
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   iothub_id                  = azure_iot_iothub.example.id
+/// resource "azure_iot_endpoint_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name        = azure_core_resource_group.example.name
+///   iothub_id                  = azure_iot_io_t_hub.example.id
 ///   name                       = "example"
 ///   connection_string          = azure_storage_account.example.primary_blob_connection_string
 ///   batch_frequency_in_seconds = 60
@@ -349,20 +364,26 @@ import 'enrichment_state.dart';
 ///   file_name_format           = "{iothub}/{partition}_{YYYY}_{MM}_{DD}_{HH}_{mm}"
 /// }
 /// resource "azure_iot_route" "example" {
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   iothub_name         = azure_iot_iothub.example.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name = azure_core_resource_group.example.name
+///   iothub_name         = azure_iot_io_t_hub.example.name
 ///   name                = "example"
 ///   source              = "DeviceMessages"
 ///   condition           = "true"
-///   endpoint_names      = azure_iot_endpointstoragecontainer.example.name
+///   endpoint_names      = azure_iot_endpoint_storage_container.example.name
 ///   enabled             = true
 /// }
 /// resource "azure_iot_enrichment" "example" {
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   iothub_name         = azure_iot_iothub.example.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name = azure_core_resource_group.example.name
+///   iothub_name         = azure_iot_io_t_hub.example.name
 ///   key                 = "example"
 ///   value               = "my value"
-///   endpoint_names      = [azure_iot_endpointstoragecontainer.example.name]
+///   endpoint_names      = [azure_iot_endpoint_storage_container.example.name]
 /// }
 /// ```
 /// ```java
@@ -565,7 +586,7 @@ class Enrichment extends pulumi.CustomResource {
           'azure:iot/enrichment:Enrichment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     endpointNames = registerOutput<List<String>>('endpointNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     iothubName = registerOutput<String>('iothubName');

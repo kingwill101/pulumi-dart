@@ -66,7 +66,7 @@ class NetworkConnectionMonitorTestConfiguration {
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
       successThreshold: (() { final guardedValue = map['successThreshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkConnectionMonitorTestConfigurationSuccessThreshold.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       tcpConfiguration: (() { final guardedValue = map['tcpConfiguration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NetworkConnectionMonitorTestConfigurationTcpConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      testFrequencyInSeconds: (() { final guardedValue = map['testFrequencyInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      testFrequencyInSeconds: (() { final guardedValue = map['testFrequencyInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

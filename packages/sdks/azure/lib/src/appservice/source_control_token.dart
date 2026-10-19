@@ -64,7 +64,7 @@ import 'source_control_token_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -72,7 +72,10 @@ import 'source_control_token_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_appservice_sourcecontroltoken" "example" {
+/// resource "azure_appservice_source_control_token" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   type  = "GitHub"
 ///   token = "ghp_sometokenvaluesecretsauce"
 /// }
@@ -152,7 +155,7 @@ class SourceControlToken extends pulumi.CustomResource {
           'azure:appservice/sourceControlToken:SourceControlToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['token', 'tokenSecret'],
         ) {
     token = registerOutput<String>('token', isSecret: true);

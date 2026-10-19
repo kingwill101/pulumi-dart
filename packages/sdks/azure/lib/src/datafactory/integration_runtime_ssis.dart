@@ -124,7 +124,7 @@ import 'integration_runtime_ssis_vnet_integration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -132,19 +132,28 @@ import 'integration_runtime_ssis_vnet_integration.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_datafactory_factory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_datafactory_integrationruntimessis" "example" {
+/// resource "azure_datafactory_integration_runtime_ssis" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example"
 ///   data_factory_id = azure_datafactory_factory.example.id
-///   location        = azure_core_resourcegroup.example.location
+///   location        = azure_core_resource_group.example.location
 ///   node_size       = "Standard_D8_v3"
 /// }
 /// ```
@@ -287,7 +296,7 @@ class IntegrationRuntimeSsis extends pulumi.CustomResource {
           'azure:datafactory/integrationRuntimeSsis:IntegrationRuntimeSsis',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     catalogInfo = registerOutput<IntegrationRuntimeSsisCatalogInfo?>('catalogInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisCatalogInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     copyComputeScale = registerOutput<IntegrationRuntimeSsisCopyComputeScale?>('copyComputeScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return IntegrationRuntimeSsisCopyComputeScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });

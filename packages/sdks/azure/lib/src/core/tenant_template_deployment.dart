@@ -95,7 +95,7 @@ import 'tenant_template_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -103,16 +103,19 @@ import 'tenant_template_deployment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_gettemplatespecversion" "example" {
+/// data "azure_core_template_spec_version" "example" {
 ///   name                = "myTemplateForTenant"
 ///   resource_group_name = "myResourceGroup"
 ///   version             = "v0.1"
 /// }
 ///
-/// resource "azure_core_tenanttemplatedeployment" "example" {
+/// resource "azure_core_tenant_template_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
 ///   location                 = "West Europe"
-///   template_spec_version_id = data.azure_core_gettemplatespecversion.example.id
+///   template_spec_version_id = data.azure_core_template_spec_version.example.id
 /// }
 /// ```
 /// ```java
@@ -210,7 +213,7 @@ class TenantTemplateDeployment extends pulumi.CustomResource {
           'azure:core/tenantTemplateDeployment:TenantTemplateDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     debugLevel = registerOutput<String?>('debugLevel');
     location = registerOutput<String>('location');

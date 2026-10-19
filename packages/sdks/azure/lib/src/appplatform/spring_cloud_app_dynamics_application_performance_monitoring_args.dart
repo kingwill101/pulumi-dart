@@ -86,7 +86,7 @@ class SpringCloudAppDynamicsApplicationPerformanceMonitoringArgs {
       agentTierName: (() { final guardedValue = map['agentTierName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       agentUniqueHostId: (() { final guardedValue = map['agentUniqueHostId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       controllerHostName: pulumi.Input.fromValue(map['controllerHostName'] as String),
-      controllerPort: (() { final guardedValue = map['controllerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      controllerPort: (() { final guardedValue = map['controllerPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       controllerSslEnabled: (() { final guardedValue = map['controllerSslEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       globallyEnabled: (() { final guardedValue = map['globallyEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

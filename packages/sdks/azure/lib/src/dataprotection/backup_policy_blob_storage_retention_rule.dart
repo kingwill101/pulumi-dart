@@ -40,7 +40,7 @@ class BackupPolicyBlobStorageRetentionRule {
       criteria: pulumi.Input.fromValue(BackupPolicyBlobStorageRetentionRuleCriteria.fromMap((map['criteria']! as Map).cast<String, dynamic>())),
       lifeCycle: pulumi.Input.fromValue(BackupPolicyBlobStorageRetentionRuleLifeCycle.fromMap((map['lifeCycle']! as Map).cast<String, dynamic>())),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
     );
   }
 }

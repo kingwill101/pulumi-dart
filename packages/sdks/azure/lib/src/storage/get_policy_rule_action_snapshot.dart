@@ -40,11 +40,11 @@ class GetPolicyRuleActionSnapshot {
 
   factory GetPolicyRuleActionSnapshot.fromMap(Map<String, dynamic> map) {
     return GetPolicyRuleActionSnapshot(
-      changeTierToArchiveAfterDaysSinceCreation: pulumi.Input.fromValue((map['changeTierToArchiveAfterDaysSinceCreation'] as num).toInt()),
-      changeTierToCoolAfterDaysSinceCreation: pulumi.Input.fromValue((map['changeTierToCoolAfterDaysSinceCreation'] as num).toInt()),
-      deleteAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue((map['deleteAfterDaysSinceCreationGreaterThan'] as num).toInt()),
-      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: pulumi.Input.fromValue((map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'] as num).toInt()),
-      tierToColdAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue((map['tierToColdAfterDaysSinceCreationGreaterThan'] as num).toInt()),
+      changeTierToArchiveAfterDaysSinceCreation: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['changeTierToArchiveAfterDaysSinceCreation'])),
+      changeTierToCoolAfterDaysSinceCreation: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['changeTierToCoolAfterDaysSinceCreation'])),
+      deleteAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['deleteAfterDaysSinceCreationGreaterThan'])),
+      tierToArchiveAfterDaysSinceLastTierChangeGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tierToArchiveAfterDaysSinceLastTierChangeGreaterThan'])),
+      tierToColdAfterDaysSinceCreationGreaterThan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tierToColdAfterDaysSinceCreationGreaterThan'])),
     );
   }
 }

@@ -434,7 +434,7 @@ import 'data_collection_rule_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -442,39 +442,54 @@ import 'data_collection_rule_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "virtualnetwork"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_network_networkinterface" "example" {
+/// resource "azure_network_network_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "nic"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ip_configurations {
 ///     name                          = "internal"
 ///     subnet_id                     = azure_network_subnet.example.id
 ///     private_ip_address_allocation = "Dynamic"
 ///   }
 /// }
-/// resource "azure_compute_linuxvirtualmachine" "example" {
+/// resource "azure_compute_linux_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "machine"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
+///   location                        = azure_core_resource_group.example.location
 ///   size                            = "Standard_B1ls"
 ///   admin_username                  = "adminuser"
-///   network_interface_ids           = [azure_network_networkinterface.example.id]
+///   network_interface_ids           = [azure_network_network_interface.example.id]
 ///   admin_password                  = "example-Password@7890"
 ///   disable_password_authentication = false
 ///   os_disk = {
@@ -488,10 +503,13 @@ import 'data_collection_rule_association_state.dart';
 ///     version   = "latest"
 ///   }
 /// }
-/// resource "azure_monitoring_datacollectionrule" "example" {
+/// resource "azure_monitoring_data_collection_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-dcr"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   destinations = {
 ///     azure_monitor_metrics = {
 ///       name = "example-destination-metrics"
@@ -502,22 +520,31 @@ import 'data_collection_rule_association_state.dart';
 ///     destinations = ["example-destination-metrics"]
 ///   }
 /// }
-/// resource "azure_monitoring_datacollectionendpoint" "example" {
+/// resource "azure_monitoring_data_collection_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-dce"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// # associate to a Data Collection Rule
-/// resource "azure_monitoring_datacollectionruleassociation" "example1" {
+/// resource "azure_monitoring_data_collection_rule_association" "example1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example1-dcra"
-///   target_resource_id      = azure_compute_linuxvirtualmachine.example.id
-///   data_collection_rule_id = azure_monitoring_datacollectionrule.example.id
+///   target_resource_id      = azure_compute_linux_virtual_machine.example.id
+///   data_collection_rule_id = azure_monitoring_data_collection_rule.example.id
 ///   description             = "example"
 /// }
 /// # associate to a Data Collection Endpoint
-/// resource "azure_monitoring_datacollectionruleassociation" "example2" {
-///   target_resource_id          = azure_compute_linuxvirtualmachine.example.id
-///   data_collection_endpoint_id = azure_monitoring_datacollectionendpoint.example.id
+/// resource "azure_monitoring_data_collection_rule_association" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   target_resource_id          = azure_compute_linux_virtual_machine.example.id
+///   data_collection_endpoint_id = azure_monitoring_data_collection_endpoint.example.id
 ///   description                 = "example"
 /// }
 /// ```
@@ -791,7 +818,7 @@ class DataCollectionRuleAssociation extends pulumi.CustomResource {
           'azure:monitoring/dataCollectionRuleAssociation:DataCollectionRuleAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     dataCollectionEndpointId = registerOutput<String?>('dataCollectionEndpointId');
     dataCollectionRuleId = registerOutput<String?>('dataCollectionRuleId');

@@ -273,7 +273,7 @@ import 'datastore_blobstorage_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -281,51 +281,72 @@ import 'datastore_blobstorage_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appinsights_insights" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "workspace-example-ai"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_type    = "web"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "workspaceexamplekeyvault"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "premium"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "workspacestorageaccount"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resource_group.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
 ///   account_tier             = "Standard"
 ///   account_replication_type = "GRS"
 /// }
 /// resource "azure_machinelearning_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-workspace"
-///   location                = azure_core_resourcegroup.example.location
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = azure_core_resource_group.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   application_insights_id = azure_appinsights_insights.example.id
-///   key_vault_id            = azure_keyvault_keyvault.example.id
+///   key_vault_id            = azure_keyvault_key_vault.example.id
 ///   storage_account_id      = azure_storage_account.example.id
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-container"
 ///   storage_account_name  = azure_storage_account.example.name
 ///   container_access_type = "private"
 /// }
-/// resource "azure_machinelearning_datastoreblobstorage" "example" {
+/// resource "azure_machinelearning_datastore_blobstorage" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-datastore"
 ///   workspace_id         = azure_machinelearning_workspace.example.id
 ///   storage_container_id = azure_storage_container.example.id
@@ -545,7 +566,7 @@ class DatastoreBlobstorage extends pulumi.CustomResource {
           'azure:machinelearning/datastoreBlobstorage:DatastoreBlobstorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['accountKey', 'sharedAccessSignature'],
         ) {
     accountKey = registerOutput<String?>('accountKey', isSecret: true);

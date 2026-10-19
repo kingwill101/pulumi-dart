@@ -226,7 +226,7 @@ import 'subnet_service_endpoint_storage_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -234,19 +234,25 @@ import 'subnet_service_endpoint_storage_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_subnetserviceendpointstoragepolicy" "example" {
+/// resource "azure_network_subnet_service_endpoint_storage_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-policy"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   definitions {
 ///     name              = "name1"
 ///     description       = "definition1"
 ///     service           = "Microsoft.Storage"
-///     service_resources = [azure_core_resourcegroup.example.id, azure_storage_account.example.id]
+///     service_resources = [azure_core_resource_group.example.id, azure_storage_account.example.id]
 ///   }
 ///   definitions {
 ///     name              = "name2"
@@ -256,9 +262,12 @@ import 'subnet_service_endpoint_storage_policy_state.dart';
 ///   }
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorageacct"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "GRS"
 /// }
@@ -415,7 +424,7 @@ class SubnetServiceEndpointStoragePolicy extends pulumi.CustomResource {
           'azure:network/subnetServiceEndpointStoragePolicy:SubnetServiceEndpointStoragePolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     definitions = registerOutput<List<SubnetServiceEndpointStoragePolicyDefinition>?>('definitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetServiceEndpointStoragePolicyDefinition>(guardedValue, (value) => SubnetServiceEndpointStoragePolicyDefinition.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');

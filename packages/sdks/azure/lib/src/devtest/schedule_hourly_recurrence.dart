@@ -20,7 +20,7 @@ class ScheduleHourlyRecurrence {
 
   factory ScheduleHourlyRecurrence.fromMap(Map<String, dynamic> map) {
     return ScheduleHourlyRecurrence(
-      minute: pulumi.Input.fromValue((map['minute'] as num).toInt()),
+      minute: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minute'])),
     );
   }
 }

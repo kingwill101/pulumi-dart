@@ -154,7 +154,7 @@ import 'collector_policy_state.dart';
 ///         Location = example.Location,
 ///         ResourceGroupName = example.Name,
 ///         ExpressRoutePortId = exampleExpressRoutePort.Id,
-///         BandwidthInGbps = 1,
+///         BandwidthInGbps = 1.0,
 ///         Sku = new Azure.Network.Inputs.ExpressRouteCircuitSkuArgs
 ///         {
 ///             Tier = "Standard",
@@ -312,7 +312,7 @@ import 'collector_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -320,33 +320,45 @@ import 'collector_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West US 2"
 /// }
-/// resource "azure_network_expressrouteport" "example" {
+/// resource "azure_network_express_route_port" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-erp"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   peering_location    = "Equinix-Seattle-SE2"
 ///   bandwidth_in_gbps   = 10
 ///   encapsulation       = "Dot1Q"
 /// }
-/// resource "azure_network_expressroutecircuit" "example" {
+/// resource "azure_network_express_route_circuit" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-erc"
-///   location              = azure_core_resourcegroup.example.location
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   express_route_port_id = azure_network_expressrouteport.example.id
+///   location              = azure_core_resource_group.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   express_route_port_id = azure_network_express_route_port.example.id
 ///   bandwidth_in_gbps     = 1
 ///   sku = {
 ///     tier   = "Standard"
 ///     family = "MeteredData"
 ///   }
 /// }
-/// resource "azure_network_expressroutecircuitpeering" "example" {
+/// resource "azure_network_express_route_circuit_peering" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   peering_type                  = "MicrosoftPeering"
-///   express_route_circuit_name    = azure_network_expressroutecircuit.example.name
-///   resource_group_name           = azure_core_resourcegroup.example.name
+///   express_route_circuit_name    = azure_network_express_route_circuit.example.name
+///   resource_group_name           = azure_core_resource_group.example.name
 ///   peer_asn                      = 100
 ///   primary_peer_address_prefix   = "192.168.199.0/30"
 ///   secondary_peer_address_prefix = "192.168.200.0/30"
@@ -355,21 +367,27 @@ import 'collector_policy_state.dart';
 ///     advertised_public_prefixes = ["123.6.0.0/24"]
 ///   }
 /// }
-/// resource "azure_networkfunction_azuretrafficcollector" "example" {
-///   depends_on          = [azure_network_expressroutecircuitpeering.example]
+/// resource "azure_networkfunction_azure_traffic_collector" "example" {
+///   depends_on = [azure_network_express_route_circuit_peering.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nfatc"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_networkfunction_collectorpolicy" "example" {
+/// resource "azure_networkfunction_collector_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-nfcp"
-///   traffic_collector_id = azure_networkfunction_azuretrafficcollector.example.id
-///   location             = azure_core_resourcegroup.example.location
+///   traffic_collector_id = azure_networkfunction_azure_traffic_collector.example.id
+///   location             = azure_core_resource_group.example.location
 ///   ipfx_emission = {
 ///     destination_types = "AzureMonitor"
 ///   }
 ///   ipfx_ingestion = {
-///     source_resource_ids = [azure_network_expressroutecircuit.example.id]
+///     source_resource_ids = [azure_network_express_route_circuit.example.id]
 ///   }
 ///   tags = {
 ///     "key" = "value"
@@ -585,7 +603,7 @@ class CollectorPolicy extends pulumi.CustomResource {
           'azure:networkfunction/collectorPolicy:CollectorPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     ipfxEmission = registerOutput<CollectorPolicyIpfxEmission>('ipfxEmission', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectorPolicyIpfxEmission.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ipfxIngestion = registerOutput<CollectorPolicyIpfxIngestion>('ipfxIngestion', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CollectorPolicyIpfxIngestion.fromMap((guardedValue as Map).cast<String, dynamic>()); });

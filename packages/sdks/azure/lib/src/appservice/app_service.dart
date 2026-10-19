@@ -203,7 +203,7 @@ import 'app_service_storage_account.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -211,23 +211,32 @@ import 'app_service_storage_account.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-appserviceplan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     tier = "Standard"
 ///     size = "S1"
 ///   }
 /// }
-/// resource "azure_appservice_appservice" "example" {
+/// resource "azure_appservice_app_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-app-service"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   app_service_plan_id = azure_appservice_plan.example.id
 ///   site_config = {
 ///     dotnet_framework_version = "v4.0"
@@ -418,7 +427,7 @@ class AppService extends pulumi.CustomResource {
           'azure:appservice/appService:AppService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');
     appSettings = registerOutput<Map<String, String>>('appSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

@@ -31,7 +31,7 @@ class NetworkConnectionMonitorTestConfigurationTcpConfiguration {
   factory NetworkConnectionMonitorTestConfigurationTcpConfiguration.fromMap(Map<String, dynamic> map) {
     return NetworkConnectionMonitorTestConfigurationTcpConfiguration(
       destinationPortBehavior: (() { final guardedValue = map['destinationPortBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      port: pulumi.Input.fromValue((map['port'] as num).toInt()),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       traceRouteEnabled: (() { final guardedValue = map['traceRouteEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }

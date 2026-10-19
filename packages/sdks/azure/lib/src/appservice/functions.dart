@@ -96,7 +96,7 @@ import 'get_windows_web_app_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -104,13 +104,13 @@ import 'get_windows_web_app_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_appservice_getappservice" "example" {
+/// data "azure_appservice_app_service" "example" {
 ///   name                = "search-app-service"
 ///   resource_group_name = "search-service"
 /// }
 ///
 /// output "appServiceId" {
-///   value = data.azure_appservice_getappservice.example.id
+///   value = data.azure_appservice_app_service.example.id
 /// }
 /// ```
 /// ```java
@@ -248,7 +248,7 @@ pulumi.Output<GetAppServiceResult> getAppServiceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -256,13 +256,13 @@ pulumi.Output<GetAppServiceResult> getAppServiceOutput(
 ///   }
 /// }
 ///
-/// data "azure_appservice_getappserviceplan" "example" {
+/// data "azure_appservice_app_service_plan" "example" {
 ///   name                = "search-app-service-plan"
 ///   resource_group_name = "search-service"
 /// }
 ///
 /// output "appServicePlanId" {
-///   value = data.azure_appservice_getappserviceplan.example.id
+///   value = data.azure_appservice_app_service_plan.example.id
 /// }
 /// ```
 /// ```java
@@ -398,7 +398,7 @@ pulumi.Output<GetAppServicePlanResult> getAppServicePlanOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -406,13 +406,13 @@ pulumi.Output<GetAppServicePlanResult> getAppServicePlanOutput(
 ///   }
 /// }
 ///
-/// data "azure_appservice_getcertificate" "example" {
+/// data "azure_appservice_certificate" "example" {
 ///   name                = "example-app-service-certificate"
 ///   resource_group_name = "example-rg"
 /// }
 ///
 /// output "appServiceCertificateId" {
-///   value = data.azure_appservice_getcertificate.example.id
+///   value = data.azure_appservice_certificate.example.id
 /// }
 /// ```
 /// ```java
@@ -556,7 +556,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -564,13 +564,13 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 ///   }
 /// }
 ///
-/// data "azure_appservice_getcertificateorder" "example" {
+/// data "azure_appservice_certificate_order" "example" {
 ///   name                = "example-cert-order"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "certificateOrderId" {
-///   value = data.azure_appservice_getcertificateorder.example.id
+///   value = data.azure_appservice_certificate_order.example.id
 /// }
 /// ```
 /// ```java
@@ -714,7 +714,7 @@ pulumi.Output<GetCertificateOrderResult> getCertificateOrderOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -722,13 +722,13 @@ pulumi.Output<GetCertificateOrderResult> getCertificateOrderOutput(
 ///   }
 /// }
 ///
-/// data "azure_appservice_getenvironmentv3" "example" {
+/// data "azure_appservice_environment_v3" "example" {
 ///   name                = "example-ASE"
 ///   resource_group_name = "example-resource-group"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_appservice_getenvironmentv3.example.id
+///   value = data.azure_appservice_environment_v3.example.id
 /// }
 /// ```
 /// ```java
@@ -867,7 +867,7 @@ pulumi.Output<GetEnvironmentV3Result> getEnvironmentV3Output(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -875,7 +875,7 @@ pulumi.Output<GetEnvironmentV3Result> getEnvironmentV3Output(
 ///   }
 /// }
 ///
-/// data "azure_appservice_getfunctionapp" "example" {
+/// data "azure_appservice_function_app" "example" {
 ///   name                = "test-azure-functions"
 ///   resource_group_name = exampleAzurermResourceGroup.name
 /// }
@@ -903,7 +903,7 @@ pulumi.Output<GetEnvironmentV3Result> getEnvironmentV3Output(
 ///     public static void stack(Context ctx) {
 ///         final var example = AppserviceFunctions.getFunctionApp(GetFunctionAppArgs.builder()
 ///             .name("test-azure-functions")
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
 ///             .build());
 ///
 ///     }
@@ -1003,7 +1003,7 @@ pulumi.Output<GetFunctionAppResult> getFunctionAppOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1011,7 +1011,7 @@ pulumi.Output<GetFunctionAppResult> getFunctionAppOutput(
 ///   }
 /// }
 ///
-/// data "azure_appservice_getfunctionapphostkeys" "example" {
+/// data "azure_appservice_function_app_host_keys" "example" {
 ///   name                = "example-function"
 ///   resource_group_name = exampleAzurermResourceGroup.name
 /// }
@@ -1039,7 +1039,7 @@ pulumi.Output<GetFunctionAppResult> getFunctionAppOutput(
 ///     public static void stack(Context ctx) {
 ///         final var example = AppserviceFunctions.getFunctionAppHostKeys(GetFunctionAppHostKeysArgs.builder()
 ///             .name("example-function")
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
 ///             .build());
 ///
 ///     }
@@ -1154,7 +1154,7 @@ pulumi.Output<GetFunctionAppHostKeysResult> getFunctionAppHostKeysOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1162,13 +1162,13 @@ pulumi.Output<GetFunctionAppHostKeysResult> getFunctionAppHostKeysOutput(
 ///   }
 /// }
 ///
-/// data "azure_appservice_getlinuxfunctionapp" "example" {
+/// data "azure_appservice_linux_function_app" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_appservice_getlinuxfunctionapp.example.id
+///   value = data.azure_appservice_linux_function_app.example.id
 /// }
 /// ```
 /// ```java
@@ -1312,7 +1312,7 @@ pulumi.Output<GetLinuxFunctionAppResult> getLinuxFunctionAppOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1320,13 +1320,13 @@ pulumi.Output<GetLinuxFunctionAppResult> getLinuxFunctionAppOutput(
 ///   }
 /// }
 ///
-/// data "azure_appservice_getlinuxwebapp" "example" {
+/// data "azure_appservice_linux_web_app" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_appservice_getlinuxwebapp.example.id
+///   value = data.azure_appservice_linux_web_app.example.id
 /// }
 /// ```
 /// ```java
@@ -1470,7 +1470,7 @@ pulumi.Output<GetLinuxWebAppResult> getLinuxWebAppOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1478,13 +1478,13 @@ pulumi.Output<GetLinuxWebAppResult> getLinuxWebAppOutput(
 ///   }
 /// }
 ///
-/// data "azure_appservice_getserviceplan" "example" {
+/// data "azure_appservice_service_plan" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_appservice_getserviceplan.example.id
+///   value = data.azure_appservice_service_plan.example.id
 /// }
 /// ```
 /// ```java
@@ -1626,7 +1626,7 @@ pulumi.Output<GetServicePlanResult> getServicePlanOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1634,7 +1634,7 @@ pulumi.Output<GetServicePlanResult> getServicePlanOutput(
 ///   }
 /// }
 ///
-/// data "azure_appservice_getsourcecontroltoken" "example" {
+/// data "azure_appservice_source_control_token" "example" {
 ///   type = "GitHub"
 /// }
 ///
@@ -1667,7 +1667,7 @@ pulumi.Output<GetServicePlanResult> getServicePlanOutput(
 ///             .type("GitHub")
 ///             .build());
 ///
-///         ctx.export("id", exampleAzurermAppServiceGithubToken.id());
+///         ctx.export("id", exampleAzurermAppServiceGithubToken.get("id"));
 ///     }
 /// }
 /// ```
@@ -1774,7 +1774,7 @@ pulumi.Output<GetSourceControlTokenResult> getSourceControlTokenOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1782,7 +1782,7 @@ pulumi.Output<GetSourceControlTokenResult> getSourceControlTokenOutput(
 ///   }
 /// }
 ///
-/// data "azure_appservice_getstaticwebapp" "example" {
+/// data "azure_appservice_static_web_app" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
@@ -1925,7 +1925,7 @@ pulumi.Output<GetStaticWebAppResult> getStaticWebAppOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1933,13 +1933,13 @@ pulumi.Output<GetStaticWebAppResult> getStaticWebAppOutput(
 ///   }
 /// }
 ///
-/// data "azure_appservice_getwindowsfunctionapp" "example" {
+/// data "azure_appservice_windows_function_app" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_appservice_getwindowsfunctionapp.example.id
+///   value = data.azure_appservice_windows_function_app.example.id
 /// }
 /// ```
 /// ```java
@@ -2083,7 +2083,7 @@ pulumi.Output<GetWindowsFunctionAppResult> getWindowsFunctionAppOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2091,13 +2091,13 @@ pulumi.Output<GetWindowsFunctionAppResult> getWindowsFunctionAppOutput(
 ///   }
 /// }
 ///
-/// data "azure_appservice_getwindowswebapp" "example" {
+/// data "azure_appservice_windows_web_app" "example" {
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_appservice_getwindowswebapp.example.id
+///   value = data.azure_appservice_windows_web_app.example.id
 /// }
 /// ```
 /// ```java

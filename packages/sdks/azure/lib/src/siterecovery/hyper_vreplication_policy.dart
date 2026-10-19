@@ -124,7 +124,7 @@ import 'hyper_vreplication_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -132,17 +132,26 @@ import 'hyper_vreplication_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "East US"
 /// }
 /// resource "azure_recoveryservices_vault" "vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-recovery-vault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_siterecovery_hypervreplicationpolicy" "policy" {
+/// resource "azure_siterecovery_hyper_v_replication_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                               = "policy"
 ///   recovery_vault_id                                  = azure_recoveryservices_vault.vault.id
 ///   recovery_point_retention_in_hours                  = 2
@@ -261,7 +270,7 @@ class HyperVReplicationPolicy extends pulumi.CustomResource {
           'azure:siterecovery/hyperVReplicationPolicy:HyperVReplicationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applicationConsistentSnapshotFrequencyInHours = registerOutput<int>('applicationConsistentSnapshotFrequencyInHours');
     this.name = registerOutput<String>('name');

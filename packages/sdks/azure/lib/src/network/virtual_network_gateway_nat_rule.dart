@@ -319,7 +319,7 @@ import 'virtual_network_gateway_nat_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -327,53 +327,71 @@ import 'virtual_network_gateway_nat_rule_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_network_getvirtualnetworkgateway" "example" {
-///   name                = azure_network_virtualnetworkgateway.example.name
-///   resource_group_name = azure_network_virtualnetworkgateway.example.resource_group_name
+/// data "azure_network_virtual_network_gateway" "example" {
+///   name                = azure_network_virtual_network_gateway.example.name
+///   resource_group_name = azure_network_virtual_network_gateway.example.resource_group_name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "GatewaySubnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.1.0/24"]
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-pip"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Dynamic"
 /// }
-/// resource "azure_network_virtualnetworkgateway" "example" {
+/// resource "azure_network_virtual_network_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnetgw"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   type                = "Vpn"
 ///   vpn_type            = "RouteBased"
 ///   sku                 = "Basic"
 ///   ip_configurations {
-///     public_ip_address_id          = azure_network_publicip.example.id
+///     public_ip_address_id          = azure_network_public_ip.example.id
 ///     private_ip_address_allocation = "Dynamic"
 ///     subnet_id                     = azure_network_subnet.example.id
 ///   }
 /// }
-/// resource "azure_network_virtualnetworkgatewaynatrule" "example" {
+/// resource "azure_network_virtual_network_gateway_nat_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-vnetgwnatrule"
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   virtual_network_gateway_id = data.azure_network_getvirtualnetworkgateway.example.id
+///   resource_group_name        = azure_core_resource_group.example.name
+///   virtual_network_gateway_id = data.azure_network_virtual_network_gateway.example.id
 ///   mode                       = "EgressSnat"
 ///   type                       = "Dynamic"
-///   ip_configuration_id        = data.azure_network_getvirtualnetworkgateway.example.ip_configurations[0].id
+///   ip_configuration_id        = data.azure_network_virtual_network_gateway.example.ip_configurations[0].id
 ///   external_mappings {
 ///     address_space = "10.2.0.0/26"
 ///     port_range    = "200"
@@ -471,7 +489,7 @@ import 'virtual_network_gateway_nat_rule_state.dart';
 ///             .virtualNetworkGatewayId(example.applyValue(_example -> _example.id()))
 ///             .mode("EgressSnat")
 ///             .type("Dynamic")
-///             .ipConfigurationId(example.applyValue(_example -> _example.ipConfigurations()[0].id()))
+///             .ipConfigurationId(example.applyValue(_example -> _example.ipConfigurations().get(0).id()))
 ///             .externalMappings(VirtualNetworkGatewayNatRuleExternalMappingArgs.builder()
 ///                 .addressSpace("10.2.0.0/26")
 ///                 .portRange("200")
@@ -603,7 +621,7 @@ class VirtualNetworkGatewayNatRule extends pulumi.CustomResource {
           'azure:network/virtualNetworkGatewayNatRule:VirtualNetworkGatewayNatRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     externalMappings = registerOutput<List<VirtualNetworkGatewayNatRuleExternalMapping>>('externalMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleExternalMapping>(guardedValue, (value) => VirtualNetworkGatewayNatRuleExternalMapping.fromMap((value as Map).cast<String, dynamic>())); });
     internalMappings = registerOutput<List<VirtualNetworkGatewayNatRuleInternalMapping>>('internalMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VirtualNetworkGatewayNatRuleInternalMapping>(guardedValue, (value) => VirtualNetworkGatewayNatRuleInternalMapping.fromMap((value as Map).cast<String, dynamic>())); });

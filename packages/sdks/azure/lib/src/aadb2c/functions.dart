@@ -68,7 +68,7 @@ import 'get_directory_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_directory_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_aadb2c_getdirectory" "example" {
+/// data "azure_aadb2c_directory" "example" {
 ///   resource_group_name = "example-rg"
 ///   domain_name         = "exampleb2ctenant.onmicrosoft.com"
 /// }
 ///
 /// output "tenantId" {
-///   value = data.azure_aadb2c_getdirectory.example.tenant_id
+///   value = data.azure_aadb2c_directory.example.tenant_id
 /// }
 /// ```
 /// ```java

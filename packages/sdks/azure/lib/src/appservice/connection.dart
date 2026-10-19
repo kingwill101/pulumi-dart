@@ -191,7 +191,7 @@ import 'connection_state.dart';
 ///         Name = "example-linuxwebapp",
 ///         ResourceGroupName = example.Name,
 ///         ServicePlanId = exampleServicePlan.Id,
-///         SiteConfig = null,
+///         SiteConfig = new() { },
 ///     });
 ///
 ///     var exampleConnection = new Azure.AppService.Connection("example", new()
@@ -302,7 +302,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -310,14 +310,20 @@ import 'connection_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_cosmosdb_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cosmosdb-account"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   offer_type          = "Standard"
 ///   kind                = "GlobalDocumentDB"
 ///   consistency_policy = {
@@ -326,41 +332,56 @@ import 'connection_state.dart';
 ///     max_staleness_prefix    = 200
 ///   }
 ///   geo_locations {
-///     location          = azure_core_resourcegroup.example.location
+///     location          = azure_core_resource_group.example.location
 ///     failover_priority = 0
 ///   }
 /// }
-/// resource "azure_cosmosdb_sqldatabase" "example" {
+/// resource "azure_cosmosdb_sql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cosmos-sql-db"
 ///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
 ///   account_name        = azure_cosmosdb_account.example.name
 ///   throughput          = 400
 /// }
-/// resource "azure_cosmosdb_sqlcontainer" "example" {
+/// resource "azure_cosmosdb_sql_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-container"
 ///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
 ///   account_name        = azure_cosmosdb_account.example.name
-///   database_name       = azure_cosmosdb_sqldatabase.example.name
+///   database_name       = azure_cosmosdb_sql_database.example.name
 ///   partition_key_path  = "/definition"
 /// }
-/// resource "azure_appservice_serviceplan" "example" {
-///   location            = azure_core_resourcegroup.example.location
+/// resource "azure_appservice_service_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example-serviceplan"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "P1v2"
 ///   os_type             = "Linux"
 /// }
-/// resource "azure_appservice_linuxwebapp" "example" {
-///   location            = azure_core_resourcegroup.example.location
+/// resource "azure_appservice_linux_web_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example-linuxwebapp"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   service_plan_id     = azure_appservice_serviceplan.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   service_plan_id     = azure_appservice_service_plan.example.id
 ///   site_config         = {}
 /// }
 /// resource "azure_appservice_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-serviceconnector"
-///   app_service_id     = azure_appservice_linuxwebapp.example.id
-///   target_resource_id = azure_cosmosdb_sqldatabase.example.id
+///   app_service_id     = azure_appservice_linux_web_app.example.id
+///   target_resource_id = azure_cosmosdb_sql_database.example.id
 ///   authentication = {
 ///     type = "systemAssignedIdentity"
 ///   }
@@ -580,7 +601,7 @@ class Connection extends pulumi.CustomResource {
           'azure:appservice/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     appServiceId = registerOutput<String>('appServiceId');
     authentication = registerOutput<ConnectionAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ConnectionAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });

@@ -72,7 +72,7 @@ import 'get_volume_snapshot_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -249,7 +249,7 @@ pulumi.Output<GetResult> getOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -261,13 +261,13 @@ pulumi.Output<GetResult> getOutput(
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
-/// data "azure_elasticsan_getvolumegroup" "exampleGetVolumeGroup" {
+/// data "azure_elasticsan_volume_group" "exampleGetVolumeGroup" {
 ///   name           = "existing"
 ///   elastic_san_id = data.azure_elasticsan_get.example.id
 /// }
 ///
 /// output "id" {
-///   value = data.azure_elasticsan_getvolumegroup.exampleGetVolumeGroup.id
+///   value = data.azure_elasticsan_volume_group.exampleGetVolumeGroup.id
 /// }
 /// ```
 /// ```java
@@ -461,7 +461,7 @@ pulumi.Output<GetVolumeGroupResult> getVolumeGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -473,17 +473,17 @@ pulumi.Output<GetVolumeGroupResult> getVolumeGroupOutput(
 ///   name                = "existing"
 ///   resource_group_name = "existing"
 /// }
-/// data "azure_elasticsan_getvolumegroup" "exampleGetVolumeGroup" {
+/// data "azure_elasticsan_volume_group" "exampleGetVolumeGroup" {
 ///   name           = "existing"
 ///   elastic_san_id = data.azure_elasticsan_get.example.id
 /// }
-/// data "azure_elasticsan_getvolumesnapshot" "exampleGetVolumeSnapshot" {
+/// data "azure_elasticsan_volume_snapshot" "exampleGetVolumeSnapshot" {
 ///   name            = "existing"
-///   volume_group_id = data.azure_elasticsan_getvolumegroup.exampleGetVolumeGroup.id
+///   volume_group_id = data.azure_elasticsan_volume_group.exampleGetVolumeGroup.id
 /// }
 ///
 /// output "id" {
-///   value = data.azure_elasticsan_getvolumesnapshot.exampleGetVolumeSnapshot.id
+///   value = data.azure_elasticsan_volume_snapshot.exampleGetVolumeSnapshot.id
 /// }
 /// ```
 /// ```java

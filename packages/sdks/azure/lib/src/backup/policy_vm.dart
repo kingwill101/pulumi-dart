@@ -282,7 +282,7 @@ import 'policy_vmtiering_policy.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -290,19 +290,28 @@ import 'policy_vmtiering_policy.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-recovery_vault"
 ///   location = "West Europe"
 /// }
 /// resource "azure_recoveryservices_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-recovery-vault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_backup_policyvm" "example" {
+/// resource "azure_backup_policy_v_m" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-recovery-vault-policy"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   recovery_vault_name = azure_recoveryservices_vault.example.name
 ///   timezone            = "UTC"
 ///   backup = {
@@ -518,7 +527,7 @@ class PolicyVM extends pulumi.CustomResource {
           'azure:backup/policyVM:PolicyVM',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backup = registerOutput<PolicyVMBackup>('backup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyVMBackup.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     consistencyType = registerOutput<String?>('consistencyType');

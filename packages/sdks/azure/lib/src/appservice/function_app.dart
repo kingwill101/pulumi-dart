@@ -186,7 +186,7 @@ import 'function_app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -194,30 +194,42 @@ import 'function_app_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "azure-functions-test-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "functionsapptestsa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "azure-functions-test-service-plan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     tier = "Standard"
 ///     size = "S1"
 ///   }
 /// }
-/// resource "azure_appservice_functionapp" "example" {
+/// resource "azure_appservice_function_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "test-azure-functions"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   app_service_plan_id        = azure_appservice_plan.example.id
 ///   storage_account_name       = azure_storage_account.example.name
 ///   storage_account_access_key = azure_storage_account.example.primary_access_key
@@ -499,7 +511,7 @@ import 'function_app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -507,31 +519,43 @@ import 'function_app_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "azure-functions-cptest-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "functionsapptestsa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "azure-functions-test-service-plan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   kind                = "FunctionApp"
 ///   sku = {
 ///     tier = "Dynamic"
 ///     size = "Y1"
 ///   }
 /// }
-/// resource "azure_appservice_functionapp" "example" {
+/// resource "azure_appservice_function_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "test-azure-functions"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   app_service_plan_id        = azure_appservice_plan.example.id
 ///   storage_account_name       = azure_storage_account.example.name
 ///   storage_account_access_key = azure_storage_account.example.primary_access_key
@@ -827,7 +851,7 @@ import 'function_app_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -835,21 +859,30 @@ import 'function_app_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "azure-functions-cptest-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "functionsapptestsa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "azure-functions-test-service-plan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   kind                = "Linux"
 ///   reserved            = true
 ///   sku = {
@@ -857,10 +890,13 @@ import 'function_app_state.dart';
 ///     size = "Y1"
 ///   }
 /// }
-/// resource "azure_appservice_functionapp" "example" {
+/// resource "azure_appservice_function_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "test-azure-functions"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   app_service_plan_id        = azure_appservice_plan.example.id
 ///   storage_account_name       = azure_storage_account.example.name
 ///   storage_account_access_key = azure_storage_account.example.primary_access_key
@@ -985,7 +1021,7 @@ import 'function_app_state.dart';
 ///
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -993,21 +1029,30 @@ import 'function_app_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "azure-functions-example-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "functionsappexamlpesa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "azure-functions-example-sp"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   kind                = "Linux"
 ///   reserved            = true
 ///   sku = {
@@ -1015,10 +1060,13 @@ import 'function_app_state.dart';
 ///     size = "Y1"
 ///   }
 /// }
-/// resource "azure_appservice_functionapp" "example" {
+/// resource "azure_appservice_function_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-azure-function"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   app_service_plan_id        = azure_appservice_plan.example.id
 ///   storage_account_name       = azure_storage_account.example.name
 ///   storage_account_access_key = azure_storage_account.example.primary_access_key
@@ -1164,7 +1212,7 @@ class FunctionApp extends pulumi.CustomResource {
           'azure:appservice/functionApp:FunctionApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['storageAccountAccessKey'],
         ) {
     appServicePlanId = registerOutput<String>('appServicePlanId');

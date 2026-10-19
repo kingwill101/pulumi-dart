@@ -89,7 +89,7 @@ import 'user_assigned_identity_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -97,14 +97,20 @@ import 'user_assigned_identity_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
-///   location            = azure_core_resourcegroup.example.location
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// ```
 /// ```java
@@ -209,7 +215,7 @@ class UserAssignedIdentity extends pulumi.CustomResource {
           'azure:msi/userAssignedIdentity:UserAssignedIdentity',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     clientId = registerOutput<String>('clientId');
     isolationScope = registerOutput<String?>('isolationScope');

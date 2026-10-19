@@ -70,7 +70,7 @@ import 'get_virtual_network_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -78,13 +78,13 @@ import 'get_virtual_network_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_devtest_getlab" "example" {
+/// data "azure_devtest_lab" "example" {
 ///   name                = "example-lab"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "uniqueIdentifier" {
-///   value = data.azure_devtest_getlab.example.unique_identifier
+///   value = data.azure_devtest_lab.example.unique_identifier
 /// }
 /// ```
 /// ```java
@@ -232,7 +232,7 @@ pulumi.Output<GetLabResult> getLabOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -240,14 +240,14 @@ pulumi.Output<GetLabResult> getLabOutput(
 ///   }
 /// }
 ///
-/// data "azure_devtest_getvirtualnetwork" "example" {
+/// data "azure_devtest_virtual_network" "example" {
 ///   name                = "example-network"
 ///   lab_name            = "examplelab"
 ///   resource_group_name = "example-resource"
 /// }
 ///
 /// output "labSubnetName" {
-///   value = data.azure_devtest_getvirtualnetwork.example.allowed_subnets[0].lab_subnet_name
+///   value = data.azure_devtest_virtual_network.example.allowed_subnets[0].lab_subnet_name
 /// }
 /// ```
 /// ```java

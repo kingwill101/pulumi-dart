@@ -915,7 +915,7 @@ import 'managed_instance_failover_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -923,12 +923,15 @@ import 'managed_instance_failover_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_mssql_managedinstancefailovergroup" "example" {
-///   depends_on                  = [azure_privatedns_zonevirtualnetworklink.primary, azure_privatedns_zonevirtualnetworklink.failover]
+/// resource "azure_mssql_managed_instance_failover_group" "example" {
+///   depends_on = [azure_privatedns_zone_virtual_network_link.primary, azure_privatedns_zone_virtual_network_link.failover]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-failover-group"
-///   location                    = azure_mssql_managedinstance.primary.location
-///   managed_instance_id         = azure_mssql_managedinstance.primary.id
-///   partner_managed_instance_id = azure_mssql_managedinstance.failover.id
+///   location                    = azure_mssql_managed_instance.primary.location
+///   managed_instance_id         = azure_mssql_managed_instance.primary.id
+///   partner_managed_instance_id = azure_mssql_managed_instance.failover.id
 ///   secondary_type              = "Geo"
 ///   read_write_endpoint_failover_policy = {
 ///     mode          = "Automatic"
@@ -936,30 +939,45 @@ import 'managed_instance_failover_group_state.dart';
 ///   }
 /// }
 /// resource "azure_privatedns_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${local.name}.private"
-///   resource_group_name = azure_core_resourcegroup.primary.name
+///   resource_group_name = azure_core_resource_group.primary.name
 /// }
 /// ## Primary SQL Managed Instance
-/// resource "azure_core_resourcegroup" "primary" {
+/// resource "azure_core_resource_group" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = local.primaryName
 ///   location = local.primaryLocation
 /// }
-/// resource "azure_network_virtualnetwork" "primary" {
+/// resource "azure_network_virtual_network" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = local.primaryName
-///   location            = azure_core_resourcegroup.primary.location
-///   resource_group_name = azure_core_resourcegroup.primary.name
+///   location            = azure_core_resource_group.primary.location
+///   resource_group_name = azure_core_resource_group.primary.name
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
-/// resource "azure_privatedns_zonevirtualnetworklink" "primary" {
+/// resource "azure_privatedns_zone_virtual_network_link" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "primary-link"
-///   resource_group_name   = azure_core_resourcegroup.primary.name
+///   resource_group_name   = azure_core_resource_group.primary.name
 ///   private_dns_zone_name = azure_privatedns_zone.example.name
-///   virtual_network_id    = azure_network_virtualnetwork.primary.id
+///   virtual_network_id    = azure_network_virtual_network.primary.id
 /// }
 /// resource "azure_network_subnet" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = local.primaryName
-///   resource_group_name  = azure_core_resourcegroup.primary.name
-///   virtual_network_name = azure_network_virtualnetwork.primary.name
+///   resource_group_name  = azure_core_resource_group.primary.name
+///   virtual_network_name = azure_network_virtual_network.primary.name
 ///   address_prefixes     = ["10.0.1.0/24"]
 ///   delegations {
 ///     name = "delegation"
@@ -969,29 +987,44 @@ import 'managed_instance_failover_group_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_network_networksecuritygroup" "primary" {
+/// resource "azure_network_network_security_group" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = local.primaryName
-///   location            = azure_core_resourcegroup.primary.location
-///   resource_group_name = azure_core_resourcegroup.primary.name
+///   location            = azure_core_resource_group.primary.location
+///   resource_group_name = azure_core_resource_group.primary.name
 /// }
-/// resource "azure_network_subnetnetworksecuritygroupassociation" "primary" {
+/// resource "azure_network_subnet_network_security_group_association" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id                 = azure_network_subnet.primary.id
-///   network_security_group_id = azure_network_networksecuritygroup.primary.id
+///   network_security_group_id = azure_network_network_security_group.primary.id
 /// }
-/// resource "azure_network_routetable" "primary" {
+/// resource "azure_network_route_table" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = local.primaryName
-///   location            = azure_core_resourcegroup.primary.location
-///   resource_group_name = azure_core_resourcegroup.primary.name
+///   location            = azure_core_resource_group.primary.location
+///   resource_group_name = azure_core_resource_group.primary.name
 /// }
-/// resource "azure_network_subnetroutetableassociation" "primary" {
+/// resource "azure_network_subnet_route_table_association" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id      = azure_network_subnet.primary.id
-///   route_table_id = azure_network_routetable.primary.id
+///   route_table_id = azure_network_route_table.primary.id
 /// }
-/// resource "azure_mssql_managedinstance" "primary" {
-///   depends_on                   = [azure_network_subnetnetworksecuritygroupassociation.primary, azure_network_subnetroutetableassociation.primary]
+/// resource "azure_mssql_managed_instance" "primary" {
+///   depends_on = [azure_network_subnet_network_security_group_association.primary, azure_network_subnet_route_table_association.primary]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = local.primaryName
-///   resource_group_name          = azure_core_resourcegroup.primary.name
-///   location                     = azure_core_resourcegroup.primary.location
+///   resource_group_name          = azure_core_resource_group.primary.name
+///   location                     = azure_core_resource_group.primary.location
 ///   administrator_login          = "mradministrator"
 ///   administrator_login_password = "thisIsDog11"
 ///   license_type                 = "BasePrice"
@@ -1000,39 +1033,57 @@ import 'managed_instance_failover_group_state.dart';
 ///   vcores                       = 4
 ///   storage_size_in_gb           = 32
 /// }
-/// resource "azure_network_virtualnetworkpeering" "primary_to_failover" {
+/// resource "azure_network_virtual_network_peering" "primary_to_failover" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "primary-to-failover"
-///   remote_virtual_network_id = azure_network_virtualnetwork.failover.id
-///   resource_group_name       = azure_core_resourcegroup.primary.name
-///   virtual_network_name      = azure_network_virtualnetwork.primary.name
+///   remote_virtual_network_id = azure_network_virtual_network.failover.id
+///   resource_group_name       = azure_core_resource_group.primary.name
+///   virtual_network_name      = azure_network_virtual_network.primary.name
 /// }
 /// ## Secondary (Fail-over) SQL Managed Instance
-/// resource "azure_core_resourcegroup" "failover" {
+/// resource "azure_core_resource_group" "failover" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = local.failoverName
 ///   location = local.failoverLocation
 /// }
-/// resource "azure_network_virtualnetwork" "failover" {
+/// resource "azure_network_virtual_network" "failover" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = local.failoverName
-///   location            = azure_core_resourcegroup.failover.location
-///   resource_group_name = azure_core_resourcegroup.failover.name
+///   location            = azure_core_resource_group.failover.location
+///   resource_group_name = azure_core_resource_group.failover.name
 ///   address_spaces      = ["10.1.0.0/16"]
 /// }
-/// resource "azure_privatedns_zonevirtualnetworklink" "failover" {
+/// resource "azure_privatedns_zone_virtual_network_link" "failover" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "failover-link"
 ///   resource_group_name   = azure_privatedns_zone.example.resource_group_name
 ///   private_dns_zone_name = azure_privatedns_zone.example.name
-///   virtual_network_id    = azure_network_virtualnetwork.failover.id
+///   virtual_network_id    = azure_network_virtual_network.failover.id
 /// }
 /// resource "azure_network_subnet" "default" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "default"
-///   resource_group_name  = azure_core_resourcegroup.failover.name
-///   virtual_network_name = azure_network_virtualnetwork.failover.name
+///   resource_group_name  = azure_core_resource_group.failover.name
+///   virtual_network_name = azure_network_virtual_network.failover.name
 ///   address_prefixes     = ["10.1.0.0/24"]
 /// }
 /// resource "azure_network_subnet" "failover" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "ManagedInstance"
-///   resource_group_name  = azure_core_resourcegroup.failover.name
-///   virtual_network_name = azure_network_virtualnetwork.failover.name
+///   resource_group_name  = azure_core_resource_group.failover.name
+///   virtual_network_name = azure_network_virtual_network.failover.name
 ///   address_prefixes     = ["10.1.1.0/24"]
 ///   delegations {
 ///     name = "delegation"
@@ -1042,29 +1093,44 @@ import 'managed_instance_failover_group_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_network_networksecuritygroup" "failover" {
+/// resource "azure_network_network_security_group" "failover" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = local.failoverName
-///   location            = azure_core_resourcegroup.failover.location
-///   resource_group_name = azure_core_resourcegroup.failover.name
+///   location            = azure_core_resource_group.failover.location
+///   resource_group_name = azure_core_resource_group.failover.name
 /// }
-/// resource "azure_network_subnetnetworksecuritygroupassociation" "failover" {
+/// resource "azure_network_subnet_network_security_group_association" "failover" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id                 = azure_network_subnet.failover.id
-///   network_security_group_id = azure_network_networksecuritygroup.failover.id
+///   network_security_group_id = azure_network_network_security_group.failover.id
 /// }
-/// resource "azure_network_routetable" "failover" {
+/// resource "azure_network_route_table" "failover" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = local.failoverName
-///   location            = azure_core_resourcegroup.failover.location
-///   resource_group_name = azure_core_resourcegroup.failover.name
+///   location            = azure_core_resource_group.failover.location
+///   resource_group_name = azure_core_resource_group.failover.name
 /// }
-/// resource "azure_network_subnetroutetableassociation" "failover" {
+/// resource "azure_network_subnet_route_table_association" "failover" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id      = azure_network_subnet.failover.id
-///   route_table_id = azure_network_routetable.failover.id
+///   route_table_id = azure_network_route_table.failover.id
 /// }
-/// resource "azure_mssql_managedinstance" "failover" {
-///   depends_on                   = [azure_network_subnetnetworksecuritygroupassociation.failover, azure_network_subnetroutetableassociation.failover]
+/// resource "azure_mssql_managed_instance" "failover" {
+///   depends_on = [azure_network_subnet_network_security_group_association.failover, azure_network_subnet_route_table_association.failover]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = local.failoverName
-///   resource_group_name          = azure_core_resourcegroup.failover.name
-///   location                     = azure_core_resourcegroup.failover.location
+///   resource_group_name          = azure_core_resource_group.failover.name
+///   location                     = azure_core_resource_group.failover.location
 ///   administrator_login          = "mradministrator"
 ///   administrator_login_password = "thisIsDog11"
 ///   license_type                 = "BasePrice"
@@ -1072,13 +1138,16 @@ import 'managed_instance_failover_group_state.dart';
 ///   sku_name                     = "GP_Gen5"
 ///   vcores                       = 4
 ///   storage_size_in_gb           = 32
-///   dns_zone_partner_id          = azure_mssql_managedinstance.primary.id
+///   dns_zone_partner_id          = azure_mssql_managed_instance.primary.id
 /// }
-/// resource "azure_network_virtualnetworkpeering" "failover_to_primary" {
+/// resource "azure_network_virtual_network_peering" "failover_to_primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "failover-to-primary"
-///   remote_virtual_network_id = azure_network_virtualnetwork.primary.id
-///   resource_group_name       = azure_core_resourcegroup.failover.name
-///   virtual_network_name      = azure_network_virtualnetwork.failover.name
+///   remote_virtual_network_id = azure_network_virtual_network.primary.id
+///   resource_group_name       = azure_core_resource_group.failover.name
+///   virtual_network_name      = azure_network_virtual_network.failover.name
 /// }
 /// locals {
 ///   name = "mymssqlmitest"
@@ -1624,7 +1693,7 @@ class ManagedInstanceFailoverGroup extends pulumi.CustomResource {
           'azure:mssql/managedInstanceFailoverGroup:ManagedInstanceFailoverGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     managedInstanceId = registerOutput<String>('managedInstanceId');

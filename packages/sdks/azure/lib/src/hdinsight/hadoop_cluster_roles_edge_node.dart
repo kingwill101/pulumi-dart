@@ -45,7 +45,7 @@ class HadoopClusterRolesEdgeNode {
     return HadoopClusterRolesEdgeNode(
       httpsEndpoints: (() { final guardedValue = map['httpsEndpoints']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HadoopClusterRolesEdgeNodeHttpsEndpoint>(guardedValue, (value) => HadoopClusterRolesEdgeNodeHttpsEndpoint.fromMap((value as Map).cast<String, dynamic>()))); })(),
       installScriptActions: pulumi.Input.fromValue(pulumi.Input.decodeList<HadoopClusterRolesEdgeNodeInstallScriptAction>(map['installScriptActions']!, (value) => HadoopClusterRolesEdgeNodeInstallScriptAction.fromMap((value as Map).cast<String, dynamic>()))),
-      targetInstanceCount: pulumi.Input.fromValue((map['targetInstanceCount'] as num).toInt()),
+      targetInstanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetInstanceCount'])),
       uninstallScriptActions: (() { final guardedValue = map['uninstallScriptActions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HadoopClusterRolesEdgeNodeUninstallScriptAction>(guardedValue, (value) => HadoopClusterRolesEdgeNodeUninstallScriptAction.fromMap((value as Map).cast<String, dynamic>()))); })(),
       vmSize: pulumi.Input.fromValue(map['vmSize'] as String),
     );

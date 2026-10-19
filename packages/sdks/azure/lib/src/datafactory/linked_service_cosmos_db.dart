@@ -140,7 +140,7 @@ import 'linked_service_cosmos_db_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -148,25 +148,34 @@ import 'linked_service_cosmos_db_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_cosmosdb_getaccount" "example" {
+/// data "azure_cosmosdb_account" "example" {
 ///   name                = "tfex-cosmosdb-account"
 ///   resource_group_name = "tfex-cosmosdb-account-rg"
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_datafactory_factory" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_datafactory_linkedservicecosmosdb" "example" {
+/// resource "azure_datafactory_linked_service_cosmos_db" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example"
 ///   data_factory_id  = azure_datafactory_factory.example.id
-///   account_endpoint = data.azure_cosmosdb_getaccount.example.endpoint
-///   account_key      = data.azure_cosmosdb_getaccount.example.primary_key
+///   account_endpoint = data.azure_cosmosdb_account.example.endpoint
+///   account_key      = data.azure_cosmosdb_account.example.primary_key
 ///   database         = "foo"
 /// }
 /// ```
@@ -303,7 +312,7 @@ class LinkedServiceCosmosDb extends pulumi.CustomResource {
           'azure:datafactory/linkedServiceCosmosDb:LinkedServiceCosmosDb',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['accountKey', 'connectionString'],
         ) {
     accountEndpoint = registerOutput<String?>('accountEndpoint');

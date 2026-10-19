@@ -176,7 +176,7 @@ import 'rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -184,27 +184,39 @@ import 'rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "LoadBalancerRG"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "PublicIPForLB"
 ///   location            = "West US"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
 /// }
-/// resource "azure_lb_loadbalancer" "example" {
+/// resource "azure_lb_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "TestLoadBalancer"
 ///   location            = "West US"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   frontend_ip_configurations {
 ///     name                 = "PublicIPAddress"
-///     public_ip_address_id = azure_network_publicip.example.id
+///     public_ip_address_id = azure_network_public_ip.example.id
 ///   }
 /// }
 /// resource "azure_lb_rule" "example" {
-///   loadbalancer_id                = azure_lb_loadbalancer.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   loadbalancer_id                = azure_lb_load_balancer.example.id
 ///   name                           = "LBRule"
 ///   protocol                       = "Tcp"
 ///   frontend_port                  = 3389
@@ -376,7 +388,7 @@ class Rule extends pulumi.CustomResource {
           'azure:lb/rule:Rule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backendAddressPoolIds = registerOutput<List<String>?>('backendAddressPoolIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     backendPort = registerOutput<int>('backendPort');

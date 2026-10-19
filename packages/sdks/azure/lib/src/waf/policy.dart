@@ -487,7 +487,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -495,14 +495,20 @@ import 'policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_waf_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-wafpolicy"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   custom_rules {
 ///     name      = "Rule1"
 ///     priority  = 1
@@ -549,27 +555,27 @@ import 'policy_state.dart';
 ///   }
 ///   managed_rules = {
 ///     exclusions = [{
-///       "matchVariable"         = "RequestHeaderNames"
-///       "selector"              = "x-company-secret-header"
-///       "selectorMatchOperator" = "Equals"
+///       match_variable          = "RequestHeaderNames"
+///       selector                = "x-company-secret-header"
+///       selector_match_operator = "Equals"
 ///       }, {
-///       "matchVariable"         = "RequestCookieNames"
-///       "selector"              = "too-tasty"
-///       "selectorMatchOperator" = "EndsWith"
+///       match_variable          = "RequestCookieNames"
+///       selector                = "too-tasty"
+///       selector_match_operator = "EndsWith"
 ///     }]
 ///     managed_rule_sets = [{
-///       "type"    = "OWASP"
-///       "version" = "3.2"
-///       "ruleGroupOverrides" = [{
-///         "ruleGroupName" = "REQUEST-920-PROTOCOL-ENFORCEMENT"
-///         "rules" = [{
-///           "id"      = "920300"
-///           "enabled" = true
-///           "action"  = "Log"
+///       type    = "OWASP"
+///       version = "3.2"
+///       rule_group_overrides = [{
+///         rule_group_name = "REQUEST-920-PROTOCOL-ENFORCEMENT"
+///         rules = [{
+///           id      = "920300"
+///           enabled = true
+///           action  = "Log"
 ///           }, {
-///           "id"      = "920440"
-///           "enabled" = true
-///           "action"  = "Block"
+///           id      = "920440"
+///           enabled = true
+///           action  = "Block"
 ///         }]
 ///       }]
 ///     }]
@@ -821,7 +827,7 @@ class Policy extends pulumi.CustomResource {
           'azure:waf/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     customRules = registerOutput<List<PolicyCustomRule>?>('customRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyCustomRule>(guardedValue, (value) => PolicyCustomRule.fromMap((value as Map).cast<String, dynamic>())); });
     httpListenerIds = registerOutput<List<String>>('httpListenerIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

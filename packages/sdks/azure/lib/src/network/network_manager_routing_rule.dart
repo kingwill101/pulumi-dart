@@ -253,7 +253,7 @@ import 'network_manager_routing_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -261,39 +261,57 @@ import 'network_manager_routing_rule_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkmanager" "example" {
+/// resource "azure_network_network_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network-manager"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   scope = {
-///     subscription_ids = [data.azure_core_getsubscription.current.id]
+///     subscription_ids = [data.azure_core_subscription.current.id]
 ///   }
 ///   scope_accesses = ["Routing"]
 /// }
-/// resource "azure_network_networkmanagernetworkgroup" "example" {
+/// resource "azure_network_network_manager_network_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-network-group"
-///   network_manager_id = azure_network_networkmanager.example.id
+///   network_manager_id = azure_network_network_manager.example.id
 /// }
-/// resource "azure_network_networkmanagerroutingconfiguration" "example" {
+/// resource "azure_network_network_manager_routing_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-routing-configuration"
-///   network_manager_id = azure_network_networkmanager.example.id
+///   network_manager_id = azure_network_network_manager.example.id
 /// }
-/// resource "azure_network_networkmanagerroutingrulecollection" "example" {
+/// resource "azure_network_network_manager_routing_rule_collection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-routing-rule-collection"
-///   routing_configuration_id = azure_network_networkmanagerroutingconfiguration.example.id
-///   network_group_ids        = [azure_network_networkmanagernetworkgroup.example.id]
+///   routing_configuration_id = azure_network_network_manager_routing_configuration.example.id
+///   network_group_ids        = [azure_network_network_manager_network_group.example.id]
 ///   description              = "example routing rule collection"
 /// }
-/// resource "azure_network_networkmanagerroutingrule" "example" {
+/// resource "azure_network_network_manager_routing_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-routing-rule"
-///   rule_collection_id = azure_network_networkmanagerroutingrulecollection.example.id
+///   rule_collection_id = azure_network_network_manager_routing_rule_collection.example.id
 ///   description        = "example routing rule"
 ///   destination = {
 ///     type    = "AddressPrefix"
@@ -489,7 +507,7 @@ class NetworkManagerRoutingRule extends pulumi.CustomResource {
           'azure:network/networkManagerRoutingRule:NetworkManagerRoutingRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     destination = registerOutput<NetworkManagerRoutingRuleDestination>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkManagerRoutingRuleDestination.fromMap((guardedValue as Map).cast<String, dynamic>()); });

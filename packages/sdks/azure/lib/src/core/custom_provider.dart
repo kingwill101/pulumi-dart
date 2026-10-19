@@ -111,7 +111,7 @@ import 'custom_provider_validation.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -119,14 +119,20 @@ import 'custom_provider_validation.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_core_customprovider" "example" {
+/// resource "azure_core_custom_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example_provider"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   resource_types {
 ///     name     = "dEf1"
 ///     endpoint = "https://testendpoint.com/"
@@ -237,7 +243,7 @@ class CustomProvider extends pulumi.CustomResource {
           'azure:core/customProvider:CustomProvider',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     actions = registerOutput<List<CustomProviderAction>?>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomProviderAction>(guardedValue, (value) => CustomProviderAction.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');

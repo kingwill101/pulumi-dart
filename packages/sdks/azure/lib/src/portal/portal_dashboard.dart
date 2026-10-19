@@ -575,7 +575,7 @@ import 'portal_dashboard_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -583,21 +583,28 @@ import 'portal_dashboard_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "mygroup"
 ///   location = "West Europe"
 /// }
-/// resource "azure_portal_portaldashboard" "my-board" {
+/// resource "azure_portal_portal_dashboard" "my-board" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "my-cool-dashboard"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   tags = {
 ///     "source" = "terraform"
 ///   }
-///   dashboard_properties ="{
+///   dashboard_properties = <<DASH
+/// {
 ///    \"lenses\": {
 ///         \"0\": {
 ///             \"order\": 0,
@@ -656,7 +663,7 @@ import 'portal_dashboard_state.dart';
 ///                         \"inputs\": [
 ///                             {
 ///                                 \"name\": \"ComponentId\",
-///                                 \"value\": \"/subscriptions/${data.azure_core_getsubscription.current.subscription_id}/resourceGroups/myRG/providers/microsoft.insights/components/myWebApp\"
+///                                 \"value\": \"/subscriptions/${data.azure_core_subscription.current.subscription_id}/resourceGroups/myRG/providers/microsoft.insights/components/myWebApp\"
 ///                             }
 ///                         ],
 ///                         \"type\": \"Extension/AppInsightsExtension/PartType/AppMapGalPt\",
@@ -705,7 +712,8 @@ import 'portal_dashboard_state.dart';
 ///         }
 ///     }
 /// }
-/// "
+/// DASH
+///
 /// }
 /// variable "mdContent" {
 ///   type        = string
@@ -1055,6 +1063,9 @@ import 'portal_dashboard_state.dart';
 /// ```hcl
 /// #...
 /// resource "azurerm_dashboard" "my-board" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "my-cool-dashboard"
 ///   resource_group_name = example.name
 ///   location            = example.location
@@ -1106,7 +1117,7 @@ class PortalDashboard extends pulumi.CustomResource {
           'azure:portal/portalDashboard:PortalDashboard',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     dashboardProperties = registerOutput<String>('dashboardProperties');
     location = registerOutput<String>('location');

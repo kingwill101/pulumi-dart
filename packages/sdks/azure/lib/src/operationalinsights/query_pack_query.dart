@@ -164,7 +164,7 @@ import 'query_pack_query_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -172,18 +172,27 @@ import 'query_pack_query_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_loganalytics_querypack" "example" {
+/// resource "azure_loganalytics_query_pack" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-laqp"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_operationalinsights_querypackquery" "example" {
+/// resource "azure_operationalinsights_query_pack_query" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "19952bc3-0bf9-49eb-b713-6b80e7a41847"
-///   query_pack_id = azure_loganalytics_querypack.example.id
+///   query_pack_id = azure_loganalytics_query_pack.example.id
 ///   body          = "let newExceptionsTimeRange = 1d;\nlet timeRangeToCheckBefore = 7d;\nexceptions\n| where timestamp < ago(timeRangeToCheckBefore)\n| summarize count() by problemId\n| join kind= rightanti (\nexceptions\n| where timestamp >= ago(newExceptionsTimeRange)\n| extend stack = tostring(details[0].rawStack)\n| summarize count(), dcount(user_AuthenticatedId), min(timestamp), max(timestamp), any(stack) by problemId  \n) on problemId \n| order by  count_ desc\n"
 ///   display_name  = "Exceptions - New in the last 24 hours"
 /// }
@@ -320,7 +329,7 @@ class QueryPackQuery extends pulumi.CustomResource {
           'azure:operationalinsights/queryPackQuery:QueryPackQuery',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     additionalSettingsJson = registerOutput<String?>('additionalSettingsJson');
     body = registerOutput<String>('body');

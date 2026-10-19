@@ -271,7 +271,7 @@ import 'flux_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -279,14 +279,20 @@ import 'flux_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_containerservice_kubernetescluster" "example" {
+/// resource "azure_containerservice_kubernetes_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-aks"
 ///   location            = "West Europe"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   dns_prefix          = "example-aks"
 ///   default_node_pool = {
 ///     name       = "default"
@@ -297,13 +303,19 @@ import 'flux_configuration_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_containerservice_kubernetesclusterextension" "example" {
+/// resource "azure_containerservice_kubernetes_cluster_extension" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example-ext"
 ///   cluster_id     = test.id
 ///   extension_type = "microsoft.flux"
 /// }
-/// resource "azure_containerservice_fluxconfiguration" "example" {
-///   depends_on = [azure_containerservice_kubernetesclusterextension.example]
+/// resource "azure_containerservice_flux_configuration" "example" {
+///   depends_on = [azure_containerservice_kubernetes_cluster_extension.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-fc"
 ///   cluster_id = test.id
 ///   namespace  = "flux"
@@ -319,8 +331,8 @@ import 'flux_configuration_state.dart';
 ///         "example_var" = "substitute_with_this"
 ///       }
 ///       substitute_froms = [{
-///         "kind" = "ConfigMap"
-///         "name" = "example-configmap"
+///         kind = "ConfigMap"
+///         name = "example-configmap"
 ///       }]
 ///     }
 ///   }
@@ -382,13 +394,13 @@ import 'flux_configuration_state.dart';
 ///
 ///         var exampleKubernetesClusterExtension = new KubernetesClusterExtension("exampleKubernetesClusterExtension", KubernetesClusterExtensionArgs.builder()
 ///             .name("example-ext")
-///             .clusterId(test.id())
+///             .clusterId(test.get("id"))
 ///             .extensionType("microsoft.flux")
 ///             .build());
 ///
 ///         var exampleFluxConfiguration = new FluxConfiguration("exampleFluxConfiguration", FluxConfigurationArgs.builder()
 ///             .name("example-fc")
-///             .clusterId(test.id())
+///             .clusterId(test.get("id"))
 ///             .namespace("flux")
 ///             .gitRepository(FluxConfigurationGitRepositoryArgs.builder()
 ///                 .url("https://github.com/Azure/arc-k8s-demo")
@@ -511,7 +523,7 @@ class FluxConfiguration extends pulumi.CustomResource {
           'azure:containerservice/fluxConfiguration:FluxConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     blobStorage = registerOutput<FluxConfigurationBlobStorage?>('blobStorage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluxConfigurationBlobStorage.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bucket = registerOutput<FluxConfigurationBucket?>('bucket', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FluxConfigurationBucket.fromMap((guardedValue as Map).cast<String, dynamic>()); });

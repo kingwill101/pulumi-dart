@@ -129,7 +129,7 @@ import 'project_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -137,23 +137,32 @@ import 'project_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_devcenter_devcenter" "example" {
+/// resource "azure_devcenter_dev_center" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   identity = {
 ///     type = "example-value"
 ///   }
 /// }
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_devcenter_project" "example" {
-///   dev_center_id       = azure_devcenter_devcenter.example.id
-///   location            = azure_core_resourcegroup.example.location
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   dev_center_id       = azure_devcenter_dev_center.example.id
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// ```
 /// ```java
@@ -283,7 +292,7 @@ class Project extends pulumi.CustomResource {
           'azure:devcenter/project:Project',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     devCenterId = registerOutput<String>('devCenterId');
