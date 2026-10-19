@@ -80,7 +80,7 @@ import 'random_uuid_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     random = {
 ///       source = "pulumi/random"
@@ -89,10 +89,16 @@ import 'random_uuid_state.dart';
 /// }
 ///
 /// # The following example shows how to generate a unique name for an Azure Resource Group.
-/// resource "random_randomuuid" "test" {
+/// resource "random_random_uuid" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
-/// resource "azurerm_resourcegroup" "test" {
-///   name     ="${random_randomuuid.test.result}-rg"
+/// resource "azurerm_resource_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     ="${random_random_uuid.test.result}-rg"
 ///   location = "Central US"
 /// }
 /// ```
@@ -172,9 +178,9 @@ class RandomUuid extends pulumi.CustomResource {
           'random:index/randomUuid:RandomUuid',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.21.4').merge(options),
         ) {
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     result = registerOutput<String>('result');
   }
 
@@ -183,11 +189,12 @@ class RandomUuid extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RandomUuidState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RandomUuid._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -201,7 +208,20 @@ class RandomUuid extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    result = registerOutput<String>('result');
+  }
+
+  /// Creates a typed reference to an existing [RandomUuid] resource.
+  RandomUuid.reference(String urn)
+    : super(
+        'random:index/randomUuid:RandomUuid',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     result = registerOutput<String>('result');
   }
 }

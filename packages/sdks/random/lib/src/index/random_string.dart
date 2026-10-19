@@ -70,7 +70,7 @@ import 'random_string_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     random = {
 ///       source = "pulumi/random"
@@ -78,7 +78,10 @@ import 'random_string_state.dart';
 ///   }
 /// }
 ///
-/// resource "random_randomstring" "random" {
+/// resource "random_random_string" "random" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   length           = 16
 ///   special          = true
 ///   override_special = "/@£$"
@@ -182,9 +185,9 @@ class RandomString extends pulumi.CustomResource {
           'random:index/randomString:RandomString',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.21.4').merge(options),
         ) {
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     length = registerOutput<int>('length');
     lower = registerOutput<bool>('lower');
     minLower = registerOutput<int>('minLower');
@@ -204,11 +207,12 @@ class RandomString extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RandomStringState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RandomString._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -222,7 +226,31 @@ class RandomString extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    length = registerOutput<int>('length');
+    lower = registerOutput<bool>('lower');
+    minLower = registerOutput<int>('minLower');
+    minNumeric = registerOutput<int>('minNumeric');
+    minSpecial = registerOutput<int>('minSpecial');
+    minUpper = registerOutput<int>('minUpper');
+    number = registerOutput<bool>('number');
+    numeric = registerOutput<bool>('numeric');
+    overrideSpecial = registerOutput<String?>('overrideSpecial');
+    result = registerOutput<String>('result');
+    special = registerOutput<bool>('special');
+    upper = registerOutput<bool>('upper');
+  }
+
+  /// Creates a typed reference to an existing [RandomString] resource.
+  RandomString.reference(String urn)
+    : super(
+        'random:index/randomString:RandomString',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     length = registerOutput<int>('length');
     lower = registerOutput<bool>('lower');
     minLower = registerOutput<int>('minLower');

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_random_uuid7_random_uuid7_args_doc}
 class RandomUuid7Args {
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  final pulumi.Input<Map<String, String>>? keepers;
+  final pulumi.Input<Map<String, String>?>? keepers;
 
   /// Creates a new [RandomUuid7Args].
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
