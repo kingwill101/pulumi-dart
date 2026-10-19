@@ -62,7 +62,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     mysql = {
 ///       source = "pulumi/mysql"
@@ -71,6 +71,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "mysql_database" "app" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "my_awesome_app"
 /// }
 /// ```
@@ -152,7 +155,7 @@ class Database extends pulumi.CustomResource {
           'mysql:index/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.3.3').merge(options),
         ) {
     defaultCharacterSet = registerOutput<String?>('defaultCharacterSet');
     defaultCollation = registerOutput<String?>('defaultCollation');
@@ -164,11 +167,12 @@ class Database extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Database._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -182,6 +186,20 @@ class Database extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    defaultCharacterSet = registerOutput<String?>('defaultCharacterSet');
+    defaultCollation = registerOutput<String?>('defaultCollation');
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [Database] resource.
+  Database.reference(String urn)
+    : super(
+        'mysql:index/database:Database',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     defaultCharacterSet = registerOutput<String?>('defaultCharacterSet');
     defaultCollation = registerOutput<String?>('defaultCollation');
     this.name = registerOutput<String>('name');

@@ -7,14 +7,14 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_providers_provider_args_doc}
 class ProviderArgs {
-  final pulumi.Input<String>? authenticationPlugin;
-  final pulumi.Input<String>? endpoint;
-  final pulumi.Input<int>? maxConnLifetimeSec;
-  final pulumi.Input<int>? maxOpenConns;
-  final pulumi.Input<String>? password;
-  final pulumi.Input<String>? proxy;
-  final pulumi.Input<String>? tls;
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? authenticationPlugin;
+  final pulumi.Input<String?>? endpoint;
+  final pulumi.Input<int?>? maxConnLifetimeSec;
+  final pulumi.Input<int?>? maxOpenConns;
+  final pulumi.Input<String?>? password;
+  final pulumi.Input<String?>? proxy;
+  final pulumi.Input<String?>? tls;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [ProviderArgs].
   /// [authenticationPlugin] Optional.
@@ -25,16 +25,16 @@ class ProviderArgs {
   /// [proxy] Optional.
   /// [tls] Optional.
   /// [username] Optional.
-  const ProviderArgs({
+  ProviderArgs({
     this.authenticationPlugin,
     this.endpoint,
     this.maxConnLifetimeSec,
     this.maxOpenConns,
     this.password,
     this.proxy,
-    this.tls,
+    pulumi.Input<String?>? tls,
     this.username,
-  });
+  }) : tls = tls ?? pulumi.Input.fromValue('false');
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -53,8 +53,8 @@ class ProviderArgs {
     return ProviderArgs(
       authenticationPlugin: (() { final guardedValue = map['authenticationPlugin']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxConnLifetimeSec: (() { final guardedValue = map['maxConnLifetimeSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxOpenConns: (() { final guardedValue = map['maxOpenConns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxConnLifetimeSec: (() { final guardedValue = map['maxConnLifetimeSec']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxOpenConns: (() { final guardedValue = map['maxOpenConns']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       proxy: (() { final guardedValue = map['proxy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tls: (() { final guardedValue = map['tls']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

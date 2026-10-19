@@ -108,7 +108,7 @@ import 'grant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     mysql = {
 ///       source = "pulumi/mysql"
@@ -117,11 +117,17 @@ import 'grant_state.dart';
 /// }
 ///
 /// resource "mysql_user" "jdoe" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user               = "jdoe"
 ///   host               = "example.com"
 ///   plaintext_password = "password"
 /// }
 /// resource "mysql_grant" "jdoe" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user       = mysql_user.jdoe.user
 ///   host       = mysql_user.jdoe.host
 ///   database   = "app"
@@ -278,7 +284,7 @@ import 'grant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     mysql = {
 ///       source = "pulumi/mysql"
@@ -287,9 +293,15 @@ import 'grant_state.dart';
 /// }
 ///
 /// resource "mysql_role" "developer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "developer"
 /// }
 /// resource "mysql_grant" "developer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   role       = mysql_role.developer.name
 ///   database   = "app"
 ///   privileges = ["SELECT", "UPDATE"]
@@ -459,7 +471,7 @@ import 'grant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     mysql = {
 ///       source = "pulumi/mysql"
@@ -468,14 +480,23 @@ import 'grant_state.dart';
 /// }
 ///
 /// resource "mysql_user" "jdoe" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user               = "jdoe"
 ///   host               = "example.com"
 ///   plaintext_password = "password"
 /// }
 /// resource "mysql_role" "developer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "developer"
 /// }
 /// resource "mysql_grant" "developer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user     = mysql_user.jdoe.user
 ///   host     = mysql_user.jdoe.host
 ///   database = "app"
@@ -581,14 +602,14 @@ class Grant extends pulumi.CustomResource {
           'mysql:index/grant:Grant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.3.3').merge(options),
         ) {
     database = registerOutput<String>('database');
     grant = registerOutput<bool?>('grant');
     host = registerOutput<String?>('host');
-    privileges = registerOutput<List<String>?>('privileges');
+    privileges = registerOutput<List<String>?>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String?>('role');
-    roles = registerOutput<List<String>?>('roles');
+    roles = registerOutput<List<String>?>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     table = registerOutput<String?>('table');
     tlsOption = registerOutput<String?>('tlsOption');
     user = registerOutput<String?>('user');
@@ -599,11 +620,12 @@ class Grant extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     GrantState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Grant._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -620,9 +642,29 @@ class Grant extends pulumi.CustomResource {
     database = registerOutput<String>('database');
     grant = registerOutput<bool?>('grant');
     host = registerOutput<String?>('host');
-    privileges = registerOutput<List<String>?>('privileges');
+    privileges = registerOutput<List<String>?>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     role = registerOutput<String?>('role');
-    roles = registerOutput<List<String>?>('roles');
+    roles = registerOutput<List<String>?>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    table = registerOutput<String?>('table');
+    tlsOption = registerOutput<String?>('tlsOption');
+    user = registerOutput<String?>('user');
+  }
+
+  /// Creates a typed reference to an existing [Grant] resource.
+  Grant.reference(String urn)
+    : super(
+        'mysql:index/grant:Grant',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    database = registerOutput<String>('database');
+    grant = registerOutput<bool?>('grant');
+    host = registerOutput<String?>('host');
+    privileges = registerOutput<List<String>?>('privileges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    role = registerOutput<String?>('role');
+    roles = registerOutput<List<String>?>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     table = registerOutput<String?>('table');
     tlsOption = registerOutput<String?>('tlsOption');
     user = registerOutput<String?>('user');

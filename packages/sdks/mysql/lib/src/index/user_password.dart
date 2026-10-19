@@ -83,7 +83,7 @@ import 'user_password_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     mysql = {
 ///       source = "pulumi/mysql"
@@ -92,9 +92,15 @@ import 'user_password_state.dart';
 /// }
 ///
 /// resource "mysql_user" "jdoe" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user = "jdoe"
 /// }
-/// resource "mysql_userpassword" "jdoe" {
+/// resource "mysql_user_password" "jdoe" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   user    = mysql_user.jdoe.user
 ///   pgp_key = "keybase:joestump"
 /// }
@@ -176,7 +182,7 @@ class UserPassword extends pulumi.CustomResource {
           'mysql:index/userPassword:UserPassword',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.3.3').merge(options),
         ) {
     encryptedPassword = registerOutput<String>('encryptedPassword');
     host = registerOutput<String?>('host');
@@ -190,11 +196,12 @@ class UserPassword extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserPasswordState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserPassword._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -208,6 +215,22 @@ class UserPassword extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    encryptedPassword = registerOutput<String>('encryptedPassword');
+    host = registerOutput<String?>('host');
+    keyFingerprint = registerOutput<String>('keyFingerprint');
+    pgpKey = registerOutput<String>('pgpKey');
+    user = registerOutput<String>('user');
+  }
+
+  /// Creates a typed reference to an existing [UserPassword] resource.
+  UserPassword.reference(String urn)
+    : super(
+        'mysql:index/userPassword:UserPassword',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     encryptedPassword = registerOutput<String>('encryptedPassword');
     host = registerOutput<String?>('host');
     keyFingerprint = registerOutput<String>('keyFingerprint');
