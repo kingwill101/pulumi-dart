@@ -69,8 +69,8 @@ import 'load_balancer_target_state.dart';
 ///     var loadBalancerTarget = new HCloud.LoadBalancerTarget("load_balancer_target", new()
 ///     {
 ///         Type = "server",
-///         LoadBalancerId = loadBalancer.Id,
-///         ServerId = myServer.Id,
+///         LoadBalancerId = loadBalancer.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+///         ServerId = myServer.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///     });
 ///
 /// });
@@ -79,6 +79,8 @@ import 'load_balancer_target_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -103,8 +105,8 @@ import 'load_balancer_target_state.dart';
 /// 		}
 /// 		_, err = hcloud.NewLoadBalancerTarget(ctx, "load_balancer_target", &hcloud.LoadBalancerTargetArgs{
 /// 			Type:           pulumi.String("server"),
-/// 			LoadBalancerId: loadBalancer.ID(),
-/// 			ServerId:       myServer.ID(),
+/// 			LoadBalancerId: loadBalancer.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+/// 			ServerId:       myServer.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -114,7 +116,7 @@ import 'load_balancer_target_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -123,18 +125,27 @@ import 'load_balancer_target_state.dart';
 /// }
 ///
 /// resource "hcloud_server" "my_server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-server"
 ///   server_type = "cx23"
 ///   image       = "ubuntu-24.04"
 /// }
-/// resource "hcloud_loadbalancer" "load_balancer" {
+/// resource "hcloud_load_balancer" "load_balancer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-load-balancer"
 ///   load_balancer_type = "lb11"
 ///   location           = "nbg1"
 /// }
-/// resource "hcloud_loadbalancertarget" "load_balancer_target" {
+/// resource "hcloud_load_balancer_target" "load_balancer_target" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   type             = "server"
-///   load_balancer_id = hcloud_loadbalancer.load_balancer.id
+///   load_balancer_id = hcloud_load_balancer.load_balancer.id
 ///   server_id        = hcloud_server.my_server.id
 /// }
 /// ```
@@ -259,7 +270,7 @@ class LoadBalancerTargetResource extends pulumi.CustomResource {
           'hcloud:index/loadBalancerTarget:LoadBalancerTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.43.1').merge(options),
         ) {
     ip = registerOutput<String?>('ip');
     labelSelector = registerOutput<String?>('labelSelector');
@@ -274,11 +285,12 @@ class LoadBalancerTargetResource extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     LoadBalancerTargetState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return LoadBalancerTargetResource._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -292,6 +304,23 @@ class LoadBalancerTargetResource extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    ip = registerOutput<String?>('ip');
+    labelSelector = registerOutput<String?>('labelSelector');
+    loadBalancerId = registerOutput<int>('loadBalancerId');
+    serverId = registerOutput<int?>('serverId');
+    type = registerOutput<String>('type');
+    usePrivateIp = registerOutput<bool>('usePrivateIp');
+  }
+
+  /// Creates a typed reference to an existing [LoadBalancerTargetResource] resource.
+  LoadBalancerTargetResource.reference(String urn)
+    : super(
+        'hcloud:index/loadBalancerTarget:LoadBalancerTarget',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     ip = registerOutput<String?>('ip');
     labelSelector = registerOutput<String?>('labelSelector');
     loadBalancerId = registerOutput<int>('loadBalancerId');

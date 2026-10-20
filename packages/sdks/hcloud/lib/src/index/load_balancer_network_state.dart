@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering LoadBalancerNetwork resources.
 class LoadBalancerNetworkState {
   /// Wether the Load Balancer public interface is enabled. Default is `true`.
-  final pulumi.Input<bool>? enablePublicInterface;
+  final pulumi.Input<bool?>? enablePublicInterface;
   /// IP to assign to the Load Balancer.
-  final pulumi.Input<String>? ip;
+  final pulumi.Input<String?>? ip;
   /// ID of the Load Balancer.
-  final pulumi.Input<int>? loadBalancerId;
+  final pulumi.Input<int?>? loadBalancerId;
   /// ID of the Network to attach the Load Balancer to. Using `subnetId` is preferred. Required if `subnetId` is not set. If `subnetId` or `ip` are not set, the Load Balancer will be attached to the last subnet (ordered by `ipRange`).
-  final pulumi.Input<int>? networkId;
+  final pulumi.Input<int?>? networkId;
   /// ID of the Subnet to attach the Load Balancer to. Required if `networkId` is not set.
-  final pulumi.Input<String>? subnetId;
+  final pulumi.Input<String?>? subnetId;
 
   /// Creates a new [LoadBalancerNetworkState].
   /// [enablePublicInterface] Wether the Load Balancer public interface is enabled. Default is `true`.
@@ -43,8 +43,8 @@ class LoadBalancerNetworkState {
     return LoadBalancerNetworkState(
       enablePublicInterface: (() { final guardedValue = map['enablePublicInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       ip: (() { final guardedValue = map['ip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      loadBalancerId: (() { final guardedValue = map['loadBalancerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      networkId: (() { final guardedValue = map['networkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      loadBalancerId: (() { final guardedValue = map['loadBalancerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      networkId: (() { final guardedValue = map['networkId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

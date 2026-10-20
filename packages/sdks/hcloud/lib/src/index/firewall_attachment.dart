@@ -63,10 +63,10 @@ import 'firewall_attachment_state.dart';
 ///
 ///     var fwRef = new HCloud.FirewallAttachment("fw_ref", new()
 ///     {
-///         FirewallId = basicFirewall.Id,
+///         FirewallId = basicFirewall.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         ServerIds = new[]
 ///         {
-///             testServer.Id,
+///             testServer.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         },
 ///     });
 ///
@@ -76,6 +76,8 @@ import 'firewall_attachment_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -97,9 +99,9 @@ import 'firewall_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewFirewallAttachment(ctx, "fw_ref", &hcloud.FirewallAttachmentArgs{
-/// 			FirewallId: basicFirewall.ID(),
+/// 			FirewallId: basicFirewall.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			ServerIds: pulumi.IntArray{
-/// 				testServer.ID(),
+/// 				testServer.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -110,7 +112,7 @@ import 'firewall_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -119,14 +121,23 @@ import 'firewall_attachment_state.dart';
 /// }
 ///
 /// resource "hcloud_server" "test_server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-server"
 ///   server_type = "cx23"
 ///   image       = "ubuntu-24.04"
 /// }
 /// resource "hcloud_firewall" "basic_firewall" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "basic_firewall"
 /// }
-/// resource "hcloud_firewallattachment" "fw_ref" {
+/// resource "hcloud_firewall_attachment" "fw_ref" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   firewall_id = hcloud_firewall.basic_firewall.id
 ///   server_ids  = [hcloud_server.test_server.id]
 /// }
@@ -261,7 +272,7 @@ import 'firewall_attachment_state.dart';
 ///
 ///     var fwRef = new HCloud.FirewallAttachment("fw_ref", new()
 ///     {
-///         FirewallId = basicFirewall.Id,
+///         FirewallId = basicFirewall.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         LabelSelectors = new[]
 ///         {
 ///             "firewall-attachment=test-server",
@@ -274,6 +285,8 @@ import 'firewall_attachment_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -298,7 +311,7 @@ import 'firewall_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewFirewallAttachment(ctx, "fw_ref", &hcloud.FirewallAttachmentArgs{
-/// 			FirewallId: basicFirewall.ID(),
+/// 			FirewallId: basicFirewall.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			LabelSelectors: pulumi.StringArray{
 /// 				pulumi.String("firewall-attachment=test-server"),
 /// 			},
@@ -311,7 +324,7 @@ import 'firewall_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -320,6 +333,9 @@ import 'firewall_attachment_state.dart';
 /// }
 ///
 /// resource "hcloud_server" "test_server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-server"
 ///   server_type = "cx23"
 ///   image       = "ubuntu-24.04"
@@ -328,9 +344,15 @@ import 'firewall_attachment_state.dart';
 ///   }
 /// }
 /// resource "hcloud_firewall" "basic_firewall" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "basic_firewall"
 /// }
-/// resource "hcloud_firewallattachment" "fw_ref" {
+/// resource "hcloud_firewall_attachment" "fw_ref" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   firewall_id     = hcloud_firewall.basic_firewall.id
 ///   label_selectors = ["firewall-attachment=test-server"]
 /// }
@@ -512,7 +534,7 @@ import 'firewall_attachment_state.dart';
 ///         IgnoreRemoteFirewallIds = true,
 ///         FirewallIds = new[]
 ///         {
-///             denyAll.Id,
+///             denyAll.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         },
 ///     });
 ///
@@ -548,19 +570,19 @@ import 'firewall_attachment_state.dart';
 ///
 ///     var denyAllAtt = new HCloud.FirewallAttachment("deny_all_att", new()
 ///     {
-///         FirewallId = denyAll.Id,
+///         FirewallId = denyAll.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         ServerIds = new[]
 ///         {
-///             testServer.Id,
+///             testServer.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         },
 ///     });
 ///
 ///     var allowRulesAtt = new HCloud.FirewallAttachment("allow_rules_att", new()
 ///     {
-///         FirewallId = allowRules.Id,
+///         FirewallId = allowRules.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         ServerIds = new[]
 ///         {
-///             testServer.Id,
+///             testServer.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         },
 ///     });
 ///
@@ -570,6 +592,8 @@ import 'firewall_attachment_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi-std/sdk/go/std"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -589,7 +613,7 @@ import 'firewall_attachment_state.dart';
 /// 			Image:                   pulumi.String("ubuntu-24.04"),
 /// 			IgnoreRemoteFirewallIds: pulumi.Bool(true),
 /// 			FirewallIds: pulumi.IntArray{
-/// 				denyAll.ID(),
+/// 				denyAll.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -625,18 +649,18 @@ import 'firewall_attachment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewFirewallAttachment(ctx, "deny_all_att", &hcloud.FirewallAttachmentArgs{
-/// 			FirewallId: denyAll.ID(),
+/// 			FirewallId: denyAll.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			ServerIds: pulumi.IntArray{
-/// 				testServer.ID(),
+/// 				testServer.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			},
 /// 		})
 /// 		if err != nil {
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewFirewallAttachment(ctx, "allow_rules_att", &hcloud.FirewallAttachmentArgs{
-/// 			FirewallId: allowRules.ID(),
+/// 			FirewallId: allowRules.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			ServerIds: pulumi.IntArray{
-/// 				testServer.ID(),
+/// 				testServer.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 			},
 /// 		})
 /// 		if err != nil {
@@ -647,7 +671,7 @@ import 'firewall_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -664,9 +688,15 @@ import 'firewall_attachment_state.dart';
 /// }
 ///
 /// resource "hcloud_firewall" "deny_all" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "deny_all"
 /// }
 /// resource "hcloud_server" "test_server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "test-server"
 ///   server_type                = "cx23"
 ///   image                      = "ubuntu-24.04"
@@ -674,6 +704,9 @@ import 'firewall_attachment_state.dart';
 ///   firewall_ids               = [hcloud_firewall.deny_all.id]
 /// }
 /// resource "hcloud_firewall" "allow_rules" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "allow_rules"
 ///   rules {
 ///     direction       = "in"
@@ -683,11 +716,17 @@ import 'firewall_attachment_state.dart';
 ///     destination_ips = [data.std_format.invoke_0.result]
 ///   }
 /// }
-/// resource "hcloud_firewallattachment" "deny_all_att" {
+/// resource "hcloud_firewall_attachment" "deny_all_att" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   firewall_id = hcloud_firewall.deny_all.id
 ///   server_ids  = [hcloud_server.test_server.id]
 /// }
-/// resource "hcloud_firewallattachment" "allow_rules_att" {
+/// resource "hcloud_firewall_attachment" "allow_rules_att" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   firewall_id = hcloud_firewall.allow_rules.id
 ///   server_ids  = [hcloud_server.test_server.id]
 /// }
@@ -845,11 +884,11 @@ class FirewallAttachment extends pulumi.CustomResource {
           'hcloud:index/firewallAttachment:FirewallAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.43.1').merge(options),
         ) {
     firewallId = registerOutput<int>('firewallId');
-    labelSelectors = registerOutput<List<String>?>('labelSelectors');
-    serverIds = registerOutput<List<int>?>('serverIds');
+    labelSelectors = registerOutput<List<String>?>('labelSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serverIds = registerOutput<List<int>?>('serverIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
   }
 
   /// Gets an existing [FirewallAttachment] resource's state with the given [name] and [id].
@@ -857,11 +896,12 @@ class FirewallAttachment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallAttachmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FirewallAttachment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -876,7 +916,21 @@ class FirewallAttachment extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     firewallId = registerOutput<int>('firewallId');
-    labelSelectors = registerOutput<List<String>?>('labelSelectors');
-    serverIds = registerOutput<List<int>?>('serverIds');
+    labelSelectors = registerOutput<List<String>?>('labelSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serverIds = registerOutput<List<int>?>('serverIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+  }
+
+  /// Creates a typed reference to an existing [FirewallAttachment] resource.
+  FirewallAttachment.reference(String urn)
+    : super(
+        'hcloud:index/firewallAttachment:FirewallAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    firewallId = registerOutput<int>('firewallId');
+    labelSelectors = registerOutput<List<String>?>('labelSelectors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    serverIds = registerOutput<List<int>?>('serverIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
   }
 }

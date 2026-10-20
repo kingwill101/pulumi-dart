@@ -4,17 +4,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class LoadBalancerServiceHttp {
   /// List of IDs from certificates which the Load Balancer has.
-  final pulumi.Input<List<int>>? certificates;
+  final pulumi.Input<List<int>?>? certificates;
   /// Lifetime of the cookie for sticky session (in seconds). Default: `300`
-  final pulumi.Input<int>? cookieLifetime;
+  final pulumi.Input<int?>? cookieLifetime;
   /// Name of the cookie for sticky session. Default: `HCLBSTICKY`
-  final pulumi.Input<String>? cookieName;
+  final pulumi.Input<String?>? cookieName;
   /// Redirect HTTP to HTTPS traffic. Only supported for services with `protocol` `https` using the default HTTP port `80`.
-  final pulumi.Input<bool>? redirectHttp;
+  final pulumi.Input<bool?>? redirectHttp;
   /// Enable sticky sessions
-  final pulumi.Input<bool>? stickySessions;
+  final pulumi.Input<bool?>? stickySessions;
   /// Idle timeout for HTTP connections in seconds. Must be between `30` and `300`.
-  final pulumi.Input<int>? timeoutIdle;
+  final pulumi.Input<int?>? timeoutIdle;
 
   /// Creates a new [LoadBalancerServiceHttp].
   /// [certificates] List of IDs from certificates which the Load Balancer has.
@@ -46,11 +46,11 @@ class LoadBalancerServiceHttp {
   factory LoadBalancerServiceHttp.fromMap(Map<String, dynamic> map) {
     return LoadBalancerServiceHttp(
       certificates: (() { final guardedValue = map['certificates']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<int>()); })(),
-      cookieLifetime: (() { final guardedValue = map['cookieLifetime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      cookieLifetime: (() { final guardedValue = map['cookieLifetime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       cookieName: (() { final guardedValue = map['cookieName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       redirectHttp: (() { final guardedValue = map['redirectHttp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       stickySessions: (() { final guardedValue = map['stickySessions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      timeoutIdle: (() { final guardedValue = map['timeoutIdle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      timeoutIdle: (() { final guardedValue = map['timeoutIdle']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

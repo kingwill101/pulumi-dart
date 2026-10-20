@@ -29,6 +29,8 @@ import 'get_location_args.dart';
 import 'get_location_result.dart';
 import 'get_locations_result.dart';
 import 'get_network_args.dart';
+import 'get_network_members_args.dart';
+import 'get_network_members_result.dart';
 import 'get_network_result.dart';
 import 'get_networks_args.dart';
 import 'get_networks_result.dart';
@@ -149,7 +151,7 @@ import 'txt_record_args.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -157,10 +159,10 @@ import 'txt_record_args.dart';
 ///   }
 /// }
 ///
-/// data "hcloud_getcertificate" "sampleCertificate1" {
+/// data "hcloud_certificate" "sampleCertificate1" {
 ///   name = "sample-certificate-1"
 /// }
-/// data "hcloud_getcertificate" "sampleCertificate2" {
+/// data "hcloud_certificate" "sampleCertificate2" {
 ///   id = "4711"
 /// }
 /// ```
@@ -224,6 +226,17 @@ Future<GetCertificateResult> getCertificate(
   return GetCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetCertificateResult> getCertificateOutput(
+  GetCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getCertificate:getCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificateResult.fromMap);
+}
+
 /// Provides details about multiple Hetzner Cloud Certificates.
 ///
 /// ## Example Usage
@@ -279,7 +292,7 @@ Future<GetCertificateResult> getCertificate(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -287,7 +300,7 @@ Future<GetCertificateResult> getCertificate(
 ///   }
 /// }
 ///
-/// data "hcloud_getcertificates" "sampleCertificate1" {
+/// data "hcloud_certificates" "sampleCertificate1" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -340,6 +353,17 @@ Future<GetCertificatesResult> getCertificates(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCertificatesResult.fromMap(result);
+}
+
+pulumi.Output<GetCertificatesResult> getCertificatesOutput(
+  GetCertificatesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getCertificates:getCertificates',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCertificatesResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud Datacenter.
@@ -419,7 +443,7 @@ Future<GetCertificatesResult> getCertificates(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -427,10 +451,10 @@ Future<GetCertificatesResult> getCertificates(
 ///   }
 /// }
 ///
-/// data "hcloud_getdatacenter" "byId" {
+/// data "hcloud_datacenter" "byId" {
 ///   id = 4
 /// }
-/// data "hcloud_getdatacenter" "byName" {
+/// data "hcloud_datacenter" "byName" {
 ///   name = "fsn1-dc14"
 /// }
 /// ```
@@ -494,6 +518,17 @@ Future<GetDatacenterResult> getDatacenter(
   return GetDatacenterResult.fromMap(result);
 }
 
+pulumi.Output<GetDatacenterResult> getDatacenterOutput(
+  GetDatacenterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getDatacenter:getDatacenter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatacenterResult.fromMap);
+}
+
 /// Provides a list of available Hetzner Cloud Datacenters.
 ///
 /// This resource may be useful to create highly available infrastructure, distributed across several Datacenters.
@@ -549,7 +584,7 @@ Future<GetDatacenterResult> getDatacenter(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -557,7 +592,7 @@ Future<GetDatacenterResult> getDatacenter(
 ///   }
 /// }
 ///
-/// data "hcloud_getdatacenters" "all" {
+/// data "hcloud_datacenters" "all" {
 /// }
 /// ```
 /// ```java
@@ -604,6 +639,17 @@ Future<GetDatacentersResult> getDatacenters(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDatacentersResult.fromMap(result);
+}
+
+pulumi.Output<GetDatacentersResult> getDatacentersOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getDatacenters:getDatacenters',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetDatacentersResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud Firewall.
@@ -674,7 +720,7 @@ Future<GetDatacentersResult> getDatacenters(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -682,10 +728,10 @@ Future<GetDatacentersResult> getDatacenters(
 ///   }
 /// }
 ///
-/// data "hcloud_getfirewall" "sampleFirewall1" {
+/// data "hcloud_firewall" "sampleFirewall1" {
 ///   name = "sample-firewall-1"
 /// }
-/// data "hcloud_getfirewall" "sampleFirewall2" {
+/// data "hcloud_firewall" "sampleFirewall2" {
 ///   id = "4711"
 /// }
 /// ```
@@ -749,6 +795,17 @@ Future<GetFirewallResult> getFirewall(
   return GetFirewallResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallResult> getFirewallOutput(
+  GetFirewallArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getFirewall:getFirewall',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallResult.fromMap);
+}
+
 /// Provides details about multiple Hetzner Cloud Firewall.
 ///
 /// ## Example Usage
@@ -804,7 +861,7 @@ Future<GetFirewallResult> getFirewall(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -812,7 +869,7 @@ Future<GetFirewallResult> getFirewall(
 ///   }
 /// }
 ///
-/// data "hcloud_getfirewalls" "sampleFirewall1" {
+/// data "hcloud_firewalls" "sampleFirewall1" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -867,6 +924,17 @@ Future<GetFirewallsResult> getFirewalls(
   return GetFirewallsResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallsResult> getFirewallsOutput(
+  GetFirewallsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getFirewalls:getFirewalls',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallsResult.fromMap);
+}
+
 /// Provides details about a Hetzner Cloud Floating IP.
 ///
 /// This resource can be useful when you need to determine a Floating IP ID based on the IP address.
@@ -896,7 +964,7 @@ Future<GetFirewallsResult> getFirewalls(
 /// for (let range = 0; range < counter; range++) {
 ///     main.push(new hcloud.FloatingIpAssignment(`main-${range}`, {
 ///         floatingIpId: ip1.then(ip1 => ip1.id),
-///         serverId: Number(mainHcloudServer.id),
+///         serverId: mainHcloudServer.id,
 ///     }));
 /// }
 /// ```
@@ -911,7 +979,7 @@ Future<GetFirewallsResult> getFirewalls(
 /// for main_range in [{"value": i} for i in range(0, counter)]:
 ///     main.append(hcloud.FloatingIpAssignment(f"main-{main_range['value']}",
 ///         floating_ip_id=ip1.id,
-///         server_id=int(main_hcloud_server["id"])))
+///         server_id=main_hcloud_server["id"]))
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -970,7 +1038,6 @@ Future<GetFirewallsResult> getFirewalls(
 /// 		var main []*hcloud.FloatingIpAssignment
 /// 		for index := 0; index < counter; index++ {
 /// 			key0 := index
-/// 			_ := index
 /// 			__res, err := hcloud.NewFloatingIpAssignment(ctx, fmt.Sprintf("main-%v", key0), &hcloud.FloatingIpAssignmentArgs{
 /// 				FloatingIpId: pulumi.Int(ip1.Id),
 /// 				ServerId:     pulumi.Any(mainHcloudServer.Id),
@@ -985,7 +1052,7 @@ Future<GetFirewallsResult> getFirewalls(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -993,16 +1060,22 @@ Future<GetFirewallsResult> getFirewalls(
 ///   }
 /// }
 ///
-/// data "hcloud_getfloatingip" "ip1" {
+/// data "hcloud_floating_ip" "ip1" {
 ///   ip_address = "1.2.3.4"
 /// }
-/// data "hcloud_getfloatingip" "ip2" {
+/// data "hcloud_floating_ip" "ip2" {
 ///   with_selector = "key=value"
 /// }
 ///
-/// resource "hcloud_floatingipassignment" "main" {
-///   for_each       = counter
-///   floating_ip_id = data.hcloud_getfloatingip.ip1.id
+/// resource "hcloud_floating_ip_assignment" "main" {
+///   for_each = counter
+///   pulumi {
+///     name ="main-${each.key}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   floating_ip_id = data.hcloud_floating_ip.ip1.id
 ///   server_id      = mainHcloudServer.id
 /// }
 /// ```
@@ -1041,7 +1114,7 @@ Future<GetFirewallsResult> getFirewalls(
 ///         for (var i = 0; i < counter; i++) {
 ///             new FloatingIpAssignment("main-" + i, FloatingIpAssignmentArgs.builder()
 ///                 .floatingIpId(ip1.id())
-///                 .serverId(mainHcloudServer.id())
+///                 .serverId(mainHcloudServer.get("id"))
 ///                 .build());
 ///
 ///
@@ -1082,6 +1155,17 @@ Future<GetFloatingIpResult> getFloatingIp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFloatingIpResult.fromMap(result);
+}
+
+pulumi.Output<GetFloatingIpResult> getFloatingIpOutput(
+  GetFloatingIpArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getFloatingIp:getFloatingIp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFloatingIpResult.fromMap);
 }
 
 /// Provides details about multiple Hetzner Cloud Floating IPs.
@@ -1139,7 +1223,7 @@ Future<GetFloatingIpResult> getFloatingIp(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -1147,7 +1231,7 @@ Future<GetFloatingIpResult> getFloatingIp(
 ///   }
 /// }
 ///
-/// data "hcloud_getfloatingips" "ip2" {
+/// data "hcloud_floating_ips" "ip2" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -1200,6 +1284,17 @@ Future<GetFloatingIpsResult> getFloatingIps(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFloatingIpsResult.fromMap(result);
+}
+
+pulumi.Output<GetFloatingIpsResult> getFloatingIpsOutput(
+  GetFloatingIpsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getFloatingIps:getFloatingIps',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFloatingIpsResult.fromMap);
 }
 
 /// Provides details about a Hetzner Cloud Image.
@@ -1331,7 +1426,7 @@ Future<GetFloatingIpsResult> getFloatingIps(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -1339,23 +1434,26 @@ Future<GetFloatingIpsResult> getFloatingIps(
 ///   }
 /// }
 ///
-/// data "hcloud_getimage" "byId" {
+/// data "hcloud_image" "byId" {
 ///   id = 114690387
 /// }
-/// data "hcloud_getimage" "byNameX86" {
+/// data "hcloud_image" "byNameX86" {
 ///   name              = "debian-12"
 ///   with_architecture = "x86"
 /// }
-/// data "hcloud_getimage" "byNameArm" {
+/// data "hcloud_image" "byNameArm" {
 ///   name              = "debian-12"
 ///   with_architecture = "arm"
 /// }
-/// data "hcloud_getimage" "byLabel" {
+/// data "hcloud_image" "byLabel" {
 ///   with_selector = "key=value"
 ///   most_recent   = true
 /// }
 ///
 /// resource "hcloud_server" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   image = byName.id
 /// }
 /// ```
@@ -1402,7 +1500,7 @@ Future<GetFloatingIpsResult> getFloatingIps(
 ///             .build());
 ///
 ///         var main = new Server("main", ServerArgs.builder()
-///             .image(byName.id())
+///             .image(byName.get("id"))
 ///             .build());
 ///
 ///     }
@@ -1452,6 +1550,17 @@ Future<GetImageResult> getImage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImageResult.fromMap(result);
+}
+
+pulumi.Output<GetImageResult> getImageOutput(
+  GetImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getImage:getImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageResult.fromMap);
 }
 
 /// Provides a list of Hetzner Storage Images.
@@ -1533,7 +1642,7 @@ Future<GetImageResult> getImage(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -1541,10 +1650,10 @@ Future<GetImageResult> getImage(
 ///   }
 /// }
 ///
-/// data "hcloud_getimages" "byArchitecture" {
+/// data "hcloud_images" "byArchitecture" {
 ///   with_architectures = ["x86"]
 /// }
-/// data "hcloud_getimages" "byLabel" {
+/// data "hcloud_images" "byLabel" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -1607,6 +1716,17 @@ Future<GetImagesResult> getImages(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImagesResult.fromMap(result);
+}
+
+pulumi.Output<GetImagesResult> getImagesOutput(
+  GetImagesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getImages:getImages',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImagesResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud Load Balancer.
@@ -1694,7 +1814,7 @@ Future<GetImagesResult> getImages(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -1702,13 +1822,13 @@ Future<GetImagesResult> getImages(
 ///   }
 /// }
 ///
-/// data "hcloud_getloadbalancer" "lb1" {
+/// data "hcloud_load_balancer" "lb1" {
 ///   name = "my-load-balancer"
 /// }
-/// data "hcloud_getloadbalancer" "lb2" {
+/// data "hcloud_load_balancer" "lb2" {
 ///   id = "123"
 /// }
-/// data "hcloud_getloadbalancer" "lb3" {
+/// data "hcloud_load_balancer" "lb3" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -1779,6 +1899,17 @@ Future<GetLoadBalancerResult> getLoadBalancer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLoadBalancerResult.fromMap(result);
+}
+
+pulumi.Output<GetLoadBalancerResult> getLoadBalancerOutput(
+  GetLoadBalancerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getLoadBalancer:getLoadBalancer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadBalancerResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud Load Balancer Type.
@@ -1877,7 +2008,7 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -1885,14 +2016,17 @@ Future<GetLoadBalancerResult> getLoadBalancer(
 ///   }
 /// }
 ///
-/// data "hcloud_getloadbalancertype" "byId" {
+/// data "hcloud_load_balancer_type" "byId" {
 ///   id = 1
 /// }
-/// data "hcloud_getloadbalancertype" "byName" {
+/// data "hcloud_load_balancer_type" "byName" {
 ///   name = "lb11"
 /// }
 ///
-/// resource "hcloud_loadbalancer" "main" {
+/// resource "hcloud_load_balancer" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "my-load-balancer"
 ///   load_balancer_type = name
 ///   location           = "fsn1"
@@ -1973,6 +2107,17 @@ Future<GetLoadBalancerTypeResult> getLoadBalancerType(
   return GetLoadBalancerTypeResult.fromMap(result);
 }
 
+pulumi.Output<GetLoadBalancerTypeResult> getLoadBalancerTypeOutput(
+  GetLoadBalancerTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getLoadBalancerType:getLoadBalancerType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadBalancerTypeResult.fromMap);
+}
+
 /// Provides a list of available Hetzner Cloud Load Balancer Types.
 ///
 /// ## Example Usage
@@ -2021,7 +2166,7 @@ Future<GetLoadBalancerTypeResult> getLoadBalancerType(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -2029,7 +2174,7 @@ Future<GetLoadBalancerTypeResult> getLoadBalancerType(
 ///   }
 /// }
 ///
-/// data "hcloud_getloadbalancertypes" "all" {
+/// data "hcloud_load_balancer_types" "all" {
 /// }
 /// ```
 /// ```java
@@ -2076,6 +2221,17 @@ Future<GetLoadBalancerTypesResult> getLoadBalancerTypes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLoadBalancerTypesResult.fromMap(result);
+}
+
+pulumi.Output<GetLoadBalancerTypesResult> getLoadBalancerTypesOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getLoadBalancerTypes:getLoadBalancerTypes',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetLoadBalancerTypesResult.fromMap);
 }
 
 /// Provides details about multiple Hetzner Cloud Load Balancers.
@@ -2141,7 +2297,7 @@ Future<GetLoadBalancerTypesResult> getLoadBalancerTypes(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -2149,9 +2305,9 @@ Future<GetLoadBalancerTypesResult> getLoadBalancerTypes(
 ///   }
 /// }
 ///
-/// data "hcloud_getloadbalancers" "lb2" {
+/// data "hcloud_load_balancers" "lb2" {
 /// }
-/// data "hcloud_getloadbalancers" "lb3" {
+/// data "hcloud_load_balancers" "lb3" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -2211,6 +2367,17 @@ Future<GetLoadBalancersResult> getLoadBalancers(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLoadBalancersResult.fromMap(result);
+}
+
+pulumi.Output<GetLoadBalancersResult> getLoadBalancersOutput(
+  GetLoadBalancersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getLoadBalancers:getLoadBalancers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLoadBalancersResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud Location.
@@ -2285,7 +2452,7 @@ Future<GetLoadBalancersResult> getLoadBalancers(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -2293,10 +2460,10 @@ Future<GetLoadBalancersResult> getLoadBalancers(
 ///   }
 /// }
 ///
-/// data "hcloud_getlocation" "byId" {
+/// data "hcloud_location" "byId" {
 ///   id = 1
 /// }
-/// data "hcloud_getlocation" "byName" {
+/// data "hcloud_location" "byName" {
 ///   name = "fsn1"
 /// }
 /// ```
@@ -2358,6 +2525,17 @@ Future<GetLocationResult> getLocation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocationResult.fromMap(result);
+}
+
+pulumi.Output<GetLocationResult> getLocationOutput(
+  GetLocationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getLocation:getLocation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLocationResult.fromMap);
 }
 
 /// Provides a list of available Hetzner Cloud Locations.
@@ -2444,7 +2622,7 @@ Future<GetLocationResult> getLocation(
 /// 				Name:       pulumi.Sprintf("node%v", val0),
 /// 				Image:      pulumi.String("debian-12"),
 /// 				ServerType: pulumi.String("cx23"),
-/// 				Location:   all.Locations[val0].Name,
+/// 				Location:   all.Locations[val0].Name.(pulumi.String),
 /// 			})
 /// 			if err != nil {
 /// 				return err
@@ -2456,7 +2634,7 @@ Future<GetLocationResult> getLocation(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -2464,15 +2642,21 @@ Future<GetLocationResult> getLocation(
 ///   }
 /// }
 ///
-/// data "hcloud_getlocations" "all" {
+/// data "hcloud_locations" "all" {
 /// }
 ///
 /// resource "hcloud_server" "workers" {
-///   count       = 5
+///   count = 5
+///   pulumi {
+///     name ="workers-${count.index}"
+///   }
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        ="node${count.index}"
 ///   image       = "debian-12"
 ///   server_type = "cx23"
-///   location    = element(data.hcloud_getlocations.all.locations, count.index).name
+///   location    = element(data.hcloud_locations.all.locations, count.index).name
 /// }
 /// ```
 /// ```java
@@ -2505,7 +2689,7 @@ Future<GetLocationResult> getLocation(
 ///                 .name(String.format("node%s", range.value()))
 ///                 .image("debian-12")
 ///                 .serverType("cx23")
-///                 .location(all.locations()[range.value()].name())
+///                 .location(all.locations()[range.value()].get("name"))
 ///                 .build());
 ///
 ///
@@ -2525,6 +2709,17 @@ Future<GetLocationsResult> getLocations(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLocationsResult.fromMap(result);
+}
+
+pulumi.Output<GetLocationsResult> getLocationsOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getLocations:getLocations',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetLocationsResult.fromMap);
 }
 
 /// Provides details about a Hetzner Cloud network.
@@ -2613,7 +2808,7 @@ Future<GetLocationsResult> getLocations(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -2621,13 +2816,13 @@ Future<GetLocationsResult> getLocations(
 ///   }
 /// }
 ///
-/// data "hcloud_getnetwork" "network1" {
+/// data "hcloud_network" "network1" {
 ///   id = "1234"
 /// }
-/// data "hcloud_getnetwork" "network2" {
+/// data "hcloud_network" "network2" {
 ///   name = "my-network"
 /// }
-/// data "hcloud_getnetwork" "network3" {
+/// data "hcloud_network" "network3" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -2700,6 +2895,225 @@ Future<GetNetworkResult> getNetwork(
   return GetNetworkResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkResult> getNetworkOutput(
+  GetNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getNetwork:getNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkResult.fromMap);
+}
+
+/// Provides a list of Hetzner Cloud Network Members.
+///
+/// See the [Networks API documentation](https://docs.hetzner.cloud/reference/cloud#tag/networks) for more details.
+///
+/// ## Example Usage
+///
+///
+/// ```typescript
+/// import * as pulumi from "@pulumi/pulumi";
+/// import * as hcloud from "@pulumi/hcloud";
+/// import * as std from "@pulumi/std";
+///
+/// const byType = hcloud.getNetworkMembers({
+///     networkId: example.id,
+///     withTypes: [
+///         "load_balancer",
+///         "server",
+///     ],
+/// });
+/// const byStatus = hcloud.getNetworkMembers({
+///     networkId: example.id,
+///     withStatuses: [
+///         "ok",
+///         "attaching",
+///         "detaching",
+///         "updating",
+///         "error",
+///     ],
+/// });
+/// const bySubnet = hcloud.getNetworkMembers({
+///     networkId: example.id,
+///     withSubnets: ["10.0.1.0/24"],
+/// });
+/// const all = hcloud.getNetworkMembers({
+///     networkId: example.id,
+/// });
+/// // A list of all IPs in the network
+/// const networkIps = Promise.all([all, std.concat({
+///     input: [
+///         [m.ip],
+///         m.aliasIps,
+///     ],
+/// })]).then(([all, invoke]) => std.flatten({
+///     input: .map(m => (invoke.result)),
+/// })).then(invoke => invoke.result);
+/// ```
+/// ```python
+/// import pulumi
+/// import pulumi_hcloud as hcloud
+/// import pulumi_std as std
+///
+/// by_type = hcloud.get_network_members(network_id=example["id"],
+///     with_types=[
+///         "load_balancer",
+///         "server",
+///     ])
+/// by_status = hcloud.get_network_members(network_id=example["id"],
+///     with_statuses=[
+///         "ok",
+///         "attaching",
+///         "detaching",
+///         "updating",
+///         "error",
+///     ])
+/// by_subnet = hcloud.get_network_members(network_id=example["id"],
+///     with_subnets=["10.0.1.0/24"])
+/// all = hcloud.get_network_members(network_id=example["id"])
+/// # A list of all IPs in the network
+/// network_ips = std.flatten(input=[std.concat(input=[
+///     [m.ip],
+///     m.alias_ips,
+/// ]).result for m in all.members]).result
+/// ```
+/// ```csharp
+/// using System.Collections.Generic;
+/// using System.Linq;
+/// using Pulumi;
+/// using HCloud = Pulumi.HCloud;
+/// using Std = Pulumi.Std;
+///
+/// return await Deployment.RunAsync(() =>
+/// {
+///     var byType = HCloud.GetNetworkMembers.Invoke(new()
+///     {
+///         NetworkId = example.Id,
+///         WithTypes = new[]
+///         {
+///             "load_balancer",
+///             "server",
+///         },
+///     });
+///
+///     var byStatus = HCloud.GetNetworkMembers.Invoke(new()
+///     {
+///         NetworkId = example.Id,
+///         WithStatuses = new[]
+///         {
+///             "ok",
+///             "attaching",
+///             "detaching",
+///             "updating",
+///             "error",
+///         },
+///     });
+///
+///     var bySubnet = HCloud.GetNetworkMembers.Invoke(new()
+///     {
+///         NetworkId = example.Id,
+///         WithSubnets = new[]
+///         {
+///             "10.0.1.0/24",
+///         },
+///     });
+///
+///     var all = HCloud.GetNetworkMembers.Invoke(new()
+///     {
+///         NetworkId = example.Id,
+///     });
+///
+///     // A list of all IPs in the network
+///     var networkIps = Output.Tuple(all, Std.Concat.Invoke(new()
+///     {
+///         Input = new[]
+///         {
+///             new[]
+///             {
+///                 m.Ip,
+///             },
+///             m.AliasIps,
+///         },
+///     })).Apply(values =>
+///     {
+///         var all = values.Item1;
+///         var invoke = values.Item2;
+///         return Std.Flatten.Invoke(new()
+///         {
+///             Input = .Select(m =>
+///             {
+///                 return invoke.Result;
+///             }).ToList(),
+///         });
+///     }).Apply(invoke => invoke.Result);
+///
+/// });
+/// ```
+/// ```hcl
+/// terraform {
+///   required_providers {
+///     hcloud = {
+///       source = "pulumi/hcloud"
+///     }
+///     std = {
+///       source = "pulumi/std"
+///     }
+///   }
+/// }
+///
+/// data "hcloud_network_members" "byType" {
+///   network_id = example.id
+///   with_types = ["load_balancer", "server"]
+/// }
+/// data "hcloud_network_members" "byStatus" {
+///   network_id    = example.id
+///   with_statuses = ["ok", "attaching", "detaching", "updating", "error"]
+/// }
+/// data "hcloud_network_members" "bySubnet" {
+///   network_id   = example.id
+///   with_subnets = ["10.0.1.0/24"]
+/// }
+/// data "hcloud_network_members" "all" {
+///   network_id = example.id
+/// }
+/// data "std_concat" "invoke_4" {
+///   for_each = toset(data.hcloud_network_members.all.members)
+///   input    = [[each.value.ip], each.value.aliasIps]
+/// }
+///
+/// // A list of all IPs in the network
+/// locals {
+///   networkIps = flatten([for m in data.hcloud_network_members.all.members : data.std_concat.invoke_4[m].result])
+/// }
+/// ```
+/// [args] Arguments passed to this invoke. {@macro pulumi_index_get_network_members_get_network_members_args_doc}
+/// [options] Invoke options controlling this call.
+Future<GetNetworkMembersResult> getNetworkMembers(
+  GetNetworkMembersArgs args, {
+  pulumi.InvokeOptions? options,
+}) async {
+  final deployment = pulumi.Deployment.instance;
+  final result = await deployment.invoke<Map<String, dynamic>>(
+    'hcloud:index/getNetworkMembers:getNetworkMembers',
+    args.toMap(),
+    options: pulumi.toDeploymentInvokeOptions(options),
+  );
+  return GetNetworkMembersResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkMembersResult> getNetworkMembersOutput(
+  GetNetworkMembersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getNetworkMembers:getNetworkMembers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkMembersResult.fromMap);
+}
+
 /// Provides details about multiple Hetzner Cloud Networks.
 ///
 /// ## Example Usage
@@ -2763,7 +3177,7 @@ Future<GetNetworkResult> getNetwork(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -2771,9 +3185,9 @@ Future<GetNetworkResult> getNetwork(
 ///   }
 /// }
 ///
-/// data "hcloud_getnetwork" "network2" {
+/// data "hcloud_network" "network2" {
 /// }
-/// data "hcloud_getnetwork" "network3" {
+/// data "hcloud_network" "network3" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -2833,6 +3247,17 @@ Future<GetNetworksResult> getNetworks(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworksResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworksResult> getNetworksOutput(
+  GetNetworksArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getNetworks:getNetworks',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworksResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud Placement Group.
@@ -2903,7 +3328,7 @@ Future<GetNetworksResult> getNetworks(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -2911,10 +3336,10 @@ Future<GetNetworksResult> getNetworks(
 ///   }
 /// }
 ///
-/// data "hcloud_getplacementgroup" "samplePlacementGroup1" {
+/// data "hcloud_placement_group" "samplePlacementGroup1" {
 ///   name = "sample-placement-group-1"
 /// }
-/// data "hcloud_getplacementgroup" "samplePlacementGroup2" {
+/// data "hcloud_placement_group" "samplePlacementGroup2" {
 ///   id = "4711"
 /// }
 /// ```
@@ -2976,6 +3401,17 @@ Future<GetPlacementGroupResult> getPlacementGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPlacementGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetPlacementGroupResult> getPlacementGroupOutput(
+  GetPlacementGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getPlacementGroup:getPlacementGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPlacementGroupResult.fromMap);
 }
 
 /// Provides details about multiple Hetzner Cloud Placement Groups.
@@ -3041,7 +3477,7 @@ Future<GetPlacementGroupResult> getPlacementGroup(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -3049,9 +3485,9 @@ Future<GetPlacementGroupResult> getPlacementGroup(
 ///   }
 /// }
 ///
-/// data "hcloud_getplacementgroups" "samplePlacementGroup1" {
+/// data "hcloud_placement_groups" "samplePlacementGroup1" {
 /// }
-/// data "hcloud_getplacementgroups" "samplePlacementGroup2" {
+/// data "hcloud_placement_groups" "samplePlacementGroup2" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -3113,6 +3549,17 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
   return GetPlacementGroupsResult.fromMap(result);
 }
 
+pulumi.Output<GetPlacementGroupsResult> getPlacementGroupsOutput(
+  GetPlacementGroupsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getPlacementGroups:getPlacementGroups',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPlacementGroupsResult.fromMap);
+}
+
 /// Provides details about a Hetzner Cloud Primary IP.
 ///
 /// See the [Primary IPs API documentation](https://docs.hetzner.cloud/reference/cloud#tag/primary-ips) for more details.
@@ -3152,7 +3599,7 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 ///         test: "tessst1",
 ///     },
 ///     publicNets: [{
-///         ipv4: Number(ip1HcloudPrimaryIp.id),
+///         ipv4: ip1HcloudPrimaryIp.id,
 ///     }],
 /// });
 /// ```
@@ -3173,7 +3620,7 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 ///         "test": "tessst1",
 ///     },
 ///     public_nets=[{
-///         "ipv4": int(ip1_hcloud_primary_ip["id"]),
+///         "ipv4": ip1_hcloud_primary_ip["id"],
 ///     }])
 /// ```
 /// ```csharp
@@ -3272,7 +3719,7 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -3280,18 +3727,21 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 ///   }
 /// }
 ///
-/// data "hcloud_getprimaryip" "ip1" {
+/// data "hcloud_primary_ip" "ip1" {
 ///   ip_address = "1.2.3.4"
 /// }
-/// data "hcloud_getprimaryip" "ip2" {
+/// data "hcloud_primary_ip" "ip2" {
 ///   name = "primary_ip_1"
 /// }
-/// data "hcloud_getprimaryip" "ip3" {
+/// data "hcloud_primary_ip" "ip3" {
 ///   with_selector = "key=value"
 /// }
 ///
 /// // Link a server to an existing primary IP
 /// resource "hcloud_server" "server_test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "test-server"
 ///   image       = "ubuntu-24.04"
 ///   server_type = "cx23"
@@ -3348,7 +3798,7 @@ Future<GetPlacementGroupsResult> getPlacementGroups(
 ///             .location("fsn1")
 ///             .labels(Map.of("test", "tessst1"))
 ///             .publicNets(ServerPublicNetArgs.builder()
-///                 .ipv4(ip1HcloudPrimaryIp.id())
+///                 .ipv4(ip1HcloudPrimaryIp.get("id"))
 ///                 .build())
 ///             .build());
 ///
@@ -3400,6 +3850,17 @@ Future<GetPrimaryIpResult> getPrimaryIp(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrimaryIpResult.fromMap(result);
+}
+
+pulumi.Output<GetPrimaryIpResult> getPrimaryIpOutput(
+  GetPrimaryIpArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getPrimaryIp:getPrimaryIp',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrimaryIpResult.fromMap);
 }
 
 /// Provides a list of Hetzner Cloud Primary IPs.
@@ -3468,7 +3929,7 @@ Future<GetPrimaryIpResult> getPrimaryIp(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -3476,7 +3937,7 @@ Future<GetPrimaryIpResult> getPrimaryIp(
 ///   }
 /// }
 ///
-/// data "hcloud_getprimaryips" "ip2" {
+/// data "hcloud_primary_ips" "ip2" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -3529,6 +3990,17 @@ Future<GetPrimaryIpsResult> getPrimaryIps(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPrimaryIpsResult.fromMap(result);
+}
+
+pulumi.Output<GetPrimaryIpsResult> getPrimaryIpsOutput(
+  GetPrimaryIpsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getPrimaryIps:getPrimaryIps',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPrimaryIpsResult.fromMap);
 }
 
 /// Provides details about a Hetzner Cloud Server.
@@ -3626,7 +4098,7 @@ Future<GetPrimaryIpsResult> getPrimaryIps(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -3634,13 +4106,13 @@ Future<GetPrimaryIpsResult> getPrimaryIps(
 ///   }
 /// }
 ///
-/// data "hcloud_getserver" "s1" {
+/// data "hcloud_server" "s1" {
 ///   name = "my-server"
 /// }
-/// data "hcloud_getserver" "s2" {
+/// data "hcloud_server" "s2" {
 ///   id = "123"
 /// }
-/// data "hcloud_getserver" "s3" {
+/// data "hcloud_server" "s3" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -3711,6 +4183,17 @@ Future<GetServerResult> getServer(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerResult.fromMap(result);
+}
+
+pulumi.Output<GetServerResult> getServerOutput(
+  GetServerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getServer:getServer',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud Server Type.
@@ -3813,7 +4296,7 @@ Future<GetServerResult> getServer(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -3821,18 +4304,21 @@ Future<GetServerResult> getServer(
 ///   }
 /// }
 ///
-/// data "hcloud_getservertype" "byId" {
+/// data "hcloud_server_type" "byId" {
 ///   id = 22
 /// }
-/// data "hcloud_getservertype" "byName" {
+/// data "hcloud_server_type" "byName" {
 ///   name = "cx23"
 /// }
 ///
 /// resource "hcloud_server" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "my-server"
 ///   location    = "fsn1"
 ///   image       = "debian-12"
-///   server_type = data.hcloud_getservertype.byName.name
+///   server_type = data.hcloud_server_type.byName.name
 /// }
 /// ```
 /// ```java
@@ -3912,6 +4398,17 @@ Future<GetServerTypeResult> getServerType(
   return GetServerTypeResult.fromMap(result);
 }
 
+pulumi.Output<GetServerTypeResult> getServerTypeOutput(
+  GetServerTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getServerType:getServerType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServerTypeResult.fromMap);
+}
+
 /// Provides a list of available Hetzner Cloud Server Types.
 ///
 /// ## Example Usage
@@ -3960,7 +4457,7 @@ Future<GetServerTypeResult> getServerType(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -3968,7 +4465,7 @@ Future<GetServerTypeResult> getServerType(
 ///   }
 /// }
 ///
-/// data "hcloud_getservertypes" "all" {
+/// data "hcloud_server_types" "all" {
 /// }
 /// ```
 /// ```java
@@ -4015,6 +4512,17 @@ Future<GetServerTypesResult> getServerTypes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServerTypesResult.fromMap(result);
+}
+
+pulumi.Output<GetServerTypesResult> getServerTypesOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getServerTypes:getServerTypes',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetServerTypesResult.fromMap);
 }
 
 /// Provides details about multiple Hetzner Cloud Servers.
@@ -4073,7 +4581,7 @@ Future<GetServerTypesResult> getServerTypes(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -4081,7 +4589,7 @@ Future<GetServerTypesResult> getServerTypes(
 ///   }
 /// }
 ///
-/// data "hcloud_getservers" "s3" {
+/// data "hcloud_servers" "s3" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -4134,6 +4642,17 @@ Future<GetServersResult> getServers(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServersResult.fromMap(result);
+}
+
+pulumi.Output<GetServersResult> getServersOutput(
+  GetServersArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getServers:getServers',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServersResult.fromMap);
 }
 
 /// Provides details about a specific Hetzner Cloud SSH Key.
@@ -4211,9 +4730,9 @@ Future<GetServersResult> getServers(
 ///     {
 ///         SshKeys = new[]
 ///         {
-///             byId.Apply(getSshKeyResult => getSshKeyResult.Id),
-///             byName.Apply(getSshKeyResult => getSshKeyResult.Id),
-///             byFingerprint.Apply(getSshKeyResult => getSshKeyResult.Id),
+///             Output.Create(byId.Apply(getSshKeyResult => getSshKeyResult.Id)).Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+///             Output.Create(byName.Apply(getSshKeyResult => getSshKeyResult.Id)).Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
+///             Output.Create(byFingerprint.Apply(getSshKeyResult => getSshKeyResult.Id)).Apply(x => x.ToString(System.Globalization.CultureInfo.InvariantCulture)),
 ///         },
 ///     });
 ///
@@ -4268,7 +4787,7 @@ Future<GetServersResult> getServers(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -4276,21 +4795,24 @@ Future<GetServersResult> getServers(
 ///   }
 /// }
 ///
-/// data "hcloud_getsshkey" "byId" {
+/// data "hcloud_ssh_key" "byId" {
 ///   id = 24332897
 /// }
-/// data "hcloud_getsshkey" "byName" {
+/// data "hcloud_ssh_key" "byName" {
 ///   name = "my-ssh-key"
 /// }
-/// data "hcloud_getsshkey" "byFingerprint" {
+/// data "hcloud_ssh_key" "byFingerprint" {
 ///   fingerprint = "55:58:dc:bd:61:6e:7d:24:07:a7:7d:9b:be:99:83:a8"
 /// }
-/// data "hcloud_getsshkey" "byLabel" {
+/// data "hcloud_ssh_key" "byLabel" {
 ///   with_selector = "key=value"
 /// }
 ///
 /// resource "hcloud_server" "main" {
-///   ssh_keys = [data.hcloud_getsshkey.byId.id, data.hcloud_getsshkey.byName.id, data.hcloud_getsshkey.byFingerprint.id]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ssh_keys = [data.hcloud_ssh_key.byId.id, data.hcloud_ssh_key.byName.id, data.hcloud_ssh_key.byFingerprint.id]
 /// }
 /// ```
 /// ```java
@@ -4388,6 +4910,17 @@ Future<GetSshKeyResult> getSshKey(
   return GetSshKeyResult.fromMap(result);
 }
 
+pulumi.Output<GetSshKeyResult> getSshKeyOutput(
+  GetSshKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getSshKey:getSshKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSshKeyResult.fromMap);
+}
+
 /// Provides a list of Hetzner Cloud SSH Keys.
 ///
 /// This resource is useful if you want to use a non-terraform managed SSH Key.
@@ -4470,7 +5003,7 @@ Future<GetSshKeyResult> getSshKey(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -4478,14 +5011,17 @@ Future<GetSshKeyResult> getSshKey(
 ///   }
 /// }
 ///
-/// data "hcloud_getsshkeys" "all" {
+/// data "hcloud_ssh_keys" "all" {
 /// }
-/// data "hcloud_getsshkeys" "byLabel" {
+/// data "hcloud_ssh_keys" "byLabel" {
 ///   with_selector = "foo=bar"
 /// }
 ///
 /// resource "hcloud_server" "main" {
-///   ssh_keys = data.hcloud_getsshkeys.all.ssh_keys[*].name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   ssh_keys = data.hcloud_ssh_keys.all.ssh_keys[*].name
 /// }
 /// ```
 /// ```java
@@ -4538,6 +5074,17 @@ Future<GetSshKeysResult> getSshKeys(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSshKeysResult.fromMap(result);
+}
+
+pulumi.Output<GetSshKeysResult> getSshKeysOutput(
+  GetSshKeysArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getSshKeys:getSshKeys',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSshKeysResult.fromMap);
 }
 
 /// Provides details about a Hetzner Storage Box.
@@ -4627,7 +5174,7 @@ Future<GetSshKeysResult> getSshKeys(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -4635,13 +5182,13 @@ Future<GetSshKeysResult> getSshKeys(
 ///   }
 /// }
 ///
-/// data "hcloud_getstoragebox" "byId" {
+/// data "hcloud_storage_box" "byId" {
 ///   id = 1333
 /// }
-/// data "hcloud_getstoragebox" "byName" {
+/// data "hcloud_storage_box" "byName" {
 ///   name = "backups"
 /// }
-/// data "hcloud_getstoragebox" "byLabelSelector" {
+/// data "hcloud_storage_box" "byLabelSelector" {
 ///   with_selector = "env=production"
 /// }
 /// ```
@@ -4714,6 +5261,17 @@ Future<GetStorageBoxResult> getStorageBox(
   return GetStorageBoxResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageBoxResult> getStorageBoxOutput(
+  GetStorageBoxArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBox:getStorageBox',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageBoxResult.fromMap);
+}
+
 /// Provides details about a Hetzner Storage Box Snapshot.
 ///
 /// See the [Storage Box Snapshots API documentation](https://docs.hetzner.cloud/reference/hetzner#storage-box-snapshots) for more details.
@@ -4722,7 +5280,7 @@ Future<GetStorageBoxResult> getStorageBox(
 ///
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -4730,20 +5288,21 @@ Future<GetStorageBoxResult> getStorageBox(
 ///   }
 /// }
 ///
-/// data "hcloud_getstorageboxsnapshot" "byId" {
+/// data "hcloud_storage_box_snapshot" "byId" {
 ///   storage_box_id = var.storageBoxId
 ///   id             = 2
 /// }
-/// data "hcloud_getstorageboxsnapshot" "byName" {
+/// data "hcloud_storage_box_snapshot" "byName" {
 ///   storage_box_id = var.storageBoxId
 ///   name           = "2025-02-12T11-35-19"
 /// }
-/// data "hcloud_getstoragebox" "byLabelSelector" {
+/// data "hcloud_storage_box" "byLabelSelector" {
 ///   storage_box_id = var.storageBoxId
 ///   with_selector  = "env=production"
 /// }
 ///
 /// variable "storageBoxId" {
+///   type = any
 /// }
 /// ```
 /// ```yaml
@@ -4785,6 +5344,17 @@ Future<GetStorageBoxSnapshotResult> getStorageBoxSnapshot(
   return GetStorageBoxSnapshotResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageBoxSnapshotResult> getStorageBoxSnapshotOutput(
+  GetStorageBoxSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBoxSnapshot:getStorageBoxSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageBoxSnapshotResult.fromMap);
+}
+
 /// Provides a list of Hetzner Storage Box Snapshots.
 ///
 /// See the [Storage Box Snapshots API documentation](https://docs.hetzner.cloud/reference/hetzner#storage-box-snapshots) for more details.
@@ -4799,10 +5369,10 @@ Future<GetStorageBoxSnapshotResult> getStorageBoxSnapshot(
 /// const config = new pulumi.Config();
 /// const storageBoxId = config.requireObject<any>("storageBoxId");
 /// const all = hcloud.getStorageBoxSnapshots({
-///     storageBoxId: Number(storageBoxId),
+///     storageBoxId: storageBoxId,
 /// });
 /// const byLabelSelector = hcloud.getStorageBoxSnapshots({
-///     storageBoxId: Number(storageBoxId),
+///     storageBoxId: storageBoxId,
 ///     withSelector: "env=production",
 /// });
 /// ```
@@ -4812,8 +5382,8 @@ Future<GetStorageBoxSnapshotResult> getStorageBoxSnapshot(
 ///
 /// config = pulumi.Config()
 /// storage_box_id = config.require_object("storageBoxId")
-/// all = hcloud.get_storage_box_snapshots(storage_box_id=int(storage_box_id))
-/// by_label_selector = hcloud.get_storage_box_snapshots(storage_box_id=int(storage_box_id),
+/// all = hcloud.get_storage_box_snapshots(storage_box_id=storage_box_id)
+/// by_label_selector = hcloud.get_storage_box_snapshots(storage_box_id=storage_box_id,
 ///     with_selector="env=production")
 /// ```
 /// ```csharp
@@ -4871,7 +5441,7 @@ Future<GetStorageBoxSnapshotResult> getStorageBoxSnapshot(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -4879,15 +5449,16 @@ Future<GetStorageBoxSnapshotResult> getStorageBoxSnapshot(
 ///   }
 /// }
 ///
-/// data "hcloud_getstorageboxsnapshots" "all" {
+/// data "hcloud_storage_box_snapshots" "all" {
 ///   storage_box_id = var.storageBoxId
 /// }
-/// data "hcloud_getstorageboxsnapshots" "byLabelSelector" {
+/// data "hcloud_storage_box_snapshots" "byLabelSelector" {
 ///   storage_box_id = var.storageBoxId
 ///   with_selector  = "env=production"
 /// }
 ///
 /// variable "storageBoxId" {
+///   type = any
 /// }
 /// ```
 /// ```java
@@ -4912,7 +5483,7 @@ Future<GetStorageBoxSnapshotResult> getStorageBoxSnapshot(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var storageBoxId = config.require("storageBoxId");
+///         final var storageBoxId = config.requireObject("storageBoxId", com.pulumi.core.TypeShape.map(String.class, Object.class));
 ///         final var all = HcloudFunctions.getStorageBoxSnapshots(GetStorageBoxSnapshotsArgs.builder()
 ///             .storageBoxId(storageBoxId)
 ///             .build());
@@ -4957,6 +5528,17 @@ Future<GetStorageBoxSnapshotsResult> getStorageBoxSnapshots(
   return GetStorageBoxSnapshotsResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageBoxSnapshotsResult> getStorageBoxSnapshotsOutput(
+  GetStorageBoxSnapshotsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBoxSnapshots:getStorageBoxSnapshots',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageBoxSnapshotsResult.fromMap);
+}
+
 /// Provides details about a Hetzner Storage Box Subaccount.
 ///
 /// See the [Storage Box Subaccounts API documentation](https://docs.hetzner.cloud/reference/hetzner#storage-box-subaccounts) for more details.
@@ -4971,19 +5553,19 @@ Future<GetStorageBoxSnapshotsResult> getStorageBoxSnapshots(
 /// const config = new pulumi.Config();
 /// const storageBoxId = config.requireObject<any>("storageBoxId");
 /// const byId = hcloud.getStorageBoxSubaccount({
-///     storageBoxId: Number(storageBoxId),
+///     storageBoxId: storageBoxId,
 ///     id: 2,
 /// });
 /// const byName = hcloud.getStorageBoxSubaccount({
-///     storageBoxId: Number(storageBoxId),
+///     storageBoxId: storageBoxId,
 ///     name: "badger",
 /// });
 /// const byUsername = hcloud.getStorageBoxSubaccount({
-///     storageBoxId: Number(storageBoxId),
+///     storageBoxId: storageBoxId,
 ///     username: "u507137-sub1",
 /// });
 /// const byLabelSelector = hcloud.getStorageBoxSubaccount({
-///     storageBoxId: Number(storageBoxId),
+///     storageBoxId: storageBoxId,
 ///     withSelector: "team=billing",
 /// });
 /// ```
@@ -4993,13 +5575,13 @@ Future<GetStorageBoxSnapshotsResult> getStorageBoxSnapshots(
 ///
 /// config = pulumi.Config()
 /// storage_box_id = config.require_object("storageBoxId")
-/// by_id = hcloud.get_storage_box_subaccount(storage_box_id=int(storage_box_id),
+/// by_id = hcloud.get_storage_box_subaccount(storage_box_id=storage_box_id,
 ///     id=2)
-/// by_name = hcloud.get_storage_box_subaccount(storage_box_id=int(storage_box_id),
+/// by_name = hcloud.get_storage_box_subaccount(storage_box_id=storage_box_id,
 ///     name="badger")
-/// by_username = hcloud.get_storage_box_subaccount(storage_box_id=int(storage_box_id),
+/// by_username = hcloud.get_storage_box_subaccount(storage_box_id=storage_box_id,
 ///     username="u507137-sub1")
-/// by_label_selector = hcloud.get_storage_box_subaccount(storage_box_id=int(storage_box_id),
+/// by_label_selector = hcloud.get_storage_box_subaccount(storage_box_id=storage_box_id,
 ///     with_selector="team=billing")
 /// ```
 /// ```csharp
@@ -5085,7 +5667,7 @@ Future<GetStorageBoxSnapshotsResult> getStorageBoxSnapshots(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -5093,24 +5675,25 @@ Future<GetStorageBoxSnapshotsResult> getStorageBoxSnapshots(
 ///   }
 /// }
 ///
-/// data "hcloud_getstorageboxsubaccount" "byId" {
+/// data "hcloud_storage_box_subaccount" "byId" {
 ///   storage_box_id = var.storageBoxId
 ///   id             = 2
 /// }
-/// data "hcloud_getstorageboxsubaccount" "byName" {
+/// data "hcloud_storage_box_subaccount" "byName" {
 ///   storage_box_id = var.storageBoxId
 ///   name           = "badger"
 /// }
-/// data "hcloud_getstorageboxsubaccount" "byUsername" {
+/// data "hcloud_storage_box_subaccount" "byUsername" {
 ///   storage_box_id = var.storageBoxId
 ///   username       = "u507137-sub1"
 /// }
-/// data "hcloud_getstorageboxsubaccount" "byLabelSelector" {
+/// data "hcloud_storage_box_subaccount" "byLabelSelector" {
 ///   storage_box_id = var.storageBoxId
 ///   with_selector  = "team=billing"
 /// }
 ///
 /// variable "storageBoxId" {
+///   type = any
 /// }
 /// ```
 /// ```java
@@ -5135,7 +5718,7 @@ Future<GetStorageBoxSnapshotsResult> getStorageBoxSnapshots(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var storageBoxId = config.require("storageBoxId");
+///         final var storageBoxId = config.requireObject("storageBoxId", com.pulumi.core.TypeShape.map(String.class, Object.class));
 ///         final var byId = HcloudFunctions.getStorageBoxSubaccount(GetStorageBoxSubaccountArgs.builder()
 ///             .storageBoxId(storageBoxId)
 ///             .id(2)
@@ -5204,6 +5787,17 @@ Future<GetStorageBoxSubaccountResult> getStorageBoxSubaccount(
   return GetStorageBoxSubaccountResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageBoxSubaccountResult> getStorageBoxSubaccountOutput(
+  GetStorageBoxSubaccountArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBoxSubaccount:getStorageBoxSubaccount',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageBoxSubaccountResult.fromMap);
+}
+
 /// Provides a list of Hetzner Storage Box Subaccounts.
 ///
 /// See the [Storage Box Subaccounts API documentation](https://docs.hetzner.cloud/reference/hetzner#storage-box-subaccounts) for more details.
@@ -5218,10 +5812,10 @@ Future<GetStorageBoxSubaccountResult> getStorageBoxSubaccount(
 /// const config = new pulumi.Config();
 /// const storageBoxId = config.requireObject<any>("storageBoxId");
 /// const all = hcloud.getStorageBoxSubaccounts({
-///     storageBoxId: Number(storageBoxId),
+///     storageBoxId: storageBoxId,
 /// });
 /// const byLabelSelector = hcloud.getStorageBoxSubaccounts({
-///     storageBoxId: Number(storageBoxId),
+///     storageBoxId: storageBoxId,
 ///     withSelector: "team=billing",
 /// });
 /// ```
@@ -5231,8 +5825,8 @@ Future<GetStorageBoxSubaccountResult> getStorageBoxSubaccount(
 ///
 /// config = pulumi.Config()
 /// storage_box_id = config.require_object("storageBoxId")
-/// all = hcloud.get_storage_box_subaccounts(storage_box_id=int(storage_box_id))
-/// by_label_selector = hcloud.get_storage_box_subaccounts(storage_box_id=int(storage_box_id),
+/// all = hcloud.get_storage_box_subaccounts(storage_box_id=storage_box_id)
+/// by_label_selector = hcloud.get_storage_box_subaccounts(storage_box_id=storage_box_id,
 ///     with_selector="team=billing")
 /// ```
 /// ```csharp
@@ -5290,7 +5884,7 @@ Future<GetStorageBoxSubaccountResult> getStorageBoxSubaccount(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -5298,15 +5892,16 @@ Future<GetStorageBoxSubaccountResult> getStorageBoxSubaccount(
 ///   }
 /// }
 ///
-/// data "hcloud_getstorageboxsubaccounts" "all" {
+/// data "hcloud_storage_box_subaccounts" "all" {
 ///   storage_box_id = var.storageBoxId
 /// }
-/// data "hcloud_getstorageboxsubaccounts" "byLabelSelector" {
+/// data "hcloud_storage_box_subaccounts" "byLabelSelector" {
 ///   storage_box_id = var.storageBoxId
 ///   with_selector  = "team=billing"
 /// }
 ///
 /// variable "storageBoxId" {
+///   type = any
 /// }
 /// ```
 /// ```java
@@ -5331,7 +5926,7 @@ Future<GetStorageBoxSubaccountResult> getStorageBoxSubaccount(
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var storageBoxId = config.require("storageBoxId");
+///         final var storageBoxId = config.requireObject("storageBoxId", com.pulumi.core.TypeShape.map(String.class, Object.class));
 ///         final var all = HcloudFunctions.getStorageBoxSubaccounts(GetStorageBoxSubaccountsArgs.builder()
 ///             .storageBoxId(storageBoxId)
 ///             .build());
@@ -5374,6 +5969,17 @@ Future<GetStorageBoxSubaccountsResult> getStorageBoxSubaccounts(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStorageBoxSubaccountsResult.fromMap(result);
+}
+
+pulumi.Output<GetStorageBoxSubaccountsResult> getStorageBoxSubaccountsOutput(
+  GetStorageBoxSubaccountsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBoxSubaccounts:getStorageBoxSubaccounts',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageBoxSubaccountsResult.fromMap);
 }
 
 /// Provides details about a Hetzner Storage Box Type.
@@ -5448,7 +6054,7 @@ Future<GetStorageBoxSubaccountsResult> getStorageBoxSubaccounts(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -5456,10 +6062,10 @@ Future<GetStorageBoxSubaccountsResult> getStorageBoxSubaccounts(
 ///   }
 /// }
 ///
-/// data "hcloud_getstorageboxtype" "byId" {
+/// data "hcloud_storage_box_type" "byId" {
 ///   id = 1333
 /// }
-/// data "hcloud_getstorageboxtype" "byName" {
+/// data "hcloud_storage_box_type" "byName" {
 ///   name = "bx11"
 /// }
 /// ```
@@ -5523,6 +6129,17 @@ Future<GetStorageBoxTypeResult> getStorageBoxType(
   return GetStorageBoxTypeResult.fromMap(result);
 }
 
+pulumi.Output<GetStorageBoxTypeResult> getStorageBoxTypeOutput(
+  GetStorageBoxTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBoxType:getStorageBoxType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageBoxTypeResult.fromMap);
+}
+
 /// Provides a list of Hetzner Storage Box Types.
 ///
 /// See the [Storage Box Type API documentation](https://docs.hetzner.cloud/reference/hetzner#storage-box-types) for more details.
@@ -5573,7 +6190,7 @@ Future<GetStorageBoxTypeResult> getStorageBoxType(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -5581,7 +6198,7 @@ Future<GetStorageBoxTypeResult> getStorageBoxType(
 ///   }
 /// }
 ///
-/// data "hcloud_getstorageboxtypes" "all" {
+/// data "hcloud_storage_box_types" "all" {
 /// }
 /// ```
 /// ```java
@@ -5628,6 +6245,17 @@ Future<GetStorageBoxTypesResult> getStorageBoxTypes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStorageBoxTypesResult.fromMap(result);
+}
+
+pulumi.Output<GetStorageBoxTypesResult> getStorageBoxTypesOutput(
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBoxTypes:getStorageBoxTypes',
+    const <String, pulumi.Input<dynamic>>{},
+    options: options,
+  ).apply(GetStorageBoxTypesResult.fromMap);
 }
 
 /// Provides a list of Hetzner Storage Boxes.
@@ -5695,7 +6323,7 @@ Future<GetStorageBoxTypesResult> getStorageBoxTypes(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -5703,9 +6331,9 @@ Future<GetStorageBoxTypesResult> getStorageBoxTypes(
 ///   }
 /// }
 ///
-/// data "hcloud_getstorageboxes" "all" {
+/// data "hcloud_storage_boxes" "all" {
 /// }
-/// data "hcloud_getstorageboxes" "byLabelSelector" {
+/// data "hcloud_storage_boxes" "byLabelSelector" {
 ///   with_selector = "env=production"
 /// }
 /// ```
@@ -5765,6 +6393,17 @@ Future<GetStorageBoxesResult> getStorageBoxes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStorageBoxesResult.fromMap(result);
+}
+
+pulumi.Output<GetStorageBoxesResult> getStorageBoxesOutput(
+  GetStorageBoxesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getStorageBoxes:getStorageBoxes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStorageBoxesResult.fromMap);
 }
 
 /// Provides details about a Hetzner Cloud volume.
@@ -5853,7 +6492,7 @@ Future<GetStorageBoxesResult> getStorageBoxes(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -5861,13 +6500,13 @@ Future<GetStorageBoxesResult> getStorageBoxes(
 ///   }
 /// }
 ///
-/// data "hcloud_getvolume" "volume1" {
+/// data "hcloud_volume" "volume1" {
 ///   id = "1234"
 /// }
-/// data "hcloud_getvolume" "volume2" {
+/// data "hcloud_volume" "volume2" {
 ///   name = "my-volume"
 /// }
-/// data "hcloud_getvolume" "volume3" {
+/// data "hcloud_volume" "volume3" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -5940,6 +6579,17 @@ Future<GetVolumeResult> getVolume(
   return GetVolumeResult.fromMap(result);
 }
 
+pulumi.Output<GetVolumeResult> getVolumeOutput(
+  GetVolumeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getVolume:getVolume',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumeResult.fromMap);
+}
+
 /// Provides details about multiple Hetzner Cloud Volumes.
 ///
 /// ## Example Usage
@@ -6003,7 +6653,7 @@ Future<GetVolumeResult> getVolume(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -6011,9 +6661,9 @@ Future<GetVolumeResult> getVolume(
 ///   }
 /// }
 ///
-/// data "hcloud_getvolumes" "volume_" {
+/// data "hcloud_volumes" "volume_" {
 /// }
-/// data "hcloud_getvolumes" "volume3" {
+/// data "hcloud_volumes" "volume3" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -6073,6 +6723,17 @@ Future<GetVolumesResult> getVolumes(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVolumesResult.fromMap(result);
+}
+
+pulumi.Output<GetVolumesResult> getVolumesOutput(
+  GetVolumesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getVolumes:getVolumes',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVolumesResult.fromMap);
 }
 
 /// Provides details about a Hetzner Cloud Zone.
@@ -6164,7 +6825,7 @@ Future<GetVolumesResult> getVolumes(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -6172,13 +6833,13 @@ Future<GetVolumesResult> getVolumes(
 ///   }
 /// }
 ///
-/// data "hcloud_getzone" "byId" {
+/// data "hcloud_zone" "byId" {
 ///   id = 1234
 /// }
-/// data "hcloud_getzone" "byName" {
+/// data "hcloud_zone" "byName" {
 ///   name = "example.com"
 /// }
-/// data "hcloud_getzone" "byLabel" {
+/// data "hcloud_zone" "byLabel" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -6249,6 +6910,17 @@ Future<GetZoneResult> getZone(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetZoneResult.fromMap(result);
+}
+
+pulumi.Output<GetZoneResult> getZoneOutput(
+  GetZoneArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getZone:getZone',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZoneResult.fromMap);
 }
 
 /// Provides details about a Hetzner Cloud Zone Resource Record Set (RRSet).
@@ -6369,7 +7041,7 @@ Future<GetZoneResult> getZone(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -6377,20 +7049,20 @@ Future<GetZoneResult> getZone(
 ///   }
 /// }
 ///
-/// data "hcloud_getzone" "example" {
+/// data "hcloud_zone" "example" {
 ///   name = "example.com"
 /// }
-/// data "hcloud_getzonerrset" "byId" {
-///   zone = data.hcloud_getzone.example.name
+/// data "hcloud_zone_rrset" "byId" {
+///   zone = data.hcloud_zone.example.name
 ///   id   = "www/A"
 /// }
-/// data "hcloud_getzonerrset" "byNameAndType" {
-///   zone = data.hcloud_getzone.example.name
+/// data "hcloud_zone_rrset" "byNameAndType" {
+///   zone = data.hcloud_zone.example.name
 ///   name = "www"
 ///   type = "A"
 /// }
-/// data "hcloud_getzonerrset" "byLabel" {
-///   zone          = data.hcloud_getzone.example.name
+/// data "hcloud_zone_rrset" "byLabel" {
+///   zone          = data.hcloud_zone.example.name
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -6479,6 +7151,17 @@ Future<GetZoneRrsetResult> getZoneRrset(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetZoneRrsetResult.fromMap(result);
+}
+
+pulumi.Output<GetZoneRrsetResult> getZoneRrsetOutput(
+  GetZoneRrsetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getZoneRrset:getZoneRrset',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZoneRrsetResult.fromMap);
 }
 
 /// Provides a list of Hetzner Cloud Zone Resource Record Set (RRSet).
@@ -6572,7 +7255,7 @@ Future<GetZoneRrsetResult> getZoneRrset(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -6580,14 +7263,14 @@ Future<GetZoneRrsetResult> getZoneRrset(
 ///   }
 /// }
 ///
-/// data "hcloud_getzone" "example" {
+/// data "hcloud_zone" "example" {
 ///   name = "example.com"
 /// }
-/// data "hcloud_getzonerrsets" "all" {
-///   zone = data.hcloud_getzone.example.name
+/// data "hcloud_zone_rrsets" "all" {
+///   zone = data.hcloud_zone.example.name
 /// }
-/// data "hcloud_getzonerrsets" "byLabel" {
-///   zone          = data.hcloud_getzone.example.name
+/// data "hcloud_zone_rrsets" "byLabel" {
+///   zone          = data.hcloud_zone.example.name
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -6663,6 +7346,17 @@ Future<GetZoneRrsetsResult> getZoneRrsets(
   return GetZoneRrsetsResult.fromMap(result);
 }
 
+pulumi.Output<GetZoneRrsetsResult> getZoneRrsetsOutput(
+  GetZoneRrsetsArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getZoneRrsets:getZoneRrsets',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZoneRrsetsResult.fromMap);
+}
+
 /// Provides a list of Hetzner Cloud Zone.
 ///
 /// See the [Zones API documentation](https://docs.hetzner.cloud/reference/cloud#zones) for more details.
@@ -6728,7 +7422,7 @@ Future<GetZoneRrsetsResult> getZoneRrsets(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -6736,9 +7430,9 @@ Future<GetZoneRrsetsResult> getZoneRrsets(
 ///   }
 /// }
 ///
-/// data "hcloud_getzones" "all" {
+/// data "hcloud_zones" "all" {
 /// }
-/// data "hcloud_getzones" "byLabel" {
+/// data "hcloud_zones" "byLabel" {
 ///   with_selector = "key=value"
 /// }
 /// ```
@@ -6800,6 +7494,17 @@ Future<GetZonesResult> getZones(
   return GetZonesResult.fromMap(result);
 }
 
+pulumi.Output<GetZonesResult> getZonesOutput(
+  GetZonesArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'hcloud:index/getZones:getZones',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZonesResult.fromMap);
+}
+
 /// Converts a Internationalized Domain Name (IDN) to ASCII using Punycode.
 ///
 /// The conversion is defined by Golang's IDNA package. See https://pkg.go.dev/golang.org/x/net/idna
@@ -6812,17 +7517,32 @@ Future<GetZonesResult> getZones(
 /// idna(domain string) string
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_idna_idna_args_doc}
+/// [domain] Value for the `domain` invoke input.
 /// [options] Invoke options controlling this call.
-Future<Map<String, dynamic>> idna(
-  IdnaArgs args, {
+Future<String> idna(
+  pulumi.Input<String> domain,
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
-  return await deployment.invoke<Map<String, dynamic>>(
+  final value = await deployment.invokeSingle<dynamic>(
     'hcloud:index/idna:idna',
-    args.toMap(),
+    IdnaArgs(domain: domain, ).toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
+  return value as String;
+}
+
+pulumi.Output<String> idnaOutput(
+  pulumi.Input<String> domain,
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeSingleOutput<dynamic>(
+    'hcloud:index/idna:idna',
+    pulumi.Input.mapToInputs(IdnaArgs(domain: domain, ).toMap()),
+    options: options,
+  ).apply<String>((value) => value as String);
 }
 
 /// Format a TXT record by splitting it in quoted strings of 255 characters.
@@ -6834,15 +7554,30 @@ Future<Map<String, dynamic>> idna(
 /// txt_record(record string) string
 /// ```
 /// [args] Arguments passed to this invoke. {@macro pulumi_index_txt_record_txt_record_args_doc}
+/// [record] Value for the `record` invoke input.
 /// [options] Invoke options controlling this call.
-Future<Map<String, dynamic>> txtRecord(
-  TxtRecordArgs args, {
+Future<String> txtRecord(
+  pulumi.Input<String> record,
+  {
   pulumi.InvokeOptions? options,
 }) async {
   final deployment = pulumi.Deployment.instance;
-  return await deployment.invoke<Map<String, dynamic>>(
+  final value = await deployment.invokeSingle<dynamic>(
     'hcloud:index/txtRecord:txtRecord',
-    args.toMap(),
+    TxtRecordArgs(record: record, ).toMap(),
     options: pulumi.toDeploymentInvokeOptions(options),
   );
+  return value as String;
+}
+
+pulumi.Output<String> txtRecordOutput(
+  pulumi.Input<String> record,
+  {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeSingleOutput<dynamic>(
+    'hcloud:index/txtRecord:txtRecord',
+    pulumi.Input.mapToInputs(TxtRecordArgs(record: record, ).toMap()),
+    options: options,
+  ).apply<String>((value) => value as String);
 }

@@ -77,7 +77,7 @@ import 'ssh_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -88,7 +88,10 @@ import 'ssh_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "hcloud_sshkey" "main" {
+/// resource "hcloud_ssh_key" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "my-ssh-key"
 ///   public_key = file("~/.ssh/id_ed25519.pub")
 /// }
@@ -170,10 +173,10 @@ class SshKey extends pulumi.CustomResource {
           'hcloud:index/sshKey:SshKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.43.1').merge(options),
         ) {
     fingerprint = registerOutput<String>('fingerprint');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     publicKey = registerOutput<String>('publicKey');
   }
@@ -183,11 +186,12 @@ class SshKey extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SshKeyState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SshKey._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -202,7 +206,22 @@ class SshKey extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     fingerprint = registerOutput<String>('fingerprint');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    publicKey = registerOutput<String>('publicKey');
+  }
+
+  /// Creates a typed reference to an existing [SshKey] resource.
+  SshKey.reference(String urn)
+    : super(
+        'hcloud:index/sshKey:SshKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    fingerprint = registerOutput<String>('fingerprint');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     publicKey = registerOutput<String>('publicKey');
   }

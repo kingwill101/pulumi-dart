@@ -62,7 +62,7 @@ import 'network_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -71,6 +71,9 @@ import 'network_state.dart';
 /// }
 ///
 /// resource "hcloud_network" "privNet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my-net"
 ///   ip_range = "10.0.1.0/24"
 /// }
@@ -145,12 +148,12 @@ class Network extends pulumi.CustomResource {
           'hcloud:index/network:Network',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.43.1').merge(options),
         ) {
     deleteProtection = registerOutput<bool?>('deleteProtection');
     exposeRoutesToVswitch = registerOutput<bool?>('exposeRoutesToVswitch');
     ipRange = registerOutput<String>('ipRange');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
   }
 
@@ -159,11 +162,12 @@ class Network extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     NetworkState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Network._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -180,7 +184,23 @@ class Network extends pulumi.CustomResource {
     deleteProtection = registerOutput<bool?>('deleteProtection');
     exposeRoutesToVswitch = registerOutput<bool?>('exposeRoutesToVswitch');
     ipRange = registerOutput<String>('ipRange');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+  }
+
+  /// Creates a typed reference to an existing [Network] resource.
+  Network.reference(String urn)
+    : super(
+        'hcloud:index/network:Network',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    exposeRoutesToVswitch = registerOutput<bool?>('exposeRoutesToVswitch');
+    ipRange = registerOutput<String>('ipRange');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
   }
 }

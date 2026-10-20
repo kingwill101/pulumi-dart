@@ -11,9 +11,9 @@ class UploadedCertificateArgs {
   final pulumi.Input<String> certificate;
   /// User-defined labels (key-value pairs) the
   /// certificate should be created with.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the Certificate.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// PEM encoded private key belonging to the certificate.
   final pulumi.Input<String> privateKey;
 

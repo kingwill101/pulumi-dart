@@ -8,15 +8,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_network_network_args_doc}
 class NetworkArgs {
   /// Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.
-  final pulumi.Input<bool>? deleteProtection;
+  final pulumi.Input<bool?>? deleteProtection;
   /// Enable or disable exposing the routes to the vSwitch connection. The exposing only takes effect if a vSwitch connection is active.
-  final pulumi.Input<bool>? exposeRoutesToVswitch;
+  final pulumi.Input<bool?>? exposeRoutesToVswitch;
   /// IP Range of the whole Network which must span all included subnets and route destinations. Must be one of the private ipv4 ranges of RFC1918.
   final pulumi.Input<String> ipRange;
   /// User-defined labels (key-value pairs) should be created with.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the Network to create (must be unique per project).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [NetworkArgs].
   /// [deleteProtection] Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.

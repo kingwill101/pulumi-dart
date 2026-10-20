@@ -36,7 +36,7 @@ class GetZonesZonePrimaryNameserver {
   factory GetZonesZonePrimaryNameserver.fromMap(Map<String, dynamic> map) {
     return GetZonesZonePrimaryNameserver(
       address: pulumi.Input.fromValue(map['address'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       tsigAlgorithm: pulumi.Input.fromValue(map['tsigAlgorithm'] as String),
       tsigKey: pulumi.Input.fromValue(map['tsigKey'] as String),
     );

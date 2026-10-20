@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_zone_get_zone_args_doc}
 class GetZoneArgs {
   /// ID of the Zone.
-  final pulumi.Input<int>? id;
+  final pulumi.Input<int?>? id;
   /// Name of the Zone.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
-  final pulumi.Input<String>? withSelector;
+  final pulumi.Input<String?>? withSelector;
 
   /// Creates a new [GetZoneArgs].
   /// [id] ID of the Zone.
@@ -34,7 +34,7 @@ class GetZoneArgs {
 
   factory GetZoneArgs.fromMap(Map<String, dynamic> map) {
     return GetZoneArgs(
-      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       withSelector: (() { final guardedValue = map['withSelector']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_volumes_get_volumes_args_doc}
 class GetVolumesArgs {
   /// [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  final pulumi.Input<String>? withSelector;
+  final pulumi.Input<String?>? withSelector;
   /// List only volumes with the specified status, could contain `creating` or `available`.
-  final pulumi.Input<List<String>>? withStatuses;
+  final pulumi.Input<List<String>?>? withStatuses;
 
   /// Creates a new [GetVolumesArgs].
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
