@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'artifact_hashes.dart';
 
 class GrafeasV1beta1IntotoArtifact {
-  final pulumi.Input<ArtifactHashes>? hashes;
-  final pulumi.Input<String>? resourceUri;
+  final pulumi.Input<ArtifactHashes?>? hashes;
+  final pulumi.Input<String?>? resourceUri;
 
   /// Creates a new [GrafeasV1beta1IntotoArtifact].
   /// [hashes] Optional.

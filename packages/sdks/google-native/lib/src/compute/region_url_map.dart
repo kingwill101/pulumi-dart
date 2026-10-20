@@ -1,9 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'custom_error_response_policy_response.dart';
+import 'host_rule_response.dart';
 import 'http_header_action_response.dart';
 import 'http_redirect_action_response.dart';
 import 'http_route_action_response.dart';
+import 'path_matcher_response.dart';
 import 'region_url_map_args.dart';
+import 'url_map_test_response.dart';
 
 /// Creates a UrlMap resource in the specified project using the data included in the request.
 class RegionUrlMap extends pulumi.CustomResource {
@@ -24,13 +27,13 @@ class RegionUrlMap extends pulumi.CustomResource {
   /// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here take effect after headerAction specified under pathMatcher. headerAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
   late final pulumi.Output<HttpHeaderActionResponse> headerAction;
   /// The list of host rules to use against the URL.
-  late final pulumi.Output<List<Map<String, dynamic>>> hostRules;
+  late final pulumi.Output<List<HostRuleResponse>> hostRules;
   /// Type of the resource. Always compute#urlMaps for url maps.
   late final pulumi.Output<String> kind;
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
   late final pulumi.Output<String> name;
   /// The list of named PathMatchers to use against the URL.
-  late final pulumi.Output<List<Map<String, dynamic>>> pathMatchers;
+  late final pulumi.Output<List<PathMatcherResponse>> pathMatchers;
   late final pulumi.Output<String> project;
   late final pulumi.Output<String> region;
   /// begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.
@@ -38,7 +41,7 @@ class RegionUrlMap extends pulumi.CustomResource {
   /// Server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
   /// The list of expected URL mapping tests. Request to update the UrlMap succeeds only if all test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
-  late final pulumi.Output<List<Map<String, dynamic>>> tests;
+  late final pulumi.Output<List<UrlMapTestResponse>> tests;
 
   /// Creates a new [RegionUrlMap].
   /// [name] The Pulumi resource name.
@@ -52,7 +55,7 @@ class RegionUrlMap extends pulumi.CustomResource {
           'google-native:compute/alpha:RegionUrlMap',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     defaultCustomErrorResponsePolicy = registerOutput<CustomErrorResponsePolicyResponse>('defaultCustomErrorResponsePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomErrorResponsePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -62,14 +65,42 @@ class RegionUrlMap extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     fingerprint = registerOutput<String>('fingerprint');
     headerAction = registerOutput<HttpHeaderActionResponse>('headerAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpHeaderActionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    hostRules = registerOutput<List<Map<String, dynamic>>>('hostRules');
+    hostRules = registerOutput<List<HostRuleResponse>>('hostRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostRuleResponse>(guardedValue, (value) => HostRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    pathMatchers = registerOutput<List<Map<String, dynamic>>>('pathMatchers');
+    pathMatchers = registerOutput<List<PathMatcherResponse>>('pathMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PathMatcherResponse>(guardedValue, (value) => PathMatcherResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
     selfLink = registerOutput<String>('selfLink');
-    tests = registerOutput<List<Map<String, dynamic>>>('tests');
+    tests = registerOutput<List<UrlMapTestResponse>>('tests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UrlMapTestResponse>(guardedValue, (value) => UrlMapTestResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [RegionUrlMap] resource.
+  RegionUrlMap.reference(String urn)
+    : super(
+        'google-native:compute/alpha:RegionUrlMap',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    defaultCustomErrorResponsePolicy = registerOutput<CustomErrorResponsePolicyResponse>('defaultCustomErrorResponsePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomErrorResponsePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultRouteAction = registerOutput<HttpRouteActionResponse>('defaultRouteAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpRouteActionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    defaultService = registerOutput<String>('defaultService');
+    defaultUrlRedirect = registerOutput<HttpRedirectActionResponse>('defaultUrlRedirect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpRedirectActionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    headerAction = registerOutput<HttpHeaderActionResponse>('headerAction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HttpHeaderActionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostRules = registerOutput<List<HostRuleResponse>>('hostRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HostRuleResponse>(guardedValue, (value) => HostRuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    pathMatchers = registerOutput<List<PathMatcherResponse>>('pathMatchers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PathMatcherResponse>(guardedValue, (value) => PathMatcherResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    tests = registerOutput<List<UrlMapTestResponse>>('tests', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<UrlMapTestResponse>(guardedValue, (value) => UrlMapTestResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

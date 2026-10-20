@@ -6,9 +6,9 @@ import 'maintenance_window_day_of_week_metastore_v1alpha.dart';
 /// Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service.
 class MaintenanceWindowMetastoreV1alpha {
   /// The day of week, when the window starts.
-  final pulumi.Input<MaintenanceWindowDayOfWeekMetastoreV1alpha>? dayOfWeek;
+  final pulumi.Input<MaintenanceWindowDayOfWeekMetastoreV1alpha?>? dayOfWeek;
   /// The hour of day (0-23) when the window starts.
-  final pulumi.Input<int>? hourOfDay;
+  final pulumi.Input<int?>? hourOfDay;
 
   /// Creates a new [MaintenanceWindowMetastoreV1alpha].
   /// [dayOfWeek] The day of week, when the window starts.
@@ -28,7 +28,7 @@ class MaintenanceWindowMetastoreV1alpha {
   factory MaintenanceWindowMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return MaintenanceWindowMetastoreV1alpha(
       dayOfWeek: (() { final guardedValue = map['dayOfWeek']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MaintenanceWindowDayOfWeekMetastoreV1alpha.fromValue(guardedValue as String)); })(),
-      hourOfDay: (() { final guardedValue = map['hourOfDay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      hourOfDay: (() { final guardedValue = map['hourOfDay']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

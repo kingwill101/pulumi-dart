@@ -8,17 +8,17 @@ import 'google_cloud_datacatalog_v1_physical_schema_thrift_schema.dart';
 /// Native schema used by a resource represented as an entry. Used by query engines for deserializing and parsing source data.
 class GoogleCloudDatacatalogV1PhysicalSchema {
   /// Schema in Avro JSON format.
-  final pulumi.Input<GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema>? avro;
+  final pulumi.Input<GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema?>? avro;
   /// Marks a CSV-encoded data source.
-  final pulumi.Input<Map<String, dynamic>>? csv;
+  final pulumi.Input<Map<String, dynamic>?>? csv;
   /// Marks an ORC-encoded data source.
-  final pulumi.Input<Map<String, dynamic>>? orc;
+  final pulumi.Input<Map<String, dynamic>?>? orc;
   /// Marks a Parquet-encoded data source.
-  final pulumi.Input<Map<String, dynamic>>? parquet;
+  final pulumi.Input<Map<String, dynamic>?>? parquet;
   /// Schema in protocol buffer format.
-  final pulumi.Input<GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema>? protobuf;
+  final pulumi.Input<GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema?>? protobuf;
   /// Schema in Thrift format.
-  final pulumi.Input<GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema>? thrift;
+  final pulumi.Input<GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema?>? thrift;
 
   /// Creates a new [GoogleCloudDatacatalogV1PhysicalSchema].
   /// [avro] Schema in Avro JSON format.

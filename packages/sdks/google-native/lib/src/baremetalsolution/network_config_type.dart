@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of this network, either Client or Private.
-enum NetworkConfigType {
+enum NetworkConfigType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   client("CLIENT"),
   private("PRIVATE");
 
   const NetworkConfigType(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkConfigType fromValue(String value) {

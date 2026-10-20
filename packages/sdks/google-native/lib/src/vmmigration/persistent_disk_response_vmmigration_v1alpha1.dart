@@ -27,7 +27,7 @@ class PersistentDiskResponseVmmigrationV1alpha1 {
   factory PersistentDiskResponseVmmigrationV1alpha1.fromMap(Map<String, dynamic> map) {
     return PersistentDiskResponseVmmigrationV1alpha1(
       diskUri: pulumi.Input.fromValue(map['diskUri'] as String),
-      sourceDiskNumber: pulumi.Input.fromValue(map['sourceDiskNumber'] as int),
+      sourceDiskNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sourceDiskNumber'])),
     );
   }
 }

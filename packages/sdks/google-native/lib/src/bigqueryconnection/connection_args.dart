@@ -9,17 +9,17 @@ import 'cloud_sql_properties.dart';
 /// {@macro pulumi_bigqueryconnection_v1beta1_connection_args_doc}
 class ConnectionArgs {
   /// Cloud SQL properties.
-  final pulumi.Input<CloudSqlProperties>? cloudSql;
+  final pulumi.Input<CloudSqlProperties?>? cloudSql;
   /// Optional. Connection id that should be assigned to the created connection.
-  final pulumi.Input<String>? connectionId;
+  final pulumi.Input<String?>? connectionId;
   /// User provided description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User provided display name for the connection.
-  final pulumi.Input<String>? friendlyName;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? friendlyName;
+  final pulumi.Input<String?>? location;
   /// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [ConnectionArgs].
   /// [cloudSql] Cloud SQL properties.

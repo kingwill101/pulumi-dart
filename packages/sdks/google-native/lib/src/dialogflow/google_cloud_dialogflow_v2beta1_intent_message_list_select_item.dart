@@ -7,9 +7,9 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_select_item_info.dart';
 /// An item in the list.
 class GoogleCloudDialogflowV2beta1IntentMessageListSelectItem {
   /// Optional. The main text describing the item.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. The image to display.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageImage>? image;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageImage?>? image;
   /// Additional information about this option.
   final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo> info;
   /// The title of the list item.

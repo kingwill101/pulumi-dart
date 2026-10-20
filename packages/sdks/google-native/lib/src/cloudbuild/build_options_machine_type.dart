@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Compute Engine machine type on which to run the build.
-enum BuildOptionsMachineType {
+enum BuildOptionsMachineType implements pulumi.PulumiEnum<String> {
   unspecified("UNSPECIFIED"),
   n1Highcpu8("N1_HIGHCPU_8"),
   n1Highcpu32("N1_HIGHCPU_32"),
@@ -8,6 +10,7 @@ enum BuildOptionsMachineType {
   e2Medium("E2_MEDIUM");
 
   const BuildOptionsMachineType(this.wireValue);
+  @override
   final String wireValue;
 
   static BuildOptionsMachineType fromValue(String value) {

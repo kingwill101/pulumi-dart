@@ -7,11 +7,11 @@ import 'restriction_evaluations.dart';
 /// A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
 class MembershipRole {
   /// The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.
-  final pulumi.Input<ExpiryDetail>? expiryDetail;
+  final pulumi.Input<ExpiryDetail?>? expiryDetail;
   /// The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Evaluations of restrictions applied to parent group on this membership.
-  final pulumi.Input<RestrictionEvaluations>? restrictionEvaluations;
+  final pulumi.Input<RestrictionEvaluations?>? restrictionEvaluations;
 
   /// Creates a new [MembershipRole].
   /// [expiryDetail] The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value.

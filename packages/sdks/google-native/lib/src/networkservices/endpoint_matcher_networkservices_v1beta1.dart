@@ -6,7 +6,7 @@ import 'metadata_label_matcher.dart';
 /// A definition of a matcher that selects endpoints to which the policies should be applied.
 class EndpointMatcherNetworkservicesV1beta1 {
   /// The matcher is based on node metadata presented by xDS clients.
-  final pulumi.Input<MetadataLabelMatcher>? metadataLabelMatcher;
+  final pulumi.Input<MetadataLabelMatcher?>? metadataLabelMatcher;
 
   /// Creates a new [EndpointMatcherNetworkservicesV1beta1].
   /// [metadataLabelMatcher] The matcher is based on node metadata presented by xDS clients.

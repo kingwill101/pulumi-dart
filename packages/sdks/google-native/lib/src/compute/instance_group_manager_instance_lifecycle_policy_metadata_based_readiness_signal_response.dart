@@ -20,7 +20,7 @@ class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalRes
 
   factory InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalResponse.fromMap(Map<String, dynamic> map) {
     return InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalResponse(
-      timeoutSec: pulumi.Input.fromValue(map['timeoutSec'] as int),
+      timeoutSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeoutSec'])),
     );
   }
 }

@@ -14,33 +14,33 @@ import 'transfer_options.dart';
 /// Configuration for running a transfer.
 class TransferSpec {
   /// An AWS S3 compatible data source.
-  final pulumi.Input<AwsS3CompatibleData>? awsS3CompatibleDataSource;
+  final pulumi.Input<AwsS3CompatibleData?>? awsS3CompatibleDataSource;
   /// An AWS S3 data source.
-  final pulumi.Input<AwsS3Data>? awsS3DataSource;
+  final pulumi.Input<AwsS3Data?>? awsS3DataSource;
   /// An Azure Blob Storage data source.
-  final pulumi.Input<AzureBlobStorageData>? azureBlobStorageDataSource;
+  final pulumi.Input<AzureBlobStorageData?>? azureBlobStorageDataSource;
   /// A Cloud Storage data sink.
-  final pulumi.Input<GcsData>? gcsDataSink;
+  final pulumi.Input<GcsData?>? gcsDataSink;
   /// A Cloud Storage data source.
-  final pulumi.Input<GcsData>? gcsDataSource;
+  final pulumi.Input<GcsData?>? gcsDataSource;
   /// For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location through which to transfer data. See [Transfer data between file systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
-  final pulumi.Input<GcsData>? gcsIntermediateDataLocation;
+  final pulumi.Input<GcsData?>? gcsIntermediateDataLocation;
   /// An HTTP URL data source.
-  final pulumi.Input<HttpData>? httpDataSource;
+  final pulumi.Input<HttpData?>? httpDataSource;
   /// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' "last modification time" do not exclude objects in a data sink.
-  final pulumi.Input<ObjectConditions>? objectConditions;
+  final pulumi.Input<ObjectConditions?>? objectConditions;
   /// A POSIX Filesystem data sink.
-  final pulumi.Input<PosixFilesystem>? posixDataSink;
+  final pulumi.Input<PosixFilesystem?>? posixDataSink;
   /// A POSIX Filesystem data source.
-  final pulumi.Input<PosixFilesystem>? posixDataSource;
+  final pulumi.Input<PosixFilesystem?>? posixDataSource;
   /// Specifies the agent pool name associated with the posix data sink. When unspecified, the default name is used.
-  final pulumi.Input<String>? sinkAgentPoolName;
+  final pulumi.Input<String?>? sinkAgentPoolName;
   /// Specifies the agent pool name associated with the posix data source. When unspecified, the default name is used.
-  final pulumi.Input<String>? sourceAgentPoolName;
+  final pulumi.Input<String?>? sourceAgentPoolName;
   /// A manifest file provides a list of objects to be transferred from the data source. This field points to the location of the manifest file. Otherwise, the entire source bucket is used. ObjectConditions still apply.
-  final pulumi.Input<TransferManifest>? transferManifest;
+  final pulumi.Input<TransferManifest?>? transferManifest;
   /// If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
-  final pulumi.Input<TransferOptions>? transferOptions;
+  final pulumi.Input<TransferOptions?>? transferOptions;
 
   /// Creates a new [TransferSpec].
   /// [awsS3CompatibleDataSource] An AWS S3 compatible data source.

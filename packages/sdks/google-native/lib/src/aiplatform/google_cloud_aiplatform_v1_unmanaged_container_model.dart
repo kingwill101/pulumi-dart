@@ -7,11 +7,11 @@ import 'google_cloud_aiplatform_v1_predict_schemata.dart';
 /// Contains model information necessary to perform batch prediction without requiring a full model import.
 class GoogleCloudAiplatformV1UnmanagedContainerModel {
   /// The path to the directory containing the Model artifact and any of its supporting files.
-  final pulumi.Input<String>? artifactUri;
+  final pulumi.Input<String?>? artifactUri;
   /// Input only. The specification of the container that is to be used when deploying this Model.
-  final pulumi.Input<GoogleCloudAiplatformV1ModelContainerSpec>? containerSpec;
+  final pulumi.Input<GoogleCloudAiplatformV1ModelContainerSpec?>? containerSpec;
   /// Contains the schemata used in Model's predictions and explanations
-  final pulumi.Input<GoogleCloudAiplatformV1PredictSchemata>? predictSchemata;
+  final pulumi.Input<GoogleCloudAiplatformV1PredictSchemata?>? predictSchemata;
 
   /// Creates a new [GoogleCloudAiplatformV1UnmanagedContainerModel].
   /// [artifactUri] The path to the directory containing the Model artifact and any of its supporting files.

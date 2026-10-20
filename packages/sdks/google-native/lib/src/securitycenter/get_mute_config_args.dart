@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_securitycenter_v1_get_mute_config_args_doc}
 class GetMuteConfigArgs {
   final pulumi.Input<String> muteConfigId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetMuteConfigArgs].
   /// [muteConfigId] Required.

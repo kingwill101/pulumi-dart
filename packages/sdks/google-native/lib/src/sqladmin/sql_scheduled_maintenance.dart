@@ -4,13 +4,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Any scheduled maintenance for this instance.
 class SqlScheduledMaintenance {
-  final pulumi.Input<bool>? canDefer;
+  final pulumi.Input<bool?>? canDefer;
   /// If the scheduled maintenance can be rescheduled.
-  final pulumi.Input<bool>? canReschedule;
+  final pulumi.Input<bool?>? canReschedule;
   /// Maintenance cannot be rescheduled to start beyond this deadline.
-  final pulumi.Input<String>? scheduleDeadlineTime;
+  final pulumi.Input<String?>? scheduleDeadlineTime;
   /// The start time of any upcoming scheduled maintenance for this instance.
-  final pulumi.Input<String>? startTime;
+  final pulumi.Input<String?>? startTime;
 
   /// Creates a new [SqlScheduledMaintenance].
   /// [canDefer] Optional.

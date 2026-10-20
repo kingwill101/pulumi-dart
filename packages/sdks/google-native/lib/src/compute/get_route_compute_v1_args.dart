@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_v1_get_route_compute_v1_args_doc}
 class GetRouteComputeV1Args {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> route;
 
   /// Creates a new [GetRouteComputeV1Args].

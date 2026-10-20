@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// BareMetalNodeConfig lists machine addresses to access Nodes.
 class BareMetalNodeConfig {
   /// The labels assigned to this node. An object containing a list of key/value pairs. The labels here, unioned with the labels set on BareMetalNodePoolConfig are the set of labels that will be applied to the node. If there are any conflicts, the BareMetalNodeConfig labels take precedence. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The default IPv4 address for SSH access and Kubernetes node. Example: 192.168.0.1
-  final pulumi.Input<String>? nodeIp;
+  final pulumi.Input<String?>? nodeIp;
 
   /// Creates a new [BareMetalNodeConfig].
   /// [labels] The labels assigned to this node. An object containing a list of key/value pairs. The labels here, unioned with the labels set on BareMetalNodePoolConfig are the set of labels that will be applied to the node. If there are any conflicts, the BareMetalNodeConfig labels take precedence. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.

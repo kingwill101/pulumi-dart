@@ -8,11 +8,11 @@ import 'iap_credential_websecurityscanner_v1beta.dart';
 /// Scan authentication configuration.
 class AuthenticationWebsecurityscannerV1beta {
   /// Authentication using a custom account.
-  final pulumi.Input<CustomAccountWebsecurityscannerV1beta>? customAccount;
+  final pulumi.Input<CustomAccountWebsecurityscannerV1beta?>? customAccount;
   /// Authentication using a Google account.
-  final pulumi.Input<GoogleAccountWebsecurityscannerV1beta>? googleAccount;
+  final pulumi.Input<GoogleAccountWebsecurityscannerV1beta?>? googleAccount;
   /// Authentication using Identity-Aware-Proxy (IAP).
-  final pulumi.Input<IapCredentialWebsecurityscannerV1beta>? iapCredential;
+  final pulumi.Input<IapCredentialWebsecurityscannerV1beta?>? iapCredential;
 
   /// Creates a new [AuthenticationWebsecurityscannerV1beta].
   /// [customAccount] Authentication using a custom account.

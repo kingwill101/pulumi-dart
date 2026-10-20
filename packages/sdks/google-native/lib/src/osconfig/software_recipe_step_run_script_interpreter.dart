@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-enum SoftwareRecipeStepRunScriptInterpreter {
+enum SoftwareRecipeStepRunScriptInterpreter implements pulumi.PulumiEnum<String> {
   interpreterUnspecified("INTERPRETER_UNSPECIFIED"),
   shell("SHELL"),
   powershell("POWERSHELL");
 
   const SoftwareRecipeStepRunScriptInterpreter(this.wireValue);
+  @override
   final String wireValue;
 
   static SoftwareRecipeStepRunScriptInterpreter fromValue(String value) {

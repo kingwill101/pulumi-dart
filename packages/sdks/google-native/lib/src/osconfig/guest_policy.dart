@@ -1,6 +1,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'assignment_response.dart';
 import 'guest_policy_args.dart';
+import 'package_repository_response.dart';
+import 'package_response.dart';
+import 'software_recipe_response.dart';
 
 /// Create an OS Config guest policy.
 class GuestPolicy extends pulumi.CustomResource {
@@ -17,12 +20,12 @@ class GuestPolicy extends pulumi.CustomResource {
   /// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
   late final pulumi.Output<String> name;
   /// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
-  late final pulumi.Output<List<Map<String, dynamic>>> packageRepositories;
+  late final pulumi.Output<List<PackageRepositoryResponse>> packageRepositories;
   /// The software packages to be managed by this policy.
-  late final pulumi.Output<List<Map<String, dynamic>>> packages;
+  late final pulumi.Output<List<PackageResponse>> packages;
   late final pulumi.Output<String> project;
   /// A list of Recipes to install on the VM instance.
-  late final pulumi.Output<List<Map<String, dynamic>>> recipes;
+  late final pulumi.Output<List<SoftwareRecipeResponse>> recipes;
   /// Last time this guest policy was updated.
   late final pulumi.Output<String> updateTime;
 
@@ -38,7 +41,7 @@ class GuestPolicy extends pulumi.CustomResource {
           'google-native:osconfig/v1beta:GuestPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['guestPolicyId', 'project']).merge(options),
         ) {
     assignment = registerOutput<AssignmentResponse>('assignment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
@@ -46,10 +49,32 @@ class GuestPolicy extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     guestPolicyId = registerOutput<String>('guestPolicyId');
     this.name = registerOutput<String>('name');
-    packageRepositories = registerOutput<List<Map<String, dynamic>>>('packageRepositories');
-    packages = registerOutput<List<Map<String, dynamic>>>('packages');
+    packageRepositories = registerOutput<List<PackageRepositoryResponse>>('packageRepositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PackageRepositoryResponse>(guardedValue, (value) => PackageRepositoryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    packages = registerOutput<List<PackageResponse>>('packages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PackageResponse>(guardedValue, (value) => PackageResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
-    recipes = registerOutput<List<Map<String, dynamic>>>('recipes');
+    recipes = registerOutput<List<SoftwareRecipeResponse>>('recipes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SoftwareRecipeResponse>(guardedValue, (value) => SoftwareRecipeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [GuestPolicy] resource.
+  GuestPolicy.reference(String urn)
+    : super(
+        'google-native:osconfig/v1beta:GuestPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assignment = registerOutput<AssignmentResponse>('assignment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AssignmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    guestPolicyId = registerOutput<String>('guestPolicyId');
+    this.name = registerOutput<String>('name');
+    packageRepositories = registerOutput<List<PackageRepositoryResponse>>('packageRepositories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PackageRepositoryResponse>(guardedValue, (value) => PackageRepositoryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    packages = registerOutput<List<PackageResponse>>('packages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PackageResponse>(guardedValue, (value) => PackageResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    recipes = registerOutput<List<SoftwareRecipeResponse>>('recipes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SoftwareRecipeResponse>(guardedValue, (value) => SoftwareRecipeResponse.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

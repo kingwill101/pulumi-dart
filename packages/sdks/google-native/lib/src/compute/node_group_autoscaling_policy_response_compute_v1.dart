@@ -30,8 +30,8 @@ class NodeGroupAutoscalingPolicyResponseComputeV1 {
 
   factory NodeGroupAutoscalingPolicyResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return NodeGroupAutoscalingPolicyResponseComputeV1(
-      maxNodes: pulumi.Input.fromValue(map['maxNodes'] as int),
-      minNodes: pulumi.Input.fromValue(map['minNodes'] as int),
+      maxNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNodes'])),
+      minNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNodes'])),
       mode: pulumi.Input.fromValue(map['mode'] as String),
     );
   }

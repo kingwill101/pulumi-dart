@@ -6,21 +6,21 @@ import 'secret.dart';
 /// Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details.
 class Oauth2AuthCodeFlow {
   /// Authorization code to be exchanged for access and refresh tokens.
-  final pulumi.Input<String>? authCode;
+  final pulumi.Input<String?>? authCode;
   /// Auth URL for Authorization Code Flow
-  final pulumi.Input<String>? authUri;
+  final pulumi.Input<String?>? authUri;
   /// Client ID for user-provided OAuth app.
-  final pulumi.Input<String>? clientId;
+  final pulumi.Input<String?>? clientId;
   /// Client secret for user-provided OAuth app.
-  final pulumi.Input<Secret>? clientSecret;
+  final pulumi.Input<Secret?>? clientSecret;
   /// Whether to enable PKCE when the user performs the auth code flow.
-  final pulumi.Input<bool>? enablePkce;
+  final pulumi.Input<bool?>? enablePkce;
   /// PKCE verifier to be used during the auth code exchange.
-  final pulumi.Input<String>? pkceVerifier;
+  final pulumi.Input<String?>? pkceVerifier;
   /// Redirect URI to be provided during the auth code exchange.
-  final pulumi.Input<String>? redirectUri;
+  final pulumi.Input<String?>? redirectUri;
   /// Scopes the connection will request when the user performs the auth code flow.
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
 
   /// Creates a new [Oauth2AuthCodeFlow].
   /// [authCode] Authorization code to be exchanged for access and refresh tokens.

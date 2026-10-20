@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The current serving state of the Cloud SQL instance.
-enum InstanceStateSqladminV1beta4 {
+enum InstanceStateSqladminV1beta4 implements pulumi.PulumiEnum<String> {
   sqlInstanceStateUnspecified("SQL_INSTANCE_STATE_UNSPECIFIED"),
   runnable("RUNNABLE"),
   suspended("SUSPENDED"),
@@ -10,6 +12,7 @@ enum InstanceStateSqladminV1beta4 {
   onlineMaintenance("ONLINE_MAINTENANCE");
 
   const InstanceStateSqladminV1beta4(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceStateSqladminV1beta4 fromValue(String value) {

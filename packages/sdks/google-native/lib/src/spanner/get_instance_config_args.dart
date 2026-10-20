@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_spanner_v1_get_instance_config_args_doc}
 class GetInstanceConfigArgs {
   final pulumi.Input<String> instanceConfigId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetInstanceConfigArgs].
   /// [instanceConfigId] Required.

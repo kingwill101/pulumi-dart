@@ -6,9 +6,9 @@ import 'public_key_credential_format.dart';
 /// A public key format and data.
 class PublicKeyCredential {
   /// The format of the key.
-  final pulumi.Input<PublicKeyCredentialFormat>? format;
+  final pulumi.Input<PublicKeyCredentialFormat?>? format;
   /// The key data.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
 
   /// Creates a new [PublicKeyCredential].
   /// [format] The format of the key.

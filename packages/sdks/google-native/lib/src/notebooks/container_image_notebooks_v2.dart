@@ -7,7 +7,7 @@ class ContainerImageNotebooksV2 {
   /// The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
   final pulumi.Input<String> repository;
   /// Optional. The tag of the container image. If not specified, this defaults to the latest tag.
-  final pulumi.Input<String>? tag;
+  final pulumi.Input<String?>? tag;
 
   /// Creates a new [ContainerImageNotebooksV2].
   /// [repository] The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`

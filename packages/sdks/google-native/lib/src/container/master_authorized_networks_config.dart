@@ -6,11 +6,11 @@ import 'cidr_block.dart';
 /// Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
 class MasterAuthorizedNetworksConfig {
   /// cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
-  final pulumi.Input<List<CidrBlock>>? cidrBlocks;
+  final pulumi.Input<List<CidrBlock>?>? cidrBlocks;
   /// Whether or not master authorized networks is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Whether master is accessbile via Google Compute Engine Public IP addresses.
-  final pulumi.Input<bool>? gcpPublicCidrsAccessEnabled;
+  final pulumi.Input<bool?>? gcpPublicCidrsAccessEnabled;
 
   /// Creates a new [MasterAuthorizedNetworksConfig].
   /// [cidrBlocks] cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.

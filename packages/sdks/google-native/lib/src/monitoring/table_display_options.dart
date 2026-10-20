@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Table display options that can be reused.
 class TableDisplayOptions {
   /// Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings
-  final pulumi.Input<List<String>>? shownColumns;
+  final pulumi.Input<List<String>?>? shownColumns;
 
   /// Creates a new [TableDisplayOptions].
   /// [shownColumns] Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings

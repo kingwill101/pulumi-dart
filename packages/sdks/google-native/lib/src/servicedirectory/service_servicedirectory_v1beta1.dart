@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'endpoint_response_servicedirectory_v1beta1.dart';
 import 'service_servicedirectory_v1beta1_args.dart';
 
 /// Creates a service, and returns the new service.
@@ -6,7 +7,7 @@ class ServiceServicedirectoryV1beta1 extends pulumi.CustomResource {
   /// The timestamp when the service was created.
   late final pulumi.Output<String> createTime;
   /// Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints.
-  late final pulumi.Output<List<Map<String, dynamic>>> endpoints;
+  late final pulumi.Output<List<EndpointResponseServicedirectoryV1beta1>> endpoints;
   late final pulumi.Output<String> location;
   /// Optional. Metadata for the service. This data can be consumed by service clients. Restrictions: * The entire metadata dictionary may contain up to 2000 characters, spread accoss all key-value pairs. Metadata that goes beyond this limit are rejected * Valid metadata keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Metadata that fails to meet these requirements are rejected Note: This field is equivalent to the `annotations` field in the v1 API. They have the same syntax and read/write to the same location in Service Directory.
   late final pulumi.Output<Map<String, String>> metadata;
@@ -33,12 +34,33 @@ class ServiceServicedirectoryV1beta1 extends pulumi.CustomResource {
           'google-native:servicedirectory/v1beta1:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'namespaceId', 'project', 'serviceId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
-    endpoints = registerOutput<List<Map<String, dynamic>>>('endpoints');
+    endpoints = registerOutput<List<EndpointResponseServicedirectoryV1beta1>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointResponseServicedirectoryV1beta1>(guardedValue, (value) => EndpointResponseServicedirectoryV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    namespaceId = registerOutput<String>('namespaceId');
+    project = registerOutput<String>('project');
+    serviceId = registerOutput<String>('serviceId');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ServiceServicedirectoryV1beta1] resource.
+  ServiceServicedirectoryV1beta1.reference(String urn)
+    : super(
+        'google-native:servicedirectory/v1beta1:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    endpoints = registerOutput<List<EndpointResponseServicedirectoryV1beta1>>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointResponseServicedirectoryV1beta1>(guardedValue, (value) => EndpointResponseServicedirectoryV1beta1.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');
     project = registerOutput<String>('project');

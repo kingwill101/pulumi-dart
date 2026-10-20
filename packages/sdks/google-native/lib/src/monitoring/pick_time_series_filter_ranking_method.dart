@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
-enum PickTimeSeriesFilterRankingMethod {
+enum PickTimeSeriesFilterRankingMethod implements pulumi.PulumiEnum<String> {
   methodUnspecified("METHOD_UNSPECIFIED"),
   methodMean("METHOD_MEAN"),
   methodMax("METHOD_MAX"),
@@ -8,6 +10,7 @@ enum PickTimeSeriesFilterRankingMethod {
   methodLatest("METHOD_LATEST");
 
   const PickTimeSeriesFilterRankingMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static PickTimeSeriesFilterRankingMethod fromValue(String value) {

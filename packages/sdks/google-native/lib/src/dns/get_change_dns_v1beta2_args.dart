@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dns_v1beta2_get_change_dns_v1beta2_args_doc}
 class GetChangeDnsV1beta2Args {
   final pulumi.Input<String> changeId;
-  final pulumi.Input<String>? clientOperationId;
+  final pulumi.Input<String?>? clientOperationId;
   final pulumi.Input<String> managedZone;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetChangeDnsV1beta2Args].
   /// [changeId] Required.

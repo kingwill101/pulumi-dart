@@ -40,8 +40,30 @@ class CanaryEvaluation extends pulumi.CustomResource {
           'google-native:apigee/v1:CanaryEvaluation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'organizationId']).merge(options),
         ) {
+    control = registerOutput<String>('control');
+    createTime = registerOutput<String>('createTime');
+    endTime = registerOutput<String>('endTime');
+    instanceId = registerOutput<String>('instanceId');
+    metricLabels = registerOutput<GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse>('metricLabels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+    treatment = registerOutput<String>('treatment');
+    verdict = registerOutput<String>('verdict');
+  }
+
+  /// Creates a typed reference to an existing [CanaryEvaluation] resource.
+  CanaryEvaluation.reference(String urn)
+    : super(
+        'google-native:apigee/v1:CanaryEvaluation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     control = registerOutput<String>('control');
     createTime = registerOutput<String>('createTime');
     endTime = registerOutput<String>('endTime');

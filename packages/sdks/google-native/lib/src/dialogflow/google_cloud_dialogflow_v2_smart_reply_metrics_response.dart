@@ -32,7 +32,7 @@ class GoogleCloudDialogflowV2SmartReplyMetricsResponse {
 
   factory GoogleCloudDialogflowV2SmartReplyMetricsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowV2SmartReplyMetricsResponse(
-      allowlistCoverage: pulumi.Input.fromValue(map['allowlistCoverage'] as double),
+      allowlistCoverage: pulumi.Input.fromValue((map['allowlistCoverage'] as num).toDouble()),
       conversationCount: pulumi.Input.fromValue(map['conversationCount'] as String),
       topNMetrics: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse>(map['topNMetrics']!, (value) => GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );

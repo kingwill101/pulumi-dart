@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A concurrency control configuration. Defines a group config that, when attached to an instance, recognizes that instance as part of a group of instances where only up the concurrency_limit of instances in that group can undergo simultaneous maintenance. For more information: go/concurrency-control-design-doc
 class ResourcePolicyVmMaintenancePolicyConcurrencyControl {
-  final pulumi.Input<int>? concurrencyLimit;
+  final pulumi.Input<int?>? concurrencyLimit;
 
   /// Creates a new [ResourcePolicyVmMaintenancePolicyConcurrencyControl].
   /// [concurrencyLimit] Optional.
@@ -20,7 +20,7 @@ class ResourcePolicyVmMaintenancePolicyConcurrencyControl {
 
   factory ResourcePolicyVmMaintenancePolicyConcurrencyControl.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyVmMaintenancePolicyConcurrencyControl(
-      concurrencyLimit: (() { final guardedValue = map['concurrencyLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      concurrencyLimit: (() { final guardedValue = map['concurrencyLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

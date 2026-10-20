@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Credential info for the Cloud SQL.
 class CloudSqlCredential {
   /// The password for the credential.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The username for the credential.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
 
   /// Creates a new [CloudSqlCredential].
   /// [password] The password for the credential.

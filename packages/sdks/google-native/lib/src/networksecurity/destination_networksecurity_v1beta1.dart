@@ -8,9 +8,9 @@ class DestinationNetworksecurityV1beta1 {
   /// List of host names to match. Matched against the ":authority" header in http requests. At least one host should match. Each host can be an exact match, or a prefix match (example "mydomain.*") or a suffix match (example "*.myorg.com") or a presence (any) match "*".
   final pulumi.Input<List<String>> hosts;
   /// Optional. Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match. Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy.
-  final pulumi.Input<HttpHeaderMatchNetworksecurityV1beta1>? httpHeaderMatch;
+  final pulumi.Input<HttpHeaderMatchNetworksecurityV1beta1?>? httpHeaderMatch;
   /// Optional. A list of HTTP methods to match. At least one method should match. Should not be set for gRPC services.
-  final pulumi.Input<List<String>>? methods;
+  final pulumi.Input<List<String>?>? methods;
   /// List of destination ports to match. At least one port should match.
   final pulumi.Input<List<int>> ports;
 

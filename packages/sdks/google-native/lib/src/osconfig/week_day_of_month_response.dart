@@ -32,8 +32,8 @@ class WeekDayOfMonthResponse {
   factory WeekDayOfMonthResponse.fromMap(Map<String, dynamic> map) {
     return WeekDayOfMonthResponse(
       dayOfWeek: pulumi.Input.fromValue(map['dayOfWeek'] as String),
-      dayOffset: pulumi.Input.fromValue(map['dayOffset'] as int),
-      weekOrdinal: pulumi.Input.fromValue(map['weekOrdinal'] as int),
+      dayOffset: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dayOffset'])),
+      weekOrdinal: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['weekOrdinal'])),
     );
   }
 }

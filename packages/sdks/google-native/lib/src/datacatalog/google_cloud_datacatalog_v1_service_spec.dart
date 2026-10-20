@@ -6,7 +6,7 @@ import 'google_cloud_datacatalog_v1_cloud_bigtable_instance_spec.dart';
 /// Specification that applies to a Service resource. Valid only for entries with the `SERVICE` type.
 class GoogleCloudDatacatalogV1ServiceSpec {
   /// Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
-  final pulumi.Input<GoogleCloudDatacatalogV1CloudBigtableInstanceSpec>? cloudBigtableInstanceSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1CloudBigtableInstanceSpec?>? cloudBigtableInstanceSpec;
 
   /// Creates a new [GoogleCloudDatacatalogV1ServiceSpec].
   /// [cloudBigtableInstanceSpec] Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.

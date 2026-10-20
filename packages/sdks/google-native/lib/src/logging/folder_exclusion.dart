@@ -29,8 +29,26 @@ class FolderExclusion extends pulumi.CustomResource {
           'google-native:logging/v2:FolderExclusion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['folderId']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    disabled = registerOutput<bool>('disabled');
+    filter = registerOutput<String>('filter');
+    folderId = registerOutput<String>('folderId');
+    this.name = registerOutput<String>('name');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [FolderExclusion] resource.
+  FolderExclusion.reference(String urn)
+    : super(
+        'google-native:logging/v2:FolderExclusion',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     disabled = registerOutput<bool>('disabled');

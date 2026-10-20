@@ -7,10 +7,10 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_sqladmin_v1beta4_get_user_sqladmin_v1beta4_args_doc}
 class GetUserSqladminV1beta4Args {
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   final pulumi.Input<String> instance;
   final pulumi.Input<String> name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetUserSqladminV1beta4Args].
   /// [host] Optional.

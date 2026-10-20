@@ -4,17 +4,17 @@
 /// Result data returned by getSubscription.
 class GetSubscriptionResult {
   /// Name of the API product for which the developer is purchasing a subscription.
-  final String apiproduct;
+  final String? apiproduct;
   /// Time when the API product subscription was created in milliseconds since epoch.
-  final String createdAt;
+  final String? createdAt;
   /// Time when the API product subscription ends in milliseconds since epoch.
-  final String endTime;
+  final String? endTime;
   /// Time when the API product subscription was last modified in milliseconds since epoch.
-  final String lastModifiedAt;
+  final String? lastModifiedAt;
   /// Name of the API product subscription.
-  final String name;
+  final String? name;
   /// Time when the API product subscription starts in milliseconds since epoch.
-  final String startTime;
+  final String? startTime;
 
   /// Creates a new [GetSubscriptionResult].
   /// [apiproduct] Name of the API product for which the developer is purchasing a subscription.
@@ -24,33 +24,33 @@ class GetSubscriptionResult {
   /// [name] Name of the API product subscription.
   /// [startTime] Time when the API product subscription starts in milliseconds since epoch.
   const GetSubscriptionResult({
-    required this.apiproduct,
-    required this.createdAt,
-    required this.endTime,
-    required this.lastModifiedAt,
-    required this.name,
-    required this.startTime,
+    this.apiproduct,
+    this.createdAt,
+    this.endTime,
+    this.lastModifiedAt,
+    this.name,
+    this.startTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'apiproduct': apiproduct,
-      'createdAt': createdAt,
-      'endTime': endTime,
-      'lastModifiedAt': lastModifiedAt,
-      'name': name,
-      'startTime': startTime,
+      'apiproduct': ?apiproduct,
+      'createdAt': ?createdAt,
+      'endTime': ?endTime,
+      'lastModifiedAt': ?lastModifiedAt,
+      'name': ?name,
+      'startTime': ?startTime,
     };
   }
 
   factory GetSubscriptionResult.fromMap(Map<String, dynamic> map) {
     return GetSubscriptionResult(
-      apiproduct: map['apiproduct'] as String,
-      createdAt: map['createdAt'] as String,
-      endTime: map['endTime'] as String,
-      lastModifiedAt: map['lastModifiedAt'] as String,
-      name: map['name'] as String,
-      startTime: map['startTime'] as String,
+      apiproduct: (() { final guardedValue = map['apiproduct']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endTime: (() { final guardedValue = map['endTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastModifiedAt: (() { final guardedValue = map['lastModifiedAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      startTime: (() { final guardedValue = map['startTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

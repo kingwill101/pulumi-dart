@@ -36,16 +36,36 @@ class AuthorizedCertificate extends pulumi.CustomResource {
           'google-native:appengine/v1:AuthorizedCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['appId']).merge(options),
         ) {
     appId = registerOutput<String>('appId');
     certificateRawData = registerOutput<CertificateRawDataResponse>('certificateRawData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateRawDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
     domainMappingsCount = registerOutput<int>('domainMappingsCount');
-    domainNames = registerOutput<List<String>>('domainNames');
+    domainNames = registerOutput<List<String>>('domainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     expireTime = registerOutput<String>('expireTime');
     managedCertificate = registerOutput<ManagedCertificateResponse>('managedCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedCertificateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    visibleDomainMappings = registerOutput<List<String>>('visibleDomainMappings');
+    visibleDomainMappings = registerOutput<List<String>>('visibleDomainMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [AuthorizedCertificate] resource.
+  AuthorizedCertificate.reference(String urn)
+    : super(
+        'google-native:appengine/v1:AuthorizedCertificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    appId = registerOutput<String>('appId');
+    certificateRawData = registerOutput<CertificateRawDataResponse>('certificateRawData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateRawDataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    domainMappingsCount = registerOutput<int>('domainMappingsCount');
+    domainNames = registerOutput<List<String>>('domainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    expireTime = registerOutput<String>('expireTime');
+    managedCertificate = registerOutput<ManagedCertificateResponse>('managedCertificate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedCertificateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    visibleDomainMappings = registerOutput<List<String>>('visibleDomainMappings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

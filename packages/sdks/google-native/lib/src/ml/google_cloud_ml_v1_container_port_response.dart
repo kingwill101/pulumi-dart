@@ -21,7 +21,7 @@ class GoogleCloudMlV1ContainerPortResponse {
 
   factory GoogleCloudMlV1ContainerPortResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1ContainerPortResponse(
-      containerPort: pulumi.Input.fromValue(map['containerPort'] as int),
+      containerPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['containerPort'])),
     );
   }
 }

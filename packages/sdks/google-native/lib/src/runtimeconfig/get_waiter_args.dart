@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_runtimeconfig_v1beta1_get_waiter_args_doc}
 class GetWaiterArgs {
   final pulumi.Input<String> configId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> waiterId;
 
   /// Creates a new [GetWaiterArgs].

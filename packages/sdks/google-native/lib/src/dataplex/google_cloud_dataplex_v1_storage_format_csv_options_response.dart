@@ -38,7 +38,7 @@ class GoogleCloudDataplexV1StorageFormatCsvOptionsResponse {
     return GoogleCloudDataplexV1StorageFormatCsvOptionsResponse(
       delimiter: pulumi.Input.fromValue(map['delimiter'] as String),
       encoding: pulumi.Input.fromValue(map['encoding'] as String),
-      headerRows: pulumi.Input.fromValue(map['headerRows'] as int),
+      headerRows: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['headerRows'])),
       quote: pulumi.Input.fromValue(map['quote'] as String),
     );
   }

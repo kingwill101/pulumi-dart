@@ -8,35 +8,35 @@ import 'volume_config_response.dart';
 /// Result data returned by getProvisioningConfig.
 class GetProvisioningConfigResult {
   /// URI to Cloud Console UI view of this provisioning config.
-  final String cloudConsoleUri;
+  final String? cloudConsoleUri;
   /// Optional. The user-defined identifier of the provisioning config.
-  final String customId;
+  final String? customId;
   /// Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
-  final String email;
+  final String? email;
   /// A service account to enable customers to access instance credentials upon handover.
-  final String handoverServiceAccount;
+  final String? handoverServiceAccount;
   /// Instances to be created.
-  final List<InstanceConfigResponse> instances;
+  final List<InstanceConfigResponse>? instances;
   /// Optional. Location name of this ProvisioningConfig. It is optional only for Intake UI transition period.
-  final String location;
+  final String? location;
   /// The system-generated name of the provisioning config. This follows the UUID format.
-  final String name;
+  final String? name;
   /// Networks to be created.
-  final List<NetworkConfigResponse> networks;
+  final List<NetworkConfigResponse>? networks;
   /// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
-  final String pod;
+  final String? pod;
   /// State of ProvisioningConfig.
-  final String state;
+  final String? state;
   /// Optional status messages associated with the FAILED state.
-  final String statusMessage;
+  final String? statusMessage;
   /// A generated ticket id to track provisioning request.
-  final String ticketId;
+  final String? ticketId;
   /// Last update timestamp.
-  final String updateTime;
+  final String? updateTime;
   /// Volumes to be created.
-  final List<VolumeConfigResponse> volumes;
+  final List<VolumeConfigResponse>? volumes;
   /// If true, VPC SC is enabled for the cluster.
-  final bool vpcScEnabled;
+  final bool? vpcScEnabled;
 
   /// Creates a new [GetProvisioningConfigResult].
   /// [cloudConsoleUri] URI to Cloud Console UI view of this provisioning config.
@@ -55,60 +55,60 @@ class GetProvisioningConfigResult {
   /// [volumes] Volumes to be created.
   /// [vpcScEnabled] If true, VPC SC is enabled for the cluster.
   const GetProvisioningConfigResult({
-    required this.cloudConsoleUri,
-    required this.customId,
-    required this.email,
-    required this.handoverServiceAccount,
-    required this.instances,
-    required this.location,
-    required this.name,
-    required this.networks,
-    required this.pod,
-    required this.state,
-    required this.statusMessage,
-    required this.ticketId,
-    required this.updateTime,
-    required this.volumes,
-    required this.vpcScEnabled,
+    this.cloudConsoleUri,
+    this.customId,
+    this.email,
+    this.handoverServiceAccount,
+    this.instances,
+    this.location,
+    this.name,
+    this.networks,
+    this.pod,
+    this.state,
+    this.statusMessage,
+    this.ticketId,
+    this.updateTime,
+    this.volumes,
+    this.vpcScEnabled,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'cloudConsoleUri': cloudConsoleUri,
-      'customId': customId,
-      'email': email,
-      'handoverServiceAccount': handoverServiceAccount,
-      'instances': pulumi.Input.encodeList<InstanceConfigResponse, Map<String, dynamic>>(instances, (value) => value.toMap()),
-      'location': location,
-      'name': name,
-      'networks': pulumi.Input.encodeList<NetworkConfigResponse, Map<String, dynamic>>(networks, (value) => value.toMap()),
-      'pod': pod,
-      'state': state,
-      'statusMessage': statusMessage,
-      'ticketId': ticketId,
-      'updateTime': updateTime,
-      'volumes': pulumi.Input.encodeList<VolumeConfigResponse, Map<String, dynamic>>(volumes, (value) => value.toMap()),
-      'vpcScEnabled': vpcScEnabled,
+      'cloudConsoleUri': ?cloudConsoleUri,
+      'customId': ?customId,
+      'email': ?email,
+      'handoverServiceAccount': ?handoverServiceAccount,
+      'instances': ?(() { final guardedValue = instances; if (guardedValue == null) return null; return pulumi.Input.encodeList<InstanceConfigResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'location': ?location,
+      'name': ?name,
+      'networks': ?(() { final guardedValue = networks; if (guardedValue == null) return null; return pulumi.Input.encodeList<NetworkConfigResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'pod': ?pod,
+      'state': ?state,
+      'statusMessage': ?statusMessage,
+      'ticketId': ?ticketId,
+      'updateTime': ?updateTime,
+      'volumes': ?(() { final guardedValue = volumes; if (guardedValue == null) return null; return pulumi.Input.encodeList<VolumeConfigResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'vpcScEnabled': ?vpcScEnabled,
     };
   }
 
   factory GetProvisioningConfigResult.fromMap(Map<String, dynamic> map) {
     return GetProvisioningConfigResult(
-      cloudConsoleUri: map['cloudConsoleUri'] as String,
-      customId: map['customId'] as String,
-      email: map['email'] as String,
-      handoverServiceAccount: map['handoverServiceAccount'] as String,
-      instances: pulumi.Input.decodeList<InstanceConfigResponse>(map['instances']!, (value) => InstanceConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
-      location: map['location'] as String,
-      name: map['name'] as String,
-      networks: pulumi.Input.decodeList<NetworkConfigResponse>(map['networks']!, (value) => NetworkConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
-      pod: map['pod'] as String,
-      state: map['state'] as String,
-      statusMessage: map['statusMessage'] as String,
-      ticketId: map['ticketId'] as String,
-      updateTime: map['updateTime'] as String,
-      volumes: pulumi.Input.decodeList<VolumeConfigResponse>(map['volumes']!, (value) => VolumeConfigResponse.fromMap((value as Map).cast<String, dynamic>())),
-      vpcScEnabled: map['vpcScEnabled'] as bool,
+      cloudConsoleUri: (() { final guardedValue = map['cloudConsoleUri']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customId: (() { final guardedValue = map['customId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      email: (() { final guardedValue = map['email']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      handoverServiceAccount: (() { final guardedValue = map['handoverServiceAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceConfigResponse>(guardedValue, (value) => InstanceConfigResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networks: (() { final guardedValue = map['networks']; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConfigResponse>(guardedValue, (value) => NetworkConfigResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      pod: (() { final guardedValue = map['pod']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      statusMessage: (() { final guardedValue = map['statusMessage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      ticketId: (() { final guardedValue = map['ticketId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeConfigResponse>(guardedValue, (value) => VolumeConfigResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      vpcScEnabled: (() { final guardedValue = map['vpcScEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
     );
   }
 }

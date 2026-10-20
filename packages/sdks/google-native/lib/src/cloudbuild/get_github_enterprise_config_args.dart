@@ -7,11 +7,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_cloudbuild_v1_get_github_enterprise_config_args_doc}
 class GetGithubEnterpriseConfigArgs {
-  final pulumi.Input<String>? configId;
+  final pulumi.Input<String?>? configId;
   final pulumi.Input<String> githubEnterpriseConfigId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? projectId;
 
   /// Creates a new [GetGithubEnterpriseConfigArgs].
   /// [configId] Optional.

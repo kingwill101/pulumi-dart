@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster.
 class DefaultSnatStatus {
   /// Disables cluster default sNAT rules.
-  final pulumi.Input<bool>? disabled;
+  final pulumi.Input<bool?>? disabled;
 
   /// Creates a new [DefaultSnatStatus].
   /// [disabled] Disables cluster default sNAT rules.

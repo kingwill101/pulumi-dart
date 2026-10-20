@@ -45,8 +45,35 @@ class TimeSeriesAiplatformV1beta1 extends pulumi.CustomResource {
           'google-native:aiplatform/v1beta1:TimeSeries',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['experimentId', 'location', 'project', 'runId', 'tensorboardId']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    experimentId = registerOutput<String>('experimentId');
+    location = registerOutput<String>('location');
+    metadata = registerOutput<GoogleCloudAiplatformV1beta1TensorboardTimeSeriesMetadataResponse>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1TensorboardTimeSeriesMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    pluginData = registerOutput<String>('pluginData');
+    pluginName = registerOutput<String>('pluginName');
+    project = registerOutput<String>('project');
+    runId = registerOutput<String>('runId');
+    tensorboardId = registerOutput<String>('tensorboardId');
+    tensorboardTimeSeriesId = registerOutput<String?>('tensorboardTimeSeriesId');
+    updateTime = registerOutput<String>('updateTime');
+    valueType = registerOutput<String>('valueType');
+  }
+
+  /// Creates a typed reference to an existing [TimeSeriesAiplatformV1beta1] resource.
+  TimeSeriesAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:TimeSeries',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');

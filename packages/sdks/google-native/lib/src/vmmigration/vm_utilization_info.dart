@@ -7,11 +7,11 @@ import 'vmware_vm_details.dart';
 /// Utilization information of a single VM.
 class VmUtilizationInfo {
   /// Utilization metrics for this VM.
-  final pulumi.Input<VmUtilizationMetrics>? utilization;
+  final pulumi.Input<VmUtilizationMetrics?>? utilization;
   /// The VM's ID in the source.
-  final pulumi.Input<String>? vmId;
+  final pulumi.Input<String?>? vmId;
   /// The description of the VM in a Source of type Vmware.
-  final pulumi.Input<VmwareVmDetails>? vmwareVmDetails;
+  final pulumi.Input<VmwareVmDetails?>? vmwareVmDetails;
 
   /// Creates a new [VmUtilizationInfo].
   /// [utilization] Utilization metrics for this VM.

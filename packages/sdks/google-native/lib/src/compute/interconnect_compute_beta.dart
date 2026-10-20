@@ -1,6 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'interconnect_circuit_info_response_compute_beta.dart';
 import 'interconnect_compute_beta_args.dart';
 import 'interconnect_macsec_response_compute_beta.dart';
+import 'interconnect_outage_notification_response_compute_beta.dart';
 
 /// Creates an Interconnect in the specified project using the data included in the request.
 class InterconnectComputeBeta extends pulumi.CustomResource {
@@ -9,7 +11,7 @@ class InterconnectComputeBeta extends pulumi.CustomResource {
   /// [Output only] List of features available for this Interconnect connection, which can take one of the following values: - MACSEC If present then the Interconnect connection is provisioned on MACsec capable hardware ports. If not present then the Interconnect connection is provisioned on non-MACsec capable ports and MACsec isn't supported and enabling MACsec fails.
   late final pulumi.Output<List<String>> availableFeatures;
   /// A list of CircuitInfo objects, that describe the individual circuits in this LAG.
-  late final pulumi.Output<List<Map<String, dynamic>>> circuitInfos;
+  late final pulumi.Output<List<InterconnectCircuitInfoResponseComputeBeta>> circuitInfos;
   /// Creation timestamp in RFC3339 text format.
   late final pulumi.Output<String> creationTimestamp;
   /// Customer name, to put in the Letter of Authorization as the party authorized to request a crossconnect.
@@ -17,7 +19,7 @@ class InterconnectComputeBeta extends pulumi.CustomResource {
   /// An optional description of this resource. Provide this property when you create the resource.
   late final pulumi.Output<String> description;
   /// A list of outages expected for this Interconnect.
-  late final pulumi.Output<List<Map<String, dynamic>>> expectedOutages;
+  late final pulumi.Output<List<InterconnectOutageNotificationResponseComputeBeta>> expectedOutages;
   /// IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
   late final pulumi.Output<String> googleIpAddress;
   /// Google reference ID to be used when raising support tickets with Google or otherwise to debug backend connectivity issues.
@@ -78,22 +80,22 @@ class InterconnectComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:Interconnect',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     adminEnabled = registerOutput<bool>('adminEnabled');
-    availableFeatures = registerOutput<List<String>>('availableFeatures');
-    circuitInfos = registerOutput<List<Map<String, dynamic>>>('circuitInfos');
+    availableFeatures = registerOutput<List<String>>('availableFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    circuitInfos = registerOutput<List<InterconnectCircuitInfoResponseComputeBeta>>('circuitInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectCircuitInfoResponseComputeBeta>(guardedValue, (value) => InterconnectCircuitInfoResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     customerName = registerOutput<String>('customerName');
     description = registerOutput<String>('description');
-    expectedOutages = registerOutput<List<Map<String, dynamic>>>('expectedOutages');
+    expectedOutages = registerOutput<List<InterconnectOutageNotificationResponseComputeBeta>>('expectedOutages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectOutageNotificationResponseComputeBeta>(guardedValue, (value) => InterconnectOutageNotificationResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
     googleIpAddress = registerOutput<String>('googleIpAddress');
     googleReferenceId = registerOutput<String>('googleReferenceId');
-    interconnectAttachments = registerOutput<List<String>>('interconnectAttachments');
+    interconnectAttachments = registerOutput<List<String>>('interconnectAttachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     interconnectType = registerOutput<String>('interconnectType');
     kind = registerOutput<String>('kind');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     linkType = registerOutput<String>('linkType');
     location = registerOutput<String>('location');
     macsec = registerOutput<InterconnectMacsecResponseComputeBeta>('macsec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectMacsecResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -106,7 +108,49 @@ class InterconnectComputeBeta extends pulumi.CustomResource {
     provisionedLinkCount = registerOutput<int>('provisionedLinkCount');
     remoteLocation = registerOutput<String>('remoteLocation');
     requestId = registerOutput<String?>('requestId');
-    requestedFeatures = registerOutput<List<String>>('requestedFeatures');
+    requestedFeatures = registerOutput<List<String>>('requestedFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    requestedLinkCount = registerOutput<int>('requestedLinkCount');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    selfLink = registerOutput<String>('selfLink');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [InterconnectComputeBeta] resource.
+  InterconnectComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:Interconnect',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    adminEnabled = registerOutput<bool>('adminEnabled');
+    availableFeatures = registerOutput<List<String>>('availableFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    circuitInfos = registerOutput<List<InterconnectCircuitInfoResponseComputeBeta>>('circuitInfos', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectCircuitInfoResponseComputeBeta>(guardedValue, (value) => InterconnectCircuitInfoResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    customerName = registerOutput<String>('customerName');
+    description = registerOutput<String>('description');
+    expectedOutages = registerOutput<List<InterconnectOutageNotificationResponseComputeBeta>>('expectedOutages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InterconnectOutageNotificationResponseComputeBeta>(guardedValue, (value) => InterconnectOutageNotificationResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
+    googleIpAddress = registerOutput<String>('googleIpAddress');
+    googleReferenceId = registerOutput<String>('googleReferenceId');
+    interconnectAttachments = registerOutput<List<String>>('interconnectAttachments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    interconnectType = registerOutput<String>('interconnectType');
+    kind = registerOutput<String>('kind');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    linkType = registerOutput<String>('linkType');
+    location = registerOutput<String>('location');
+    macsec = registerOutput<InterconnectMacsecResponseComputeBeta>('macsec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InterconnectMacsecResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    macsecEnabled = registerOutput<bool>('macsecEnabled');
+    this.name = registerOutput<String>('name');
+    nocContactEmail = registerOutput<String>('nocContactEmail');
+    operationalStatus = registerOutput<String>('operationalStatus');
+    peerIpAddress = registerOutput<String>('peerIpAddress');
+    project = registerOutput<String>('project');
+    provisionedLinkCount = registerOutput<int>('provisionedLinkCount');
+    remoteLocation = registerOutput<String>('remoteLocation');
+    requestId = registerOutput<String?>('requestId');
+    requestedFeatures = registerOutput<List<String>>('requestedFeatures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     requestedLinkCount = registerOutput<int>('requestedLinkCount');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
     selfLink = registerOutput<String>('selfLink');

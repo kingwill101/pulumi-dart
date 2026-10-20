@@ -1,4 +1,6 @@
-enum IntentDefaultResponsePlatformsItemDialogflowV2beta1 {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum IntentDefaultResponsePlatformsItemDialogflowV2beta1 implements pulumi.PulumiEnum<String> {
   platformUnspecified("PLATFORM_UNSPECIFIED"),
   facebook("FACEBOOK"),
   slack("SLACK"),
@@ -12,6 +14,7 @@ enum IntentDefaultResponsePlatformsItemDialogflowV2beta1 {
   googleHangouts("GOOGLE_HANGOUTS");
 
   const IntentDefaultResponsePlatformsItemDialogflowV2beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static IntentDefaultResponsePlatformsItemDialogflowV2beta1 fromValue(String value) {

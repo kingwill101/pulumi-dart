@@ -31,8 +31,25 @@ class FolderReplayPolicysimulatorV1beta1 extends pulumi.CustomResource {
           'google-native:policysimulator/v1beta1:FolderReplay',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['folderId', 'location']).merge(options),
         ) {
+    config = registerOutput<GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    folderId = registerOutput<String>('folderId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    resultsSummary = registerOutput<GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse>('resultsSummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [FolderReplayPolicysimulatorV1beta1] resource.
+  FolderReplayPolicysimulatorV1beta1.reference(String urn)
+    : super(
+        'google-native:policysimulator/v1beta1:FolderReplay',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     config = registerOutput<GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     folderId = registerOutput<String>('folderId');
     location = registerOutput<String>('location');

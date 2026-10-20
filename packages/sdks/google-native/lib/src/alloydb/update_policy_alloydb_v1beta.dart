@@ -6,7 +6,7 @@ import 'update_policy_mode_alloydb_v1beta.dart';
 /// Policy to be used while updating the instance.
 class UpdatePolicyAlloydbV1beta {
   /// Mode for updating the instance.
-  final pulumi.Input<UpdatePolicyModeAlloydbV1beta>? mode;
+  final pulumi.Input<UpdatePolicyModeAlloydbV1beta?>? mode;
 
   /// Creates a new [UpdatePolicyAlloydbV1beta].
   /// [mode] Mode for updating the instance.

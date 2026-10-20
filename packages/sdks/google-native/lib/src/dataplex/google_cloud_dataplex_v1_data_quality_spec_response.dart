@@ -41,7 +41,7 @@ class GoogleCloudDataplexV1DataQualitySpecResponse {
       postScanActions: pulumi.Input.fromValue(GoogleCloudDataplexV1DataQualitySpecPostScanActionsResponse.fromMap((map['postScanActions']! as Map).cast<String, dynamic>())),
       rowFilter: pulumi.Input.fromValue(map['rowFilter'] as String),
       rules: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDataplexV1DataQualityRuleResponse>(map['rules']!, (value) => GoogleCloudDataplexV1DataQualityRuleResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      samplingPercent: pulumi.Input.fromValue(map['samplingPercent'] as double),
+      samplingPercent: pulumi.Input.fromValue((map['samplingPercent'] as num).toDouble()),
     );
   }
 }

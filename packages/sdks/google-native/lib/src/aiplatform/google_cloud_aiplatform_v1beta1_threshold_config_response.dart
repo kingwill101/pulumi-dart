@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1beta1ThresholdConfigResponse {
 
   factory GoogleCloudAiplatformV1beta1ThresholdConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1beta1ThresholdConfigResponse(
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

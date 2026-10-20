@@ -7,9 +7,9 @@ import 'opportunistic_maintenance_strategy.dart';
 /// HostMaintenancePolicy contains the maintenance policy for the hosts on which the GKE VMs run on.
 class HostMaintenancePolicy {
   /// Specifies the frequency of planned maintenance events.
-  final pulumi.Input<HostMaintenancePolicyMaintenanceInterval>? maintenanceInterval;
+  final pulumi.Input<HostMaintenancePolicyMaintenanceInterval?>? maintenanceInterval;
   /// Strategy that will trigger maintenance on behalf of the customer.
-  final pulumi.Input<OpportunisticMaintenanceStrategy>? opportunisticMaintenanceStrategy;
+  final pulumi.Input<OpportunisticMaintenanceStrategy?>? opportunisticMaintenanceStrategy;
 
   /// Creates a new [HostMaintenancePolicy].
   /// [maintenanceInterval] Specifies the frequency of planned maintenance events.

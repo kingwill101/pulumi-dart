@@ -44,7 +44,7 @@ class PostgresqlSourceConfigResponse {
     return PostgresqlSourceConfigResponse(
       excludeObjects: pulumi.Input.fromValue(PostgresqlRdbmsResponse.fromMap((map['excludeObjects']! as Map).cast<String, dynamic>())),
       includeObjects: pulumi.Input.fromValue(PostgresqlRdbmsResponse.fromMap((map['includeObjects']! as Map).cast<String, dynamic>())),
-      maxConcurrentBackfillTasks: pulumi.Input.fromValue(map['maxConcurrentBackfillTasks'] as int),
+      maxConcurrentBackfillTasks: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConcurrentBackfillTasks'])),
       publication: pulumi.Input.fromValue(map['publication'] as String),
       replicationSlot: pulumi.Input.fromValue(map['replicationSlot'] as String),
     );

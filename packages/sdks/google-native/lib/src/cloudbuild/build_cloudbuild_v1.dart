@@ -3,11 +3,14 @@ import 'artifacts_response.dart';
 import 'build_approval_response.dart';
 import 'build_args.dart';
 import 'build_options_response.dart';
+import 'build_step_response.dart';
 import 'failure_info_response.dart';
 import 'results_response.dart';
+import 'secret_response.dart';
 import 'secrets_response.dart';
 import 'source_provenance_response.dart';
 import 'source_response.dart';
+import 'warning_response.dart';
 
 /// Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`).
 /// Auto-naming is currently not supported for this resource.
@@ -47,7 +50,7 @@ class BuildCloudbuildV1 extends pulumi.CustomResource {
   /// Results of the build.
   late final pulumi.Output<ResultsResponse> results;
   /// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
-  late final pulumi.Output<List<Map<String, dynamic>>> secrets;
+  late final pulumi.Output<List<SecretResponse>> secrets;
   /// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account.
   late final pulumi.Output<String> serviceAccount;
   /// The location of the source files to build.
@@ -61,7 +64,7 @@ class BuildCloudbuildV1 extends pulumi.CustomResource {
   /// Customer-readable message about the current status.
   late final pulumi.Output<String> statusDetail;
   /// The operations to be performed on the workspace.
-  late final pulumi.Output<List<Map<String, dynamic>>> steps;
+  late final pulumi.Output<List<BuildStepResponse>> steps;
   /// Substitutions data for `Build` resource.
   late final pulumi.Output<Map<String, String>> substitutions;
   /// Tags for annotation of a `Build`. These are not docker tags.
@@ -71,7 +74,7 @@ class BuildCloudbuildV1 extends pulumi.CustomResource {
   /// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
   late final pulumi.Output<Map<String, String>> timing;
   /// Non-fatal problems encountered during the execution of the build.
-  late final pulumi.Output<List<Map<String, dynamic>>> warnings;
+  late final pulumi.Output<List<WarningResponse>> warnings;
 
   /// Creates a new [BuildCloudbuildV1].
   /// [name] The Pulumi resource name.
@@ -85,7 +88,7 @@ class BuildCloudbuildV1 extends pulumi.CustomResource {
           'google-native:cloudbuild/v1:Build',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'projectId']).merge(options),
         ) {
     approval = registerOutput<BuildApprovalResponse>('approval', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildApprovalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     artifacts = registerOutput<ArtifactsResponse>('artifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ArtifactsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -94,7 +97,7 @@ class BuildCloudbuildV1 extends pulumi.CustomResource {
     createTime = registerOutput<String>('createTime');
     failureInfo = registerOutput<FailureInfoResponse>('failureInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FailureInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     finishTime = registerOutput<String>('finishTime');
-    images = registerOutput<List<String>>('images');
+    images = registerOutput<List<String>>('images', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     logUrl = registerOutput<String>('logUrl');
     logsBucket = registerOutput<String>('logsBucket');
@@ -104,18 +107,59 @@ class BuildCloudbuildV1 extends pulumi.CustomResource {
     projectId = registerOutput<String>('projectId');
     queueTtl = registerOutput<String>('queueTtl');
     results = registerOutput<ResultsResponse>('results', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResultsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    secrets = registerOutput<List<Map<String, dynamic>>>('secrets');
+    secrets = registerOutput<List<SecretResponse>>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretResponse>(guardedValue, (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>())); });
     serviceAccount = registerOutput<String>('serviceAccount');
     source = registerOutput<SourceResponse>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sourceProvenance = registerOutput<SourceProvenanceResponse>('sourceProvenance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceProvenanceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startTime = registerOutput<String>('startTime');
     status = registerOutput<String>('status');
     statusDetail = registerOutput<String>('statusDetail');
-    steps = registerOutput<List<Map<String, dynamic>>>('steps');
-    substitutions = registerOutput<Map<String, String>>('substitutions');
-    tags = registerOutput<List<String>>('tags');
+    steps = registerOutput<List<BuildStepResponse>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BuildStepResponse>(guardedValue, (value) => BuildStepResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    substitutions = registerOutput<Map<String, String>>('substitutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     timeout = registerOutput<String>('timeout');
-    timing = registerOutput<Map<String, String>>('timing');
-    warnings = registerOutput<List<Map<String, dynamic>>>('warnings');
+    timing = registerOutput<Map<String, String>>('timing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    warnings = registerOutput<List<WarningResponse>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WarningResponse>(guardedValue, (value) => WarningResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [BuildCloudbuildV1] resource.
+  BuildCloudbuildV1.reference(String urn)
+    : super(
+        'google-native:cloudbuild/v1:Build',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    approval = registerOutput<BuildApprovalResponse>('approval', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildApprovalResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    artifacts = registerOutput<ArtifactsResponse>('artifacts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ArtifactsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availableSecrets = registerOutput<SecretsResponse>('availableSecrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SecretsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    buildTriggerId = registerOutput<String>('buildTriggerId');
+    createTime = registerOutput<String>('createTime');
+    failureInfo = registerOutput<FailureInfoResponse>('failureInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FailureInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    finishTime = registerOutput<String>('finishTime');
+    images = registerOutput<List<String>>('images', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    logUrl = registerOutput<String>('logUrl');
+    logsBucket = registerOutput<String>('logsBucket');
+    this.name = registerOutput<String>('name');
+    this.options = registerOutput<BuildOptionsResponse>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BuildOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    projectId = registerOutput<String>('projectId');
+    queueTtl = registerOutput<String>('queueTtl');
+    results = registerOutput<ResultsResponse>('results', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResultsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secrets = registerOutput<List<SecretResponse>>('secrets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SecretResponse>(guardedValue, (value) => SecretResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    serviceAccount = registerOutput<String>('serviceAccount');
+    source = registerOutput<SourceResponse>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceProvenance = registerOutput<SourceProvenanceResponse>('sourceProvenance', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SourceProvenanceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startTime = registerOutput<String>('startTime');
+    status = registerOutput<String>('status');
+    statusDetail = registerOutput<String>('statusDetail');
+    steps = registerOutput<List<BuildStepResponse>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BuildStepResponse>(guardedValue, (value) => BuildStepResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    substitutions = registerOutput<Map<String, String>>('substitutions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    timeout = registerOutput<String>('timeout');
+    timing = registerOutput<Map<String, String>>('timing', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    warnings = registerOutput<List<WarningResponse>>('warnings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<WarningResponse>(guardedValue, (value) => WarningResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

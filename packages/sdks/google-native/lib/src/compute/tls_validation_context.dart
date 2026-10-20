@@ -7,11 +7,11 @@ import 'tls_validation_context_validation_source.dart';
 /// [Deprecated] Defines the mechanism to obtain the Certificate Authority certificate to validate the client/server certificate. validate the client/server certificate.
 class TlsValidationContext {
   /// The path to the file holding the CA certificate to validate the client or server certificate.
-  final pulumi.Input<String>? certificatePath;
+  final pulumi.Input<String?>? certificatePath;
   /// Specifies the config to retrieve certificates through SDS. This field is applicable only if tlsCertificateSource is set to USE_SDS.
-  final pulumi.Input<SdsConfig>? sdsConfig;
+  final pulumi.Input<SdsConfig?>? sdsConfig;
   /// Defines how TLS certificates are obtained.
-  final pulumi.Input<TlsValidationContextValidationSource>? validationSource;
+  final pulumi.Input<TlsValidationContextValidationSource?>? validationSource;
 
   /// Creates a new [TlsValidationContext].
   /// [certificatePath] The path to the file holding the CA certificate to validate the client or server certificate.

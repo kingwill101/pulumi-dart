@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The IP addresses of callers that are allowed to use the key.
 class ServerKeyRestrictions {
   /// A list of the caller IP addresses that are allowed to make API calls with this key.
-  final pulumi.Input<List<String>>? allowedIps;
+  final pulumi.Input<List<String>?>? allowedIps;
 
   /// Creates a new [ServerKeyRestrictions].
   /// [allowedIps] A list of the caller IP addresses that are allowed to make API calls with this key.

@@ -6,7 +6,7 @@ import 'logging_variant_config.dart';
 /// NodePoolLoggingConfig specifies logging configuration for nodepools.
 class NodePoolLoggingConfig {
   /// Logging variant configuration.
-  final pulumi.Input<LoggingVariantConfig>? variantConfig;
+  final pulumi.Input<LoggingVariantConfig?>? variantConfig;
 
   /// Creates a new [NodePoolLoggingConfig].
   /// [variantConfig] Logging variant configuration.

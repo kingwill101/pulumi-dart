@@ -26,7 +26,7 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse {
 
   factory GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse(
-      objectiveValue: pulumi.Input.fromValue(map['objectiveValue'] as double),
+      objectiveValue: pulumi.Input.fromValue((map['objectiveValue'] as num).toDouble()),
       trainingStep: pulumi.Input.fromValue(map['trainingStep'] as String),
     );
   }

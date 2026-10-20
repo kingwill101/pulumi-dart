@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration options for the KALM addon.
 class KalmConfig {
   /// Whether KALM is enabled for this cluster.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [KalmConfig].
   /// [enabled] Whether KALM is enabled for this cluster.

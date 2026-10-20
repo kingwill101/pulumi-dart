@@ -6,9 +6,9 @@ import 'oracle_column.dart';
 /// Oracle table.
 class OracleTable {
   /// Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
-  final pulumi.Input<List<OracleColumn>>? oracleColumns;
+  final pulumi.Input<List<OracleColumn>?>? oracleColumns;
   /// Table name.
-  final pulumi.Input<String>? table;
+  final pulumi.Input<String?>? table;
 
   /// Creates a new [OracleTable].
   /// [oracleColumns] Oracle columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.

@@ -9,13 +9,13 @@ import 'taxonomy_activated_policy_types_item_datacatalog_v1beta1.dart';
 /// {@macro pulumi_datacatalog_v1beta1_taxonomy_datacatalog_v1beta1_args_doc}
 class TaxonomyDatacatalogV1beta1Args {
   /// Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
-  final pulumi.Input<List<TaxonomyActivatedPolicyTypesItemDatacatalogV1beta1>>? activatedPolicyTypes;
+  final pulumi.Input<List<TaxonomyActivatedPolicyTypesItemDatacatalogV1beta1>?>? activatedPolicyTypes;
   /// Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8. The taxonomy display name must be unique within an organization.
   final pulumi.Input<String> displayName;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [TaxonomyDatacatalogV1beta1Args].
   /// [activatedPolicyTypes] Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.

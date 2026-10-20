@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkservices_v1beta1_get_service_lb_policy_args_doc}
 class GetServiceLbPolicyArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> serviceLbPolicyId;
 
   /// Creates a new [GetServiceLbPolicyArgs].

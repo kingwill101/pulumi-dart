@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A single rollout step with specified traffic allocation.
 class GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep {
   /// The name of the rollout step;
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The minimum time that this step should last. Should be longer than 1 hour. If not set, the default minimum duration for each step will be 1 hour.
-  final pulumi.Input<String>? minDuration;
+  final pulumi.Input<String?>? minDuration;
   /// The percentage of traffic allocated to the flow version of this rollout step. (0%, 100%].
-  final pulumi.Input<int>? trafficPercent;
+  final pulumi.Input<int?>? trafficPercent;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep].
   /// [displayName] The name of the rollout step;
@@ -33,7 +33,7 @@ class GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep {
     return GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep(
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       minDuration: (() { final guardedValue = map['minDuration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      trafficPercent: (() { final guardedValue = map['trafficPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      trafficPercent: (() { final guardedValue = map['trafficPercent']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

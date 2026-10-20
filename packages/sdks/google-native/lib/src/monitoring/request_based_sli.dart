@@ -7,9 +7,9 @@ import 'time_series_ratio.dart';
 /// Service Level Indicators for which atomic units of service are counted directly.
 class RequestBasedSli {
   /// distribution_cut is used when good_service is a count of values aggregated in a Distribution that fall into a good range. The total_service is the total count of all values aggregated in the Distribution.
-  final pulumi.Input<DistributionCut>? distributionCut;
+  final pulumi.Input<DistributionCut?>? distributionCut;
   /// good_total_ratio is used when the ratio of good_service to total_service is computed from two TimeSeries.
-  final pulumi.Input<TimeSeriesRatio>? goodTotalRatio;
+  final pulumi.Input<TimeSeriesRatio?>? goodTotalRatio;
 
   /// Creates a new [RequestBasedSli].
   /// [distributionCut] distribution_cut is used when good_service is a count of values aggregated in a Distribution that fall into a good range. The total_service is the total count of all values aggregated in the Distribution.

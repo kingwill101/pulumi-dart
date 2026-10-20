@@ -10,7 +10,7 @@ class GetParticipantDialogflowV2beta1Args {
   final pulumi.Input<String> conversationId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> participantId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetParticipantDialogflowV2beta1Args].
   /// [conversationId] Required.

@@ -1,10 +1,13 @@
-enum LoggingConfigLogActionsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum LoggingConfigLogActionsItem implements pulumi.PulumiEnum<String> {
   loggableActionUnspecified("LOGGABLE_ACTION_UNSPECIFIED"),
   find("FIND"),
   delete("DELETE"),
   copy("COPY");
 
   const LoggingConfigLogActionsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static LoggingConfigLogActionsItem fromValue(String value) {

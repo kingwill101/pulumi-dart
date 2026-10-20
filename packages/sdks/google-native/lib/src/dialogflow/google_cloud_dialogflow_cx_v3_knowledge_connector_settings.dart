@@ -7,15 +7,15 @@ import 'google_cloud_dialogflow_cx_v3_fulfillment.dart';
 /// The Knowledge Connector settings for this page or flow. This includes information such as the attached Knowledge Bases, and the way to execute fulfillment.
 class GoogleCloudDialogflowCxV3KnowledgeConnectorSettings {
   /// Optional. List of related data store connections.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3DataStoreConnection>>? dataStoreConnections;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3DataStoreConnection>?>? dataStoreConnections;
   /// Whether Knowledge Connector is enabled or not.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// The target flow to transition to. Format: `projects//locations//agents//flows/`.
-  final pulumi.Input<String>? targetFlow;
+  final pulumi.Input<String?>? targetFlow;
   /// The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
-  final pulumi.Input<String>? targetPage;
+  final pulumi.Input<String?>? targetPage;
   /// The fulfillment to be triggered. When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter `$request.knowledge.answers` (contains up to the 5 highest confidence answers) and `$request.knowledge.questions` (contains the corresponding questions) to construct the fulfillment.
-  final pulumi.Input<GoogleCloudDialogflowCxV3Fulfillment>? triggerFulfillment;
+  final pulumi.Input<GoogleCloudDialogflowCxV3Fulfillment?>? triggerFulfillment;
 
   /// Creates a new [GoogleCloudDialogflowCxV3KnowledgeConnectorSettings].
   /// [dataStoreConnections] Optional. List of related data store connections.

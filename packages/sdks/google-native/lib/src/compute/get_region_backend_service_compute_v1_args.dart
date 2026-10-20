@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_v1_get_region_backend_service_compute_v1_args_doc}
 class GetRegionBackendServiceComputeV1Args {
   final pulumi.Input<String> backendService;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetRegionBackendServiceComputeV1Args].

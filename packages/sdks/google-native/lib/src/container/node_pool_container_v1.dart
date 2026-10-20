@@ -8,6 +8,7 @@ import 'node_pool_args.dart';
 import 'node_pool_autoscaling_response.dart';
 import 'placement_policy_response.dart';
 import 'queued_provisioning_response.dart';
+import 'status_condition_response.dart';
 import 'update_info_response.dart';
 import 'upgrade_settings_response.dart';
 
@@ -19,7 +20,7 @@ class NodePoolContainerV1 extends pulumi.CustomResource {
   late final pulumi.Output<BestEffortProvisioningResponse> bestEffortProvisioning;
   late final pulumi.Output<String> clusterId;
   /// Which conditions caused the current node pool state.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<StatusConditionResponse>> conditions;
   /// The node configuration of the pool.
   late final pulumi.Output<NodeConfigResponse> config;
   /// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
@@ -71,18 +72,53 @@ class NodePoolContainerV1 extends pulumi.CustomResource {
           'google-native:container/v1:NodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['clusterId', 'location', 'project']).merge(options),
         ) {
     autoscaling = registerOutput<NodePoolAutoscalingResponse>('autoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolAutoscalingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     bestEffortProvisioning = registerOutput<BestEffortProvisioningResponse>('bestEffortProvisioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BestEffortProvisioningResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clusterId = registerOutput<String>('clusterId');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    conditions = registerOutput<List<StatusConditionResponse>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusConditionResponse>(guardedValue, (value) => StatusConditionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     config = registerOutput<NodeConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     initialNodeCount = registerOutput<int>('initialNodeCount');
-    instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls');
+    instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
-    locations = registerOutput<List<String>>('locations');
+    locations = registerOutput<List<String>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    management = registerOutput<NodeManagementResponse>('management', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeManagementResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    maxPodsConstraint = registerOutput<MaxPodsConstraintResponse>('maxPodsConstraint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaxPodsConstraintResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    networkConfig = registerOutput<NodeNetworkConfigResponse>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeNetworkConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    placementPolicy = registerOutput<PlacementPolicyResponse>('placementPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PlacementPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    podIpv4CidrSize = registerOutput<int>('podIpv4CidrSize');
+    project = registerOutput<String>('project');
+    queuedProvisioning = registerOutput<QueuedProvisioningResponse>('queuedProvisioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueuedProvisioningResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfLink = registerOutput<String>('selfLink');
+    status = registerOutput<String>('status');
+    statusMessage = registerOutput<String>('statusMessage');
+    updateInfo = registerOutput<UpdateInfoResponse>('updateInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpdateInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    upgradeSettings = registerOutput<UpgradeSettingsResponse>('upgradeSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return UpgradeSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    version = registerOutput<String>('version');
+  }
+
+  /// Creates a typed reference to an existing [NodePoolContainerV1] resource.
+  NodePoolContainerV1.reference(String urn)
+    : super(
+        'google-native:container/v1:NodePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoscaling = registerOutput<NodePoolAutoscalingResponse>('autoscaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodePoolAutoscalingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    bestEffortProvisioning = registerOutput<BestEffortProvisioningResponse>('bestEffortProvisioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BestEffortProvisioningResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clusterId = registerOutput<String>('clusterId');
+    conditions = registerOutput<List<StatusConditionResponse>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StatusConditionResponse>(guardedValue, (value) => StatusConditionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    config = registerOutput<NodeConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    initialNodeCount = registerOutput<int>('initialNodeCount');
+    instanceGroupUrls = registerOutput<List<String>>('instanceGroupUrls', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    locations = registerOutput<List<String>>('locations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     management = registerOutput<NodeManagementResponse>('management', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeManagementResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     maxPodsConstraint = registerOutput<MaxPodsConstraintResponse>('maxPodsConstraint', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MaxPodsConstraintResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

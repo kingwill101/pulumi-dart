@@ -38,6 +38,17 @@ Future<GetBucketResult> getBucket(
   return GetBucketResult.fromMap(result);
 }
 
+pulumi.Output<GetBucketResult> getBucketOutput(
+  GetBucketArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:storage/v1:getBucket',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketResult.fromMap);
+}
+
 /// Returns the ACL entry for the specified entity on the specified bucket.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_v1_get_bucket_access_control_args_doc}
 /// [options] Invoke options controlling this call.
@@ -52,6 +63,17 @@ Future<GetBucketAccessControlResult> getBucketAccessControl(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBucketAccessControlResult.fromMap(result);
+}
+
+pulumi.Output<GetBucketAccessControlResult> getBucketAccessControlOutput(
+  GetBucketAccessControlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:storage/v1:getBucketAccessControl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketAccessControlResult.fromMap);
 }
 
 /// Returns an IAM policy for the specified bucket.
@@ -70,6 +92,17 @@ Future<GetBucketIamPolicyResult> getBucketIamPolicy(
   return GetBucketIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetBucketIamPolicyResult> getBucketIamPolicyOutput(
+  GetBucketIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:storage/v1:getBucketIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketIamPolicyResult.fromMap);
+}
+
 /// Retrieves an object or its metadata.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_v1_get_bucket_object_args_doc}
 /// [options] Invoke options controlling this call.
@@ -84,6 +117,17 @@ Future<GetBucketObjectResult> getBucketObject(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBucketObjectResult.fromMap(result);
+}
+
+pulumi.Output<GetBucketObjectResult> getBucketObjectOutput(
+  GetBucketObjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:storage/v1:getBucketObject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBucketObjectResult.fromMap);
 }
 
 /// Returns the default object ACL entry for the specified entity on the specified bucket.
@@ -102,6 +146,17 @@ Future<GetDefaultObjectAccessControlResult> getDefaultObjectAccessControl(
   return GetDefaultObjectAccessControlResult.fromMap(result);
 }
 
+pulumi.Output<GetDefaultObjectAccessControlResult> getDefaultObjectAccessControlOutput(
+  GetDefaultObjectAccessControlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:storage/v1:getDefaultObjectAccessControl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDefaultObjectAccessControlResult.fromMap);
+}
+
 /// Retrieves an HMAC key's metadata
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_v1_get_hmac_key_args_doc}
 /// [options] Invoke options controlling this call.
@@ -116,6 +171,17 @@ Future<GetHmacKeyResult> getHmacKey(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHmacKeyResult.fromMap(result);
+}
+
+pulumi.Output<GetHmacKeyResult> getHmacKeyOutput(
+  GetHmacKeyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:storage/v1:getHmacKey',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHmacKeyResult.fromMap);
 }
 
 /// Returns metadata of the specified managed folder.
@@ -134,6 +200,17 @@ Future<GetManagedFolderResult> getManagedFolder(
   return GetManagedFolderResult.fromMap(result);
 }
 
+pulumi.Output<GetManagedFolderResult> getManagedFolderOutput(
+  GetManagedFolderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:storage/v1:getManagedFolder',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedFolderResult.fromMap);
+}
+
 /// Returns an IAM policy for the specified managed folder.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_v1_get_managed_folder_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -148,6 +225,17 @@ Future<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetManagedFolderIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicyOutput(
+  GetManagedFolderIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:storage/v1:getManagedFolderIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetManagedFolderIamPolicyResult.fromMap);
 }
 
 /// View a notification configuration.
@@ -166,6 +254,17 @@ Future<GetNotificationResult> getNotification(
   return GetNotificationResult.fromMap(result);
 }
 
+pulumi.Output<GetNotificationResult> getNotificationOutput(
+  GetNotificationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:storage/v1:getNotification',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNotificationResult.fromMap);
+}
+
 /// Returns the ACL entry for the specified entity on the specified object.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_v1_get_object_access_control_args_doc}
 /// [options] Invoke options controlling this call.
@@ -182,6 +281,17 @@ Future<GetObjectAccessControlResult> getObjectAccessControl(
   return GetObjectAccessControlResult.fromMap(result);
 }
 
+pulumi.Output<GetObjectAccessControlResult> getObjectAccessControlOutput(
+  GetObjectAccessControlArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:storage/v1:getObjectAccessControl',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetObjectAccessControlResult.fromMap);
+}
+
 /// Returns an IAM policy for the specified object.
 /// [args] Arguments passed to this invoke. {@macro pulumi_storage_v1_get_object_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -196,4 +306,15 @@ Future<GetObjectIamPolicyResult> getObjectIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetObjectIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetObjectIamPolicyResult> getObjectIamPolicyOutput(
+  GetObjectIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:storage/v1:getObjectIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetObjectIamPolicyResult.fromMap);
 }

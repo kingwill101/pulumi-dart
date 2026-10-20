@@ -9,20 +9,20 @@ import 'public_delegated_prefix_public_delegated_sub_prefix_compute_v1.dart';
 /// {@macro pulumi_compute_v1_global_public_delegated_prefix_compute_v1_args_doc}
 class GlobalPublicDelegatedPrefixComputeV1Args {
   /// An optional description of this resource. Provide this property when you create the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The IP address range, in CIDR format, represented by this public delegated prefix.
-  final pulumi.Input<String>? ipCidrRange;
+  final pulumi.Input<String?>? ipCidrRange;
   /// If true, the prefix will be live migrated.
-  final pulumi.Input<bool>? isLiveMigration;
+  final pulumi.Input<bool?>? isLiveMigration;
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
-  final pulumi.Input<String>? parentPrefix;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? parentPrefix;
+  final pulumi.Input<String?>? project;
   /// The list of sub public delegated prefixes that exist for this public delegated prefix.
-  final pulumi.Input<List<PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1>>? publicDelegatedSubPrefixs;
+  final pulumi.Input<List<PublicDelegatedPrefixPublicDelegatedSubPrefixComputeV1>?>? publicDelegatedSubPrefixs;
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
 
   /// Creates a new [GlobalPublicDelegatedPrefixComputeV1Args].
   /// [description] An optional description of this resource. Provide this property when you create the resource.

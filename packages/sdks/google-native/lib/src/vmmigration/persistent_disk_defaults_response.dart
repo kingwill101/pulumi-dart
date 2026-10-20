@@ -52,7 +52,7 @@ class PersistentDiskDefaultsResponse {
       diskName: pulumi.Input.fromValue(map['diskName'] as String),
       diskType: pulumi.Input.fromValue(map['diskType'] as String),
       encryption: pulumi.Input.fromValue(EncryptionResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>())),
-      sourceDiskNumber: pulumi.Input.fromValue(map['sourceDiskNumber'] as int),
+      sourceDiskNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sourceDiskNumber'])),
       vmAttachmentDetails: pulumi.Input.fromValue(VmAttachmentDetailsResponse.fromMap((map['vmAttachmentDetails']! as Map).cast<String, dynamic>())),
     );
   }

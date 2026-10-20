@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
-enum RegionCommitmentTypeComputeBeta {
+enum RegionCommitmentTypeComputeBeta implements pulumi.PulumiEnum<String> {
   acceleratorOptimized("ACCELERATOR_OPTIMIZED"),
   acceleratorOptimizedA3("ACCELERATOR_OPTIMIZED_A3"),
   computeOptimized("COMPUTE_OPTIMIZED"),
@@ -18,6 +20,7 @@ enum RegionCommitmentTypeComputeBeta {
   typeUnspecified("TYPE_UNSPECIFIED");
 
   const RegionCommitmentTypeComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static RegionCommitmentTypeComputeBeta fromValue(String value) {

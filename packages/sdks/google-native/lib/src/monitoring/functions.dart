@@ -34,6 +34,17 @@ Future<GetDashboardResult> getDashboard(
   return GetDashboardResult.fromMap(result);
 }
 
+pulumi.Output<GetDashboardResult> getDashboardOutput(
+  GetDashboardArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:monitoring/v1:getDashboard',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDashboardResult.fromMap);
+}
+
 /// Gets a single alerting policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_monitoring_v3_get_alert_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -48,6 +59,17 @@ Future<GetAlertPolicyResult> getAlertPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAlertPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetAlertPolicyResult> getAlertPolicyOutput(
+  GetAlertPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:monitoring/v3:getAlertPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAlertPolicyResult.fromMap);
 }
 
 /// Gets a single group.
@@ -66,6 +88,17 @@ Future<GetGroupResult> getGroup(
   return GetGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetGroupResult> getGroupOutput(
+  GetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:monitoring/v3:getGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupResult.fromMap);
+}
+
 /// Gets a single metric descriptor.
 /// [args] Arguments passed to this invoke. {@macro pulumi_monitoring_v3_get_metric_descriptor_args_doc}
 /// [options] Invoke options controlling this call.
@@ -80,6 +113,17 @@ Future<GetMetricDescriptorResult> getMetricDescriptor(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMetricDescriptorResult.fromMap(result);
+}
+
+pulumi.Output<GetMetricDescriptorResult> getMetricDescriptorOutput(
+  GetMetricDescriptorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:monitoring/v3:getMetricDescriptor',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMetricDescriptorResult.fromMap);
 }
 
 /// Gets a single notification channel. The channel includes the relevant configuration details with which the channel was created. However, the response may truncate or omit passwords, API keys, or other private key matter and thus the response may not be 100% identical to the information that was supplied in the call to the create method.
@@ -98,6 +142,17 @@ Future<GetNotificationChannelResult> getNotificationChannel(
   return GetNotificationChannelResult.fromMap(result);
 }
 
+pulumi.Output<GetNotificationChannelResult> getNotificationChannelOutput(
+  GetNotificationChannelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:monitoring/v3:getNotificationChannel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNotificationChannelResult.fromMap);
+}
+
 /// Get the named Service.
 /// [args] Arguments passed to this invoke. {@macro pulumi_monitoring_v3_get_service_args_doc}
 /// [options] Invoke options controlling this call.
@@ -112,6 +167,17 @@ Future<GetServiceResult> getService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:monitoring/v3:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
 }
 
 /// Get a ServiceLevelObjective by name.
@@ -130,6 +196,17 @@ Future<GetServiceLevelObjectiveResult> getServiceLevelObjective(
   return GetServiceLevelObjectiveResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceLevelObjectiveResult> getServiceLevelObjectiveOutput(
+  GetServiceLevelObjectiveArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:monitoring/v3:getServiceLevelObjective',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceLevelObjectiveResult.fromMap);
+}
+
 /// Retrieves a Snooze by name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_monitoring_v3_get_snooze_args_doc}
 /// [options] Invoke options controlling this call.
@@ -146,6 +223,17 @@ Future<GetSnoozeResult> getSnooze(
   return GetSnoozeResult.fromMap(result);
 }
 
+pulumi.Output<GetSnoozeResult> getSnoozeOutput(
+  GetSnoozeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:monitoring/v3:getSnooze',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnoozeResult.fromMap);
+}
+
 /// Gets a single Uptime check configuration.
 /// [args] Arguments passed to this invoke. {@macro pulumi_monitoring_v3_get_uptime_check_config_args_doc}
 /// [options] Invoke options controlling this call.
@@ -160,4 +248,15 @@ Future<GetUptimeCheckConfigResult> getUptimeCheckConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUptimeCheckConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetUptimeCheckConfigResult> getUptimeCheckConfigOutput(
+  GetUptimeCheckConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:monitoring/v3:getUptimeCheckConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUptimeCheckConfigResult.fromMap);
 }

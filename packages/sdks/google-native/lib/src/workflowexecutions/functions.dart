@@ -20,6 +20,17 @@ Future<GetExecutionResult> getExecution(
   return GetExecutionResult.fromMap(result);
 }
 
+pulumi.Output<GetExecutionResult> getExecutionOutput(
+  GetExecutionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:workflowexecutions/v1:getExecution',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExecutionResult.fromMap);
+}
+
 /// Returns an execution of the given name.
 /// [args] Arguments passed to this invoke. {@macro pulumi_workflowexecutions_v1beta_get_execution_workflowexecutions_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetExecutionWorkflowexecutionsV1betaResult> getExecutionWorkflowexecution
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetExecutionWorkflowexecutionsV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetExecutionWorkflowexecutionsV1betaResult> getExecutionWorkflowexecutionsV1betaOutput(
+  GetExecutionWorkflowexecutionsV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:workflowexecutions/v1beta:getExecution',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExecutionWorkflowexecutionsV1betaResult.fromMap);
 }

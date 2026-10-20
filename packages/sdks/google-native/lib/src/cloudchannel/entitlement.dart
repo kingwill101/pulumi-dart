@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'entitlement_args.dart';
 import 'google_cloud_channel_v1_association_info_response.dart';
 import 'google_cloud_channel_v1_commitment_settings_response.dart';
+import 'google_cloud_channel_v1_parameter_response.dart';
 import 'google_cloud_channel_v1_provisioned_service_response.dart';
 import 'google_cloud_channel_v1_trial_settings_response.dart';
 
@@ -25,7 +26,7 @@ class Entitlement extends pulumi.CustomResource {
   /// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
   late final pulumi.Output<String> offer;
   /// Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input: - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for commitment-based offers The response may additionally include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. For Google Cloud billing subaccounts, the following Parameter may be accepted as input: - display_name: The display name of the billing subaccount.
-  late final pulumi.Output<List<Map<String, dynamic>>> parameters;
+  late final pulumi.Output<List<GoogleCloudChannelV1ParameterResponse>> parameters;
   /// Service provisioning details for the entitlement.
   late final pulumi.Output<GoogleCloudChannelV1ProvisionedServiceResponse> provisionedService;
   /// Current provisioning state of the entitlement.
@@ -51,7 +52,7 @@ class Entitlement extends pulumi.CustomResource {
           'google-native:cloudchannel/v1:Entitlement',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['accountId', 'customerId']).merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     associationInfo = registerOutput<GoogleCloudChannelV1AssociationInfoResponse>('associationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudChannelV1AssociationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -61,11 +62,37 @@ class Entitlement extends pulumi.CustomResource {
     customerId = registerOutput<String>('customerId');
     this.name = registerOutput<String>('name');
     offer = registerOutput<String>('offer');
-    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
+    parameters = registerOutput<List<GoogleCloudChannelV1ParameterResponse>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudChannelV1ParameterResponse>(guardedValue, (value) => GoogleCloudChannelV1ParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
     provisionedService = registerOutput<GoogleCloudChannelV1ProvisionedServiceResponse>('provisionedService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudChannelV1ProvisionedServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     provisioningState = registerOutput<String>('provisioningState');
     purchaseOrderId = registerOutput<String>('purchaseOrderId');
-    suspensionReasons = registerOutput<List<String>>('suspensionReasons');
+    suspensionReasons = registerOutput<List<String>>('suspensionReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    trialSettings = registerOutput<GoogleCloudChannelV1TrialSettingsResponse>('trialSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudChannelV1TrialSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Entitlement] resource.
+  Entitlement.reference(String urn)
+    : super(
+        'google-native:cloudchannel/v1:Entitlement',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    accountId = registerOutput<String>('accountId');
+    associationInfo = registerOutput<GoogleCloudChannelV1AssociationInfoResponse>('associationInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudChannelV1AssociationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    billingAccount = registerOutput<String>('billingAccount');
+    commitmentSettings = registerOutput<GoogleCloudChannelV1CommitmentSettingsResponse>('commitmentSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudChannelV1CommitmentSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    customerId = registerOutput<String>('customerId');
+    this.name = registerOutput<String>('name');
+    offer = registerOutput<String>('offer');
+    parameters = registerOutput<List<GoogleCloudChannelV1ParameterResponse>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudChannelV1ParameterResponse>(guardedValue, (value) => GoogleCloudChannelV1ParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    provisionedService = registerOutput<GoogleCloudChannelV1ProvisionedServiceResponse>('provisionedService', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudChannelV1ProvisionedServiceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    provisioningState = registerOutput<String>('provisioningState');
+    purchaseOrderId = registerOutput<String>('purchaseOrderId');
+    suspensionReasons = registerOutput<List<String>>('suspensionReasons', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     trialSettings = registerOutput<GoogleCloudChannelV1TrialSettingsResponse>('trialSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudChannelV1TrialSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');
   }

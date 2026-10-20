@@ -71,17 +71,17 @@ class SpriteSheetResponse {
 
   factory SpriteSheetResponse.fromMap(Map<String, dynamic> map) {
     return SpriteSheetResponse(
-      columnCount: pulumi.Input.fromValue(map['columnCount'] as int),
+      columnCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['columnCount'])),
       endTimeOffset: pulumi.Input.fromValue(map['endTimeOffset'] as String),
       filePrefix: pulumi.Input.fromValue(map['filePrefix'] as String),
       format: pulumi.Input.fromValue(map['format'] as String),
       interval: pulumi.Input.fromValue(map['interval'] as String),
-      quality: pulumi.Input.fromValue(map['quality'] as int),
-      rowCount: pulumi.Input.fromValue(map['rowCount'] as int),
-      spriteHeightPixels: pulumi.Input.fromValue(map['spriteHeightPixels'] as int),
-      spriteWidthPixels: pulumi.Input.fromValue(map['spriteWidthPixels'] as int),
+      quality: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['quality'])),
+      rowCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rowCount'])),
+      spriteHeightPixels: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['spriteHeightPixels'])),
+      spriteWidthPixels: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['spriteWidthPixels'])),
       startTimeOffset: pulumi.Input.fromValue(map['startTimeOffset'] as String),
-      totalCount: pulumi.Input.fromValue(map['totalCount'] as int),
+      totalCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalCount'])),
     );
   }
 }

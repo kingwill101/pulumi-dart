@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkconnectivity_v1_get_service_connection_policy_args_doc}
 class GetServiceConnectionPolicyArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> serviceConnectionPolicyId;
 
   /// Creates a new [GetServiceConnectionPolicyArgs].

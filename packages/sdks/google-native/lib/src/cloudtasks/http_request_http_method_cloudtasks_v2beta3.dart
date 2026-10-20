@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The HTTP method to use for the request. The default is POST.
-enum HttpRequestHttpMethodCloudtasksV2beta3 {
+enum HttpRequestHttpMethodCloudtasksV2beta3 implements pulumi.PulumiEnum<String> {
   httpMethodUnspecified("HTTP_METHOD_UNSPECIFIED"),
   post("POST"),
   get("GET"),
@@ -10,6 +12,7 @@ enum HttpRequestHttpMethodCloudtasksV2beta3 {
   options("OPTIONS");
 
   const HttpRequestHttpMethodCloudtasksV2beta3(this.wireValue);
+  @override
   final String wireValue;
 
   static HttpRequestHttpMethodCloudtasksV2beta3 fromValue(String value) {

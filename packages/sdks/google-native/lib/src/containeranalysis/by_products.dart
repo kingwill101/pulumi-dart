@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines an object for the byproducts field in in-toto links. The suggested fields are "stderr", "stdout", and "return-value".
 class ByProducts {
-  final pulumi.Input<Map<String, String>>? customValues;
+  final pulumi.Input<Map<String, String>?>? customValues;
 
   /// Creates a new [ByProducts].
   /// [customValues] Optional.

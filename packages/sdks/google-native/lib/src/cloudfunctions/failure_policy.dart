@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Describes the policy in case of function's execution failure. If empty, then defaults to ignoring failures (i.e. not retrying them).
 class FailurePolicy {
   /// If specified, then the function will be retried in case of a failure.
-  final pulumi.Input<Map<String, dynamic>>? retry;
+  final pulumi.Input<Map<String, dynamic>?>? retry;
 
   /// Creates a new [FailurePolicy].
   /// [retry] If specified, then the function will be retried in case of a failure.

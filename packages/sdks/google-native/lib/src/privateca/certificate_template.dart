@@ -44,13 +44,37 @@ class CertificateTemplate extends pulumi.CustomResource {
           'google-native:privateca/v1:CertificateTemplate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['certificateTemplateId', 'location', 'project']).merge(options),
         ) {
     certificateTemplateId = registerOutput<String>('certificateTemplateId');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     identityConstraints = registerOutput<CertificateIdentityConstraintsResponse>('identityConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateIdentityConstraintsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    maximumLifetime = registerOutput<String>('maximumLifetime');
+    this.name = registerOutput<String>('name');
+    passthroughExtensions = registerOutput<CertificateExtensionConstraintsResponse>('passthroughExtensions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateExtensionConstraintsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    predefinedValues = registerOutput<X509ParametersResponse>('predefinedValues', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return X509ParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [CertificateTemplate] resource.
+  CertificateTemplate.reference(String urn)
+    : super(
+        'google-native:privateca/v1:CertificateTemplate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificateTemplateId = registerOutput<String>('certificateTemplateId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    identityConstraints = registerOutput<CertificateIdentityConstraintsResponse>('identityConstraints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateIdentityConstraintsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     maximumLifetime = registerOutput<String>('maximumLifetime');
     this.name = registerOutput<String>('name');

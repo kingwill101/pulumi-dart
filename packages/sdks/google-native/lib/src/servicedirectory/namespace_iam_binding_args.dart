@@ -9,7 +9,7 @@ import '../accesscontextmanager/condition.dart';
 /// {@macro pulumi_servicedirectory_v1_namespace_iam_binding_args_doc}
 class NamespaceIamBindingArgs {
   /// An IAM Condition for a given binding.
-  final pulumi.Input<Condition>? condition;
+  final pulumi.Input<Condition?>? condition;
   /// Identities that will be granted the privilege in role. Each entry can have one of the following values:
   ///
   /// * user:{emailid}: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.

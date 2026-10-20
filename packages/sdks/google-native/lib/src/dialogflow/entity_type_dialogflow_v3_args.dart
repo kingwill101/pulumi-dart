@@ -13,25 +13,25 @@ import 'google_cloud_dialogflow_cx_v3_entity_type_excluded_phrase.dart';
 class EntityTypeDialogflowV3Args {
   final pulumi.Input<String> agentId;
   /// Indicates whether the entity type can be automatically expanded.
-  final pulumi.Input<EntityTypeAutoExpansionModeDialogflowV3>? autoExpansionMode;
+  final pulumi.Input<EntityTypeAutoExpansionModeDialogflowV3?>? autoExpansionMode;
   /// The human-readable name of the entity type, unique within the agent.
   final pulumi.Input<String> displayName;
   /// Enables fuzzy entity extraction during classification.
-  final pulumi.Input<bool>? enableFuzzyExtraction;
+  final pulumi.Input<bool?>? enableFuzzyExtraction;
   /// The collection of entity entries associated with the entity type.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3EntityTypeEntity>>? entities;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3EntityTypeEntity>?>? entities;
   /// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase>>? excludedPhrases;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase>?>? excludedPhrases;
   /// Indicates the kind of entity type.
   final pulumi.Input<EntityTypeKindDialogflowV3> kind;
   /// The language of the following fields in `entity_type`: * `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not specified, the agent's default language is used. [Many languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported. Note: languages must be enabled in the agent before they can be used.
-  final pulumi.Input<String>? languageCode;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? languageCode;
+  final pulumi.Input<String?>? location;
   /// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name when logging.
-  final pulumi.Input<bool>? redact;
+  final pulumi.Input<bool?>? redact;
 
   /// Creates a new [EntityTypeDialogflowV3Args].
   /// [agentId] Required.

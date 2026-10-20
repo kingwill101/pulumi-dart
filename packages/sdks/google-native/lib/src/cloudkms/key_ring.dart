@@ -26,8 +26,24 @@ class KeyRing extends pulumi.CustomResource {
           'google-native:cloudkms/v1:KeyRing',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['keyRingId', 'location', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    keyRingId = registerOutput<String>('keyRingId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [KeyRing] resource.
+  KeyRing.reference(String urn)
+    : super(
+        'google-native:cloudkms/v1:KeyRing',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     keyRingId = registerOutput<String>('keyRingId');
     location = registerOutput<String>('location');

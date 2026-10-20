@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The user type. It determines the method to authenticate the user during login. The default is the database's built-in user type.
-enum UserType {
+enum UserType implements pulumi.PulumiEnum<String> {
   builtIn("BUILT_IN"),
   cloudIamUser("CLOUD_IAM_USER"),
   cloudIamServiceAccount("CLOUD_IAM_SERVICE_ACCOUNT"),
@@ -8,6 +10,7 @@ enum UserType {
   cloudIamGroupServiceAccount("CLOUD_IAM_GROUP_SERVICE_ACCOUNT");
 
   const UserType(this.wireValue);
+  @override
   final String wireValue;
 
   static UserType fromValue(String value) {

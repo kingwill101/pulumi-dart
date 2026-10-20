@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'autoscaler_status_details_response_compute_beta.dart';
 import 'autoscaling_policy_response_compute_beta.dart';
 import 'region_autoscaler_compute_beta_args.dart';
 
@@ -27,7 +28,7 @@ class RegionAutoscalerComputeBeta extends pulumi.CustomResource {
   /// The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
   late final pulumi.Output<String> status;
   /// Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
-  late final pulumi.Output<List<Map<String, dynamic>>> statusDetails;
+  late final pulumi.Output<List<AutoscalerStatusDetailsResponseComputeBeta>> statusDetails;
   /// URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
   late final pulumi.Output<String> target;
   /// URL of the zone where the instance group resides (for autoscalers living in zonal scope).
@@ -45,7 +46,7 @@ class RegionAutoscalerComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:RegionAutoscaler',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     autoscalingPolicy = registerOutput<AutoscalingPolicyResponseComputeBeta>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalingPolicyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -56,10 +57,36 @@ class RegionAutoscalerComputeBeta extends pulumi.CustomResource {
     recommendedSize = registerOutput<int>('recommendedSize');
     region = registerOutput<String>('region');
     requestId = registerOutput<String?>('requestId');
-    scalingScheduleStatus = registerOutput<Map<String, String>>('scalingScheduleStatus');
+    scalingScheduleStatus = registerOutput<Map<String, String>>('scalingScheduleStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     selfLink = registerOutput<String>('selfLink');
     status = registerOutput<String>('status');
-    statusDetails = registerOutput<List<Map<String, dynamic>>>('statusDetails');
+    statusDetails = registerOutput<List<AutoscalerStatusDetailsResponseComputeBeta>>('statusDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutoscalerStatusDetailsResponseComputeBeta>(guardedValue, (value) => AutoscalerStatusDetailsResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
+    target = registerOutput<String>('target');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [RegionAutoscalerComputeBeta] resource.
+  RegionAutoscalerComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:RegionAutoscaler',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    autoscalingPolicy = registerOutput<AutoscalingPolicyResponseComputeBeta>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AutoscalingPolicyResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    recommendedSize = registerOutput<int>('recommendedSize');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    scalingScheduleStatus = registerOutput<Map<String, String>>('scalingScheduleStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    selfLink = registerOutput<String>('selfLink');
+    status = registerOutput<String>('status');
+    statusDetails = registerOutput<List<AutoscalerStatusDetailsResponseComputeBeta>>('statusDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutoscalerStatusDetailsResponseComputeBeta>(guardedValue, (value) => AutoscalerStatusDetailsResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>())); });
     target = registerOutput<String>('target');
     zone = registerOutput<String>('zone');
   }

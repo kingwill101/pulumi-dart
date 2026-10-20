@@ -22,9 +22,24 @@ class Keystore extends pulumi.CustomResource {
           'google-native:apigee/v1:Keystore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['environmentId', 'organizationId']).merge(options),
         ) {
-    aliases = registerOutput<List<String>>('aliases');
+    aliases = registerOutput<List<String>>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    environmentId = registerOutput<String>('environmentId');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+  }
+
+  /// Creates a typed reference to an existing [Keystore] resource.
+  Keystore.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Keystore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aliases = registerOutput<List<String>>('aliases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     environmentId = registerOutput<String>('environmentId');
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');

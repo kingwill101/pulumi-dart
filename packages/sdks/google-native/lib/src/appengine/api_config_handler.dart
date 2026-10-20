@@ -8,15 +8,15 @@ import 'api_config_handler_security_level.dart';
 /// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for API handlers.
 class ApiConfigHandler {
   /// Action to take when users access resources that require authentication. Defaults to redirect.
-  final pulumi.Input<ApiConfigHandlerAuthFailAction>? authFailAction;
+  final pulumi.Input<ApiConfigHandlerAuthFailAction?>? authFailAction;
   /// Level of login required to access this resource. Defaults to optional.
-  final pulumi.Input<ApiConfigHandlerLogin>? login;
+  final pulumi.Input<ApiConfigHandlerLogin?>? login;
   /// Path to the script from the application root directory.
-  final pulumi.Input<String>? script;
+  final pulumi.Input<String?>? script;
   /// Security (HTTPS) enforcement for this URL.
-  final pulumi.Input<ApiConfigHandlerSecurityLevel>? securityLevel;
+  final pulumi.Input<ApiConfigHandlerSecurityLevel?>? securityLevel;
   /// URL to serve the endpoint at.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [ApiConfigHandler].
   /// [authFailAction] Action to take when users access resources that require authentication. Defaults to redirect.

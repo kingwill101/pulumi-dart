@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing metrics.
-enum VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod {
+enum VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod implements pulumi.PulumiEnum<String> {
   aggregationMethodUnspecified("AGGREGATION_METHOD_UNSPECIFIED"),
   aggregationMethodAverage("AGGREGATION_METHOD_AVERAGE"),
   aggregationMethodMedian("AGGREGATION_METHOD_MEDIAN"),
@@ -7,6 +9,7 @@ enum VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMetho
   aggregationMethodPeak("AGGREGATION_METHOD_PEAK");
 
   const VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static VirtualMachinePreferencesSizingOptimizationCustomParametersAggregationMethod fromValue(String value) {

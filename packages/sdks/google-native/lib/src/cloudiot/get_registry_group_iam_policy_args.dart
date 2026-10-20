@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetRegistryGroupIamPolicyArgs {
   final pulumi.Input<String> groupId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> registryId;
 
   /// Creates a new [GetRegistryGroupIamPolicyArgs].

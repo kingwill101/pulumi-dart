@@ -7,27 +7,27 @@ import 'vm_utilization_info_response_vmmigration_v1alpha1.dart';
 /// Result data returned by getUtilizationReport.
 class GetUtilizationReportVmmigrationV1alpha1Result {
   /// The time the report was created (this refers to the time of the request, not the time the report creation completed).
-  final String createTime;
+  final String? createTime;
   /// The report display name, as assigned by the user.
-  final String displayName;
+  final String? displayName;
   /// Provides details on the state of the report in case of an error.
-  final StatusResponseVmmigrationV1alpha1 error;
+  final StatusResponseVmmigrationV1alpha1? error;
   /// The point in time when the time frame ends. Notice that the time frame is counted backwards. For instance if the "frame_end_time" value is 2021/01/20 and the time frame is WEEK then the report covers the week between 2021/01/20 and 2021/01/14.
-  final String frameEndTime;
+  final String? frameEndTime;
   /// The report unique name.
-  final String name;
+  final String? name;
   /// Current state of the report.
-  final String state;
+  final String? state;
   /// The time the state was last set.
-  final String stateTime;
+  final String? stateTime;
   /// Time frame of the report.
-  final String timeFrame;
+  final String? timeFrame;
   /// Total number of VMs included in the report.
-  final int vmCount;
+  final int? vmCount;
   /// List of utilization information per VM. When sent as part of the request, the "vm_id" field is used in order to specify which VMs to include in the report. In that case all other fields are ignored.
-  final List<VmUtilizationInfoResponseVmmigrationV1alpha1> vms;
+  final List<VmUtilizationInfoResponseVmmigrationV1alpha1>? vms;
   /// Total number of VMs included in the report.
-  final int vmsCount;
+  final int? vmsCount;
 
   /// Creates a new [GetUtilizationReportVmmigrationV1alpha1Result].
   /// [createTime] The time the report was created (this refers to the time of the request, not the time the report creation completed).
@@ -42,48 +42,48 @@ class GetUtilizationReportVmmigrationV1alpha1Result {
   /// [vms] List of utilization information per VM. When sent as part of the request, the "vm_id" field is used in order to specify which VMs to include in the report. In that case all other fields are ignored.
   /// [vmsCount] Total number of VMs included in the report.
   const GetUtilizationReportVmmigrationV1alpha1Result({
-    required this.createTime,
-    required this.displayName,
-    required this.error,
-    required this.frameEndTime,
-    required this.name,
-    required this.state,
-    required this.stateTime,
-    required this.timeFrame,
-    required this.vmCount,
-    required this.vms,
-    required this.vmsCount,
+    this.createTime,
+    this.displayName,
+    this.error,
+    this.frameEndTime,
+    this.name,
+    this.state,
+    this.stateTime,
+    this.timeFrame,
+    this.vmCount,
+    this.vms,
+    this.vmsCount,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'displayName': displayName,
-      'error': error.toMap(),
-      'frameEndTime': frameEndTime,
-      'name': name,
-      'state': state,
-      'stateTime': stateTime,
-      'timeFrame': timeFrame,
-      'vmCount': vmCount,
-      'vms': pulumi.Input.encodeList<VmUtilizationInfoResponseVmmigrationV1alpha1, Map<String, dynamic>>(vms, (value) => value.toMap()),
-      'vmsCount': vmsCount,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'error': ?error?.toMap(),
+      'frameEndTime': ?frameEndTime,
+      'name': ?name,
+      'state': ?state,
+      'stateTime': ?stateTime,
+      'timeFrame': ?timeFrame,
+      'vmCount': ?vmCount,
+      'vms': ?(() { final guardedValue = vms; if (guardedValue == null) return null; return pulumi.Input.encodeList<VmUtilizationInfoResponseVmmigrationV1alpha1, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'vmsCount': ?vmsCount,
     };
   }
 
   factory GetUtilizationReportVmmigrationV1alpha1Result.fromMap(Map<String, dynamic> map) {
     return GetUtilizationReportVmmigrationV1alpha1Result(
-      createTime: map['createTime'] as String,
-      displayName: map['displayName'] as String,
-      error: StatusResponseVmmigrationV1alpha1.fromMap((map['error']! as Map).cast<String, dynamic>()),
-      frameEndTime: map['frameEndTime'] as String,
-      name: map['name'] as String,
-      state: map['state'] as String,
-      stateTime: map['stateTime'] as String,
-      timeFrame: map['timeFrame'] as String,
-      vmCount: map['vmCount'] as int,
-      vms: pulumi.Input.decodeList<VmUtilizationInfoResponseVmmigrationV1alpha1>(map['vms']!, (value) => VmUtilizationInfoResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())),
-      vmsCount: map['vmsCount'] as int,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      error: (() { final guardedValue = map['error']; if (guardedValue == null) return null; return StatusResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      frameEndTime: (() { final guardedValue = map['frameEndTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      stateTime: (() { final guardedValue = map['stateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      timeFrame: (() { final guardedValue = map['timeFrame']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      vmCount: (() { final guardedValue = map['vmCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      vms: (() { final guardedValue = map['vms']; if (guardedValue == null) return null; return pulumi.Input.decodeList<VmUtilizationInfoResponseVmmigrationV1alpha1>(guardedValue, (value) => VmUtilizationInfoResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())); })(),
+      vmsCount: (() { final guardedValue = map['vmsCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

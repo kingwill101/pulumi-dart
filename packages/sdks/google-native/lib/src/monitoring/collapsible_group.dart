@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
 class CollapsibleGroup {
   /// The collapsed state of the widget on first page load.
-  final pulumi.Input<bool>? collapsed;
+  final pulumi.Input<bool?>? collapsed;
 
   /// Creates a new [CollapsibleGroup].
   /// [collapsed] The collapsed state of the widget on first page load.

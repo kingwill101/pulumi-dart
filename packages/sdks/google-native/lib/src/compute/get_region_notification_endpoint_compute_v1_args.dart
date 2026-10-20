@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_v1_get_region_notification_endpoint_compute_v1_args_doc}
 class GetRegionNotificationEndpointComputeV1Args {
   final pulumi.Input<String> notificationEndpoint;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetRegionNotificationEndpointComputeV1Args].

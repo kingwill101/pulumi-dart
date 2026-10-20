@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnvelopeSignatureContaineranalysisV1beta1 {
-  final pulumi.Input<String>? keyid;
-  final pulumi.Input<String>? sig;
+  final pulumi.Input<String?>? keyid;
+  final pulumi.Input<String?>? sig;
 
   /// Creates a new [EnvelopeSignatureContaineranalysisV1beta1].
   /// [keyid] Optional.

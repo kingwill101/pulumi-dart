@@ -21,7 +21,7 @@ class SourceInfoResponse {
 
   factory SourceInfoResponse.fromMap(Map<String, dynamic> map) {
     return SourceInfoResponse(
-      sourceFiles: pulumi.Input.fromValue((map['sourceFiles'] as List).cast<Map<String, String>>()),
+      sourceFiles: pulumi.Input.fromValue(pulumi.Input.decodeList<Map<String, String>>(map['sourceFiles']!, (value) => (value as Map).cast<String, String>())),
     );
   }
 }

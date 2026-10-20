@@ -31,8 +31,27 @@ class ResponsePolicyRule extends pulumi.CustomResource {
           'google-native:dns/v1beta2:ResponsePolicyRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'responsePolicy']).merge(options),
         ) {
+    behavior = registerOutput<String>('behavior');
+    clientOperationId = registerOutput<String?>('clientOperationId');
+    dnsName = registerOutput<String>('dnsName');
+    kind = registerOutput<String>('kind');
+    localData = registerOutput<ResponsePolicyRuleLocalDataResponseDnsV1beta2>('localData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResponsePolicyRuleLocalDataResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    responsePolicy = registerOutput<String>('responsePolicy');
+    ruleName = registerOutput<String>('ruleName');
+  }
+
+  /// Creates a typed reference to an existing [ResponsePolicyRule] resource.
+  ResponsePolicyRule.reference(String urn)
+    : super(
+        'google-native:dns/v1beta2:ResponsePolicyRule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     behavior = registerOutput<String>('behavior');
     clientOperationId = registerOutput<String?>('clientOperationId');
     dnsName = registerOutput<String>('dnsName');

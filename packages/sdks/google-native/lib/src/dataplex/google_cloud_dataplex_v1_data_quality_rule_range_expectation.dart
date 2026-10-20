@@ -5,13 +5,13 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Evaluates whether each column value lies between a specified range.
 class GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
   /// Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
-  final pulumi.Input<String>? maxValue;
+  final pulumi.Input<String?>? maxValue;
   /// Optional. The minimum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
-  final pulumi.Input<String>? minValue;
+  final pulumi.Input<String?>? minValue;
   /// Optional. Whether each value needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
-  final pulumi.Input<bool>? strictMaxEnabled;
+  final pulumi.Input<bool?>? strictMaxEnabled;
   /// Optional. Whether each value needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
-  final pulumi.Input<bool>? strictMinEnabled;
+  final pulumi.Input<bool?>? strictMinEnabled;
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityRuleRangeExpectation].
   /// [maxValue] Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.

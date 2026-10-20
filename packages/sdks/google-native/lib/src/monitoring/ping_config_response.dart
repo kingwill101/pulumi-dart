@@ -21,7 +21,7 @@ class PingConfigResponse {
 
   factory PingConfigResponse.fromMap(Map<String, dynamic> map) {
     return PingConfigResponse(
-      pingsCount: pulumi.Input.fromValue(map['pingsCount'] as int),
+      pingsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['pingsCount'])),
     );
   }
 }

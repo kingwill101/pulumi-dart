@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Planning state before being submitted for evaluation
-enum FutureReservationPlanningStatusComputeBeta {
+enum FutureReservationPlanningStatusComputeBeta implements pulumi.PulumiEnum<String> {
   draft("DRAFT"),
   planningStatusUnspecified("PLANNING_STATUS_UNSPECIFIED"),
   submitted("SUBMITTED");
 
   const FutureReservationPlanningStatusComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static FutureReservationPlanningStatusComputeBeta fromValue(String value) {

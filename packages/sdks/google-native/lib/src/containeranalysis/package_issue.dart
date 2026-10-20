@@ -13,15 +13,15 @@ class PackageIssue {
   /// The version of the package that is installed on the resource affected by this vulnerability.
   final pulumi.Input<Version> affectedVersion;
   /// The location at which this package was found.
-  final pulumi.Input<List<GrafeasV1FileLocation>>? fileLocation;
+  final pulumi.Input<List<GrafeasV1FileLocation>?>? fileLocation;
   /// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was fixed in. It is possible for this to be different from the affected_cpe_uri.
-  final pulumi.Input<String>? fixedCpeUri;
+  final pulumi.Input<String?>? fixedCpeUri;
   /// The package this vulnerability was fixed in. It is possible for this to be different from the affected_package.
-  final pulumi.Input<String>? fixedPackage;
+  final pulumi.Input<String?>? fixedPackage;
   /// The version of the package this vulnerability was fixed in. Setting this to VersionKind.MAXIMUM means no fix is yet available.
   final pulumi.Input<Version> fixedVersion;
   /// The type of package (e.g. OS, MAVEN, GO).
-  final pulumi.Input<String>? packageType;
+  final pulumi.Input<String?>? packageType;
 
   /// Creates a new [PackageIssue].
   /// [affectedCpeUri] The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was found in.

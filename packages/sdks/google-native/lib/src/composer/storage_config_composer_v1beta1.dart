@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The configuration for data storage in the environment.
 class StorageConfigComposerV1beta1 {
   /// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
-  final pulumi.Input<String>? bucket;
+  final pulumi.Input<String?>? bucket;
 
   /// Creates a new [StorageConfigComposerV1beta1].
   /// [bucket] Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.

@@ -71,8 +71,8 @@ class ProbingDetailsResponse {
       error: pulumi.Input.fromValue(StatusResponse.fromMap((map['error']! as Map).cast<String, dynamic>())),
       probingLatency: pulumi.Input.fromValue(LatencyDistributionResponse.fromMap((map['probingLatency']! as Map).cast<String, dynamic>())),
       result: pulumi.Input.fromValue(map['result'] as String),
-      sentProbeCount: pulumi.Input.fromValue(map['sentProbeCount'] as int),
-      successfulProbeCount: pulumi.Input.fromValue(map['successfulProbeCount'] as int),
+      sentProbeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sentProbeCount'])),
+      successfulProbeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['successfulProbeCount'])),
       verifyTime: pulumi.Input.fromValue(map['verifyTime'] as String),
     );
   }

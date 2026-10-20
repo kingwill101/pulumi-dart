@@ -9,7 +9,7 @@ import 'condition.dart';
 /// {@macro pulumi_compute_v1_region_network_firewall_policy_iam_binding_compute_v1_args_doc}
 class RegionNetworkFirewallPolicyIamBindingComputeV1Args {
   /// An IAM Condition for a given binding.
-  final pulumi.Input<Condition>? condition;
+  final pulumi.Input<Condition?>? condition;
   /// Identities that will be granted the privilege in role. Each entry can have one of the following values:
   ///
   /// * user:{emailid}: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.

@@ -31,8 +31,26 @@ class Topic extends pulumi.CustomResource {
           'google-native:pubsublite/v1:Topic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'topicId']).merge(options),
         ) {
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    partitionConfig = registerOutput<PartitionConfigResponse>('partitionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PartitionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    reservationConfig = registerOutput<ReservationConfigResponse>('reservationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReservationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retentionConfig = registerOutput<RetentionConfigResponse>('retentionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RetentionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    topicId = registerOutput<String>('topicId');
+  }
+
+  /// Creates a typed reference to an existing [Topic] resource.
+  Topic.reference(String urn)
+    : super(
+        'google-native:pubsublite/v1:Topic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     partitionConfig = registerOutput<PartitionConfigResponse>('partitionConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PartitionConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

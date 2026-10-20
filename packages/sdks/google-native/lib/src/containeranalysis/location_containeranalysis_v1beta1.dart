@@ -6,11 +6,11 @@ import 'version_containeranalysis_v1beta1.dart';
 /// An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
 class LocationContaineranalysisV1beta1 {
   /// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
-  final pulumi.Input<String>? cpeUri;
+  final pulumi.Input<String?>? cpeUri;
   /// The path from which we gathered that this package/version is installed.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Deprecated. The version installed at this location.
-  final pulumi.Input<VersionContaineranalysisV1beta1>? version;
+  final pulumi.Input<VersionContaineranalysisV1beta1?>? version;
 
   /// Creates a new [LocationContaineranalysisV1beta1].
   /// [cpeUri] Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.

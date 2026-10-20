@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
-enum InstanceProtocol {
+enum InstanceProtocol implements pulumi.PulumiEnum<String> {
   fileProtocolUnspecified("FILE_PROTOCOL_UNSPECIFIED"),
   nfsV3("NFS_V3"),
   nfsV41("NFS_V4_1");
 
   const InstanceProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceProtocol fromValue(String value) {

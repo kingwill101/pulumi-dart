@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_contactcenterinsights_v1_phrase_match_rule_group_response.dart';
 import 'phrase_matcher_args.dart';
 
 /// Creates a phrase matcher.
@@ -13,7 +14,7 @@ class PhraseMatcher extends pulumi.CustomResource {
   /// The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
   late final pulumi.Output<String> name;
   /// A list of phase match rule groups that are included in this matcher.
-  late final pulumi.Output<List<Map<String, dynamic>>> phraseMatchRuleGroups;
+  late final pulumi.Output<List<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse>> phraseMatchRuleGroups;
   late final pulumi.Output<String> project;
   /// The timestamp of when the revision was created. It is also the create time when a new matcher is added.
   late final pulumi.Output<String> revisionCreateTime;
@@ -40,14 +41,38 @@ class PhraseMatcher extends pulumi.CustomResource {
           'google-native:contactcenterinsights/v1:PhraseMatcher',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     activationUpdateTime = registerOutput<String>('activationUpdateTime');
     active = registerOutput<bool>('active');
     displayName = registerOutput<String>('displayName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    phraseMatchRuleGroups = registerOutput<List<Map<String, dynamic>>>('phraseMatchRuleGroups');
+    phraseMatchRuleGroups = registerOutput<List<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse>>('phraseMatchRuleGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse>(guardedValue, (value) => GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    revisionId = registerOutput<String>('revisionId');
+    roleMatch = registerOutput<String>('roleMatch');
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+    versionTag = registerOutput<String>('versionTag');
+  }
+
+  /// Creates a typed reference to an existing [PhraseMatcher] resource.
+  PhraseMatcher.reference(String urn)
+    : super(
+        'google-native:contactcenterinsights/v1:PhraseMatcher',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    activationUpdateTime = registerOutput<String>('activationUpdateTime');
+    active = registerOutput<bool>('active');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    phraseMatchRuleGroups = registerOutput<List<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse>>('phraseMatchRuleGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse>(guardedValue, (value) => GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     revisionCreateTime = registerOutput<String>('revisionCreateTime');
     revisionId = registerOutput<String>('revisionId');

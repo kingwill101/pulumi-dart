@@ -10,9 +10,9 @@ class MysqlProfileDatastreamV1alpha1 {
   /// Input only. Password for the MySQL connection.
   final pulumi.Input<String> password;
   /// Port for the MySQL connection, default value is 3306.
-  final pulumi.Input<int>? port;
+  final pulumi.Input<int?>? port;
   /// SSL configuration for the MySQL connection.
-  final pulumi.Input<MysqlSslConfigDatastreamV1alpha1>? sslConfig;
+  final pulumi.Input<MysqlSslConfigDatastreamV1alpha1?>? sslConfig;
   /// Username for the MySQL connection.
   final pulumi.Input<String> username;
 
@@ -44,7 +44,7 @@ class MysqlProfileDatastreamV1alpha1 {
     return MysqlProfileDatastreamV1alpha1(
       hostname: pulumi.Input.fromValue(map['hostname'] as String),
       password: pulumi.Input.fromValue(map['password'] as String),
-      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      port: (() { final guardedValue = map['port']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sslConfig: (() { final guardedValue = map['sslConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MysqlSslConfigDatastreamV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       username: pulumi.Input.fromValue(map['username'] as String),
     );

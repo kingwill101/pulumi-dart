@@ -15,35 +15,35 @@ class MigrationJobDatamigrationV1beta1Args {
   /// The resource name (URI) of the destination connection profile.
   final pulumi.Input<String> destination;
   /// The database engine type and provider of the destination.
-  final pulumi.Input<DatabaseTypeDatamigrationV1beta1>? destinationDatabase;
+  final pulumi.Input<DatabaseTypeDatamigrationV1beta1?>? destinationDatabase;
   /// The migration job display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
-  final pulumi.Input<String>? dumpPath;
+  final pulumi.Input<String?>? dumpPath;
   /// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Required. The ID of the instance to create.
   final pulumi.Input<String> migrationJobId;
   /// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
-  final pulumi.Input<ReverseSshConnectivityDatamigrationV1beta1>? reverseSshConnectivity;
+  final pulumi.Input<ReverseSshConnectivityDatamigrationV1beta1?>? reverseSshConnectivity;
   /// The resource name (URI) of the source connection profile.
   final pulumi.Input<String> source;
   /// The database engine type and provider of the source.
-  final pulumi.Input<DatabaseTypeDatamigrationV1beta1>? sourceDatabase;
+  final pulumi.Input<DatabaseTypeDatamigrationV1beta1?>? sourceDatabase;
   /// The current migration job state.
-  final pulumi.Input<MigrationJobStateDatamigrationV1beta1>? state;
+  final pulumi.Input<MigrationJobStateDatamigrationV1beta1?>? state;
   /// static ip connectivity data (default, no additional details needed).
-  final pulumi.Input<Map<String, dynamic>>? staticIpConnectivity;
+  final pulumi.Input<Map<String, dynamic>?>? staticIpConnectivity;
   /// The migration job type.
   final pulumi.Input<MigrationJobTypeDatamigrationV1beta1> type;
   /// The details of the VPC network that the source database is located in.
-  final pulumi.Input<VpcPeeringConnectivityDatamigrationV1beta1>? vpcPeeringConnectivity;
+  final pulumi.Input<VpcPeeringConnectivityDatamigrationV1beta1?>? vpcPeeringConnectivity;
 
   /// Creates a new [MigrationJobDatamigrationV1beta1Args].
   /// [destination] The resource name (URI) of the destination connection profile.

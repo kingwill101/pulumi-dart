@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Commitment for a particular license resource.
 class LicenseResourceCommitmentComputeV1 {
   /// The number of licenses purchased.
-  final pulumi.Input<String>? amount;
+  final pulumi.Input<String?>? amount;
   /// Specifies the core range of the instance for which this license applies.
-  final pulumi.Input<String>? coresPerLicense;
+  final pulumi.Input<String?>? coresPerLicense;
   /// Any applicable license URI.
-  final pulumi.Input<String>? license;
+  final pulumi.Input<String?>? license;
 
   /// Creates a new [LicenseResourceCommitmentComputeV1].
   /// [amount] The number of licenses purchased.

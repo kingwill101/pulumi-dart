@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The license type to use in OS adaptation.
-enum ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1 {
+enum ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1 implements pulumi.PulumiEnum<String> {
   computeEngineLicenseTypeDefault("COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT"),
   computeEngineLicenseTypePayg("COMPUTE_ENGINE_LICENSE_TYPE_PAYG"),
   computeEngineLicenseTypeByol("COMPUTE_ENGINE_LICENSE_TYPE_BYOL");
 
   const ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1(this.wireValue);
+  @override
   final String wireValue;
 
   static ComputeEngineTargetDefaultsLicenseTypeVmmigrationV1alpha1 fromValue(String value) {

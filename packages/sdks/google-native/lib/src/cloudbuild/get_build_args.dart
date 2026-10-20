@@ -10,7 +10,7 @@ class GetBuildArgs {
   final pulumi.Input<String> buildId;
   final pulumi.Input<String> id;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> projectId;
 
   /// Creates a new [GetBuildArgs].

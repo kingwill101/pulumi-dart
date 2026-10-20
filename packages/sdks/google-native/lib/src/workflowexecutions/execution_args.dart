@@ -9,13 +9,13 @@ import 'execution_call_log_level.dart';
 /// {@macro pulumi_workflowexecutions_v1_execution_args_doc}
 class ExecutionArgs {
   /// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
-  final pulumi.Input<String>? argument;
+  final pulumi.Input<String?>? argument;
   /// The call logging level associated to this execution.
-  final pulumi.Input<ExecutionCallLogLevel>? callLogLevel;
+  final pulumi.Input<ExecutionCallLogLevel?>? callLogLevel;
   /// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. By default, labels are inherited from the workflow but are overridden by any labels associated with the execution.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> workflowId;
 
   /// Creates a new [ExecutionArgs].

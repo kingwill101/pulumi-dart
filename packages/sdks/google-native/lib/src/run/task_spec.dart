@@ -7,15 +7,15 @@ import 'volume.dart';
 /// TaskSpec is a description of a task.
 class TaskSpec {
   /// Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
-  final pulumi.Input<List<Container>>? containers;
+  final pulumi.Input<List<Container>?>? containers;
   /// Optional. Number of retries allowed per task, before marking this job failed. Defaults to 3.
-  final pulumi.Input<int>? maxRetries;
+  final pulumi.Input<int?>? maxRetries;
   /// Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
-  final pulumi.Input<String>? serviceAccountName;
+  final pulumi.Input<String?>? serviceAccountName;
   /// Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
-  final pulumi.Input<String>? timeoutSeconds;
+  final pulumi.Input<String?>? timeoutSeconds;
   /// Optional. List of volumes that can be mounted by containers belonging to the task.
-  final pulumi.Input<List<Volume>>? volumes;
+  final pulumi.Input<List<Volume>?>? volumes;
 
   /// Creates a new [TaskSpec].
   /// [containers] Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
@@ -44,7 +44,7 @@ class TaskSpec {
   factory TaskSpec.fromMap(Map<String, dynamic> map) {
     return TaskSpec(
       containers: (() { final guardedValue = map['containers']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Container>(guardedValue, (value) => Container.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      maxRetries: (() { final guardedValue = map['maxRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxRetries: (() { final guardedValue = map['maxRetries']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       serviceAccountName: (() { final guardedValue = map['serviceAccountName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       timeoutSeconds: (() { final guardedValue = map['timeoutSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       volumes: (() { final guardedValue = map['volumes']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Volume>(guardedValue, (value) => Volume.fromMap((value as Map).cast<String, dynamic>()))); })(),

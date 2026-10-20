@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_bigtableadmin_v2_get_instance_args_doc}
 class GetInstanceArgs {
   final pulumi.Input<String> instanceId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetInstanceArgs].
   /// [instanceId] Required.

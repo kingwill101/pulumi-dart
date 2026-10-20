@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Node configuration for the connection.
 class NodeConfig {
   /// Maximum number of nodes in the runtime nodes.
-  final pulumi.Input<int>? maxNodeCount;
+  final pulumi.Input<int?>? maxNodeCount;
   /// Minimum number of nodes in the runtime nodes.
-  final pulumi.Input<int>? minNodeCount;
+  final pulumi.Input<int?>? minNodeCount;
 
   /// Creates a new [NodeConfig].
   /// [maxNodeCount] Maximum number of nodes in the runtime nodes.
@@ -26,8 +26,8 @@ class NodeConfig {
 
   factory NodeConfig.fromMap(Map<String, dynamic> map) {
     return NodeConfig(
-      maxNodeCount: (() { final guardedValue = map['maxNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minNodeCount: (() { final guardedValue = map['minNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxNodeCount: (() { final guardedValue = map['maxNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minNodeCount: (() { final guardedValue = map['minNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

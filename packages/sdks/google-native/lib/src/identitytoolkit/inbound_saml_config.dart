@@ -32,8 +32,27 @@ class InboundSamlConfig extends pulumi.CustomResource {
           'google-native:identitytoolkit/v2:InboundSamlConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'tenantId']).merge(options),
         ) {
+    displayName = registerOutput<String>('displayName');
+    enabled = registerOutput<bool>('enabled');
+    idpConfig = registerOutput<GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse>('idpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inboundSamlConfigId = registerOutput<String?>('inboundSamlConfigId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    spConfig = registerOutput<GoogleCloudIdentitytoolkitAdminV2SpConfigResponse>('spConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2SpConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tenantId = registerOutput<String>('tenantId');
+  }
+
+  /// Creates a typed reference to an existing [InboundSamlConfig] resource.
+  InboundSamlConfig.reference(String urn)
+    : super(
+        'google-native:identitytoolkit/v2:InboundSamlConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     displayName = registerOutput<String>('displayName');
     enabled = registerOutput<bool>('enabled');
     idpConfig = registerOutput<GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse>('idpConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

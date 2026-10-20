@@ -5,19 +5,19 @@ import 'google_cloud_securitycenter_v1_custom_config_response.dart';
 /// Result data returned by getOrganizationSecurityHealthAnalyticsSettingCustomModule.
 class GetOrganizationSecurityHealthAnalyticsSettingCustomModuleResult {
   /// If empty, indicates that the custom module was created in the organization, folder, or project in which you are viewing the custom module. Otherwise, `ancestor_module` specifies the organization or folder from which the custom module is inherited.
-  final String ancestorModule;
+  final String? ancestorModule;
   /// The user specified custom configuration for the module.
-  final GoogleCloudSecuritycenterV1CustomConfigResponse customConfig;
+  final GoogleCloudSecuritycenterV1CustomConfigResponse? customConfig;
   /// The display name of the Security Health Analytics custom module. This display name becomes the finding category for all findings that are returned by this custom module. The display name must be between 1 and 128 characters, start with a lowercase letter, and contain alphanumeric characters or underscores only.
-  final String displayName;
+  final String? displayName;
   /// The enablement state of the custom module.
-  final String enablementState;
+  final String? enablementState;
   /// The editor that last updated the custom module.
-  final String lastEditor;
+  final String? lastEditor;
   /// Immutable. The resource name of the custom module. Its format is "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
-  final String name;
+  final String? name;
   /// The time at which the custom module was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetOrganizationSecurityHealthAnalyticsSettingCustomModuleResult].
   /// [ancestorModule] If empty, indicates that the custom module was created in the organization, folder, or project in which you are viewing the custom module. Otherwise, `ancestor_module` specifies the organization or folder from which the custom module is inherited.
@@ -28,36 +28,36 @@ class GetOrganizationSecurityHealthAnalyticsSettingCustomModuleResult {
   /// [name] Immutable. The resource name of the custom module. Its format is "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
   /// [updateTime] The time at which the custom module was last updated.
   const GetOrganizationSecurityHealthAnalyticsSettingCustomModuleResult({
-    required this.ancestorModule,
-    required this.customConfig,
-    required this.displayName,
-    required this.enablementState,
-    required this.lastEditor,
-    required this.name,
-    required this.updateTime,
+    this.ancestorModule,
+    this.customConfig,
+    this.displayName,
+    this.enablementState,
+    this.lastEditor,
+    this.name,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'ancestorModule': ancestorModule,
-      'customConfig': customConfig.toMap(),
-      'displayName': displayName,
-      'enablementState': enablementState,
-      'lastEditor': lastEditor,
-      'name': name,
-      'updateTime': updateTime,
+      'ancestorModule': ?ancestorModule,
+      'customConfig': ?customConfig?.toMap(),
+      'displayName': ?displayName,
+      'enablementState': ?enablementState,
+      'lastEditor': ?lastEditor,
+      'name': ?name,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetOrganizationSecurityHealthAnalyticsSettingCustomModuleResult.fromMap(Map<String, dynamic> map) {
     return GetOrganizationSecurityHealthAnalyticsSettingCustomModuleResult(
-      ancestorModule: map['ancestorModule'] as String,
-      customConfig: GoogleCloudSecuritycenterV1CustomConfigResponse.fromMap((map['customConfig']! as Map).cast<String, dynamic>()),
-      displayName: map['displayName'] as String,
-      enablementState: map['enablementState'] as String,
-      lastEditor: map['lastEditor'] as String,
-      name: map['name'] as String,
-      updateTime: map['updateTime'] as String,
+      ancestorModule: (() { final guardedValue = map['ancestorModule']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customConfig: (() { final guardedValue = map['customConfig']; if (guardedValue == null) return null; return GoogleCloudSecuritycenterV1CustomConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      enablementState: (() { final guardedValue = map['enablementState']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      lastEditor: (() { final guardedValue = map['lastEditor']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

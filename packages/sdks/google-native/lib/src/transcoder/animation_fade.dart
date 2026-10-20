@@ -7,13 +7,13 @@ import 'normalized_coordinate.dart';
 /// Display overlay object with fade animation.
 class AnimationFade {
   /// The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
-  final pulumi.Input<String>? endTimeOffset;
+  final pulumi.Input<String?>? endTimeOffset;
   /// Type of fade animation: `FADE_IN` or `FADE_OUT`.
   final pulumi.Input<AnimationFadeFadeType> fadeType;
   /// The time to start the fade animation, in seconds. Default: 0
-  final pulumi.Input<String>? startTimeOffset;
+  final pulumi.Input<String?>? startTimeOffset;
   /// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
-  final pulumi.Input<NormalizedCoordinate>? xy;
+  final pulumi.Input<NormalizedCoordinate?>? xy;
 
   /// Creates a new [AnimationFade].
   /// [endTimeOffset] The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s

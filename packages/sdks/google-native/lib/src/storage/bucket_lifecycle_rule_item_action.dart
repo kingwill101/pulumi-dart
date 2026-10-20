@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The action to take.
 class BucketLifecycleRuleItemAction {
   /// Target storage class. Required iff the type of the action is SetStorageClass.
-  final pulumi.Input<String>? storageClass;
+  final pulumi.Input<String?>? storageClass;
   /// Type of the action. Currently, only Delete, SetStorageClass, and AbortIncompleteMultipartUpload are supported.
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [BucketLifecycleRuleItemAction].
   /// [storageClass] Target storage class. Required iff the type of the action is SetStorageClass.

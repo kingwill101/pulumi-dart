@@ -53,12 +53,12 @@ class RevisionSpecResponse {
 
   factory RevisionSpecResponse.fromMap(Map<String, dynamic> map) {
     return RevisionSpecResponse(
-      containerConcurrency: pulumi.Input.fromValue(map['containerConcurrency'] as int),
+      containerConcurrency: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['containerConcurrency'])),
       containers: pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerResponse>(map['containers']!, (value) => ContainerResponse.fromMap((value as Map).cast<String, dynamic>()))),
       enableServiceLinks: pulumi.Input.fromValue(map['enableServiceLinks'] as bool),
       imagePullSecrets: pulumi.Input.fromValue(pulumi.Input.decodeList<LocalObjectReferenceResponse>(map['imagePullSecrets']!, (value) => LocalObjectReferenceResponse.fromMap((value as Map).cast<String, dynamic>()))),
       serviceAccountName: pulumi.Input.fromValue(map['serviceAccountName'] as String),
-      timeoutSeconds: pulumi.Input.fromValue(map['timeoutSeconds'] as int),
+      timeoutSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeoutSeconds'])),
       volumes: pulumi.Input.fromValue(pulumi.Input.decodeList<VolumeResponse>(map['volumes']!, (value) => VolumeResponse.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

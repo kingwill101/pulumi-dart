@@ -45,8 +45,34 @@ class HttpsHealthCheck extends pulumi.CustomResource {
           'google-native:compute/alpha:HttpsHealthCheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    checkIntervalSec = registerOutput<int>('checkIntervalSec');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    healthyThreshold = registerOutput<int>('healthyThreshold');
+    host = registerOutput<String>('host');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    port = registerOutput<int>('port');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    requestPath = registerOutput<String>('requestPath');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    timeoutSec = registerOutput<int>('timeoutSec');
+    unhealthyThreshold = registerOutput<int>('unhealthyThreshold');
+  }
+
+  /// Creates a typed reference to an existing [HttpsHealthCheck] resource.
+  HttpsHealthCheck.reference(String urn)
+    : super(
+        'google-native:compute/alpha:HttpsHealthCheck',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     checkIntervalSec = registerOutput<int>('checkIntervalSec');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');

@@ -32,7 +32,7 @@ class VolumeResponseAppengineV1beta {
   factory VolumeResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return VolumeResponseAppengineV1beta(
       name: pulumi.Input.fromValue(map['name'] as String),
-      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as double),
+      sizeGb: pulumi.Input.fromValue((map['sizeGb'] as num).toDouble()),
       volumeType: pulumi.Input.fromValue(map['volumeType'] as String),
     );
   }

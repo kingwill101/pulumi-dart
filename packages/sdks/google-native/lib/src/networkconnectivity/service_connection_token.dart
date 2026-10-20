@@ -40,13 +40,37 @@ class ServiceConnectionToken extends pulumi.CustomResource {
           'google-native:networkconnectivity/v1:ServiceConnectionToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    serviceConnectionTokenId = registerOutput<String?>('serviceConnectionTokenId');
+    token = registerOutput<String>('token');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ServiceConnectionToken] resource.
+  ServiceConnectionToken.reference(String urn)
+    : super(
+        'google-native:networkconnectivity/v1:ServiceConnectionToken',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    expireTime = registerOutput<String>('expireTime');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');

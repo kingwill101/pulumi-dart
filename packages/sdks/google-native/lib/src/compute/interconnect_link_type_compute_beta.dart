@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
-enum InterconnectLinkTypeComputeBeta {
+enum InterconnectLinkTypeComputeBeta implements pulumi.PulumiEnum<String> {
   linkTypeEthernet100gLr("LINK_TYPE_ETHERNET_100G_LR"),
   linkTypeEthernet10gLr("LINK_TYPE_ETHERNET_10G_LR");
 
   const InterconnectLinkTypeComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static InterconnectLinkTypeComputeBeta fromValue(String value) {

@@ -25,8 +25,8 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpecResponse {
 
   factory GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpecResponse(
-      maxValue: pulumi.Input.fromValue(map['maxValue'] as double),
-      minValue: pulumi.Input.fromValue(map['minValue'] as double),
+      maxValue: pulumi.Input.fromValue((map['maxValue'] as num).toDouble()),
+      minValue: pulumi.Input.fromValue((map['minValue'] as num).toDouble()),
     );
   }
 }

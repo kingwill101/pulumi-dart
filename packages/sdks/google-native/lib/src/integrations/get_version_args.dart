@@ -10,7 +10,7 @@ class GetVersionArgs {
   final pulumi.Input<String> integrationId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> productId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> versionId;
 
   /// Creates a new [GetVersionArgs].

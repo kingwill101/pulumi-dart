@@ -55,7 +55,7 @@ class DiskResponse {
       mountPoint: pulumi.Input.fromValue(map['mountPoint'] as String),
       name: pulumi.Input.fromValue(map['name'] as String),
       readOnly: pulumi.Input.fromValue(map['readOnly'] as bool),
-      sizeGb: pulumi.Input.fromValue(map['sizeGb'] as int),
+      sizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeGb'])),
       source: pulumi.Input.fromValue(map['source'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

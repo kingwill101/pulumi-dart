@@ -50,8 +50,37 @@ class NodeGroupComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:NodeGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['initialNodeCount', 'project', 'zone']).merge(options),
         ) {
+    autoscalingPolicy = registerOutput<NodeGroupAutoscalingPolicyResponseComputeV1>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupAutoscalingPolicyResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    initialNodeCount = registerOutput<int>('initialNodeCount');
+    kind = registerOutput<String>('kind');
+    locationHint = registerOutput<String>('locationHint');
+    maintenancePolicy = registerOutput<String>('maintenancePolicy');
+    maintenanceWindow = registerOutput<NodeGroupMaintenanceWindowResponseComputeV1>('maintenanceWindow', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupMaintenanceWindowResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    nodeTemplate = registerOutput<String>('nodeTemplate');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    shareSettings = registerOutput<ShareSettingsResponseComputeV1>('shareSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ShareSettingsResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    size = registerOutput<int>('size');
+    status = registerOutput<String>('status');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [NodeGroupComputeV1] resource.
+  NodeGroupComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:NodeGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     autoscalingPolicy = registerOutput<NodeGroupAutoscalingPolicyResponseComputeV1>('autoscalingPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NodeGroupAutoscalingPolicyResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');

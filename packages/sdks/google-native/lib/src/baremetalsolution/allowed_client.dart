@@ -6,17 +6,17 @@ import 'allowed_client_mount_permissions.dart';
 /// Represents an 'access point' for the share.
 class AllowedClient {
   /// Allow dev flag. Which controls whether to allow creation of devices.
-  final pulumi.Input<bool>? allowDev;
+  final pulumi.Input<bool?>? allowDev;
   /// Allow the setuid flag.
-  final pulumi.Input<bool>? allowSuid;
+  final pulumi.Input<bool?>? allowSuid;
   /// The subnet of IP addresses permitted to access the share.
-  final pulumi.Input<String>? allowedClientsCidr;
+  final pulumi.Input<String?>? allowedClientsCidr;
   /// Mount permissions.
-  final pulumi.Input<AllowedClientMountPermissions>? mountPermissions;
+  final pulumi.Input<AllowedClientMountPermissions?>? mountPermissions;
   /// The network the access point sits on.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
-  final pulumi.Input<bool>? noRootSquash;
+  final pulumi.Input<bool?>? noRootSquash;
 
   /// Creates a new [AllowedClient].
   /// [allowDev] Allow dev flag. Which controls whether to allow creation of devices.

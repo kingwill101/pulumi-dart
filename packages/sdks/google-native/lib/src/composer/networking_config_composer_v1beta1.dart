@@ -6,7 +6,7 @@ import 'networking_config_connection_type_composer_v1beta1.dart';
 /// Configuration options for networking connections in the Composer 2 environment.
 class NetworkingConfigComposerV1beta1 {
   /// Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.
-  final pulumi.Input<NetworkingConfigConnectionTypeComposerV1beta1>? connectionType;
+  final pulumi.Input<NetworkingConfigConnectionTypeComposerV1beta1?>? connectionType;
 
   /// Creates a new [NetworkingConfigComposerV1beta1].
   /// [connectionType] Optional. Indicates the user requested specifc connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment.

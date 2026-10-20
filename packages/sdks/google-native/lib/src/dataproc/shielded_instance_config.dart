@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
 class ShieldedInstanceConfig {
   /// Optional. Defines whether instances have integrity monitoring enabled.
-  final pulumi.Input<bool>? enableIntegrityMonitoring;
+  final pulumi.Input<bool?>? enableIntegrityMonitoring;
   /// Optional. Defines whether instances have Secure Boot enabled.
-  final pulumi.Input<bool>? enableSecureBoot;
+  final pulumi.Input<bool?>? enableSecureBoot;
   /// Optional. Defines whether instances have the vTPM enabled.
-  final pulumi.Input<bool>? enableVtpm;
+  final pulumi.Input<bool?>? enableVtpm;
 
   /// Creates a new [ShieldedInstanceConfig].
   /// [enableIntegrityMonitoring] Optional. Defines whether instances have integrity monitoring enabled.

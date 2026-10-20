@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNodeGroupArgs {
   final pulumi.Input<String> clusterId;
   final pulumi.Input<String> nodeGroupId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> regionId;
 
   /// Creates a new [GetNodeGroupArgs].

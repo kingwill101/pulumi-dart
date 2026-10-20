@@ -37,8 +37,29 @@ class Environment extends pulumi.CustomResource {
           'google-native:notebooks/v1:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['environmentId', 'location', 'project']).merge(options),
         ) {
+    containerImage = registerOutput<ContainerImageResponse>('containerImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    environmentId = registerOutput<String>('environmentId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    postStartupScript = registerOutput<String>('postStartupScript');
+    project = registerOutput<String>('project');
+    vmImage = registerOutput<VmImageResponse>('vmImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Environment] resource.
+  Environment.reference(String urn)
+    : super(
+        'google-native:notebooks/v1:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     containerImage = registerOutput<ContainerImageResponse>('containerImage', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ContainerImageResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');

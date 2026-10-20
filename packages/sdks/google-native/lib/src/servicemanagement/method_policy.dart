@@ -6,9 +6,9 @@ import 'field_policy.dart';
 /// Defines policies applying to an RPC method.
 class MethodPolicy {
   /// Policies that are applicable to the request message.
-  final pulumi.Input<List<FieldPolicy>>? requestPolicies;
+  final pulumi.Input<List<FieldPolicy>?>? requestPolicies;
   /// Selects a method to which these policies should be enforced, for example, "google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax details. NOTE: This field must not be set in the proto annotation. It will be automatically filled by the service config compiler .
-  final pulumi.Input<String>? selector;
+  final pulumi.Input<String?>? selector;
 
   /// Creates a new [MethodPolicy].
   /// [requestPolicies] Policies that are applicable to the request message.

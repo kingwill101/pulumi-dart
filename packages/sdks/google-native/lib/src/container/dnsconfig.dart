@@ -7,11 +7,11 @@ import 'dnsconfig_cluster_dns_scope.dart';
 /// DNSConfig contains the desired set of options for configuring clusterDNS.
 class DNSConfig {
   /// cluster_dns indicates which in-cluster DNS provider should be used.
-  final pulumi.Input<DNSConfigClusterDns>? clusterDns;
+  final pulumi.Input<DNSConfigClusterDns?>? clusterDns;
   /// cluster_dns_domain is the suffix used for all cluster service records.
-  final pulumi.Input<String>? clusterDnsDomain;
+  final pulumi.Input<String?>? clusterDnsDomain;
   /// cluster_dns_scope indicates the scope of access to cluster DNS records.
-  final pulumi.Input<DNSConfigClusterDnsScope>? clusterDnsScope;
+  final pulumi.Input<DNSConfigClusterDnsScope?>? clusterDnsScope;
 
   /// Creates a new [DNSConfig].
   /// [clusterDns] cluster_dns indicates which in-cluster DNS provider should be used.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
-enum ConditionSys {
+enum ConditionSys implements pulumi.PulumiEnum<String> {
   noAttr("NO_ATTR"),
   region("REGION"),
   service("SERVICE"),
@@ -7,6 +9,7 @@ enum ConditionSys {
   ip("IP");
 
   const ConditionSys(this.wireValue);
+  @override
   final String wireValue;
 
   static ConditionSys fromValue(String value) {

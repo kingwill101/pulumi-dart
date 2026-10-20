@@ -7,9 +7,9 @@ import 'service_mesh_membership_spec_management.dart';
 /// **Service Mesh**: Spec for a single Membership for the servicemesh feature
 class ServiceMeshMembershipSpec {
   /// Deprecated: use `management` instead Enables automatic control plane management.
-  final pulumi.Input<ServiceMeshMembershipSpecControlPlane>? controlPlane;
+  final pulumi.Input<ServiceMeshMembershipSpecControlPlane?>? controlPlane;
   /// Enables automatic Service Mesh management.
-  final pulumi.Input<ServiceMeshMembershipSpecManagement>? management;
+  final pulumi.Input<ServiceMeshMembershipSpecManagement?>? management;
 
   /// Creates a new [ServiceMeshMembershipSpec].
   /// [controlPlane] Deprecated: use `management` instead Enables automatic control plane management.

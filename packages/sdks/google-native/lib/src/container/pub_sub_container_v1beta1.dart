@@ -6,11 +6,11 @@ import 'filter_container_v1beta1.dart';
 /// Pub/Sub specific notification config.
 class PubSubContainerV1beta1 {
   /// Enable notifications for Pub/Sub.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
-  final pulumi.Input<FilterContainerV1beta1>? filter;
+  final pulumi.Input<FilterContainerV1beta1?>? filter;
   /// The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
-  final pulumi.Input<String>? topic;
+  final pulumi.Input<String?>? topic;
 
   /// Creates a new [PubSubContainerV1beta1].
   /// [enabled] Enable notifications for Pub/Sub.

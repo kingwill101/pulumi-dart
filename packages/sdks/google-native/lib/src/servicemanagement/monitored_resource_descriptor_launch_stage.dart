@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The launch stage of the monitored resource definition.
-enum MonitoredResourceDescriptorLaunchStage {
+enum MonitoredResourceDescriptorLaunchStage implements pulumi.PulumiEnum<String> {
   launchStageUnspecified("LAUNCH_STAGE_UNSPECIFIED"),
   unimplemented("UNIMPLEMENTED"),
   prelaunch("PRELAUNCH"),
@@ -10,6 +12,7 @@ enum MonitoredResourceDescriptorLaunchStage {
   deprecated("DEPRECATED");
 
   const MonitoredResourceDescriptorLaunchStage(this.wireValue);
+  @override
   final String wireValue;
 
   static MonitoredResourceDescriptorLaunchStage fromValue(String value) {

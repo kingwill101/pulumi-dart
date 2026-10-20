@@ -40,6 +40,17 @@ Future<GetApiResult> getApi(
   return GetApiResult.fromMap(result);
 }
 
+pulumi.Output<GetApiResult> getApiOutput(
+  GetApiArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigateway/v1:getApi',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigateway_v1_get_api_config_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -54,6 +65,17 @@ Future<GetApiConfigIamPolicyResult> getApiConfigIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApiConfigIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetApiConfigIamPolicyResult> getApiConfigIamPolicyOutput(
+  GetApiConfigIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigateway/v1:getApiConfigIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiConfigIamPolicyResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -72,6 +94,17 @@ Future<GetApiIamPolicyResult> getApiIamPolicy(
   return GetApiIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetApiIamPolicyResult> getApiIamPolicyOutput(
+  GetApiIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigateway/v1:getApiIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiIamPolicyResult.fromMap);
+}
+
 /// Gets details of a single ApiConfig.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigateway_v1_get_config_args_doc}
 /// [options] Invoke options controlling this call.
@@ -86,6 +119,17 @@ Future<GetConfigResult> getConfig(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigResult> getConfigOutput(
+  GetConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigateway/v1:getConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigResult.fromMap);
 }
 
 /// Gets details of a single Gateway.
@@ -104,6 +148,17 @@ Future<GetGatewayResult> getGateway(
   return GetGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetGatewayResult> getGatewayOutput(
+  GetGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigateway/v1:getGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigateway_v1_get_gateway_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -118,6 +173,17 @@ Future<GetGatewayIamPolicyResult> getGatewayIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGatewayIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetGatewayIamPolicyResult> getGatewayIamPolicyOutput(
+  GetGatewayIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigateway/v1:getGatewayIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayIamPolicyResult.fromMap);
 }
 
 /// Gets details of a single Api.
@@ -136,6 +202,17 @@ Future<GetApiApigatewayV1betaResult> getApiApigatewayV1beta(
   return GetApiApigatewayV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetApiApigatewayV1betaResult> getApiApigatewayV1betaOutput(
+  GetApiApigatewayV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigateway/v1beta:getApi',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiApigatewayV1betaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigateway_v1beta_get_api_config_iam_policy_apigateway_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -150,6 +227,17 @@ Future<GetApiConfigIamPolicyApigatewayV1betaResult> getApiConfigIamPolicyApigate
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApiConfigIamPolicyApigatewayV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetApiConfigIamPolicyApigatewayV1betaResult> getApiConfigIamPolicyApigatewayV1betaOutput(
+  GetApiConfigIamPolicyApigatewayV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigateway/v1beta:getApiConfigIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiConfigIamPolicyApigatewayV1betaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -168,6 +256,17 @@ Future<GetApiIamPolicyApigatewayV1betaResult> getApiIamPolicyApigatewayV1beta(
   return GetApiIamPolicyApigatewayV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetApiIamPolicyApigatewayV1betaResult> getApiIamPolicyApigatewayV1betaOutput(
+  GetApiIamPolicyApigatewayV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigateway/v1beta:getApiIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiIamPolicyApigatewayV1betaResult.fromMap);
+}
+
 /// Gets details of a single ApiConfig.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigateway_v1beta_get_config_apigateway_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -182,6 +281,17 @@ Future<GetConfigApigatewayV1betaResult> getConfigApigatewayV1beta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetConfigApigatewayV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetConfigApigatewayV1betaResult> getConfigApigatewayV1betaOutput(
+  GetConfigApigatewayV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigateway/v1beta:getConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigApigatewayV1betaResult.fromMap);
 }
 
 /// Gets details of a single Gateway.
@@ -200,6 +310,17 @@ Future<GetGatewayApigatewayV1betaResult> getGatewayApigatewayV1beta(
   return GetGatewayApigatewayV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetGatewayApigatewayV1betaResult> getGatewayApigatewayV1betaOutput(
+  GetGatewayApigatewayV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigateway/v1beta:getGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayApigatewayV1betaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigateway_v1beta_get_gateway_iam_policy_apigateway_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -214,4 +335,15 @@ Future<GetGatewayIamPolicyApigatewayV1betaResult> getGatewayIamPolicyApigatewayV
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGatewayIamPolicyApigatewayV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetGatewayIamPolicyApigatewayV1betaResult> getGatewayIamPolicyApigatewayV1betaOutput(
+  GetGatewayIamPolicyApigatewayV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigateway/v1beta:getGatewayIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGatewayIamPolicyApigatewayV1betaResult.fromMap);
 }

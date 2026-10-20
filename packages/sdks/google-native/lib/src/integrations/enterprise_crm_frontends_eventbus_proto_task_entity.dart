@@ -10,17 +10,17 @@ import 'enterprise_crm_frontends_eventbus_proto_task_entity_task_type.dart';
 /// Contains a task's metadata and associated information. Next available id: 7
 class EnterpriseCrmFrontendsEventbusProtoTaskEntity {
   /// True if the task has conflict with vpcsc
-  final pulumi.Input<bool>? disabledForVpcSc;
+  final pulumi.Input<bool?>? disabledForVpcSc;
   /// Metadata inclueds the task name, author and so on.
-  final pulumi.Input<EnterpriseCrmEventbusProtoTaskMetadata>? metadata;
+  final pulumi.Input<EnterpriseCrmEventbusProtoTaskMetadata?>? metadata;
   /// Declarations for inputs/outputs for a TypedTask. This is also associated with the METADATA mask.
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage>? paramSpecs;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoParamSpecsMessage?>? paramSpecs;
   /// Deprecated - statistics from the Monarch query.
-  final pulumi.Input<EnterpriseCrmEventbusStats>? stats;
+  final pulumi.Input<EnterpriseCrmEventbusStats?>? stats;
   /// Defines the type of the task
-  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType>? taskType;
+  final pulumi.Input<EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType?>? taskType;
   /// UI configuration for this task Also associated with the METADATA mask.
-  final pulumi.Input<EnterpriseCrmEventbusProtoTaskUiConfig>? uiConfig;
+  final pulumi.Input<EnterpriseCrmEventbusProtoTaskUiConfig?>? uiConfig;
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoTaskEntity].
   /// [disabledForVpcSc] True if the task has conflict with vpcsc

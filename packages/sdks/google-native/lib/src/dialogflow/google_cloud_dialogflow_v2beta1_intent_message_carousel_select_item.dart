@@ -7,9 +7,9 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_select_item_info.dart';
 /// An item in the carousel.
 class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem {
   /// Optional. The body text of the card.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. The image to display.
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageImage>? image;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageImage?>? image;
   /// Additional info about the option item.
   final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo> info;
   /// Title of the carousel item.

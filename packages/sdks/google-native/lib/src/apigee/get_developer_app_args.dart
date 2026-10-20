@@ -9,9 +9,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDeveloperAppArgs {
   final pulumi.Input<String> appId;
   final pulumi.Input<String> developerId;
-  final pulumi.Input<String>? entity;
+  final pulumi.Input<String?>? entity;
   final pulumi.Input<String> organizationId;
-  final pulumi.Input<String>? query;
+  final pulumi.Input<String?>? query;
 
   /// Creates a new [GetDeveloperAppArgs].
   /// [appId] Required.

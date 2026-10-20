@@ -6,11 +6,11 @@ import 'file_reference.dart';
 /// A test that explores an iOS application on an iOS device.
 class IosRoboTest {
   /// The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
-  final pulumi.Input<String>? appBundleId;
+  final pulumi.Input<String?>? appBundleId;
   /// The ipa stored at this file should be used to run the test.
   final pulumi.Input<FileReference> appIpa;
   /// An optional Roboscript to customize the crawl. See https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about Roboscripts.
-  final pulumi.Input<FileReference>? roboScript;
+  final pulumi.Input<FileReference?>? roboScript;
 
   /// Creates a new [IosRoboTest].
   /// [appBundleId] The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.

@@ -6,7 +6,7 @@ import 'namespace_actuation_feature_spec_actuation_mode.dart';
 /// An empty spec for actuation feature. This is required since Feature proto requires a spec.
 class NamespaceActuationFeatureSpec {
   /// actuation_mode controls the behavior of the controller
-  final pulumi.Input<NamespaceActuationFeatureSpecActuationMode>? actuationMode;
+  final pulumi.Input<NamespaceActuationFeatureSpecActuationMode?>? actuationMode;
 
   /// Creates a new [NamespaceActuationFeatureSpec].
   /// [actuationMode] actuation_mode controls the behavior of the controller

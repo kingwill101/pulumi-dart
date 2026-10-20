@@ -7,17 +7,17 @@ import 'transform_summary_kind.dart';
 /// Description of the type, names/ids, and input/outputs for a transform.
 class TransformSummary {
   /// Transform-specific display data.
-  final pulumi.Input<List<DisplayData>>? displayData;
+  final pulumi.Input<List<DisplayData>?>? displayData;
   /// SDK generated id of this transform instance.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// User names for all collection inputs to this transform.
-  final pulumi.Input<List<String>>? inputCollectionName;
+  final pulumi.Input<List<String>?>? inputCollectionName;
   /// Type of transform.
-  final pulumi.Input<TransformSummaryKind>? kind;
+  final pulumi.Input<TransformSummaryKind?>? kind;
   /// User provided name for this transform instance.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// User names for all collection outputs to this transform.
-  final pulumi.Input<List<String>>? outputCollectionName;
+  final pulumi.Input<List<String>?>? outputCollectionName;
 
   /// Creates a new [TransformSummary].
   /// [displayData] Transform-specific display data.

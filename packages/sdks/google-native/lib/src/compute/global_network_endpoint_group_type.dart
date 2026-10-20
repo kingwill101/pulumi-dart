@@ -1,8 +1,11 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
-enum GlobalNetworkEndpointGroupType {
+enum GlobalNetworkEndpointGroupType implements pulumi.PulumiEnum<String> {
   loadBalancing("LOAD_BALANCING");
 
   const GlobalNetworkEndpointGroupType(this.wireValue);
+  @override
   final String wireValue;
 
   static GlobalNetworkEndpointGroupType fromValue(String value) {

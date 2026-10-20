@@ -9,11 +9,11 @@ import 'execution_call_log_level_workflowexecutions_v1beta.dart';
 /// {@macro pulumi_workflowexecutions_v1beta_execution_workflowexecutions_v1beta_args_doc}
 class ExecutionWorkflowexecutionsV1betaArgs {
   /// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
-  final pulumi.Input<String>? argument;
+  final pulumi.Input<String?>? argument;
   /// The call logging level associated to this execution.
-  final pulumi.Input<ExecutionCallLogLevelWorkflowexecutionsV1beta>? callLogLevel;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<ExecutionCallLogLevelWorkflowexecutionsV1beta?>? callLogLevel;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> workflowId;
 
   /// Creates a new [ExecutionWorkflowexecutionsV1betaArgs].

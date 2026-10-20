@@ -10,7 +10,7 @@ class GetAutomationArgs {
   final pulumi.Input<String> automationId;
   final pulumi.Input<String> deliveryPipelineId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAutomationArgs].
   /// [automationId] Required.

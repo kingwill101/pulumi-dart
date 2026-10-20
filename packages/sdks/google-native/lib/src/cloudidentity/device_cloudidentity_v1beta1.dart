@@ -83,7 +83,7 @@ class DeviceCloudidentityV1beta1 extends pulumi.CustomResource {
           'google-native:cloudidentity/v1beta1:Device',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
     androidSpecificAttributes = registerOutput<AndroidAttributesResponse>('androidSpecificAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AndroidAttributesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     assetTag = registerOutput<String>('assetTag');
@@ -91,7 +91,7 @@ class DeviceCloudidentityV1beta1 extends pulumi.CustomResource {
     bootloaderVersion = registerOutput<String>('bootloaderVersion');
     brand = registerOutput<String>('brand');
     buildNumber = registerOutput<String>('buildNumber');
-    clientTypes = registerOutput<List<String>>('clientTypes');
+    clientTypes = registerOutput<List<String>>('clientTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     compromisedState = registerOutput<String>('compromisedState');
     createTime = registerOutput<String>('createTime');
     deviceId = registerOutput<String>('deviceId');
@@ -111,11 +111,54 @@ class DeviceCloudidentityV1beta1 extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     networkOperator = registerOutput<String>('networkOperator');
     osVersion = registerOutput<String>('osVersion');
-    otherAccounts = registerOutput<List<String>>('otherAccounts');
+    otherAccounts = registerOutput<List<String>>('otherAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     ownerType = registerOutput<String>('ownerType');
     releaseVersion = registerOutput<String>('releaseVersion');
     securityPatchTime = registerOutput<String>('securityPatchTime');
     serialNumber = registerOutput<String>('serialNumber');
-    wifiMacAddresses = registerOutput<List<String>>('wifiMacAddresses');
+    wifiMacAddresses = registerOutput<List<String>>('wifiMacAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DeviceCloudidentityV1beta1] resource.
+  DeviceCloudidentityV1beta1.reference(String urn)
+    : super(
+        'google-native:cloudidentity/v1beta1:Device',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    androidSpecificAttributes = registerOutput<AndroidAttributesResponse>('androidSpecificAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AndroidAttributesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    assetTag = registerOutput<String>('assetTag');
+    basebandVersion = registerOutput<String>('basebandVersion');
+    bootloaderVersion = registerOutput<String>('bootloaderVersion');
+    brand = registerOutput<String>('brand');
+    buildNumber = registerOutput<String>('buildNumber');
+    clientTypes = registerOutput<List<String>>('clientTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    compromisedState = registerOutput<String>('compromisedState');
+    createTime = registerOutput<String>('createTime');
+    deviceId = registerOutput<String>('deviceId');
+    deviceType = registerOutput<String>('deviceType');
+    enabledDeveloperOptions = registerOutput<bool>('enabledDeveloperOptions');
+    enabledUsbDebugging = registerOutput<bool>('enabledUsbDebugging');
+    encryptionState = registerOutput<String>('encryptionState');
+    endpointVerificationSpecificAttributes = registerOutput<EndpointVerificationSpecificAttributesResponse>('endpointVerificationSpecificAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointVerificationSpecificAttributesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    hostname = registerOutput<String>('hostname');
+    imei = registerOutput<String>('imei');
+    kernelVersion = registerOutput<String>('kernelVersion');
+    lastSyncTime = registerOutput<String>('lastSyncTime');
+    managementState = registerOutput<String>('managementState');
+    manufacturer = registerOutput<String>('manufacturer');
+    meid = registerOutput<String>('meid');
+    model = registerOutput<String>('model');
+    this.name = registerOutput<String>('name');
+    networkOperator = registerOutput<String>('networkOperator');
+    osVersion = registerOutput<String>('osVersion');
+    otherAccounts = registerOutput<List<String>>('otherAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ownerType = registerOutput<String>('ownerType');
+    releaseVersion = registerOutput<String>('releaseVersion');
+    securityPatchTime = registerOutput<String>('securityPatchTime');
+    serialNumber = registerOutput<String>('serialNumber');
+    wifiMacAddresses = registerOutput<List<String>>('wifiMacAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

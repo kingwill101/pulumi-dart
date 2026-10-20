@@ -36,14 +36,35 @@ class FeatureGroupAiplatformV1beta1 extends pulumi.CustomResource {
           'google-native:aiplatform/v1beta1:FeatureGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['featureGroupId', 'location', 'project']).merge(options),
         ) {
     bigQuery = registerOutput<GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponse>('bigQuery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');
     featureGroupId = registerOutput<String>('featureGroupId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [FeatureGroupAiplatformV1beta1] resource.
+  FeatureGroupAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:FeatureGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bigQuery = registerOutput<GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponse>('bigQuery', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1FeatureGroupBigQueryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    featureGroupId = registerOutput<String>('featureGroupId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -45,7 +45,7 @@ class TCPHealthCheckResponseComputeBeta {
 
   factory TCPHealthCheckResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return TCPHealthCheckResponseComputeBeta(
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       portName: pulumi.Input.fromValue(map['portName'] as String),
       portSpecification: pulumi.Input.fromValue(map['portSpecification'] as String),
       proxyHeader: pulumi.Input.fromValue(map['proxyHeader'] as String),

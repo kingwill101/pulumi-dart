@@ -31,7 +31,7 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldIn
 
   factory GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse(
-      averageLength: pulumi.Input.fromValue(map['averageLength'] as double),
+      averageLength: pulumi.Input.fromValue((map['averageLength'] as num).toDouble()),
       maxLength: pulumi.Input.fromValue(map['maxLength'] as String),
       minLength: pulumi.Input.fromValue(map['minLength'] as String),
     );

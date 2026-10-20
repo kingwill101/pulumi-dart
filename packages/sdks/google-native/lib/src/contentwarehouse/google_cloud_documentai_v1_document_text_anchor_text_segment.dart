@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A text segment in the Document.text. The indices may be out of bounds which indicate that the text extends into another document shard for large sharded documents. See ShardInfo.text_offset
 class GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment {
   /// TextSegment half open end UTF-8 char index in the Document.text.
-  final pulumi.Input<String>? endIndex;
+  final pulumi.Input<String?>? endIndex;
   /// TextSegment start UTF-8 char index in the Document.text.
-  final pulumi.Input<String>? startIndex;
+  final pulumi.Input<String?>? startIndex;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment].
   /// [endIndex] TextSegment half open end UTF-8 char index in the Document.text.

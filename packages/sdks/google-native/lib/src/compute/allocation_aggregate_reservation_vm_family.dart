@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The VM family that all instances scheduled against this reservation must belong to.
-enum AllocationAggregateReservationVmFamily {
+enum AllocationAggregateReservationVmFamily implements pulumi.PulumiEnum<String> {
   vmFamilyCloudTpuLiteDeviceCt5l("VM_FAMILY_CLOUD_TPU_LITE_DEVICE_CT5L"),
   vmFamilyCloudTpuLitePodSliceCt5lp("VM_FAMILY_CLOUD_TPU_LITE_POD_SLICE_CT5LP"),
   vmFamilyCloudTpuPodSliceCt4p("VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P");
 
   const AllocationAggregateReservationVmFamily(this.wireValue);
+  @override
   final String wireValue;
 
   static AllocationAggregateReservationVmFamily fromValue(String value) {

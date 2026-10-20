@@ -32,9 +32,9 @@ class GoogleCloudMlV1AutoScalingResponse {
 
   factory GoogleCloudMlV1AutoScalingResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1AutoScalingResponse(
-      maxNodes: pulumi.Input.fromValue(map['maxNodes'] as int),
+      maxNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNodes'])),
       metrics: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudMlV1MetricSpecResponse>(map['metrics']!, (value) => GoogleCloudMlV1MetricSpecResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      minNodes: pulumi.Input.fromValue(map['minNodes'] as int),
+      minNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNodes'])),
     );
   }
 }

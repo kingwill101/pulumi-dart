@@ -8,13 +8,13 @@ import 'bare_metal_sr_iov_config.dart';
 /// Specifies the cluster network configuration.
 class BareMetalNetworkConfig {
   /// Enables the use of advanced Anthos networking features, such as Bundled Load Balancing with BGP or the egress NAT gateway. Setting configuration for advanced networking features will automatically set this flag.
-  final pulumi.Input<bool>? advancedNetworking;
+  final pulumi.Input<bool?>? advancedNetworking;
   /// Configuration for island mode CIDR. In an island-mode network, nodes have unique IP addresses, but pods don't have unique addresses across clusters. This doesn't cause problems because pods in one cluster never directly communicate with pods in another cluster. Instead, there are gateways that mediate between a pod in one cluster and a pod in another cluster.
-  final pulumi.Input<BareMetalIslandModeCidrConfig>? islandModeCidr;
+  final pulumi.Input<BareMetalIslandModeCidrConfig?>? islandModeCidr;
   /// Configuration for multiple network interfaces.
-  final pulumi.Input<BareMetalMultipleNetworkInterfacesConfig>? multipleNetworkInterfacesConfig;
+  final pulumi.Input<BareMetalMultipleNetworkInterfacesConfig?>? multipleNetworkInterfacesConfig;
   /// Configuration for SR-IOV.
-  final pulumi.Input<BareMetalSrIovConfig>? srIovConfig;
+  final pulumi.Input<BareMetalSrIovConfig?>? srIovConfig;
 
   /// Creates a new [BareMetalNetworkConfig].
   /// [advancedNetworking] Enables the use of advanced Anthos networking features, such as Bundled Load Balancing with BGP or the egress NAT gateway. Setting configuration for advanced networking features will automatically set this flag.

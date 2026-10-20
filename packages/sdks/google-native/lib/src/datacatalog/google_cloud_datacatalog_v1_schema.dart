@@ -6,7 +6,7 @@ import 'google_cloud_datacatalog_v1_column_schema.dart';
 /// Represents a schema, for example, a BigQuery, GoogleSQL, or Avro schema.
 class GoogleCloudDatacatalogV1Schema {
   /// The unified GoogleSQL-like schema of columns. The overall maximum number of columns and nested columns is 10,000. The maximum nested depth is 15 levels.
-  final pulumi.Input<List<GoogleCloudDatacatalogV1ColumnSchema>>? columns;
+  final pulumi.Input<List<GoogleCloudDatacatalogV1ColumnSchema>?>? columns;
 
   /// Creates a new [GoogleCloudDatacatalogV1Schema].
   /// [columns] The unified GoogleSQL-like schema of columns. The overall maximum number of columns and nested columns is 10,000. The maximum nested depth is 15 levels.

@@ -11,16 +11,16 @@ import 'instruction_data_type.dart';
 /// {@macro pulumi_datalabeling_v1beta1_instruction_args_doc}
 class InstructionArgs {
   /// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
-  final pulumi.Input<GoogleCloudDatalabelingV1beta1CsvInstruction>? csvInstruction;
+  final pulumi.Input<GoogleCloudDatalabelingV1beta1CsvInstruction?>? csvInstruction;
   /// The data type of this instruction.
   final pulumi.Input<InstructionDataType> dataType;
   /// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The display name of the instruction. Maximum of 64 characters.
   final pulumi.Input<String> displayName;
   /// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
-  final pulumi.Input<GoogleCloudDatalabelingV1beta1PdfInstruction>? pdfInstruction;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<GoogleCloudDatalabelingV1beta1PdfInstruction?>? pdfInstruction;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [InstructionArgs].
   /// [csvInstruction] Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.

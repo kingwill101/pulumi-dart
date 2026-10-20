@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The action taken if the reCAPTCHA score of a request is within the interval [start_score, end_score].
-enum GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction {
+enum GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction implements pulumi.PulumiEnum<String> {
   recaptchaActionUnspecified("RECAPTCHA_ACTION_UNSPECIFIED"),
   block("BLOCK");
 
   const GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRuleAction fromValue(String value) {

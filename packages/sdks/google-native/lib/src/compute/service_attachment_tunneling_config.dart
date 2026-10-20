@@ -7,9 +7,9 @@ import 'service_attachment_tunneling_config_routing_mode.dart';
 /// Use to configure this PSC connection in tunneling mode. In tunneling mode traffic from consumer to producer will be encapsulated as it crosses the VPC boundary and traffic from producer to consumer will be decapsulated in the same manner.
 class ServiceAttachmentTunnelingConfig {
   /// Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers.
-  final pulumi.Input<ServiceAttachmentTunnelingConfigEncapsulationProfile>? encapsulationProfile;
+  final pulumi.Input<ServiceAttachmentTunnelingConfigEncapsulationProfile?>? encapsulationProfile;
   /// How this Service Attachment will treat traffic sent to the tunnel_ip, destined for the consumer network.
-  final pulumi.Input<ServiceAttachmentTunnelingConfigRoutingMode>? routingMode;
+  final pulumi.Input<ServiceAttachmentTunnelingConfigRoutingMode?>? routingMode;
 
   /// Creates a new [ServiceAttachmentTunnelingConfig].
   /// [encapsulationProfile] Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers.

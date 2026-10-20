@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The current state of the job. Jobs are created in the `JOB_STATE_STOPPED` state unless otherwise specified. A job in the `JOB_STATE_RUNNING` state may asynchronously enter a terminal state. After a job has reached a terminal state, no further state updates may be made. This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
-enum JobCurrentState {
+enum JobCurrentState implements pulumi.PulumiEnum<String> {
   jobStateUnknown("JOB_STATE_UNKNOWN"),
   jobStateStopped("JOB_STATE_STOPPED"),
   jobStateRunning("JOB_STATE_RUNNING"),
@@ -15,6 +17,7 @@ enum JobCurrentState {
   jobStateResourceCleaningUp("JOB_STATE_RESOURCE_CLEANING_UP");
 
   const JobCurrentState(this.wireValue);
+  @override
   final String wireValue;
 
   static JobCurrentState fromValue(String value) {

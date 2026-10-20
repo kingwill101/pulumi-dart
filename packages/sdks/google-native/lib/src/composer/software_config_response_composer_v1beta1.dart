@@ -58,7 +58,7 @@ class SoftwareConfigResponseComposerV1beta1 {
       imageVersion: pulumi.Input.fromValue(map['imageVersion'] as String),
       pypiPackages: pulumi.Input.fromValue((map['pypiPackages'] as Map).cast<String, String>()),
       pythonVersion: pulumi.Input.fromValue(map['pythonVersion'] as String),
-      schedulerCount: pulumi.Input.fromValue(map['schedulerCount'] as int),
+      schedulerCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['schedulerCount'])),
     );
   }
 }

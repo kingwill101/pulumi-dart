@@ -10,12 +10,12 @@ import 'worker_config_cloudbuild_v1alpha2.dart';
 /// {@macro pulumi_cloudbuild_v1alpha2_worker_pool_cloudbuild_v1alpha2_args_doc}
 class WorkerPoolCloudbuildV1alpha2Args {
   /// Network configuration for the `WorkerPool`.
-  final pulumi.Input<NetworkConfigCloudbuildV1alpha2>? networkConfig;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<NetworkConfigCloudbuildV1alpha2?>? networkConfig;
+  final pulumi.Input<String?>? project;
   /// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
   final pulumi.Input<String> region;
   /// Worker configuration for the `WorkerPool`.
-  final pulumi.Input<WorkerConfigCloudbuildV1alpha2>? workerConfig;
+  final pulumi.Input<WorkerConfigCloudbuildV1alpha2?>? workerConfig;
   /// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
   final pulumi.Input<String> workerPoolId;
 

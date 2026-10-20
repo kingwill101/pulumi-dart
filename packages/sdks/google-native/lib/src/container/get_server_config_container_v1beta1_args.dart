@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_container_v1beta1_get_server_config_container_v1beta1_args_doc}
 class GetServerConfigContainerV1beta1Args {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> projectId;
   final pulumi.Input<String> zone;
 

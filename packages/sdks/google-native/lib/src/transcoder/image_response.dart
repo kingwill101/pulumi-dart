@@ -32,7 +32,7 @@ class ImageResponse {
 
   factory ImageResponse.fromMap(Map<String, dynamic> map) {
     return ImageResponse(
-      alpha: pulumi.Input.fromValue(map['alpha'] as double),
+      alpha: pulumi.Input.fromValue((map['alpha'] as num).toDouble()),
       resolution: pulumi.Input.fromValue(NormalizedCoordinateResponse.fromMap((map['resolution']! as Map).cast<String, dynamic>())),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The observation noise level of the study. Currently only supported by the Vertex AI Vizier service. Not supported by HyperparameterTuningJob or TrainingPipeline.
-enum GoogleCloudAiplatformV1beta1StudySpecObservationNoise {
+enum GoogleCloudAiplatformV1beta1StudySpecObservationNoise implements pulumi.PulumiEnum<String> {
   observationNoiseUnspecified("OBSERVATION_NOISE_UNSPECIFIED"),
   low("LOW"),
   high("HIGH");
 
   const GoogleCloudAiplatformV1beta1StudySpecObservationNoise(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudAiplatformV1beta1StudySpecObservationNoise fromValue(String value) {

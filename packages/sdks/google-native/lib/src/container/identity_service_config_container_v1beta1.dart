@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// IdentityServiceConfig is configuration for Identity Service which allows customers to use external identity providers with the K8S API
 class IdentityServiceConfigContainerV1beta1 {
   /// Whether to enable the Identity Service component
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [IdentityServiceConfigContainerV1beta1].
   /// [enabled] Whether to enable the Identity Service component

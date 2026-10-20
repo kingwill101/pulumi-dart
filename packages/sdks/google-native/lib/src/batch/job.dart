@@ -1,8 +1,10 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'allocation_policy_response.dart';
 import 'job_args.dart';
+import 'job_notification_response.dart';
 import 'job_status_response.dart';
 import 'logs_policy_response.dart';
+import 'task_group_response.dart';
 
 /// Create a Job.
 /// Auto-naming is currently not supported for this resource.
@@ -21,7 +23,7 @@ class Job extends pulumi.CustomResource {
   /// Job name. For example: "projects/123456/locations/us-central1/jobs/job01".
   late final pulumi.Output<String> name;
   /// Notification configurations.
-  late final pulumi.Output<List<Map<String, dynamic>>> notifications;
+  late final pulumi.Output<List<JobNotificationResponse>> notifications;
   /// Priority of the Job. The valid value range is [0, 100). Default value is 0. Higher value indicates higher priority. A job with higher priority value is more likely to run earlier if all other requirements are satisfied.
   late final pulumi.Output<String> priority;
   late final pulumi.Output<String> project;
@@ -30,7 +32,7 @@ class Job extends pulumi.CustomResource {
   /// Job status. It is read only for users.
   late final pulumi.Output<JobStatusResponse> status;
   /// TaskGroups in the Job. Only one TaskGroup is supported now.
-  late final pulumi.Output<List<Map<String, dynamic>>> taskGroups;
+  late final pulumi.Output<List<TaskGroupResponse>> taskGroups;
   /// A system generated unique ID (in UUID4 format) for the Job.
   late final pulumi.Output<String> uid;
   /// The last time the Job was updated.
@@ -48,21 +50,47 @@ class Job extends pulumi.CustomResource {
           'google-native:batch/v1:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     allocationPolicy = registerOutput<AllocationPolicyResponse>('allocationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AllocationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     jobId = registerOutput<String?>('jobId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     logsPolicy = registerOutput<LogsPolicyResponse>('logsPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogsPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
-    notifications = registerOutput<List<Map<String, dynamic>>>('notifications');
+    notifications = registerOutput<List<JobNotificationResponse>>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobNotificationResponse>(guardedValue, (value) => JobNotificationResponse.fromMap((value as Map).cast<String, dynamic>())); });
     priority = registerOutput<String>('priority');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
     status = registerOutput<JobStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    taskGroups = registerOutput<List<Map<String, dynamic>>>('taskGroups');
+    taskGroups = registerOutput<List<TaskGroupResponse>>('taskGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskGroupResponse>(guardedValue, (value) => TaskGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'google-native:batch/v1:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocationPolicy = registerOutput<AllocationPolicyResponse>('allocationPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AllocationPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    jobId = registerOutput<String?>('jobId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    logsPolicy = registerOutput<LogsPolicyResponse>('logsPolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LogsPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    notifications = registerOutput<List<JobNotificationResponse>>('notifications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<JobNotificationResponse>(guardedValue, (value) => JobNotificationResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    priority = registerOutput<String>('priority');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    status = registerOutput<JobStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    taskGroups = registerOutput<List<TaskGroupResponse>>('taskGroups', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TaskGroupResponse>(guardedValue, (value) => TaskGroupResponse.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
   }

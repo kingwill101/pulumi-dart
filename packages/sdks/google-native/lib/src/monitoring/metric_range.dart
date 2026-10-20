@@ -6,9 +6,9 @@ import 'google_monitoring_v3_range.dart';
 /// A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min &lt;= x &lt;= range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
 class MetricRange {
   /// Range of values considered "good." For a one-sided range, set one bound to an infinite value.
-  final pulumi.Input<GoogleMonitoringV3Range>? range;
+  final pulumi.Input<GoogleMonitoringV3Range?>? range;
   /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying the TimeSeries to use for evaluating window quality.
-  final pulumi.Input<String>? timeSeries;
+  final pulumi.Input<String?>? timeSeries;
 
   /// Creates a new [MetricRange].
   /// [range] Range of values considered "good." For a one-sided range, set one bound to an infinite value.

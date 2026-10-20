@@ -47,10 +47,10 @@ class GooglePrivacyDlpV2CloudStorageOptionsResponse {
   factory GooglePrivacyDlpV2CloudStorageOptionsResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2CloudStorageOptionsResponse(
       bytesLimitPerFile: pulumi.Input.fromValue(map['bytesLimitPerFile'] as String),
-      bytesLimitPerFilePercent: pulumi.Input.fromValue(map['bytesLimitPerFilePercent'] as int),
+      bytesLimitPerFilePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bytesLimitPerFilePercent'])),
       fileSet: pulumi.Input.fromValue(GooglePrivacyDlpV2FileSetResponse.fromMap((map['fileSet']! as Map).cast<String, dynamic>())),
       fileTypes: pulumi.Input.fromValue((map['fileTypes'] as List).cast<String>()),
-      filesLimitPercent: pulumi.Input.fromValue(map['filesLimitPercent'] as int),
+      filesLimitPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['filesLimitPercent'])),
       sampleMethod: pulumi.Input.fromValue(map['sampleMethod'] as String),
     );
   }

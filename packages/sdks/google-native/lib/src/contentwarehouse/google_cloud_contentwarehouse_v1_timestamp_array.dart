@@ -6,7 +6,7 @@ import 'google_cloud_contentwarehouse_v1_timestamp_value.dart';
 /// Timestamp values.
 class GoogleCloudContentwarehouseV1TimestampArray {
   /// List of timestamp values.
-  final pulumi.Input<List<GoogleCloudContentwarehouseV1TimestampValue>>? values;
+  final pulumi.Input<List<GoogleCloudContentwarehouseV1TimestampValue>?>? values;
 
   /// Creates a new [GoogleCloudContentwarehouseV1TimestampArray].
   /// [values] List of timestamp values.

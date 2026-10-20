@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'phrase_response.dart';
 import 'phrase_set_args.dart';
 
 /// Create a set of phrase hints. Each item in the set can be a single word or a multi-word phrase. The items in the PhraseSet are favored by the recognition model when you send a call that includes the PhraseSet.
@@ -23,7 +24,7 @@ class PhraseSet extends pulumi.CustomResource {
   /// The resource name of the phrase set.
   late final pulumi.Output<String> name;
   /// A list of word and phrases.
-  late final pulumi.Output<List<Map<String, dynamic>>> phrases;
+  late final pulumi.Output<List<PhraseResponse>> phrases;
   late final pulumi.Output<String> project;
   /// Whether or not this PhraseSet is in the process of being updated. This field is not used.
   late final pulumi.Output<bool> reconciling;
@@ -44,9 +45,9 @@ class PhraseSet extends pulumi.CustomResource {
           'google-native:speech/v1:PhraseSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     boost = registerOutput<double>('boost');
     deleteTime = registerOutput<String>('deleteTime');
     displayName = registerOutput<String>('displayName');
@@ -56,7 +57,33 @@ class PhraseSet extends pulumi.CustomResource {
     kmsKeyVersionName = registerOutput<String>('kmsKeyVersionName');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    phrases = registerOutput<List<Map<String, dynamic>>>('phrases');
+    phrases = registerOutput<List<PhraseResponse>>('phrases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PhraseResponse>(guardedValue, (value) => PhraseResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+  }
+
+  /// Creates a typed reference to an existing [PhraseSet] resource.
+  PhraseSet.reference(String urn)
+    : super(
+        'google-native:speech/v1:PhraseSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    boost = registerOutput<double>('boost');
+    deleteTime = registerOutput<String>('deleteTime');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    expireTime = registerOutput<String>('expireTime');
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    kmsKeyVersionName = registerOutput<String>('kmsKeyVersionName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    phrases = registerOutput<List<PhraseResponse>>('phrases', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PhraseResponse>(guardedValue, (value) => PhraseResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');
     state = registerOutput<String>('state');

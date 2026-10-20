@@ -7,9 +7,9 @@ import 'oracle_rdbms_datastream_v1alpha1.dart';
 /// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
 class BackfillAllStrategyDatastreamV1alpha1 {
   /// MySQL data source objects to avoid backfilling.
-  final pulumi.Input<MysqlRdbmsDatastreamV1alpha1>? mysqlExcludedObjects;
+  final pulumi.Input<MysqlRdbmsDatastreamV1alpha1?>? mysqlExcludedObjects;
   /// Oracle data source objects to avoid backfilling.
-  final pulumi.Input<OracleRdbmsDatastreamV1alpha1>? oracleExcludedObjects;
+  final pulumi.Input<OracleRdbmsDatastreamV1alpha1?>? oracleExcludedObjects;
 
   /// Creates a new [BackfillAllStrategyDatastreamV1alpha1].
   /// [mysqlExcludedObjects] MySQL data source objects to avoid backfilling.

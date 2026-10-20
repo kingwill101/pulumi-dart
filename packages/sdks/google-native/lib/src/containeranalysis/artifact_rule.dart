@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Defines an object to declare an in-toto artifact rule
 class ArtifactRule {
-  final pulumi.Input<List<String>>? artifactRule;
+  final pulumi.Input<List<String>?>? artifactRule;
 
   /// Creates a new [ArtifactRule].
   /// [artifactRule] Optional.

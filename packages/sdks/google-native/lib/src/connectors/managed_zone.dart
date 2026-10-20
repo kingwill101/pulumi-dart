@@ -36,12 +36,33 @@ class ManagedZone extends pulumi.CustomResource {
           'google-native:connectors/v1:ManagedZone',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['managedZoneId', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     dns = registerOutput<String>('dns');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    managedZoneId = registerOutput<String>('managedZoneId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    targetProject = registerOutput<String>('targetProject');
+    targetVpc = registerOutput<String>('targetVpc');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ManagedZone] resource.
+  ManagedZone.reference(String urn)
+    : super(
+        'google-native:connectors/v1:ManagedZone',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    dns = registerOutput<String>('dns');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     managedZoneId = registerOutput<String>('managedZoneId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -9,26 +9,26 @@ import 'rule_basic_profile_networksecurity_v1beta1.dart';
 /// {@macro pulumi_networksecurity_v1beta1_rule_networksecurity_v1beta1_args_doc}
 class RuleNetworksecurityV1beta1Args {
   /// Optional. CEL expression for matching on L7/application level criteria.
-  final pulumi.Input<String>? applicationMatcher;
+  final pulumi.Input<String?>? applicationMatcher;
   /// Profile which tells what the primitive action should be.
   final pulumi.Input<RuleBasicProfileNetworksecurityV1beta1> basicProfile;
   /// Optional. Free-text description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Whether the rule is enforced.
   final pulumi.Input<bool> enabled;
   final pulumi.Input<String> gatewaySecurityPolicyId;
   /// The ID to use for the rule, which will become the final component of the rule's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
-  final pulumi.Input<String>? gatewaySecurityPolicyRuleId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? gatewaySecurityPolicyRuleId;
+  final pulumi.Input<String?>? location;
   /// Immutable. Name of the resource. ame is the full resource name so projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule} rule should match the pattern: (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
   final pulumi.Input<String> name;
   /// Priority of the rule. Lower number corresponds to higher precedence.
   final pulumi.Input<int> priority;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// CEL expression for matching on session criteria.
   final pulumi.Input<String> sessionMatcher;
   /// Optional. Flag to enable TLS inspection of traffic matching on , can only be true if the parent GatewaySecurityPolicy references a TLSInspectionConfig.
-  final pulumi.Input<bool>? tlsInspectionEnabled;
+  final pulumi.Input<bool?>? tlsInspectionEnabled;
 
   /// Creates a new [RuleNetworksecurityV1beta1Args].
   /// [applicationMatcher] Optional. CEL expression for matching on L7/application level criteria.
@@ -85,7 +85,7 @@ class RuleNetworksecurityV1beta1Args {
       gatewaySecurityPolicyRuleId: (() { final guardedValue = map['gatewaySecurityPolicyRuleId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: pulumi.Input.fromValue(map['name'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       sessionMatcher: pulumi.Input.fromValue(map['sessionMatcher'] as String),
       tlsInspectionEnabled: (() { final guardedValue = map['tlsInspectionEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

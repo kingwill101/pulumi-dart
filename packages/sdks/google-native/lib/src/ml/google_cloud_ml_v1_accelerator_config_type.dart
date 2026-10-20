@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of accelerator to use.
-enum GoogleCloudMlV1AcceleratorConfigType {
+enum GoogleCloudMlV1AcceleratorConfigType implements pulumi.PulumiEnum<String> {
   acceleratorTypeUnspecified("ACCELERATOR_TYPE_UNSPECIFIED"),
   nvidiaTeslaK80("NVIDIA_TESLA_K80"),
   nvidiaTeslaP100("NVIDIA_TESLA_P100"),
@@ -14,6 +16,7 @@ enum GoogleCloudMlV1AcceleratorConfigType {
   tpuV4Pod("TPU_V4_POD");
 
   const GoogleCloudMlV1AcceleratorConfigType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudMlV1AcceleratorConfigType fromValue(String value) {

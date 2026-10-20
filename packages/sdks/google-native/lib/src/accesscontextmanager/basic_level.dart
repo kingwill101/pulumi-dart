@@ -7,7 +7,7 @@ import 'condition.dart';
 /// `BasicLevel` is an `AccessLevel` using a set of recommended features.
 class BasicLevel {
   /// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
-  final pulumi.Input<BasicLevelCombiningFunction>? combiningFunction;
+  final pulumi.Input<BasicLevelCombiningFunction?>? combiningFunction;
   /// A list of requirements for the `AccessLevel` to be granted.
   final pulumi.Input<List<Condition>> conditions;
 

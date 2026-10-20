@@ -6,7 +6,7 @@ import 'google_devtools_artifactregistry_v1_remote_repository_config_yum_reposit
 /// Configuration for a Yum remote repository.
 class YumRepository {
   /// One of the publicly available Yum repositories supported by Artifact Registry.
-  final pulumi.Input<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository>? publicRepository;
+  final pulumi.Input<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository?>? publicRepository;
 
   /// Creates a new [YumRepository].
   /// [publicRepository] One of the publicly available Yum repositories supported by Artifact Registry.

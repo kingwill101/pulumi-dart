@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_pubsub_v1beta2_get_subscription_pubsub_v1beta2_args_doc}
 class GetSubscriptionPubsubV1beta2Args {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> subscriptionId;
 
   /// Creates a new [GetSubscriptionPubsubV1beta2Args].

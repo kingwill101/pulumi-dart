@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
-enum GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint {
+enum GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint implements pulumi.PulumiEnum<String> {
   urlTypeHintUnspecified("URL_TYPE_HINT_UNSPECIFIED"),
   ampAction("AMP_ACTION"),
   ampContent("AMP_CONTENT");
 
   const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint fromValue(String value) {

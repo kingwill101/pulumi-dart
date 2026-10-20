@@ -7,9 +7,9 @@ import 'service_networking.dart';
 /// KubernetesConfig contains the Kubernetes runtime configuration.
 class KubernetesConfig {
   /// Kubernetes Gateway API service mesh configuration.
-  final pulumi.Input<GatewayServiceMesh>? gatewayServiceMesh;
+  final pulumi.Input<GatewayServiceMesh?>? gatewayServiceMesh;
   /// Kubernetes Service networking configuration.
-  final pulumi.Input<ServiceNetworking>? serviceNetworking;
+  final pulumi.Input<ServiceNetworking?>? serviceNetworking;
 
   /// Creates a new [KubernetesConfig].
   /// [gatewayServiceMesh] Kubernetes Gateway API service mesh configuration.

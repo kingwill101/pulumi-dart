@@ -78,7 +78,7 @@ class DisplayDataResponse {
     return DisplayDataResponse(
       boolValue: pulumi.Input.fromValue(map['boolValue'] as bool),
       durationValue: pulumi.Input.fromValue(map['durationValue'] as String),
-      floatValue: pulumi.Input.fromValue(map['floatValue'] as double),
+      floatValue: pulumi.Input.fromValue((map['floatValue'] as num).toDouble()),
       int64Value: pulumi.Input.fromValue(map['int64Value'] as String),
       javaClassValue: pulumi.Input.fromValue(map['javaClassValue'] as String),
       key: pulumi.Input.fromValue(map['key'] as String),

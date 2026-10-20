@@ -14,20 +14,20 @@ class GuestPolicyArgs {
   /// Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
   final pulumi.Input<Assignment> assignment;
   /// Description of the guest policy. Length of the description is limited to 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The etag for this guest policy. If this is provided on update, it must match the server's etag.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
   final pulumi.Input<String> guestPolicyId;
   /// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
-  final pulumi.Input<List<PackageRepository>>? packageRepositories;
+  final pulumi.Input<List<PackageRepository>?>? packageRepositories;
   /// The software packages to be managed by this policy.
-  final pulumi.Input<List<Package>>? packages;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<List<Package>?>? packages;
+  final pulumi.Input<String?>? project;
   /// A list of Recipes to install on the VM instance.
-  final pulumi.Input<List<SoftwareRecipe>>? recipes;
+  final pulumi.Input<List<SoftwareRecipe>?>? recipes;
 
   /// Creates a new [GuestPolicyArgs].
   /// [assignment] Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).

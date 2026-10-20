@@ -8,11 +8,11 @@ import 'google_cloud_identitytoolkit_admin_v2_provider_config.dart';
 /// Options related to MultiFactor Authentication for the project.
 class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig {
   /// A list of usable second factors for this project.
-  final pulumi.Input<List<GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem>>? enabledProviders;
+  final pulumi.Input<List<GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigEnabledProvidersItem>?>? enabledProviders;
   /// A list of usable second factors for this project along with their configurations. This field does not support phone based MFA, for that use the 'enabled_providers' field.
-  final pulumi.Input<List<GoogleCloudIdentitytoolkitAdminV2ProviderConfig>>? providerConfigs;
+  final pulumi.Input<List<GoogleCloudIdentitytoolkitAdminV2ProviderConfig>?>? providerConfigs;
   /// Whether MultiFactor Authentication has been enabled for this project.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState>? state;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState?>? state;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig].
   /// [enabledProviders] A list of usable second factors for this project.

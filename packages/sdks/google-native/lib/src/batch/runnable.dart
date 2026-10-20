@@ -9,25 +9,25 @@ import 'script.dart';
 /// Runnable describes instructions for executing a specific script or container as part of a Task.
 class Runnable {
   /// By default, after a Runnable fails, no further Runnable are executed. This flag indicates that this Runnable must be run even if the Task has already failed. This is useful for Runnables that copy output files off of the VM or for debugging. The always_run flag does not override the Task's overall max_run_duration. If the max_run_duration has expired then no further Runnables will execute, not even always_run Runnables.
-  final pulumi.Input<bool>? alwaysRun;
+  final pulumi.Input<bool?>? alwaysRun;
   /// This flag allows a Runnable to continue running in the background while the Task executes subsequent Runnables. This is useful to provide services to other Runnables (or to provide debugging support tools like SSH servers).
-  final pulumi.Input<bool>? background;
+  final pulumi.Input<bool?>? background;
   /// Barrier runnable.
-  final pulumi.Input<Barrier>? barrier;
+  final pulumi.Input<Barrier?>? barrier;
   /// Container runnable.
-  final pulumi.Input<Container>? container;
+  final pulumi.Input<Container?>? container;
   /// Optional. DisplayName is an optional field that can be provided by the caller. If provided, it will be used in logs and other outputs to identify the script, making it easier for users to understand the logs. If not provided the index of the runnable will be used for outputs.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Environment variables for this Runnable (overrides variables set for the whole Task or TaskGroup).
-  final pulumi.Input<Environment>? environment;
+  final pulumi.Input<Environment?>? environment;
   /// Normally, a non-zero exit status causes the Task to fail. This flag allows execution of other Runnables to continue instead.
-  final pulumi.Input<bool>? ignoreExitStatus;
+  final pulumi.Input<bool?>? ignoreExitStatus;
   /// Labels for this Runnable.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Script runnable.
-  final pulumi.Input<Script>? script;
+  final pulumi.Input<Script?>? script;
   /// Timeout for this Runnable.
-  final pulumi.Input<String>? timeout;
+  final pulumi.Input<String?>? timeout;
 
   /// Creates a new [Runnable].
   /// [alwaysRun] By default, after a Runnable fails, no further Runnable are executed. This flag indicates that this Runnable must be run even if the Task has already failed. This is useful for Runnables that copy output files off of the VM or for debugging. The always_run flag does not override the Task's overall max_run_duration. If the max_run_duration has expired then no further Runnables will execute, not even always_run Runnables.

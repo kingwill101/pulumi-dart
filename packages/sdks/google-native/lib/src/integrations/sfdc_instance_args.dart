@@ -8,20 +8,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_integrations_v1alpha_sfdc_instance_args_doc}
 class SfdcInstanceArgs {
   /// A list of AuthConfigs that can be tried to open the channel to SFDC
-  final pulumi.Input<List<String>>? authConfigId;
+  final pulumi.Input<List<String>?>? authConfigId;
   /// A description of the sfdc instance.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User selected unique name/alias to easily reference an instance.
-  final pulumi.Input<String>? displayName;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? displayName;
+  final pulumi.Input<String?>? location;
   /// Resource name of the SFDC instance projects/{project}/locations/{location}/sfdcInstances/{sfdcInstance}.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> productId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// URL used for API calls after authentication (the login authority is configured within the referenced AuthConfig).
-  final pulumi.Input<String>? serviceAuthority;
+  final pulumi.Input<String?>? serviceAuthority;
   /// The SFDC Org Id. This is defined in salesforce.
-  final pulumi.Input<String>? sfdcOrgId;
+  final pulumi.Input<String?>? sfdcOrgId;
 
   /// Creates a new [SfdcInstanceArgs].
   /// [authConfigId] A list of AuthConfigs that can be tried to open the channel to SFDC

@@ -6,9 +6,9 @@ import 'kms_wrapped_crypto_key_healthcare_v1beta1.dart';
 /// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. Outputs a base64-encoded representation of the hashed output. For example, `L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=`.
 class CryptoHashConfigHealthcareV1beta1 {
   /// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither crypto_key nor kms_wrapped is specified. Must not be set if kms_wrapped is set.
-  final pulumi.Input<String>? cryptoKey;
+  final pulumi.Input<String?>? cryptoKey;
   /// KMS wrapped key. Must not be set if crypto_key is set.
-  final pulumi.Input<KmsWrappedCryptoKeyHealthcareV1beta1>? kmsWrapped;
+  final pulumi.Input<KmsWrappedCryptoKeyHealthcareV1beta1?>? kmsWrapped;
 
   /// Creates a new [CryptoHashConfigHealthcareV1beta1].
   /// [cryptoKey] An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither crypto_key nor kms_wrapped is specified. Must not be set if kms_wrapped is set.

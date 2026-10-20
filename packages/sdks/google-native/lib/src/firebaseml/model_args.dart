@@ -12,14 +12,14 @@ class ModelArgs {
   /// The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
   final pulumi.Input<String> displayName;
   /// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// State common to all model types. Includes publishing and validation information.
-  final pulumi.Input<ModelState>? state;
+  final pulumi.Input<ModelState?>? state;
   /// User defined tags which can be used to group/filter models during listing
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// A TFLite Model
-  final pulumi.Input<TfLiteModel>? tfliteModel;
+  final pulumi.Input<TfLiteModel?>? tfliteModel;
 
   /// Creates a new [ModelArgs].
   /// [displayName] The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.

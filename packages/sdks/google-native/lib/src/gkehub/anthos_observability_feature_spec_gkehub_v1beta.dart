@@ -6,7 +6,7 @@ import 'anthos_observability_membership_spec_gkehub_v1beta.dart';
 /// **Anthos Observability**: Spec
 class AnthosObservabilityFeatureSpecGkehubV1beta {
   /// Default membership spec for unconfigured memberships
-  final pulumi.Input<AnthosObservabilityMembershipSpecGkehubV1beta>? defaultMembershipSpec;
+  final pulumi.Input<AnthosObservabilityMembershipSpecGkehubV1beta?>? defaultMembershipSpec;
 
   /// Creates a new [AnthosObservabilityFeatureSpecGkehubV1beta].
   /// [defaultMembershipSpec] Default membership spec for unconfigured memberships

@@ -1,9 +1,12 @@
-enum GooglePrivacyDlpV2InspectConfigContentOptionsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum GooglePrivacyDlpV2InspectConfigContentOptionsItem implements pulumi.PulumiEnum<String> {
   contentUnspecified("CONTENT_UNSPECIFIED"),
   contentText("CONTENT_TEXT"),
   contentImage("CONTENT_IMAGE");
 
   const GooglePrivacyDlpV2InspectConfigContentOptionsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static GooglePrivacyDlpV2InspectConfigContentOptionsItem fromValue(String value) {

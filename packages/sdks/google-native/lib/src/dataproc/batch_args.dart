@@ -14,25 +14,25 @@ import 'spark_sql_batch.dart';
 /// {@macro pulumi_dataproc_v1_batch_args_doc}
 class BatchArgs {
   /// Optional. The ID to use for the batch, which will become the final component of the batch's resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
-  final pulumi.Input<String>? batchId;
+  final pulumi.Input<String?>? batchId;
   /// Optional. Environment configuration for the batch execution.
-  final pulumi.Input<EnvironmentConfig>? environmentConfig;
+  final pulumi.Input<EnvironmentConfig?>? environmentConfig;
   /// Optional. The labels to associate with this batch. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a batch.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Optional. PySpark batch config.
-  final pulumi.Input<PySparkBatch>? pysparkBatch;
+  final pulumi.Input<PySparkBatch?>? pysparkBatch;
   /// Optional. A unique ID used to identify the request. If the service receives two CreateBatchRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s with the same request_id, the second request is ignored and the Operation that corresponds to the first Batch created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Optional. Runtime configuration for the batch execution.
-  final pulumi.Input<RuntimeConfig>? runtimeConfig;
+  final pulumi.Input<RuntimeConfig?>? runtimeConfig;
   /// Optional. Spark batch config.
-  final pulumi.Input<SparkBatch>? sparkBatch;
+  final pulumi.Input<SparkBatch?>? sparkBatch;
   /// Optional. SparkR batch config.
-  final pulumi.Input<SparkRBatch>? sparkRBatch;
+  final pulumi.Input<SparkRBatch?>? sparkRBatch;
   /// Optional. SparkSql batch config.
-  final pulumi.Input<SparkSqlBatch>? sparkSqlBatch;
+  final pulumi.Input<SparkSqlBatch?>? sparkSqlBatch;
 
   /// Creates a new [BatchArgs].
   /// [batchId] Optional. The ID to use for the batch, which will become the final component of the batch's resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.

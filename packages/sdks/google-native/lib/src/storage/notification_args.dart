@@ -9,25 +9,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NotificationArgs {
   final pulumi.Input<String> bucket;
   /// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
-  final pulumi.Input<Map<String, String>>? customAttributes;
+  final pulumi.Input<Map<String, String>?>? customAttributes;
   /// HTTP 1.1 Entity tag for this subscription notification.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
-  final pulumi.Input<List<String>>? eventTypes;
+  final pulumi.Input<List<String>?>? eventTypes;
   /// The ID of the notification.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The kind of item this is. For notifications, this is always storage#notification.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// If present, only apply this notification configuration to object names that begin with this prefix.
-  final pulumi.Input<String>? objectNamePrefix;
+  final pulumi.Input<String?>? objectNamePrefix;
   /// The desired content of the Payload.
-  final pulumi.Input<String>? payloadFormat;
+  final pulumi.Input<String?>? payloadFormat;
   /// The canonical URL of this notification.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
-  final pulumi.Input<String>? topic;
+  final pulumi.Input<String?>? topic;
   /// The project to be billed for this request. Required for Requester Pays buckets.
-  final pulumi.Input<String>? userProject;
+  final pulumi.Input<String?>? userProject;
 
   /// Creates a new [NotificationArgs].
   /// [bucket] Required.

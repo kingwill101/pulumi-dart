@@ -20,6 +20,17 @@ Future<GetRepoResult> getRepo(
   return GetRepoResult.fromMap(result);
 }
 
+pulumi.Output<GetRepoResult> getRepoOutput(
+  GetRepoArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:sourcerepo/v1:getRepo',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepoResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_sourcerepo_v1_get_repo_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetRepoIamPolicyResult> getRepoIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRepoIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRepoIamPolicyResult> getRepoIamPolicyOutput(
+  GetRepoIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:sourcerepo/v1:getRepoIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRepoIamPolicyResult.fromMap);
 }

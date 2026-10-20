@@ -8,25 +8,25 @@ import 'option.dart';
 /// A single field of a message type.
 class Field {
   /// The field cardinality.
-  final pulumi.Input<FieldCardinality>? cardinality;
+  final pulumi.Input<FieldCardinality?>? cardinality;
   /// The string value of the default value of this field. Proto2 syntax only.
-  final pulumi.Input<String>? defaultValue;
+  final pulumi.Input<String?>? defaultValue;
   /// The field JSON name.
-  final pulumi.Input<String>? jsonName;
+  final pulumi.Input<String?>? jsonName;
   /// The field type.
-  final pulumi.Input<FieldKind>? kind;
+  final pulumi.Input<FieldKind?>? kind;
   /// The field name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The field number.
-  final pulumi.Input<int>? number;
+  final pulumi.Input<int?>? number;
   /// The index of the field type in `Type.oneofs`, for message or enumeration types. The first type has index 1; zero means the type is not in the list.
-  final pulumi.Input<int>? oneofIndex;
+  final pulumi.Input<int?>? oneofIndex;
   /// The protocol buffer options.
-  final pulumi.Input<List<Option>>? options;
+  final pulumi.Input<List<Option>?>? options;
   /// Whether to use alternative packed wire representation.
-  final pulumi.Input<bool>? packed;
+  final pulumi.Input<bool?>? packed;
   /// The field type URL, without the scheme, for message or enumeration types. Example: `"type.googleapis.com/google.protobuf.Timestamp"`.
-  final pulumi.Input<String>? typeUrl;
+  final pulumi.Input<String?>? typeUrl;
 
   /// Creates a new [Field].
   /// [cardinality] The field cardinality.
@@ -74,8 +74,8 @@ class Field {
       jsonName: (() { final guardedValue = map['jsonName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return pulumi.Input.fromValue(FieldKind.fromValue(guardedValue as String)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      oneofIndex: (() { final guardedValue = map['oneofIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      number: (() { final guardedValue = map['number']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      oneofIndex: (() { final guardedValue = map['oneofIndex']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       options: (() { final guardedValue = map['options']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Option>(guardedValue, (value) => Option.fromMap((value as Map).cast<String, dynamic>()))); })(),
       packed: (() { final guardedValue = map['packed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       typeUrl: (() { final guardedValue = map['typeUrl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

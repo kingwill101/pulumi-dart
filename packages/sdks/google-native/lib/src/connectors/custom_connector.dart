@@ -38,14 +38,36 @@ class CustomConnector extends pulumi.CustomResource {
           'google-native:connectors/v1:CustomConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['customConnectorId', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     customConnectorId = registerOutput<String>('customConnectorId');
     customConnectorType = registerOutput<String>('customConnectorType');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    launchStage = registerOutput<String>('launchStage');
+    logo = registerOutput<String>('logo');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [CustomConnector] resource.
+  CustomConnector.reference(String urn)
+    : super(
+        'google-native:connectors/v1:CustomConnector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    customConnectorId = registerOutput<String>('customConnectorId');
+    customConnectorType = registerOutput<String>('customConnectorType');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     launchStage = registerOutput<String>('launchStage');
     logo = registerOutput<String>('logo');
     this.name = registerOutput<String>('name');

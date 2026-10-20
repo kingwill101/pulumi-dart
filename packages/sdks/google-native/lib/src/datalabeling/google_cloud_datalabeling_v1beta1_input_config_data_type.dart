@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Data type must be specifed when user tries to import data.
-enum GoogleCloudDatalabelingV1beta1InputConfigDataType {
+enum GoogleCloudDatalabelingV1beta1InputConfigDataType implements pulumi.PulumiEnum<String> {
   dataTypeUnspecified("DATA_TYPE_UNSPECIFIED"),
   image("IMAGE"),
   video("VIDEO"),
@@ -7,6 +9,7 @@ enum GoogleCloudDatalabelingV1beta1InputConfigDataType {
   generalData("GENERAL_DATA");
 
   const GoogleCloudDatalabelingV1beta1InputConfigDataType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDatalabelingV1beta1InputConfigDataType fromValue(String value) {

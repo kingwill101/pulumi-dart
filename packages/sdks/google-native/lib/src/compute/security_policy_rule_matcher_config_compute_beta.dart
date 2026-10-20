@@ -5,11 +5,11 @@ import 'security_policy_rule_matcher_config_layer4_config_compute_beta.dart';
 
 class SecurityPolicyRuleMatcherConfigComputeBeta {
   /// CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.
-  final pulumi.Input<List<String>>? destIpRanges;
+  final pulumi.Input<List<String>?>? destIpRanges;
   /// Pairs of IP protocols and ports that the rule should match. This field may only be specified when versioned_expr is set to FIREWALL.
-  final pulumi.Input<List<SecurityPolicyRuleMatcherConfigLayer4ConfigComputeBeta>>? layer4Configs;
+  final pulumi.Input<List<SecurityPolicyRuleMatcherConfigLayer4ConfigComputeBeta>?>? layer4Configs;
   /// CIDR IP address range. Maximum number of src_ip_ranges allowed is 10.
-  final pulumi.Input<List<String>>? srcIpRanges;
+  final pulumi.Input<List<String>?>? srcIpRanges;
 
   /// Creates a new [SecurityPolicyRuleMatcherConfigComputeBeta].
   /// [destIpRanges] CIDR IP address range. This field may only be specified when versioned_expr is set to FIREWALL.

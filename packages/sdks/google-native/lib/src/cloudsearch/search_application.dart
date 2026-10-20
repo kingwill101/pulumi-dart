@@ -1,15 +1,18 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'data_source_restriction_response.dart';
+import 'facet_options_response.dart';
 import 'query_interpretation_config_response.dart';
 import 'scoring_config_response.dart';
 import 'search_application_args.dart';
 import 'sort_options_response.dart';
+import 'source_config_response.dart';
 
 /// Creates a search application. **Note:** This API requires an admin account to execute.
 class SearchApplication extends pulumi.CustomResource {
   /// Retrictions applied to the configurations. The maximum number of elements is 10.
-  late final pulumi.Output<List<Map<String, dynamic>>> dataSourceRestrictions;
+  late final pulumi.Output<List<DataSourceRestrictionResponse>> dataSourceRestrictions;
   /// The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
-  late final pulumi.Output<List<Map<String, dynamic>>> defaultFacetOptions;
+  late final pulumi.Output<List<FacetOptionsResponse>> defaultFacetOptions;
   /// The default options for sorting the search results
   late final pulumi.Output<SortOptionsResponse> defaultSortOptions;
   /// Display name of the Search Application. The maximum length is 300 characters.
@@ -27,7 +30,7 @@ class SearchApplication extends pulumi.CustomResource {
   /// Configuration for ranking results.
   late final pulumi.Output<ScoringConfigResponse> scoringConfig;
   /// Configuration for a sources specified in data_source_restrictions.
-  late final pulumi.Output<List<Map<String, dynamic>>> sourceConfig;
+  late final pulumi.Output<List<SourceConfigResponse>> sourceConfig;
 
   /// Creates a new [SearchApplication].
   /// [name] The Pulumi resource name.
@@ -41,18 +44,40 @@ class SearchApplication extends pulumi.CustomResource {
           'google-native:cloudsearch/v1:SearchApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
-    dataSourceRestrictions = registerOutput<List<Map<String, dynamic>>>('dataSourceRestrictions');
-    defaultFacetOptions = registerOutput<List<Map<String, dynamic>>>('defaultFacetOptions');
+    dataSourceRestrictions = registerOutput<List<DataSourceRestrictionResponse>>('dataSourceRestrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataSourceRestrictionResponse>(guardedValue, (value) => DataSourceRestrictionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultFacetOptions = registerOutput<List<FacetOptionsResponse>>('defaultFacetOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FacetOptionsResponse>(guardedValue, (value) => FacetOptionsResponse.fromMap((value as Map).cast<String, dynamic>())); });
     defaultSortOptions = registerOutput<SortOptionsResponse>('defaultSortOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SortOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
     enableAuditLog = registerOutput<bool>('enableAuditLog');
     this.name = registerOutput<String>('name');
-    operationIds = registerOutput<List<String>>('operationIds');
+    operationIds = registerOutput<List<String>>('operationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     queryInterpretationConfig = registerOutput<QueryInterpretationConfigResponse>('queryInterpretationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueryInterpretationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     returnResultThumbnailUrls = registerOutput<bool>('returnResultThumbnailUrls');
     scoringConfig = registerOutput<ScoringConfigResponse>('scoringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScoringConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    sourceConfig = registerOutput<List<Map<String, dynamic>>>('sourceConfig');
+    sourceConfig = registerOutput<List<SourceConfigResponse>>('sourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SourceConfigResponse>(guardedValue, (value) => SourceConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [SearchApplication] resource.
+  SearchApplication.reference(String urn)
+    : super(
+        'google-native:cloudsearch/v1:SearchApplication',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dataSourceRestrictions = registerOutput<List<DataSourceRestrictionResponse>>('dataSourceRestrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DataSourceRestrictionResponse>(guardedValue, (value) => DataSourceRestrictionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultFacetOptions = registerOutput<List<FacetOptionsResponse>>('defaultFacetOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FacetOptionsResponse>(guardedValue, (value) => FacetOptionsResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    defaultSortOptions = registerOutput<SortOptionsResponse>('defaultSortOptions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SortOptionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    enableAuditLog = registerOutput<bool>('enableAuditLog');
+    this.name = registerOutput<String>('name');
+    operationIds = registerOutput<List<String>>('operationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    queryInterpretationConfig = registerOutput<QueryInterpretationConfigResponse>('queryInterpretationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return QueryInterpretationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    returnResultThumbnailUrls = registerOutput<bool>('returnResultThumbnailUrls');
+    scoringConfig = registerOutput<ScoringConfigResponse>('scoringConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScoringConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sourceConfig = registerOutput<List<SourceConfigResponse>>('sourceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SourceConfigResponse>(guardedValue, (value) => SourceConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

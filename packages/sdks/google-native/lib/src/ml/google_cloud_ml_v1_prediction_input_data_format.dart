@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The format of the input data files.
-enum GoogleCloudMlV1PredictionInputDataFormat {
+enum GoogleCloudMlV1PredictionInputDataFormat implements pulumi.PulumiEnum<String> {
   dataFormatUnspecified("DATA_FORMAT_UNSPECIFIED"),
   json("JSON"),
   text("TEXT"),
@@ -8,6 +10,7 @@ enum GoogleCloudMlV1PredictionInputDataFormat {
   csv("CSV");
 
   const GoogleCloudMlV1PredictionInputDataFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudMlV1PredictionInputDataFormat fromValue(String value) {

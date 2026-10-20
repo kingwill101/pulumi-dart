@@ -21,67 +21,67 @@ import 'object_access_control_response.dart';
 /// Result data returned by getBucket.
 class GetBucketResult {
   /// Access controls on the bucket.
-  final List<BucketAccessControlResponse> acl;
+  final List<BucketAccessControlResponse>? acl;
   /// The bucket's Autoclass configuration.
-  final BucketAutoclassResponse autoclass;
+  final BucketAutoclassResponse? autoclass;
   /// The bucket's billing configuration.
-  final BucketBillingResponse billing;
+  final BucketBillingResponse? billing;
   /// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
-  final List<BucketCorsItemResponse> cors;
+  final List<BucketCorsItemResponse>? cors;
   /// The bucket's custom placement configuration for Custom Dual Regions.
-  final BucketCustomPlacementConfigResponse customPlacementConfig;
+  final BucketCustomPlacementConfigResponse? customPlacementConfig;
   /// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
-  final bool defaultEventBasedHold;
+  final bool? defaultEventBasedHold;
   /// Default access controls to apply to new objects when no ACL is provided.
-  final List<ObjectAccessControlResponse> defaultObjectAcl;
+  final List<ObjectAccessControlResponse>? defaultObjectAcl;
   /// Encryption configuration for a bucket.
-  final BucketEncryptionResponse encryption;
+  final BucketEncryptionResponse? encryption;
   /// HTTP 1.1 Entity tag for the bucket.
-  final String etag;
+  final String? etag;
   /// The bucket's IAM configuration.
-  final BucketIamConfigurationResponse iamConfiguration;
+  final BucketIamConfigurationResponse? iamConfiguration;
   /// The kind of item this is. For buckets, this is always storage#bucket.
-  final String kind;
+  final String? kind;
   /// User-provided labels, in key/value pairs.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The bucket's lifecycle configuration. See lifecycle management for more information.
-  final BucketLifecycleResponse lifecycle;
+  final BucketLifecycleResponse? lifecycle;
   /// The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list.
-  final String location;
+  final String? location;
   /// The type of the bucket location.
-  final String locationType;
+  final String? locationType;
   /// The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
-  final BucketLoggingResponse logging;
+  final BucketLoggingResponse? logging;
   /// The metadata generation of this bucket.
-  final String metageneration;
+  final String? metageneration;
   /// The name of the bucket.
-  final String name;
+  final String? name;
   /// The bucket's object retention config.
-  final BucketObjectRetentionResponse objectRetention;
+  final BucketObjectRetentionResponse? objectRetention;
   /// The owner of the bucket. This is always the project team's owner group.
-  final BucketOwnerResponse owner;
+  final BucketOwnerResponse? owner;
   /// The project number of the project the bucket belongs to.
-  final String projectNumber;
+  final String? projectNumber;
   /// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
-  final BucketRetentionPolicyResponse retentionPolicy;
+  final BucketRetentionPolicyResponse? retentionPolicy;
   /// The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
-  final String rpo;
+  final String? rpo;
   /// Reserved for future use.
-  final bool satisfiesPZS;
+  final bool? satisfiesPZS;
   /// The URI of this bucket.
-  final String selfLink;
+  final String? selfLink;
   /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
-  final BucketSoftDeletePolicyResponse softDeletePolicy;
+  final BucketSoftDeletePolicyResponse? softDeletePolicy;
   /// The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
-  final String storageClass;
+  final String? storageClass;
   /// The creation time of the bucket in RFC 3339 format.
-  final String timeCreated;
+  final String? timeCreated;
   /// The modification time of the bucket in RFC 3339 format.
-  final String updated;
+  final String? updated;
   /// The bucket's versioning configuration.
-  final BucketVersioningResponse versioning;
+  final BucketVersioningResponse? versioning;
   /// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
-  final BucketWebsiteResponse website;
+  final BucketWebsiteResponse? website;
 
   /// Creates a new [GetBucketResult].
   /// [acl] Access controls on the bucket.
@@ -116,108 +116,108 @@ class GetBucketResult {
   /// [versioning] The bucket's versioning configuration.
   /// [website] The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
   const GetBucketResult({
-    required this.acl,
-    required this.autoclass,
-    required this.billing,
-    required this.cors,
-    required this.customPlacementConfig,
-    required this.defaultEventBasedHold,
-    required this.defaultObjectAcl,
-    required this.encryption,
-    required this.etag,
-    required this.iamConfiguration,
-    required this.kind,
-    required this.labels,
-    required this.lifecycle,
-    required this.location,
-    required this.locationType,
-    required this.logging,
-    required this.metageneration,
-    required this.name,
-    required this.objectRetention,
-    required this.owner,
-    required this.projectNumber,
-    required this.retentionPolicy,
-    required this.rpo,
-    required this.satisfiesPZS,
-    required this.selfLink,
-    required this.softDeletePolicy,
-    required this.storageClass,
-    required this.timeCreated,
-    required this.updated,
-    required this.versioning,
-    required this.website,
+    this.acl,
+    this.autoclass,
+    this.billing,
+    this.cors,
+    this.customPlacementConfig,
+    this.defaultEventBasedHold,
+    this.defaultObjectAcl,
+    this.encryption,
+    this.etag,
+    this.iamConfiguration,
+    this.kind,
+    this.labels,
+    this.lifecycle,
+    this.location,
+    this.locationType,
+    this.logging,
+    this.metageneration,
+    this.name,
+    this.objectRetention,
+    this.owner,
+    this.projectNumber,
+    this.retentionPolicy,
+    this.rpo,
+    this.satisfiesPZS,
+    this.selfLink,
+    this.softDeletePolicy,
+    this.storageClass,
+    this.timeCreated,
+    this.updated,
+    this.versioning,
+    this.website,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acl': pulumi.Input.encodeList<BucketAccessControlResponse, Map<String, dynamic>>(acl, (value) => value.toMap()),
-      'autoclass': autoclass.toMap(),
-      'billing': billing.toMap(),
-      'cors': pulumi.Input.encodeList<BucketCorsItemResponse, Map<String, dynamic>>(cors, (value) => value.toMap()),
-      'customPlacementConfig': customPlacementConfig.toMap(),
-      'defaultEventBasedHold': defaultEventBasedHold,
-      'defaultObjectAcl': pulumi.Input.encodeList<ObjectAccessControlResponse, Map<String, dynamic>>(defaultObjectAcl, (value) => value.toMap()),
-      'encryption': encryption.toMap(),
-      'etag': etag,
-      'iamConfiguration': iamConfiguration.toMap(),
-      'kind': kind,
-      'labels': labels,
-      'lifecycle': lifecycle.toMap(),
-      'location': location,
-      'locationType': locationType,
-      'logging': logging.toMap(),
-      'metageneration': metageneration,
-      'name': name,
-      'objectRetention': objectRetention.toMap(),
-      'owner': owner.toMap(),
-      'projectNumber': projectNumber,
-      'retentionPolicy': retentionPolicy.toMap(),
-      'rpo': rpo,
-      'satisfiesPZS': satisfiesPZS,
-      'selfLink': selfLink,
-      'softDeletePolicy': softDeletePolicy.toMap(),
-      'storageClass': storageClass,
-      'timeCreated': timeCreated,
-      'updated': updated,
-      'versioning': versioning.toMap(),
-      'website': website.toMap(),
+      'acl': ?(() { final guardedValue = acl; if (guardedValue == null) return null; return pulumi.Input.encodeList<BucketAccessControlResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'autoclass': ?autoclass?.toMap(),
+      'billing': ?billing?.toMap(),
+      'cors': ?(() { final guardedValue = cors; if (guardedValue == null) return null; return pulumi.Input.encodeList<BucketCorsItemResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'customPlacementConfig': ?customPlacementConfig?.toMap(),
+      'defaultEventBasedHold': ?defaultEventBasedHold,
+      'defaultObjectAcl': ?(() { final guardedValue = defaultObjectAcl; if (guardedValue == null) return null; return pulumi.Input.encodeList<ObjectAccessControlResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'encryption': ?encryption?.toMap(),
+      'etag': ?etag,
+      'iamConfiguration': ?iamConfiguration?.toMap(),
+      'kind': ?kind,
+      'labels': ?labels,
+      'lifecycle': ?lifecycle?.toMap(),
+      'location': ?location,
+      'locationType': ?locationType,
+      'logging': ?logging?.toMap(),
+      'metageneration': ?metageneration,
+      'name': ?name,
+      'objectRetention': ?objectRetention?.toMap(),
+      'owner': ?owner?.toMap(),
+      'projectNumber': ?projectNumber,
+      'retentionPolicy': ?retentionPolicy?.toMap(),
+      'rpo': ?rpo,
+      'satisfiesPZS': ?satisfiesPZS,
+      'selfLink': ?selfLink,
+      'softDeletePolicy': ?softDeletePolicy?.toMap(),
+      'storageClass': ?storageClass,
+      'timeCreated': ?timeCreated,
+      'updated': ?updated,
+      'versioning': ?versioning?.toMap(),
+      'website': ?website?.toMap(),
     };
   }
 
   factory GetBucketResult.fromMap(Map<String, dynamic> map) {
     return GetBucketResult(
-      acl: pulumi.Input.decodeList<BucketAccessControlResponse>(map['acl']!, (value) => BucketAccessControlResponse.fromMap((value as Map).cast<String, dynamic>())),
-      autoclass: BucketAutoclassResponse.fromMap((map['autoclass']! as Map).cast<String, dynamic>()),
-      billing: BucketBillingResponse.fromMap((map['billing']! as Map).cast<String, dynamic>()),
-      cors: pulumi.Input.decodeList<BucketCorsItemResponse>(map['cors']!, (value) => BucketCorsItemResponse.fromMap((value as Map).cast<String, dynamic>())),
-      customPlacementConfig: BucketCustomPlacementConfigResponse.fromMap((map['customPlacementConfig']! as Map).cast<String, dynamic>()),
-      defaultEventBasedHold: map['defaultEventBasedHold'] as bool,
-      defaultObjectAcl: pulumi.Input.decodeList<ObjectAccessControlResponse>(map['defaultObjectAcl']!, (value) => ObjectAccessControlResponse.fromMap((value as Map).cast<String, dynamic>())),
-      encryption: BucketEncryptionResponse.fromMap((map['encryption']! as Map).cast<String, dynamic>()),
-      etag: map['etag'] as String,
-      iamConfiguration: BucketIamConfigurationResponse.fromMap((map['iamConfiguration']! as Map).cast<String, dynamic>()),
-      kind: map['kind'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      lifecycle: BucketLifecycleResponse.fromMap((map['lifecycle']! as Map).cast<String, dynamic>()),
-      location: map['location'] as String,
-      locationType: map['locationType'] as String,
-      logging: BucketLoggingResponse.fromMap((map['logging']! as Map).cast<String, dynamic>()),
-      metageneration: map['metageneration'] as String,
-      name: map['name'] as String,
-      objectRetention: BucketObjectRetentionResponse.fromMap((map['objectRetention']! as Map).cast<String, dynamic>()),
-      owner: BucketOwnerResponse.fromMap((map['owner']! as Map).cast<String, dynamic>()),
-      projectNumber: map['projectNumber'] as String,
-      retentionPolicy: BucketRetentionPolicyResponse.fromMap((map['retentionPolicy']! as Map).cast<String, dynamic>()),
-      rpo: map['rpo'] as String,
-      satisfiesPZS: map['satisfiesPZS'] as bool,
-      selfLink: map['selfLink'] as String,
-      softDeletePolicy: BucketSoftDeletePolicyResponse.fromMap((map['softDeletePolicy']! as Map).cast<String, dynamic>()),
-      storageClass: map['storageClass'] as String,
-      timeCreated: map['timeCreated'] as String,
-      updated: map['updated'] as String,
-      versioning: BucketVersioningResponse.fromMap((map['versioning']! as Map).cast<String, dynamic>()),
-      website: BucketWebsiteResponse.fromMap((map['website']! as Map).cast<String, dynamic>()),
+      acl: (() { final guardedValue = map['acl']; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketAccessControlResponse>(guardedValue, (value) => BucketAccessControlResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      autoclass: (() { final guardedValue = map['autoclass']; if (guardedValue == null) return null; return BucketAutoclassResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      billing: (() { final guardedValue = map['billing']; if (guardedValue == null) return null; return BucketBillingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      cors: (() { final guardedValue = map['cors']; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketCorsItemResponse>(guardedValue, (value) => BucketCorsItemResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      customPlacementConfig: (() { final guardedValue = map['customPlacementConfig']; if (guardedValue == null) return null; return BucketCustomPlacementConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      defaultEventBasedHold: (() { final guardedValue = map['defaultEventBasedHold']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      defaultObjectAcl: (() { final guardedValue = map['defaultObjectAcl']; if (guardedValue == null) return null; return pulumi.Input.decodeList<ObjectAccessControlResponse>(guardedValue, (value) => ObjectAccessControlResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return BucketEncryptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      iamConfiguration: (() { final guardedValue = map['iamConfiguration']; if (guardedValue == null) return null; return BucketIamConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      lifecycle: (() { final guardedValue = map['lifecycle']; if (guardedValue == null) return null; return BucketLifecycleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      locationType: (() { final guardedValue = map['locationType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      logging: (() { final guardedValue = map['logging']; if (guardedValue == null) return null; return BucketLoggingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      metageneration: (() { final guardedValue = map['metageneration']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      objectRetention: (() { final guardedValue = map['objectRetention']; if (guardedValue == null) return null; return BucketObjectRetentionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      owner: (() { final guardedValue = map['owner']; if (guardedValue == null) return null; return BucketOwnerResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      projectNumber: (() { final guardedValue = map['projectNumber']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      retentionPolicy: (() { final guardedValue = map['retentionPolicy']; if (guardedValue == null) return null; return BucketRetentionPolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      rpo: (() { final guardedValue = map['rpo']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      satisfiesPZS: (() { final guardedValue = map['satisfiesPZS']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      softDeletePolicy: (() { final guardedValue = map['softDeletePolicy']; if (guardedValue == null) return null; return BucketSoftDeletePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      storageClass: (() { final guardedValue = map['storageClass']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      timeCreated: (() { final guardedValue = map['timeCreated']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updated: (() { final guardedValue = map['updated']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      versioning: (() { final guardedValue = map['versioning']; if (guardedValue == null) return null; return BucketVersioningResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      website: (() { final guardedValue = map['website']; if (guardedValue == null) return null; return BucketWebsiteResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

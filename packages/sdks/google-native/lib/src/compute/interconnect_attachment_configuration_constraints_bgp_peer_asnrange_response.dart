@@ -23,8 +23,8 @@ class InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse {
 
   factory InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse(
-      max: pulumi.Input.fromValue(map['max'] as int),
-      min: pulumi.Input.fromValue(map['min'] as int),
+      max: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['max'])),
+      min: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['min'])),
     );
   }
 }

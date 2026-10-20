@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored already exist in the target cluster. This MUST be set to a value other than NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
-enum RestoreConfigNamespacedResourceRestoreMode {
+enum RestoreConfigNamespacedResourceRestoreMode implements pulumi.PulumiEnum<String> {
   namespacedResourceRestoreModeUnspecified("NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED"),
   deleteAndRestore("DELETE_AND_RESTORE"),
   failOnConflict("FAIL_ON_CONFLICT");
 
   const RestoreConfigNamespacedResourceRestoreMode(this.wireValue);
+  @override
   final String wireValue;
 
   static RestoreConfigNamespacedResourceRestoreMode fromValue(String value) {

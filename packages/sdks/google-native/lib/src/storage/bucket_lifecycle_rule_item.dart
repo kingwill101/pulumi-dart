@@ -6,9 +6,9 @@ import 'bucket_lifecycle_rule_item_condition.dart';
 
 class BucketLifecycleRuleItem {
   /// The action to take.
-  final pulumi.Input<BucketLifecycleRuleItemAction>? action;
+  final pulumi.Input<BucketLifecycleRuleItemAction?>? action;
   /// The condition(s) under which the action will be taken.
-  final pulumi.Input<BucketLifecycleRuleItemCondition>? condition;
+  final pulumi.Input<BucketLifecycleRuleItemCondition?>? condition;
 
   /// Creates a new [BucketLifecycleRuleItem].
   /// [action] The action to take.

@@ -9,13 +9,13 @@ class GoogleDevtoolsCloudbuildV2GitLabConfig {
   /// A GitLab personal access token with the `api` scope access.
   final pulumi.Input<UserCredential> authorizerCredential;
   /// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is https://gitlab.com.
-  final pulumi.Input<String>? hostUri;
+  final pulumi.Input<String?>? hostUri;
   /// A GitLab personal access token with the minimum `read_api` scope access.
   final pulumi.Input<UserCredential> readAuthorizerCredential;
   /// Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
-  final pulumi.Input<GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig>? serviceDirectoryConfig;
+  final pulumi.Input<GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig?>? serviceDirectoryConfig;
   /// SSL certificate to use for requests to GitLab Enterprise.
-  final pulumi.Input<String>? sslCa;
+  final pulumi.Input<String?>? sslCa;
   /// Immutable. SecretManager resource containing the webhook secret of a GitLab Enterprise project, formatted as `projects/*/secrets/*/versions/*`.
   final pulumi.Input<String> webhookSecretSecretVersion;
 

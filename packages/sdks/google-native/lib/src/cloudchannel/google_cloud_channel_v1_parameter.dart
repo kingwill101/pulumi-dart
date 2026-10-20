@@ -6,9 +6,9 @@ import 'google_cloud_channel_v1_value.dart';
 /// Definition for extended entitlement parameters.
 class GoogleCloudChannelV1Parameter {
   /// Name of the parameter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Value of the parameter.
-  final pulumi.Input<GoogleCloudChannelV1Value>? value;
+  final pulumi.Input<GoogleCloudChannelV1Value?>? value;
 
   /// Creates a new [GoogleCloudChannelV1Parameter].
   /// [name] Name of the parameter.

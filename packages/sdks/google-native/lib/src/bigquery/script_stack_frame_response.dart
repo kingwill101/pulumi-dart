@@ -45,11 +45,11 @@ class ScriptStackFrameResponse {
 
   factory ScriptStackFrameResponse.fromMap(Map<String, dynamic> map) {
     return ScriptStackFrameResponse(
-      endColumn: pulumi.Input.fromValue(map['endColumn'] as int),
-      endLine: pulumi.Input.fromValue(map['endLine'] as int),
+      endColumn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['endColumn'])),
+      endLine: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['endLine'])),
       procedureId: pulumi.Input.fromValue(map['procedureId'] as String),
-      startColumn: pulumi.Input.fromValue(map['startColumn'] as int),
-      startLine: pulumi.Input.fromValue(map['startLine'] as int),
+      startColumn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startColumn'])),
+      startLine: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['startLine'])),
       text: pulumi.Input.fromValue(map['text'] as String),
     );
   }

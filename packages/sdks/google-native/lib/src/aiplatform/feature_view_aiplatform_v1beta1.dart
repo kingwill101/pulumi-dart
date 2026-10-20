@@ -46,7 +46,7 @@ class FeatureViewAiplatformV1beta1 extends pulumi.CustomResource {
           'google-native:aiplatform/v1beta1:FeatureView',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['featureOnlineStoreId', 'featureViewId', 'location', 'project']).merge(options),
         ) {
     bigQuerySource = registerOutput<GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse>('bigQuerySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
@@ -54,7 +54,32 @@ class FeatureViewAiplatformV1beta1 extends pulumi.CustomResource {
     featureOnlineStoreId = registerOutput<String>('featureOnlineStoreId');
     featureRegistrySource = registerOutput<GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse>('featureRegistrySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     featureViewId = registerOutput<String>('featureViewId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    runSyncImmediately = registerOutput<bool?>('runSyncImmediately');
+    syncConfig = registerOutput<GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse>('syncConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1FeatureViewSyncConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+    vectorSearchConfig = registerOutput<GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse>('vectorSearchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [FeatureViewAiplatformV1beta1] resource.
+  FeatureViewAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:FeatureView',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bigQuerySource = registerOutput<GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse>('bigQuerySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1FeatureViewBigQuerySourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    etag = registerOutput<String>('etag');
+    featureOnlineStoreId = registerOutput<String>('featureOnlineStoreId');
+    featureRegistrySource = registerOutput<GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse>('featureRegistrySource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    featureViewId = registerOutput<String>('featureViewId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

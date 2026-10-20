@@ -21,59 +21,59 @@ import 'tags.dart';
 
 class InstanceProperties {
   /// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
-  final pulumi.Input<AdvancedMachineFeatures>? advancedMachineFeatures;
+  final pulumi.Input<AdvancedMachineFeatures?>? advancedMachineFeatures;
   /// Enables instances created based on these properties to send packets with source IP addresses other than their own and receive packets with destination IP addresses other than their own. If these instances will be used as an IP gateway or it will be set as the next-hop in a Route resource, specify true. If unsure, leave this set to false. See the Enable IP forwarding documentation for more information.
-  final pulumi.Input<bool>? canIpForward;
+  final pulumi.Input<bool?>? canIpForward;
   /// Specifies the Confidential Instance options. Note that for MachineImage, this is not supported yet.
-  final pulumi.Input<ConfidentialInstanceConfig>? confidentialInstanceConfig;
+  final pulumi.Input<ConfidentialInstanceConfig?>? confidentialInstanceConfig;
   /// An optional text description for the instances that are created from these properties.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// An array of disks that are associated with the instances that are created from these properties.
-  final pulumi.Input<List<AttachedDisk>>? disks;
+  final pulumi.Input<List<AttachedDisk>?>? disks;
   /// Display Device properties to enable support for remote display products like: Teradici, VNC and TeamViewer Note that for MachineImage, this is not supported yet.
-  final pulumi.Input<DisplayDevice>? displayDevice;
+  final pulumi.Input<DisplayDevice?>? displayDevice;
   /// A list of guest accelerator cards' type and count to use for instances created from these properties.
-  final pulumi.Input<List<AcceleratorConfig>>? guestAccelerators;
+  final pulumi.Input<List<AcceleratorConfig>?>? guestAccelerators;
   /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
-  final pulumi.Input<InstancePropertiesKeyRevocationActionType>? keyRevocationActionType;
+  final pulumi.Input<InstancePropertiesKeyRevocationActionType?>? keyRevocationActionType;
   /// Labels to apply to instances that are created from these properties.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The machine type to use for instances that are created from these properties.
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// The metadata key/value pairs to assign to instances that are created from these properties. These pairs can consist of custom metadata or predefined keys. See Project and instance metadata for more information.
-  final pulumi.Input<Metadata>? metadata;
+  final pulumi.Input<Metadata?>? metadata;
   /// Minimum cpu/platform to be used by instances. The instance may be scheduled on the specified or newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU Platform.
-  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String?>? minCpuPlatform;
   /// An array of network access configurations for this interface.
-  final pulumi.Input<List<NetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<NetworkInterface>?>? networkInterfaces;
   /// Note that for MachineImage, this is not supported yet.
-  final pulumi.Input<NetworkPerformanceConfig>? networkPerformanceConfig;
+  final pulumi.Input<NetworkPerformanceConfig?>? networkPerformanceConfig;
   /// Partner Metadata assigned to the instance properties. A map from a subdomain (namespace) to entries map.
-  final pulumi.Input<Map<String, String>>? partnerMetadata;
+  final pulumi.Input<Map<String, String>?>? partnerMetadata;
   /// PostKeyRevocationActionType of the instance.
-  final pulumi.Input<InstancePropertiesPostKeyRevocationActionType>? postKeyRevocationActionType;
+  final pulumi.Input<InstancePropertiesPostKeyRevocationActionType?>? postKeyRevocationActionType;
   /// The private IPv6 google access type for VMs. If not specified, use INHERIT_FROM_SUBNETWORK as default. Note that for MachineImage, this is not supported yet.
-  final pulumi.Input<InstancePropertiesPrivateIpv6GoogleAccess>? privateIpv6GoogleAccess;
+  final pulumi.Input<InstancePropertiesPrivateIpv6GoogleAccess?>? privateIpv6GoogleAccess;
   /// Specifies the reservations that instances can consume from. Note that for MachineImage, this is not supported yet.
-  final pulumi.Input<ReservationAffinity>? reservationAffinity;
+  final pulumi.Input<ReservationAffinity?>? reservationAffinity;
   /// Resource manager tags to be bound to the instance. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
-  final pulumi.Input<Map<String, String>>? resourceManagerTags;
+  final pulumi.Input<Map<String, String>?>? resourceManagerTags;
   /// Resource policies (names, not URLs) applied to instances created from these properties. Note that for MachineImage, this is not supported yet.
-  final pulumi.Input<List<String>>? resourcePolicies;
+  final pulumi.Input<List<String>?>? resourcePolicies;
   /// Specifies the scheduling options for the instances that are created from these properties.
-  final pulumi.Input<Scheduling>? scheduling;
+  final pulumi.Input<Scheduling?>? scheduling;
   /// [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50. Note that for MachineImage, this is not supported yet.
-  final pulumi.Input<List<String>>? secureTags;
+  final pulumi.Input<List<String>?>? secureTags;
   /// A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
-  final pulumi.Input<List<ServiceAccount>>? serviceAccounts;
+  final pulumi.Input<List<ServiceAccount>?>? serviceAccounts;
   /// Mapping of user defined keys to ServiceIntegrationSpec.
-  final pulumi.Input<Map<String, String>>? serviceIntegrationSpecs;
+  final pulumi.Input<Map<String, String>?>? serviceIntegrationSpecs;
   /// Note that for MachineImage, this is not supported yet.
-  final pulumi.Input<ShieldedInstanceConfig>? shieldedInstanceConfig;
+  final pulumi.Input<ShieldedInstanceConfig?>? shieldedInstanceConfig;
   /// Specifies the Shielded VM options for the instances that are created from these properties.
-  final pulumi.Input<ShieldedVmConfig>? shieldedVmConfig;
+  final pulumi.Input<ShieldedVmConfig?>? shieldedVmConfig;
   /// A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
-  final pulumi.Input<Tags>? tags;
+  final pulumi.Input<Tags?>? tags;
 
   /// Creates a new [InstanceProperties].
   /// [advancedMachineFeatures] Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.

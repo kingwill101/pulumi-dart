@@ -7,17 +7,17 @@ import 'json_file_format_datastream_v1alpha1.dart';
 /// Google Cloud Storage destination configuration
 class GcsDestinationConfigDatastreamV1alpha1 {
   /// AVRO file format configuration.
-  final pulumi.Input<Map<String, dynamic>>? avroFileFormat;
+  final pulumi.Input<Map<String, dynamic>?>? avroFileFormat;
   /// The maximum duration for which new events are added before a file is closed and a new file is created.
-  final pulumi.Input<String>? fileRotationInterval;
+  final pulumi.Input<String?>? fileRotationInterval;
   /// The maximum file size to be saved in the bucket.
-  final pulumi.Input<int>? fileRotationMb;
+  final pulumi.Input<int?>? fileRotationMb;
   /// File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
-  final pulumi.Input<GcsDestinationConfigGcsFileFormat>? gcsFileFormat;
+  final pulumi.Input<GcsDestinationConfigGcsFileFormat?>? gcsFileFormat;
   /// JSON file format configuration.
-  final pulumi.Input<JsonFileFormatDatastreamV1alpha1>? jsonFileFormat;
+  final pulumi.Input<JsonFileFormatDatastreamV1alpha1?>? jsonFileFormat;
   /// Path inside the Cloud Storage bucket to write data to.
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [GcsDestinationConfigDatastreamV1alpha1].
   /// [avroFileFormat] AVRO file format configuration.
@@ -50,7 +50,7 @@ class GcsDestinationConfigDatastreamV1alpha1 {
     return GcsDestinationConfigDatastreamV1alpha1(
       avroFileFormat: (() { final guardedValue = map['avroFileFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, dynamic>()); })(),
       fileRotationInterval: (() { final guardedValue = map['fileRotationInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      fileRotationMb: (() { final guardedValue = map['fileRotationMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      fileRotationMb: (() { final guardedValue = map['fileRotationMb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       gcsFileFormat: (() { final guardedValue = map['gcsFileFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GcsDestinationConfigGcsFileFormat.fromValue(guardedValue as String)); })(),
       jsonFileFormat: (() { final guardedValue = map['jsonFileFormat']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JsonFileFormatDatastreamV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       path: (() { final guardedValue = map['path']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

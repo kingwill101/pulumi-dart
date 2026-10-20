@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The action that the external access rule performs.
-enum ExternalAccessRuleAction {
+enum ExternalAccessRuleAction implements pulumi.PulumiEnum<String> {
   actionUnspecified("ACTION_UNSPECIFIED"),
   allow("ALLOW"),
   deny("DENY");
 
   const ExternalAccessRuleAction(this.wireValue);
+  @override
   final String wireValue;
 
   static ExternalAccessRuleAction fromValue(String value) {

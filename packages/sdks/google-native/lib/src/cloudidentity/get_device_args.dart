@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_cloudidentity_v1_get_device_args_doc}
 class GetDeviceArgs {
-  final pulumi.Input<String>? customer;
+  final pulumi.Input<String?>? customer;
   final pulumi.Input<String> deviceId;
 
   /// Creates a new [GetDeviceArgs].

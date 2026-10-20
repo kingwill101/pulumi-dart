@@ -101,7 +101,7 @@ class NetworkInterfaceResponseComputeV1 {
       accessConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<AccessConfigResponseComputeV1>(map['accessConfigs']!, (value) => AccessConfigResponseComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
       aliasIpRanges: pulumi.Input.fromValue(pulumi.Input.decodeList<AliasIpRangeResponseComputeV1>(map['aliasIpRanges']!, (value) => AliasIpRangeResponseComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
       fingerprint: pulumi.Input.fromValue(map['fingerprint'] as String),
-      internalIpv6PrefixLength: pulumi.Input.fromValue(map['internalIpv6PrefixLength'] as int),
+      internalIpv6PrefixLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['internalIpv6PrefixLength'])),
       ipv6AccessConfigs: pulumi.Input.fromValue(pulumi.Input.decodeList<AccessConfigResponseComputeV1>(map['ipv6AccessConfigs']!, (value) => AccessConfigResponseComputeV1.fromMap((value as Map).cast<String, dynamic>()))),
       ipv6AccessType: pulumi.Input.fromValue(map['ipv6AccessType'] as String),
       ipv6Address: pulumi.Input.fromValue(map['ipv6Address'] as String),
@@ -111,7 +111,7 @@ class NetworkInterfaceResponseComputeV1 {
       networkAttachment: pulumi.Input.fromValue(map['networkAttachment'] as String),
       networkIP: pulumi.Input.fromValue(map['networkIP'] as String),
       nicType: pulumi.Input.fromValue(map['nicType'] as String),
-      queueCount: pulumi.Input.fromValue(map['queueCount'] as int),
+      queueCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['queueCount'])),
       stackType: pulumi.Input.fromValue(map['stackType'] as String),
       subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
     );

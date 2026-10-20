@@ -52,7 +52,7 @@ class Case extends pulumi.CustomResource {
           'google-native:cloudsupport/v2:Case',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['v2Id', 'v2Id1']).merge(options),
         ) {
     classification = registerOutput<CaseClassificationResponse>('classification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaseClassificationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contactEmail = registerOutput<String>('contactEmail');
@@ -65,7 +65,35 @@ class Case extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     priority = registerOutput<String>('priority');
     state = registerOutput<String>('state');
-    subscriberEmailAddresses = registerOutput<List<String>>('subscriberEmailAddresses');
+    subscriberEmailAddresses = registerOutput<List<String>>('subscriberEmailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    testCase = registerOutput<bool>('testCase');
+    timeZone = registerOutput<String>('timeZone');
+    updateTime = registerOutput<String>('updateTime');
+    v2Id = registerOutput<String>('v2Id');
+    v2Id1 = registerOutput<String>('v2Id1');
+  }
+
+  /// Creates a typed reference to an existing [Case] resource.
+  Case.reference(String urn)
+    : super(
+        'google-native:cloudsupport/v2:Case',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    classification = registerOutput<CaseClassificationResponse>('classification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaseClassificationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contactEmail = registerOutput<String>('contactEmail');
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<ActorResponse>('creator', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    escalated = registerOutput<bool>('escalated');
+    languageCode = registerOutput<String>('languageCode');
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<String>('priority');
+    state = registerOutput<String>('state');
+    subscriberEmailAddresses = registerOutput<List<String>>('subscriberEmailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     testCase = registerOutput<bool>('testCase');
     timeZone = registerOutput<String>('timeZone');
     updateTime = registerOutput<String>('updateTime');

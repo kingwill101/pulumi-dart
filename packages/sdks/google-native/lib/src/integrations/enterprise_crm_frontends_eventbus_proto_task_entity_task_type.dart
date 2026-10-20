@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines the type of the task
-enum EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType {
+enum EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType implements pulumi.PulumiEnum<String> {
   task("TASK"),
   asisTemplate("ASIS_TEMPLATE"),
   ioTemplate("IO_TEMPLATE");
 
   const EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmFrontendsEventbusProtoTaskEntityTaskType fromValue(String value) {

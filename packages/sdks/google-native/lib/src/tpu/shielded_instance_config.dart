@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A set of Shielded Instance options.
 class ShieldedInstanceConfig {
   /// Defines whether the instance has Secure Boot enabled.
-  final pulumi.Input<bool>? enableSecureBoot;
+  final pulumi.Input<bool?>? enableSecureBoot;
 
   /// Creates a new [ShieldedInstanceConfig].
   /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled.

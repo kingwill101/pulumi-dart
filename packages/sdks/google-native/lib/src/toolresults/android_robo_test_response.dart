@@ -44,8 +44,8 @@ class AndroidRoboTestResponse {
       appInitialActivity: pulumi.Input.fromValue(map['appInitialActivity'] as String),
       bootstrapPackageId: pulumi.Input.fromValue(map['bootstrapPackageId'] as String),
       bootstrapRunnerClass: pulumi.Input.fromValue(map['bootstrapRunnerClass'] as String),
-      maxDepth: pulumi.Input.fromValue(map['maxDepth'] as int),
-      maxSteps: pulumi.Input.fromValue(map['maxSteps'] as int),
+      maxDepth: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxDepth'])),
+      maxSteps: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxSteps'])),
     );
   }
 }

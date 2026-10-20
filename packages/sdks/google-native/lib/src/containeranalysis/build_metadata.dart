@@ -3,9 +3,9 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class BuildMetadata {
-  final pulumi.Input<String>? finishedOn;
-  final pulumi.Input<String>? invocationId;
-  final pulumi.Input<String>? startedOn;
+  final pulumi.Input<String?>? finishedOn;
+  final pulumi.Input<String?>? invocationId;
+  final pulumi.Input<String?>? startedOn;
 
   /// Creates a new [BuildMetadata].
   /// [finishedOn] Optional.

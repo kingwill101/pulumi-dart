@@ -12,21 +12,21 @@ import 'google_cloud_contentwarehouse_v1_remove_from_folder_action.dart';
 /// Represents the action triggered by Rule Engine when the rule is true.
 class GoogleCloudContentwarehouseV1Action {
   /// Action triggering access control operations.
-  final pulumi.Input<GoogleCloudContentwarehouseV1AccessControlAction>? accessControl;
+  final pulumi.Input<GoogleCloudContentwarehouseV1AccessControlAction?>? accessControl;
   /// ID of the action. Managed internally.
-  final pulumi.Input<String>? actionId;
+  final pulumi.Input<String?>? actionId;
   /// Action triggering create document link operation.
-  final pulumi.Input<GoogleCloudContentwarehouseV1AddToFolderAction>? addToFolder;
+  final pulumi.Input<GoogleCloudContentwarehouseV1AddToFolderAction?>? addToFolder;
   /// Action triggering data update operations.
-  final pulumi.Input<GoogleCloudContentwarehouseV1DataUpdateAction>? dataUpdate;
+  final pulumi.Input<GoogleCloudContentwarehouseV1DataUpdateAction?>? dataUpdate;
   /// Action triggering data validation operations.
-  final pulumi.Input<GoogleCloudContentwarehouseV1DataValidationAction>? dataValidation;
+  final pulumi.Input<GoogleCloudContentwarehouseV1DataValidationAction?>? dataValidation;
   /// Action deleting the document.
-  final pulumi.Input<GoogleCloudContentwarehouseV1DeleteDocumentAction>? deleteDocumentAction;
+  final pulumi.Input<GoogleCloudContentwarehouseV1DeleteDocumentAction?>? deleteDocumentAction;
   /// Action publish to Pub/Sub operation.
-  final pulumi.Input<GoogleCloudContentwarehouseV1PublishAction>? publishToPubSub;
+  final pulumi.Input<GoogleCloudContentwarehouseV1PublishAction?>? publishToPubSub;
   /// Action removing a document from a folder.
-  final pulumi.Input<GoogleCloudContentwarehouseV1RemoveFromFolderAction>? removeFromFolderAction;
+  final pulumi.Input<GoogleCloudContentwarehouseV1RemoveFromFolderAction?>? removeFromFolderAction;
 
   /// Creates a new [GoogleCloudContentwarehouseV1Action].
   /// [accessControl] Action triggering access control operations.

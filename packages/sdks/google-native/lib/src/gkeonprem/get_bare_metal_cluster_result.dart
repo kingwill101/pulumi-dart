@@ -21,69 +21,69 @@ import 'validation_check_response.dart';
 /// Result data returned by getBareMetalCluster.
 class GetBareMetalClusterResult {
   /// The admin cluster this bare metal user cluster belongs to. This is the full resource name of the admin cluster's fleet membership.
-  final String adminClusterMembership;
+  final String? adminClusterMembership;
   /// The resource name of the bare metal admin cluster managing this user cluster.
-  final String adminClusterName;
+  final String? adminClusterName;
   /// Annotations on the bare metal user cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-  final Map<String, String> annotations;
+  final Map<String, String>? annotations;
   /// The Anthos clusters on bare metal version for your user cluster.
-  final String bareMetalVersion;
+  final String? bareMetalVersion;
   /// Binary Authorization related configurations.
-  final BinaryAuthorizationResponse binaryAuthorization;
+  final BinaryAuthorizationResponse? binaryAuthorization;
   /// Cluster operations configuration.
-  final BareMetalClusterOperationsConfigResponse clusterOperations;
+  final BareMetalClusterOperationsConfigResponse? clusterOperations;
   /// Control plane configuration.
-  final BareMetalControlPlaneConfigResponse controlPlane;
+  final BareMetalControlPlaneConfigResponse? controlPlane;
   /// The time when the bare metal user cluster was created.
-  final String createTime;
+  final String? createTime;
   /// The time when the bare metal user cluster was deleted. If the resource is not deleted, this must be empty
-  final String deleteTime;
+  final String? deleteTime;
   /// A human readable description of this bare metal user cluster.
-  final String description;
+  final String? description;
   /// The IP address of the bare metal user cluster's API server.
-  final String endpoint;
+  final String? endpoint;
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Allows clients to perform consistent read-modify-writes through optimistic concurrency control.
-  final String etag;
+  final String? etag;
   /// Fleet configuration for the cluster.
-  final FleetResponse fleet;
+  final FleetResponse? fleet;
   /// Load balancer configuration.
-  final BareMetalLoadBalancerConfigResponse loadBalancer;
+  final BareMetalLoadBalancerConfigResponse? loadBalancer;
   /// The object name of the bare metal user cluster custom resource on the associated admin cluster. This field is used to support conflicting names when enrolling existing clusters to the API. When used as a part of cluster enrollment, this field will differ from the name in the resource name. For new clusters, this field will match the user provided cluster name and be visible in the last component of the resource name. It is not modifiable. When the local name and cluster name differ, the local name is used in the admin cluster controller logs. You use the cluster name when accessing the cluster using bmctl and kubectl.
-  final String localName;
+  final String? localName;
   /// Maintenance configuration.
-  final BareMetalMaintenanceConfigResponse maintenanceConfig;
+  final BareMetalMaintenanceConfigResponse? maintenanceConfig;
   /// Status of on-going maintenance tasks.
-  final BareMetalMaintenanceStatusResponse maintenanceStatus;
+  final BareMetalMaintenanceStatusResponse? maintenanceStatus;
   /// Immutable. The bare metal user cluster resource name.
-  final String name;
+  final String? name;
   /// Network configuration.
-  final BareMetalNetworkConfigResponse networkConfig;
+  final BareMetalNetworkConfigResponse? networkConfig;
   /// Node access related configurations.
-  final BareMetalNodeAccessConfigResponse nodeAccessConfig;
+  final BareMetalNodeAccessConfigResponse? nodeAccessConfig;
   /// Workload node configuration.
-  final BareMetalWorkloadNodeConfigResponse nodeConfig;
+  final BareMetalWorkloadNodeConfigResponse? nodeConfig;
   /// OS environment related configurations.
-  final BareMetalOsEnvironmentConfigResponse osEnvironmentConfig;
+  final BareMetalOsEnvironmentConfigResponse? osEnvironmentConfig;
   /// Proxy configuration.
-  final BareMetalProxyConfigResponse proxy;
+  final BareMetalProxyConfigResponse? proxy;
   /// If set, there are currently changes in flight to the bare metal user cluster.
-  final bool reconciling;
+  final bool? reconciling;
   /// Security related setting configuration.
-  final BareMetalSecurityConfigResponse securityConfig;
+  final BareMetalSecurityConfigResponse? securityConfig;
   /// The current state of the bare metal user cluster.
-  final String state;
+  final String? state;
   /// Detailed cluster status.
-  final ResourceStatusResponse status;
+  final ResourceStatusResponse? status;
   /// Storage configuration.
-  final BareMetalStorageConfigResponse storage;
+  final BareMetalStorageConfigResponse? storage;
   /// The unique identifier of the bare metal user cluster.
-  final String uid;
+  final String? uid;
   /// The time when the bare metal user cluster was last updated.
-  final String updateTime;
+  final String? updateTime;
   /// The cluster upgrade policy.
-  final BareMetalClusterUpgradePolicyResponse upgradePolicy;
+  final BareMetalClusterUpgradePolicyResponse? upgradePolicy;
   /// The result of the preflight check.
-  final ValidationCheckResponse validationCheck;
+  final ValidationCheckResponse? validationCheck;
 
   /// Creates a new [GetBareMetalClusterResult].
   /// [adminClusterMembership] The admin cluster this bare metal user cluster belongs to. This is the full resource name of the admin cluster's fleet membership.
@@ -119,111 +119,111 @@ class GetBareMetalClusterResult {
   /// [upgradePolicy] The cluster upgrade policy.
   /// [validationCheck] The result of the preflight check.
   const GetBareMetalClusterResult({
-    required this.adminClusterMembership,
-    required this.adminClusterName,
-    required this.annotations,
-    required this.bareMetalVersion,
-    required this.binaryAuthorization,
-    required this.clusterOperations,
-    required this.controlPlane,
-    required this.createTime,
-    required this.deleteTime,
-    required this.description,
-    required this.endpoint,
-    required this.etag,
-    required this.fleet,
-    required this.loadBalancer,
-    required this.localName,
-    required this.maintenanceConfig,
-    required this.maintenanceStatus,
-    required this.name,
-    required this.networkConfig,
-    required this.nodeAccessConfig,
-    required this.nodeConfig,
-    required this.osEnvironmentConfig,
-    required this.proxy,
-    required this.reconciling,
-    required this.securityConfig,
-    required this.state,
-    required this.status,
-    required this.storage,
-    required this.uid,
-    required this.updateTime,
-    required this.upgradePolicy,
-    required this.validationCheck,
+    this.adminClusterMembership,
+    this.adminClusterName,
+    this.annotations,
+    this.bareMetalVersion,
+    this.binaryAuthorization,
+    this.clusterOperations,
+    this.controlPlane,
+    this.createTime,
+    this.deleteTime,
+    this.description,
+    this.endpoint,
+    this.etag,
+    this.fleet,
+    this.loadBalancer,
+    this.localName,
+    this.maintenanceConfig,
+    this.maintenanceStatus,
+    this.name,
+    this.networkConfig,
+    this.nodeAccessConfig,
+    this.nodeConfig,
+    this.osEnvironmentConfig,
+    this.proxy,
+    this.reconciling,
+    this.securityConfig,
+    this.state,
+    this.status,
+    this.storage,
+    this.uid,
+    this.updateTime,
+    this.upgradePolicy,
+    this.validationCheck,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'adminClusterMembership': adminClusterMembership,
-      'adminClusterName': adminClusterName,
-      'annotations': annotations,
-      'bareMetalVersion': bareMetalVersion,
-      'binaryAuthorization': binaryAuthorization.toMap(),
-      'clusterOperations': clusterOperations.toMap(),
-      'controlPlane': controlPlane.toMap(),
-      'createTime': createTime,
-      'deleteTime': deleteTime,
-      'description': description,
-      'endpoint': endpoint,
-      'etag': etag,
-      'fleet': fleet.toMap(),
-      'loadBalancer': loadBalancer.toMap(),
-      'localName': localName,
-      'maintenanceConfig': maintenanceConfig.toMap(),
-      'maintenanceStatus': maintenanceStatus.toMap(),
-      'name': name,
-      'networkConfig': networkConfig.toMap(),
-      'nodeAccessConfig': nodeAccessConfig.toMap(),
-      'nodeConfig': nodeConfig.toMap(),
-      'osEnvironmentConfig': osEnvironmentConfig.toMap(),
-      'proxy': proxy.toMap(),
-      'reconciling': reconciling,
-      'securityConfig': securityConfig.toMap(),
-      'state': state,
-      'status': status.toMap(),
-      'storage': storage.toMap(),
-      'uid': uid,
-      'updateTime': updateTime,
-      'upgradePolicy': upgradePolicy.toMap(),
-      'validationCheck': validationCheck.toMap(),
+      'adminClusterMembership': ?adminClusterMembership,
+      'adminClusterName': ?adminClusterName,
+      'annotations': ?annotations,
+      'bareMetalVersion': ?bareMetalVersion,
+      'binaryAuthorization': ?binaryAuthorization?.toMap(),
+      'clusterOperations': ?clusterOperations?.toMap(),
+      'controlPlane': ?controlPlane?.toMap(),
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'description': ?description,
+      'endpoint': ?endpoint,
+      'etag': ?etag,
+      'fleet': ?fleet?.toMap(),
+      'loadBalancer': ?loadBalancer?.toMap(),
+      'localName': ?localName,
+      'maintenanceConfig': ?maintenanceConfig?.toMap(),
+      'maintenanceStatus': ?maintenanceStatus?.toMap(),
+      'name': ?name,
+      'networkConfig': ?networkConfig?.toMap(),
+      'nodeAccessConfig': ?nodeAccessConfig?.toMap(),
+      'nodeConfig': ?nodeConfig?.toMap(),
+      'osEnvironmentConfig': ?osEnvironmentConfig?.toMap(),
+      'proxy': ?proxy?.toMap(),
+      'reconciling': ?reconciling,
+      'securityConfig': ?securityConfig?.toMap(),
+      'state': ?state,
+      'status': ?status?.toMap(),
+      'storage': ?storage?.toMap(),
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'upgradePolicy': ?upgradePolicy?.toMap(),
+      'validationCheck': ?validationCheck?.toMap(),
     };
   }
 
   factory GetBareMetalClusterResult.fromMap(Map<String, dynamic> map) {
     return GetBareMetalClusterResult(
-      adminClusterMembership: map['adminClusterMembership'] as String,
-      adminClusterName: map['adminClusterName'] as String,
-      annotations: (map['annotations'] as Map).cast<String, String>(),
-      bareMetalVersion: map['bareMetalVersion'] as String,
-      binaryAuthorization: BinaryAuthorizationResponse.fromMap((map['binaryAuthorization']! as Map).cast<String, dynamic>()),
-      clusterOperations: BareMetalClusterOperationsConfigResponse.fromMap((map['clusterOperations']! as Map).cast<String, dynamic>()),
-      controlPlane: BareMetalControlPlaneConfigResponse.fromMap((map['controlPlane']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      deleteTime: map['deleteTime'] as String,
-      description: map['description'] as String,
-      endpoint: map['endpoint'] as String,
-      etag: map['etag'] as String,
-      fleet: FleetResponse.fromMap((map['fleet']! as Map).cast<String, dynamic>()),
-      loadBalancer: BareMetalLoadBalancerConfigResponse.fromMap((map['loadBalancer']! as Map).cast<String, dynamic>()),
-      localName: map['localName'] as String,
-      maintenanceConfig: BareMetalMaintenanceConfigResponse.fromMap((map['maintenanceConfig']! as Map).cast<String, dynamic>()),
-      maintenanceStatus: BareMetalMaintenanceStatusResponse.fromMap((map['maintenanceStatus']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      networkConfig: BareMetalNetworkConfigResponse.fromMap((map['networkConfig']! as Map).cast<String, dynamic>()),
-      nodeAccessConfig: BareMetalNodeAccessConfigResponse.fromMap((map['nodeAccessConfig']! as Map).cast<String, dynamic>()),
-      nodeConfig: BareMetalWorkloadNodeConfigResponse.fromMap((map['nodeConfig']! as Map).cast<String, dynamic>()),
-      osEnvironmentConfig: BareMetalOsEnvironmentConfigResponse.fromMap((map['osEnvironmentConfig']! as Map).cast<String, dynamic>()),
-      proxy: BareMetalProxyConfigResponse.fromMap((map['proxy']! as Map).cast<String, dynamic>()),
-      reconciling: map['reconciling'] as bool,
-      securityConfig: BareMetalSecurityConfigResponse.fromMap((map['securityConfig']! as Map).cast<String, dynamic>()),
-      state: map['state'] as String,
-      status: ResourceStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
-      storage: BareMetalStorageConfigResponse.fromMap((map['storage']! as Map).cast<String, dynamic>()),
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
-      upgradePolicy: BareMetalClusterUpgradePolicyResponse.fromMap((map['upgradePolicy']! as Map).cast<String, dynamic>()),
-      validationCheck: ValidationCheckResponse.fromMap((map['validationCheck']! as Map).cast<String, dynamic>()),
+      adminClusterMembership: (() { final guardedValue = map['adminClusterMembership']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      adminClusterName: (() { final guardedValue = map['adminClusterName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      bareMetalVersion: (() { final guardedValue = map['bareMetalVersion']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      binaryAuthorization: (() { final guardedValue = map['binaryAuthorization']; if (guardedValue == null) return null; return BinaryAuthorizationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      clusterOperations: (() { final guardedValue = map['clusterOperations']; if (guardedValue == null) return null; return BareMetalClusterOperationsConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      controlPlane: (() { final guardedValue = map['controlPlane']; if (guardedValue == null) return null; return BareMetalControlPlaneConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpoint: (() { final guardedValue = map['endpoint']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      fleet: (() { final guardedValue = map['fleet']; if (guardedValue == null) return null; return FleetResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      loadBalancer: (() { final guardedValue = map['loadBalancer']; if (guardedValue == null) return null; return BareMetalLoadBalancerConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      localName: (() { final guardedValue = map['localName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      maintenanceConfig: (() { final guardedValue = map['maintenanceConfig']; if (guardedValue == null) return null; return BareMetalMaintenanceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      maintenanceStatus: (() { final guardedValue = map['maintenanceStatus']; if (guardedValue == null) return null; return BareMetalMaintenanceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      networkConfig: (() { final guardedValue = map['networkConfig']; if (guardedValue == null) return null; return BareMetalNetworkConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      nodeAccessConfig: (() { final guardedValue = map['nodeAccessConfig']; if (guardedValue == null) return null; return BareMetalNodeAccessConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      nodeConfig: (() { final guardedValue = map['nodeConfig']; if (guardedValue == null) return null; return BareMetalWorkloadNodeConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      osEnvironmentConfig: (() { final guardedValue = map['osEnvironmentConfig']; if (guardedValue == null) return null; return BareMetalOsEnvironmentConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      proxy: (() { final guardedValue = map['proxy']; if (guardedValue == null) return null; return BareMetalProxyConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      securityConfig: (() { final guardedValue = map['securityConfig']; if (guardedValue == null) return null; return BareMetalSecurityConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return ResourceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      storage: (() { final guardedValue = map['storage']; if (guardedValue == null) return null; return BareMetalStorageConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      upgradePolicy: (() { final guardedValue = map['upgradePolicy']; if (guardedValue == null) return null; return BareMetalClusterUpgradePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      validationCheck: (() { final guardedValue = map['validationCheck']; if (guardedValue == null) return null; return ValidationCheckResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

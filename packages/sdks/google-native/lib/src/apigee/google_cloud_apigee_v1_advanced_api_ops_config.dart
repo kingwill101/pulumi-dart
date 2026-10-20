@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for the Advanced API Ops add-on.
 class GoogleCloudApigeeV1AdvancedApiOpsConfig {
   /// Flag that specifies whether the Advanced API Ops add-on is enabled.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [GoogleCloudApigeeV1AdvancedApiOpsConfig].
   /// [enabled] Flag that specifies whether the Advanced API Ops add-on is enabled.

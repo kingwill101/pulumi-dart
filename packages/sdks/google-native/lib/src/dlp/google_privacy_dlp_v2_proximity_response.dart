@@ -26,8 +26,8 @@ class GooglePrivacyDlpV2ProximityResponse {
 
   factory GooglePrivacyDlpV2ProximityResponse.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2ProximityResponse(
-      windowAfter: pulumi.Input.fromValue(map['windowAfter'] as int),
-      windowBefore: pulumi.Input.fromValue(map['windowBefore'] as int),
+      windowAfter: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['windowAfter'])),
+      windowBefore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['windowBefore'])),
     );
   }
 }

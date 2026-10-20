@@ -67,7 +67,7 @@ class GoogleCloudAiplatformV1SavedQueryResponse {
   factory GoogleCloudAiplatformV1SavedQueryResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1SavedQueryResponse(
       annotationFilter: pulumi.Input.fromValue(map['annotationFilter'] as String),
-      annotationSpecCount: pulumi.Input.fromValue(map['annotationSpecCount'] as int),
+      annotationSpecCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['annotationSpecCount'])),
       createTime: pulumi.Input.fromValue(map['createTime'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       etag: pulumi.Input.fromValue(map['etag'] as String),

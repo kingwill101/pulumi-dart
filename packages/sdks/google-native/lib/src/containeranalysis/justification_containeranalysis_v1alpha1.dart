@@ -6,9 +6,9 @@ import 'justification_justification_type_containeranalysis_v1alpha1.dart';
 /// Justification provides the justification when the state of the assessment if NOT_AFFECTED.
 class JustificationContaineranalysisV1alpha1 {
   /// Additional details on why this justification was chosen.
-  final pulumi.Input<String>? details;
+  final pulumi.Input<String?>? details;
   /// The justification type for this vulnerability.
-  final pulumi.Input<JustificationJustificationTypeContaineranalysisV1alpha1>? justificationType;
+  final pulumi.Input<JustificationJustificationTypeContaineranalysisV1alpha1?>? justificationType;
 
   /// Creates a new [JustificationContaineranalysisV1alpha1].
   /// [details] Additional details on why this justification was chosen.

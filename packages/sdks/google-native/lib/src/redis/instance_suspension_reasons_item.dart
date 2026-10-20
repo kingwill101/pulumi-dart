@@ -1,8 +1,11 @@
-enum InstanceSuspensionReasonsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum InstanceSuspensionReasonsItem implements pulumi.PulumiEnum<String> {
   suspensionReasonUnspecified("SUSPENSION_REASON_UNSPECIFIED"),
   customerManagedKeyIssue("CUSTOMER_MANAGED_KEY_ISSUE");
 
   const InstanceSuspensionReasonsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceSuspensionReasonsItem fromValue(String value) {

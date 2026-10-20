@@ -6,13 +6,13 @@ import 'text_mapping.dart';
 /// Encoding of a text stream. For example, closed captions or subtitles.
 class TextStream {
   /// The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`
-  final pulumi.Input<String>? codec;
+  final pulumi.Input<String?>? codec;
   /// The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.
-  final pulumi.Input<List<TextMapping>>? mapping;
+  final pulumi.Input<List<TextMapping>?>? mapping;
 
   /// Creates a new [TextStream].
   /// [codec] The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`

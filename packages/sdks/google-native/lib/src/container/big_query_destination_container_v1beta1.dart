@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Parameters for using BigQuery as the destination of resource usage export.
 class BigQueryDestinationContainerV1beta1 {
   /// The ID of a BigQuery Dataset.
-  final pulumi.Input<String>? datasetId;
+  final pulumi.Input<String?>? datasetId;
 
   /// Creates a new [BigQueryDestinationContainerV1beta1].
   /// [datasetId] The ID of a BigQuery Dataset.

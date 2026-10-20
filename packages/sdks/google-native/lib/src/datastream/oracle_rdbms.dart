@@ -6,7 +6,7 @@ import 'oracle_schema.dart';
 /// Oracle database structure.
 class OracleRdbms {
   /// Oracle schemas/databases in the database server.
-  final pulumi.Input<List<OracleSchema>>? oracleSchemas;
+  final pulumi.Input<List<OracleSchema>?>? oracleSchemas;
 
   /// Creates a new [OracleRdbms].
   /// [oracleSchemas] Oracle schemas/databases in the database server.

@@ -55,7 +55,7 @@ class RegionInstantSnapshot extends pulumi.CustomResource {
           'google-native:compute/alpha:RegionInstantSnapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     architecture = registerOutput<String>('architecture');
     creationTimestamp = registerOutput<String>('creationTimestamp');
@@ -64,7 +64,38 @@ class RegionInstantSnapshot extends pulumi.CustomResource {
     guestFlush = registerOutput<bool>('guestFlush');
     kind = registerOutput<String>('kind');
     labelFingerprint = registerOutput<String>('labelFingerprint');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    resourceStatus = registerOutput<InstantSnapshotResourceStatusResponse>('resourceStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstantSnapshotResourceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    sourceDisk = registerOutput<String>('sourceDisk');
+    sourceDiskId = registerOutput<String>('sourceDiskId');
+    status = registerOutput<String>('status');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [RegionInstantSnapshot] resource.
+  RegionInstantSnapshot.reference(String urn)
+    : super(
+        'google-native:compute/alpha:RegionInstantSnapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    architecture = registerOutput<String>('architecture');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    diskSizeGb = registerOutput<String>('diskSizeGb');
+    guestFlush = registerOutput<bool>('guestFlush');
+    kind = registerOutput<String>('kind');
+    labelFingerprint = registerOutput<String>('labelFingerprint');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     region = registerOutput<String>('region');

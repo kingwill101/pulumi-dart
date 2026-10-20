@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the entry. Only used for Entries with types in the EntryType enum.
-enum EntryTypeDatacatalogV1beta1 {
+enum EntryTypeDatacatalogV1beta1 implements pulumi.PulumiEnum<String> {
   entryTypeUnspecified("ENTRY_TYPE_UNSPECIFIED"),
   table("TABLE"),
   model("MODEL"),
@@ -7,6 +9,7 @@ enum EntryTypeDatacatalogV1beta1 {
   fileset("FILESET");
 
   const EntryTypeDatacatalogV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static EntryTypeDatacatalogV1beta1 fromValue(String value) {

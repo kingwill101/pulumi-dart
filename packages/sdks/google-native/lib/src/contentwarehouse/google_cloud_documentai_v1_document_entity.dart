@@ -9,25 +9,25 @@ import 'google_cloud_documentai_v1_document_text_anchor.dart';
 /// An entity that could be a phrase in the text or a property that belongs to the document. It is a known entity type, such as a person, an organization, or location.
 class GoogleCloudDocumentaiV1DocumentEntity {
   /// Optional. Confidence of detected Schema entity. Range `[0, 1]`.
-  final pulumi.Input<double>? confidence;
+  final pulumi.Input<double?>? confidence;
   /// Optional. Canonical id. This will be a unique value in the entity list for this document.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// Optional. Deprecated. Use `id` field instead.
-  final pulumi.Input<String>? mentionId;
+  final pulumi.Input<String?>? mentionId;
   /// Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.
-  final pulumi.Input<String>? mentionText;
+  final pulumi.Input<String?>? mentionText;
   /// Optional. Normalized entity value. Absent if the extracted value could not be converted or the type (e.g. address) is not supported for certain parsers. This field is also only populated for certain supported document types.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentEntityNormalizedValue>? normalizedValue;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentEntityNormalizedValue?>? normalizedValue;
   /// Optional. Represents the provenance of this entity wrt. the location on the page where it was found.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageAnchor>? pageAnchor;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageAnchor?>? pageAnchor;
   /// Optional. Entities can be nested to form a hierarchical data structure representing the content in the document.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentEntity>>? properties;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentEntity>?>? properties;
   /// Optional. The history of this annotation.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenance>? provenance;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentProvenance?>? provenance;
   /// Optional. Whether the entity will be redacted for de-identification purposes.
-  final pulumi.Input<bool>? redacted;
+  final pulumi.Input<bool?>? redacted;
   /// Optional. Provenance of the entity. Text anchor indexing into the Document.text.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentTextAnchor>? textAnchor;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentTextAnchor?>? textAnchor;
   /// Entity type from a schema e.g. `Address`.
   final pulumi.Input<String> type;
 
@@ -75,7 +75,7 @@ class GoogleCloudDocumentaiV1DocumentEntity {
 
   factory GoogleCloudDocumentaiV1DocumentEntity.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentEntity(
-      confidence: (() { final guardedValue = map['confidence']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      confidence: (() { final guardedValue = map['confidence']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mentionId: (() { final guardedValue = map['mentionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       mentionText: (() { final guardedValue = map['mentionText']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

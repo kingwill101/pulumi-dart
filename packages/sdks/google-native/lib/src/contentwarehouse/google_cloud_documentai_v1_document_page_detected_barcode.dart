@@ -7,9 +7,9 @@ import 'google_cloud_documentai_v1_document_page_layout.dart';
 /// A detected barcode.
 class GoogleCloudDocumentaiV1DocumentPageDetectedBarcode {
   /// Detailed barcode information of the DetectedBarcode.
-  final pulumi.Input<GoogleCloudDocumentaiV1Barcode>? barcode;
+  final pulumi.Input<GoogleCloudDocumentaiV1Barcode?>? barcode;
   /// Layout for DetectedBarcode.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout>? layout;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout?>? layout;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageDetectedBarcode].
   /// [barcode] Detailed barcode information of the DetectedBarcode.

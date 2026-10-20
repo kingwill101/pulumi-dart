@@ -8,20 +8,20 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_integrations_v1alpha_sfdc_channel_args_doc}
 class SfdcChannelArgs {
   /// The Channel topic defined by salesforce once an channel is opened
-  final pulumi.Input<String>? channelTopic;
+  final pulumi.Input<String?>? channelTopic;
   /// The description for this channel
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Client level unique name/alias to easily reference a channel.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Indicated if a channel has any active integrations referencing it. Set to false when the channel is created, and set to true if there is any integration published with the channel configured in it.
-  final pulumi.Input<bool>? isActive;
+  final pulumi.Input<bool?>? isActive;
   /// Last sfdc messsage replay id for channel
-  final pulumi.Input<String>? lastReplayId;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? lastReplayId;
+  final pulumi.Input<String?>? location;
   /// Resource name of the SFDC channel projects/{project}/locations/{location}/sfdcInstances/{sfdc_instance}/sfdcChannels/{sfdc_channel}.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> productId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> sfdcInstanceId;
 
   /// Creates a new [SfdcChannelArgs].

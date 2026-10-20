@@ -17,3 +17,14 @@ Future<GetModelResult> getModel(
   );
   return GetModelResult.fromMap(result);
 }
+
+pulumi.Output<GetModelResult> getModelOutput(
+  GetModelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:firebaseml/v1beta2:getModel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetModelResult.fromMap);
+}

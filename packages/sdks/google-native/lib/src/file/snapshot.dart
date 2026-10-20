@@ -34,13 +34,34 @@ class Snapshot extends pulumi.CustomResource {
           'google-native:file/v1:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instanceId', 'location', 'project', 'snapshotId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     filesystemUsedBytes = registerOutput<String>('filesystemUsedBytes');
     instanceId = registerOutput<String>('instanceId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    snapshotId = registerOutput<String>('snapshotId');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Snapshot] resource.
+  Snapshot.reference(String urn)
+    : super(
+        'google-native:file/v1:Snapshot',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    filesystemUsedBytes = registerOutput<String>('filesystemUsedBytes');
+    instanceId = registerOutput<String>('instanceId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

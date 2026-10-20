@@ -20,6 +20,17 @@ Future<GetDebugTokenResult> getDebugToken(
   return GetDebugTokenResult.fromMap(result);
 }
 
+pulumi.Output<GetDebugTokenResult> getDebugTokenOutput(
+  GetDebugTokenArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:firebaseappcheck/v1:getDebugToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDebugTokenResult.fromMap);
+}
+
 /// Gets the specified DebugToken. For security reasons, the `token` field is never populated in the response.
 /// [args] Arguments passed to this invoke. {@macro pulumi_firebaseappcheck_v1beta_get_debug_token_firebaseappcheck_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetDebugTokenFirebaseappcheckV1betaResult> getDebugTokenFirebaseappcheckV
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDebugTokenFirebaseappcheckV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetDebugTokenFirebaseappcheckV1betaResult> getDebugTokenFirebaseappcheckV1betaOutput(
+  GetDebugTokenFirebaseappcheckV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:firebaseappcheck/v1beta:getDebugToken',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDebugTokenFirebaseappcheckV1betaResult.fromMap);
 }

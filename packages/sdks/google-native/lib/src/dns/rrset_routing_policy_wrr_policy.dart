@@ -5,8 +5,8 @@ import 'rrset_routing_policy_wrr_policy_wrr_policy_item.dart';
 
 /// Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
 class RRSetRoutingPolicyWrrPolicy {
-  final pulumi.Input<List<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>>? items;
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<List<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>?>? items;
+  final pulumi.Input<String?>? kind;
 
   /// Creates a new [RRSetRoutingPolicyWrrPolicy].
   /// [items] Optional.

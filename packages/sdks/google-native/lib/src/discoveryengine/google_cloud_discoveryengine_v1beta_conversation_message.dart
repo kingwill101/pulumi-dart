@@ -7,9 +7,9 @@ import 'google_cloud_discoveryengine_v1beta_text_input.dart';
 /// Defines a conversation message.
 class GoogleCloudDiscoveryengineV1betaConversationMessage {
   /// Search reply.
-  final pulumi.Input<GoogleCloudDiscoveryengineV1betaReply>? reply;
+  final pulumi.Input<GoogleCloudDiscoveryengineV1betaReply?>? reply;
   /// User text input.
-  final pulumi.Input<GoogleCloudDiscoveryengineV1betaTextInput>? userInput;
+  final pulumi.Input<GoogleCloudDiscoveryengineV1betaTextInput?>? userInput;
 
   /// Creates a new [GoogleCloudDiscoveryengineV1betaConversationMessage].
   /// [reply] Search reply.

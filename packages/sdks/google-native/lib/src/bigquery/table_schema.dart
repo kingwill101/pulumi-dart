@@ -5,7 +5,7 @@ import 'table_field_schema.dart';
 
 class TableSchema {
   /// Describes the fields in a table.
-  final pulumi.Input<List<TableFieldSchema>>? fields;
+  final pulumi.Input<List<TableFieldSchema>?>? fields;
 
   /// Creates a new [TableSchema].
   /// [fields] Describes the fields in a table.

@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Defines text alignment for all cells in this column.
-enum GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment {
+enum GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment implements pulumi.PulumiEnum<String> {
   horizontalAlignmentUnspecified("HORIZONTAL_ALIGNMENT_UNSPECIFIED"),
   leading("LEADING"),
   center("CENTER"),
   trailing("TRAILING");
 
   const GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignment fromValue(String value) {

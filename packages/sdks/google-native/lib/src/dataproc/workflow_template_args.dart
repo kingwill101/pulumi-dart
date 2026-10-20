@@ -12,22 +12,22 @@ import 'workflow_template_placement.dart';
 /// {@macro pulumi_dataproc_v1_workflow_template_args_doc}
 class WorkflowTemplateArgs {
   /// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
-  final pulumi.Input<String>? dagTimeout;
+  final pulumi.Input<String?>? dagTimeout;
   /// Optional. Encryption settings for the encrypting customer core content.
-  final pulumi.Input<GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig>? encryptionConfig;
-  final pulumi.Input<String>? id;
+  final pulumi.Input<GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig?>? encryptionConfig;
+  final pulumi.Input<String?>? id;
   /// The Directed Acyclic Graph of Jobs to submit.
   final pulumi.Input<List<OrderedJob>> jobs;
   /// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-  final pulumi.Input<List<TemplateParameter>>? parameters;
+  final pulumi.Input<List<TemplateParameter>?>? parameters;
   /// WorkflowTemplate scheduling information.
   final pulumi.Input<WorkflowTemplatePlacement> placement;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
-  final pulumi.Input<int>? version;
+  final pulumi.Input<int?>? version;
 
   /// Creates a new [WorkflowTemplateArgs].
   /// [dagTimeout] Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
@@ -79,7 +79,7 @@ class WorkflowTemplateArgs {
       parameters: (() { final guardedValue = map['parameters']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<TemplateParameter>(guardedValue, (value) => TemplateParameter.fromMap((value as Map).cast<String, dynamic>()))); })(),
       placement: pulumi.Input.fromValue(WorkflowTemplatePlacement.fromMap((map['placement']! as Map).cast<String, dynamic>())),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

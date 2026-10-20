@@ -46,7 +46,7 @@ class NotificationEndpointGrpcSettingsResponseComputeBeta {
       endpoint: pulumi.Input.fromValue(map['endpoint'] as String),
       payloadName: pulumi.Input.fromValue(map['payloadName'] as String),
       resendInterval: pulumi.Input.fromValue(DurationResponseComputeBeta.fromMap((map['resendInterval']! as Map).cast<String, dynamic>())),
-      retryDurationSec: pulumi.Input.fromValue(map['retryDurationSec'] as int),
+      retryDurationSec: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retryDurationSec'])),
     );
   }
 }

@@ -1,7 +1,7 @@
 // ignore_for_file: unused_element, unnecessary_cast
 
 import 'package:pulumi/pulumi.dart' as pulumi;
-import 'bucket_access_control_storage_v1.dart';
+import 'bucket_access_control.dart';
 import 'bucket_autoclass.dart';
 import 'bucket_billing.dart';
 import 'bucket_cors_item.dart';
@@ -16,7 +16,7 @@ import 'bucket_retention_policy.dart';
 import 'bucket_soft_delete_policy.dart';
 import 'bucket_versioning.dart';
 import 'bucket_website.dart';
-import 'object_access_control_storage_v1.dart';
+import 'object_access_control.dart';
 
 /// {@template pulumi_storage_v1_bucket_args_doc}
 /// The set of arguments for Bucket.
@@ -24,81 +24,81 @@ import 'object_access_control_storage_v1.dart';
 /// {@macro pulumi_storage_v1_bucket_args_doc}
 class BucketArgs {
   /// Access controls on the bucket.
-  final pulumi.Input<List<BucketAccessControlStorageV1>>? acl;
+  final pulumi.Input<List<BucketAccessControl>?>? acl;
   /// The bucket's Autoclass configuration.
-  final pulumi.Input<BucketAutoclass>? autoclass;
+  final pulumi.Input<BucketAutoclass?>? autoclass;
   /// The bucket's billing configuration.
-  final pulumi.Input<BucketBilling>? billing;
+  final pulumi.Input<BucketBilling?>? billing;
   /// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
-  final pulumi.Input<List<BucketCorsItem>>? cors;
+  final pulumi.Input<List<BucketCorsItem>?>? cors;
   /// The bucket's custom placement configuration for Custom Dual Regions.
-  final pulumi.Input<BucketCustomPlacementConfig>? customPlacementConfig;
+  final pulumi.Input<BucketCustomPlacementConfig?>? customPlacementConfig;
   /// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
-  final pulumi.Input<bool>? defaultEventBasedHold;
+  final pulumi.Input<bool?>? defaultEventBasedHold;
   /// Default access controls to apply to new objects when no ACL is provided.
-  final pulumi.Input<List<ObjectAccessControlStorageV1>>? defaultObjectAcl;
+  final pulumi.Input<List<ObjectAccessControl>?>? defaultObjectAcl;
   /// When set to true, object retention is enabled for this bucket.
-  final pulumi.Input<bool>? enableObjectRetention;
+  final pulumi.Input<bool?>? enableObjectRetention;
   /// Encryption configuration for a bucket.
-  final pulumi.Input<BucketEncryption>? encryption;
+  final pulumi.Input<BucketEncryption?>? encryption;
   /// HTTP 1.1 Entity tag for the bucket.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The bucket's IAM configuration.
-  final pulumi.Input<BucketIamConfiguration>? iamConfiguration;
+  final pulumi.Input<BucketIamConfiguration?>? iamConfiguration;
   /// The ID of the bucket. For buckets, the id and name properties are the same.
-  final pulumi.Input<String>? id;
+  final pulumi.Input<String?>? id;
   /// The kind of item this is. For buckets, this is always storage#bucket.
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<String?>? kind;
   /// User-provided labels, in key/value pairs.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The bucket's lifecycle configuration. See lifecycle management for more information.
-  final pulumi.Input<BucketLifecycle>? lifecycle;
+  final pulumi.Input<BucketLifecycle?>? lifecycle;
   /// The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list.
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// The type of the bucket location.
-  final pulumi.Input<String>? locationType;
+  final pulumi.Input<String?>? locationType;
   /// The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
-  final pulumi.Input<BucketLogging>? logging;
+  final pulumi.Input<BucketLogging?>? logging;
   /// The metadata generation of this bucket.
-  final pulumi.Input<String>? metageneration;
+  final pulumi.Input<String?>? metageneration;
   /// The name of the bucket.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The bucket's object retention config.
-  final pulumi.Input<BucketObjectRetention>? objectRetention;
+  final pulumi.Input<BucketObjectRetention?>? objectRetention;
   /// The owner of the bucket. This is always the project team's owner group.
-  final pulumi.Input<BucketOwner>? owner;
+  final pulumi.Input<BucketOwner?>? owner;
   /// Apply a predefined set of access controls to this bucket.
-  final pulumi.Input<String>? predefinedAcl;
+  final pulumi.Input<String?>? predefinedAcl;
   /// Apply a predefined set of default object access controls to this bucket.
-  final pulumi.Input<String>? predefinedDefaultObjectAcl;
+  final pulumi.Input<String?>? predefinedDefaultObjectAcl;
   /// A valid API project identifier.
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// The project number of the project the bucket belongs to.
-  final pulumi.Input<String>? projectNumber;
+  final pulumi.Input<String?>? projectNumber;
   /// Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full.
-  final pulumi.Input<String>? projection;
+  final pulumi.Input<String?>? projection;
   /// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
-  final pulumi.Input<BucketRetentionPolicy>? retentionPolicy;
+  final pulumi.Input<BucketRetentionPolicy?>? retentionPolicy;
   /// The Recovery Point Objective (RPO) of this bucket. Set to ASYNC_TURBO to turn on Turbo Replication on a bucket.
-  final pulumi.Input<String>? rpo;
+  final pulumi.Input<String?>? rpo;
   /// Reserved for future use.
-  final pulumi.Input<bool>? satisfiesPZS;
+  final pulumi.Input<bool?>? satisfiesPZS;
   /// The URI of this bucket.
-  final pulumi.Input<String>? selfLink;
+  final pulumi.Input<String?>? selfLink;
   /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be retained, and cannot be permanently deleted.
-  final pulumi.Input<BucketSoftDeletePolicy>? softDeletePolicy;
+  final pulumi.Input<BucketSoftDeletePolicy?>? softDeletePolicy;
   /// The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
-  final pulumi.Input<String>? storageClass;
+  final pulumi.Input<String?>? storageClass;
   /// The creation time of the bucket in RFC 3339 format.
-  final pulumi.Input<String>? timeCreated;
+  final pulumi.Input<String?>? timeCreated;
   /// The modification time of the bucket in RFC 3339 format.
-  final pulumi.Input<String>? updated;
+  final pulumi.Input<String?>? updated;
   /// The project to be billed for this request.
-  final pulumi.Input<String>? userProject;
+  final pulumi.Input<String?>? userProject;
   /// The bucket's versioning configuration.
-  final pulumi.Input<BucketVersioning>? versioning;
+  final pulumi.Input<BucketVersioning?>? versioning;
   /// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
-  final pulumi.Input<BucketWebsite>? website;
+  final pulumi.Input<BucketWebsite?>? website;
 
   /// Creates a new [BucketArgs].
   /// [acl] Access controls on the bucket.
@@ -182,13 +182,13 @@ class BucketArgs {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'acl': ?acl,
+      'acl': ?pulumi.Input.mapOptionalInputValue<List<BucketAccessControl>, List<Map<String, dynamic>>>(acl, (value) => pulumi.Input.encodeList<BucketAccessControl, Map<String, dynamic>>(value, (value) => value.toMap())),
       'autoclass': ?pulumi.Input.mapOptionalInputValue<BucketAutoclass, Map<String, dynamic>>(autoclass, (value) => value.toMap()),
       'billing': ?pulumi.Input.mapOptionalInputValue<BucketBilling, Map<String, dynamic>>(billing, (value) => value.toMap()),
       'cors': ?pulumi.Input.mapOptionalInputValue<List<BucketCorsItem>, List<Map<String, dynamic>>>(cors, (value) => pulumi.Input.encodeList<BucketCorsItem, Map<String, dynamic>>(value, (value) => value.toMap())),
       'customPlacementConfig': ?pulumi.Input.mapOptionalInputValue<BucketCustomPlacementConfig, Map<String, dynamic>>(customPlacementConfig, (value) => value.toMap()),
       'defaultEventBasedHold': ?defaultEventBasedHold,
-      'defaultObjectAcl': ?defaultObjectAcl,
+      'defaultObjectAcl': ?pulumi.Input.mapOptionalInputValue<List<ObjectAccessControl>, List<Map<String, dynamic>>>(defaultObjectAcl, (value) => pulumi.Input.encodeList<ObjectAccessControl, Map<String, dynamic>>(value, (value) => value.toMap())),
       'enableObjectRetention': ?enableObjectRetention,
       'encryption': ?pulumi.Input.mapOptionalInputValue<BucketEncryption, Map<String, dynamic>>(encryption, (value) => value.toMap()),
       'etag': ?etag,
@@ -225,13 +225,13 @@ class BucketArgs {
 
   factory BucketArgs.fromMap(Map<String, dynamic> map) {
     return BucketArgs(
-      acl: (() { final guardedValue = map['acl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<BucketAccessControlStorageV1>()); })(),
+      acl: (() { final guardedValue = map['acl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BucketAccessControl>(guardedValue, (value) => BucketAccessControl.fromMap((value as Map).cast<String, dynamic>()))); })(),
       autoclass: (() { final guardedValue = map['autoclass']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BucketAutoclass.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       billing: (() { final guardedValue = map['billing']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BucketBilling.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       cors: (() { final guardedValue = map['cors']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<BucketCorsItem>(guardedValue, (value) => BucketCorsItem.fromMap((value as Map).cast<String, dynamic>()))); })(),
       customPlacementConfig: (() { final guardedValue = map['customPlacementConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BucketCustomPlacementConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       defaultEventBasedHold: (() { final guardedValue = map['defaultEventBasedHold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      defaultObjectAcl: (() { final guardedValue = map['defaultObjectAcl']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<ObjectAccessControlStorageV1>()); })(),
+      defaultObjectAcl: (() { final guardedValue = map['defaultObjectAcl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ObjectAccessControl>(guardedValue, (value) => ObjectAccessControl.fromMap((value as Map).cast<String, dynamic>()))); })(),
       enableObjectRetention: (() { final guardedValue = map['enableObjectRetention']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       encryption: (() { final guardedValue = map['encryption']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BucketEncryption.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

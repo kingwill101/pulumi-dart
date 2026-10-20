@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
-enum NodeGroupMaintenancePolicyComputeV1 {
+enum NodeGroupMaintenancePolicyComputeV1 implements pulumi.PulumiEnum<String> {
   default_("DEFAULT"),
   maintenancePolicyUnspecified("MAINTENANCE_POLICY_UNSPECIFIED"),
   migrateWithinNodeGroup("MIGRATE_WITHIN_NODE_GROUP"),
   restartInPlace("RESTART_IN_PLACE");
 
   const NodeGroupMaintenancePolicyComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static NodeGroupMaintenancePolicyComputeV1 fromValue(String value) {

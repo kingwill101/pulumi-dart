@@ -11,19 +11,19 @@ import 'sign_in_behavior_cloudidentity_v1beta1.dart';
 /// {@macro pulumi_cloudidentity_v1beta1_inbound_sso_assignment_cloudidentity_v1beta1_args_doc}
 class InboundSsoAssignmentCloudidentityV1beta1Args {
   /// Immutable. The customer. For example: `customers/C0123abc`.
-  final pulumi.Input<String>? customer;
+  final pulumi.Input<String?>? customer;
   /// Must be zero (which is the default value so it can be omitted) for assignments with `target_org_unit` set and must be greater-than-or-equal-to one for assignments with `target_group` set.
-  final pulumi.Input<int>? rank;
+  final pulumi.Input<int?>? rank;
   /// SAML SSO details. Must be set if and only if `sso_mode` is set to `SAML_SSO`.
-  final pulumi.Input<SamlSsoInfoCloudidentityV1beta1>? samlSsoInfo;
+  final pulumi.Input<SamlSsoInfoCloudidentityV1beta1?>? samlSsoInfo;
   /// Assertions about users assigned to an IdP will always be accepted from that IdP. This controls whether/when Google should redirect a user to the IdP. Unset (defaults) is the recommended configuration.
-  final pulumi.Input<SignInBehaviorCloudidentityV1beta1>? signInBehavior;
+  final pulumi.Input<SignInBehaviorCloudidentityV1beta1?>? signInBehavior;
   /// Inbound SSO behavior.
-  final pulumi.Input<InboundSsoAssignmentSsoModeCloudidentityV1beta1>? ssoMode;
+  final pulumi.Input<InboundSsoAssignmentSsoModeCloudidentityV1beta1?>? ssoMode;
   /// Immutable. Must be of the form `groups/{group}`.
-  final pulumi.Input<String>? targetGroup;
+  final pulumi.Input<String?>? targetGroup;
   /// Immutable. Must be of the form `orgUnits/{org_unit}`.
-  final pulumi.Input<String>? targetOrgUnit;
+  final pulumi.Input<String?>? targetOrgUnit;
 
   /// Creates a new [InboundSsoAssignmentCloudidentityV1beta1Args].
   /// [customer] Immutable. The customer. For example: `customers/C0123abc`.
@@ -58,7 +58,7 @@ class InboundSsoAssignmentCloudidentityV1beta1Args {
   factory InboundSsoAssignmentCloudidentityV1beta1Args.fromMap(Map<String, dynamic> map) {
     return InboundSsoAssignmentCloudidentityV1beta1Args(
       customer: (() { final guardedValue = map['customer']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rank: (() { final guardedValue = map['rank']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      rank: (() { final guardedValue = map['rank']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       samlSsoInfo: (() { final guardedValue = map['samlSsoInfo']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SamlSsoInfoCloudidentityV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       signInBehavior: (() { final guardedValue = map['signInBehavior']; if (guardedValue == null) return null; return pulumi.Input.fromValue(SignInBehaviorCloudidentityV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       ssoMode: (() { final guardedValue = map['ssoMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(InboundSsoAssignmentSsoModeCloudidentityV1beta1.fromValue(guardedValue as String)); })(),

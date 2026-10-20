@@ -6,13 +6,13 @@ import 'dashboard_filter_filter_type.dart';
 /// A filter to reduce the amount of data charted in relevant widgets.
 class DashboardFilter {
   /// The specified filter type
-  final pulumi.Input<DashboardFilterFilterType>? filterType;
+  final pulumi.Input<DashboardFilterFilterType?>? filterType;
   /// The key for the label
   final pulumi.Input<String> labelKey;
   /// A variable-length string value.
-  final pulumi.Input<String>? stringValue;
+  final pulumi.Input<String?>? stringValue;
   /// The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard.
-  final pulumi.Input<String>? templateVariable;
+  final pulumi.Input<String?>? templateVariable;
 
   /// Creates a new [DashboardFilter].
   /// [filterType] The specified filter type

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Logging variant deployed on nodes.
-enum LoggingVariantConfigVariant {
+enum LoggingVariantConfigVariant implements pulumi.PulumiEnum<String> {
   variantUnspecified("VARIANT_UNSPECIFIED"),
   default_("DEFAULT"),
   maxThroughput("MAX_THROUGHPUT");
 
   const LoggingVariantConfigVariant(this.wireValue);
+  @override
   final String wireValue;
 
   static LoggingVariantConfigVariant fromValue(String value) {

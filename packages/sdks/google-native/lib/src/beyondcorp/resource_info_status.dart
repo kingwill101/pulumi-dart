@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Overall health status. Overall status is derived based on the status of each sub level resources.
-enum ResourceInfoStatus {
+enum ResourceInfoStatus implements pulumi.PulumiEnum<String> {
   healthStatusUnspecified("HEALTH_STATUS_UNSPECIFIED"),
   healthy("HEALTHY"),
   unhealthy("UNHEALTHY"),
@@ -7,6 +9,7 @@ enum ResourceInfoStatus {
   degraded("DEGRADED");
 
   const ResourceInfoStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourceInfoStatus fromValue(String value) {

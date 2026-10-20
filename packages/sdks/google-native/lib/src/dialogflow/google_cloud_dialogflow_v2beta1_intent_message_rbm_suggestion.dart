@@ -7,9 +7,9 @@ import 'google_cloud_dialogflow_v2beta1_intent_message_rbm_suggested_reply.dart'
 /// Rich Business Messaging (RBM) suggestion. Suggestions allow user to easily select/click a predefined response or perform an action (like opening a web uri).
 class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion {
   /// Predefined client side actions that user can choose
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction>? action;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction?>? action;
   /// Predefined replies for user to select instead of typing
-  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply>? reply;
+  final pulumi.Input<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply?>? reply;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion].
   /// [action] Predefined client side actions that user can choose

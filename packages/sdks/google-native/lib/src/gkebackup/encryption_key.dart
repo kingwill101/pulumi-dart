@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Defined a customer managed encryption key that will be used to encrypt Backup artifacts.
 class EncryptionKey {
   /// Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
-  final pulumi.Input<String>? gcpKmsEncryptionKey;
+  final pulumi.Input<String?>? gcpKmsEncryptionKey;
 
   /// Creates a new [EncryptionKey].
   /// [gcpKmsEncryptionKey] Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`

@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A stacktrace.
 class StackTrace {
   /// The stack trace message. Required
-  final pulumi.Input<String>? exception;
+  final pulumi.Input<String?>? exception;
 
   /// Creates a new [StackTrace].
   /// [exception] The stack trace message. Required

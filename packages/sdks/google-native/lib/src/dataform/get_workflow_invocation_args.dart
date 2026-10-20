@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dataform_v1beta1_get_workflow_invocation_args_doc}
 class GetWorkflowInvocationArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> repositoryId;
   final pulumi.Input<String> workflowInvocationId;
 

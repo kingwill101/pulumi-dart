@@ -39,8 +39,30 @@ class WorkforcePool extends pulumi.CustomResource {
           'google-native:iam/v1:WorkforcePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location']).merge(options),
         ) {
+    accessRestrictions = registerOutput<AccessRestrictionsResponse>('accessRestrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessRestrictionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    disabled = registerOutput<bool>('disabled');
+    displayName = registerOutput<String>('displayName');
+    expireTime = registerOutput<String>('expireTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+    sessionDuration = registerOutput<String>('sessionDuration');
+    state = registerOutput<String>('state');
+    workforcePoolId = registerOutput<String?>('workforcePoolId');
+  }
+
+  /// Creates a typed reference to an existing [WorkforcePool] resource.
+  WorkforcePool.reference(String urn)
+    : super(
+        'google-native:iam/v1:WorkforcePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessRestrictions = registerOutput<AccessRestrictionsResponse>('accessRestrictions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AccessRestrictionsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     description = registerOutput<String>('description');
     disabled = registerOutput<bool>('disabled');

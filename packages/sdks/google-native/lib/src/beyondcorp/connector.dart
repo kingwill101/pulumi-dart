@@ -42,12 +42,36 @@ class Connector extends pulumi.CustomResource {
           'google-native:beyondcorp/v1alpha:Connector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     connectorId = registerOutput<String?>('connectorId');
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    principalInfo = registerOutput<PrincipalInfoResponse>('principalInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrincipalInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    resourceInfo = registerOutput<ResourceInfoResponse>('resourceInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Connector] resource.
+  Connector.reference(String urn)
+    : super(
+        'google-native:beyondcorp/v1alpha:Connector',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    connectorId = registerOutput<String?>('connectorId');
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     principalInfo = registerOutput<PrincipalInfoResponse>('principalInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PrincipalInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

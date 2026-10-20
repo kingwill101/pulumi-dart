@@ -48,8 +48,33 @@ class PatchDeployment extends pulumi.CustomResource {
           'google-native:osconfig/v1:PatchDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['patchDeploymentId', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    duration = registerOutput<String>('duration');
+    instanceFilter = registerOutput<PatchInstanceFilterResponse>('instanceFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchInstanceFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastExecuteTime = registerOutput<String>('lastExecuteTime');
+    this.name = registerOutput<String>('name');
+    oneTimeSchedule = registerOutput<OneTimeScheduleResponse>('oneTimeSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OneTimeScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    patchConfig = registerOutput<PatchConfigResponse>('patchConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    patchDeploymentId = registerOutput<String>('patchDeploymentId');
+    project = registerOutput<String>('project');
+    recurringSchedule = registerOutput<RecurringScheduleResponse>('recurringSchedule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RecurringScheduleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rollout = registerOutput<PatchRolloutResponse>('rollout', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PatchRolloutResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [PatchDeployment] resource.
+  PatchDeployment.reference(String urn)
+    : super(
+        'google-native:osconfig/v1:PatchDeployment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     duration = registerOutput<String>('duration');

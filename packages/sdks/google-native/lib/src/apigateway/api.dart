@@ -35,12 +35,33 @@ class Api extends pulumi.CustomResource {
           'google-native:apigateway/v1:Api',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['apiId', 'location', 'project']).merge(options),
         ) {
     apiId = registerOutput<String>('apiId');
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    managedService = registerOutput<String>('managedService');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Api] resource.
+  Api.reference(String urn)
+    : super(
+        'google-native:apigateway/v1:Api',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiId = registerOutput<String>('apiId');
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     managedService = registerOutput<String>('managedService');
     this.name = registerOutput<String>('name');

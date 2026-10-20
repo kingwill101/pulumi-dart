@@ -10,7 +10,7 @@ class GetHl7V2StoreHealthcareV1beta1Args {
   final pulumi.Input<String> datasetId;
   final pulumi.Input<String> hl7V2StoreId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetHl7V2StoreHealthcareV1beta1Args].
   /// [datasetId] Required.

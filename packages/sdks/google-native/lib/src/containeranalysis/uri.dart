@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// An URI message.
 class URI {
   /// A label for the URI.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// The unique resource identifier.
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [URI].
   /// [label] A label for the URI.

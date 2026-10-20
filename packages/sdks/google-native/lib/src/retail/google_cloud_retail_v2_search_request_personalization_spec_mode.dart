@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defaults to Mode.AUTO.
-enum GoogleCloudRetailV2SearchRequestPersonalizationSpecMode {
+enum GoogleCloudRetailV2SearchRequestPersonalizationSpecMode implements pulumi.PulumiEnum<String> {
   modeUnspecified("MODE_UNSPECIFIED"),
   auto("AUTO"),
   disabled("DISABLED");
 
   const GoogleCloudRetailV2SearchRequestPersonalizationSpecMode(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudRetailV2SearchRequestPersonalizationSpecMode fromValue(String value) {

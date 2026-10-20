@@ -62,10 +62,10 @@ class UrlMapTestResponse {
 
   factory UrlMapTestResponse.fromMap(Map<String, dynamic> map) {
     return UrlMapTestResponse(
-      backendServiceWeight: pulumi.Input.fromValue(map['backendServiceWeight'] as int),
+      backendServiceWeight: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backendServiceWeight'])),
       description: pulumi.Input.fromValue(map['description'] as String),
       expectedOutputUrl: pulumi.Input.fromValue(map['expectedOutputUrl'] as String),
-      expectedRedirectResponseCode: pulumi.Input.fromValue(map['expectedRedirectResponseCode'] as int),
+      expectedRedirectResponseCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['expectedRedirectResponseCode'])),
       expectedUrlRedirect: pulumi.Input.fromValue(map['expectedUrlRedirect'] as String),
       headers: pulumi.Input.fromValue(pulumi.Input.decodeList<UrlMapTestHeaderResponse>(map['headers']!, (value) => UrlMapTestHeaderResponse.fromMap((value as Map).cast<String, dynamic>()))),
       host: pulumi.Input.fromValue(map['host'] as String),

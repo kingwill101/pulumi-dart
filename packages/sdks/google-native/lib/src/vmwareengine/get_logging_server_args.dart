@@ -10,7 +10,7 @@ class GetLoggingServerArgs {
   final pulumi.Input<String> location;
   final pulumi.Input<String> loggingServerId;
   final pulumi.Input<String> privateCloudId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetLoggingServerArgs].
   /// [location] Required.

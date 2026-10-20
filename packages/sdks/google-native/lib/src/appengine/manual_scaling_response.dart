@@ -21,7 +21,7 @@ class ManualScalingResponse {
 
   factory ManualScalingResponse.fromMap(Map<String, dynamic> map) {
     return ManualScalingResponse(
-      instances: pulumi.Input.fromValue(map['instances'] as int),
+      instances: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['instances'])),
     );
   }
 }

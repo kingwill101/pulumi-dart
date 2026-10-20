@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Message contains the JWT encryption information for the proxy server.
 class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo {
   /// Optional. Service Account for encryption key.
-  final pulumi.Input<String>? encryptionSaEmail;
+  final pulumi.Input<String?>? encryptionSaEmail;
   /// Optional. JWK in string.
-  final pulumi.Input<String>? jwk;
+  final pulumi.Input<String?>? jwk;
 
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo].
   /// [encryptionSaEmail] Optional. Service Account for encryption key.

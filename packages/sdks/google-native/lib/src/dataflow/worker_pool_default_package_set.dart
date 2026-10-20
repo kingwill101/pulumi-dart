@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.
-enum WorkerPoolDefaultPackageSet {
+enum WorkerPoolDefaultPackageSet implements pulumi.PulumiEnum<String> {
   defaultPackageSetUnknown("DEFAULT_PACKAGE_SET_UNKNOWN"),
   defaultPackageSetNone("DEFAULT_PACKAGE_SET_NONE"),
   defaultPackageSetJava("DEFAULT_PACKAGE_SET_JAVA"),
   defaultPackageSetPython("DEFAULT_PACKAGE_SET_PYTHON");
 
   const WorkerPoolDefaultPackageSet(this.wireValue);
+  @override
   final String wireValue;
 
   static WorkerPoolDefaultPackageSet fromValue(String value) {

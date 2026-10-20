@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// cluster_dns_scope indicates the scope of access to cluster DNS records.
-enum DNSConfigClusterDnsScope {
+enum DNSConfigClusterDnsScope implements pulumi.PulumiEnum<String> {
   dnsScopeUnspecified("DNS_SCOPE_UNSPECIFIED"),
   clusterScope("CLUSTER_SCOPE"),
   vpcScope("VPC_SCOPE");
 
   const DNSConfigClusterDnsScope(this.wireValue);
+  @override
   final String wireValue;
 
   static DNSConfigClusterDnsScope fromValue(String value) {

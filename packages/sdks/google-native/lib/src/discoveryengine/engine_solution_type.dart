@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The solutions of the engine.
-enum EngineSolutionType {
+enum EngineSolutionType implements pulumi.PulumiEnum<String> {
   solutionTypeUnspecified("SOLUTION_TYPE_UNSPECIFIED"),
   solutionTypeRecommendation("SOLUTION_TYPE_RECOMMENDATION"),
   solutionTypeSearch("SOLUTION_TYPE_SEARCH"),
   solutionTypeChat("SOLUTION_TYPE_CHAT");
 
   const EngineSolutionType(this.wireValue);
+  @override
   final String wireValue;
 
   static EngineSolutionType fromValue(String value) {

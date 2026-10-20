@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'policy_alternative_name_server_config_response_dns_v1beta2.dart';
 import 'policy_dns_v1beta2_args.dart';
+import 'policy_network_response_dns_v1beta2.dart';
 
 /// Creates a new Policy.
 class PolicyDnsV1beta2 extends pulumi.CustomResource {
@@ -18,7 +19,7 @@ class PolicyDnsV1beta2 extends pulumi.CustomResource {
   /// User-assigned name for this policy.
   late final pulumi.Output<String> name;
   /// List of network names specifying networks to which this policy is applied.
-  late final pulumi.Output<List<Map<String, dynamic>>> networks;
+  late final pulumi.Output<List<PolicyNetworkResponseDnsV1beta2>> networks;
   late final pulumi.Output<String> project;
 
   /// Creates a new [PolicyDnsV1beta2].
@@ -33,7 +34,7 @@ class PolicyDnsV1beta2 extends pulumi.CustomResource {
           'google-native:dns/v1beta2:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     alternativeNameServerConfig = registerOutput<PolicyAlternativeNameServerConfigResponseDnsV1beta2>('alternativeNameServerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyAlternativeNameServerConfigResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     clientOperationId = registerOutput<String?>('clientOperationId');
@@ -42,7 +43,27 @@ class PolicyDnsV1beta2 extends pulumi.CustomResource {
     enableLogging = registerOutput<bool>('enableLogging');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    networks = registerOutput<List<Map<String, dynamic>>>('networks');
+    networks = registerOutput<List<PolicyNetworkResponseDnsV1beta2>>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyNetworkResponseDnsV1beta2>(guardedValue, (value) => PolicyNetworkResponseDnsV1beta2.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [PolicyDnsV1beta2] resource.
+  PolicyDnsV1beta2.reference(String urn)
+    : super(
+        'google-native:dns/v1beta2:Policy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    alternativeNameServerConfig = registerOutput<PolicyAlternativeNameServerConfigResponseDnsV1beta2>('alternativeNameServerConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PolicyAlternativeNameServerConfigResponseDnsV1beta2.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    clientOperationId = registerOutput<String?>('clientOperationId');
+    description = registerOutput<String>('description');
+    enableInboundForwarding = registerOutput<bool>('enableInboundForwarding');
+    enableLogging = registerOutput<bool>('enableLogging');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    networks = registerOutput<List<PolicyNetworkResponseDnsV1beta2>>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyNetworkResponseDnsV1beta2>(guardedValue, (value) => PolicyNetworkResponseDnsV1beta2.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
   }
 }

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_iam_v1_get_provider_args_doc}
 class GetProviderArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> providerId;
   final pulumi.Input<String> workloadIdentityPoolId;
 

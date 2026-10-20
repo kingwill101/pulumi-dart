@@ -1,7 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_retail_v2_audience_response.dart';
 import 'google_cloud_retail_v2_color_info_response.dart';
+import 'google_cloud_retail_v2_fulfillment_info_response.dart';
+import 'google_cloud_retail_v2_image_response.dart';
+import 'google_cloud_retail_v2_local_inventory_response.dart';
 import 'google_cloud_retail_v2_price_info_response.dart';
+import 'google_cloud_retail_v2_product_response.dart';
+import 'google_cloud_retail_v2_promotion_response.dart';
 import 'google_cloud_retail_v2_rating_response.dart';
 import 'product_args.dart';
 
@@ -34,15 +39,15 @@ class Product extends pulumi.CustomResource {
   /// The timestamp when this product becomes unavailable for SearchService.Search. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the users to delete the stale products explicitly, instead of using this field to determine staleness. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
   late final pulumi.Output<String> expireTime;
   /// Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods. All the elements must have distinct FulfillmentInfo.type. Otherwise, an INVALID_ARGUMENT error is returned.
-  late final pulumi.Output<List<Map<String, dynamic>>> fulfillmentInfo;
+  late final pulumi.Output<List<GoogleCloudRetailV2FulfillmentInfoResponse>> fulfillmentInfo;
   /// The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn), [Product.gtin8](https://schema.org/gtin8), [Product.gtin12](https://schema.org/gtin12), [Product.gtin13](https://schema.org/gtin13), or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
   late final pulumi.Output<String> gtin;
   /// Product images for the product. We highly recommend putting the main image first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
-  late final pulumi.Output<List<Map<String, dynamic>>> images;
+  late final pulumi.Output<List<GoogleCloudRetailV2ImageResponse>> images;
   /// Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
   late final pulumi.Output<String> languageCode;
   /// A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
-  late final pulumi.Output<List<Map<String, dynamic>>> localInventories;
+  late final pulumi.Output<List<GoogleCloudRetailV2LocalInventoryResponse>> localInventories;
   late final pulumi.Output<String> location;
   /// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
   late final pulumi.Output<List<String>> materials;
@@ -58,7 +63,7 @@ class Product extends pulumi.CustomResource {
   late final pulumi.Output<String> productId;
   late final pulumi.Output<String> project;
   /// The promotions applied to the product. A maximum of 10 values are allowed per Product. Only Promotion.promotion_id will be used, other fields will be ignored if set.
-  late final pulumi.Output<List<Map<String, dynamic>>> promotions;
+  late final pulumi.Output<List<GoogleCloudRetailV2PromotionResponse>> promotions;
   /// The timestamp when the product is published by the retailer for the first time, which indicates the freshness of the products. Note that this field is different from available_time, given it purely describes product freshness regardless of when it is available on search and recommendation.
   late final pulumi.Output<String> publishTime;
   /// The rating of this product.
@@ -78,7 +83,7 @@ class Product extends pulumi.CustomResource {
   /// Canonical URL directly linking to the product detail page. It is strongly recommended to provide a valid uri for the product, otherwise the service performance could be significantly degraded. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [link](https://support.google.com/merchants/answer/6324416). Schema.org property [Offer.url](https://schema.org/url).
   late final pulumi.Output<String> uri;
   /// Product variants grouped together on primary product which share similar product attributes. It's automatically grouped by primary_product_id for all the product variants. Only populated for Type.PRIMARY Products. Note: This field is OUTPUT_ONLY for ProductService.GetProduct. Do not set this field in API requests.
-  late final pulumi.Output<List<Map<String, dynamic>>> variants;
+  late final pulumi.Output<List<GoogleCloudRetailV2ProductResponse>> variants;
 
   /// Creates a new [Product].
   /// [name] The Pulumi resource name.
@@ -92,45 +97,94 @@ class Product extends pulumi.CustomResource {
           'google-native:retail/v2:Product',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['branchId', 'catalogId', 'location', 'productId', 'project']).merge(options),
         ) {
-    attributes = registerOutput<Map<String, String>>('attributes');
+    attributes = registerOutput<Map<String, String>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     audience = registerOutput<GoogleCloudRetailV2AudienceResponse>('audience', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2AudienceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     availability = registerOutput<String>('availability');
     availableQuantity = registerOutput<int>('availableQuantity');
     availableTime = registerOutput<String>('availableTime');
     branchId = registerOutput<String>('branchId');
-    brands = registerOutput<List<String>>('brands');
+    brands = registerOutput<List<String>>('brands', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     catalogId = registerOutput<String>('catalogId');
-    categories = registerOutput<List<String>>('categories');
-    collectionMemberIds = registerOutput<List<String>>('collectionMemberIds');
+    categories = registerOutput<List<String>>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    collectionMemberIds = registerOutput<List<String>>('collectionMemberIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     colorInfo = registerOutput<GoogleCloudRetailV2ColorInfoResponse>('colorInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2ColorInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    conditions = registerOutput<List<String>>('conditions');
+    conditions = registerOutput<List<String>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String>('description');
     expireTime = registerOutput<String>('expireTime');
-    fulfillmentInfo = registerOutput<List<Map<String, dynamic>>>('fulfillmentInfo');
+    fulfillmentInfo = registerOutput<List<GoogleCloudRetailV2FulfillmentInfoResponse>>('fulfillmentInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRetailV2FulfillmentInfoResponse>(guardedValue, (value) => GoogleCloudRetailV2FulfillmentInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
     gtin = registerOutput<String>('gtin');
-    images = registerOutput<List<Map<String, dynamic>>>('images');
+    images = registerOutput<List<GoogleCloudRetailV2ImageResponse>>('images', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRetailV2ImageResponse>(guardedValue, (value) => GoogleCloudRetailV2ImageResponse.fromMap((value as Map).cast<String, dynamic>())); });
     languageCode = registerOutput<String>('languageCode');
-    localInventories = registerOutput<List<Map<String, dynamic>>>('localInventories');
+    localInventories = registerOutput<List<GoogleCloudRetailV2LocalInventoryResponse>>('localInventories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRetailV2LocalInventoryResponse>(guardedValue, (value) => GoogleCloudRetailV2LocalInventoryResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
-    materials = registerOutput<List<String>>('materials');
+    materials = registerOutput<List<String>>('materials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
-    patterns = registerOutput<List<String>>('patterns');
+    patterns = registerOutput<List<String>>('patterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     priceInfo = registerOutput<GoogleCloudRetailV2PriceInfoResponse>('priceInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2PriceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     primaryProductId = registerOutput<String>('primaryProductId');
     productId = registerOutput<String>('productId');
     project = registerOutput<String>('project');
-    promotions = registerOutput<List<Map<String, dynamic>>>('promotions');
+    promotions = registerOutput<List<GoogleCloudRetailV2PromotionResponse>>('promotions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRetailV2PromotionResponse>(guardedValue, (value) => GoogleCloudRetailV2PromotionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     publishTime = registerOutput<String>('publishTime');
     rating = registerOutput<GoogleCloudRetailV2RatingResponse>('rating', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2RatingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     retrievableFields = registerOutput<String>('retrievableFields');
-    sizes = registerOutput<List<String>>('sizes');
-    tags = registerOutput<List<String>>('tags');
+    sizes = registerOutput<List<String>>('sizes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     title = registerOutput<String>('title');
     ttl = registerOutput<String>('ttl');
     type = registerOutput<String>('type');
     uri = registerOutput<String>('uri');
-    variants = registerOutput<List<Map<String, dynamic>>>('variants');
+    variants = registerOutput<List<GoogleCloudRetailV2ProductResponse>>('variants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRetailV2ProductResponse>(guardedValue, (value) => GoogleCloudRetailV2ProductResponse.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Product] resource.
+  Product.reference(String urn)
+    : super(
+        'google-native:retail/v2:Product',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    attributes = registerOutput<Map<String, String>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    audience = registerOutput<GoogleCloudRetailV2AudienceResponse>('audience', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2AudienceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    availability = registerOutput<String>('availability');
+    availableQuantity = registerOutput<int>('availableQuantity');
+    availableTime = registerOutput<String>('availableTime');
+    branchId = registerOutput<String>('branchId');
+    brands = registerOutput<List<String>>('brands', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    catalogId = registerOutput<String>('catalogId');
+    categories = registerOutput<List<String>>('categories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    collectionMemberIds = registerOutput<List<String>>('collectionMemberIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    colorInfo = registerOutput<GoogleCloudRetailV2ColorInfoResponse>('colorInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2ColorInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    conditions = registerOutput<List<String>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String>('description');
+    expireTime = registerOutput<String>('expireTime');
+    fulfillmentInfo = registerOutput<List<GoogleCloudRetailV2FulfillmentInfoResponse>>('fulfillmentInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRetailV2FulfillmentInfoResponse>(guardedValue, (value) => GoogleCloudRetailV2FulfillmentInfoResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    gtin = registerOutput<String>('gtin');
+    images = registerOutput<List<GoogleCloudRetailV2ImageResponse>>('images', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRetailV2ImageResponse>(guardedValue, (value) => GoogleCloudRetailV2ImageResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    languageCode = registerOutput<String>('languageCode');
+    localInventories = registerOutput<List<GoogleCloudRetailV2LocalInventoryResponse>>('localInventories', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRetailV2LocalInventoryResponse>(guardedValue, (value) => GoogleCloudRetailV2LocalInventoryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    materials = registerOutput<List<String>>('materials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    patterns = registerOutput<List<String>>('patterns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    priceInfo = registerOutput<GoogleCloudRetailV2PriceInfoResponse>('priceInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2PriceInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    primaryProductId = registerOutput<String>('primaryProductId');
+    productId = registerOutput<String>('productId');
+    project = registerOutput<String>('project');
+    promotions = registerOutput<List<GoogleCloudRetailV2PromotionResponse>>('promotions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRetailV2PromotionResponse>(guardedValue, (value) => GoogleCloudRetailV2PromotionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    publishTime = registerOutput<String>('publishTime');
+    rating = registerOutput<GoogleCloudRetailV2RatingResponse>('rating', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2RatingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    retrievableFields = registerOutput<String>('retrievableFields');
+    sizes = registerOutput<List<String>>('sizes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    title = registerOutput<String>('title');
+    ttl = registerOutput<String>('ttl');
+    type = registerOutput<String>('type');
+    uri = registerOutput<String>('uri');
+    variants = registerOutput<List<GoogleCloudRetailV2ProductResponse>>('variants', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRetailV2ProductResponse>(guardedValue, (value) => GoogleCloudRetailV2ProductResponse.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'data_source_args.dart';
+import 'gsuite_principal_response.dart';
 
 /// Creates a datasource. **Note:** This API requires an admin account to execute.
 class DataSource extends pulumi.CustomResource {
@@ -12,7 +13,7 @@ class DataSource extends pulumi.CustomResource {
   /// List of service accounts that have indexing access.
   late final pulumi.Output<List<String>> indexingServiceAccounts;
   /// This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.
-  late final pulumi.Output<List<Map<String, dynamic>>> itemsVisibility;
+  late final pulumi.Output<List<GSuitePrincipalResponse>> itemsVisibility;
   /// The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
   late final pulumi.Output<String> name;
   /// IDs of the Long Running Operations (LROs) currently running for this schema.
@@ -34,15 +35,35 @@ class DataSource extends pulumi.CustomResource {
           'google-native:cloudsearch/v1:DataSource',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
     disableModifications = registerOutput<bool>('disableModifications');
     disableServing = registerOutput<bool>('disableServing');
     displayName = registerOutput<String>('displayName');
-    indexingServiceAccounts = registerOutput<List<String>>('indexingServiceAccounts');
-    itemsVisibility = registerOutput<List<Map<String, dynamic>>>('itemsVisibility');
+    indexingServiceAccounts = registerOutput<List<String>>('indexingServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    itemsVisibility = registerOutput<List<GSuitePrincipalResponse>>('itemsVisibility', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GSuitePrincipalResponse>(guardedValue, (value) => GSuitePrincipalResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    operationIds = registerOutput<List<String>>('operationIds');
+    operationIds = registerOutput<List<String>>('operationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    returnThumbnailUrls = registerOutput<bool>('returnThumbnailUrls');
+    shortName = registerOutput<String>('shortName');
+  }
+
+  /// Creates a typed reference to an existing [DataSource] resource.
+  DataSource.reference(String urn)
+    : super(
+        'google-native:cloudsearch/v1:DataSource',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    disableModifications = registerOutput<bool>('disableModifications');
+    disableServing = registerOutput<bool>('disableServing');
+    displayName = registerOutput<String>('displayName');
+    indexingServiceAccounts = registerOutput<List<String>>('indexingServiceAccounts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    itemsVisibility = registerOutput<List<GSuitePrincipalResponse>>('itemsVisibility', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GSuitePrincipalResponse>(guardedValue, (value) => GSuitePrincipalResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    operationIds = registerOutput<List<String>>('operationIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     returnThumbnailUrls = registerOutput<bool>('returnThumbnailUrls');
     shortName = registerOutput<String>('shortName');
   }

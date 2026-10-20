@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta {
   /// Named instance selections configuring properties that the group will use when creating new VMs.
-  final pulumi.Input<Map<String, String>>? instanceSelectionLists;
+  final pulumi.Input<Map<String, String>?>? instanceSelectionLists;
 
   /// Creates a new [InstanceGroupManagerInstanceFlexibilityPolicyComputeBeta].
   /// [instanceSelectionLists] Named instance selections configuring properties that the group will use when creating new VMs.

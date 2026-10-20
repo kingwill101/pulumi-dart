@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
-enum RoutineLanguage {
+enum RoutineLanguage implements pulumi.PulumiEnum<String> {
   languageUnspecified("LANGUAGE_UNSPECIFIED"),
   sql("SQL"),
   javascript("JAVASCRIPT"),
@@ -8,6 +10,7 @@ enum RoutineLanguage {
   scala("SCALA");
 
   const RoutineLanguage(this.wireValue);
+  @override
   final String wireValue;
 
   static RoutineLanguage fromValue(String value) {

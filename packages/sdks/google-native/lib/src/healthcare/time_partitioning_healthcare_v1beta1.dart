@@ -6,9 +6,9 @@ import 'time_partitioning_type_healthcare_v1beta1.dart';
 /// Configuration for FHIR BigQuery time-partitioned tables.
 class TimePartitioningHealthcareV1beta1 {
   /// Number of milliseconds for which to keep the storage for a partition.
-  final pulumi.Input<String>? expirationMs;
+  final pulumi.Input<String?>? expirationMs;
   /// Type of partitioning.
-  final pulumi.Input<TimePartitioningTypeHealthcareV1beta1>? type;
+  final pulumi.Input<TimePartitioningTypeHealthcareV1beta1?>? type;
 
   /// Creates a new [TimePartitioningHealthcareV1beta1].
   /// [expirationMs] Number of milliseconds for which to keep the storage for a partition.

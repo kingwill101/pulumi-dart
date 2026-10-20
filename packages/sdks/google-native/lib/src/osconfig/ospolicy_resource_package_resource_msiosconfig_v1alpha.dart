@@ -6,7 +6,7 @@ import 'ospolicy_resource_file_osconfig_v1alpha.dart';
 /// An MSI package. MSI packages only support INSTALLED state.
 class OSPolicyResourcePackageResourceMSIOsconfigV1alpha {
   /// Additional properties to use during installation. This should be in the format of Property=Setting. Appended to the defaults of `ACTION=INSTALL REBOOT=ReallySuppress`.
-  final pulumi.Input<List<String>>? properties;
+  final pulumi.Input<List<String>?>? properties;
   /// The MSI package.
   final pulumi.Input<OSPolicyResourceFileOsconfigV1alpha> source;
 

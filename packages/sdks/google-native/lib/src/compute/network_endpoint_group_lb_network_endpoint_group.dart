@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Load balancing specific fields for network endpoint group.
 class NetworkEndpointGroupLbNetworkEndpointGroup {
   /// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
-  final pulumi.Input<int>? defaultPort;
+  final pulumi.Input<int?>? defaultPort;
   /// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
 
   /// Creates a new [NetworkEndpointGroupLbNetworkEndpointGroup].
   /// [defaultPort] The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
@@ -31,7 +31,7 @@ class NetworkEndpointGroupLbNetworkEndpointGroup {
 
   factory NetworkEndpointGroupLbNetworkEndpointGroup.fromMap(Map<String, dynamic> map) {
     return NetworkEndpointGroupLbNetworkEndpointGroup(
-      defaultPort: (() { final guardedValue = map['defaultPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      defaultPort: (() { final guardedValue = map['defaultPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       subnetwork: (() { final guardedValue = map['subnetwork']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The architecture of the disk. Valid values are ARM64 or X86_64.
-enum RegionDiskArchitectureComputeV1 {
+enum RegionDiskArchitectureComputeV1 implements pulumi.PulumiEnum<String> {
   architectureUnspecified("ARCHITECTURE_UNSPECIFIED"),
   arm64("ARM64"),
   x8664("X86_64");
 
   const RegionDiskArchitectureComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static RegionDiskArchitectureComputeV1 fromValue(String value) {

@@ -12,27 +12,27 @@ import 'security_action_state.dart';
 /// {@macro pulumi_apigee_v1_security_action_args_doc}
 class SecurityActionArgs {
   /// Allow a request through if it matches this SecurityAction.
-  final pulumi.Input<Map<String, dynamic>>? allow;
+  final pulumi.Input<Map<String, dynamic>?>? allow;
   /// A valid SecurityAction must contain at least one condition.
   final pulumi.Input<GoogleCloudApigeeV1SecurityActionConditionConfig> conditionConfig;
   /// Deny a request through if it matches this SecurityAction.
-  final pulumi.Input<GoogleCloudApigeeV1SecurityActionDeny>? deny;
+  final pulumi.Input<GoogleCloudApigeeV1SecurityActionDeny?>? deny;
   /// Optional. An optional user provided description of the SecurityAction.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   final pulumi.Input<String> environmentId;
   /// The expiration for this SecurityAction.
-  final pulumi.Input<String>? expireTime;
+  final pulumi.Input<String?>? expireTime;
   /// Flag a request through if it matches this SecurityAction.
-  final pulumi.Input<GoogleCloudApigeeV1SecurityActionFlag>? flag;
+  final pulumi.Input<GoogleCloudApigeeV1SecurityActionFlag?>? flag;
   /// Immutable. This field is ignored during creation as per AIP-133. Please set the `security_action_id` field in the CreateSecurityActionRequest when creating a new SecurityAction. Format: organizations/{org}/environments/{env}/securityActions/{security_action}
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
   /// Required. The ID to use for the SecurityAction, which will become the final component of the action's resource name. This value should be 0-61 characters, and valid format is (^[a-z]([a-z0-9-]{​0,61}[a-z0-9])?$).
   final pulumi.Input<String> securityActionId;
   /// Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
   final pulumi.Input<SecurityActionState> state;
   /// Input only. The TTL for this SecurityAction.
-  final pulumi.Input<String>? ttl;
+  final pulumi.Input<String?>? ttl;
 
   /// Creates a new [SecurityActionArgs].
   /// [allow] Allow a request through if it matches this SecurityAction.

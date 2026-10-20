@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The HTTP Status code to use for the redirect.
-enum HttpRouteRedirectResponseCode {
+enum HttpRouteRedirectResponseCode implements pulumi.PulumiEnum<String> {
   responseCodeUnspecified("RESPONSE_CODE_UNSPECIFIED"),
   movedPermanentlyDefault("MOVED_PERMANENTLY_DEFAULT"),
   found("FOUND"),
@@ -8,6 +10,7 @@ enum HttpRouteRedirectResponseCode {
   permanentRedirect("PERMANENT_REDIRECT");
 
   const HttpRouteRedirectResponseCode(this.wireValue);
+  @override
   final String wireValue;
 
   static HttpRouteRedirectResponseCode fromValue(String value) {

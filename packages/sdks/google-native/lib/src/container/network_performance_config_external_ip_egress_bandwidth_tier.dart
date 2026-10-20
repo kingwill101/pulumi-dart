@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
-enum NetworkPerformanceConfigExternalIpEgressBandwidthTier {
+enum NetworkPerformanceConfigExternalIpEgressBandwidthTier implements pulumi.PulumiEnum<String> {
   tierUnspecified("TIER_UNSPECIFIED"),
   tier1("TIER_1");
 
   const NetworkPerformanceConfigExternalIpEgressBandwidthTier(this.wireValue);
+  @override
   final String wireValue;
 
   static NetworkPerformanceConfigExternalIpEgressBandwidthTier fromValue(String value) {

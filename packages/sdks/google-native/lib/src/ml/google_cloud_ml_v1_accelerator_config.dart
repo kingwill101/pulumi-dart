@@ -6,9 +6,9 @@ import 'google_cloud_ml_v1_accelerator_config_type.dart';
 /// Represents a hardware accelerator request config. Note that the AcceleratorConfig can be used in both Jobs and Versions. Learn more about [accelerators for training](/ml-engine/docs/using-gpus) and [accelerators for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
 class GoogleCloudMlV1AcceleratorConfig {
   /// The number of accelerators to attach to each machine running the job.
-  final pulumi.Input<String>? count;
+  final pulumi.Input<String?>? count;
   /// The type of accelerator to use.
-  final pulumi.Input<GoogleCloudMlV1AcceleratorConfigType>? type;
+  final pulumi.Input<GoogleCloudMlV1AcceleratorConfigType?>? type;
 
   /// Creates a new [GoogleCloudMlV1AcceleratorConfig].
   /// [count] The number of accelerators to attach to each machine running the job.

@@ -6,7 +6,7 @@ import 'http_config_http_enabled_state.dart';
 /// The configuration of the HTTP bridge for a device registry.
 class HttpConfig {
   /// If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
-  final pulumi.Input<HttpConfigHttpEnabledState>? httpEnabledState;
+  final pulumi.Input<HttpConfigHttpEnabledState?>? httpEnabledState;
 
   /// Creates a new [HttpConfig].
   /// [httpEnabledState] If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.

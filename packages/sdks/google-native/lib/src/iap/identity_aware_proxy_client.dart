@@ -25,8 +25,24 @@ class IdentityAwareProxyClient extends pulumi.CustomResource {
           'google-native:iap/v1:IdentityAwareProxyClient',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['brandId', 'project']).merge(options),
         ) {
+    brandId = registerOutput<String>('brandId');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    secret = registerOutput<String>('secret');
+  }
+
+  /// Creates a typed reference to an existing [IdentityAwareProxyClient] resource.
+  IdentityAwareProxyClient.reference(String urn)
+    : super(
+        'google-native:iap/v1:IdentityAwareProxyClient',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     brandId = registerOutput<String>('brandId');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');

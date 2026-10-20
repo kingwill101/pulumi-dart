@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a group of VMs that can be identified as having all these labels, for example "env=prod and app=web".
 class PatchInstanceFilterGroupLabelOsconfigV1beta {
   /// Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
 
   /// Creates a new [PatchInstanceFilterGroupLabelOsconfigV1beta].
   /// [labels] Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.

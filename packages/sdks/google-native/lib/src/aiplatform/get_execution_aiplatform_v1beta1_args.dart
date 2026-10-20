@@ -10,7 +10,7 @@ class GetExecutionAiplatformV1beta1Args {
   final pulumi.Input<String> executionId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> metadataStoreId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetExecutionAiplatformV1beta1Args].
   /// [executionId] Required.

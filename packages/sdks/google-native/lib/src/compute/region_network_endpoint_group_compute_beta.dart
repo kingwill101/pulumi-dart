@@ -63,9 +63,42 @@ class RegionNetworkEndpointGroupComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:RegionNetworkEndpointGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    appEngine = registerOutput<NetworkEndpointGroupAppEngineResponseComputeBeta>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupAppEngineResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudFunction = registerOutput<NetworkEndpointGroupCloudFunctionResponseComputeBeta>('cloudFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupCloudFunctionResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cloudRun = registerOutput<NetworkEndpointGroupCloudRunResponseComputeBeta>('cloudRun', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupCloudRunResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    defaultPort = registerOutput<int>('defaultPort');
+    description = registerOutput<String>('description');
+    kind = registerOutput<String>('kind');
+    loadBalancer = registerOutput<NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta>('loadBalancer', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupLbNetworkEndpointGroupResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    networkEndpointType = registerOutput<String>('networkEndpointType');
+    project = registerOutput<String>('project');
+    pscData = registerOutput<NetworkEndpointGroupPscDataResponseComputeBeta>('pscData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupPscDataResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    pscTargetService = registerOutput<String>('pscTargetService');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    serverlessDeployment = registerOutput<NetworkEndpointGroupServerlessDeploymentResponseComputeBeta>('serverlessDeployment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupServerlessDeploymentResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    size = registerOutput<int>('size');
+    subnetwork = registerOutput<String>('subnetwork');
+    zone = registerOutput<String>('zone');
+  }
+
+  /// Creates a typed reference to an existing [RegionNetworkEndpointGroupComputeBeta] resource.
+  RegionNetworkEndpointGroupComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:RegionNetworkEndpointGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     appEngine = registerOutput<NetworkEndpointGroupAppEngineResponseComputeBeta>('appEngine', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupAppEngineResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudFunction = registerOutput<NetworkEndpointGroupCloudFunctionResponseComputeBeta>('cloudFunction', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupCloudFunctionResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cloudRun = registerOutput<NetworkEndpointGroupCloudRunResponseComputeBeta>('cloudRun', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkEndpointGroupCloudRunResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });

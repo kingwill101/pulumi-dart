@@ -8,17 +8,17 @@ import 'google_cloud_datacatalog_v1_routine_spec_routine_type.dart';
 /// Specification that applies to a routine. Valid only for entries with the `ROUTINE` type.
 class GoogleCloudDatacatalogV1RoutineSpec {
   /// Fields specific for BigQuery routines.
-  final pulumi.Input<GoogleCloudDatacatalogV1BigQueryRoutineSpec>? bigqueryRoutineSpec;
+  final pulumi.Input<GoogleCloudDatacatalogV1BigQueryRoutineSpec?>? bigqueryRoutineSpec;
   /// The body of the routine.
-  final pulumi.Input<String>? definitionBody;
+  final pulumi.Input<String?>? definitionBody;
   /// The language the routine is written in. The exact value depends on the source system. For BigQuery routines, possible values are: * `SQL` * `JAVASCRIPT`
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
   /// Return type of the argument. The exact value depends on the source system and the language.
-  final pulumi.Input<String>? returnType;
+  final pulumi.Input<String?>? returnType;
   /// Arguments of the routine.
-  final pulumi.Input<List<GoogleCloudDatacatalogV1RoutineSpecArgument>>? routineArguments;
+  final pulumi.Input<List<GoogleCloudDatacatalogV1RoutineSpecArgument>?>? routineArguments;
   /// The type of the routine.
-  final pulumi.Input<GoogleCloudDatacatalogV1RoutineSpecRoutineType>? routineType;
+  final pulumi.Input<GoogleCloudDatacatalogV1RoutineSpecRoutineType?>? routineType;
 
   /// Creates a new [GoogleCloudDatacatalogV1RoutineSpec].
   /// [bigqueryRoutineSpec] Fields specific for BigQuery routines.

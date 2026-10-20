@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A substitute action transparently serves a different page than the one requested.
 class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction {
   /// Optional. The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
 
   /// Creates a new [GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteAction].
   /// [path] Optional. The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".

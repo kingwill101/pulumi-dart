@@ -14,23 +14,23 @@ import 'google_cloud_integrations_v1alpha_username_and_password.dart';
 /// Defines parameters for a single, canonical credential.
 class GoogleCloudIntegrationsV1alphaCredential {
   /// Auth token credential
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaAuthToken>? authToken;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaAuthToken?>? authToken;
   /// Credential type associated with auth config.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaCredentialCredentialType>? credentialType;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaCredentialCredentialType?>? credentialType;
   /// JWT credential
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaJwt>? jwt;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaJwt?>? jwt;
   /// The api_key and oauth2_implicit are not covered in v1 and will be picked up once v1 is implemented. ApiKey api_key = 3; OAuth2 authorization code credential
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode>? oauth2AuthorizationCode;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaOAuth2AuthorizationCode?>? oauth2AuthorizationCode;
   /// OAuth2Implicit oauth2_implicit = 5; OAuth2 client credentials
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials>? oauth2ClientCredentials;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaOAuth2ClientCredentials?>? oauth2ClientCredentials;
   /// OAuth2 resource owner credentials
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials>? oauth2ResourceOwnerCredentials;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentials?>? oauth2ResourceOwnerCredentials;
   /// Google OIDC ID Token
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaOidcToken>? oidcToken;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaOidcToken?>? oidcToken;
   /// Service account credential
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaServiceAccountCredentials>? serviceAccountCredentials;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaServiceAccountCredentials?>? serviceAccountCredentials;
   /// Username and password credential
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaUsernameAndPassword>? usernameAndPassword;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaUsernameAndPassword?>? usernameAndPassword;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaCredential].
   /// [authToken] Auth token credential

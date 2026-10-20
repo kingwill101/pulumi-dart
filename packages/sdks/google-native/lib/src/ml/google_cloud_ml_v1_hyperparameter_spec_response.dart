@@ -66,9 +66,9 @@ class GoogleCloudMlV1HyperparameterSpecResponse {
       enableTrialEarlyStopping: pulumi.Input.fromValue(map['enableTrialEarlyStopping'] as bool),
       goal: pulumi.Input.fromValue(map['goal'] as String),
       hyperparameterMetricTag: pulumi.Input.fromValue(map['hyperparameterMetricTag'] as String),
-      maxFailedTrials: pulumi.Input.fromValue(map['maxFailedTrials'] as int),
-      maxParallelTrials: pulumi.Input.fromValue(map['maxParallelTrials'] as int),
-      maxTrials: pulumi.Input.fromValue(map['maxTrials'] as int),
+      maxFailedTrials: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxFailedTrials'])),
+      maxParallelTrials: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxParallelTrials'])),
+      maxTrials: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxTrials'])),
       params: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudMlV1ParameterSpecResponse>(map['params']!, (value) => GoogleCloudMlV1ParameterSpecResponse.fromMap((value as Map).cast<String, dynamic>()))),
       resumePreviousJobId: pulumi.Input.fromValue(map['resumePreviousJobId'] as String),
     );

@@ -44,7 +44,7 @@ class Company extends pulumi.CustomResource {
           'google-native:jobs/v3:Company',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     careerSiteUri = registerOutput<String>('careerSiteUri');
     derivedInfo = registerOutput<CompanyDerivedInfoResponse>('derivedInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CompanyDerivedInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -54,7 +54,32 @@ class Company extends pulumi.CustomResource {
     headquartersAddress = registerOutput<String>('headquartersAddress');
     hiringAgency = registerOutput<bool>('hiringAgency');
     imageUri = registerOutput<String>('imageUri');
-    keywordSearchableJobCustomAttributes = registerOutput<List<String>>('keywordSearchableJobCustomAttributes');
+    keywordSearchableJobCustomAttributes = registerOutput<List<String>>('keywordSearchableJobCustomAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    size = registerOutput<String>('size');
+    suspended = registerOutput<bool>('suspended');
+    websiteUri = registerOutput<String>('websiteUri');
+  }
+
+  /// Creates a typed reference to an existing [Company] resource.
+  Company.reference(String urn)
+    : super(
+        'google-native:jobs/v3:Company',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    careerSiteUri = registerOutput<String>('careerSiteUri');
+    derivedInfo = registerOutput<CompanyDerivedInfoResponse>('derivedInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CompanyDerivedInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    eeoText = registerOutput<String>('eeoText');
+    externalId = registerOutput<String>('externalId');
+    headquartersAddress = registerOutput<String>('headquartersAddress');
+    hiringAgency = registerOutput<bool>('hiringAgency');
+    imageUri = registerOutput<String>('imageUri');
+    keywordSearchableJobCustomAttributes = registerOutput<List<String>>('keywordSearchableJobCustomAttributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     size = registerOutput<String>('size');

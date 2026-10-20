@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_apigee_v1_get_developer_args_doc}
 class GetDeveloperArgs {
-  final pulumi.Input<String>? action;
+  final pulumi.Input<String?>? action;
   final pulumi.Input<String> developerId;
   final pulumi.Input<String> organizationId;
 

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_pubsub_v1beta1a_topic_pubsub_v1beta1a_args_doc}
 class TopicPubsubV1beta1aArgs {
   /// Name of the topic.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [TopicPubsubV1beta1aArgs].
   /// [name] Name of the topic.

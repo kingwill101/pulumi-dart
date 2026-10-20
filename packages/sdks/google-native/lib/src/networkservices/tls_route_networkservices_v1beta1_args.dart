@@ -9,17 +9,17 @@ import 'tls_route_route_rule_networkservices_v1beta1.dart';
 /// {@macro pulumi_networkservices_v1beta1_tls_route_networkservices_v1beta1_args_doc}
 class TlsRouteNetworkservicesV1beta1Args {
   /// Optional. A free-text description of the resource. Max length 1024 characters.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Gateways defines a list of gateways this TlsRoute is attached to, as one of the routing rules to route the requests served by the gateway. Each gateway reference should match the pattern: `projects/*/locations/global/gateways/`
-  final pulumi.Input<List<String>>? gateways;
+  final pulumi.Input<List<String>?>? gateways;
   /// Optional. Set of label tags associated with the TlsRoute resource.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/*/locations/global/meshes/` The attached Mesh should be of a type SIDECAR
-  final pulumi.Input<List<String>>? meshes;
+  final pulumi.Input<List<String>?>? meshes;
   /// Name of the TlsRoute resource. It matches pattern `projects/*/locations/global/tlsRoutes/tls_route_name&gt;`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
   final pulumi.Input<List<TlsRouteRouteRuleNetworkservicesV1beta1>> rules;
   /// Required. Short name of the TlsRoute resource to be created.

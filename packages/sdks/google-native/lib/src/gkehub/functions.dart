@@ -88,6 +88,17 @@ Future<GetBindingResult> getBinding(
   return GetBindingResult.fromMap(result);
 }
 
+pulumi.Output<GetBindingResult> getBindingOutput(
+  GetBindingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1:getBinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBindingResult.fromMap);
+}
+
 /// Gets details of a single Feature.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1_get_feature_args_doc}
 /// [options] Invoke options controlling this call.
@@ -102,6 +113,17 @@ Future<GetFeatureResult> getFeature(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFeatureResult.fromMap(result);
+}
+
+pulumi.Output<GetFeatureResult> getFeatureOutput(
+  GetFeatureArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1:getFeature',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFeatureResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -120,6 +142,17 @@ Future<GetFeatureIamPolicyResult> getFeatureIamPolicy(
   return GetFeatureIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetFeatureIamPolicyResult> getFeatureIamPolicyOutput(
+  GetFeatureIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1:getFeatureIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFeatureIamPolicyResult.fromMap);
+}
+
 /// Returns the details of a fleet.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1_get_fleet_args_doc}
 /// [options] Invoke options controlling this call.
@@ -134,6 +167,17 @@ Future<GetFleetResult> getFleet(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFleetResult.fromMap(result);
+}
+
+pulumi.Output<GetFleetResult> getFleetOutput(
+  GetFleetArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1:getFleet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetResult.fromMap);
 }
 
 /// Gets the details of a Membership.
@@ -152,6 +196,17 @@ Future<GetMembershipResult> getMembership(
   return GetMembershipResult.fromMap(result);
 }
 
+pulumi.Output<GetMembershipResult> getMembershipOutput(
+  GetMembershipArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1:getMembership',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMembershipResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1_get_membership_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -166,6 +221,17 @@ Future<GetMembershipIamPolicyResult> getMembershipIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMembershipIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetMembershipIamPolicyResult> getMembershipIamPolicyOutput(
+  GetMembershipIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1:getMembershipIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMembershipIamPolicyResult.fromMap);
 }
 
 /// Returns the details of a fleet namespace.
@@ -184,6 +250,17 @@ Future<GetNamespaceResult> getNamespace(
   return GetNamespaceResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceResult> getNamespaceOutput(
+  GetNamespaceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1:getNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceResult.fromMap);
+}
+
 /// Returns the details of a Scope RBACRoleBinding.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1_get_rbacrolebinding_args_doc}
 /// [options] Invoke options controlling this call.
@@ -198,6 +275,17 @@ Future<GetRbacrolebindingResult> getRbacrolebinding(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRbacrolebindingResult.fromMap(result);
+}
+
+pulumi.Output<GetRbacrolebindingResult> getRbacrolebindingOutput(
+  GetRbacrolebindingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1:getRbacrolebinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRbacrolebindingResult.fromMap);
 }
 
 /// Returns the details of a Scope.
@@ -216,6 +304,17 @@ Future<GetScopeResult> getScope(
   return GetScopeResult.fromMap(result);
 }
 
+pulumi.Output<GetScopeResult> getScopeOutput(
+  GetScopeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1:getScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScopeResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1_get_scope_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -230,6 +329,17 @@ Future<GetScopeIamPolicyResult> getScopeIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScopeIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetScopeIamPolicyResult> getScopeIamPolicyOutput(
+  GetScopeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1:getScopeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScopeIamPolicyResult.fromMap);
 }
 
 /// Gets the details of a Membership.
@@ -248,6 +358,17 @@ Future<GetMembershipGkehubV1alpha2Result> getMembershipGkehubV1alpha2(
   return GetMembershipGkehubV1alpha2Result.fromMap(result);
 }
 
+pulumi.Output<GetMembershipGkehubV1alpha2Result> getMembershipGkehubV1alpha2Output(
+  GetMembershipGkehubV1alpha2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1alpha2:getMembership',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMembershipGkehubV1alpha2Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1alpha2_get_membership_iam_policy_gkehub_v1alpha2_args_doc}
 /// [options] Invoke options controlling this call.
@@ -262,6 +383,17 @@ Future<GetMembershipIamPolicyGkehubV1alpha2Result> getMembershipIamPolicyGkehubV
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMembershipIamPolicyGkehubV1alpha2Result.fromMap(result);
+}
+
+pulumi.Output<GetMembershipIamPolicyGkehubV1alpha2Result> getMembershipIamPolicyGkehubV1alpha2Output(
+  GetMembershipIamPolicyGkehubV1alpha2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1alpha2:getMembershipIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMembershipIamPolicyGkehubV1alpha2Result.fromMap);
 }
 
 /// Returns the details of a MembershipBinding.
@@ -280,6 +412,17 @@ Future<GetBindingGkehubV1alphaResult> getBindingGkehubV1alpha(
   return GetBindingGkehubV1alphaResult.fromMap(result);
 }
 
+pulumi.Output<GetBindingGkehubV1alphaResult> getBindingGkehubV1alphaOutput(
+  GetBindingGkehubV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1alpha:getBinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBindingGkehubV1alphaResult.fromMap);
+}
+
 /// Gets details of a single Feature.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1alpha_get_feature_gkehub_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
@@ -294,6 +437,17 @@ Future<GetFeatureGkehubV1alphaResult> getFeatureGkehubV1alpha(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFeatureGkehubV1alphaResult.fromMap(result);
+}
+
+pulumi.Output<GetFeatureGkehubV1alphaResult> getFeatureGkehubV1alphaOutput(
+  GetFeatureGkehubV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1alpha:getFeature',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFeatureGkehubV1alphaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -312,6 +466,17 @@ Future<GetFeatureIamPolicyGkehubV1alphaResult> getFeatureIamPolicyGkehubV1alpha(
   return GetFeatureIamPolicyGkehubV1alphaResult.fromMap(result);
 }
 
+pulumi.Output<GetFeatureIamPolicyGkehubV1alphaResult> getFeatureIamPolicyGkehubV1alphaOutput(
+  GetFeatureIamPolicyGkehubV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1alpha:getFeatureIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFeatureIamPolicyGkehubV1alphaResult.fromMap);
+}
+
 /// Returns the details of a fleet.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1alpha_get_fleet_gkehub_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
@@ -326,6 +491,17 @@ Future<GetFleetGkehubV1alphaResult> getFleetGkehubV1alpha(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFleetGkehubV1alphaResult.fromMap(result);
+}
+
+pulumi.Output<GetFleetGkehubV1alphaResult> getFleetGkehubV1alphaOutput(
+  GetFleetGkehubV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1alpha:getFleet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetGkehubV1alphaResult.fromMap);
 }
 
 /// Gets the details of a Membership.
@@ -344,6 +520,17 @@ Future<GetMembershipGkehubV1alphaResult> getMembershipGkehubV1alpha(
   return GetMembershipGkehubV1alphaResult.fromMap(result);
 }
 
+pulumi.Output<GetMembershipGkehubV1alphaResult> getMembershipGkehubV1alphaOutput(
+  GetMembershipGkehubV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1alpha:getMembership',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMembershipGkehubV1alphaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1alpha_get_membership_iam_policy_gkehub_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
@@ -358,6 +545,17 @@ Future<GetMembershipIamPolicyGkehubV1alphaResult> getMembershipIamPolicyGkehubV1
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMembershipIamPolicyGkehubV1alphaResult.fromMap(result);
+}
+
+pulumi.Output<GetMembershipIamPolicyGkehubV1alphaResult> getMembershipIamPolicyGkehubV1alphaOutput(
+  GetMembershipIamPolicyGkehubV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1alpha:getMembershipIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMembershipIamPolicyGkehubV1alphaResult.fromMap);
 }
 
 /// Returns the details of a Membership RBACRoleBinding.
@@ -376,6 +574,17 @@ Future<GetMembershipRbacRoleBindingResult> getMembershipRbacRoleBinding(
   return GetMembershipRbacRoleBindingResult.fromMap(result);
 }
 
+pulumi.Output<GetMembershipRbacRoleBindingResult> getMembershipRbacRoleBindingOutput(
+  GetMembershipRbacRoleBindingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1alpha:getMembershipRbacRoleBinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMembershipRbacRoleBindingResult.fromMap);
+}
+
 /// Returns the details of a fleet namespace.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1alpha_get_namespace_gkehub_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
@@ -390,6 +599,17 @@ Future<GetNamespaceGkehubV1alphaResult> getNamespaceGkehubV1alpha(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNamespaceGkehubV1alphaResult.fromMap(result);
+}
+
+pulumi.Output<GetNamespaceGkehubV1alphaResult> getNamespaceGkehubV1alphaOutput(
+  GetNamespaceGkehubV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1alpha:getNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceGkehubV1alphaResult.fromMap);
 }
 
 /// Returns the details of a Scope.
@@ -408,6 +628,17 @@ Future<GetScopeGkehubV1alphaResult> getScopeGkehubV1alpha(
   return GetScopeGkehubV1alphaResult.fromMap(result);
 }
 
+pulumi.Output<GetScopeGkehubV1alphaResult> getScopeGkehubV1alphaOutput(
+  GetScopeGkehubV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1alpha:getScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScopeGkehubV1alphaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1alpha_get_scope_iam_policy_gkehub_v1alpha_args_doc}
 /// [options] Invoke options controlling this call.
@@ -422,6 +653,17 @@ Future<GetScopeIamPolicyGkehubV1alphaResult> getScopeIamPolicyGkehubV1alpha(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScopeIamPolicyGkehubV1alphaResult.fromMap(result);
+}
+
+pulumi.Output<GetScopeIamPolicyGkehubV1alphaResult> getScopeIamPolicyGkehubV1alphaOutput(
+  GetScopeIamPolicyGkehubV1alphaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1alpha:getScopeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScopeIamPolicyGkehubV1alphaResult.fromMap);
 }
 
 /// Returns the details of a Scope RBACRoleBinding.
@@ -440,6 +682,17 @@ Future<GetScopeRbacRoleBindingResult> getScopeRbacRoleBinding(
   return GetScopeRbacRoleBindingResult.fromMap(result);
 }
 
+pulumi.Output<GetScopeRbacRoleBindingResult> getScopeRbacRoleBindingOutput(
+  GetScopeRbacRoleBindingArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1alpha:getScopeRbacRoleBinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScopeRbacRoleBindingResult.fromMap);
+}
+
 /// Gets the details of a Membership.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1beta1_get_membership_gkehub_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -454,6 +707,17 @@ Future<GetMembershipGkehubV1beta1Result> getMembershipGkehubV1beta1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMembershipGkehubV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetMembershipGkehubV1beta1Result> getMembershipGkehubV1beta1Output(
+  GetMembershipGkehubV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1beta1:getMembership',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMembershipGkehubV1beta1Result.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -472,6 +736,17 @@ Future<GetMembershipIamPolicyGkehubV1beta1Result> getMembershipIamPolicyGkehubV1
   return GetMembershipIamPolicyGkehubV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetMembershipIamPolicyGkehubV1beta1Result> getMembershipIamPolicyGkehubV1beta1Output(
+  GetMembershipIamPolicyGkehubV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1beta1:getMembershipIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMembershipIamPolicyGkehubV1beta1Result.fromMap);
+}
+
 /// Returns the details of a MembershipBinding.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1beta_get_binding_gkehub_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -486,6 +761,17 @@ Future<GetBindingGkehubV1betaResult> getBindingGkehubV1beta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBindingGkehubV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetBindingGkehubV1betaResult> getBindingGkehubV1betaOutput(
+  GetBindingGkehubV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1beta:getBinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBindingGkehubV1betaResult.fromMap);
 }
 
 /// Gets details of a single Feature.
@@ -504,6 +790,17 @@ Future<GetFeatureGkehubV1betaResult> getFeatureGkehubV1beta(
   return GetFeatureGkehubV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetFeatureGkehubV1betaResult> getFeatureGkehubV1betaOutput(
+  GetFeatureGkehubV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1beta:getFeature',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFeatureGkehubV1betaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1beta_get_feature_iam_policy_gkehub_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -518,6 +815,17 @@ Future<GetFeatureIamPolicyGkehubV1betaResult> getFeatureIamPolicyGkehubV1beta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFeatureIamPolicyGkehubV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetFeatureIamPolicyGkehubV1betaResult> getFeatureIamPolicyGkehubV1betaOutput(
+  GetFeatureIamPolicyGkehubV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1beta:getFeatureIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFeatureIamPolicyGkehubV1betaResult.fromMap);
 }
 
 /// Returns the details of a fleet.
@@ -536,6 +844,17 @@ Future<GetFleetGkehubV1betaResult> getFleetGkehubV1beta(
   return GetFleetGkehubV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetFleetGkehubV1betaResult> getFleetGkehubV1betaOutput(
+  GetFleetGkehubV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1beta:getFleet',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFleetGkehubV1betaResult.fromMap);
+}
+
 /// Gets the details of a Membership.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1beta_get_membership_gkehub_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -550,6 +869,17 @@ Future<GetMembershipGkehubV1betaResult> getMembershipGkehubV1beta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMembershipGkehubV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetMembershipGkehubV1betaResult> getMembershipGkehubV1betaOutput(
+  GetMembershipGkehubV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1beta:getMembership',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMembershipGkehubV1betaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -568,6 +898,17 @@ Future<GetMembershipIamPolicyGkehubV1betaResult> getMembershipIamPolicyGkehubV1b
   return GetMembershipIamPolicyGkehubV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetMembershipIamPolicyGkehubV1betaResult> getMembershipIamPolicyGkehubV1betaOutput(
+  GetMembershipIamPolicyGkehubV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1beta:getMembershipIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMembershipIamPolicyGkehubV1betaResult.fromMap);
+}
+
 /// Returns the details of a Membership RBACRoleBinding.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1beta_get_membership_rbac_role_binding_gkehub_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -582,6 +923,17 @@ Future<GetMembershipRbacRoleBindingGkehubV1betaResult> getMembershipRbacRoleBind
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMembershipRbacRoleBindingGkehubV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetMembershipRbacRoleBindingGkehubV1betaResult> getMembershipRbacRoleBindingGkehubV1betaOutput(
+  GetMembershipRbacRoleBindingGkehubV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1beta:getMembershipRbacRoleBinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMembershipRbacRoleBindingGkehubV1betaResult.fromMap);
 }
 
 /// Returns the details of a fleet namespace.
@@ -600,6 +952,17 @@ Future<GetNamespaceGkehubV1betaResult> getNamespaceGkehubV1beta(
   return GetNamespaceGkehubV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetNamespaceGkehubV1betaResult> getNamespaceGkehubV1betaOutput(
+  GetNamespaceGkehubV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1beta:getNamespace',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNamespaceGkehubV1betaResult.fromMap);
+}
+
 /// Returns the details of a Scope.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1beta_get_scope_gkehub_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -614,6 +977,17 @@ Future<GetScopeGkehubV1betaResult> getScopeGkehubV1beta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScopeGkehubV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetScopeGkehubV1betaResult> getScopeGkehubV1betaOutput(
+  GetScopeGkehubV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1beta:getScope',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScopeGkehubV1betaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -632,6 +1006,17 @@ Future<GetScopeIamPolicyGkehubV1betaResult> getScopeIamPolicyGkehubV1beta(
   return GetScopeIamPolicyGkehubV1betaResult.fromMap(result);
 }
 
+pulumi.Output<GetScopeIamPolicyGkehubV1betaResult> getScopeIamPolicyGkehubV1betaOutput(
+  GetScopeIamPolicyGkehubV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1beta:getScopeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScopeIamPolicyGkehubV1betaResult.fromMap);
+}
+
 /// Returns the details of a Scope RBACRoleBinding.
 /// [args] Arguments passed to this invoke. {@macro pulumi_gkehub_v1beta_get_scope_rbac_role_binding_gkehub_v1beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -646,4 +1031,15 @@ Future<GetScopeRbacRoleBindingGkehubV1betaResult> getScopeRbacRoleBindingGkehubV
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetScopeRbacRoleBindingGkehubV1betaResult.fromMap(result);
+}
+
+pulumi.Output<GetScopeRbacRoleBindingGkehubV1betaResult> getScopeRbacRoleBindingGkehubV1betaOutput(
+  GetScopeRbacRoleBindingGkehubV1betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:gkehub/v1beta:getScopeRbacRoleBinding',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetScopeRbacRoleBindingGkehubV1betaResult.fromMap);
 }

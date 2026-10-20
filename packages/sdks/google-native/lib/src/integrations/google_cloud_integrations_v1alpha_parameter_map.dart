@@ -8,11 +8,11 @@ import 'google_cloud_integrations_v1alpha_parameter_map_value_type.dart';
 /// A generic multi-map that holds key value pairs. They keys and values can be of any type, unless specified.
 class GoogleCloudIntegrationsV1alphaParameterMap {
   /// A list of parameter map entries.
-  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaParameterMapEntry>>? entries;
+  final pulumi.Input<List<GoogleCloudIntegrationsV1alphaParameterMapEntry>?>? entries;
   /// Option to specify key type for all entries of the map. If provided then field types for all entries must conform to this.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMapKeyType>? keyType;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMapKeyType?>? keyType;
   /// Option to specify value type for all entries of the map. If provided then field types for all entries must conform to this.
-  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMapValueType>? valueType;
+  final pulumi.Input<GoogleCloudIntegrationsV1alphaParameterMapValueType?>? valueType;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaParameterMap].
   /// [entries] A list of parameter map entries.

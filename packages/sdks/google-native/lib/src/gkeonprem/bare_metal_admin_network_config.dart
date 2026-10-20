@@ -6,7 +6,7 @@ import 'bare_metal_admin_island_mode_cidr_config.dart';
 /// BareMetalAdminNetworkConfig specifies the cluster network configuration.
 class BareMetalAdminNetworkConfig {
   /// Configuration for Island mode CIDR.
-  final pulumi.Input<BareMetalAdminIslandModeCidrConfig>? islandModeCidr;
+  final pulumi.Input<BareMetalAdminIslandModeCidrConfig?>? islandModeCidr;
 
   /// Creates a new [BareMetalAdminNetworkConfig].
   /// [islandModeCidr] Configuration for Island mode CIDR.

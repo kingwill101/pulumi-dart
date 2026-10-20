@@ -11,7 +11,7 @@ class GetConsentArtifactHealthcareV1beta1Args {
   final pulumi.Input<String> consentStoreId;
   final pulumi.Input<String> datasetId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetConsentArtifactHealthcareV1beta1Args].
   /// [consentArtifactId] Required.

@@ -26,8 +26,8 @@ class HttpFaultAbortResponseComputeV1 {
 
   factory HttpFaultAbortResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return HttpFaultAbortResponseComputeV1(
-      httpStatus: pulumi.Input.fromValue(map['httpStatus'] as int),
-      percentage: pulumi.Input.fromValue(map['percentage'] as double),
+      httpStatus: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['httpStatus'])),
+      percentage: pulumi.Input.fromValue((map['percentage'] as num).toDouble()),
     );
   }
 }

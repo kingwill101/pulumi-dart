@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Relation between source value and compare value
-enum IntComparisonFilterValueComparison {
+enum IntComparisonFilterValueComparison implements pulumi.PulumiEnum<String> {
   valueComparisonUnspecified("VALUE_COMPARISON_UNSPECIFIED"),
   valueComparisonIfValueSmallerThan("VALUE_COMPARISON_IF_VALUE_SMALLER_THAN"),
   valueComparisonIfValueSmallerEqualThan("VALUE_COMPARISON_IF_VALUE_SMALLER_EQUAL_THAN"),
@@ -7,6 +9,7 @@ enum IntComparisonFilterValueComparison {
   valueComparisonIfValueLargerEqualThan("VALUE_COMPARISON_IF_VALUE_LARGER_EQUAL_THAN");
 
   const IntComparisonFilterValueComparison(this.wireValue);
+  @override
   final String wireValue;
 
   static IntComparisonFilterValueComparison fromValue(String value) {

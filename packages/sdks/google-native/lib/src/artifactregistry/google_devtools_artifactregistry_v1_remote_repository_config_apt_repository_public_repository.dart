@@ -6,9 +6,9 @@ import 'google_devtools_artifactregistry_v1_remote_repository_config_apt_reposit
 /// Publicly available Apt repositories constructed from a common repository base and a custom repository path.
 class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository {
   /// A common public repository base for Apt.
-  final pulumi.Input<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase>? repositoryBase;
+  final pulumi.Input<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepositoryRepositoryBase?>? repositoryBase;
   /// A custom field to define a path to a specific repository from the base.
-  final pulumi.Input<String>? repositoryPath;
+  final pulumi.Input<String?>? repositoryPath;
 
   /// Creates a new [GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository].
   /// [repositoryBase] A common public repository base for Apt.

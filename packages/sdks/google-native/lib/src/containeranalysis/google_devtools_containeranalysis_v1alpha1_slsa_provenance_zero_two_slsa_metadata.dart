@@ -6,15 +6,15 @@ import 'google_devtools_containeranalysis_v1alpha1_slsa_provenance_zero_two_slsa
 /// Other properties of the build.
 class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata {
   /// The timestamp of when the build completed.
-  final pulumi.Input<String>? buildFinishedOn;
+  final pulumi.Input<String?>? buildFinishedOn;
   /// Identifies this particular build invocation, which can be useful for finding associated logs or other ad-hoc analysis.
-  final pulumi.Input<String>? buildInvocationId;
+  final pulumi.Input<String?>? buildInvocationId;
   /// The timestamp of when the build started.
-  final pulumi.Input<String>? buildStartedOn;
+  final pulumi.Input<String?>? buildStartedOn;
   /// Indicates that the builder claims certain fields in this message to be complete.
-  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness>? completeness;
+  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompleteness?>? completeness;
   /// If true, the builder claims that running invocation on materials will produce bit-for-bit identical output.
-  final pulumi.Input<bool>? reproducible;
+  final pulumi.Input<bool?>? reproducible;
 
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaMetadata].
   /// [buildFinishedOn] The timestamp of when the build completed.

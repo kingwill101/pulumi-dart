@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// String/text values.
 class GoogleCloudContentwarehouseV1TextArray {
   /// List of text values.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [GoogleCloudContentwarehouseV1TextArray].
   /// [values] List of text values.

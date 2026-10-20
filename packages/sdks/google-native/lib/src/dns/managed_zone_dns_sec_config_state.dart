@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies whether DNSSEC is enabled, and what mode it is in.
-enum ManagedZoneDnsSecConfigState {
+enum ManagedZoneDnsSecConfigState implements pulumi.PulumiEnum<String> {
   off("off"),
   on("on"),
   transfer("transfer");
 
   const ManagedZoneDnsSecConfigState(this.wireValue);
+  @override
   final String wireValue;
 
   static ManagedZoneDnsSecConfigState fromValue(String value) {

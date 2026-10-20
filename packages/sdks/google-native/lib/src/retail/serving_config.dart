@@ -62,30 +62,64 @@ class ServingConfig extends pulumi.CustomResource {
           'google-native:retail/v2:ServingConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['catalogId', 'location', 'project', 'servingConfigId']).merge(options),
         ) {
-    boostControlIds = registerOutput<List<String>>('boostControlIds');
+    boostControlIds = registerOutput<List<String>>('boostControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     catalogId = registerOutput<String>('catalogId');
     displayName = registerOutput<String>('displayName');
     diversityLevel = registerOutput<String>('diversityLevel');
     diversityType = registerOutput<String>('diversityType');
-    doNotAssociateControlIds = registerOutput<List<String>>('doNotAssociateControlIds');
+    doNotAssociateControlIds = registerOutput<List<String>>('doNotAssociateControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     dynamicFacetSpec = registerOutput<GoogleCloudRetailV2SearchRequestDynamicFacetSpecResponse>('dynamicFacetSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2SearchRequestDynamicFacetSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     enableCategoryFilterLevel = registerOutput<String>('enableCategoryFilterLevel');
-    facetControlIds = registerOutput<List<String>>('facetControlIds');
-    filterControlIds = registerOutput<List<String>>('filterControlIds');
-    ignoreControlIds = registerOutput<List<String>>('ignoreControlIds');
+    facetControlIds = registerOutput<List<String>>('facetControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    filterControlIds = registerOutput<List<String>>('filterControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ignoreControlIds = registerOutput<List<String>>('ignoreControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     modelId = registerOutput<String>('modelId');
     this.name = registerOutput<String>('name');
-    onewaySynonymsControlIds = registerOutput<List<String>>('onewaySynonymsControlIds');
+    onewaySynonymsControlIds = registerOutput<List<String>>('onewaySynonymsControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     personalizationSpec = registerOutput<GoogleCloudRetailV2SearchRequestPersonalizationSpecResponse>('personalizationSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2SearchRequestPersonalizationSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     priceRerankingLevel = registerOutput<String>('priceRerankingLevel');
     project = registerOutput<String>('project');
-    redirectControlIds = registerOutput<List<String>>('redirectControlIds');
-    replacementControlIds = registerOutput<List<String>>('replacementControlIds');
+    redirectControlIds = registerOutput<List<String>>('redirectControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    replacementControlIds = registerOutput<List<String>>('replacementControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     servingConfigId = registerOutput<String>('servingConfigId');
-    solutionTypes = registerOutput<List<String>>('solutionTypes');
-    twowaySynonymsControlIds = registerOutput<List<String>>('twowaySynonymsControlIds');
+    solutionTypes = registerOutput<List<String>>('solutionTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    twowaySynonymsControlIds = registerOutput<List<String>>('twowaySynonymsControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ServingConfig] resource.
+  ServingConfig.reference(String urn)
+    : super(
+        'google-native:retail/v2:ServingConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    boostControlIds = registerOutput<List<String>>('boostControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    catalogId = registerOutput<String>('catalogId');
+    displayName = registerOutput<String>('displayName');
+    diversityLevel = registerOutput<String>('diversityLevel');
+    diversityType = registerOutput<String>('diversityType');
+    doNotAssociateControlIds = registerOutput<List<String>>('doNotAssociateControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    dynamicFacetSpec = registerOutput<GoogleCloudRetailV2SearchRequestDynamicFacetSpecResponse>('dynamicFacetSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2SearchRequestDynamicFacetSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    enableCategoryFilterLevel = registerOutput<String>('enableCategoryFilterLevel');
+    facetControlIds = registerOutput<List<String>>('facetControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    filterControlIds = registerOutput<List<String>>('filterControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    ignoreControlIds = registerOutput<List<String>>('ignoreControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    modelId = registerOutput<String>('modelId');
+    this.name = registerOutput<String>('name');
+    onewaySynonymsControlIds = registerOutput<List<String>>('onewaySynonymsControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    personalizationSpec = registerOutput<GoogleCloudRetailV2SearchRequestPersonalizationSpecResponse>('personalizationSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2SearchRequestPersonalizationSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    priceRerankingLevel = registerOutput<String>('priceRerankingLevel');
+    project = registerOutput<String>('project');
+    redirectControlIds = registerOutput<List<String>>('redirectControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    replacementControlIds = registerOutput<List<String>>('replacementControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    servingConfigId = registerOutput<String>('servingConfigId');
+    solutionTypes = registerOutput<List<String>>('solutionTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    twowaySynonymsControlIds = registerOutput<List<String>>('twowaySynonymsControlIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

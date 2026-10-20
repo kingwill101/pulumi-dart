@@ -58,7 +58,7 @@ class BatchPredictionJob extends pulumi.CustomResource {
   /// Information further describing the output of this job.
   late final pulumi.Output<GoogleCloudAiplatformV1BatchPredictionJobOutputInfoResponse> outputInfo;
   /// Partial failures encountered. For example, single files that can't be read. This field never exceeds 20 entries. Status details fields contain standard Google Cloud error details.
-  late final pulumi.Output<List<Map<String, dynamic>>> partialFailures;
+  late final pulumi.Output<List<GoogleRpcStatusResponse>> partialFailures;
   late final pulumi.Output<String> project;
   /// Information about resources that had been consumed by this job. Provided in real time at best effort basis, as well as a final value once the job completes. Note: This field currently may be not populated for batch predictions that use AutoML Models.
   late final pulumi.Output<GoogleCloudAiplatformV1ResourcesConsumedResponse> resourcesConsumed;
@@ -85,7 +85,7 @@ class BatchPredictionJob extends pulumi.CustomResource {
           'google-native:aiplatform/v1:BatchPredictionJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     completionStats = registerOutput<GoogleCloudAiplatformV1CompletionStatsResponse>('completionStats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1CompletionStatsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
@@ -99,7 +99,7 @@ class BatchPredictionJob extends pulumi.CustomResource {
     generateExplanation = registerOutput<bool>('generateExplanation');
     inputConfig = registerOutput<GoogleCloudAiplatformV1BatchPredictionJobInputConfigResponse>('inputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1BatchPredictionJobInputConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     instanceConfig = registerOutput<GoogleCloudAiplatformV1BatchPredictionJobInstanceConfigResponse>('instanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1BatchPredictionJobInstanceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     manualBatchTuningParameters = registerOutput<GoogleCloudAiplatformV1ManualBatchTuningParametersResponse>('manualBatchTuningParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1ManualBatchTuningParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     model = registerOutput<String>('model');
@@ -108,7 +108,47 @@ class BatchPredictionJob extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     outputConfig = registerOutput<GoogleCloudAiplatformV1BatchPredictionJobOutputConfigResponse>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1BatchPredictionJobOutputConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     outputInfo = registerOutput<GoogleCloudAiplatformV1BatchPredictionJobOutputInfoResponse>('outputInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1BatchPredictionJobOutputInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    partialFailures = registerOutput<List<Map<String, dynamic>>>('partialFailures');
+    partialFailures = registerOutput<List<GoogleRpcStatusResponse>>('partialFailures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleRpcStatusResponse>(guardedValue, (value) => GoogleRpcStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    resourcesConsumed = registerOutput<GoogleCloudAiplatformV1ResourcesConsumedResponse>('resourcesConsumed', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1ResourcesConsumedResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceAccount = registerOutput<String>('serviceAccount');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+    unmanagedContainerModel = registerOutput<GoogleCloudAiplatformV1UnmanagedContainerModelResponse>('unmanagedContainerModel', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1UnmanagedContainerModelResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [BatchPredictionJob] resource.
+  BatchPredictionJob.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1:BatchPredictionJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    completionStats = registerOutput<GoogleCloudAiplatformV1CompletionStatsResponse>('completionStats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1CompletionStatsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    dedicatedResources = registerOutput<GoogleCloudAiplatformV1BatchDedicatedResourcesResponse>('dedicatedResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1BatchDedicatedResourcesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    disableContainerLogging = registerOutput<bool>('disableContainerLogging');
+    displayName = registerOutput<String>('displayName');
+    encryptionSpec = registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endTime = registerOutput<String>('endTime');
+    error = registerOutput<GoogleRpcStatusResponse>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleRpcStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    explanationSpec = registerOutput<GoogleCloudAiplatformV1ExplanationSpecResponse>('explanationSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1ExplanationSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    generateExplanation = registerOutput<bool>('generateExplanation');
+    inputConfig = registerOutput<GoogleCloudAiplatformV1BatchPredictionJobInputConfigResponse>('inputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1BatchPredictionJobInputConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instanceConfig = registerOutput<GoogleCloudAiplatformV1BatchPredictionJobInstanceConfigResponse>('instanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1BatchPredictionJobInstanceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    manualBatchTuningParameters = registerOutput<GoogleCloudAiplatformV1ManualBatchTuningParametersResponse>('manualBatchTuningParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1ManualBatchTuningParametersResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    model = registerOutput<String>('model');
+    modelParameters = registerOutput<dynamic>('modelParameters');
+    modelVersionId = registerOutput<String>('modelVersionId');
+    this.name = registerOutput<String>('name');
+    outputConfig = registerOutput<GoogleCloudAiplatformV1BatchPredictionJobOutputConfigResponse>('outputConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1BatchPredictionJobOutputConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    outputInfo = registerOutput<GoogleCloudAiplatformV1BatchPredictionJobOutputInfoResponse>('outputInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1BatchPredictionJobOutputInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    partialFailures = registerOutput<List<GoogleRpcStatusResponse>>('partialFailures', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleRpcStatusResponse>(guardedValue, (value) => GoogleRpcStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     resourcesConsumed = registerOutput<GoogleCloudAiplatformV1ResourcesConsumedResponse>('resourcesConsumed', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1ResourcesConsumedResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     serviceAccount = registerOutput<String>('serviceAccount');

@@ -6,8 +6,8 @@ import 'google_cloud_ml_v1_automated_stopping_config_median_automated_stopping_c
 
 /// Configuration for Automated Early Stopping of Trials. If no implementation_config is set, automated early stopping will not be run.
 class GoogleCloudMlV1AutomatedStoppingConfig {
-  final pulumi.Input<GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig>? decayCurveStoppingConfig;
-  final pulumi.Input<GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig>? medianAutomatedStoppingConfig;
+  final pulumi.Input<GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig?>? decayCurveStoppingConfig;
+  final pulumi.Input<GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig?>? medianAutomatedStoppingConfig;
 
   /// Creates a new [GoogleCloudMlV1AutomatedStoppingConfig].
   /// [decayCurveStoppingConfig] Optional.

@@ -1,9 +1,12 @@
-enum CommonLanguageSettingsDestinationsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum CommonLanguageSettingsDestinationsItem implements pulumi.PulumiEnum<String> {
   clientLibraryDestinationUnspecified("CLIENT_LIBRARY_DESTINATION_UNSPECIFIED"),
   github("GITHUB"),
   packageManager("PACKAGE_MANAGER");
 
   const CommonLanguageSettingsDestinationsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static CommonLanguageSettingsDestinationsItem fromValue(String value) {

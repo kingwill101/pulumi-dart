@@ -8,15 +8,15 @@ import 'identity_service_oidc_config_gkehub_v1beta.dart';
 /// Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod.
 class IdentityServiceAuthMethodGkehubV1beta {
   /// AzureAD specific Configuration.
-  final pulumi.Input<IdentityServiceAzureADConfigGkehubV1beta>? azureadConfig;
+  final pulumi.Input<IdentityServiceAzureADConfigGkehubV1beta?>? azureadConfig;
   /// GoogleConfig specific configuration.
-  final pulumi.Input<IdentityServiceGoogleConfigGkehubV1beta>? googleConfig;
+  final pulumi.Input<IdentityServiceGoogleConfigGkehubV1beta?>? googleConfig;
   /// Identifier for auth config.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// OIDC specific configuration.
-  final pulumi.Input<IdentityServiceOidcConfigGkehubV1beta>? oidcConfig;
+  final pulumi.Input<IdentityServiceOidcConfigGkehubV1beta?>? oidcConfig;
   /// Proxy server address to use for auth method.
-  final pulumi.Input<String>? proxy;
+  final pulumi.Input<String?>? proxy;
 
   /// Creates a new [IdentityServiceAuthMethodGkehubV1beta].
   /// [azureadConfig] AzureAD specific Configuration.

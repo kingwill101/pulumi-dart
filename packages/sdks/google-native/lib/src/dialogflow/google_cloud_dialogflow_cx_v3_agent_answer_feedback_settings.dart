@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Settings for answer feedback collection.
 class GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings {
   /// Optional. If enabled, end users will be able to provide answer feedback to Dialogflow responses. Feature works only if interaction logging is enabled in the Dialogflow agent.
-  final pulumi.Input<bool>? enableAnswerFeedback;
+  final pulumi.Input<bool?>? enableAnswerFeedback;
 
   /// Creates a new [GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings].
   /// [enableAnswerFeedback] Optional. If enabled, end users will be able to provide answer feedback to Dialogflow responses. Feature works only if interaction logging is enabled in the Dialogflow agent.

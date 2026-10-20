@@ -21,7 +21,7 @@ class InterconnectAttachmentPrivateInfoResponseComputeV1 {
 
   factory InterconnectAttachmentPrivateInfoResponseComputeV1.fromMap(Map<String, dynamic> map) {
     return InterconnectAttachmentPrivateInfoResponseComputeV1(
-      tag8021q: pulumi.Input.fromValue(map['tag8021q'] as int),
+      tag8021q: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['tag8021q'])),
     );
   }
 }

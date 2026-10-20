@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_containeranalysis_v1_get_note_iam_policy_args_doc}
 class GetNoteIamPolicyArgs {
   final pulumi.Input<String> noteId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetNoteIamPolicyArgs].
   /// [noteId] Required.

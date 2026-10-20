@@ -6,9 +6,9 @@ import 'google_cloud_dialogflow_v2_intent_message_table_card_cell.dart';
 /// Row of TableCard.
 class GoogleCloudDialogflowV2IntentMessageTableCardRow {
   /// Optional. List of cells that make up this row.
-  final pulumi.Input<List<GoogleCloudDialogflowV2IntentMessageTableCardCell>>? cells;
+  final pulumi.Input<List<GoogleCloudDialogflowV2IntentMessageTableCardCell>?>? cells;
   /// Optional. Whether to add a visual divider after this row.
-  final pulumi.Input<bool>? dividerAfter;
+  final pulumi.Input<bool?>? dividerAfter;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageTableCardRow].
   /// [cells] Optional. List of cells that make up this row.

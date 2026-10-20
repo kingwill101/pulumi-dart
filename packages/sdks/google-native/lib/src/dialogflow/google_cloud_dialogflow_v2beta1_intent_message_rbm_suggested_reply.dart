@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Rich Business Messaging (RBM) suggested reply that the user can click instead of typing in their own response.
 class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
   /// Opaque payload that the Dialogflow receives in a user event when the user taps the suggested reply. This data will be also forwarded to webhook to allow performing custom business logic.
-  final pulumi.Input<String>? postbackData;
+  final pulumi.Input<String?>? postbackData;
   /// Suggested reply text.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply].
   /// [postbackData] Opaque payload that the Dialogflow receives in a user event when the user taps the suggested reply. This data will be also forwarded to webhook to allow performing custom business logic.

@@ -6,7 +6,7 @@ import 'google_cloud_dialogflow_v2_article_suggestion_model_metadata_training_mo
 /// Metadata for article suggestion models.
 class GoogleCloudDialogflowV2ArticleSuggestionModelMetadata {
   /// Optional. Type of the article suggestion model. If not provided, model_type is used.
-  final pulumi.Input<GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType>? trainingModelType;
+  final pulumi.Input<GoogleCloudDialogflowV2ArticleSuggestionModelMetadataTrainingModelType?>? trainingModelType;
 
   /// Creates a new [GoogleCloudDialogflowV2ArticleSuggestionModelMetadata].
   /// [trainingModelType] Optional. Type of the article suggestion model. If not provided, model_type is used.

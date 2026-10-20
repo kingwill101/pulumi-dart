@@ -36,8 +36,29 @@ class FolderBigQueryExport extends pulumi.CustomResource {
           'google-native:securitycenter/v1:FolderBigQueryExport',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['bigQueryExportId', 'folderId']).merge(options),
         ) {
+    bigQueryExportId = registerOutput<String>('bigQueryExportId');
+    createTime = registerOutput<String>('createTime');
+    dataset = registerOutput<String>('dataset');
+    description = registerOutput<String>('description');
+    filter = registerOutput<String>('filter');
+    folderId = registerOutput<String>('folderId');
+    mostRecentEditor = registerOutput<String>('mostRecentEditor');
+    this.name = registerOutput<String>('name');
+    principal = registerOutput<String>('principal');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [FolderBigQueryExport] resource.
+  FolderBigQueryExport.reference(String urn)
+    : super(
+        'google-native:securitycenter/v1:FolderBigQueryExport',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bigQueryExportId = registerOutput<String>('bigQueryExportId');
     createTime = registerOutput<String>('createTime');
     dataset = registerOutput<String>('dataset');

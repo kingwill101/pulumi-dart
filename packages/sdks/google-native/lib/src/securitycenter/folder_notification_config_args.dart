@@ -11,14 +11,14 @@ class FolderNotificationConfigArgs {
   /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters and contain alphanumeric characters, underscores, or hyphens only.
   final pulumi.Input<String> configId;
   /// The description of the notification config (max of 1024 characters).
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   final pulumi.Input<String> folderId;
   /// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket", "folders/{folder_id}/notificationConfigs/notify_public_bucket", or "projects/{project_id}/notificationConfigs/notify_public_bucket".
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
-  final pulumi.Input<String>? pubsubTopic;
+  final pulumi.Input<String?>? pubsubTopic;
   /// The config for triggering streaming-based notifications.
-  final pulumi.Input<StreamingConfig>? streamingConfig;
+  final pulumi.Input<StreamingConfig?>? streamingConfig;
 
   /// Creates a new [FolderNotificationConfigArgs].
   /// [configId] Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters and contain alphanumeric characters, underscores, or hyphens only.

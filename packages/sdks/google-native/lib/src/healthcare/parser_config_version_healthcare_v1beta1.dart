@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. Determines the version of both the default parser to be used when `schema` is not given, as well as the schematized parser used when `schema` is specified. This field is immutable after HL7v2 store creation.
-enum ParserConfigVersionHealthcareV1beta1 {
+enum ParserConfigVersionHealthcareV1beta1 implements pulumi.PulumiEnum<String> {
   parserVersionUnspecified("PARSER_VERSION_UNSPECIFIED"),
   v1("V1"),
   v2("V2"),
   v3("V3");
 
   const ParserConfigVersionHealthcareV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static ParserConfigVersionHealthcareV1beta1 fromValue(String value) {

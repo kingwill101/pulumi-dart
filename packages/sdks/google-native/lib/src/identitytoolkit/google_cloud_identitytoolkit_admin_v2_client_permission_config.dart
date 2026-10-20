@@ -6,7 +6,7 @@ import 'google_cloud_identitytoolkit_admin_v2_client_permissions.dart';
 /// Options related to how clients making requests on behalf of a tenant should be configured.
 class GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig {
   /// Configuration related to restricting a user's ability to affect their account.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2ClientPermissions>? permissions;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2ClientPermissions?>? permissions;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig].
   /// [permissions] Configuration related to restricting a user's ability to affect their account.

@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'document_args.dart';
+import 'google_cloud_contentwarehouse_v1_property_response.dart';
 import 'google_cloud_documentai_v1_document_response.dart';
 
 /// Creates a document.
@@ -31,7 +32,7 @@ class Document extends pulumi.CustomResource {
   late final pulumi.Output<String> plainText;
   late final pulumi.Output<String> project;
   /// List of values that are user supplied metadata.
-  late final pulumi.Output<List<Map<String, dynamic>>> properties;
+  late final pulumi.Output<List<GoogleCloudContentwarehouseV1PropertyResponse>> properties;
   /// This is used when DocAI was not used to load the document and parsing/ extracting is needed for the inline_raw_document. For example, if inline_raw_document is the byte representation of a PDF file, then this should be set to: RAW_DOCUMENT_FILE_TYPE_PDF.
   late final pulumi.Output<String> rawDocumentFileType;
   /// Raw document file in Cloud Storage path.
@@ -61,7 +62,7 @@ class Document extends pulumi.CustomResource {
           'google-native:contentwarehouse/v1:Document',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     cloudAiDocument = registerOutput<GoogleCloudDocumentaiV1DocumentResponse>('cloudAiDocument', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDocumentaiV1DocumentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contentCategory = registerOutput<String>('contentCategory');
@@ -77,7 +78,41 @@ class Document extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     plainText = registerOutput<String>('plainText');
     project = registerOutput<String>('project');
-    properties = registerOutput<List<Map<String, dynamic>>>('properties');
+    properties = registerOutput<List<GoogleCloudContentwarehouseV1PropertyResponse>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudContentwarehouseV1PropertyResponse>(guardedValue, (value) => GoogleCloudContentwarehouseV1PropertyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    rawDocumentFileType = registerOutput<String>('rawDocumentFileType');
+    rawDocumentPath = registerOutput<String>('rawDocumentPath');
+    referenceId = registerOutput<String>('referenceId');
+    textExtractionDisabled = registerOutput<bool>('textExtractionDisabled');
+    textExtractionEnabled = registerOutput<bool>('textExtractionEnabled');
+    title = registerOutput<String>('title');
+    updateTime = registerOutput<String>('updateTime');
+    updater = registerOutput<String>('updater');
+  }
+
+  /// Creates a typed reference to an existing [Document] resource.
+  Document.reference(String urn)
+    : super(
+        'google-native:contentwarehouse/v1:Document',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cloudAiDocument = registerOutput<GoogleCloudDocumentaiV1DocumentResponse>('cloudAiDocument', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDocumentaiV1DocumentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contentCategory = registerOutput<String>('contentCategory');
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<String>('creator');
+    displayName = registerOutput<String>('displayName');
+    displayUri = registerOutput<String>('displayUri');
+    dispositionTime = registerOutput<String>('dispositionTime');
+    documentSchemaName = registerOutput<String>('documentSchemaName');
+    inlineRawDocument = registerOutput<String>('inlineRawDocument');
+    legalHold = registerOutput<bool>('legalHold');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    plainText = registerOutput<String>('plainText');
+    project = registerOutput<String>('project');
+    properties = registerOutput<List<GoogleCloudContentwarehouseV1PropertyResponse>>('properties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudContentwarehouseV1PropertyResponse>(guardedValue, (value) => GoogleCloudContentwarehouseV1PropertyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     rawDocumentFileType = registerOutput<String>('rawDocumentFileType');
     rawDocumentPath = registerOutput<String>('rawDocumentPath');
     referenceId = registerOutput<String>('referenceId');

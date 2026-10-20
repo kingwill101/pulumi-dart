@@ -52,10 +52,10 @@ class GoogleCloudRetailV2alphaPriceInfoResponse {
 
   factory GoogleCloudRetailV2alphaPriceInfoResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudRetailV2alphaPriceInfoResponse(
-      cost: pulumi.Input.fromValue(map['cost'] as double),
+      cost: pulumi.Input.fromValue((map['cost'] as num).toDouble()),
       currencyCode: pulumi.Input.fromValue(map['currencyCode'] as String),
-      originalPrice: pulumi.Input.fromValue(map['originalPrice'] as double),
-      price: pulumi.Input.fromValue(map['price'] as double),
+      originalPrice: pulumi.Input.fromValue((map['originalPrice'] as num).toDouble()),
+      price: pulumi.Input.fromValue((map['price'] as num).toDouble()),
       priceEffectiveTime: pulumi.Input.fromValue(map['priceEffectiveTime'] as String),
       priceExpireTime: pulumi.Input.fromValue(map['priceExpireTime'] as String),
       priceRange: pulumi.Input.fromValue(GoogleCloudRetailV2alphaPriceInfoPriceRangeResponse.fromMap((map['priceRange']! as Map).cast<String, dynamic>())),

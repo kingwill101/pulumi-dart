@@ -630,6 +630,17 @@ Future<GetAddressResult> getAddress(
   return GetAddressResult.fromMap(result);
 }
 
+pulumi.Output<GetAddressResult> getAddressOutput(
+  GetAddressArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getAddress',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAddressResult.fromMap);
+}
+
 /// Returns the specified autoscaler resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_autoscaler_args_doc}
 /// [options] Invoke options controlling this call.
@@ -644,6 +655,17 @@ Future<GetAutoscalerResult> getAutoscaler(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAutoscalerResult.fromMap(result);
+}
+
+pulumi.Output<GetAutoscalerResult> getAutoscalerOutput(
+  GetAutoscalerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getAutoscaler',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutoscalerResult.fromMap);
 }
 
 /// Returns the specified BackendBucket resource.
@@ -662,6 +684,17 @@ Future<GetBackendBucketResult> getBackendBucket(
   return GetBackendBucketResult.fromMap(result);
 }
 
+pulumi.Output<GetBackendBucketResult> getBackendBucketOutput(
+  GetBackendBucketArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getBackendBucket',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendBucketResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_backend_bucket_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -676,6 +709,17 @@ Future<GetBackendBucketIamPolicyResult> getBackendBucketIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackendBucketIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetBackendBucketIamPolicyResult> getBackendBucketIamPolicyOutput(
+  GetBackendBucketIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getBackendBucketIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendBucketIamPolicyResult.fromMap);
 }
 
 /// Returns the specified BackendService resource.
@@ -694,6 +738,17 @@ Future<GetBackendServiceResult> getBackendService(
   return GetBackendServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetBackendServiceResult> getBackendServiceOutput(
+  GetBackendServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getBackendService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendServiceResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_backend_service_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -708,6 +763,17 @@ Future<GetBackendServiceIamPolicyResult> getBackendServiceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackendServiceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetBackendServiceIamPolicyResult> getBackendServiceIamPolicyOutput(
+  GetBackendServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getBackendServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendServiceIamPolicyResult.fromMap);
 }
 
 /// Returns the specified persistent disk.
@@ -726,6 +792,17 @@ Future<GetDiskResult> getDisk(
   return GetDiskResult.fromMap(result);
 }
 
+pulumi.Output<GetDiskResult> getDiskOutput(
+  GetDiskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getDisk',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_disk_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -740,6 +817,17 @@ Future<GetDiskIamPolicyResult> getDiskIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDiskIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetDiskIamPolicyResult> getDiskIamPolicyOutput(
+  GetDiskIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getDiskIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskIamPolicyResult.fromMap);
 }
 
 /// Returns the specified externalVpnGateway. Get a list of available externalVpnGateways by making a list() request.
@@ -758,6 +846,17 @@ Future<GetExternalVpnGatewayResult> getExternalVpnGateway(
   return GetExternalVpnGatewayResult.fromMap(result);
 }
 
+pulumi.Output<GetExternalVpnGatewayResult> getExternalVpnGatewayOutput(
+  GetExternalVpnGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getExternalVpnGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExternalVpnGatewayResult.fromMap);
+}
+
 /// Returns the specified firewall.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_firewall_args_doc}
 /// [options] Invoke options controlling this call.
@@ -772,6 +871,17 @@ Future<GetFirewallResult> getFirewall(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFirewallResult.fromMap(result);
+}
+
+pulumi.Output<GetFirewallResult> getFirewallOutput(
+  GetFirewallArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getFirewall',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallResult.fromMap);
 }
 
 /// Returns the specified firewall policy.
@@ -790,6 +900,17 @@ Future<GetFirewallPolicyResult> getFirewallPolicy(
   return GetFirewallPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallPolicyResult> getFirewallPolicyOutput(
+  GetFirewallPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_firewall_policy_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -804,6 +925,17 @@ Future<GetFirewallPolicyIamPolicyResult> getFirewallPolicyIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFirewallPolicyIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetFirewallPolicyIamPolicyResult> getFirewallPolicyIamPolicyOutput(
+  GetFirewallPolicyIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getFirewallPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallPolicyIamPolicyResult.fromMap);
 }
 
 /// Returns the specified ForwardingRule resource.
@@ -822,6 +954,17 @@ Future<GetForwardingRuleResult> getForwardingRule(
   return GetForwardingRuleResult.fromMap(result);
 }
 
+pulumi.Output<GetForwardingRuleResult> getForwardingRuleOutput(
+  GetForwardingRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getForwardingRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetForwardingRuleResult.fromMap);
+}
+
 /// Retrieves information about the specified future reservation.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_future_reservation_args_doc}
 /// [options] Invoke options controlling this call.
@@ -836,6 +979,17 @@ Future<GetFutureReservationResult> getFutureReservation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFutureReservationResult.fromMap(result);
+}
+
+pulumi.Output<GetFutureReservationResult> getFutureReservationOutput(
+  GetFutureReservationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getFutureReservation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFutureReservationResult.fromMap);
 }
 
 /// Returns the specified address resource.
@@ -854,6 +1008,17 @@ Future<GetGlobalAddressResult> getGlobalAddress(
   return GetGlobalAddressResult.fromMap(result);
 }
 
+pulumi.Output<GetGlobalAddressResult> getGlobalAddressOutput(
+  GetGlobalAddressArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getGlobalAddress',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalAddressResult.fromMap);
+}
+
 /// Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by making a list() request.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_global_forwarding_rule_args_doc}
 /// [options] Invoke options controlling this call.
@@ -868,6 +1033,17 @@ Future<GetGlobalForwardingRuleResult> getGlobalForwardingRule(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlobalForwardingRuleResult.fromMap(result);
+}
+
+pulumi.Output<GetGlobalForwardingRuleResult> getGlobalForwardingRuleOutput(
+  GetGlobalForwardingRuleArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getGlobalForwardingRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalForwardingRuleResult.fromMap);
 }
 
 /// Returns the specified network endpoint group.
@@ -886,6 +1062,17 @@ Future<GetGlobalNetworkEndpointGroupResult> getGlobalNetworkEndpointGroup(
   return GetGlobalNetworkEndpointGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetGlobalNetworkEndpointGroupResult> getGlobalNetworkEndpointGroupOutput(
+  GetGlobalNetworkEndpointGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getGlobalNetworkEndpointGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalNetworkEndpointGroupResult.fromMap);
+}
+
 /// Returns the specified global PublicDelegatedPrefix resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_global_public_delegated_prefix_args_doc}
 /// [options] Invoke options controlling this call.
@@ -900,6 +1087,17 @@ Future<GetGlobalPublicDelegatedPrefixResult> getGlobalPublicDelegatedPrefix(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlobalPublicDelegatedPrefixResult.fromMap(result);
+}
+
+pulumi.Output<GetGlobalPublicDelegatedPrefixResult> getGlobalPublicDelegatedPrefixOutput(
+  GetGlobalPublicDelegatedPrefixArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getGlobalPublicDelegatedPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalPublicDelegatedPrefixResult.fromMap);
 }
 
 /// Returns the specified HealthCheck resource.
@@ -918,6 +1116,17 @@ Future<GetHealthCheckResult> getHealthCheck(
   return GetHealthCheckResult.fromMap(result);
 }
 
+pulumi.Output<GetHealthCheckResult> getHealthCheckOutput(
+  GetHealthCheckArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getHealthCheck',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHealthCheckResult.fromMap);
+}
+
 /// Returns the specified HttpHealthCheck resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_http_health_check_args_doc}
 /// [options] Invoke options controlling this call.
@@ -932,6 +1141,17 @@ Future<GetHttpHealthCheckResult> getHttpHealthCheck(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHttpHealthCheckResult.fromMap(result);
+}
+
+pulumi.Output<GetHttpHealthCheckResult> getHttpHealthCheckOutput(
+  GetHttpHealthCheckArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getHttpHealthCheck',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHttpHealthCheckResult.fromMap);
 }
 
 /// Returns the specified HttpsHealthCheck resource.
@@ -950,6 +1170,17 @@ Future<GetHttpsHealthCheckResult> getHttpsHealthCheck(
   return GetHttpsHealthCheckResult.fromMap(result);
 }
 
+pulumi.Output<GetHttpsHealthCheckResult> getHttpsHealthCheckOutput(
+  GetHttpsHealthCheckArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getHttpsHealthCheck',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHttpsHealthCheckResult.fromMap);
+}
+
 /// Returns the specified image.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_image_args_doc}
 /// [options] Invoke options controlling this call.
@@ -964,6 +1195,17 @@ Future<GetImageResult> getImage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImageResult.fromMap(result);
+}
+
+pulumi.Output<GetImageResult> getImageOutput(
+  GetImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -982,6 +1224,17 @@ Future<GetImageIamPolicyResult> getImageIamPolicy(
   return GetImageIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetImageIamPolicyResult> getImageIamPolicyOutput(
+  GetImageIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getImageIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageIamPolicyResult.fromMap);
+}
+
 /// Returns the specified Instance resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_instance_args_doc}
 /// [options] Invoke options controlling this call.
@@ -996,6 +1249,17 @@ Future<GetInstanceResult> getInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
 }
 
 /// Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request. For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
@@ -1014,6 +1278,17 @@ Future<GetInstanceGroupResult> getInstanceGroup(
   return GetInstanceGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceGroupResult> getInstanceGroupOutput(
+  GetInstanceGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getInstanceGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceGroupResult.fromMap);
+}
+
 /// Returns all of the details about the specified managed instance group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_instance_group_manager_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1028,6 +1303,17 @@ Future<GetInstanceGroupManagerResult> getInstanceGroupManager(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceGroupManagerResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceGroupManagerResult> getInstanceGroupManagerOutput(
+  GetInstanceGroupManagerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getInstanceGroupManager',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceGroupManagerResult.fromMap);
 }
 
 /// Returns all of the details about the specified resize request.
@@ -1046,6 +1332,17 @@ Future<GetInstanceGroupManagerResizeRequestResult> getInstanceGroupManagerResize
   return GetInstanceGroupManagerResizeRequestResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceGroupManagerResizeRequestResult> getInstanceGroupManagerResizeRequestOutput(
+  GetInstanceGroupManagerResizeRequestArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getInstanceGroupManagerResizeRequest',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceGroupManagerResizeRequestResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_instance_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1060,6 +1357,17 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
+  GetInstanceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceIamPolicyResult.fromMap);
 }
 
 /// Returns the specified instance template.
@@ -1078,6 +1386,17 @@ Future<GetInstanceTemplateResult> getInstanceTemplate(
   return GetInstanceTemplateResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceTemplateResult> getInstanceTemplateOutput(
+  GetInstanceTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getInstanceTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceTemplateResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_instance_template_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1092,6 +1411,17 @@ Future<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceTemplateIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicyOutput(
+  GetInstanceTemplateIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getInstanceTemplateIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceTemplateIamPolicyResult.fromMap);
 }
 
 /// Returns the specified InstantSnapshot resource in the specified zone.
@@ -1110,6 +1440,17 @@ Future<GetInstantSnapshotResult> getInstantSnapshot(
   return GetInstantSnapshotResult.fromMap(result);
 }
 
+pulumi.Output<GetInstantSnapshotResult> getInstantSnapshotOutput(
+  GetInstantSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getInstantSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstantSnapshotResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_instant_snapshot_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1124,6 +1465,17 @@ Future<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstantSnapshotIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetInstantSnapshotIamPolicyResult> getInstantSnapshotIamPolicyOutput(
+  GetInstantSnapshotIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getInstantSnapshotIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstantSnapshotIamPolicyResult.fromMap);
 }
 
 /// Returns the specified Interconnect. Get a list of available Interconnects by making a list() request.
@@ -1142,6 +1494,17 @@ Future<GetInterconnectResult> getInterconnect(
   return GetInterconnectResult.fromMap(result);
 }
 
+pulumi.Output<GetInterconnectResult> getInterconnectOutput(
+  GetInterconnectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getInterconnect',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInterconnectResult.fromMap);
+}
+
 /// Returns the specified interconnect attachment.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_interconnect_attachment_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1156,6 +1519,17 @@ Future<GetInterconnectAttachmentResult> getInterconnectAttachment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInterconnectAttachmentResult.fromMap(result);
+}
+
+pulumi.Output<GetInterconnectAttachmentResult> getInterconnectAttachmentOutput(
+  GetInterconnectAttachmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getInterconnectAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInterconnectAttachmentResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -1174,6 +1548,17 @@ Future<GetInterconnectAttachmentIamPolicyResult> getInterconnectAttachmentIamPol
   return GetInterconnectAttachmentIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetInterconnectAttachmentIamPolicyResult> getInterconnectAttachmentIamPolicyOutput(
+  GetInterconnectAttachmentIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getInterconnectAttachmentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInterconnectAttachmentIamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_interconnect_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1188,6 +1573,17 @@ Future<GetInterconnectIamPolicyResult> getInterconnectIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInterconnectIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetInterconnectIamPolicyResult> getInterconnectIamPolicyOutput(
+  GetInterconnectIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getInterconnectIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInterconnectIamPolicyResult.fromMap);
 }
 
 /// Returns the specified License resource. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
@@ -1206,6 +1602,17 @@ Future<GetLicenseResult> getLicense(
   return GetLicenseResult.fromMap(result);
 }
 
+pulumi.Output<GetLicenseResult> getLicenseOutput(
+  GetLicenseArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getLicense',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLicenseResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_license_code_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1220,6 +1627,17 @@ Future<GetLicenseCodeIamPolicyResult> getLicenseCodeIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLicenseCodeIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetLicenseCodeIamPolicyResult> getLicenseCodeIamPolicyOutput(
+  GetLicenseCodeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getLicenseCodeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLicenseCodeIamPolicyResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
@@ -1238,6 +1656,17 @@ Future<GetLicenseIamPolicyResult> getLicenseIamPolicy(
   return GetLicenseIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetLicenseIamPolicyResult> getLicenseIamPolicyOutput(
+  GetLicenseIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getLicenseIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLicenseIamPolicyResult.fromMap);
+}
+
 /// Returns the specified machine image.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_machine_image_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1252,6 +1681,17 @@ Future<GetMachineImageResult> getMachineImage(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMachineImageResult.fromMap(result);
+}
+
+pulumi.Output<GetMachineImageResult> getMachineImageOutput(
+  GetMachineImageArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getMachineImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineImageResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -1270,6 +1710,17 @@ Future<GetMachineImageIamPolicyResult> getMachineImageIamPolicy(
   return GetMachineImageIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetMachineImageIamPolicyResult> getMachineImageIamPolicyOutput(
+  GetMachineImageIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getMachineImageIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineImageIamPolicyResult.fromMap);
+}
+
 /// Returns the specified network.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_network_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1284,6 +1735,17 @@ Future<GetNetworkResult> getNetwork(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkResult> getNetworkOutput(
+  GetNetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkResult.fromMap);
 }
 
 /// Returns the specified NetworkAttachment resource in the given scope.
@@ -1302,6 +1764,17 @@ Future<GetNetworkAttachmentResult> getNetworkAttachment(
   return GetNetworkAttachmentResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkAttachmentResult> getNetworkAttachmentOutput(
+  GetNetworkAttachmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getNetworkAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkAttachmentResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_network_attachment_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1316,6 +1789,17 @@ Future<GetNetworkAttachmentIamPolicyResult> getNetworkAttachmentIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkAttachmentIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkAttachmentIamPolicyResult> getNetworkAttachmentIamPolicyOutput(
+  GetNetworkAttachmentIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getNetworkAttachmentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkAttachmentIamPolicyResult.fromMap);
 }
 
 /// Gets a specified NetworkEdgeSecurityService.
@@ -1334,6 +1818,17 @@ Future<GetNetworkEdgeSecurityServiceResult> getNetworkEdgeSecurityService(
   return GetNetworkEdgeSecurityServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkEdgeSecurityServiceResult> getNetworkEdgeSecurityServiceOutput(
+  GetNetworkEdgeSecurityServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getNetworkEdgeSecurityService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkEdgeSecurityServiceResult.fromMap);
+}
+
 /// Returns the specified network endpoint group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_network_endpoint_group_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1348,6 +1843,17 @@ Future<GetNetworkEndpointGroupResult> getNetworkEndpointGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkEndpointGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkEndpointGroupResult> getNetworkEndpointGroupOutput(
+  GetNetworkEndpointGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getNetworkEndpointGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkEndpointGroupResult.fromMap);
 }
 
 /// Returns the specified network firewall policy.
@@ -1366,6 +1872,17 @@ Future<GetNetworkFirewallPolicyResult> getNetworkFirewallPolicy(
   return GetNetworkFirewallPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkFirewallPolicyResult> getNetworkFirewallPolicyOutput(
+  GetNetworkFirewallPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getNetworkFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFirewallPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_network_firewall_policy_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1380,6 +1897,17 @@ Future<GetNetworkFirewallPolicyIamPolicyResult> getNetworkFirewallPolicyIamPolic
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkFirewallPolicyIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkFirewallPolicyIamPolicyResult> getNetworkFirewallPolicyIamPolicyOutput(
+  GetNetworkFirewallPolicyIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getNetworkFirewallPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFirewallPolicyIamPolicyResult.fromMap);
 }
 
 /// Returns the specified NodeGroup. Get a list of available NodeGroups by making a list() request. Note: the "nodes" field should not be used. Use nodeGroups.listNodes instead.
@@ -1398,6 +1926,17 @@ Future<GetNodeGroupResult> getNodeGroup(
   return GetNodeGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetNodeGroupResult> getNodeGroupOutput(
+  GetNodeGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getNodeGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeGroupResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_node_group_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1412,6 +1951,17 @@ Future<GetNodeGroupIamPolicyResult> getNodeGroupIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNodeGroupIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetNodeGroupIamPolicyResult> getNodeGroupIamPolicyOutput(
+  GetNodeGroupIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getNodeGroupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeGroupIamPolicyResult.fromMap);
 }
 
 /// Returns the specified node template.
@@ -1430,6 +1980,17 @@ Future<GetNodeTemplateResult> getNodeTemplate(
   return GetNodeTemplateResult.fromMap(result);
 }
 
+pulumi.Output<GetNodeTemplateResult> getNodeTemplateOutput(
+  GetNodeTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getNodeTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeTemplateResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_node_template_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1444,6 +2005,17 @@ Future<GetNodeTemplateIamPolicyResult> getNodeTemplateIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNodeTemplateIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetNodeTemplateIamPolicyResult> getNodeTemplateIamPolicyOutput(
+  GetNodeTemplateIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getNodeTemplateIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeTemplateIamPolicyResult.fromMap);
 }
 
 /// List all of the ordered rules present in a single specified policy.
@@ -1462,6 +2034,17 @@ Future<GetOrganizationSecurityPolicyResult> getOrganizationSecurityPolicy(
   return GetOrganizationSecurityPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetOrganizationSecurityPolicyResult> getOrganizationSecurityPolicyOutput(
+  GetOrganizationSecurityPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getOrganizationSecurityPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationSecurityPolicyResult.fromMap);
+}
+
 /// Returns the specified PacketMirroring resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_packet_mirroring_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1476,6 +2059,17 @@ Future<GetPacketMirroringResult> getPacketMirroring(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPacketMirroringResult.fromMap(result);
+}
+
+pulumi.Output<GetPacketMirroringResult> getPacketMirroringOutput(
+  GetPacketMirroringArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getPacketMirroring',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPacketMirroringResult.fromMap);
 }
 
 /// Returns the specified PublicAdvertisedPrefix resource.
@@ -1494,6 +2088,17 @@ Future<GetPublicAdvertisedPrefixResult> getPublicAdvertisedPrefix(
   return GetPublicAdvertisedPrefixResult.fromMap(result);
 }
 
+pulumi.Output<GetPublicAdvertisedPrefixResult> getPublicAdvertisedPrefixOutput(
+  GetPublicAdvertisedPrefixArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getPublicAdvertisedPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicAdvertisedPrefixResult.fromMap);
+}
+
 /// Returns the specified PublicDelegatedPrefix resource in the given region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_public_delegated_prefix_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1508,6 +2113,17 @@ Future<GetPublicDelegatedPrefixResult> getPublicDelegatedPrefix(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPublicDelegatedPrefixResult.fromMap(result);
+}
+
+pulumi.Output<GetPublicDelegatedPrefixResult> getPublicDelegatedPrefixOutput(
+  GetPublicDelegatedPrefixArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getPublicDelegatedPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicDelegatedPrefixResult.fromMap);
 }
 
 /// Returns the specified autoscaler.
@@ -1526,6 +2142,17 @@ Future<GetRegionAutoscalerResult> getRegionAutoscaler(
   return GetRegionAutoscalerResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionAutoscalerResult> getRegionAutoscalerOutput(
+  GetRegionAutoscalerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionAutoscaler',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionAutoscalerResult.fromMap);
+}
+
 /// Returns the specified regional BackendService resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_region_backend_service_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1540,6 +2167,17 @@ Future<GetRegionBackendServiceResult> getRegionBackendService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionBackendServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionBackendServiceResult> getRegionBackendServiceOutput(
+  GetRegionBackendServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionBackendService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionBackendServiceResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -1558,6 +2196,17 @@ Future<GetRegionBackendServiceIamPolicyResult> getRegionBackendServiceIamPolicy(
   return GetRegionBackendServiceIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionBackendServiceIamPolicyResult> getRegionBackendServiceIamPolicyOutput(
+  GetRegionBackendServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionBackendServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionBackendServiceIamPolicyResult.fromMap);
+}
+
 /// Returns the specified commitment resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_region_commitment_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1572,6 +2221,17 @@ Future<GetRegionCommitmentResult> getRegionCommitment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionCommitmentResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionCommitmentResult> getRegionCommitmentOutput(
+  GetRegionCommitmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionCommitment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionCommitmentResult.fromMap);
 }
 
 /// Returns a specified regional persistent disk.
@@ -1590,6 +2250,17 @@ Future<GetRegionDiskResult> getRegionDisk(
   return GetRegionDiskResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionDiskResult> getRegionDiskOutput(
+  GetRegionDiskArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionDisk',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionDiskResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_region_disk_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1604,6 +2275,17 @@ Future<GetRegionDiskIamPolicyResult> getRegionDiskIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionDiskIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionDiskIamPolicyResult> getRegionDiskIamPolicyOutput(
+  GetRegionDiskIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionDiskIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionDiskIamPolicyResult.fromMap);
 }
 
 /// Returns the specified HealthCheck resource.
@@ -1622,6 +2304,17 @@ Future<GetRegionHealthCheckResult> getRegionHealthCheck(
   return GetRegionHealthCheckResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionHealthCheckResult> getRegionHealthCheckOutput(
+  GetRegionHealthCheckArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionHealthCheck',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionHealthCheckResult.fromMap);
+}
+
 /// Returns the specified regional HealthCheckService resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_region_health_check_service_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1636,6 +2329,17 @@ Future<GetRegionHealthCheckServiceResult> getRegionHealthCheckService(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionHealthCheckServiceResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionHealthCheckServiceResult> getRegionHealthCheckServiceOutput(
+  GetRegionHealthCheckServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionHealthCheckService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionHealthCheckServiceResult.fromMap);
 }
 
 /// Returns all of the details about the specified managed instance group.
@@ -1654,6 +2358,17 @@ Future<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManager(
   return GetRegionInstanceGroupManagerResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionInstanceGroupManagerResult> getRegionInstanceGroupManagerOutput(
+  GetRegionInstanceGroupManagerArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionInstanceGroupManager',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionInstanceGroupManagerResult.fromMap);
+}
+
 /// Returns the specified instance template.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_region_instance_template_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1668,6 +2383,17 @@ Future<GetRegionInstanceTemplateResult> getRegionInstanceTemplate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionInstanceTemplateResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionInstanceTemplateResult> getRegionInstanceTemplateOutput(
+  GetRegionInstanceTemplateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionInstanceTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionInstanceTemplateResult.fromMap);
 }
 
 /// Returns the specified InstantSnapshot resource in the specified region.
@@ -1686,6 +2412,17 @@ Future<GetRegionInstantSnapshotResult> getRegionInstantSnapshot(
   return GetRegionInstantSnapshotResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionInstantSnapshotResult> getRegionInstantSnapshotOutput(
+  GetRegionInstantSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionInstantSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionInstantSnapshotResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_region_instant_snapshot_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1700,6 +2437,17 @@ Future<GetRegionInstantSnapshotIamPolicyResult> getRegionInstantSnapshotIamPolic
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionInstantSnapshotIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionInstantSnapshotIamPolicyResult> getRegionInstantSnapshotIamPolicyOutput(
+  GetRegionInstantSnapshotIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionInstantSnapshotIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionInstantSnapshotIamPolicyResult.fromMap);
 }
 
 /// Returns the specified network endpoint group.
@@ -1718,6 +2466,17 @@ Future<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroup(
   return GetRegionNetworkEndpointGroupResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionNetworkEndpointGroupResult> getRegionNetworkEndpointGroupOutput(
+  GetRegionNetworkEndpointGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionNetworkEndpointGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionNetworkEndpointGroupResult.fromMap);
+}
+
 /// Returns the specified network firewall policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_region_network_firewall_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1732,6 +2491,17 @@ Future<GetRegionNetworkFirewallPolicyResult> getRegionNetworkFirewallPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionNetworkFirewallPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionNetworkFirewallPolicyResult> getRegionNetworkFirewallPolicyOutput(
+  GetRegionNetworkFirewallPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionNetworkFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionNetworkFirewallPolicyResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -1750,6 +2520,17 @@ Future<GetRegionNetworkFirewallPolicyIamPolicyResult> getRegionNetworkFirewallPo
   return GetRegionNetworkFirewallPolicyIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionNetworkFirewallPolicyIamPolicyResult> getRegionNetworkFirewallPolicyIamPolicyOutput(
+  GetRegionNetworkFirewallPolicyIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionNetworkFirewallPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionNetworkFirewallPolicyIamPolicyResult.fromMap);
+}
+
 /// Returns the specified NotificationEndpoint resource in the given region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_region_notification_endpoint_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1764,6 +2545,17 @@ Future<GetRegionNotificationEndpointResult> getRegionNotificationEndpoint(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionNotificationEndpointResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionNotificationEndpointResult> getRegionNotificationEndpointOutput(
+  GetRegionNotificationEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionNotificationEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionNotificationEndpointResult.fromMap);
 }
 
 /// List all of the ordered rules present in a single specified policy.
@@ -1782,6 +2574,17 @@ Future<GetRegionSecurityPolicyResult> getRegionSecurityPolicy(
   return GetRegionSecurityPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionSecurityPolicyResult> getRegionSecurityPolicyOutput(
+  GetRegionSecurityPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionSecurityPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionSecurityPolicyResult.fromMap);
+}
+
 /// Returns the specified Snapshot resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_region_snapshot_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1796,6 +2599,17 @@ Future<GetRegionSnapshotResult> getRegionSnapshot(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionSnapshotResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionSnapshotResult> getRegionSnapshotOutput(
+  GetRegionSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionSnapshotResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -1814,6 +2628,17 @@ Future<GetRegionSnapshotIamPolicyResult> getRegionSnapshotIamPolicy(
   return GetRegionSnapshotIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionSnapshotIamPolicyResult> getRegionSnapshotIamPolicyOutput(
+  GetRegionSnapshotIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionSnapshotIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionSnapshotIamPolicyResult.fromMap);
+}
+
 /// Returns the specified SslCertificate resource in the specified region. Get a list of available SSL certificates by making a list() request.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_region_ssl_certificate_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1828,6 +2653,17 @@ Future<GetRegionSslCertificateResult> getRegionSslCertificate(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionSslCertificateResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionSslCertificateResult> getRegionSslCertificateOutput(
+  GetRegionSslCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionSslCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionSslCertificateResult.fromMap);
 }
 
 /// Lists all of the ordered rules present in a single specified policy.
@@ -1846,6 +2682,17 @@ Future<GetRegionSslPolicyResult> getRegionSslPolicy(
   return GetRegionSslPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionSslPolicyResult> getRegionSslPolicyOutput(
+  GetRegionSslPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionSslPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionSslPolicyResult.fromMap);
+}
+
 /// Returns the specified TargetHttpProxy resource in the specified region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_region_target_http_proxy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1860,6 +2707,17 @@ Future<GetRegionTargetHttpProxyResult> getRegionTargetHttpProxy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionTargetHttpProxyResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionTargetHttpProxyResult> getRegionTargetHttpProxyOutput(
+  GetRegionTargetHttpProxyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionTargetHttpProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionTargetHttpProxyResult.fromMap);
 }
 
 /// Returns the specified TargetHttpsProxy resource in the specified region.
@@ -1878,6 +2736,17 @@ Future<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxy(
   return GetRegionTargetHttpsProxyResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionTargetHttpsProxyResult> getRegionTargetHttpsProxyOutput(
+  GetRegionTargetHttpsProxyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionTargetHttpsProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionTargetHttpsProxyResult.fromMap);
+}
+
 /// Returns the specified TargetTcpProxy resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_region_target_tcp_proxy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1892,6 +2761,17 @@ Future<GetRegionTargetTcpProxyResult> getRegionTargetTcpProxy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionTargetTcpProxyResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionTargetTcpProxyResult> getRegionTargetTcpProxyOutput(
+  GetRegionTargetTcpProxyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionTargetTcpProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionTargetTcpProxyResult.fromMap);
 }
 
 /// Returns the specified UrlMap resource.
@@ -1910,6 +2790,17 @@ Future<GetRegionUrlMapResult> getRegionUrlMap(
   return GetRegionUrlMapResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionUrlMapResult> getRegionUrlMapOutput(
+  GetRegionUrlMapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRegionUrlMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionUrlMapResult.fromMap);
+}
+
 /// Retrieves information about the specified reservation.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_reservation_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1924,6 +2815,17 @@ Future<GetReservationResult> getReservation(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReservationResult.fromMap(result);
+}
+
+pulumi.Output<GetReservationResult> getReservationOutput(
+  GetReservationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getReservation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservationResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -1942,6 +2844,17 @@ Future<GetReservationIamPolicyResult> getReservationIamPolicy(
   return GetReservationIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetReservationIamPolicyResult> getReservationIamPolicyOutput(
+  GetReservationIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getReservationIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservationIamPolicyResult.fromMap);
+}
+
 /// Retrieves all information of the specified resource policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_resource_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1956,6 +2869,17 @@ Future<GetResourcePolicyResult> getResourcePolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourcePolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetResourcePolicyResult> getResourcePolicyOutput(
+  GetResourcePolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getResourcePolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourcePolicyResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -1974,6 +2898,17 @@ Future<GetResourcePolicyIamPolicyResult> getResourcePolicyIamPolicy(
   return GetResourcePolicyIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetResourcePolicyIamPolicyResult> getResourcePolicyIamPolicyOutput(
+  GetResourcePolicyIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getResourcePolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourcePolicyIamPolicyResult.fromMap);
+}
+
 /// Returns the specified Route resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_route_args_doc}
 /// [options] Invoke options controlling this call.
@@ -1988,6 +2923,17 @@ Future<GetRouteResult> getRoute(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouteResult.fromMap(result);
+}
+
+pulumi.Output<GetRouteResult> getRouteOutput(
+  GetRouteArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRoute',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteResult.fromMap);
 }
 
 /// Returns the specified Router resource.
@@ -2006,6 +2952,17 @@ Future<GetRouterResult> getRouter(
   return GetRouterResult.fromMap(result);
 }
 
+pulumi.Output<GetRouterResult> getRouterOutput(
+  GetRouterArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getRouter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouterResult.fromMap);
+}
+
 /// List all of the ordered rules present in a single specified policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_security_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2020,6 +2977,17 @@ Future<GetSecurityPolicyResult> getSecurityPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSecurityPolicyResult> getSecurityPolicyOutput(
+  GetSecurityPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getSecurityPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityPolicyResult.fromMap);
 }
 
 /// Returns the specified ServiceAttachment resource in the given scope.
@@ -2038,6 +3006,17 @@ Future<GetServiceAttachmentResult> getServiceAttachment(
   return GetServiceAttachmentResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceAttachmentResult> getServiceAttachmentOutput(
+  GetServiceAttachmentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getServiceAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceAttachmentResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_service_attachment_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2052,6 +3031,17 @@ Future<GetServiceAttachmentIamPolicyResult> getServiceAttachmentIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceAttachmentIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceAttachmentIamPolicyResult> getServiceAttachmentIamPolicyOutput(
+  GetServiceAttachmentIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getServiceAttachmentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceAttachmentIamPolicyResult.fromMap);
 }
 
 /// Returns the specified Snapshot resource.
@@ -2070,6 +3060,17 @@ Future<GetSnapshotResult> getSnapshot(
   return GetSnapshotResult.fromMap(result);
 }
 
+pulumi.Output<GetSnapshotResult> getSnapshotOutput(
+  GetSnapshotArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_snapshot_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2084,6 +3085,17 @@ Future<GetSnapshotIamPolicyResult> getSnapshotIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSnapshotIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSnapshotIamPolicyResult> getSnapshotIamPolicyOutput(
+  GetSnapshotIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getSnapshotIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotIamPolicyResult.fromMap);
 }
 
 /// Returns the specified SslCertificate resource.
@@ -2102,6 +3114,17 @@ Future<GetSslCertificateResult> getSslCertificate(
   return GetSslCertificateResult.fromMap(result);
 }
 
+pulumi.Output<GetSslCertificateResult> getSslCertificateOutput(
+  GetSslCertificateArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getSslCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSslCertificateResult.fromMap);
+}
+
 /// Lists all of the ordered rules present in a single specified policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_ssl_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2116,6 +3139,17 @@ Future<GetSslPolicyResult> getSslPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSslPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSslPolicyResult> getSslPolicyOutput(
+  GetSslPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getSslPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSslPolicyResult.fromMap);
 }
 
 /// Returns a specified storage pool. Gets a list of available storage pools by making a list() request.
@@ -2134,6 +3168,17 @@ Future<GetStoragePoolResult> getStoragePool(
   return GetStoragePoolResult.fromMap(result);
 }
 
+pulumi.Output<GetStoragePoolResult> getStoragePoolOutput(
+  GetStoragePoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getStoragePool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStoragePoolResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_storage_pool_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2148,6 +3193,17 @@ Future<GetStoragePoolIamPolicyResult> getStoragePoolIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetStoragePoolIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetStoragePoolIamPolicyResult> getStoragePoolIamPolicyOutput(
+  GetStoragePoolIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getStoragePoolIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetStoragePoolIamPolicyResult.fromMap);
 }
 
 /// Returns the specified subnetwork.
@@ -2166,6 +3222,17 @@ Future<GetSubnetworkResult> getSubnetwork(
   return GetSubnetworkResult.fromMap(result);
 }
 
+pulumi.Output<GetSubnetworkResult> getSubnetworkOutput(
+  GetSubnetworkArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getSubnetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetworkResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_subnetwork_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2180,6 +3247,17 @@ Future<GetSubnetworkIamPolicyResult> getSubnetworkIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubnetworkIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetSubnetworkIamPolicyResult> getSubnetworkIamPolicyOutput(
+  GetSubnetworkIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getSubnetworkIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetworkIamPolicyResult.fromMap);
 }
 
 /// Returns the specified TargetGrpcProxy resource in the given scope.
@@ -2198,6 +3276,17 @@ Future<GetTargetGrpcProxyResult> getTargetGrpcProxy(
   return GetTargetGrpcProxyResult.fromMap(result);
 }
 
+pulumi.Output<GetTargetGrpcProxyResult> getTargetGrpcProxyOutput(
+  GetTargetGrpcProxyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getTargetGrpcProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetGrpcProxyResult.fromMap);
+}
+
 /// Returns the specified TargetHttpProxy resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_target_http_proxy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2212,6 +3301,17 @@ Future<GetTargetHttpProxyResult> getTargetHttpProxy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetHttpProxyResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetHttpProxyResult> getTargetHttpProxyOutput(
+  GetTargetHttpProxyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getTargetHttpProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetHttpProxyResult.fromMap);
 }
 
 /// Returns the specified TargetHttpsProxy resource.
@@ -2230,6 +3330,17 @@ Future<GetTargetHttpsProxyResult> getTargetHttpsProxy(
   return GetTargetHttpsProxyResult.fromMap(result);
 }
 
+pulumi.Output<GetTargetHttpsProxyResult> getTargetHttpsProxyOutput(
+  GetTargetHttpsProxyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getTargetHttpsProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetHttpsProxyResult.fromMap);
+}
+
 /// Returns the specified TargetInstance resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_target_instance_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2244,6 +3355,17 @@ Future<GetTargetInstanceResult> getTargetInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetInstanceResult> getTargetInstanceOutput(
+  GetTargetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getTargetInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetInstanceResult.fromMap);
 }
 
 /// Returns the specified target pool.
@@ -2262,6 +3384,17 @@ Future<GetTargetPoolResult> getTargetPool(
   return GetTargetPoolResult.fromMap(result);
 }
 
+pulumi.Output<GetTargetPoolResult> getTargetPoolOutput(
+  GetTargetPoolArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getTargetPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetPoolResult.fromMap);
+}
+
 /// Returns the specified TargetSslProxy resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_target_ssl_proxy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2276,6 +3409,17 @@ Future<GetTargetSslProxyResult> getTargetSslProxy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetSslProxyResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetSslProxyResult> getTargetSslProxyOutput(
+  GetTargetSslProxyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getTargetSslProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetSslProxyResult.fromMap);
 }
 
 /// Returns the specified TargetTcpProxy resource.
@@ -2294,6 +3438,17 @@ Future<GetTargetTcpProxyResult> getTargetTcpProxy(
   return GetTargetTcpProxyResult.fromMap(result);
 }
 
+pulumi.Output<GetTargetTcpProxyResult> getTargetTcpProxyOutput(
+  GetTargetTcpProxyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getTargetTcpProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetTcpProxyResult.fromMap);
+}
+
 /// Returns the specified target VPN gateway.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_target_vpn_gateway_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2308,6 +3463,17 @@ Future<GetTargetVpnGatewayResult> getTargetVpnGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetVpnGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetVpnGatewayResult> getTargetVpnGatewayOutput(
+  GetTargetVpnGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getTargetVpnGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetVpnGatewayResult.fromMap);
 }
 
 /// Returns the specified UrlMap resource.
@@ -2326,6 +3492,17 @@ Future<GetUrlMapResult> getUrlMap(
   return GetUrlMapResult.fromMap(result);
 }
 
+pulumi.Output<GetUrlMapResult> getUrlMapOutput(
+  GetUrlMapArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getUrlMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUrlMapResult.fromMap);
+}
+
 /// Returns the specified VPN gateway.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_vpn_gateway_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2340,6 +3517,17 @@ Future<GetVpnGatewayResult> getVpnGateway(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpnGatewayResult.fromMap(result);
+}
+
+pulumi.Output<GetVpnGatewayResult> getVpnGatewayOutput(
+  GetVpnGatewayArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getVpnGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpnGatewayResult.fromMap);
 }
 
 /// Returns the specified VpnTunnel resource.
@@ -2358,6 +3546,17 @@ Future<GetVpnTunnelResult> getVpnTunnel(
   return GetVpnTunnelResult.fromMap(result);
 }
 
+pulumi.Output<GetVpnTunnelResult> getVpnTunnelOutput(
+  GetVpnTunnelArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getVpnTunnel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpnTunnelResult.fromMap);
+}
+
 /// Returns the specified QueuedResource resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_alpha_get_zone_queued_resource_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2372,6 +3571,17 @@ Future<GetZoneQueuedResourceResult> getZoneQueuedResource(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetZoneQueuedResourceResult.fromMap(result);
+}
+
+pulumi.Output<GetZoneQueuedResourceResult> getZoneQueuedResourceOutput(
+  GetZoneQueuedResourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/alpha:getZoneQueuedResource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetZoneQueuedResourceResult.fromMap);
 }
 
 /// Returns the specified address resource.
@@ -2390,6 +3600,17 @@ Future<GetAddressComputeBetaResult> getAddressComputeBeta(
   return GetAddressComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetAddressComputeBetaResult> getAddressComputeBetaOutput(
+  GetAddressComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getAddress',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAddressComputeBetaResult.fromMap);
+}
+
 /// Returns the specified autoscaler resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_autoscaler_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2404,6 +3625,17 @@ Future<GetAutoscalerComputeBetaResult> getAutoscalerComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAutoscalerComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetAutoscalerComputeBetaResult> getAutoscalerComputeBetaOutput(
+  GetAutoscalerComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getAutoscaler',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutoscalerComputeBetaResult.fromMap);
 }
 
 /// Returns the specified BackendBucket resource.
@@ -2422,6 +3654,17 @@ Future<GetBackendBucketComputeBetaResult> getBackendBucketComputeBeta(
   return GetBackendBucketComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetBackendBucketComputeBetaResult> getBackendBucketComputeBetaOutput(
+  GetBackendBucketComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getBackendBucket',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendBucketComputeBetaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_backend_bucket_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2436,6 +3679,17 @@ Future<GetBackendBucketIamPolicyComputeBetaResult> getBackendBucketIamPolicyComp
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackendBucketIamPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetBackendBucketIamPolicyComputeBetaResult> getBackendBucketIamPolicyComputeBetaOutput(
+  GetBackendBucketIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getBackendBucketIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendBucketIamPolicyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified BackendService resource.
@@ -2454,6 +3708,17 @@ Future<GetBackendServiceComputeBetaResult> getBackendServiceComputeBeta(
   return GetBackendServiceComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetBackendServiceComputeBetaResult> getBackendServiceComputeBetaOutput(
+  GetBackendServiceComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getBackendService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendServiceComputeBetaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_backend_service_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2468,6 +3733,17 @@ Future<GetBackendServiceIamPolicyComputeBetaResult> getBackendServiceIamPolicyCo
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackendServiceIamPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetBackendServiceIamPolicyComputeBetaResult> getBackendServiceIamPolicyComputeBetaOutput(
+  GetBackendServiceIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getBackendServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendServiceIamPolicyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified persistent disk.
@@ -2486,6 +3762,17 @@ Future<GetDiskComputeBetaResult> getDiskComputeBeta(
   return GetDiskComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetDiskComputeBetaResult> getDiskComputeBetaOutput(
+  GetDiskComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getDisk',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskComputeBetaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_disk_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2500,6 +3787,17 @@ Future<GetDiskIamPolicyComputeBetaResult> getDiskIamPolicyComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDiskIamPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetDiskIamPolicyComputeBetaResult> getDiskIamPolicyComputeBetaOutput(
+  GetDiskIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getDiskIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskIamPolicyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified externalVpnGateway. Get a list of available externalVpnGateways by making a list() request.
@@ -2518,6 +3816,17 @@ Future<GetExternalVpnGatewayComputeBetaResult> getExternalVpnGatewayComputeBeta(
   return GetExternalVpnGatewayComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetExternalVpnGatewayComputeBetaResult> getExternalVpnGatewayComputeBetaOutput(
+  GetExternalVpnGatewayComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getExternalVpnGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExternalVpnGatewayComputeBetaResult.fromMap);
+}
+
 /// Returns the specified firewall.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_firewall_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2532,6 +3841,17 @@ Future<GetFirewallComputeBetaResult> getFirewallComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFirewallComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetFirewallComputeBetaResult> getFirewallComputeBetaOutput(
+  GetFirewallComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getFirewall',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallComputeBetaResult.fromMap);
 }
 
 /// Returns the specified firewall policy.
@@ -2550,6 +3870,17 @@ Future<GetFirewallPolicyComputeBetaResult> getFirewallPolicyComputeBeta(
   return GetFirewallPolicyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetFirewallPolicyComputeBetaResult> getFirewallPolicyComputeBetaOutput(
+  GetFirewallPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallPolicyComputeBetaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_firewall_policy_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2564,6 +3895,17 @@ Future<GetFirewallPolicyIamPolicyComputeBetaResult> getFirewallPolicyIamPolicyCo
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFirewallPolicyIamPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetFirewallPolicyIamPolicyComputeBetaResult> getFirewallPolicyIamPolicyComputeBetaOutput(
+  GetFirewallPolicyIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getFirewallPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallPolicyIamPolicyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified ForwardingRule resource.
@@ -2582,6 +3924,17 @@ Future<GetForwardingRuleComputeBetaResult> getForwardingRuleComputeBeta(
   return GetForwardingRuleComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetForwardingRuleComputeBetaResult> getForwardingRuleComputeBetaOutput(
+  GetForwardingRuleComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getForwardingRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetForwardingRuleComputeBetaResult.fromMap);
+}
+
 /// Retrieves information about the specified future reservation.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_future_reservation_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2596,6 +3949,17 @@ Future<GetFutureReservationComputeBetaResult> getFutureReservationComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFutureReservationComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetFutureReservationComputeBetaResult> getFutureReservationComputeBetaOutput(
+  GetFutureReservationComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getFutureReservation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFutureReservationComputeBetaResult.fromMap);
 }
 
 /// Returns the specified address resource.
@@ -2614,6 +3978,17 @@ Future<GetGlobalAddressComputeBetaResult> getGlobalAddressComputeBeta(
   return GetGlobalAddressComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetGlobalAddressComputeBetaResult> getGlobalAddressComputeBetaOutput(
+  GetGlobalAddressComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getGlobalAddress',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalAddressComputeBetaResult.fromMap);
+}
+
 /// Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by making a list() request.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_global_forwarding_rule_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2628,6 +4003,17 @@ Future<GetGlobalForwardingRuleComputeBetaResult> getGlobalForwardingRuleComputeB
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlobalForwardingRuleComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetGlobalForwardingRuleComputeBetaResult> getGlobalForwardingRuleComputeBetaOutput(
+  GetGlobalForwardingRuleComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getGlobalForwardingRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalForwardingRuleComputeBetaResult.fromMap);
 }
 
 /// Returns the specified network endpoint group.
@@ -2646,6 +4032,17 @@ Future<GetGlobalNetworkEndpointGroupComputeBetaResult> getGlobalNetworkEndpointG
   return GetGlobalNetworkEndpointGroupComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetGlobalNetworkEndpointGroupComputeBetaResult> getGlobalNetworkEndpointGroupComputeBetaOutput(
+  GetGlobalNetworkEndpointGroupComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getGlobalNetworkEndpointGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalNetworkEndpointGroupComputeBetaResult.fromMap);
+}
+
 /// Returns the specified global PublicDelegatedPrefix resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_global_public_delegated_prefix_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2660,6 +4057,17 @@ Future<GetGlobalPublicDelegatedPrefixComputeBetaResult> getGlobalPublicDelegated
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlobalPublicDelegatedPrefixComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetGlobalPublicDelegatedPrefixComputeBetaResult> getGlobalPublicDelegatedPrefixComputeBetaOutput(
+  GetGlobalPublicDelegatedPrefixComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getGlobalPublicDelegatedPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalPublicDelegatedPrefixComputeBetaResult.fromMap);
 }
 
 /// Returns the specified HealthCheck resource.
@@ -2678,6 +4086,17 @@ Future<GetHealthCheckComputeBetaResult> getHealthCheckComputeBeta(
   return GetHealthCheckComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetHealthCheckComputeBetaResult> getHealthCheckComputeBetaOutput(
+  GetHealthCheckComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getHealthCheck',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHealthCheckComputeBetaResult.fromMap);
+}
+
 /// Returns the specified HttpHealthCheck resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_http_health_check_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2692,6 +4111,17 @@ Future<GetHttpHealthCheckComputeBetaResult> getHttpHealthCheckComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHttpHealthCheckComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetHttpHealthCheckComputeBetaResult> getHttpHealthCheckComputeBetaOutput(
+  GetHttpHealthCheckComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getHttpHealthCheck',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHttpHealthCheckComputeBetaResult.fromMap);
 }
 
 /// Returns the specified HttpsHealthCheck resource.
@@ -2710,6 +4140,17 @@ Future<GetHttpsHealthCheckComputeBetaResult> getHttpsHealthCheckComputeBeta(
   return GetHttpsHealthCheckComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetHttpsHealthCheckComputeBetaResult> getHttpsHealthCheckComputeBetaOutput(
+  GetHttpsHealthCheckComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getHttpsHealthCheck',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHttpsHealthCheckComputeBetaResult.fromMap);
+}
+
 /// Returns the specified image.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_image_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2724,6 +4165,17 @@ Future<GetImageComputeBetaResult> getImageComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImageComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetImageComputeBetaResult> getImageComputeBetaOutput(
+  GetImageComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageComputeBetaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -2742,6 +4194,17 @@ Future<GetImageIamPolicyComputeBetaResult> getImageIamPolicyComputeBeta(
   return GetImageIamPolicyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetImageIamPolicyComputeBetaResult> getImageIamPolicyComputeBetaOutput(
+  GetImageIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getImageIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageIamPolicyComputeBetaResult.fromMap);
+}
+
 /// Returns the specified Instance resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_instance_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2756,6 +4219,17 @@ Future<GetInstanceComputeBetaResult> getInstanceComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceComputeBetaResult> getInstanceComputeBetaOutput(
+  GetInstanceComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceComputeBetaResult.fromMap);
 }
 
 /// Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request. For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
@@ -2774,6 +4248,17 @@ Future<GetInstanceGroupComputeBetaResult> getInstanceGroupComputeBeta(
   return GetInstanceGroupComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceGroupComputeBetaResult> getInstanceGroupComputeBetaOutput(
+  GetInstanceGroupComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getInstanceGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceGroupComputeBetaResult.fromMap);
+}
+
 /// Returns all of the details about the specified managed instance group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_instance_group_manager_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2788,6 +4273,17 @@ Future<GetInstanceGroupManagerComputeBetaResult> getInstanceGroupManagerComputeB
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceGroupManagerComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceGroupManagerComputeBetaResult> getInstanceGroupManagerComputeBetaOutput(
+  GetInstanceGroupManagerComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getInstanceGroupManager',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceGroupManagerComputeBetaResult.fromMap);
 }
 
 /// Returns all of the details about the specified resize request.
@@ -2806,6 +4302,17 @@ Future<GetInstanceGroupManagerResizeRequestComputeBetaResult> getInstanceGroupMa
   return GetInstanceGroupManagerResizeRequestComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceGroupManagerResizeRequestComputeBetaResult> getInstanceGroupManagerResizeRequestComputeBetaOutput(
+  GetInstanceGroupManagerResizeRequestComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getInstanceGroupManagerResizeRequest',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceGroupManagerResizeRequestComputeBetaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_instance_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2820,6 +4327,17 @@ Future<GetInstanceIamPolicyComputeBetaResult> getInstanceIamPolicyComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceIamPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceIamPolicyComputeBetaResult> getInstanceIamPolicyComputeBetaOutput(
+  GetInstanceIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceIamPolicyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified instance template.
@@ -2838,6 +4356,17 @@ Future<GetInstanceTemplateComputeBetaResult> getInstanceTemplateComputeBeta(
   return GetInstanceTemplateComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceTemplateComputeBetaResult> getInstanceTemplateComputeBetaOutput(
+  GetInstanceTemplateComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getInstanceTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceTemplateComputeBetaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_instance_template_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2852,6 +4381,17 @@ Future<GetInstanceTemplateIamPolicyComputeBetaResult> getInstanceTemplateIamPoli
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceTemplateIamPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceTemplateIamPolicyComputeBetaResult> getInstanceTemplateIamPolicyComputeBetaOutput(
+  GetInstanceTemplateIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getInstanceTemplateIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceTemplateIamPolicyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified InstantSnapshot resource in the specified zone.
@@ -2870,6 +4410,17 @@ Future<GetInstantSnapshotComputeBetaResult> getInstantSnapshotComputeBeta(
   return GetInstantSnapshotComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetInstantSnapshotComputeBetaResult> getInstantSnapshotComputeBetaOutput(
+  GetInstantSnapshotComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getInstantSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstantSnapshotComputeBetaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_instant_snapshot_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2884,6 +4435,17 @@ Future<GetInstantSnapshotIamPolicyComputeBetaResult> getInstantSnapshotIamPolicy
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstantSnapshotIamPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetInstantSnapshotIamPolicyComputeBetaResult> getInstantSnapshotIamPolicyComputeBetaOutput(
+  GetInstantSnapshotIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getInstantSnapshotIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstantSnapshotIamPolicyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified Interconnect. Get a list of available Interconnects by making a list() request.
@@ -2902,6 +4464,17 @@ Future<GetInterconnectComputeBetaResult> getInterconnectComputeBeta(
   return GetInterconnectComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetInterconnectComputeBetaResult> getInterconnectComputeBetaOutput(
+  GetInterconnectComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getInterconnect',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInterconnectComputeBetaResult.fromMap);
+}
+
 /// Returns the specified interconnect attachment.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_interconnect_attachment_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2916,6 +4489,17 @@ Future<GetInterconnectAttachmentComputeBetaResult> getInterconnectAttachmentComp
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInterconnectAttachmentComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetInterconnectAttachmentComputeBetaResult> getInterconnectAttachmentComputeBetaOutput(
+  GetInterconnectAttachmentComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getInterconnectAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInterconnectAttachmentComputeBetaResult.fromMap);
 }
 
 /// Returns the specified License resource. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
@@ -2934,6 +4518,17 @@ Future<GetLicenseComputeBetaResult> getLicenseComputeBeta(
   return GetLicenseComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetLicenseComputeBetaResult> getLicenseComputeBetaOutput(
+  GetLicenseComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getLicense',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLicenseComputeBetaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_license_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2948,6 +4543,17 @@ Future<GetLicenseIamPolicyComputeBetaResult> getLicenseIamPolicyComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLicenseIamPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetLicenseIamPolicyComputeBetaResult> getLicenseIamPolicyComputeBetaOutput(
+  GetLicenseIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getLicenseIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLicenseIamPolicyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified machine image.
@@ -2966,6 +4572,17 @@ Future<GetMachineImageComputeBetaResult> getMachineImageComputeBeta(
   return GetMachineImageComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetMachineImageComputeBetaResult> getMachineImageComputeBetaOutput(
+  GetMachineImageComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getMachineImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineImageComputeBetaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_machine_image_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -2980,6 +4597,17 @@ Future<GetMachineImageIamPolicyComputeBetaResult> getMachineImageIamPolicyComput
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMachineImageIamPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetMachineImageIamPolicyComputeBetaResult> getMachineImageIamPolicyComputeBetaOutput(
+  GetMachineImageIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getMachineImageIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineImageIamPolicyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified network.
@@ -2998,6 +4626,17 @@ Future<GetNetworkComputeBetaResult> getNetworkComputeBeta(
   return GetNetworkComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkComputeBetaResult> getNetworkComputeBetaOutput(
+  GetNetworkComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkComputeBetaResult.fromMap);
+}
+
 /// Returns the specified NetworkAttachment resource in the given scope.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_network_attachment_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3012,6 +4651,17 @@ Future<GetNetworkAttachmentComputeBetaResult> getNetworkAttachmentComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkAttachmentComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkAttachmentComputeBetaResult> getNetworkAttachmentComputeBetaOutput(
+  GetNetworkAttachmentComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getNetworkAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkAttachmentComputeBetaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -3030,6 +4680,17 @@ Future<GetNetworkAttachmentIamPolicyComputeBetaResult> getNetworkAttachmentIamPo
   return GetNetworkAttachmentIamPolicyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkAttachmentIamPolicyComputeBetaResult> getNetworkAttachmentIamPolicyComputeBetaOutput(
+  GetNetworkAttachmentIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getNetworkAttachmentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkAttachmentIamPolicyComputeBetaResult.fromMap);
+}
+
 /// Gets a specified NetworkEdgeSecurityService.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_network_edge_security_service_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3044,6 +4705,17 @@ Future<GetNetworkEdgeSecurityServiceComputeBetaResult> getNetworkEdgeSecuritySer
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkEdgeSecurityServiceComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkEdgeSecurityServiceComputeBetaResult> getNetworkEdgeSecurityServiceComputeBetaOutput(
+  GetNetworkEdgeSecurityServiceComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getNetworkEdgeSecurityService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkEdgeSecurityServiceComputeBetaResult.fromMap);
 }
 
 /// Returns the specified network endpoint group.
@@ -3062,6 +4734,17 @@ Future<GetNetworkEndpointGroupComputeBetaResult> getNetworkEndpointGroupComputeB
   return GetNetworkEndpointGroupComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkEndpointGroupComputeBetaResult> getNetworkEndpointGroupComputeBetaOutput(
+  GetNetworkEndpointGroupComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getNetworkEndpointGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkEndpointGroupComputeBetaResult.fromMap);
+}
+
 /// Returns the specified network firewall policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_network_firewall_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3076,6 +4759,17 @@ Future<GetNetworkFirewallPolicyComputeBetaResult> getNetworkFirewallPolicyComput
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkFirewallPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetNetworkFirewallPolicyComputeBetaResult> getNetworkFirewallPolicyComputeBetaOutput(
+  GetNetworkFirewallPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getNetworkFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFirewallPolicyComputeBetaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -3094,6 +4788,17 @@ Future<GetNetworkFirewallPolicyIamPolicyComputeBetaResult> getNetworkFirewallPol
   return GetNetworkFirewallPolicyIamPolicyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetNetworkFirewallPolicyIamPolicyComputeBetaResult> getNetworkFirewallPolicyIamPolicyComputeBetaOutput(
+  GetNetworkFirewallPolicyIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getNetworkFirewallPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFirewallPolicyIamPolicyComputeBetaResult.fromMap);
+}
+
 /// Returns the specified NodeGroup. Get a list of available NodeGroups by making a list() request. Note: the "nodes" field should not be used. Use nodeGroups.listNodes instead.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_node_group_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3108,6 +4813,17 @@ Future<GetNodeGroupComputeBetaResult> getNodeGroupComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNodeGroupComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetNodeGroupComputeBetaResult> getNodeGroupComputeBetaOutput(
+  GetNodeGroupComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getNodeGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeGroupComputeBetaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -3126,6 +4842,17 @@ Future<GetNodeGroupIamPolicyComputeBetaResult> getNodeGroupIamPolicyComputeBeta(
   return GetNodeGroupIamPolicyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetNodeGroupIamPolicyComputeBetaResult> getNodeGroupIamPolicyComputeBetaOutput(
+  GetNodeGroupIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getNodeGroupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeGroupIamPolicyComputeBetaResult.fromMap);
+}
+
 /// Returns the specified node template.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_node_template_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3140,6 +4867,17 @@ Future<GetNodeTemplateComputeBetaResult> getNodeTemplateComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNodeTemplateComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetNodeTemplateComputeBetaResult> getNodeTemplateComputeBetaOutput(
+  GetNodeTemplateComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getNodeTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeTemplateComputeBetaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -3158,6 +4896,17 @@ Future<GetNodeTemplateIamPolicyComputeBetaResult> getNodeTemplateIamPolicyComput
   return GetNodeTemplateIamPolicyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetNodeTemplateIamPolicyComputeBetaResult> getNodeTemplateIamPolicyComputeBetaOutput(
+  GetNodeTemplateIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getNodeTemplateIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeTemplateIamPolicyComputeBetaResult.fromMap);
+}
+
 /// List all of the ordered rules present in a single specified policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_organization_security_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3172,6 +4921,17 @@ Future<GetOrganizationSecurityPolicyComputeBetaResult> getOrganizationSecurityPo
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationSecurityPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationSecurityPolicyComputeBetaResult> getOrganizationSecurityPolicyComputeBetaOutput(
+  GetOrganizationSecurityPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getOrganizationSecurityPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationSecurityPolicyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified PacketMirroring resource.
@@ -3190,6 +4950,17 @@ Future<GetPacketMirroringComputeBetaResult> getPacketMirroringComputeBeta(
   return GetPacketMirroringComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetPacketMirroringComputeBetaResult> getPacketMirroringComputeBetaOutput(
+  GetPacketMirroringComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getPacketMirroring',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPacketMirroringComputeBetaResult.fromMap);
+}
+
 /// Returns the specified PublicAdvertisedPrefix resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_public_advertised_prefix_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3204,6 +4975,17 @@ Future<GetPublicAdvertisedPrefixComputeBetaResult> getPublicAdvertisedPrefixComp
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPublicAdvertisedPrefixComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetPublicAdvertisedPrefixComputeBetaResult> getPublicAdvertisedPrefixComputeBetaOutput(
+  GetPublicAdvertisedPrefixComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getPublicAdvertisedPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicAdvertisedPrefixComputeBetaResult.fromMap);
 }
 
 /// Returns the specified PublicDelegatedPrefix resource in the given region.
@@ -3222,6 +5004,17 @@ Future<GetPublicDelegatedPrefixComputeBetaResult> getPublicDelegatedPrefixComput
   return GetPublicDelegatedPrefixComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetPublicDelegatedPrefixComputeBetaResult> getPublicDelegatedPrefixComputeBetaOutput(
+  GetPublicDelegatedPrefixComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getPublicDelegatedPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicDelegatedPrefixComputeBetaResult.fromMap);
+}
+
 /// Returns the specified autoscaler.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_autoscaler_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3236,6 +5029,17 @@ Future<GetRegionAutoscalerComputeBetaResult> getRegionAutoscalerComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionAutoscalerComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionAutoscalerComputeBetaResult> getRegionAutoscalerComputeBetaOutput(
+  GetRegionAutoscalerComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionAutoscaler',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionAutoscalerComputeBetaResult.fromMap);
 }
 
 /// Returns the specified regional BackendService resource.
@@ -3254,6 +5058,17 @@ Future<GetRegionBackendServiceComputeBetaResult> getRegionBackendServiceComputeB
   return GetRegionBackendServiceComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionBackendServiceComputeBetaResult> getRegionBackendServiceComputeBetaOutput(
+  GetRegionBackendServiceComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionBackendService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionBackendServiceComputeBetaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_backend_service_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3268,6 +5083,17 @@ Future<GetRegionBackendServiceIamPolicyComputeBetaResult> getRegionBackendServic
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionBackendServiceIamPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionBackendServiceIamPolicyComputeBetaResult> getRegionBackendServiceIamPolicyComputeBetaOutput(
+  GetRegionBackendServiceIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionBackendServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionBackendServiceIamPolicyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified commitment resource.
@@ -3286,6 +5112,17 @@ Future<GetRegionCommitmentComputeBetaResult> getRegionCommitmentComputeBeta(
   return GetRegionCommitmentComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionCommitmentComputeBetaResult> getRegionCommitmentComputeBetaOutput(
+  GetRegionCommitmentComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionCommitment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionCommitmentComputeBetaResult.fromMap);
+}
+
 /// Returns a specified regional persistent disk.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_disk_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3300,6 +5137,17 @@ Future<GetRegionDiskComputeBetaResult> getRegionDiskComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionDiskComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionDiskComputeBetaResult> getRegionDiskComputeBetaOutput(
+  GetRegionDiskComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionDisk',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionDiskComputeBetaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -3318,6 +5166,17 @@ Future<GetRegionDiskIamPolicyComputeBetaResult> getRegionDiskIamPolicyComputeBet
   return GetRegionDiskIamPolicyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionDiskIamPolicyComputeBetaResult> getRegionDiskIamPolicyComputeBetaOutput(
+  GetRegionDiskIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionDiskIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionDiskIamPolicyComputeBetaResult.fromMap);
+}
+
 /// Returns the specified HealthCheck resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_health_check_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3332,6 +5191,17 @@ Future<GetRegionHealthCheckComputeBetaResult> getRegionHealthCheckComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionHealthCheckComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionHealthCheckComputeBetaResult> getRegionHealthCheckComputeBetaOutput(
+  GetRegionHealthCheckComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionHealthCheck',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionHealthCheckComputeBetaResult.fromMap);
 }
 
 /// Returns the specified regional HealthCheckService resource.
@@ -3350,6 +5220,17 @@ Future<GetRegionHealthCheckServiceComputeBetaResult> getRegionHealthCheckService
   return GetRegionHealthCheckServiceComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionHealthCheckServiceComputeBetaResult> getRegionHealthCheckServiceComputeBetaOutput(
+  GetRegionHealthCheckServiceComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionHealthCheckService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionHealthCheckServiceComputeBetaResult.fromMap);
+}
+
 /// Returns all of the details about the specified managed instance group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_instance_group_manager_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3364,6 +5245,17 @@ Future<GetRegionInstanceGroupManagerComputeBetaResult> getRegionInstanceGroupMan
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionInstanceGroupManagerComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionInstanceGroupManagerComputeBetaResult> getRegionInstanceGroupManagerComputeBetaOutput(
+  GetRegionInstanceGroupManagerComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionInstanceGroupManager',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionInstanceGroupManagerComputeBetaResult.fromMap);
 }
 
 /// Returns the specified instance template.
@@ -3382,6 +5274,17 @@ Future<GetRegionInstanceTemplateComputeBetaResult> getRegionInstanceTemplateComp
   return GetRegionInstanceTemplateComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionInstanceTemplateComputeBetaResult> getRegionInstanceTemplateComputeBetaOutput(
+  GetRegionInstanceTemplateComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionInstanceTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionInstanceTemplateComputeBetaResult.fromMap);
+}
+
 /// Returns the specified InstantSnapshot resource in the specified region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_instant_snapshot_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3396,6 +5299,17 @@ Future<GetRegionInstantSnapshotComputeBetaResult> getRegionInstantSnapshotComput
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionInstantSnapshotComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionInstantSnapshotComputeBetaResult> getRegionInstantSnapshotComputeBetaOutput(
+  GetRegionInstantSnapshotComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionInstantSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionInstantSnapshotComputeBetaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -3414,6 +5328,17 @@ Future<GetRegionInstantSnapshotIamPolicyComputeBetaResult> getRegionInstantSnaps
   return GetRegionInstantSnapshotIamPolicyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionInstantSnapshotIamPolicyComputeBetaResult> getRegionInstantSnapshotIamPolicyComputeBetaOutput(
+  GetRegionInstantSnapshotIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionInstantSnapshotIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionInstantSnapshotIamPolicyComputeBetaResult.fromMap);
+}
+
 /// Returns the specified network endpoint group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_network_endpoint_group_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3428,6 +5353,17 @@ Future<GetRegionNetworkEndpointGroupComputeBetaResult> getRegionNetworkEndpointG
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionNetworkEndpointGroupComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionNetworkEndpointGroupComputeBetaResult> getRegionNetworkEndpointGroupComputeBetaOutput(
+  GetRegionNetworkEndpointGroupComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionNetworkEndpointGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionNetworkEndpointGroupComputeBetaResult.fromMap);
 }
 
 /// Returns the specified network firewall policy.
@@ -3446,6 +5382,17 @@ Future<GetRegionNetworkFirewallPolicyComputeBetaResult> getRegionNetworkFirewall
   return GetRegionNetworkFirewallPolicyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionNetworkFirewallPolicyComputeBetaResult> getRegionNetworkFirewallPolicyComputeBetaOutput(
+  GetRegionNetworkFirewallPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionNetworkFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionNetworkFirewallPolicyComputeBetaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_network_firewall_policy_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3460,6 +5407,17 @@ Future<GetRegionNetworkFirewallPolicyIamPolicyComputeBetaResult> getRegionNetwor
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionNetworkFirewallPolicyIamPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionNetworkFirewallPolicyIamPolicyComputeBetaResult> getRegionNetworkFirewallPolicyIamPolicyComputeBetaOutput(
+  GetRegionNetworkFirewallPolicyIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionNetworkFirewallPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionNetworkFirewallPolicyIamPolicyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified NotificationEndpoint resource in the given region.
@@ -3478,6 +5436,17 @@ Future<GetRegionNotificationEndpointComputeBetaResult> getRegionNotificationEndp
   return GetRegionNotificationEndpointComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionNotificationEndpointComputeBetaResult> getRegionNotificationEndpointComputeBetaOutput(
+  GetRegionNotificationEndpointComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionNotificationEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionNotificationEndpointComputeBetaResult.fromMap);
+}
+
 /// List all of the ordered rules present in a single specified policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_security_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3492,6 +5461,17 @@ Future<GetRegionSecurityPolicyComputeBetaResult> getRegionSecurityPolicyComputeB
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionSecurityPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionSecurityPolicyComputeBetaResult> getRegionSecurityPolicyComputeBetaOutput(
+  GetRegionSecurityPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionSecurityPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionSecurityPolicyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified SslCertificate resource in the specified region. Get a list of available SSL certificates by making a list() request.
@@ -3510,6 +5490,17 @@ Future<GetRegionSslCertificateComputeBetaResult> getRegionSslCertificateComputeB
   return GetRegionSslCertificateComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionSslCertificateComputeBetaResult> getRegionSslCertificateComputeBetaOutput(
+  GetRegionSslCertificateComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionSslCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionSslCertificateComputeBetaResult.fromMap);
+}
+
 /// Lists all of the ordered rules present in a single specified policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_ssl_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3524,6 +5515,17 @@ Future<GetRegionSslPolicyComputeBetaResult> getRegionSslPolicyComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionSslPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionSslPolicyComputeBetaResult> getRegionSslPolicyComputeBetaOutput(
+  GetRegionSslPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionSslPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionSslPolicyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified TargetHttpProxy resource in the specified region.
@@ -3542,6 +5544,17 @@ Future<GetRegionTargetHttpProxyComputeBetaResult> getRegionTargetHttpProxyComput
   return GetRegionTargetHttpProxyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionTargetHttpProxyComputeBetaResult> getRegionTargetHttpProxyComputeBetaOutput(
+  GetRegionTargetHttpProxyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionTargetHttpProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionTargetHttpProxyComputeBetaResult.fromMap);
+}
+
 /// Returns the specified TargetHttpsProxy resource in the specified region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_target_https_proxy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3556,6 +5569,17 @@ Future<GetRegionTargetHttpsProxyComputeBetaResult> getRegionTargetHttpsProxyComp
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionTargetHttpsProxyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionTargetHttpsProxyComputeBetaResult> getRegionTargetHttpsProxyComputeBetaOutput(
+  GetRegionTargetHttpsProxyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionTargetHttpsProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionTargetHttpsProxyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified TargetTcpProxy resource.
@@ -3574,6 +5598,17 @@ Future<GetRegionTargetTcpProxyComputeBetaResult> getRegionTargetTcpProxyComputeB
   return GetRegionTargetTcpProxyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetRegionTargetTcpProxyComputeBetaResult> getRegionTargetTcpProxyComputeBetaOutput(
+  GetRegionTargetTcpProxyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionTargetTcpProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionTargetTcpProxyComputeBetaResult.fromMap);
+}
+
 /// Returns the specified UrlMap resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_region_url_map_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3588,6 +5623,17 @@ Future<GetRegionUrlMapComputeBetaResult> getRegionUrlMapComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionUrlMapComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetRegionUrlMapComputeBetaResult> getRegionUrlMapComputeBetaOutput(
+  GetRegionUrlMapComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRegionUrlMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionUrlMapComputeBetaResult.fromMap);
 }
 
 /// Retrieves information about the specified reservation.
@@ -3606,6 +5652,17 @@ Future<GetReservationComputeBetaResult> getReservationComputeBeta(
   return GetReservationComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetReservationComputeBetaResult> getReservationComputeBetaOutput(
+  GetReservationComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getReservation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservationComputeBetaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_reservation_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3620,6 +5677,17 @@ Future<GetReservationIamPolicyComputeBetaResult> getReservationIamPolicyComputeB
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReservationIamPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetReservationIamPolicyComputeBetaResult> getReservationIamPolicyComputeBetaOutput(
+  GetReservationIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getReservationIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservationIamPolicyComputeBetaResult.fromMap);
 }
 
 /// Retrieves all information of the specified resource policy.
@@ -3638,6 +5706,17 @@ Future<GetResourcePolicyComputeBetaResult> getResourcePolicyComputeBeta(
   return GetResourcePolicyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetResourcePolicyComputeBetaResult> getResourcePolicyComputeBetaOutput(
+  GetResourcePolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getResourcePolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourcePolicyComputeBetaResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_resource_policy_iam_policy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3652,6 +5731,17 @@ Future<GetResourcePolicyIamPolicyComputeBetaResult> getResourcePolicyIamPolicyCo
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourcePolicyIamPolicyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetResourcePolicyIamPolicyComputeBetaResult> getResourcePolicyIamPolicyComputeBetaOutput(
+  GetResourcePolicyIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getResourcePolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourcePolicyIamPolicyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified Route resource.
@@ -3670,6 +5760,17 @@ Future<GetRouteComputeBetaResult> getRouteComputeBeta(
   return GetRouteComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetRouteComputeBetaResult> getRouteComputeBetaOutput(
+  GetRouteComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRoute',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteComputeBetaResult.fromMap);
+}
+
 /// Returns the specified Router resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_router_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3684,6 +5785,17 @@ Future<GetRouterComputeBetaResult> getRouterComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouterComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetRouterComputeBetaResult> getRouterComputeBetaOutput(
+  GetRouterComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getRouter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouterComputeBetaResult.fromMap);
 }
 
 /// List all of the ordered rules present in a single specified policy.
@@ -3702,6 +5814,17 @@ Future<GetSecurityPolicyComputeBetaResult> getSecurityPolicyComputeBeta(
   return GetSecurityPolicyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetSecurityPolicyComputeBetaResult> getSecurityPolicyComputeBetaOutput(
+  GetSecurityPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getSecurityPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityPolicyComputeBetaResult.fromMap);
+}
+
 /// Returns the specified ServiceAttachment resource in the given scope.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_service_attachment_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3716,6 +5839,17 @@ Future<GetServiceAttachmentComputeBetaResult> getServiceAttachmentComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceAttachmentComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceAttachmentComputeBetaResult> getServiceAttachmentComputeBetaOutput(
+  GetServiceAttachmentComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getServiceAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceAttachmentComputeBetaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -3734,6 +5868,17 @@ Future<GetServiceAttachmentIamPolicyComputeBetaResult> getServiceAttachmentIamPo
   return GetServiceAttachmentIamPolicyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceAttachmentIamPolicyComputeBetaResult> getServiceAttachmentIamPolicyComputeBetaOutput(
+  GetServiceAttachmentIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getServiceAttachmentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceAttachmentIamPolicyComputeBetaResult.fromMap);
+}
+
 /// Returns the specified Snapshot resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_snapshot_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3748,6 +5893,17 @@ Future<GetSnapshotComputeBetaResult> getSnapshotComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSnapshotComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetSnapshotComputeBetaResult> getSnapshotComputeBetaOutput(
+  GetSnapshotComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotComputeBetaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -3766,6 +5922,17 @@ Future<GetSnapshotIamPolicyComputeBetaResult> getSnapshotIamPolicyComputeBeta(
   return GetSnapshotIamPolicyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetSnapshotIamPolicyComputeBetaResult> getSnapshotIamPolicyComputeBetaOutput(
+  GetSnapshotIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getSnapshotIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotIamPolicyComputeBetaResult.fromMap);
+}
+
 /// Returns the specified SslCertificate resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_ssl_certificate_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3780,6 +5947,17 @@ Future<GetSslCertificateComputeBetaResult> getSslCertificateComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSslCertificateComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetSslCertificateComputeBetaResult> getSslCertificateComputeBetaOutput(
+  GetSslCertificateComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getSslCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSslCertificateComputeBetaResult.fromMap);
 }
 
 /// Lists all of the ordered rules present in a single specified policy.
@@ -3798,6 +5976,17 @@ Future<GetSslPolicyComputeBetaResult> getSslPolicyComputeBeta(
   return GetSslPolicyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetSslPolicyComputeBetaResult> getSslPolicyComputeBetaOutput(
+  GetSslPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getSslPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSslPolicyComputeBetaResult.fromMap);
+}
+
 /// Returns the specified subnetwork.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_subnetwork_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3812,6 +6001,17 @@ Future<GetSubnetworkComputeBetaResult> getSubnetworkComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubnetworkComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetSubnetworkComputeBetaResult> getSubnetworkComputeBetaOutput(
+  GetSubnetworkComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getSubnetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetworkComputeBetaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -3830,6 +6030,17 @@ Future<GetSubnetworkIamPolicyComputeBetaResult> getSubnetworkIamPolicyComputeBet
   return GetSubnetworkIamPolicyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetSubnetworkIamPolicyComputeBetaResult> getSubnetworkIamPolicyComputeBetaOutput(
+  GetSubnetworkIamPolicyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getSubnetworkIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetworkIamPolicyComputeBetaResult.fromMap);
+}
+
 /// Returns the specified TargetGrpcProxy resource in the given scope.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_target_grpc_proxy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3844,6 +6055,17 @@ Future<GetTargetGrpcProxyComputeBetaResult> getTargetGrpcProxyComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetGrpcProxyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetGrpcProxyComputeBetaResult> getTargetGrpcProxyComputeBetaOutput(
+  GetTargetGrpcProxyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getTargetGrpcProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetGrpcProxyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified TargetHttpProxy resource.
@@ -3862,6 +6084,17 @@ Future<GetTargetHttpProxyComputeBetaResult> getTargetHttpProxyComputeBeta(
   return GetTargetHttpProxyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetTargetHttpProxyComputeBetaResult> getTargetHttpProxyComputeBetaOutput(
+  GetTargetHttpProxyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getTargetHttpProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetHttpProxyComputeBetaResult.fromMap);
+}
+
 /// Returns the specified TargetHttpsProxy resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_target_https_proxy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3876,6 +6109,17 @@ Future<GetTargetHttpsProxyComputeBetaResult> getTargetHttpsProxyComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetHttpsProxyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetHttpsProxyComputeBetaResult> getTargetHttpsProxyComputeBetaOutput(
+  GetTargetHttpsProxyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getTargetHttpsProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetHttpsProxyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified TargetInstance resource.
@@ -3894,6 +6138,17 @@ Future<GetTargetInstanceComputeBetaResult> getTargetInstanceComputeBeta(
   return GetTargetInstanceComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetTargetInstanceComputeBetaResult> getTargetInstanceComputeBetaOutput(
+  GetTargetInstanceComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getTargetInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetInstanceComputeBetaResult.fromMap);
+}
+
 /// Returns the specified target pool.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_target_pool_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3908,6 +6163,17 @@ Future<GetTargetPoolComputeBetaResult> getTargetPoolComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetPoolComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetPoolComputeBetaResult> getTargetPoolComputeBetaOutput(
+  GetTargetPoolComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getTargetPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetPoolComputeBetaResult.fromMap);
 }
 
 /// Returns the specified TargetSslProxy resource.
@@ -3926,6 +6192,17 @@ Future<GetTargetSslProxyComputeBetaResult> getTargetSslProxyComputeBeta(
   return GetTargetSslProxyComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetTargetSslProxyComputeBetaResult> getTargetSslProxyComputeBetaOutput(
+  GetTargetSslProxyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getTargetSslProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetSslProxyComputeBetaResult.fromMap);
+}
+
 /// Returns the specified TargetTcpProxy resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_target_tcp_proxy_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3940,6 +6217,17 @@ Future<GetTargetTcpProxyComputeBetaResult> getTargetTcpProxyComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetTcpProxyComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetTargetTcpProxyComputeBetaResult> getTargetTcpProxyComputeBetaOutput(
+  GetTargetTcpProxyComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getTargetTcpProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetTcpProxyComputeBetaResult.fromMap);
 }
 
 /// Returns the specified target VPN gateway.
@@ -3958,6 +6246,17 @@ Future<GetTargetVpnGatewayComputeBetaResult> getTargetVpnGatewayComputeBeta(
   return GetTargetVpnGatewayComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetTargetVpnGatewayComputeBetaResult> getTargetVpnGatewayComputeBetaOutput(
+  GetTargetVpnGatewayComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getTargetVpnGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetVpnGatewayComputeBetaResult.fromMap);
+}
+
 /// Returns the specified UrlMap resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_url_map_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -3972,6 +6271,17 @@ Future<GetUrlMapComputeBetaResult> getUrlMapComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUrlMapComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetUrlMapComputeBetaResult> getUrlMapComputeBetaOutput(
+  GetUrlMapComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getUrlMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUrlMapComputeBetaResult.fromMap);
 }
 
 /// Returns the specified VPN gateway.
@@ -3990,6 +6300,17 @@ Future<GetVpnGatewayComputeBetaResult> getVpnGatewayComputeBeta(
   return GetVpnGatewayComputeBetaResult.fromMap(result);
 }
 
+pulumi.Output<GetVpnGatewayComputeBetaResult> getVpnGatewayComputeBetaOutput(
+  GetVpnGatewayComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getVpnGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpnGatewayComputeBetaResult.fromMap);
+}
+
 /// Returns the specified VpnTunnel resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_beta_get_vpn_tunnel_compute_beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4004,6 +6325,17 @@ Future<GetVpnTunnelComputeBetaResult> getVpnTunnelComputeBeta(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpnTunnelComputeBetaResult.fromMap(result);
+}
+
+pulumi.Output<GetVpnTunnelComputeBetaResult> getVpnTunnelComputeBetaOutput(
+  GetVpnTunnelComputeBetaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/beta:getVpnTunnel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpnTunnelComputeBetaResult.fromMap);
 }
 
 /// Returns the specified address resource.
@@ -4022,6 +6354,17 @@ Future<GetAddressComputeV1Result> getAddressComputeV1(
   return GetAddressComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetAddressComputeV1Result> getAddressComputeV1Output(
+  GetAddressComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getAddress',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAddressComputeV1Result.fromMap);
+}
+
 /// Returns the specified autoscaler resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_autoscaler_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4036,6 +6379,17 @@ Future<GetAutoscalerComputeV1Result> getAutoscalerComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetAutoscalerComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetAutoscalerComputeV1Result> getAutoscalerComputeV1Output(
+  GetAutoscalerComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getAutoscaler',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetAutoscalerComputeV1Result.fromMap);
 }
 
 /// Returns the specified BackendBucket resource.
@@ -4054,6 +6408,17 @@ Future<GetBackendBucketComputeV1Result> getBackendBucketComputeV1(
   return GetBackendBucketComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetBackendBucketComputeV1Result> getBackendBucketComputeV1Output(
+  GetBackendBucketComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getBackendBucket',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendBucketComputeV1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_backend_bucket_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4068,6 +6433,17 @@ Future<GetBackendBucketIamPolicyComputeV1Result> getBackendBucketIamPolicyComput
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackendBucketIamPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetBackendBucketIamPolicyComputeV1Result> getBackendBucketIamPolicyComputeV1Output(
+  GetBackendBucketIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getBackendBucketIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendBucketIamPolicyComputeV1Result.fromMap);
 }
 
 /// Returns the specified BackendService resource.
@@ -4086,6 +6462,17 @@ Future<GetBackendServiceComputeV1Result> getBackendServiceComputeV1(
   return GetBackendServiceComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetBackendServiceComputeV1Result> getBackendServiceComputeV1Output(
+  GetBackendServiceComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getBackendService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendServiceComputeV1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_backend_service_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4100,6 +6487,17 @@ Future<GetBackendServiceIamPolicyComputeV1Result> getBackendServiceIamPolicyComp
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetBackendServiceIamPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetBackendServiceIamPolicyComputeV1Result> getBackendServiceIamPolicyComputeV1Output(
+  GetBackendServiceIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getBackendServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetBackendServiceIamPolicyComputeV1Result.fromMap);
 }
 
 /// Returns the specified persistent disk.
@@ -4118,6 +6516,17 @@ Future<GetDiskComputeV1Result> getDiskComputeV1(
   return GetDiskComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetDiskComputeV1Result> getDiskComputeV1Output(
+  GetDiskComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getDisk',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskComputeV1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_disk_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4132,6 +6541,17 @@ Future<GetDiskIamPolicyComputeV1Result> getDiskIamPolicyComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDiskIamPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetDiskIamPolicyComputeV1Result> getDiskIamPolicyComputeV1Output(
+  GetDiskIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getDiskIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDiskIamPolicyComputeV1Result.fromMap);
 }
 
 /// Returns the specified externalVpnGateway. Get a list of available externalVpnGateways by making a list() request.
@@ -4150,6 +6570,17 @@ Future<GetExternalVpnGatewayComputeV1Result> getExternalVpnGatewayComputeV1(
   return GetExternalVpnGatewayComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetExternalVpnGatewayComputeV1Result> getExternalVpnGatewayComputeV1Output(
+  GetExternalVpnGatewayComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getExternalVpnGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetExternalVpnGatewayComputeV1Result.fromMap);
+}
+
 /// Returns the specified firewall.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_firewall_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4164,6 +6595,17 @@ Future<GetFirewallComputeV1Result> getFirewallComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFirewallComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetFirewallComputeV1Result> getFirewallComputeV1Output(
+  GetFirewallComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getFirewall',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallComputeV1Result.fromMap);
 }
 
 /// Returns the specified firewall policy.
@@ -4182,6 +6624,17 @@ Future<GetFirewallPolicyComputeV1Result> getFirewallPolicyComputeV1(
   return GetFirewallPolicyComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetFirewallPolicyComputeV1Result> getFirewallPolicyComputeV1Output(
+  GetFirewallPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallPolicyComputeV1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_firewall_policy_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4196,6 +6649,17 @@ Future<GetFirewallPolicyIamPolicyComputeV1Result> getFirewallPolicyIamPolicyComp
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetFirewallPolicyIamPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetFirewallPolicyIamPolicyComputeV1Result> getFirewallPolicyIamPolicyComputeV1Output(
+  GetFirewallPolicyIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getFirewallPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFirewallPolicyIamPolicyComputeV1Result.fromMap);
 }
 
 /// Returns the specified ForwardingRule resource.
@@ -4214,6 +6678,17 @@ Future<GetForwardingRuleComputeV1Result> getForwardingRuleComputeV1(
   return GetForwardingRuleComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetForwardingRuleComputeV1Result> getForwardingRuleComputeV1Output(
+  GetForwardingRuleComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getForwardingRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetForwardingRuleComputeV1Result.fromMap);
+}
+
 /// Returns the specified address resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_global_address_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4228,6 +6703,17 @@ Future<GetGlobalAddressComputeV1Result> getGlobalAddressComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlobalAddressComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetGlobalAddressComputeV1Result> getGlobalAddressComputeV1Output(
+  GetGlobalAddressComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getGlobalAddress',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalAddressComputeV1Result.fromMap);
 }
 
 /// Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by making a list() request.
@@ -4246,6 +6732,17 @@ Future<GetGlobalForwardingRuleComputeV1Result> getGlobalForwardingRuleComputeV1(
   return GetGlobalForwardingRuleComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetGlobalForwardingRuleComputeV1Result> getGlobalForwardingRuleComputeV1Output(
+  GetGlobalForwardingRuleComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getGlobalForwardingRule',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalForwardingRuleComputeV1Result.fromMap);
+}
+
 /// Returns the specified network endpoint group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_global_network_endpoint_group_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4260,6 +6757,17 @@ Future<GetGlobalNetworkEndpointGroupComputeV1Result> getGlobalNetworkEndpointGro
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGlobalNetworkEndpointGroupComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetGlobalNetworkEndpointGroupComputeV1Result> getGlobalNetworkEndpointGroupComputeV1Output(
+  GetGlobalNetworkEndpointGroupComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getGlobalNetworkEndpointGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalNetworkEndpointGroupComputeV1Result.fromMap);
 }
 
 /// Returns the specified global PublicDelegatedPrefix resource.
@@ -4278,6 +6786,17 @@ Future<GetGlobalPublicDelegatedPrefixComputeV1Result> getGlobalPublicDelegatedPr
   return GetGlobalPublicDelegatedPrefixComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetGlobalPublicDelegatedPrefixComputeV1Result> getGlobalPublicDelegatedPrefixComputeV1Output(
+  GetGlobalPublicDelegatedPrefixComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getGlobalPublicDelegatedPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGlobalPublicDelegatedPrefixComputeV1Result.fromMap);
+}
+
 /// Returns the specified HealthCheck resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_health_check_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4292,6 +6811,17 @@ Future<GetHealthCheckComputeV1Result> getHealthCheckComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHealthCheckComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetHealthCheckComputeV1Result> getHealthCheckComputeV1Output(
+  GetHealthCheckComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getHealthCheck',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHealthCheckComputeV1Result.fromMap);
 }
 
 /// Returns the specified HttpHealthCheck resource.
@@ -4310,6 +6840,17 @@ Future<GetHttpHealthCheckComputeV1Result> getHttpHealthCheckComputeV1(
   return GetHttpHealthCheckComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetHttpHealthCheckComputeV1Result> getHttpHealthCheckComputeV1Output(
+  GetHttpHealthCheckComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getHttpHealthCheck',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHttpHealthCheckComputeV1Result.fromMap);
+}
+
 /// Returns the specified HttpsHealthCheck resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_https_health_check_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4324,6 +6865,17 @@ Future<GetHttpsHealthCheckComputeV1Result> getHttpsHealthCheckComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetHttpsHealthCheckComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetHttpsHealthCheckComputeV1Result> getHttpsHealthCheckComputeV1Output(
+  GetHttpsHealthCheckComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getHttpsHealthCheck',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetHttpsHealthCheckComputeV1Result.fromMap);
 }
 
 /// Returns the specified image.
@@ -4342,6 +6894,17 @@ Future<GetImageComputeV1Result> getImageComputeV1(
   return GetImageComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetImageComputeV1Result> getImageComputeV1Output(
+  GetImageComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageComputeV1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_image_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4356,6 +6919,17 @@ Future<GetImageIamPolicyComputeV1Result> getImageIamPolicyComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetImageIamPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetImageIamPolicyComputeV1Result> getImageIamPolicyComputeV1Output(
+  GetImageIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getImageIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetImageIamPolicyComputeV1Result.fromMap);
 }
 
 /// Returns the specified Instance resource.
@@ -4374,6 +6948,17 @@ Future<GetInstanceComputeV1Result> getInstanceComputeV1(
   return GetInstanceComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetInstanceComputeV1Result> getInstanceComputeV1Output(
+  GetInstanceComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceComputeV1Result.fromMap);
+}
+
 /// Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request. For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_instance_group_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4388,6 +6973,17 @@ Future<GetInstanceGroupComputeV1Result> getInstanceGroupComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceGroupComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetInstanceGroupComputeV1Result> getInstanceGroupComputeV1Output(
+  GetInstanceGroupComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getInstanceGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceGroupComputeV1Result.fromMap);
 }
 
 /// Returns all of the details about the specified managed instance group.
@@ -4406,6 +7002,17 @@ Future<GetInstanceGroupManagerComputeV1Result> getInstanceGroupManagerComputeV1(
   return GetInstanceGroupManagerComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetInstanceGroupManagerComputeV1Result> getInstanceGroupManagerComputeV1Output(
+  GetInstanceGroupManagerComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getInstanceGroupManager',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceGroupManagerComputeV1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_instance_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4420,6 +7027,17 @@ Future<GetInstanceIamPolicyComputeV1Result> getInstanceIamPolicyComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceIamPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetInstanceIamPolicyComputeV1Result> getInstanceIamPolicyComputeV1Output(
+  GetInstanceIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceIamPolicyComputeV1Result.fromMap);
 }
 
 /// Returns the specified instance template.
@@ -4438,6 +7056,17 @@ Future<GetInstanceTemplateComputeV1Result> getInstanceTemplateComputeV1(
   return GetInstanceTemplateComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetInstanceTemplateComputeV1Result> getInstanceTemplateComputeV1Output(
+  GetInstanceTemplateComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getInstanceTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceTemplateComputeV1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_instance_template_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4452,6 +7081,17 @@ Future<GetInstanceTemplateIamPolicyComputeV1Result> getInstanceTemplateIamPolicy
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceTemplateIamPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetInstanceTemplateIamPolicyComputeV1Result> getInstanceTemplateIamPolicyComputeV1Output(
+  GetInstanceTemplateIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getInstanceTemplateIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceTemplateIamPolicyComputeV1Result.fromMap);
 }
 
 /// Returns the specified Interconnect. Get a list of available Interconnects by making a list() request.
@@ -4470,6 +7110,17 @@ Future<GetInterconnectComputeV1Result> getInterconnectComputeV1(
   return GetInterconnectComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetInterconnectComputeV1Result> getInterconnectComputeV1Output(
+  GetInterconnectComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getInterconnect',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInterconnectComputeV1Result.fromMap);
+}
+
 /// Returns the specified interconnect attachment.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_interconnect_attachment_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4484,6 +7135,17 @@ Future<GetInterconnectAttachmentComputeV1Result> getInterconnectAttachmentComput
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInterconnectAttachmentComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetInterconnectAttachmentComputeV1Result> getInterconnectAttachmentComputeV1Output(
+  GetInterconnectAttachmentComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getInterconnectAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInterconnectAttachmentComputeV1Result.fromMap);
 }
 
 /// Returns the specified License resource. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
@@ -4502,6 +7164,17 @@ Future<GetLicenseComputeV1Result> getLicenseComputeV1(
   return GetLicenseComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetLicenseComputeV1Result> getLicenseComputeV1Output(
+  GetLicenseComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getLicense',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLicenseComputeV1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_license_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4516,6 +7189,17 @@ Future<GetLicenseIamPolicyComputeV1Result> getLicenseIamPolicyComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetLicenseIamPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetLicenseIamPolicyComputeV1Result> getLicenseIamPolicyComputeV1Output(
+  GetLicenseIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getLicenseIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetLicenseIamPolicyComputeV1Result.fromMap);
 }
 
 /// Returns the specified machine image.
@@ -4534,6 +7218,17 @@ Future<GetMachineImageComputeV1Result> getMachineImageComputeV1(
   return GetMachineImageComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetMachineImageComputeV1Result> getMachineImageComputeV1Output(
+  GetMachineImageComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getMachineImage',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineImageComputeV1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_machine_image_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4548,6 +7243,17 @@ Future<GetMachineImageIamPolicyComputeV1Result> getMachineImageIamPolicyComputeV
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetMachineImageIamPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetMachineImageIamPolicyComputeV1Result> getMachineImageIamPolicyComputeV1Output(
+  GetMachineImageIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getMachineImageIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMachineImageIamPolicyComputeV1Result.fromMap);
 }
 
 /// Returns the specified network.
@@ -4566,6 +7272,17 @@ Future<GetNetworkComputeV1Result> getNetworkComputeV1(
   return GetNetworkComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetNetworkComputeV1Result> getNetworkComputeV1Output(
+  GetNetworkComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getNetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkComputeV1Result.fromMap);
+}
+
 /// Returns the specified NetworkAttachment resource in the given scope.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_network_attachment_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4580,6 +7297,17 @@ Future<GetNetworkAttachmentComputeV1Result> getNetworkAttachmentComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkAttachmentComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetNetworkAttachmentComputeV1Result> getNetworkAttachmentComputeV1Output(
+  GetNetworkAttachmentComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getNetworkAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkAttachmentComputeV1Result.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -4598,6 +7326,17 @@ Future<GetNetworkAttachmentIamPolicyComputeV1Result> getNetworkAttachmentIamPoli
   return GetNetworkAttachmentIamPolicyComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetNetworkAttachmentIamPolicyComputeV1Result> getNetworkAttachmentIamPolicyComputeV1Output(
+  GetNetworkAttachmentIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getNetworkAttachmentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkAttachmentIamPolicyComputeV1Result.fromMap);
+}
+
 /// Gets a specified NetworkEdgeSecurityService.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_network_edge_security_service_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4612,6 +7351,17 @@ Future<GetNetworkEdgeSecurityServiceComputeV1Result> getNetworkEdgeSecurityServi
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkEdgeSecurityServiceComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetNetworkEdgeSecurityServiceComputeV1Result> getNetworkEdgeSecurityServiceComputeV1Output(
+  GetNetworkEdgeSecurityServiceComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getNetworkEdgeSecurityService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkEdgeSecurityServiceComputeV1Result.fromMap);
 }
 
 /// Returns the specified network endpoint group.
@@ -4630,6 +7380,17 @@ Future<GetNetworkEndpointGroupComputeV1Result> getNetworkEndpointGroupComputeV1(
   return GetNetworkEndpointGroupComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetNetworkEndpointGroupComputeV1Result> getNetworkEndpointGroupComputeV1Output(
+  GetNetworkEndpointGroupComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getNetworkEndpointGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkEndpointGroupComputeV1Result.fromMap);
+}
+
 /// Returns the specified network firewall policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_network_firewall_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4644,6 +7405,17 @@ Future<GetNetworkFirewallPolicyComputeV1Result> getNetworkFirewallPolicyComputeV
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNetworkFirewallPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetNetworkFirewallPolicyComputeV1Result> getNetworkFirewallPolicyComputeV1Output(
+  GetNetworkFirewallPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getNetworkFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFirewallPolicyComputeV1Result.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -4662,6 +7434,17 @@ Future<GetNetworkFirewallPolicyIamPolicyComputeV1Result> getNetworkFirewallPolic
   return GetNetworkFirewallPolicyIamPolicyComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetNetworkFirewallPolicyIamPolicyComputeV1Result> getNetworkFirewallPolicyIamPolicyComputeV1Output(
+  GetNetworkFirewallPolicyIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getNetworkFirewallPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNetworkFirewallPolicyIamPolicyComputeV1Result.fromMap);
+}
+
 /// Returns the specified NodeGroup. Get a list of available NodeGroups by making a list() request. Note: the "nodes" field should not be used. Use nodeGroups.listNodes instead.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_node_group_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4676,6 +7459,17 @@ Future<GetNodeGroupComputeV1Result> getNodeGroupComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNodeGroupComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetNodeGroupComputeV1Result> getNodeGroupComputeV1Output(
+  GetNodeGroupComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getNodeGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeGroupComputeV1Result.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -4694,6 +7488,17 @@ Future<GetNodeGroupIamPolicyComputeV1Result> getNodeGroupIamPolicyComputeV1(
   return GetNodeGroupIamPolicyComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetNodeGroupIamPolicyComputeV1Result> getNodeGroupIamPolicyComputeV1Output(
+  GetNodeGroupIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getNodeGroupIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeGroupIamPolicyComputeV1Result.fromMap);
+}
+
 /// Returns the specified node template.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_node_template_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4708,6 +7513,17 @@ Future<GetNodeTemplateComputeV1Result> getNodeTemplateComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetNodeTemplateComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetNodeTemplateComputeV1Result> getNodeTemplateComputeV1Output(
+  GetNodeTemplateComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getNodeTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeTemplateComputeV1Result.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -4726,6 +7542,17 @@ Future<GetNodeTemplateIamPolicyComputeV1Result> getNodeTemplateIamPolicyComputeV
   return GetNodeTemplateIamPolicyComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetNodeTemplateIamPolicyComputeV1Result> getNodeTemplateIamPolicyComputeV1Output(
+  GetNodeTemplateIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getNodeTemplateIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetNodeTemplateIamPolicyComputeV1Result.fromMap);
+}
+
 /// Returns the specified PacketMirroring resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_packet_mirroring_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4740,6 +7567,17 @@ Future<GetPacketMirroringComputeV1Result> getPacketMirroringComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPacketMirroringComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetPacketMirroringComputeV1Result> getPacketMirroringComputeV1Output(
+  GetPacketMirroringComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getPacketMirroring',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPacketMirroringComputeV1Result.fromMap);
 }
 
 /// Returns the specified PublicAdvertisedPrefix resource.
@@ -4758,6 +7596,17 @@ Future<GetPublicAdvertisedPrefixComputeV1Result> getPublicAdvertisedPrefixComput
   return GetPublicAdvertisedPrefixComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetPublicAdvertisedPrefixComputeV1Result> getPublicAdvertisedPrefixComputeV1Output(
+  GetPublicAdvertisedPrefixComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getPublicAdvertisedPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicAdvertisedPrefixComputeV1Result.fromMap);
+}
+
 /// Returns the specified PublicDelegatedPrefix resource in the given region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_public_delegated_prefix_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4772,6 +7621,17 @@ Future<GetPublicDelegatedPrefixComputeV1Result> getPublicDelegatedPrefixComputeV
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetPublicDelegatedPrefixComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetPublicDelegatedPrefixComputeV1Result> getPublicDelegatedPrefixComputeV1Output(
+  GetPublicDelegatedPrefixComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getPublicDelegatedPrefix',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetPublicDelegatedPrefixComputeV1Result.fromMap);
 }
 
 /// Returns the specified autoscaler.
@@ -4790,6 +7650,17 @@ Future<GetRegionAutoscalerComputeV1Result> getRegionAutoscalerComputeV1(
   return GetRegionAutoscalerComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetRegionAutoscalerComputeV1Result> getRegionAutoscalerComputeV1Output(
+  GetRegionAutoscalerComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionAutoscaler',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionAutoscalerComputeV1Result.fromMap);
+}
+
 /// Returns the specified regional BackendService resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_backend_service_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4804,6 +7675,17 @@ Future<GetRegionBackendServiceComputeV1Result> getRegionBackendServiceComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionBackendServiceComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetRegionBackendServiceComputeV1Result> getRegionBackendServiceComputeV1Output(
+  GetRegionBackendServiceComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionBackendService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionBackendServiceComputeV1Result.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -4822,6 +7704,17 @@ Future<GetRegionBackendServiceIamPolicyComputeV1Result> getRegionBackendServiceI
   return GetRegionBackendServiceIamPolicyComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetRegionBackendServiceIamPolicyComputeV1Result> getRegionBackendServiceIamPolicyComputeV1Output(
+  GetRegionBackendServiceIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionBackendServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionBackendServiceIamPolicyComputeV1Result.fromMap);
+}
+
 /// Returns the specified commitment resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_commitment_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4836,6 +7729,17 @@ Future<GetRegionCommitmentComputeV1Result> getRegionCommitmentComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionCommitmentComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetRegionCommitmentComputeV1Result> getRegionCommitmentComputeV1Output(
+  GetRegionCommitmentComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionCommitment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionCommitmentComputeV1Result.fromMap);
 }
 
 /// Returns a specified regional persistent disk.
@@ -4854,6 +7758,17 @@ Future<GetRegionDiskComputeV1Result> getRegionDiskComputeV1(
   return GetRegionDiskComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetRegionDiskComputeV1Result> getRegionDiskComputeV1Output(
+  GetRegionDiskComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionDisk',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionDiskComputeV1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_disk_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4868,6 +7783,17 @@ Future<GetRegionDiskIamPolicyComputeV1Result> getRegionDiskIamPolicyComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionDiskIamPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetRegionDiskIamPolicyComputeV1Result> getRegionDiskIamPolicyComputeV1Output(
+  GetRegionDiskIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionDiskIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionDiskIamPolicyComputeV1Result.fromMap);
 }
 
 /// Returns the specified HealthCheck resource.
@@ -4886,6 +7812,17 @@ Future<GetRegionHealthCheckComputeV1Result> getRegionHealthCheckComputeV1(
   return GetRegionHealthCheckComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetRegionHealthCheckComputeV1Result> getRegionHealthCheckComputeV1Output(
+  GetRegionHealthCheckComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionHealthCheck',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionHealthCheckComputeV1Result.fromMap);
+}
+
 /// Returns the specified regional HealthCheckService resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_health_check_service_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4900,6 +7837,17 @@ Future<GetRegionHealthCheckServiceComputeV1Result> getRegionHealthCheckServiceCo
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionHealthCheckServiceComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetRegionHealthCheckServiceComputeV1Result> getRegionHealthCheckServiceComputeV1Output(
+  GetRegionHealthCheckServiceComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionHealthCheckService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionHealthCheckServiceComputeV1Result.fromMap);
 }
 
 /// Returns all of the details about the specified managed instance group.
@@ -4918,6 +7866,17 @@ Future<GetRegionInstanceGroupManagerComputeV1Result> getRegionInstanceGroupManag
   return GetRegionInstanceGroupManagerComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetRegionInstanceGroupManagerComputeV1Result> getRegionInstanceGroupManagerComputeV1Output(
+  GetRegionInstanceGroupManagerComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionInstanceGroupManager',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionInstanceGroupManagerComputeV1Result.fromMap);
+}
+
 /// Returns the specified instance template.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_instance_template_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4932,6 +7891,17 @@ Future<GetRegionInstanceTemplateComputeV1Result> getRegionInstanceTemplateComput
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionInstanceTemplateComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetRegionInstanceTemplateComputeV1Result> getRegionInstanceTemplateComputeV1Output(
+  GetRegionInstanceTemplateComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionInstanceTemplate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionInstanceTemplateComputeV1Result.fromMap);
 }
 
 /// Returns the specified network endpoint group.
@@ -4950,6 +7920,17 @@ Future<GetRegionNetworkEndpointGroupComputeV1Result> getRegionNetworkEndpointGro
   return GetRegionNetworkEndpointGroupComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetRegionNetworkEndpointGroupComputeV1Result> getRegionNetworkEndpointGroupComputeV1Output(
+  GetRegionNetworkEndpointGroupComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionNetworkEndpointGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionNetworkEndpointGroupComputeV1Result.fromMap);
+}
+
 /// Returns the specified network firewall policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_network_firewall_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4964,6 +7945,17 @@ Future<GetRegionNetworkFirewallPolicyComputeV1Result> getRegionNetworkFirewallPo
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionNetworkFirewallPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetRegionNetworkFirewallPolicyComputeV1Result> getRegionNetworkFirewallPolicyComputeV1Output(
+  GetRegionNetworkFirewallPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionNetworkFirewallPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionNetworkFirewallPolicyComputeV1Result.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -4982,6 +7974,17 @@ Future<GetRegionNetworkFirewallPolicyIamPolicyComputeV1Result> getRegionNetworkF
   return GetRegionNetworkFirewallPolicyIamPolicyComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetRegionNetworkFirewallPolicyIamPolicyComputeV1Result> getRegionNetworkFirewallPolicyIamPolicyComputeV1Output(
+  GetRegionNetworkFirewallPolicyIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionNetworkFirewallPolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionNetworkFirewallPolicyIamPolicyComputeV1Result.fromMap);
+}
+
 /// Returns the specified NotificationEndpoint resource in the given region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_notification_endpoint_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -4996,6 +7999,17 @@ Future<GetRegionNotificationEndpointComputeV1Result> getRegionNotificationEndpoi
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionNotificationEndpointComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetRegionNotificationEndpointComputeV1Result> getRegionNotificationEndpointComputeV1Output(
+  GetRegionNotificationEndpointComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionNotificationEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionNotificationEndpointComputeV1Result.fromMap);
 }
 
 /// List all of the ordered rules present in a single specified policy.
@@ -5014,6 +8028,17 @@ Future<GetRegionSecurityPolicyComputeV1Result> getRegionSecurityPolicyComputeV1(
   return GetRegionSecurityPolicyComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetRegionSecurityPolicyComputeV1Result> getRegionSecurityPolicyComputeV1Output(
+  GetRegionSecurityPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionSecurityPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionSecurityPolicyComputeV1Result.fromMap);
+}
+
 /// Returns the specified SslCertificate resource in the specified region. Get a list of available SSL certificates by making a list() request.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_ssl_certificate_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5028,6 +8053,17 @@ Future<GetRegionSslCertificateComputeV1Result> getRegionSslCertificateComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionSslCertificateComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetRegionSslCertificateComputeV1Result> getRegionSslCertificateComputeV1Output(
+  GetRegionSslCertificateComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionSslCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionSslCertificateComputeV1Result.fromMap);
 }
 
 /// Lists all of the ordered rules present in a single specified policy.
@@ -5046,6 +8082,17 @@ Future<GetRegionSslPolicyComputeV1Result> getRegionSslPolicyComputeV1(
   return GetRegionSslPolicyComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetRegionSslPolicyComputeV1Result> getRegionSslPolicyComputeV1Output(
+  GetRegionSslPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionSslPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionSslPolicyComputeV1Result.fromMap);
+}
+
 /// Returns the specified TargetHttpProxy resource in the specified region.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_target_http_proxy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5060,6 +8107,17 @@ Future<GetRegionTargetHttpProxyComputeV1Result> getRegionTargetHttpProxyComputeV
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionTargetHttpProxyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetRegionTargetHttpProxyComputeV1Result> getRegionTargetHttpProxyComputeV1Output(
+  GetRegionTargetHttpProxyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionTargetHttpProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionTargetHttpProxyComputeV1Result.fromMap);
 }
 
 /// Returns the specified TargetHttpsProxy resource in the specified region.
@@ -5078,6 +8136,17 @@ Future<GetRegionTargetHttpsProxyComputeV1Result> getRegionTargetHttpsProxyComput
   return GetRegionTargetHttpsProxyComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetRegionTargetHttpsProxyComputeV1Result> getRegionTargetHttpsProxyComputeV1Output(
+  GetRegionTargetHttpsProxyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionTargetHttpsProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionTargetHttpsProxyComputeV1Result.fromMap);
+}
+
 /// Returns the specified TargetTcpProxy resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_region_target_tcp_proxy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5092,6 +8161,17 @@ Future<GetRegionTargetTcpProxyComputeV1Result> getRegionTargetTcpProxyComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegionTargetTcpProxyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetRegionTargetTcpProxyComputeV1Result> getRegionTargetTcpProxyComputeV1Output(
+  GetRegionTargetTcpProxyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionTargetTcpProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionTargetTcpProxyComputeV1Result.fromMap);
 }
 
 /// Returns the specified UrlMap resource.
@@ -5110,6 +8190,17 @@ Future<GetRegionUrlMapComputeV1Result> getRegionUrlMapComputeV1(
   return GetRegionUrlMapComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetRegionUrlMapComputeV1Result> getRegionUrlMapComputeV1Output(
+  GetRegionUrlMapComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRegionUrlMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegionUrlMapComputeV1Result.fromMap);
+}
+
 /// Retrieves information about the specified reservation.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_reservation_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5124,6 +8215,17 @@ Future<GetReservationComputeV1Result> getReservationComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetReservationComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetReservationComputeV1Result> getReservationComputeV1Output(
+  GetReservationComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getReservation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservationComputeV1Result.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -5142,6 +8244,17 @@ Future<GetReservationIamPolicyComputeV1Result> getReservationIamPolicyComputeV1(
   return GetReservationIamPolicyComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetReservationIamPolicyComputeV1Result> getReservationIamPolicyComputeV1Output(
+  GetReservationIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getReservationIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetReservationIamPolicyComputeV1Result.fromMap);
+}
+
 /// Retrieves all information of the specified resource policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_resource_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5156,6 +8269,17 @@ Future<GetResourcePolicyComputeV1Result> getResourcePolicyComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetResourcePolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetResourcePolicyComputeV1Result> getResourcePolicyComputeV1Output(
+  GetResourcePolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getResourcePolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourcePolicyComputeV1Result.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -5174,6 +8298,17 @@ Future<GetResourcePolicyIamPolicyComputeV1Result> getResourcePolicyIamPolicyComp
   return GetResourcePolicyIamPolicyComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetResourcePolicyIamPolicyComputeV1Result> getResourcePolicyIamPolicyComputeV1Output(
+  GetResourcePolicyIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getResourcePolicyIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetResourcePolicyIamPolicyComputeV1Result.fromMap);
+}
+
 /// Returns the specified Route resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_route_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5188,6 +8323,17 @@ Future<GetRouteComputeV1Result> getRouteComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRouteComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetRouteComputeV1Result> getRouteComputeV1Output(
+  GetRouteComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRoute',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouteComputeV1Result.fromMap);
 }
 
 /// Returns the specified Router resource.
@@ -5206,6 +8352,17 @@ Future<GetRouterComputeV1Result> getRouterComputeV1(
   return GetRouterComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetRouterComputeV1Result> getRouterComputeV1Output(
+  GetRouterComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getRouter',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRouterComputeV1Result.fromMap);
+}
+
 /// List all of the ordered rules present in a single specified policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_security_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5220,6 +8377,17 @@ Future<GetSecurityPolicyComputeV1Result> getSecurityPolicyComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSecurityPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetSecurityPolicyComputeV1Result> getSecurityPolicyComputeV1Output(
+  GetSecurityPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getSecurityPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSecurityPolicyComputeV1Result.fromMap);
 }
 
 /// Returns the specified ServiceAttachment resource in the given scope.
@@ -5238,6 +8406,17 @@ Future<GetServiceAttachmentComputeV1Result> getServiceAttachmentComputeV1(
   return GetServiceAttachmentComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetServiceAttachmentComputeV1Result> getServiceAttachmentComputeV1Output(
+  GetServiceAttachmentComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getServiceAttachment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceAttachmentComputeV1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_service_attachment_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5252,6 +8431,17 @@ Future<GetServiceAttachmentIamPolicyComputeV1Result> getServiceAttachmentIamPoli
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceAttachmentIamPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetServiceAttachmentIamPolicyComputeV1Result> getServiceAttachmentIamPolicyComputeV1Output(
+  GetServiceAttachmentIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getServiceAttachmentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceAttachmentIamPolicyComputeV1Result.fromMap);
 }
 
 /// Returns the specified Snapshot resource.
@@ -5270,6 +8460,17 @@ Future<GetSnapshotComputeV1Result> getSnapshotComputeV1(
   return GetSnapshotComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetSnapshotComputeV1Result> getSnapshotComputeV1Output(
+  GetSnapshotComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getSnapshot',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotComputeV1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_snapshot_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5284,6 +8485,17 @@ Future<GetSnapshotIamPolicyComputeV1Result> getSnapshotIamPolicyComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSnapshotIamPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetSnapshotIamPolicyComputeV1Result> getSnapshotIamPolicyComputeV1Output(
+  GetSnapshotIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getSnapshotIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSnapshotIamPolicyComputeV1Result.fromMap);
 }
 
 /// Returns the specified SslCertificate resource.
@@ -5302,6 +8514,17 @@ Future<GetSslCertificateComputeV1Result> getSslCertificateComputeV1(
   return GetSslCertificateComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetSslCertificateComputeV1Result> getSslCertificateComputeV1Output(
+  GetSslCertificateComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getSslCertificate',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSslCertificateComputeV1Result.fromMap);
+}
+
 /// Lists all of the ordered rules present in a single specified policy.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_ssl_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5316,6 +8539,17 @@ Future<GetSslPolicyComputeV1Result> getSslPolicyComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSslPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetSslPolicyComputeV1Result> getSslPolicyComputeV1Output(
+  GetSslPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getSslPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSslPolicyComputeV1Result.fromMap);
 }
 
 /// Returns the specified subnetwork.
@@ -5334,6 +8568,17 @@ Future<GetSubnetworkComputeV1Result> getSubnetworkComputeV1(
   return GetSubnetworkComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetSubnetworkComputeV1Result> getSubnetworkComputeV1Output(
+  GetSubnetworkComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getSubnetwork',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetworkComputeV1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_subnetwork_iam_policy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5348,6 +8593,17 @@ Future<GetSubnetworkIamPolicyComputeV1Result> getSubnetworkIamPolicyComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSubnetworkIamPolicyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetSubnetworkIamPolicyComputeV1Result> getSubnetworkIamPolicyComputeV1Output(
+  GetSubnetworkIamPolicyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getSubnetworkIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSubnetworkIamPolicyComputeV1Result.fromMap);
 }
 
 /// Returns the specified TargetGrpcProxy resource in the given scope.
@@ -5366,6 +8622,17 @@ Future<GetTargetGrpcProxyComputeV1Result> getTargetGrpcProxyComputeV1(
   return GetTargetGrpcProxyComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetTargetGrpcProxyComputeV1Result> getTargetGrpcProxyComputeV1Output(
+  GetTargetGrpcProxyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getTargetGrpcProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetGrpcProxyComputeV1Result.fromMap);
+}
+
 /// Returns the specified TargetHttpProxy resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_target_http_proxy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5380,6 +8647,17 @@ Future<GetTargetHttpProxyComputeV1Result> getTargetHttpProxyComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetHttpProxyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetTargetHttpProxyComputeV1Result> getTargetHttpProxyComputeV1Output(
+  GetTargetHttpProxyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getTargetHttpProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetHttpProxyComputeV1Result.fromMap);
 }
 
 /// Returns the specified TargetHttpsProxy resource.
@@ -5398,6 +8676,17 @@ Future<GetTargetHttpsProxyComputeV1Result> getTargetHttpsProxyComputeV1(
   return GetTargetHttpsProxyComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetTargetHttpsProxyComputeV1Result> getTargetHttpsProxyComputeV1Output(
+  GetTargetHttpsProxyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getTargetHttpsProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetHttpsProxyComputeV1Result.fromMap);
+}
+
 /// Returns the specified TargetInstance resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_target_instance_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5412,6 +8701,17 @@ Future<GetTargetInstanceComputeV1Result> getTargetInstanceComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetInstanceComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetTargetInstanceComputeV1Result> getTargetInstanceComputeV1Output(
+  GetTargetInstanceComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getTargetInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetInstanceComputeV1Result.fromMap);
 }
 
 /// Returns the specified target pool.
@@ -5430,6 +8730,17 @@ Future<GetTargetPoolComputeV1Result> getTargetPoolComputeV1(
   return GetTargetPoolComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetTargetPoolComputeV1Result> getTargetPoolComputeV1Output(
+  GetTargetPoolComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getTargetPool',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetPoolComputeV1Result.fromMap);
+}
+
 /// Returns the specified TargetSslProxy resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_target_ssl_proxy_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5444,6 +8755,17 @@ Future<GetTargetSslProxyComputeV1Result> getTargetSslProxyComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetSslProxyComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetTargetSslProxyComputeV1Result> getTargetSslProxyComputeV1Output(
+  GetTargetSslProxyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getTargetSslProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetSslProxyComputeV1Result.fromMap);
 }
 
 /// Returns the specified TargetTcpProxy resource.
@@ -5462,6 +8784,17 @@ Future<GetTargetTcpProxyComputeV1Result> getTargetTcpProxyComputeV1(
   return GetTargetTcpProxyComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetTargetTcpProxyComputeV1Result> getTargetTcpProxyComputeV1Output(
+  GetTargetTcpProxyComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getTargetTcpProxy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetTcpProxyComputeV1Result.fromMap);
+}
+
 /// Returns the specified target VPN gateway.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_target_vpn_gateway_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5476,6 +8809,17 @@ Future<GetTargetVpnGatewayComputeV1Result> getTargetVpnGatewayComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTargetVpnGatewayComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetTargetVpnGatewayComputeV1Result> getTargetVpnGatewayComputeV1Output(
+  GetTargetVpnGatewayComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getTargetVpnGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetVpnGatewayComputeV1Result.fromMap);
 }
 
 /// Returns the specified UrlMap resource.
@@ -5494,6 +8838,17 @@ Future<GetUrlMapComputeV1Result> getUrlMapComputeV1(
   return GetUrlMapComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetUrlMapComputeV1Result> getUrlMapComputeV1Output(
+  GetUrlMapComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getUrlMap',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUrlMapComputeV1Result.fromMap);
+}
+
 /// Returns the specified VPN gateway.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_vpn_gateway_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5510,6 +8865,17 @@ Future<GetVpnGatewayComputeV1Result> getVpnGatewayComputeV1(
   return GetVpnGatewayComputeV1Result.fromMap(result);
 }
 
+pulumi.Output<GetVpnGatewayComputeV1Result> getVpnGatewayComputeV1Output(
+  GetVpnGatewayComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getVpnGateway',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpnGatewayComputeV1Result.fromMap);
+}
+
 /// Returns the specified VpnTunnel resource.
 /// [args] Arguments passed to this invoke. {@macro pulumi_compute_v1_get_vpn_tunnel_compute_v1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -5524,4 +8890,15 @@ Future<GetVpnTunnelComputeV1Result> getVpnTunnelComputeV1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVpnTunnelComputeV1Result.fromMap(result);
+}
+
+pulumi.Output<GetVpnTunnelComputeV1Result> getVpnTunnelComputeV1Output(
+  GetVpnTunnelComputeV1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:compute/v1:getVpnTunnel',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVpnTunnelComputeV1Result.fromMap);
 }

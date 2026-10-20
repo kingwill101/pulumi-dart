@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class KnowledgeBaseContaineranalysisV1beta1 {
   /// The KB name (generally of the form KB[0-9]+ i.e. KB123456).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// A link to the KB in the Windows update catalog - https://www.catalog.update.microsoft.com/
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [KnowledgeBaseContaineranalysisV1beta1].
   /// [name] The KB name (generally of the form KB[0-9]+ i.e. KB123456).

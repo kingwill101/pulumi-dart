@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDatabaseArgs {
   final pulumi.Input<String> database;
   final pulumi.Input<String> instance;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDatabaseArgs].
   /// [database] Required.

@@ -27,7 +27,7 @@ class ScalingConfigResponseMetastoreV1alpha {
   factory ScalingConfigResponseMetastoreV1alpha.fromMap(Map<String, dynamic> map) {
     return ScalingConfigResponseMetastoreV1alpha(
       instanceSize: pulumi.Input.fromValue(map['instanceSize'] as String),
-      scalingFactor: pulumi.Input.fromValue(map['scalingFactor'] as double),
+      scalingFactor: pulumi.Input.fromValue((map['scalingFactor'] as num).toDouble()),
     );
   }
 }

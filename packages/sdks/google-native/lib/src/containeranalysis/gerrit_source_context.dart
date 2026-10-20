@@ -6,13 +6,13 @@ import 'alias_context.dart';
 /// A SourceContext referring to a Gerrit project.
 class GerritSourceContext {
   /// An alias, which may be a branch or tag.
-  final pulumi.Input<AliasContext>? aliasContext;
+  final pulumi.Input<AliasContext?>? aliasContext;
   /// The full project name within the host. Projects may be nested, so "project/subproject" is a valid project name. The "repo name" is the hostURI/project.
-  final pulumi.Input<String>? gerritProject;
+  final pulumi.Input<String?>? gerritProject;
   /// The URI of a running Gerrit instance.
-  final pulumi.Input<String>? hostUri;
+  final pulumi.Input<String?>? hostUri;
   /// A revision (commit) ID.
-  final pulumi.Input<String>? revisionId;
+  final pulumi.Input<String?>? revisionId;
 
   /// Creates a new [GerritSourceContext].
   /// [aliasContext] An alias, which may be a branch or tag.

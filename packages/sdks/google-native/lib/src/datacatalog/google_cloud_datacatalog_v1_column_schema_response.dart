@@ -74,7 +74,7 @@ class GoogleCloudDatacatalogV1ColumnSchemaResponse {
       highestIndexingType: pulumi.Input.fromValue(map['highestIndexingType'] as String),
       lookerColumnSpec: pulumi.Input.fromValue(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse.fromMap((map['lookerColumnSpec']! as Map).cast<String, dynamic>())),
       mode: pulumi.Input.fromValue(map['mode'] as String),
-      ordinalPosition: pulumi.Input.fromValue(map['ordinalPosition'] as int),
+      ordinalPosition: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['ordinalPosition'])),
       subcolumns: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDatacatalogV1ColumnSchemaResponse>(map['subcolumns']!, (value) => GoogleCloudDatacatalogV1ColumnSchemaResponse.fromMap((value as Map).cast<String, dynamic>()))),
       type: pulumi.Input.fromValue(map['type'] as String),
     );

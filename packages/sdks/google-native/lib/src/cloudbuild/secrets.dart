@@ -7,9 +7,9 @@ import 'secret_manager_secret.dart';
 /// Secrets and secret environment variables.
 class Secrets {
   /// Secrets encrypted with KMS key and the associated secret environment variable.
-  final pulumi.Input<List<InlineSecret>>? inline;
+  final pulumi.Input<List<InlineSecret>?>? inline;
   /// Secrets in Secret Manager and associated secret environment variable.
-  final pulumi.Input<List<SecretManagerSecret>>? secretManager;
+  final pulumi.Input<List<SecretManagerSecret>?>? secretManager;
 
   /// Creates a new [Secrets].
   /// [inline] Secrets encrypted with KMS key and the associated secret environment variable.

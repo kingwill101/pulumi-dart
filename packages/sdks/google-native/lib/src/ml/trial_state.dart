@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The detailed state of a trial.
-enum TrialState {
+enum TrialState implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   requested("REQUESTED"),
   active("ACTIVE"),
@@ -7,6 +9,7 @@ enum TrialState {
   stopping("STOPPING");
 
   const TrialState(this.wireValue);
+  @override
   final String wireValue;
 
   static TrialState fromValue(String value) {

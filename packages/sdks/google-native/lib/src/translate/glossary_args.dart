@@ -11,17 +11,17 @@ import 'language_codes_set.dart';
 /// {@macro pulumi_translate_v3_glossary_args_doc}
 class GlossaryArgs {
   /// Optional. The display name of the glossary.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
   final pulumi.Input<GlossaryInputConfig> inputConfig;
   /// Used with equivalent term set glossaries.
-  final pulumi.Input<LanguageCodesSet>? languageCodesSet;
+  final pulumi.Input<LanguageCodesSet?>? languageCodesSet;
   /// Used with unidirectional glossaries.
-  final pulumi.Input<LanguageCodePair>? languagePair;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<LanguageCodePair?>? languagePair;
+  final pulumi.Input<String?>? location;
   /// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GlossaryArgs].
   /// [displayName] Optional. The display name of the glossary.

@@ -8,11 +8,11 @@ import 'postgresql_source_config.dart';
 /// The configuration of the stream source.
 class SourceConfig {
   /// MySQL data source configuration.
-  final pulumi.Input<MysqlSourceConfig>? mysqlSourceConfig;
+  final pulumi.Input<MysqlSourceConfig?>? mysqlSourceConfig;
   /// Oracle data source configuration.
-  final pulumi.Input<OracleSourceConfig>? oracleSourceConfig;
+  final pulumi.Input<OracleSourceConfig?>? oracleSourceConfig;
   /// PostgreSQL data source configuration.
-  final pulumi.Input<PostgresqlSourceConfig>? postgresqlSourceConfig;
+  final pulumi.Input<PostgresqlSourceConfig?>? postgresqlSourceConfig;
   /// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
   final pulumi.Input<String> sourceConnectionProfile;
 

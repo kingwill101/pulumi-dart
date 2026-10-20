@@ -7,11 +7,11 @@ import 'channel_credentials.dart';
 /// [Deprecated] gRPC config to access the SDS server. gRPC config to access the SDS server.
 class GrpcServiceConfig {
   /// The call credentials to access the SDS server.
-  final pulumi.Input<CallCredentials>? callCredentials;
+  final pulumi.Input<CallCredentials?>? callCredentials;
   /// The channel credentials to access the SDS server.
-  final pulumi.Input<ChannelCredentials>? channelCredentials;
+  final pulumi.Input<ChannelCredentials?>? channelCredentials;
   /// The target URI of the SDS server.
-  final pulumi.Input<String>? targetUri;
+  final pulumi.Input<String?>? targetUri;
 
   /// Creates a new [GrpcServiceConfig].
   /// [callCredentials] The call credentials to access the SDS server.

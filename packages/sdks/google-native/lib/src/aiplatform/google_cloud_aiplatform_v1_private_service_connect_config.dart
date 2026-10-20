@@ -7,7 +7,7 @@ class GoogleCloudAiplatformV1PrivateServiceConnectConfig {
   /// If true, expose the IndexEndpoint via private service connect.
   final pulumi.Input<bool> enablePrivateServiceConnect;
   /// A list of Projects from which the forwarding rule will target the service attachment.
-  final pulumi.Input<List<String>>? projectAllowlist;
+  final pulumi.Input<List<String>?>? projectAllowlist;
 
   /// Creates a new [GoogleCloudAiplatformV1PrivateServiceConnectConfig].
   /// [enablePrivateServiceConnect] If true, expose the IndexEndpoint via private service connect.

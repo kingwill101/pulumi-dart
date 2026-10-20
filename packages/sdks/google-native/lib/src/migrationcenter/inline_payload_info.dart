@@ -7,9 +7,9 @@ import 'payload_file.dart';
 /// A resource that represents the inline import job payload.
 class InlinePayloadInfo {
   /// The import job format.
-  final pulumi.Input<InlinePayloadInfoFormat>? format;
+  final pulumi.Input<InlinePayloadInfoFormat?>? format;
   /// List of payload files.
-  final pulumi.Input<List<PayloadFile>>? payload;
+  final pulumi.Input<List<PayloadFile>?>? payload;
 
   /// Creates a new [InlinePayloadInfo].
   /// [format] The import job format.

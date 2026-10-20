@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_ml_v1_measurement_response.dart';
+import 'google_cloud_ml_v1_trial_parameter_response.dart';
 import 'trial_args.dart';
 
 /// Adds a user provided trial to a study.
@@ -15,11 +16,11 @@ class Trial extends pulumi.CustomResource {
   late final pulumi.Output<String> infeasibleReason;
   late final pulumi.Output<String> location;
   /// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
-  late final pulumi.Output<List<Map<String, dynamic>>> measurements;
+  late final pulumi.Output<List<GoogleCloudMlV1MeasurementResponse>> measurements;
   /// Name of the trial assigned by the service.
   late final pulumi.Output<String> name;
   /// The parameters of the trial.
-  late final pulumi.Output<List<Map<String, dynamic>>> parameters;
+  late final pulumi.Output<List<GoogleCloudMlV1TrialParameterResponse>> parameters;
   late final pulumi.Output<String> project;
   /// Time at which the trial was started.
   late final pulumi.Output<String> startTime;
@@ -41,16 +42,40 @@ class Trial extends pulumi.CustomResource {
           'google-native:ml/v1:Trial',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'studyId']).merge(options),
         ) {
     clientId = registerOutput<String>('clientId');
     endTime = registerOutput<String>('endTime');
     finalMeasurement = registerOutput<GoogleCloudMlV1MeasurementResponse>('finalMeasurement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1MeasurementResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     infeasibleReason = registerOutput<String>('infeasibleReason');
     location = registerOutput<String>('location');
-    measurements = registerOutput<List<Map<String, dynamic>>>('measurements');
+    measurements = registerOutput<List<GoogleCloudMlV1MeasurementResponse>>('measurements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudMlV1MeasurementResponse>(guardedValue, (value) => GoogleCloudMlV1MeasurementResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
+    parameters = registerOutput<List<GoogleCloudMlV1TrialParameterResponse>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudMlV1TrialParameterResponse>(guardedValue, (value) => GoogleCloudMlV1TrialParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+    studyId = registerOutput<String>('studyId');
+    trialInfeasible = registerOutput<bool>('trialInfeasible');
+  }
+
+  /// Creates a typed reference to an existing [Trial] resource.
+  Trial.reference(String urn)
+    : super(
+        'google-native:ml/v1:Trial',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clientId = registerOutput<String>('clientId');
+    endTime = registerOutput<String>('endTime');
+    finalMeasurement = registerOutput<GoogleCloudMlV1MeasurementResponse>('finalMeasurement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1MeasurementResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infeasibleReason = registerOutput<String>('infeasibleReason');
+    location = registerOutput<String>('location');
+    measurements = registerOutput<List<GoogleCloudMlV1MeasurementResponse>>('measurements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudMlV1MeasurementResponse>(guardedValue, (value) => GoogleCloudMlV1MeasurementResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<List<GoogleCloudMlV1TrialParameterResponse>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudMlV1TrialParameterResponse>(guardedValue, (value) => GoogleCloudMlV1TrialParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     startTime = registerOutput<String>('startTime');
     state = registerOutput<String>('state');

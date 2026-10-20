@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkmanagement_v1beta1_get_connectivity_test_networkmanagement_v1beta1_args_doc}
 class GetConnectivityTestNetworkmanagementV1beta1Args {
   final pulumi.Input<String> connectivityTestId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetConnectivityTestNetworkmanagementV1beta1Args].
   /// [connectivityTestId] Required.

@@ -1,11 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'annotation_spec_set_args.dart';
+import 'google_cloud_datalabeling_v1beta1_annotation_spec_response.dart';
 
 /// Creates an annotation spec set by providing a set of labels.
 /// Auto-naming is currently not supported for this resource.
 class AnnotationSpecSet extends pulumi.CustomResource {
   /// The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
-  late final pulumi.Output<List<Map<String, dynamic>>> annotationSpecs;
+  late final pulumi.Output<List<GoogleCloudDatalabelingV1beta1AnnotationSpecResponse>> annotationSpecs;
   /// The names of any related resources that are blocking changes to the annotation spec set.
   late final pulumi.Output<List<String>> blockingResources;
   /// Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
@@ -28,10 +29,27 @@ class AnnotationSpecSet extends pulumi.CustomResource {
           'google-native:datalabeling/v1beta1:AnnotationSpecSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
-    annotationSpecs = registerOutput<List<Map<String, dynamic>>>('annotationSpecs');
-    blockingResources = registerOutput<List<String>>('blockingResources');
+    annotationSpecs = registerOutput<List<GoogleCloudDatalabelingV1beta1AnnotationSpecResponse>>('annotationSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDatalabelingV1beta1AnnotationSpecResponse>(guardedValue, (value) => GoogleCloudDatalabelingV1beta1AnnotationSpecResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    blockingResources = registerOutput<List<String>>('blockingResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [AnnotationSpecSet] resource.
+  AnnotationSpecSet.reference(String urn)
+    : super(
+        'google-native:datalabeling/v1beta1:AnnotationSpecSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotationSpecs = registerOutput<List<GoogleCloudDatalabelingV1beta1AnnotationSpecResponse>>('annotationSpecs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDatalabelingV1beta1AnnotationSpecResponse>(guardedValue, (value) => GoogleCloudDatalabelingV1beta1AnnotationSpecResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    blockingResources = registerOutput<List<String>>('blockingResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
     this.name = registerOutput<String>('name');

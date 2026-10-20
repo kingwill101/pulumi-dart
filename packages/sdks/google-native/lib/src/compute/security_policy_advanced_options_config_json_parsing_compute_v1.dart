@@ -1,9 +1,12 @@
-enum SecurityPolicyAdvancedOptionsConfigJsonParsingComputeV1 {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum SecurityPolicyAdvancedOptionsConfigJsonParsingComputeV1 implements pulumi.PulumiEnum<String> {
   disabled("DISABLED"),
   standard("STANDARD"),
   standardWithGraphql("STANDARD_WITH_GRAPHQL");
 
   const SecurityPolicyAdvancedOptionsConfigJsonParsingComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static SecurityPolicyAdvancedOptionsConfigJsonParsingComputeV1 fromValue(String value) {

@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetAnnotationArgs {
   final pulumi.Input<String> annotationId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAnnotationArgs].
   /// [annotationId] Required.

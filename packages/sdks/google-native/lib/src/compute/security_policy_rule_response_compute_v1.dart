@@ -85,7 +85,7 @@ class SecurityPolicyRuleResponseComputeV1 {
       networkMatch: pulumi.Input.fromValue(SecurityPolicyRuleNetworkMatcherResponseComputeV1.fromMap((map['networkMatch']! as Map).cast<String, dynamic>())),
       preconfiguredWafConfig: pulumi.Input.fromValue(SecurityPolicyRulePreconfiguredWafConfigResponseComputeV1.fromMap((map['preconfiguredWafConfig']! as Map).cast<String, dynamic>())),
       preview: pulumi.Input.fromValue(map['preview'] as bool),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       rateLimitOptions: pulumi.Input.fromValue(SecurityPolicyRuleRateLimitOptionsResponseComputeV1.fromMap((map['rateLimitOptions']! as Map).cast<String, dynamic>())),
       redirectOptions: pulumi.Input.fromValue(SecurityPolicyRuleRedirectOptionsResponseComputeV1.fromMap((map['redirectOptions']! as Map).cast<String, dynamic>())),
     );

@@ -4,25 +4,25 @@
 /// Result data returned by getDataset.
 class GetDatasetResult {
   /// Timestamp when this dataset was created.
-  final String createTime;
+  final String? createTime;
   /// The name of the dataset to show in the interface. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
-  final String displayName;
+  final String? displayName;
   /// The number of examples in the dataset.
-  final int exampleCount;
+  final int? exampleCount;
   /// The resource name of the dataset, in form of `projects/{project-number-or-id}/locations/{location_id}/datasets/{dataset_id}`
-  final String name;
+  final String? name;
   /// The BCP-47 language code of the source language.
-  final String sourceLanguageCode;
+  final String? sourceLanguageCode;
   /// The BCP-47 language code of the target language.
-  final String targetLanguageCode;
+  final String? targetLanguageCode;
   /// Number of test examples (sentence pairs).
-  final int testExampleCount;
+  final int? testExampleCount;
   /// Number of training examples (sentence pairs).
-  final int trainExampleCount;
+  final int? trainExampleCount;
   /// Timestamp when this dataset was last updated.
-  final String updateTime;
+  final String? updateTime;
   /// Number of validation examples (sentence pairs).
-  final int validateExampleCount;
+  final int? validateExampleCount;
 
   /// Creates a new [GetDatasetResult].
   /// [createTime] Timestamp when this dataset was created.
@@ -36,45 +36,45 @@ class GetDatasetResult {
   /// [updateTime] Timestamp when this dataset was last updated.
   /// [validateExampleCount] Number of validation examples (sentence pairs).
   const GetDatasetResult({
-    required this.createTime,
-    required this.displayName,
-    required this.exampleCount,
-    required this.name,
-    required this.sourceLanguageCode,
-    required this.targetLanguageCode,
-    required this.testExampleCount,
-    required this.trainExampleCount,
-    required this.updateTime,
-    required this.validateExampleCount,
+    this.createTime,
+    this.displayName,
+    this.exampleCount,
+    this.name,
+    this.sourceLanguageCode,
+    this.targetLanguageCode,
+    this.testExampleCount,
+    this.trainExampleCount,
+    this.updateTime,
+    this.validateExampleCount,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'displayName': displayName,
-      'exampleCount': exampleCount,
-      'name': name,
-      'sourceLanguageCode': sourceLanguageCode,
-      'targetLanguageCode': targetLanguageCode,
-      'testExampleCount': testExampleCount,
-      'trainExampleCount': trainExampleCount,
-      'updateTime': updateTime,
-      'validateExampleCount': validateExampleCount,
+      'createTime': ?createTime,
+      'displayName': ?displayName,
+      'exampleCount': ?exampleCount,
+      'name': ?name,
+      'sourceLanguageCode': ?sourceLanguageCode,
+      'targetLanguageCode': ?targetLanguageCode,
+      'testExampleCount': ?testExampleCount,
+      'trainExampleCount': ?trainExampleCount,
+      'updateTime': ?updateTime,
+      'validateExampleCount': ?validateExampleCount,
     };
   }
 
   factory GetDatasetResult.fromMap(Map<String, dynamic> map) {
     return GetDatasetResult(
-      createTime: map['createTime'] as String,
-      displayName: map['displayName'] as String,
-      exampleCount: map['exampleCount'] as int,
-      name: map['name'] as String,
-      sourceLanguageCode: map['sourceLanguageCode'] as String,
-      targetLanguageCode: map['targetLanguageCode'] as String,
-      testExampleCount: map['testExampleCount'] as int,
-      trainExampleCount: map['trainExampleCount'] as int,
-      updateTime: map['updateTime'] as String,
-      validateExampleCount: map['validateExampleCount'] as int,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      exampleCount: (() { final guardedValue = map['exampleCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sourceLanguageCode: (() { final guardedValue = map['sourceLanguageCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      targetLanguageCode: (() { final guardedValue = map['targetLanguageCode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      testExampleCount: (() { final guardedValue = map['testExampleCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      trainExampleCount: (() { final guardedValue = map['trainExampleCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      validateExampleCount: (() { final guardedValue = map['validateExampleCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
     );
   }
 }

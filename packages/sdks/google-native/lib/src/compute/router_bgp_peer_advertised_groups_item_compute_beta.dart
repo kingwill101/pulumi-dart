@@ -1,7 +1,10 @@
-enum RouterBgpPeerAdvertisedGroupsItemComputeBeta {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum RouterBgpPeerAdvertisedGroupsItemComputeBeta implements pulumi.PulumiEnum<String> {
   allSubnets("ALL_SUBNETS");
 
   const RouterBgpPeerAdvertisedGroupsItemComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static RouterBgpPeerAdvertisedGroupsItemComputeBeta fromValue(String value) {

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'code_compilation_config_response.dart';
 import 'release_config_args.dart';
+import 'scheduled_release_record_response.dart';
 
 /// Creates a new ReleaseConfig in a given Repository.
 /// Auto-naming is currently not supported for this resource.
@@ -16,7 +17,7 @@ class ReleaseConfig extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   /// Records of the 10 most recent scheduled release attempts, ordered in in descending order of `release_time`. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
-  late final pulumi.Output<List<Map<String, dynamic>>> recentScheduledReleaseRecords;
+  late final pulumi.Output<List<ScheduledReleaseRecordResponse>> recentScheduledReleaseRecords;
   /// Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is created from this release config, or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
   late final pulumi.Output<String> releaseCompilationResult;
   /// Required. The ID to use for the release config, which will become the final component of the release config's resource name.
@@ -37,7 +38,7 @@ class ReleaseConfig extends pulumi.CustomResource {
           'google-native:dataform/v1beta1:ReleaseConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'releaseConfigId', 'repositoryId']).merge(options),
         ) {
     codeCompilationConfig = registerOutput<CodeCompilationConfigResponse>('codeCompilationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CodeCompilationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cronSchedule = registerOutput<String>('cronSchedule');
@@ -45,7 +46,29 @@ class ReleaseConfig extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    recentScheduledReleaseRecords = registerOutput<List<Map<String, dynamic>>>('recentScheduledReleaseRecords');
+    recentScheduledReleaseRecords = registerOutput<List<ScheduledReleaseRecordResponse>>('recentScheduledReleaseRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledReleaseRecordResponse>(guardedValue, (value) => ScheduledReleaseRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    releaseCompilationResult = registerOutput<String>('releaseCompilationResult');
+    releaseConfigId = registerOutput<String>('releaseConfigId');
+    repositoryId = registerOutput<String>('repositoryId');
+    timeZone = registerOutput<String>('timeZone');
+  }
+
+  /// Creates a typed reference to an existing [ReleaseConfig] resource.
+  ReleaseConfig.reference(String urn)
+    : super(
+        'google-native:dataform/v1beta1:ReleaseConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    codeCompilationConfig = registerOutput<CodeCompilationConfigResponse>('codeCompilationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CodeCompilationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cronSchedule = registerOutput<String>('cronSchedule');
+    gitCommitish = registerOutput<String>('gitCommitish');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    recentScheduledReleaseRecords = registerOutput<List<ScheduledReleaseRecordResponse>>('recentScheduledReleaseRecords', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScheduledReleaseRecordResponse>(guardedValue, (value) => ScheduledReleaseRecordResponse.fromMap((value as Map).cast<String, dynamic>())); });
     releaseCompilationResult = registerOutput<String>('releaseCompilationResult');
     releaseConfigId = registerOutput<String>('releaseConfigId');
     repositoryId = registerOutput<String>('repositoryId');

@@ -7,11 +7,11 @@ import 'options_primary_ids.dart';
 /// Specifies additional options to apply to the base profile.
 class Options {
   /// Set Clean Descriptors Option.
-  final pulumi.Input<Map<String, dynamic>>? cleanDescriptors;
+  final pulumi.Input<Map<String, dynamic>?>? cleanDescriptors;
   /// Apply `Action.clean_image` to [`PixelData`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html) as configured.
-  final pulumi.Input<ImageConfigHealthcareV1beta1>? cleanImage;
+  final pulumi.Input<ImageConfigHealthcareV1beta1?>? cleanImage;
   /// Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
-  final pulumi.Input<OptionsPrimaryIds>? primaryIds;
+  final pulumi.Input<OptionsPrimaryIds?>? primaryIds;
 
   /// Creates a new [Options].
   /// [cleanDescriptors] Set Clean Descriptors Option.

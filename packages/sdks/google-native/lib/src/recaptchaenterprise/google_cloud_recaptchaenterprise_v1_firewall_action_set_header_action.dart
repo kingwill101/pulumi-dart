@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A set header action sets a header and forwards the request to the backend. This can be used to trigger custom protection implemented on the backend.
 class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction {
   /// Optional. The header key to set in the request to the backend server.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Optional. The header value to set in the request to the backend server.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction].
   /// [key] Optional. The header key to set in the request to the backend server.

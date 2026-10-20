@@ -1,4 +1,6 @@
-enum EnterpriseCrmLoggingGwsFieldLimitsShortenerType {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum EnterpriseCrmLoggingGwsFieldLimitsShortenerType implements pulumi.PulumiEnum<String> {
   shortenerTypeUnspecified("SHORTENER_TYPE_UNSPECIFIED"),
   shorten("SHORTEN"),
   hash("HASH"),
@@ -8,6 +10,7 @@ enum EnterpriseCrmLoggingGwsFieldLimitsShortenerType {
   shortenDomain("SHORTEN_DOMAIN");
 
   const EnterpriseCrmLoggingGwsFieldLimitsShortenerType(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmLoggingGwsFieldLimitsShortenerType fromValue(String value) {

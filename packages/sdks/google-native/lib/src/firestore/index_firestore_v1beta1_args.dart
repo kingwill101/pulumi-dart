@@ -10,15 +10,15 @@ import 'index_state.dart';
 /// {@macro pulumi_firestore_v1beta1_index_firestore_v1beta1_args_doc}
 class IndexFirestoreV1beta1Args {
   /// The collection ID to which this index applies. Required.
-  final pulumi.Input<String>? collectionId;
+  final pulumi.Input<String?>? collectionId;
   final pulumi.Input<String> databaseId;
   /// The fields to index.
-  final pulumi.Input<List<GoogleFirestoreAdminV1beta1IndexField>>? fields;
+  final pulumi.Input<List<GoogleFirestoreAdminV1beta1IndexField>?>? fields;
   /// The resource name of the index. Output only.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// The state of the index. Output only.
-  final pulumi.Input<IndexState>? state;
+  final pulumi.Input<IndexState?>? state;
 
   /// Creates a new [IndexFirestoreV1beta1Args].
   /// [collectionId] The collection ID to which this index applies. Required.

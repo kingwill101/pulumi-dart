@@ -50,7 +50,7 @@ class EndpointResponse {
       annotations: pulumi.Input.fromValue((map['annotations'] as Map).cast<String, String>()),
       name: pulumi.Input.fromValue(map['name'] as String),
       network: pulumi.Input.fromValue(map['network'] as String),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       uid: pulumi.Input.fromValue(map['uid'] as String),
     );
   }

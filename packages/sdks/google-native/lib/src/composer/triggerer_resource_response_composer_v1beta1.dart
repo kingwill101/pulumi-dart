@@ -31,9 +31,9 @@ class TriggererResourceResponseComposerV1beta1 {
 
   factory TriggererResourceResponseComposerV1beta1.fromMap(Map<String, dynamic> map) {
     return TriggererResourceResponseComposerV1beta1(
-      count: pulumi.Input.fromValue(map['count'] as int),
-      cpu: pulumi.Input.fromValue(map['cpu'] as double),
-      memoryGb: pulumi.Input.fromValue(map['memoryGb'] as double),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
+      cpu: pulumi.Input.fromValue((map['cpu'] as num).toDouble()),
+      memoryGb: pulumi.Input.fromValue((map['memoryGb'] as num).toDouble()),
     );
   }
 }

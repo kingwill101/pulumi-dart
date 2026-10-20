@@ -6,7 +6,7 @@ import 'row.dart';
 /// A simplified layout that divides the available space into rows and arranges a set of widgets horizontally in each row.
 class RowLayout {
   /// The rows of content to display.
-  final pulumi.Input<List<Row>>? rows;
+  final pulumi.Input<List<Row>?>? rows;
 
   /// Creates a new [RowLayout].
   /// [rows] The rows of content to display.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
-enum GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState {
+enum GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState implements pulumi.PulumiEnum<String> {
   stockStateUnspecified("STOCK_STATE_UNSPECIFIED"),
   inStock("IN_STOCK"),
   outOfStock("OUT_OF_STOCK"),
@@ -7,6 +9,7 @@ enum GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState {
   backorder("BACKORDER");
 
   const GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState fromValue(String value) {

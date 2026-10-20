@@ -27,7 +27,7 @@ class BestEffortProvisioningResponse {
   factory BestEffortProvisioningResponse.fromMap(Map<String, dynamic> map) {
     return BestEffortProvisioningResponse(
       enabled: pulumi.Input.fromValue(map['enabled'] as bool),
-      minProvisionNodes: pulumi.Input.fromValue(map['minProvisionNodes'] as int),
+      minProvisionNodes: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minProvisionNodes'])),
     );
   }
 }

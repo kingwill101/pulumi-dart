@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Can only be specified if VPC flow logs for this subnetwork is enabled. Configures whether all, none or a subset of metadata fields should be added to the reported VPC flow logs. Default is EXCLUDE_ALL_METADATA.
-enum SubnetworkLogConfigMetadataComputeV1 {
+enum SubnetworkLogConfigMetadataComputeV1 implements pulumi.PulumiEnum<String> {
   customMetadata("CUSTOM_METADATA"),
   excludeAllMetadata("EXCLUDE_ALL_METADATA"),
   includeAllMetadata("INCLUDE_ALL_METADATA");
 
   const SubnetworkLogConfigMetadataComputeV1(this.wireValue);
+  @override
   final String wireValue;
 
   static SubnetworkLogConfigMetadataComputeV1 fromValue(String value) {

@@ -42,7 +42,7 @@ class SecuritySetting extends pulumi.CustomResource {
           'google-native:dialogflow/v3:SecuritySetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     audioExportSettings = registerOutput<GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse>('audioExportSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     deidentifyTemplate = registerOutput<String>('deidentifyTemplate');
@@ -52,7 +52,31 @@ class SecuritySetting extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    purgeDataTypes = registerOutput<List<String>>('purgeDataTypes');
+    purgeDataTypes = registerOutput<List<String>>('purgeDataTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    redactionScope = registerOutput<String>('redactionScope');
+    redactionStrategy = registerOutput<String>('redactionStrategy');
+    retentionStrategy = registerOutput<String>('retentionStrategy');
+    retentionWindowDays = registerOutput<int>('retentionWindowDays');
+  }
+
+  /// Creates a typed reference to an existing [SecuritySetting] resource.
+  SecuritySetting.reference(String urn)
+    : super(
+        'google-native:dialogflow/v3:SecuritySetting',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    audioExportSettings = registerOutput<GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse>('audioExportSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    deidentifyTemplate = registerOutput<String>('deidentifyTemplate');
+    displayName = registerOutput<String>('displayName');
+    insightsExportSettings = registerOutput<GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse>('insightsExportSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    inspectTemplate = registerOutput<String>('inspectTemplate');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    purgeDataTypes = registerOutput<List<String>>('purgeDataTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     redactionScope = registerOutput<String>('redactionScope');
     redactionStrategy = registerOutput<String>('redactionStrategy');
     retentionStrategy = registerOutput<String>('retentionStrategy');

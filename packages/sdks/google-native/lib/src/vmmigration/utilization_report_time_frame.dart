@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Time frame of the report.
-enum UtilizationReportTimeFrame {
+enum UtilizationReportTimeFrame implements pulumi.PulumiEnum<String> {
   timeFrameUnspecified("TIME_FRAME_UNSPECIFIED"),
   week("WEEK"),
   month("MONTH"),
   year("YEAR");
 
   const UtilizationReportTimeFrame(this.wireValue);
+  @override
   final String wireValue;
 
   static UtilizationReportTimeFrame fromValue(String value) {

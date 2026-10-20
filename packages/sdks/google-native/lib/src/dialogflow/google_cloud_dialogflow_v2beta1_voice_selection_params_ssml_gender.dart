@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
-enum GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender {
+enum GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender implements pulumi.PulumiEnum<String> {
   ssmlVoiceGenderUnspecified("SSML_VOICE_GENDER_UNSPECIFIED"),
   ssmlVoiceGenderMale("SSML_VOICE_GENDER_MALE"),
   ssmlVoiceGenderFemale("SSML_VOICE_GENDER_FEMALE"),
   ssmlVoiceGenderNeutral("SSML_VOICE_GENDER_NEUTRAL");
 
   const GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender fromValue(String value) {

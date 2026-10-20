@@ -5,27 +5,27 @@ import 'google_cloud_aiplatform_v1beta1_encryption_spec_response.dart';
 /// Result data returned by getTensorboard.
 class GetTensorboardAiplatformV1beta1Result {
   /// Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
-  final String blobStoragePathPrefix;
+  final String? blobStoragePathPrefix;
   /// Timestamp when this Tensorboard was created.
-  final String createTime;
+  final String? createTime;
   /// Description of this Tensorboard.
-  final String description;
+  final String? description;
   /// User provided name of this Tensorboard.
-  final String displayName;
+  final String? displayName;
   /// Customer-managed encryption key spec for a Tensorboard. If set, this Tensorboard and all sub-resources of this Tensorboard will be secured by this key.
-  final GoogleCloudAiplatformV1beta1EncryptionSpecResponse encryptionSpec;
+  final GoogleCloudAiplatformV1beta1EncryptionSpecResponse? encryptionSpec;
   /// Used to perform a consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final String etag;
+  final String? etag;
   /// Used to indicate if the TensorBoard instance is the default one. Each project & region can have at most one default TensorBoard instance. Creation of a default TensorBoard instance and updating an existing TensorBoard instance to be default will mark all other TensorBoard instances (if any) as non default.
-  final bool isDefault;
+  final bool? isDefault;
   /// The labels with user-defined metadata to organize your Tensorboards. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Tensorboard (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Name of the Tensorboard. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}`
-  final String name;
+  final String? name;
   /// The number of Runs stored in this Tensorboard.
-  final int runCount;
+  final int? runCount;
   /// Timestamp when this Tensorboard was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetTensorboardAiplatformV1beta1Result].
   /// [blobStoragePathPrefix] Consumer project Cloud Storage path prefix used to store blob data, which can either be a bucket or directory. Does not end with a '/'.
@@ -40,48 +40,48 @@ class GetTensorboardAiplatformV1beta1Result {
   /// [runCount] The number of Runs stored in this Tensorboard.
   /// [updateTime] Timestamp when this Tensorboard was last updated.
   const GetTensorboardAiplatformV1beta1Result({
-    required this.blobStoragePathPrefix,
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.encryptionSpec,
-    required this.etag,
-    required this.isDefault,
-    required this.labels,
-    required this.name,
-    required this.runCount,
-    required this.updateTime,
+    this.blobStoragePathPrefix,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.encryptionSpec,
+    this.etag,
+    this.isDefault,
+    this.labels,
+    this.name,
+    this.runCount,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'blobStoragePathPrefix': blobStoragePathPrefix,
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'encryptionSpec': encryptionSpec.toMap(),
-      'etag': etag,
-      'isDefault': isDefault,
-      'labels': labels,
-      'name': name,
-      'runCount': runCount,
-      'updateTime': updateTime,
+      'blobStoragePathPrefix': ?blobStoragePathPrefix,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'encryptionSpec': ?encryptionSpec?.toMap(),
+      'etag': ?etag,
+      'isDefault': ?isDefault,
+      'labels': ?labels,
+      'name': ?name,
+      'runCount': ?runCount,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetTensorboardAiplatformV1beta1Result.fromMap(Map<String, dynamic> map) {
     return GetTensorboardAiplatformV1beta1Result(
-      blobStoragePathPrefix: map['blobStoragePathPrefix'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      encryptionSpec: GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((map['encryptionSpec']! as Map).cast<String, dynamic>()),
-      etag: map['etag'] as String,
-      isDefault: map['isDefault'] as bool,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      runCount: map['runCount'] as int,
-      updateTime: map['updateTime'] as String,
+      blobStoragePathPrefix: (() { final guardedValue = map['blobStoragePathPrefix']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      encryptionSpec: (() { final guardedValue = map['encryptionSpec']; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      runCount: (() { final guardedValue = map['runCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

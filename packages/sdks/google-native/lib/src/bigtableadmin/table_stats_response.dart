@@ -36,8 +36,8 @@ class TableStatsResponse {
 
   factory TableStatsResponse.fromMap(Map<String, dynamic> map) {
     return TableStatsResponse(
-      averageCellsPerColumn: pulumi.Input.fromValue(map['averageCellsPerColumn'] as double),
-      averageColumnsPerRow: pulumi.Input.fromValue(map['averageColumnsPerRow'] as double),
+      averageCellsPerColumn: pulumi.Input.fromValue((map['averageCellsPerColumn'] as num).toDouble()),
+      averageColumnsPerRow: pulumi.Input.fromValue((map['averageColumnsPerRow'] as num).toDouble()),
       logicalDataBytes: pulumi.Input.fromValue(map['logicalDataBytes'] as String),
       rowCount: pulumi.Input.fromValue(map['rowCount'] as String),
     );

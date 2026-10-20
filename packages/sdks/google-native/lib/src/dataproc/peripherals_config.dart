@@ -6,9 +6,9 @@ import 'spark_history_server_config.dart';
 /// Auxiliary services configuration for a workload.
 class PeripheralsConfig {
   /// Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]
-  final pulumi.Input<String>? metastoreService;
+  final pulumi.Input<String?>? metastoreService;
   /// Optional. The Spark History Server configuration for the workload.
-  final pulumi.Input<SparkHistoryServerConfig>? sparkHistoryServerConfig;
+  final pulumi.Input<SparkHistoryServerConfig?>? sparkHistoryServerConfig;
 
   /// Creates a new [PeripheralsConfig].
   /// [metastoreService] Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]

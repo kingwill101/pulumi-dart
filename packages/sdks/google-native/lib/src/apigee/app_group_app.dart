@@ -1,5 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'app_group_app_args.dart';
+import 'google_cloud_apigee_v1_attribute_response.dart';
+import 'google_cloud_apigee_v1_credential_response.dart';
 
 /// Creates an app and associates it with an AppGroup. This API associates the AppGroup app with the specified API product and auto-generates an API key for the app to use in calls to API proxies inside that API product. The `name` is the unique ID of the app that you can use in API calls.
 /// Auto-naming is currently not supported for this resource.
@@ -12,13 +14,13 @@ class AppGroupApp extends pulumi.CustomResource {
   late final pulumi.Output<String> appId;
   late final pulumi.Output<String> appgroupId;
   /// List of attributes for the AppGroup app.
-  late final pulumi.Output<List<Map<String, dynamic>>> attributes;
+  late final pulumi.Output<List<GoogleCloudApigeeV1AttributeResponse>> attributes;
   /// Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to AppGroup apps.
   late final pulumi.Output<String> callbackUrl;
   /// Time the AppGroup app was created in milliseconds since epoch.
   late final pulumi.Output<String> createdAt;
   /// Set of credentials for the AppGroup app consisting of the consumer key/secret pairs associated with the API products.
-  late final pulumi.Output<List<Map<String, dynamic>>> credentials;
+  late final pulumi.Output<List<GoogleCloudApigeeV1CredentialResponse>> credentials;
   /// Immutable. Expiration time, in seconds, for the consumer key that is generated for the AppGroup app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
   late final pulumi.Output<String> keyExpiresIn;
   /// Time the AppGroup app was modified in milliseconds since epoch.
@@ -43,21 +45,46 @@ class AppGroupApp extends pulumi.CustomResource {
           'google-native:apigee/v1:AppGroupApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['appgroupId', 'organizationId']).merge(options),
         ) {
-    apiProducts = registerOutput<List<String>>('apiProducts');
+    apiProducts = registerOutput<List<String>>('apiProducts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     appGroup = registerOutput<String>('appGroup');
     appId = registerOutput<String>('appId');
     appgroupId = registerOutput<String>('appgroupId');
-    attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
+    attributes = registerOutput<List<GoogleCloudApigeeV1AttributeResponse>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(guardedValue, (value) => GoogleCloudApigeeV1AttributeResponse.fromMap((value as Map).cast<String, dynamic>())); });
     callbackUrl = registerOutput<String>('callbackUrl');
     createdAt = registerOutput<String>('createdAt');
-    credentials = registerOutput<List<Map<String, dynamic>>>('credentials');
+    credentials = registerOutput<List<GoogleCloudApigeeV1CredentialResponse>>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1CredentialResponse>(guardedValue, (value) => GoogleCloudApigeeV1CredentialResponse.fromMap((value as Map).cast<String, dynamic>())); });
     keyExpiresIn = registerOutput<String>('keyExpiresIn');
     lastModifiedAt = registerOutput<String>('lastModifiedAt');
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
-    scopes = registerOutput<List<String>>('scopes');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    status = registerOutput<String>('status');
+  }
+
+  /// Creates a typed reference to an existing [AppGroupApp] resource.
+  AppGroupApp.reference(String urn)
+    : super(
+        'google-native:apigee/v1:AppGroupApp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiProducts = registerOutput<List<String>>('apiProducts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    appGroup = registerOutput<String>('appGroup');
+    appId = registerOutput<String>('appId');
+    appgroupId = registerOutput<String>('appgroupId');
+    attributes = registerOutput<List<GoogleCloudApigeeV1AttributeResponse>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(guardedValue, (value) => GoogleCloudApigeeV1AttributeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    callbackUrl = registerOutput<String>('callbackUrl');
+    createdAt = registerOutput<String>('createdAt');
+    credentials = registerOutput<List<GoogleCloudApigeeV1CredentialResponse>>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1CredentialResponse>(guardedValue, (value) => GoogleCloudApigeeV1CredentialResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    keyExpiresIn = registerOutput<String>('keyExpiresIn');
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     status = registerOutput<String>('status');
   }
 }

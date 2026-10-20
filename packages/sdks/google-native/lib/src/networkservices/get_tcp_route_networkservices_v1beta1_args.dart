@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkservices_v1beta1_get_tcp_route_networkservices_v1beta1_args_doc}
 class GetTcpRouteNetworkservicesV1beta1Args {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> tcpRouteId;
 
   /// Creates a new [GetTcpRouteNetworkservicesV1beta1Args].

@@ -159,7 +159,7 @@ class JobConfigurationQueryResponse {
       destinationEncryptionConfiguration: pulumi.Input.fromValue(EncryptionConfigurationResponse.fromMap((map['destinationEncryptionConfiguration']! as Map).cast<String, dynamic>())),
       destinationTable: pulumi.Input.fromValue(TableReferenceResponse.fromMap((map['destinationTable']! as Map).cast<String, dynamic>())),
       flattenResults: pulumi.Input.fromValue(map['flattenResults'] as bool),
-      maximumBillingTier: pulumi.Input.fromValue(map['maximumBillingTier'] as int),
+      maximumBillingTier: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maximumBillingTier'])),
       maximumBytesBilled: pulumi.Input.fromValue(map['maximumBytesBilled'] as String),
       parameterMode: pulumi.Input.fromValue(map['parameterMode'] as String),
       preserveNulls: pulumi.Input.fromValue(map['preserveNulls'] as bool),

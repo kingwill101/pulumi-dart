@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Day of the week for this MaintenanceWindow (in UTC).
-enum MaintenanceWindowDayOfWeek {
+enum MaintenanceWindowDayOfWeek implements pulumi.PulumiEnum<String> {
   dayOfWeekUnspecified("DAY_OF_WEEK_UNSPECIFIED"),
   monday("MONDAY"),
   tuesday("TUESDAY"),
@@ -10,6 +12,7 @@ enum MaintenanceWindowDayOfWeek {
   sunday("SUNDAY");
 
   const MaintenanceWindowDayOfWeek(this.wireValue);
+  @override
   final String wireValue;
 
   static MaintenanceWindowDayOfWeek fromValue(String value) {

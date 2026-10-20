@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The kind of analysis that is handled by this discovery.
-enum DiscoveryAnalysisKind {
+enum DiscoveryAnalysisKind implements pulumi.PulumiEnum<String> {
   kindUnspecified("KIND_UNSPECIFIED"),
   packageVulnerability("PACKAGE_VULNERABILITY"),
   buildDetails("BUILD_DETAILS"),
@@ -19,6 +21,7 @@ enum DiscoveryAnalysisKind {
   sbomReference("SBOM_REFERENCE");
 
   const DiscoveryAnalysisKind(this.wireValue);
+  @override
   final String wireValue;
 
   static DiscoveryAnalysisKind fromValue(String value) {

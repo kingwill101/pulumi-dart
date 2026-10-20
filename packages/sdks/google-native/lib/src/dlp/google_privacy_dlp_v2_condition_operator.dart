@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Operator used to compare the field or infoType to the value.
-enum GooglePrivacyDlpV2ConditionOperator {
+enum GooglePrivacyDlpV2ConditionOperator implements pulumi.PulumiEnum<String> {
   relationalOperatorUnspecified("RELATIONAL_OPERATOR_UNSPECIFIED"),
   equalTo("EQUAL_TO"),
   notEqualTo("NOT_EQUAL_TO"),
@@ -10,6 +12,7 @@ enum GooglePrivacyDlpV2ConditionOperator {
   exists("EXISTS");
 
   const GooglePrivacyDlpV2ConditionOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static GooglePrivacyDlpV2ConditionOperator fromValue(String value) {

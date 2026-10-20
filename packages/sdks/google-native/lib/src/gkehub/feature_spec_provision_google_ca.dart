@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. Specifies CA configuration.
-enum FeatureSpecProvisionGoogleCa {
+enum FeatureSpecProvisionGoogleCa implements pulumi.PulumiEnum<String> {
   googleCaProvisioningUnspecified("GOOGLE_CA_PROVISIONING_UNSPECIFIED"),
   disabled("DISABLED"),
   enabled("ENABLED"),
@@ -7,6 +9,7 @@ enum FeatureSpecProvisionGoogleCa {
   enabledWithDefaultCa("ENABLED_WITH_DEFAULT_CA");
 
   const FeatureSpecProvisionGoogleCa(this.wireValue);
+  @override
   final String wireValue;
 
   static FeatureSpecProvisionGoogleCa fromValue(String value) {

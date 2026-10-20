@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'report_config_args.dart';
+import 'report_config_group_preference_set_assignment_response.dart';
 
 /// Creates a report configuration.
 /// Auto-naming is currently not supported for this resource.
@@ -11,7 +12,7 @@ class ReportConfig extends pulumi.CustomResource {
   /// User-friendly display name. Maximum length is 63 characters.
   late final pulumi.Output<String> displayName;
   /// Collection of combinations of groups and preference sets.
-  late final pulumi.Output<List<Map<String, dynamic>>> groupPreferencesetAssignments;
+  late final pulumi.Output<List<ReportConfigGroupPreferenceSetAssignmentResponse>> groupPreferencesetAssignments;
   late final pulumi.Output<String> location;
   /// Name of resource.
   late final pulumi.Output<String> name;
@@ -35,12 +36,33 @@ class ReportConfig extends pulumi.CustomResource {
           'google-native:migrationcenter/v1:ReportConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'reportConfigId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    groupPreferencesetAssignments = registerOutput<List<Map<String, dynamic>>>('groupPreferencesetAssignments');
+    groupPreferencesetAssignments = registerOutput<List<ReportConfigGroupPreferenceSetAssignmentResponse>>('groupPreferencesetAssignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReportConfigGroupPreferenceSetAssignmentResponse>(guardedValue, (value) => ReportConfigGroupPreferenceSetAssignmentResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    reportConfigId = registerOutput<String>('reportConfigId');
+    requestId = registerOutput<String?>('requestId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ReportConfig] resource.
+  ReportConfig.reference(String urn)
+    : super(
+        'google-native:migrationcenter/v1:ReportConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    groupPreferencesetAssignments = registerOutput<List<ReportConfigGroupPreferenceSetAssignmentResponse>>('groupPreferencesetAssignments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ReportConfigGroupPreferenceSetAssignmentResponse>(guardedValue, (value) => ReportConfigGroupPreferenceSetAssignmentResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -39,8 +39,31 @@ class Key extends pulumi.CustomResource {
           'google-native:iam/v1:Key',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'serviceAccountId']).merge(options),
         ) {
+    disabled = registerOutput<bool>('disabled');
+    keyAlgorithm = registerOutput<String>('keyAlgorithm');
+    keyOrigin = registerOutput<String>('keyOrigin');
+    keyType = registerOutput<String>('keyType');
+    this.name = registerOutput<String>('name');
+    privateKeyData = registerOutput<String>('privateKeyData');
+    privateKeyType = registerOutput<String>('privateKeyType');
+    project = registerOutput<String>('project');
+    publicKeyData = registerOutput<String>('publicKeyData');
+    serviceAccountId = registerOutput<String>('serviceAccountId');
+    validAfterTime = registerOutput<String>('validAfterTime');
+    validBeforeTime = registerOutput<String>('validBeforeTime');
+  }
+
+  /// Creates a typed reference to an existing [Key] resource.
+  Key.reference(String urn)
+    : super(
+        'google-native:iam/v1:Key',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     disabled = registerOutput<bool>('disabled');
     keyAlgorithm = registerOutput<String>('keyAlgorithm');
     keyOrigin = registerOutput<String>('keyOrigin');

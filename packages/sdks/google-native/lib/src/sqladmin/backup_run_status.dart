@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The status of this run.
-enum BackupRunStatus {
+enum BackupRunStatus implements pulumi.PulumiEnum<String> {
   sqlBackupRunStatusUnspecified("SQL_BACKUP_RUN_STATUS_UNSPECIFIED"),
   enqueued("ENQUEUED"),
   overdue("OVERDUE"),
@@ -12,6 +14,7 @@ enum BackupRunStatus {
   deleted("DELETED");
 
   const BackupRunStatus(this.wireValue);
+  @override
   final String wireValue;
 
   static BackupRunStatus fromValue(String value) {

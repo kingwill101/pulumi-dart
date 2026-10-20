@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_sourcerepo_v1_get_repo_args_doc}
 class GetRepoArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> repoId;
 
   /// Creates a new [GetRepoArgs].

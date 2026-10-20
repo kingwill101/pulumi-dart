@@ -36,10 +36,10 @@ class GoogleTypeColorResponse {
 
   factory GoogleTypeColorResponse.fromMap(Map<String, dynamic> map) {
     return GoogleTypeColorResponse(
-      alpha: pulumi.Input.fromValue(map['alpha'] as double),
-      blue: pulumi.Input.fromValue(map['blue'] as double),
-      green: pulumi.Input.fromValue(map['green'] as double),
-      red: pulumi.Input.fromValue(map['red'] as double),
+      alpha: pulumi.Input.fromValue((map['alpha'] as num).toDouble()),
+      blue: pulumi.Input.fromValue((map['blue'] as num).toDouble()),
+      green: pulumi.Input.fromValue((map['green'] as num).toDouble()),
+      red: pulumi.Input.fromValue((map['red'] as num).toDouble()),
     );
   }
 }

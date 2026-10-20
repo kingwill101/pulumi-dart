@@ -6,19 +6,19 @@ import 'rule_response.dart';
 /// Result data returned by getAuthorizationPolicy.
 class GetAuthorizationPolicyResult {
   /// The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
-  final String action;
+  final String? action;
   /// The timestamp when the resource was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. Free-text description of the resource.
-  final String description;
+  final String? description;
   /// Optional. Set of label tags associated with the AuthorizationPolicy resource.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
-  final String name;
+  final String? name;
   /// Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
-  final List<RuleResponse> rules;
+  final List<RuleResponse>? rules;
   /// The timestamp when the resource was updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetAuthorizationPolicyResult].
   /// [action] The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
@@ -29,36 +29,36 @@ class GetAuthorizationPolicyResult {
   /// [rules] Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
   /// [updateTime] The timestamp when the resource was updated.
   const GetAuthorizationPolicyResult({
-    required this.action,
-    required this.createTime,
-    required this.description,
-    required this.labels,
-    required this.name,
-    required this.rules,
-    required this.updateTime,
+    this.action,
+    this.createTime,
+    this.description,
+    this.labels,
+    this.name,
+    this.rules,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'action': action,
-      'createTime': createTime,
-      'description': description,
-      'labels': labels,
-      'name': name,
-      'rules': pulumi.Input.encodeList<RuleResponse, Map<String, dynamic>>(rules, (value) => value.toMap()),
-      'updateTime': updateTime,
+      'action': ?action,
+      'createTime': ?createTime,
+      'description': ?description,
+      'labels': ?labels,
+      'name': ?name,
+      'rules': ?(() { final guardedValue = rules; if (guardedValue == null) return null; return pulumi.Input.encodeList<RuleResponse, Map<String, dynamic>>(guardedValue, (value) => value.toMap()); })(),
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetAuthorizationPolicyResult.fromMap(Map<String, dynamic> map) {
     return GetAuthorizationPolicyResult(
-      action: map['action'] as String,
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      rules: pulumi.Input.decodeList<RuleResponse>(map['rules']!, (value) => RuleResponse.fromMap((value as Map).cast<String, dynamic>())),
-      updateTime: map['updateTime'] as String,
+      action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.decodeList<RuleResponse>(guardedValue, (value) => RuleResponse.fromMap((value as Map).cast<String, dynamic>())); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

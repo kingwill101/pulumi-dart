@@ -32,8 +32,27 @@ class EndpointAttachment extends pulumi.CustomResource {
           'google-native:apigee/v1:EndpointAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
+    connectionState = registerOutput<String>('connectionState');
+    endpointAttachmentId = registerOutput<String?>('endpointAttachmentId');
+    host = registerOutput<String>('host');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    serviceAttachment = registerOutput<String>('serviceAttachment');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [EndpointAttachment] resource.
+  EndpointAttachment.reference(String urn)
+    : super(
+        'google-native:apigee/v1:EndpointAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     connectionState = registerOutput<String>('connectionState');
     endpointAttachmentId = registerOutput<String?>('endpointAttachmentId');
     host = registerOutput<String>('host');

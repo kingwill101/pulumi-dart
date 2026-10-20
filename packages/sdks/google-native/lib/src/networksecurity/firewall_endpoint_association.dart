@@ -41,12 +41,36 @@ class FirewallEndpointAssociation extends pulumi.CustomResource {
           'google-native:networksecurity/v1beta1:FirewallEndpointAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     firewallEndpoint = registerOutput<String>('firewallEndpoint');
     firewallEndpointAssociationId = registerOutput<String?>('firewallEndpointAssociationId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    tlsInspectionPolicy = registerOutput<String>('tlsInspectionPolicy');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [FirewallEndpointAssociation] resource.
+  FirewallEndpointAssociation.reference(String urn)
+    : super(
+        'google-native:networksecurity/v1beta1:FirewallEndpointAssociation',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    firewallEndpoint = registerOutput<String>('firewallEndpoint');
+    firewallEndpointAssociationId = registerOutput<String?>('firewallEndpointAssociationId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     network = registerOutput<String>('network');

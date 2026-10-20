@@ -33,7 +33,7 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsResponse {
   factory GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsResponse(
       metrics: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse>(map['metrics']!, (value) => GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      sessionCount: pulumi.Input.fromValue(map['sessionCount'] as int),
+      sessionCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sessionCount'])),
       version: pulumi.Input.fromValue(map['version'] as String),
     );
   }

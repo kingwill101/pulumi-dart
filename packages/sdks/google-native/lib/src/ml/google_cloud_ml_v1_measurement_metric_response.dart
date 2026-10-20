@@ -27,7 +27,7 @@ class GoogleCloudMlV1MeasurementMetricResponse {
   factory GoogleCloudMlV1MeasurementMetricResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1MeasurementMetricResponse(
       metric: pulumi.Input.fromValue(map['metric'] as String),
-      value: pulumi.Input.fromValue(map['value'] as double),
+      value: pulumi.Input.fromValue((map['value'] as num).toDouble()),
     );
   }
 }

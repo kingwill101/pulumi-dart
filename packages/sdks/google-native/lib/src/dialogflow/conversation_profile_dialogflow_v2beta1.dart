@@ -55,8 +55,36 @@ class ConversationProfileDialogflowV2beta1 extends pulumi.CustomResource {
           'google-native:dialogflow/v2beta1:ConversationProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    automatedAgentConfig = registerOutput<GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse>('automatedAgentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    humanAgentAssistantConfig = registerOutput<GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse>('humanAgentAssistantConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    humanAgentHandoffConfig = registerOutput<GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponse>('humanAgentHandoffConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    languageCode = registerOutput<String>('languageCode');
+    location = registerOutput<String>('location');
+    loggingConfig = registerOutput<GoogleCloudDialogflowV2beta1LoggingConfigResponse>('loggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2beta1LoggingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    newMessageEventNotificationConfig = registerOutput<GoogleCloudDialogflowV2beta1NotificationConfigResponse>('newMessageEventNotificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2beta1NotificationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    notificationConfig = registerOutput<GoogleCloudDialogflowV2beta1NotificationConfigResponse>('notificationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2beta1NotificationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    securitySettings = registerOutput<String>('securitySettings');
+    sttConfig = registerOutput<GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse>('sttConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeZone = registerOutput<String>('timeZone');
+    ttsConfig = registerOutput<GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse>('ttsConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ConversationProfileDialogflowV2beta1] resource.
+  ConversationProfileDialogflowV2beta1.reference(String urn)
+    : super(
+        'google-native:dialogflow/v2beta1:ConversationProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     automatedAgentConfig = registerOutput<GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse>('automatedAgentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');

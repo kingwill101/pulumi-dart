@@ -10,21 +10,21 @@ import 'geth_details.dart';
 /// Ethereum-specific blockchain node details.
 class EthereumDetails {
   /// Immutable. Enables JSON-RPC access to functions in the `admin` namespace. Defaults to `false`.
-  final pulumi.Input<bool>? apiEnableAdmin;
+  final pulumi.Input<bool?>? apiEnableAdmin;
   /// Immutable. Enables JSON-RPC access to functions in the `debug` namespace. Defaults to `false`.
-  final pulumi.Input<bool>? apiEnableDebug;
+  final pulumi.Input<bool?>? apiEnableDebug;
   /// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced.
-  final pulumi.Input<String>? beaconFeeRecipient;
+  final pulumi.Input<String?>? beaconFeeRecipient;
   /// Immutable. The consensus client.
-  final pulumi.Input<EthereumDetailsConsensusClient>? consensusClient;
+  final pulumi.Input<EthereumDetailsConsensusClient?>? consensusClient;
   /// Immutable. The execution client
-  final pulumi.Input<EthereumDetailsExecutionClient>? executionClient;
+  final pulumi.Input<EthereumDetailsExecutionClient?>? executionClient;
   /// Details for the Geth execution client.
-  final pulumi.Input<GethDetails>? gethDetails;
+  final pulumi.Input<GethDetails?>? gethDetails;
   /// Immutable. The Ethereum environment being accessed.
-  final pulumi.Input<EthereumDetailsNetwork>? network;
+  final pulumi.Input<EthereumDetailsNetwork?>? network;
   /// Immutable. The type of Ethereum node.
-  final pulumi.Input<EthereumDetailsNodeType>? nodeType;
+  final pulumi.Input<EthereumDetailsNodeType?>? nodeType;
 
   /// Creates a new [EthereumDetails].
   /// [apiEnableAdmin] Immutable. Enables JSON-RPC access to functions in the `admin` namespace. Defaults to `false`.

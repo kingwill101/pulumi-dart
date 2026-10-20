@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'instance_config_response.dart';
+import 'network_config_response.dart';
 import 'provisioning_config_args.dart';
+import 'volume_config_response.dart';
 
 /// Create new ProvisioningConfig.
 /// Auto-naming is currently not supported for this resource.
@@ -15,12 +18,12 @@ class ProvisioningConfig extends pulumi.CustomResource {
   /// A service account to enable customers to access instance credentials upon handover.
   late final pulumi.Output<String> handoverServiceAccount;
   /// Instances to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>> instances;
+  late final pulumi.Output<List<InstanceConfigResponse>> instances;
   late final pulumi.Output<String> location;
   /// The system-generated name of the provisioning config. This follows the UUID format.
   late final pulumi.Output<String> name;
   /// Networks to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>> networks;
+  late final pulumi.Output<List<NetworkConfigResponse>> networks;
   /// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes, nfsshares) allocated in the same pod only.
   late final pulumi.Output<String> pod;
   late final pulumi.Output<String> project;
@@ -33,7 +36,7 @@ class ProvisioningConfig extends pulumi.CustomResource {
   /// Last update timestamp.
   late final pulumi.Output<String> updateTime;
   /// Volumes to be created.
-  late final pulumi.Output<List<Map<String, dynamic>>> volumes;
+  late final pulumi.Output<List<VolumeConfigResponse>> volumes;
   /// If true, VPC SC is enabled for the cluster.
   late final pulumi.Output<bool> vpcScEnabled;
 
@@ -49,23 +52,50 @@ class ProvisioningConfig extends pulumi.CustomResource {
           'google-native:baremetalsolution/v2:ProvisioningConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     cloudConsoleUri = registerOutput<String>('cloudConsoleUri');
     customId = registerOutput<String>('customId');
     email = registerOutput<String>('email');
     handoverServiceAccount = registerOutput<String>('handoverServiceAccount');
-    instances = registerOutput<List<Map<String, dynamic>>>('instances');
+    instances = registerOutput<List<InstanceConfigResponse>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceConfigResponse>(guardedValue, (value) => InstanceConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    networks = registerOutput<List<Map<String, dynamic>>>('networks');
+    networks = registerOutput<List<NetworkConfigResponse>>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConfigResponse>(guardedValue, (value) => NetworkConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     pod = registerOutput<String>('pod');
     project = registerOutput<String>('project');
     state = registerOutput<String>('state');
     statusMessage = registerOutput<String>('statusMessage');
     ticketId = registerOutput<String>('ticketId');
     updateTime = registerOutput<String>('updateTime');
-    volumes = registerOutput<List<Map<String, dynamic>>>('volumes');
+    volumes = registerOutput<List<VolumeConfigResponse>>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeConfigResponse>(guardedValue, (value) => VolumeConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    vpcScEnabled = registerOutput<bool>('vpcScEnabled');
+  }
+
+  /// Creates a typed reference to an existing [ProvisioningConfig] resource.
+  ProvisioningConfig.reference(String urn)
+    : super(
+        'google-native:baremetalsolution/v2:ProvisioningConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    cloudConsoleUri = registerOutput<String>('cloudConsoleUri');
+    customId = registerOutput<String>('customId');
+    email = registerOutput<String>('email');
+    handoverServiceAccount = registerOutput<String>('handoverServiceAccount');
+    instances = registerOutput<List<InstanceConfigResponse>>('instances', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<InstanceConfigResponse>(guardedValue, (value) => InstanceConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    networks = registerOutput<List<NetworkConfigResponse>>('networks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkConfigResponse>(guardedValue, (value) => NetworkConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    pod = registerOutput<String>('pod');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    statusMessage = registerOutput<String>('statusMessage');
+    ticketId = registerOutput<String>('ticketId');
+    updateTime = registerOutput<String>('updateTime');
+    volumes = registerOutput<List<VolumeConfigResponse>>('volumes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<VolumeConfigResponse>(guardedValue, (value) => VolumeConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     vpcScEnabled = registerOutput<bool>('vpcScEnabled');
   }
 }

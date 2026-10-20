@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'destination_response.dart';
+import 'event_filter_response.dart';
 import 'transport_response.dart';
 import 'trigger_args.dart';
 
@@ -18,7 +19,7 @@ class Trigger extends pulumi.CustomResource {
   /// Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This is set to `application/json` if the value is not defined.
   late final pulumi.Output<String> eventDataContentType;
   /// Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
-  late final pulumi.Output<List<Map<String, dynamic>>> eventFilters;
+  late final pulumi.Output<List<EventFilterResponse>> eventFilters;
   /// Optional. User labels attached to the triggers that can be used to group resources.
   late final pulumi.Output<Map<String, String>> labels;
   late final pulumi.Output<String> location;
@@ -48,16 +49,43 @@ class Trigger extends pulumi.CustomResource {
           'google-native:eventarc/v1:Trigger',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'triggerId']).merge(options),
         ) {
     channel = registerOutput<String>('channel');
-    conditions = registerOutput<Map<String, String>>('conditions');
+    conditions = registerOutput<Map<String, String>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     createTime = registerOutput<String>('createTime');
     destination = registerOutput<DestinationResponse>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     eventDataContentType = registerOutput<String>('eventDataContentType');
-    eventFilters = registerOutput<List<Map<String, dynamic>>>('eventFilters');
-    labels = registerOutput<Map<String, String>>('labels');
+    eventFilters = registerOutput<List<EventFilterResponse>>('eventFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventFilterResponse>(guardedValue, (value) => EventFilterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    transport = registerOutput<TransportResponse>('transport', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TransportResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    triggerId = registerOutput<String>('triggerId');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Trigger] resource.
+  Trigger.reference(String urn)
+    : super(
+        'google-native:eventarc/v1:Trigger',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    channel = registerOutput<String>('channel');
+    conditions = registerOutput<Map<String, String>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    createTime = registerOutput<String>('createTime');
+    destination = registerOutput<DestinationResponse>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DestinationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    eventDataContentType = registerOutput<String>('eventDataContentType');
+    eventFilters = registerOutput<List<EventFilterResponse>>('eventFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EventFilterResponse>(guardedValue, (value) => EventFilterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

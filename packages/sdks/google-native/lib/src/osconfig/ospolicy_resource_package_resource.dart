@@ -13,21 +13,21 @@ import 'ospolicy_resource_package_resource_zypper.dart';
 /// A resource that manages a system package.
 class OSPolicyResourcePackageResource {
   /// A package managed by Apt.
-  final pulumi.Input<OSPolicyResourcePackageResourceAPT>? apt;
+  final pulumi.Input<OSPolicyResourcePackageResourceAPT?>? apt;
   /// A deb package file.
-  final pulumi.Input<OSPolicyResourcePackageResourceDeb>? deb;
+  final pulumi.Input<OSPolicyResourcePackageResourceDeb?>? deb;
   /// The desired state the agent should maintain for this package.
   final pulumi.Input<OSPolicyResourcePackageResourceDesiredState> desiredState;
   /// A package managed by GooGet.
-  final pulumi.Input<OSPolicyResourcePackageResourceGooGet>? googet;
+  final pulumi.Input<OSPolicyResourcePackageResourceGooGet?>? googet;
   /// An MSI package.
-  final pulumi.Input<OSPolicyResourcePackageResourceMSI>? msi;
+  final pulumi.Input<OSPolicyResourcePackageResourceMSI?>? msi;
   /// An rpm package file.
-  final pulumi.Input<OSPolicyResourcePackageResourceRPM>? rpm;
+  final pulumi.Input<OSPolicyResourcePackageResourceRPM?>? rpm;
   /// A package managed by YUM.
-  final pulumi.Input<OSPolicyResourcePackageResourceYUM>? yum;
+  final pulumi.Input<OSPolicyResourcePackageResourceYUM?>? yum;
   /// A package managed by Zypper.
-  final pulumi.Input<OSPolicyResourcePackageResourceZypper>? zypper;
+  final pulumi.Input<OSPolicyResourcePackageResourceZypper?>? zypper;
 
   /// Creates a new [OSPolicyResourcePackageResource].
   /// [apt] A package managed by Apt.

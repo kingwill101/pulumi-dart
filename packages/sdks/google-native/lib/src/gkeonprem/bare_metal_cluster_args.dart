@@ -23,43 +23,43 @@ class BareMetalClusterArgs {
   /// The admin cluster this bare metal user cluster belongs to. This is the full resource name of the admin cluster's fleet membership.
   final pulumi.Input<String> adminClusterMembership;
   /// Annotations on the bare metal user cluster. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-  final pulumi.Input<Map<String, String>>? annotations;
+  final pulumi.Input<Map<String, String>?>? annotations;
   /// Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/
   final pulumi.Input<String> bareMetalClusterId;
   /// The Anthos clusters on bare metal version for your user cluster.
   final pulumi.Input<String> bareMetalVersion;
   /// Binary Authorization related configurations.
-  final pulumi.Input<BinaryAuthorization>? binaryAuthorization;
+  final pulumi.Input<BinaryAuthorization?>? binaryAuthorization;
   /// Cluster operations configuration.
-  final pulumi.Input<BareMetalClusterOperationsConfig>? clusterOperations;
+  final pulumi.Input<BareMetalClusterOperationsConfig?>? clusterOperations;
   /// Control plane configuration.
   final pulumi.Input<BareMetalControlPlaneConfig> controlPlane;
   /// A human readable description of this bare metal user cluster.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Load balancer configuration.
   final pulumi.Input<BareMetalLoadBalancerConfig> loadBalancer;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? location;
   /// Maintenance configuration.
-  final pulumi.Input<BareMetalMaintenanceConfig>? maintenanceConfig;
+  final pulumi.Input<BareMetalMaintenanceConfig?>? maintenanceConfig;
   /// Immutable. The bare metal user cluster resource name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Network configuration.
   final pulumi.Input<BareMetalNetworkConfig> networkConfig;
   /// Node access related configurations.
-  final pulumi.Input<BareMetalNodeAccessConfig>? nodeAccessConfig;
+  final pulumi.Input<BareMetalNodeAccessConfig?>? nodeAccessConfig;
   /// Workload node configuration.
-  final pulumi.Input<BareMetalWorkloadNodeConfig>? nodeConfig;
+  final pulumi.Input<BareMetalWorkloadNodeConfig?>? nodeConfig;
   /// OS environment related configurations.
-  final pulumi.Input<BareMetalOsEnvironmentConfig>? osEnvironmentConfig;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<BareMetalOsEnvironmentConfig?>? osEnvironmentConfig;
+  final pulumi.Input<String?>? project;
   /// Proxy configuration.
-  final pulumi.Input<BareMetalProxyConfig>? proxy;
+  final pulumi.Input<BareMetalProxyConfig?>? proxy;
   /// Security related setting configuration.
-  final pulumi.Input<BareMetalSecurityConfig>? securityConfig;
+  final pulumi.Input<BareMetalSecurityConfig?>? securityConfig;
   /// Storage configuration.
   final pulumi.Input<BareMetalStorageConfig> storage;
   /// The cluster upgrade policy.
-  final pulumi.Input<BareMetalClusterUpgradePolicy>? upgradePolicy;
+  final pulumi.Input<BareMetalClusterUpgradePolicy?>? upgradePolicy;
 
   /// Creates a new [BareMetalClusterArgs].
   /// [adminClusterMembership] The admin cluster this bare metal user cluster belongs to. This is the full resource name of the admin cluster's fleet membership.

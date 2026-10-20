@@ -6,13 +6,13 @@ import 'machine_config.dart';
 /// Settings for the cluster's primary instance
 class PrimaryInstanceSettings {
   /// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
-  final pulumi.Input<Map<String, String>>? databaseFlags;
+  final pulumi.Input<Map<String, String>?>? databaseFlags;
   /// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
   final pulumi.Input<String> id;
   /// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Configuration for the machines that host the underlying database engine.
-  final pulumi.Input<MachineConfig>? machineConfig;
+  final pulumi.Input<MachineConfig?>? machineConfig;
 
   /// Creates a new [PrimaryInstanceSettings].
   /// [databaseFlags] Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.

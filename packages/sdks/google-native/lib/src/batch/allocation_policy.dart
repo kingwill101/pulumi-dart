@@ -10,17 +10,17 @@ import 'service_account.dart';
 /// A Job's resource allocation policy describes when, where, and how compute resources should be allocated for the Job.
 class AllocationPolicy {
   /// Describe instances that can be created by this AllocationPolicy. Only instances[0] is supported now.
-  final pulumi.Input<List<InstancePolicyOrTemplate>>? instances;
+  final pulumi.Input<List<InstancePolicyOrTemplate>?>? instances;
   /// Labels applied to all VM instances and other resources created by AllocationPolicy. Labels could be user provided or system generated. You can assign up to 64 labels. [Google Compute Engine label restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) apply. Label names that start with "goog-" or "google-" are reserved.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Location where compute resources should be allocated for the Job.
-  final pulumi.Input<LocationPolicy>? location;
+  final pulumi.Input<LocationPolicy?>? location;
   /// The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
-  final pulumi.Input<NetworkPolicy>? network;
+  final pulumi.Input<NetworkPolicy?>? network;
   /// The placement policy.
-  final pulumi.Input<PlacementPolicy>? placement;
+  final pulumi.Input<PlacementPolicy?>? placement;
   /// Service account that VMs will run as.
-  final pulumi.Input<ServiceAccount>? serviceAccount;
+  final pulumi.Input<ServiceAccount?>? serviceAccount;
 
   /// Creates a new [AllocationPolicy].
   /// [instances] Describe instances that can be created by this AllocationPolicy. Only instances[0] is supported now.

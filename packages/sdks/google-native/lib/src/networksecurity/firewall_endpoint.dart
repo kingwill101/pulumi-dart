@@ -41,14 +41,38 @@ class FirewallEndpoint extends pulumi.CustomResource {
           'google-native:networksecurity/v1beta1:FirewallEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['firewallEndpointId', 'location', 'organizationId']).merge(options),
         ) {
-    associatedNetworks = registerOutput<List<String>>('associatedNetworks');
+    associatedNetworks = registerOutput<List<String>>('associatedNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     billingProjectId = registerOutput<String>('billingProjectId');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     firewallEndpointId = registerOutput<String>('firewallEndpointId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    reconciling = registerOutput<bool>('reconciling');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [FirewallEndpoint] resource.
+  FirewallEndpoint.reference(String urn)
+    : super(
+        'google-native:networksecurity/v1beta1:FirewallEndpoint',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    associatedNetworks = registerOutput<List<String>>('associatedNetworks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    billingProjectId = registerOutput<String>('billingProjectId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    firewallEndpointId = registerOutput<String>('firewallEndpointId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');

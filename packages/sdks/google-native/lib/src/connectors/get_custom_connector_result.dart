@@ -4,23 +4,23 @@
 /// Result data returned by getCustomConnector.
 class GetCustomConnectorResult {
   /// Created time.
-  final String createTime;
+  final String? createTime;
   /// Type of the custom connector.
-  final String customConnectorType;
+  final String? customConnectorType;
   /// Optional. Description of the resource.
-  final String description;
+  final String? description;
   /// Optional. Display name.
-  final String displayName;
+  final String? displayName;
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Launch stage.
-  final String launchStage;
+  final String? launchStage;
   /// Optional. Logo of the resource.
-  final String logo;
+  final String? logo;
   /// Identifier. Resource name of the CustomConnector. Format: projects/{project}/locations/{location}/customConnectors/{connector}
-  final String name;
+  final String? name;
   /// Updated time.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetCustomConnectorResult].
   /// [createTime] Created time.
@@ -33,42 +33,42 @@ class GetCustomConnectorResult {
   /// [name] Identifier. Resource name of the CustomConnector. Format: projects/{project}/locations/{location}/customConnectors/{connector}
   /// [updateTime] Updated time.
   const GetCustomConnectorResult({
-    required this.createTime,
-    required this.customConnectorType,
-    required this.description,
-    required this.displayName,
-    required this.labels,
-    required this.launchStage,
-    required this.logo,
-    required this.name,
-    required this.updateTime,
+    this.createTime,
+    this.customConnectorType,
+    this.description,
+    this.displayName,
+    this.labels,
+    this.launchStage,
+    this.logo,
+    this.name,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'customConnectorType': customConnectorType,
-      'description': description,
-      'displayName': displayName,
-      'labels': labels,
-      'launchStage': launchStage,
-      'logo': logo,
-      'name': name,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'customConnectorType': ?customConnectorType,
+      'description': ?description,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'launchStage': ?launchStage,
+      'logo': ?logo,
+      'name': ?name,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetCustomConnectorResult.fromMap(Map<String, dynamic> map) {
     return GetCustomConnectorResult(
-      createTime: map['createTime'] as String,
-      customConnectorType: map['customConnectorType'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      launchStage: map['launchStage'] as String,
-      logo: map['logo'] as String,
-      name: map['name'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      customConnectorType: (() { final guardedValue = map['customConnectorType']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      launchStage: (() { final guardedValue = map['launchStage']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      logo: (() { final guardedValue = map['logo']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

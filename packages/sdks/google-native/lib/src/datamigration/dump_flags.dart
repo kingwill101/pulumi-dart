@@ -6,7 +6,7 @@ import 'dump_flag.dart';
 /// Dump flags definition.
 class DumpFlags {
   /// The flags for the initial dump.
-  final pulumi.Input<List<DumpFlag>>? dumpFlags;
+  final pulumi.Input<List<DumpFlag>?>? dumpFlags;
 
   /// Creates a new [DumpFlags].
   /// [dumpFlags] The flags for the initial dump.

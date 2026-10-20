@@ -7,6 +7,7 @@ import 'runtime_info_response.dart';
 import 'spark_batch_response.dart';
 import 'spark_rbatch_response.dart';
 import 'spark_sql_batch_response.dart';
+import 'state_history_response.dart';
 
 /// Creates a batch workload that executes asynchronously.
 /// Auto-naming is currently not supported for this resource.
@@ -44,7 +45,7 @@ class Batch extends pulumi.CustomResource {
   /// The state of the batch.
   late final pulumi.Output<String> state;
   /// Historical state information for the batch.
-  late final pulumi.Output<List<Map<String, dynamic>>> stateHistory;
+  late final pulumi.Output<List<StateHistoryResponse>> stateHistory;
   /// Batch state details, such as a failure description if the state is FAILED.
   late final pulumi.Output<String> stateMessage;
   /// The time when the batch entered a current state.
@@ -64,13 +65,13 @@ class Batch extends pulumi.CustomResource {
           'google-native:dataproc/v1:Batch',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     batchId = registerOutput<String?>('batchId');
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
     environmentConfig = registerOutput<EnvironmentConfigResponse>('environmentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     operation = registerOutput<String>('operation');
@@ -83,7 +84,39 @@ class Batch extends pulumi.CustomResource {
     sparkRBatch = registerOutput<SparkRBatchResponse>('sparkRBatch', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkRBatchResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     sparkSqlBatch = registerOutput<SparkSqlBatchResponse>('sparkSqlBatch', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkSqlBatchResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
-    stateHistory = registerOutput<List<Map<String, dynamic>>>('stateHistory');
+    stateHistory = registerOutput<List<StateHistoryResponse>>('stateHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StateHistoryResponse>(guardedValue, (value) => StateHistoryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    stateMessage = registerOutput<String>('stateMessage');
+    stateTime = registerOutput<String>('stateTime');
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Creates a typed reference to an existing [Batch] resource.
+  Batch.reference(String urn)
+    : super(
+        'google-native:dataproc/v1:Batch',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    batchId = registerOutput<String?>('batchId');
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<String>('creator');
+    environmentConfig = registerOutput<EnvironmentConfigResponse>('environmentConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    operation = registerOutput<String>('operation');
+    project = registerOutput<String>('project');
+    pysparkBatch = registerOutput<PySparkBatchResponse>('pysparkBatch', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PySparkBatchResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    requestId = registerOutput<String?>('requestId');
+    runtimeConfig = registerOutput<RuntimeConfigResponse>('runtimeConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    runtimeInfo = registerOutput<RuntimeInfoResponse>('runtimeInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sparkBatch = registerOutput<SparkBatchResponse>('sparkBatch', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkBatchResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sparkRBatch = registerOutput<SparkRBatchResponse>('sparkRBatch', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkRBatchResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sparkSqlBatch = registerOutput<SparkSqlBatchResponse>('sparkSqlBatch', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SparkSqlBatchResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    stateHistory = registerOutput<List<StateHistoryResponse>>('stateHistory', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StateHistoryResponse>(guardedValue, (value) => StateHistoryResponse.fromMap((value as Map).cast<String, dynamic>())); });
     stateMessage = registerOutput<String>('stateMessage');
     stateTime = registerOutput<String>('stateTime');
     uuid = registerOutput<String>('uuid');

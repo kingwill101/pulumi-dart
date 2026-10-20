@@ -6,15 +6,15 @@ import 'google_cloud_datapipelines_v1_runtime_environment.dart';
 /// Parameters to provide to the template being launched.
 class GoogleCloudDatapipelinesV1LaunchTemplateParameters {
   /// The runtime environment for the job.
-  final pulumi.Input<GoogleCloudDatapipelinesV1RuntimeEnvironment>? environment;
+  final pulumi.Input<GoogleCloudDatapipelinesV1RuntimeEnvironment?>? environment;
   /// The job name to use for the created job.
   final pulumi.Input<String> jobName;
   /// The runtime parameters to pass to the job.
-  final pulumi.Input<Map<String, String>>? parameters;
+  final pulumi.Input<Map<String, String>?>? parameters;
   /// Map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job. Only applicable when updating a pipeline.
-  final pulumi.Input<Map<String, String>>? transformNameMapping;
+  final pulumi.Input<Map<String, String>?>? transformNameMapping;
   /// If set, replace the existing pipeline with the name specified by jobName with this pipeline, preserving state.
-  final pulumi.Input<bool>? update;
+  final pulumi.Input<bool?>? update;
 
   /// Creates a new [GoogleCloudDatapipelinesV1LaunchTemplateParameters].
   /// [environment] The runtime environment for the job.

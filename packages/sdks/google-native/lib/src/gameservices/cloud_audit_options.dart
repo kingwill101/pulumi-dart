@@ -7,9 +7,9 @@ import 'cloud_audit_options_log_name.dart';
 /// Write a Cloud Audit log
 class CloudAuditOptions {
   /// Information used by the Cloud Audit Logging pipeline.
-  final pulumi.Input<AuthorizationLoggingOptions>? authorizationLoggingOptions;
+  final pulumi.Input<AuthorizationLoggingOptions?>? authorizationLoggingOptions;
   /// The log_name to populate in the Cloud Audit Record.
-  final pulumi.Input<CloudAuditOptionsLogName>? logName;
+  final pulumi.Input<CloudAuditOptionsLogName?>? logName;
 
   /// Creates a new [CloudAuditOptions].
   /// [authorizationLoggingOptions] Information used by the Cloud Audit Logging pipeline.

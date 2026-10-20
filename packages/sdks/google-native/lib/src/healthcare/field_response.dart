@@ -41,8 +41,8 @@ class FieldResponse {
 
   factory FieldResponse.fromMap(Map<String, dynamic> map) {
     return FieldResponse(
-      maxOccurs: pulumi.Input.fromValue(map['maxOccurs'] as int),
-      minOccurs: pulumi.Input.fromValue(map['minOccurs'] as int),
+      maxOccurs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxOccurs'])),
+      minOccurs: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minOccurs'])),
       name: pulumi.Input.fromValue(map['name'] as String),
       table: pulumi.Input.fromValue(map['table'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),

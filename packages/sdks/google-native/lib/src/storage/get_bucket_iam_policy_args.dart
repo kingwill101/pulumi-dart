@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_v1_get_bucket_iam_policy_args_doc}
 class GetBucketIamPolicyArgs {
   final pulumi.Input<String> bucket;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? userProject;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? userProject;
 
   /// Creates a new [GetBucketIamPolicyArgs].
   /// [bucket] Required.
@@ -32,7 +32,7 @@ class GetBucketIamPolicyArgs {
   factory GetBucketIamPolicyArgs.fromMap(Map<String, dynamic> map) {
     return GetBucketIamPolicyArgs(
       bucket: pulumi.Input.fromValue(map['bucket'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       userProject: (() { final guardedValue = map['userProject']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

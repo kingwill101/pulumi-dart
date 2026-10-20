@@ -59,12 +59,12 @@ class TestSuiteOverviewResponse {
   factory TestSuiteOverviewResponse.fromMap(Map<String, dynamic> map) {
     return TestSuiteOverviewResponse(
       elapsedTime: pulumi.Input.fromValue(DurationResponse.fromMap((map['elapsedTime']! as Map).cast<String, dynamic>())),
-      errorCount: pulumi.Input.fromValue(map['errorCount'] as int),
-      failureCount: pulumi.Input.fromValue(map['failureCount'] as int),
-      flakyCount: pulumi.Input.fromValue(map['flakyCount'] as int),
+      errorCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['errorCount'])),
+      failureCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['failureCount'])),
+      flakyCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['flakyCount'])),
       name: pulumi.Input.fromValue(map['name'] as String),
-      skippedCount: pulumi.Input.fromValue(map['skippedCount'] as int),
-      totalCount: pulumi.Input.fromValue(map['totalCount'] as int),
+      skippedCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['skippedCount'])),
+      totalCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalCount'])),
       xmlSource: pulumi.Input.fromValue(FileReferenceResponse.fromMap((map['xmlSource']! as Map).cast<String, dynamic>())),
     );
   }

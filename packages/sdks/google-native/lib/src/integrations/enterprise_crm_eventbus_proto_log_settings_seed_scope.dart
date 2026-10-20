@@ -1,10 +1,13 @@
-enum EnterpriseCrmEventbusProtoLogSettingsSeedScope {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum EnterpriseCrmEventbusProtoLogSettingsSeedScope implements pulumi.PulumiEnum<String> {
   seedScopeUnspecified("SEED_SCOPE_UNSPECIFIED"),
   eventName("EVENT_NAME"),
   timePeriod("TIME_PERIOD"),
   paramName("PARAM_NAME");
 
   const EnterpriseCrmEventbusProtoLogSettingsSeedScope(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmEventbusProtoLogSettingsSeedScope fromValue(String value) {

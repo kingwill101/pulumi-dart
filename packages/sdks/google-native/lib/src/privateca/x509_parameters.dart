@@ -10,17 +10,17 @@ import 'x509_extension.dart';
 /// An X509Parameters is used to describe certain fields of an X.509 certificate, such as the key usage fields, fields specific to CA certificates, certificate policy extensions and custom extensions.
 class X509Parameters {
   /// Optional. Describes custom X.509 extensions.
-  final pulumi.Input<List<X509Extension>>? additionalExtensions;
+  final pulumi.Input<List<X509Extension>?>? additionalExtensions;
   /// Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
-  final pulumi.Input<List<String>>? aiaOcspServers;
+  final pulumi.Input<List<String>?>? aiaOcspServers;
   /// Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
-  final pulumi.Input<CaOptions>? caOptions;
+  final pulumi.Input<CaOptions?>? caOptions;
   /// Optional. Indicates the intended use for keys that correspond to a certificate.
-  final pulumi.Input<KeyUsage>? keyUsage;
+  final pulumi.Input<KeyUsage?>? keyUsage;
   /// Optional. Describes the X.509 name constraints extension.
-  final pulumi.Input<NameConstraints>? nameConstraints;
+  final pulumi.Input<NameConstraints?>? nameConstraints;
   /// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
-  final pulumi.Input<List<ObjectId>>? policyIds;
+  final pulumi.Input<List<ObjectId>?>? policyIds;
 
   /// Creates a new [X509Parameters].
   /// [additionalExtensions] Optional. Describes custom X.509 extensions.

@@ -5,21 +5,21 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
 class GitHubEnterpriseSecrets {
   /// The resource name for the OAuth client ID secret in Secret Manager.
-  final pulumi.Input<String>? oauthClientIdName;
+  final pulumi.Input<String?>? oauthClientIdName;
   /// The resource name for the OAuth client ID secret version in Secret Manager.
-  final pulumi.Input<String>? oauthClientIdVersionName;
+  final pulumi.Input<String?>? oauthClientIdVersionName;
   /// The resource name for the OAuth secret in Secret Manager.
-  final pulumi.Input<String>? oauthSecretName;
+  final pulumi.Input<String?>? oauthSecretName;
   /// The resource name for the OAuth secret secret version in Secret Manager.
-  final pulumi.Input<String>? oauthSecretVersionName;
+  final pulumi.Input<String?>? oauthSecretVersionName;
   /// The resource name for the private key secret.
-  final pulumi.Input<String>? privateKeyName;
+  final pulumi.Input<String?>? privateKeyName;
   /// The resource name for the private key secret version.
-  final pulumi.Input<String>? privateKeyVersionName;
+  final pulumi.Input<String?>? privateKeyVersionName;
   /// The resource name for the webhook secret in Secret Manager.
-  final pulumi.Input<String>? webhookSecretName;
+  final pulumi.Input<String?>? webhookSecretName;
   /// The resource name for the webhook secret secret version in Secret Manager.
-  final pulumi.Input<String>? webhookSecretVersionName;
+  final pulumi.Input<String?>? webhookSecretVersionName;
 
   /// Creates a new [GitHubEnterpriseSecrets].
   /// [oauthClientIdName] The resource name for the OAuth client ID secret in Secret Manager.

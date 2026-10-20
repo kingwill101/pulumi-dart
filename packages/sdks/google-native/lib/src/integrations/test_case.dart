@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_integrations_v1alpha_integration_parameter_response.dart';
+import 'google_cloud_integrations_v1alpha_test_task_config_response.dart';
 import 'test_case_args.dart';
 
 /// Creates a new test case
@@ -26,9 +28,9 @@ class TestCase extends pulumi.CustomResource {
   /// Required. Required
   late final pulumi.Output<String> testCaseId;
   /// Optional. Parameters that are expected to be passed to the test case when the test case is triggered. This gives the user the ability to provide default values. This should include all the output variables of the trigger as input variables.
-  late final pulumi.Output<List<Map<String, dynamic>>> testInputParameters;
+  late final pulumi.Output<List<GoogleCloudIntegrationsV1alphaIntegrationParameterResponse>> testInputParameters;
   /// Optional. However, the test case doesn't mock or assert anything without test_task_configs.
-  late final pulumi.Output<List<Map<String, dynamic>>> testTaskConfigs;
+  late final pulumi.Output<List<GoogleCloudIntegrationsV1alphaTestTaskConfigResponse>> testTaskConfigs;
   /// This defines the trigger ID in workflow which is considered to be executed as starting point of the test case
   late final pulumi.Output<String> triggerId;
   /// Auto-generated.
@@ -49,7 +51,7 @@ class TestCase extends pulumi.CustomResource {
           'google-native:integrations/v1alpha:TestCase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['integrationId', 'location', 'project', 'testCaseId', 'versionId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     creatorEmail = registerOutput<String>('creatorEmail');
@@ -63,8 +65,37 @@ class TestCase extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     testCaseId = registerOutput<String>('testCaseId');
-    testInputParameters = registerOutput<List<Map<String, dynamic>>>('testInputParameters');
-    testTaskConfigs = registerOutput<List<Map<String, dynamic>>>('testTaskConfigs');
+    testInputParameters = registerOutput<List<GoogleCloudIntegrationsV1alphaIntegrationParameterResponse>>('testInputParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaIntegrationParameterResponse>(guardedValue, (value) => GoogleCloudIntegrationsV1alphaIntegrationParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    testTaskConfigs = registerOutput<List<GoogleCloudIntegrationsV1alphaTestTaskConfigResponse>>('testTaskConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaTestTaskConfigResponse>(guardedValue, (value) => GoogleCloudIntegrationsV1alphaTestTaskConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    triggerId = registerOutput<String>('triggerId');
+    updateTime = registerOutput<String>('updateTime');
+    versionId = registerOutput<String>('versionId');
+    workflowId = registerOutput<String>('workflowId');
+  }
+
+  /// Creates a typed reference to an existing [TestCase] resource.
+  TestCase.reference(String urn)
+    : super(
+        'google-native:integrations/v1alpha:TestCase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    creatorEmail = registerOutput<String>('creatorEmail');
+    databasePersistencePolicy = registerOutput<String>('databasePersistencePolicy');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    integrationId = registerOutput<String>('integrationId');
+    lastModifierEmail = registerOutput<String>('lastModifierEmail');
+    location = registerOutput<String>('location');
+    lockHolderEmail = registerOutput<String>('lockHolderEmail');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    testCaseId = registerOutput<String>('testCaseId');
+    testInputParameters = registerOutput<List<GoogleCloudIntegrationsV1alphaIntegrationParameterResponse>>('testInputParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaIntegrationParameterResponse>(guardedValue, (value) => GoogleCloudIntegrationsV1alphaIntegrationParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    testTaskConfigs = registerOutput<List<GoogleCloudIntegrationsV1alphaTestTaskConfigResponse>>('testTaskConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudIntegrationsV1alphaTestTaskConfigResponse>(guardedValue, (value) => GoogleCloudIntegrationsV1alphaTestTaskConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
     triggerId = registerOutput<String>('triggerId');
     updateTime = registerOutput<String>('updateTime');
     versionId = registerOutput<String>('versionId');

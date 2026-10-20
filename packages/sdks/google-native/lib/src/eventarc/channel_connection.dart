@@ -32,8 +32,28 @@ class ChannelConnection extends pulumi.CustomResource {
           'google-native:eventarc/v1:ChannelConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['channelConnectionId', 'location', 'project']).merge(options),
         ) {
+    activationToken = registerOutput<String>('activationToken');
+    channel = registerOutput<String>('channel');
+    channelConnectionId = registerOutput<String>('channelConnectionId');
+    createTime = registerOutput<String>('createTime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ChannelConnection] resource.
+  ChannelConnection.reference(String urn)
+    : super(
+        'google-native:eventarc/v1:ChannelConnection',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     activationToken = registerOutput<String>('activationToken');
     channel = registerOutput<String>('channel');
     channelConnectionId = registerOutput<String>('channelConnectionId');

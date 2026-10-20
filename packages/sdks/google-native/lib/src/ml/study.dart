@@ -32,8 +32,27 @@ class Study extends pulumi.CustomResource {
           'google-native:ml/v1:Study',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'studyId']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    inactiveReason = registerOutput<String>('inactiveReason');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    studyConfig = registerOutput<GoogleCloudMlV1StudyConfigResponse>('studyConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1StudyConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    studyId = registerOutput<String>('studyId');
+  }
+
+  /// Creates a typed reference to an existing [Study] resource.
+  Study.reference(String urn)
+    : super(
+        'google-native:ml/v1:Study',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     inactiveReason = registerOutput<String>('inactiveReason');
     location = registerOutput<String>('location');

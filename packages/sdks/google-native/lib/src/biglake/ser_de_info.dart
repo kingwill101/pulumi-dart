@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Serializer and deserializer information.
 class SerDeInfo {
   /// The fully qualified Java class name of the serialization library.
-  final pulumi.Input<String>? serializationLib;
+  final pulumi.Input<String?>? serializationLib;
 
   /// Creates a new [SerDeInfo].
   /// [serializationLib] The fully qualified Java class name of the serialization library.

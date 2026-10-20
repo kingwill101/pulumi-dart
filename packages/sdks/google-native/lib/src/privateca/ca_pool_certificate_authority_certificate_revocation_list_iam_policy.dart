@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'audit_config_response.dart';
+import 'binding_response.dart';
 import 'ca_pool_certificate_authority_certificate_revocation_list_iam_policy_args.dart';
 
 /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -6,9 +8,9 @@ import 'ca_pool_certificate_authority_certificate_revocation_list_iam_policy_arg
 /// on Google Cloud even though it will be deleted from Pulumi state.
 class CaPoolCertificateAuthorityCertificateRevocationListIamPolicy extends pulumi.CustomResource {
   /// Specifies cloud audit logging configuration for this policy.
-  late final pulumi.Output<List<Map<String, dynamic>>> auditConfigs;
+  late final pulumi.Output<List<AuditConfigResponse>> auditConfigs;
   /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
-  late final pulumi.Output<List<Map<String, dynamic>>> bindings;
+  late final pulumi.Output<List<BindingResponse>> bindings;
   late final pulumi.Output<String> caPoolId;
   late final pulumi.Output<String> certificateAuthorityId;
   late final pulumi.Output<String> certificateRevocationListId;
@@ -31,10 +33,30 @@ class CaPoolCertificateAuthorityCertificateRevocationListIamPolicy extends pulum
           'google-native:privateca/v1:CaPoolCertificateAuthorityCertificateRevocationListIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['caPoolId', 'certificateAuthorityId', 'certificateRevocationListId', 'location', 'project']).merge(options),
         ) {
-    auditConfigs = registerOutput<List<Map<String, dynamic>>>('auditConfigs');
-    bindings = registerOutput<List<Map<String, dynamic>>>('bindings');
+    auditConfigs = registerOutput<List<AuditConfigResponse>>('auditConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuditConfigResponse>(guardedValue, (value) => AuditConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    bindings = registerOutput<List<BindingResponse>>('bindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BindingResponse>(guardedValue, (value) => BindingResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    caPoolId = registerOutput<String>('caPoolId');
+    certificateAuthorityId = registerOutput<String>('certificateAuthorityId');
+    certificateRevocationListId = registerOutput<String>('certificateRevocationListId');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    project = registerOutput<String>('project');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [CaPoolCertificateAuthorityCertificateRevocationListIamPolicy] resource.
+  CaPoolCertificateAuthorityCertificateRevocationListIamPolicy.reference(String urn)
+    : super(
+        'google-native:privateca/v1:CaPoolCertificateAuthorityCertificateRevocationListIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    auditConfigs = registerOutput<List<AuditConfigResponse>>('auditConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AuditConfigResponse>(guardedValue, (value) => AuditConfigResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    bindings = registerOutput<List<BindingResponse>>('bindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BindingResponse>(guardedValue, (value) => BindingResponse.fromMap((value as Map).cast<String, dynamic>())); });
     caPoolId = registerOutput<String>('caPoolId');
     certificateAuthorityId = registerOutput<String>('certificateAuthorityId');
     certificateRevocationListId = registerOutput<String>('certificateRevocationListId');

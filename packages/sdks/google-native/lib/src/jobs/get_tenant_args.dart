@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_jobs_v4_get_tenant_args_doc}
 class GetTenantArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> tenantId;
 
   /// Creates a new [GetTenantArgs].

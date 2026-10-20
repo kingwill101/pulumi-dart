@@ -6,7 +6,7 @@ import 'gpudriver_installation_config_gpu_driver_version_container_v1beta1.dart'
 /// GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed.
 class GPUDriverInstallationConfigContainerV1beta1 {
   /// Mode for how the GPU driver is installed.
-  final pulumi.Input<GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1>? gpuDriverVersion;
+  final pulumi.Input<GPUDriverInstallationConfigGpuDriverVersionContainerV1beta1?>? gpuDriverVersion;
 
   /// Creates a new [GPUDriverInstallationConfigContainerV1beta1].
   /// [gpuDriverVersion] Mode for how the GPU driver is installed.

@@ -48,11 +48,11 @@ class CircuitBreakersResponse {
   factory CircuitBreakersResponse.fromMap(Map<String, dynamic> map) {
     return CircuitBreakersResponse(
       connectTimeout: pulumi.Input.fromValue(DurationResponse.fromMap((map['connectTimeout']! as Map).cast<String, dynamic>())),
-      maxConnections: pulumi.Input.fromValue(map['maxConnections'] as int),
-      maxPendingRequests: pulumi.Input.fromValue(map['maxPendingRequests'] as int),
-      maxRequests: pulumi.Input.fromValue(map['maxRequests'] as int),
-      maxRequestsPerConnection: pulumi.Input.fromValue(map['maxRequestsPerConnection'] as int),
-      maxRetries: pulumi.Input.fromValue(map['maxRetries'] as int),
+      maxConnections: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConnections'])),
+      maxPendingRequests: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPendingRequests'])),
+      maxRequests: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRequests'])),
+      maxRequestsPerConnection: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRequestsPerConnection'])),
+      maxRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRetries'])),
     );
   }
 }

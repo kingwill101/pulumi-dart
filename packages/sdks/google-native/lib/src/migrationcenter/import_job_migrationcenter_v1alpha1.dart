@@ -51,7 +51,7 @@ class ImportJobMigrationcenterV1alpha1 extends pulumi.CustomResource {
           'google-native:migrationcenter/v1alpha1:ImportJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['importJobId', 'location', 'project']).merge(options),
         ) {
     assetSource = registerOutput<String>('assetSource');
     completeTime = registerOutput<String>('completeTime');
@@ -61,7 +61,34 @@ class ImportJobMigrationcenterV1alpha1 extends pulumi.CustomResource {
     gcsPayload = registerOutput<GCSPayloadInfoResponse>('gcsPayload', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GCSPayloadInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     importJobId = registerOutput<String>('importJobId');
     inlinePayload = registerOutput<InlinePayloadInfoResponse>('inlinePayload', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InlinePayloadInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    validationReport = registerOutput<ValidationReportResponseMigrationcenterV1alpha1>('validationReport', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ValidationReportResponseMigrationcenterV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [ImportJobMigrationcenterV1alpha1] resource.
+  ImportJobMigrationcenterV1alpha1.reference(String urn)
+    : super(
+        'google-native:migrationcenter/v1alpha1:ImportJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    assetSource = registerOutput<String>('assetSource');
+    completeTime = registerOutput<String>('completeTime');
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    executionReport = registerOutput<ExecutionReportResponseMigrationcenterV1alpha1>('executionReport', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExecutionReportResponseMigrationcenterV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    gcsPayload = registerOutput<GCSPayloadInfoResponse>('gcsPayload', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GCSPayloadInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    importJobId = registerOutput<String>('importJobId');
+    inlinePayload = registerOutput<InlinePayloadInfoResponse>('inlinePayload', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InlinePayloadInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

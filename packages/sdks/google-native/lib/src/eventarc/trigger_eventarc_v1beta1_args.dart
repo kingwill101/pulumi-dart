@@ -12,15 +12,15 @@ class TriggerEventarcV1beta1Args {
   /// Destination specifies where the events should be sent to.
   final pulumi.Input<DestinationEventarcV1beta1> destination;
   /// Optional. User labels attached to the triggers that can be used to group resources.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Unordered list. The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
   final pulumi.Input<List<MatchingCriteria>> matchingCriteria;
   /// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Required. The user-provided ID to be assigned to the trigger.
   final pulumi.Input<String> triggerId;
 

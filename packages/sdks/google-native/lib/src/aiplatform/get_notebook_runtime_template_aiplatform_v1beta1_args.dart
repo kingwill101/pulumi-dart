@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNotebookRuntimeTemplateAiplatformV1beta1Args {
   final pulumi.Input<String> location;
   final pulumi.Input<String> notebookRuntimeTemplateId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetNotebookRuntimeTemplateAiplatformV1beta1Args].
   /// [location] Required.

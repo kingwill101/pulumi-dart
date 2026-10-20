@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDebugTokenFirebaseappcheckV1betaArgs {
   final pulumi.Input<String> appId;
   final pulumi.Input<String> debugTokenId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDebugTokenFirebaseappcheckV1betaArgs].
   /// [appId] Required.

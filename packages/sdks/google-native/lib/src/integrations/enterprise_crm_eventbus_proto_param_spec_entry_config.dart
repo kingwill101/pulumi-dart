@@ -6,21 +6,21 @@ import 'enterprise_crm_eventbus_proto_param_spec_entry_config_parameter_name_opt
 
 class EnterpriseCrmEventbusProtoParamSpecEntryConfig {
   /// A short phrase to describe what this parameter contains.
-  final pulumi.Input<String>? descriptivePhrase;
+  final pulumi.Input<String?>? descriptivePhrase;
   /// Detailed help text for this parameter containing information not provided elsewhere. For example, instructions on how to migrate from a deprecated parameter.
-  final pulumi.Input<String>? helpText;
+  final pulumi.Input<String?>? helpText;
   /// Whether the default value is hidden in the UI.
-  final pulumi.Input<bool>? hideDefaultValue;
-  final pulumi.Input<EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption>? inputDisplayOption;
+  final pulumi.Input<bool?>? hideDefaultValue;
+  final pulumi.Input<EnterpriseCrmEventbusProtoParamSpecEntryConfigInputDisplayOption?>? inputDisplayOption;
   /// Whether this field is hidden in the UI.
-  final pulumi.Input<bool>? isHidden;
+  final pulumi.Input<bool?>? isHidden;
   /// A user-friendly label for the parameter.
-  final pulumi.Input<String>? label;
-  final pulumi.Input<EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption>? parameterNameOption;
+  final pulumi.Input<String?>? label;
+  final pulumi.Input<EnterpriseCrmEventbusProtoParamSpecEntryConfigParameterNameOption?>? parameterNameOption;
   /// A user-friendly label for subSection under which the parameter will be displayed.
-  final pulumi.Input<String>? subSectionLabel;
+  final pulumi.Input<String?>? subSectionLabel;
   /// Placeholder text which will appear in the UI input form for this parameter.
-  final pulumi.Input<String>? uiPlaceholderText;
+  final pulumi.Input<String?>? uiPlaceholderText;
 
   /// Creates a new [EnterpriseCrmEventbusProtoParamSpecEntryConfig].
   /// [descriptivePhrase] A short phrase to describe what this parameter contains.

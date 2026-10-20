@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates the category (image, audio, video etc.) of the original content.
-enum DocumentContentCategory {
+enum DocumentContentCategory implements pulumi.PulumiEnum<String> {
   contentCategoryUnspecified("CONTENT_CATEGORY_UNSPECIFIED"),
   contentCategoryImage("CONTENT_CATEGORY_IMAGE"),
   contentCategoryAudio("CONTENT_CATEGORY_AUDIO"),
   contentCategoryVideo("CONTENT_CATEGORY_VIDEO");
 
   const DocumentContentCategory(this.wireValue);
+  @override
   final String wireValue;
 
   static DocumentContentCategory fromValue(String value) {

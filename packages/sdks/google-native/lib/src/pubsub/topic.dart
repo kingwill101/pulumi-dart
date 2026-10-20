@@ -34,10 +34,30 @@ class Topic extends pulumi.CustomResource {
           'google-native:pubsub/v1:Topic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'topicId']).merge(options),
         ) {
     kmsKeyName = registerOutput<String>('kmsKeyName');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    messageRetentionDuration = registerOutput<String>('messageRetentionDuration');
+    messageStoragePolicy = registerOutput<MessageStoragePolicyResponse>('messageStoragePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MessageStoragePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    schemaSettings = registerOutput<SchemaSettingsResponse>('schemaSettings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchemaSettingsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    topicId = registerOutput<String>('topicId');
+  }
+
+  /// Creates a typed reference to an existing [Topic] resource.
+  Topic.reference(String urn)
+    : super(
+        'google-native:pubsub/v1:Topic',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    kmsKeyName = registerOutput<String>('kmsKeyName');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     messageRetentionDuration = registerOutput<String>('messageRetentionDuration');
     messageStoragePolicy = registerOutput<MessageStoragePolicyResponse>('messageStoragePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MessageStoragePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

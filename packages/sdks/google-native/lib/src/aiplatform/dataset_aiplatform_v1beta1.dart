@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'dataset_aiplatform_v1beta1_args.dart';
 import 'google_cloud_aiplatform_v1beta1_encryption_spec_response.dart';
+import 'google_cloud_aiplatform_v1beta1_saved_query_response.dart';
 
 /// Creates a Dataset.
 /// Auto-naming is currently not supported for this resource.
@@ -30,7 +31,7 @@ class DatasetAiplatformV1beta1 extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   /// All SavedQueries belong to the Dataset will be returned in List/Get Dataset response. The annotation_specs field will not be populated except for UI cases which will only use annotation_spec_count. In CreateDataset request, a SavedQuery is created together if this field is set, up to one SavedQuery can be set in CreateDatasetRequest. The SavedQuery should not contain any AnnotationSpec.
-  late final pulumi.Output<List<Map<String, dynamic>>> savedQueries;
+  late final pulumi.Output<List<GoogleCloudAiplatformV1beta1SavedQueryResponse>> savedQueries;
   /// Timestamp when this Dataset was last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -46,7 +47,7 @@ class DatasetAiplatformV1beta1 extends pulumi.CustomResource {
           'google-native:aiplatform/v1beta1:Dataset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     dataItemCount = registerOutput<String>('dataItemCount');
@@ -54,14 +55,40 @@ class DatasetAiplatformV1beta1 extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     encryptionSpec = registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     metadata = registerOutput<dynamic>('metadata');
     metadataArtifact = registerOutput<String>('metadataArtifact');
     metadataSchemaUri = registerOutput<String>('metadataSchemaUri');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    savedQueries = registerOutput<List<Map<String, dynamic>>>('savedQueries');
+    savedQueries = registerOutput<List<GoogleCloudAiplatformV1beta1SavedQueryResponse>>('savedQueries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1SavedQueryResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1SavedQueryResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DatasetAiplatformV1beta1] resource.
+  DatasetAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:Dataset',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    dataItemCount = registerOutput<String>('dataItemCount');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    encryptionSpec = registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    metadata = registerOutput<dynamic>('metadata');
+    metadataArtifact = registerOutput<String>('metadataArtifact');
+    metadataSchemaUri = registerOutput<String>('metadataSchemaUri');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    savedQueries = registerOutput<List<GoogleCloudAiplatformV1beta1SavedQueryResponse>>('savedQueries', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1SavedQueryResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1SavedQueryResponse.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

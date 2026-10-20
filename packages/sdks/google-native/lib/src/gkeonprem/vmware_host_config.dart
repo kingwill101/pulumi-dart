@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the common parameters for all the hosts irrespective of their IP address.
 class VmwareHostConfig {
   /// DNS search domains.
-  final pulumi.Input<List<String>>? dnsSearchDomains;
+  final pulumi.Input<List<String>?>? dnsSearchDomains;
   /// DNS servers.
-  final pulumi.Input<List<String>>? dnsServers;
+  final pulumi.Input<List<String>?>? dnsServers;
   /// NTP servers.
-  final pulumi.Input<List<String>>? ntpServers;
+  final pulumi.Input<List<String>?>? ntpServers;
 
   /// Creates a new [VmwareHostConfig].
   /// [dnsSearchDomains] DNS search domains.

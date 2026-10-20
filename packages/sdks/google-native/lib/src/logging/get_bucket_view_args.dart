@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetBucketViewArgs {
   final pulumi.Input<String> bucketId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> viewId;
 
   /// Creates a new [GetBucketViewArgs].

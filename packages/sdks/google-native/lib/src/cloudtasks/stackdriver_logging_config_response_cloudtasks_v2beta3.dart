@@ -21,7 +21,7 @@ class StackdriverLoggingConfigResponseCloudtasksV2beta3 {
 
   factory StackdriverLoggingConfigResponseCloudtasksV2beta3.fromMap(Map<String, dynamic> map) {
     return StackdriverLoggingConfigResponseCloudtasksV2beta3(
-      samplingRatio: pulumi.Input.fromValue(map['samplingRatio'] as double),
+      samplingRatio: pulumi.Input.fromValue((map['samplingRatio'] as num).toDouble()),
     );
   }
 }

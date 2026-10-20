@@ -9,15 +9,15 @@ import 'multi_cluster_ingress_feature_spec_gkehub_v1beta.dart';
 /// CommonFeatureSpec contains Hub-wide configuration information
 class CommonFeatureSpecGkehubV1beta {
   /// Anthos Observability spec
-  final pulumi.Input<AnthosObservabilityFeatureSpecGkehubV1beta>? anthosobservability;
+  final pulumi.Input<AnthosObservabilityFeatureSpecGkehubV1beta?>? anthosobservability;
   /// Appdevexperience specific spec.
-  final pulumi.Input<Map<String, dynamic>>? appdevexperience;
+  final pulumi.Input<Map<String, dynamic>?>? appdevexperience;
   /// ClusterUpgrade (fleet-based) feature spec.
-  final pulumi.Input<ClusterUpgradeFleetSpecGkehubV1beta>? clusterupgrade;
+  final pulumi.Input<ClusterUpgradeFleetSpecGkehubV1beta?>? clusterupgrade;
   /// FleetObservability feature spec.
-  final pulumi.Input<FleetObservabilityFeatureSpecGkehubV1beta>? fleetobservability;
+  final pulumi.Input<FleetObservabilityFeatureSpecGkehubV1beta?>? fleetobservability;
   /// Multicluster Ingress-specific spec.
-  final pulumi.Input<MultiClusterIngressFeatureSpecGkehubV1beta>? multiclusteringress;
+  final pulumi.Input<MultiClusterIngressFeatureSpecGkehubV1beta?>? multiclusteringress;
 
   /// Creates a new [CommonFeatureSpecGkehubV1beta].
   /// [anthosobservability] Anthos Observability spec

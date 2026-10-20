@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
 class NetworkTags {
   /// List of network tags.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
 
   /// Creates a new [NetworkTags].
   /// [tags] List of network tags.

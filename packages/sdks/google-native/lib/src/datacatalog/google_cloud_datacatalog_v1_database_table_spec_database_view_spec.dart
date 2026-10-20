@@ -6,11 +6,11 @@ import 'google_cloud_datacatalog_v1_database_table_spec_database_view_spec_view_
 /// Specification that applies to database view.
 class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec {
   /// Name of a singular table this view reflects one to one.
-  final pulumi.Input<String>? baseTable;
+  final pulumi.Input<String?>? baseTable;
   /// SQL query used to generate this view.
-  final pulumi.Input<String>? sqlQuery;
+  final pulumi.Input<String?>? sqlQuery;
   /// Type of this view.
-  final pulumi.Input<GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType>? viewType;
+  final pulumi.Input<GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType?>? viewType;
 
   /// Creates a new [GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec].
   /// [baseTable] Name of a singular table this view reflects one to one.

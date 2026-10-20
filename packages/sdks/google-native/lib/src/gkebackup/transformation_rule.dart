@@ -7,11 +7,11 @@ import 'transformation_rule_action.dart';
 /// A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to transform) and transformation logic.
 class TransformationRule {
   /// Optional. The description is a user specified string description of the transformation rule.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A list of transformation rule actions to take against candidate resources. Actions are executed in order defined - this order matters, as they could potentially interfere with each other and the first operation could affect the outcome of the second operation.
   final pulumi.Input<List<TransformationRuleAction>> fieldActions;
   /// Optional. This field is used to specify a set of fields that should be used to determine which resources in backup should be acted upon by the supplied transformation rule actions, and this will ensure that only specific resources are affected by transformation rule actions.
-  final pulumi.Input<ResourceFilter>? resourceFilter;
+  final pulumi.Input<ResourceFilter?>? resourceFilter;
 
   /// Creates a new [TransformationRule].
   /// [description] Optional. The description is a user specified string description of the transformation rule.

@@ -40,12 +40,36 @@ class RegionTargetHttpProxyComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:RegionTargetHttpProxy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
     fingerprint = registerOutput<String>('fingerprint');
-    httpFilters = registerOutput<List<String>>('httpFilters');
+    httpFilters = registerOutput<List<String>>('httpFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    httpKeepAliveTimeoutSec = registerOutput<int>('httpKeepAliveTimeoutSec');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    proxyBind = registerOutput<bool>('proxyBind');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    urlMap = registerOutput<String>('urlMap');
+  }
+
+  /// Creates a typed reference to an existing [RegionTargetHttpProxyComputeBeta] resource.
+  RegionTargetHttpProxyComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:RegionTargetHttpProxy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    fingerprint = registerOutput<String>('fingerprint');
+    httpFilters = registerOutput<List<String>>('httpFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     httpKeepAliveTimeoutSec = registerOutput<int>('httpKeepAliveTimeoutSec');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');

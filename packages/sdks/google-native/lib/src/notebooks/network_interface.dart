@@ -6,11 +6,11 @@ import 'network_interface_nic_type.dart';
 /// The definition of a network interface resource attached to a VM.
 class NetworkInterface {
   /// Optional. The name of the VPC that this VM instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
-  final pulumi.Input<NetworkInterfaceNicType>? nicType;
+  final pulumi.Input<NetworkInterfaceNicType?>? nicType;
   /// Optional. The name of the subnet that this VM instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
-  final pulumi.Input<String>? subnet;
+  final pulumi.Input<String?>? subnet;
 
   /// Creates a new [NetworkInterface].
   /// [network] Optional. The name of the VPC that this VM instance is in. Format: `projects/{project_id}/global/networks/{network_id}`

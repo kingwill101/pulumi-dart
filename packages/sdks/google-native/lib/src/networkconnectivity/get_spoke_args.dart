@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_networkconnectivity_v1_get_spoke_args_doc}
 class GetSpokeArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> spokeId;
 
   /// Creates a new [GetSpokeArgs].

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Trusted attributes supplied by the IAM system.
-enum ConditionIamGameservicesV1beta {
+enum ConditionIamGameservicesV1beta implements pulumi.PulumiEnum<String> {
   noAttr("NO_ATTR"),
   authority("AUTHORITY"),
   attribution("ATTRIBUTION"),
@@ -10,6 +12,7 @@ enum ConditionIamGameservicesV1beta {
   credsAssertion("CREDS_ASSERTION");
 
   const ConditionIamGameservicesV1beta(this.wireValue);
+  @override
   final String wireValue;
 
   static ConditionIamGameservicesV1beta fromValue(String value) {

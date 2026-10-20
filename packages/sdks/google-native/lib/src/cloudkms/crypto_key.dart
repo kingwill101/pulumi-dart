@@ -49,7 +49,7 @@ class CryptoKey extends pulumi.CustomResource {
           'google-native:cloudkms/v1:CryptoKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['cryptoKeyId', 'keyRingId', 'location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     cryptoKeyBackend = registerOutput<String>('cryptoKeyBackend');
@@ -57,7 +57,34 @@ class CryptoKey extends pulumi.CustomResource {
     destroyScheduledDuration = registerOutput<String>('destroyScheduledDuration');
     importOnly = registerOutput<bool>('importOnly');
     keyRingId = registerOutput<String>('keyRingId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nextRotationTime = registerOutput<String>('nextRotationTime');
+    primary = registerOutput<CryptoKeyVersionResponse>('primary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyVersionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    purpose = registerOutput<String>('purpose');
+    rotationPeriod = registerOutput<String>('rotationPeriod');
+    skipInitialVersionCreation = registerOutput<bool?>('skipInitialVersionCreation');
+    versionTemplate = registerOutput<CryptoKeyVersionTemplateResponse>('versionTemplate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CryptoKeyVersionTemplateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [CryptoKey] resource.
+  CryptoKey.reference(String urn)
+    : super(
+        'google-native:cloudkms/v1:CryptoKey',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    cryptoKeyBackend = registerOutput<String>('cryptoKeyBackend');
+    cryptoKeyId = registerOutput<String>('cryptoKeyId');
+    destroyScheduledDuration = registerOutput<String>('destroyScheduledDuration');
+    importOnly = registerOutput<bool>('importOnly');
+    keyRingId = registerOutput<String>('keyRingId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     nextRotationTime = registerOutput<String>('nextRotationTime');

@@ -41,8 +41,32 @@ class ReportMigrationcenterV1alpha1 extends pulumi.CustomResource {
           'google-native:migrationcenter/v1alpha1:Report',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'reportConfigId', 'reportId']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    reportConfigId = registerOutput<String>('reportConfigId');
+    reportId = registerOutput<String>('reportId');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    summary = registerOutput<ReportSummaryResponseMigrationcenterV1alpha1>('summary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReportSummaryResponseMigrationcenterV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ReportMigrationcenterV1alpha1] resource.
+  ReportMigrationcenterV1alpha1.reference(String urn)
+    : super(
+        'google-native:migrationcenter/v1alpha1:Report',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');

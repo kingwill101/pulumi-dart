@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'security_policy_ddos_protection_config_ddos_protection_compute_v1.dart';
 
 class SecurityPolicyDdosProtectionConfigComputeV1 {
-  final pulumi.Input<SecurityPolicyDdosProtectionConfigDdosProtectionComputeV1>? ddosProtection;
+  final pulumi.Input<SecurityPolicyDdosProtectionConfigDdosProtectionComputeV1?>? ddosProtection;
 
   /// Creates a new [SecurityPolicyDdosProtectionConfigComputeV1].
   /// [ddosProtection] Optional.

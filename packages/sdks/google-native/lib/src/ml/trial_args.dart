@@ -11,15 +11,15 @@ import 'trial_state.dart';
 /// {@macro pulumi_ml_v1_trial_args_doc}
 class TrialArgs {
   /// The final measurement containing the objective value.
-  final pulumi.Input<GoogleCloudMlV1Measurement>? finalMeasurement;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<GoogleCloudMlV1Measurement?>? finalMeasurement;
+  final pulumi.Input<String?>? location;
   /// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
-  final pulumi.Input<List<GoogleCloudMlV1Measurement>>? measurements;
+  final pulumi.Input<List<GoogleCloudMlV1Measurement>?>? measurements;
   /// The parameters of the trial.
-  final pulumi.Input<List<GoogleCloudMlV1TrialParameter>>? parameters;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<List<GoogleCloudMlV1TrialParameter>?>? parameters;
+  final pulumi.Input<String?>? project;
   /// The detailed state of a trial.
-  final pulumi.Input<TrialState>? state;
+  final pulumi.Input<TrialState?>? state;
   final pulumi.Input<String> studyId;
 
   /// Creates a new [TrialArgs].

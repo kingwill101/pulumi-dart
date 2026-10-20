@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Options to configure rule type SetTablePrimaryKey. The rule is used to specify the columns and name to configure/alter the primary key of a table. The rule filter field can refer to one entity. The rule scope can be one of: Table.
 class SetTablePrimaryKey {
   /// Optional. Name for the primary key
-  final pulumi.Input<String>? primaryKey;
+  final pulumi.Input<String?>? primaryKey;
   /// List of column names for the primary key
   final pulumi.Input<List<String>> primaryKeyColumns;
 

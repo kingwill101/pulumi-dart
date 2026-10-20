@@ -54,7 +54,7 @@ class CaseCloudsupportV2beta extends pulumi.CustomResource {
           'google-native:cloudsupport/v2beta:Case',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['v2betaId1', 'v2betumId']).merge(options),
         ) {
     classification = registerOutput<CaseClassificationResponseCloudsupportV2beta>('classification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaseClassificationResponseCloudsupportV2beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     contactEmail = registerOutput<String>('contactEmail');
@@ -68,7 +68,36 @@ class CaseCloudsupportV2beta extends pulumi.CustomResource {
     priority = registerOutput<String>('priority');
     severity = registerOutput<String>('severity');
     state = registerOutput<String>('state');
-    subscriberEmailAddresses = registerOutput<List<String>>('subscriberEmailAddresses');
+    subscriberEmailAddresses = registerOutput<List<String>>('subscriberEmailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    testCase = registerOutput<bool>('testCase');
+    timeZone = registerOutput<String>('timeZone');
+    updateTime = registerOutput<String>('updateTime');
+    v2betaId1 = registerOutput<String>('v2betaId1');
+    v2betumId = registerOutput<String>('v2betumId');
+  }
+
+  /// Creates a typed reference to an existing [CaseCloudsupportV2beta] resource.
+  CaseCloudsupportV2beta.reference(String urn)
+    : super(
+        'google-native:cloudsupport/v2beta:Case',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    classification = registerOutput<CaseClassificationResponseCloudsupportV2beta>('classification', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CaseClassificationResponseCloudsupportV2beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    contactEmail = registerOutput<String>('contactEmail');
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<ActorResponseCloudsupportV2beta>('creator', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ActorResponseCloudsupportV2beta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    escalated = registerOutput<bool>('escalated');
+    languageCode = registerOutput<String>('languageCode');
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<String>('priority');
+    severity = registerOutput<String>('severity');
+    state = registerOutput<String>('state');
+    subscriberEmailAddresses = registerOutput<List<String>>('subscriberEmailAddresses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     testCase = registerOutput<bool>('testCase');
     timeZone = registerOutput<String>('timeZone');
     updateTime = registerOutput<String>('updateTime');

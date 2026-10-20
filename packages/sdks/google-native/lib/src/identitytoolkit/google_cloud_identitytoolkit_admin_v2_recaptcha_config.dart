@@ -7,11 +7,11 @@ import 'google_cloud_identitytoolkit_admin_v2_recaptcha_managed_rule.dart';
 /// The reCAPTCHA Enterprise integration config.
 class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
   /// The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
-  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState>? emailPasswordEnforcementState;
+  final pulumi.Input<GoogleCloudIdentitytoolkitAdminV2RecaptchaConfigEmailPasswordEnforcementState?>? emailPasswordEnforcementState;
   /// The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.
-  final pulumi.Input<List<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule>>? managedRules;
+  final pulumi.Input<List<GoogleCloudIdentitytoolkitAdminV2RecaptchaManagedRule>?>? managedRules;
   /// Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
-  final pulumi.Input<bool>? useAccountDefender;
+  final pulumi.Input<bool?>? useAccountDefender;
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig].
   /// [emailPasswordEnforcementState] The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.

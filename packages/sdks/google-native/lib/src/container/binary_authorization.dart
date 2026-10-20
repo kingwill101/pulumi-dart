@@ -6,9 +6,9 @@ import 'binary_authorization_evaluation_mode.dart';
 /// Configuration for Binary Authorization.
 class BinaryAuthorization {
   /// This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
-  final pulumi.Input<BinaryAuthorizationEvaluationMode>? evaluationMode;
+  final pulumi.Input<BinaryAuthorizationEvaluationMode?>? evaluationMode;
 
   /// Creates a new [BinaryAuthorization].
   /// [enabled] This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.

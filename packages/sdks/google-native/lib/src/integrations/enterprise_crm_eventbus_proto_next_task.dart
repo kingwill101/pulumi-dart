@@ -6,17 +6,17 @@ import 'enterprise_crm_eventbus_proto_combined_condition.dart';
 /// The task that is next in line to be executed, if the condition specified evaluated to true.
 class EnterpriseCrmEventbusProtoNextTask {
   /// Combined condition for this task to become an eligible next task. Each of these combined_conditions are joined with logical OR. DEPRECATED: use `condition`
-  final pulumi.Input<List<EnterpriseCrmEventbusProtoCombinedCondition>>? combinedConditions;
+  final pulumi.Input<List<EnterpriseCrmEventbusProtoCombinedCondition>?>? combinedConditions;
   /// Standard filter expression for this task to become an eligible next task.
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
   /// User-provided description intended to give more business context about the next task edge or condition.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// User-provided label that is attached to this edge in the UI.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// ID of the next task.
-  final pulumi.Input<String>? taskConfigId;
+  final pulumi.Input<String?>? taskConfigId;
   /// Task number of the next task.
-  final pulumi.Input<String>? taskNumber;
+  final pulumi.Input<String?>? taskNumber;
 
   /// Creates a new [EnterpriseCrmEventbusProtoNextTask].
   /// [combinedConditions] Combined condition for this task to become an eligible next task. Each of these combined_conditions are joined with logical OR. DEPRECATED: use `condition`

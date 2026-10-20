@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_connectors_v1_get_managed_zone_args_doc}
 class GetManagedZoneArgs {
   final pulumi.Input<String> managedZone;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetManagedZoneArgs].
   /// [managedZone] Required.

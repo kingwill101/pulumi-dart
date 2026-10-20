@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
-enum FreeInstanceMetadataExpireBehavior {
+enum FreeInstanceMetadataExpireBehavior implements pulumi.PulumiEnum<String> {
   expireBehaviorUnspecified("EXPIRE_BEHAVIOR_UNSPECIFIED"),
   freeToProvisioned("FREE_TO_PROVISIONED"),
   removeAfterGracePeriod("REMOVE_AFTER_GRACE_PERIOD");
 
   const FreeInstanceMetadataExpireBehavior(this.wireValue);
+  @override
   final String wireValue;
 
   static FreeInstanceMetadataExpireBehavior fromValue(String value) {

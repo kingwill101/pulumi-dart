@@ -6,7 +6,7 @@ import 'enterprise_crm_eventbus_proto_success_policy_final_state.dart';
 /// Policy that dictates the behavior for the task after it completes successfully.
 class EnterpriseCrmEventbusProtoSuccessPolicy {
   /// State to which the execution snapshot status will be set if the task succeeds.
-  final pulumi.Input<EnterpriseCrmEventbusProtoSuccessPolicyFinalState>? finalState;
+  final pulumi.Input<EnterpriseCrmEventbusProtoSuccessPolicyFinalState?>? finalState;
 
   /// Creates a new [EnterpriseCrmEventbusProtoSuccessPolicy].
   /// [finalState] State to which the execution snapshot status will be set if the task succeeds.

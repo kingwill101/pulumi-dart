@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Time-based Constraint for Study
 class GoogleCloudAiplatformV1beta1StudyTimeConstraint {
   /// Compares the wallclock time to this time. Must use UTC timezone.
-  final pulumi.Input<String>? endTime;
+  final pulumi.Input<String?>? endTime;
   /// Counts the wallclock time passed since the creation of this Study.
-  final pulumi.Input<String>? maxDuration;
+  final pulumi.Input<String?>? maxDuration;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1StudyTimeConstraint].
   /// [endTime] Compares the wallclock time to this time. Must use UTC timezone.

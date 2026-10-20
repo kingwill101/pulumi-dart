@@ -8,13 +8,13 @@ import 'transform_summary.dart';
 /// A descriptive representation of submitted pipeline as well as the executed form. This data is provided by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided metrics.
 class PipelineDescription {
   /// Pipeline level display data.
-  final pulumi.Input<List<DisplayData>>? displayData;
+  final pulumi.Input<List<DisplayData>?>? displayData;
   /// Description of each stage of execution of the pipeline.
-  final pulumi.Input<List<ExecutionStageSummary>>? executionPipelineStage;
+  final pulumi.Input<List<ExecutionStageSummary>?>? executionPipelineStage;
   /// Description of each transform in the pipeline and collections between them.
-  final pulumi.Input<List<TransformSummary>>? originalPipelineTransform;
+  final pulumi.Input<List<TransformSummary>?>? originalPipelineTransform;
   /// A hash value of the submitted pipeline portable graph step names if exists.
-  final pulumi.Input<String>? stepNamesHash;
+  final pulumi.Input<String?>? stepNamesHash;
 
   /// Creates a new [PipelineDescription].
   /// [displayData] Pipeline level display data.

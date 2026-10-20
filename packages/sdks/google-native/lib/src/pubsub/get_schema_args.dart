@@ -7,9 +7,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_pubsub_v1_get_schema_args_doc}
 class GetSchemaArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> schemaId;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? view;
 
   /// Creates a new [GetSchemaArgs].
   /// [project] Optional.

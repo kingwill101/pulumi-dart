@@ -32,8 +32,27 @@ class ServicePerimeter extends pulumi.CustomResource {
           'google-native:accesscontextmanager/v1:ServicePerimeter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['accessPolicyId']).merge(options),
         ) {
+    accessPolicyId = registerOutput<String>('accessPolicyId');
+    description = registerOutput<String>('description');
+    this.name = registerOutput<String>('name');
+    perimeterType = registerOutput<String>('perimeterType');
+    spec = registerOutput<ServicePerimeterConfigResponse>('spec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    status = registerOutput<ServicePerimeterConfigResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServicePerimeterConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    title = registerOutput<String>('title');
+    useExplicitDryRunSpec = registerOutput<bool>('useExplicitDryRunSpec');
+  }
+
+  /// Creates a typed reference to an existing [ServicePerimeter] resource.
+  ServicePerimeter.reference(String urn)
+    : super(
+        'google-native:accesscontextmanager/v1:ServicePerimeter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accessPolicyId = registerOutput<String>('accessPolicyId');
     description = registerOutput<String>('description');
     this.name = registerOutput<String>('name');

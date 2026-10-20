@@ -26,6 +26,17 @@ Future<GetConfigResult> getConfig(
   return GetConfigResult.fromMap(result);
 }
 
+pulumi.Output<GetConfigResult> getConfigOutput(
+  GetConfigArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicemanagement/v1:getConfig',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetConfigResult.fromMap);
+}
+
 /// Gets a service configuration rollout.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicemanagement_v1_get_rollout_args_doc}
 /// [options] Invoke options controlling this call.
@@ -40,6 +51,17 @@ Future<GetRolloutResult> getRollout(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRolloutResult.fromMap(result);
+}
+
+pulumi.Output<GetRolloutResult> getRolloutOutput(
+  GetRolloutArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicemanagement/v1:getRollout',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRolloutResult.fromMap);
 }
 
 /// Gets a managed service. Authentication is required unless the service is public.
@@ -58,6 +80,17 @@ Future<GetServiceResult> getService(
   return GetServiceResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceResult> getServiceOutput(
+  GetServiceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicemanagement/v1:getService',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicemanagement_v1_get_service_consumer_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -74,6 +107,17 @@ Future<GetServiceConsumerIamPolicyResult> getServiceConsumerIamPolicy(
   return GetServiceConsumerIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetServiceConsumerIamPolicyResult> getServiceConsumerIamPolicyOutput(
+  GetServiceConsumerIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicemanagement/v1:getServiceConsumerIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceConsumerIamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_servicemanagement_v1_get_service_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -88,4 +132,15 @@ Future<GetServiceIamPolicyResult> getServiceIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetServiceIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetServiceIamPolicyResult> getServiceIamPolicyOutput(
+  GetServiceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:servicemanagement/v1:getServiceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetServiceIamPolicyResult.fromMap);
 }

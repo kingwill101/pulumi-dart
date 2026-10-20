@@ -27,7 +27,7 @@ class CaOptionsResponse {
   factory CaOptionsResponse.fromMap(Map<String, dynamic> map) {
     return CaOptionsResponse(
       isCa: pulumi.Input.fromValue(map['isCa'] as bool),
-      maxIssuerPathLength: pulumi.Input.fromValue(map['maxIssuerPathLength'] as int),
+      maxIssuerPathLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxIssuerPathLength'])),
     );
   }
 }

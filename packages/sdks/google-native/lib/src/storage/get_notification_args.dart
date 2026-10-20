@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNotificationArgs {
   final pulumi.Input<String> bucket;
   final pulumi.Input<String> notification;
-  final pulumi.Input<String>? userProject;
+  final pulumi.Input<String?>? userProject;
 
   /// Creates a new [GetNotificationArgs].
   /// [bucket] Required.

@@ -48,6 +48,17 @@ Future<GetCloneJobResult> getCloneJob(
   return GetCloneJobResult.fromMap(result);
 }
 
+pulumi.Output<GetCloneJobResult> getCloneJobOutput(
+  GetCloneJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1:getCloneJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloneJobResult.fromMap);
+}
+
 /// Gets details of a single CutoverJob.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vmmigration_v1_get_cutover_job_args_doc}
 /// [options] Invoke options controlling this call.
@@ -62,6 +73,17 @@ Future<GetCutoverJobResult> getCutoverJob(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCutoverJobResult.fromMap(result);
+}
+
+pulumi.Output<GetCutoverJobResult> getCutoverJobOutput(
+  GetCutoverJobArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1:getCutoverJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCutoverJobResult.fromMap);
 }
 
 /// Gets details of a single DatacenterConnector.
@@ -80,6 +102,17 @@ Future<GetDatacenterConnectorResult> getDatacenterConnector(
   return GetDatacenterConnectorResult.fromMap(result);
 }
 
+pulumi.Output<GetDatacenterConnectorResult> getDatacenterConnectorOutput(
+  GetDatacenterConnectorArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1:getDatacenterConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatacenterConnectorResult.fromMap);
+}
+
 /// Gets details of a single Group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vmmigration_v1_get_group_args_doc}
 /// [options] Invoke options controlling this call.
@@ -94,6 +127,17 @@ Future<GetGroupResult> getGroup(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupResult.fromMap(result);
+}
+
+pulumi.Output<GetGroupResult> getGroupOutput(
+  GetGroupArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1:getGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupResult.fromMap);
 }
 
 /// Gets details of a single MigratingVm.
@@ -112,6 +156,17 @@ Future<GetMigratingVmResult> getMigratingVm(
   return GetMigratingVmResult.fromMap(result);
 }
 
+pulumi.Output<GetMigratingVmResult> getMigratingVmOutput(
+  GetMigratingVmArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1:getMigratingVm',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMigratingVmResult.fromMap);
+}
+
 /// Gets details of a single Source.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vmmigration_v1_get_source_args_doc}
 /// [options] Invoke options controlling this call.
@@ -126,6 +181,17 @@ Future<GetSourceResult> getSource(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSourceResult.fromMap(result);
+}
+
+pulumi.Output<GetSourceResult> getSourceOutput(
+  GetSourceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1:getSource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSourceResult.fromMap);
 }
 
 /// Gets details of a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
@@ -144,6 +210,17 @@ Future<GetTargetProjectResult> getTargetProject(
   return GetTargetProjectResult.fromMap(result);
 }
 
+pulumi.Output<GetTargetProjectResult> getTargetProjectOutput(
+  GetTargetProjectArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1:getTargetProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetProjectResult.fromMap);
+}
+
 /// Gets a single Utilization Report.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vmmigration_v1_get_utilization_report_args_doc}
 /// [options] Invoke options controlling this call.
@@ -158,6 +235,17 @@ Future<GetUtilizationReportResult> getUtilizationReport(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUtilizationReportResult.fromMap(result);
+}
+
+pulumi.Output<GetUtilizationReportResult> getUtilizationReportOutput(
+  GetUtilizationReportArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1:getUtilizationReport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUtilizationReportResult.fromMap);
 }
 
 /// Gets details of a single CloneJob.
@@ -176,6 +264,17 @@ Future<GetCloneJobVmmigrationV1alpha1Result> getCloneJobVmmigrationV1alpha1(
   return GetCloneJobVmmigrationV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetCloneJobVmmigrationV1alpha1Result> getCloneJobVmmigrationV1alpha1Output(
+  GetCloneJobVmmigrationV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1alpha1:getCloneJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCloneJobVmmigrationV1alpha1Result.fromMap);
+}
+
 /// Gets details of a single CutoverJob.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vmmigration_v1alpha1_get_cutover_job_vmmigration_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -190,6 +289,17 @@ Future<GetCutoverJobVmmigrationV1alpha1Result> getCutoverJobVmmigrationV1alpha1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetCutoverJobVmmigrationV1alpha1Result.fromMap(result);
+}
+
+pulumi.Output<GetCutoverJobVmmigrationV1alpha1Result> getCutoverJobVmmigrationV1alpha1Output(
+  GetCutoverJobVmmigrationV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1alpha1:getCutoverJob',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCutoverJobVmmigrationV1alpha1Result.fromMap);
 }
 
 /// Gets details of a single DatacenterConnector.
@@ -208,6 +318,17 @@ Future<GetDatacenterConnectorVmmigrationV1alpha1Result> getDatacenterConnectorVm
   return GetDatacenterConnectorVmmigrationV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetDatacenterConnectorVmmigrationV1alpha1Result> getDatacenterConnectorVmmigrationV1alpha1Output(
+  GetDatacenterConnectorVmmigrationV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1alpha1:getDatacenterConnector',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDatacenterConnectorVmmigrationV1alpha1Result.fromMap);
+}
+
 /// Gets details of a single Group.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vmmigration_v1alpha1_get_group_vmmigration_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -222,6 +343,17 @@ Future<GetGroupVmmigrationV1alpha1Result> getGroupVmmigrationV1alpha1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetGroupVmmigrationV1alpha1Result.fromMap(result);
+}
+
+pulumi.Output<GetGroupVmmigrationV1alpha1Result> getGroupVmmigrationV1alpha1Output(
+  GetGroupVmmigrationV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1alpha1:getGroup',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetGroupVmmigrationV1alpha1Result.fromMap);
 }
 
 /// Gets details of a single MigratingVm.
@@ -240,6 +372,17 @@ Future<GetMigratingVmVmmigrationV1alpha1Result> getMigratingVmVmmigrationV1alpha
   return GetMigratingVmVmmigrationV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetMigratingVmVmmigrationV1alpha1Result> getMigratingVmVmmigrationV1alpha1Output(
+  GetMigratingVmVmmigrationV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1alpha1:getMigratingVm',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetMigratingVmVmmigrationV1alpha1Result.fromMap);
+}
+
 /// Gets details of a single Source.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vmmigration_v1alpha1_get_source_vmmigration_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -254,6 +397,17 @@ Future<GetSourceVmmigrationV1alpha1Result> getSourceVmmigrationV1alpha1(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSourceVmmigrationV1alpha1Result.fromMap(result);
+}
+
+pulumi.Output<GetSourceVmmigrationV1alpha1Result> getSourceVmmigrationV1alpha1Output(
+  GetSourceVmmigrationV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1alpha1:getSource',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSourceVmmigrationV1alpha1Result.fromMap);
 }
 
 /// Gets details of a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
@@ -272,6 +426,17 @@ Future<GetTargetProjectVmmigrationV1alpha1Result> getTargetProjectVmmigrationV1a
   return GetTargetProjectVmmigrationV1alpha1Result.fromMap(result);
 }
 
+pulumi.Output<GetTargetProjectVmmigrationV1alpha1Result> getTargetProjectVmmigrationV1alpha1Output(
+  GetTargetProjectVmmigrationV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1alpha1:getTargetProject',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTargetProjectVmmigrationV1alpha1Result.fromMap);
+}
+
 /// Gets a single Utilization Report.
 /// [args] Arguments passed to this invoke. {@macro pulumi_vmmigration_v1alpha1_get_utilization_report_vmmigration_v1alpha1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -286,4 +451,15 @@ Future<GetUtilizationReportVmmigrationV1alpha1Result> getUtilizationReportVmmigr
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetUtilizationReportVmmigrationV1alpha1Result.fromMap(result);
+}
+
+pulumi.Output<GetUtilizationReportVmmigrationV1alpha1Result> getUtilizationReportVmmigrationV1alpha1Output(
+  GetUtilizationReportVmmigrationV1alpha1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:vmmigration/v1alpha1:getUtilizationReport',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetUtilizationReportVmmigrationV1alpha1Result.fromMap);
 }

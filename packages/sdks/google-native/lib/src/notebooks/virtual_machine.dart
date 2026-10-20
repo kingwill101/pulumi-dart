@@ -6,7 +6,7 @@ import 'virtual_machine_config.dart';
 /// Runtime using Virtual Machine for computing.
 class VirtualMachine {
   /// Virtual Machine configuration settings.
-  final pulumi.Input<VirtualMachineConfig>? virtualMachineConfig;
+  final pulumi.Input<VirtualMachineConfig?>? virtualMachineConfig;
 
   /// Creates a new [VirtualMachine].
   /// [virtualMachineConfig] Virtual Machine configuration settings.

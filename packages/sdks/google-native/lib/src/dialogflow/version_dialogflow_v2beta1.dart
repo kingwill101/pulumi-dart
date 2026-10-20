@@ -29,8 +29,26 @@ class VersionDialogflowV2beta1 extends pulumi.CustomResource {
           'google-native:dialogflow/v2beta1:Version',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    status = registerOutput<String>('status');
+    versionNumber = registerOutput<int>('versionNumber');
+  }
+
+  /// Creates a typed reference to an existing [VersionDialogflowV2beta1] resource.
+  VersionDialogflowV2beta1.reference(String urn)
+    : super(
+        'google-native:dialogflow/v2beta1:Version',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     location = registerOutput<String>('location');

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Type of the JMS Source. i.e. Queue or Topic
-enum JMSType {
+enum JMSType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   queue("QUEUE"),
   topic("TOPIC");
 
   const JMSType(this.wireValue);
+  @override
   final String wireValue;
 
   static JMSType fromValue(String value) {

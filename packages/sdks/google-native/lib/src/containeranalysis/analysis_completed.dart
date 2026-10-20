@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single resource.
 class AnalysisCompleted {
-  final pulumi.Input<List<String>>? analysisType;
+  final pulumi.Input<List<String>?>? analysisType;
 
   /// Creates a new [AnalysisCompleted].
   /// [analysisType] Optional.

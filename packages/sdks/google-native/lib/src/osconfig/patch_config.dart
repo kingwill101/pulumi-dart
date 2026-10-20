@@ -11,23 +11,23 @@ import 'zypper_settings.dart';
 /// Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
 class PatchConfig {
   /// Apt update settings. Use this setting to override the default `apt` patch rules.
-  final pulumi.Input<AptSettings>? apt;
+  final pulumi.Input<AptSettings?>? apt;
   /// Goo update settings. Use this setting to override the default `goo` patch rules.
-  final pulumi.Input<Map<String, dynamic>>? goo;
+  final pulumi.Input<Map<String, dynamic>?>? goo;
   /// Allows the patch job to run on Managed instance groups (MIGs).
-  final pulumi.Input<bool>? migInstancesAllowed;
+  final pulumi.Input<bool?>? migInstancesAllowed;
   /// The `ExecStep` to run after the patch update.
-  final pulumi.Input<ExecStep>? postStep;
+  final pulumi.Input<ExecStep?>? postStep;
   /// The `ExecStep` to run before the patch update.
-  final pulumi.Input<ExecStep>? preStep;
+  final pulumi.Input<ExecStep?>? preStep;
   /// Post-patch reboot settings.
-  final pulumi.Input<PatchConfigRebootConfig>? rebootConfig;
+  final pulumi.Input<PatchConfigRebootConfig?>? rebootConfig;
   /// Windows update settings. Use this override the default windows patch rules.
-  final pulumi.Input<WindowsUpdateSettings>? windowsUpdate;
+  final pulumi.Input<WindowsUpdateSettings?>? windowsUpdate;
   /// Yum update settings. Use this setting to override the default `yum` patch rules.
-  final pulumi.Input<YumSettings>? yum;
+  final pulumi.Input<YumSettings?>? yum;
   /// Zypper update settings. Use this setting to override the default `zypper` patch rules.
-  final pulumi.Input<ZypperSettings>? zypper;
+  final pulumi.Input<ZypperSettings?>? zypper;
 
   /// Creates a new [PatchConfig].
   /// [apt] Apt update settings. Use this setting to override the default `apt` patch rules.

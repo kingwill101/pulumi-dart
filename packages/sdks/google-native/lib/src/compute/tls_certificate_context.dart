@@ -8,11 +8,11 @@ import 'tls_certificate_paths.dart';
 /// [Deprecated] Defines the mechanism to obtain the client or server certificate. Defines the mechanism to obtain the client or server certificate.
 class TlsCertificateContext {
   /// Specifies the certificate and private key paths. This field is applicable only if tlsCertificateSource is set to USE_PATH.
-  final pulumi.Input<TlsCertificatePaths>? certificatePaths;
+  final pulumi.Input<TlsCertificatePaths?>? certificatePaths;
   /// Defines how TLS certificates are obtained.
-  final pulumi.Input<TlsCertificateContextCertificateSource>? certificateSource;
+  final pulumi.Input<TlsCertificateContextCertificateSource?>? certificateSource;
   /// Specifies the config to retrieve certificates through SDS. This field is applicable only if tlsCertificateSource is set to USE_SDS.
-  final pulumi.Input<SdsConfig>? sdsConfig;
+  final pulumi.Input<SdsConfig?>? sdsConfig;
 
   /// Creates a new [TlsCertificateContext].
   /// [certificatePaths] Specifies the certificate and private key paths. This field is applicable only if tlsCertificateSource is set to USE_PATH.

@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_v1_get_hmac_key_args_doc}
 class GetHmacKeyArgs {
   final pulumi.Input<String> accessId;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? userProject;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? userProject;
 
   /// Creates a new [GetHmacKeyArgs].
   /// [accessId] Required.

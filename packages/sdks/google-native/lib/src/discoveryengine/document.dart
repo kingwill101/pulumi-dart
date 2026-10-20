@@ -38,13 +38,13 @@ class Document extends pulumi.CustomResource {
           'google-native:discoveryengine/v1alpha:Document',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['branchId', 'collectionId', 'dataStoreId', 'documentId', 'location', 'project']).merge(options),
         ) {
     branchId = registerOutput<String>('branchId');
     collectionId = registerOutput<String>('collectionId');
     content = registerOutput<GoogleCloudDiscoveryengineV1alphaDocumentContentResponse>('content', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDiscoveryengineV1alphaDocumentContentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     dataStoreId = registerOutput<String>('dataStoreId');
-    derivedStructData = registerOutput<Map<String, String>>('derivedStructData');
+    derivedStructData = registerOutput<Map<String, String>>('derivedStructData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     documentId = registerOutput<String>('documentId');
     jsonData = registerOutput<String>('jsonData');
     location = registerOutput<String>('location');
@@ -52,6 +52,30 @@ class Document extends pulumi.CustomResource {
     parentDocumentId = registerOutput<String>('parentDocumentId');
     project = registerOutput<String>('project');
     schemaId = registerOutput<String>('schemaId');
-    structData = registerOutput<Map<String, String>>('structData');
+    structData = registerOutput<Map<String, String>>('structData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Document] resource.
+  Document.reference(String urn)
+    : super(
+        'google-native:discoveryengine/v1alpha:Document',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    branchId = registerOutput<String>('branchId');
+    collectionId = registerOutput<String>('collectionId');
+    content = registerOutput<GoogleCloudDiscoveryengineV1alphaDocumentContentResponse>('content', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDiscoveryengineV1alphaDocumentContentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    dataStoreId = registerOutput<String>('dataStoreId');
+    derivedStructData = registerOutput<Map<String, String>>('derivedStructData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    documentId = registerOutput<String>('documentId');
+    jsonData = registerOutput<String>('jsonData');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    parentDocumentId = registerOutput<String>('parentDocumentId');
+    project = registerOutput<String>('project');
+    schemaId = registerOutput<String>('schemaId');
+    structData = registerOutput<Map<String, String>>('structData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

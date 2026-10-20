@@ -61,7 +61,7 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse {
 
   factory PublicDelegatedPrefixPublicDelegatedSubPrefixResponse.fromMap(Map<String, dynamic> map) {
     return PublicDelegatedPrefixPublicDelegatedSubPrefixResponse(
-      allocatablePrefixLength: pulumi.Input.fromValue(map['allocatablePrefixLength'] as int),
+      allocatablePrefixLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['allocatablePrefixLength'])),
       delegateeProject: pulumi.Input.fromValue(map['delegateeProject'] as String),
       description: pulumi.Input.fromValue(map['description'] as String),
       ipCidrRange: pulumi.Input.fromValue(map['ipCidrRange'] as String),

@@ -10,17 +10,17 @@ import 'object_meta.dart';
 /// {@macro pulumi_run_v1_domain_mapping_args_doc}
 class DomainMappingArgs {
   /// The API version for this call such as "domains.cloudrun.com/v1".
-  final pulumi.Input<String>? apiVersion;
+  final pulumi.Input<String?>? apiVersion;
   /// Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
-  final pulumi.Input<String>? dryRun;
+  final pulumi.Input<String?>? dryRun;
   /// The kind of resource, in this case "DomainMapping".
-  final pulumi.Input<String>? kind;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? kind;
+  final pulumi.Input<String?>? location;
   /// Metadata associated with this BuildTemplate.
-  final pulumi.Input<ObjectMeta>? metadata;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<ObjectMeta?>? metadata;
+  final pulumi.Input<String?>? project;
   /// The spec for this DomainMapping.
-  final pulumi.Input<DomainMappingSpec>? spec;
+  final pulumi.Input<DomainMappingSpec?>? spec;
 
   /// Creates a new [DomainMappingArgs].
   /// [apiVersion] The API version for this call such as "domains.cloudrun.com/v1".

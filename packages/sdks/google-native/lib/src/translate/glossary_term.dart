@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a single glossary term
 class GlossaryTerm {
   /// The language for this glossary term.
-  final pulumi.Input<String>? languageCode;
+  final pulumi.Input<String?>? languageCode;
   /// The text for the glossary term.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [GlossaryTerm].
   /// [languageCode] The language for this glossary term.

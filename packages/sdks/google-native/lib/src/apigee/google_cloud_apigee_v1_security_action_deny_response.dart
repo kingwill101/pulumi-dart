@@ -21,7 +21,7 @@ class GoogleCloudApigeeV1SecurityActionDenyResponse {
 
   factory GoogleCloudApigeeV1SecurityActionDenyResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityActionDenyResponse(
-      responseCode: pulumi.Input.fromValue(map['responseCode'] as int),
+      responseCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['responseCode'])),
     );
   }
 }

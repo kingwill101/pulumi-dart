@@ -31,8 +31,28 @@ class BucketView extends pulumi.CustomResource {
           'google-native:logging/v2:BucketView',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['bucketId', 'location', 'project', 'viewId']).merge(options),
         ) {
+    bucketId = registerOutput<String>('bucketId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    filter = registerOutput<String>('filter');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+    viewId = registerOutput<String>('viewId');
+  }
+
+  /// Creates a typed reference to an existing [BucketView] resource.
+  BucketView.reference(String urn)
+    : super(
+        'google-native:logging/v2:BucketView',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     bucketId = registerOutput<String>('bucketId');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');

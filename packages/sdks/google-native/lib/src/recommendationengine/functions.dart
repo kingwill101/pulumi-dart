@@ -17,3 +17,14 @@ Future<GetCatalogItemResult> getCatalogItem(
   );
   return GetCatalogItemResult.fromMap(result);
 }
+
+pulumi.Output<GetCatalogItemResult> getCatalogItemOutput(
+  GetCatalogItemArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:recommendationengine/v1beta1:getCatalogItem',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCatalogItemResult.fromMap);
+}

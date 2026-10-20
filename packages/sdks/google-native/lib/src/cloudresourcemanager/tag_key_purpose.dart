@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. A purpose denotes that this Tag is intended for use in policies of a specific policy engine, and will involve that policy engine in management operations involving this Tag. A purpose does not grant a policy engine exclusive rights to the Tag, and it may be referenced by other policy engines. A purpose cannot be changed once set.
-enum TagKeyPurpose {
+enum TagKeyPurpose implements pulumi.PulumiEnum<String> {
   purposeUnspecified("PURPOSE_UNSPECIFIED"),
   gceFirewall("GCE_FIREWALL"),
   dataGovernance("DATA_GOVERNANCE");
 
   const TagKeyPurpose(this.wireValue);
+  @override
   final String wireValue;
 
   static TagKeyPurpose fromValue(String value) {

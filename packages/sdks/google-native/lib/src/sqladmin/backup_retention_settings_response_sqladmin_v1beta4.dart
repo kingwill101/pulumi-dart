@@ -26,7 +26,7 @@ class BackupRetentionSettingsResponseSqladminV1beta4 {
 
   factory BackupRetentionSettingsResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return BackupRetentionSettingsResponseSqladminV1beta4(
-      retainedBackups: pulumi.Input.fromValue(map['retainedBackups'] as int),
+      retainedBackups: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retainedBackups'])),
       retentionUnit: pulumi.Input.fromValue(map['retentionUnit'] as String),
     );
   }

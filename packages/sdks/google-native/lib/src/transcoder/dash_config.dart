@@ -6,7 +6,7 @@ import 'dash_config_segment_reference_scheme.dart';
 /// `DASH` manifest configuration.
 class DashConfig {
   /// The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.
-  final pulumi.Input<DashConfigSegmentReferenceScheme>? segmentReferenceScheme;
+  final pulumi.Input<DashConfigSegmentReferenceScheme?>? segmentReferenceScheme;
 
   /// Creates a new [DashConfig].
   /// [segmentReferenceScheme] The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.

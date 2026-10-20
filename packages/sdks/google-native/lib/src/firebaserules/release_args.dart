@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_firebaserules_v1_release_args_doc}
 class ReleaseArgs {
   /// Format: `projects/{project_id}/releases/{release_id}`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
   final pulumi.Input<String> rulesetName;
 

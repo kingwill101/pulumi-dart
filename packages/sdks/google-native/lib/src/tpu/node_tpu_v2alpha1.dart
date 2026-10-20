@@ -1,11 +1,14 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'accelerator_config_response_tpu_v2alpha1.dart';
+import 'attached_disk_response_tpu_v2alpha1.dart';
 import 'boot_disk_config_response.dart';
 import 'network_config_response_tpu_v2alpha1.dart';
+import 'network_endpoint_response_tpu_v2alpha1.dart';
 import 'node_tpu_v2alpha1_args.dart';
 import 'scheduling_config_response_tpu_v2alpha1.dart';
 import 'service_account_response_tpu_v2alpha1.dart';
 import 'shielded_instance_config_response_tpu_v2alpha1.dart';
+import 'symptom_response_tpu_v2alpha1.dart';
 
 /// Creates a node.
 /// Auto-naming is currently not supported for this resource.
@@ -25,7 +28,7 @@ class NodeTpuV2alpha1 extends pulumi.CustomResource {
   /// The time when the node was created.
   late final pulumi.Output<String> createTime;
   /// The additional data disks for the Node.
-  late final pulumi.Output<List<Map<String, dynamic>>> dataDisks;
+  late final pulumi.Output<List<AttachedDiskResponseTpuV2alpha1>> dataDisks;
   /// The user-supplied description of the TPU. Maximum of 512 characters.
   late final pulumi.Output<String> description;
   /// The health status of the TPU node.
@@ -44,7 +47,7 @@ class NodeTpuV2alpha1 extends pulumi.CustomResource {
   /// Network configurations for the TPU node.
   late final pulumi.Output<NetworkConfigResponseTpuV2alpha1> networkConfig;
   /// The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
-  late final pulumi.Output<List<Map<String, dynamic>>> networkEndpoints;
+  late final pulumi.Output<List<NetworkEndpointResponseTpuV2alpha1>> networkEndpoints;
   /// The unqualified resource name.
   late final pulumi.Output<String?> nodeId;
   late final pulumi.Output<String> project;
@@ -63,7 +66,7 @@ class NodeTpuV2alpha1 extends pulumi.CustomResource {
   /// The current state for the TPU Node.
   late final pulumi.Output<String> state;
   /// The Symptoms that have occurred to the TPU Node.
-  late final pulumi.Output<List<Map<String, dynamic>>> symptoms;
+  late final pulumi.Output<List<SymptomResponseTpuV2alpha1>> symptoms;
   /// Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
   late final pulumi.Output<List<String>> tags;
 
@@ -79,7 +82,7 @@ class NodeTpuV2alpha1 extends pulumi.CustomResource {
           'google-native:tpu/v2alpha1:Node',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     acceleratorConfig = registerOutput<AcceleratorConfigResponseTpuV2alpha1>('acceleratorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AcceleratorConfigResponseTpuV2alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     acceleratorType = registerOutput<String>('acceleratorType');
@@ -88,17 +91,17 @@ class NodeTpuV2alpha1 extends pulumi.CustomResource {
     bootDiskConfig = registerOutput<BootDiskConfigResponse>('bootDiskConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BootDiskConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     cidrBlock = registerOutput<String>('cidrBlock');
     createTime = registerOutput<String>('createTime');
-    dataDisks = registerOutput<List<Map<String, dynamic>>>('dataDisks');
+    dataDisks = registerOutput<List<AttachedDiskResponseTpuV2alpha1>>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AttachedDiskResponseTpuV2alpha1>(guardedValue, (value) => AttachedDiskResponseTpuV2alpha1.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String>('description');
     health = registerOutput<String>('health');
     healthDescription = registerOutput<String>('healthDescription');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     multisliceNode = registerOutput<bool>('multisliceNode');
     this.name = registerOutput<String>('name');
     networkConfig = registerOutput<NetworkConfigResponseTpuV2alpha1>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkConfigResponseTpuV2alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    networkEndpoints = registerOutput<List<Map<String, dynamic>>>('networkEndpoints');
+    networkEndpoints = registerOutput<List<NetworkEndpointResponseTpuV2alpha1>>('networkEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkEndpointResponseTpuV2alpha1>(guardedValue, (value) => NetworkEndpointResponseTpuV2alpha1.fromMap((value as Map).cast<String, dynamic>())); });
     nodeId = registerOutput<String?>('nodeId');
     project = registerOutput<String>('project');
     queuedResource = registerOutput<String>('queuedResource');
@@ -108,7 +111,47 @@ class NodeTpuV2alpha1 extends pulumi.CustomResource {
     serviceAccount = registerOutput<ServiceAccountResponseTpuV2alpha1>('serviceAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAccountResponseTpuV2alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     shieldedInstanceConfig = registerOutput<ShieldedInstanceConfigResponseTpuV2alpha1>('shieldedInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ShieldedInstanceConfigResponseTpuV2alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
-    symptoms = registerOutput<List<Map<String, dynamic>>>('symptoms');
-    tags = registerOutput<List<String>>('tags');
+    symptoms = registerOutput<List<SymptomResponseTpuV2alpha1>>('symptoms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SymptomResponseTpuV2alpha1>(guardedValue, (value) => SymptomResponseTpuV2alpha1.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NodeTpuV2alpha1] resource.
+  NodeTpuV2alpha1.reference(String urn)
+    : super(
+        'google-native:tpu/v2alpha1:Node',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceleratorConfig = registerOutput<AcceleratorConfigResponseTpuV2alpha1>('acceleratorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AcceleratorConfigResponseTpuV2alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    acceleratorType = registerOutput<String>('acceleratorType');
+    apiVersion = registerOutput<String>('apiVersion');
+    autocheckpointEnabled = registerOutput<bool>('autocheckpointEnabled');
+    bootDiskConfig = registerOutput<BootDiskConfigResponse>('bootDiskConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BootDiskConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cidrBlock = registerOutput<String>('cidrBlock');
+    createTime = registerOutput<String>('createTime');
+    dataDisks = registerOutput<List<AttachedDiskResponseTpuV2alpha1>>('dataDisks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AttachedDiskResponseTpuV2alpha1>(guardedValue, (value) => AttachedDiskResponseTpuV2alpha1.fromMap((value as Map).cast<String, dynamic>())); });
+    description = registerOutput<String>('description');
+    health = registerOutput<String>('health');
+    healthDescription = registerOutput<String>('healthDescription');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    multisliceNode = registerOutput<bool>('multisliceNode');
+    this.name = registerOutput<String>('name');
+    networkConfig = registerOutput<NetworkConfigResponseTpuV2alpha1>('networkConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return NetworkConfigResponseTpuV2alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    networkEndpoints = registerOutput<List<NetworkEndpointResponseTpuV2alpha1>>('networkEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkEndpointResponseTpuV2alpha1>(guardedValue, (value) => NetworkEndpointResponseTpuV2alpha1.fromMap((value as Map).cast<String, dynamic>())); });
+    nodeId = registerOutput<String?>('nodeId');
+    project = registerOutput<String>('project');
+    queuedResource = registerOutput<String>('queuedResource');
+    requestId = registerOutput<String?>('requestId');
+    runtimeVersion = registerOutput<String>('runtimeVersion');
+    schedulingConfig = registerOutput<SchedulingConfigResponseTpuV2alpha1>('schedulingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchedulingConfigResponseTpuV2alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceAccount = registerOutput<ServiceAccountResponseTpuV2alpha1>('serviceAccount', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ServiceAccountResponseTpuV2alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    shieldedInstanceConfig = registerOutput<ShieldedInstanceConfigResponseTpuV2alpha1>('shieldedInstanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ShieldedInstanceConfigResponseTpuV2alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    symptoms = registerOutput<List<SymptomResponseTpuV2alpha1>>('symptoms', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SymptomResponseTpuV2alpha1>(guardedValue, (value) => SymptomResponseTpuV2alpha1.fromMap((value as Map).cast<String, dynamic>())); });
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

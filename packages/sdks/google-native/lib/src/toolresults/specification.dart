@@ -7,9 +7,9 @@ import 'ios_test.dart';
 /// The details about how to run the execution.
 class Specification {
   /// An Android mobile test execution specification.
-  final pulumi.Input<AndroidTest>? androidTest;
+  final pulumi.Input<AndroidTest?>? androidTest;
   /// An iOS mobile test execution specification.
-  final pulumi.Input<IosTest>? iosTest;
+  final pulumi.Input<IosTest?>? iosTest;
 
   /// Creates a new [Specification].
   /// [androidTest] An Android mobile test execution specification.

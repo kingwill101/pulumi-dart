@@ -3,7 +3,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray {
-  final pulumi.Input<List<bool>>? booleanValues;
+  final pulumi.Input<List<bool>?>? booleanValues;
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray].
   /// [booleanValues] Optional.

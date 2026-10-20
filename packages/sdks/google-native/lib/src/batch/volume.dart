@@ -7,15 +7,15 @@ import 'nfs.dart';
 /// Volume describes a volume and parameters for it to be mounted to a VM.
 class Volume {
   /// Device name of an attached disk volume, which should align with a device_name specified by job.allocation_policy.instances[0].policy.disks[i].device_name or defined by the given instance template in job.allocation_policy.instances[0].instance_template.
-  final pulumi.Input<String>? deviceName;
+  final pulumi.Input<String?>? deviceName;
   /// A Google Cloud Storage (GCS) volume.
-  final pulumi.Input<GCS>? gcs;
+  final pulumi.Input<GCS?>? gcs;
   /// For Google Cloud Storage (GCS), mount options are the options supported by the gcsfuse tool (https://github.com/GoogleCloudPlatform/gcsfuse). For existing persistent disks, mount options provided by the mount command (https://man7.org/linux/man-pages/man8/mount.8.html) except writing are supported. This is due to restrictions of multi-writer mode (https://cloud.google.com/compute/docs/disks/sharing-disks-between-vms). For other attached disks and Network File System (NFS), mount options are these supported by the mount command (https://man7.org/linux/man-pages/man8/mount.8.html).
-  final pulumi.Input<List<String>>? mountOptions;
+  final pulumi.Input<List<String>?>? mountOptions;
   /// The mount path for the volume, e.g. /mnt/disks/share.
-  final pulumi.Input<String>? mountPath;
+  final pulumi.Input<String?>? mountPath;
   /// A Network File System (NFS) volume. For example, a Filestore file share.
-  final pulumi.Input<NFS>? nfs;
+  final pulumi.Input<NFS?>? nfs;
 
   /// Creates a new [Volume].
   /// [deviceName] Device name of an attached disk volume, which should align with a device_name specified by job.allocation_policy.instances[0].policy.disks[i].device_name or defined by the given instance template in job.allocation_policy.instances[0].instance_template.

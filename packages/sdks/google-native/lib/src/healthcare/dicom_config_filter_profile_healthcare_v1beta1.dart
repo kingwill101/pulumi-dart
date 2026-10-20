@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Tag filtering profile that determines which tags to keep/remove.
-enum DicomConfigFilterProfileHealthcareV1beta1 {
+enum DicomConfigFilterProfileHealthcareV1beta1 implements pulumi.PulumiEnum<String> {
   tagFilterProfileUnspecified("TAG_FILTER_PROFILE_UNSPECIFIED"),
   minimalKeepListProfile("MINIMAL_KEEP_LIST_PROFILE"),
   attributeConfidentialityBasicProfile("ATTRIBUTE_CONFIDENTIALITY_BASIC_PROFILE"),
@@ -7,6 +9,7 @@ enum DicomConfigFilterProfileHealthcareV1beta1 {
   deidentifyTagContents("DEIDENTIFY_TAG_CONTENTS");
 
   const DicomConfigFilterProfileHealthcareV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static DicomConfigFilterProfileHealthcareV1beta1 fromValue(String value) {

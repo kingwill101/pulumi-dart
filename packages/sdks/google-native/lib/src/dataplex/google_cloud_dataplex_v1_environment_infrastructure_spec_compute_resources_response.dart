@@ -31,9 +31,9 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse
 
   factory GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesResponse(
-      diskSizeGb: pulumi.Input.fromValue(map['diskSizeGb'] as int),
-      maxNodeCount: pulumi.Input.fromValue(map['maxNodeCount'] as int),
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      diskSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['diskSizeGb'])),
+      maxNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxNodeCount'])),
+      nodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodeCount'])),
     );
   }
 }

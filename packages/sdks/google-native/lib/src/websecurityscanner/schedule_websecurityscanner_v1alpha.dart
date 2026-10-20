@@ -7,7 +7,7 @@ class ScheduleWebsecurityscannerV1alpha {
   /// The duration of time between executions in days.
   final pulumi.Input<int> intervalDurationDays;
   /// A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
-  final pulumi.Input<String>? scheduleTime;
+  final pulumi.Input<String?>? scheduleTime;
 
   /// Creates a new [ScheduleWebsecurityscannerV1alpha].
   /// [intervalDurationDays] The duration of time between executions in days.
@@ -26,7 +26,7 @@ class ScheduleWebsecurityscannerV1alpha {
 
   factory ScheduleWebsecurityscannerV1alpha.fromMap(Map<String, dynamic> map) {
     return ScheduleWebsecurityscannerV1alpha(
-      intervalDurationDays: pulumi.Input.fromValue(map['intervalDurationDays'] as int),
+      intervalDurationDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['intervalDurationDays'])),
       scheduleTime: (() { final guardedValue = map['scheduleTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

@@ -6,9 +6,9 @@ import 'google_devtools_containeranalysis_v1alpha1_alias_context_kind.dart';
 /// An alias to a repo revision.
 class GoogleDevtoolsContaineranalysisV1alpha1AliasContext {
   /// The alias kind.
-  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind>? kind;
+  final pulumi.Input<GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind?>? kind;
   /// The alias name.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1AliasContext].
   /// [kind] The alias kind.

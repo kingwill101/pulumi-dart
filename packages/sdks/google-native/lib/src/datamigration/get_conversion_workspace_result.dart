@@ -5,25 +5,25 @@ import 'database_engine_info_response.dart';
 /// Result data returned by getConversionWorkspace.
 class GetConversionWorkspaceResult {
   /// The timestamp when the workspace resource was created.
-  final String createTime;
+  final String? createTime;
   /// The destination engine details.
-  final DatabaseEngineInfoResponse destination;
+  final DatabaseEngineInfoResponse? destination;
   /// Optional. The display name for the workspace.
-  final String displayName;
+  final String? displayName;
   /// Optional. A generic list of settings for the workspace. The settings are database pair dependant and can indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
-  final Map<String, String> globalSettings;
+  final Map<String, String>? globalSettings;
   /// Whether the workspace has uncommitted changes (changes which were made after the workspace was committed).
-  final bool hasUncommittedChanges;
+  final bool? hasUncommittedChanges;
   /// The latest commit ID.
-  final String latestCommitId;
+  final String? latestCommitId;
   /// The timestamp when the workspace was committed.
-  final String latestCommitTime;
+  final String? latestCommitTime;
   /// Full name of the workspace resource, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
-  final String name;
+  final String? name;
   /// The source engine details.
-  final DatabaseEngineInfoResponse source;
+  final DatabaseEngineInfoResponse? source;
   /// The timestamp when the workspace resource was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetConversionWorkspaceResult].
   /// [createTime] The timestamp when the workspace resource was created.
@@ -37,45 +37,45 @@ class GetConversionWorkspaceResult {
   /// [source] The source engine details.
   /// [updateTime] The timestamp when the workspace resource was last updated.
   const GetConversionWorkspaceResult({
-    required this.createTime,
-    required this.destination,
-    required this.displayName,
-    required this.globalSettings,
-    required this.hasUncommittedChanges,
-    required this.latestCommitId,
-    required this.latestCommitTime,
-    required this.name,
-    required this.source,
-    required this.updateTime,
+    this.createTime,
+    this.destination,
+    this.displayName,
+    this.globalSettings,
+    this.hasUncommittedChanges,
+    this.latestCommitId,
+    this.latestCommitTime,
+    this.name,
+    this.source,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'destination': destination.toMap(),
-      'displayName': displayName,
-      'globalSettings': globalSettings,
-      'hasUncommittedChanges': hasUncommittedChanges,
-      'latestCommitId': latestCommitId,
-      'latestCommitTime': latestCommitTime,
-      'name': name,
-      'source': source.toMap(),
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'destination': ?destination?.toMap(),
+      'displayName': ?displayName,
+      'globalSettings': ?globalSettings,
+      'hasUncommittedChanges': ?hasUncommittedChanges,
+      'latestCommitId': ?latestCommitId,
+      'latestCommitTime': ?latestCommitTime,
+      'name': ?name,
+      'source': ?source?.toMap(),
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetConversionWorkspaceResult.fromMap(Map<String, dynamic> map) {
     return GetConversionWorkspaceResult(
-      createTime: map['createTime'] as String,
-      destination: DatabaseEngineInfoResponse.fromMap((map['destination']! as Map).cast<String, dynamic>()),
-      displayName: map['displayName'] as String,
-      globalSettings: (map['globalSettings'] as Map).cast<String, String>(),
-      hasUncommittedChanges: map['hasUncommittedChanges'] as bool,
-      latestCommitId: map['latestCommitId'] as String,
-      latestCommitTime: map['latestCommitTime'] as String,
-      name: map['name'] as String,
-      source: DatabaseEngineInfoResponse.fromMap((map['source']! as Map).cast<String, dynamic>()),
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      destination: (() { final guardedValue = map['destination']; if (guardedValue == null) return null; return DatabaseEngineInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      globalSettings: (() { final guardedValue = map['globalSettings']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      hasUncommittedChanges: (() { final guardedValue = map['hasUncommittedChanges']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      latestCommitId: (() { final guardedValue = map['latestCommitId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      latestCommitTime: (() { final guardedValue = map['latestCommitTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return DatabaseEngineInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

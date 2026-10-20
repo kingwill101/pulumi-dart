@@ -7,9 +7,9 @@ import 'version_source.dart';
 /// Root config for HL7v2 datatype definitions for a specific HL7v2 version.
 class Hl7TypesConfig {
   /// The HL7v2 type definitions.
-  final pulumi.Input<List<Type>>? type;
+  final pulumi.Input<List<Type>?>? type;
   /// The version selectors that this config applies to. A message must match ALL version sources to apply.
-  final pulumi.Input<List<VersionSource>>? version;
+  final pulumi.Input<List<VersionSource>?>? version;
 
   /// Creates a new [Hl7TypesConfig].
   /// [type] The HL7v2 type definitions.

@@ -70,7 +70,7 @@ class GoogleCloudDocumentaiV1DocumentEntityResponse {
 
   factory GoogleCloudDocumentaiV1DocumentEntityResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentEntityResponse(
-      confidence: pulumi.Input.fromValue(map['confidence'] as double),
+      confidence: pulumi.Input.fromValue((map['confidence'] as num).toDouble()),
       mentionId: pulumi.Input.fromValue(map['mentionId'] as String),
       mentionText: pulumi.Input.fromValue(map['mentionText'] as String),
       normalizedValue: pulumi.Input.fromValue(GoogleCloudDocumentaiV1DocumentEntityNormalizedValueResponse.fromMap((map['normalizedValue']! as Map).cast<String, dynamic>())),

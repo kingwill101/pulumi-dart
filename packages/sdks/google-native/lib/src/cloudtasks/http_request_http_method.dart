@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The HTTP method to use for the request. The default is POST.
-enum HttpRequestHttpMethod {
+enum HttpRequestHttpMethod implements pulumi.PulumiEnum<String> {
   httpMethodUnspecified("HTTP_METHOD_UNSPECIFIED"),
   post("POST"),
   get("GET"),
@@ -10,6 +12,7 @@ enum HttpRequestHttpMethod {
   options("OPTIONS");
 
   const HttpRequestHttpMethod(this.wireValue);
+  @override
   final String wireValue;
 
   static HttpRequestHttpMethod fromValue(String value) {

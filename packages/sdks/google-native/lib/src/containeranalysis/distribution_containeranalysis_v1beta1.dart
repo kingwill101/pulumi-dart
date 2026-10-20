@@ -7,17 +7,17 @@ import 'version_containeranalysis_v1beta1.dart';
 /// This represents a particular channel of distribution for a given package. E.g., Debian's jessie-backports dpkg mirror.
 class DistributionContaineranalysisV1beta1 {
   /// The CPU architecture for which packages in this distribution channel were built.
-  final pulumi.Input<DistributionArchitectureContaineranalysisV1beta1>? architecture;
+  final pulumi.Input<DistributionArchitectureContaineranalysisV1beta1?>? architecture;
   /// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
   final pulumi.Input<String> cpeUri;
   /// The distribution channel-specific description of this package.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The latest available version of this package in this distribution channel.
-  final pulumi.Input<VersionContaineranalysisV1beta1>? latestVersion;
+  final pulumi.Input<VersionContaineranalysisV1beta1?>? latestVersion;
   /// A freeform string denoting the maintainer of this package.
-  final pulumi.Input<String>? maintainer;
+  final pulumi.Input<String?>? maintainer;
   /// The distribution channel-specific homepage for this package.
-  final pulumi.Input<String>? url;
+  final pulumi.Input<String?>? url;
 
   /// Creates a new [DistributionContaineranalysisV1beta1].
   /// [architecture] The CPU architecture for which packages in this distribution channel were built.

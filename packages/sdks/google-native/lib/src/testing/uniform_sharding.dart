@@ -21,7 +21,7 @@ class UniformSharding {
 
   factory UniformSharding.fromMap(Map<String, dynamic> map) {
     return UniformSharding(
-      numShards: pulumi.Input.fromValue(map['numShards'] as int),
+      numShards: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numShards'])),
     );
   }
 }

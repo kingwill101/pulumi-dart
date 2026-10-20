@@ -7,9 +7,9 @@ import 'google_privacy_dlp_v2_record_suppression.dart';
 /// A type of transformation that is applied over structured data such as a table.
 class GooglePrivacyDlpV2RecordTransformations {
   /// Transform the record by applying various field transformations.
-  final pulumi.Input<List<GooglePrivacyDlpV2FieldTransformation>>? fieldTransformations;
+  final pulumi.Input<List<GooglePrivacyDlpV2FieldTransformation>?>? fieldTransformations;
   /// Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
-  final pulumi.Input<List<GooglePrivacyDlpV2RecordSuppression>>? recordSuppressions;
+  final pulumi.Input<List<GooglePrivacyDlpV2RecordSuppression>?>? recordSuppressions;
 
   /// Creates a new [GooglePrivacyDlpV2RecordTransformations].
   /// [fieldTransformations] Transform the record by applying various field transformations.

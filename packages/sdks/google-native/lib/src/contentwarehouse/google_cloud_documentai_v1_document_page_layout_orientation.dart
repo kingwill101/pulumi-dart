@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Detected orientation for the Layout.
-enum GoogleCloudDocumentaiV1DocumentPageLayoutOrientation {
+enum GoogleCloudDocumentaiV1DocumentPageLayoutOrientation implements pulumi.PulumiEnum<String> {
   orientationUnspecified("ORIENTATION_UNSPECIFIED"),
   pageUp("PAGE_UP"),
   pageRight("PAGE_RIGHT"),
@@ -7,6 +9,7 @@ enum GoogleCloudDocumentaiV1DocumentPageLayoutOrientation {
   pageLeft("PAGE_LEFT");
 
   const GoogleCloudDocumentaiV1DocumentPageLayoutOrientation(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDocumentaiV1DocumentPageLayoutOrientation fromValue(String value) {

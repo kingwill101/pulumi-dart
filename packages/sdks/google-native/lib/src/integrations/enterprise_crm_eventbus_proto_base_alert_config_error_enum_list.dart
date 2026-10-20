@@ -5,8 +5,8 @@ import 'enterprise_crm_eventbus_proto_base_alert_config_error_enum_list_filter_t
 
 /// List of error enums for alerts.
 class EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList {
-  final pulumi.Input<List<String>>? enumStrings;
-  final pulumi.Input<EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType>? filterType;
+  final pulumi.Input<List<String>?>? enumStrings;
+  final pulumi.Input<EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListFilterType?>? filterType;
 
   /// Creates a new [EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList].
   /// [enumStrings] Optional.

@@ -7,11 +7,11 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
   /// Name of the column.
   final pulumi.Input<String> column;
   /// Optional. Description of the column. Default value is an empty string.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. A column's mode indicates whether the values in this column are required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are supported. Default mode is `NULLABLE`.
-  final pulumi.Input<String>? mode;
+  final pulumi.Input<String?>? mode;
   /// Optional. Schema of sub-columns. A column can have zero or more sub-columns.
-  final pulumi.Input<List<GoogleCloudDatacatalogV1beta1ColumnSchema>>? subcolumns;
+  final pulumi.Input<List<GoogleCloudDatacatalogV1beta1ColumnSchema>?>? subcolumns;
   /// Type of the column.
   final pulumi.Input<String> type;
 

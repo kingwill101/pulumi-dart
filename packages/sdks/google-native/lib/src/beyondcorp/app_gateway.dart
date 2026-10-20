@@ -1,10 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'allocated_connection_response.dart';
 import 'app_gateway_args.dart';
 
 /// Creates a new AppGateway in a given project and location.
 class AppGateway extends pulumi.CustomResource {
   /// A list of connections allocated for the Gateway
-  late final pulumi.Output<List<Map<String, dynamic>>> allocatedConnections;
+  late final pulumi.Output<List<AllocatedConnectionResponse>> allocatedConnections;
   /// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
   late final pulumi.Output<String?> appGatewayId;
   /// Timestamp when the resource was created.
@@ -44,14 +45,40 @@ class AppGateway extends pulumi.CustomResource {
           'google-native:beyondcorp/v1:AppGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
-    allocatedConnections = registerOutput<List<Map<String, dynamic>>>('allocatedConnections');
+    allocatedConnections = registerOutput<List<AllocatedConnectionResponse>>('allocatedConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AllocatedConnectionResponse>(guardedValue, (value) => AllocatedConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     appGatewayId = registerOutput<String?>('appGatewayId');
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     hostType = registerOutput<String>('hostType');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    type = registerOutput<String>('type');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    uri = registerOutput<String>('uri');
+  }
+
+  /// Creates a typed reference to an existing [AppGateway] resource.
+  AppGateway.reference(String urn)
+    : super(
+        'google-native:beyondcorp/v1:AppGateway',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    allocatedConnections = registerOutput<List<AllocatedConnectionResponse>>('allocatedConnections', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AllocatedConnectionResponse>(guardedValue, (value) => AllocatedConnectionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    appGatewayId = registerOutput<String?>('appGatewayId');
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    hostType = registerOutput<String>('hostType');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

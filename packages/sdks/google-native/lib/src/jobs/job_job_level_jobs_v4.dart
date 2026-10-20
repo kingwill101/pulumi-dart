@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The experience level associated with the job, such as "Entry Level".
-enum JobJobLevelJobsV4 {
+enum JobJobLevelJobsV4 implements pulumi.PulumiEnum<String> {
   jobLevelUnspecified("JOB_LEVEL_UNSPECIFIED"),
   entryLevel("ENTRY_LEVEL"),
   experienced("EXPERIENCED"),
@@ -8,6 +10,7 @@ enum JobJobLevelJobsV4 {
   executive("EXECUTIVE");
 
   const JobJobLevelJobsV4(this.wireValue);
+  @override
   final String wireValue;
 
   static JobJobLevelJobsV4 fromValue(String value) {

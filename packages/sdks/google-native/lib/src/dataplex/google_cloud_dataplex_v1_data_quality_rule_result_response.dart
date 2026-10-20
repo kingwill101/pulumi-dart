@@ -55,7 +55,7 @@ class GoogleCloudDataplexV1DataQualityRuleResultResponse {
       evaluatedCount: pulumi.Input.fromValue(map['evaluatedCount'] as String),
       failingRowsQuery: pulumi.Input.fromValue(map['failingRowsQuery'] as String),
       nullCount: pulumi.Input.fromValue(map['nullCount'] as String),
-      passRatio: pulumi.Input.fromValue(map['passRatio'] as double),
+      passRatio: pulumi.Input.fromValue((map['passRatio'] as num).toDouble()),
       passed: pulumi.Input.fromValue(map['passed'] as bool),
       passedCount: pulumi.Input.fromValue(map['passedCount'] as String),
       rule: pulumi.Input.fromValue(GoogleCloudDataplexV1DataQualityRuleResponse.fromMap((map['rule']! as Map).cast<String, dynamic>())),

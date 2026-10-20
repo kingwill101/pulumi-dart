@@ -11,25 +11,25 @@ class ConnectorVpcaccessV1beta1Args {
   /// Required. The ID to use for this connector.
   final pulumi.Input<String> connectorId;
   /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
-  final pulumi.Input<String>? ipCidrRange;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? ipCidrRange;
+  final pulumi.Input<String?>? location;
   /// Machine type of VM Instance underlying connector. Default is e2-micro
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// Maximum value of instances in autoscaling group underlying the connector.
-  final pulumi.Input<int>? maxInstances;
+  final pulumi.Input<int?>? maxInstances;
   /// Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If both max-throughput and max-instances are provided, max-instances takes precedence over max-throughput.
-  final pulumi.Input<int>? maxThroughput;
+  final pulumi.Input<int?>? maxThroughput;
   /// Minimum value of instances in autoscaling group underlying the connector.
-  final pulumi.Input<int>? minInstances;
+  final pulumi.Input<int?>? minInstances;
   /// Minimum throughput of the connector in Mbps. Default and min is 200. If both min-throughput and min-instances are provided, min-instances takes precedence over min-throughput.
-  final pulumi.Input<int>? minThroughput;
+  final pulumi.Input<int?>? minThroughput;
   /// The resource name in the format `projects/*/locations/*/connectors/*`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Name of a VPC network.
-  final pulumi.Input<String>? network;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? network;
+  final pulumi.Input<String?>? project;
   /// The subnet in which to house the VPC Access Connector.
-  final pulumi.Input<SubnetVpcaccessV1beta1>? subnet;
+  final pulumi.Input<SubnetVpcaccessV1beta1?>? subnet;
 
   /// Creates a new [ConnectorVpcaccessV1beta1Args].
   /// [connectorId] Required. The ID to use for this connector.
@@ -82,10 +82,10 @@ class ConnectorVpcaccessV1beta1Args {
       ipCidrRange: (() { final guardedValue = map['ipCidrRange']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      maxThroughput: (() { final guardedValue = map['maxThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      minThroughput: (() { final guardedValue = map['minThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxInstances: (() { final guardedValue = map['maxInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      maxThroughput: (() { final guardedValue = map['maxThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minInstances: (() { final guardedValue = map['minInstances']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      minThroughput: (() { final guardedValue = map['minThroughput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

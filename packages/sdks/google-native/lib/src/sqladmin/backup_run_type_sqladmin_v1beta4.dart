@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
-enum BackupRunTypeSqladminV1beta4 {
+enum BackupRunTypeSqladminV1beta4 implements pulumi.PulumiEnum<String> {
   sqlBackupRunTypeUnspecified("SQL_BACKUP_RUN_TYPE_UNSPECIFIED"),
   automated("AUTOMATED"),
   onDemand("ON_DEMAND");
 
   const BackupRunTypeSqladminV1beta4(this.wireValue);
+  @override
   final String wireValue;
 
   static BackupRunTypeSqladminV1beta4 fromValue(String value) {

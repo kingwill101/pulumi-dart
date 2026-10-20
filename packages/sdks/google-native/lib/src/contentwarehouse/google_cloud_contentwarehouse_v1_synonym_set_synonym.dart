@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a list of words given by the customer All these words are synonyms of each other.
 class GoogleCloudContentwarehouseV1SynonymSetSynonym {
   /// For example: sale, invoice, bill, order
-  final pulumi.Input<List<String>>? words;
+  final pulumi.Input<List<String>?>? words;
 
   /// Creates a new [GoogleCloudContentwarehouseV1SynonymSetSynonym].
   /// [words] For example: sale, invoice, bill, order

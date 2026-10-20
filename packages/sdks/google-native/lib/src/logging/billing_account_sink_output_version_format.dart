@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Deprecated. This field is unused.
-enum BillingAccountSinkOutputVersionFormat {
+enum BillingAccountSinkOutputVersionFormat implements pulumi.PulumiEnum<String> {
   versionFormatUnspecified("VERSION_FORMAT_UNSPECIFIED"),
   v2("V2"),
   v1("V1");
 
   const BillingAccountSinkOutputVersionFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static BillingAccountSinkOutputVersionFormat fromValue(String value) {

@@ -17,3 +17,14 @@ Future<GetEvaluationResult> getEvaluation(
   );
   return GetEvaluationResult.fromMap(result);
 }
+
+pulumi.Output<GetEvaluationResult> getEvaluationOutput(
+  GetEvaluationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:workloadmanager/v1:getEvaluation',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEvaluationResult.fromMap);
+}

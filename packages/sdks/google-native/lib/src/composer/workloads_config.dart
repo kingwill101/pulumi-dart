@@ -9,13 +9,13 @@ import 'worker_resource.dart';
 /// The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
 class WorkloadsConfig {
   /// Optional. Resources used by Airflow schedulers.
-  final pulumi.Input<SchedulerResource>? scheduler;
+  final pulumi.Input<SchedulerResource?>? scheduler;
   /// Optional. Resources used by Airflow triggerers.
-  final pulumi.Input<TriggererResource>? triggerer;
+  final pulumi.Input<TriggererResource?>? triggerer;
   /// Optional. Resources used by Airflow web server.
-  final pulumi.Input<WebServerResource>? webServer;
+  final pulumi.Input<WebServerResource?>? webServer;
   /// Optional. Resources used by Airflow workers.
-  final pulumi.Input<WorkerResource>? worker;
+  final pulumi.Input<WorkerResource?>? worker;
 
   /// Creates a new [WorkloadsConfig].
   /// [scheduler] Optional. Resources used by Airflow schedulers.

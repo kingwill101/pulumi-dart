@@ -9,19 +9,19 @@ import 'threshold.dart';
 /// A chart that displays data on a 2D (X and Y axes) plane.
 class XyChart {
   /// Display options for the chart.
-  final pulumi.Input<ChartOptions>? chartOptions;
+  final pulumi.Input<ChartOptions?>? chartOptions;
   /// The data displayed in this chart.
   final pulumi.Input<List<DataSet>> dataSets;
   /// Threshold lines drawn horizontally across the chart.
-  final pulumi.Input<List<Threshold>>? thresholds;
+  final pulumi.Input<List<Threshold>?>? thresholds;
   /// The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
-  final pulumi.Input<String>? timeshiftDuration;
+  final pulumi.Input<String?>? timeshiftDuration;
   /// The properties applied to the x-axis.
-  final pulumi.Input<Axis>? xAxis;
+  final pulumi.Input<Axis?>? xAxis;
   /// The properties applied to the y2-axis.
-  final pulumi.Input<Axis>? y2Axis;
+  final pulumi.Input<Axis?>? y2Axis;
   /// The properties applied to the y-axis.
-  final pulumi.Input<Axis>? yAxis;
+  final pulumi.Input<Axis?>? yAxis;
 
   /// Creates a new [XyChart].
   /// [chartOptions] Display options for the chart.

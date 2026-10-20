@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetMembershipRbacRoleBindingGkehubV1betaArgs {
   final pulumi.Input<String> location;
   final pulumi.Input<String> membershipId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> rbacrolebindingId;
 
   /// Creates a new [GetMembershipRbacRoleBindingGkehubV1betaArgs].

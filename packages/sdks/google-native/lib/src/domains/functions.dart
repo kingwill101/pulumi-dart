@@ -28,6 +28,17 @@ Future<GetRegistrationResult> getRegistration(
   return GetRegistrationResult.fromMap(result);
 }
 
+pulumi.Output<GetRegistrationResult> getRegistrationOutput(
+  GetRegistrationArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:domains/v1:getRegistration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistrationResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_domains_v1_get_registration_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -42,6 +53,17 @@ Future<GetRegistrationIamPolicyResult> getRegistrationIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistrationIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRegistrationIamPolicyResult> getRegistrationIamPolicyOutput(
+  GetRegistrationIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:domains/v1:getRegistrationIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistrationIamPolicyResult.fromMap);
 }
 
 /// Gets the details of a `Registration` resource.
@@ -60,6 +82,17 @@ Future<GetRegistrationDomainsV1alpha2Result> getRegistrationDomainsV1alpha2(
   return GetRegistrationDomainsV1alpha2Result.fromMap(result);
 }
 
+pulumi.Output<GetRegistrationDomainsV1alpha2Result> getRegistrationDomainsV1alpha2Output(
+  GetRegistrationDomainsV1alpha2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:domains/v1alpha2:getRegistration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistrationDomainsV1alpha2Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_domains_v1alpha2_get_registration_iam_policy_domains_v1alpha2_args_doc}
 /// [options] Invoke options controlling this call.
@@ -74,6 +107,17 @@ Future<GetRegistrationIamPolicyDomainsV1alpha2Result> getRegistrationIamPolicyDo
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistrationIamPolicyDomainsV1alpha2Result.fromMap(result);
+}
+
+pulumi.Output<GetRegistrationIamPolicyDomainsV1alpha2Result> getRegistrationIamPolicyDomainsV1alpha2Output(
+  GetRegistrationIamPolicyDomainsV1alpha2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:domains/v1alpha2:getRegistrationIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistrationIamPolicyDomainsV1alpha2Result.fromMap);
 }
 
 /// Gets the details of a `Registration` resource.
@@ -92,6 +136,17 @@ Future<GetRegistrationDomainsV1beta1Result> getRegistrationDomainsV1beta1(
   return GetRegistrationDomainsV1beta1Result.fromMap(result);
 }
 
+pulumi.Output<GetRegistrationDomainsV1beta1Result> getRegistrationDomainsV1beta1Output(
+  GetRegistrationDomainsV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:domains/v1beta1:getRegistration',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistrationDomainsV1beta1Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_domains_v1beta1_get_registration_iam_policy_domains_v1beta1_args_doc}
 /// [options] Invoke options controlling this call.
@@ -106,4 +161,15 @@ Future<GetRegistrationIamPolicyDomainsV1beta1Result> getRegistrationIamPolicyDom
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRegistrationIamPolicyDomainsV1beta1Result.fromMap(result);
+}
+
+pulumi.Output<GetRegistrationIamPolicyDomainsV1beta1Result> getRegistrationIamPolicyDomainsV1beta1Output(
+  GetRegistrationIamPolicyDomainsV1beta1Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:domains/v1beta1:getRegistrationIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRegistrationIamPolicyDomainsV1beta1Result.fromMap);
 }

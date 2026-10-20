@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
-enum CompensationEntryUnit {
+enum CompensationEntryUnit implements pulumi.PulumiEnum<String> {
   compensationUnitUnspecified("COMPENSATION_UNIT_UNSPECIFIED"),
   hourly("HOURLY"),
   daily("DAILY"),
@@ -10,6 +12,7 @@ enum CompensationEntryUnit {
   otherCompensationUnit("OTHER_COMPENSATION_UNIT");
 
   const CompensationEntryUnit(this.wireValue);
+  @override
   final String wireValue;
 
   static CompensationEntryUnit fromValue(String value) {

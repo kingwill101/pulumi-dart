@@ -9,8 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class CatalogArgs {
   /// Required. The ID to use for the catalog, which will become the final component of the catalog's resource name.
   final pulumi.Input<String> catalogId;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [CatalogArgs].
   /// [catalogId] Required. The ID to use for the catalog, which will become the final component of the catalog's resource name.

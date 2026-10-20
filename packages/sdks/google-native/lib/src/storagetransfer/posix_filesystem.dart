@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A POSIX filesystem resource.
 class PosixFilesystem {
   /// Root directory path to the filesystem.
-  final pulumi.Input<String>? rootDirectory;
+  final pulumi.Input<String?>? rootDirectory;
 
   /// Creates a new [PosixFilesystem].
   /// [rootDirectory] Root directory path to the filesystem.

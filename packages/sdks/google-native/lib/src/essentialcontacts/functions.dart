@@ -22,6 +22,17 @@ Future<GetContactResult> getContact(
   return GetContactResult.fromMap(result);
 }
 
+pulumi.Output<GetContactResult> getContactOutput(
+  GetContactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:essentialcontacts/v1:getContact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetContactResult.fromMap);
+}
+
 /// Gets a single contact.
 /// [args] Arguments passed to this invoke. {@macro pulumi_essentialcontacts_v1_get_folder_contact_args_doc}
 /// [options] Invoke options controlling this call.
@@ -38,6 +49,17 @@ Future<GetFolderContactResult> getFolderContact(
   return GetFolderContactResult.fromMap(result);
 }
 
+pulumi.Output<GetFolderContactResult> getFolderContactOutput(
+  GetFolderContactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:essentialcontacts/v1:getFolderContact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFolderContactResult.fromMap);
+}
+
 /// Gets a single contact.
 /// [args] Arguments passed to this invoke. {@macro pulumi_essentialcontacts_v1_get_organization_contact_args_doc}
 /// [options] Invoke options controlling this call.
@@ -52,4 +74,15 @@ Future<GetOrganizationContactResult> getOrganizationContact(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetOrganizationContactResult.fromMap(result);
+}
+
+pulumi.Output<GetOrganizationContactResult> getOrganizationContactOutput(
+  GetOrganizationContactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:essentialcontacts/v1:getOrganizationContact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetOrganizationContactResult.fromMap);
 }

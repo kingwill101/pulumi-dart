@@ -6,9 +6,9 @@ import 'jupyter_config_kernel.dart';
 /// Jupyter configuration for an interactive session.
 class JupyterConfig {
   /// Optional. Display name, shown in the Jupyter kernelspec card.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Kernel
-  final pulumi.Input<JupyterConfigKernel>? kernel;
+  final pulumi.Input<JupyterConfigKernel?>? kernel;
 
   /// Creates a new [JupyterConfig].
   /// [displayName] Optional. Display name, shown in the Jupyter kernelspec card.

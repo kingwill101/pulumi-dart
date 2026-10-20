@@ -31,9 +31,9 @@ class UserMetadataResponse {
 
   factory UserMetadataResponse.fromMap(Map<String, dynamic> map) {
     return UserMetadataResponse(
-      additionalDeveloperUserCount: pulumi.Input.fromValue(map['additionalDeveloperUserCount'] as int),
-      additionalStandardUserCount: pulumi.Input.fromValue(map['additionalStandardUserCount'] as int),
-      additionalViewerUserCount: pulumi.Input.fromValue(map['additionalViewerUserCount'] as int),
+      additionalDeveloperUserCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['additionalDeveloperUserCount'])),
+      additionalStandardUserCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['additionalStandardUserCount'])),
+      additionalViewerUserCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['additionalViewerUserCount'])),
     );
   }
 }

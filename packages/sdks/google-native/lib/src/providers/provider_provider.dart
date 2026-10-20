@@ -22,7 +22,7 @@ class ProviderProvider extends pulumi.ProviderResource {
           'google-native',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0').merge(options),
         ) {
     project = registerOutput<String?>('project');
     region = registerOutput<String?>('region');

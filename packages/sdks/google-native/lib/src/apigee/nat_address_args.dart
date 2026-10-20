@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class NatAddressArgs {
   final pulumi.Input<String> instanceId;
   /// Resource ID of the NAT address.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
 
   /// Creates a new [NatAddressArgs].

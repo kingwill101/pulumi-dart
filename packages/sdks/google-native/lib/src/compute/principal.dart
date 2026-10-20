@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// [Deprecated] All fields defined in a principal are ANDed.
 class Principal {
   /// An expression to specify custom condition.
-  final pulumi.Input<String>? condition;
+  final pulumi.Input<String?>? condition;
   /// The groups the principal belongs to. Exact match, prefix match, and suffix match are supported.
-  final pulumi.Input<List<String>>? groups;
+  final pulumi.Input<List<String>?>? groups;
   /// IPv4 or IPv6 address or range (In CIDR format)
-  final pulumi.Input<List<String>>? ips;
+  final pulumi.Input<List<String>?>? ips;
   /// The namespaces. Exact match, prefix match, and suffix match are supported.
-  final pulumi.Input<List<String>>? namespaces;
+  final pulumi.Input<List<String>?>? namespaces;
   /// Negate of groups. Specifies exclusions.
-  final pulumi.Input<List<String>>? notGroups;
+  final pulumi.Input<List<String>?>? notGroups;
   /// Negate of IPs. Specifies exclusions.
-  final pulumi.Input<List<String>>? notIps;
+  final pulumi.Input<List<String>?>? notIps;
   /// Negate of namespaces. Specifies exclusions.
-  final pulumi.Input<List<String>>? notNamespaces;
+  final pulumi.Input<List<String>?>? notNamespaces;
   /// Negate of users. Specifies exclusions.
-  final pulumi.Input<List<String>>? notUsers;
+  final pulumi.Input<List<String>?>? notUsers;
   /// A map of Istio attribute to expected values. Exact match, prefix match, and suffix match are supported for values. For example, `request.headers[version]: "v1"`. The properties are ANDed together.
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// The user names/IDs or service accounts. Exact match, prefix match, and suffix match are supported.
-  final pulumi.Input<List<String>>? users;
+  final pulumi.Input<List<String>?>? users;
 
   /// Creates a new [Principal].
   /// [condition] An expression to specify custom condition.

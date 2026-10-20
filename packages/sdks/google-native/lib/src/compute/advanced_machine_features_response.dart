@@ -48,10 +48,10 @@ class AdvancedMachineFeaturesResponse {
     return AdvancedMachineFeaturesResponse(
       enableNestedVirtualization: pulumi.Input.fromValue(map['enableNestedVirtualization'] as bool),
       enableUefiNetworking: pulumi.Input.fromValue(map['enableUefiNetworking'] as bool),
-      numaNodeCount: pulumi.Input.fromValue(map['numaNodeCount'] as int),
+      numaNodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numaNodeCount'])),
       performanceMonitoringUnit: pulumi.Input.fromValue(map['performanceMonitoringUnit'] as String),
-      threadsPerCore: pulumi.Input.fromValue(map['threadsPerCore'] as int),
-      visibleCoreCount: pulumi.Input.fromValue(map['visibleCoreCount'] as int),
+      threadsPerCore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['threadsPerCore'])),
+      visibleCoreCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['visibleCoreCount'])),
     );
   }
 }

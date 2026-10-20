@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_datacatalog_v1_get_taxonomy_iam_policy_args_doc}
 class GetTaxonomyIamPolicyArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> taxonomyId;
 
   /// Creates a new [GetTaxonomyIamPolicyArgs].

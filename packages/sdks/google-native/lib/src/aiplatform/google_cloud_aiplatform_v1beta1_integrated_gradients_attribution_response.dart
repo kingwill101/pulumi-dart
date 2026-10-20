@@ -35,7 +35,7 @@ class GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionResponse {
     return GoogleCloudAiplatformV1beta1IntegratedGradientsAttributionResponse(
       blurBaselineConfig: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1BlurBaselineConfigResponse.fromMap((map['blurBaselineConfig']! as Map).cast<String, dynamic>())),
       smoothGradConfig: pulumi.Input.fromValue(GoogleCloudAiplatformV1beta1SmoothGradConfigResponse.fromMap((map['smoothGradConfig']! as Map).cast<String, dynamic>())),
-      stepCount: pulumi.Input.fromValue(map['stepCount'] as int),
+      stepCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['stepCount'])),
     );
   }
 }

@@ -17,25 +17,25 @@ class ConnectionProfileDatastreamV1alpha1Args {
   /// Display name.
   final pulumi.Input<String> displayName;
   /// Forward SSH tunnel connectivity.
-  final pulumi.Input<ForwardSshTunnelConnectivityDatastreamV1alpha1>? forwardSshConnectivity;
+  final pulumi.Input<ForwardSshTunnelConnectivityDatastreamV1alpha1?>? forwardSshConnectivity;
   /// Cloud Storage ConnectionProfile configuration.
-  final pulumi.Input<GcsProfileDatastreamV1alpha1>? gcsProfile;
+  final pulumi.Input<GcsProfileDatastreamV1alpha1?>? gcsProfile;
   /// Labels.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// MySQL ConnectionProfile configuration.
-  final pulumi.Input<MysqlProfileDatastreamV1alpha1>? mysqlProfile;
+  final pulumi.Input<MysqlProfileDatastreamV1alpha1?>? mysqlProfile;
   /// No connectivity option chosen.
-  final pulumi.Input<Map<String, dynamic>>? noConnectivity;
+  final pulumi.Input<Map<String, dynamic>?>? noConnectivity;
   /// Oracle ConnectionProfile configuration.
-  final pulumi.Input<OracleProfileDatastreamV1alpha1>? oracleProfile;
+  final pulumi.Input<OracleProfileDatastreamV1alpha1?>? oracleProfile;
   /// Private connectivity.
-  final pulumi.Input<PrivateConnectivityDatastreamV1alpha1>? privateConnectivity;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<PrivateConnectivityDatastreamV1alpha1?>? privateConnectivity;
+  final pulumi.Input<String?>? project;
   /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Static Service IP connectivity.
-  final pulumi.Input<Map<String, dynamic>>? staticServiceIpConnectivity;
+  final pulumi.Input<Map<String, dynamic>?>? staticServiceIpConnectivity;
 
   /// Creates a new [ConnectionProfileDatastreamV1alpha1Args].
   /// [connectionProfileId] Required. The connection profile identifier.

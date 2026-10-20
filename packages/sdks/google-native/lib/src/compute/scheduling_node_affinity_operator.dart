@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
-enum SchedulingNodeAffinityOperator {
+enum SchedulingNodeAffinityOperator implements pulumi.PulumiEnum<String> {
   in_("IN"),
   notIn("NOT_IN"),
   operatorUnspecified("OPERATOR_UNSPECIFIED");
 
   const SchedulingNodeAffinityOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static SchedulingNodeAffinityOperator fromValue(String value) {

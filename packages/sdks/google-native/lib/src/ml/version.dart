@@ -77,7 +77,7 @@ class Version extends pulumi.CustomResource {
           'google-native:ml/v1:Version',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['modelId', 'project']).merge(options),
         ) {
     acceleratorConfig = registerOutput<GoogleCloudMlV1AcceleratorConfigResponse>('acceleratorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1AcceleratorConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoScaling = registerOutput<GoogleCloudMlV1AutoScalingResponse>('autoScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1AutoScalingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -90,7 +90,7 @@ class Version extends pulumi.CustomResource {
     explanationConfig = registerOutput<GoogleCloudMlV1ExplanationConfigResponse>('explanationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1ExplanationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     framework = registerOutput<String>('framework');
     isDefault = registerOutput<bool>('isDefault');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastMigrationModelId = registerOutput<String>('lastMigrationModelId');
     lastMigrationTime = registerOutput<String>('lastMigrationTime');
     lastUseTime = registerOutput<String>('lastUseTime');
@@ -98,7 +98,46 @@ class Version extends pulumi.CustomResource {
     manualScaling = registerOutput<GoogleCloudMlV1ManualScalingResponse>('manualScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1ManualScalingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     modelId = registerOutput<String>('modelId');
     this.name = registerOutput<String>('name');
-    packageUris = registerOutput<List<String>>('packageUris');
+    packageUris = registerOutput<List<String>>('packageUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    predictionClass = registerOutput<String>('predictionClass');
+    project = registerOutput<String>('project');
+    pythonVersion = registerOutput<String>('pythonVersion');
+    requestLoggingConfig = registerOutput<GoogleCloudMlV1RequestLoggingConfigResponse>('requestLoggingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1RequestLoggingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    routes = registerOutput<GoogleCloudMlV1RouteMapResponse>('routes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1RouteMapResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    runtimeVersion = registerOutput<String>('runtimeVersion');
+    serviceAccount = registerOutput<String>('serviceAccount');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [Version] resource.
+  Version.reference(String urn)
+    : super(
+        'google-native:ml/v1:Version',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acceleratorConfig = registerOutput<GoogleCloudMlV1AcceleratorConfigResponse>('acceleratorConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1AcceleratorConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    autoScaling = registerOutput<GoogleCloudMlV1AutoScalingResponse>('autoScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1AutoScalingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    container = registerOutput<GoogleCloudMlV1ContainerSpecResponse>('container', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1ContainerSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    deploymentUri = registerOutput<String>('deploymentUri');
+    description = registerOutput<String>('description');
+    errorMessage = registerOutput<String>('errorMessage');
+    etag = registerOutput<String>('etag');
+    explanationConfig = registerOutput<GoogleCloudMlV1ExplanationConfigResponse>('explanationConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1ExplanationConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    framework = registerOutput<String>('framework');
+    isDefault = registerOutput<bool>('isDefault');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lastMigrationModelId = registerOutput<String>('lastMigrationModelId');
+    lastMigrationTime = registerOutput<String>('lastMigrationTime');
+    lastUseTime = registerOutput<String>('lastUseTime');
+    machineType = registerOutput<String>('machineType');
+    manualScaling = registerOutput<GoogleCloudMlV1ManualScalingResponse>('manualScaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudMlV1ManualScalingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    modelId = registerOutput<String>('modelId');
+    this.name = registerOutput<String>('name');
+    packageUris = registerOutput<List<String>>('packageUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     predictionClass = registerOutput<String>('predictionClass');
     project = registerOutput<String>('project');
     pythonVersion = registerOutput<String>('pythonVersion');

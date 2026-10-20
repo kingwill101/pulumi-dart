@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// How this data should be plotted on the chart.
-enum DataSetPlotType {
+enum DataSetPlotType implements pulumi.PulumiEnum<String> {
   plotTypeUnspecified("PLOT_TYPE_UNSPECIFIED"),
   line("LINE"),
   stackedArea("STACKED_AREA"),
@@ -7,6 +9,7 @@ enum DataSetPlotType {
   heatmap("HEATMAP");
 
   const DataSetPlotType(this.wireValue);
+  @override
   final String wireValue;
 
   static DataSetPlotType fromValue(String value) {

@@ -6,7 +6,7 @@ import 'namespaced_gke_deployment_target_dataproc_v1beta2.dart';
 /// The GKE config for this cluster.
 class GkeClusterConfigDataprocV1beta2 {
   /// Optional. A target for the deployment.
-  final pulumi.Input<NamespacedGkeDeploymentTargetDataprocV1beta2>? namespacedGkeDeploymentTarget;
+  final pulumi.Input<NamespacedGkeDeploymentTargetDataprocV1beta2?>? namespacedGkeDeploymentTarget;
 
   /// Creates a new [GkeClusterConfigDataprocV1beta2].
   /// [namespacedGkeDeploymentTarget] Optional. A target for the deployment.

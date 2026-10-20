@@ -9,17 +9,17 @@ import 'google_cloud_apigee_v1_attribute.dart';
 /// {@macro pulumi_apigee_v1_appgroup_args_doc}
 class AppgroupArgs {
   /// A list of attributes
-  final pulumi.Input<List<GoogleCloudApigeeV1Attribute>>? attributes;
+  final pulumi.Input<List<GoogleCloudApigeeV1Attribute>?>? attributes;
   /// channel identifier identifies the owner maintaing this grouping.
-  final pulumi.Input<String>? channelId;
+  final pulumi.Input<String?>? channelId;
   /// A reference to the associated storefront/marketplace.
-  final pulumi.Input<String>? channelUri;
+  final pulumi.Input<String?>? channelUri;
   /// app group name displayed in the UI
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Immutable. Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._\-$ %.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Immutable. the org the app group is created
-  final pulumi.Input<String>? organization;
+  final pulumi.Input<String?>? organization;
   final pulumi.Input<String> organizationId;
 
   /// Creates a new [AppgroupArgs].

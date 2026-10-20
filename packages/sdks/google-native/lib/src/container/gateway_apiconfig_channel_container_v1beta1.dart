@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The Gateway API release channel to use for Gateway API.
-enum GatewayAPIConfigChannelContainerV1beta1 {
+enum GatewayAPIConfigChannelContainerV1beta1 implements pulumi.PulumiEnum<String> {
   channelUnspecified("CHANNEL_UNSPECIFIED"),
   channelDisabled("CHANNEL_DISABLED"),
   channelExperimental("CHANNEL_EXPERIMENTAL"),
   channelStandard("CHANNEL_STANDARD");
 
   const GatewayAPIConfigChannelContainerV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static GatewayAPIConfigChannelContainerV1beta1 fromValue(String value) {

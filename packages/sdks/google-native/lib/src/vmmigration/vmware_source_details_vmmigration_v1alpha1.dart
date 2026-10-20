@@ -5,15 +5,15 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// VmwareSourceDetails message describes a specific source details for the vmware source type.
 class VmwareSourceDetailsVmmigrationV1alpha1 {
   /// Input only. The credentials password. This is write only and can not be read in a GET operation.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The hostname of the vcenter.
-  final pulumi.Input<String>? resolvedVcenterHost;
+  final pulumi.Input<String?>? resolvedVcenterHost;
   /// The thumbprint representing the certificate for the vcenter.
-  final pulumi.Input<String>? thumbprint;
+  final pulumi.Input<String?>? thumbprint;
   /// The credentials username.
-  final pulumi.Input<String>? username;
+  final pulumi.Input<String?>? username;
   /// The ip address of the vcenter this Source represents.
-  final pulumi.Input<String>? vcenterIp;
+  final pulumi.Input<String?>? vcenterIp;
 
   /// Creates a new [VmwareSourceDetailsVmmigrationV1alpha1].
   /// [password] Input only. The credentials password. This is write only and can not be read in a GET operation.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_aiplatform_v1beta1_get_study_aiplatform_v1beta1_args_doc}
 class GetStudyAiplatformV1beta1Args {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> studyId;
 
   /// Creates a new [GetStudyAiplatformV1beta1Args].

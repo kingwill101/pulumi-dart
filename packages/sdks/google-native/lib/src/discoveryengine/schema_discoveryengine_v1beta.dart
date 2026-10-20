@@ -28,7 +28,7 @@ class SchemaDiscoveryengineV1beta extends pulumi.CustomResource {
           'google-native:discoveryengine/v1beta:Schema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['collectionId', 'dataStoreId', 'location', 'project', 'schemaId']).merge(options),
         ) {
     collectionId = registerOutput<String>('collectionId');
     dataStoreId = registerOutput<String>('dataStoreId');
@@ -37,6 +37,25 @@ class SchemaDiscoveryengineV1beta extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     schemaId = registerOutput<String>('schemaId');
-    structSchema = registerOutput<Map<String, String>>('structSchema');
+    structSchema = registerOutput<Map<String, String>>('structSchema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [SchemaDiscoveryengineV1beta] resource.
+  SchemaDiscoveryengineV1beta.reference(String urn)
+    : super(
+        'google-native:discoveryengine/v1beta:Schema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    collectionId = registerOutput<String>('collectionId');
+    dataStoreId = registerOutput<String>('dataStoreId');
+    jsonSchema = registerOutput<String>('jsonSchema');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    schemaId = registerOutput<String>('schemaId');
+    structSchema = registerOutput<Map<String, String>>('structSchema', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

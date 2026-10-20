@@ -7,9 +7,9 @@ import 'dataplex_config_metastore_v1beta.dart';
 /// Specifies how metastore metadata should be integrated with external services.
 class MetadataIntegrationMetastoreV1beta {
   /// Optional. The integration config for the Data Catalog service.
-  final pulumi.Input<DataCatalogConfigMetastoreV1beta>? dataCatalogConfig;
+  final pulumi.Input<DataCatalogConfigMetastoreV1beta?>? dataCatalogConfig;
   /// The integration config for the Dataplex service.
-  final pulumi.Input<DataplexConfigMetastoreV1beta>? dataplexConfig;
+  final pulumi.Input<DataplexConfigMetastoreV1beta?>? dataplexConfig;
 
   /// Creates a new [MetadataIntegrationMetastoreV1beta].
   /// [dataCatalogConfig] Optional. The integration config for the Data Catalog service.

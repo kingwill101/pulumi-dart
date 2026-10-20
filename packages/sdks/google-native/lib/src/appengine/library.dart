@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Third-party Python runtime library that is required by the application.
 class Library {
   /// Name of the library. Example: "django".
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Version of the library to select, or "latest".
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [Library].
   /// [name] Name of the library. Example: "django".

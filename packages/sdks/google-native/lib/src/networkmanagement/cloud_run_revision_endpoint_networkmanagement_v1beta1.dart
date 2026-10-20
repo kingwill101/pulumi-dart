@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Wrapper for Cloud Run revision attributes.
 class CloudRunRevisionEndpointNetworkmanagementV1beta1 {
   /// A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [CloudRunRevisionEndpointNetworkmanagementV1beta1].
   /// [uri] A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}

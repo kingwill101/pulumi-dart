@@ -1,9 +1,11 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'aws_source_vm_details_response_vmmigration_v1alpha1.dart';
 import 'azure_source_vm_details_response_vmmigration_v1alpha1.dart';
+import 'clone_job_response_vmmigration_v1alpha1.dart';
 import 'compute_engine_disks_target_defaults_response_vmmigration_v1alpha1.dart';
 import 'compute_engine_target_defaults_response_vmmigration_v1alpha1.dart';
 import 'cutover_forecast_response_vmmigration_v1alpha1.dart';
+import 'cutover_job_response_vmmigration_v1alpha1.dart';
 import 'migrating_vm_vmmigration_v1alpha1_args.dart';
 import 'replication_cycle_response_vmmigration_v1alpha1.dart';
 import 'replication_sync_response_vmmigration_v1alpha1.dart';
@@ -54,9 +56,9 @@ class MigratingVmVmmigrationV1alpha1 extends pulumi.CustomResource {
   late final pulumi.Output<SchedulePolicyResponseVmmigrationV1alpha1> policy;
   late final pulumi.Output<String> project;
   /// The recent clone jobs performed on the migrating VM. This field holds the vm's last completed clone job and the vm's running clone job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request.
-  late final pulumi.Output<List<Map<String, dynamic>>> recentCloneJobs;
+  late final pulumi.Output<List<CloneJobResponseVmmigrationV1alpha1>> recentCloneJobs;
   /// The recent cutover jobs performed on the migrating VM. This field holds the vm's last completed cutover job and the vm's running cutover job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request.
-  late final pulumi.Output<List<Map<String, dynamic>>> recentCutoverJobs;
+  late final pulumi.Output<List<CutoverJobResponseVmmigrationV1alpha1>> recentCutoverJobs;
   /// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   late final pulumi.Output<String?> requestId;
   late final pulumi.Output<String> sourceId;
@@ -85,7 +87,7 @@ class MigratingVmVmmigrationV1alpha1 extends pulumi.CustomResource {
           'google-native:vmmigration/v1alpha1:MigratingVm',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'migratingVmId', 'project', 'sourceId']).merge(options),
         ) {
     awsSourceVmDetails = registerOutput<AwsSourceVmDetailsResponseVmmigrationV1alpha1>('awsSourceVmDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsSourceVmDetailsResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     azureSourceVmDetails = registerOutput<AzureSourceVmDetailsResponseVmmigrationV1alpha1>('azureSourceVmDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureSourceVmDetailsResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -99,7 +101,7 @@ class MigratingVmVmmigrationV1alpha1 extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     error = registerOutput<StatusResponseVmmigrationV1alpha1>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     group = registerOutput<String>('group');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastReplicationCycle = registerOutput<ReplicationCycleResponseVmmigrationV1alpha1>('lastReplicationCycle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationCycleResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastSync = registerOutput<ReplicationSyncResponseVmmigrationV1alpha1>('lastSync', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationSyncResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
@@ -107,8 +109,49 @@ class MigratingVmVmmigrationV1alpha1 extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     policy = registerOutput<SchedulePolicyResponseVmmigrationV1alpha1>('policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchedulePolicyResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
-    recentCloneJobs = registerOutput<List<Map<String, dynamic>>>('recentCloneJobs');
-    recentCutoverJobs = registerOutput<List<Map<String, dynamic>>>('recentCutoverJobs');
+    recentCloneJobs = registerOutput<List<CloneJobResponseVmmigrationV1alpha1>>('recentCloneJobs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloneJobResponseVmmigrationV1alpha1>(guardedValue, (value) => CloneJobResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())); });
+    recentCutoverJobs = registerOutput<List<CutoverJobResponseVmmigrationV1alpha1>>('recentCutoverJobs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CutoverJobResponseVmmigrationV1alpha1>(guardedValue, (value) => CutoverJobResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())); });
+    requestId = registerOutput<String?>('requestId');
+    sourceId = registerOutput<String>('sourceId');
+    sourceVmId = registerOutput<String>('sourceVmId');
+    state = registerOutput<String>('state');
+    stateTime = registerOutput<String>('stateTime');
+    targetDefaults = registerOutput<TargetVMDetailsResponse>('targetDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetVMDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+    vmwareSourceVmDetails = registerOutput<VmwareSourceVmDetailsResponseVmmigrationV1alpha1>('vmwareSourceVmDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VmwareSourceVmDetailsResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [MigratingVmVmmigrationV1alpha1] resource.
+  MigratingVmVmmigrationV1alpha1.reference(String urn)
+    : super(
+        'google-native:vmmigration/v1alpha1:MigratingVm',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    awsSourceVmDetails = registerOutput<AwsSourceVmDetailsResponseVmmigrationV1alpha1>('awsSourceVmDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AwsSourceVmDetailsResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    azureSourceVmDetails = registerOutput<AzureSourceVmDetailsResponseVmmigrationV1alpha1>('azureSourceVmDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AzureSourceVmDetailsResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computeEngineDisksTargetDefaults = registerOutput<ComputeEngineDisksTargetDefaultsResponseVmmigrationV1alpha1>('computeEngineDisksTargetDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEngineDisksTargetDefaultsResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computeEngineTargetDefaults = registerOutput<ComputeEngineTargetDefaultsResponseVmmigrationV1alpha1>('computeEngineTargetDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ComputeEngineTargetDefaultsResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    computeEngineVmDefaults = registerOutput<TargetVMDetailsResponse>('computeEngineVmDefaults', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TargetVMDetailsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    currentSyncInfo = registerOutput<ReplicationCycleResponseVmmigrationV1alpha1>('currentSyncInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationCycleResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    cutoverForecast = registerOutput<CutoverForecastResponseVmmigrationV1alpha1>('cutoverForecast', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CutoverForecastResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    error = registerOutput<StatusResponseVmmigrationV1alpha1>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    group = registerOutput<String>('group');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lastReplicationCycle = registerOutput<ReplicationCycleResponseVmmigrationV1alpha1>('lastReplicationCycle', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationCycleResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastSync = registerOutput<ReplicationSyncResponseVmmigrationV1alpha1>('lastSync', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationSyncResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    migratingVmId = registerOutput<String>('migratingVmId');
+    this.name = registerOutput<String>('name');
+    policy = registerOutput<SchedulePolicyResponseVmmigrationV1alpha1>('policy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SchedulePolicyResponseVmmigrationV1alpha1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    recentCloneJobs = registerOutput<List<CloneJobResponseVmmigrationV1alpha1>>('recentCloneJobs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CloneJobResponseVmmigrationV1alpha1>(guardedValue, (value) => CloneJobResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())); });
+    recentCutoverJobs = registerOutput<List<CutoverJobResponseVmmigrationV1alpha1>>('recentCutoverJobs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CutoverJobResponseVmmigrationV1alpha1>(guardedValue, (value) => CutoverJobResponseVmmigrationV1alpha1.fromMap((value as Map).cast<String, dynamic>())); });
     requestId = registerOutput<String?>('requestId');
     sourceId = registerOutput<String>('sourceId');
     sourceVmId = registerOutput<String>('sourceVmId');

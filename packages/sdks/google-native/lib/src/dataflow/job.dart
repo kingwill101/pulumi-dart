@@ -1,10 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'environment_response.dart';
+import 'execution_stage_state_response.dart';
 import 'job_args.dart';
 import 'job_execution_info_response.dart';
 import 'job_metadata_response.dart';
 import 'pipeline_description_response.dart';
 import 'runtime_updatable_params_response.dart';
+import 'step_response.dart';
 
 /// Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not enter confidential information when you supply string values using the API.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
@@ -47,11 +49,11 @@ class Job extends pulumi.CustomResource {
   /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
   late final pulumi.Output<bool> satisfiesPzs;
   /// This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
-  late final pulumi.Output<List<Map<String, dynamic>>> stageStates;
+  late final pulumi.Output<List<ExecutionStageStateResponse>> stageStates;
   /// The timestamp when the job was started (transitioned to JOB_STATE_PENDING). Flexible resource scheduling jobs are started with some delay after job creation, so start_time is unset before start and is updated when the job is started by the Cloud Dataflow service. For other jobs, start_time always equals to create_time and is immutable and set by the Cloud Dataflow service.
   late final pulumi.Output<String> startTime;
   /// Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
-  late final pulumi.Output<List<Map<String, dynamic>>> steps;
+  late final pulumi.Output<List<StepResponse>> steps;
   /// The Cloud Storage location where the steps are stored.
   late final pulumi.Output<String> stepsLocation;
   /// A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
@@ -75,7 +77,7 @@ class Job extends pulumi.CustomResource {
           'google-native:dataflow/v1b3:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     clientRequestId = registerOutput<String>('clientRequestId');
     createTime = registerOutput<String>('createTime');
@@ -85,7 +87,7 @@ class Job extends pulumi.CustomResource {
     environment = registerOutput<EnvironmentResponse>('environment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     executionInfo = registerOutput<JobExecutionInfoResponse>('executionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobExecutionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     jobMetadata = registerOutput<JobMetadataResponse>('jobMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     pipelineDescription = registerOutput<PipelineDescriptionResponse>('pipelineDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
@@ -96,12 +98,50 @@ class Job extends pulumi.CustomResource {
     runtimeUpdatableParams = registerOutput<RuntimeUpdatableParamsResponse>('runtimeUpdatableParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeUpdatableParamsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     satisfiesPzi = registerOutput<bool>('satisfiesPzi');
     satisfiesPzs = registerOutput<bool>('satisfiesPzs');
-    stageStates = registerOutput<List<Map<String, dynamic>>>('stageStates');
+    stageStates = registerOutput<List<ExecutionStageStateResponse>>('stageStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExecutionStageStateResponse>(guardedValue, (value) => ExecutionStageStateResponse.fromMap((value as Map).cast<String, dynamic>())); });
     startTime = registerOutput<String>('startTime');
-    steps = registerOutput<List<Map<String, dynamic>>>('steps');
+    steps = registerOutput<List<StepResponse>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StepResponse>(guardedValue, (value) => StepResponse.fromMap((value as Map).cast<String, dynamic>())); });
     stepsLocation = registerOutput<String>('stepsLocation');
-    tempFiles = registerOutput<List<String>>('tempFiles');
-    transformNameMapping = registerOutput<Map<String, String>>('transformNameMapping');
+    tempFiles = registerOutput<List<String>>('tempFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    transformNameMapping = registerOutput<Map<String, String>>('transformNameMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    type = registerOutput<String>('type');
+    view = registerOutput<String?>('view');
+  }
+
+  /// Creates a typed reference to an existing [Job] resource.
+  Job.reference(String urn)
+    : super(
+        'google-native:dataflow/v1b3:Job',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clientRequestId = registerOutput<String>('clientRequestId');
+    createTime = registerOutput<String>('createTime');
+    createdFromSnapshotId = registerOutput<String>('createdFromSnapshotId');
+    currentState = registerOutput<String>('currentState');
+    currentStateTime = registerOutput<String>('currentStateTime');
+    environment = registerOutput<EnvironmentResponse>('environment', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EnvironmentResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    executionInfo = registerOutput<JobExecutionInfoResponse>('executionInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobExecutionInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    jobMetadata = registerOutput<JobMetadataResponse>('jobMetadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return JobMetadataResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    pipelineDescription = registerOutput<PipelineDescriptionResponse>('pipelineDescription', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PipelineDescriptionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    replaceJobId = registerOutput<String>('replaceJobId');
+    replacedByJobId = registerOutput<String>('replacedByJobId');
+    requestedState = registerOutput<String>('requestedState');
+    runtimeUpdatableParams = registerOutput<RuntimeUpdatableParamsResponse>('runtimeUpdatableParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RuntimeUpdatableParamsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    satisfiesPzi = registerOutput<bool>('satisfiesPzi');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    stageStates = registerOutput<List<ExecutionStageStateResponse>>('stageStates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ExecutionStageStateResponse>(guardedValue, (value) => ExecutionStageStateResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    startTime = registerOutput<String>('startTime');
+    steps = registerOutput<List<StepResponse>>('steps', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<StepResponse>(guardedValue, (value) => StepResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    stepsLocation = registerOutput<String>('stepsLocation');
+    tempFiles = registerOutput<List<String>>('tempFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    transformNameMapping = registerOutput<Map<String, String>>('transformNameMapping', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     type = registerOutput<String>('type');
     view = registerOutput<String?>('view');
   }

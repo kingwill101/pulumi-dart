@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents a whole calendar date, for example a date of birth. The time of day and time zone are either specified elsewhere or are not significant. The date is relative to the [Proleptic Gregorian Calendar](https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar). The date must be a valid calendar date between the year 1 and 9999.
 class Date {
   /// Day of month. Must be from 1 to 31 and valid for the year and month.
-  final pulumi.Input<int>? day;
+  final pulumi.Input<int?>? day;
   /// Month of date. Must be from 1 to 12.
-  final pulumi.Input<int>? month;
+  final pulumi.Input<int?>? month;
   /// Year of date. Must be from 1 to 9999.
-  final pulumi.Input<int>? year;
+  final pulumi.Input<int?>? year;
 
   /// Creates a new [Date].
   /// [day] Day of month. Must be from 1 to 31 and valid for the year and month.
@@ -31,9 +31,9 @@ class Date {
 
   factory Date.fromMap(Map<String, dynamic> map) {
     return Date(
-      day: (() { final guardedValue = map['day']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      month: (() { final guardedValue = map['month']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
-      year: (() { final guardedValue = map['year']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      day: (() { final guardedValue = map['day']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      month: (() { final guardedValue = map['month']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      year: (() { final guardedValue = map['year']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

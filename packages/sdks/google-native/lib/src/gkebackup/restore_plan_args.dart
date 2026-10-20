@@ -13,11 +13,11 @@ class RestorePlanArgs {
   /// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
   final pulumi.Input<String> cluster;
   /// Optional. User specified descriptive string for this RestorePlan.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. A set of custom labels supplied by user.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Configuration of Restores created via this RestorePlan.
   final pulumi.Input<RestoreConfig> restoreConfig;
   /// Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location

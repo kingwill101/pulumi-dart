@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'google_cloud_aiplatform_v1beta1_measurement_response.dart';
+import 'google_cloud_aiplatform_v1beta1_trial_parameter_response.dart';
 import 'trial_aiplatform_v1beta1_args.dart';
 
 /// Adds a user provided Trial to a Study.
@@ -17,11 +18,11 @@ class TrialAiplatformV1beta1 extends pulumi.CustomResource {
   late final pulumi.Output<String> infeasibleReason;
   late final pulumi.Output<String> location;
   /// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_duration). These are used for early stopping computations.
-  late final pulumi.Output<List<Map<String, dynamic>>> measurements;
+  late final pulumi.Output<List<GoogleCloudAiplatformV1beta1MeasurementResponse>> measurements;
   /// Resource name of the Trial assigned by the service.
   late final pulumi.Output<String> name;
   /// The parameters of the Trial.
-  late final pulumi.Output<List<Map<String, dynamic>>> parameters;
+  late final pulumi.Output<List<GoogleCloudAiplatformV1beta1TrialParameterResponse>> parameters;
   late final pulumi.Output<String> project;
   /// Time when the Trial was started.
   late final pulumi.Output<String> startTime;
@@ -43,7 +44,7 @@ class TrialAiplatformV1beta1 extends pulumi.CustomResource {
           'google-native:aiplatform/v1beta1:Trial',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'studyId']).merge(options),
         ) {
     clientId = registerOutput<String>('clientId');
     customJob = registerOutput<String>('customJob');
@@ -51,13 +52,38 @@ class TrialAiplatformV1beta1 extends pulumi.CustomResource {
     finalMeasurement = registerOutput<GoogleCloudAiplatformV1beta1MeasurementResponse>('finalMeasurement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1MeasurementResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     infeasibleReason = registerOutput<String>('infeasibleReason');
     location = registerOutput<String>('location');
-    measurements = registerOutput<List<Map<String, dynamic>>>('measurements');
+    measurements = registerOutput<List<GoogleCloudAiplatformV1beta1MeasurementResponse>>('measurements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1MeasurementResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1MeasurementResponse.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    parameters = registerOutput<List<Map<String, dynamic>>>('parameters');
+    parameters = registerOutput<List<GoogleCloudAiplatformV1beta1TrialParameterResponse>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1TrialParameterResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1TrialParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
     project = registerOutput<String>('project');
     startTime = registerOutput<String>('startTime');
     state = registerOutput<String>('state');
     studyId = registerOutput<String>('studyId');
-    webAccessUris = registerOutput<Map<String, String>>('webAccessUris');
+    webAccessUris = registerOutput<Map<String, String>>('webAccessUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [TrialAiplatformV1beta1] resource.
+  TrialAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:Trial',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clientId = registerOutput<String>('clientId');
+    customJob = registerOutput<String>('customJob');
+    endTime = registerOutput<String>('endTime');
+    finalMeasurement = registerOutput<GoogleCloudAiplatformV1beta1MeasurementResponse>('finalMeasurement', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1MeasurementResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    infeasibleReason = registerOutput<String>('infeasibleReason');
+    location = registerOutput<String>('location');
+    measurements = registerOutput<List<GoogleCloudAiplatformV1beta1MeasurementResponse>>('measurements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1MeasurementResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1MeasurementResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    parameters = registerOutput<List<GoogleCloudAiplatformV1beta1TrialParameterResponse>>('parameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudAiplatformV1beta1TrialParameterResponse>(guardedValue, (value) => GoogleCloudAiplatformV1beta1TrialParameterResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    project = registerOutput<String>('project');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+    studyId = registerOutput<String>('studyId');
+    webAccessUris = registerOutput<Map<String, String>>('webAccessUris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

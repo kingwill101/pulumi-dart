@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The current state of the environment.
-enum EnvironmentState {
+enum EnvironmentState implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   creating("CREATING"),
   running("RUNNING"),
@@ -8,6 +10,7 @@ enum EnvironmentState {
   error("ERROR");
 
   const EnvironmentState(this.wireValue);
+  @override
   final String wireValue;
 
   static EnvironmentState fromValue(String value) {

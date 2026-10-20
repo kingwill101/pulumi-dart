@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_v1_get_network_endpoint_group_compute_v1_args_doc}
 class GetNetworkEndpointGroupComputeV1Args {
   final pulumi.Input<String> networkEndpointGroup;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> zone;
 
   /// Creates a new [GetNetworkEndpointGroupComputeV1Args].

@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'subnetwork_args.dart';
 import 'subnetwork_log_config_response.dart';
+import 'subnetwork_secondary_range_response.dart';
 
 /// Creates a subnetwork in the specified project using the data included in the request.
 class Subnetwork extends pulumi.CustomResource {
@@ -59,7 +60,7 @@ class Subnetwork extends pulumi.CustomResource {
   /// The role of subnetwork. Currently, this field is only used when purpose = REGIONAL_MANAGED_PROXY. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Envoy-based load balancers in a region. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
   late final pulumi.Output<String> role;
   /// An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
-  late final pulumi.Output<List<Map<String, dynamic>>> secondaryIpRanges;
+  late final pulumi.Output<List<SubnetworkSecondaryRangeResponse>> secondaryIpRanges;
   /// Server-defined URL for the resource.
   late final pulumi.Output<String> selfLink;
   /// Server-defined URL for this resource with the resource id.
@@ -83,7 +84,7 @@ class Subnetwork extends pulumi.CustomResource {
           'google-native:compute/alpha:Subnetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
     aggregationInterval = registerOutput<String>('aggregationInterval');
     allowSubnetCidrRoutesOverlap = registerOutput<bool>('allowSubnetCidrRoutesOverlap');
@@ -113,11 +114,56 @@ class Subnetwork extends pulumi.CustomResource {
     requestId = registerOutput<String?>('requestId');
     reservedInternalRange = registerOutput<String>('reservedInternalRange');
     role = registerOutput<String>('role');
-    secondaryIpRanges = registerOutput<List<Map<String, dynamic>>>('secondaryIpRanges');
+    secondaryIpRanges = registerOutput<List<SubnetworkSecondaryRangeResponse>>('secondaryIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetworkSecondaryRangeResponse>(guardedValue, (value) => SubnetworkSecondaryRangeResponse.fromMap((value as Map).cast<String, dynamic>())); });
     selfLink = registerOutput<String>('selfLink');
     selfLinkWithId = registerOutput<String>('selfLinkWithId');
     stackType = registerOutput<String>('stackType');
     state = registerOutput<String>('state');
-    vlans = registerOutput<List<int>>('vlans');
+    vlans = registerOutput<List<int>>('vlans', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+  }
+
+  /// Creates a typed reference to an existing [Subnetwork] resource.
+  Subnetwork.reference(String urn)
+    : super(
+        'google-native:compute/alpha:Subnetwork',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    aggregationInterval = registerOutput<String>('aggregationInterval');
+    allowSubnetCidrRoutesOverlap = registerOutput<bool>('allowSubnetCidrRoutesOverlap');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    enableFlowLogs = registerOutput<bool>('enableFlowLogs');
+    enableL2 = registerOutput<bool>('enableL2');
+    enablePrivateV6Access = registerOutput<bool>('enablePrivateV6Access');
+    externalIpv6Prefix = registerOutput<String>('externalIpv6Prefix');
+    fingerprint = registerOutput<String>('fingerprint');
+    flowSampling = registerOutput<double>('flowSampling');
+    gatewayAddress = registerOutput<String>('gatewayAddress');
+    internalIpv6Prefix = registerOutput<String>('internalIpv6Prefix');
+    ipCidrRange = registerOutput<String>('ipCidrRange');
+    ipv6AccessType = registerOutput<String>('ipv6AccessType');
+    ipv6CidrRange = registerOutput<String>('ipv6CidrRange');
+    kind = registerOutput<String>('kind');
+    logConfig = registerOutput<SubnetworkLogConfigResponse>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SubnetworkLogConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    metadata = registerOutput<String>('metadata');
+    this.name = registerOutput<String>('name');
+    network = registerOutput<String>('network');
+    privateIpGoogleAccess = registerOutput<bool>('privateIpGoogleAccess');
+    privateIpv6GoogleAccess = registerOutput<String>('privateIpv6GoogleAccess');
+    project = registerOutput<String>('project');
+    purpose = registerOutput<String>('purpose');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    reservedInternalRange = registerOutput<String>('reservedInternalRange');
+    role = registerOutput<String>('role');
+    secondaryIpRanges = registerOutput<List<SubnetworkSecondaryRangeResponse>>('secondaryIpRanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SubnetworkSecondaryRangeResponse>(guardedValue, (value) => SubnetworkSecondaryRangeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    selfLink = registerOutput<String>('selfLink');
+    selfLinkWithId = registerOutput<String>('selfLinkWithId');
+    stackType = registerOutput<String>('stackType');
+    state = registerOutput<String>('state');
+    vlans = registerOutput<List<int>>('vlans', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
   }
 }

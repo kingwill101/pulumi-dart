@@ -18,12 +18,12 @@ class CustomConnectorVersionArgs {
   /// Configuration of the customConnector's destination.
   final pulumi.Input<DestinationConfig> destinationConfig;
   /// Optional. Whether to enable backend destination config. This is the backend server that the connector connects to.
-  final pulumi.Input<bool>? enableBackendDestinationConfig;
+  final pulumi.Input<bool?>? enableBackendDestinationConfig;
   /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? project;
   /// Optional. Location of the custom connector spec.
-  final pulumi.Input<String>? specLocation;
+  final pulumi.Input<String?>? specLocation;
   /// Type of the customConnector.
   final pulumi.Input<CustomConnectorVersionType> type;
 

@@ -8,11 +8,11 @@ class PackageIssueContaineranalysisV1beta1 {
   /// The location of the vulnerability.
   final pulumi.Input<VulnerabilityLocationContaineranalysisV1beta1> affectedLocation;
   /// The location of the available fix for vulnerability.
-  final pulumi.Input<VulnerabilityLocationContaineranalysisV1beta1>? fixedLocation;
+  final pulumi.Input<VulnerabilityLocationContaineranalysisV1beta1?>? fixedLocation;
   /// The type of package (e.g. OS, MAVEN, GO).
-  final pulumi.Input<String>? packageType;
+  final pulumi.Input<String?>? packageType;
   /// Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
-  final pulumi.Input<String>? severityName;
+  final pulumi.Input<String?>? severityName;
 
   /// Creates a new [PackageIssueContaineranalysisV1beta1].
   /// [affectedLocation] The location of the vulnerability.

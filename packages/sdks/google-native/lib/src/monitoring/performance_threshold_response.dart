@@ -35,7 +35,7 @@ class PerformanceThresholdResponse {
     return PerformanceThresholdResponse(
       basicSliPerformance: pulumi.Input.fromValue(BasicSliResponse.fromMap((map['basicSliPerformance']! as Map).cast<String, dynamic>())),
       performance: pulumi.Input.fromValue(RequestBasedSliResponse.fromMap((map['performance']! as Map).cast<String, dynamic>())),
-      threshold: pulumi.Input.fromValue(map['threshold'] as double),
+      threshold: pulumi.Input.fromValue((map['threshold'] as num).toDouble()),
     );
   }
 }

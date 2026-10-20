@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. The format of packages that are stored in the repository.
-enum RepositoryFormatArtifactregistryV1beta2 {
+enum RepositoryFormatArtifactregistryV1beta2 implements pulumi.PulumiEnum<String> {
   formatUnspecified("FORMAT_UNSPECIFIED"),
   docker("DOCKER"),
   maven("MAVEN"),
@@ -10,6 +12,7 @@ enum RepositoryFormatArtifactregistryV1beta2 {
   python("PYTHON");
 
   const RepositoryFormatArtifactregistryV1beta2(this.wireValue);
+  @override
   final String wireValue;
 
   static RepositoryFormatArtifactregistryV1beta2 fromValue(String value) {

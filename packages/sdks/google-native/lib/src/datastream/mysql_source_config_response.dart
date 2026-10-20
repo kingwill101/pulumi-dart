@@ -39,8 +39,8 @@ class MysqlSourceConfigResponse {
     return MysqlSourceConfigResponse(
       excludeObjects: pulumi.Input.fromValue(MysqlRdbmsResponse.fromMap((map['excludeObjects']! as Map).cast<String, dynamic>())),
       includeObjects: pulumi.Input.fromValue(MysqlRdbmsResponse.fromMap((map['includeObjects']! as Map).cast<String, dynamic>())),
-      maxConcurrentBackfillTasks: pulumi.Input.fromValue(map['maxConcurrentBackfillTasks'] as int),
-      maxConcurrentCdcTasks: pulumi.Input.fromValue(map['maxConcurrentCdcTasks'] as int),
+      maxConcurrentBackfillTasks: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConcurrentBackfillTasks'])),
+      maxConcurrentCdcTasks: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxConcurrentCdcTasks'])),
     );
   }
 }

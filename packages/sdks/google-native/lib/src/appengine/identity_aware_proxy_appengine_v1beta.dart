@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Identity-Aware Proxy
 class IdentityAwareProxyAppengineV1beta {
   /// Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// OAuth2 client ID to use for the authentication flow.
-  final pulumi.Input<String>? oauth2ClientId;
+  final pulumi.Input<String?>? oauth2ClientId;
   /// OAuth2 client secret to use for the authentication flow.For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2_client_secret_sha256 field.@InputOnly
-  final pulumi.Input<String>? oauth2ClientSecret;
+  final pulumi.Input<String?>? oauth2ClientSecret;
 
   /// Creates a new [IdentityAwareProxyAppengineV1beta].
   /// [enabled] Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.

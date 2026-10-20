@@ -9,18 +9,18 @@ import 'import_data_file_format_migrationcenter_v1alpha1.dart';
 /// {@macro pulumi_migrationcenter_v1alpha1_import_data_file_migrationcenter_v1alpha1_args_doc}
 class ImportDataFileMigrationcenterV1alpha1Args {
   /// Optional. User-friendly display name. Maximum length is 256 characters.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The payload format.
   final pulumi.Input<ImportDataFileFormatMigrationcenterV1alpha1> format;
   /// Required. The ID of the new data file.
   final pulumi.Input<String> importDataFileId;
   final pulumi.Input<String> importJobId;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Information about a file that is uploaded to a storage service.
-  final pulumi.Input<Map<String, dynamic>>? uploadFileInfo;
+  final pulumi.Input<Map<String, dynamic>?>? uploadFileInfo;
 
   /// Creates a new [ImportDataFileMigrationcenterV1alpha1Args].
   /// [displayName] Optional. User-friendly display name. Maximum length is 256 characters.

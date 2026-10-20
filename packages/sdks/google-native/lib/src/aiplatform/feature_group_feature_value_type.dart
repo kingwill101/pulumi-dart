@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. Only applicable for Vertex AI Feature Store (Legacy). Type of Feature value.
-enum FeatureGroupFeatureValueType {
+enum FeatureGroupFeatureValueType implements pulumi.PulumiEnum<String> {
   valueTypeUnspecified("VALUE_TYPE_UNSPECIFIED"),
   bool_("BOOL"),
   boolArray("BOOL_ARRAY"),
@@ -12,6 +14,7 @@ enum FeatureGroupFeatureValueType {
   bytes("BYTES");
 
   const FeatureGroupFeatureValueType(this.wireValue);
+  @override
   final String wireValue;
 
   static FeatureGroupFeatureValueType fromValue(String value) {

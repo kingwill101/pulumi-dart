@@ -52,8 +52,36 @@ class BackupRunSqladminV1beta4 extends pulumi.CustomResource {
           'google-native:sqladmin/v1beta4:BackupRun',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['instance', 'project']).merge(options),
         ) {
+    backupKind = registerOutput<String>('backupKind');
+    description = registerOutput<String>('description');
+    diskEncryptionConfiguration = registerOutput<DiskEncryptionConfigurationResponseSqladminV1beta4>('diskEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskEncryptionConfigurationResponseSqladminV1beta4.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    diskEncryptionStatus = registerOutput<DiskEncryptionStatusResponseSqladminV1beta4>('diskEncryptionStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskEncryptionStatusResponseSqladminV1beta4.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endTime = registerOutput<String>('endTime');
+    enqueuedTime = registerOutput<String>('enqueuedTime');
+    error = registerOutput<OperationErrorResponseSqladminV1beta4>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OperationErrorResponseSqladminV1beta4.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    instance = registerOutput<String>('instance');
+    kind = registerOutput<String>('kind');
+    location = registerOutput<String>('location');
+    project = registerOutput<String>('project');
+    selfLink = registerOutput<String>('selfLink');
+    startTime = registerOutput<String>('startTime');
+    status = registerOutput<String>('status');
+    timeZone = registerOutput<String>('timeZone');
+    type = registerOutput<String>('type');
+    windowStartTime = registerOutput<String>('windowStartTime');
+  }
+
+  /// Creates a typed reference to an existing [BackupRunSqladminV1beta4] resource.
+  BackupRunSqladminV1beta4.reference(String urn)
+    : super(
+        'google-native:sqladmin/v1beta4:BackupRun',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     backupKind = registerOutput<String>('backupKind');
     description = registerOutput<String>('description');
     diskEncryptionConfiguration = registerOutput<DiskEncryptionConfigurationResponseSqladminV1beta4>('diskEncryptionConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DiskEncryptionConfigurationResponseSqladminV1beta4.fromMap((guardedValue as Map).cast<String, dynamic>()); });

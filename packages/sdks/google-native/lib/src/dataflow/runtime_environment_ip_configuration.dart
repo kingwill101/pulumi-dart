@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Optional. Configuration for VM IPs.
-enum RuntimeEnvironmentIpConfiguration {
+enum RuntimeEnvironmentIpConfiguration implements pulumi.PulumiEnum<String> {
   workerIpUnspecified("WORKER_IP_UNSPECIFIED"),
   workerIpPublic("WORKER_IP_PUBLIC"),
   workerIpPrivate("WORKER_IP_PRIVATE");
 
   const RuntimeEnvironmentIpConfiguration(this.wireValue);
+  @override
   final String wireValue;
 
   static RuntimeEnvironmentIpConfiguration fromValue(String value) {

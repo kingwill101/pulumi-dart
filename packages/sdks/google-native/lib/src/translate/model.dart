@@ -38,8 +38,31 @@ class Model extends pulumi.CustomResource {
           'google-native:translate/v3:Model',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    dataset = registerOutput<String>('dataset');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    sourceLanguageCode = registerOutput<String>('sourceLanguageCode');
+    targetLanguageCode = registerOutput<String>('targetLanguageCode');
+    testExampleCount = registerOutput<int>('testExampleCount');
+    trainExampleCount = registerOutput<int>('trainExampleCount');
+    updateTime = registerOutput<String>('updateTime');
+    validateExampleCount = registerOutput<int>('validateExampleCount');
+  }
+
+  /// Creates a typed reference to an existing [Model] resource.
+  Model.reference(String urn)
+    : super(
+        'google-native:translate/v3:Model',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     dataset = registerOutput<String>('dataset');
     displayName = registerOutput<String>('displayName');

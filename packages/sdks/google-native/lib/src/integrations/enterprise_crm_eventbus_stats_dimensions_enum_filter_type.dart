@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether to include or exclude the enums matching the regex.
-enum EnterpriseCrmEventbusStatsDimensionsEnumFilterType {
+enum EnterpriseCrmEventbusStatsDimensionsEnumFilterType implements pulumi.PulumiEnum<String> {
   defaultInclusive("DEFAULT_INCLUSIVE"),
   exclusive("EXCLUSIVE");
 
   const EnterpriseCrmEventbusStatsDimensionsEnumFilterType(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmEventbusStatsDimensionsEnumFilterType fromValue(String value) {

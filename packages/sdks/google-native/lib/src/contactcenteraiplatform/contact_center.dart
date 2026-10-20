@@ -54,7 +54,7 @@ class ContactCenter extends pulumi.CustomResource {
           'google-native:contactcenteraiplatform/v1alpha1:ContactCenter',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['contactCenterId', 'location', 'project']).merge(options),
         ) {
     adminUser = registerOutput<AdminUserResponse>('adminUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdminUserResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     ccaipManagedUsers = registerOutput<bool>('ccaipManagedUsers');
@@ -64,7 +64,36 @@ class ContactCenter extends pulumi.CustomResource {
     displayName = registerOutput<String>('displayName');
     instanceConfig = registerOutput<InstanceConfigResponse>('instanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     kmsKey = registerOutput<String>('kmsKey');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    samlParams = registerOutput<SAMLParamsResponse>('samlParams', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SAMLParamsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+    uris = registerOutput<URIsResponse>('uris', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return URIsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    userEmail = registerOutput<String>('userEmail');
+  }
+
+  /// Creates a typed reference to an existing [ContactCenter] resource.
+  ContactCenter.reference(String urn)
+    : super(
+        'google-native:contactcenteraiplatform/v1alpha1:ContactCenter',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    adminUser = registerOutput<AdminUserResponse>('adminUser', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return AdminUserResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    ccaipManagedUsers = registerOutput<bool>('ccaipManagedUsers');
+    contactCenterId = registerOutput<String>('contactCenterId');
+    createTime = registerOutput<String>('createTime');
+    customerDomainPrefix = registerOutput<String>('customerDomainPrefix');
+    displayName = registerOutput<String>('displayName');
+    instanceConfig = registerOutput<InstanceConfigResponse>('instanceConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kmsKey = registerOutput<String>('kmsKey');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

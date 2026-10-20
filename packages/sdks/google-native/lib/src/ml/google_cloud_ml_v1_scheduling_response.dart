@@ -33,7 +33,7 @@ class GoogleCloudMlV1SchedulingResponse {
     return GoogleCloudMlV1SchedulingResponse(
       maxRunningTime: pulumi.Input.fromValue(map['maxRunningTime'] as String),
       maxWaitTime: pulumi.Input.fromValue(map['maxWaitTime'] as String),
-      priority: pulumi.Input.fromValue(map['priority'] as int),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
     );
   }
 }

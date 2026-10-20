@@ -19,91 +19,91 @@ import 'view_definition_response.dart';
 /// Result data returned by getTable.
 class GetTableResult {
   /// [Optional] Specifies the configuration of a BigLake managed table.
-  final BigLakeConfigurationResponse biglakeConfiguration;
+  final BigLakeConfigurationResponse? biglakeConfiguration;
   /// Clone definition.
-  final CloneDefinitionResponse cloneDefinition;
+  final CloneDefinitionResponse? cloneDefinition;
   /// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
-  final ClusteringResponse clustering;
+  final ClusteringResponse? clustering;
   /// The time when this table was created, in milliseconds since the epoch.
-  final String creationTime;
+  final String? creationTime;
   /// The default collation of the table.
-  final String defaultCollation;
+  final String? defaultCollation;
   /// The default rounding mode of the table.
-  final String defaultRoundingMode;
+  final String? defaultRoundingMode;
   /// [Optional] A user-friendly description of this table.
-  final String description;
+  final String? description;
   /// Custom encryption configuration (e.g., Cloud KMS keys).
-  final EncryptionConfigurationResponse encryptionConfiguration;
+  final EncryptionConfigurationResponse? encryptionConfiguration;
   /// A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
-  final String etag;
+  final String? etag;
   /// [Optional] The time when this table expires, in milliseconds since the epoch. If not present, the table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime on newly created tables.
-  final String expirationTime;
+  final String? expirationTime;
   /// [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
-  final ExternalDataConfigurationResponse externalDataConfiguration;
+  final ExternalDataConfigurationResponse? externalDataConfiguration;
   /// [Optional] A descriptive name for this table.
-  final String friendlyName;
+  final String? friendlyName;
   /// The type of the resource.
-  final String kind;
+  final String? kind;
   /// The labels associated with this table. You can use these to organize and group your tables. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The time when this table was last modified, in milliseconds since the epoch.
-  final String lastModifiedTime;
+  final String? lastModifiedTime;
   /// The geographic location where the table resides. This value is inherited from the dataset.
-  final String location;
+  final String? location;
   /// [Optional] Materialized view definition.
-  final MaterializedViewDefinitionResponse materializedView;
+  final MaterializedViewDefinitionResponse? materializedView;
   /// [Optional] Max staleness of data that could be returned when table or materialized view is queried (formatted as Google SQL Interval type).
-  final String maxStaleness;
+  final String? maxStaleness;
   /// [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
-  final ModelDefinitionResponse model;
+  final ModelDefinitionResponse? model;
   /// Number of logical bytes that are less than 90 days old.
-  final String numActiveLogicalBytes;
+  final String? numActiveLogicalBytes;
   /// Number of physical bytes less than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
-  final String numActivePhysicalBytes;
+  final String? numActivePhysicalBytes;
   /// The size of this table in bytes, excluding any data in the streaming buffer.
-  final String numBytes;
+  final String? numBytes;
   /// The number of bytes in the table that are considered "long-term storage".
-  final String numLongTermBytes;
+  final String? numLongTermBytes;
   /// Number of logical bytes that are more than 90 days old.
-  final String numLongTermLogicalBytes;
+  final String? numLongTermLogicalBytes;
   /// Number of physical bytes more than 90 days old. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
-  final String numLongTermPhysicalBytes;
+  final String? numLongTermPhysicalBytes;
   /// The number of partitions present in the table or materialized view. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
-  final String numPartitions;
+  final String? numPartitions;
   /// [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
-  final String numPhysicalBytes;
+  final String? numPhysicalBytes;
   /// The number of rows of data in this table, excluding any data in the streaming buffer.
-  final String numRows;
+  final String? numRows;
   /// Number of physical bytes used by time travel storage (deleted or changed data). This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
-  final String numTimeTravelPhysicalBytes;
+  final String? numTimeTravelPhysicalBytes;
   /// Total number of logical bytes in the table or materialized view.
-  final String numTotalLogicalBytes;
+  final String? numTotalLogicalBytes;
   /// The physical size of this table in bytes. This also includes storage used for time travel. This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
-  final String numTotalPhysicalBytes;
+  final String? numTotalPhysicalBytes;
   /// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
-  final RangePartitioningResponse rangePartitioning;
+  final RangePartitioningResponse? rangePartitioning;
   /// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
-  final bool requirePartitionFilter;
+  final bool? requirePartitionFilter;
   /// [Optional] The tags associated with this table. Tag keys are globally unique. See additional information on [tags](https://cloud.google.com/iam/docs/tags-access-control#definitions). An object containing a list of "key": value pairs. The key is the namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is parent id. The value is the friendly short name of the tag value, e.g. "production".
-  final Map<String, String> resourceTags;
+  final Map<String, String>? resourceTags;
   /// [Optional] Describes the schema of this table.
-  final TableSchemaResponse schema;
+  final TableSchemaResponse? schema;
   /// A URL that can be used to access this resource again.
-  final String selfLink;
+  final String? selfLink;
   /// Snapshot definition.
-  final SnapshotDefinitionResponse snapshotDefinition;
+  final SnapshotDefinitionResponse? snapshotDefinition;
   /// Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
-  final StreamingbufferResponse streamingBuffer;
+  final StreamingbufferResponse? streamingBuffer;
   /// [Optional] The table constraints on the table.
-  final TableConstraintsResponse tableConstraints;
+  final TableConstraintsResponse? tableConstraints;
   /// [Required] Reference describing the ID of this table.
-  final TableReferenceResponse tableReference;
+  final TableReferenceResponse? tableReference;
   /// Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
-  final TimePartitioningResponse timePartitioning;
+  final TimePartitioningResponse? timePartitioning;
   /// Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
-  final String type;
+  final String? type;
   /// [Optional] The view definition.
-  final ViewDefinitionResponse view;
+  final ViewDefinitionResponse? view;
 
   /// Creates a new [GetTableResult].
   /// [biglakeConfiguration] [Optional] Specifies the configuration of a BigLake managed table.
@@ -150,144 +150,144 @@ class GetTableResult {
   /// [type] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
   /// [view] [Optional] The view definition.
   const GetTableResult({
-    required this.biglakeConfiguration,
-    required this.cloneDefinition,
-    required this.clustering,
-    required this.creationTime,
-    required this.defaultCollation,
-    required this.defaultRoundingMode,
-    required this.description,
-    required this.encryptionConfiguration,
-    required this.etag,
-    required this.expirationTime,
-    required this.externalDataConfiguration,
-    required this.friendlyName,
-    required this.kind,
-    required this.labels,
-    required this.lastModifiedTime,
-    required this.location,
-    required this.materializedView,
-    required this.maxStaleness,
-    required this.model,
-    required this.numActiveLogicalBytes,
-    required this.numActivePhysicalBytes,
-    required this.numBytes,
-    required this.numLongTermBytes,
-    required this.numLongTermLogicalBytes,
-    required this.numLongTermPhysicalBytes,
-    required this.numPartitions,
-    required this.numPhysicalBytes,
-    required this.numRows,
-    required this.numTimeTravelPhysicalBytes,
-    required this.numTotalLogicalBytes,
-    required this.numTotalPhysicalBytes,
-    required this.rangePartitioning,
-    required this.requirePartitionFilter,
-    required this.resourceTags,
-    required this.schema,
-    required this.selfLink,
-    required this.snapshotDefinition,
-    required this.streamingBuffer,
-    required this.tableConstraints,
-    required this.tableReference,
-    required this.timePartitioning,
-    required this.type,
-    required this.view,
+    this.biglakeConfiguration,
+    this.cloneDefinition,
+    this.clustering,
+    this.creationTime,
+    this.defaultCollation,
+    this.defaultRoundingMode,
+    this.description,
+    this.encryptionConfiguration,
+    this.etag,
+    this.expirationTime,
+    this.externalDataConfiguration,
+    this.friendlyName,
+    this.kind,
+    this.labels,
+    this.lastModifiedTime,
+    this.location,
+    this.materializedView,
+    this.maxStaleness,
+    this.model,
+    this.numActiveLogicalBytes,
+    this.numActivePhysicalBytes,
+    this.numBytes,
+    this.numLongTermBytes,
+    this.numLongTermLogicalBytes,
+    this.numLongTermPhysicalBytes,
+    this.numPartitions,
+    this.numPhysicalBytes,
+    this.numRows,
+    this.numTimeTravelPhysicalBytes,
+    this.numTotalLogicalBytes,
+    this.numTotalPhysicalBytes,
+    this.rangePartitioning,
+    this.requirePartitionFilter,
+    this.resourceTags,
+    this.schema,
+    this.selfLink,
+    this.snapshotDefinition,
+    this.streamingBuffer,
+    this.tableConstraints,
+    this.tableReference,
+    this.timePartitioning,
+    this.type,
+    this.view,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'biglakeConfiguration': biglakeConfiguration.toMap(),
-      'cloneDefinition': cloneDefinition.toMap(),
-      'clustering': clustering.toMap(),
-      'creationTime': creationTime,
-      'defaultCollation': defaultCollation,
-      'defaultRoundingMode': defaultRoundingMode,
-      'description': description,
-      'encryptionConfiguration': encryptionConfiguration.toMap(),
-      'etag': etag,
-      'expirationTime': expirationTime,
-      'externalDataConfiguration': externalDataConfiguration.toMap(),
-      'friendlyName': friendlyName,
-      'kind': kind,
-      'labels': labels,
-      'lastModifiedTime': lastModifiedTime,
-      'location': location,
-      'materializedView': materializedView.toMap(),
-      'maxStaleness': maxStaleness,
-      'model': model.toMap(),
-      'numActiveLogicalBytes': numActiveLogicalBytes,
-      'numActivePhysicalBytes': numActivePhysicalBytes,
-      'numBytes': numBytes,
-      'numLongTermBytes': numLongTermBytes,
-      'numLongTermLogicalBytes': numLongTermLogicalBytes,
-      'numLongTermPhysicalBytes': numLongTermPhysicalBytes,
-      'numPartitions': numPartitions,
-      'numPhysicalBytes': numPhysicalBytes,
-      'numRows': numRows,
-      'numTimeTravelPhysicalBytes': numTimeTravelPhysicalBytes,
-      'numTotalLogicalBytes': numTotalLogicalBytes,
-      'numTotalPhysicalBytes': numTotalPhysicalBytes,
-      'rangePartitioning': rangePartitioning.toMap(),
-      'requirePartitionFilter': requirePartitionFilter,
-      'resourceTags': resourceTags,
-      'schema': schema.toMap(),
-      'selfLink': selfLink,
-      'snapshotDefinition': snapshotDefinition.toMap(),
-      'streamingBuffer': streamingBuffer.toMap(),
-      'tableConstraints': tableConstraints.toMap(),
-      'tableReference': tableReference.toMap(),
-      'timePartitioning': timePartitioning.toMap(),
-      'type': type,
-      'view': view.toMap(),
+      'biglakeConfiguration': ?biglakeConfiguration?.toMap(),
+      'cloneDefinition': ?cloneDefinition?.toMap(),
+      'clustering': ?clustering?.toMap(),
+      'creationTime': ?creationTime,
+      'defaultCollation': ?defaultCollation,
+      'defaultRoundingMode': ?defaultRoundingMode,
+      'description': ?description,
+      'encryptionConfiguration': ?encryptionConfiguration?.toMap(),
+      'etag': ?etag,
+      'expirationTime': ?expirationTime,
+      'externalDataConfiguration': ?externalDataConfiguration?.toMap(),
+      'friendlyName': ?friendlyName,
+      'kind': ?kind,
+      'labels': ?labels,
+      'lastModifiedTime': ?lastModifiedTime,
+      'location': ?location,
+      'materializedView': ?materializedView?.toMap(),
+      'maxStaleness': ?maxStaleness,
+      'model': ?model?.toMap(),
+      'numActiveLogicalBytes': ?numActiveLogicalBytes,
+      'numActivePhysicalBytes': ?numActivePhysicalBytes,
+      'numBytes': ?numBytes,
+      'numLongTermBytes': ?numLongTermBytes,
+      'numLongTermLogicalBytes': ?numLongTermLogicalBytes,
+      'numLongTermPhysicalBytes': ?numLongTermPhysicalBytes,
+      'numPartitions': ?numPartitions,
+      'numPhysicalBytes': ?numPhysicalBytes,
+      'numRows': ?numRows,
+      'numTimeTravelPhysicalBytes': ?numTimeTravelPhysicalBytes,
+      'numTotalLogicalBytes': ?numTotalLogicalBytes,
+      'numTotalPhysicalBytes': ?numTotalPhysicalBytes,
+      'rangePartitioning': ?rangePartitioning?.toMap(),
+      'requirePartitionFilter': ?requirePartitionFilter,
+      'resourceTags': ?resourceTags,
+      'schema': ?schema?.toMap(),
+      'selfLink': ?selfLink,
+      'snapshotDefinition': ?snapshotDefinition?.toMap(),
+      'streamingBuffer': ?streamingBuffer?.toMap(),
+      'tableConstraints': ?tableConstraints?.toMap(),
+      'tableReference': ?tableReference?.toMap(),
+      'timePartitioning': ?timePartitioning?.toMap(),
+      'type': ?type,
+      'view': ?view?.toMap(),
     };
   }
 
   factory GetTableResult.fromMap(Map<String, dynamic> map) {
     return GetTableResult(
-      biglakeConfiguration: BigLakeConfigurationResponse.fromMap((map['biglakeConfiguration']! as Map).cast<String, dynamic>()),
-      cloneDefinition: CloneDefinitionResponse.fromMap((map['cloneDefinition']! as Map).cast<String, dynamic>()),
-      clustering: ClusteringResponse.fromMap((map['clustering']! as Map).cast<String, dynamic>()),
-      creationTime: map['creationTime'] as String,
-      defaultCollation: map['defaultCollation'] as String,
-      defaultRoundingMode: map['defaultRoundingMode'] as String,
-      description: map['description'] as String,
-      encryptionConfiguration: EncryptionConfigurationResponse.fromMap((map['encryptionConfiguration']! as Map).cast<String, dynamic>()),
-      etag: map['etag'] as String,
-      expirationTime: map['expirationTime'] as String,
-      externalDataConfiguration: ExternalDataConfigurationResponse.fromMap((map['externalDataConfiguration']! as Map).cast<String, dynamic>()),
-      friendlyName: map['friendlyName'] as String,
-      kind: map['kind'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      lastModifiedTime: map['lastModifiedTime'] as String,
-      location: map['location'] as String,
-      materializedView: MaterializedViewDefinitionResponse.fromMap((map['materializedView']! as Map).cast<String, dynamic>()),
-      maxStaleness: map['maxStaleness'] as String,
-      model: ModelDefinitionResponse.fromMap((map['model']! as Map).cast<String, dynamic>()),
-      numActiveLogicalBytes: map['numActiveLogicalBytes'] as String,
-      numActivePhysicalBytes: map['numActivePhysicalBytes'] as String,
-      numBytes: map['numBytes'] as String,
-      numLongTermBytes: map['numLongTermBytes'] as String,
-      numLongTermLogicalBytes: map['numLongTermLogicalBytes'] as String,
-      numLongTermPhysicalBytes: map['numLongTermPhysicalBytes'] as String,
-      numPartitions: map['numPartitions'] as String,
-      numPhysicalBytes: map['numPhysicalBytes'] as String,
-      numRows: map['numRows'] as String,
-      numTimeTravelPhysicalBytes: map['numTimeTravelPhysicalBytes'] as String,
-      numTotalLogicalBytes: map['numTotalLogicalBytes'] as String,
-      numTotalPhysicalBytes: map['numTotalPhysicalBytes'] as String,
-      rangePartitioning: RangePartitioningResponse.fromMap((map['rangePartitioning']! as Map).cast<String, dynamic>()),
-      requirePartitionFilter: map['requirePartitionFilter'] as bool,
-      resourceTags: (map['resourceTags'] as Map).cast<String, String>(),
-      schema: TableSchemaResponse.fromMap((map['schema']! as Map).cast<String, dynamic>()),
-      selfLink: map['selfLink'] as String,
-      snapshotDefinition: SnapshotDefinitionResponse.fromMap((map['snapshotDefinition']! as Map).cast<String, dynamic>()),
-      streamingBuffer: StreamingbufferResponse.fromMap((map['streamingBuffer']! as Map).cast<String, dynamic>()),
-      tableConstraints: TableConstraintsResponse.fromMap((map['tableConstraints']! as Map).cast<String, dynamic>()),
-      tableReference: TableReferenceResponse.fromMap((map['tableReference']! as Map).cast<String, dynamic>()),
-      timePartitioning: TimePartitioningResponse.fromMap((map['timePartitioning']! as Map).cast<String, dynamic>()),
-      type: map['type'] as String,
-      view: ViewDefinitionResponse.fromMap((map['view']! as Map).cast<String, dynamic>()),
+      biglakeConfiguration: (() { final guardedValue = map['biglakeConfiguration']; if (guardedValue == null) return null; return BigLakeConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      cloneDefinition: (() { final guardedValue = map['cloneDefinition']; if (guardedValue == null) return null; return CloneDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      clustering: (() { final guardedValue = map['clustering']; if (guardedValue == null) return null; return ClusteringResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      creationTime: (() { final guardedValue = map['creationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultCollation: (() { final guardedValue = map['defaultCollation']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      defaultRoundingMode: (() { final guardedValue = map['defaultRoundingMode']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      encryptionConfiguration: (() { final guardedValue = map['encryptionConfiguration']; if (guardedValue == null) return null; return EncryptionConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      expirationTime: (() { final guardedValue = map['expirationTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      externalDataConfiguration: (() { final guardedValue = map['externalDataConfiguration']; if (guardedValue == null) return null; return ExternalDataConfigurationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      friendlyName: (() { final guardedValue = map['friendlyName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      lastModifiedTime: (() { final guardedValue = map['lastModifiedTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      materializedView: (() { final guardedValue = map['materializedView']; if (guardedValue == null) return null; return MaterializedViewDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      maxStaleness: (() { final guardedValue = map['maxStaleness']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      model: (() { final guardedValue = map['model']; if (guardedValue == null) return null; return ModelDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      numActiveLogicalBytes: (() { final guardedValue = map['numActiveLogicalBytes']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numActivePhysicalBytes: (() { final guardedValue = map['numActivePhysicalBytes']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numBytes: (() { final guardedValue = map['numBytes']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numLongTermBytes: (() { final guardedValue = map['numLongTermBytes']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numLongTermLogicalBytes: (() { final guardedValue = map['numLongTermLogicalBytes']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numLongTermPhysicalBytes: (() { final guardedValue = map['numLongTermPhysicalBytes']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numPartitions: (() { final guardedValue = map['numPartitions']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numPhysicalBytes: (() { final guardedValue = map['numPhysicalBytes']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numRows: (() { final guardedValue = map['numRows']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numTimeTravelPhysicalBytes: (() { final guardedValue = map['numTimeTravelPhysicalBytes']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numTotalLogicalBytes: (() { final guardedValue = map['numTotalLogicalBytes']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      numTotalPhysicalBytes: (() { final guardedValue = map['numTotalPhysicalBytes']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      rangePartitioning: (() { final guardedValue = map['rangePartitioning']; if (guardedValue == null) return null; return RangePartitioningResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      requirePartitionFilter: (() { final guardedValue = map['requirePartitionFilter']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      resourceTags: (() { final guardedValue = map['resourceTags']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return TableSchemaResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      snapshotDefinition: (() { final guardedValue = map['snapshotDefinition']; if (guardedValue == null) return null; return SnapshotDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      streamingBuffer: (() { final guardedValue = map['streamingBuffer']; if (guardedValue == null) return null; return StreamingbufferResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tableConstraints: (() { final guardedValue = map['tableConstraints']; if (guardedValue == null) return null; return TableConstraintsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      tableReference: (() { final guardedValue = map['tableReference']; if (guardedValue == null) return null; return TableReferenceResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      timePartitioning: (() { final guardedValue = map['timePartitioning']; if (guardedValue == null) return null; return TimePartitioningResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      type: (() { final guardedValue = map['type']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      view: (() { final guardedValue = map['view']; if (guardedValue == null) return null; return ViewDefinitionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

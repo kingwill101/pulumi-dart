@@ -38,7 +38,7 @@ class ImportRowErrorResponse {
   factory ImportRowErrorResponse.fromMap(Map<String, dynamic> map) {
     return ImportRowErrorResponse(
       errors: pulumi.Input.fromValue(pulumi.Input.decodeList<ImportErrorResponse>(map['errors']!, (value) => ImportErrorResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      rowNumber: pulumi.Input.fromValue(map['rowNumber'] as int),
+      rowNumber: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['rowNumber'])),
       vmName: pulumi.Input.fromValue(map['vmName'] as String),
       vmUuid: pulumi.Input.fromValue(map['vmUuid'] as String),
     );

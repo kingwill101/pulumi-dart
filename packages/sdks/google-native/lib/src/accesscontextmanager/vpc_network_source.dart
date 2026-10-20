@@ -6,7 +6,7 @@ import 'vpc_sub_network.dart';
 /// The originating network source in Google Cloud.
 class VpcNetworkSource {
   /// Sub-segment ranges of a VPC network.
-  final pulumi.Input<VpcSubNetwork>? vpcSubnetwork;
+  final pulumi.Input<VpcSubNetwork?>? vpcSubnetwork;
 
   /// Creates a new [VpcNetworkSource].
   /// [vpcSubnetwork] Sub-segment ranges of a VPC network.

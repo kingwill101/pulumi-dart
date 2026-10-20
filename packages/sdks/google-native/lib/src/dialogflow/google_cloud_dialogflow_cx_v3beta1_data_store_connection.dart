@@ -6,9 +6,9 @@ import 'google_cloud_dialogflow_cx_v3beta1_data_store_connection_data_store_type
 /// A data store connection. It represents a data store in Discovery Engine and the type of the contents it contains.
 class GoogleCloudDialogflowCxV3beta1DataStoreConnection {
   /// The full name of the referenced data store. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` `projects/{project}/locations/{location}/dataStores/{data_store}`
-  final pulumi.Input<String>? dataStore;
+  final pulumi.Input<String?>? dataStore;
   /// The type of the connected data store.
-  final pulumi.Input<GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType>? dataStoreType;
+  final pulumi.Input<GoogleCloudDialogflowCxV3beta1DataStoreConnectionDataStoreType?>? dataStoreType;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1DataStoreConnection].
   /// [dataStore] The full name of the referenced data store. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` `projects/{project}/locations/{location}/dataStores/{data_store}`

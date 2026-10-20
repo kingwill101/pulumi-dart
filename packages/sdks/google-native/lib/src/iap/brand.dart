@@ -28,8 +28,24 @@ class Brand extends pulumi.CustomResource {
           'google-native:iap/v1:Brand',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    applicationTitle = registerOutput<String>('applicationTitle');
+    this.name = registerOutput<String>('name');
+    orgInternalOnly = registerOutput<bool>('orgInternalOnly');
+    project = registerOutput<String>('project');
+    supportEmail = registerOutput<String>('supportEmail');
+  }
+
+  /// Creates a typed reference to an existing [Brand] resource.
+  Brand.reference(String urn)
+    : super(
+        'google-native:iap/v1:Brand',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationTitle = registerOutput<String>('applicationTitle');
     this.name = registerOutput<String>('name');
     orgInternalOnly = registerOutput<bool>('orgInternalOnly');

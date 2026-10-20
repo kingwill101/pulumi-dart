@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetDataExchangeArgs {
   final pulumi.Input<String> dataExchangeId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetDataExchangeArgs].
   /// [dataExchangeId] Required.

@@ -11,7 +11,7 @@ class GKE {
   /// The namespace the GKE service is running in.
   final pulumi.Input<String> namespace;
   /// Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
-  final pulumi.Input<String>? path;
+  final pulumi.Input<String?>? path;
   /// Name of the GKE service.
   final pulumi.Input<String> service;
 

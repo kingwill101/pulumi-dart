@@ -4,25 +4,25 @@
 /// Result data returned by getTargetInstance.
 class GetTargetInstanceComputeV1Result {
   /// Creation timestamp in RFC3339 text format.
-  final String creationTimestamp;
+  final String? creationTimestamp;
   /// An optional description of this resource. Provide this property when you create the resource.
-  final String description;
+  final String? description;
   /// A URL to the virtual machine instance that handles traffic for this target instance. When creating a target instance, you can provide the fully-qualified URL or a valid partial URL to the desired virtual machine. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance - zones/zone/instances/instance
-  final String instance;
+  final String? instance;
   /// The type of the resource. Always compute#targetInstance for target instances.
-  final String kind;
+  final String? kind;
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  final String name;
+  final String? name;
   /// Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
-  final String natPolicy;
+  final String? natPolicy;
   /// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
-  final String network;
+  final String? network;
   /// The resource URL for the security policy associated with this target instance.
-  final String securityPolicy;
+  final String? securityPolicy;
   /// Server-defined URL for the resource.
-  final String selfLink;
+  final String? selfLink;
   /// URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-  final String zone;
+  final String? zone;
 
   /// Creates a new [GetTargetInstanceComputeV1Result].
   /// [creationTimestamp] Creation timestamp in RFC3339 text format.
@@ -36,45 +36,45 @@ class GetTargetInstanceComputeV1Result {
   /// [selfLink] Server-defined URL for the resource.
   /// [zone] URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
   const GetTargetInstanceComputeV1Result({
-    required this.creationTimestamp,
-    required this.description,
-    required this.instance,
-    required this.kind,
-    required this.name,
-    required this.natPolicy,
-    required this.network,
-    required this.securityPolicy,
-    required this.selfLink,
-    required this.zone,
+    this.creationTimestamp,
+    this.description,
+    this.instance,
+    this.kind,
+    this.name,
+    this.natPolicy,
+    this.network,
+    this.securityPolicy,
+    this.selfLink,
+    this.zone,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'creationTimestamp': creationTimestamp,
-      'description': description,
-      'instance': instance,
-      'kind': kind,
-      'name': name,
-      'natPolicy': natPolicy,
-      'network': network,
-      'securityPolicy': securityPolicy,
-      'selfLink': selfLink,
-      'zone': zone,
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'instance': ?instance,
+      'kind': ?kind,
+      'name': ?name,
+      'natPolicy': ?natPolicy,
+      'network': ?network,
+      'securityPolicy': ?securityPolicy,
+      'selfLink': ?selfLink,
+      'zone': ?zone,
     };
   }
 
   factory GetTargetInstanceComputeV1Result.fromMap(Map<String, dynamic> map) {
     return GetTargetInstanceComputeV1Result(
-      creationTimestamp: map['creationTimestamp'] as String,
-      description: map['description'] as String,
-      instance: map['instance'] as String,
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      natPolicy: map['natPolicy'] as String,
-      network: map['network'] as String,
-      securityPolicy: map['securityPolicy'] as String,
-      selfLink: map['selfLink'] as String,
-      zone: map['zone'] as String,
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      instance: (() { final guardedValue = map['instance']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      natPolicy: (() { final guardedValue = map['natPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      network: (() { final guardedValue = map['network']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      securityPolicy: (() { final guardedValue = map['securityPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

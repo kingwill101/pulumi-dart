@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_alpha_get_packet_mirroring_args_doc}
 class GetPacketMirroringArgs {
   final pulumi.Input<String> packetMirroring;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetPacketMirroringArgs].

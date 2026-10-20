@@ -38,13 +38,36 @@ class RouteDatastreamV1alpha1 extends pulumi.CustomResource {
           'google-native:datastream/v1alpha1:Route',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'privateConnectionId', 'project', 'routeId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     destinationAddress = registerOutput<String>('destinationAddress');
     destinationPort = registerOutput<int>('destinationPort');
     displayName = registerOutput<String>('displayName');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    privateConnectionId = registerOutput<String>('privateConnectionId');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    routeId = registerOutput<String>('routeId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [RouteDatastreamV1alpha1] resource.
+  RouteDatastreamV1alpha1.reference(String urn)
+    : super(
+        'google-native:datastream/v1alpha1:Route',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    destinationAddress = registerOutput<String>('destinationAddress');
+    destinationPort = registerOutput<int>('destinationPort');
+    displayName = registerOutput<String>('displayName');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     privateConnectionId = registerOutput<String>('privateConnectionId');

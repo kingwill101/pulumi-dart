@@ -7,9 +7,9 @@ import 'user_managed.dart';
 /// A policy that defines the replication and encryption configuration of data.
 class Replication {
   /// The Secret will automatically be replicated without any restrictions.
-  final pulumi.Input<Automatic>? automatic;
+  final pulumi.Input<Automatic?>? automatic;
   /// The Secret will only be replicated into the locations specified.
-  final pulumi.Input<UserManaged>? userManaged;
+  final pulumi.Input<UserManaged?>? userManaged;
 
   /// Creates a new [Replication].
   /// [automatic] The Secret will automatically be replicated without any restrictions.

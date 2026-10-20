@@ -1,4 +1,6 @@
-enum CertificateExtensionConstraintsKnownExtensionsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum CertificateExtensionConstraintsKnownExtensionsItem implements pulumi.PulumiEnum<String> {
   knownCertificateExtensionUnspecified("KNOWN_CERTIFICATE_EXTENSION_UNSPECIFIED"),
   baseKeyUsage("BASE_KEY_USAGE"),
   extendedKeyUsage("EXTENDED_KEY_USAGE"),
@@ -8,6 +10,7 @@ enum CertificateExtensionConstraintsKnownExtensionsItem {
   nameConstraints("NAME_CONSTRAINTS");
 
   const CertificateExtensionConstraintsKnownExtensionsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static CertificateExtensionConstraintsKnownExtensionsItem fromValue(String value) {

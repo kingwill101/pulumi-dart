@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Data cache configurations.
 class DataCacheConfigSqladminV1beta4 {
   /// Whether data cache is enabled for the instance.
-  final pulumi.Input<bool>? dataCacheEnabled;
+  final pulumi.Input<bool?>? dataCacheEnabled;
 
   /// Creates a new [DataCacheConfigSqladminV1beta4].
   /// [dataCacheEnabled] Whether data cache is enabled for the instance.

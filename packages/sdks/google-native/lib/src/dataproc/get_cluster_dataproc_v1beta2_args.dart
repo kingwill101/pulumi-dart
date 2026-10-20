@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dataproc_v1beta2_get_cluster_dataproc_v1beta2_args_doc}
 class GetClusterDataprocV1beta2Args {
   final pulumi.Input<String> clusterName;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetClusterDataprocV1beta2Args].

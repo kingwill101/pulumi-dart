@@ -7,7 +7,7 @@ import 'google_privacy_dlp_v2_primitive_transformation.dart';
 /// A transformation to apply to text that is identified as a specific info_type.
 class GooglePrivacyDlpV2InfoTypeTransformation {
   /// InfoTypes to apply the transformation to. An empty list will cause this transformation to apply to all findings that correspond to infoTypes that were requested in `InspectConfig`.
-  final pulumi.Input<List<GooglePrivacyDlpV2InfoType>>? infoTypes;
+  final pulumi.Input<List<GooglePrivacyDlpV2InfoType>?>? infoTypes;
   /// Primitive transformation to apply to the infoType.
   final pulumi.Input<GooglePrivacyDlpV2PrimitiveTransformation> primitiveTransformation;
 

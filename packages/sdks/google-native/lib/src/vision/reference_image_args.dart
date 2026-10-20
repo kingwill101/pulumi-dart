@@ -9,14 +9,14 @@ import 'bounding_poly.dart';
 /// {@macro pulumi_vision_v1_reference_image_args_doc}
 class ReferenceImageArgs {
   /// Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
-  final pulumi.Input<List<BoundingPoly>>? boundingPolys;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<List<BoundingPoly>?>? boundingPolys;
+  final pulumi.Input<String?>? location;
   /// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> productId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   /// A user-supplied resource id for the ReferenceImage to be added. If set, the server will attempt to use this value as the resource id. If it is already in use, an error is returned with code ALREADY_EXISTS. Must be at most 128 characters long. It cannot contain the character `/`.
-  final pulumi.Input<String>? referenceImageId;
+  final pulumi.Input<String?>? referenceImageId;
   /// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
   final pulumi.Input<String> uri;
 

@@ -9,19 +9,19 @@ import 'trust_store.dart';
 /// {@macro pulumi_certificatemanager_v1_trust_config_args_doc}
 class TrustConfigArgs {
   /// One or more paragraphs of text description of a TrustConfig.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// Set of labels associated with a TrustConfig.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern `projects/*/locations/*/trustConfigs/*`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
   final pulumi.Input<String> trustConfigId;
   /// Set of trust stores to perform validation against. This field is supported when TrustConfig is configured with Load Balancers, currently not supported for SPIFFE certificate validation. Only one TrustStore specified is currently allowed.
-  final pulumi.Input<List<TrustStore>>? trustStores;
+  final pulumi.Input<List<TrustStore>?>? trustStores;
 
   /// Creates a new [TrustConfigArgs].
   /// [description] One or more paragraphs of text description of a TrustConfig.

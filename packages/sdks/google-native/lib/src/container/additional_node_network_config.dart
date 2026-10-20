@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// AdditionalNodeNetworkConfig is the configuration for additional node networks within the NodeNetworkConfig message
 class AdditionalNodeNetworkConfig {
   /// Name of the VPC where the additional interface belongs
-  final pulumi.Input<String>? network;
+  final pulumi.Input<String?>? network;
   /// Name of the subnetwork where the additional interface belongs
-  final pulumi.Input<String>? subnetwork;
+  final pulumi.Input<String?>? subnetwork;
 
   /// Creates a new [AdditionalNodeNetworkConfig].
   /// [network] Name of the VPC where the additional interface belongs

@@ -6,11 +6,11 @@ import 'scheduling_node_affinity_operator_compute_v1.dart';
 /// Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled.
 class SchedulingNodeAffinityComputeV1 {
   /// Corresponds to the label key of Node resource.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// Defines the operation of node selection. Valid operators are IN for affinity and NOT_IN for anti-affinity.
-  final pulumi.Input<SchedulingNodeAffinityOperatorComputeV1>? operator;
+  final pulumi.Input<SchedulingNodeAffinityOperatorComputeV1?>? operator;
   /// Corresponds to the label values of Node resource.
-  final pulumi.Input<List<String>>? values;
+  final pulumi.Input<List<String>?>? values;
 
   /// Creates a new [SchedulingNodeAffinityComputeV1].
   /// [key] Corresponds to the label key of Node resource.

@@ -6,7 +6,7 @@ import 'relationship_note_type_containeranalysis_v1beta1.dart';
 /// RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
 class RelationshipNoteContaineranalysisV1beta1 {
   /// The type of relationship between the source and target SPDX elements
-  final pulumi.Input<RelationshipNoteTypeContaineranalysisV1beta1>? type;
+  final pulumi.Input<RelationshipNoteTypeContaineranalysisV1beta1?>? type;
 
   /// Creates a new [RelationshipNoteContaineranalysisV1beta1].
   /// [type] The type of relationship between the source and target SPDX elements

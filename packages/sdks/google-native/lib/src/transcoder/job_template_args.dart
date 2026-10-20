@@ -9,15 +9,15 @@ import 'job_config.dart';
 /// {@macro pulumi_transcoder_v1_job_template_args_doc}
 class JobTemplateArgs {
   /// The configuration for this template.
-  final pulumi.Input<JobConfig>? config;
+  final pulumi.Input<JobConfig?>? config;
   /// Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`.
   final pulumi.Input<String> jobTemplateId;
   /// The labels associated with this job template. You can use these to organize and group your job templates.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [JobTemplateArgs].
   /// [config] The configuration for this template.

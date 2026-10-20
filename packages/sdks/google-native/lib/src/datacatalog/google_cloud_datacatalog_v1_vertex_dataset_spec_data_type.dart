@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of the dataset.
-enum GoogleCloudDatacatalogV1VertexDatasetSpecDataType {
+enum GoogleCloudDatacatalogV1VertexDatasetSpecDataType implements pulumi.PulumiEnum<String> {
   dataTypeUnspecified("DATA_TYPE_UNSPECIFIED"),
   table("TABLE"),
   image("IMAGE"),
@@ -15,6 +17,7 @@ enum GoogleCloudDatacatalogV1VertexDatasetSpecDataType {
   textPrompt("TEXT_PROMPT");
 
   const GoogleCloudDatacatalogV1VertexDatasetSpecDataType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDatacatalogV1VertexDatasetSpecDataType fromValue(String value) {

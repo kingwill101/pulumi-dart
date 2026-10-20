@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
 class GoogleCloudDatacatalogV1UsageSignal {
   /// Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
-  final pulumi.Input<Map<String, String>>? commonUsageWithinTimeRange;
+  final pulumi.Input<Map<String, String>?>? commonUsageWithinTimeRange;
   /// Favorite count in the source system.
-  final pulumi.Input<String>? favoriteCount;
+  final pulumi.Input<String?>? favoriteCount;
   /// The end timestamp of the duration of usage statistics.
-  final pulumi.Input<String>? updateTime;
+  final pulumi.Input<String?>? updateTime;
 
   /// Creates a new [GoogleCloudDatacatalogV1UsageSignal].
   /// [commonUsageWithinTimeRange] Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.

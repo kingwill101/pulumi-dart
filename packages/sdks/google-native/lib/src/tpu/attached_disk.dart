@@ -6,9 +6,9 @@ import 'attached_disk_mode.dart';
 /// A node-attached disk resource. Next ID: 8;
 class AttachedDisk {
   /// The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.
-  final pulumi.Input<AttachedDiskMode>? mode;
+  final pulumi.Input<AttachedDiskMode?>? mode;
   /// Specifies the full path to an existing disk. For example: "projects/my-project/zones/us-central1-c/disks/my-disk".
-  final pulumi.Input<String>? sourceDisk;
+  final pulumi.Input<String?>? sourceDisk;
 
   /// Creates a new [AttachedDisk].
   /// [mode] The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.

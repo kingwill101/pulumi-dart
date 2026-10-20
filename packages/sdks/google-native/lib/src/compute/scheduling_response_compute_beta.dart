@@ -89,14 +89,14 @@ class SchedulingResponseComputeBeta {
   factory SchedulingResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return SchedulingResponseComputeBeta(
       automaticRestart: pulumi.Input.fromValue(map['automaticRestart'] as bool),
-      hostErrorTimeoutSeconds: pulumi.Input.fromValue(map['hostErrorTimeoutSeconds'] as int),
+      hostErrorTimeoutSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hostErrorTimeoutSeconds'])),
       instanceTerminationAction: pulumi.Input.fromValue(map['instanceTerminationAction'] as String),
       localSsdRecoveryTimeout: pulumi.Input.fromValue(DurationResponseComputeBeta.fromMap((map['localSsdRecoveryTimeout']! as Map).cast<String, dynamic>())),
       locationHint: pulumi.Input.fromValue(map['locationHint'] as String),
-      maintenanceFreezeDurationHours: pulumi.Input.fromValue(map['maintenanceFreezeDurationHours'] as int),
+      maintenanceFreezeDurationHours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maintenanceFreezeDurationHours'])),
       maintenanceInterval: pulumi.Input.fromValue(map['maintenanceInterval'] as String),
       maxRunDuration: pulumi.Input.fromValue(DurationResponseComputeBeta.fromMap((map['maxRunDuration']! as Map).cast<String, dynamic>())),
-      minNodeCpus: pulumi.Input.fromValue(map['minNodeCpus'] as int),
+      minNodeCpus: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minNodeCpus'])),
       nodeAffinities: pulumi.Input.fromValue(pulumi.Input.decodeList<SchedulingNodeAffinityResponseComputeBeta>(map['nodeAffinities']!, (value) => SchedulingNodeAffinityResponseComputeBeta.fromMap((value as Map).cast<String, dynamic>()))),
       onHostMaintenance: pulumi.Input.fromValue(map['onHostMaintenance'] as String),
       preemptible: pulumi.Input.fromValue(map['preemptible'] as bool),

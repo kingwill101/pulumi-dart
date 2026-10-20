@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates that this field supports operations on `array_value`s.
-enum GoogleFirestoreAdminV1beta2IndexFieldArrayConfig {
+enum GoogleFirestoreAdminV1beta2IndexFieldArrayConfig implements pulumi.PulumiEnum<String> {
   arrayConfigUnspecified("ARRAY_CONFIG_UNSPECIFIED"),
   contains("CONTAINS");
 
   const GoogleFirestoreAdminV1beta2IndexFieldArrayConfig(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleFirestoreAdminV1beta2IndexFieldArrayConfig fromValue(String value) {

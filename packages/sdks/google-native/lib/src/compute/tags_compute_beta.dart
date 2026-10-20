@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A set of instance tags.
 class TagsComputeBeta {
   /// An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
-  final pulumi.Input<List<String>>? items;
+  final pulumi.Input<List<String>?>? items;
 
   /// Creates a new [TagsComputeBeta].
   /// [items] An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.

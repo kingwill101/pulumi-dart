@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dataproc_v1beta2_get_job_dataproc_v1beta2_args_doc}
 class GetJobDataprocV1beta2Args {
   final pulumi.Input<String> jobId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetJobDataprocV1beta2Args].

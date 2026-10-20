@@ -32,10 +32,30 @@ class User extends pulumi.CustomResource {
           'google-native:alloydb/v1:User',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['clusterId', 'location', 'project', 'userId']).merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
-    databaseRoles = registerOutput<List<String>>('databaseRoles');
+    databaseRoles = registerOutput<List<String>>('databaseRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    userId = registerOutput<String>('userId');
+    userType = registerOutput<String>('userType');
+  }
+
+  /// Creates a typed reference to an existing [User] resource.
+  User.reference(String urn)
+    : super(
+        'google-native:alloydb/v1:User',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterId = registerOutput<String>('clusterId');
+    databaseRoles = registerOutput<List<String>>('databaseRoles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     password = registerOutput<String>('password');

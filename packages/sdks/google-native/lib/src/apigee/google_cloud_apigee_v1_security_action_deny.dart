@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Message that should be set in case of a Deny Action.
 class GoogleCloudApigeeV1SecurityActionDeny {
   /// Optional. The HTTP response code if the Action = DENY.
-  final pulumi.Input<int>? responseCode;
+  final pulumi.Input<int?>? responseCode;
 
   /// Creates a new [GoogleCloudApigeeV1SecurityActionDeny].
   /// [responseCode] Optional. The HTTP response code if the Action = DENY.
@@ -21,7 +21,7 @@ class GoogleCloudApigeeV1SecurityActionDeny {
 
   factory GoogleCloudApigeeV1SecurityActionDeny.fromMap(Map<String, dynamic> map) {
     return GoogleCloudApigeeV1SecurityActionDeny(
-      responseCode: (() { final guardedValue = map['responseCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      responseCode: (() { final guardedValue = map['responseCode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

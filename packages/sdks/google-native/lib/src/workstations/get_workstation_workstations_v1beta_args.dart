@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_workstations_v1beta_get_workstation_workstations_v1beta_args_doc}
 class GetWorkstationWorkstationsV1betaArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> workstationClusterId;
   final pulumi.Input<String> workstationConfigId;
   final pulumi.Input<String> workstationId;

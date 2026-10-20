@@ -50,7 +50,7 @@ class Environment extends pulumi.CustomResource {
           'google-native:dataplex/v1:Environment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['environmentId', 'lakeId', 'location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
@@ -58,7 +58,34 @@ class Environment extends pulumi.CustomResource {
     endpoints = registerOutput<GoogleCloudDataplexV1EnvironmentEndpointsResponse>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1EnvironmentEndpointsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     environmentId = registerOutput<String>('environmentId');
     infrastructureSpec = registerOutput<GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse>('infrastructureSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lakeId = registerOutput<String>('lakeId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    sessionSpec = registerOutput<GoogleCloudDataplexV1EnvironmentSessionSpecResponse>('sessionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1EnvironmentSessionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    sessionStatus = registerOutput<GoogleCloudDataplexV1EnvironmentSessionStatusResponse>('sessionStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1EnvironmentSessionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Environment] resource.
+  Environment.reference(String urn)
+    : super(
+        'google-native:dataplex/v1:Environment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    endpoints = registerOutput<GoogleCloudDataplexV1EnvironmentEndpointsResponse>('endpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1EnvironmentEndpointsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environmentId = registerOutput<String>('environmentId');
+    infrastructureSpec = registerOutput<GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse>('infrastructureSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lakeId = registerOutput<String>('lakeId');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

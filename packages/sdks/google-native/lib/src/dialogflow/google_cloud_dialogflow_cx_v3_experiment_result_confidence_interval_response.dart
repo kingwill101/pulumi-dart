@@ -36,10 +36,10 @@ class GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponse {
 
   factory GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalResponse(
-      confidenceLevel: pulumi.Input.fromValue(map['confidenceLevel'] as double),
-      lowerBound: pulumi.Input.fromValue(map['lowerBound'] as double),
-      ratio: pulumi.Input.fromValue(map['ratio'] as double),
-      upperBound: pulumi.Input.fromValue(map['upperBound'] as double),
+      confidenceLevel: pulumi.Input.fromValue((map['confidenceLevel'] as num).toDouble()),
+      lowerBound: pulumi.Input.fromValue((map['lowerBound'] as num).toDouble()),
+      ratio: pulumi.Input.fromValue((map['ratio'] as num).toDouble()),
+      upperBound: pulumi.Input.fromValue((map['upperBound'] as num).toDouble()),
     );
   }
 }

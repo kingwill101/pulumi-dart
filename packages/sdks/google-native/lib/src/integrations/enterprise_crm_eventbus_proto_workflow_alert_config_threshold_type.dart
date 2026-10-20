@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The threshold type, whether lower(expected_min) or upper(expected_max), for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
-enum EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdType {
+enum EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdType implements pulumi.PulumiEnum<String> {
   unspecifiedThresholdType("UNSPECIFIED_THRESHOLD_TYPE"),
   expectedMin("EXPECTED_MIN"),
   expectedMax("EXPECTED_MAX");
 
   const EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdType(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdType fromValue(String value) {

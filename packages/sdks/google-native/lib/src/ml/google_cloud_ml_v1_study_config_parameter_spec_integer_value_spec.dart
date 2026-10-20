@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec {
   /// Must be specified if type is `INTEGER`. Maximum value of the parameter.
-  final pulumi.Input<String>? maxValue;
+  final pulumi.Input<String?>? maxValue;
   /// Must be specified if type is `INTEGER`. Minimum value of the parameter.
-  final pulumi.Input<String>? minValue;
+  final pulumi.Input<String?>? minValue;
 
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec].
   /// [maxValue] Must be specified if type is `INTEGER`. Maximum value of the parameter.

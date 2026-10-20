@@ -37,7 +37,7 @@ class NetworkInterfaceSubInterfaceResponse {
       ipAddress: pulumi.Input.fromValue(map['ipAddress'] as String),
       ipAllocationMode: pulumi.Input.fromValue(map['ipAllocationMode'] as String),
       subnetwork: pulumi.Input.fromValue(map['subnetwork'] as String),
-      vlan: pulumi.Input.fromValue(map['vlan'] as int),
+      vlan: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vlan'])),
     );
   }
 }

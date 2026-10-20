@@ -7,9 +7,9 @@ import 'google_cloud_dialogflow_cx_v3_response_message.dart';
 /// The list of messages or conditional cases to activate for this case.
 class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent {
   /// Additional cases to be evaluated.
-  final pulumi.Input<GoogleCloudDialogflowCxV3FulfillmentConditionalCases>? additionalCases;
+  final pulumi.Input<GoogleCloudDialogflowCxV3FulfillmentConditionalCases?>? additionalCases;
   /// Returned message.
-  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessage>? message;
+  final pulumi.Input<GoogleCloudDialogflowCxV3ResponseMessage?>? message;
 
   /// Creates a new [GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent].
   /// [additionalCases] Additional cases to be evaluated.

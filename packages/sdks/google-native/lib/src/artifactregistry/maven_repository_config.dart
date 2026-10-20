@@ -6,9 +6,9 @@ import 'maven_repository_config_version_policy.dart';
 /// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
 class MavenRepositoryConfig {
   /// The repository with this flag will allow publishing the same snapshot versions.
-  final pulumi.Input<bool>? allowSnapshotOverwrites;
+  final pulumi.Input<bool?>? allowSnapshotOverwrites;
   /// Version policy defines the versions that the registry will accept.
-  final pulumi.Input<MavenRepositoryConfigVersionPolicy>? versionPolicy;
+  final pulumi.Input<MavenRepositoryConfigVersionPolicy?>? versionPolicy;
 
   /// Creates a new [MavenRepositoryConfig].
   /// [allowSnapshotOverwrites] The repository with this flag will allow publishing the same snapshot versions.

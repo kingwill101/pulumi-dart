@@ -7,31 +7,31 @@ import 'resource_status_response.dart';
 /// Result data returned by getBareMetalNodePool.
 class GetBareMetalNodePoolResult {
   /// Annotations on the bare metal node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
-  final Map<String, String> annotations;
+  final Map<String, String>? annotations;
   /// The time at which this bare metal node pool was created.
-  final String createTime;
+  final String? createTime;
   /// The time at which this bare metal node pool was deleted. If the resource is not deleted, this must be empty
-  final String deleteTime;
+  final String? deleteTime;
   /// The display name for the bare metal node pool.
-  final String displayName;
+  final String? displayName;
   /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Allows clients to perform consistent read-modify-writes through optimistic concurrency control.
-  final String etag;
+  final String? etag;
   /// Immutable. The bare metal node pool resource name.
-  final String name;
+  final String? name;
   /// Node pool configuration.
-  final BareMetalNodePoolConfigResponse nodePoolConfig;
+  final BareMetalNodePoolConfigResponse? nodePoolConfig;
   /// If set, there are currently changes in flight to the bare metal node pool.
-  final bool reconciling;
+  final bool? reconciling;
   /// The current state of the bare metal node pool.
-  final String state;
+  final String? state;
   /// ResourceStatus representing the detailed node pool status.
-  final ResourceStatusResponse status;
+  final ResourceStatusResponse? status;
   /// The unique identifier of the bare metal node pool.
-  final String uid;
+  final String? uid;
   /// The time at which this bare metal node pool was last updated.
-  final String updateTime;
+  final String? updateTime;
   /// The worker node pool upgrade policy.
-  final BareMetalNodePoolUpgradePolicyResponse upgradePolicy;
+  final BareMetalNodePoolUpgradePolicyResponse? upgradePolicy;
 
   /// Creates a new [GetBareMetalNodePoolResult].
   /// [annotations] Annotations on the bare metal node pool. This field has the same restrictions as Kubernetes annotations. The total size of all keys and values combined is limited to 256k. Key can have 2 segments: prefix (optional) and name (required), separated by a slash (/). Prefix must be a DNS subdomain. Name must be 63 characters or less, begin and end with alphanumerics, with dashes (-), underscores (_), dots (.), and alphanumerics between.
@@ -48,54 +48,54 @@ class GetBareMetalNodePoolResult {
   /// [updateTime] The time at which this bare metal node pool was last updated.
   /// [upgradePolicy] The worker node pool upgrade policy.
   const GetBareMetalNodePoolResult({
-    required this.annotations,
-    required this.createTime,
-    required this.deleteTime,
-    required this.displayName,
-    required this.etag,
-    required this.name,
-    required this.nodePoolConfig,
-    required this.reconciling,
-    required this.state,
-    required this.status,
-    required this.uid,
-    required this.updateTime,
-    required this.upgradePolicy,
+    this.annotations,
+    this.createTime,
+    this.deleteTime,
+    this.displayName,
+    this.etag,
+    this.name,
+    this.nodePoolConfig,
+    this.reconciling,
+    this.state,
+    this.status,
+    this.uid,
+    this.updateTime,
+    this.upgradePolicy,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'annotations': annotations,
-      'createTime': createTime,
-      'deleteTime': deleteTime,
-      'displayName': displayName,
-      'etag': etag,
-      'name': name,
-      'nodePoolConfig': nodePoolConfig.toMap(),
-      'reconciling': reconciling,
-      'state': state,
-      'status': status.toMap(),
-      'uid': uid,
-      'updateTime': updateTime,
-      'upgradePolicy': upgradePolicy.toMap(),
+      'annotations': ?annotations,
+      'createTime': ?createTime,
+      'deleteTime': ?deleteTime,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'name': ?name,
+      'nodePoolConfig': ?nodePoolConfig?.toMap(),
+      'reconciling': ?reconciling,
+      'state': ?state,
+      'status': ?status?.toMap(),
+      'uid': ?uid,
+      'updateTime': ?updateTime,
+      'upgradePolicy': ?upgradePolicy?.toMap(),
     };
   }
 
   factory GetBareMetalNodePoolResult.fromMap(Map<String, dynamic> map) {
     return GetBareMetalNodePoolResult(
-      annotations: (map['annotations'] as Map).cast<String, String>(),
-      createTime: map['createTime'] as String,
-      deleteTime: map['deleteTime'] as String,
-      displayName: map['displayName'] as String,
-      etag: map['etag'] as String,
-      name: map['name'] as String,
-      nodePoolConfig: BareMetalNodePoolConfigResponse.fromMap((map['nodePoolConfig']! as Map).cast<String, dynamic>()),
-      reconciling: map['reconciling'] as bool,
-      state: map['state'] as String,
-      status: ResourceStatusResponse.fromMap((map['status']! as Map).cast<String, dynamic>()),
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
-      upgradePolicy: BareMetalNodePoolUpgradePolicyResponse.fromMap((map['upgradePolicy']! as Map).cast<String, dynamic>()),
+      annotations: (() { final guardedValue = map['annotations']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      deleteTime: (() { final guardedValue = map['deleteTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      nodePoolConfig: (() { final guardedValue = map['nodePoolConfig']; if (guardedValue == null) return null; return BareMetalNodePoolConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      reconciling: (() { final guardedValue = map['reconciling']; if (guardedValue == null) return null; return guardedValue as bool; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return ResourceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      upgradePolicy: (() { final guardedValue = map['upgradePolicy']; if (guardedValue == null) return null; return BareMetalNodePoolUpgradePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }
 }

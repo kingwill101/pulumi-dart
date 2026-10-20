@@ -6,7 +6,7 @@ import 'performance_config_dump_parallel_level.dart';
 /// Performance configuration definition.
 class PerformanceConfig {
   /// Initial dump parallelism level.
-  final pulumi.Input<PerformanceConfigDumpParallelLevel>? dumpParallelLevel;
+  final pulumi.Input<PerformanceConfigDumpParallelLevel?>? dumpParallelLevel;
 
   /// Creates a new [PerformanceConfig].
   /// [dumpParallelLevel] Initial dump parallelism level.

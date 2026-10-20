@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// See RepoType above.
-enum GitFileSourceRepoType {
+enum GitFileSourceRepoType implements pulumi.PulumiEnum<String> {
   unknown("UNKNOWN"),
   cloudSourceRepositories("CLOUD_SOURCE_REPOSITORIES"),
   github("GITHUB"),
@@ -7,6 +9,7 @@ enum GitFileSourceRepoType {
   gitlab("GITLAB");
 
   const GitFileSourceRepoType(this.wireValue);
+  @override
   final String wireValue;
 
   static GitFileSourceRepoType fromValue(String value) {

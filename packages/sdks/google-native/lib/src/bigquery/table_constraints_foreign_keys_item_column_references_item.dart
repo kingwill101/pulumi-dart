@@ -3,8 +3,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 
 class TableConstraintsForeignKeysItemColumnReferencesItem {
-  final pulumi.Input<String>? referencedColumn;
-  final pulumi.Input<String>? referencingColumn;
+  final pulumi.Input<String?>? referencedColumn;
+  final pulumi.Input<String?>? referencingColumn;
 
   /// Creates a new [TableConstraintsForeignKeysItemColumnReferencesItem].
   /// [referencedColumn] Optional.

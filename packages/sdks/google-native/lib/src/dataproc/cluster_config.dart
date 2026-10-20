@@ -18,39 +18,39 @@ import 'software_config.dart';
 /// The cluster config.
 class ClusterConfig {
   /// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
-  final pulumi.Input<AutoscalingConfig>? autoscalingConfig;
+  final pulumi.Input<AutoscalingConfig?>? autoscalingConfig;
   /// Optional. The node group settings.
-  final pulumi.Input<List<AuxiliaryNodeGroup>>? auxiliaryNodeGroups;
+  final pulumi.Input<List<AuxiliaryNodeGroup>?>? auxiliaryNodeGroups;
   /// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
-  final pulumi.Input<String>? configBucket;
+  final pulumi.Input<String?>? configBucket;
   /// Optional. The config for Dataproc metrics.
-  final pulumi.Input<DataprocMetricConfig>? dataprocMetricConfig;
+  final pulumi.Input<DataprocMetricConfig?>? dataprocMetricConfig;
   /// Optional. Encryption settings for the cluster.
-  final pulumi.Input<EncryptionConfig>? encryptionConfig;
+  final pulumi.Input<EncryptionConfig?>? encryptionConfig;
   /// Optional. Port/endpoint configuration for this cluster
-  final pulumi.Input<EndpointConfig>? endpointConfig;
+  final pulumi.Input<EndpointConfig?>? endpointConfig;
   /// Optional. The shared Compute Engine config settings for all instances in a cluster.
-  final pulumi.Input<GceClusterConfig>? gceClusterConfig;
+  final pulumi.Input<GceClusterConfig?>? gceClusterConfig;
   /// Optional. BETA. The Kubernetes Engine config for Dataproc clusters deployed to The Kubernetes Engine config for Dataproc clusters deployed to Kubernetes. These config settings are mutually exclusive with Compute Engine-based options, such as gce_cluster_config, master_config, worker_config, secondary_worker_config, and autoscaling_config.
-  final pulumi.Input<GkeClusterConfig>? gkeClusterConfig;
+  final pulumi.Input<GkeClusterConfig?>? gkeClusterConfig;
   /// Optional. Commands to execute on each node after config is completed. By default, executables are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google http://metadata/computeMetadata/v1/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi
-  final pulumi.Input<List<NodeInitializationAction>>? initializationActions;
+  final pulumi.Input<List<NodeInitializationAction>?>? initializationActions;
   /// Optional. Lifecycle setting for the cluster.
-  final pulumi.Input<LifecycleConfig>? lifecycleConfig;
+  final pulumi.Input<LifecycleConfig?>? lifecycleConfig;
   /// Optional. The Compute Engine config settings for the cluster's master instance.
-  final pulumi.Input<InstanceGroupConfig>? masterConfig;
+  final pulumi.Input<InstanceGroupConfig?>? masterConfig;
   /// Optional. Metastore configuration.
-  final pulumi.Input<MetastoreConfig>? metastoreConfig;
+  final pulumi.Input<MetastoreConfig?>? metastoreConfig;
   /// Optional. The Compute Engine config settings for a cluster's secondary worker instances
-  final pulumi.Input<InstanceGroupConfig>? secondaryWorkerConfig;
+  final pulumi.Input<InstanceGroupConfig?>? secondaryWorkerConfig;
   /// Optional. Security settings for the cluster.
-  final pulumi.Input<SecurityConfig>? securityConfig;
+  final pulumi.Input<SecurityConfig?>? securityConfig;
   /// Optional. The config settings for cluster software.
-  final pulumi.Input<SoftwareConfig>? softwareConfig;
+  final pulumi.Input<SoftwareConfig?>? softwareConfig;
   /// Optional. A Cloud Storage bucket used to store ephemeral cluster and jobs data, such as Spark and MapReduce history files. If you do not specify a temp bucket, Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's temp bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket. The default bucket has a TTL of 90 days, but you can use any TTL (or none) if you specify a bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
-  final pulumi.Input<String>? tempBucket;
+  final pulumi.Input<String?>? tempBucket;
   /// Optional. The Compute Engine config settings for the cluster's worker instances.
-  final pulumi.Input<InstanceGroupConfig>? workerConfig;
+  final pulumi.Input<InstanceGroupConfig?>? workerConfig;
 
   /// Creates a new [ClusterConfig].
   /// [autoscalingConfig] Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.

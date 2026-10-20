@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Subject refers to the subject of the intoto statement
 class SubjectContaineranalysisV1alpha1 {
   /// "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
-  final pulumi.Input<Map<String, String>>? digest;
+  final pulumi.Input<Map<String, String>?>? digest;
   /// name is the name of the Subject used here
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [SubjectContaineranalysisV1alpha1].
   /// [digest] "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet

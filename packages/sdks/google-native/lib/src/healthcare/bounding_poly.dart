@@ -6,9 +6,9 @@ import 'vertex.dart';
 /// A bounding polygon for the detected image annotation.
 class BoundingPoly {
   /// A description of this polygon.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// List of the vertices of this polygon.
-  final pulumi.Input<List<Vertex>>? vertices;
+  final pulumi.Input<List<Vertex>?>? vertices;
 
   /// Creates a new [BoundingPoly].
   /// [label] A description of this polygon.

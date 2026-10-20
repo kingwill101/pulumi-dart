@@ -42,7 +42,7 @@ class GoogleCloudDataplexV1TaskTriggerSpecResponse {
   factory GoogleCloudDataplexV1TaskTriggerSpecResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDataplexV1TaskTriggerSpecResponse(
       disabled: pulumi.Input.fromValue(map['disabled'] as bool),
-      maxRetries: pulumi.Input.fromValue(map['maxRetries'] as int),
+      maxRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRetries'])),
       schedule: pulumi.Input.fromValue(map['schedule'] as String),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),

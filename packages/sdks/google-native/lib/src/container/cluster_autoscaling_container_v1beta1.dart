@@ -8,15 +8,15 @@ import 'resource_limit_container_v1beta1.dart';
 /// ClusterAutoscaling contains global, per-cluster information required by Cluster Autoscaler to automatically adjust the size of the cluster and create/delete node pools based on the current needs.
 class ClusterAutoscalingContainerV1beta1 {
   /// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes can be created by NAP.
-  final pulumi.Input<List<String>>? autoprovisioningLocations;
+  final pulumi.Input<List<String>?>? autoprovisioningLocations;
   /// AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.
-  final pulumi.Input<AutoprovisioningNodePoolDefaultsContainerV1beta1>? autoprovisioningNodePoolDefaults;
+  final pulumi.Input<AutoprovisioningNodePoolDefaultsContainerV1beta1?>? autoprovisioningNodePoolDefaults;
   /// Defines autoscaling behaviour.
-  final pulumi.Input<ClusterAutoscalingAutoscalingProfileContainerV1beta1>? autoscalingProfile;
+  final pulumi.Input<ClusterAutoscalingAutoscalingProfileContainerV1beta1?>? autoscalingProfile;
   /// Enables automatic node pool creation and deletion.
-  final pulumi.Input<bool>? enableNodeAutoprovisioning;
+  final pulumi.Input<bool?>? enableNodeAutoprovisioning;
   /// Contains global constraints regarding minimum and maximum amount of resources in the cluster.
-  final pulumi.Input<List<ResourceLimitContainerV1beta1>>? resourceLimits;
+  final pulumi.Input<List<ResourceLimitContainerV1beta1>?>? resourceLimits;
 
   /// Creates a new [ClusterAutoscalingContainerV1beta1].
   /// [autoprovisioningLocations] The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes can be created by NAP.

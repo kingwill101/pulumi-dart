@@ -9,17 +9,17 @@ import 'google_cloud_apigee_v1_attribute.dart';
 /// {@macro pulumi_apigee_v1_developer_args_doc}
 class DeveloperArgs {
   /// Access type.
-  final pulumi.Input<String>? accessType;
+  final pulumi.Input<String?>? accessType;
   /// Developer app family.
-  final pulumi.Input<String>? appFamily;
+  final pulumi.Input<String?>? appFamily;
   /// List of apps associated with the developer.
-  final pulumi.Input<List<String>>? apps;
+  final pulumi.Input<List<String>?>? apps;
   /// Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
-  final pulumi.Input<List<GoogleCloudApigeeV1Attribute>>? attributes;
+  final pulumi.Input<List<GoogleCloudApigeeV1Attribute>?>? attributes;
   /// List of companies associated with the developer.
-  final pulumi.Input<List<String>>? companies;
+  final pulumi.Input<List<String>?>? companies;
   /// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
-  final pulumi.Input<String>? developerId;
+  final pulumi.Input<String?>? developerId;
   /// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
   final pulumi.Input<String> email;
   /// First name of the developer.

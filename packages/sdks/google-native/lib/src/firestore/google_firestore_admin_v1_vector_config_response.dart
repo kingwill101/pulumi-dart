@@ -26,7 +26,7 @@ class GoogleFirestoreAdminV1VectorConfigResponse {
 
   factory GoogleFirestoreAdminV1VectorConfigResponse.fromMap(Map<String, dynamic> map) {
     return GoogleFirestoreAdminV1VectorConfigResponse(
-      dimension: pulumi.Input.fromValue(map['dimension'] as int),
+      dimension: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dimension'])),
       flat: pulumi.Input.fromValue((map['flat']! as Map).cast<String, dynamic>()),
     );
   }

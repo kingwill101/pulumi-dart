@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetPrivateConnectionDatastreamV1alpha1Args {
   final pulumi.Input<String> location;
   final pulumi.Input<String> privateConnectionId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetPrivateConnectionDatastreamV1alpha1Args].
   /// [location] Required.

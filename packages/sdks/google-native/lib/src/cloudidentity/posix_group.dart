@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// POSIX Group definition to represent a group in a POSIX compliant system.
 class PosixGroup {
   /// GID of the POSIX group.
-  final pulumi.Input<String>? gid;
+  final pulumi.Input<String?>? gid;
   /// Name of the POSIX group.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// System identifier for which group name and gid apply to. If not specified it will default to empty value.
-  final pulumi.Input<String>? systemId;
+  final pulumi.Input<String?>? systemId;
 
   /// Creates a new [PosixGroup].
   /// [gid] GID of the POSIX group.

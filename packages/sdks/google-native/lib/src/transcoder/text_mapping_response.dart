@@ -33,7 +33,7 @@ class TextMappingResponse {
     return TextMappingResponse(
       atomKey: pulumi.Input.fromValue(map['atomKey'] as String),
       inputKey: pulumi.Input.fromValue(map['inputKey'] as String),
-      inputTrack: pulumi.Input.fromValue(map['inputTrack'] as int),
+      inputTrack: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['inputTrack'])),
     );
   }
 }

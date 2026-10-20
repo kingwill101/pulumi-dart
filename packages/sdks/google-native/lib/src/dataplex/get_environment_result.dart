@@ -8,29 +8,29 @@ import 'google_cloud_dataplex_v1_environment_session_status_response.dart';
 /// Result data returned by getEnvironment.
 class GetEnvironmentResult {
   /// Environment creation time.
-  final String createTime;
+  final String? createTime;
   /// Optional. Description of the environment.
-  final String description;
+  final String? description;
   /// Optional. User friendly display name.
-  final String displayName;
+  final String? displayName;
   /// URI Endpoints to access sessions associated with the Environment.
-  final GoogleCloudDataplexV1EnvironmentEndpointsResponse endpoints;
+  final GoogleCloudDataplexV1EnvironmentEndpointsResponse? endpoints;
   /// Infrastructure specification for the Environment.
-  final GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse infrastructureSpec;
+  final GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse? infrastructureSpec;
   /// Optional. User defined labels for the environment.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The relative resource name of the environment, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id}
-  final String name;
+  final String? name;
   /// Optional. Configuration for sessions created for this environment.
-  final GoogleCloudDataplexV1EnvironmentSessionSpecResponse sessionSpec;
+  final GoogleCloudDataplexV1EnvironmentSessionSpecResponse? sessionSpec;
   /// Status of sessions created for this environment.
-  final GoogleCloudDataplexV1EnvironmentSessionStatusResponse sessionStatus;
+  final GoogleCloudDataplexV1EnvironmentSessionStatusResponse? sessionStatus;
   /// Current state of the environment.
-  final String state;
+  final String? state;
   /// System generated globally unique ID for the environment. This ID will be different if the environment is deleted and re-created with the same name.
-  final String uid;
+  final String? uid;
   /// The time when the environment was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetEnvironmentResult].
   /// [createTime] Environment creation time.
@@ -46,51 +46,51 @@ class GetEnvironmentResult {
   /// [uid] System generated globally unique ID for the environment. This ID will be different if the environment is deleted and re-created with the same name.
   /// [updateTime] The time when the environment was last updated.
   const GetEnvironmentResult({
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.endpoints,
-    required this.infrastructureSpec,
-    required this.labels,
-    required this.name,
-    required this.sessionSpec,
-    required this.sessionStatus,
-    required this.state,
-    required this.uid,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.endpoints,
+    this.infrastructureSpec,
+    this.labels,
+    this.name,
+    this.sessionSpec,
+    this.sessionStatus,
+    this.state,
+    this.uid,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'endpoints': endpoints.toMap(),
-      'infrastructureSpec': infrastructureSpec.toMap(),
-      'labels': labels,
-      'name': name,
-      'sessionSpec': sessionSpec.toMap(),
-      'sessionStatus': sessionStatus.toMap(),
-      'state': state,
-      'uid': uid,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'endpoints': ?endpoints?.toMap(),
+      'infrastructureSpec': ?infrastructureSpec?.toMap(),
+      'labels': ?labels,
+      'name': ?name,
+      'sessionSpec': ?sessionSpec?.toMap(),
+      'sessionStatus': ?sessionStatus?.toMap(),
+      'state': ?state,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetEnvironmentResult.fromMap(Map<String, dynamic> map) {
     return GetEnvironmentResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      endpoints: GoogleCloudDataplexV1EnvironmentEndpointsResponse.fromMap((map['endpoints']! as Map).cast<String, dynamic>()),
-      infrastructureSpec: GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse.fromMap((map['infrastructureSpec']! as Map).cast<String, dynamic>()),
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      sessionSpec: GoogleCloudDataplexV1EnvironmentSessionSpecResponse.fromMap((map['sessionSpec']! as Map).cast<String, dynamic>()),
-      sessionStatus: GoogleCloudDataplexV1EnvironmentSessionStatusResponse.fromMap((map['sessionStatus']! as Map).cast<String, dynamic>()),
-      state: map['state'] as String,
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return GoogleCloudDataplexV1EnvironmentEndpointsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      infrastructureSpec: (() { final guardedValue = map['infrastructureSpec']; if (guardedValue == null) return null; return GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sessionSpec: (() { final guardedValue = map['sessionSpec']; if (guardedValue == null) return null; return GoogleCloudDataplexV1EnvironmentSessionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      sessionStatus: (() { final guardedValue = map['sessionStatus']; if (guardedValue == null) return null; return GoogleCloudDataplexV1EnvironmentSessionStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

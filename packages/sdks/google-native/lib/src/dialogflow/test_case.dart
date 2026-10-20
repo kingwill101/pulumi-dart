@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_dialogflow_cx_v3_conversation_turn_response.dart';
 import 'google_cloud_dialogflow_cx_v3_test_case_result_response.dart';
 import 'google_cloud_dialogflow_cx_v3_test_config_response.dart';
 import 'test_case_args.dart';
@@ -23,7 +24,7 @@ class TestCase extends pulumi.CustomResource {
   /// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
   late final pulumi.Output<List<String>> tags;
   /// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
-  late final pulumi.Output<List<Map<String, dynamic>>> testCaseConversationTurns;
+  late final pulumi.Output<List<GoogleCloudDialogflowCxV3ConversationTurnResponse>> testCaseConversationTurns;
   /// Config for the test case.
   late final pulumi.Output<GoogleCloudDialogflowCxV3TestConfigResponse> testConfig;
 
@@ -39,7 +40,7 @@ class TestCase extends pulumi.CustomResource {
           'google-native:dialogflow/v3:TestCase',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['agentId', 'location', 'project']).merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
     creationTime = registerOutput<String>('creationTime');
@@ -49,8 +50,30 @@ class TestCase extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notes = registerOutput<String>('notes');
     project = registerOutput<String>('project');
-    tags = registerOutput<List<String>>('tags');
-    testCaseConversationTurns = registerOutput<List<Map<String, dynamic>>>('testCaseConversationTurns');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    testCaseConversationTurns = registerOutput<List<GoogleCloudDialogflowCxV3ConversationTurnResponse>>('testCaseConversationTurns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ConversationTurnResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3ConversationTurnResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    testConfig = registerOutput<GoogleCloudDialogflowCxV3TestConfigResponse>('testConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3TestConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [TestCase] resource.
+  TestCase.reference(String urn)
+    : super(
+        'google-native:dialogflow/v3:TestCase',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentId = registerOutput<String>('agentId');
+    creationTime = registerOutput<String>('creationTime');
+    displayName = registerOutput<String>('displayName');
+    lastTestResult = registerOutput<GoogleCloudDialogflowCxV3TestCaseResultResponse>('lastTestResult', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3TestCaseResultResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    notes = registerOutput<String>('notes');
+    project = registerOutput<String>('project');
+    tags = registerOutput<List<String>>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    testCaseConversationTurns = registerOutput<List<GoogleCloudDialogflowCxV3ConversationTurnResponse>>('testCaseConversationTurns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3ConversationTurnResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3ConversationTurnResponse.fromMap((value as Map).cast<String, dynamic>())); });
     testConfig = registerOutput<GoogleCloudDialogflowCxV3TestConfigResponse>('testConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudDialogflowCxV3TestConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
   }
 }

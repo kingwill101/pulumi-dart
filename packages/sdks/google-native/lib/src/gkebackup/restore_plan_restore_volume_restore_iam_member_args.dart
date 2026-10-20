@@ -9,7 +9,7 @@ import '../accesscontextmanager/condition.dart';
 /// {@macro pulumi_gkebackup_v1_restore_plan_restore_volume_restore_iam_member_args_doc}
 class RestorePlanRestoreVolumeRestoreIamMemberArgs {
   /// An IAM Condition for a given binding.
-  final pulumi.Input<Condition>? condition;
+  final pulumi.Input<Condition?>? condition;
   /// Identity that will be granted the privilege in role. The entry can have one of the following values:
   ///
   /// * user:{emailid}: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.

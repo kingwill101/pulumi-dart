@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Ascending is the default sort order
-enum SortOptionsSortOrder {
+enum SortOptionsSortOrder implements pulumi.PulumiEnum<String> {
   ascending("ASCENDING"),
   descending("DESCENDING");
 
   const SortOptionsSortOrder(this.wireValue);
+  @override
   final String wireValue;
 
   static SortOptionsSortOrder fromValue(String value) {

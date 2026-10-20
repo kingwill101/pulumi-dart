@@ -28,8 +28,26 @@ class View extends pulumi.CustomResource {
           'google-native:contactcenterinsights/v1:View',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    updateTime = registerOutput<String>('updateTime');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [View] resource.
+  View.reference(String urn)
+    : super(
+        'google-native:contactcenterinsights/v1:View',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     location = registerOutput<String>('location');

@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudiot_v1_get_device_args_doc}
 class GetDeviceArgs {
   final pulumi.Input<String> deviceId;
-  final pulumi.Input<String>? fieldMask;
+  final pulumi.Input<String?>? fieldMask;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> registryId;
 
   /// Creates a new [GetDeviceArgs].

@@ -9,13 +9,13 @@ import 'google_cloud_contentwarehouse_v1_synonym_set_synonym.dart';
 /// {@macro pulumi_contentwarehouse_v1_synonym_set_args_doc}
 class SynonymSetArgs {
   /// This is a freeform field. Example contexts can be "sales," "engineering," "real estate," "accounting," etc. The context can be supplied during search requests.
-  final pulumi.Input<String>? context;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<String?>? context;
+  final pulumi.Input<String?>? location;
   /// The resource name of the SynonymSet This is mandatory for google.api.resource. Format: projects/{project_number}/locations/{location}/synonymSets/{context}.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// List of Synonyms for the context.
-  final pulumi.Input<List<GoogleCloudContentwarehouseV1SynonymSetSynonym>>? synonyms;
+  final pulumi.Input<List<GoogleCloudContentwarehouseV1SynonymSetSynonym>?>? synonyms;
 
   /// Creates a new [SynonymSetArgs].
   /// [context] This is a freeform field. Example contexts can be "sales," "engineering," "real estate," "accounting," etc. The context can be supplied during search requests.

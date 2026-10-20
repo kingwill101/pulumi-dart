@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_cloudkms_v1_key_ring_args_doc}
 class KeyRingArgs {
   /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
-  final pulumi.Input<String>? keyRingId;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? keyRingId;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [KeyRingArgs].
   /// [keyRingId] Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`

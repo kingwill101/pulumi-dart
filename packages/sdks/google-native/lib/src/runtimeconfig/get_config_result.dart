@@ -4,29 +4,29 @@
 /// Result data returned by getConfig.
 class GetConfigResult {
   /// An optional description of the RuntimeConfig object.
-  final String description;
+  final String? description;
   /// The resource name of a runtime config. The name must have the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME] The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches the `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression. The length of `[CONFIG_NAME]` must be less than 64 characters. You pick the RuntimeConfig resource name, but the server will validate that the name adheres to this format. After you create the resource, you cannot change the resource's name.
-  final String name;
+  final String? name;
 
   /// Creates a new [GetConfigResult].
   /// [description] An optional description of the RuntimeConfig object.
   /// [name] The resource name of a runtime config. The name must have the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME] The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches the `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression. The length of `[CONFIG_NAME]` must be less than 64 characters. You pick the RuntimeConfig resource name, but the server will validate that the name adheres to this format. After you create the resource, you cannot change the resource's name.
   const GetConfigResult({
-    required this.description,
-    required this.name,
+    this.description,
+    this.name,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'description': description,
-      'name': name,
+      'description': ?description,
+      'name': ?name,
     };
   }
 
   factory GetConfigResult.fromMap(Map<String, dynamic> map) {
     return GetConfigResult(
-      description: map['description'] as String,
-      name: map['name'] as String,
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

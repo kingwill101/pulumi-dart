@@ -6,11 +6,11 @@ import 'google_cloud_dialogflow_cx_v3beta1_rollout_config_rollout_step.dart';
 /// The configuration for auto rollout.
 class GoogleCloudDialogflowCxV3beta1RolloutConfig {
   /// The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate &lt; 10% OR average_turn_count &lt; 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
-  final pulumi.Input<String>? failureCondition;
+  final pulumi.Input<String?>? failureCondition;
   /// The conditions that are used to evaluate the success of a rollout step. If not specified, all rollout steps will proceed to the next one unless failure conditions are met. E.g. "containment_rate &gt; 60% AND callback_rate &lt; 20%". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
-  final pulumi.Input<String>? rolloutCondition;
+  final pulumi.Input<String?>? rolloutCondition;
   /// Steps to roll out a flow version. Steps should be sorted by percentage in ascending order.
-  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep>>? rolloutSteps;
+  final pulumi.Input<List<GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStep>?>? rolloutSteps;
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1RolloutConfig].
   /// [failureCondition] The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate &lt; 10% OR average_turn_count &lt; 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).

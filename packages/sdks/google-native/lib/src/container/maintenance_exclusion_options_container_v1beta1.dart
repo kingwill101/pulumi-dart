@@ -6,7 +6,7 @@ import 'maintenance_exclusion_options_scope_container_v1beta1.dart';
 /// Represents the Maintenance exclusion option.
 class MaintenanceExclusionOptionsContainerV1beta1 {
   /// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
-  final pulumi.Input<MaintenanceExclusionOptionsScopeContainerV1beta1>? scope;
+  final pulumi.Input<MaintenanceExclusionOptionsScopeContainerV1beta1?>? scope;
 
   /// Creates a new [MaintenanceExclusionOptionsContainerV1beta1].
   /// [scope] Scope specifies the upgrade scope which upgrades are blocked by the exclusion.

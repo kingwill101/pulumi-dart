@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A Sole Tenant node type.
 class SoleTenantNodeType {
   /// Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
-  final pulumi.Input<String>? nodeName;
+  final pulumi.Input<String?>? nodeName;
 
   /// Creates a new [SoleTenantNodeType].
   /// [nodeName] Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes

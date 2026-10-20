@@ -6,11 +6,11 @@ import 'log_config_counter_options_custom_field_compute_beta.dart';
 /// This is deprecated and has no effect. Do not use.
 class LogConfigCounterOptionsComputeBeta {
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<List<LogConfigCounterOptionsCustomFieldComputeBeta>>? customFields;
+  final pulumi.Input<List<LogConfigCounterOptionsCustomFieldComputeBeta>?>? customFields;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
   /// This is deprecated and has no effect. Do not use.
-  final pulumi.Input<String>? metric;
+  final pulumi.Input<String?>? metric;
 
   /// Creates a new [LogConfigCounterOptionsComputeBeta].
   /// [customFields] This is deprecated and has no effect. Do not use.

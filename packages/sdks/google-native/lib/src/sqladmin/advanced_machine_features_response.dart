@@ -21,7 +21,7 @@ class AdvancedMachineFeaturesResponse {
 
   factory AdvancedMachineFeaturesResponse.fromMap(Map<String, dynamic> map) {
     return AdvancedMachineFeaturesResponse(
-      threadsPerCore: pulumi.Input.fromValue(map['threadsPerCore'] as int),
+      threadsPerCore: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['threadsPerCore'])),
     );
   }
 }

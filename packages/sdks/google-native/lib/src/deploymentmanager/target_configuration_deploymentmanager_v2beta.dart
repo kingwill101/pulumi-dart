@@ -6,9 +6,9 @@ import 'import_file_deploymentmanager_v2beta.dart';
 
 class TargetConfigurationDeploymentmanagerV2beta {
   /// The configuration to use for this deployment.
-  final pulumi.Input<ConfigFileDeploymentmanagerV2beta>? config;
+  final pulumi.Input<ConfigFileDeploymentmanagerV2beta?>? config;
   /// Specifies any files to import for this configuration. This can be used to import templates or other files. For example, you might import a text file in order to use the file in a template.
-  final pulumi.Input<List<ImportFileDeploymentmanagerV2beta>>? imports;
+  final pulumi.Input<List<ImportFileDeploymentmanagerV2beta>?>? imports;
 
   /// Creates a new [TargetConfigurationDeploymentmanagerV2beta].
   /// [config] The configuration to use for this deployment.

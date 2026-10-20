@@ -10,14 +10,14 @@ import 'project_security_health_analytics_setting_custom_module_enablement_state
 /// {@macro pulumi_securitycenter_v1_project_security_health_analytics_setting_custom_module_args_doc}
 class ProjectSecurityHealthAnalyticsSettingCustomModuleArgs {
   /// The user specified custom configuration for the module.
-  final pulumi.Input<GoogleCloudSecuritycenterV1CustomConfig>? customConfig;
+  final pulumi.Input<GoogleCloudSecuritycenterV1CustomConfig?>? customConfig;
   /// The display name of the Security Health Analytics custom module. This display name becomes the finding category for all findings that are returned by this custom module. The display name must be between 1 and 128 characters, start with a lowercase letter, and contain alphanumeric characters or underscores only.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// The enablement state of the custom module.
-  final pulumi.Input<ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState>? enablementState;
+  final pulumi.Input<ProjectSecurityHealthAnalyticsSettingCustomModuleEnablementState?>? enablementState;
   /// Immutable. The resource name of the custom module. Its format is "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [ProjectSecurityHealthAnalyticsSettingCustomModuleArgs].
   /// [customConfig] The user specified custom configuration for the module.

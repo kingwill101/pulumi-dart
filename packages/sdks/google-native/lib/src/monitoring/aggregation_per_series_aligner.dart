@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
-enum AggregationPerSeriesAligner {
+enum AggregationPerSeriesAligner implements pulumi.PulumiEnum<String> {
   alignNone("ALIGN_NONE"),
   alignDelta("ALIGN_DELTA"),
   alignRate("ALIGN_RATE"),
@@ -21,6 +23,7 @@ enum AggregationPerSeriesAligner {
   alignPercentChange("ALIGN_PERCENT_CHANGE");
 
   const AggregationPerSeriesAligner(this.wireValue);
+  @override
   final String wireValue;
 
   static AggregationPerSeriesAligner fromValue(String value) {

@@ -6,9 +6,9 @@ import 'workload_policy_config.dart';
 /// Autopilot is the configuration for Autopilot settings on the cluster.
 class Autopilot {
   /// Enable Autopilot
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
   /// Workload policy configuration for Autopilot.
-  final pulumi.Input<WorkloadPolicyConfig>? workloadPolicyConfig;
+  final pulumi.Input<WorkloadPolicyConfig?>? workloadPolicyConfig;
 
   /// Creates a new [Autopilot].
   /// [enabled] Enable Autopilot

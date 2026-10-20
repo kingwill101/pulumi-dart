@@ -7,9 +7,9 @@ import 'ssl_config_ssl_mode_alloydb_v1alpha.dart';
 /// SSL configuration.
 class SslConfigAlloydbV1alpha {
   /// Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.
-  final pulumi.Input<SslConfigCaSourceAlloydbV1alpha>? caSource;
+  final pulumi.Input<SslConfigCaSourceAlloydbV1alpha?>? caSource;
   /// Optional. SSL mode. Specifies client-server SSL/TLS connection behavior.
-  final pulumi.Input<SslConfigSslModeAlloydbV1alpha>? sslMode;
+  final pulumi.Input<SslConfigSslModeAlloydbV1alpha?>? sslMode;
 
   /// Creates a new [SslConfigAlloydbV1alpha].
   /// [caSource] Optional. Certificate Authority (CA) source. Only CA_SOURCE_MANAGED is supported currently, and is the default value.

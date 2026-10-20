@@ -1,4 +1,6 @@
-enum BasicPerfSampleSeriesSampleSeriesLabel {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum BasicPerfSampleSeriesSampleSeriesLabel implements pulumi.PulumiEnum<String> {
   sampleSeriesTypeUnspecified("sampleSeriesTypeUnspecified"),
   memoryRssPrivate("memoryRssPrivate"),
   memoryRssShared("memoryRssShared"),
@@ -14,6 +16,7 @@ enum BasicPerfSampleSeriesSampleSeriesLabel {
   graphicsFrameRate("graphicsFrameRate");
 
   const BasicPerfSampleSeriesSampleSeriesLabel(this.wireValue);
+  @override
   final String wireValue;
 
   static BasicPerfSampleSeriesSampleSeriesLabel fromValue(String value) {

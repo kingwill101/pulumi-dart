@@ -7,9 +7,9 @@ import 'google_privacy_dlp_v2_pub_sub_condition_minimum_sensitivity_score.dart';
 /// A condition consisting of a value.
 class GooglePrivacyDlpV2PubSubCondition {
   /// The minimum data risk score that triggers the condition.
-  final pulumi.Input<GooglePrivacyDlpV2PubSubConditionMinimumRiskScore>? minimumRiskScore;
+  final pulumi.Input<GooglePrivacyDlpV2PubSubConditionMinimumRiskScore?>? minimumRiskScore;
   /// The minimum sensitivity level that triggers the condition.
-  final pulumi.Input<GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore>? minimumSensitivityScore;
+  final pulumi.Input<GooglePrivacyDlpV2PubSubConditionMinimumSensitivityScore?>? minimumSensitivityScore;
 
   /// Creates a new [GooglePrivacyDlpV2PubSubCondition].
   /// [minimumRiskScore] The minimum data risk score that triggers the condition.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
-enum InstanceBootDiskType {
+enum InstanceBootDiskType implements pulumi.PulumiEnum<String> {
   diskTypeUnspecified("DISK_TYPE_UNSPECIFIED"),
   pdStandard("PD_STANDARD"),
   pdSsd("PD_SSD"),
@@ -7,6 +9,7 @@ enum InstanceBootDiskType {
   pdExtreme("PD_EXTREME");
 
   const InstanceBootDiskType(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceBootDiskType fromValue(String value) {

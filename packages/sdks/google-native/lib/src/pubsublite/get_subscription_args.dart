@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_pubsublite_v1_get_subscription_args_doc}
 class GetSubscriptionArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> subscriptionId;
 
   /// Creates a new [GetSubscriptionArgs].

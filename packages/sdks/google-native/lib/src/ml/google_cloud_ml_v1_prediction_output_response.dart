@@ -37,7 +37,7 @@ class GoogleCloudMlV1PredictionOutputResponse {
   factory GoogleCloudMlV1PredictionOutputResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1PredictionOutputResponse(
       errorCount: pulumi.Input.fromValue(map['errorCount'] as String),
-      nodeHours: pulumi.Input.fromValue(map['nodeHours'] as double),
+      nodeHours: pulumi.Input.fromValue((map['nodeHours'] as num).toDouble()),
       outputPath: pulumi.Input.fromValue(map['outputPath'] as String),
       predictionCount: pulumi.Input.fromValue(map['predictionCount'] as String),
     );

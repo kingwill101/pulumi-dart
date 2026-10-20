@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// PostKeyRevocationActionType of the instance.
-enum InstancePostKeyRevocationActionTypeComputeBeta {
+enum InstancePostKeyRevocationActionTypeComputeBeta implements pulumi.PulumiEnum<String> {
   noop("NOOP"),
   postKeyRevocationActionTypeUnspecified("POST_KEY_REVOCATION_ACTION_TYPE_UNSPECIFIED"),
   shutdown("SHUTDOWN");
 
   const InstancePostKeyRevocationActionTypeComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static InstancePostKeyRevocationActionTypeComputeBeta fromValue(String value) {

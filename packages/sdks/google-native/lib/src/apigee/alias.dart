@@ -35,8 +35,29 @@ class Alias extends pulumi.CustomResource {
           'google-native:apigee/v1:Alias',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['environmentId', 'format', 'keystoreId', 'organizationId']).merge(options),
         ) {
+    alias = registerOutput<String>('alias');
+    certsInfo = registerOutput<GoogleCloudApigeeV1CertificateResponse>('certsInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1CertificateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    environmentId = registerOutput<String>('environmentId');
+    format = registerOutput<String>('format');
+    ignoreExpiryValidation = registerOutput<bool?>('ignoreExpiryValidation');
+    ignoreNewlineValidation = registerOutput<bool?>('ignoreNewlineValidation');
+    keystoreId = registerOutput<String>('keystoreId');
+    organizationId = registerOutput<String>('organizationId');
+    password = registerOutput<String?>('password');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [Alias] resource.
+  Alias.reference(String urn)
+    : super(
+        'google-native:apigee/v1:Alias',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     alias = registerOutput<String>('alias');
     certsInfo = registerOutput<GoogleCloudApigeeV1CertificateResponse>('certsInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1CertificateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     environmentId = registerOutput<String>('environmentId');

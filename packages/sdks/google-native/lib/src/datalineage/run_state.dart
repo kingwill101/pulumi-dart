@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The state of the run.
-enum RunState {
+enum RunState implements pulumi.PulumiEnum<String> {
   unknown("UNKNOWN"),
   started("STARTED"),
   completed("COMPLETED"),
@@ -7,6 +9,7 @@ enum RunState {
   aborted("ABORTED");
 
   const RunState(this.wireValue);
+  @override
   final String wireValue;
 
   static RunState fromValue(String value) {

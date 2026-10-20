@@ -37,8 +37,28 @@ class ChannelPartnerLink extends pulumi.CustomResource {
           'google-native:cloudchannel/v1:ChannelPartnerLink',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['accountId']).merge(options),
         ) {
+    accountId = registerOutput<String>('accountId');
+    channelPartnerCloudIdentityInfo = registerOutput<GoogleCloudChannelV1CloudIdentityInfoResponse>('channelPartnerCloudIdentityInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudChannelV1CloudIdentityInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    inviteLinkUri = registerOutput<String>('inviteLinkUri');
+    linkState = registerOutput<String>('linkState');
+    this.name = registerOutput<String>('name');
+    publicId = registerOutput<String>('publicId');
+    resellerCloudIdentityId = registerOutput<String>('resellerCloudIdentityId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ChannelPartnerLink] resource.
+  ChannelPartnerLink.reference(String urn)
+    : super(
+        'google-native:cloudchannel/v1:ChannelPartnerLink',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     accountId = registerOutput<String>('accountId');
     channelPartnerCloudIdentityInfo = registerOutput<GoogleCloudChannelV1CloudIdentityInfoResponse>('channelPartnerCloudIdentityInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudChannelV1CloudIdentityInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     createTime = registerOutput<String>('createTime');

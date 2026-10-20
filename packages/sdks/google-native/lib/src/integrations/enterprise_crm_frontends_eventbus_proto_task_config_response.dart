@@ -170,7 +170,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse {
       errorCatcherId: pulumi.Input.fromValue(map['errorCatcherId'] as String),
       externalTaskType: pulumi.Input.fromValue(map['externalTaskType'] as String),
       failurePolicy: pulumi.Input.fromValue(EnterpriseCrmEventbusProtoFailurePolicyResponse.fromMap((map['failurePolicy']! as Map).cast<String, dynamic>())),
-      incomingEdgeCount: pulumi.Input.fromValue(map['incomingEdgeCount'] as int),
+      incomingEdgeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['incomingEdgeCount'])),
       jsonValidationOption: pulumi.Input.fromValue(map['jsonValidationOption'] as String),
       label: pulumi.Input.fromValue(map['label'] as String),
       lastModifiedTime: pulumi.Input.fromValue(map['lastModifiedTime'] as String),

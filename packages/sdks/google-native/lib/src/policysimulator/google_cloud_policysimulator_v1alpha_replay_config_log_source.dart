@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The logs to use as input for the Replay.
-enum GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource {
+enum GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource implements pulumi.PulumiEnum<String> {
   logSourceUnspecified("LOG_SOURCE_UNSPECIFIED"),
   recentAccesses("RECENT_ACCESSES");
 
   const GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudPolicysimulatorV1alphaReplayConfigLogSource fromValue(String value) {

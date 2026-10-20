@@ -7,13 +7,13 @@ import 'google_cloud_aiplatform_v1_presets.dart';
 /// Example-based explainability that returns the nearest neighbors from the provided dataset.
 class GoogleCloudAiplatformV1Examples {
   /// The Cloud Storage input instances.
-  final pulumi.Input<GoogleCloudAiplatformV1ExamplesExampleGcsSource>? exampleGcsSource;
+  final pulumi.Input<GoogleCloudAiplatformV1ExamplesExampleGcsSource?>? exampleGcsSource;
   /// The full configuration for the generated index, the semantics are the same as metadata and should match [NearestNeighborSearchConfig](https://cloud.google.com/vertex-ai/docs/explainable-ai/configuring-explanations-example-based#nearest-neighbor-search-config).
   final pulumi.Input<dynamic>? nearestNeighborSearchConfig;
   /// The number of neighbors to return when querying for examples.
-  final pulumi.Input<int>? neighborCount;
+  final pulumi.Input<int?>? neighborCount;
   /// Simplified preset configuration, which automatically sets configuration values based on the desired query speed-precision trade-off and modality.
-  final pulumi.Input<GoogleCloudAiplatformV1Presets>? presets;
+  final pulumi.Input<GoogleCloudAiplatformV1Presets?>? presets;
 
   /// Creates a new [GoogleCloudAiplatformV1Examples].
   /// [exampleGcsSource] The Cloud Storage input instances.
@@ -40,7 +40,7 @@ class GoogleCloudAiplatformV1Examples {
     return GoogleCloudAiplatformV1Examples(
       exampleGcsSource: (() { final guardedValue = map['exampleGcsSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1ExamplesExampleGcsSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       nearestNeighborSearchConfig: (() { final guardedValue = map['nearestNeighborSearchConfig']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue); })(),
-      neighborCount: (() { final guardedValue = map['neighborCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      neighborCount: (() { final guardedValue = map['neighborCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       presets: (() { final guardedValue = map['presets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudAiplatformV1Presets.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
     );
   }

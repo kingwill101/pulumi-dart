@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the entry. For details, see [`EntryType`](#entrytype).
-enum EntryType {
+enum EntryType implements pulumi.PulumiEnum<String> {
   entryTypeUnspecified("ENTRY_TYPE_UNSPECIFIED"),
   table("TABLE"),
   model("MODEL"),
@@ -18,6 +20,7 @@ enum EntryType {
   look("LOOK");
 
   const EntryType(this.wireValue);
+  @override
   final String wireValue;
 
   static EntryType fromValue(String value) {

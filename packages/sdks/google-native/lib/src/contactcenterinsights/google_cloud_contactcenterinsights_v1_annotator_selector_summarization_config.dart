@@ -6,9 +6,9 @@ import 'google_cloud_contactcenterinsights_v1_annotator_selector_summarization_c
 /// Configuration for summarization.
 class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
   /// Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
-  final pulumi.Input<String>? conversationProfile;
+  final pulumi.Input<String?>? conversationProfile;
   /// Default summarization model to be used.
-  final pulumi.Input<GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel>? summarizationModel;
+  final pulumi.Input<GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModel?>? summarizationModel;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig].
   /// [conversationProfile] Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}

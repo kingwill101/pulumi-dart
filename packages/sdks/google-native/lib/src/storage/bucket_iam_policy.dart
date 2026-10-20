@@ -1,12 +1,13 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'bucket_iam_policy_args.dart';
+import 'bucket_iam_policy_bindings_item_response.dart';
 
 /// Updates an IAM policy for the specified bucket.
 /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 /// on Google Cloud even though it will be deleted from Pulumi state.
 class BucketIamPolicy extends pulumi.CustomResource {
   /// An association between a role, which comes with a set of permissions, and members who may assume that role.
-  late final pulumi.Output<List<Map<String, dynamic>>> bindings;
+  late final pulumi.Output<List<BucketIamPolicyBindingsItemResponse>> bindings;
   late final pulumi.Output<String> bucket;
   /// HTTP 1.1  Entity tag for the policy.
   late final pulumi.Output<String> etag;
@@ -31,9 +32,27 @@ class BucketIamPolicy extends pulumi.CustomResource {
           'google-native:storage/v1:BucketIamPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['bucket']).merge(options),
         ) {
-    bindings = registerOutput<List<Map<String, dynamic>>>('bindings');
+    bindings = registerOutput<List<BucketIamPolicyBindingsItemResponse>>('bindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketIamPolicyBindingsItemResponse>(guardedValue, (value) => BucketIamPolicyBindingsItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    bucket = registerOutput<String>('bucket');
+    etag = registerOutput<String>('etag');
+    kind = registerOutput<String>('kind');
+    resourceId = registerOutput<String>('resourceId');
+    userProject = registerOutput<String?>('userProject');
+    version = registerOutput<int>('version');
+  }
+
+  /// Creates a typed reference to an existing [BucketIamPolicy] resource.
+  BucketIamPolicy.reference(String urn)
+    : super(
+        'google-native:storage/v1:BucketIamPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    bindings = registerOutput<List<BucketIamPolicyBindingsItemResponse>>('bindings', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<BucketIamPolicyBindingsItemResponse>(guardedValue, (value) => BucketIamPolicyBindingsItemResponse.fromMap((value as Map).cast<String, dynamic>())); });
     bucket = registerOutput<String>('bucket');
     etag = registerOutput<String>('etag');
     kind = registerOutput<String>('kind');

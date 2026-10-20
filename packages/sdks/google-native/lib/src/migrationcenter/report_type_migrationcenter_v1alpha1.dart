@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Report type.
-enum ReportTypeMigrationcenterV1alpha1 {
+enum ReportTypeMigrationcenterV1alpha1 implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   totalCostOfOwnership("TOTAL_COST_OF_OWNERSHIP");
 
   const ReportTypeMigrationcenterV1alpha1(this.wireValue);
+  @override
   final String wireValue;
 
   static ReportTypeMigrationcenterV1alpha1 fromValue(String value) {

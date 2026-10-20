@@ -39,7 +39,7 @@ class AndroidApp extends pulumi.CustomResource {
           'google-native:firebase/v1beta1:AndroidApp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
     apiKeyId = registerOutput<String>('apiKeyId');
     appId = registerOutput<String>('appId');
@@ -49,8 +49,30 @@ class AndroidApp extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     packageName = registerOutput<String>('packageName');
     project = registerOutput<String>('project');
-    sha1Hashes = registerOutput<List<String>>('sha1Hashes');
-    sha256Hashes = registerOutput<List<String>>('sha256Hashes');
+    sha1Hashes = registerOutput<List<String>>('sha1Hashes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sha256Hashes = registerOutput<List<String>>('sha256Hashes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [AndroidApp] resource.
+  AndroidApp.reference(String urn)
+    : super(
+        'google-native:firebase/v1beta1:AndroidApp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiKeyId = registerOutput<String>('apiKeyId');
+    appId = registerOutput<String>('appId');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    expireTime = registerOutput<String>('expireTime');
+    this.name = registerOutput<String>('name');
+    packageName = registerOutput<String>('packageName');
+    project = registerOutput<String>('project');
+    sha1Hashes = registerOutput<List<String>>('sha1Hashes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    sha256Hashes = registerOutput<List<String>>('sha256Hashes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     state = registerOutput<String>('state');
   }
 }

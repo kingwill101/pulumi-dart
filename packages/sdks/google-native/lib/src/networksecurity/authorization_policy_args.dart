@@ -2,7 +2,7 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'authorization_policy_action.dart';
-import 'rule_networksecurity_v1.dart';
+import 'rule.dart';
 
 /// {@template pulumi_networksecurity_v1_authorization_policy_args_doc}
 /// The set of arguments for AuthorizationPolicy.
@@ -14,15 +14,15 @@ class AuthorizationPolicyArgs {
   /// Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy".
   final pulumi.Input<String> authorizationPolicyId;
   /// Optional. Free-text description of the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. Set of label tags associated with the AuthorizationPolicy resource.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
-  final pulumi.Input<List<RuleNetworksecurityV1>>? rules;
+  final pulumi.Input<List<Rule>?>? rules;
 
   /// Creates a new [AuthorizationPolicyArgs].
   /// [action] The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
@@ -53,7 +53,7 @@ class AuthorizationPolicyArgs {
       'location': ?location,
       'name': ?name,
       'project': ?project,
-      'rules': ?rules,
+      'rules': ?pulumi.Input.mapOptionalInputValue<List<Rule>, List<Map<String, dynamic>>>(rules, (value) => pulumi.Input.encodeList<Rule, Map<String, dynamic>>(value, (value) => value.toMap())),
     };
   }
 
@@ -66,7 +66,7 @@ class AuthorizationPolicyArgs {
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<RuleNetworksecurityV1>()); })(),
+      rules: (() { final guardedValue = map['rules']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<Rule>(guardedValue, (value) => Rule.fromMap((value as Map).cast<String, dynamic>()))); })(),
     );
   }
 }

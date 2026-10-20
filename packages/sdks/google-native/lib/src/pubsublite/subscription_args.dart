@@ -10,19 +10,19 @@ import 'export_config.dart';
 /// {@macro pulumi_pubsublite_v1_subscription_args_doc}
 class SubscriptionArgs {
   /// The settings for this subscription's message delivery.
-  final pulumi.Input<DeliveryConfig>? deliveryConfig;
+  final pulumi.Input<DeliveryConfig?>? deliveryConfig;
   /// If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
-  final pulumi.Input<ExportConfig>? exportConfig;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<ExportConfig?>? exportConfig;
+  final pulumi.Input<String?>? location;
   /// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
   /// If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
-  final pulumi.Input<bool>? skipBacklog;
+  final pulumi.Input<bool?>? skipBacklog;
   /// Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
   final pulumi.Input<String> subscriptionId;
   /// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
-  final pulumi.Input<String>? topic;
+  final pulumi.Input<String?>? topic;
 
   /// Creates a new [SubscriptionArgs].
   /// [deliveryConfig] The settings for this subscription's message delivery.

@@ -7,9 +7,9 @@ import 'google_cloud_documentai_v1_document_page_layout.dart';
 /// A detected symbol.
 class GoogleCloudDocumentaiV1DocumentPageSymbol {
   /// A list of detected languages together with confidence.
-  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>>? detectedLanguages;
+  final pulumi.Input<List<GoogleCloudDocumentaiV1DocumentPageDetectedLanguage>?>? detectedLanguages;
   /// Layout for Symbol.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout>? layout;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageLayout?>? layout;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageSymbol].
   /// [detectedLanguages] A list of detected languages together with confidence.

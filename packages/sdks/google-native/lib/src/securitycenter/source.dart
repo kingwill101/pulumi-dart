@@ -27,8 +27,24 @@ class Source extends pulumi.CustomResource {
           'google-native:securitycenter/v1:Source',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
+    canonicalName = registerOutput<String>('canonicalName');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+  }
+
+  /// Creates a typed reference to an existing [Source] resource.
+  Source.reference(String urn)
+    : super(
+        'google-native:securitycenter/v1:Source',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     canonicalName = registerOutput<String>('canonicalName');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');

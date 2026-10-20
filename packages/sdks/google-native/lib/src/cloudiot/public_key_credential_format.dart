@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The format of the key.
-enum PublicKeyCredentialFormat {
+enum PublicKeyCredentialFormat implements pulumi.PulumiEnum<String> {
   unspecifiedPublicKeyFormat("UNSPECIFIED_PUBLIC_KEY_FORMAT"),
   rsaPem("RSA_PEM"),
   rsaX509Pem("RSA_X509_PEM"),
@@ -7,6 +9,7 @@ enum PublicKeyCredentialFormat {
   es256X509Pem("ES256_X509_PEM");
 
   const PublicKeyCredentialFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static PublicKeyCredentialFormat fromValue(String value) {

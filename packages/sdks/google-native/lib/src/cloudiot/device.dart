@@ -1,6 +1,7 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'device_args.dart';
 import 'device_config_response.dart';
+import 'device_credential_response.dart';
 import 'device_state_response.dart';
 import 'gateway_config_response.dart';
 import 'status_response.dart';
@@ -12,7 +13,7 @@ class Device extends pulumi.CustomResource {
   /// The most recent device configuration, which is eventually sent from Cloud IoT Core to the device. If not present on creation, the configuration will be initialized with an empty payload and version value of `1`. To update this field after creation, use the `DeviceManager.ModifyCloudToDeviceConfig` method.
   late final pulumi.Output<DeviceConfigResponse> config;
   /// The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
-  late final pulumi.Output<List<Map<String, dynamic>>> credentials;
+  late final pulumi.Output<List<DeviceCredentialResponse>> credentials;
   /// Gateway-related configuration and state.
   late final pulumi.Output<GatewayConfigResponse> gatewayConfig;
   /// [Output only] The last time a cloud-to-device config version acknowledgment was received from the device. This field is only for configurations sent through MQTT.
@@ -55,11 +56,11 @@ class Device extends pulumi.CustomResource {
           'google-native:cloudiot/v1:Device',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'registryId']).merge(options),
         ) {
     blocked = registerOutput<bool>('blocked');
     config = registerOutput<DeviceConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    credentials = registerOutput<List<Map<String, dynamic>>>('credentials');
+    credentials = registerOutput<List<DeviceCredentialResponse>>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeviceCredentialResponse>(guardedValue, (value) => DeviceCredentialResponse.fromMap((value as Map).cast<String, dynamic>())); });
     gatewayConfig = registerOutput<GatewayConfigResponse>('gatewayConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastConfigAckTime = registerOutput<String>('lastConfigAckTime');
     lastConfigSendTime = registerOutput<String>('lastConfigSendTime');
@@ -70,7 +71,37 @@ class Device extends pulumi.CustomResource {
     lastStateTime = registerOutput<String>('lastStateTime');
     location = registerOutput<String>('location');
     logLevel = registerOutput<String>('logLevel');
-    metadata = registerOutput<Map<String, String>>('metadata');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    numId = registerOutput<String>('numId');
+    project = registerOutput<String>('project');
+    registryId = registerOutput<String>('registryId');
+    state = registerOutput<DeviceStateResponse>('state', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceStateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [Device] resource.
+  Device.reference(String urn)
+    : super(
+        'google-native:cloudiot/v1:Device',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    blocked = registerOutput<bool>('blocked');
+    config = registerOutput<DeviceConfigResponse>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeviceConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    credentials = registerOutput<List<DeviceCredentialResponse>>('credentials', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeviceCredentialResponse>(guardedValue, (value) => DeviceCredentialResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    gatewayConfig = registerOutput<GatewayConfigResponse>('gatewayConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GatewayConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastConfigAckTime = registerOutput<String>('lastConfigAckTime');
+    lastConfigSendTime = registerOutput<String>('lastConfigSendTime');
+    lastErrorStatus = registerOutput<StatusResponse>('lastErrorStatus', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastErrorTime = registerOutput<String>('lastErrorTime');
+    lastEventTime = registerOutput<String>('lastEventTime');
+    lastHeartbeatTime = registerOutput<String>('lastHeartbeatTime');
+    lastStateTime = registerOutput<String>('lastStateTime');
+    location = registerOutput<String>('location');
+    logLevel = registerOutput<String>('logLevel');
+    metadata = registerOutput<Map<String, String>>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     numId = registerOutput<String>('numId');
     project = registerOutput<String>('project');

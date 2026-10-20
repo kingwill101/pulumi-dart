@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dataproc_v1_get_workflow_template_iam_policy_args_doc}
 class GetWorkflowTemplateIamPolicyArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> workflowTemplateId;
 
   /// Creates a new [GetWorkflowTemplateIamPolicyArgs].

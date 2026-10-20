@@ -7,13 +7,13 @@ import 'google_cloud_recaptchaenterprise_v1_web_key_settings_integration_type.da
 /// Settings specific to keys that can be used by websites.
 class GoogleCloudRecaptchaenterpriseV1WebKeySettings {
   /// Optional. If set to true, it means allowed_domains will not be enforced.
-  final pulumi.Input<bool>? allowAllDomains;
+  final pulumi.Input<bool?>? allowAllDomains;
   /// Optional. If set to true, the key can be used on AMP (Accelerated Mobile Pages) websites. This is supported only for the SCORE integration type.
-  final pulumi.Input<bool>? allowAmpTraffic;
+  final pulumi.Input<bool?>? allowAmpTraffic;
   /// Optional. Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
-  final pulumi.Input<List<String>>? allowedDomains;
+  final pulumi.Input<List<String>?>? allowedDomains;
   /// Optional. Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
-  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference>? challengeSecurityPreference;
+  final pulumi.Input<GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference?>? challengeSecurityPreference;
   /// Describes how this key is integrated with the website.
   final pulumi.Input<GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType> integrationType;
 

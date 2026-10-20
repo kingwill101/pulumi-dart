@@ -4,13 +4,13 @@
 /// Result data returned by getEnvgroupAttachment.
 class GetEnvgroupAttachmentResult {
   /// The time at which the environment group attachment was created as milliseconds since epoch.
-  final String createdAt;
+  final String? createdAt;
   /// ID of the attached environment.
-  final String environment;
+  final String? environment;
   /// ID of the environment group.
-  final String environmentGroupId;
+  final String? environmentGroupId;
   /// ID of the environment group attachment.
-  final String name;
+  final String? name;
 
   /// Creates a new [GetEnvgroupAttachmentResult].
   /// [createdAt] The time at which the environment group attachment was created as milliseconds since epoch.
@@ -18,27 +18,27 @@ class GetEnvgroupAttachmentResult {
   /// [environmentGroupId] ID of the environment group.
   /// [name] ID of the environment group attachment.
   const GetEnvgroupAttachmentResult({
-    required this.createdAt,
-    required this.environment,
-    required this.environmentGroupId,
-    required this.name,
+    this.createdAt,
+    this.environment,
+    this.environmentGroupId,
+    this.name,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createdAt': createdAt,
-      'environment': environment,
-      'environmentGroupId': environmentGroupId,
-      'name': name,
+      'createdAt': ?createdAt,
+      'environment': ?environment,
+      'environmentGroupId': ?environmentGroupId,
+      'name': ?name,
     };
   }
 
   factory GetEnvgroupAttachmentResult.fromMap(Map<String, dynamic> map) {
     return GetEnvgroupAttachmentResult(
-      createdAt: map['createdAt'] as String,
-      environment: map['environment'] as String,
-      environmentGroupId: map['environmentGroupId'] as String,
-      name: map['name'] as String,
+      createdAt: (() { final guardedValue = map['createdAt']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      environmentGroupId: (() { final guardedValue = map['environmentGroupId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

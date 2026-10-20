@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
-enum InstanceGroupManagerFailoverActionComputeBeta {
+enum InstanceGroupManagerFailoverActionComputeBeta implements pulumi.PulumiEnum<String> {
   noFailover("NO_FAILOVER"),
   unknown("UNKNOWN");
 
   const InstanceGroupManagerFailoverActionComputeBeta(this.wireValue);
+  @override
   final String wireValue;
 
   static InstanceGroupManagerFailoverActionComputeBeta fromValue(String value) {

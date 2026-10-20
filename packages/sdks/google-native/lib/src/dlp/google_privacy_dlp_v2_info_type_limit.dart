@@ -6,9 +6,9 @@ import 'google_privacy_dlp_v2_info_type.dart';
 /// Max findings configuration per infoType, per content item or long running DlpJob.
 class GooglePrivacyDlpV2InfoTypeLimit {
   /// Type of information the findings limit applies to. Only one limit per info_type should be provided. If InfoTypeLimit does not have an info_type, the DLP API applies the limit against all info_types that are found but not specified in another InfoTypeLimit.
-  final pulumi.Input<GooglePrivacyDlpV2InfoType>? infoType;
+  final pulumi.Input<GooglePrivacyDlpV2InfoType?>? infoType;
   /// Max findings limit for the given infoType.
-  final pulumi.Input<int>? maxFindings;
+  final pulumi.Input<int?>? maxFindings;
 
   /// Creates a new [GooglePrivacyDlpV2InfoTypeLimit].
   /// [infoType] Type of information the findings limit applies to. Only one limit per info_type should be provided. If InfoTypeLimit does not have an info_type, the DLP API applies the limit against all info_types that are found but not specified in another InfoTypeLimit.
@@ -28,7 +28,7 @@ class GooglePrivacyDlpV2InfoTypeLimit {
   factory GooglePrivacyDlpV2InfoTypeLimit.fromMap(Map<String, dynamic> map) {
     return GooglePrivacyDlpV2InfoTypeLimit(
       infoType: (() { final guardedValue = map['infoType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GooglePrivacyDlpV2InfoType.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      maxFindings: (() { final guardedValue = map['maxFindings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maxFindings: (() { final guardedValue = map['maxFindings']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

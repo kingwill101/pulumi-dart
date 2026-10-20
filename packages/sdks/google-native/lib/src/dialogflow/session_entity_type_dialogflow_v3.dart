@@ -1,11 +1,12 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_dialogflow_cx_v3_entity_type_entity_response.dart';
 import 'session_entity_type_dialogflow_v3_args.dart';
 
 /// Creates a session entity type.
 class SessionEntityTypeDialogflowV3 extends pulumi.CustomResource {
   late final pulumi.Output<String> agentId;
   /// The collection of entities to override or supplement the custom entity type.
-  late final pulumi.Output<List<Map<String, dynamic>>> entities;
+  late final pulumi.Output<List<GoogleCloudDialogflowCxV3EntityTypeEntityResponse>> entities;
   /// Indicates whether the additional data should override or supplement the custom entity type definition.
   late final pulumi.Output<String> entityOverrideMode;
   late final pulumi.Output<String> environmentId;
@@ -27,10 +28,29 @@ class SessionEntityTypeDialogflowV3 extends pulumi.CustomResource {
           'google-native:dialogflow/v3:SessionEntityType',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['agentId', 'environmentId', 'location', 'project', 'sessionId']).merge(options),
         ) {
     agentId = registerOutput<String>('agentId');
-    entities = registerOutput<List<Map<String, dynamic>>>('entities');
+    entities = registerOutput<List<GoogleCloudDialogflowCxV3EntityTypeEntityResponse>>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3EntityTypeEntityResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3EntityTypeEntityResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    entityOverrideMode = registerOutput<String>('entityOverrideMode');
+    environmentId = registerOutput<String>('environmentId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    sessionId = registerOutput<String>('sessionId');
+  }
+
+  /// Creates a typed reference to an existing [SessionEntityTypeDialogflowV3] resource.
+  SessionEntityTypeDialogflowV3.reference(String urn)
+    : super(
+        'google-native:dialogflow/v3:SessionEntityType',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    agentId = registerOutput<String>('agentId');
+    entities = registerOutput<List<GoogleCloudDialogflowCxV3EntityTypeEntityResponse>>('entities', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudDialogflowCxV3EntityTypeEntityResponse>(guardedValue, (value) => GoogleCloudDialogflowCxV3EntityTypeEntityResponse.fromMap((value as Map).cast<String, dynamic>())); });
     entityOverrideMode = registerOutput<String>('entityOverrideMode');
     environmentId = registerOutput<String>('environmentId');
     location = registerOutput<String>('location');

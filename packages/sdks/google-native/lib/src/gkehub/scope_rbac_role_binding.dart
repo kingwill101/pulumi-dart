@@ -44,12 +44,37 @@ class ScopeRbacRoleBinding extends pulumi.CustomResource {
           'google-native:gkehub/v1alpha:ScopeRbacRoleBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'rbacrolebindingId', 'scopeId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     group = registerOutput<String>('group');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rbacrolebindingId = registerOutput<String>('rbacrolebindingId');
+    role = registerOutput<RoleResponseGkehubV1alpha>('role', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RoleResponseGkehubV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    scopeId = registerOutput<String>('scopeId');
+    state = registerOutput<RBACRoleBindingLifecycleStateResponseGkehubV1alpha>('state', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RBACRoleBindingLifecycleStateResponseGkehubV1alpha.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    user = registerOutput<String>('user');
+  }
+
+  /// Creates a typed reference to an existing [ScopeRbacRoleBinding] resource.
+  ScopeRbacRoleBinding.reference(String urn)
+    : super(
+        'google-native:gkehub/v1alpha:ScopeRbacRoleBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    group = registerOutput<String>('group');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

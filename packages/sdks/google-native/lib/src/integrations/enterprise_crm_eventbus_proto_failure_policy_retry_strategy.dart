@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines what happens to the task upon failure.
-enum EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy {
+enum EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy implements pulumi.PulumiEnum<String> {
   unspecified("UNSPECIFIED"),
   ignore("IGNORE"),
   none("NONE"),
@@ -10,6 +12,7 @@ enum EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy {
   restartWorkflowWithBackoff("RESTART_WORKFLOW_WITH_BACKOFF");
 
   const EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmEventbusProtoFailurePolicyRetryStrategy fromValue(String value) {

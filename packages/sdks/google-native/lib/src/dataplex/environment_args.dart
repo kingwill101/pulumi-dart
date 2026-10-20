@@ -10,20 +10,20 @@ import 'google_cloud_dataplex_v1_environment_session_spec.dart';
 /// {@macro pulumi_dataplex_v1_environment_args_doc}
 class EnvironmentArgs {
   /// Optional. Description of the environment.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Optional. User friendly display name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Required. Environment identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the lake.
   final pulumi.Input<String> environmentId;
   /// Infrastructure specification for the Environment.
   final pulumi.Input<GoogleCloudDataplexV1EnvironmentInfrastructureSpec> infrastructureSpec;
   /// Optional. User defined labels for the environment.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   final pulumi.Input<String> lakeId;
-  final pulumi.Input<String>? location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? location;
+  final pulumi.Input<String?>? project;
   /// Optional. Configuration for sessions created for this environment.
-  final pulumi.Input<GoogleCloudDataplexV1EnvironmentSessionSpec>? sessionSpec;
+  final pulumi.Input<GoogleCloudDataplexV1EnvironmentSessionSpec?>? sessionSpec;
 
   /// Creates a new [EnvironmentArgs].
   /// [description] Optional. Description of the environment.

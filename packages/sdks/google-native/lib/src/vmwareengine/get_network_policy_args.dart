@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetNetworkPolicyArgs {
   final pulumi.Input<String> location;
   final pulumi.Input<String> networkPolicyId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetNetworkPolicyArgs].
   /// [location] Required.

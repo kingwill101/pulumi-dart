@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Indicates whether connections should be secured using TLS. The value of this field determines how TLS is enforced. This field can be set to one of the following: - SIMPLE Secure connections with standard TLS semantics. - MUTUAL Secure connections to the backends using mutual TLS by presenting client certificates for authentication.
-enum ServerTlsSettingsTlsMode {
+enum ServerTlsSettingsTlsMode implements pulumi.PulumiEnum<String> {
   invalid("INVALID"),
   mutual("MUTUAL"),
   simple("SIMPLE");
 
   const ServerTlsSettingsTlsMode(this.wireValue);
+  @override
   final String wireValue;
 
   static ServerTlsSettingsTlsMode fromValue(String value) {

@@ -17,9 +17,9 @@ class FolderContactArgs {
   /// The categories of notifications that the contact will receive communications for.
   final pulumi.Input<List<FolderContactNotificationCategorySubscriptionsItem>> notificationCategorySubscriptions;
   /// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
-  final pulumi.Input<String>? validateTime;
+  final pulumi.Input<String?>? validateTime;
   /// The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
-  final pulumi.Input<FolderContactValidationState>? validationState;
+  final pulumi.Input<FolderContactValidationState?>? validationState;
 
   /// Creates a new [FolderContactArgs].
   /// [email] The email address to send notifications to. The email address does not need to be a Google Account.

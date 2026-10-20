@@ -6,13 +6,13 @@ import 'gce_instance_filter.dart';
 /// Message describing resource filters
 class ResourceFilter {
   /// Filter compute engine resource
-  final pulumi.Input<GceInstanceFilter>? gceInstanceFilter;
+  final pulumi.Input<GceInstanceFilter?>? gceInstanceFilter;
   /// The label used for filter resource
-  final pulumi.Input<Map<String, String>>? inclusionLabels;
+  final pulumi.Input<Map<String, String>?>? inclusionLabels;
   /// The id pattern for filter resource
-  final pulumi.Input<List<String>>? resourceIdPatterns;
+  final pulumi.Input<List<String>?>? resourceIdPatterns;
   /// The scopes of evaluation resource
-  final pulumi.Input<List<String>>? scopes;
+  final pulumi.Input<List<String>?>? scopes;
 
   /// Creates a new [ResourceFilter].
   /// [gceInstanceFilter] Filter compute engine resource

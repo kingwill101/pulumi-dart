@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Specify what to do with extra properties when executing a request.
-enum ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta {
+enum ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta implements pulumi.PulumiEnum<String> {
   unknown("UNKNOWN"),
   include("INCLUDE"),
   ignore("IGNORE"),
@@ -8,6 +10,7 @@ enum ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta {
   fail("FAIL");
 
   const ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta(this.wireValue);
+  @override
   final String wireValue;
 
   static ValidationOptionsUndeclaredPropertiesDeploymentmanagerV2beta fromValue(String value) {

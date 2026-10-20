@@ -25,11 +25,28 @@ class AnnotationStore extends pulumi.CustomResource {
           'google-native:healthcare/v1beta1:AnnotationStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['datasetId', 'location', 'project']).merge(options),
         ) {
     annotationStoreId = registerOutput<String?>('annotationStoreId');
     datasetId = registerOutput<String>('datasetId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+  }
+
+  /// Creates a typed reference to an existing [AnnotationStore] resource.
+  AnnotationStore.reference(String urn)
+    : super(
+        'google-native:healthcare/v1beta1:AnnotationStore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotationStoreId = registerOutput<String?>('annotationStoreId');
+    datasetId = registerOutput<String>('datasetId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

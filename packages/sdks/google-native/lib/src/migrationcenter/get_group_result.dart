@@ -4,17 +4,17 @@
 /// Result data returned by getGroup.
 class GetGroupResult {
   /// The timestamp when the group was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. The description of the group.
-  final String description;
+  final String? description;
   /// Optional. User-friendly display name.
-  final String displayName;
+  final String? displayName;
   /// Labels as key value pairs.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// The name of the group.
-  final String name;
+  final String? name;
   /// The timestamp when the group was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetGroupResult].
   /// [createTime] The timestamp when the group was created.
@@ -24,33 +24,33 @@ class GetGroupResult {
   /// [name] The name of the group.
   /// [updateTime] The timestamp when the group was last updated.
   const GetGroupResult({
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.labels,
-    required this.name,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.labels,
+    this.name,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'labels': labels,
-      'name': name,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'name': ?name,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetGroupResult.fromMap(Map<String, dynamic> map) {
     return GetGroupResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

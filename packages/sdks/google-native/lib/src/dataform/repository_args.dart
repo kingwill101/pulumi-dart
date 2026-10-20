@@ -10,23 +10,23 @@ import 'workspace_compilation_overrides.dart';
 /// {@macro pulumi_dataform_v1beta1_repository_args_doc}
 class RepositoryArgs {
   /// Optional. The repository's user-friendly name.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. If set, configures this repository to be linked to a Git remote.
-  final pulumi.Input<GitRemoteSettings>? gitRemoteSettings;
+  final pulumi.Input<GitRemoteSettings?>? gitRemoteSettings;
   /// Optional. Repository user labels.
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? location;
   /// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
-  final pulumi.Input<String>? npmrcEnvironmentVariablesSecretVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? npmrcEnvironmentVariablesSecretVersion;
+  final pulumi.Input<String?>? project;
   /// Required. The ID to use for the repository, which will become the final component of the repository's resource name.
   final pulumi.Input<String> repositoryId;
   /// Optional. The service account to run workflow invocations under.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role on the created repository. To modify access to the created repository later apply setIamPolicy from https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
-  final pulumi.Input<bool>? setAuthenticatedUserAdmin;
+  final pulumi.Input<bool?>? setAuthenticatedUserAdmin;
   /// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
-  final pulumi.Input<WorkspaceCompilationOverrides>? workspaceCompilationOverrides;
+  final pulumi.Input<WorkspaceCompilationOverrides?>? workspaceCompilationOverrides;
 
   /// Creates a new [RepositoryArgs].
   /// [displayName] Optional. The repository's user-friendly name.

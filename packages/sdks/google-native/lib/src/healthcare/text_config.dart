@@ -5,11 +5,11 @@ import 'info_type_transformation.dart';
 
 class TextConfig {
   /// Transformations to apply to the detected data, overridden by `exclude_info_types`.
-  final pulumi.Input<List<InfoTypeTransformation>>? additionalTransformations;
+  final pulumi.Input<List<InfoTypeTransformation>?>? additionalTransformations;
   /// InfoTypes to skip transforming, overriding `additional_transformations`.
-  final pulumi.Input<List<String>>? excludeInfoTypes;
+  final pulumi.Input<List<String>?>? excludeInfoTypes;
   /// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
-  final pulumi.Input<List<InfoTypeTransformation>>? transformations_;
+  final pulumi.Input<List<InfoTypeTransformation>?>? transformations_;
 
   /// Creates a new [TextConfig].
   /// [additionalTransformations] Transformations to apply to the detected data, overridden by `exclude_info_types`.

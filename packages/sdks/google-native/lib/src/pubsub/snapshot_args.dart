@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_pubsub_v1_snapshot_args_doc}
 class SnapshotArgs {
   /// Optional. See [Creating and managing labels](https://cloud.google.com/pubsub/docs/labels).
-  final pulumi.Input<Map<String, String>>? labels;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<Map<String, String>?>? labels;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> snapshotId;
   /// The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
   final pulumi.Input<String> subscription;

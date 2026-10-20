@@ -39,7 +39,7 @@ class GooglePrivacyDlpV2CharacterMaskConfigResponse {
     return GooglePrivacyDlpV2CharacterMaskConfigResponse(
       charactersToIgnore: pulumi.Input.fromValue(pulumi.Input.decodeList<GooglePrivacyDlpV2CharsToIgnoreResponse>(map['charactersToIgnore']!, (value) => GooglePrivacyDlpV2CharsToIgnoreResponse.fromMap((value as Map).cast<String, dynamic>()))),
       maskingCharacter: pulumi.Input.fromValue(map['maskingCharacter'] as String),
-      numberToMask: pulumi.Input.fromValue(map['numberToMask'] as int),
+      numberToMask: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numberToMask'])),
       reverseOrder: pulumi.Input.fromValue(map['reverseOrder'] as bool),
     );
   }

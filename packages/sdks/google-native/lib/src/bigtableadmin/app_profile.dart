@@ -39,8 +39,30 @@ class AppProfile extends pulumi.CustomResource {
           'google-native:bigtableadmin/v2:AppProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['appProfileId', 'instanceId', 'project']).merge(options),
         ) {
+    appProfileId = registerOutput<String>('appProfileId');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    ignoreWarnings = registerOutput<bool?>('ignoreWarnings');
+    instanceId = registerOutput<String>('instanceId');
+    multiClusterRoutingUseAny = registerOutput<MultiClusterRoutingUseAnyResponse>('multiClusterRoutingUseAny', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return MultiClusterRoutingUseAnyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<String>('priority');
+    project = registerOutput<String>('project');
+    singleClusterRouting = registerOutput<SingleClusterRoutingResponse>('singleClusterRouting', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SingleClusterRoutingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    standardIsolation = registerOutput<StandardIsolationResponse>('standardIsolation', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return StandardIsolationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [AppProfile] resource.
+  AppProfile.reference(String urn)
+    : super(
+        'google-native:bigtableadmin/v2:AppProfile',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     appProfileId = registerOutput<String>('appProfileId');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');

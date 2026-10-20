@@ -26,7 +26,7 @@ class SqlServerDatabaseDetailsResponseSqladminV1beta4 {
 
   factory SqlServerDatabaseDetailsResponseSqladminV1beta4.fromMap(Map<String, dynamic> map) {
     return SqlServerDatabaseDetailsResponseSqladminV1beta4(
-      compatibilityLevel: pulumi.Input.fromValue(map['compatibilityLevel'] as int),
+      compatibilityLevel: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['compatibilityLevel'])),
       recoveryModel: pulumi.Input.fromValue(map['recoveryModel'] as String),
     );
   }

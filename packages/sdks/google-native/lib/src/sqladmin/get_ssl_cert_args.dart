@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_sqladmin_v1_get_ssl_cert_args_doc}
 class GetSslCertArgs {
   final pulumi.Input<String> instance;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> sha1Fingerprint;
 
   /// Creates a new [GetSslCertArgs].

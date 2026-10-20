@@ -39,14 +39,37 @@ class CertificateIssuanceConfig extends pulumi.CustomResource {
           'google-native:certificatemanager/v1:CertificateIssuanceConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['certificateIssuanceConfigId', 'location', 'project']).merge(options),
         ) {
     certificateAuthorityConfig = registerOutput<CertificateAuthorityConfigResponse>('certificateAuthorityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateAuthorityConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     certificateIssuanceConfigId = registerOutput<String>('certificateIssuanceConfigId');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     keyAlgorithm = registerOutput<String>('keyAlgorithm');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lifetime = registerOutput<String>('lifetime');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rotationWindowPercentage = registerOutput<int>('rotationWindowPercentage');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [CertificateIssuanceConfig] resource.
+  CertificateIssuanceConfig.reference(String urn)
+    : super(
+        'google-native:certificatemanager/v1:CertificateIssuanceConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificateAuthorityConfig = registerOutput<CertificateAuthorityConfigResponse>('certificateAuthorityConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CertificateAuthorityConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    certificateIssuanceConfigId = registerOutput<String>('certificateIssuanceConfigId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    keyAlgorithm = registerOutput<String>('keyAlgorithm');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lifetime = registerOutput<String>('lifetime');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

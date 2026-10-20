@@ -13,13 +13,13 @@ class GlossaryTranslateV3beta1Args {
   /// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
   final pulumi.Input<GlossaryInputConfigTranslateV3beta1> inputConfig;
   /// Used with equivalent term set glossaries.
-  final pulumi.Input<LanguageCodesSetTranslateV3beta1>? languageCodesSet;
+  final pulumi.Input<LanguageCodesSetTranslateV3beta1?>? languageCodesSet;
   /// Used with unidirectional glossaries.
-  final pulumi.Input<LanguageCodePairTranslateV3beta1>? languagePair;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<LanguageCodePairTranslateV3beta1?>? languagePair;
+  final pulumi.Input<String?>? location;
   /// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-  final pulumi.Input<String>? name;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? name;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GlossaryTranslateV3beta1Args].
   /// [inputConfig] Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.

@@ -1,15 +1,17 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'service_attachment_compute_v1_args.dart';
+import 'service_attachment_connected_endpoint_response_compute_v1.dart';
+import 'service_attachment_consumer_project_limit_response_compute_v1.dart';
 import 'uint128_response_compute_v1.dart';
 
 /// Creates a ServiceAttachment in the specified project in the given scope using the parameters that are included in the request.
 class ServiceAttachmentComputeV1 extends pulumi.CustomResource {
   /// An array of connections for all the consumers connected to this service attachment.
-  late final pulumi.Output<List<Map<String, dynamic>>> connectedEndpoints;
+  late final pulumi.Output<List<ServiceAttachmentConnectedEndpointResponseComputeV1>> connectedEndpoints;
   /// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
   late final pulumi.Output<String> connectionPreference;
   /// Projects that are allowed to connect to this service attachment.
-  late final pulumi.Output<List<Map<String, dynamic>>> consumerAcceptLists;
+  late final pulumi.Output<List<ServiceAttachmentConsumerProjectLimitResponseComputeV1>> consumerAcceptLists;
   /// Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
   late final pulumi.Output<List<String>> consumerRejectLists;
   /// Creation timestamp in RFC3339 text format.
@@ -55,20 +57,51 @@ class ServiceAttachmentComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:ServiceAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
-    connectedEndpoints = registerOutput<List<Map<String, dynamic>>>('connectedEndpoints');
+    connectedEndpoints = registerOutput<List<ServiceAttachmentConnectedEndpointResponseComputeV1>>('connectedEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceAttachmentConnectedEndpointResponseComputeV1>(guardedValue, (value) => ServiceAttachmentConnectedEndpointResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
     connectionPreference = registerOutput<String>('connectionPreference');
-    consumerAcceptLists = registerOutput<List<Map<String, dynamic>>>('consumerAcceptLists');
-    consumerRejectLists = registerOutput<List<String>>('consumerRejectLists');
+    consumerAcceptLists = registerOutput<List<ServiceAttachmentConsumerProjectLimitResponseComputeV1>>('consumerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceAttachmentConsumerProjectLimitResponseComputeV1>(guardedValue, (value) => ServiceAttachmentConsumerProjectLimitResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+    consumerRejectLists = registerOutput<List<String>>('consumerRejectLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');
-    domainNames = registerOutput<List<String>>('domainNames');
+    domainNames = registerOutput<List<String>>('domainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
     fingerprint = registerOutput<String>('fingerprint');
     kind = registerOutput<String>('kind');
     this.name = registerOutput<String>('name');
-    natSubnets = registerOutput<List<String>>('natSubnets');
+    natSubnets = registerOutput<List<String>>('natSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    producerForwardingRule = registerOutput<String>('producerForwardingRule');
+    project = registerOutput<String>('project');
+    pscServiceAttachmentId = registerOutput<Uint128ResponseComputeV1>('pscServiceAttachmentId', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Uint128ResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    reconcileConnections = registerOutput<bool>('reconcileConnections');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    targetService = registerOutput<String>('targetService');
+  }
+
+  /// Creates a typed reference to an existing [ServiceAttachmentComputeV1] resource.
+  ServiceAttachmentComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:ServiceAttachment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    connectedEndpoints = registerOutput<List<ServiceAttachmentConnectedEndpointResponseComputeV1>>('connectedEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceAttachmentConnectedEndpointResponseComputeV1>(guardedValue, (value) => ServiceAttachmentConnectedEndpointResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+    connectionPreference = registerOutput<String>('connectionPreference');
+    consumerAcceptLists = registerOutput<List<ServiceAttachmentConsumerProjectLimitResponseComputeV1>>('consumerAcceptLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ServiceAttachmentConsumerProjectLimitResponseComputeV1>(guardedValue, (value) => ServiceAttachmentConsumerProjectLimitResponseComputeV1.fromMap((value as Map).cast<String, dynamic>())); });
+    consumerRejectLists = registerOutput<List<String>>('consumerRejectLists', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    domainNames = registerOutput<List<String>>('domainNames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    enableProxyProtocol = registerOutput<bool>('enableProxyProtocol');
+    fingerprint = registerOutput<String>('fingerprint');
+    kind = registerOutput<String>('kind');
+    this.name = registerOutput<String>('name');
+    natSubnets = registerOutput<List<String>>('natSubnets', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     producerForwardingRule = registerOutput<String>('producerForwardingRule');
     project = registerOutput<String>('project');
     pscServiceAttachmentId = registerOutput<Uint128ResponseComputeV1>('pscServiceAttachmentId', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return Uint128ResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });

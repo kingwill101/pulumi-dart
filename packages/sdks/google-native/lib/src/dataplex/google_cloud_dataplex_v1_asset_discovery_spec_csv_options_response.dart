@@ -39,7 +39,7 @@ class GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsResponse {
       delimiter: pulumi.Input.fromValue(map['delimiter'] as String),
       disableTypeInference: pulumi.Input.fromValue(map['disableTypeInference'] as bool),
       encoding: pulumi.Input.fromValue(map['encoding'] as String),
-      headerRows: pulumi.Input.fromValue(map['headerRows'] as int),
+      headerRows: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['headerRows'])),
     );
   }
 }

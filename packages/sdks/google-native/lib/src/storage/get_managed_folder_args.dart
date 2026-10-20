@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storage_v1_get_managed_folder_args_doc}
 class GetManagedFolderArgs {
   final pulumi.Input<String> bucket;
-  final pulumi.Input<String>? ifMetagenerationMatch;
-  final pulumi.Input<String>? ifMetagenerationNotMatch;
+  final pulumi.Input<String?>? ifMetagenerationMatch;
+  final pulumi.Input<String?>? ifMetagenerationNotMatch;
   final pulumi.Input<String> managedFolder;
 
   /// Creates a new [GetManagedFolderArgs].

@@ -42,10 +42,10 @@ class ResourcesResponseAppengineV1beta {
 
   factory ResourcesResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return ResourcesResponseAppengineV1beta(
-      cpu: pulumi.Input.fromValue(map['cpu'] as double),
-      diskGb: pulumi.Input.fromValue(map['diskGb'] as double),
+      cpu: pulumi.Input.fromValue((map['cpu'] as num).toDouble()),
+      diskGb: pulumi.Input.fromValue((map['diskGb'] as num).toDouble()),
       kmsKeyReference: pulumi.Input.fromValue(map['kmsKeyReference'] as String),
-      memoryGb: pulumi.Input.fromValue(map['memoryGb'] as double),
+      memoryGb: pulumi.Input.fromValue((map['memoryGb'] as num).toDouble()),
       volumes: pulumi.Input.fromValue(pulumi.Input.decodeList<VolumeResponseAppengineV1beta>(map['volumes']!, (value) => VolumeResponseAppengineV1beta.fromMap((value as Map).cast<String, dynamic>()))),
     );
   }

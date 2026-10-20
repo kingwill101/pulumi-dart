@@ -6,7 +6,7 @@ import 'google_privacy_dlp_v2_big_query_table_types_types_item.dart';
 /// The types of BigQuery tables supported by Cloud DLP.
 class GooglePrivacyDlpV2BigQueryTableTypes {
   /// A set of BigQuery table types.
-  final pulumi.Input<List<GooglePrivacyDlpV2BigQueryTableTypesTypesItem>>? types;
+  final pulumi.Input<List<GooglePrivacyDlpV2BigQueryTableTypesTypesItem>?>? types;
 
   /// Creates a new [GooglePrivacyDlpV2BigQueryTableTypes].
   /// [types] A set of BigQuery table types.

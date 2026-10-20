@@ -9,13 +9,13 @@ import 'zypper_repository.dart';
 /// A package repository.
 class PackageRepository {
   /// An Apt Repository.
-  final pulumi.Input<AptRepository>? apt;
+  final pulumi.Input<AptRepository?>? apt;
   /// A Goo Repository.
-  final pulumi.Input<GooRepository>? goo;
+  final pulumi.Input<GooRepository?>? goo;
   /// A Yum Repository.
-  final pulumi.Input<YumRepository>? yum;
+  final pulumi.Input<YumRepository?>? yum;
   /// A Zypper Repository.
-  final pulumi.Input<ZypperRepository>? zypper;
+  final pulumi.Input<ZypperRepository?>? zypper;
 
   /// Creates a new [PackageRepository].
   /// [apt] An Apt Repository.

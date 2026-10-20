@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
-enum ResourceCommitmentType {
+enum ResourceCommitmentType implements pulumi.PulumiEnum<String> {
   accelerator("ACCELERATOR"),
   localSsd("LOCAL_SSD"),
   memory("MEMORY"),
@@ -7,6 +9,7 @@ enum ResourceCommitmentType {
   vcpu("VCPU");
 
   const ResourceCommitmentType(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourceCommitmentType fromValue(String value) {

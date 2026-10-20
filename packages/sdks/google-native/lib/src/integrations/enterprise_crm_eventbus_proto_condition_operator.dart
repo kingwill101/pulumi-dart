@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Operator used to evaluate the condition. Please note that an operator with an inappropriate key/value operand will result in IllegalArgumentException, e.g. CONTAINS with boolean key/value pair.
-enum EnterpriseCrmEventbusProtoConditionOperator {
+enum EnterpriseCrmEventbusProtoConditionOperator implements pulumi.PulumiEnum<String> {
   unset("UNSET"),
   equals("EQUALS"),
   contains("CONTAINS"),
@@ -11,6 +13,7 @@ enum EnterpriseCrmEventbusProtoConditionOperator {
   isNotEmpty("IS_NOT_EMPTY");
 
   const EnterpriseCrmEventbusProtoConditionOperator(this.wireValue);
+  @override
   final String wireValue;
 
   static EnterpriseCrmEventbusProtoConditionOperator fromValue(String value) {

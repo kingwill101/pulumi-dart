@@ -30,8 +30,27 @@ class Variable extends pulumi.CustomResource {
           'google-native:runtimeconfig/v1beta1:Variable',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['configId', 'project']).merge(options),
         ) {
+    configId = registerOutput<String>('configId');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    text = registerOutput<String>('text');
+    updateTime = registerOutput<String>('updateTime');
+    value = registerOutput<String>('value');
+  }
+
+  /// Creates a typed reference to an existing [Variable] resource.
+  Variable.reference(String urn)
+    : super(
+        'google-native:runtimeconfig/v1beta1:Variable',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     configId = registerOutput<String>('configId');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

@@ -37,10 +37,10 @@ class NodeGroupDataprocV1 extends pulumi.CustomResource {
           'google-native:dataproc/v1:NodeGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['clusterId', 'project', 'regionId']).merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     nodeGroupConfig = registerOutput<InstanceGroupConfigResponse>('nodeGroupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     nodeGroupId = registerOutput<String?>('nodeGroupId');
@@ -48,6 +48,27 @@ class NodeGroupDataprocV1 extends pulumi.CustomResource {
     project = registerOutput<String>('project');
     regionId = registerOutput<String>('regionId');
     requestId = registerOutput<String?>('requestId');
-    roles = registerOutput<List<String>>('roles');
+    roles = registerOutput<List<String>>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [NodeGroupDataprocV1] resource.
+  NodeGroupDataprocV1.reference(String urn)
+    : super(
+        'google-native:dataproc/v1:NodeGroup',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterId = registerOutput<String>('clusterId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    nodeGroupConfig = registerOutput<InstanceGroupConfigResponse>('nodeGroupConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return InstanceGroupConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nodeGroupId = registerOutput<String?>('nodeGroupId');
+    parentOperationId = registerOutput<String?>('parentOperationId');
+    project = registerOutput<String>('project');
+    regionId = registerOutput<String>('regionId');
+    requestId = registerOutput<String?>('requestId');
+    roles = registerOutput<List<String>>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

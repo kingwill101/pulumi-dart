@@ -12,21 +12,21 @@ import 'url_map_security_level.dart';
 /// URL pattern and description of how the URL should be handled. App Engine can handle URLs by executing application code or by serving static files uploaded with the version, such as images, CSS, or JavaScript.
 class UrlMap {
   /// Uses API Endpoints to handle requests.
-  final pulumi.Input<ApiEndpointHandler>? apiEndpoint;
+  final pulumi.Input<ApiEndpointHandler?>? apiEndpoint;
   /// Action to take when users access resources that require authentication. Defaults to redirect.
-  final pulumi.Input<UrlMapAuthFailAction>? authFailAction;
+  final pulumi.Input<UrlMapAuthFailAction?>? authFailAction;
   /// Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
-  final pulumi.Input<UrlMapLogin>? login;
+  final pulumi.Input<UrlMapLogin?>? login;
   /// 30x code to use when performing redirects for the secure field. Defaults to 302.
-  final pulumi.Input<UrlMapRedirectHttpResponseCode>? redirectHttpResponseCode;
+  final pulumi.Input<UrlMapRedirectHttpResponseCode?>? redirectHttpResponseCode;
   /// Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto".
-  final pulumi.Input<ScriptHandler>? script;
+  final pulumi.Input<ScriptHandler?>? script;
   /// Security (HTTPS) enforcement for this URL.
-  final pulumi.Input<UrlMapSecurityLevel>? securityLevel;
+  final pulumi.Input<UrlMapSecurityLevel?>? securityLevel;
   /// Returns the contents of a file, such as an image, as the response.
-  final pulumi.Input<StaticFilesHandler>? staticFiles;
+  final pulumi.Input<StaticFilesHandler?>? staticFiles;
   /// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
-  final pulumi.Input<String>? urlRegex;
+  final pulumi.Input<String?>? urlRegex;
 
   /// Creates a new [UrlMap].
   /// [apiEndpoint] Uses API Endpoints to handle requests.

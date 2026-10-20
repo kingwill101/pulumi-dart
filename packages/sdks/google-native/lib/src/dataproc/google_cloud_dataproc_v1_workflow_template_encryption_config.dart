@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Encryption settings for the encrypting customer core content. NEXT ID: 2
 class GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig {
   /// Optional. The Cloud KMS key name to use for encrypting customer core content.
-  final pulumi.Input<String>? kmsKey;
+  final pulumi.Input<String?>? kmsKey;
 
   /// Creates a new [GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig].
   /// [kmsKey] Optional. The Cloud KMS key name to use for encrypting customer core content.

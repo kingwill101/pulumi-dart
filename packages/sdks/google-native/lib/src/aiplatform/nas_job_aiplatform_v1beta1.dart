@@ -49,7 +49,7 @@ class NasJobAiplatformV1beta1 extends pulumi.CustomResource {
           'google-native:aiplatform/v1beta1:NasJob',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
@@ -57,7 +57,33 @@ class NasJobAiplatformV1beta1 extends pulumi.CustomResource {
     encryptionSpec = registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endTime = registerOutput<String>('endTime');
     error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleRpcStatusResponseAiplatformV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nasJobOutput = registerOutput<GoogleCloudAiplatformV1beta1NasJobOutputResponse>('nasJobOutput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1NasJobOutputResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    nasJobSpec = registerOutput<GoogleCloudAiplatformV1beta1NasJobSpecResponse>('nasJobSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1NasJobSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [NasJobAiplatformV1beta1] resource.
+  NasJobAiplatformV1beta1.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1beta1:NasJob',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    enableRestrictedImageTraining = registerOutput<bool>('enableRestrictedImageTraining');
+    encryptionSpec = registerOutput<GoogleCloudAiplatformV1beta1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endTime = registerOutput<String>('endTime');
+    error = registerOutput<GoogleRpcStatusResponseAiplatformV1beta1>('error', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleRpcStatusResponseAiplatformV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     nasJobOutput = registerOutput<GoogleCloudAiplatformV1beta1NasJobOutputResponse>('nasJobOutput', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1beta1NasJobOutputResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

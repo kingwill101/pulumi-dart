@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The desired format of the notification message payloads.
-enum NotificationConfigPayloadFormat {
+enum NotificationConfigPayloadFormat implements pulumi.PulumiEnum<String> {
   payloadFormatUnspecified("PAYLOAD_FORMAT_UNSPECIFIED"),
   none("NONE"),
   json("JSON");
 
   const NotificationConfigPayloadFormat(this.wireValue);
+  @override
   final String wireValue;
 
   static NotificationConfigPayloadFormat fromValue(String value) {

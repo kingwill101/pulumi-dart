@@ -27,8 +27,24 @@ class Folder extends pulumi.CustomResource {
           'google-native:cloudresourcemanager/v2:Folder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['parent']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    lifecycleState = registerOutput<String>('lifecycleState');
+    this.name = registerOutput<String>('name');
+    parent = registerOutput<String>('parent');
+  }
+
+  /// Creates a typed reference to an existing [Folder] resource.
+  Folder.reference(String urn)
+    : super(
+        'google-native:cloudresourcemanager/v2:Folder',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     lifecycleState = registerOutput<String>('lifecycleState');

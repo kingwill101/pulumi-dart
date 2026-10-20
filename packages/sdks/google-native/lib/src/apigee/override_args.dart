@@ -9,13 +9,13 @@ import 'google_cloud_apigee_v1_trace_sampling_config.dart';
 /// {@macro pulumi_apigee_v1_override_args_doc}
 class OverrideArgs {
   /// ID of the API proxy that will have its trace configuration overridden.
-  final pulumi.Input<String>? apiProxy;
+  final pulumi.Input<String?>? apiProxy;
   final pulumi.Input<String> environmentId;
   /// ID of the trace configuration override specified as a system-generated UUID.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   final pulumi.Input<String> organizationId;
   /// Trace configuration to override.
-  final pulumi.Input<GoogleCloudApigeeV1TraceSamplingConfig>? samplingConfig;
+  final pulumi.Input<GoogleCloudApigeeV1TraceSamplingConfig?>? samplingConfig;
 
   /// Creates a new [OverrideArgs].
   /// [apiProxy] ID of the API proxy that will have its trace configuration overridden.

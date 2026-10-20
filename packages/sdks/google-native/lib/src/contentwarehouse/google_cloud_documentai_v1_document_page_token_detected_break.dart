@@ -6,7 +6,7 @@ import 'google_cloud_documentai_v1_document_page_token_detected_break_type.dart'
 /// Detected break at the end of a Token.
 class GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak {
   /// Detected break type.
-  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType>? type;
+  final pulumi.Input<GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakType?>? type;
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak].
   /// [type] Detected break type.

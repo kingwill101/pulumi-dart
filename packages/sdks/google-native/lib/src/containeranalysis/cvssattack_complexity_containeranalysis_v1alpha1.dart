@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defined in CVSS v3, CVSS v2
-enum CVSSAttackComplexityContaineranalysisV1alpha1 {
+enum CVSSAttackComplexityContaineranalysisV1alpha1 implements pulumi.PulumiEnum<String> {
   attackComplexityUnspecified("ATTACK_COMPLEXITY_UNSPECIFIED"),
   attackComplexityLow("ATTACK_COMPLEXITY_LOW"),
   attackComplexityHigh("ATTACK_COMPLEXITY_HIGH"),
   attackComplexityMedium("ATTACK_COMPLEXITY_MEDIUM");
 
   const CVSSAttackComplexityContaineranalysisV1alpha1(this.wireValue);
+  @override
   final String wireValue;
 
   static CVSSAttackComplexityContaineranalysisV1alpha1 fromValue(String value) {

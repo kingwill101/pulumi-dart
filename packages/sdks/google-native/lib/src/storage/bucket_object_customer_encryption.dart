@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
 class BucketObjectCustomerEncryption {
   /// The encryption algorithm.
-  final pulumi.Input<String>? encryptionAlgorithm;
+  final pulumi.Input<String?>? encryptionAlgorithm;
   /// SHA256 hash value of the encryption key.
-  final pulumi.Input<String>? keySha256;
+  final pulumi.Input<String?>? keySha256;
 
   /// Creates a new [BucketObjectCustomerEncryption].
   /// [encryptionAlgorithm] The encryption algorithm.

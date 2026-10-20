@@ -7,11 +7,11 @@ import 'request_based_sli.dart';
 /// A PerformanceThreshold is used when each window is good when that window has a sufficiently high performance.
 class PerformanceThreshold {
   /// BasicSli to evaluate to judge window quality.
-  final pulumi.Input<BasicSli>? basicSliPerformance;
+  final pulumi.Input<BasicSli?>? basicSliPerformance;
   /// RequestBasedSli to evaluate to judge window quality.
-  final pulumi.Input<RequestBasedSli>? performance;
+  final pulumi.Input<RequestBasedSli?>? performance;
   /// If window performance &gt;= threshold, the window is counted as good.
-  final pulumi.Input<double>? threshold;
+  final pulumi.Input<double?>? threshold;
 
   /// Creates a new [PerformanceThreshold].
   /// [basicSliPerformance] BasicSli to evaluate to judge window quality.
@@ -35,7 +35,7 @@ class PerformanceThreshold {
     return PerformanceThreshold(
       basicSliPerformance: (() { final guardedValue = map['basicSliPerformance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BasicSli.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       performance: (() { final guardedValue = map['performance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(RequestBasedSli.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      threshold: (() { final guardedValue = map['threshold']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

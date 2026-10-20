@@ -5,9 +5,9 @@ import 'sort_options_sort_order.dart';
 
 class SortOptions {
   /// The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
-  final pulumi.Input<String>? operatorName;
+  final pulumi.Input<String?>? operatorName;
   /// Ascending is the default sort order
-  final pulumi.Input<SortOptionsSortOrder>? sortOrder;
+  final pulumi.Input<SortOptionsSortOrder?>? sortOrder;
 
   /// Creates a new [SortOptions].
   /// [operatorName] The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.

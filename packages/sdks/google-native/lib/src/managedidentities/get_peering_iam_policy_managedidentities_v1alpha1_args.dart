@@ -7,9 +7,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_managedidentities_v1alpha1_get_peering_iam_policy_managedidentities_v1alpha1_args_doc}
 class GetPeeringIamPolicyManagedidentitiesV1alpha1Args {
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
   final pulumi.Input<String> peeringId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetPeeringIamPolicyManagedidentitiesV1alpha1Args].
   /// [optionsRequestedPolicyVersion] Optional.
@@ -31,7 +31,7 @@ class GetPeeringIamPolicyManagedidentitiesV1alpha1Args {
 
   factory GetPeeringIamPolicyManagedidentitiesV1alpha1Args.fromMap(Map<String, dynamic> map) {
     return GetPeeringIamPolicyManagedidentitiesV1alpha1Args(
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       peeringId: pulumi.Input.fromValue(map['peeringId'] as String),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

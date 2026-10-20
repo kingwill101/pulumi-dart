@@ -3,6 +3,8 @@ import 'google_cloud_run_v2_binary_authorization_response.dart';
 import 'google_cloud_run_v2_condition_response.dart';
 import 'google_cloud_run_v2_revision_template_response.dart';
 import 'google_cloud_run_v2_service_scaling_response.dart';
+import 'google_cloud_run_v2_traffic_target_response.dart';
+import 'google_cloud_run_v2_traffic_target_status_response.dart';
 import 'service_run_v2_args.dart';
 
 /// Creates a new Service in a given project and location.
@@ -16,7 +18,7 @@ class ServiceRunV2 extends pulumi.CustomResource {
   /// Arbitrary version identifier for the API client.
   late final pulumi.Output<String> clientVersion;
   /// The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
-  late final pulumi.Output<List<Map<String, dynamic>>> conditions;
+  late final pulumi.Output<List<GoogleCloudRunV2ConditionResponse>> conditions;
   /// The creation time.
   late final pulumi.Output<String> createTime;
   /// Email address of the authenticated creator.
@@ -64,9 +66,9 @@ class ServiceRunV2 extends pulumi.CustomResource {
   /// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
   late final pulumi.Output<GoogleCloudRunV2ConditionResponse> terminalCondition;
   /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
-  late final pulumi.Output<List<Map<String, dynamic>>> traffic;
+  late final pulumi.Output<List<GoogleCloudRunV2TrafficTargetResponse>> traffic;
   /// Detailed status information for corresponding traffic targets. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
-  late final pulumi.Output<List<Map<String, dynamic>>> trafficStatuses;
+  late final pulumi.Output<List<GoogleCloudRunV2TrafficTargetStatusResponse>> trafficStatuses;
   /// Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
   late final pulumi.Output<String> uid;
   /// The last-modified time.
@@ -86,23 +88,23 @@ class ServiceRunV2 extends pulumi.CustomResource {
           'google-native:run/v2:Service',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'serviceId']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     binaryAuthorization = registerOutput<GoogleCloudRunV2BinaryAuthorizationResponse>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRunV2BinaryAuthorizationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     client = registerOutput<String>('client');
     clientVersion = registerOutput<String>('clientVersion');
-    conditions = registerOutput<List<Map<String, dynamic>>>('conditions');
+    conditions = registerOutput<List<GoogleCloudRunV2ConditionResponse>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRunV2ConditionResponse>(guardedValue, (value) => GoogleCloudRunV2ConditionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     createTime = registerOutput<String>('createTime');
     creator = registerOutput<String>('creator');
-    customAudiences = registerOutput<List<String>>('customAudiences');
+    customAudiences = registerOutput<List<String>>('customAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String>('description');
     etag = registerOutput<String>('etag');
     expireTime = registerOutput<String>('expireTime');
     generation = registerOutput<String>('generation');
     ingress = registerOutput<String>('ingress');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     lastModifier = registerOutput<String>('lastModifier');
     latestCreatedRevision = registerOutput<String>('latestCreatedRevision');
     latestReadyRevision = registerOutput<String>('latestReadyRevision');
@@ -117,8 +119,53 @@ class ServiceRunV2 extends pulumi.CustomResource {
     serviceId = registerOutput<String>('serviceId');
     template = registerOutput<GoogleCloudRunV2RevisionTemplateResponse>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRunV2RevisionTemplateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     terminalCondition = registerOutput<GoogleCloudRunV2ConditionResponse>('terminalCondition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRunV2ConditionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    traffic = registerOutput<List<Map<String, dynamic>>>('traffic');
-    trafficStatuses = registerOutput<List<Map<String, dynamic>>>('trafficStatuses');
+    traffic = registerOutput<List<GoogleCloudRunV2TrafficTargetResponse>>('traffic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRunV2TrafficTargetResponse>(guardedValue, (value) => GoogleCloudRunV2TrafficTargetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    trafficStatuses = registerOutput<List<GoogleCloudRunV2TrafficTargetStatusResponse>>('trafficStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRunV2TrafficTargetStatusResponse>(guardedValue, (value) => GoogleCloudRunV2TrafficTargetStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    uri = registerOutput<String>('uri');
+  }
+
+  /// Creates a typed reference to an existing [ServiceRunV2] resource.
+  ServiceRunV2.reference(String urn)
+    : super(
+        'google-native:run/v2:Service',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    binaryAuthorization = registerOutput<GoogleCloudRunV2BinaryAuthorizationResponse>('binaryAuthorization', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRunV2BinaryAuthorizationResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    client = registerOutput<String>('client');
+    clientVersion = registerOutput<String>('clientVersion');
+    conditions = registerOutput<List<GoogleCloudRunV2ConditionResponse>>('conditions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRunV2ConditionResponse>(guardedValue, (value) => GoogleCloudRunV2ConditionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    createTime = registerOutput<String>('createTime');
+    creator = registerOutput<String>('creator');
+    customAudiences = registerOutput<List<String>>('customAudiences', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    deleteTime = registerOutput<String>('deleteTime');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    expireTime = registerOutput<String>('expireTime');
+    generation = registerOutput<String>('generation');
+    ingress = registerOutput<String>('ingress');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    lastModifier = registerOutput<String>('lastModifier');
+    latestCreatedRevision = registerOutput<String>('latestCreatedRevision');
+    latestReadyRevision = registerOutput<String>('latestReadyRevision');
+    launchStage = registerOutput<String>('launchStage');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    observedGeneration = registerOutput<String>('observedGeneration');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    satisfiesPzs = registerOutput<bool>('satisfiesPzs');
+    scaling = registerOutput<GoogleCloudRunV2ServiceScalingResponse>('scaling', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRunV2ServiceScalingResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    serviceId = registerOutput<String>('serviceId');
+    template = registerOutput<GoogleCloudRunV2RevisionTemplateResponse>('template', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRunV2RevisionTemplateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    terminalCondition = registerOutput<GoogleCloudRunV2ConditionResponse>('terminalCondition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRunV2ConditionResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    traffic = registerOutput<List<GoogleCloudRunV2TrafficTargetResponse>>('traffic', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRunV2TrafficTargetResponse>(guardedValue, (value) => GoogleCloudRunV2TrafficTargetResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    trafficStatuses = registerOutput<List<GoogleCloudRunV2TrafficTargetStatusResponse>>('trafficStatuses', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudRunV2TrafficTargetStatusResponse>(guardedValue, (value) => GoogleCloudRunV2TrafficTargetStatusResponse.fromMap((value as Map).cast<String, dynamic>())); });
     uid = registerOutput<String>('uid');
     updateTime = registerOutput<String>('updateTime');
     uri = registerOutput<String>('uri');

@@ -4,8 +4,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// A signature object consists of the KeyID used and the signature itself.
 class GrafeasV1beta1IntotoSignature {
-  final pulumi.Input<String>? keyid;
-  final pulumi.Input<String>? sig;
+  final pulumi.Input<String?>? keyid;
+  final pulumi.Input<String?>? sig;
 
   /// Creates a new [GrafeasV1beta1IntotoSignature].
   /// [keyid] Optional.

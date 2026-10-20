@@ -47,7 +47,7 @@ class GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataR
   factory GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionDataResponse(
       answerRecord: pulumi.Input.fromValue(map['answerRecord'] as String),
-      confidence: pulumi.Input.fromValue(map['confidence'] as double),
+      confidence: pulumi.Input.fromValue((map['confidence'] as num).toDouble()),
       conversationModel: pulumi.Input.fromValue(map['conversationModel'] as String),
       metadata: pulumi.Input.fromValue((map['metadata'] as Map).cast<String, String>()),
       text: pulumi.Input.fromValue(map['text'] as String),

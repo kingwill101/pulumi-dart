@@ -9,7 +9,7 @@ class CryptoKeyVersionTemplate {
   /// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
   final pulumi.Input<CryptoKeyVersionTemplateAlgorithm> algorithm;
   /// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
-  final pulumi.Input<CryptoKeyVersionTemplateProtectionLevel>? protectionLevel;
+  final pulumi.Input<CryptoKeyVersionTemplateProtectionLevel?>? protectionLevel;
 
   /// Creates a new [CryptoKeyVersionTemplate].
   /// [algorithm] Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.

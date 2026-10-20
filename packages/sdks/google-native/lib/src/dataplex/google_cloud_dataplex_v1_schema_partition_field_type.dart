@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Immutable. The type of field.
-enum GoogleCloudDataplexV1SchemaPartitionFieldType {
+enum GoogleCloudDataplexV1SchemaPartitionFieldType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   boolean("BOOLEAN"),
   byte("BYTE"),
@@ -18,6 +20,7 @@ enum GoogleCloudDataplexV1SchemaPartitionFieldType {
   null_("NULL");
 
   const GoogleCloudDataplexV1SchemaPartitionFieldType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDataplexV1SchemaPartitionFieldType fromValue(String value) {

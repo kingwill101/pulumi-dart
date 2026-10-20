@@ -7,13 +7,13 @@ import 'enterprise_crm_eventbus_proto_next_teardown_task.dart';
 
 class EnterpriseCrmEventbusProtoTeardownTaskConfig {
   /// The creator's email address.
-  final pulumi.Input<String>? creatorEmail;
+  final pulumi.Input<String?>? creatorEmail;
   /// Unique identifier of the teardown task within this Config. We use this field as the identifier to find next teardown tasks.
   final pulumi.Input<String> name;
-  final pulumi.Input<EnterpriseCrmEventbusProtoNextTeardownTask>? nextTeardownTask;
+  final pulumi.Input<EnterpriseCrmEventbusProtoNextTeardownTask?>? nextTeardownTask;
   /// The parameters the user can pass to this task.
-  final pulumi.Input<EnterpriseCrmEventbusProtoEventParameters>? parameters;
-  final pulumi.Input<EnterpriseCrmEventbusProtoEventBusProperties>? properties;
+  final pulumi.Input<EnterpriseCrmEventbusProtoEventParameters?>? parameters;
+  final pulumi.Input<EnterpriseCrmEventbusProtoEventBusProperties?>? properties;
   /// Implementation class name.
   final pulumi.Input<String> teardownTaskImplementationClassName;
 

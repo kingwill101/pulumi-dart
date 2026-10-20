@@ -8,8 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_artifactregistry_v1beta1_get_repository_iam_policy_artifactregistry_v1beta1_args_doc}
 class GetRepositoryIamPolicyArtifactregistryV1beta1Args {
   final pulumi.Input<String> location;
-  final pulumi.Input<int>? optionsRequestedPolicyVersion;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<int?>? optionsRequestedPolicyVersion;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> repositoryId;
 
   /// Creates a new [GetRepositoryIamPolicyArtifactregistryV1beta1Args].
@@ -36,7 +36,7 @@ class GetRepositoryIamPolicyArtifactregistryV1beta1Args {
   factory GetRepositoryIamPolicyArtifactregistryV1beta1Args.fromMap(Map<String, dynamic> map) {
     return GetRepositoryIamPolicyArtifactregistryV1beta1Args(
       location: pulumi.Input.fromValue(map['location'] as String),
-      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      optionsRequestedPolicyVersion: (() { final guardedValue = map['optionsRequestedPolicyVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       repositoryId: pulumi.Input.fromValue(map['repositoryId'] as String),
     );

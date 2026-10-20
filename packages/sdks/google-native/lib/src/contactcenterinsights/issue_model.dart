@@ -40,8 +40,31 @@ class IssueModel extends pulumi.CustomResource {
           'google-native:contactcenterinsights/v1:IssueModel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    displayName = registerOutput<String>('displayName');
+    inputDataConfig = registerOutput<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse>('inputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    issueCount = registerOutput<String>('issueCount');
+    languageCode = registerOutput<String>('languageCode');
+    location = registerOutput<String>('location');
+    modelType = registerOutput<String>('modelType');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    trainingStats = registerOutput<GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse>('trainingStats', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [IssueModel] resource.
+  IssueModel.reference(String urn)
+    : super(
+        'google-native:contactcenterinsights/v1:IssueModel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     displayName = registerOutput<String>('displayName');
     inputDataConfig = registerOutput<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse>('inputDataConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

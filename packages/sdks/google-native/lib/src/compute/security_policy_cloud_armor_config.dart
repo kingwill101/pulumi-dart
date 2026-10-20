@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration options for Cloud Armor.
 class SecurityPolicyCloudArmorConfig {
   /// If set to true, enables Cloud Armor Machine Learning.
-  final pulumi.Input<bool>? enableMl;
+  final pulumi.Input<bool?>? enableMl;
 
   /// Creates a new [SecurityPolicyCloudArmorConfig].
   /// [enableMl] If set to true, enables Cloud Armor Machine Learning.

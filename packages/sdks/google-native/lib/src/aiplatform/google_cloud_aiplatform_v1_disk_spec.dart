@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the spec of disk options.
 class GoogleCloudAiplatformV1DiskSpec {
   /// Size in GB of the boot disk (default is 100GB).
-  final pulumi.Input<int>? bootDiskSizeGb;
+  final pulumi.Input<int?>? bootDiskSizeGb;
   /// Type of the boot disk (default is "pd-ssd"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-  final pulumi.Input<String>? bootDiskType;
+  final pulumi.Input<String?>? bootDiskType;
 
   /// Creates a new [GoogleCloudAiplatformV1DiskSpec].
   /// [bootDiskSizeGb] Size in GB of the boot disk (default is 100GB).
@@ -26,7 +26,7 @@ class GoogleCloudAiplatformV1DiskSpec {
 
   factory GoogleCloudAiplatformV1DiskSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudAiplatformV1DiskSpec(
-      bootDiskSizeGb: (() { final guardedValue = map['bootDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      bootDiskSizeGb: (() { final guardedValue = map['bootDiskSizeGb']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       bootDiskType: (() { final guardedValue = map['bootDiskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

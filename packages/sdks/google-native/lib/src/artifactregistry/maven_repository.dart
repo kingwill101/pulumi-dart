@@ -6,7 +6,7 @@ import 'maven_repository_public_repository.dart';
 /// Configuration for a Maven remote repository.
 class MavenRepository {
   /// One of the publicly available Maven repositories supported by Artifact Registry.
-  final pulumi.Input<MavenRepositoryPublicRepository>? publicRepository;
+  final pulumi.Input<MavenRepositoryPublicRepository?>? publicRepository;
 
   /// Creates a new [MavenRepository].
   /// [publicRepository] One of the publicly available Maven repositories supported by Artifact Registry.

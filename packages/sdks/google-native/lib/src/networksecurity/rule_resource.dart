@@ -42,8 +42,33 @@ class RuleResource extends pulumi.CustomResource {
           'google-native:networksecurity/v1beta1:Rule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['gatewaySecurityPolicyId', 'location', 'project']).merge(options),
         ) {
+    applicationMatcher = registerOutput<String>('applicationMatcher');
+    basicProfile = registerOutput<String>('basicProfile');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    enabled = registerOutput<bool>('enabled');
+    gatewaySecurityPolicyId = registerOutput<String>('gatewaySecurityPolicyId');
+    gatewaySecurityPolicyRuleId = registerOutput<String?>('gatewaySecurityPolicyRuleId');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    priority = registerOutput<int>('priority');
+    project = registerOutput<String>('project');
+    sessionMatcher = registerOutput<String>('sessionMatcher');
+    tlsInspectionEnabled = registerOutput<bool>('tlsInspectionEnabled');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [RuleResource] resource.
+  RuleResource.reference(String urn)
+    : super(
+        'google-native:networksecurity/v1beta1:Rule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     applicationMatcher = registerOutput<String>('applicationMatcher');
     basicProfile = registerOutput<String>('basicProfile');
     createTime = registerOutput<String>('createTime');

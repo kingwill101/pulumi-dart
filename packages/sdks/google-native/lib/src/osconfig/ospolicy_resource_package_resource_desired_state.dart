@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The desired state the agent should maintain for this package.
-enum OSPolicyResourcePackageResourceDesiredState {
+enum OSPolicyResourcePackageResourceDesiredState implements pulumi.PulumiEnum<String> {
   desiredStateUnspecified("DESIRED_STATE_UNSPECIFIED"),
   installed("INSTALLED"),
   removed("REMOVED");
 
   const OSPolicyResourcePackageResourceDesiredState(this.wireValue);
+  @override
   final String wireValue;
 
   static OSPolicyResourcePackageResourceDesiredState fromValue(String value) {

@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// actuation_mode controls the behavior of the controller
-enum NamespaceActuationFeatureSpecActuationMode {
+enum NamespaceActuationFeatureSpecActuationMode implements pulumi.PulumiEnum<String> {
   actuationModeUnspecified("ACTUATION_MODE_UNSPECIFIED"),
   actuationModeCreateAndDeleteIfCreated("ACTUATION_MODE_CREATE_AND_DELETE_IF_CREATED"),
   actuationModeAddAndRemoveFleetLabels("ACTUATION_MODE_ADD_AND_REMOVE_FLEET_LABELS");
 
   const NamespaceActuationFeatureSpecActuationMode(this.wireValue);
+  @override
   final String wireValue;
 
   static NamespaceActuationFeatureSpecActuationMode fromValue(String value) {

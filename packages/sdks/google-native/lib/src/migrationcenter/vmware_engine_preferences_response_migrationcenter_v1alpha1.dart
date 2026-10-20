@@ -37,9 +37,9 @@ class VmwareEnginePreferencesResponseMigrationcenterV1alpha1 {
   factory VmwareEnginePreferencesResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return VmwareEnginePreferencesResponseMigrationcenterV1alpha1(
       commitmentPlan: pulumi.Input.fromValue(map['commitmentPlan'] as String),
-      cpuOvercommitRatio: pulumi.Input.fromValue(map['cpuOvercommitRatio'] as double),
-      memoryOvercommitRatio: pulumi.Input.fromValue(map['memoryOvercommitRatio'] as double),
-      storageDeduplicationCompressionRatio: pulumi.Input.fromValue(map['storageDeduplicationCompressionRatio'] as double),
+      cpuOvercommitRatio: pulumi.Input.fromValue((map['cpuOvercommitRatio'] as num).toDouble()),
+      memoryOvercommitRatio: pulumi.Input.fromValue((map['memoryOvercommitRatio'] as num).toDouble()),
+      storageDeduplicationCompressionRatio: pulumi.Input.fromValue((map['storageDeduplicationCompressionRatio'] as num).toDouble()),
     );
   }
 }

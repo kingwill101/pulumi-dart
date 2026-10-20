@@ -9,10 +9,10 @@ import 'output_config.dart';
 /// {@macro pulumi_cloudtrace_v2beta1_trace_sink_args_doc}
 class TraceSinkArgs {
   /// The canonical sink resource name, unique within the project. Must be of the form: projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The export destination.
   final pulumi.Input<OutputConfig> outputConfig;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [TraceSinkArgs].
   /// [name] The canonical sink resource name, unique within the project. Must be of the form: projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.

@@ -6,7 +6,7 @@ import 'compensation_entry.dart';
 /// Job compensation details.
 class CompensationInfo {
   /// Optional. Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as ** base compensation entry ** for the job.
-  final pulumi.Input<List<CompensationEntry>>? entries;
+  final pulumi.Input<List<CompensationEntry>?>? entries;
 
   /// Creates a new [CompensationInfo].
   /// [entries] Optional. Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as ** base compensation entry ** for the job.

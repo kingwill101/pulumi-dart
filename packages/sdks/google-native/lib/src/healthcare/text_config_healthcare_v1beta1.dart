@@ -7,13 +7,13 @@ import 'text_config_profile_type.dart';
 /// Configures how to transform sensitive text `InfoTypes`.
 class TextConfigHealthcareV1beta1 {
   /// Additional transformations to apply to the detected data, overriding `profile`.
-  final pulumi.Input<List<InfoTypeTransformationHealthcareV1beta1>>? additionalTransformations;
+  final pulumi.Input<List<InfoTypeTransformationHealthcareV1beta1>?>? additionalTransformations;
   /// InfoTypes to skip transforming, overriding `profile`.
-  final pulumi.Input<List<String>>? excludeInfoTypes;
+  final pulumi.Input<List<String>?>? excludeInfoTypes;
   /// Base profile type for text transformation.
-  final pulumi.Input<TextConfigProfileType>? profileType;
+  final pulumi.Input<TextConfigProfileType?>? profileType;
   /// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
-  final pulumi.Input<List<InfoTypeTransformationHealthcareV1beta1>>? transformations_;
+  final pulumi.Input<List<InfoTypeTransformationHealthcareV1beta1>?>? transformations_;
 
   /// Creates a new [TextConfigHealthcareV1beta1].
   /// [additionalTransformations] Additional transformations to apply to the detected data, overriding `profile`.

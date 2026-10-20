@@ -4,29 +4,29 @@
 /// Result data returned by getTargetPool.
 class GetTargetPoolComputeBetaResult {
   /// The server-defined URL for the resource. This field is applicable only when the containing target pool is serving a forwarding rule as the primary pool, and its failoverRatio field is properly set to a value between [0, 1]. backupPool and failoverRatio together define the fallback behavior of the primary target pool: if the ratio of the healthy instances in the primary pool is at or below failoverRatio, traffic arriving at the load-balanced IP will be directed to the backup pool. In case where failoverRatio and backupPool are not set, or all the instances in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy instances with the best effort, or to all instances when no instance is healthy.
-  final String backupPool;
+  final String? backupPool;
   /// Creation timestamp in RFC3339 text format.
-  final String creationTimestamp;
+  final String? creationTimestamp;
   /// An optional description of this resource. Provide this property when you create the resource.
-  final String description;
+  final String? description;
   /// This field is applicable only when the containing target pool is serving a forwarding rule as the primary pool (i.e., not as a backup pool to some other target pool). The value of the field must be in [0, 1]. If set, backupPool must also be set. They together define the fallback behavior of the primary target pool: if the ratio of the healthy instances in the primary pool is at or below this number, traffic arriving at the load-balanced IP will be directed to the backup pool. In case where failoverRatio is not set or all the instances in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy instances with the best effort, or to all instances when no instance is healthy.
-  final double failoverRatio;
+  final double? failoverRatio;
   /// The URL of the HttpHealthCheck resource. A member instance in this pool is considered healthy if and only if the health checks pass. Only legacy HttpHealthChecks are supported. Only one health check may be specified.
-  final List<String> healthChecks;
+  final List<String>? healthChecks;
   /// A list of resource URLs to the virtual machine instances serving this pool. They must live in zones contained in the same region as this pool.
-  final List<String> instances;
+  final List<String>? instances;
   /// Type of the resource. Always compute#targetPool for target pools.
-  final String kind;
+  final String? kind;
   /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  final String name;
+  final String? name;
   /// URL of the region where the target pool resides.
-  final String region;
+  final String? region;
   /// The resource URL for the security policy associated with this target pool.
-  final String securityPolicy;
+  final String? securityPolicy;
   /// Server-defined URL for the resource.
-  final String selfLink;
+  final String? selfLink;
   /// Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
-  final String sessionAffinity;
+  final String? sessionAffinity;
 
   /// Creates a new [GetTargetPoolComputeBetaResult].
   /// [backupPool] The server-defined URL for the resource. This field is applicable only when the containing target pool is serving a forwarding rule as the primary pool, and its failoverRatio field is properly set to a value between [0, 1]. backupPool and failoverRatio together define the fallback behavior of the primary target pool: if the ratio of the healthy instances in the primary pool is at or below failoverRatio, traffic arriving at the load-balanced IP will be directed to the backup pool. In case where failoverRatio and backupPool are not set, or all the instances in the backup pool are unhealthy, the traffic will be directed back to the primary pool in the "force" mode, where traffic will be spread to the healthy instances with the best effort, or to all instances when no instance is healthy.
@@ -42,51 +42,51 @@ class GetTargetPoolComputeBetaResult {
   /// [selfLink] Server-defined URL for the resource.
   /// [sessionAffinity] Session affinity option, must be one of the following values: NONE: Connections from the same client IP may go to any instance in the pool. CLIENT_IP: Connections from the same client IP will go to the same instance in the pool while that instance remains healthy. CLIENT_IP_PROTO: Connections from the same client IP with the same IP protocol will go to the same instance in the pool while that instance remains healthy.
   const GetTargetPoolComputeBetaResult({
-    required this.backupPool,
-    required this.creationTimestamp,
-    required this.description,
-    required this.failoverRatio,
-    required this.healthChecks,
-    required this.instances,
-    required this.kind,
-    required this.name,
-    required this.region,
-    required this.securityPolicy,
-    required this.selfLink,
-    required this.sessionAffinity,
+    this.backupPool,
+    this.creationTimestamp,
+    this.description,
+    this.failoverRatio,
+    this.healthChecks,
+    this.instances,
+    this.kind,
+    this.name,
+    this.region,
+    this.securityPolicy,
+    this.selfLink,
+    this.sessionAffinity,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'backupPool': backupPool,
-      'creationTimestamp': creationTimestamp,
-      'description': description,
-      'failoverRatio': failoverRatio,
-      'healthChecks': healthChecks,
-      'instances': instances,
-      'kind': kind,
-      'name': name,
-      'region': region,
-      'securityPolicy': securityPolicy,
-      'selfLink': selfLink,
-      'sessionAffinity': sessionAffinity,
+      'backupPool': ?backupPool,
+      'creationTimestamp': ?creationTimestamp,
+      'description': ?description,
+      'failoverRatio': ?failoverRatio,
+      'healthChecks': ?healthChecks,
+      'instances': ?instances,
+      'kind': ?kind,
+      'name': ?name,
+      'region': ?region,
+      'securityPolicy': ?securityPolicy,
+      'selfLink': ?selfLink,
+      'sessionAffinity': ?sessionAffinity,
     };
   }
 
   factory GetTargetPoolComputeBetaResult.fromMap(Map<String, dynamic> map) {
     return GetTargetPoolComputeBetaResult(
-      backupPool: map['backupPool'] as String,
-      creationTimestamp: map['creationTimestamp'] as String,
-      description: map['description'] as String,
-      failoverRatio: map['failoverRatio'] as double,
-      healthChecks: (map['healthChecks'] as List).cast<String>(),
-      instances: (map['instances'] as List).cast<String>(),
-      kind: map['kind'] as String,
-      name: map['name'] as String,
-      region: map['region'] as String,
-      securityPolicy: map['securityPolicy'] as String,
-      selfLink: map['selfLink'] as String,
-      sessionAffinity: map['sessionAffinity'] as String,
+      backupPool: (() { final guardedValue = map['backupPool']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      creationTimestamp: (() { final guardedValue = map['creationTimestamp']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      failoverRatio: (() { final guardedValue = map['failoverRatio']; if (guardedValue == null) return null; return (guardedValue as num).toDouble(); })(),
+      healthChecks: (() { final guardedValue = map['healthChecks']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      instances: (() { final guardedValue = map['instances']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      kind: (() { final guardedValue = map['kind']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      securityPolicy: (() { final guardedValue = map['securityPolicy']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      selfLink: (() { final guardedValue = map['selfLink']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sessionAffinity: (() { final guardedValue = map['sessionAffinity']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

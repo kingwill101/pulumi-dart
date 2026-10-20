@@ -35,7 +35,7 @@ class BucketCorsItemResponse {
 
   factory BucketCorsItemResponse.fromMap(Map<String, dynamic> map) {
     return BucketCorsItemResponse(
-      maxAgeSeconds: pulumi.Input.fromValue(map['maxAgeSeconds'] as int),
+      maxAgeSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxAgeSeconds'])),
       method: pulumi.Input.fromValue((map['method'] as List).cast<String>()),
       origin: pulumi.Input.fromValue((map['origin'] as List).cast<String>()),
       responseHeader: pulumi.Input.fromValue((map['responseHeader'] as List).cast<String>()),

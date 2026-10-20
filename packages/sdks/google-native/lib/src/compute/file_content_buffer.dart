@@ -5,9 +5,9 @@ import 'file_content_buffer_file_type.dart';
 
 class FileContentBuffer {
   /// The raw content in the secure keys file.
-  final pulumi.Input<String>? content;
+  final pulumi.Input<String?>? content;
   /// The file type of source file.
-  final pulumi.Input<FileContentBufferFileType>? fileType;
+  final pulumi.Input<FileContentBufferFileType?>? fileType;
 
   /// Creates a new [FileContentBuffer].
   /// [content] The raw content in the secure keys file.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A reference to a StoredInfoType to use with scanning.
 class GooglePrivacyDlpV2StoredType {
   /// Timestamp indicating when the version of the `StoredInfoType` used for inspection was created. Output-only field, populated by the system.
-  final pulumi.Input<String>? createTime;
+  final pulumi.Input<String?>? createTime;
   /// Resource name of the requested `StoredInfoType`, for example `organizations/433245324/storedInfoTypes/432452342` or `projects/project-id/storedInfoTypes/432452342`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [GooglePrivacyDlpV2StoredType].
   /// [createTime] Timestamp indicating when the version of the `StoredInfoType` used for inspection was created. Output-only field, populated by the system.

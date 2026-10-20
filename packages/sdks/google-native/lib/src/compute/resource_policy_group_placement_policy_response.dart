@@ -61,15 +61,15 @@ class ResourcePolicyGroupPlacementPolicyResponse {
 
   factory ResourcePolicyGroupPlacementPolicyResponse.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyGroupPlacementPolicyResponse(
-      availabilityDomainCount: pulumi.Input.fromValue(map['availabilityDomainCount'] as int),
+      availabilityDomainCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['availabilityDomainCount'])),
       collocation: pulumi.Input.fromValue(map['collocation'] as String),
       locality: pulumi.Input.fromValue(map['locality'] as String),
-      maxDistance: pulumi.Input.fromValue(map['maxDistance'] as int),
+      maxDistance: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxDistance'])),
       scope: pulumi.Input.fromValue(map['scope'] as String),
-      sliceCount: pulumi.Input.fromValue(map['sliceCount'] as int),
+      sliceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sliceCount'])),
       style: pulumi.Input.fromValue(map['style'] as String),
       tpuTopology: pulumi.Input.fromValue(map['tpuTopology'] as String),
-      vmCount: pulumi.Input.fromValue(map['vmCount'] as int),
+      vmCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vmCount'])),
     );
   }
 }

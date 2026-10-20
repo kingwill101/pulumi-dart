@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The new job state.
-enum MessageNewJobState {
+enum MessageNewJobState implements pulumi.PulumiEnum<String> {
   stateUnspecified("STATE_UNSPECIFIED"),
   queued("QUEUED"),
   scheduled("SCHEDULED"),
@@ -9,6 +11,7 @@ enum MessageNewJobState {
   deletionInProgress("DELETION_IN_PROGRESS");
 
   const MessageNewJobState(this.wireValue);
+  @override
   final String wireValue;
 
   static MessageNewJobState fromValue(String value) {

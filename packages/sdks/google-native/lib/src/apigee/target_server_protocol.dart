@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The protocol used by this TargetServer.
-enum TargetServerProtocol {
+enum TargetServerProtocol implements pulumi.PulumiEnum<String> {
   protocolUnspecified("PROTOCOL_UNSPECIFIED"),
   http("HTTP"),
   http2("HTTP2"),
@@ -8,6 +10,7 @@ enum TargetServerProtocol {
   externalCallout("EXTERNAL_CALLOUT");
 
   const TargetServerProtocol(this.wireValue);
+  @override
   final String wireValue;
 
   static TargetServerProtocol fromValue(String value) {

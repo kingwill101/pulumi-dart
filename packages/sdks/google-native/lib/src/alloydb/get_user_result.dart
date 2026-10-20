@@ -4,13 +4,13 @@
 /// Result data returned by getUser.
 class GetUserResult {
   /// Optional. List of database roles this user has. The database role strings are subject to the PostgreSQL naming conventions.
-  final List<String> databaseRoles;
+  final List<String>? databaseRoles;
   /// Name of the resource in the form of projects/{project}/locations/{location}/cluster/{cluster}/users/{user}.
-  final String name;
+  final String? name;
   /// Input only. Password for the user.
-  final String password;
+  final String? password;
   /// Optional. Type of this user.
-  final String userType;
+  final String? userType;
 
   /// Creates a new [GetUserResult].
   /// [databaseRoles] Optional. List of database roles this user has. The database role strings are subject to the PostgreSQL naming conventions.
@@ -18,27 +18,27 @@ class GetUserResult {
   /// [password] Input only. Password for the user.
   /// [userType] Optional. Type of this user.
   const GetUserResult({
-    required this.databaseRoles,
-    required this.name,
-    required this.password,
-    required this.userType,
+    this.databaseRoles,
+    this.name,
+    this.password,
+    this.userType,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'databaseRoles': databaseRoles,
-      'name': name,
-      'password': password,
-      'userType': userType,
+      'databaseRoles': ?databaseRoles,
+      'name': ?name,
+      'password': ?password,
+      'userType': ?userType,
     };
   }
 
   factory GetUserResult.fromMap(Map<String, dynamic> map) {
     return GetUserResult(
-      databaseRoles: (map['databaseRoles'] as List).cast<String>(),
-      name: map['name'] as String,
-      password: map['password'] as String,
-      userType: map['userType'] as String,
+      databaseRoles: (() { final guardedValue = map['databaseRoles']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      password: (() { final guardedValue = map['password']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      userType: (() { final guardedValue = map['userType']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

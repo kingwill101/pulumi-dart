@@ -10,7 +10,7 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel {
   /// The default candidate. If the model fails at serving time, we fall back to the default.
   final pulumi.Input<GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate> defaultCandidate;
   /// Optional. The name to display for the panel.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
 
   /// Creates a new [GoogleCloudRetailV2alphaModelPageOptimizationConfigPanel].
   /// [candidates] The candidates to consider on the panel.

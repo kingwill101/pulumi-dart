@@ -11,23 +11,23 @@ import 'firewall_policy_vpc_network_scope.dart';
 /// {@macro pulumi_compute_alpha_firewall_policy_args_doc}
 class FirewallPolicyArgs {
   /// A list of associations that belong to this firewall policy.
-  final pulumi.Input<List<FirewallPolicyAssociation>>? associations;
+  final pulumi.Input<List<FirewallPolicyAssociation>?>? associations;
   /// An optional description of this resource. Provide this property when you create the resource.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Deprecated, please use short name instead. User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by Google Cloud which uniquely identifies the Organization Firewall Policy.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
-  final pulumi.Input<String>? parentId;
+  final pulumi.Input<String?>? parentId;
   /// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
-  final pulumi.Input<List<FirewallPolicyRule>>? rules;
+  final pulumi.Input<List<FirewallPolicyRule>?>? rules;
   /// User-provided name of the Organization firewall policy. The name should be unique in the organization in which the firewall policy is created. This field is not applicable to network firewall policies. This name must be set on creation and cannot be changed. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-  final pulumi.Input<String>? shortName;
+  final pulumi.Input<String?>? shortName;
   /// The scope of networks allowed to be associated with the firewall policy. This field can be either GLOBAL_VPC_NETWORK or REGIONAL_VPC_NETWORK. A firewall policy with the VPC scope set to GLOBAL_VPC_NETWORK is allowed to be attached only to global networks. When the VPC scope is set to REGIONAL_VPC_NETWORK the firewall policy is allowed to be attached only to regional networks in the same scope as the firewall policy. Note: if not specified then GLOBAL_VPC_NETWORK will be used.
-  final pulumi.Input<FirewallPolicyVpcNetworkScope>? vpcNetworkScope;
+  final pulumi.Input<FirewallPolicyVpcNetworkScope?>? vpcNetworkScope;
 
   /// Creates a new [FirewallPolicyArgs].
   /// [associations] A list of associations that belong to this firewall policy.

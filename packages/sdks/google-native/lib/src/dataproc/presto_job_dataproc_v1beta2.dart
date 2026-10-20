@@ -7,19 +7,19 @@ import 'query_list_dataproc_v1beta2.dart';
 /// A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT: The Dataproc Presto Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/presto) must be enabled when the cluster is created to submit a Presto job to the cluster.
 class PrestoJobDataprocV1beta2 {
   /// Optional. Presto client tags to attach to this query
-  final pulumi.Input<List<String>>? clientTags;
+  final pulumi.Input<List<String>?>? clientTags;
   /// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
-  final pulumi.Input<bool>? continueOnFailure;
+  final pulumi.Input<bool?>? continueOnFailure;
   /// Optional. The runtime log config for job execution.
-  final pulumi.Input<LoggingConfigDataprocV1beta2>? loggingConfig;
+  final pulumi.Input<LoggingConfigDataprocV1beta2?>? loggingConfig;
   /// Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
-  final pulumi.Input<String>? outputFormat;
+  final pulumi.Input<String?>? outputFormat;
   /// Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
-  final pulumi.Input<Map<String, String>>? properties;
+  final pulumi.Input<Map<String, String>?>? properties;
   /// The HCFS URI of the script that contains SQL queries.
-  final pulumi.Input<String>? queryFileUri;
+  final pulumi.Input<String?>? queryFileUri;
   /// A list of queries.
-  final pulumi.Input<QueryListDataprocV1beta2>? queryList;
+  final pulumi.Input<QueryListDataprocV1beta2?>? queryList;
 
   /// Creates a new [PrestoJobDataprocV1beta2].
   /// [clientTags] Optional. Presto client tags to attach to this query

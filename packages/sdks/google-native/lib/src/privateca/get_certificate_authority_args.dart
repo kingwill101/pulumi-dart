@@ -10,7 +10,7 @@ class GetCertificateAuthorityArgs {
   final pulumi.Input<String> caPoolId;
   final pulumi.Input<String> certificateAuthorityId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetCertificateAuthorityArgs].
   /// [caPoolId] Required.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
-enum GooglePrivacyDlpV2InspectConfigMinLikelihood {
+enum GooglePrivacyDlpV2InspectConfigMinLikelihood implements pulumi.PulumiEnum<String> {
   likelihoodUnspecified("LIKELIHOOD_UNSPECIFIED"),
   veryUnlikely("VERY_UNLIKELY"),
   unlikely("UNLIKELY"),
@@ -8,6 +10,7 @@ enum GooglePrivacyDlpV2InspectConfigMinLikelihood {
   veryLikely("VERY_LIKELY");
 
   const GooglePrivacyDlpV2InspectConfigMinLikelihood(this.wireValue);
+  @override
   final String wireValue;
 
   static GooglePrivacyDlpV2InspectConfigMinLikelihood fromValue(String value) {

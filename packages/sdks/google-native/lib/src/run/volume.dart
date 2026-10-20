@@ -8,13 +8,13 @@ import 'secret_volume_source.dart';
 /// Volume represents a named volume in a container.
 class Volume {
   /// Not supported in Cloud Run.
-  final pulumi.Input<ConfigMapVolumeSource>? configMap;
+  final pulumi.Input<ConfigMapVolumeSource?>? configMap;
   /// Ephemeral storage used as a shared volume.
-  final pulumi.Input<EmptyDirVolumeSource>? emptyDir;
+  final pulumi.Input<EmptyDirVolumeSource?>? emptyDir;
   /// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
-  final pulumi.Input<SecretVolumeSource>? secret;
+  final pulumi.Input<SecretVolumeSource?>? secret;
 
   /// Creates a new [Volume].
   /// [configMap] Not supported in Cloud Run.

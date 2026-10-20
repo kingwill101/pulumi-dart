@@ -8,11 +8,11 @@ import 'google_cloud_aiplatform_v1beta1_model_monitoring_objective_config_explan
 /// Output from BatchPredictionJob for Model Monitoring baseline dataset, which can be used to generate baseline attribution scores.
 class GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline {
   /// BigQuery location for BatchExplain output.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1BigQueryDestination>? bigquery;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1BigQueryDestination?>? bigquery;
   /// Cloud Storage location for BatchExplain output.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1GcsDestination>? gcs;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1GcsDestination?>? gcs;
   /// The storage format of the predictions generated BatchPrediction job.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormat>? predictionFormat;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaselinePredictionFormat?>? predictionFormat;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ModelMonitoringObjectiveConfigExplanationConfigExplanationBaseline].
   /// [bigquery] BigQuery location for BatchExplain output.

@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_beta_get_snapshot_compute_beta_args_doc}
 class GetSnapshotComputeBetaArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> snapshot;
 
   /// Creates a new [GetSnapshotComputeBetaArgs].

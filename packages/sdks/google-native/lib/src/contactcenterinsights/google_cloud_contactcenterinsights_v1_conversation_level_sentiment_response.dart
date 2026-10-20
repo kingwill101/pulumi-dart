@@ -27,7 +27,7 @@ class GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse {
 
   factory GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse(
-      channelTag: pulumi.Input.fromValue(map['channelTag'] as int),
+      channelTag: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['channelTag'])),
       sentimentData: pulumi.Input.fromValue(GoogleCloudContactcenterinsightsV1SentimentDataResponse.fromMap((map['sentimentData']! as Map).cast<String, dynamic>())),
     );
   }

@@ -7,11 +7,11 @@ import 'spark_standalone_autoscaling_config.dart';
 /// Basic algorithm for autoscaling.
 class BasicAutoscalingAlgorithm {
   /// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
-  final pulumi.Input<String>? cooldownPeriod;
+  final pulumi.Input<String?>? cooldownPeriod;
   /// Optional. Spark Standalone autoscaling configuration
-  final pulumi.Input<SparkStandaloneAutoscalingConfig>? sparkStandaloneConfig;
+  final pulumi.Input<SparkStandaloneAutoscalingConfig?>? sparkStandaloneConfig;
   /// Optional. YARN autoscaling configuration.
-  final pulumi.Input<BasicYarnAutoscalingConfig>? yarnConfig;
+  final pulumi.Input<BasicYarnAutoscalingConfig?>? yarnConfig;
 
   /// Creates a new [BasicAutoscalingAlgorithm].
   /// [cooldownPeriod] Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.

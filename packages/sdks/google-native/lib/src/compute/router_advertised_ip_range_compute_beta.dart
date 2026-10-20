@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Description-tagged IP ranges for the router to advertise.
 class RouterAdvertisedIpRangeComputeBeta {
   /// User-specified description for the IP range.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The IP range to advertise. The value must be a CIDR-formatted string.
-  final pulumi.Input<String>? range;
+  final pulumi.Input<String?>? range;
 
   /// Creates a new [RouterAdvertisedIpRangeComputeBeta].
   /// [description] User-specified description for the IP range.

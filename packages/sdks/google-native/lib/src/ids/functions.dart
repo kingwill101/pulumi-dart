@@ -20,6 +20,17 @@ Future<GetEndpointResult> getEndpoint(
   return GetEndpointResult.fromMap(result);
 }
 
+pulumi.Output<GetEndpointResult> getEndpointOutput(
+  GetEndpointArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:ids/v1:getEndpoint',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_ids_v1_get_endpoint_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetEndpointIamPolicyResult> getEndpointIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetEndpointIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetEndpointIamPolicyResult> getEndpointIamPolicyOutput(
+  GetEndpointIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:ids/v1:getEndpointIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetEndpointIamPolicyResult.fromMap);
 }

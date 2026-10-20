@@ -13,19 +13,19 @@ import 'google_cloud_billing_budgets_v1beta1_threshold_rule.dart';
 /// {@macro pulumi_billingbudgets_v1beta1_budget_billingbudgets_v1beta1_args_doc}
 class BudgetBillingbudgetsV1beta1Args {
   /// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
-  final pulumi.Input<GoogleCloudBillingBudgetsV1beta1AllUpdatesRule>? allUpdatesRule;
+  final pulumi.Input<GoogleCloudBillingBudgetsV1beta1AllUpdatesRule?>? allUpdatesRule;
   /// Budgeted amount.
   final pulumi.Input<GoogleCloudBillingBudgetsV1beta1BudgetAmount> amount;
   final pulumi.Input<String> billingAccountId;
   /// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
-  final pulumi.Input<GoogleCloudBillingBudgetsV1beta1Filter>? budgetFilter;
+  final pulumi.Input<GoogleCloudBillingBudgetsV1beta1Filter?>? budgetFilter;
   /// User data for display name in UI. Validation: &lt;= 60 chars.
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
-  final pulumi.Input<String>? etag;
-  final pulumi.Input<BudgetOwnershipScopeBillingbudgetsV1beta1>? ownershipScope;
+  final pulumi.Input<String?>? etag;
+  final pulumi.Input<BudgetOwnershipScopeBillingbudgetsV1beta1?>? ownershipScope;
   /// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
-  final pulumi.Input<List<GoogleCloudBillingBudgetsV1beta1ThresholdRule>>? thresholdRules;
+  final pulumi.Input<List<GoogleCloudBillingBudgetsV1beta1ThresholdRule>?>? thresholdRules;
 
   /// Creates a new [BudgetBillingbudgetsV1beta1Args].
   /// [allUpdatesRule] Optional. Rules to apply to notifications sent based on budget spend and thresholds.

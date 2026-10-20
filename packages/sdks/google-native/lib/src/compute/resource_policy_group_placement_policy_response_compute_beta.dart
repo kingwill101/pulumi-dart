@@ -46,12 +46,12 @@ class ResourcePolicyGroupPlacementPolicyResponseComputeBeta {
 
   factory ResourcePolicyGroupPlacementPolicyResponseComputeBeta.fromMap(Map<String, dynamic> map) {
     return ResourcePolicyGroupPlacementPolicyResponseComputeBeta(
-      availabilityDomainCount: pulumi.Input.fromValue(map['availabilityDomainCount'] as int),
+      availabilityDomainCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['availabilityDomainCount'])),
       collocation: pulumi.Input.fromValue(map['collocation'] as String),
-      maxDistance: pulumi.Input.fromValue(map['maxDistance'] as int),
-      sliceCount: pulumi.Input.fromValue(map['sliceCount'] as int),
+      maxDistance: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxDistance'])),
+      sliceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sliceCount'])),
       tpuTopology: pulumi.Input.fromValue(map['tpuTopology'] as String),
-      vmCount: pulumi.Input.fromValue(map['vmCount'] as int),
+      vmCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vmCount'])),
     );
   }
 }

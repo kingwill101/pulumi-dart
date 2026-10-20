@@ -6,9 +6,9 @@ import 'google_cloud_ml_v1_metric_spec_name.dart';
 /// MetricSpec contains the specifications to use to calculate the desired nodes count when autoscaling is enabled.
 class GoogleCloudMlV1MetricSpec {
   /// metric name.
-  final pulumi.Input<GoogleCloudMlV1MetricSpecName>? name;
+  final pulumi.Input<GoogleCloudMlV1MetricSpecName?>? name;
   /// Target specifies the target value for the given metric; once real metric deviates from the threshold by a certain percentage, the node count changes.
-  final pulumi.Input<int>? target;
+  final pulumi.Input<int?>? target;
 
   /// Creates a new [GoogleCloudMlV1MetricSpec].
   /// [name] metric name.
@@ -28,7 +28,7 @@ class GoogleCloudMlV1MetricSpec {
   factory GoogleCloudMlV1MetricSpec.fromMap(Map<String, dynamic> map) {
     return GoogleCloudMlV1MetricSpec(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudMlV1MetricSpecName.fromValue(guardedValue as String)); })(),
-      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      target: (() { final guardedValue = map['target']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

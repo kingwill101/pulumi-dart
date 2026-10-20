@@ -6,7 +6,7 @@ import 'consumer.dart';
 /// Network configuration for the Dataproc Metastore service.
 class NetworkConfig {
   /// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
-  final pulumi.Input<List<Consumer>>? consumers;
+  final pulumi.Input<List<Consumer>?>? consumers;
 
   /// Creates a new [NetworkConfig].
   /// [consumers] Immutable. The consumer-side network configuration for the Dataproc Metastore instance.

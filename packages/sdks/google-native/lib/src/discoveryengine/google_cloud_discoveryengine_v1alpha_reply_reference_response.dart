@@ -37,8 +37,8 @@ class GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse {
   factory GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDiscoveryengineV1alphaReplyReferenceResponse(
       anchorText: pulumi.Input.fromValue(map['anchorText'] as String),
-      end: pulumi.Input.fromValue(map['end'] as int),
-      start: pulumi.Input.fromValue(map['start'] as int),
+      end: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['end'])),
+      start: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['start'])),
       uri: pulumi.Input.fromValue(map['uri'] as String),
     );
   }

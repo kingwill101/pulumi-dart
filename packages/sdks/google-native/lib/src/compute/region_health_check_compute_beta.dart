@@ -55,8 +55,39 @@ class RegionHealthCheckComputeBeta extends pulumi.CustomResource {
           'google-native:compute/beta:RegionHealthCheck',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'region']).merge(options),
         ) {
+    checkIntervalSec = registerOutput<int>('checkIntervalSec');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    grpcHealthCheck = registerOutput<GRPCHealthCheckResponseComputeBeta>('grpcHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GRPCHealthCheckResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    healthyThreshold = registerOutput<int>('healthyThreshold');
+    http2HealthCheck = registerOutput<HTTP2HealthCheckResponseComputeBeta>('http2HealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HTTP2HealthCheckResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpHealthCheck = registerOutput<HTTPHealthCheckResponseComputeBeta>('httpHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HTTPHealthCheckResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    httpsHealthCheck = registerOutput<HTTPSHealthCheckResponseComputeBeta>('httpsHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HTTPSHealthCheckResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    kind = registerOutput<String>('kind');
+    logConfig = registerOutput<HealthCheckLogConfigResponseComputeBeta>('logConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return HealthCheckLogConfigResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    region = registerOutput<String>('region');
+    requestId = registerOutput<String?>('requestId');
+    selfLink = registerOutput<String>('selfLink');
+    sslHealthCheck = registerOutput<SSLHealthCheckResponseComputeBeta>('sslHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SSLHealthCheckResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    tcpHealthCheck = registerOutput<TCPHealthCheckResponseComputeBeta>('tcpHealthCheck', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TCPHealthCheckResponseComputeBeta.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    timeoutSec = registerOutput<int>('timeoutSec');
+    type = registerOutput<String>('type');
+    unhealthyThreshold = registerOutput<int>('unhealthyThreshold');
+  }
+
+  /// Creates a typed reference to an existing [RegionHealthCheckComputeBeta] resource.
+  RegionHealthCheckComputeBeta.reference(String urn)
+    : super(
+        'google-native:compute/beta:RegionHealthCheck',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     checkIntervalSec = registerOutput<int>('checkIntervalSec');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');

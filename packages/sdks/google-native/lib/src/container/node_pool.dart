@@ -15,35 +15,35 @@ import 'upgrade_settings.dart';
 /// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
 class NodePool {
   /// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
-  final pulumi.Input<NodePoolAutoscaling>? autoscaling;
+  final pulumi.Input<NodePoolAutoscaling?>? autoscaling;
   /// Enable best effort provisioning for nodes
-  final pulumi.Input<BestEffortProvisioning>? bestEffortProvisioning;
+  final pulumi.Input<BestEffortProvisioning?>? bestEffortProvisioning;
   /// Which conditions caused the current node pool state.
-  final pulumi.Input<List<StatusCondition>>? conditions;
+  final pulumi.Input<List<StatusCondition>?>? conditions;
   /// The node configuration of the pool.
-  final pulumi.Input<NodeConfig>? config;
+  final pulumi.Input<NodeConfig?>? config;
   /// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
-  final pulumi.Input<String>? etag;
+  final pulumi.Input<String?>? etag;
   /// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
-  final pulumi.Input<int>? initialNodeCount;
+  final pulumi.Input<int?>? initialNodeCount;
   /// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
-  final pulumi.Input<List<String>>? locations;
+  final pulumi.Input<List<String>?>? locations;
   /// NodeManagement configuration for this NodePool.
-  final pulumi.Input<NodeManagement>? management;
+  final pulumi.Input<NodeManagement?>? management;
   /// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
-  final pulumi.Input<MaxPodsConstraint>? maxPodsConstraint;
+  final pulumi.Input<MaxPodsConstraint?>? maxPodsConstraint;
   /// The name of the node pool.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
-  final pulumi.Input<NodeNetworkConfig>? networkConfig;
+  final pulumi.Input<NodeNetworkConfig?>? networkConfig;
   /// Specifies the node placement policy.
-  final pulumi.Input<PlacementPolicy>? placementPolicy;
+  final pulumi.Input<PlacementPolicy?>? placementPolicy;
   /// Specifies the configuration of queued provisioning.
-  final pulumi.Input<QueuedProvisioning>? queuedProvisioning;
+  final pulumi.Input<QueuedProvisioning?>? queuedProvisioning;
   /// Upgrade settings control disruption and speed of the upgrade.
-  final pulumi.Input<UpgradeSettings>? upgradeSettings;
+  final pulumi.Input<UpgradeSettings?>? upgradeSettings;
   /// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [NodePool].
   /// [autoscaling] Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
@@ -106,7 +106,7 @@ class NodePool {
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<StatusCondition>(guardedValue, (value) => StatusCondition.fromMap((value as Map).cast<String, dynamic>()))); })(),
       config: (() { final guardedValue = map['config']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeConfig.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      initialNodeCount: (() { final guardedValue = map['initialNodeCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       locations: (() { final guardedValue = map['locations']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       management: (() { final guardedValue = map['management']; if (guardedValue == null) return null; return pulumi.Input.fromValue(NodeManagement.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       maxPodsConstraint: (() { final guardedValue = map['maxPodsConstraint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(MaxPodsConstraint.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

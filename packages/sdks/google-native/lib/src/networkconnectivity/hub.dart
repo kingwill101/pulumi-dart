@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'hub_args.dart';
+import 'routing_vpcresponse.dart';
 import 'spoke_summary_response.dart';
 
 /// Creates a new Network Connectivity Center hub in the specified project.
@@ -21,7 +22,7 @@ class Hub extends pulumi.CustomResource {
   /// The route tables that belong to this hub. They use the following form: `projects/{project_number}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}` This field is read-only. Network Connectivity Center automatically populates it based on the route tables nested under the hub.
   late final pulumi.Output<List<String>> routeTables;
   /// The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center automatically populates it based on the set of spokes attached to the hub.
-  late final pulumi.Output<List<Map<String, dynamic>>> routingVpcs;
+  late final pulumi.Output<List<RoutingVPCResponse>> routingVpcs;
   /// A summary of the spokes associated with a hub. The summary includes a count of spokes according to type and according to state. If any spokes are inactive, the summary also lists the reasons they are inactive, including a count for each reason.
   late final pulumi.Output<SpokeSummaryResponse> spokeSummary;
   /// The current lifecycle state of this hub.
@@ -43,17 +44,41 @@ class Hub extends pulumi.CustomResource {
           'google-native:networkconnectivity/v1:Hub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['hubId', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     hubId = registerOutput<String>('hubId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     requestId = registerOutput<String?>('requestId');
-    routeTables = registerOutput<List<String>>('routeTables');
-    routingVpcs = registerOutput<List<Map<String, dynamic>>>('routingVpcs');
+    routeTables = registerOutput<List<String>>('routeTables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    routingVpcs = registerOutput<List<RoutingVPCResponse>>('routingVpcs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingVPCResponse>(guardedValue, (value) => RoutingVPCResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    spokeSummary = registerOutput<SpokeSummaryResponse>('spokeSummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeSummaryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    state = registerOutput<String>('state');
+    uniqueId = registerOutput<String>('uniqueId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Hub] resource.
+  Hub.reference(String urn)
+    : super(
+        'google-native:networkconnectivity/v1:Hub',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    hubId = registerOutput<String>('hubId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    routeTables = registerOutput<List<String>>('routeTables', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    routingVpcs = registerOutput<List<RoutingVPCResponse>>('routingVpcs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingVPCResponse>(guardedValue, (value) => RoutingVPCResponse.fromMap((value as Map).cast<String, dynamic>())); });
     spokeSummary = registerOutput<SpokeSummaryResponse>('spokeSummary', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SpokeSummaryResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     state = registerOutput<String>('state');
     uniqueId = registerOutput<String>('uniqueId');

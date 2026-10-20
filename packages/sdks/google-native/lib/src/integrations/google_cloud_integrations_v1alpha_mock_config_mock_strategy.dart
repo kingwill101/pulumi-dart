@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Mockstrategy defines how the particular task should be mocked during test execution
-enum GoogleCloudIntegrationsV1alphaMockConfigMockStrategy {
+enum GoogleCloudIntegrationsV1alphaMockConfigMockStrategy implements pulumi.PulumiEnum<String> {
   mockStrategyUnspecified("MOCK_STRATEGY_UNSPECIFIED"),
   noMockStrategy("NO_MOCK_STRATEGY"),
   specificMockStrategy("SPECIFIC_MOCK_STRATEGY"),
@@ -7,6 +9,7 @@ enum GoogleCloudIntegrationsV1alphaMockConfigMockStrategy {
   skipMockStrategy("SKIP_MOCK_STRATEGY");
 
   const GoogleCloudIntegrationsV1alphaMockConfigMockStrategy(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudIntegrationsV1alphaMockConfigMockStrategy fromValue(String value) {

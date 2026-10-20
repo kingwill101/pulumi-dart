@@ -6,9 +6,9 @@ import 'backup_retention_settings_retention_unit.dart';
 /// We currently only support backup retention by specifying the number of backups we will retain.
 class BackupRetentionSettings {
   /// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
-  final pulumi.Input<int>? retainedBackups;
+  final pulumi.Input<int?>? retainedBackups;
   /// The unit that 'retained_backups' represents.
-  final pulumi.Input<BackupRetentionSettingsRetentionUnit>? retentionUnit;
+  final pulumi.Input<BackupRetentionSettingsRetentionUnit?>? retentionUnit;
 
   /// Creates a new [BackupRetentionSettings].
   /// [retainedBackups] Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
@@ -27,7 +27,7 @@ class BackupRetentionSettings {
 
   factory BackupRetentionSettings.fromMap(Map<String, dynamic> map) {
     return BackupRetentionSettings(
-      retainedBackups: (() { final guardedValue = map['retainedBackups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      retainedBackups: (() { final guardedValue = map['retainedBackups']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       retentionUnit: (() { final guardedValue = map['retentionUnit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(BackupRetentionSettingsRetentionUnit.fromValue(guardedValue as String)); })(),
     );
   }

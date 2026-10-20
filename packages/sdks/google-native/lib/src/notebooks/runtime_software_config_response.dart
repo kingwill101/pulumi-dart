@@ -86,7 +86,7 @@ class RuntimeSoftwareConfigResponse {
       disableTerminal: pulumi.Input.fromValue(map['disableTerminal'] as bool),
       enableHealthMonitoring: pulumi.Input.fromValue(map['enableHealthMonitoring'] as bool),
       idleShutdown: pulumi.Input.fromValue(map['idleShutdown'] as bool),
-      idleShutdownTimeout: pulumi.Input.fromValue(map['idleShutdownTimeout'] as int),
+      idleShutdownTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['idleShutdownTimeout'])),
       installGpuDriver: pulumi.Input.fromValue(map['installGpuDriver'] as bool),
       kernels: pulumi.Input.fromValue(pulumi.Input.decodeList<ContainerImageResponse>(map['kernels']!, (value) => ContainerImageResponse.fromMap((value as Map).cast<String, dynamic>()))),
       mixerDisabled: pulumi.Input.fromValue(map['mixerDisabled'] as bool),

@@ -1,4 +1,6 @@
-enum OrganizationContactNotificationCategorySubscriptionsItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum OrganizationContactNotificationCategorySubscriptionsItem implements pulumi.PulumiEnum<String> {
   notificationCategoryUnspecified("NOTIFICATION_CATEGORY_UNSPECIFIED"),
   all("ALL"),
   suspension("SUSPENSION"),
@@ -10,6 +12,7 @@ enum OrganizationContactNotificationCategorySubscriptionsItem {
   technicalIncidents("TECHNICAL_INCIDENTS");
 
   const OrganizationContactNotificationCategorySubscriptionsItem(this.wireValue);
+  @override
   final String wireValue;
 
   static OrganizationContactNotificationCategorySubscriptionsItem fromValue(String value) {

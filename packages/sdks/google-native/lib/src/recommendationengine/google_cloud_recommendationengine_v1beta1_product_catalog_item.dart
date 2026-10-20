@@ -9,21 +9,21 @@ import 'google_cloud_recommendationengine_v1beta1_product_catalog_item_stock_sta
 /// ProductCatalogItem captures item metadata specific to retail products.
 class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
   /// Optional. The available quantity of the item.
-  final pulumi.Input<String>? availableQuantity;
+  final pulumi.Input<String?>? availableQuantity;
   /// Optional. Canonical URL directly linking to the item detail page with a length limit of 5 KiB..
-  final pulumi.Input<String>? canonicalProductUri;
+  final pulumi.Input<String?>? canonicalProductUri;
   /// Optional. A map to pass the costs associated with the product. For example: {"manufacturing": 45.5} The profit of selling this item is computed like so: * If 'exactPrice' is provided, profit = displayPrice - sum(costs) * If 'priceRange' is provided, profit = minPrice - sum(costs)
-  final pulumi.Input<Map<String, String>>? costs;
+  final pulumi.Input<Map<String, String>?>? costs;
   /// Optional. Only required if the price is set. Currency code for price/costs. Use three-character ISO-4217 code.
-  final pulumi.Input<String>? currencyCode;
+  final pulumi.Input<String?>? currencyCode;
   /// Optional. The exact product price.
-  final pulumi.Input<GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice>? exactPrice;
+  final pulumi.Input<GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice?>? exactPrice;
   /// Optional. Product images for the catalog item.
-  final pulumi.Input<List<GoogleCloudRecommendationengineV1beta1Image>>? images;
+  final pulumi.Input<List<GoogleCloudRecommendationengineV1beta1Image>?>? images;
   /// Optional. The product price range.
-  final pulumi.Input<GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange>? priceRange;
+  final pulumi.Input<GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange?>? priceRange;
   /// Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
-  final pulumi.Input<GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState>? stockState;
+  final pulumi.Input<GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState?>? stockState;
 
   /// Creates a new [GoogleCloudRecommendationengineV1beta1ProductCatalogItem].
   /// [availableQuantity] Optional. The available quantity of the item.

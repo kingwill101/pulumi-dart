@@ -57,14 +57,14 @@ class AudioStreamResponse {
 
   factory AudioStreamResponse.fromMap(Map<String, dynamic> map) {
     return AudioStreamResponse(
-      bitrateBps: pulumi.Input.fromValue(map['bitrateBps'] as int),
-      channelCount: pulumi.Input.fromValue(map['channelCount'] as int),
+      bitrateBps: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bitrateBps'])),
+      channelCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['channelCount'])),
       channelLayout: pulumi.Input.fromValue((map['channelLayout'] as List).cast<String>()),
       codec: pulumi.Input.fromValue(map['codec'] as String),
       displayName: pulumi.Input.fromValue(map['displayName'] as String),
       languageCode: pulumi.Input.fromValue(map['languageCode'] as String),
       mapping: pulumi.Input.fromValue(pulumi.Input.decodeList<AudioMappingResponse>(map['mapping']!, (value) => AudioMappingResponse.fromMap((value as Map).cast<String, dynamic>()))),
-      sampleRateHertz: pulumi.Input.fromValue(map['sampleRateHertz'] as int),
+      sampleRateHertz: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sampleRateHertz'])),
     );
   }
 }

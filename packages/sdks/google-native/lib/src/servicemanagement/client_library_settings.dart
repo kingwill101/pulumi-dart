@@ -14,27 +14,27 @@ import 'ruby_settings.dart';
 /// Details about how and where to publish client libraries.
 class ClientLibrarySettings {
   /// Settings for C++ client libraries.
-  final pulumi.Input<CppSettings>? cppSettings;
+  final pulumi.Input<CppSettings?>? cppSettings;
   /// Settings for .NET client libraries.
-  final pulumi.Input<DotnetSettings>? dotnetSettings;
+  final pulumi.Input<DotnetSettings?>? dotnetSettings;
   /// Settings for Go client libraries.
-  final pulumi.Input<GoSettings>? goSettings;
+  final pulumi.Input<GoSettings?>? goSettings;
   /// Settings for legacy Java features, supported in the Service YAML.
-  final pulumi.Input<JavaSettings>? javaSettings;
+  final pulumi.Input<JavaSettings?>? javaSettings;
   /// Launch stage of this version of the API.
-  final pulumi.Input<ClientLibrarySettingsLaunchStage>? launchStage;
+  final pulumi.Input<ClientLibrarySettingsLaunchStage?>? launchStage;
   /// Settings for Node client libraries.
-  final pulumi.Input<NodeSettings>? nodeSettings;
+  final pulumi.Input<NodeSettings?>? nodeSettings;
   /// Settings for PHP client libraries.
-  final pulumi.Input<PhpSettings>? phpSettings;
+  final pulumi.Input<PhpSettings?>? phpSettings;
   /// Settings for Python client libraries.
-  final pulumi.Input<PythonSettings>? pythonSettings;
+  final pulumi.Input<PythonSettings?>? pythonSettings;
   /// When using transport=rest, the client request will encode enums as numbers rather than strings.
-  final pulumi.Input<bool>? restNumericEnums;
+  final pulumi.Input<bool?>? restNumericEnums;
   /// Settings for Ruby client libraries.
-  final pulumi.Input<RubySettings>? rubySettings;
+  final pulumi.Input<RubySettings?>? rubySettings;
   /// Version of the API to apply these settings to. This is the full protobuf package for the API, ending in the version element. Examples: "google.cloud.speech.v1" and "google.spanner.admin.database.v1".
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [ClientLibrarySettings].
   /// [cppSettings] Settings for C++ client libraries.

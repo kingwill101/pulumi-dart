@@ -29,10 +29,27 @@ class SecretSecretmanagerV1beta1 extends pulumi.CustomResource {
           'google-native:secretmanager/v1beta1:Secret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'secretId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    replication = registerOutput<ReplicationResponseSecretmanagerV1beta1>('replication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationResponseSecretmanagerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    secretId = registerOutput<String>('secretId');
+  }
+
+  /// Creates a typed reference to an existing [SecretSecretmanagerV1beta1] resource.
+  SecretSecretmanagerV1beta1.reference(String urn)
+    : super(
+        'google-native:secretmanager/v1beta1:Secret',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     replication = registerOutput<ReplicationResponseSecretmanagerV1beta1>('replication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReplicationResponseSecretmanagerV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });

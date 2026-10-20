@@ -36,6 +36,17 @@ Future<GetCompositeTypeResult> getCompositeType(
   return GetCompositeTypeResult.fromMap(result);
 }
 
+pulumi.Output<GetCompositeTypeResult> getCompositeTypeOutput(
+  GetCompositeTypeArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:deploymentmanager/alpha:getCompositeType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCompositeTypeResult.fromMap);
+}
+
 /// Gets information about a specific deployment.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deploymentmanager_alpha_get_deployment_args_doc}
 /// [options] Invoke options controlling this call.
@@ -50,6 +61,17 @@ Future<GetDeploymentResult> getDeployment(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeploymentResult.fromMap(result);
+}
+
+pulumi.Output<GetDeploymentResult> getDeploymentOutput(
+  GetDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:deploymentmanager/alpha:getDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -68,6 +90,17 @@ Future<GetDeploymentIamPolicyResult> getDeploymentIamPolicy(
   return GetDeploymentIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetDeploymentIamPolicyResult> getDeploymentIamPolicyOutput(
+  GetDeploymentIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:deploymentmanager/alpha:getDeploymentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentIamPolicyResult.fromMap);
+}
+
 /// Gets information about a specific type provider.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deploymentmanager_alpha_get_type_provider_args_doc}
 /// [options] Invoke options controlling this call.
@@ -82,6 +115,17 @@ Future<GetTypeProviderResult> getTypeProvider(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTypeProviderResult.fromMap(result);
+}
+
+pulumi.Output<GetTypeProviderResult> getTypeProviderOutput(
+  GetTypeProviderArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:deploymentmanager/alpha:getTypeProvider',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTypeProviderResult.fromMap);
 }
 
 /// Gets information about a specific deployment.
@@ -100,6 +144,17 @@ Future<GetDeploymentDeploymentmanagerV2Result> getDeploymentDeploymentmanagerV2(
   return GetDeploymentDeploymentmanagerV2Result.fromMap(result);
 }
 
+pulumi.Output<GetDeploymentDeploymentmanagerV2Result> getDeploymentDeploymentmanagerV2Output(
+  GetDeploymentDeploymentmanagerV2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:deploymentmanager/v2:getDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentDeploymentmanagerV2Result.fromMap);
+}
+
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deploymentmanager_v2_get_deployment_iam_policy_deploymentmanager_v2_args_doc}
 /// [options] Invoke options controlling this call.
@@ -114,6 +169,17 @@ Future<GetDeploymentIamPolicyDeploymentmanagerV2Result> getDeploymentIamPolicyDe
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeploymentIamPolicyDeploymentmanagerV2Result.fromMap(result);
+}
+
+pulumi.Output<GetDeploymentIamPolicyDeploymentmanagerV2Result> getDeploymentIamPolicyDeploymentmanagerV2Output(
+  GetDeploymentIamPolicyDeploymentmanagerV2Args args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:deploymentmanager/v2:getDeploymentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentIamPolicyDeploymentmanagerV2Result.fromMap);
 }
 
 /// Gets information about a specific composite type.
@@ -132,6 +198,17 @@ Future<GetCompositeTypeDeploymentmanagerV2betaResult> getCompositeTypeDeployment
   return GetCompositeTypeDeploymentmanagerV2betaResult.fromMap(result);
 }
 
+pulumi.Output<GetCompositeTypeDeploymentmanagerV2betaResult> getCompositeTypeDeploymentmanagerV2betaOutput(
+  GetCompositeTypeDeploymentmanagerV2betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:deploymentmanager/v2beta:getCompositeType',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetCompositeTypeDeploymentmanagerV2betaResult.fromMap);
+}
+
 /// Gets information about a specific deployment.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deploymentmanager_v2beta_get_deployment_deploymentmanager_v2beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -146,6 +223,17 @@ Future<GetDeploymentDeploymentmanagerV2betaResult> getDeploymentDeploymentmanage
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeploymentDeploymentmanagerV2betaResult.fromMap(result);
+}
+
+pulumi.Output<GetDeploymentDeploymentmanagerV2betaResult> getDeploymentDeploymentmanagerV2betaOutput(
+  GetDeploymentDeploymentmanagerV2betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:deploymentmanager/v2beta:getDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentDeploymentmanagerV2betaResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. May be empty if no such policy or resource exists.
@@ -164,6 +252,17 @@ Future<GetDeploymentIamPolicyDeploymentmanagerV2betaResult> getDeploymentIamPoli
   return GetDeploymentIamPolicyDeploymentmanagerV2betaResult.fromMap(result);
 }
 
+pulumi.Output<GetDeploymentIamPolicyDeploymentmanagerV2betaResult> getDeploymentIamPolicyDeploymentmanagerV2betaOutput(
+  GetDeploymentIamPolicyDeploymentmanagerV2betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:deploymentmanager/v2beta:getDeploymentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentIamPolicyDeploymentmanagerV2betaResult.fromMap);
+}
+
 /// Gets information about a specific type provider.
 /// [args] Arguments passed to this invoke. {@macro pulumi_deploymentmanager_v2beta_get_type_provider_deploymentmanager_v2beta_args_doc}
 /// [options] Invoke options controlling this call.
@@ -178,4 +277,15 @@ Future<GetTypeProviderDeploymentmanagerV2betaResult> getTypeProviderDeploymentma
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetTypeProviderDeploymentmanagerV2betaResult.fromMap(result);
+}
+
+pulumi.Output<GetTypeProviderDeploymentmanagerV2betaResult> getTypeProviderDeploymentmanagerV2betaOutput(
+  GetTypeProviderDeploymentmanagerV2betaArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:deploymentmanager/v2beta:getTypeProvider',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetTypeProviderDeploymentmanagerV2betaResult.fromMap);
 }

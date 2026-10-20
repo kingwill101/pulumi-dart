@@ -6,7 +6,7 @@ import 'google_cloud_retail_v2_model_frequently_bought_together_features_config_
 /// Additional configs for the frequently-bought-together model type.
 class GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig {
   /// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
-  final pulumi.Input<GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType>? contextProductsType;
+  final pulumi.Input<GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfigContextProductsType?>? contextProductsType;
 
   /// Creates a new [GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig].
   /// [contextProductsType] Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.

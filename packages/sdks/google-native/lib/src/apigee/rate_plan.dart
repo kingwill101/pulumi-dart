@@ -1,4 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_apigee_v1_rate_range_response.dart';
+import 'google_cloud_apigee_v1_revenue_share_range_response.dart';
 import 'google_type_money_response.dart';
 import 'rate_plan_args.dart';
 
@@ -11,7 +13,7 @@ class RatePlan extends pulumi.CustomResource {
   /// Frequency at which the customer will be billed.
   late final pulumi.Output<String> billingPeriod;
   /// API call volume ranges and the fees charged when the total number of API calls is within a given range. The method used to calculate the final fee depends on the selected pricing model. For example, if the pricing model is `STAIRSTEP` and the ranges are defined as follows: ``` { "start": 1, "end": 100, "fee": 75 }, { "start": 101, "end": 200, "fee": 100 }, } ``` Then the following fees would be charged based on the total number of API calls (assuming the currency selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls cost $100 The number of API calls cannot exceed 200.
-  late final pulumi.Output<List<Map<String, dynamic>>> consumptionPricingRates;
+  late final pulumi.Output<List<GoogleCloudApigeeV1RateRangeResponse>> consumptionPricingRates;
   /// Pricing model used for consumption-based charges.
   late final pulumi.Output<String> consumptionPricingType;
   /// Time that the rate plan was created in milliseconds since epoch.
@@ -36,7 +38,7 @@ class RatePlan extends pulumi.CustomResource {
   /// DEPRECATED: This field is no longer supported and will eventually be removed when Apigee Hybrid 1.5/1.6 is no longer supported. Instead, use the `billingType` field inside `DeveloperMonetizationConfig` resource. Flag that specifies the billing account type, prepaid or postpaid.
   late final pulumi.Output<String> paymentFundingModel;
   /// Details of the revenue sharing model.
-  late final pulumi.Output<List<Map<String, dynamic>>> revenueShareRates;
+  late final pulumi.Output<List<GoogleCloudApigeeV1RevenueShareRangeResponse>> revenueShareRates;
   /// Method used to calculate the revenue that is shared with developers.
   late final pulumi.Output<String> revenueShareType;
   /// Initial, one-time fee paid when purchasing the API product.
@@ -58,12 +60,12 @@ class RatePlan extends pulumi.CustomResource {
           'google-native:apigee/v1:RatePlan',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['apiproductId', 'organizationId']).merge(options),
         ) {
     apiproduct = registerOutput<String>('apiproduct');
     apiproductId = registerOutput<String>('apiproductId');
     billingPeriod = registerOutput<String>('billingPeriod');
-    consumptionPricingRates = registerOutput<List<Map<String, dynamic>>>('consumptionPricingRates');
+    consumptionPricingRates = registerOutput<List<GoogleCloudApigeeV1RateRangeResponse>>('consumptionPricingRates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1RateRangeResponse>(guardedValue, (value) => GoogleCloudApigeeV1RateRangeResponse.fromMap((value as Map).cast<String, dynamic>())); });
     consumptionPricingType = registerOutput<String>('consumptionPricingType');
     createdAt = registerOutput<String>('createdAt');
     currencyCode = registerOutput<String>('currencyCode');
@@ -76,7 +78,39 @@ class RatePlan extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     organizationId = registerOutput<String>('organizationId');
     paymentFundingModel = registerOutput<String>('paymentFundingModel');
-    revenueShareRates = registerOutput<List<Map<String, dynamic>>>('revenueShareRates');
+    revenueShareRates = registerOutput<List<GoogleCloudApigeeV1RevenueShareRangeResponse>>('revenueShareRates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1RevenueShareRangeResponse>(guardedValue, (value) => GoogleCloudApigeeV1RevenueShareRangeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    revenueShareType = registerOutput<String>('revenueShareType');
+    setupFee = registerOutput<GoogleTypeMoneyResponse>('setupFee', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleTypeMoneyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    startTime = registerOutput<String>('startTime');
+    state = registerOutput<String>('state');
+  }
+
+  /// Creates a typed reference to an existing [RatePlan] resource.
+  RatePlan.reference(String urn)
+    : super(
+        'google-native:apigee/v1:RatePlan',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiproduct = registerOutput<String>('apiproduct');
+    apiproductId = registerOutput<String>('apiproductId');
+    billingPeriod = registerOutput<String>('billingPeriod');
+    consumptionPricingRates = registerOutput<List<GoogleCloudApigeeV1RateRangeResponse>>('consumptionPricingRates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1RateRangeResponse>(guardedValue, (value) => GoogleCloudApigeeV1RateRangeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    consumptionPricingType = registerOutput<String>('consumptionPricingType');
+    createdAt = registerOutput<String>('createdAt');
+    currencyCode = registerOutput<String>('currencyCode');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    endTime = registerOutput<String>('endTime');
+    fixedFeeFrequency = registerOutput<int>('fixedFeeFrequency');
+    fixedRecurringFee = registerOutput<GoogleTypeMoneyResponse>('fixedRecurringFee', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleTypeMoneyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    organizationId = registerOutput<String>('organizationId');
+    paymentFundingModel = registerOutput<String>('paymentFundingModel');
+    revenueShareRates = registerOutput<List<GoogleCloudApigeeV1RevenueShareRangeResponse>>('revenueShareRates', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1RevenueShareRangeResponse>(guardedValue, (value) => GoogleCloudApigeeV1RevenueShareRangeResponse.fromMap((value as Map).cast<String, dynamic>())); });
     revenueShareType = registerOutput<String>('revenueShareType');
     setupFee = registerOutput<GoogleTypeMoneyResponse>('setupFee', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleTypeMoneyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     startTime = registerOutput<String>('startTime');

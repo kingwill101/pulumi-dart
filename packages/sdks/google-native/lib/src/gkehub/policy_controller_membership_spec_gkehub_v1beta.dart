@@ -6,9 +6,9 @@ import 'policy_controller_hub_config_gkehub_v1beta.dart';
 /// **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR.
 class PolicyControllerMembershipSpecGkehubV1beta {
   /// Policy Controller configuration for the cluster.
-  final pulumi.Input<PolicyControllerHubConfigGkehubV1beta>? policyControllerHubConfig;
+  final pulumi.Input<PolicyControllerHubConfigGkehubV1beta?>? policyControllerHubConfig;
   /// Version of Policy Controller installed.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [PolicyControllerMembershipSpecGkehubV1beta].
   /// [policyControllerHubConfig] Policy Controller configuration for the cluster.

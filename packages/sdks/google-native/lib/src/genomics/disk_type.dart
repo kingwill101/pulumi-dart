@@ -1,11 +1,14 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The type of the disk to create.
-enum DiskType {
+enum DiskType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   persistentHdd("PERSISTENT_HDD"),
   persistentSsd("PERSISTENT_SSD"),
   localSsd("LOCAL_SSD");
 
   const DiskType(this.wireValue);
+  @override
   final String wireValue;
 
   static DiskType fromValue(String value) {

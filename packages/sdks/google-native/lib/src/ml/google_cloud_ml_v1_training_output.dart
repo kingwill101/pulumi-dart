@@ -7,19 +7,19 @@ import 'google_cloud_ml_v1_hyperparameter_output.dart';
 /// Represents results of a training job. Output only.
 class GoogleCloudMlV1TrainingOutput {
   /// Details related to built-in algorithms jobs. Only set for built-in algorithms jobs.
-  final pulumi.Input<GoogleCloudMlV1BuiltInAlgorithmOutput>? builtInAlgorithmOutput;
+  final pulumi.Input<GoogleCloudMlV1BuiltInAlgorithmOutput?>? builtInAlgorithmOutput;
   /// The number of hyperparameter tuning trials that completed successfully. Only set for hyperparameter tuning jobs.
-  final pulumi.Input<String>? completedTrialCount;
+  final pulumi.Input<String?>? completedTrialCount;
   /// The amount of ML units consumed by the job.
-  final pulumi.Input<double>? consumedMLUnits;
+  final pulumi.Input<double?>? consumedMLUnits;
   /// The TensorFlow summary tag name used for optimizing hyperparameter tuning trials. See [`HyperparameterSpec.hyperparameterMetricTag`](#HyperparameterSpec.FIELDS.hyperparameter_metric_tag) for more information. Only set for hyperparameter tuning jobs.
-  final pulumi.Input<String>? hyperparameterMetricTag;
+  final pulumi.Input<String?>? hyperparameterMetricTag;
   /// Whether this job is a built-in Algorithm job.
-  final pulumi.Input<bool>? isBuiltInAlgorithmJob;
+  final pulumi.Input<bool?>? isBuiltInAlgorithmJob;
   /// Whether this job is a hyperparameter tuning job.
-  final pulumi.Input<bool>? isHyperparameterTuningJob;
+  final pulumi.Input<bool?>? isHyperparameterTuningJob;
   /// Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs.
-  final pulumi.Input<List<GoogleCloudMlV1HyperparameterOutput>>? trials;
+  final pulumi.Input<List<GoogleCloudMlV1HyperparameterOutput>?>? trials;
 
   /// Creates a new [GoogleCloudMlV1TrainingOutput].
   /// [builtInAlgorithmOutput] Details related to built-in algorithms jobs. Only set for built-in algorithms jobs.
@@ -55,7 +55,7 @@ class GoogleCloudMlV1TrainingOutput {
     return GoogleCloudMlV1TrainingOutput(
       builtInAlgorithmOutput: (() { final guardedValue = map['builtInAlgorithmOutput']; if (guardedValue == null) return null; return pulumi.Input.fromValue(GoogleCloudMlV1BuiltInAlgorithmOutput.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       completedTrialCount: (() { final guardedValue = map['completedTrialCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      consumedMLUnits: (() { final guardedValue = map['consumedMLUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      consumedMLUnits: (() { final guardedValue = map['consumedMLUnits']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       hyperparameterMetricTag: (() { final guardedValue = map['hyperparameterMetricTag']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isBuiltInAlgorithmJob: (() { final guardedValue = map['isBuiltInAlgorithmJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       isHyperparameterTuningJob: (() { final guardedValue = map['isHyperparameterTuningJob']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),

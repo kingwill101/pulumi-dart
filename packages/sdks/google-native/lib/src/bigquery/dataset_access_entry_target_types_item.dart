@@ -1,9 +1,12 @@
-enum DatasetAccessEntryTargetTypesItem {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum DatasetAccessEntryTargetTypesItem implements pulumi.PulumiEnum<String> {
   targetTypeUnspecified("TARGET_TYPE_UNSPECIFIED"),
   views("VIEWS"),
   routines("ROUTINES");
 
   const DatasetAccessEntryTargetTypesItem(this.wireValue);
+  @override
   final String wireValue;
 
   static DatasetAccessEntryTargetTypesItem fromValue(String value) {

@@ -5,7 +5,7 @@ import 'allocation_aggregate_reservation_reserved_resource_info_accelerator_comp
 
 class AllocationAggregateReservationReservedResourceInfoComputeBeta {
   /// Properties of accelerator resources in this reservation.
-  final pulumi.Input<AllocationAggregateReservationReservedResourceInfoAcceleratorComputeBeta>? accelerator;
+  final pulumi.Input<AllocationAggregateReservationReservedResourceInfoAcceleratorComputeBeta?>? accelerator;
 
   /// Creates a new [AllocationAggregateReservationReservedResourceInfoComputeBeta].
   /// [accelerator] Properties of accelerator resources in this reservation.

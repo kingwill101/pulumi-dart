@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Capacity commitment commitment plan.
-enum CapacityCommitmentPlanBigqueryreservationV1beta1 {
+enum CapacityCommitmentPlanBigqueryreservationV1beta1 implements pulumi.PulumiEnum<String> {
   commitmentPlanUnspecified("COMMITMENT_PLAN_UNSPECIFIED"),
   flex("FLEX"),
   trial("TRIAL"),
@@ -7,6 +9,7 @@ enum CapacityCommitmentPlanBigqueryreservationV1beta1 {
   annual("ANNUAL");
 
   const CapacityCommitmentPlanBigqueryreservationV1beta1(this.wireValue);
+  @override
   final String wireValue;
 
   static CapacityCommitmentPlanBigqueryreservationV1beta1 fromValue(String value) {

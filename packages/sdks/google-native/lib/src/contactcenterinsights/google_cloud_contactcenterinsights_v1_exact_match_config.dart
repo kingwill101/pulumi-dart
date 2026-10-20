@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Exact match configuration.
 class GoogleCloudContactcenterinsightsV1ExactMatchConfig {
   /// Whether to consider case sensitivity when performing an exact match.
-  final pulumi.Input<bool>? caseSensitive;
+  final pulumi.Input<bool?>? caseSensitive;
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1ExactMatchConfig].
   /// [caseSensitive] Whether to consider case sensitivity when performing an exact match.

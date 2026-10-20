@@ -10,7 +10,7 @@ class GetBindingGkehubV1alphaArgs {
   final pulumi.Input<String> bindingId;
   final pulumi.Input<String> location;
   final pulumi.Input<String> membershipId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetBindingGkehubV1alphaArgs].
   /// [bindingId] Required.

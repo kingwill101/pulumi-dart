@@ -12,23 +12,23 @@ import 'organization_discovery_config_status.dart';
 /// {@macro pulumi_dlp_v2_organization_discovery_config_args_doc}
 class OrganizationDiscoveryConfigArgs {
   /// Actions to execute at the completion of scanning.
-  final pulumi.Input<List<GooglePrivacyDlpV2DataProfileAction>>? actions;
+  final pulumi.Input<List<GooglePrivacyDlpV2DataProfileAction>?>? actions;
   /// The config ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-  final pulumi.Input<String>? configId;
+  final pulumi.Input<String?>? configId;
   /// Display name (max 100 chars)
-  final pulumi.Input<String>? displayName;
+  final pulumi.Input<String?>? displayName;
   /// Detection logic for profile generation. Not all template features are used by Discovery. FindingLimits, include_quote and exclude_info_types have no impact on Discovery. Multiple templates may be provided if there is data in multiple regions. At most one template must be specified per-region (including "global"). Each region is scanned using the applicable template. If no region-specific template is specified, but a "global" template is specified, it will be copied to that region and used instead. If no global or region-specific template is provided for a region with data, that region's data will not be scanned. For more information, see https://cloud.google.com/dlp/docs/data-profiles#data-residency.
-  final pulumi.Input<List<String>>? inspectTemplates;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<List<String>?>? inspectTemplates;
+  final pulumi.Input<String?>? location;
   /// Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created, for example `projects/dlp-test-project/locations/global/discoveryConfigs/53234423`.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Only set when the parent is an org.
-  final pulumi.Input<GooglePrivacyDlpV2OrgConfig>? orgConfig;
+  final pulumi.Input<GooglePrivacyDlpV2OrgConfig?>? orgConfig;
   final pulumi.Input<String> organizationId;
   /// A status for this configuration.
   final pulumi.Input<OrganizationDiscoveryConfigStatus> status;
   /// Target to match against for determining what to scan and how frequently.
-  final pulumi.Input<List<GooglePrivacyDlpV2DiscoveryTarget>>? targets;
+  final pulumi.Input<List<GooglePrivacyDlpV2DiscoveryTarget>?>? targets;
 
   /// Creates a new [OrganizationDiscoveryConfigArgs].
   /// [actions] Actions to execute at the completion of scanning.

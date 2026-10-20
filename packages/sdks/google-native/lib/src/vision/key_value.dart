@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A product label represented as a key-value pair.
 class KeyValue {
   /// The key of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
-  final pulumi.Input<String>? key;
+  final pulumi.Input<String?>? key;
   /// The value of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
-  final pulumi.Input<String>? value;
+  final pulumi.Input<String?>? value;
 
   /// Creates a new [KeyValue].
   /// [key] The key of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.

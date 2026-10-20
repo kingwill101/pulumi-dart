@@ -7,13 +7,13 @@ import 'google_privacy_dlp_v2_selected_info_types.dart';
 /// Configuration for determining how redaction of images should occur.
 class GooglePrivacyDlpV2ImageTransformation {
   /// Apply transformation to all findings not specified in other ImageTransformation's selected_info_types. Only one instance is allowed within the ImageTransformations message.
-  final pulumi.Input<Map<String, dynamic>>? allInfoTypes;
+  final pulumi.Input<Map<String, dynamic>?>? allInfoTypes;
   /// Apply transformation to all text that doesn't match an infoType. Only one instance is allowed within the ImageTransformations message.
-  final pulumi.Input<Map<String, dynamic>>? allText;
+  final pulumi.Input<Map<String, dynamic>?>? allText;
   /// The color to use when redacting content from an image. If not specified, the default is black.
-  final pulumi.Input<GooglePrivacyDlpV2Color>? redactionColor;
+  final pulumi.Input<GooglePrivacyDlpV2Color?>? redactionColor;
   /// Apply transformation to the selected info_types.
-  final pulumi.Input<GooglePrivacyDlpV2SelectedInfoTypes>? selectedInfoTypes;
+  final pulumi.Input<GooglePrivacyDlpV2SelectedInfoTypes?>? selectedInfoTypes;
 
   /// Creates a new [GooglePrivacyDlpV2ImageTransformation].
   /// [allInfoTypes] Apply transformation to all findings not specified in other ImageTransformation's selected_info_types. Only one instance is allowed within the ImageTransformations message.

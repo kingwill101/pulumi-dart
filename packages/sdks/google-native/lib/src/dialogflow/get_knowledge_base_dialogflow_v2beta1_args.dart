@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetKnowledgeBaseDialogflowV2beta1Args {
   final pulumi.Input<String> knowledgeBaseId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetKnowledgeBaseDialogflowV2beta1Args].
   /// [knowledgeBaseId] Required.

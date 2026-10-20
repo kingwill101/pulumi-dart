@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Identifies the trigger type for running the policy.
-enum GoogleCloudContentwarehouseV1RuleTriggerType {
+enum GoogleCloudContentwarehouseV1RuleTriggerType implements pulumi.PulumiEnum<String> {
   unknown("UNKNOWN"),
   onCreate("ON_CREATE"),
   onUpdate("ON_UPDATE"),
@@ -7,6 +9,7 @@ enum GoogleCloudContentwarehouseV1RuleTriggerType {
   onDeleteLink("ON_DELETE_LINK");
 
   const GoogleCloudContentwarehouseV1RuleTriggerType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudContentwarehouseV1RuleTriggerType fromValue(String value) {

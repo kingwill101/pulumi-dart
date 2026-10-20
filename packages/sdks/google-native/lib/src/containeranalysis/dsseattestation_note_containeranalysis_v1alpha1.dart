@@ -6,7 +6,7 @@ import 'dssehint_containeranalysis_v1alpha1.dart';
 /// A note describing an attestation
 class DSSEAttestationNoteContaineranalysisV1alpha1 {
   /// DSSEHint hints at the purpose of the attestation authority.
-  final pulumi.Input<DSSEHintContaineranalysisV1alpha1>? hint;
+  final pulumi.Input<DSSEHintContaineranalysisV1alpha1?>? hint;
 
   /// Creates a new [DSSEAttestationNoteContaineranalysisV1alpha1].
   /// [hint] DSSEHint hints at the purpose of the attestation authority.

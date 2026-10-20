@@ -5,19 +5,19 @@ import 'cis_benchmark.dart';
 import 'compliance_version.dart';
 
 class ComplianceNote {
-  final pulumi.Input<CisBenchmark>? cisBenchmark;
+  final pulumi.Input<CisBenchmark?>? cisBenchmark;
   /// A description about this compliance check.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// A rationale for the existence of this compliance check.
-  final pulumi.Input<String>? rationale;
+  final pulumi.Input<String?>? rationale;
   /// A description of remediation steps if the compliance check fails.
-  final pulumi.Input<String>? remediation;
+  final pulumi.Input<String?>? remediation;
   /// Serialized scan instructions with a predefined format.
-  final pulumi.Input<String>? scanInstructions;
+  final pulumi.Input<String?>? scanInstructions;
   /// The title that identifies this compliance check.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
   /// The OS and config versions the benchmark applies to.
-  final pulumi.Input<List<ComplianceVersion>>? version;
+  final pulumi.Input<List<ComplianceVersion>?>? version;
 
   /// Creates a new [ComplianceNote].
   /// [cisBenchmark] Optional.

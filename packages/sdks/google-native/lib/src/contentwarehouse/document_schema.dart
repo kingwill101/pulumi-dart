@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'document_schema_args.dart';
+import 'google_cloud_contentwarehouse_v1_property_definition_response.dart';
 
 /// Creates a document schema.
 class DocumentSchema extends pulumi.CustomResource {
@@ -16,7 +17,7 @@ class DocumentSchema extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   /// Document details.
-  late final pulumi.Output<List<Map<String, dynamic>>> propertyDefinitions;
+  late final pulumi.Output<List<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>> propertyDefinitions;
   /// The time when the document schema is last updated.
   late final pulumi.Output<String> updateTime;
 
@@ -32,7 +33,7 @@ class DocumentSchema extends pulumi.CustomResource {
           'google-native:contentwarehouse/v1:DocumentSchema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
@@ -41,7 +42,27 @@ class DocumentSchema extends pulumi.CustomResource {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    propertyDefinitions = registerOutput<List<Map<String, dynamic>>>('propertyDefinitions');
+    propertyDefinitions = registerOutput<List<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>>('propertyDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>(guardedValue, (value) => GoogleCloudContentwarehouseV1PropertyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [DocumentSchema] resource.
+  DocumentSchema.reference(String urn)
+    : super(
+        'google-native:contentwarehouse/v1:DocumentSchema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    documentIsFolder = registerOutput<bool>('documentIsFolder');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    propertyDefinitions = registerOutput<List<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>>('propertyDefinitions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudContentwarehouseV1PropertyDefinitionResponse>(guardedValue, (value) => GoogleCloudContentwarehouseV1PropertyDefinitionResponse.fromMap((value as Map).cast<String, dynamic>())); });
     updateTime = registerOutput<String>('updateTime');
   }
 }

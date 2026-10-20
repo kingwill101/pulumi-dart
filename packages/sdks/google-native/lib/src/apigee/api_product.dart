@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'api_product_args.dart';
+import 'google_cloud_apigee_v1_attribute_response.dart';
 import 'google_cloud_apigee_v1_graph_qloperation_group_response.dart';
 import 'google_cloud_apigee_v1_grpc_operation_group_response.dart';
 import 'google_cloud_apigee_v1_operation_group_response.dart';
@@ -11,7 +12,7 @@ class ApiProduct extends pulumi.CustomResource {
   /// Flag that specifies how API keys are approved to access the APIs defined by the API product. If set to `manual`, the consumer key is generated and returned in "pending" state. In this case, the API keys won't work until they have been explicitly approved. If set to `auto`, the consumer key is generated and returned in "approved" state and can be used immediately. **Note:** Typically, `auto` is used to provide access to free or trial API products that provide limited quota or capabilities.
   late final pulumi.Output<String> approvalType;
   /// Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes. Use this property to specify the access level of the API product as either `public`, `private`, or `internal`. Only products marked `public` are available to developers in the Apigee developer portal. For example, you can set a product to `internal` while it is in development and then change access to `public` when it is ready to release on the portal. API products marked as `private` do not appear on the portal, but can be accessed by external developers.
-  late final pulumi.Output<List<Map<String, dynamic>>> attributes;
+  late final pulumi.Output<List<GoogleCloudApigeeV1AttributeResponse>> attributes;
   /// Response only. Creation time of this environment as milliseconds since epoch.
   late final pulumi.Output<String> createdAt;
   /// Description of the API product. Include key information about the API product that is not captured by other fields.
@@ -56,26 +57,56 @@ class ApiProduct extends pulumi.CustomResource {
           'google-native:apigee/v1:ApiProduct',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['organizationId']).merge(options),
         ) {
-    apiResources = registerOutput<List<String>>('apiResources');
+    apiResources = registerOutput<List<String>>('apiResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     approvalType = registerOutput<String>('approvalType');
-    attributes = registerOutput<List<Map<String, dynamic>>>('attributes');
+    attributes = registerOutput<List<GoogleCloudApigeeV1AttributeResponse>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(guardedValue, (value) => GoogleCloudApigeeV1AttributeResponse.fromMap((value as Map).cast<String, dynamic>())); });
     createdAt = registerOutput<String>('createdAt');
     description = registerOutput<String>('description');
     displayName = registerOutput<String>('displayName');
-    environments = registerOutput<List<String>>('environments');
+    environments = registerOutput<List<String>>('environments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     graphqlOperationGroup = registerOutput<GoogleCloudApigeeV1GraphQLOperationGroupResponse>('graphqlOperationGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1GraphQLOperationGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     grpcOperationGroup = registerOutput<GoogleCloudApigeeV1GrpcOperationGroupResponse>('grpcOperationGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1GrpcOperationGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     lastModifiedAt = registerOutput<String>('lastModifiedAt');
     this.name = registerOutput<String>('name');
     operationGroup = registerOutput<GoogleCloudApigeeV1OperationGroupResponse>('operationGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1OperationGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     organizationId = registerOutput<String>('organizationId');
-    proxies = registerOutput<List<String>>('proxies');
+    proxies = registerOutput<List<String>>('proxies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     quota = registerOutput<String>('quota');
     quotaCounterScope = registerOutput<String>('quotaCounterScope');
     quotaInterval = registerOutput<String>('quotaInterval');
     quotaTimeUnit = registerOutput<String>('quotaTimeUnit');
-    scopes = registerOutput<List<String>>('scopes');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ApiProduct] resource.
+  ApiProduct.reference(String urn)
+    : super(
+        'google-native:apigee/v1:ApiProduct',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    apiResources = registerOutput<List<String>>('apiResources', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    approvalType = registerOutput<String>('approvalType');
+    attributes = registerOutput<List<GoogleCloudApigeeV1AttributeResponse>>('attributes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudApigeeV1AttributeResponse>(guardedValue, (value) => GoogleCloudApigeeV1AttributeResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    createdAt = registerOutput<String>('createdAt');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    environments = registerOutput<List<String>>('environments', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    graphqlOperationGroup = registerOutput<GoogleCloudApigeeV1GraphQLOperationGroupResponse>('graphqlOperationGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1GraphQLOperationGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    grpcOperationGroup = registerOutput<GoogleCloudApigeeV1GrpcOperationGroupResponse>('grpcOperationGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1GrpcOperationGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    lastModifiedAt = registerOutput<String>('lastModifiedAt');
+    this.name = registerOutput<String>('name');
+    operationGroup = registerOutput<GoogleCloudApigeeV1OperationGroupResponse>('operationGroup', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudApigeeV1OperationGroupResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    organizationId = registerOutput<String>('organizationId');
+    proxies = registerOutput<List<String>>('proxies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    quota = registerOutput<String>('quota');
+    quotaCounterScope = registerOutput<String>('quotaCounterScope');
+    quotaInterval = registerOutput<String>('quotaInterval');
+    quotaTimeUnit = registerOutput<String>('quotaTimeUnit');
+    scopes = registerOutput<List<String>>('scopes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

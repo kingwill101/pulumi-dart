@@ -66,16 +66,16 @@ class Vp9CodecSettingsResponse {
 
   factory Vp9CodecSettingsResponse.fromMap(Map<String, dynamic> map) {
     return Vp9CodecSettingsResponse(
-      bitrateBps: pulumi.Input.fromValue(map['bitrateBps'] as int),
-      crfLevel: pulumi.Input.fromValue(map['crfLevel'] as int),
-      frameRate: pulumi.Input.fromValue(map['frameRate'] as double),
+      bitrateBps: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['bitrateBps'])),
+      crfLevel: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['crfLevel'])),
+      frameRate: pulumi.Input.fromValue((map['frameRate'] as num).toDouble()),
       gopDuration: pulumi.Input.fromValue(map['gopDuration'] as String),
-      gopFrameCount: pulumi.Input.fromValue(map['gopFrameCount'] as int),
-      heightPixels: pulumi.Input.fromValue(map['heightPixels'] as int),
+      gopFrameCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['gopFrameCount'])),
+      heightPixels: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['heightPixels'])),
       pixelFormat: pulumi.Input.fromValue(map['pixelFormat'] as String),
       profile: pulumi.Input.fromValue(map['profile'] as String),
       rateControlMode: pulumi.Input.fromValue(map['rateControlMode'] as String),
-      widthPixels: pulumi.Input.fromValue(map['widthPixels'] as int),
+      widthPixels: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['widthPixels'])),
     );
   }
 }

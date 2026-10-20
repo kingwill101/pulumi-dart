@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_beta_get_node_group_compute_beta_args_doc}
 class GetNodeGroupComputeBetaArgs {
   final pulumi.Input<String> nodeGroup;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> zone;
 
   /// Creates a new [GetNodeGroupComputeBetaArgs].

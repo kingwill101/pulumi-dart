@@ -6,7 +6,7 @@ import 'google_cloud_dialogflow_v2_smart_reply_model_metadata_training_model_typ
 /// Metadata for smart reply models.
 class GoogleCloudDialogflowV2SmartReplyModelMetadata {
   /// Optional. Type of the smart reply model. If not provided, model_type is used.
-  final pulumi.Input<GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType>? trainingModelType;
+  final pulumi.Input<GoogleCloudDialogflowV2SmartReplyModelMetadataTrainingModelType?>? trainingModelType;
 
   /// Creates a new [GoogleCloudDialogflowV2SmartReplyModelMetadata].
   /// [trainingModelType] Optional. Type of the smart reply model. If not provided, model_type is used.

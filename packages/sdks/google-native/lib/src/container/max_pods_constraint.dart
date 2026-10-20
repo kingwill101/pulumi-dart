@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Constraints applied to pods.
 class MaxPodsConstraint {
   /// Constraint enforced on the max num of pods per node.
-  final pulumi.Input<String>? maxPodsPerNode;
+  final pulumi.Input<String?>? maxPodsPerNode;
 
   /// Creates a new [MaxPodsConstraint].
   /// [maxPodsPerNode] Constraint enforced on the max num of pods per node.

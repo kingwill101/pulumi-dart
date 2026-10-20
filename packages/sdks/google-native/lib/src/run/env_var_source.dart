@@ -7,9 +7,9 @@ import 'secret_key_selector.dart';
 /// EnvVarSource represents a source for the value of an EnvVar.
 class EnvVarSource {
   /// Not supported by Cloud Run. Not supported in Cloud Run.
-  final pulumi.Input<ConfigMapKeySelector>? configMapKeyRef;
+  final pulumi.Input<ConfigMapKeySelector?>? configMapKeyRef;
   /// Selects a key (version) of a secret in Secret Manager.
-  final pulumi.Input<SecretKeySelector>? secretKeyRef;
+  final pulumi.Input<SecretKeySelector?>? secretKeyRef;
 
   /// Creates a new [EnvVarSource].
   /// [configMapKeyRef] Not supported by Cloud Run. Not supported in Cloud Run.

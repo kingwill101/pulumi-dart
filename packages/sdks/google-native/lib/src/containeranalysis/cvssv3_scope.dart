@@ -1,9 +1,12 @@
-enum CVSSv3Scope {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum CVSSv3Scope implements pulumi.PulumiEnum<String> {
   scopeUnspecified("SCOPE_UNSPECIFIED"),
   scopeUnchanged("SCOPE_UNCHANGED"),
   scopeChanged("SCOPE_CHANGED");
 
   const CVSSv3Scope(this.wireValue);
+  @override
   final String wireValue;
 
   static CVSSv3Scope fromValue(String value) {

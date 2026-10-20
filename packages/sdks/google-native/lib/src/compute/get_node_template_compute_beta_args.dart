@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_beta_get_node_template_compute_beta_args_doc}
 class GetNodeTemplateComputeBetaArgs {
   final pulumi.Input<String> nodeTemplate;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetNodeTemplateComputeBetaArgs].

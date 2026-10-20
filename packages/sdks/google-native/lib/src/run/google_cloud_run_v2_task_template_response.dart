@@ -62,7 +62,7 @@ class GoogleCloudRunV2TaskTemplateResponse {
       containers: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudRunV2ContainerResponse>(map['containers']!, (value) => GoogleCloudRunV2ContainerResponse.fromMap((value as Map).cast<String, dynamic>()))),
       encryptionKey: pulumi.Input.fromValue(map['encryptionKey'] as String),
       executionEnvironment: pulumi.Input.fromValue(map['executionEnvironment'] as String),
-      maxRetries: pulumi.Input.fromValue(map['maxRetries'] as int),
+      maxRetries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxRetries'])),
       serviceAccount: pulumi.Input.fromValue(map['serviceAccount'] as String),
       timeout: pulumi.Input.fromValue(map['timeout'] as String),
       volumes: pulumi.Input.fromValue(pulumi.Input.decodeList<GoogleCloudRunV2VolumeResponse>(map['volumes']!, (value) => GoogleCloudRunV2VolumeResponse.fromMap((value as Map).cast<String, dynamic>()))),

@@ -7,9 +7,9 @@ import 'google_privacy_dlp_v2_discovery_schema_modified_cadence_types_item.dart'
 /// The cadence at which to update data profiles when a schema is modified.
 class GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
   /// How frequently profiles may be updated when schemas are modified. Defaults to monthly.
-  final pulumi.Input<GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency>? frequency;
+  final pulumi.Input<GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceFrequency?>? frequency;
   /// The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMNS.
-  final pulumi.Input<List<GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem>>? types;
+  final pulumi.Input<List<GooglePrivacyDlpV2DiscoverySchemaModifiedCadenceTypesItem>?>? types;
 
   /// Creates a new [GooglePrivacyDlpV2DiscoverySchemaModifiedCadence].
   /// [frequency] How frequently profiles may be updated when schemas are modified. Defaults to monthly.

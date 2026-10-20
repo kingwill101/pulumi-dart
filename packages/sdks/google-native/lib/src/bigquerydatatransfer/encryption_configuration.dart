@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the encryption configuration for a transfer.
 class EncryptionConfiguration {
   /// The name of the KMS key used for encrypting BigQuery data.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
 
   /// Creates a new [EncryptionConfiguration].
   /// [kmsKeyName] The name of the KMS key used for encrypting BigQuery data.

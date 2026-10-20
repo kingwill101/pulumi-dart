@@ -5,11 +5,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Security configurations to manage scoring.
 class GoogleCloudApigeeV1SecurityProfileScoringConfig {
   /// Description of the config.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Path of the component config used for scoring.
-  final pulumi.Input<String>? scorePath;
+  final pulumi.Input<String?>? scorePath;
   /// Title of the config.
-  final pulumi.Input<String>? title;
+  final pulumi.Input<String?>? title;
 
   /// Creates a new [GoogleCloudApigeeV1SecurityProfileScoringConfig].
   /// [description] Description of the config.

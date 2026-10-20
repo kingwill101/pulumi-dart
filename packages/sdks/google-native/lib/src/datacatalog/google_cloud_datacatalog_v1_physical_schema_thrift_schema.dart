@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Schema in Thrift format.
 class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema {
   /// Thrift IDL source of the schema.
-  final pulumi.Input<String>? text;
+  final pulumi.Input<String?>? text;
 
   /// Creates a new [GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema].
   /// [text] Thrift IDL source of the schema.

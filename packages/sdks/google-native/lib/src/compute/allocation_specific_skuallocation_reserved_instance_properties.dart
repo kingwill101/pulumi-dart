@@ -8,19 +8,19 @@ import 'allocation_specific_skuallocation_reserved_instance_properties_maintenan
 /// Properties of the SKU instances being reserved. Next ID: 9
 class AllocationSpecificSKUAllocationReservedInstanceProperties {
   /// Specifies accelerator type and count.
-  final pulumi.Input<List<AcceleratorConfig>>? guestAccelerators;
+  final pulumi.Input<List<AcceleratorConfig>?>? guestAccelerators;
   /// Specifies amount of local ssd to reserve with each instance. The type of disk is local-ssd.
-  final pulumi.Input<List<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>>? localSsds;
+  final pulumi.Input<List<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>?>? localSsds;
   /// An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
-  final pulumi.Input<String>? locationHint;
+  final pulumi.Input<String?>? locationHint;
   /// Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
-  final pulumi.Input<String>? machineType;
+  final pulumi.Input<String?>? machineType;
   /// Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
-  final pulumi.Input<int>? maintenanceFreezeDurationHours;
+  final pulumi.Input<int?>? maintenanceFreezeDurationHours;
   /// Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
-  final pulumi.Input<AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval>? maintenanceInterval;
+  final pulumi.Input<AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval?>? maintenanceInterval;
   /// Minimum cpu platform the reservation.
-  final pulumi.Input<String>? minCpuPlatform;
+  final pulumi.Input<String?>? minCpuPlatform;
 
   /// Creates a new [AllocationSpecificSKUAllocationReservedInstanceProperties].
   /// [guestAccelerators] Specifies accelerator type and count.
@@ -58,7 +58,7 @@ class AllocationSpecificSKUAllocationReservedInstanceProperties {
       localSsds: (() { final guardedValue = map['localSsds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>(guardedValue, (value) => AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk.fromMap((value as Map).cast<String, dynamic>()))); })(),
       locationHint: (() { final guardedValue = map['locationHint']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       machineType: (() { final guardedValue = map['machineType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maintenanceFreezeDurationHours: (() { final guardedValue = map['maintenanceFreezeDurationHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      maintenanceFreezeDurationHours: (() { final guardedValue = map['maintenanceFreezeDurationHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       maintenanceInterval: (() { final guardedValue = map['maintenanceInterval']; if (guardedValue == null) return null; return pulumi.Input.fromValue(AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval.fromValue(guardedValue as String)); })(),
       minCpuPlatform: (() { final guardedValue = map['minCpuPlatform']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -4,9 +4,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 /// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
 class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource {
-  final pulumi.Input<Map<String, String>>? digest;
-  final pulumi.Input<String>? entryPoint;
-  final pulumi.Input<String>? uri;
+  final pulumi.Input<Map<String, String>?>? digest;
+  final pulumi.Input<String?>? entryPoint;
+  final pulumi.Input<String?>? uri;
 
   /// Creates a new [GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSource].
   /// [digest] Optional.

@@ -11,19 +11,19 @@ import 'node_group_roles_item.dart';
 class NodeGroupArgs {
   final pulumi.Input<String> clusterId;
   /// Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The Node group resource name (https://aip.dev/122).
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Optional. The node group instance group configuration.
-  final pulumi.Input<InstanceGroupConfig>? nodeGroupConfig;
+  final pulumi.Input<InstanceGroupConfig?>? nodeGroupConfig;
   /// Optional. An optional node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
-  final pulumi.Input<String>? nodeGroupId;
+  final pulumi.Input<String?>? nodeGroupId;
   /// Optional. operation id of the parent operation sending the create request
-  final pulumi.Input<String>? parentOperationId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? parentOperationId;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> regionId;
   /// Optional. A unique ID used to identify the request. If the server receives two CreateNodeGroupRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests) with the same ID, the second request is ignored and the first google.longrunning.Operation created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-  final pulumi.Input<String>? requestId;
+  final pulumi.Input<String?>? requestId;
   /// Node group roles.
   final pulumi.Input<List<NodeGroupRolesItem>> roles;
 

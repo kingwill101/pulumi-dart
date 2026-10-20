@@ -26,8 +26,8 @@ class RequestUtilizationResponseAppengineV1beta {
 
   factory RequestUtilizationResponseAppengineV1beta.fromMap(Map<String, dynamic> map) {
     return RequestUtilizationResponseAppengineV1beta(
-      targetConcurrentRequests: pulumi.Input.fromValue(map['targetConcurrentRequests'] as int),
-      targetRequestCountPerSecond: pulumi.Input.fromValue(map['targetRequestCountPerSecond'] as int),
+      targetConcurrentRequests: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetConcurrentRequests'])),
+      targetRequestCountPerSecond: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['targetRequestCountPerSecond'])),
     );
   }
 }

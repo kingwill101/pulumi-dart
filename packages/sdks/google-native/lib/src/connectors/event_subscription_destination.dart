@@ -7,11 +7,11 @@ import 'event_subscription_destination_type.dart';
 /// Message for EventSubscription Destination to act on receiving an event
 class EventSubscriptionDestination {
   /// OPTION 1: Hit an endpoint when we receive an event.
-  final pulumi.Input<EndPoint>? endpoint;
+  final pulumi.Input<EndPoint?>? endpoint;
   /// Service account needed for runtime plane to trigger IP workflow.
-  final pulumi.Input<String>? serviceAccount;
+  final pulumi.Input<String?>? serviceAccount;
   /// type of the destination
-  final pulumi.Input<EventSubscriptionDestinationType>? type;
+  final pulumi.Input<EventSubscriptionDestinationType?>? type;
 
   /// Creates a new [EventSubscriptionDestination].
   /// [endpoint] OPTION 1: Hit an endpoint when we receive an event.

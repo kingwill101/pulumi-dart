@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_compute_alpha_get_target_https_proxy_args_doc}
 class GetTargetHttpsProxyArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> targetHttpsProxy;
 
   /// Creates a new [GetTargetHttpsProxyArgs].

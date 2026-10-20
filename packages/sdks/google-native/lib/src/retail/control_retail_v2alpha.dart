@@ -38,9 +38,9 @@ class ControlRetailV2alpha extends pulumi.CustomResource {
           'google-native:retail/v2alpha:Control',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['catalogId', 'controlId', 'location', 'project']).merge(options),
         ) {
-    associatedServingConfigIds = registerOutput<List<String>>('associatedServingConfigIds');
+    associatedServingConfigIds = registerOutput<List<String>>('associatedServingConfigIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     catalogId = registerOutput<String>('catalogId');
     controlId = registerOutput<String>('controlId');
     displayName = registerOutput<String>('displayName');
@@ -49,7 +49,29 @@ class ControlRetailV2alpha extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
     rule = registerOutput<GoogleCloudRetailV2alphaRuleResponse>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2alphaRuleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    searchSolutionUseCase = registerOutput<List<String>>('searchSolutionUseCase');
-    solutionTypes = registerOutput<List<String>>('solutionTypes');
+    searchSolutionUseCase = registerOutput<List<String>>('searchSolutionUseCase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    solutionTypes = registerOutput<List<String>>('solutionTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [ControlRetailV2alpha] resource.
+  ControlRetailV2alpha.reference(String urn)
+    : super(
+        'google-native:retail/v2alpha:Control',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    associatedServingConfigIds = registerOutput<List<String>>('associatedServingConfigIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    catalogId = registerOutput<String>('catalogId');
+    controlId = registerOutput<String>('controlId');
+    displayName = registerOutput<String>('displayName');
+    facetSpec = registerOutput<GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse>('facetSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rule = registerOutput<GoogleCloudRetailV2alphaRuleResponse>('rule', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudRetailV2alphaRuleResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    searchSolutionUseCase = registerOutput<List<String>>('searchSolutionUseCase', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    solutionTypes = registerOutput<List<String>>('solutionTypes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
-enum ResourcePolicyWeeklyCycleDayOfWeekDay {
+enum ResourcePolicyWeeklyCycleDayOfWeekDay implements pulumi.PulumiEnum<String> {
   friday("FRIDAY"),
   invalid("INVALID"),
   monday("MONDAY"),
@@ -10,6 +12,7 @@ enum ResourcePolicyWeeklyCycleDayOfWeekDay {
   wednesday("WEDNESDAY");
 
   const ResourcePolicyWeeklyCycleDayOfWeekDay(this.wireValue);
+  @override
   final String wireValue;
 
   static ResourcePolicyWeeklyCycleDayOfWeekDay fromValue(String value) {

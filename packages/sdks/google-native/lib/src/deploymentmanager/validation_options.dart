@@ -7,9 +7,9 @@ import 'validation_options_undeclared_properties.dart';
 /// Options for how to validate and process properties on a resource.
 class ValidationOptions {
   /// Customize how deployment manager will validate the resource against schema errors.
-  final pulumi.Input<ValidationOptionsSchemaValidation>? schemaValidation;
+  final pulumi.Input<ValidationOptionsSchemaValidation?>? schemaValidation;
   /// Specify what to do with extra properties when executing a request.
-  final pulumi.Input<ValidationOptionsUndeclaredProperties>? undeclaredProperties;
+  final pulumi.Input<ValidationOptionsUndeclaredProperties?>? undeclaredProperties;
 
   /// Creates a new [ValidationOptions].
   /// [schemaValidation] Customize how deployment manager will validate the resource against schema errors.

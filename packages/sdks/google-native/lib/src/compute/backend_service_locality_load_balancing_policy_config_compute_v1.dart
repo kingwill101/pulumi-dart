@@ -6,8 +6,8 @@ import 'backend_service_locality_load_balancing_policy_config_policy_compute_v1.
 
 /// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
 class BackendServiceLocalityLoadBalancingPolicyConfigComputeV1 {
-  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1>? customPolicy;
-  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeV1>? policy;
+  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyComputeV1?>? customPolicy;
+  final pulumi.Input<BackendServiceLocalityLoadBalancingPolicyConfigPolicyComputeV1?>? policy;
 
   /// Creates a new [BackendServiceLocalityLoadBalancingPolicyConfigComputeV1].
   /// [customPolicy] Optional.

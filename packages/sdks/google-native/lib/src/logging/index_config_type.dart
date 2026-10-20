@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The type of data in this index.
-enum IndexConfigType {
+enum IndexConfigType implements pulumi.PulumiEnum<String> {
   indexTypeUnspecified("INDEX_TYPE_UNSPECIFIED"),
   indexTypeString("INDEX_TYPE_STRING"),
   indexTypeInteger("INDEX_TYPE_INTEGER");
 
   const IndexConfigType(this.wireValue);
+  @override
   final String wireValue;
 
   static IndexConfigType fromValue(String value) {

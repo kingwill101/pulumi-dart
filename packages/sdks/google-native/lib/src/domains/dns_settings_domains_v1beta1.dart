@@ -8,11 +8,11 @@ import 'google_domains_dns_domains_v1beta1.dart';
 /// Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
 class DnsSettingsDomainsV1beta1 {
   /// An arbitrary DNS provider identified by its name servers.
-  final pulumi.Input<CustomDnsDomainsV1beta1>? customDns;
+  final pulumi.Input<CustomDnsDomainsV1beta1?>? customDns;
   /// The list of glue records for this `Registration`. Commonly empty.
-  final pulumi.Input<List<GlueRecordDomainsV1beta1>>? glueRecords;
+  final pulumi.Input<List<GlueRecordDomainsV1beta1>?>? glueRecords;
   /// Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations) The free DNS zone provided by [Google Domains](https://domains.google/).
-  final pulumi.Input<GoogleDomainsDnsDomainsV1beta1>? googleDomainsDns;
+  final pulumi.Input<GoogleDomainsDnsDomainsV1beta1?>? googleDomainsDns;
 
   /// Creates a new [DnsSettingsDomainsV1beta1].
   /// [customDns] An arbitrary DNS provider identified by its name servers.

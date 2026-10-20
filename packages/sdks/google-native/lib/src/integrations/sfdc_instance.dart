@@ -38,9 +38,32 @@ class SfdcInstance extends pulumi.CustomResource {
           'google-native:integrations/v1alpha:SfdcInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'productId', 'project']).merge(options),
         ) {
-    authConfigId = registerOutput<List<String>>('authConfigId');
+    authConfigId = registerOutput<List<String>>('authConfigId', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    description = registerOutput<String>('description');
+    displayName = registerOutput<String>('displayName');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    productId = registerOutput<String>('productId');
+    project = registerOutput<String>('project');
+    serviceAuthority = registerOutput<String>('serviceAuthority');
+    sfdcOrgId = registerOutput<String>('sfdcOrgId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [SfdcInstance] resource.
+  SfdcInstance.reference(String urn)
+    : super(
+        'google-native:integrations/v1alpha:SfdcInstance',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authConfigId = registerOutput<List<String>>('authConfigId', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     createTime = registerOutput<String>('createTime');
     deleteTime = registerOutput<String>('deleteTime');
     description = registerOutput<String>('description');

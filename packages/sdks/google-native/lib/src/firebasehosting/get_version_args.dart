@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_firebasehosting_v1beta1_get_version_args_doc}
 class GetVersionArgs {
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> siteId;
   final pulumi.Input<String> versionId;
 

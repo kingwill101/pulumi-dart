@@ -6,9 +6,9 @@ import 'router_appliance_instance.dart';
 /// A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
 class LinkedRouterApplianceInstances {
   /// The list of router appliance instances.
-  final pulumi.Input<List<RouterApplianceInstance>>? instances;
+  final pulumi.Input<List<RouterApplianceInstance>?>? instances;
   /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
-  final pulumi.Input<bool>? siteToSiteDataTransfer;
+  final pulumi.Input<bool?>? siteToSiteDataTransfer;
 
   /// Creates a new [LinkedRouterApplianceInstances].
   /// [instances] The list of router appliance instances.

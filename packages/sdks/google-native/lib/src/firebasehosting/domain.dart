@@ -33,8 +33,27 @@ class Domain extends pulumi.CustomResource {
           'google-native:firebasehosting/v1beta1:Domain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'siteId']).merge(options),
         ) {
+    domainName = registerOutput<String>('domainName');
+    domainRedirect = registerOutput<DomainRedirectResponse>('domainRedirect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainRedirectResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    provisioning = registerOutput<DomainProvisioningResponse>('provisioning', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainProvisioningResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    site = registerOutput<String>('site');
+    siteId = registerOutput<String>('siteId');
+    status = registerOutput<String>('status');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Domain] resource.
+  Domain.reference(String urn)
+    : super(
+        'google-native:firebasehosting/v1beta1:Domain',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     domainName = registerOutput<String>('domainName');
     domainRedirect = registerOutput<DomainRedirectResponse>('domainRedirect', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DomainRedirectResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');

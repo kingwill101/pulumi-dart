@@ -26,8 +26,8 @@ class GoogleCloudDocumentaiV1DocumentProvenanceParentResponse {
 
   factory GoogleCloudDocumentaiV1DocumentProvenanceParentResponse.fromMap(Map<String, dynamic> map) {
     return GoogleCloudDocumentaiV1DocumentProvenanceParentResponse(
-      index: pulumi.Input.fromValue(map['index'] as int),
-      revision: pulumi.Input.fromValue(map['revision'] as int),
+      index: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['index'])),
+      revision: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['revision'])),
     );
   }
 }

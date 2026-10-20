@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Endpoint config for this cluster
 class EndpointConfigDataprocV1beta2 {
   /// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
-  final pulumi.Input<bool>? enableHttpPortAccess;
+  final pulumi.Input<bool?>? enableHttpPortAccess;
 
   /// Creates a new [EndpointConfigDataprocV1beta2].
   /// [enableHttpPortAccess] Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.

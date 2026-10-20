@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_notebooks_v1_get_runtime_args_doc}
 class GetRuntimeArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> runtimeId;
 
   /// Creates a new [GetRuntimeArgs].

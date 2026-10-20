@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Parameters for a latency threshold SLI.
 class LatencyCriteria {
   /// Good service is defined to be the count of requests made to this service that return in no more than threshold.
-  final pulumi.Input<String>? threshold;
+  final pulumi.Input<String?>? threshold;
 
   /// Creates a new [LatencyCriteria].
   /// [threshold] Good service is defined to be the count of requests made to this service that return in no more than threshold.

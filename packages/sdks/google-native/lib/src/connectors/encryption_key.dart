@@ -6,9 +6,9 @@ import 'encryption_key_type.dart';
 /// Encryption Key value.
 class EncryptionKey {
   /// The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
-  final pulumi.Input<String>? kmsKeyName;
+  final pulumi.Input<String?>? kmsKeyName;
   /// Type.
-  final pulumi.Input<EncryptionKeyType>? type;
+  final pulumi.Input<EncryptionKeyType?>? type;
 
   /// Creates a new [EncryptionKey].
   /// [kmsKeyName] The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.

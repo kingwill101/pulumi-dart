@@ -4,35 +4,35 @@
 /// Result data returned by getIdentityAwareProxyClient.
 class GetIdentityAwareProxyClientResult {
   /// Human-friendly name given to the OAuth client.
-  final String displayName;
+  final String? displayName;
   /// Unique identifier of the OAuth client.
-  final String name;
+  final String? name;
   /// Client secret of the OAuth client.
-  final String secret;
+  final String? secret;
 
   /// Creates a new [GetIdentityAwareProxyClientResult].
   /// [displayName] Human-friendly name given to the OAuth client.
   /// [name] Unique identifier of the OAuth client.
   /// [secret] Client secret of the OAuth client.
   const GetIdentityAwareProxyClientResult({
-    required this.displayName,
-    required this.name,
-    required this.secret,
+    this.displayName,
+    this.name,
+    this.secret,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'displayName': displayName,
-      'name': name,
-      'secret': secret,
+      'displayName': ?displayName,
+      'name': ?name,
+      'secret': ?secret,
     };
   }
 
   factory GetIdentityAwareProxyClientResult.fromMap(Map<String, dynamic> map) {
     return GetIdentityAwareProxyClientResult(
-      displayName: map['displayName'] as String,
-      name: map['name'] as String,
-      secret: map['secret'] as String,
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      secret: (() { final guardedValue = map['secret']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

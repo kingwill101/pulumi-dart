@@ -9,17 +9,17 @@ import 'subject_containeranalysis_v1alpha1.dart';
 /// Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
 class InTotoStatementContaineranalysisV1alpha1 {
   /// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
-  final pulumi.Input<String>? predicateType;
+  final pulumi.Input<String?>? predicateType;
   /// Generic Grafeas provenance.
-  final pulumi.Input<InTotoProvenanceContaineranalysisV1alpha1>? provenance;
+  final pulumi.Input<InTotoProvenanceContaineranalysisV1alpha1?>? provenance;
   /// SLSA 0.1 provenance.
-  final pulumi.Input<SlsaProvenanceContaineranalysisV1alpha1>? slsaProvenance;
+  final pulumi.Input<SlsaProvenanceContaineranalysisV1alpha1?>? slsaProvenance;
   /// SLSA 0.2 provenance.
-  final pulumi.Input<SlsaProvenanceZeroTwoContaineranalysisV1alpha1>? slsaProvenanceZeroTwo;
+  final pulumi.Input<SlsaProvenanceZeroTwoContaineranalysisV1alpha1?>? slsaProvenanceZeroTwo;
   /// subject is the subjects of the intoto statement
-  final pulumi.Input<List<SubjectContaineranalysisV1alpha1>>? subject;
+  final pulumi.Input<List<SubjectContaineranalysisV1alpha1>?>? subject;
   /// Always "https://in-toto.io/Statement/v0.1".
-  final pulumi.Input<String>? type;
+  final pulumi.Input<String?>? type;
 
   /// Creates a new [InTotoStatementContaineranalysisV1alpha1].
   /// [predicateType] "https://slsa.dev/provenance/v0.1" for SlsaProvenance.

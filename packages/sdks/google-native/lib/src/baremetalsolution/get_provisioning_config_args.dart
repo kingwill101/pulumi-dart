@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_baremetalsolution_v2_get_provisioning_config_args_doc}
 class GetProvisioningConfigArgs {
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> provisioningConfigId;
 
   /// Creates a new [GetProvisioningConfigArgs].

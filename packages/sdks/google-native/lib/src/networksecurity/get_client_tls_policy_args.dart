@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetClientTlsPolicyArgs {
   final pulumi.Input<String> clientTlsPolicyId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetClientTlsPolicyArgs].
   /// [clientTlsPolicyId] Required.

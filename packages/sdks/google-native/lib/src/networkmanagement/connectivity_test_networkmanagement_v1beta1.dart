@@ -47,19 +47,44 @@ class ConnectivityTestNetworkmanagementV1beta1 extends pulumi.CustomResource {
           'google-native:networkmanagement/v1beta1:ConnectivityTest',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project', 'testId']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     destination = registerOutput<EndpointResponseNetworkmanagementV1beta1>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointResponseNetworkmanagementV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     displayName = registerOutput<String>('displayName');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     probingDetails = registerOutput<ProbingDetailsResponseNetworkmanagementV1beta1>('probingDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProbingDetailsResponseNetworkmanagementV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     project = registerOutput<String>('project');
     protocol = registerOutput<String>('protocol');
     reachabilityDetails = registerOutput<ReachabilityDetailsResponseNetworkmanagementV1beta1>('reachabilityDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReachabilityDetailsResponseNetworkmanagementV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    relatedProjects = registerOutput<List<String>>('relatedProjects');
+    relatedProjects = registerOutput<List<String>>('relatedProjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    source = registerOutput<EndpointResponseNetworkmanagementV1beta1>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointResponseNetworkmanagementV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    testId = registerOutput<String>('testId');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [ConnectivityTestNetworkmanagementV1beta1] resource.
+  ConnectivityTestNetworkmanagementV1beta1.reference(String urn)
+    : super(
+        'google-native:networkmanagement/v1beta1:ConnectivityTest',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    destination = registerOutput<EndpointResponseNetworkmanagementV1beta1>('destination', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointResponseNetworkmanagementV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    displayName = registerOutput<String>('displayName');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    probingDetails = registerOutput<ProbingDetailsResponseNetworkmanagementV1beta1>('probingDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProbingDetailsResponseNetworkmanagementV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    protocol = registerOutput<String>('protocol');
+    reachabilityDetails = registerOutput<ReachabilityDetailsResponseNetworkmanagementV1beta1>('reachabilityDetails', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ReachabilityDetailsResponseNetworkmanagementV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    relatedProjects = registerOutput<List<String>>('relatedProjects', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     source = registerOutput<EndpointResponseNetworkmanagementV1beta1>('source', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointResponseNetworkmanagementV1beta1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     testId = registerOutput<String>('testId');
     updateTime = registerOutput<String>('updateTime');

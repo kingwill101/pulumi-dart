@@ -44,7 +44,7 @@ class EndpointPolicy extends pulumi.CustomResource {
           'google-native:networkservices/v1:EndpointPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['endpointPolicyId', 'location', 'project']).merge(options),
         ) {
     authorizationPolicy = registerOutput<String>('authorizationPolicy');
     clientTlsPolicy = registerOutput<String>('clientTlsPolicy');
@@ -52,7 +52,32 @@ class EndpointPolicy extends pulumi.CustomResource {
     description = registerOutput<String>('description');
     endpointMatcher = registerOutput<EndpointMatcherResponse>('endpointMatcher', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointMatcherResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     endpointPolicyId = registerOutput<String>('endpointPolicyId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    serverTlsPolicy = registerOutput<String>('serverTlsPolicy');
+    trafficPortSelector = registerOutput<TrafficPortSelectorResponse>('trafficPortSelector', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return TrafficPortSelectorResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    type = registerOutput<String>('type');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [EndpointPolicy] resource.
+  EndpointPolicy.reference(String urn)
+    : super(
+        'google-native:networkservices/v1:EndpointPolicy',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    authorizationPolicy = registerOutput<String>('authorizationPolicy');
+    clientTlsPolicy = registerOutput<String>('clientTlsPolicy');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    endpointMatcher = registerOutput<EndpointMatcherResponse>('endpointMatcher', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EndpointMatcherResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    endpointPolicyId = registerOutput<String>('endpointPolicyId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');

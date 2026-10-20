@@ -9,7 +9,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetOsPolicyAssignmentOsconfigV1alphaArgs {
   final pulumi.Input<String> location;
   final pulumi.Input<String> osPolicyAssignmentId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetOsPolicyAssignmentOsconfigV1alphaArgs].
   /// [location] Required.

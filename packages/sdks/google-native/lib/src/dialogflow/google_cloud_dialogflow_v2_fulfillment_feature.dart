@@ -6,7 +6,7 @@ import 'google_cloud_dialogflow_v2_fulfillment_feature_type.dart';
 /// Whether fulfillment is enabled for the specific feature.
 class GoogleCloudDialogflowV2FulfillmentFeature {
   /// The type of the feature that enabled for fulfillment.
-  final pulumi.Input<GoogleCloudDialogflowV2FulfillmentFeatureType>? type;
+  final pulumi.Input<GoogleCloudDialogflowV2FulfillmentFeatureType?>? type;
 
   /// Creates a new [GoogleCloudDialogflowV2FulfillmentFeature].
   /// [type] The type of the feature that enabled for fulfillment.

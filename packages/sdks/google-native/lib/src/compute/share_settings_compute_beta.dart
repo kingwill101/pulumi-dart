@@ -6,11 +6,11 @@ import 'share_settings_share_type_compute_beta.dart';
 /// The share setting for reservations and sole tenancy node groups.
 class ShareSettingsComputeBeta {
   /// A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-  final pulumi.Input<Map<String, String>>? projectMap;
+  final pulumi.Input<Map<String, String>?>? projectMap;
   /// A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
-  final pulumi.Input<List<String>>? projects;
+  final pulumi.Input<List<String>?>? projects;
   /// Type of sharing for this shared-reservation
-  final pulumi.Input<ShareSettingsShareTypeComputeBeta>? shareType;
+  final pulumi.Input<ShareSettingsShareTypeComputeBeta?>? shareType;
 
   /// Creates a new [ShareSettingsComputeBeta].
   /// [projectMap] A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.

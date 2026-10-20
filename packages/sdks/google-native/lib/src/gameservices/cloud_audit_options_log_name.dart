@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The log_name to populate in the Cloud Audit Record.
-enum CloudAuditOptionsLogName {
+enum CloudAuditOptionsLogName implements pulumi.PulumiEnum<String> {
   unspecifiedLogName("UNSPECIFIED_LOG_NAME"),
   adminActivity("ADMIN_ACTIVITY"),
   dataAccess("DATA_ACCESS");
 
   const CloudAuditOptionsLogName(this.wireValue);
+  @override
   final String wireValue;
 
   static CloudAuditOptionsLogName fromValue(String value) {

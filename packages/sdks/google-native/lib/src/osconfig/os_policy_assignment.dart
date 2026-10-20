@@ -2,6 +2,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 import 'os_policy_assignment_args.dart';
 import 'ospolicy_assignment_instance_filter_response.dart';
 import 'ospolicy_assignment_rollout_response.dart';
+import 'ospolicy_response.dart';
 
 /// Create an OS policy assignment. This method also creates the first revision of the OS policy assignment. This method returns a long running operation (LRO) that contains the rollout details. The rollout can be cancelled by cancelling the LRO. For more information, see [Method: projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1/projects.locations.osPolicyAssignments.operations/cancel).
 class OsPolicyAssignment extends pulumi.CustomResource {
@@ -19,7 +20,7 @@ class OsPolicyAssignment extends pulumi.CustomResource {
   /// Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
   late final pulumi.Output<String> name;
   /// List of OS policies to be applied to the VMs.
-  late final pulumi.Output<List<Map<String, dynamic>>> osPolicies;
+  late final pulumi.Output<List<OSPolicyResponse>> osPolicies;
   /// Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project.
   late final pulumi.Output<String> osPolicyAssignmentId;
   late final pulumi.Output<String> project;
@@ -48,7 +49,7 @@ class OsPolicyAssignment extends pulumi.CustomResource {
           'google-native:osconfig/v1:OsPolicyAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'osPolicyAssignmentId', 'project']).merge(options),
         ) {
     baseline = registerOutput<bool>('baseline');
     deleted = registerOutput<bool>('deleted');
@@ -57,7 +58,34 @@ class OsPolicyAssignment extends pulumi.CustomResource {
     instanceFilter = registerOutput<OSPolicyAssignmentInstanceFilterResponse>('instanceFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OSPolicyAssignmentInstanceFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
-    osPolicies = registerOutput<List<Map<String, dynamic>>>('osPolicies');
+    osPolicies = registerOutput<List<OSPolicyResponse>>('osPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OSPolicyResponse>(guardedValue, (value) => OSPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    osPolicyAssignmentId = registerOutput<String>('osPolicyAssignmentId');
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    revisionCreateTime = registerOutput<String>('revisionCreateTime');
+    revisionId = registerOutput<String>('revisionId');
+    rollout = registerOutput<OSPolicyAssignmentRolloutResponse>('rollout', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OSPolicyAssignmentRolloutResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    rolloutState = registerOutput<String>('rolloutState');
+    uid = registerOutput<String>('uid');
+  }
+
+  /// Creates a typed reference to an existing [OsPolicyAssignment] resource.
+  OsPolicyAssignment.reference(String urn)
+    : super(
+        'google-native:osconfig/v1:OsPolicyAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    baseline = registerOutput<bool>('baseline');
+    deleted = registerOutput<bool>('deleted');
+    description = registerOutput<String>('description');
+    etag = registerOutput<String>('etag');
+    instanceFilter = registerOutput<OSPolicyAssignmentInstanceFilterResponse>('instanceFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return OSPolicyAssignmentInstanceFilterResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    osPolicies = registerOutput<List<OSPolicyResponse>>('osPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<OSPolicyResponse>(guardedValue, (value) => OSPolicyResponse.fromMap((value as Map).cast<String, dynamic>())); });
     osPolicyAssignmentId = registerOutput<String>('osPolicyAssignmentId');
     project = registerOutput<String>('project');
     reconciling = registerOutput<bool>('reconciling');

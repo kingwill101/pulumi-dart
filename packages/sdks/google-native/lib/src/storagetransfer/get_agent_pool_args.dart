@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_storagetransfer_v1_get_agent_pool_args_doc}
 class GetAgentPoolArgs {
   final pulumi.Input<String> agentPoolId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAgentPoolArgs].
   /// [agentPoolId] Required.

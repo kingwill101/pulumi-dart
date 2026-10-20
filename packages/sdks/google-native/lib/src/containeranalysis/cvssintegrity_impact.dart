@@ -1,4 +1,6 @@
-enum CVSSIntegrityImpact {
+import 'package:pulumi/pulumi.dart' as pulumi;
+
+enum CVSSIntegrityImpact implements pulumi.PulumiEnum<String> {
   impactUnspecified("IMPACT_UNSPECIFIED"),
   impactHigh("IMPACT_HIGH"),
   impactLow("IMPACT_LOW"),
@@ -7,6 +9,7 @@ enum CVSSIntegrityImpact {
   impactComplete("IMPACT_COMPLETE");
 
   const CVSSIntegrityImpact(this.wireValue);
+  @override
   final String wireValue;
 
   static CVSSIntegrityImpact fromValue(String value) {

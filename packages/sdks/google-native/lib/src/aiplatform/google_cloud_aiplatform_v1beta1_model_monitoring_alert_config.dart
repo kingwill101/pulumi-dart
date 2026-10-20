@@ -5,11 +5,11 @@ import 'google_cloud_aiplatform_v1beta1_model_monitoring_alert_config_email_aler
 
 class GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig {
   /// Email alert config.
-  final pulumi.Input<GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig>? emailAlertConfig;
+  final pulumi.Input<GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfigEmailAlertConfig?>? emailAlertConfig;
   /// Dump the anomalies to Cloud Logging. The anomalies will be put to json payload encoded from proto google.cloud.aiplatform.logging.ModelMonitoringAnomaliesLogEntry. This can be further sinked to Pub/Sub or any other services supported by Cloud Logging.
-  final pulumi.Input<bool>? enableLogging;
+  final pulumi.Input<bool?>? enableLogging;
   /// Resource names of the NotificationChannels to send alert. Must be of the format `projects//notificationChannels/`
-  final pulumi.Input<List<String>>? notificationChannels;
+  final pulumi.Input<List<String>?>? notificationChannels;
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ModelMonitoringAlertConfig].
   /// [emailAlertConfig] Email alert config.

@@ -1,5 +1,7 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The Ethereum environment being accessed.
-enum EthereumDetailsNetwork {
+enum EthereumDetailsNetwork implements pulumi.PulumiEnum<String> {
   networkUnspecified("NETWORK_UNSPECIFIED"),
   mainnet("MAINNET"),
   testnetGoerliPrater("TESTNET_GOERLI_PRATER"),
@@ -7,6 +9,7 @@ enum EthereumDetailsNetwork {
   testnetHolesky("TESTNET_HOLESKY");
 
   const EthereumDetailsNetwork(this.wireValue);
+  @override
   final String wireValue;
 
   static EthereumDetailsNetwork fromValue(String value) {

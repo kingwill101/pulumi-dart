@@ -6,11 +6,11 @@ import 'on_prem_cluster_cluster_type_gkehub_v1alpha.dart';
 /// OnPremCluster contains information specific to GKE On-Prem clusters.
 class OnPremClusterGkehubV1alpha {
   /// Immutable. Whether the cluster is an admin cluster.
-  final pulumi.Input<bool>? adminCluster;
+  final pulumi.Input<bool?>? adminCluster;
   /// Immutable. The on prem cluster's type.
-  final pulumi.Input<OnPremClusterClusterTypeGkehubV1alpha>? clusterType;
+  final pulumi.Input<OnPremClusterClusterTypeGkehubV1alpha?>? clusterType;
   /// Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
-  final pulumi.Input<String>? resourceLink;
+  final pulumi.Input<String?>? resourceLink;
 
   /// Creates a new [OnPremClusterGkehubV1alpha].
   /// [adminCluster] Immutable. Whether the cluster is an admin cluster.

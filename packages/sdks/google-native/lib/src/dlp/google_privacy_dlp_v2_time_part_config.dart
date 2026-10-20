@@ -6,7 +6,7 @@ import 'google_privacy_dlp_v2_time_part_config_part_to_extract.dart';
 /// For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a portion of the value.
 class GooglePrivacyDlpV2TimePartConfig {
   /// The part of the time to keep.
-  final pulumi.Input<GooglePrivacyDlpV2TimePartConfigPartToExtract>? partToExtract;
+  final pulumi.Input<GooglePrivacyDlpV2TimePartConfigPartToExtract?>? partToExtract;
 
   /// Creates a new [GooglePrivacyDlpV2TimePartConfig].
   /// [partToExtract] The part of the time to keep.

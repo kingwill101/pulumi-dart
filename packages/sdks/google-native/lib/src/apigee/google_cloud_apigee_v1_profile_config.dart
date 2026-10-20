@@ -6,7 +6,7 @@ import 'google_cloud_apigee_v1_profile_config_category.dart';
 /// ProfileConfig defines a set of categories and policies which will be used to compute security score.
 class GoogleCloudApigeeV1ProfileConfig {
   /// List of categories of profile config.
-  final pulumi.Input<List<GoogleCloudApigeeV1ProfileConfigCategory>>? categories;
+  final pulumi.Input<List<GoogleCloudApigeeV1ProfileConfigCategory>?>? categories;
 
   /// Creates a new [GoogleCloudApigeeV1ProfileConfig].
   /// [categories] List of categories of profile config.

@@ -41,13 +41,36 @@ class Featurestore extends pulumi.CustomResource {
           'google-native:aiplatform/v1:Featurestore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['featurestoreId', 'location', 'project']).merge(options),
         ) {
     createTime = registerOutput<String>('createTime');
     encryptionSpec = registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     etag = registerOutput<String>('etag');
     featurestoreId = registerOutput<String>('featurestoreId');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    onlineServingConfig = registerOutput<GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse>('onlineServingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    onlineStorageTtlDays = registerOutput<int>('onlineStorageTtlDays');
+    project = registerOutput<String>('project');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Featurestore] resource.
+  Featurestore.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1:Featurestore',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createTime = registerOutput<String>('createTime');
+    encryptionSpec = registerOutput<GoogleCloudAiplatformV1EncryptionSpecResponse>('encryptionSpec', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1EncryptionSpecResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    etag = registerOutput<String>('etag');
+    featurestoreId = registerOutput<String>('featurestoreId');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     onlineServingConfig = registerOutput<GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse>('onlineServingConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1FeaturestoreOnlineServingConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

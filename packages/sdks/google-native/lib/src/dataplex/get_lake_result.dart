@@ -7,29 +7,29 @@ import 'google_cloud_dataplex_v1_lake_metastore_status_response.dart';
 /// Result data returned by getLake.
 class GetLakeResult {
   /// Aggregated status of the underlying assets of the lake.
-  final GoogleCloudDataplexV1AssetStatusResponse assetStatus;
+  final GoogleCloudDataplexV1AssetStatusResponse? assetStatus;
   /// The time when the lake was created.
-  final String createTime;
+  final String? createTime;
   /// Optional. Description of the lake.
-  final String description;
+  final String? description;
   /// Optional. User friendly display name.
-  final String displayName;
+  final String? displayName;
   /// Optional. User-defined labels for the lake.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Optional. Settings to manage lake and Dataproc Metastore service instance association.
-  final GoogleCloudDataplexV1LakeMetastoreResponse metastore;
+  final GoogleCloudDataplexV1LakeMetastoreResponse? metastore;
   /// Metastore status of the lake.
-  final GoogleCloudDataplexV1LakeMetastoreStatusResponse metastoreStatus;
+  final GoogleCloudDataplexV1LakeMetastoreStatusResponse? metastoreStatus;
   /// The relative resource name of the lake, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
-  final String name;
+  final String? name;
   /// Service account associated with this lake. This service account must be authorized to access or operate on resources managed by the lake.
-  final String serviceAccount;
+  final String? serviceAccount;
   /// Current state of the lake.
-  final String state;
+  final String? state;
   /// System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
-  final String uid;
+  final String? uid;
   /// The time when the lake was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetLakeResult].
   /// [assetStatus] Aggregated status of the underlying assets of the lake.
@@ -45,51 +45,51 @@ class GetLakeResult {
   /// [uid] System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
   /// [updateTime] The time when the lake was last updated.
   const GetLakeResult({
-    required this.assetStatus,
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.labels,
-    required this.metastore,
-    required this.metastoreStatus,
-    required this.name,
-    required this.serviceAccount,
-    required this.state,
-    required this.uid,
-    required this.updateTime,
+    this.assetStatus,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.labels,
+    this.metastore,
+    this.metastoreStatus,
+    this.name,
+    this.serviceAccount,
+    this.state,
+    this.uid,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'assetStatus': assetStatus.toMap(),
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'labels': labels,
-      'metastore': metastore.toMap(),
-      'metastoreStatus': metastoreStatus.toMap(),
-      'name': name,
-      'serviceAccount': serviceAccount,
-      'state': state,
-      'uid': uid,
-      'updateTime': updateTime,
+      'assetStatus': ?assetStatus?.toMap(),
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'labels': ?labels,
+      'metastore': ?metastore?.toMap(),
+      'metastoreStatus': ?metastoreStatus?.toMap(),
+      'name': ?name,
+      'serviceAccount': ?serviceAccount,
+      'state': ?state,
+      'uid': ?uid,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetLakeResult.fromMap(Map<String, dynamic> map) {
     return GetLakeResult(
-      assetStatus: GoogleCloudDataplexV1AssetStatusResponse.fromMap((map['assetStatus']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      metastore: GoogleCloudDataplexV1LakeMetastoreResponse.fromMap((map['metastore']! as Map).cast<String, dynamic>()),
-      metastoreStatus: GoogleCloudDataplexV1LakeMetastoreStatusResponse.fromMap((map['metastoreStatus']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
-      serviceAccount: map['serviceAccount'] as String,
-      state: map['state'] as String,
-      uid: map['uid'] as String,
-      updateTime: map['updateTime'] as String,
+      assetStatus: (() { final guardedValue = map['assetStatus']; if (guardedValue == null) return null; return GoogleCloudDataplexV1AssetStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      metastore: (() { final guardedValue = map['metastore']; if (guardedValue == null) return null; return GoogleCloudDataplexV1LakeMetastoreResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      metastoreStatus: (() { final guardedValue = map['metastoreStatus']; if (guardedValue == null) return null; return GoogleCloudDataplexV1LakeMetastoreStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      serviceAccount: (() { final guardedValue = map['serviceAccount']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      state: (() { final guardedValue = map['state']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      uid: (() { final guardedValue = map['uid']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

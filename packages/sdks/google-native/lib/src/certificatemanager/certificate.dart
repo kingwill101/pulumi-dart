@@ -44,19 +44,44 @@ class Certificate extends pulumi.CustomResource {
           'google-native:certificatemanager/v1:Certificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['certificateId', 'location', 'project']).merge(options),
         ) {
     certificateId = registerOutput<String>('certificateId');
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     expireTime = registerOutput<String>('expireTime');
-    labels = registerOutput<Map<String, String>>('labels');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     location = registerOutput<String>('location');
     managed = registerOutput<ManagedCertificateResponse>('managed', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedCertificateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');
     pemCertificate = registerOutput<String>('pemCertificate');
     project = registerOutput<String>('project');
-    sanDnsnames = registerOutput<List<String>>('sanDnsnames');
+    sanDnsnames = registerOutput<List<String>>('sanDnsnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    scope = registerOutput<String>('scope');
+    selfManaged = registerOutput<SelfManagedCertificateResponse>('selfManaged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SelfManagedCertificateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Certificate] resource.
+  Certificate.reference(String urn)
+    : super(
+        'google-native:certificatemanager/v1:Certificate',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    certificateId = registerOutput<String>('certificateId');
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    expireTime = registerOutput<String>('expireTime');
+    labels = registerOutput<Map<String, String>>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    location = registerOutput<String>('location');
+    managed = registerOutput<ManagedCertificateResponse>('managed', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ManagedCertificateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    this.name = registerOutput<String>('name');
+    pemCertificate = registerOutput<String>('pemCertificate');
+    project = registerOutput<String>('project');
+    sanDnsnames = registerOutput<List<String>>('sanDnsnames', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     scope = registerOutput<String>('scope');
     selfManaged = registerOutput<SelfManagedCertificateResponse>('selfManaged', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SelfManagedCertificateResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     updateTime = registerOutput<String>('updateTime');

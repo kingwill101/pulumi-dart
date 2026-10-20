@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The owner of the bucket. This is always the project team's owner group.
 class BucketOwner {
   /// The entity, in the form project-owner-projectId.
-  final pulumi.Input<String>? entity;
+  final pulumi.Input<String?>? entity;
   /// The ID for the entity.
-  final pulumi.Input<String>? entityId;
+  final pulumi.Input<String?>? entityId;
 
   /// Creates a new [BucketOwner].
   /// [entity] The entity, in the form project-owner-projectId.

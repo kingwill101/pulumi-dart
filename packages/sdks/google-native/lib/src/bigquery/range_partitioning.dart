@@ -5,9 +5,9 @@ import 'range_partitioning_range.dart';
 
 class RangePartitioning {
   /// [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
-  final pulumi.Input<String>? field;
+  final pulumi.Input<String?>? field;
   /// [TrustedTester] [Required] Defines the ranges for range partitioning.
-  final pulumi.Input<RangePartitioningRange>? range;
+  final pulumi.Input<RangePartitioningRange?>? range;
 
   /// Creates a new [RangePartitioning].
   /// [field] [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.

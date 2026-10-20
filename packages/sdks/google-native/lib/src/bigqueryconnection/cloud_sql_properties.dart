@@ -7,13 +7,13 @@ import 'cloud_sql_properties_type.dart';
 /// Connection properties specific to the Cloud SQL.
 class CloudSqlProperties {
   /// Input only. Cloud SQL credential.
-  final pulumi.Input<CloudSqlCredential>? credential;
+  final pulumi.Input<CloudSqlCredential?>? credential;
   /// Database name.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// Cloud SQL instance ID in the form `project:location:instance`.
-  final pulumi.Input<String>? instanceId;
+  final pulumi.Input<String?>? instanceId;
   /// Type of the Cloud SQL database.
-  final pulumi.Input<CloudSqlPropertiesType>? type;
+  final pulumi.Input<CloudSqlPropertiesType?>? type;
 
   /// Creates a new [CloudSqlProperties].
   /// [credential] Input only. Cloud SQL credential.

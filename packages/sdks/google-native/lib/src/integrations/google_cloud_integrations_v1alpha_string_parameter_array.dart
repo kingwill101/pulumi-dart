@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// This message only contains a field of string array.
 class GoogleCloudIntegrationsV1alphaStringParameterArray {
   /// String array.
-  final pulumi.Input<List<String>>? stringValues;
+  final pulumi.Input<List<String>?>? stringValues;
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaStringParameterArray].
   /// [stringValues] String array.

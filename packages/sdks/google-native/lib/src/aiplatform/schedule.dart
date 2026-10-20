@@ -56,8 +56,39 @@ class Schedule extends pulumi.CustomResource {
           'google-native:aiplatform/v1:Schedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
+    allowQueueing = registerOutput<bool>('allowQueueing');
+    catchUp = registerOutput<bool>('catchUp');
+    createPipelineJobRequest = registerOutput<GoogleCloudAiplatformV1CreatePipelineJobRequestResponse>('createPipelineJobRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1CreatePipelineJobRequestResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    createTime = registerOutput<String>('createTime');
+    cron = registerOutput<String>('cron');
+    displayName = registerOutput<String>('displayName');
+    endTime = registerOutput<String>('endTime');
+    lastPauseTime = registerOutput<String>('lastPauseTime');
+    lastResumeTime = registerOutput<String>('lastResumeTime');
+    lastScheduledRunResponse = registerOutput<GoogleCloudAiplatformV1ScheduleRunResponseResponse>('lastScheduledRunResponse', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1ScheduleRunResponseResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    maxConcurrentRunCount = registerOutput<String>('maxConcurrentRunCount');
+    maxRunCount = registerOutput<String>('maxRunCount');
+    this.name = registerOutput<String>('name');
+    nextRunTime = registerOutput<String>('nextRunTime');
+    project = registerOutput<String>('project');
+    startTime = registerOutput<String>('startTime');
+    startedRunCount = registerOutput<String>('startedRunCount');
+    state = registerOutput<String>('state');
+    updateTime = registerOutput<String>('updateTime');
+  }
+
+  /// Creates a typed reference to an existing [Schedule] resource.
+  Schedule.reference(String urn)
+    : super(
+        'google-native:aiplatform/v1:Schedule',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     allowQueueing = registerOutput<bool>('allowQueueing');
     catchUp = registerOutput<bool>('catchUp');
     createPipelineJobRequest = registerOutput<GoogleCloudAiplatformV1CreatePipelineJobRequestResponse>('createPipelineJobRequest', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return GoogleCloudAiplatformV1CreatePipelineJobRequestResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });

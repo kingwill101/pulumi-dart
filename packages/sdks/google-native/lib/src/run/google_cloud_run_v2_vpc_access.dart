@@ -7,11 +7,11 @@ import 'google_cloud_run_v2_vpc_access_egress.dart';
 /// VPC Access settings. For more information on sending traffic to a VPC network, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
 class GoogleCloudRunV2VpcAccess {
   /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
-  final pulumi.Input<String>? connector;
+  final pulumi.Input<String?>? connector;
   /// Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
-  final pulumi.Input<GoogleCloudRunV2VpcAccessEgress>? egress;
+  final pulumi.Input<GoogleCloudRunV2VpcAccessEgress?>? egress;
   /// Direct VPC egress settings. Currently only single network interface is supported.
-  final pulumi.Input<List<GoogleCloudRunV2NetworkInterface>>? networkInterfaces;
+  final pulumi.Input<List<GoogleCloudRunV2NetworkInterface>?>? networkInterfaces;
 
   /// Creates a new [GoogleCloudRunV2VpcAccess].
   /// [connector] VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.

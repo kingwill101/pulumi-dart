@@ -39,9 +39,9 @@ class ExecutionReportResponseMigrationcenterV1alpha1 {
   factory ExecutionReportResponseMigrationcenterV1alpha1.fromMap(Map<String, dynamic> map) {
     return ExecutionReportResponseMigrationcenterV1alpha1(
       executionErrors: pulumi.Input.fromValue(ValidationReportResponseMigrationcenterV1alpha1.fromMap((map['executionErrors']! as Map).cast<String, dynamic>())),
-      framesReported: pulumi.Input.fromValue(map['framesReported'] as int),
+      framesReported: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['framesReported'])),
       jobErrors: pulumi.Input.fromValue(pulumi.Input.decodeList<ImportErrorResponseMigrationcenterV1alpha1>(map['jobErrors']!, (value) => ImportErrorResponseMigrationcenterV1alpha1.fromMap((value as Map).cast<String, dynamic>()))),
-      totalRowsCount: pulumi.Input.fromValue(map['totalRowsCount'] as int),
+      totalRowsCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['totalRowsCount'])),
     );
   }
 }

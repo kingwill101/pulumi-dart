@@ -10,19 +10,19 @@ import 'response_policy_network_dns_v1beta2.dart';
 /// {@macro pulumi_dns_v1beta2_response_policy_args_doc}
 class ResponsePolicyArgs {
   /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-  final pulumi.Input<String>? clientOperationId;
+  final pulumi.Input<String?>? clientOperationId;
   /// User-provided description for this Response Policy.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The list of Google Kubernetes Engine clusters to which this response policy is applied.
-  final pulumi.Input<List<ResponsePolicyGKEClusterDnsV1beta2>>? gkeClusters;
-  final pulumi.Input<String>? kind;
+  final pulumi.Input<List<ResponsePolicyGKEClusterDnsV1beta2>?>? gkeClusters;
+  final pulumi.Input<String?>? kind;
   /// User labels.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// List of network names specifying networks to which this policy is applied.
-  final pulumi.Input<List<ResponsePolicyNetworkDnsV1beta2>>? networks;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<List<ResponsePolicyNetworkDnsV1beta2>?>? networks;
+  final pulumi.Input<String?>? project;
   /// User assigned name for this Response Policy.
-  final pulumi.Input<String>? responsePolicyName;
+  final pulumi.Input<String?>? responsePolicyName;
 
   /// Creates a new [ResponsePolicyArgs].
   /// [clientOperationId] For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.

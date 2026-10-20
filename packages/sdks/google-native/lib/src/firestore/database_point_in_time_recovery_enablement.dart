@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Whether to enable the PITR feature on this database.
-enum DatabasePointInTimeRecoveryEnablement {
+enum DatabasePointInTimeRecoveryEnablement implements pulumi.PulumiEnum<String> {
   pointInTimeRecoveryEnablementUnspecified("POINT_IN_TIME_RECOVERY_ENABLEMENT_UNSPECIFIED"),
   pointInTimeRecoveryEnabled("POINT_IN_TIME_RECOVERY_ENABLED"),
   pointInTimeRecoveryDisabled("POINT_IN_TIME_RECOVERY_DISABLED");
 
   const DatabasePointInTimeRecoveryEnablement(this.wireValue);
+  @override
   final String wireValue;
 
   static DatabasePointInTimeRecoveryEnablement fromValue(String value) {

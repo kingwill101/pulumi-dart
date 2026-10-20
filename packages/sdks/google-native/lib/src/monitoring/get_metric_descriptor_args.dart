@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_monitoring_v3_get_metric_descriptor_args_doc}
 class GetMetricDescriptorArgs {
   final pulumi.Input<String> metricDescriptorId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetMetricDescriptorArgs].
   /// [metricDescriptorId] Required.

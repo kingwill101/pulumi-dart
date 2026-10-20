@@ -50,8 +50,8 @@ class GoogleCloudIdentitytoolkitAdminV2CustomStrengthOptionsResponse {
       containsNonAlphanumericCharacter: pulumi.Input.fromValue(map['containsNonAlphanumericCharacter'] as bool),
       containsNumericCharacter: pulumi.Input.fromValue(map['containsNumericCharacter'] as bool),
       containsUppercaseCharacter: pulumi.Input.fromValue(map['containsUppercaseCharacter'] as bool),
-      maxPasswordLength: pulumi.Input.fromValue(map['maxPasswordLength'] as int),
-      minPasswordLength: pulumi.Input.fromValue(map['minPasswordLength'] as int),
+      maxPasswordLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxPasswordLength'])),
+      minPasswordLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minPasswordLength'])),
     );
   }
 }

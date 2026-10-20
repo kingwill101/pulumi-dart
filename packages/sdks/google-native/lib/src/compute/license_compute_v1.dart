@@ -37,8 +37,30 @@ class LicenseComputeV1 extends pulumi.CustomResource {
           'google-native:compute/v1:License',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['project']).merge(options),
         ) {
+    chargesUseFee = registerOutput<bool>('chargesUseFee');
+    creationTimestamp = registerOutput<String>('creationTimestamp');
+    description = registerOutput<String>('description');
+    kind = registerOutput<String>('kind');
+    licenseCode = registerOutput<String>('licenseCode');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    resourceRequirements = registerOutput<LicenseResourceRequirementsResponseComputeV1>('resourceRequirements', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return LicenseResourceRequirementsResponseComputeV1.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    selfLink = registerOutput<String>('selfLink');
+    transferable = registerOutput<bool>('transferable');
+  }
+
+  /// Creates a typed reference to an existing [LicenseComputeV1] resource.
+  LicenseComputeV1.reference(String urn)
+    : super(
+        'google-native:compute/v1:License',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     chargesUseFee = registerOutput<bool>('chargesUseFee');
     creationTimestamp = registerOutput<String>('creationTimestamp');
     description = registerOutput<String>('description');

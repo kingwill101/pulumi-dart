@@ -73,16 +73,16 @@ class OutlierDetectionResponse {
   factory OutlierDetectionResponse.fromMap(Map<String, dynamic> map) {
     return OutlierDetectionResponse(
       baseEjectionTime: pulumi.Input.fromValue(DurationResponse.fromMap((map['baseEjectionTime']! as Map).cast<String, dynamic>())),
-      consecutiveErrors: pulumi.Input.fromValue(map['consecutiveErrors'] as int),
-      consecutiveGatewayFailure: pulumi.Input.fromValue(map['consecutiveGatewayFailure'] as int),
-      enforcingConsecutiveErrors: pulumi.Input.fromValue(map['enforcingConsecutiveErrors'] as int),
-      enforcingConsecutiveGatewayFailure: pulumi.Input.fromValue(map['enforcingConsecutiveGatewayFailure'] as int),
-      enforcingSuccessRate: pulumi.Input.fromValue(map['enforcingSuccessRate'] as int),
+      consecutiveErrors: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['consecutiveErrors'])),
+      consecutiveGatewayFailure: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['consecutiveGatewayFailure'])),
+      enforcingConsecutiveErrors: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['enforcingConsecutiveErrors'])),
+      enforcingConsecutiveGatewayFailure: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['enforcingConsecutiveGatewayFailure'])),
+      enforcingSuccessRate: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['enforcingSuccessRate'])),
       interval: pulumi.Input.fromValue(DurationResponse.fromMap((map['interval']! as Map).cast<String, dynamic>())),
-      maxEjectionPercent: pulumi.Input.fromValue(map['maxEjectionPercent'] as int),
-      successRateMinimumHosts: pulumi.Input.fromValue(map['successRateMinimumHosts'] as int),
-      successRateRequestVolume: pulumi.Input.fromValue(map['successRateRequestVolume'] as int),
-      successRateStdevFactor: pulumi.Input.fromValue(map['successRateStdevFactor'] as int),
+      maxEjectionPercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxEjectionPercent'])),
+      successRateMinimumHosts: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['successRateMinimumHosts'])),
+      successRateRequestVolume: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['successRateRequestVolume'])),
+      successRateStdevFactor: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['successRateStdevFactor'])),
     );
   }
 }

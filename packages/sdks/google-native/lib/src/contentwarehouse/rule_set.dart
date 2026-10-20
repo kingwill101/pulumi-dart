@@ -1,4 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
+import 'google_cloud_contentwarehouse_v1_rule_response.dart';
 import 'rule_set_args.dart';
 
 /// Creates a ruleset.
@@ -10,7 +11,7 @@ class RuleSet extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   late final pulumi.Output<String> project;
   /// List of rules given by the customer.
-  late final pulumi.Output<List<Map<String, dynamic>>> rules;
+  late final pulumi.Output<List<GoogleCloudContentwarehouseV1RuleResponse>> rules;
   /// Source of the rules i.e., customer name.
   late final pulumi.Output<String> source;
 
@@ -26,13 +27,30 @@ class RuleSet extends pulumi.CustomResource {
           'google-native:contentwarehouse/v1:RuleSet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project']).merge(options),
         ) {
     description = registerOutput<String>('description');
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');
     project = registerOutput<String>('project');
-    rules = registerOutput<List<Map<String, dynamic>>>('rules');
+    rules = registerOutput<List<GoogleCloudContentwarehouseV1RuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudContentwarehouseV1RuleResponse>(guardedValue, (value) => GoogleCloudContentwarehouseV1RuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
+    source = registerOutput<String>('source');
+  }
+
+  /// Creates a typed reference to an existing [RuleSet] resource.
+  RuleSet.reference(String urn)
+    : super(
+        'google-native:contentwarehouse/v1:RuleSet',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String>('description');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    rules = registerOutput<List<GoogleCloudContentwarehouseV1RuleResponse>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<GoogleCloudContentwarehouseV1RuleResponse>(guardedValue, (value) => GoogleCloudContentwarehouseV1RuleResponse.fromMap((value as Map).cast<String, dynamic>())); });
     source = registerOutput<String>('source');
   }
 }

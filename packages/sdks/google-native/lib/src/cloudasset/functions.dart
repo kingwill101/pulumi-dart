@@ -20,6 +20,17 @@ Future<GetFeedResult> getFeed(
   return GetFeedResult.fromMap(result);
 }
 
+pulumi.Output<GetFeedResult> getFeedOutput(
+  GetFeedArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudasset/v1:getFeed',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetFeedResult.fromMap);
+}
+
 /// Gets details about a saved query.
 /// [args] Arguments passed to this invoke. {@macro pulumi_cloudasset_v1_get_saved_query_args_doc}
 /// [options] Invoke options controlling this call.
@@ -34,4 +45,15 @@ Future<GetSavedQueryResult> getSavedQuery(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetSavedQueryResult.fromMap(result);
+}
+
+pulumi.Output<GetSavedQueryResult> getSavedQueryOutput(
+  GetSavedQueryArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:cloudasset/v1:getSavedQuery',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSavedQueryResult.fromMap);
 }

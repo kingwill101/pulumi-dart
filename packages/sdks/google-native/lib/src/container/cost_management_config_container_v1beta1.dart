@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Configuration for fine-grained cost management feature.
 class CostManagementConfigContainerV1beta1 {
   /// Whether the feature is enabled or not.
-  final pulumi.Input<bool>? enabled;
+  final pulumi.Input<bool?>? enabled;
 
   /// Creates a new [CostManagementConfigContainerV1beta1].
   /// [enabled] Whether the feature is enabled or not.

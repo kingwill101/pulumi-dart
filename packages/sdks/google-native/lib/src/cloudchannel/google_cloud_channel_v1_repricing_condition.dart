@@ -6,7 +6,7 @@ import 'google_cloud_channel_v1_sku_group_condition.dart';
 /// Represents the various repricing conditions you can use for a conditional override.
 class GoogleCloudChannelV1RepricingCondition {
   /// SKU Group condition for override.
-  final pulumi.Input<GoogleCloudChannelV1SkuGroupCondition>? skuGroupCondition;
+  final pulumi.Input<GoogleCloudChannelV1SkuGroupCondition?>? skuGroupCondition;
 
   /// Creates a new [GoogleCloudChannelV1RepricingCondition].
   /// [skuGroupCondition] SKU Group condition for override.

@@ -5,17 +5,17 @@ import 'basic_perf_sample_series_response.dart';
 /// Result data returned by getPerfSampleSeries.
 class GetPerfSampleSeriesResult {
   /// Basic series represented by a line chart
-  final BasicPerfSampleSeriesResponse basicPerfSampleSeries;
+  final BasicPerfSampleSeriesResponse? basicPerfSampleSeries;
   /// A tool results execution ID.
-  final String executionId;
+  final String? executionId;
   /// A tool results history ID.
-  final String historyId;
+  final String? historyId;
   /// The cloud project
-  final String project;
+  final String? project;
   /// A sample series id
-  final String sampleSeriesId;
+  final String? sampleSeriesId;
   /// A tool results step ID.
-  final String stepId;
+  final String? stepId;
 
   /// Creates a new [GetPerfSampleSeriesResult].
   /// [basicPerfSampleSeries] Basic series represented by a line chart
@@ -25,33 +25,33 @@ class GetPerfSampleSeriesResult {
   /// [sampleSeriesId] A sample series id
   /// [stepId] A tool results step ID.
   const GetPerfSampleSeriesResult({
-    required this.basicPerfSampleSeries,
-    required this.executionId,
-    required this.historyId,
-    required this.project,
-    required this.sampleSeriesId,
-    required this.stepId,
+    this.basicPerfSampleSeries,
+    this.executionId,
+    this.historyId,
+    this.project,
+    this.sampleSeriesId,
+    this.stepId,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'basicPerfSampleSeries': basicPerfSampleSeries.toMap(),
-      'executionId': executionId,
-      'historyId': historyId,
-      'project': project,
-      'sampleSeriesId': sampleSeriesId,
-      'stepId': stepId,
+      'basicPerfSampleSeries': ?basicPerfSampleSeries?.toMap(),
+      'executionId': ?executionId,
+      'historyId': ?historyId,
+      'project': ?project,
+      'sampleSeriesId': ?sampleSeriesId,
+      'stepId': ?stepId,
     };
   }
 
   factory GetPerfSampleSeriesResult.fromMap(Map<String, dynamic> map) {
     return GetPerfSampleSeriesResult(
-      basicPerfSampleSeries: BasicPerfSampleSeriesResponse.fromMap((map['basicPerfSampleSeries']! as Map).cast<String, dynamic>()),
-      executionId: map['executionId'] as String,
-      historyId: map['historyId'] as String,
-      project: map['project'] as String,
-      sampleSeriesId: map['sampleSeriesId'] as String,
-      stepId: map['stepId'] as String,
+      basicPerfSampleSeries: (() { final guardedValue = map['basicPerfSampleSeries']; if (guardedValue == null) return null; return BasicPerfSampleSeriesResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      executionId: (() { final guardedValue = map['executionId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      historyId: (() { final guardedValue = map['historyId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      project: (() { final guardedValue = map['project']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      sampleSeriesId: (() { final guardedValue = map['sampleSeriesId']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      stepId: (() { final guardedValue = map['stepId']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

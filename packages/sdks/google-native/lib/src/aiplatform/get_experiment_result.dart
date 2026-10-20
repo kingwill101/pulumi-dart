@@ -4,21 +4,21 @@
 /// Result data returned by getExperiment.
 class GetExperimentResult {
   /// Timestamp when this TensorboardExperiment was created.
-  final String createTime;
+  final String? createTime;
   /// Description of this TensorboardExperiment.
-  final String description;
+  final String? description;
   /// User provided name of this TensorboardExperiment.
-  final String displayName;
+  final String? displayName;
   /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
-  final String etag;
+  final String? etag;
   /// The labels with user-defined metadata to organize your TensorboardExperiment. Label keys and values cannot be longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one Dataset (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `aiplatform.googleapis.com/` and are immutable. The following system labels exist for each Dataset: * `aiplatform.googleapis.com/dataset_metadata_schema`: output only. Its value is the metadata_schema's title.
-  final Map<String, String> labels;
+  final Map<String, String>? labels;
   /// Name of the TensorboardExperiment. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}`
-  final String name;
+  final String? name;
   /// Immutable. Source of the TensorboardExperiment. Example: a custom training job.
-  final String source;
+  final String? source;
   /// Timestamp when this TensorboardExperiment was last updated.
-  final String updateTime;
+  final String? updateTime;
 
   /// Creates a new [GetExperimentResult].
   /// [createTime] Timestamp when this TensorboardExperiment was created.
@@ -30,39 +30,39 @@ class GetExperimentResult {
   /// [source] Immutable. Source of the TensorboardExperiment. Example: a custom training job.
   /// [updateTime] Timestamp when this TensorboardExperiment was last updated.
   const GetExperimentResult({
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.etag,
-    required this.labels,
-    required this.name,
-    required this.source,
-    required this.updateTime,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.name,
+    this.source,
+    this.updateTime,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'etag': etag,
-      'labels': labels,
-      'name': name,
-      'source': source,
-      'updateTime': updateTime,
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'etag': ?etag,
+      'labels': ?labels,
+      'name': ?name,
+      'source': ?source,
+      'updateTime': ?updateTime,
     };
   }
 
   factory GetExperimentResult.fromMap(Map<String, dynamic> map) {
     return GetExperimentResult(
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      etag: map['etag'] as String,
-      labels: (map['labels'] as Map).cast<String, String>(),
-      name: map['name'] as String,
-      source: map['source'] as String,
-      updateTime: map['updateTime'] as String,
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      etag: (() { final guardedValue = map['etag']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      source: (() { final guardedValue = map['source']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      updateTime: (() { final guardedValue = map['updateTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

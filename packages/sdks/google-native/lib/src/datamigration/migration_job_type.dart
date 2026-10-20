@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. The migration job type.
-enum MigrationJobType {
+enum MigrationJobType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   oneTime("ONE_TIME"),
   continuous("CONTINUOUS");
 
   const MigrationJobType(this.wireValue);
+  @override
   final String wireValue;
 
   static MigrationJobType fromValue(String value) {

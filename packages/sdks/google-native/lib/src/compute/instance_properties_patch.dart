@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Represents the change that you want to make to the instance properties.
 class InstancePropertiesPatch {
   /// The label key-value pairs that you want to patch onto the instance.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
-  final pulumi.Input<Map<String, String>>? metadata;
+  final pulumi.Input<Map<String, String>?>? metadata;
 
   /// Creates a new [InstancePropertiesPatch].
   /// [labels] The label key-value pairs that you want to patch onto the instance.

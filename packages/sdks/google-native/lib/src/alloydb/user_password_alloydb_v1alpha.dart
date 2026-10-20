@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The username/password for a database user. Used for specifying initial users at cluster creation time.
 class UserPasswordAlloydbV1alpha {
   /// The initial password for the user.
-  final pulumi.Input<String>? password;
+  final pulumi.Input<String?>? password;
   /// The database username.
-  final pulumi.Input<String>? user;
+  final pulumi.Input<String?>? user;
 
   /// Creates a new [UserPasswordAlloydbV1alpha].
   /// [password] The initial password for the user.

@@ -32,8 +32,27 @@ class Subscription extends pulumi.CustomResource {
           'google-native:pubsublite/v1:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'project', 'subscriptionId']).merge(options),
         ) {
+    deliveryConfig = registerOutput<DeliveryConfigResponse>('deliveryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeliveryConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    exportConfig = registerOutput<ExportConfigResponse>('exportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    project = registerOutput<String>('project');
+    skipBacklog = registerOutput<bool?>('skipBacklog');
+    subscriptionId = registerOutput<String>('subscriptionId');
+    topic = registerOutput<String>('topic');
+  }
+
+  /// Creates a typed reference to an existing [Subscription] resource.
+  Subscription.reference(String urn)
+    : super(
+        'google-native:pubsublite/v1:Subscription',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     deliveryConfig = registerOutput<DeliveryConfigResponse>('deliveryConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return DeliveryConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     exportConfig = registerOutput<ExportConfigResponse>('exportConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ExportConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');

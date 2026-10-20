@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The blockchain type of the node.
-enum BlockchainNodeBlockchainType {
+enum BlockchainNodeBlockchainType implements pulumi.PulumiEnum<String> {
   blockchainTypeUnspecified("BLOCKCHAIN_TYPE_UNSPECIFIED"),
   ethereum("ETHEREUM");
 
   const BlockchainNodeBlockchainType(this.wireValue);
+  @override
   final String wireValue;
 
   static BlockchainNodeBlockchainType fromValue(String value) {

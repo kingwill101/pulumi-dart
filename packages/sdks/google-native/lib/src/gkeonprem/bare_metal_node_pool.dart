@@ -50,9 +50,37 @@ class BareMetalNodePool extends pulumi.CustomResource {
           'google-native:gkeonprem/v1:BareMetalNodePool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['bareMetalClusterId', 'location', 'project']).merge(options),
         ) {
-    annotations = registerOutput<Map<String, String>>('annotations');
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    bareMetalClusterId = registerOutput<String>('bareMetalClusterId');
+    bareMetalNodePoolId = registerOutput<String?>('bareMetalNodePoolId');
+    createTime = registerOutput<String>('createTime');
+    deleteTime = registerOutput<String>('deleteTime');
+    displayName = registerOutput<String>('displayName');
+    etag = registerOutput<String>('etag');
+    location = registerOutput<String>('location');
+    this.name = registerOutput<String>('name');
+    nodePoolConfig = registerOutput<BareMetalNodePoolConfigResponse>('nodePoolConfig', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalNodePoolConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    project = registerOutput<String>('project');
+    reconciling = registerOutput<bool>('reconciling');
+    state = registerOutput<String>('state');
+    status = registerOutput<ResourceStatusResponse>('status', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResourceStatusResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    upgradePolicy = registerOutput<BareMetalNodePoolUpgradePolicyResponse>('upgradePolicy', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return BareMetalNodePoolUpgradePolicyResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+  }
+
+  /// Creates a typed reference to an existing [BareMetalNodePool] resource.
+  BareMetalNodePool.reference(String urn)
+    : super(
+        'google-native:gkeonprem/v1:BareMetalNodePool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    annotations = registerOutput<Map<String, String>>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     bareMetalClusterId = registerOutput<String>('bareMetalClusterId');
     bareMetalNodePoolId = registerOutput<String?>('bareMetalNodePoolId');
     createTime = registerOutput<String>('createTime');

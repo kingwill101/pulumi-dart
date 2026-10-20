@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_dns_v1beta2_get_managed_zone_iam_policy_dns_v1beta2_args_doc}
 class GetManagedZoneIamPolicyDnsV1beta2Args {
   final pulumi.Input<String> managedZone;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetManagedZoneIamPolicyDnsV1beta2Args].
   /// [managedZone] Required.

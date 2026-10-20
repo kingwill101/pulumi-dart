@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Immutable. The scope of the certificate.
-enum CertificateScope {
+enum CertificateScope implements pulumi.PulumiEnum<String> {
   default_("DEFAULT"),
   edgeCache("EDGE_CACHE"),
   allRegions("ALL_REGIONS");
 
   const CertificateScope(this.wireValue);
+  @override
   final String wireValue;
 
   static CertificateScope fromValue(String value) {

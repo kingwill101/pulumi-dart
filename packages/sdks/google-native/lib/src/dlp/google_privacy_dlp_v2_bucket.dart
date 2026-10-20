@@ -6,9 +6,9 @@ import 'google_privacy_dlp_v2_value.dart';
 /// Bucket is represented as a range, along with replacement values.
 class GooglePrivacyDlpV2Bucket {
   /// Upper bound of the range, exclusive; type must match min.
-  final pulumi.Input<GooglePrivacyDlpV2Value>? max;
+  final pulumi.Input<GooglePrivacyDlpV2Value?>? max;
   /// Lower bound of the range, inclusive. Type should be the same as max if used.
-  final pulumi.Input<GooglePrivacyDlpV2Value>? min;
+  final pulumi.Input<GooglePrivacyDlpV2Value?>? min;
   /// Replacement value for this bucket.
   final pulumi.Input<GooglePrivacyDlpV2Value> replacementValue;
 

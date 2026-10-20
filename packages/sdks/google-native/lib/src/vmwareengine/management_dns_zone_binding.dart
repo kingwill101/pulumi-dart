@@ -40,8 +40,32 @@ class ManagementDnsZoneBinding extends pulumi.CustomResource {
           'google-native:vmwareengine/v1:ManagementDnsZoneBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '0.32.0', replaceOnChanges: ['location', 'managementDnsZoneBindingId', 'privateCloudId', 'project']).merge(options),
         ) {
+    createTime = registerOutput<String>('createTime');
+    description = registerOutput<String>('description');
+    location = registerOutput<String>('location');
+    managementDnsZoneBindingId = registerOutput<String>('managementDnsZoneBindingId');
+    this.name = registerOutput<String>('name');
+    privateCloudId = registerOutput<String>('privateCloudId');
+    project = registerOutput<String>('project');
+    requestId = registerOutput<String?>('requestId');
+    state = registerOutput<String>('state');
+    uid = registerOutput<String>('uid');
+    updateTime = registerOutput<String>('updateTime');
+    vmwareEngineNetwork = registerOutput<String>('vmwareEngineNetwork');
+    vpcNetwork = registerOutput<String>('vpcNetwork');
+  }
+
+  /// Creates a typed reference to an existing [ManagementDnsZoneBinding] resource.
+  ManagementDnsZoneBinding.reference(String urn)
+    : super(
+        'google-native:vmwareengine/v1:ManagementDnsZoneBinding',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createTime = registerOutput<String>('createTime');
     description = registerOutput<String>('description');
     location = registerOutput<String>('location');

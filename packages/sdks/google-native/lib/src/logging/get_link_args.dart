@@ -10,7 +10,7 @@ class GetLinkArgs {
   final pulumi.Input<String> bucketId;
   final pulumi.Input<String> linkId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetLinkArgs].
   /// [bucketId] Required.

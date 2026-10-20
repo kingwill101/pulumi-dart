@@ -6,7 +6,7 @@ import 'header_cloudtasks_v2beta3.dart';
 /// Wraps the Header object.
 class HeaderOverrideCloudtasksV2beta3 {
   /// header embodying a key and a value.
-  final pulumi.Input<HeaderCloudtasksV2beta3>? header;
+  final pulumi.Input<HeaderCloudtasksV2beta3?>? header;
 
   /// Creates a new [HeaderOverrideCloudtasksV2beta3].
   /// [header] header embodying a key and a value.

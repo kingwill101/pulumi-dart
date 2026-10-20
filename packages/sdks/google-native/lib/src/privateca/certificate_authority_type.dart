@@ -1,10 +1,13 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// Required. Immutable. The Type of this CertificateAuthority.
-enum CertificateAuthorityType {
+enum CertificateAuthorityType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   selfSigned("SELF_SIGNED"),
   subordinate("SUBORDINATE");
 
   const CertificateAuthorityType(this.wireValue);
+  @override
   final String wireValue;
 
   static CertificateAuthorityType fromValue(String value) {

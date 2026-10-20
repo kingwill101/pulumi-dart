@@ -5,7 +5,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// A set of Compute Engine Confidential VM instance options.
 class GceConfidentialInstanceConfig {
   /// Optional. Whether the instance has confidential compute enabled.
-  final pulumi.Input<bool>? enableConfidentialCompute;
+  final pulumi.Input<bool?>? enableConfidentialCompute;
 
   /// Creates a new [GceConfidentialInstanceConfig].
   /// [enableConfidentialCompute] Optional. Whether the instance has confidential compute enabled.

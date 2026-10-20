@@ -6,19 +6,19 @@ import 'google_cloud_dialogflow_v2_input_config_response.dart';
 /// Result data returned by getConversationDataset.
 class GetConversationDatasetResult {
   /// The number of conversations this conversation dataset contains.
-  final String conversationCount;
+  final String? conversationCount;
   /// Metadata set during conversation data import.
-  final GoogleCloudDialogflowV2ConversationInfoResponse conversationInfo;
+  final GoogleCloudDialogflowV2ConversationInfoResponse? conversationInfo;
   /// Creation time of this dataset.
-  final String createTime;
+  final String? createTime;
   /// Optional. The description of the dataset. Maximum of 10000 bytes.
-  final String description;
+  final String? description;
   /// The display name of the dataset. Maximum of 64 bytes.
-  final String displayName;
+  final String? displayName;
   /// Input configurations set during conversation data import.
-  final GoogleCloudDialogflowV2InputConfigResponse inputConfig;
+  final GoogleCloudDialogflowV2InputConfigResponse? inputConfig;
   /// ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
-  final String name;
+  final String? name;
 
   /// Creates a new [GetConversationDatasetResult].
   /// [conversationCount] The number of conversations this conversation dataset contains.
@@ -29,36 +29,36 @@ class GetConversationDatasetResult {
   /// [inputConfig] Input configurations set during conversation data import.
   /// [name] ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
   const GetConversationDatasetResult({
-    required this.conversationCount,
-    required this.conversationInfo,
-    required this.createTime,
-    required this.description,
-    required this.displayName,
-    required this.inputConfig,
-    required this.name,
+    this.conversationCount,
+    this.conversationInfo,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.inputConfig,
+    this.name,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'conversationCount': conversationCount,
-      'conversationInfo': conversationInfo.toMap(),
-      'createTime': createTime,
-      'description': description,
-      'displayName': displayName,
-      'inputConfig': inputConfig.toMap(),
-      'name': name,
+      'conversationCount': ?conversationCount,
+      'conversationInfo': ?conversationInfo?.toMap(),
+      'createTime': ?createTime,
+      'description': ?description,
+      'displayName': ?displayName,
+      'inputConfig': ?inputConfig?.toMap(),
+      'name': ?name,
     };
   }
 
   factory GetConversationDatasetResult.fromMap(Map<String, dynamic> map) {
     return GetConversationDatasetResult(
-      conversationCount: map['conversationCount'] as String,
-      conversationInfo: GoogleCloudDialogflowV2ConversationInfoResponse.fromMap((map['conversationInfo']! as Map).cast<String, dynamic>()),
-      createTime: map['createTime'] as String,
-      description: map['description'] as String,
-      displayName: map['displayName'] as String,
-      inputConfig: GoogleCloudDialogflowV2InputConfigResponse.fromMap((map['inputConfig']! as Map).cast<String, dynamic>()),
-      name: map['name'] as String,
+      conversationCount: (() { final guardedValue = map['conversationCount']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      conversationInfo: (() { final guardedValue = map['conversationInfo']; if (guardedValue == null) return null; return GoogleCloudDialogflowV2ConversationInfoResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      createTime: (() { final guardedValue = map['createTime']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
+      inputConfig: (() { final guardedValue = map['inputConfig']; if (guardedValue == null) return null; return GoogleCloudDialogflowV2InputConfigResponse.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
     );
   }
 }

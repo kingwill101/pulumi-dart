@@ -54,6 +54,17 @@ Future<GetApiResult> getApi(
   return GetApiResult.fromMap(result);
 }
 
+pulumi.Output<GetApiResult> getApiOutput(
+  GetApiArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getApi',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigeeregistry_v1_get_api_artifact_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -68,6 +79,17 @@ Future<GetApiArtifactIamPolicyResult> getApiArtifactIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApiArtifactIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetApiArtifactIamPolicyResult> getApiArtifactIamPolicyOutput(
+  GetApiArtifactIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getApiArtifactIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiArtifactIamPolicyResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -86,6 +108,17 @@ Future<GetApiDeploymentIamPolicyResult> getApiDeploymentIamPolicy(
   return GetApiDeploymentIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetApiDeploymentIamPolicyResult> getApiDeploymentIamPolicyOutput(
+  GetApiDeploymentIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getApiDeploymentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiDeploymentIamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigeeregistry_v1_get_api_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -100,6 +133,17 @@ Future<GetApiIamPolicyResult> getApiIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApiIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetApiIamPolicyResult> getApiIamPolicyOutput(
+  GetApiIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getApiIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiIamPolicyResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -118,6 +162,17 @@ Future<GetApiVersionArtifactIamPolicyResult> getApiVersionArtifactIamPolicy(
   return GetApiVersionArtifactIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetApiVersionArtifactIamPolicyResult> getApiVersionArtifactIamPolicyOutput(
+  GetApiVersionArtifactIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getApiVersionArtifactIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiVersionArtifactIamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigeeregistry_v1_get_api_version_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -132,6 +187,17 @@ Future<GetApiVersionIamPolicyResult> getApiVersionIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApiVersionIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetApiVersionIamPolicyResult> getApiVersionIamPolicyOutput(
+  GetApiVersionIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getApiVersionIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiVersionIamPolicyResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -150,6 +216,17 @@ Future<GetApiVersionSpecArtifactIamPolicyResult> getApiVersionSpecArtifactIamPol
   return GetApiVersionSpecArtifactIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetApiVersionSpecArtifactIamPolicyResult> getApiVersionSpecArtifactIamPolicyOutput(
+  GetApiVersionSpecArtifactIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getApiVersionSpecArtifactIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiVersionSpecArtifactIamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigeeregistry_v1_get_api_version_spec_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -164,6 +241,17 @@ Future<GetApiVersionSpecIamPolicyResult> getApiVersionSpecIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetApiVersionSpecIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetApiVersionSpecIamPolicyResult> getApiVersionSpecIamPolicyOutput(
+  GetApiVersionSpecIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getApiVersionSpecIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetApiVersionSpecIamPolicyResult.fromMap);
 }
 
 /// Returns a specified artifact.
@@ -182,6 +270,17 @@ Future<GetArtifactResult> getArtifact(
   return GetArtifactResult.fromMap(result);
 }
 
+pulumi.Output<GetArtifactResult> getArtifactOutput(
+  GetArtifactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getArtifact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetArtifactResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigeeregistry_v1_get_artifact_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -196,6 +295,17 @@ Future<GetArtifactIamPolicyResult> getArtifactIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetArtifactIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetArtifactIamPolicyResult> getArtifactIamPolicyOutput(
+  GetArtifactIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getArtifactIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetArtifactIamPolicyResult.fromMap);
 }
 
 /// Returns a specified deployment.
@@ -214,6 +324,17 @@ Future<GetDeploymentResult> getDeployment(
   return GetDeploymentResult.fromMap(result);
 }
 
+pulumi.Output<GetDeploymentResult> getDeploymentOutput(
+  GetDeploymentArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getDeployment',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentResult.fromMap);
+}
+
 /// Returns a specified artifact.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigeeregistry_v1_get_deployment_artifact_args_doc}
 /// [options] Invoke options controlling this call.
@@ -228,6 +349,17 @@ Future<GetDeploymentArtifactResult> getDeploymentArtifact(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetDeploymentArtifactResult.fromMap(result);
+}
+
+pulumi.Output<GetDeploymentArtifactResult> getDeploymentArtifactOutput(
+  GetDeploymentArtifactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getDeploymentArtifact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDeploymentArtifactResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -246,6 +378,17 @@ Future<GetDocumentIamPolicyResult> getDocumentIamPolicy(
   return GetDocumentIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetDocumentIamPolicyResult> getDocumentIamPolicyOutput(
+  GetDocumentIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getDocumentIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetDocumentIamPolicyResult.fromMap);
+}
+
 /// Gets details of a single Instance.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigeeregistry_v1_get_instance_args_doc}
 /// [options] Invoke options controlling this call.
@@ -260,6 +403,17 @@ Future<GetInstanceResult> getInstance(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetInstanceResult.fromMap(result);
+}
+
+pulumi.Output<GetInstanceResult> getInstanceOutput(
+  GetInstanceArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getInstance',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceResult.fromMap);
 }
 
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -278,6 +432,17 @@ Future<GetInstanceIamPolicyResult> getInstanceIamPolicy(
   return GetInstanceIamPolicyResult.fromMap(result);
 }
 
+pulumi.Output<GetInstanceIamPolicyResult> getInstanceIamPolicyOutput(
+  GetInstanceIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getInstanceIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetInstanceIamPolicyResult.fromMap);
+}
+
 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigeeregistry_v1_get_runtime_iam_policy_args_doc}
 /// [options] Invoke options controlling this call.
@@ -292,6 +457,17 @@ Future<GetRuntimeIamPolicyResult> getRuntimeIamPolicy(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetRuntimeIamPolicyResult.fromMap(result);
+}
+
+pulumi.Output<GetRuntimeIamPolicyResult> getRuntimeIamPolicyOutput(
+  GetRuntimeIamPolicyArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getRuntimeIamPolicy',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetRuntimeIamPolicyResult.fromMap);
 }
 
 /// Returns a specified spec.
@@ -310,6 +486,17 @@ Future<GetSpecResult> getSpec(
   return GetSpecResult.fromMap(result);
 }
 
+pulumi.Output<GetSpecResult> getSpecOutput(
+  GetSpecArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getSpec',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetSpecResult.fromMap);
+}
+
 /// Returns a specified version.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigeeregistry_v1_get_version_args_doc}
 /// [options] Invoke options controlling this call.
@@ -326,6 +513,17 @@ Future<GetVersionResult> getVersion(
   return GetVersionResult.fromMap(result);
 }
 
+pulumi.Output<GetVersionResult> getVersionOutput(
+  GetVersionArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getVersion',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVersionResult.fromMap);
+}
+
 /// Returns a specified artifact.
 /// [args] Arguments passed to this invoke. {@macro pulumi_apigeeregistry_v1_get_version_artifact_args_doc}
 /// [options] Invoke options controlling this call.
@@ -340,4 +538,15 @@ Future<GetVersionArtifactResult> getVersionArtifact(
     options: pulumi.toDeploymentInvokeOptions(options),
   );
   return GetVersionArtifactResult.fromMap(result);
+}
+
+pulumi.Output<GetVersionArtifactResult> getVersionArtifactOutput(
+  GetVersionArtifactArgs args, {
+  pulumi.InvokeOutputOptions? options,
+}) {
+  return pulumi.invokeOutput<Map<String, dynamic>>(
+    'google-native:apigeeregistry/v1:getVersionArtifact',
+    pulumi.Input.mapToInputs(args.toMap()),
+    options: options,
+  ).apply(GetVersionArtifactResult.fromMap);
 }

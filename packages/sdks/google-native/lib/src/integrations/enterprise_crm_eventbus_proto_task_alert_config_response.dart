@@ -87,7 +87,7 @@ class EnterpriseCrmEventbusProtoTaskAlertConfigResponse {
       durationThresholdMs: pulumi.Input.fromValue(map['durationThresholdMs'] as String),
       errorEnumList: pulumi.Input.fromValue(EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse.fromMap((map['errorEnumList']! as Map).cast<String, dynamic>())),
       metricType: pulumi.Input.fromValue(map['metricType'] as String),
-      numAggregationPeriods: pulumi.Input.fromValue(map['numAggregationPeriods'] as int),
+      numAggregationPeriods: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numAggregationPeriods'])),
       onlyFinalAttempt: pulumi.Input.fromValue(map['onlyFinalAttempt'] as bool),
       playbookUrl: pulumi.Input.fromValue(map['playbookUrl'] as String),
       thresholdType: pulumi.Input.fromValue(map['thresholdType'] as String),

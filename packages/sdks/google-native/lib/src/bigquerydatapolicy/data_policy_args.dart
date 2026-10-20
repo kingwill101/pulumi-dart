@@ -10,15 +10,15 @@ import 'data_policy_data_policy_type.dart';
 /// {@macro pulumi_bigquerydatapolicy_v1_data_policy_args_doc}
 class DataPolicyArgs {
   /// The data masking policy that specifies the data masking rule to use.
-  final pulumi.Input<DataMaskingPolicy>? dataMaskingPolicy;
+  final pulumi.Input<DataMaskingPolicy?>? dataMaskingPolicy;
   /// User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {data_policy_id} in part of the resource name.
-  final pulumi.Input<String>? dataPolicyId;
+  final pulumi.Input<String?>? dataPolicyId;
   /// Type of data policy.
-  final pulumi.Input<DataPolicyDataPolicyType>? dataPolicyType;
-  final pulumi.Input<String>? location;
+  final pulumi.Input<DataPolicyDataPolicyType?>? dataPolicyType;
+  final pulumi.Input<String?>? location;
   /// Policy tag resource name, in the format of `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
-  final pulumi.Input<String>? policyTag;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? policyTag;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [DataPolicyArgs].
   /// [dataMaskingPolicy] The data masking policy that specifies the data masking rule to use.

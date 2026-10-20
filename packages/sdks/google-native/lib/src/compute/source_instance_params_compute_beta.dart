@@ -6,7 +6,7 @@ import 'disk_instantiation_config_compute_beta.dart';
 /// A specification of the parameters to use when creating the instance template from a source instance.
 class SourceInstanceParamsComputeBeta {
   /// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
-  final pulumi.Input<List<DiskInstantiationConfigComputeBeta>>? diskConfigs;
+  final pulumi.Input<List<DiskInstantiationConfigComputeBeta>?>? diskConfigs;
 
   /// Creates a new [SourceInstanceParamsComputeBeta].
   /// [diskConfigs] Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.

@@ -5,9 +5,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// The image response message.
 class GoogleCloudDialogflowV2IntentMessageImage {
   /// Optional. A text description of the image to be used for accessibility, e.g., screen readers.
-  final pulumi.Input<String>? accessibilityText;
+  final pulumi.Input<String?>? accessibilityText;
   /// Optional. The public URI to an image file.
-  final pulumi.Input<String>? imageUri;
+  final pulumi.Input<String?>? imageUri;
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageImage].
   /// [accessibilityText] Optional. A text description of the image to be used for accessibility, e.g., screen readers.

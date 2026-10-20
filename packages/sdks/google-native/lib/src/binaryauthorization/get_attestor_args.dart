@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_binaryauthorization_v1_get_attestor_args_doc}
 class GetAttestorArgs {
   final pulumi.Input<String> attestorId;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
 
   /// Creates a new [GetAttestorArgs].
   /// [attestorId] Required.

@@ -21,7 +21,7 @@ class MachineConfigResponse {
 
   factory MachineConfigResponse.fromMap(Map<String, dynamic> map) {
     return MachineConfigResponse(
-      cpuCount: pulumi.Input.fromValue(map['cpuCount'] as int),
+      cpuCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['cpuCount'])),
     );
   }
 }

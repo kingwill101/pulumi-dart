@@ -6,7 +6,7 @@ import 'google_privacy_dlp_v2_field_id.dart';
 /// Compute numerical stats over an individual column, including number of distinct values and value count distribution.
 class GooglePrivacyDlpV2CategoricalStatsConfig {
   /// Field to compute categorical stats on. All column types are supported except for arrays and structs. However, it may be more informative to use NumericalStats when the field type is supported, depending on the data.
-  final pulumi.Input<GooglePrivacyDlpV2FieldId>? field;
+  final pulumi.Input<GooglePrivacyDlpV2FieldId?>? field;
 
   /// Creates a new [GooglePrivacyDlpV2CategoricalStatsConfig].
   /// [field] Field to compute categorical stats on. All column types are supported except for arrays and structs. However, it may be more informative to use NumericalStats when the field type is supported, depending on the data.

@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_compute_v1_get_region_disk_compute_v1_args_doc}
 class GetRegionDiskComputeV1Args {
   final pulumi.Input<String> disk;
-  final pulumi.Input<String>? project;
+  final pulumi.Input<String?>? project;
   final pulumi.Input<String> region;
 
   /// Creates a new [GetRegionDiskComputeV1Args].

@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The type of the feature that enabled for fulfillment.
-enum GoogleCloudDialogflowV2FulfillmentFeatureType {
+enum GoogleCloudDialogflowV2FulfillmentFeatureType implements pulumi.PulumiEnum<String> {
   typeUnspecified("TYPE_UNSPECIFIED"),
   smalltalk("SMALLTALK");
 
   const GoogleCloudDialogflowV2FulfillmentFeatureType(this.wireValue);
+  @override
   final String wireValue;
 
   static GoogleCloudDialogflowV2FulfillmentFeatureType fromValue(String value) {

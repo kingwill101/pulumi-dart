@@ -6,7 +6,7 @@ import 'iap_test_service_account_info_websecurityscanner_v1beta.dart';
 /// Describes authentication configuration for Identity-Aware-Proxy (IAP).
 class IapCredentialWebsecurityscannerV1beta {
   /// Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
-  final pulumi.Input<IapTestServiceAccountInfoWebsecurityscannerV1beta>? iapTestServiceAccountInfo;
+  final pulumi.Input<IapTestServiceAccountInfoWebsecurityscannerV1beta?>? iapTestServiceAccountInfo;
 
   /// Creates a new [IapCredentialWebsecurityscannerV1beta].
   /// [iapTestServiceAccountInfo] Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.

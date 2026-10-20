@@ -1,9 +1,12 @@
+import 'package:pulumi/pulumi.dart' as pulumi;
+
 /// The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.
-enum VpnGatewayGatewayIpVersion {
+enum VpnGatewayGatewayIpVersion implements pulumi.PulumiEnum<String> {
   ipv4("IPV4"),
   ipv6("IPV6");
 
   const VpnGatewayGatewayIpVersion(this.wireValue);
+  @override
   final String wireValue;
 
   static VpnGatewayGatewayIpVersion fromValue(String value) {

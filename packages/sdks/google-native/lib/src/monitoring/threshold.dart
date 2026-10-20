@@ -8,15 +8,15 @@ import 'threshold_target_axis.dart';
 /// Defines a threshold for categorizing time series values.
 class Threshold {
   /// The state color for this threshold. Color is not allowed in a XyChart.
-  final pulumi.Input<ThresholdColor>? color;
+  final pulumi.Input<ThresholdColor?>? color;
   /// The direction for the current threshold. Direction is not allowed in a XyChart.
-  final pulumi.Input<ThresholdDirection>? direction;
+  final pulumi.Input<ThresholdDirection?>? direction;
   /// A label for the threshold.
-  final pulumi.Input<String>? label;
+  final pulumi.Input<String?>? label;
   /// The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
-  final pulumi.Input<ThresholdTargetAxis>? targetAxis;
+  final pulumi.Input<ThresholdTargetAxis?>? targetAxis;
   /// The value of the threshold. The value should be defined in the native scale of the metric.
-  final pulumi.Input<double>? value;
+  final pulumi.Input<double?>? value;
 
   /// Creates a new [Threshold].
   /// [color] The state color for this threshold. Color is not allowed in a XyChart.
@@ -48,7 +48,7 @@ class Threshold {
       direction: (() { final guardedValue = map['direction']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ThresholdDirection.fromValue(guardedValue as String)); })(),
       label: (() { final guardedValue = map['label']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       targetAxis: (() { final guardedValue = map['targetAxis']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ThresholdTargetAxis.fromValue(guardedValue as String)); })(),
-      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as double); })(),
+      value: (() { final guardedValue = map['value']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
     );
   }
 }

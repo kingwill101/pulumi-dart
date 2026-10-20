@@ -9,8 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class GetExecutionWorkflowexecutionsV1betaArgs {
   final pulumi.Input<String> executionId;
   final pulumi.Input<String> location;
-  final pulumi.Input<String>? project;
-  final pulumi.Input<String>? view;
+  final pulumi.Input<String?>? project;
+  final pulumi.Input<String?>? view;
   final pulumi.Input<String> workflowId;
 
   /// Creates a new [GetExecutionWorkflowexecutionsV1betaArgs].
