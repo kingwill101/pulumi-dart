@@ -107,7 +107,7 @@ import 'url_normalization_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -115,7 +115,10 @@ import 'url_normalization_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_urlnormalizationsettings" "example_url_normalization_settings" {
+/// resource "cloudflare_url_normalization_settings" "example_url_normalization_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "9f1839b6152d298aca64c4e906b6d074"
 ///   scope   = "incoming"
 ///   type    = "cloudflare"
@@ -190,7 +193,7 @@ class UrlNormalizationSettings extends pulumi.CustomResource {
           'cloudflare:index/urlNormalizationSettings:UrlNormalizationSettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     scope = registerOutput<String>('scope');
     type = registerOutput<String>('type');

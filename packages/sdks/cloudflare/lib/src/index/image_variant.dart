@@ -57,9 +57,9 @@ import 'image_variant_state.dart';
 ///         Options = new Cloudflare.Inputs.ImageVariantOptionsArgs
 ///         {
 ///             Fit = "scale-down",
-///             Height = 768,
+///             Height = 768.0,
 ///             Metadata = "none",
-///             Width = 1366,
+///             Width = 1366.0,
 ///         },
 ///         NeverRequireSignedUrls = true,
 ///     });
@@ -95,7 +95,7 @@ import 'image_variant_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -103,7 +103,10 @@ import 'image_variant_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_imagevariant" "example_image_variant" {
+/// resource "cloudflare_image_variant" "example_image_variant" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id       = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   image_variant_id = "hero"
 ///   options = {
@@ -196,7 +199,7 @@ class ImageVariant extends pulumi.CustomResource {
           'cloudflare:index/imageVariant:ImageVariant',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     imageVariantId = registerOutput<String>('imageVariantId');

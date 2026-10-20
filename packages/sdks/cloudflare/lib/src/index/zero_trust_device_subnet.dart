@@ -78,7 +78,7 @@ import 'zero_trust_device_subnet_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -86,7 +86,10 @@ import 'zero_trust_device_subnet_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdevicesubnet" "example_zero_trust_device_subnet" {
+/// resource "cloudflare_zero_trust_device_subnet" "example_zero_trust_device_subnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id         = "699d98642c564d2e855e9661899b7252"
 ///   name               = "IPv4 Cloudflare Source IPs"
 ///   network            = "100.64.0.0/12"
@@ -178,7 +181,7 @@ class ZeroTrustDeviceSubnet extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDeviceSubnet:ZeroTrustDeviceSubnet',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     capacity = registerOutput<ZeroTrustDeviceSubnetCapacity>('capacity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDeviceSubnetCapacity.fromMap((guardedValue as Map).cast<String, dynamic>()); });

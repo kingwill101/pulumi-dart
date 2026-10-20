@@ -198,7 +198,7 @@ import 'api_token_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -206,7 +206,10 @@ import 'api_token_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_apitoken" "example_api_token" {
+/// resource "cloudflare_api_token" "example_api_token" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "workers read-only token"
 ///   policies {
 ///     effect = "allow"
@@ -324,6 +327,10 @@ import 'api_token_state.dart';
 /// ```
 class ApiToken extends pulumi.CustomResource {
   late final pulumi.Output<ApiTokenCondition?> condition;
+  /// The email address of the user who created the token at the time of
+  /// creation. Only present for Account Owned API Tokens when a creator email
+  /// was available.
+  late final pulumi.Output<String> creatorEmailAtCreation;
   /// The expiration time on or after which the JWT MUST NOT be accepted for processing.
   late final pulumi.Output<String?> expiresOn;
   /// The time on which the token was created.
@@ -336,8 +343,16 @@ class ApiToken extends pulumi.CustomResource {
   late final pulumi.Output<String> name;
   /// The time before which the token MUST NOT be accepted for processing.
   late final pulumi.Output<String?> notBefore;
-  /// Set of access policies assigned to the token.
+  /// List of access policies assigned to the token.
   late final pulumi.Output<List<ApiTokenPolicy>> policies;
+  /// The identifier of the service that provisioned the token. For an
+  /// OAuth-provisioned token, this is the OAuth client identifier. Present
+  /// when `provisionerType` is present and null when the identifier is
+  /// unavailable.
+  late final pulumi.Output<String> provisionerId;
+  /// The type of service that provisioned the token. Only present for
+  /// provisioned Account Owned API Tokens.
+  late final pulumi.Output<String> provisionerType;
   /// Status of the token.
   /// Available values: "active", "disabled", "expired".
   late final pulumi.Output<String> status;
@@ -356,10 +371,11 @@ class ApiToken extends pulumi.CustomResource {
           'cloudflare:index/apiToken:ApiToken',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
           additionalSecretOutputs: const ['value'],
         ) {
     condition = registerOutput<ApiTokenCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiTokenCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creatorEmailAtCreation = registerOutput<String>('creatorEmailAtCreation');
     expiresOn = registerOutput<String?>('expiresOn');
     issuedOn = registerOutput<String>('issuedOn');
     lastUsedOn = registerOutput<String>('lastUsedOn');
@@ -367,6 +383,8 @@ class ApiToken extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notBefore = registerOutput<String?>('notBefore');
     policies = registerOutput<List<ApiTokenPolicy>>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiTokenPolicy>(guardedValue, (value) => ApiTokenPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    provisionerId = registerOutput<String>('provisionerId');
+    provisionerType = registerOutput<String>('provisionerType');
     status = registerOutput<String>('status');
     value = registerOutput<String>('value', isSecret: true);
   }
@@ -396,6 +414,7 @@ class ApiToken extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     condition = registerOutput<ApiTokenCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiTokenCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creatorEmailAtCreation = registerOutput<String>('creatorEmailAtCreation');
     expiresOn = registerOutput<String?>('expiresOn');
     issuedOn = registerOutput<String>('issuedOn');
     lastUsedOn = registerOutput<String>('lastUsedOn');
@@ -403,6 +422,8 @@ class ApiToken extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notBefore = registerOutput<String?>('notBefore');
     policies = registerOutput<List<ApiTokenPolicy>>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiTokenPolicy>(guardedValue, (value) => ApiTokenPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    provisionerId = registerOutput<String>('provisionerId');
+    provisionerType = registerOutput<String>('provisionerType');
     status = registerOutput<String>('status');
     value = registerOutput<String>('value', isSecret: true);
   }
@@ -418,6 +439,7 @@ class ApiToken extends pulumi.CustomResource {
         isResourceReference: true,
       ) {
     condition = registerOutput<ApiTokenCondition?>('condition', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ApiTokenCondition.fromMap((guardedValue as Map).cast<String, dynamic>()); });
+    creatorEmailAtCreation = registerOutput<String>('creatorEmailAtCreation');
     expiresOn = registerOutput<String?>('expiresOn');
     issuedOn = registerOutput<String>('issuedOn');
     lastUsedOn = registerOutput<String>('lastUsedOn');
@@ -425,6 +447,8 @@ class ApiToken extends pulumi.CustomResource {
     this.name = registerOutput<String>('name');
     notBefore = registerOutput<String?>('notBefore');
     policies = registerOutput<List<ApiTokenPolicy>>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ApiTokenPolicy>(guardedValue, (value) => ApiTokenPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+    provisionerId = registerOutput<String>('provisionerId');
+    provisionerType = registerOutput<String>('provisionerType');
     status = registerOutput<String>('status');
     value = registerOutput<String>('value', isSecret: true);
   }

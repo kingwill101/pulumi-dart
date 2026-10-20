@@ -91,7 +91,7 @@ import 'zero_trust_list_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -99,7 +99,10 @@ import 'zero_trust_list_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustlist" "example_zero_trust_list" {
+/// resource "cloudflare_zero_trust_list" "example_zero_trust_list" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "699d98642c564d2e855e9661899b7252"
 ///   name        = "Admin Serial Numbers"
 ///   type        = "SERIAL"
@@ -168,6 +171,7 @@ import 'zero_trust_list_state.dart';
 /// $ pulumi import cloudflare:index/zeroTrustList:ZeroTrustList example '<account_id>/<list_id>'
 /// ```
 class ZeroTrustList extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   late final pulumi.Output<String> createdAt;
   /// Provide the list description.
@@ -195,7 +199,7 @@ class ZeroTrustList extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustList:ZeroTrustList',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

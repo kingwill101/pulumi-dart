@@ -28,9 +28,9 @@ class GetZeroTrustDlpDatasetsResultUpload {
 
   factory GetZeroTrustDlpDatasetsResultUpload.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustDlpDatasetsResultUpload(
-      numCells: pulumi.Input.fromValue((map['numCells'] as num).toInt()),
+      numCells: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['numCells'])),
       status: pulumi.Input.fromValue(map['status'] as String),
-      version: pulumi.Input.fromValue((map['version'] as num).toInt()),
+      version: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['version'])),
     );
   }
 }

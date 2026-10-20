@@ -165,7 +165,7 @@ import 'zero_trust_access_policy_state.dart';
 ///         {
 ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyApprovalGroupArgs
 ///             {
-///                 ApprovalsNeeded = 1,
+///                 ApprovalsNeeded = 1.0,
 ///                 EmailAddresses = new[]
 ///                 {
 ///                     "test1@cloudflare.com",
@@ -175,7 +175,7 @@ import 'zero_trust_access_policy_state.dart';
 ///             },
 ///             new Cloudflare.Inputs.ZeroTrustAccessPolicyApprovalGroupArgs
 ///             {
-///                 ApprovalsNeeded = 3,
+///                 ApprovalsNeeded = 3.0,
 ///                 EmailAddresses = new[]
 ///                 {
 ///                     "test@cloudflare.com",
@@ -316,7 +316,7 @@ import 'zero_trust_access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -324,7 +324,10 @@ import 'zero_trust_access_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustaccesspolicy" "example_zero_trust_access_policy" {
+/// resource "cloudflare_zero_trust_access_policy" "example_zero_trust_access_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   decision   = "allow"
 ///   includes {
@@ -557,7 +560,7 @@ class ZeroTrustAccessPolicy extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessPolicy:ZeroTrustAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     appCount = registerOutput<int>('appCount');

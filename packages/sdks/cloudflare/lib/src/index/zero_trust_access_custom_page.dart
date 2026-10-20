@@ -78,7 +78,7 @@ import 'zero_trust_access_custom_page_warning.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -86,7 +86,10 @@ import 'zero_trust_access_custom_page_warning.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustaccesscustompage" "example_zero_trust_access_custom_page" {
+/// resource "cloudflare_zero_trust_access_custom_page" "example_zero_trust_access_custom_page" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id       = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   custom_html      = "<html><body><h1>Access Denied</h1></body></html>"
 ///   name             = "name"
@@ -174,7 +177,7 @@ class ZeroTrustAccessCustomPage extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustAccessCustomPage:ZeroTrustAccessCustomPage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     contractVersion = registerOutput<int>('contractVersion');

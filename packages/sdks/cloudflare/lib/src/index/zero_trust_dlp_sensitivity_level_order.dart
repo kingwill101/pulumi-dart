@@ -74,7 +74,7 @@ import 'zero_trust_dlp_sensitivity_level_order_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -82,7 +82,10 @@ import 'zero_trust_dlp_sensitivity_level_order_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdlpsensitivitylevelorder" "example_zero_trust_dlp_sensitivity_level_order" {
+/// resource "cloudflare_zero_trust_dlp_sensitivity_level_order" "example_zero_trust_dlp_sensitivity_level_order" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id           = "account_id"
 ///   sensitivity_group_id = "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
 ///   level_ids            = ["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"]
@@ -153,7 +156,7 @@ class ZeroTrustDlpSensitivityLevelOrder extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDlpSensitivityLevelOrder:ZeroTrustDlpSensitivityLevelOrder',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     levelIds = registerOutput<List<String>>('levelIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -65,7 +65,7 @@ import 'zero_trust_device_default_profile_certificates_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -73,7 +73,10 @@ import 'zero_trust_device_default_profile_certificates_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdevicedefaultprofilecertificates" "example_zero_trust_device_default_profile_certificates" {
+/// resource "cloudflare_zero_trust_device_default_profile_certificates" "example_zero_trust_device_default_profile_certificates" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "699d98642c564d2e855e9661899b7252"
 ///   enabled = true
 /// }
@@ -138,7 +141,7 @@ class ZeroTrustDeviceDefaultProfileCertificates extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDeviceDefaultProfileCertificates:ZeroTrustDeviceDefaultProfileCertificates',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     zoneId = registerOutput<String>('zoneId');

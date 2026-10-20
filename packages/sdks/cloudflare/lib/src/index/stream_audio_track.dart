@@ -78,7 +78,7 @@ import 'stream_audio_track_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -86,7 +86,10 @@ import 'stream_audio_track_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_streamaudiotrack" "example_stream_audio_track" {
+/// resource "cloudflare_stream_audio_track" "example_stream_audio_track" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id       = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   identifier       = "ea95132c15732412d22c1476fa83f27a"
 ///   audio_identifier = "ea95132c15732412d22c1476fa83f27a"
@@ -174,7 +177,7 @@ class StreamAudioTrack extends pulumi.CustomResource {
           'cloudflare:index/streamAudioTrack:StreamAudioTrack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     audioIdentifier = registerOutput<String?>('audioIdentifier');

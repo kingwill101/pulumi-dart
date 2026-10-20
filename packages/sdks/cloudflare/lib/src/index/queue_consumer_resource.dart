@@ -67,11 +67,11 @@ import 'queue_consumer_state.dart';
 ///         DeadLetterQueue = "example-queue",
 ///         Settings = new Cloudflare.Inputs.QueueConsumerSettingsArgs
 ///         {
-///             BatchSize = 50,
-///             MaxConcurrency = 10,
-///             MaxRetries = 3,
-///             MaxWaitTimeMs = 5000,
-///             RetryDelay = 10,
+///             BatchSize = 50.0,
+///             MaxConcurrency = 10.0,
+///             MaxRetries = 3.0,
+///             MaxWaitTimeMs = 5000.0,
+///             RetryDelay = 10.0,
 ///         },
 ///     });
 ///
@@ -109,7 +109,7 @@ import 'queue_consumer_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -117,7 +117,10 @@ import 'queue_consumer_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_queueconsumer" "example_queue_consumer" {
+/// resource "cloudflare_queue_consumer" "example_queue_consumer" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id        = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   queue_id          = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   script_name       = "my-consumer-worker"
@@ -208,7 +211,7 @@ class QueueConsumerResource extends pulumi.CustomResource {
   /// Name of a Worker
   late final pulumi.Output<String> scriptName;
   late final pulumi.Output<QueueConsumerSettings> settings;
-  /// Available values: "worker", "httpPull".
+  /// Available values: "worker", "httpPull", "notification".
   late final pulumi.Output<String> type;
 
   /// Creates a new [QueueConsumerResource].
@@ -223,7 +226,7 @@ class QueueConsumerResource extends pulumi.CustomResource {
           'cloudflare:index/queueConsumer:QueueConsumer',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     consumerId = registerOutput<String>('consumerId');

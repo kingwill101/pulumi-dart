@@ -6,6 +6,10 @@ import 'get_account_tokens_result_policy.dart';
 
 class GetAccountTokensResult {
   final pulumi.Input<GetAccountTokensResultCondition> condition;
+  /// The email address of the user who created the token at the time of
+  /// creation. Only present for Account Owned API Tokens when a creator email
+  /// was available.
+  final pulumi.Input<String> creatorEmailAtCreation;
   /// The expiration time on or after which the JWT MUST NOT be accepted for processing.
   final pulumi.Input<String> expiresOn;
   /// Token identifier tag.
@@ -22,12 +26,21 @@ class GetAccountTokensResult {
   final pulumi.Input<String> notBefore;
   /// List of access policies assigned to the token.
   final pulumi.Input<List<GetAccountTokensResultPolicy>> policies;
+  /// The identifier of the service that provisioned the token. For an
+  /// OAuth-provisioned token, this is the OAuth client identifier. Present
+  /// when `provisionerType` is present and null when the identifier is
+  /// unavailable.
+  final pulumi.Input<String> provisionerId;
+  /// The type of service that provisioned the token. Only present for
+  /// provisioned Account Owned API Tokens.
+  final pulumi.Input<String> provisionerType;
   /// Status of the token.
   /// Available values: "active", "disabled", "expired".
   final pulumi.Input<String> status;
 
   /// Creates a new [GetAccountTokensResult].
   /// [condition] Required.
+  /// [creatorEmailAtCreation] The email address of the user who created the token at the time of
   /// [expiresOn] The expiration time on or after which the JWT MUST NOT be accepted for processing.
   /// [id] Token identifier tag.
   /// [issuedOn] The time on which the token was created.
@@ -36,9 +49,12 @@ class GetAccountTokensResult {
   /// [name] Token name.
   /// [notBefore] The time before which the token MUST NOT be accepted for processing.
   /// [policies] List of access policies assigned to the token.
+  /// [provisionerId] The identifier of the service that provisioned the token. For an
+  /// [provisionerType] The type of service that provisioned the token. Only present for
   /// [status] Status of the token.
   const GetAccountTokensResult({
     required this.condition,
+    required this.creatorEmailAtCreation,
     required this.expiresOn,
     required this.id,
     required this.issuedOn,
@@ -47,12 +63,15 @@ class GetAccountTokensResult {
     required this.name,
     required this.notBefore,
     required this.policies,
+    required this.provisionerId,
+    required this.provisionerType,
     required this.status,
   });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'condition': pulumi.Input.mapInputValue<GetAccountTokensResultCondition, Map<String, dynamic>>(condition, (value) => value.toMap()),
+      'creatorEmailAtCreation': creatorEmailAtCreation,
       'expiresOn': expiresOn,
       'id': id,
       'issuedOn': issuedOn,
@@ -61,6 +80,8 @@ class GetAccountTokensResult {
       'name': name,
       'notBefore': notBefore,
       'policies': pulumi.Input.mapInputValue<List<GetAccountTokensResultPolicy>, List<Map<String, dynamic>>>(policies, (value) => pulumi.Input.encodeList<GetAccountTokensResultPolicy, Map<String, dynamic>>(value, (value) => value.toMap())),
+      'provisionerId': provisionerId,
+      'provisionerType': provisionerType,
       'status': status,
     };
   }
@@ -68,6 +89,7 @@ class GetAccountTokensResult {
   factory GetAccountTokensResult.fromMap(Map<String, dynamic> map) {
     return GetAccountTokensResult(
       condition: pulumi.Input.fromValue(GetAccountTokensResultCondition.fromMap((map['condition']! as Map).cast<String, dynamic>())),
+      creatorEmailAtCreation: pulumi.Input.fromValue(map['creatorEmailAtCreation'] as String),
       expiresOn: pulumi.Input.fromValue(map['expiresOn'] as String),
       id: pulumi.Input.fromValue(map['id'] as String),
       issuedOn: pulumi.Input.fromValue(map['issuedOn'] as String),
@@ -76,6 +98,8 @@ class GetAccountTokensResult {
       name: pulumi.Input.fromValue(map['name'] as String),
       notBefore: pulumi.Input.fromValue(map['notBefore'] as String),
       policies: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAccountTokensResultPolicy>(map['policies']!, (value) => GetAccountTokensResultPolicy.fromMap((value as Map).cast<String, dynamic>()))),
+      provisionerId: pulumi.Input.fromValue(map['provisionerId'] as String),
+      provisionerType: pulumi.Input.fromValue(map['provisionerType'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
     );
   }

@@ -82,7 +82,7 @@ import 'google_tag_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -90,7 +90,10 @@ import 'google_tag_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_googletaggateway" "example_google_tag_gateway" {
+/// resource "cloudflare_google_tag_gateway" "example_google_tag_gateway" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id          = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   enabled          = true
 ///   endpoint         = "/metrics"
@@ -178,7 +181,7 @@ class GoogleTagGateway extends pulumi.CustomResource {
           'cloudflare:index/googleTagGateway:GoogleTagGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     enabled = registerOutput<bool>('enabled');
     endpoint = registerOutput<String>('endpoint');

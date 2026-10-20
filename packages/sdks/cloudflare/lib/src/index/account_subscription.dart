@@ -108,7 +108,7 @@ import 'account_subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -116,7 +116,10 @@ import 'account_subscription_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_accountsubscription" "example_account_subscription" {
+/// resource "cloudflare_account_subscription" "example_account_subscription" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "account_id"
 ///   frequency  = "monthly"
 ///   rate_plan = {
@@ -192,7 +195,7 @@ import 'account_subscription_state.dart';
 /// ## Import
 ///
 /// ```sh
-/// $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>'
+/// $ pulumi import cloudflare:index/accountSubscription:AccountSubscription example '<account_id>/<subscription_id>'
 /// ```
 class AccountSubscription extends pulumi.CustomResource {
   /// The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.
@@ -226,7 +229,7 @@ class AccountSubscription extends pulumi.CustomResource {
           'cloudflare:index/accountSubscription:AccountSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     currency = registerOutput<String>('currency');

@@ -86,7 +86,7 @@ import 'zero_trust_device_managed_networks_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -94,7 +94,10 @@ import 'zero_trust_device_managed_networks_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdevicemanagednetworks" "example_zero_trust_device_managed_networks" {
+/// resource "cloudflare_zero_trust_device_managed_networks" "example_zero_trust_device_managed_networks" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   config = {
 ///     tls_sockaddr = "foo.bar:1234"
@@ -183,7 +186,7 @@ class ZeroTrustDeviceManagedNetworks extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDeviceManagedNetworks:ZeroTrustDeviceManagedNetworks',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     config = registerOutput<ZeroTrustDeviceManagedNetworksConfig>('config', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ZeroTrustDeviceManagedNetworksConfig.fromMap((guardedValue as Map).cast<String, dynamic>()); });

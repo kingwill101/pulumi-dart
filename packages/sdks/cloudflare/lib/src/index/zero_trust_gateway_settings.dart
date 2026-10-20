@@ -341,7 +341,7 @@ import 'zero_trust_gateway_settings_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -349,7 +349,10 @@ import 'zero_trust_gateway_settings_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustgatewaysettings" "example_zero_trust_gateway_settings" {
+/// resource "cloudflare_zero_trust_gateway_settings" "example_zero_trust_gateway_settings" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   settings = {
 ///     activity_log = {
@@ -598,6 +601,7 @@ import 'zero_trust_gateway_settings_state.dart';
 /// $ pulumi import cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings example '<account_id>'
 /// ```
 class ZeroTrustGatewaySettings extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   late final pulumi.Output<String> createdAt;
   /// Specify account settings.
@@ -616,7 +620,7 @@ class ZeroTrustGatewaySettings extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustGatewaySettings:ZeroTrustGatewaySettings',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdAt = registerOutput<String>('createdAt');

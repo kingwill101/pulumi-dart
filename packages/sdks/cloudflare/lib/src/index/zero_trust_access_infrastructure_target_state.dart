@@ -18,6 +18,9 @@ class ZeroTrustAccessInfrastructureTargetState {
   final pulumi.Input<ZeroTrustAccessInfrastructureTargetIp?>? ip;
   /// Date and time at which the target was modified
   final pulumi.Input<String?>? modifiedAt;
+  /// Optional tags to associate with the target. Keys and values are
+  /// user-defined strings.
+  final pulumi.Input<Map<String, String>?>? tags;
 
   /// Creates a new [ZeroTrustAccessInfrastructureTargetState].
   /// [accountId] Account identifier
@@ -25,12 +28,14 @@ class ZeroTrustAccessInfrastructureTargetState {
   /// [hostname] A non-unique field that refers to a target. Case insensitive, maximum
   /// [ip] The IPv4/IPv6 address that identifies where to reach a target
   /// [modifiedAt] Date and time at which the target was modified
+  /// [tags] Optional tags to associate with the target. Keys and values are
   const ZeroTrustAccessInfrastructureTargetState({
     this.accountId,
     this.createdAt,
     this.hostname,
     this.ip,
     this.modifiedAt,
+    this.tags,
   });
 
   Map<String, dynamic> toMap() {
@@ -40,6 +45,7 @@ class ZeroTrustAccessInfrastructureTargetState {
       'hostname': ?hostname,
       'ip': ?pulumi.Input.mapOptionalInputValue<ZeroTrustAccessInfrastructureTargetIp, Map<String, dynamic>>(ip, (value) => value.toMap()),
       'modifiedAt': ?modifiedAt,
+      'tags': ?tags,
     };
   }
 
@@ -50,6 +56,7 @@ class ZeroTrustAccessInfrastructureTargetState {
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ip: (() { final guardedValue = map['ip']; if (guardedValue == null) return null; return pulumi.Input.fromValue(ZeroTrustAccessInfrastructureTargetIp.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       modifiedAt: (() { final guardedValue = map['modifiedAt']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
     );
   }
 }

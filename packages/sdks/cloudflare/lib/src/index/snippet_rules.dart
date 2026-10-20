@@ -92,7 +92,7 @@ import 'snippet_rules_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -100,7 +100,10 @@ import 'snippet_rules_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_snippetrules" "example_snippet_rules" {
+/// resource "cloudflare_snippet_rules" "example_snippet_rules" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "9f1839b6152d298aca64c4e906b6d074"
 ///   rules {
 ///     expression   = "ip.src eq 1.1.1.1"
@@ -183,7 +186,7 @@ class SnippetRules extends pulumi.CustomResource {
           'cloudflare:index/snippetRules:SnippetRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     rules = registerOutput<List<SnippetRulesRule>>('rules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SnippetRulesRule>(guardedValue, (value) => SnippetRulesRule.fromMap((value as Map).cast<String, dynamic>())); });
     zoneId = registerOutput<String>('zoneId');

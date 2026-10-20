@@ -9,6 +9,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 class ShareRecipientArgs {
   /// Account identifier.
   final pulumi.Input<String> accountId;
+  /// Include resources in the response.
+  final pulumi.Input<bool?>? includeResources;
   /// Organization identifier.
   final pulumi.Input<String?>? organizationId;
   /// The account that will receive the share.
@@ -18,11 +20,13 @@ class ShareRecipientArgs {
 
   /// Creates a new [ShareRecipientArgs].
   /// [accountId] Account identifier.
+  /// [includeResources] Include resources in the response.
   /// [organizationId] Organization identifier.
   /// [recipientAccountId] The account that will receive the share.
   /// [shareId] Share identifier tag.
   const ShareRecipientArgs({
     required this.accountId,
+    this.includeResources,
     this.organizationId,
     this.recipientAccountId,
     required this.shareId,
@@ -31,6 +35,7 @@ class ShareRecipientArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': accountId,
+      'includeResources': ?includeResources,
       'organizationId': ?organizationId,
       'recipientAccountId': ?recipientAccountId,
       'shareId': shareId,
@@ -40,6 +45,7 @@ class ShareRecipientArgs {
   factory ShareRecipientArgs.fromMap(Map<String, dynamic> map) {
     return ShareRecipientArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
+      includeResources: (() { final guardedValue = map['includeResources']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       organizationId: (() { final guardedValue = map['organizationId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       recipientAccountId: (() { final guardedValue = map['recipientAccountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       shareId: pulumi.Input.fromValue(map['shareId'] as String),

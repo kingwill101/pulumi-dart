@@ -17,6 +17,9 @@ import 'secrets_store_secret_state.dart';
 /// const exampleSecretsStoreSecret = new cloudflare.SecretsStoreSecret("example_secrets_store_secret", {
 ///     accountId: "985e105f4ecef8ad9ca31a8372d0c353",
 ///     storeId: "023e105f4ecef8ad9ca31a8372d0c353",
+///     name: "MY_API_KEY",
+///     scopes: ["workers"],
+///     value: "my-secret-value",
 /// });
 /// ```
 /// ```python
@@ -25,7 +28,10 @@ import 'secrets_store_secret_state.dart';
 ///
 /// example_secrets_store_secret = cloudflare.SecretsStoreSecret("example_secrets_store_secret",
 ///     account_id="985e105f4ecef8ad9ca31a8372d0c353",
-///     store_id="023e105f4ecef8ad9ca31a8372d0c353")
+///     store_id="023e105f4ecef8ad9ca31a8372d0c353",
+///     name="MY_API_KEY",
+///     scopes=["workers"],
+///     value="my-secret-value")
 /// ```
 /// ```csharp
 /// using System.Collections.Generic;
@@ -39,6 +45,12 @@ import 'secrets_store_secret_state.dart';
 ///     {
 ///         AccountId = "985e105f4ecef8ad9ca31a8372d0c353",
 ///         StoreId = "023e105f4ecef8ad9ca31a8372d0c353",
+///         Name = "MY_API_KEY",
+///         Scopes = new[]
+///         {
+///             "workers",
+///         },
+///         Value = "my-secret-value",
 ///     });
 ///
 /// });
@@ -56,6 +68,11 @@ import 'secrets_store_secret_state.dart';
 /// 		_, err := cloudflare.NewSecretsStoreSecret(ctx, "example_secrets_store_secret", &cloudflare.SecretsStoreSecretArgs{
 /// 			AccountId: pulumi.String("985e105f4ecef8ad9ca31a8372d0c353"),
 /// 			StoreId:   pulumi.String("023e105f4ecef8ad9ca31a8372d0c353"),
+/// 			Name:      pulumi.String("MY_API_KEY"),
+/// 			Scopes: pulumi.StringArray{
+/// 				pulumi.String("workers"),
+/// 			},
+/// 			Value: pulumi.String("my-secret-value"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -65,7 +82,7 @@ import 'secrets_store_secret_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -73,9 +90,15 @@ import 'secrets_store_secret_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_secretsstoresecret" "example_secrets_store_secret" {
+/// resource "cloudflare_secrets_store_secret" "example_secrets_store_secret" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "985e105f4ecef8ad9ca31a8372d0c353"
 ///   store_id   = "023e105f4ecef8ad9ca31a8372d0c353"
+///   name       = "MY_API_KEY"
+///   scopes     = ["workers"]
+///   value      = "my-secret-value"
 /// }
 /// ```
 /// ```java
@@ -102,6 +125,9 @@ import 'secrets_store_secret_state.dart';
 ///         var exampleSecretsStoreSecret = new SecretsStoreSecret("exampleSecretsStoreSecret", SecretsStoreSecretArgs.builder()
 ///             .accountId("985e105f4ecef8ad9ca31a8372d0c353")
 ///             .storeId("023e105f4ecef8ad9ca31a8372d0c353")
+///             .name("MY_API_KEY")
+///             .scopes("workers")
+///             .value("my-secret-value")
 ///             .build());
 ///
 ///     }
@@ -115,6 +141,10 @@ import 'secrets_store_secret_state.dart';
 ///     properties:
 ///       accountId: 985e105f4ecef8ad9ca31a8372d0c353
 ///       storeId: 023e105f4ecef8ad9ca31a8372d0c353
+///       name: MY_API_KEY
+///       scopes:
+///         - workers
+///       value: my-secret-value
 /// ```
 ///
 ///
@@ -155,7 +185,7 @@ class SecretsStoreSecret extends pulumi.CustomResource {
           'cloudflare:index/secretsStoreSecret:SecretsStoreSecret',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
           additionalSecretOutputs: const ['value'],
         ) {
     accountId = registerOutput<String>('accountId');

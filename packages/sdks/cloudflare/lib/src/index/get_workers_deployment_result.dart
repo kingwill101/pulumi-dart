@@ -14,11 +14,12 @@ class GetWorkersDeploymentResult {
   final String? deploymentId;
   /// The ID of this resource.
   final String? id;
-  /// Name of the script, used in URLs and route configuration.
+  /// Name of the script.
   final String? scriptName;
   final String? source;
   /// Available values: "percentage".
   final String? strategy;
+  /// Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
   final List<GetWorkersDeploymentVersion>? versions;
 
   /// Creates a new [GetWorkersDeploymentResult].
@@ -28,10 +29,10 @@ class GetWorkersDeploymentResult {
   /// [createdOn] Optional.
   /// [deploymentId] Optional.
   /// [id] The ID of this resource.
-  /// [scriptName] Name of the script, used in URLs and route configuration.
+  /// [scriptName] Name of the script.
   /// [source] Optional.
   /// [strategy] Available values: "percentage".
-  /// [versions] Optional.
+  /// [versions] Worker versions included in this deployment. Each object must contain a `versionId` UUID and a `percentage`; percentages across all objects must total 100. In the `cf` CLI, pass the entire array as one JSON value to `--versions`, either inline, for example `--versions '[{"versionId":"023e105f-2a42-4f8b-a1c1-73f6a2a30c0f","percentage":100}]'`, or from a JSON file with `--versions @versions.json`.
   const GetWorkersDeploymentResult({
     this.accountId,
     this.annotations,

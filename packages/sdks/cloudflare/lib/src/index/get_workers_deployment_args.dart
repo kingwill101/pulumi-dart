@@ -10,13 +10,13 @@ class GetWorkersDeploymentArgs {
   /// Identifier.
   final pulumi.Input<String> accountId;
   final pulumi.Input<String> deploymentId;
-  /// Name of the script, used in URLs and route configuration.
+  /// Name of the script.
   final pulumi.Input<String> scriptName;
 
   /// Creates a new [GetWorkersDeploymentArgs].
   /// [accountId] Identifier.
   /// [deploymentId] Required.
-  /// [scriptName] Name of the script, used in URLs and route configuration.
+  /// [scriptName] Name of the script.
   const GetWorkersDeploymentArgs({
     required this.accountId,
     required this.deploymentId,

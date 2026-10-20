@@ -72,7 +72,7 @@ import 'registrar_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -80,7 +80,10 @@ import 'registrar_domain_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_registrardomain" "example_registrar_domain" {
+/// resource "cloudflare_registrar_domain" "example_registrar_domain" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   domain_name = "example.com"
 ///   auto_renew  = true
@@ -138,14 +141,14 @@ import 'registrar_domain_state.dart';
 ///
 /// &gt; This resource does not currently support `pulumi import`.
 class RegistrarDomain extends pulumi.CustomResource {
-  /// Identifier
+  /// Identifier.
   late final pulumi.Output<String> accountId;
   /// Auto-renew controls whether subscription is automatically renewed upon domain expiration.
   late final pulumi.Output<bool?> autoRenew;
-  /// Fully qualified domain name (FQDN) including the extension
-  /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely
-  /// identifies a registration — the same domain cannot be registered
-  /// twice, making it a natural idempotency key for registration requests.
+  /// Provides a fully qualified domain name (FQDN), including the extension
+  /// (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies
+  /// a registration. Cloudflare permits only one registration per domain, making
+  /// the domain name a natural idempotency key for registration requests.
   late final pulumi.Output<String> domainName;
   /// Shows whether a registrar lock is in place for a domain.
   late final pulumi.Output<bool?> locked;
@@ -164,7 +167,7 @@ class RegistrarDomain extends pulumi.CustomResource {
           'cloudflare:index/registrarDomain:RegistrarDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     autoRenew = registerOutput<bool?>('autoRenew');

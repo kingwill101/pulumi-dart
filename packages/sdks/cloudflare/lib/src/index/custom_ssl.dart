@@ -44,6 +44,13 @@ import 'custom_ssl_state.dart';
 ///   -----END CERTIFICATE-----
 ///
 /// `,
+///     bundleMethod: "ubiquitous",
+///     customCsrId: "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+///     deploy: "staging",
+///     geoRestrictions: {
+///         label: "us",
+///     },
+///     policy: "(country: US) or (region: EU)",
 ///     privateKey: `  -----BEGIN RSA PRIVATE KEY-----
 ///   MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
 ///   dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
@@ -73,13 +80,6 @@ import 'custom_ssl_state.dart';
 ///   -----END RSA PRIVATE KEY-----
 ///
 /// `,
-///     bundleMethod: "ubiquitous",
-///     customCsrId: "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
-///     deploy: "staging",
-///     geoRestrictions: {
-///         label: "us",
-///     },
-///     policy: "(country: US) or (region: EU)",
 ///     type: "sni_custom",
 /// });
 /// ```
@@ -113,6 +113,13 @@ import 'custom_ssl_state.dart';
 ///   -----END CERTIFICATE-----
 ///
 /// """,
+///     bundle_method="ubiquitous",
+///     custom_csr_id="7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+///     deploy="staging",
+///     geo_restrictions={
+///         "label": "us",
+///     },
+///     policy="(country: US) or (region: EU)",
 ///     private_key="""  -----BEGIN RSA PRIVATE KEY-----
 ///   MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
 ///   dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
@@ -142,13 +149,6 @@ import 'custom_ssl_state.dart';
 ///   -----END RSA PRIVATE KEY-----
 ///
 /// """,
-///     bundle_method="ubiquitous",
-///     custom_csr_id="7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
-///     deploy="staging",
-///     geo_restrictions={
-///         "label": "us",
-///     },
-///     policy="(country: US) or (region: EU)",
 ///     type="sni_custom")
 /// ```
 /// ```csharp
@@ -186,6 +186,14 @@ import 'custom_ssl_state.dart';
 ///   -----END CERTIFICATE-----
 ///
 /// ",
+///         BundleMethod = "ubiquitous",
+///         CustomCsrId = "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
+///         Deploy = "staging",
+///         GeoRestrictions = new Cloudflare.Inputs.CustomSslGeoRestrictionsArgs
+///         {
+///             Label = "us",
+///         },
+///         Policy = "(country: US) or (region: EU)",
 ///         PrivateKey = @"  -----BEGIN RSA PRIVATE KEY-----
 ///   MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
 ///   dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
@@ -215,14 +223,6 @@ import 'custom_ssl_state.dart';
 ///   -----END RSA PRIVATE KEY-----
 ///
 /// ",
-///         BundleMethod = "ubiquitous",
-///         CustomCsrId = "7b163417-1d2b-4c84-a38a-2fb7a0cd7752",
-///         Deploy = "staging",
-///         GeoRestrictions = new Cloudflare.Inputs.CustomSslGeoRestrictionsArgs
-///         {
-///             Label = "us",
-///         },
-///         Policy = "(country: US) or (region: EU)",
 ///         Type = "sni_custom",
 ///     });
 ///
@@ -264,6 +264,13 @@ import 'custom_ssl_state.dart';
 ///   -----END CERTIFICATE-----
 ///
 /// `),
+/// 			BundleMethod: pulumi.String("ubiquitous"),
+/// 			CustomCsrId:  pulumi.String("7b163417-1d2b-4c84-a38a-2fb7a0cd7752"),
+/// 			Deploy:       pulumi.String("staging"),
+/// 			GeoRestrictions: &cloudflare.CustomSslGeoRestrictionsArgs{
+/// 				Label: pulumi.String("us"),
+/// 			},
+/// 			Policy: pulumi.String("(country: US) or (region: EU)"),
 /// 			PrivateKey: pulumi.String(`  -----BEGIN RSA PRIVATE KEY-----
 ///   MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
 ///   dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
@@ -293,14 +300,7 @@ import 'custom_ssl_state.dart';
 ///   -----END RSA PRIVATE KEY-----
 ///
 /// `),
-/// 			BundleMethod: pulumi.String("ubiquitous"),
-/// 			CustomCsrId:  pulumi.String("7b163417-1d2b-4c84-a38a-2fb7a0cd7752"),
-/// 			Deploy:       pulumi.String("staging"),
-/// 			GeoRestrictions: &cloudflare.CustomSslGeoRestrictionsArgs{
-/// 				Label: pulumi.String("us"),
-/// 			},
-/// 			Policy: pulumi.String("(country: US) or (region: EU)"),
-/// 			Type:   pulumi.String("sni_custom"),
+/// 			Type: pulumi.String("sni_custom"),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -310,7 +310,7 @@ import 'custom_ssl_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -318,18 +318,76 @@ import 'custom_ssl_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_customssl" "example_custom_ssl" {
+/// resource "cloudflare_custom_ssl" "example_custom_ssl" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id       = "023e105f4ecef8ad9ca31a8372d0c353"
-///   certificate   = "  -----BEGIN CERTIFICATE-----\n  MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV\n  BAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX\n  aWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAxWjBF\n  MQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50\n  ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB\n  CgKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1\n  CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB\n  KwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5\n  0GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI\n  dZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2\n  izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4\n  9rWf288N6sJA5BRb6FJIGDB1BgNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI\n  GKFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV\n  BAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF\n  MAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFwl0tH0quUYZYO0dZYt4R7SJ0pCm2\n  2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x3/djYHXWba7HpEu0dR3ugQP\n  Mlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSlhMtJVcoRp5CJsjAMBUG\n  SvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIVvN/LAcc+14vioFq\n  2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9IbtySh3SpFdQDhw\n  YbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=\n  -----END CERTIFICATE-----\n\n"
-///   private_key   = "  -----BEGIN RSA PRIVATE KEY-----\n  MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG\n  dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn\n  abIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid\n  tnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py\n  FxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE\n  ewooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb\n  HBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/\n  axiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb\n  +ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g\n  +j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv\n  KLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7\n  9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo\n  /WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu\n  iacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9\n  N2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe\n  VAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB\n  vULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U\n  lySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR\n  9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7\n  mEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX\n  dFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe\n  PG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS\n  fhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W\n  qu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T\n  lv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi\n  -----END RSA PRIVATE KEY-----\n\n"
+///   certificate   = <<EOT
+///   -----BEGIN CERTIFICATE-----
+///   MIIDtTCCAp2gAwIBAgIJAMHAwfXZ5/PWMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
+///   BAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX
+///   aWRnaXRzIFB0eSBMdGQwHhcNMTYwODI0MTY0MzAxWhcNMTYxMTIyMTY0MzAxWjBF
+///   MQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50
+///   ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+///   CgKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmGdtcGbg/1
+///   CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKnabIRuGvB
+///   KwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpidtnKX/a+5
+///   0GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+pyFxIXjbEI
+///   dZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pEewooaeO2
+///   izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABo4GnMIGkMB0GA1UdDgQWBBT/LbE4
+///   9rWf288N6sJA5BRb6FJIGDB1BgNVHSMEbjBsgBT/LbE49rWf288N6sJA5BRb6FJI
+///   GKFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNV
+///   BAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAMHAwfXZ5/PWMAwGA1UdEwQF
+///   MAMBAf8wDQYJKoZIhvcNAQELBQADggEBAHHFwl0tH0quUYZYO0dZYt4R7SJ0pCm2
+///   2satiyzHl4OnXcHDpekAo7/a09c6Lz6AU83cKy/+x3/djYHXWba7HpEu0dR3ugQP
+///   Mlr4zrhd9xKZ0KZKiYmtJH+ak4OM4L3FbT0owUZPyjLSlhMtJVcoRp5CJsjAMBUG
+///   SvD8RX+T01wzox/Qb+lnnNnOlaWpqu8eoOenybxKp1a9ULzIVvN/LAcc+14vioFq
+///   2swRWtmocBAs8QR9n4uvbpiYvS8eYueDCWMM4fvFfBhaDZ3N9IbtySh3SpFdQDhw
+///   YbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=
+///   -----END CERTIFICATE-----
+///
+/// EOT
+///
 ///   bundle_method = "ubiquitous"
 ///   custom_csr_id = "7b163417-1d2b-4c84-a38a-2fb7a0cd7752"
 ///   deploy        = "staging"
 ///   geo_restrictions = {
 ///     label = "us"
 ///   }
-///   policy = "(country: US) or (region: EU)"
-///   type   = "sni_custom"
+///   policy      = "(country: US) or (region: EU)"
+///   private_key = <<EOT
+///   -----BEGIN RSA PRIVATE KEY-----
+///   MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
+///   dtcGbg/1CGZu0jJGkMoppoUo4c3dts3iwqRYmBikUP77wwY2QGmDZw2FvkJCJlKn
+///   abIRuGvBKwzESIXgKk2016aTP6/dAjEHyo6SeoK8lkIySUvK0fyOVlsiEsCmOpid
+///   tnKX/a+50GjB79CJH4ER2lLVZnhePFR/zUOyPxZQQ4naHf7yu/b5jhO0f8fwt+py
+///   FxIXjbEIdZliWRkRMtzrHOJIhrmJ2A1J7iOrirbbwillwjjNVUWPf3IJ3M12S9pE
+///   ewooaeO2izNTERcG9HzAacbVRn2Y2SWIyT/18QIDAQABAoIBACbhTYXBZYKmYPCb
+///   HBR1IBlCQA2nLGf0qRuJNJZg5iEzXows/6tc8YymZkQE7nolapWsQ+upk2y5Xdp/
+///   axiuprIs9JzkYK8Ox0r+dlwCG1kSW+UAbX0bQ/qUqlsTvU6muVuMP8vZYHxJ3wmb
+///   +ufRBKztPTQ/rYWaYQcgC0RWI20HTFBMxlTAyNxYNWzX7RKFkGVVyB9RsAtmcc8g
+///   +j4OdosbfNoJPS0HeIfNpAznDfHKdxDk2Yc1tV6RHBrC1ynyLE9+TaflIAdo2MVv
+///   KLMLq51GqYKtgJFIlBRPQqKoyXdz3fGvXrTkf/WY9QNq0J1Vk5ERePZ54mN8iZB7
+///   9lwy/AkCgYEA6FXzosxswaJ2wQLeoYc7ceaweX/SwTvxHgXzRyJIIT0eJWgx13Wo
+///   /WA3Iziimsjf6qE+SI/8laxPp2A86VMaIt3Z3mJN/CqSVGw8LK2AQst+OwdPyDMu
+///   iacE8lj/IFGC8mwNUAb9CzGU3JpU4PxxGFjS/eMtGeRXCWkK4NE+G08CgYEA1Kp9
+///   N2JrVlqUz+gAX+LPmE9OEMAS9WQSQsfCHGogIFDGGcNf7+uwBM7GAaSJIP01zcoe
+///   VAgWdzXCv3FLhsaZoJ6RyLOLay5phbu1iaTr4UNYm5WtYTzMzqh8l1+MFFDl9xDB
+///   vULuCIIrglM5MeS/qnSg1uMoH2oVPj9TVst/ir8CgYEAxrI7Ws9Zc4Bt70N1As+U
+///   lySjaEVZCMkqvHJ6TCuVZFfQoE0r0whdLdRLU2PsLFP+q7qaeZQqgBaNSKeVcDYR
+///   9B+nY/jOmQoPewPVsp/vQTCnE/R81spu0mp0YI6cIheT1Z9zAy322svcc43JaWB7
+///   mEbeqyLOP4Z4qSOcmghZBSECgYACvR9Xs0DGn+wCsW4vze/2ei77MD4OQvepPIFX
+///   dFZtlBy5ADcgE9z0cuVB6CiL8DbdK5kwY9pGNr8HUCI03iHkW6Zs+0L0YmihfEVe
+///   PG19PSzK9CaDdhD9KFZSbLyVFmWfxOt50H7YRTTiPMgjyFpfi5j2q348yVT0tEQS
+///   fhRqaQKBgAcWPokmJ7EbYQGeMbS7HC8eWO/RyamlnSffdCdSc7ue3zdVJxpAkQ8W
+///   qu80pEIF6raIQfAf8MXiiZ7auFOSnHQTXUbhCpvDLKi0Mwq3G8Pl07l+2s6dQG6T
+///   lv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi
+///   -----END RSA PRIVATE KEY-----
+///
+/// EOT
+///
+///   type        = "sni_custom"
 /// }
 /// ```
 /// ```java
@@ -381,6 +439,13 @@ import 'custom_ssl_state.dart';
 ///   -----END CERTIFICATE-----
 ///
 ///             """)
+///             .bundleMethod("ubiquitous")
+///             .customCsrId("7b163417-1d2b-4c84-a38a-2fb7a0cd7752")
+///             .deploy("staging")
+///             .geoRestrictions(CustomSslGeoRestrictionsArgs.builder()
+///                 .label("us")
+///                 .build())
+///             .policy("(country: US) or (region: EU)")
 ///             .privateKey("""
 ///   -----BEGIN RSA PRIVATE KEY-----
 ///   MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
@@ -411,13 +476,6 @@ import 'custom_ssl_state.dart';
 ///   -----END RSA PRIVATE KEY-----
 ///
 ///             """)
-///             .bundleMethod("ubiquitous")
-///             .customCsrId("7b163417-1d2b-4c84-a38a-2fb7a0cd7752")
-///             .deploy("staging")
-///             .geoRestrictions(CustomSslGeoRestrictionsArgs.builder()
-///                 .label("us")
-///                 .build())
-///             .policy("(country: US) or (region: EU)")
 ///             .type("sni_custom")
 ///             .build());
 ///
@@ -455,6 +513,12 @@ import 'custom_ssl_state.dart';
 ///           YbjM2rxXiyLGxB4Bol7QTv4zHif7Zt89FReT/NBy4rzaskDJY5L6xmY=
 ///           -----END CERTIFICATE-----
 ///
+///       bundleMethod: ubiquitous
+///       customCsrId: 7b163417-1d2b-4c84-a38a-2fb7a0cd7752
+///       deploy: staging
+///       geoRestrictions:
+///         label: us
+///       policy: '(country: US) or (region: EU)'
 ///       privateKey: |2+
 ///           -----BEGIN RSA PRIVATE KEY-----
 ///           MIIEowIBAAKCAQEAwQHoetcl9+5ikGzV6cMzWtWPJHqXT3wpbEkRU9Yz7lgvddmG
@@ -484,12 +548,6 @@ import 'custom_ssl_state.dart';
 ///           lv6XTQaMyf6n1yjzL+fzDrH3qXMxHMO/b13EePXpDMpY7HQpoLDi
 ///           -----END RSA PRIVATE KEY-----
 ///
-///       bundleMethod: ubiquitous
-///       customCsrId: 7b163417-1d2b-4c84-a38a-2fb7a0cd7752
-///       deploy: staging
-///       geoRestrictions:
-///         label: us
-///       policy: '(country: US) or (region: EU)'
 ///       type: sni_custom
 /// ```
 ///
@@ -529,8 +587,8 @@ class CustomSsl extends pulumi.CustomResource {
   late final pulumi.Output<String> policyRestrictions;
   /// The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates.
   late final pulumi.Output<double> priority;
-  /// The zone's private key.
-  late final pulumi.Output<String> privateKey;
+  /// The zone's private key. Not required if custom*csr*id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare.
+  late final pulumi.Output<String?> privateKey;
   /// The type of hash used for the certificate.
   late final pulumi.Output<String> signature;
   /// Status of the zone's custom SSL.
@@ -556,7 +614,7 @@ class CustomSsl extends pulumi.CustomResource {
           'cloudflare:index/customSsl:CustomSsl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
           additionalSecretOutputs: const ['privateKey'],
         ) {
     bundleMethod = registerOutput<String>('bundleMethod');
@@ -572,7 +630,7 @@ class CustomSsl extends pulumi.CustomResource {
     policy = registerOutput<String?>('policy');
     policyRestrictions = registerOutput<String>('policyRestrictions');
     priority = registerOutput<double>('priority');
-    privateKey = registerOutput<String>('privateKey', isSecret: true);
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
     signature = registerOutput<String>('signature');
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
@@ -617,7 +675,7 @@ class CustomSsl extends pulumi.CustomResource {
     policy = registerOutput<String?>('policy');
     policyRestrictions = registerOutput<String>('policyRestrictions');
     priority = registerOutput<double>('priority');
-    privateKey = registerOutput<String>('privateKey', isSecret: true);
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
     signature = registerOutput<String>('signature');
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');
@@ -648,7 +706,7 @@ class CustomSsl extends pulumi.CustomResource {
     policy = registerOutput<String?>('policy');
     policyRestrictions = registerOutput<String>('policyRestrictions');
     priority = registerOutput<double>('priority');
-    privateKey = registerOutput<String>('privateKey', isSecret: true);
+    privateKey = registerOutput<String?>('privateKey', isSecret: true);
     signature = registerOutput<String>('signature');
     status = registerOutput<String>('status');
     type = registerOutput<String>('type');

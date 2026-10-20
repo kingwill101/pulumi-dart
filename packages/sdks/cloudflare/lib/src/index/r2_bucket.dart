@@ -72,7 +72,7 @@ import 'r2_bucket_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -80,7 +80,10 @@ import 'r2_bucket_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_r2bucket" "example_r2_bucket" {
+/// resource "cloudflare_r2_bucket" "example_r2_bucket" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id    = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name          = "example-bucket"
 ///   location      = "apac"
@@ -137,7 +140,7 @@ import 'r2_bucket_state.dart';
 /// $ pulumi import cloudflare:index/r2Bucket:R2Bucket example '<account_id>/<bucket_name>/<jurisdiction>'
 /// ```
 class R2Bucket extends pulumi.CustomResource {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   late final pulumi.Output<String> accountId;
   /// Creation timestamp.
   late final pulumi.Output<String> creationDate;
@@ -165,7 +168,7 @@ class R2Bucket extends pulumi.CustomResource {
           'cloudflare:index/r2Bucket:R2Bucket',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     creationDate = registerOutput<String>('creationDate');

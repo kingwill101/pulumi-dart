@@ -8,6 +8,8 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_ai_search_instances_get_ai_search_instances_args_doc}
 class GetAiSearchInstancesArgs {
   final pulumi.Input<String?>? accountId;
+  /// Filter by exact Search for Agents hostname (case-insensitive).
+  final pulumi.Input<String?>? hostname;
   /// Max items to fetch, default: 1000
   final pulumi.Input<int?>? maxItems;
   /// Filter by namespace.
@@ -23,6 +25,7 @@ class GetAiSearchInstancesArgs {
 
   /// Creates a new [GetAiSearchInstancesArgs].
   /// [accountId] Optional.
+  /// [hostname] Filter by exact Search for Agents hostname (case-insensitive).
   /// [maxItems] Max items to fetch, default: 1000
   /// [namespace] Filter by namespace.
   /// [orderBy] Field to order results by.
@@ -30,6 +33,7 @@ class GetAiSearchInstancesArgs {
   /// [search] Filter instances whose id contains this string (case-insensitive).
   const GetAiSearchInstancesArgs({
     this.accountId,
+    this.hostname,
     this.maxItems,
     this.namespace,
     this.orderBy,
@@ -40,6 +44,7 @@ class GetAiSearchInstancesArgs {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'accountId': ?accountId,
+      'hostname': ?hostname,
       'maxItems': ?maxItems,
       'namespace': ?namespace,
       'orderBy': ?orderBy,
@@ -51,7 +56,8 @@ class GetAiSearchInstancesArgs {
   factory GetAiSearchInstancesArgs.fromMap(Map<String, dynamic> map) {
     return GetAiSearchInstancesArgs(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       namespace: (() { final guardedValue = map['namespace']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orderBy: (() { final guardedValue = map['orderBy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       orderByDirection: (() { final guardedValue = map['orderByDirection']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

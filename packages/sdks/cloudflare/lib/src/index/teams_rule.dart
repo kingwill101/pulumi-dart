@@ -629,7 +629,7 @@ import 'teams_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -637,7 +637,10 @@ import 'teams_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustgatewaypolicy" "example_zero_trust_gateway_policy" {
+/// resource "cloudflare_zero_trust_gateway_policy" "example_zero_trust_gateway_policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id     = "699d98642c564d2e855e9661899b7252"
 ///   action         = "allow"
 ///   name           = "block bad websites"
@@ -689,16 +692,16 @@ import 'teams_rule_state.dart';
 ///     delete_headers = ["X-Old-Header", "X-Remove-Me"]
 ///     dns_resolvers = {
 ///       ipv4s = [{
-///         "ip"                         = "2.2.2.2"
-///         "port"                       = 5053
-///         "routeThroughPrivateNetwork" = true
-///         "vnetId"                     = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+///         ip                            = "2.2.2.2"
+///         port                          = 5053
+///         route_through_private_network = true
+///         vnet_id                       = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///       }]
 ///       ipv6s = [{
-///         "ip"                         = "2001:DB8::"
-///         "port"                       = 5053
-///         "routeThroughPrivateNetwork" = true
-///         "vnetId"                     = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
+///         ip                            = "2001:DB8::"
+///         port                          = 5053
+///         route_through_private_network = true
+///         vnet_id                       = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///       }]
 ///     }
 ///     egress = {
@@ -1057,6 +1060,7 @@ import 'teams_rule_state.dart';
 /// $ pulumi import cloudflare:index/teamsRule:TeamsRule example '<account_id>/<rule_id>'
 /// ```
 class TeamsRule extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   /// Specify the action to perform when the associated traffic, identity, and device posture expressions either absent or evaluate to `true`.
   /// Available values: "on", "off", "allow", "block", "scan", "noscan", "safesearch", "ytrestricted", "isolate", "noisolate", "override", "l4Override", "egress", "resolve", "quarantine", "redirect".
@@ -1110,7 +1114,7 @@ class TeamsRule extends pulumi.CustomResource {
           'cloudflare:index/teamsRule:TeamsRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     action = registerOutput<String>('action');

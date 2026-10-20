@@ -121,7 +121,7 @@ import 'zero_trust_gateway_logging_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -129,7 +129,10 @@ import 'zero_trust_gateway_logging_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustgatewaylogging" "example_zero_trust_gateway_logging" {
+/// resource "cloudflare_zero_trust_gateway_logging" "example_zero_trust_gateway_logging" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   redact_pii = true
 ///   settings_by_rule_type = {
@@ -222,6 +225,7 @@ import 'zero_trust_gateway_logging_state.dart';
 /// $ pulumi import cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging example '<account_id>'
 /// ```
 class ZeroTrustGatewayLogging extends pulumi.CustomResource {
+  /// Specify the Cloudflare account identifier.
   late final pulumi.Output<String> accountId;
   /// Indicate whether to redact personally identifiable information from activity logging (PII fields include source IP, user email, user ID, device ID, URL, referrer, and user agent).
   late final pulumi.Output<bool> redactPii;
@@ -240,7 +244,7 @@ class ZeroTrustGatewayLogging extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustGatewayLogging:ZeroTrustGatewayLogging',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     redactPii = registerOutput<bool>('redactPii');

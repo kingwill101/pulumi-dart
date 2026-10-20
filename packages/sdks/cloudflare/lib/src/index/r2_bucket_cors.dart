@@ -79,7 +79,7 @@ import 'r2_bucket_cors_state.dart';
 ///                 {
 ///                     "Content-Encoding",
 ///                 },
-///                 MaxAgeSeconds = 3600,
+///                 MaxAgeSeconds = 3600.0,
 ///             },
 ///         },
 ///     });
@@ -128,7 +128,7 @@ import 'r2_bucket_cors_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -136,7 +136,10 @@ import 'r2_bucket_cors_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_r2bucketcors" "example_r2_bucket_cors" {
+/// resource "cloudflare_r2_bucket_cors" "example_r2_bucket_cors" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bucket_name = "example-bucket"
 ///   rules {
@@ -219,7 +222,7 @@ import 'r2_bucket_cors_state.dart';
 ///
 /// &gt; This resource does not currently support `pulumi import`.
 class R2BucketCors extends pulumi.CustomResource {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   late final pulumi.Output<String> accountId;
   /// Name of the bucket.
   late final pulumi.Output<String> bucketName;
@@ -239,7 +242,7 @@ class R2BucketCors extends pulumi.CustomResource {
           'cloudflare:index/r2BucketCors:R2BucketCors',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     bucketName = registerOutput<String>('bucketName');

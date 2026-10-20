@@ -156,7 +156,7 @@ import 'token_validation_rules_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -164,7 +164,10 @@ import 'token_validation_rules_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_tokenvalidationrules" "example_token_validation_rules" {
+/// resource "cloudflare_token_validation_rules" "example_token_validation_rules" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id     = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   action      = "log"
 ///   description = "Long description for Token Validation Rule"
@@ -172,10 +175,10 @@ import 'token_validation_rules_state.dart';
 ///   expression  = "is_jwt_valid(\"52973293-cb04-4a97-8f55-e7d2ad1107dd\") or is_jwt_valid(\"46eab8d1-6376-45e3-968f-2c649d77d423\")"
 ///   selector = {
 ///     excludes = [{
-///       "operationIds" = ["f9c5615e-fe15-48ce-bec6-cfc1946f1bec", "56828eae-035a-4396-ba07-51c66d680a04"]
+///       operation_ids = ["f9c5615e-fe15-48ce-bec6-cfc1946f1bec", "56828eae-035a-4396-ba07-51c66d680a04"]
 ///     }]
 ///     includes = [{
-///       "host" = ["v1.example.com", "v2.example.com"]
+///       host = ["v1.example.com", "v2.example.com"]
 ///     }]
 ///   }
 ///   title = "Example Token Validation Rule"
@@ -293,7 +296,7 @@ class TokenValidationRules extends pulumi.CustomResource {
           'cloudflare:index/tokenValidationRules:TokenValidationRules',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     createdAt = registerOutput<String>('createdAt');

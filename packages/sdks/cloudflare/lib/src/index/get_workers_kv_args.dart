@@ -7,17 +7,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_get_workers_kv_get_workers_kv_args_doc}
 class GetWorkersKvArgs {
-  /// Identifier.
+  /// ID of the Cloudflare account that owns the Workers KV namespaces.
   final pulumi.Input<String> accountId;
   /// A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
   final pulumi.Input<String> keyName;
-  /// Namespace identifier tag.
+  /// ID of the Workers KV namespace.
   final pulumi.Input<String> namespaceId;
 
   /// Creates a new [GetWorkersKvArgs].
-  /// [accountId] Identifier.
+  /// [accountId] ID of the Cloudflare account that owns the Workers KV namespaces.
   /// [keyName] A key's name. The name may be at most 512 bytes. All printable, non-whitespace characters are valid. Use percent-encoding to define key names as part of a URL.
-  /// [namespaceId] Namespace identifier tag.
+  /// [namespaceId] ID of the Workers KV namespace.
   const GetWorkersKvArgs({
     required this.accountId,
     required this.keyName,

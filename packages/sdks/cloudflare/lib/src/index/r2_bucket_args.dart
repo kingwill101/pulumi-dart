@@ -7,7 +7,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@endtemplate}
 /// {@macro pulumi_index_r2_bucket_r2_bucket_args_doc}
 class R2BucketArgs {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   final pulumi.Input<String> accountId;
   /// Jurisdiction where objects in this bucket are guaranteed to be stored.
   /// Available values: "default", "eu", "fedramp", "us".
@@ -22,7 +22,7 @@ class R2BucketArgs {
   final pulumi.Input<String?>? storageClass;
 
   /// Creates a new [R2BucketArgs].
-  /// [accountId] Account ID.
+  /// [accountId] Cloudflare account ID that owns the R2 resource.
   /// [jurisdiction] Jurisdiction where objects in this bucket are guaranteed to be stored.
   /// [location] Location of the bucket.
   /// [name] Name of the bucket.

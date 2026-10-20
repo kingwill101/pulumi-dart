@@ -72,7 +72,7 @@ import 'zero_trust_tunnel_warp_connector_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -80,7 +80,10 @@ import 'zero_trust_tunnel_warp_connector_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrusttunnelwarpconnector" "example_zero_trust_tunnel_warp_connector" {
+/// resource "cloudflare_zero_trust_tunnel_warp_connector" "example_zero_trust_tunnel_warp_connector" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "699d98642c564d2e855e9661899b7252"
 ///   name       = "blog"
 ///   ha         = true
@@ -175,7 +178,7 @@ class ZeroTrustTunnelWarpConnector extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustTunnelWarpConnector:ZeroTrustTunnelWarpConnector',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
           additionalSecretOutputs: const ['tunnelSecret'],
         ) {
     accountId = registerOutput<String>('accountId');

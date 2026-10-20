@@ -14,6 +14,7 @@ class GetPipelineStreamResult {
   /// Indicates the endpoint URL of this stream.
   final String? endpoint;
   final GetPipelineStreamFilter? filter;
+  /// Defines the data format of the events.
   final GetPipelineStreamFormat? format;
   final GetPipelineStreamHttp? http;
   /// Specifies the public ID of the stream.
@@ -21,6 +22,7 @@ class GetPipelineStreamResult {
   final String? modifiedAt;
   /// Indicates the name of the Stream.
   final String? name;
+  /// Defines the schema of the events in the data stream.
   final GetPipelineStreamSchema? schema;
   /// Specifies the public ID of the stream.
   final String? streamId;
@@ -33,12 +35,12 @@ class GetPipelineStreamResult {
   /// [createdAt] Optional.
   /// [endpoint] Indicates the endpoint URL of this stream.
   /// [filter] Optional.
-  /// [format] Optional.
+  /// [format] Defines the data format of the events.
   /// [http] Optional.
   /// [id] Specifies the public ID of the stream.
   /// [modifiedAt] Optional.
   /// [name] Indicates the name of the Stream.
-  /// [schema] Optional.
+  /// [schema] Defines the schema of the events in the data stream.
   /// [streamId] Specifies the public ID of the stream.
   /// [version] Indicates the current version of this stream.
   /// [workerBinding] Optional.
@@ -89,7 +91,7 @@ class GetPipelineStreamResult {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       schema: (() { final guardedValue = map['schema']; if (guardedValue == null) return null; return GetPipelineStreamSchema.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       streamId: (() { final guardedValue = map['streamId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      version: (() { final guardedValue = map['version']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       workerBinding: (() { final guardedValue = map['workerBinding']; if (guardedValue == null) return null; return GetPipelineStreamWorkerBinding.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
     );
   }

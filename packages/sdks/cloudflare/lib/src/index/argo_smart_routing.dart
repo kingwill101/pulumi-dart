@@ -65,7 +65,7 @@ import 'argo_smart_routing_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -73,7 +73,10 @@ import 'argo_smart_routing_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_argosmartrouting" "example_argo_smart_routing" {
+/// resource "cloudflare_argo_smart_routing" "example_argo_smart_routing" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   value   = "on"
 /// }
@@ -146,7 +149,7 @@ class ArgoSmartRouting extends pulumi.CustomResource {
           'cloudflare:index/argoSmartRouting:ArgoSmartRouting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     editable = registerOutput<bool>('editable');
     modifiedOn = registerOutput<String>('modifiedOn');

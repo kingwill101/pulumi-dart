@@ -47,7 +47,7 @@ class CloudforceOneRequestPriorityArgs {
     return CloudforceOneRequestPriorityArgs(
       accountId: pulumi.Input.fromValue(map['accountId'] as String),
       labels: pulumi.Input.fromValue((map['labels'] as List).cast<String>()),
-      priority: pulumi.Input.fromValue((map['priority'] as num).toInt()),
+      priority: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['priority'])),
       requirement: pulumi.Input.fromValue(map['requirement'] as String),
       tlp: pulumi.Input.fromValue(map['tlp'] as String),
     );

@@ -104,7 +104,7 @@ import 'magic_wan_static_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -112,7 +112,10 @@ import 'magic_wan_static_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_magicwanstaticroute" "example_magic_wan_static_route" {
+/// resource "cloudflare_magic_wan_static_route" "example_magic_wan_static_route" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   nexthop     = "203.0.113.1"
 ///   prefix      = "192.0.2.0/24"
@@ -220,7 +223,7 @@ class MagicWanStaticRoute extends pulumi.CustomResource {
           'cloudflare:index/magicWanStaticRoute:MagicWanStaticRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdOn = registerOutput<String>('createdOn');

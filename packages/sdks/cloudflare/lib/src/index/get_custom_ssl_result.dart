@@ -9,7 +9,7 @@ class GetCustomSslResult {
   /// A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
   /// Available values: "ubiquitous", "optimal", "force".
   final String? bundleMethod;
-  /// Identifier.
+  /// Custom certificate identifier tag.
   final String? customCertificateId;
   /// The identifier for the Custom CSR that was used.
   final String? customCsrId;
@@ -19,7 +19,7 @@ class GetCustomSslResult {
   /// Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
   final GetCustomSslGeoRestrictions? geoRestrictions;
   final List<String>? hosts;
-  /// Identifier.
+  /// Custom certificate identifier tag.
   final String? id;
   /// The certificate authority that issued the certificate.
   final String? issuer;
@@ -39,13 +39,13 @@ class GetCustomSslResult {
 
   /// Creates a new [GetCustomSslResult].
   /// [bundleMethod] A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it.
-  /// [customCertificateId] Identifier.
+  /// [customCertificateId] Custom certificate identifier tag.
   /// [customCsrId] The identifier for the Custom CSR that was used.
   /// [expiresOn] When the certificate from the authority expires.
   /// [filter] Optional.
   /// [geoRestrictions] Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance.
   /// [hosts] Optional.
-  /// [id] Identifier.
+  /// [id] Custom certificate identifier tag.
   /// [issuer] The certificate authority that issued the certificate.
   /// [keylessServer] Optional.
   /// [modifiedOn] When the certificate was last modified.

@@ -1,9 +1,5 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'email_routing_dns_args.dart';
-import 'email_routing_dns_error.dart';
-import 'email_routing_dns_message.dart';
-import 'email_routing_dns_result.dart';
-import 'email_routing_dns_result_info.dart';
 import 'email_routing_dns_state.dart';
 
 /// Accepted Permissions
@@ -69,7 +65,7 @@ import 'email_routing_dns_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -77,7 +73,10 @@ import 'email_routing_dns_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_emailroutingdns" "example_email_routing_dns" {
+/// resource "cloudflare_email_routing_dns" "example_email_routing_dns" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name    = "example.net"
 /// }
@@ -132,21 +131,19 @@ class EmailRoutingDns extends pulumi.CustomResource {
   late final pulumi.Output<String> created;
   /// State of the zone settings for Email Routing.
   late final pulumi.Output<bool> enabled;
-  late final pulumi.Output<List<EmailRoutingDnsError>> errors;
-  late final pulumi.Output<List<EmailRoutingDnsMessage>> messages;
   /// The date and time the settings have been modified.
   late final pulumi.Output<String> modified;
   /// Domain of your zone.
   late final pulumi.Output<String?> name;
-  late final pulumi.Output<EmailRoutingDnsResult> result;
-  late final pulumi.Output<EmailRoutingDnsResultInfo> resultInfo;
   /// Flag to check if the user skipped the configuration wizard.
   late final pulumi.Output<bool> skipWizard;
   /// Show the state of your account, and the type or configuration error.
   /// Available values: "ready", "unconfigured", "misconfigured", "misconfigured/locked", "unlocked".
   late final pulumi.Output<String> status;
-  /// Whether the API call was successful.
-  late final pulumi.Output<bool> success;
+  /// Deprecated. When supplied, the response shape differs from the documented default and is not modeled in generated SDKs. Do not rely on this parameter.
+  late final pulumi.Output<String?> subdomain;
+  /// Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+  late final pulumi.Output<bool> supportSubaddress;
   /// Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
   late final pulumi.Output<String> tag;
   /// Identifier.
@@ -164,19 +161,16 @@ class EmailRoutingDns extends pulumi.CustomResource {
           'cloudflare:index/emailRoutingDns:EmailRoutingDns',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     created = registerOutput<String>('created');
     enabled = registerOutput<bool>('enabled');
-    errors = registerOutput<List<EmailRoutingDnsError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailRoutingDnsError>(guardedValue, (value) => EmailRoutingDnsError.fromMap((value as Map).cast<String, dynamic>())); });
-    messages = registerOutput<List<EmailRoutingDnsMessage>>('messages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailRoutingDnsMessage>(guardedValue, (value) => EmailRoutingDnsMessage.fromMap((value as Map).cast<String, dynamic>())); });
     modified = registerOutput<String>('modified');
     this.name = registerOutput<String?>('name');
-    result = registerOutput<EmailRoutingDnsResult>('result', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EmailRoutingDnsResult.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    resultInfo = registerOutput<EmailRoutingDnsResultInfo>('resultInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EmailRoutingDnsResultInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipWizard = registerOutput<bool>('skipWizard');
     status = registerOutput<String>('status');
-    success = registerOutput<bool>('success');
+    subdomain = registerOutput<String?>('subdomain');
+    supportSubaddress = registerOutput<bool>('supportSubaddress');
     tag = registerOutput<String>('tag');
     zoneId = registerOutput<String>('zoneId');
   }
@@ -207,15 +201,12 @@ class EmailRoutingDns extends pulumi.CustomResource {
         ) {
     created = registerOutput<String>('created');
     enabled = registerOutput<bool>('enabled');
-    errors = registerOutput<List<EmailRoutingDnsError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailRoutingDnsError>(guardedValue, (value) => EmailRoutingDnsError.fromMap((value as Map).cast<String, dynamic>())); });
-    messages = registerOutput<List<EmailRoutingDnsMessage>>('messages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailRoutingDnsMessage>(guardedValue, (value) => EmailRoutingDnsMessage.fromMap((value as Map).cast<String, dynamic>())); });
     modified = registerOutput<String>('modified');
     this.name = registerOutput<String?>('name');
-    result = registerOutput<EmailRoutingDnsResult>('result', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EmailRoutingDnsResult.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    resultInfo = registerOutput<EmailRoutingDnsResultInfo>('resultInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EmailRoutingDnsResultInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipWizard = registerOutput<bool>('skipWizard');
     status = registerOutput<String>('status');
-    success = registerOutput<bool>('success');
+    subdomain = registerOutput<String?>('subdomain');
+    supportSubaddress = registerOutput<bool>('supportSubaddress');
     tag = registerOutput<String>('tag');
     zoneId = registerOutput<String>('zoneId');
   }
@@ -231,15 +222,12 @@ class EmailRoutingDns extends pulumi.CustomResource {
       ) {
     created = registerOutput<String>('created');
     enabled = registerOutput<bool>('enabled');
-    errors = registerOutput<List<EmailRoutingDnsError>>('errors', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailRoutingDnsError>(guardedValue, (value) => EmailRoutingDnsError.fromMap((value as Map).cast<String, dynamic>())); });
-    messages = registerOutput<List<EmailRoutingDnsMessage>>('messages', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EmailRoutingDnsMessage>(guardedValue, (value) => EmailRoutingDnsMessage.fromMap((value as Map).cast<String, dynamic>())); });
     modified = registerOutput<String>('modified');
     this.name = registerOutput<String?>('name');
-    result = registerOutput<EmailRoutingDnsResult>('result', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EmailRoutingDnsResult.fromMap((guardedValue as Map).cast<String, dynamic>()); });
-    resultInfo = registerOutput<EmailRoutingDnsResultInfo>('resultInfo', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return EmailRoutingDnsResultInfo.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     skipWizard = registerOutput<bool>('skipWizard');
     status = registerOutput<String>('status');
-    success = registerOutput<bool>('success');
+    subdomain = registerOutput<String?>('subdomain');
+    supportSubaddress = registerOutput<bool>('supportSubaddress');
     tag = registerOutput<String>('tag');
     zoneId = registerOutput<String>('zoneId');
   }

@@ -66,7 +66,7 @@ import 'workers_for_platforms_namespace_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -74,7 +74,10 @@ import 'workers_for_platforms_namespace_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_workersforplatformsdispatchnamespace" "example_workers_for_platforms_dispatch_namespace" {
+/// resource "cloudflare_workers_for_platforms_dispatch_namespace" "example_workers_for_platforms_dispatch_namespace" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name       = "my-dispatch-namespace"
 /// }
@@ -158,7 +161,7 @@ class WorkersForPlatformsNamespace extends pulumi.CustomResource {
           'cloudflare:index/workersForPlatformsNamespace:WorkersForPlatformsNamespace',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     createdBy = registerOutput<String>('createdBy');

@@ -8,6 +8,7 @@ import 'teams_list_item.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_teams_list_teams_list_args_doc}
 class TeamsListArgs {
+  /// Specify the Cloudflare account identifier.
   final pulumi.Input<String> accountId;
   /// Provide the list description.
   final pulumi.Input<String?>? description;
@@ -20,7 +21,7 @@ class TeamsListArgs {
   final pulumi.Input<String> type;
 
   /// Creates a new [TeamsListArgs].
-  /// [accountId] Required.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [description] Provide the list description.
   /// [items] Add items to the list.
   /// [name] Specify the list name.

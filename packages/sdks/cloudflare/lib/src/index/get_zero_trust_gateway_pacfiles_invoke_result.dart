@@ -5,6 +5,7 @@ import 'get_zero_trust_gateway_pacfiles_result.dart';
 
 /// Result data returned by getZeroTrustGatewayPacfiles.
 class GetZeroTrustGatewayPacfilesInvokeResult {
+  /// Specify the Cloudflare account identifier.
   final String? accountId;
   /// Max items to fetch, default: 1000
   final int? maxItems;
@@ -12,7 +13,7 @@ class GetZeroTrustGatewayPacfilesInvokeResult {
   final List<GetZeroTrustGatewayPacfilesResult>? results;
 
   /// Creates a new [GetZeroTrustGatewayPacfilesInvokeResult].
-  /// [accountId] Optional.
+  /// [accountId] Specify the Cloudflare account identifier.
   /// [maxItems] Max items to fetch, default: 1000
   /// [results] The items returned by the data source
   const GetZeroTrustGatewayPacfilesInvokeResult({
@@ -32,7 +33,7 @@ class GetZeroTrustGatewayPacfilesInvokeResult {
   factory GetZeroTrustGatewayPacfilesInvokeResult.fromMap(Map<String, dynamic> map) {
     return GetZeroTrustGatewayPacfilesInvokeResult(
       accountId: (() { final guardedValue = map['accountId']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      maxItems: (() { final guardedValue = map['maxItems']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       results: (() { final guardedValue = map['results']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetZeroTrustGatewayPacfilesResult>(guardedValue, (value) => GetZeroTrustGatewayPacfilesResult.fromMap((value as Map).cast<String, dynamic>())); })(),
     );
   }

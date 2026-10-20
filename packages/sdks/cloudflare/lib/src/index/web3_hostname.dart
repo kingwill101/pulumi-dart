@@ -77,7 +77,7 @@ import 'web3_hostname_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -85,7 +85,10 @@ import 'web3_hostname_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_web3hostname" "example_web3_hostname" {
+/// resource "cloudflare_web3_hostname" "example_web3_hostname" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id     = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   name        = "gateway.example.com"
 ///   target      = "ipfs"
@@ -174,7 +177,7 @@ class Web3Hostname extends pulumi.CustomResource {
           'cloudflare:index/web3Hostname:Web3Hostname',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     createdOn = registerOutput<String>('createdOn');
     description = registerOutput<String?>('description');

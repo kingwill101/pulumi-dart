@@ -64,7 +64,7 @@ import 'logpush_ownership_challenge_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -72,7 +72,10 @@ import 'logpush_ownership_challenge_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_logpushownershipchallenge" "example_logpush_ownership_challenge" {
+/// resource "cloudflare_logpush_ownership_challenge" "example_logpush_ownership_challenge" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   destination_conf = "s3://mybucket/logs?region=us-west-2"
 ///   zone_id          = "zone_id"
 /// }
@@ -143,7 +146,7 @@ class LogpushOwnershipChallenge extends pulumi.CustomResource {
           'cloudflare:index/logpushOwnershipChallenge:LogpushOwnershipChallenge',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
           additionalSecretOutputs: const ['destinationConf'],
         ) {
     accountId = registerOutput<String?>('accountId');

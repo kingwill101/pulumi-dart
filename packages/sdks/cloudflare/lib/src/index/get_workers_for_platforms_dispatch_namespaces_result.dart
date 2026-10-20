@@ -61,7 +61,7 @@ class GetWorkersForPlatformsDispatchNamespacesResult {
       modifiedBy: pulumi.Input.fromValue(map['modifiedBy'] as String),
       modifiedOn: pulumi.Input.fromValue(map['modifiedOn'] as String),
       namespaceId: pulumi.Input.fromValue(map['namespaceId'] as String),
-      scriptCount: pulumi.Input.fromValue((map['scriptCount'] as num).toInt()),
+      scriptCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scriptCount'])),
       trustedWorkers: pulumi.Input.fromValue(map['trustedWorkers'] as bool),
     );
   }

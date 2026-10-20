@@ -2,59 +2,49 @@
 
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'get_zero_trust_dns_location_endpoints.dart';
+import 'get_zero_trust_dns_location_filter.dart';
 import 'get_zero_trust_dns_location_max_ttl.dart';
 import 'get_zero_trust_dns_location_network.dart';
 
 /// Result data returned by getZeroTrustDnsLocation.
 class GetZeroTrustDnsLocationResult {
   final String? accountId;
-  /// Indicate whether this location is the default location.
   final bool? clientDefault;
   final String? createdAt;
-  /// Indicate the identifier of the pair of IPv4 addresses assigned to this location.
   final String? dnsDestinationIpsId;
-  /// Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
   final String? dnsDestinationIpv6BlockId;
-  /// Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.
   final String? dohSubdomain;
-  /// Indicate whether the location must resolve EDNS queries.
   final bool? ecsSupport;
-  /// Configure the destination endpoints for this location.
   final GetZeroTrustDnsLocationEndpoints? endpoints;
-  /// The ID of this resource.
+  final GetZeroTrustDnsLocationFilter? filter;
   final String? id;
-  /// Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
   final String? ip;
-  /// Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
   final String? ipv4Destination;
-  /// Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
   final String? ipv4DestinationBackup;
   final String? locationId;
-  /// Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
   final GetZeroTrustDnsLocationMaxTtl? maxTtl;
-  /// Specify the location name.
   final String? name;
-  /// Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
   final List<GetZeroTrustDnsLocationNetwork>? networks;
   final String? updatedAt;
 
   /// Creates a new [GetZeroTrustDnsLocationResult].
   /// [accountId] Optional.
-  /// [clientDefault] Indicate whether this location is the default location.
+  /// [clientDefault] Optional.
   /// [createdAt] Optional.
-  /// [dnsDestinationIpsId] Indicate the identifier of the pair of IPv4 addresses assigned to this location.
-  /// [dnsDestinationIpv6BlockId] Specify the UUID of the IPv6 block brought to the gateway so that this location's IPv6 address is allocated from the Bring Your Own IPv6 (BYOIPv6) block rather than the standard Cloudflare IPv6 block.
-  /// [dohSubdomain] Specify the DNS over HTTPS domain that receives DNS requests. Gateway automatically generates this value.
-  /// [ecsSupport] Indicate whether the location must resolve EDNS queries.
-  /// [endpoints] Configure the destination endpoints for this location.
-  /// [id] The ID of this resource.
-  /// [ip] Defines the automatically generated IPv6 destination IP assigned to this location. Gateway counts all DNS requests sent to this IP as requests under this location.
-  /// [ipv4Destination] Show the primary destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
-  /// [ipv4DestinationBackup] Show the backup destination IPv4 address from the pair identified dns*destination*ips_id. This field read-only.
+  /// [dnsDestinationIpsId] Optional.
+  /// [dnsDestinationIpv6BlockId] Optional.
+  /// [dohSubdomain] Optional.
+  /// [ecsSupport] Optional.
+  /// [endpoints] Optional.
+  /// [filter] Optional.
+  /// [id] Optional.
+  /// [ip] Optional.
+  /// [ipv4Destination] Optional.
+  /// [ipv4DestinationBackup] Optional.
   /// [locationId] Optional.
-  /// [maxTtl] Controls how DNS response TTLs are capped for this location relative to the account `maxTtlSecs` setting. Omitting `maxTtl` on update resets it to `inherit`.
-  /// [name] Specify the location name.
-  /// [networks] Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
+  /// [maxTtl] Optional.
+  /// [name] Optional.
+  /// [networks] Optional.
   /// [updatedAt] Optional.
   const GetZeroTrustDnsLocationResult({
     this.accountId,
@@ -65,6 +55,7 @@ class GetZeroTrustDnsLocationResult {
     this.dohSubdomain,
     this.ecsSupport,
     this.endpoints,
+    this.filter,
     this.id,
     this.ip,
     this.ipv4Destination,
@@ -86,6 +77,7 @@ class GetZeroTrustDnsLocationResult {
       'dohSubdomain': ?dohSubdomain,
       'ecsSupport': ?ecsSupport,
       'endpoints': ?endpoints?.toMap(),
+      'filter': ?filter?.toMap(),
       'id': ?id,
       'ip': ?ip,
       'ipv4Destination': ?ipv4Destination,
@@ -108,6 +100,7 @@ class GetZeroTrustDnsLocationResult {
       dohSubdomain: (() { final guardedValue = map['dohSubdomain']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ecsSupport: (() { final guardedValue = map['ecsSupport']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       endpoints: (() { final guardedValue = map['endpoints']; if (guardedValue == null) return null; return GetZeroTrustDnsLocationEndpoints.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
+      filter: (() { final guardedValue = map['filter']; if (guardedValue == null) return null; return GetZeroTrustDnsLocationFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); })(),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ip: (() { final guardedValue = map['ip']; if (guardedValue == null) return null; return guardedValue as String; })(),
       ipv4Destination: (() { final guardedValue = map['ipv4Destination']; if (guardedValue == null) return null; return guardedValue as String; })(),

@@ -69,7 +69,7 @@ import 'api_shield_discovery_operation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -77,7 +77,10 @@ import 'api_shield_discovery_operation_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_apishielddiscoveryoperation" "example_api_shield_discovery_operation" {
+/// resource "cloudflare_api_shield_discovery_operation" "example_api_shield_discovery_operation" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   zone_id      = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   operation_id = "f174e90a-fafe-4643-bbbc-4a0ed4fc8415"
 ///   state        = "review"
@@ -151,7 +154,7 @@ class ApiShieldDiscoveryOperation extends pulumi.CustomResource {
           'cloudflare:index/apiShieldDiscoveryOperation:ApiShieldDiscoveryOperation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     operationId = registerOutput<String>('operationId');
     state = registerOutput<String?>('state');

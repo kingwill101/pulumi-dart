@@ -68,7 +68,7 @@ import 'custom_page_asset_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -76,7 +76,10 @@ import 'custom_page_asset_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_custompageasset" "example_custom_page_asset" {
+/// resource "cloudflare_custom_page_asset" "example_custom_page_asset" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   description = "Custom 500 error page"
 ///   name        = "my_custom_error_page"
 ///   url         = "https://example.com/error.html"
@@ -159,7 +162,7 @@ class CustomPageAsset extends pulumi.CustomResource {
           'cloudflare:index/customPageAsset:CustomPageAsset',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String?>('accountId');
     description = registerOutput<String>('description');

@@ -131,7 +131,7 @@ import 'zero_trust_dlp_predefined_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -139,7 +139,10 @@ import 'zero_trust_dlp_predefined_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_zerotrustdlppredefinedprofile" "example_zero_trust_dlp_predefined_profile" {
+/// resource "cloudflare_zero_trust_dlp_predefined_profile" "example_zero_trust_dlp_predefined_profile" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   profile_id  = "e91a2360-da51-4fdf-9711-bcdecd462614"
 ///   account_id  = "account_id"
 ///   ocr_enabled = true
@@ -248,7 +251,7 @@ class ZeroTrustDlpPredefinedProfile extends pulumi.CustomResource {
           'cloudflare:index/zeroTrustDlpPredefinedProfile:ZeroTrustDlpPredefinedProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     aiContextEnabled = registerOutput<bool>('aiContextEnabled');

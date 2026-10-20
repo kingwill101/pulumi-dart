@@ -116,7 +116,7 @@ import 'r2_bucket_sippy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     cloudflare = {
 ///       source = "pulumi/cloudflare"
@@ -124,7 +124,10 @@ import 'r2_bucket_sippy_state.dart';
 ///   }
 /// }
 ///
-/// resource "cloudflare_r2bucketsippy" "example_r2_bucket_sippy" {
+/// resource "cloudflare_r2_bucket_sippy" "example_r2_bucket_sippy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   account_id  = "023e105f4ecef8ad9ca31a8372d0c353"
 ///   bucket_name = "example-bucket"
 ///   destination = {
@@ -209,7 +212,7 @@ import 'r2_bucket_sippy_state.dart';
 ///
 /// &gt; This resource does not currently support `pulumi import`.
 class R2BucketSippy extends pulumi.CustomResource {
-  /// Account ID.
+  /// Cloudflare account ID that owns the R2 resource.
   late final pulumi.Output<String> accountId;
   /// Name of the bucket.
   late final pulumi.Output<String> bucketName;
@@ -234,7 +237,7 @@ class R2BucketSippy extends pulumi.CustomResource {
           'cloudflare:index/r2BucketSippy:R2BucketSippy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.20.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.22.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     bucketName = registerOutput<String>('bucketName');
