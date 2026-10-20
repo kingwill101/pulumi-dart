@@ -113,7 +113,7 @@ import 'get_public_key_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -124,17 +124,23 @@ import 'get_public_key_result.dart';
 ///   }
 /// }
 ///
-/// data "tls_getcertificate" "example" {
-///   url = aws_ekscluster.example.identity[0].oidc[0].issuer
+/// data "tls_certificate" "example" {
+///   url = aws_eks_cluster.example.identity[0].oidc[0].issuer
 /// }
 ///
-/// resource "aws_ekscluster" "example" {
+/// resource "aws_eks_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "example"
 /// }
-/// resource "aws_iamopenidconnectprovider" "example" {
+/// resource "aws_iam_openid_connect_provider" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   client_id_list  = ["sts.amazonaws.com"]
-///   thumbprint_list = [data.tls_getcertificate.example.certificates[0].sha1_fingerprint]
-///   url             = aws_ekscluster.example.identity[0].oidc[0].issuer
+///   thumbprint_list = [data.tls_certificate.example.certificates[0].sha1_fingerprint]
+///   url             = aws_eks_cluster.example.identity[0].oidc[0].issuer
 /// }
 /// ```
 /// ```java
@@ -167,13 +173,13 @@ import 'get_public_key_result.dart';
 ///             .build());
 ///
 ///         final var example = TlsFunctions.getCertificate(GetCertificateArgs.builder()
-///             .url(exampleEksCluster.identity()[0].oidc()[0].issuer())
+///             .url(exampleEksCluster.get("identity")[0].get("oidc")[0].get("issuer"))
 ///             .build());
 ///
 ///         var exampleIamOpenidConnectProvider = new IamOpenidConnectProvider("exampleIamOpenidConnectProvider", IamOpenidConnectProviderArgs.builder()
 ///             .clientIdList(Arrays.asList("sts.amazonaws.com"))
 ///             .thumbprintList(Arrays.asList(example.certificates()[0].sha1Fingerprint()))
-///             .url(exampleEksCluster.identity()[0].oidc()[0].issuer())
+///             .url(exampleEksCluster.get("identity")[0].get("oidc")[0].get("issuer"))
 ///             .build());
 ///
 ///     }
@@ -271,7 +277,7 @@ import 'get_public_key_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     std = {
 ///       source = "pulumi/std"
@@ -282,7 +288,7 @@ import 'get_public_key_result.dart';
 ///   }
 /// }
 ///
-/// data "tls_getcertificate" "exampleContent" {
+/// data "tls_certificate" "exampleContent" {
 ///   content = file("example.pem")
 /// }
 /// ```
@@ -378,7 +384,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 /// import * as tls from "@pulumi/tls";
 ///
 /// const ed25519_example = new tls.PrivateKey("ed25519-example", {algorithm: "ED25519"});
-/// // Public key loaded from a terraform-generated private key, using the PEM (RFC 1421) format
+/// // Public key loaded from a pulumi-generated private key, using the PEM (RFC 1421) format
 /// const privateKeyPem_example = tls.getPublicKeyOutput({
 ///     privateKeyPem: ed25519_example.privateKeyPem,
 /// });
@@ -395,7 +401,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 /// import pulumi_tls as tls
 ///
 /// ed25519_example = tls.PrivateKey("ed25519-example", algorithm="ED25519")
-/// # Public key loaded from a terraform-generated private key, using the PEM (RFC 1421) format
+/// # Public key loaded from a pulumi-generated private key, using the PEM (RFC 1421) format
 /// private_key_pem_example = tls.get_public_key_output(private_key_pem=ed25519_example.private_key_pem)
 /// # Public key loaded from filesystem, using the Open SSH (RFC 4716) format
 /// private_key_openssh_example = tls.get_public_key(private_key_openssh=std.file(input="~/.ssh/id_rsa_rfc4716").result)
@@ -414,7 +420,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 ///         Algorithm = "ED25519",
 ///     });
 ///
-///     // Public key loaded from a terraform-generated private key, using the PEM (RFC 1421) format
+///     // Public key loaded from a pulumi-generated private key, using the PEM (RFC 1421) format
 ///     var privateKeyPem_example = Tls.GetPublicKey.Invoke(new()
 ///     {
 ///         PrivateKeyPem = ed25519_example.PrivateKeyPem,
@@ -448,7 +454,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 /// 		if err != nil {
 /// 			return err
 /// 		}
-/// 		// Public key loaded from a terraform-generated private key, using the PEM (RFC 1421) format
+/// 		// Public key loaded from a pulumi-generated private key, using the PEM (RFC 1421) format
 /// 		_ = tls.GetPublicKeyOutput(ctx, tls.GetPublicKeyOutputArgs{
 /// 			PrivateKeyPem: ed25519_example.PrivateKeyPem,
 /// 		}, nil)
@@ -470,7 +476,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     std = {
 ///       source = "pulumi/std"
@@ -481,17 +487,20 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 ///   }
 /// }
 ///
-/// data "tls_getpublickey" "privateKeyPem-example" {
-///   private_key_pem = tls_privatekey.ed25519-example.private_key_pem
+/// data "tls_public_key" "privateKeyPem-example" {
+///   private_key_pem = tls_private_key.ed25519-example.private_key_pem
 /// }
-/// data "tls_getpublickey" "privateKeyOpenssh-example" {
+/// data "tls_public_key" "privateKeyOpenssh-example" {
 ///   private_key_openssh = file("~/.ssh/id_rsa_rfc4716")
 /// }
 ///
-/// resource "tls_privatekey" "ed25519-example" {
+/// resource "tls_private_key" "ed25519-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   algorithm = "ED25519"
 /// }
-/// # Public key loaded from a terraform-generated private key, using the PEM (RFC 1421) format
+/// # Public key loaded from a pulumi-generated private key, using the PEM (RFC 1421) format
 /// # Public key loaded from filesystem, using the Open SSH (RFC 4716) format
 /// ```
 /// ```java
@@ -523,7 +532,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 ///             .algorithm("ED25519")
 ///             .build());
 ///
-///         // Public key loaded from a terraform-generated private key, using the PEM (RFC 1421) format
+///         // Public key loaded from a pulumi-generated private key, using the PEM (RFC 1421) format
 ///         final var privateKeyPem-example = TlsFunctions.getPublicKey(GetPublicKeyArgs.builder()
 ///             .privateKeyPem(ed25519_example.privateKeyPem())
 ///             .build());
@@ -545,7 +554,7 @@ pulumi.Output<GetCertificateResult> getCertificateOutput(
 ///     properties:
 ///       algorithm: ED25519
 /// variables:
-///   # Public key loaded from a terraform-generated private key, using the PEM (RFC 1421) format
+///   # Public key loaded from a pulumi-generated private key, using the PEM (RFC 1421) format
 ///   privateKeyPem-example:
 ///     fn::invoke:
 ///       function: tls:getPublicKey
