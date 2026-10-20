@@ -115,7 +115,7 @@ import 'database_connection_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -123,15 +123,21 @@ import 'database_connection_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databaseconnectionpool" "pool-01" {
-///   cluster_id = digitalocean_databasecluster.postgres-example.id
+/// resource "digitalocean_database_connection_pool" "pool-01" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id = digitalocean_database_cluster.postgres-example.id
 ///   name       = "pool-01"
 ///   mode       = "transaction"
 ///   size       = 20
 ///   db_name    = "defaultdb"
 ///   user       = "doadmin"
 /// }
-/// resource "digitalocean_databasecluster" "postgres-example" {
+/// resource "digitalocean_database_cluster" "postgres-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-postgres-cluster"
 ///   engine     = "pg"
 ///   version    = "15"
@@ -253,19 +259,20 @@ class DatabaseConnectionPool extends pulumi.CustomResource {
           'digitalocean:index/databaseConnectionPool:DatabaseConnectionPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
+          additionalSecretOutputs: const ['password', 'privateUri', 'uri'],
         ) {
     clusterId = registerOutput<String>('clusterId');
     dbName = registerOutput<String>('dbName');
     host = registerOutput<String>('host');
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     port = registerOutput<int>('port');
     privateHost = registerOutput<String>('privateHost');
-    privateUri = registerOutput<String>('privateUri');
+    privateUri = registerOutput<String>('privateUri', isSecret: true);
     size = registerOutput<int>('size');
-    uri = registerOutput<String>('uri');
+    uri = registerOutput<String>('uri', isSecret: true);
     user = registerOutput<String?>('user');
   }
 
@@ -274,11 +281,12 @@ class DatabaseConnectionPool extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseConnectionPoolState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseConnectionPool._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -297,12 +305,36 @@ class DatabaseConnectionPool extends pulumi.CustomResource {
     host = registerOutput<String>('host');
     mode = registerOutput<String>('mode');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String>('password');
+    password = registerOutput<String>('password', isSecret: true);
     port = registerOutput<int>('port');
     privateHost = registerOutput<String>('privateHost');
-    privateUri = registerOutput<String>('privateUri');
+    privateUri = registerOutput<String>('privateUri', isSecret: true);
     size = registerOutput<int>('size');
-    uri = registerOutput<String>('uri');
+    uri = registerOutput<String>('uri', isSecret: true);
+    user = registerOutput<String?>('user');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseConnectionPool] resource.
+  DatabaseConnectionPool.reference(String urn)
+    : super(
+        'digitalocean:index/databaseConnectionPool:DatabaseConnectionPool',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password', 'privateUri', 'uri'],
+        isResourceReference: true,
+      ) {
+    clusterId = registerOutput<String>('clusterId');
+    dbName = registerOutput<String>('dbName');
+    host = registerOutput<String>('host');
+    mode = registerOutput<String>('mode');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String>('password', isSecret: true);
+    port = registerOutput<int>('port');
+    privateHost = registerOutput<String>('privateHost');
+    privateUri = registerOutput<String>('privateUri', isSecret: true);
+    size = registerOutput<int>('size');
+    uri = registerOutput<String>('uri', isSecret: true);
     user = registerOutput<String?>('user');
   }
 }

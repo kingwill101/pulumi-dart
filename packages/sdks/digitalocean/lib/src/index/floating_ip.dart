@@ -63,7 +63,7 @@ import 'floating_ip_state.dart';
 ///
 ///     var foobarFloatingIp = new DigitalOcean.FloatingIp("foobar", new()
 ///     {
-///         DropletId = foobar.Id,
+///         DropletId = foobar.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         Region = foobar.Region,
 ///     });
 ///
@@ -104,7 +104,7 @@ import 'floating_ip_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -113,6 +113,9 @@ import 'floating_ip_state.dart';
 /// }
 ///
 /// resource "digitalocean_droplet" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "baz"
 ///   size               = "s-1vcpu-1gb"
 ///   image              = "ubuntu-18-04-x64"
@@ -120,7 +123,10 @@ import 'floating_ip_state.dart';
 ///   ipv6               = true
 ///   private_networking = true
 /// }
-/// resource "digitalocean_floatingip" "foobar" {
+/// resource "digitalocean_floating_ip" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   droplet_id = digitalocean_droplet.foobar.id
 ///   region     = digitalocean_droplet.foobar.region
 /// }
@@ -214,7 +220,7 @@ class FloatingIp extends pulumi.CustomResource {
           'digitalocean:index/floatingIp:FloatingIp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     dropletId = registerOutput<int?>('dropletId');
     floatingIpUrn = registerOutput<String>('floatingIpUrn');
@@ -227,11 +233,12 @@ class FloatingIp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FloatingIpState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FloatingIp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -245,6 +252,21 @@ class FloatingIp extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    dropletId = registerOutput<int?>('dropletId');
+    floatingIpUrn = registerOutput<String>('floatingIpUrn');
+    ipAddress = registerOutput<String>('ipAddress');
+    region = registerOutput<String>('region');
+  }
+
+  /// Creates a typed reference to an existing [FloatingIp] resource.
+  FloatingIp.reference(String urn)
+    : super(
+        'digitalocean:index/floatingIp:FloatingIp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     dropletId = registerOutput<int?>('dropletId');
     floatingIpUrn = registerOutput<String>('floatingIpUrn');
     ipAddress = registerOutput<String>('ipAddress');

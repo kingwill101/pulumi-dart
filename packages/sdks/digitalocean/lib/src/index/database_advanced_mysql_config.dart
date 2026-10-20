@@ -115,7 +115,7 @@ import 'database_advanced_mysql_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -123,14 +123,20 @@ import 'database_advanced_mysql_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databaseadvancedmysqlconfig" "example" {
-///   cluster_id = digitalocean_databasecluster.example.id
+/// resource "digitalocean_database_advanced_mysql_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id = digitalocean_database_cluster.example.id
 ///   mysql_parameters = {
 ///     "time_zone"       = "SYSTEM"
 ///     "connect_timeout" = "10"
 ///   }
 /// }
-/// resource "digitalocean_databasecluster" "example" {
+/// resource "digitalocean_database_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-advanced-mysql-cluster"
 ///   engine     = "advanced_mysql"
 ///   version    = "8"
@@ -392,10 +398,10 @@ class DatabaseAdvancedMysqlConfig extends pulumi.CustomResource {
           'digitalocean:index/databaseAdvancedMysqlConfig:DatabaseAdvancedMysqlConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
-    mysqlParameters = registerOutput<Map<String, String>?>('mysqlParameters');
+    mysqlParameters = registerOutput<Map<String, String>?>('mysqlParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 
   /// Gets an existing [DatabaseAdvancedMysqlConfig] resource's state with the given [name] and [id].
@@ -403,11 +409,12 @@ class DatabaseAdvancedMysqlConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseAdvancedMysqlConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseAdvancedMysqlConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -422,6 +429,19 @@ class DatabaseAdvancedMysqlConfig extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     clusterId = registerOutput<String>('clusterId');
-    mysqlParameters = registerOutput<Map<String, String>?>('mysqlParameters');
+    mysqlParameters = registerOutput<Map<String, String>?>('mysqlParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+  }
+
+  /// Creates a typed reference to an existing [DatabaseAdvancedMysqlConfig] resource.
+  DatabaseAdvancedMysqlConfig.reference(String urn)
+    : super(
+        'digitalocean:index/databaseAdvancedMysqlConfig:DatabaseAdvancedMysqlConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    clusterId = registerOutput<String>('clusterId');
+    mysqlParameters = registerOutput<Map<String, String>?>('mysqlParameters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
   }
 }

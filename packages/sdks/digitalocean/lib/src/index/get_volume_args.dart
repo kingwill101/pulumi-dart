@@ -8,11 +8,11 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_get_volume_get_volume_args_doc}
 class GetVolumeArgs {
   /// Text describing a block storage volume.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// The name of block storage volume.
   final pulumi.Input<String> name;
   /// The region the block storage volume is provisioned in.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
 
   /// Creates a new [GetVolumeArgs].
   /// [description] Text describing a block storage volume.

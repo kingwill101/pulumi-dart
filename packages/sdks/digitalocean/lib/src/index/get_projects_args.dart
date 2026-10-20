@@ -11,10 +11,10 @@ import 'get_projects_sort.dart';
 class GetProjectsArgs {
   /// Filter the results.
   /// The `filter` block is documented below.
-  final pulumi.Input<List<GetProjectsFilter>>? filters;
+  final pulumi.Input<List<GetProjectsFilter>?>? filters;
   /// Sort the results.
   /// The `sort` block is documented below.
-  final pulumi.Input<List<GetProjectsSort>>? sorts;
+  final pulumi.Input<List<GetProjectsSort>?>? sorts;
 
   /// Creates a new [GetProjectsArgs].
   /// [filters] Filter the results.

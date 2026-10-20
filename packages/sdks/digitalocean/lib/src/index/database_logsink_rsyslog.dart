@@ -121,7 +121,7 @@ import 'database_logsink_rsyslog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -129,14 +129,20 @@ import 'database_logsink_rsyslog_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databaselogsinkrsyslog" "example" {
-///   cluster_id = digitalocean_databasecluster.postgres-example.id
+/// resource "digitalocean_database_logsink_rsyslog" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id = digitalocean_database_cluster.postgres-example.id
 ///   name       = "rsyslog-prod"
 ///   server     = "192.0.2.10"
 ///   port       = 514
 ///   format     = "rfc5424"
 /// }
-/// resource "digitalocean_databasecluster" "postgres-example" {
+/// resource "digitalocean_database_cluster" "postgres-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-postgres-cluster"
 ///   engine     = "pg"
 ///   version    = "15"
@@ -303,7 +309,7 @@ import 'database_logsink_rsyslog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -314,7 +320,10 @@ import 'database_logsink_rsyslog_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databaselogsinkrsyslog" "example-tls" {
+/// resource "digitalocean_database_logsink_rsyslog" "example-tls" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id = postgres-example.id
 ///   name       = "rsyslog-secure"
 ///   server     = "logs.example.com"
@@ -348,7 +357,7 @@ import 'database_logsink_rsyslog_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example_tls = new DatabaseLogsinkRsyslog("example-tls", DatabaseLogsinkRsyslogArgs.builder()
-///             .clusterId(postgres_example.id())
+///             .clusterId(postgres_example.get("id"))
 ///             .name("rsyslog-secure")
 ///             .server("logs.example.com")
 ///             .port(6514)
@@ -505,7 +514,7 @@ import 'database_logsink_rsyslog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -516,7 +525,10 @@ import 'database_logsink_rsyslog_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databaselogsinkrsyslog" "example-mtls" {
+/// resource "digitalocean_database_logsink_rsyslog" "example-mtls" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id  = postgres-example.id
 ///   name        = "rsyslog-mtls"
 ///   server      = "secure-logs.example.com"
@@ -552,7 +564,7 @@ import 'database_logsink_rsyslog_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example_mtls = new DatabaseLogsinkRsyslog("example-mtls", DatabaseLogsinkRsyslogArgs.builder()
-///             .clusterId(postgres_example.id())
+///             .clusterId(postgres_example.get("id"))
 ///             .name("rsyslog-mtls")
 ///             .server("secure-logs.example.com")
 ///             .port(6514)
@@ -682,7 +694,7 @@ import 'database_logsink_rsyslog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -690,7 +702,10 @@ import 'database_logsink_rsyslog_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databaselogsinkrsyslog" "example-custom" {
+/// resource "digitalocean_database_logsink_rsyslog" "example-custom" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cluster_id      = postgres-example.id
 ///   name            = "rsyslog-custom"
 ///   server          = "192.0.2.10"
@@ -722,7 +737,7 @@ import 'database_logsink_rsyslog_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example_custom = new DatabaseLogsinkRsyslog("example-custom", DatabaseLogsinkRsyslogArgs.builder()
-///             .clusterId(postgres_example.id())
+///             .clusterId(postgres_example.get("id"))
 ///             .name("rsyslog-custom")
 ///             .server("192.0.2.10")
 ///             .port(514)
@@ -796,11 +811,12 @@ class DatabaseLogsinkRsyslog extends pulumi.CustomResource {
           'digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
+          additionalSecretOutputs: const ['caCert', 'clientKey'],
         ) {
-    caCert = registerOutput<String?>('caCert');
+    caCert = registerOutput<String?>('caCert', isSecret: true);
     clientCert = registerOutput<String?>('clientCert');
-    clientKey = registerOutput<String?>('clientKey');
+    clientKey = registerOutput<String?>('clientKey', isSecret: true);
     clusterId = registerOutput<String>('clusterId');
     format = registerOutput<String?>('format');
     logline = registerOutput<String?>('logline');
@@ -817,11 +833,12 @@ class DatabaseLogsinkRsyslog extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseLogsinkRsyslogState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseLogsinkRsyslog._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -835,9 +852,33 @@ class DatabaseLogsinkRsyslog extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    caCert = registerOutput<String?>('caCert');
+    caCert = registerOutput<String?>('caCert', isSecret: true);
     clientCert = registerOutput<String?>('clientCert');
-    clientKey = registerOutput<String?>('clientKey');
+    clientKey = registerOutput<String?>('clientKey', isSecret: true);
+    clusterId = registerOutput<String>('clusterId');
+    format = registerOutput<String?>('format');
+    logline = registerOutput<String?>('logline');
+    logsinkId = registerOutput<String>('logsinkId');
+    this.name = registerOutput<String>('name');
+    port = registerOutput<int>('port');
+    server = registerOutput<String>('server');
+    structuredData = registerOutput<String?>('structuredData');
+    tls = registerOutput<bool?>('tls');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseLogsinkRsyslog] resource.
+  DatabaseLogsinkRsyslog.reference(String urn)
+    : super(
+        'digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['caCert', 'clientKey'],
+        isResourceReference: true,
+      ) {
+    caCert = registerOutput<String?>('caCert', isSecret: true);
+    clientCert = registerOutput<String?>('clientCert');
+    clientKey = registerOutput<String?>('clientKey', isSecret: true);
     clusterId = registerOutput<String>('clusterId');
     format = registerOutput<String?>('format');
     logline = registerOutput<String?>('logline');

@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Nfs resources.
 class NfsState {
   /// The host IP of the NFS server accessible from the associated VPC.
-  final pulumi.Input<String>? host;
+  final pulumi.Input<String?>? host;
   /// The mount path for accessing the NFS share.
-  final pulumi.Input<String>? mountPath;
+  final pulumi.Input<String?>? mountPath;
   /// A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
   /// &gt; **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
-  final pulumi.Input<String>? performanceTier;
+  final pulumi.Input<String?>? performanceTier;
   /// The region where the NFS share will be created.
-  final pulumi.Input<String>? region;
+  final pulumi.Input<String?>? region;
   /// The size of the NFS share in GiB. Minimum size is 50 GiB.
-  final pulumi.Input<int>? size;
+  final pulumi.Input<int?>? size;
   /// The current status of the NFS share.
-  final pulumi.Input<String>? status;
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<String?>? status;
+  final pulumi.Input<List<String>?>? tags;
   /// The ID of the VPC where the NFS share will be created.
-  final pulumi.Input<String>? vpcId;
+  final pulumi.Input<String?>? vpcId;
   /// The set of VPC IDs the NFS share is attached to.
-  final pulumi.Input<List<String>>? vpcIds;
+  final pulumi.Input<List<String>?>? vpcIds;
 
   /// Creates a new [NfsState].
   /// [host] The host IP of the NFS server accessible from the associated VPC.
@@ -71,7 +71,7 @@ class NfsState {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       performanceTier: (() { final guardedValue = map['performanceTier']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       region: (() { final guardedValue = map['region']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      size: (() { final guardedValue = map['size']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       status: (() { final guardedValue = map['status']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       vpcId: (() { final guardedValue = map['vpcId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

@@ -62,7 +62,7 @@ import 'spaces_bucket_object_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -70,7 +70,10 @@ import 'spaces_bucket_object_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_spacesbucket" "static-assets" {
+/// resource "digitalocean_spaces_bucket" "static-assets" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 /// }
 /// ```
 /// ```java
@@ -199,7 +202,7 @@ import 'spaces_bucket_object_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -207,13 +210,19 @@ import 'spaces_bucket_object_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_spacesbucket" "foobar" {
+/// resource "digitalocean_spaces_bucket" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "foobar"
 ///   region = "nyc3"
 /// }
-/// resource "digitalocean_spacesbucketobject" "index" {
-///   region       = digitalocean_spacesbucket.foobar.region
-///   bucket       = digitalocean_spacesbucket.foobar.name
+/// resource "digitalocean_spaces_bucket_object" "index" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   region       = digitalocean_spaces_bucket.foobar.region
+///   bucket       = digitalocean_spaces_bucket.foobar.name
 ///   key          = "index.html"
 ///   content      = "<html><body><p>This page is empty.</p></body></html>"
 ///   content_type = "text/html"
@@ -332,7 +341,7 @@ class SpacesBucketObject extends pulumi.CustomResource {
           'digitalocean:index/spacesBucketObject:SpacesBucketObject',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     acl = registerOutput<String?>('acl');
     bucket = registerOutput<String>('bucket');
@@ -346,7 +355,7 @@ class SpacesBucketObject extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     key = registerOutput<String>('key');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     region = registerOutput<String>('region');
     source = registerOutput<String?>('source');
     versionId = registerOutput<String>('versionId');
@@ -358,11 +367,12 @@ class SpacesBucketObject extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SpacesBucketObjectState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SpacesBucketObject._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -388,7 +398,35 @@ class SpacesBucketObject extends pulumi.CustomResource {
     etag = registerOutput<String>('etag');
     forceDestroy = registerOutput<bool?>('forceDestroy');
     key = registerOutput<String>('key');
-    metadata = registerOutput<Map<String, String>?>('metadata');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    region = registerOutput<String>('region');
+    source = registerOutput<String?>('source');
+    versionId = registerOutput<String>('versionId');
+    websiteRedirect = registerOutput<String?>('websiteRedirect');
+  }
+
+  /// Creates a typed reference to an existing [SpacesBucketObject] resource.
+  SpacesBucketObject.reference(String urn)
+    : super(
+        'digitalocean:index/spacesBucketObject:SpacesBucketObject',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    acl = registerOutput<String?>('acl');
+    bucket = registerOutput<String>('bucket');
+    cacheControl = registerOutput<String?>('cacheControl');
+    content = registerOutput<String?>('content');
+    contentBase64 = registerOutput<String?>('contentBase64');
+    contentDisposition = registerOutput<String?>('contentDisposition');
+    contentEncoding = registerOutput<String?>('contentEncoding');
+    contentLanguage = registerOutput<String?>('contentLanguage');
+    contentType = registerOutput<String>('contentType');
+    etag = registerOutput<String>('etag');
+    forceDestroy = registerOutput<bool?>('forceDestroy');
+    key = registerOutput<String>('key');
+    metadata = registerOutput<Map<String, String>?>('metadata', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     region = registerOutput<String>('region');
     source = registerOutput<String?>('source');
     versionId = registerOutput<String>('versionId');

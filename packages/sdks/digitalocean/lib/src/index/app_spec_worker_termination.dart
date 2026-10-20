@@ -6,7 +6,7 @@ class AppSpecWorkerTermination {
   /// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
   ///
   /// A `function` component can contain:
-  final pulumi.Input<int>? gracePeriodSeconds;
+  final pulumi.Input<int?>? gracePeriodSeconds;
 
   /// Creates a new [AppSpecWorkerTermination].
   /// [gracePeriodSeconds] The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
@@ -22,7 +22,7 @@ class AppSpecWorkerTermination {
 
   factory AppSpecWorkerTermination.fromMap(Map<String, dynamic> map) {
     return AppSpecWorkerTermination(
-      gracePeriodSeconds: (() { final guardedValue = map['gracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      gracePeriodSeconds: (() { final guardedValue = map['gracePeriodSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

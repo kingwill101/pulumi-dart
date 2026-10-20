@@ -1,5 +1,8 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'firewall_args.dart';
+import 'firewall_inbound_rule.dart';
+import 'firewall_outbound_rule.dart';
+import 'firewall_pending_change.dart';
 import 'firewall_state.dart';
 
 /// Provides a DigitalOcean Cloud Firewall resource. This can be used to create,
@@ -173,7 +176,7 @@ import 'firewall_state.dart';
 ///         Name = "only-22-80-and-443",
 ///         DropletIds = new[]
 ///         {
-///             web.Id,
+///             web.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         },
 ///         InboundRules = new[]
 ///         {
@@ -346,7 +349,7 @@ import 'firewall_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -355,12 +358,18 @@ import 'firewall_state.dart';
 /// }
 ///
 /// resource "digitalocean_droplet" "web" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "web-1"
 ///   size   = "s-1vcpu-1gb"
 ///   image  = "ubuntu-18-04-x64"
 ///   region = "nyc3"
 /// }
 /// resource "digitalocean_firewall" "web" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "only-22-80-and-443"
 ///   droplet_ids = [digitalocean_droplet.web.id]
 ///   inbound_rules {
@@ -558,17 +567,17 @@ class Firewall extends pulumi.CustomResource {
   late final pulumi.Output<List<int>?> dropletIds;
   /// The inbound access rule block for the Firewall.
   /// The `inboundRule` block is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> inboundRules;
+  late final pulumi.Output<List<FirewallInboundRule>?> inboundRules;
   /// The Firewall name
   late final pulumi.Output<String> name;
   /// The outbound access rule block for the Firewall.
   /// The `outboundRule` block is documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>?> outboundRules;
+  late final pulumi.Output<List<FirewallOutboundRule>?> outboundRules;
   /// An list of object containing the fields, "dropletId",
   /// "removing", and "status".  It is provided to detail exactly which Droplets
   /// are having their security policies updated.  When empty, all changes
   /// have been successfully applied.
-  late final pulumi.Output<List<Map<String, dynamic>>> pendingChanges;
+  late final pulumi.Output<List<FirewallPendingChange>> pendingChanges;
   /// A status string indicating the current state of the Firewall.
   /// This can be "waiting", "succeeded", or "failed".
   late final pulumi.Output<String> status;
@@ -587,16 +596,16 @@ class Firewall extends pulumi.CustomResource {
           'digitalocean:index/firewall:Firewall',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
-    dropletIds = registerOutput<List<int>?>('dropletIds');
-    inboundRules = registerOutput<List<Map<String, dynamic>>?>('inboundRules');
+    dropletIds = registerOutput<List<int>?>('dropletIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    inboundRules = registerOutput<List<FirewallInboundRule>?>('inboundRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallInboundRule>(guardedValue, (value) => FirewallInboundRule.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    outboundRules = registerOutput<List<Map<String, dynamic>>?>('outboundRules');
-    pendingChanges = registerOutput<List<Map<String, dynamic>>>('pendingChanges');
+    outboundRules = registerOutput<List<FirewallOutboundRule>?>('outboundRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallOutboundRule>(guardedValue, (value) => FirewallOutboundRule.fromMap((value as Map).cast<String, dynamic>())); });
+    pendingChanges = registerOutput<List<FirewallPendingChange>>('pendingChanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPendingChange>(guardedValue, (value) => FirewallPendingChange.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 
   /// Gets an existing [Firewall] resource's state with the given [name] and [id].
@@ -604,11 +613,12 @@ class Firewall extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FirewallState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Firewall._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -623,12 +633,31 @@ class Firewall extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     createdAt = registerOutput<String>('createdAt');
-    dropletIds = registerOutput<List<int>?>('dropletIds');
-    inboundRules = registerOutput<List<Map<String, dynamic>>?>('inboundRules');
+    dropletIds = registerOutput<List<int>?>('dropletIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    inboundRules = registerOutput<List<FirewallInboundRule>?>('inboundRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallInboundRule>(guardedValue, (value) => FirewallInboundRule.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');
-    outboundRules = registerOutput<List<Map<String, dynamic>>?>('outboundRules');
-    pendingChanges = registerOutput<List<Map<String, dynamic>>>('pendingChanges');
+    outboundRules = registerOutput<List<FirewallOutboundRule>?>('outboundRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallOutboundRule>(guardedValue, (value) => FirewallOutboundRule.fromMap((value as Map).cast<String, dynamic>())); });
+    pendingChanges = registerOutput<List<FirewallPendingChange>>('pendingChanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPendingChange>(guardedValue, (value) => FirewallPendingChange.fromMap((value as Map).cast<String, dynamic>())); });
     status = registerOutput<String>('status');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+  }
+
+  /// Creates a typed reference to an existing [Firewall] resource.
+  Firewall.reference(String urn)
+    : super(
+        'digitalocean:index/firewall:Firewall',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    createdAt = registerOutput<String>('createdAt');
+    dropletIds = registerOutput<List<int>?>('dropletIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    inboundRules = registerOutput<List<FirewallInboundRule>?>('inboundRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallInboundRule>(guardedValue, (value) => FirewallInboundRule.fromMap((value as Map).cast<String, dynamic>())); });
+    this.name = registerOutput<String>('name');
+    outboundRules = registerOutput<List<FirewallOutboundRule>?>('outboundRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallOutboundRule>(guardedValue, (value) => FirewallOutboundRule.fromMap((value as Map).cast<String, dynamic>())); });
+    pendingChanges = registerOutput<List<FirewallPendingChange>>('pendingChanges', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FirewallPendingChange>(guardedValue, (value) => FirewallPendingChange.fromMap((value as Map).cast<String, dynamic>())); });
+    status = registerOutput<String>('status');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
   }
 }

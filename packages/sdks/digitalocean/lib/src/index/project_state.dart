@@ -5,25 +5,25 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// Input properties used for looking up and filtering Project resources.
 class ProjectState {
   /// the date and time when the project was created, (ISO8601)
-  final pulumi.Input<String>? createdAt;
+  final pulumi.Input<String?>? createdAt;
   /// the description of the project
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
-  final pulumi.Input<String>? environment;
+  final pulumi.Input<String?>? environment;
   /// a boolean indicating whether or not the project is the default project. (Default: "false")
-  final pulumi.Input<bool>? isDefault;
+  final pulumi.Input<bool?>? isDefault;
   /// The name of the Project
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// the id of the project owner.
-  final pulumi.Input<int>? ownerId;
+  final pulumi.Input<int?>? ownerId;
   /// the unique universal identifier of the project owner.
-  final pulumi.Input<String>? ownerUuid;
+  final pulumi.Input<String?>? ownerUuid;
   /// the purpose of the project, (Default: "Web Application")
-  final pulumi.Input<String>? purpose;
+  final pulumi.Input<String?>? purpose;
   /// a list of uniform resource names (URNs) for the resources associated with the project
-  final pulumi.Input<List<String>>? resources;
+  final pulumi.Input<List<String>?>? resources;
   /// the date and time when the project was last updated, (ISO8601)
-  final pulumi.Input<String>? updatedAt;
+  final pulumi.Input<String?>? updatedAt;
 
   /// Creates a new [ProjectState].
   /// [createdAt] the date and time when the project was created, (ISO8601)
@@ -71,7 +71,7 @@ class ProjectState {
       environment: (() { final guardedValue = map['environment']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       isDefault: (() { final guardedValue = map['isDefault']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ownerId: (() { final guardedValue = map['ownerId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       ownerUuid: (() { final guardedValue = map['ownerUuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       purpose: (() { final guardedValue = map['purpose']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resources: (() { final guardedValue = map['resources']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),

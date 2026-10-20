@@ -10,36 +10,36 @@ import 'database_cluster_storage_autoscale.dart';
 /// {@endtemplate}
 /// {@macro pulumi_index_database_cluster_database_cluster_args_doc}
 class DatabaseClusterArgs {
-  final pulumi.Input<DatabaseClusterBackupRestore>? backupRestore;
+  final pulumi.Input<DatabaseClusterBackupRestore?>? backupRestore;
   /// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
   final pulumi.Input<String> engine;
   /// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
-  final pulumi.Input<String>? evictionPolicy;
+  final pulumi.Input<String?>? evictionPolicy;
   /// Defines when the automatic maintenance should be performed for the database cluster.
-  final pulumi.Input<List<DatabaseClusterMaintenanceWindow>>? maintenanceWindows;
+  final pulumi.Input<List<DatabaseClusterMaintenanceWindow>?>? maintenanceWindows;
   /// The name of the database cluster.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
   final pulumi.Input<int> nodeCount;
   /// The ID of the VPC where the database cluster will be located.
-  final pulumi.Input<String>? privateNetworkUuid;
+  final pulumi.Input<String?>? privateNetworkUuid;
   /// The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
-  final pulumi.Input<String>? projectId;
+  final pulumi.Input<String?>? projectId;
   /// DigitalOcean region where the cluster will reside.
-  final pulumi.Input<String> region;
+  final pulumi.Input<dynamic> region;
   /// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
-  final pulumi.Input<String> size;
+  final pulumi.Input<dynamic> size;
   /// A comma separated string specifying the  SQL modes for a MySQL cluster.
-  final pulumi.Input<String>? sqlMode;
+  final pulumi.Input<String?>? sqlMode;
   /// Storage autoscaling configuration for the database cluster.
-  final pulumi.Input<DatabaseClusterStorageAutoscale>? storageAutoscale;
+  final pulumi.Input<DatabaseClusterStorageAutoscale?>? storageAutoscale;
   /// Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
-  final pulumi.Input<String>? storageSizeMib;
+  final pulumi.Input<String?>? storageSizeMib;
   /// A list of tag names to be applied to the database cluster.
-  final pulumi.Input<List<String>>? tags;
+  final pulumi.Input<List<String>?>? tags;
   /// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
   /// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
-  final pulumi.Input<String>? version;
+  final pulumi.Input<String?>? version;
 
   /// Creates a new [DatabaseClusterArgs].
   /// [backupRestore] Optional.
@@ -102,11 +102,11 @@ class DatabaseClusterArgs {
       evictionPolicy: (() { final guardedValue = map['evictionPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       maintenanceWindows: (() { final guardedValue = map['maintenanceWindows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<DatabaseClusterMaintenanceWindow>(guardedValue, (value) => DatabaseClusterMaintenanceWindow.fromMap((value as Map).cast<String, dynamic>()))); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      nodeCount: pulumi.Input.fromValue(map['nodeCount'] as int),
+      nodeCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['nodeCount'])),
       privateNetworkUuid: (() { final guardedValue = map['privateNetworkUuid']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       projectId: (() { final guardedValue = map['projectId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      region: pulumi.Input.fromValue(map['region'] as String),
-      size: pulumi.Input.fromValue(map['size'] as String),
+      region: pulumi.Input.fromValue(map['region']),
+      size: pulumi.Input.fromValue(map['size']),
       sqlMode: (() { final guardedValue = map['sqlMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       storageAutoscale: (() { final guardedValue = map['storageAutoscale']; if (guardedValue == null) return null; return pulumi.Input.fromValue(DatabaseClusterStorageAutoscale.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       storageSizeMib: (() { final guardedValue = map['storageSizeMib']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

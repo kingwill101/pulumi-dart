@@ -82,7 +82,7 @@ import 'byoip_prefix_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -91,7 +91,10 @@ import 'byoip_prefix_state.dart';
 /// }
 ///
 /// # Create a new BYOIP prefix
-/// resource "digitalocean_byoipprefix" "example" {
+/// resource "digitalocean_byoip_prefix" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   prefix     = "192.0.2.0/24"
 ///   signature  = prefixSignature
 ///   region     = "nyc3"
@@ -180,7 +183,7 @@ class ByoipPrefix extends pulumi.CustomResource {
           'digitalocean:index/byoipPrefix:ByoipPrefix',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     advertised = registerOutput<bool?>('advertised');
     failureReason = registerOutput<String>('failureReason');
@@ -196,11 +199,12 @@ class ByoipPrefix extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ByoipPrefixState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ByoipPrefix._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -214,6 +218,24 @@ class ByoipPrefix extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    advertised = registerOutput<bool?>('advertised');
+    failureReason = registerOutput<String>('failureReason');
+    prefix = registerOutput<String>('prefix');
+    region = registerOutput<String>('region');
+    signature = registerOutput<String?>('signature');
+    status = registerOutput<String>('status');
+    uuid = registerOutput<String>('uuid');
+  }
+
+  /// Creates a typed reference to an existing [ByoipPrefix] resource.
+  ByoipPrefix.reference(String urn)
+    : super(
+        'digitalocean:index/byoipPrefix:ByoipPrefix',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     advertised = registerOutput<bool?>('advertised');
     failureReason = registerOutput<String>('failureReason');
     prefix = registerOutput<String>('prefix');

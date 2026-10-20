@@ -13,27 +13,27 @@ import 'app_spec_function_route.dart';
 
 class AppSpecFunction {
   /// Describes an alert policy for the component.
-  final pulumi.Input<List<AppSpecFunctionAlert>>? alerts;
+  final pulumi.Input<List<AppSpecFunctionAlert>?>? alerts;
   /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-  final pulumi.Input<AppSpecFunctionBitbucket>? bitbucket;
+  final pulumi.Input<AppSpecFunctionBitbucket?>? bitbucket;
   /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-  final pulumi.Input<AppSpecFunctionCors>? cors;
+  final pulumi.Input<AppSpecFunctionCors?>? cors;
   /// Describes an environment variable made available to an app competent.
-  final pulumi.Input<List<AppSpecFunctionEnv>>? envs;
+  final pulumi.Input<List<AppSpecFunctionEnv>?>? envs;
   /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
-  final pulumi.Input<AppSpecFunctionGit>? git;
+  final pulumi.Input<AppSpecFunctionGit?>? git;
   /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-  final pulumi.Input<AppSpecFunctionGithub>? github;
+  final pulumi.Input<AppSpecFunctionGithub?>? github;
   /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-  final pulumi.Input<AppSpecFunctionGitlab>? gitlab;
+  final pulumi.Input<AppSpecFunctionGitlab?>? gitlab;
   /// Describes a log forwarding destination.
-  final pulumi.Input<List<AppSpecFunctionLogDestination>>? logDestinations;
+  final pulumi.Input<List<AppSpecFunctionLogDestination>?>? logDestinations;
   /// The name of the component.
   final pulumi.Input<String> name;
   /// An HTTP paths that should be routed to this component.
-  final pulumi.Input<List<AppSpecFunctionRoute>>? routes;
+  final pulumi.Input<List<AppSpecFunctionRoute>?>? routes;
   /// An optional path to the working directory to use for the build.
-  final pulumi.Input<String>? sourceDir;
+  final pulumi.Input<String?>? sourceDir;
 
   /// Creates a new [AppSpecFunction].
   /// [alerts] Describes an alert policy for the component.

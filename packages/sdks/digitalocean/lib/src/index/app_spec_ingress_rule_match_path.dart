@@ -4,7 +4,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 
 class AppSpecIngressRuleMatchPath {
   /// Prefix-based match.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [AppSpecIngressRuleMatchPath].
   /// [prefix] Prefix-based match.

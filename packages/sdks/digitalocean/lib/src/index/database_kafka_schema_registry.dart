@@ -156,7 +156,7 @@ import 'database_kafka_schema_registry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -164,13 +164,31 @@ import 'database_kafka_schema_registry_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasekafkaschemaregistry" "schema-01" {
-///   cluster_id   = digitalocean_databasecluster.kafka-example.id
+/// resource "digitalocean_database_kafka_schema_registry" "schema-01" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id   = digitalocean_database_cluster.kafka-example.id
 ///   subject_name = "test-schema"
 ///   schema_type  = "avro"
-///   schema       = "{\n  \\\"type\\\": \\\"record\\\",\n  \\\"namespace\\\": \\\"example\\\",\n  \\\"name\\\": \\\"TestRecord\\\",\n  \\\"fields\\\": [\n    {\\\"name\\\": \\\"id\\\", \\\"type\\\": \\\"string\\\"},\n    {\\\"name\\\": \\\"name\\\", \\\"type\\\": \\\"string\\\"},\n    {\\\"name\\\": \\\"value\\\", \\\"type\\\": \\\"int\\\"}\n  ]\n}\n"
+///   schema       = <<EOF
+/// {
+///   \"type\": \"record\",
+///   \"namespace\": \"example\",
+///   \"name\": \"TestRecord\",
+///   \"fields\": [
+///     {\"name\": \"id\", \"type\": \"string\"},
+///     {\"name\": \"name\", \"type\": \"string\"},
+///     {\"name\": \"value\", \"type\": \"int\"}
+///   ]
 /// }
-/// resource "digitalocean_databasecluster" "kafka-example" {
+/// EOF
+///
+/// }
+/// resource "digitalocean_database_cluster" "kafka-example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-kafka-cluster"
 ///   engine     = "kafka"
 ///   version    = "3.5"
@@ -287,7 +305,7 @@ class DatabaseKafkaSchemaRegistry extends pulumi.CustomResource {
           'digitalocean:index/databaseKafkaSchemaRegistry:DatabaseKafkaSchemaRegistry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
     schema = registerOutput<String>('schema');
@@ -300,11 +318,12 @@ class DatabaseKafkaSchemaRegistry extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseKafkaSchemaRegistryState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseKafkaSchemaRegistry._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -318,6 +337,21 @@ class DatabaseKafkaSchemaRegistry extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    clusterId = registerOutput<String>('clusterId');
+    schema = registerOutput<String>('schema');
+    schemaType = registerOutput<String>('schemaType');
+    subjectName = registerOutput<String>('subjectName');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseKafkaSchemaRegistry] resource.
+  DatabaseKafkaSchemaRegistry.reference(String urn)
+    : super(
+        'digitalocean:index/databaseKafkaSchemaRegistry:DatabaseKafkaSchemaRegistry',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     clusterId = registerOutput<String>('clusterId');
     schema = registerOutput<String>('schema');
     schemaType = registerOutput<String>('schemaType');

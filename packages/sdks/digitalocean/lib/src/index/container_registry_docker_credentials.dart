@@ -61,7 +61,7 @@ import 'container_registry_docker_credentials_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -69,7 +69,10 @@ import 'container_registry_docker_credentials_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_containerregistrydockercredentials" "example" {
+/// resource "digitalocean_container_registry_docker_credentials" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   registry_name = "example"
 /// }
 /// ```
@@ -178,7 +181,7 @@ import 'container_registry_docker_credentials_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -186,11 +189,14 @@ import 'container_registry_docker_credentials_state.dart';
 ///   }
 /// }
 ///
-/// data "digitalocean_getcontainerregistry" "example" {
+/// data "digitalocean_container_registry" "example" {
 ///   name = "example"
 /// }
 ///
-/// resource "digitalocean_containerregistrydockercredentials" "example" {
+/// resource "digitalocean_container_registry_docker_credentials" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   registry_name = "example"
 /// }
 /// ```
@@ -364,7 +370,7 @@ import 'container_registry_docker_credentials_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -375,19 +381,25 @@ import 'container_registry_docker_credentials_state.dart';
 ///   }
 /// }
 ///
-/// data "digitalocean_getkubernetescluster" "example" {
+/// data "digitalocean_kubernetes_cluster" "example" {
 ///   name = "prod-cluster-01"
 /// }
 ///
-/// resource "digitalocean_containerregistrydockercredentials" "example" {
+/// resource "digitalocean_container_registry_docker_credentials" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   registry_name = "example"
 /// }
 /// resource "kubernetes_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   metadata = [{
 ///     "name" = "docker-cfg"
 ///   }]
 ///   data = {
-///     ".dockerconfigjson" = digitalocean_containerregistrydockercredentials.example.docker_credentials
+///     ".dockerconfigjson" = digitalocean_container_registry_docker_credentials.example.docker_credentials
 ///   }
 ///   type = "kubernetes.io/dockerconfigjson"
 /// }
@@ -481,10 +493,11 @@ class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
           'digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
+          additionalSecretOutputs: const ['dockerCredentials'],
         ) {
     credentialExpirationTime = registerOutput<String>('credentialExpirationTime');
-    dockerCredentials = registerOutput<String>('dockerCredentials');
+    dockerCredentials = registerOutput<String>('dockerCredentials', isSecret: true);
     expirySeconds = registerOutput<int?>('expirySeconds');
     registryName = registerOutput<String>('registryName');
     write = registerOutput<bool?>('write');
@@ -495,11 +508,12 @@ class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ContainerRegistryDockerCredentialsState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return ContainerRegistryDockerCredentials._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -514,7 +528,24 @@ class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     credentialExpirationTime = registerOutput<String>('credentialExpirationTime');
-    dockerCredentials = registerOutput<String>('dockerCredentials');
+    dockerCredentials = registerOutput<String>('dockerCredentials', isSecret: true);
+    expirySeconds = registerOutput<int?>('expirySeconds');
+    registryName = registerOutput<String>('registryName');
+    write = registerOutput<bool?>('write');
+  }
+
+  /// Creates a typed reference to an existing [ContainerRegistryDockerCredentials] resource.
+  ContainerRegistryDockerCredentials.reference(String urn)
+    : super(
+        'digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['dockerCredentials'],
+        isResourceReference: true,
+      ) {
+    credentialExpirationTime = registerOutput<String>('credentialExpirationTime');
+    dockerCredentials = registerOutput<String>('dockerCredentials', isSecret: true);
     expirySeconds = registerOutput<int?>('expirySeconds');
     registryName = registerOutput<String>('registryName');
     write = registerOutput<bool?>('write');

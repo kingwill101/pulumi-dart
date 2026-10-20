@@ -109,7 +109,7 @@ import 'database_valkey_config_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -117,13 +117,19 @@ import 'database_valkey_config_state.dart';
 ///   }
 /// }
 ///
-/// resource "digitalocean_databasevalkeyconfig" "example" {
-///   cluster_id              = digitalocean_databasecluster.example.id
+/// resource "digitalocean_database_valkey_config" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   cluster_id              = digitalocean_database_cluster.example.id
 ///   notify_keyspace_events  = "KEA"
 ///   timeout                 = 90
 ///   valkey_maxmemory_policy = "allkeys-random"
 /// }
-/// resource "digitalocean_databasecluster" "example" {
+/// resource "digitalocean_database_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "example-valkey-cluster"
 ///   engine     = "valkey"
 ///   version    = "8"
@@ -245,7 +251,7 @@ class DatabaseValkeyConfig extends pulumi.CustomResource {
           'digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     aclChannelsDefault = registerOutput<String>('aclChannelsDefault');
     clusterId = registerOutput<String>('clusterId');
@@ -268,11 +274,12 @@ class DatabaseValkeyConfig extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseValkeyConfigState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return DatabaseValkeyConfig._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -286,6 +293,31 @@ class DatabaseValkeyConfig extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    aclChannelsDefault = registerOutput<String>('aclChannelsDefault');
+    clusterId = registerOutput<String>('clusterId');
+    frequentSnapshots = registerOutput<bool>('frequentSnapshots');
+    ioThreads = registerOutput<int>('ioThreads');
+    lfuDecayTime = registerOutput<int>('lfuDecayTime');
+    lfuLogFactor = registerOutput<int>('lfuLogFactor');
+    notifyKeyspaceEvents = registerOutput<String>('notifyKeyspaceEvents');
+    numberOfDatabases = registerOutput<int>('numberOfDatabases');
+    persistence = registerOutput<String>('persistence');
+    pubsubClientOutputBufferLimit = registerOutput<int>('pubsubClientOutputBufferLimit');
+    ssl = registerOutput<bool>('ssl');
+    timeout = registerOutput<int>('timeout');
+    valkeyActiveExpireEffort = registerOutput<int>('valkeyActiveExpireEffort');
+    valkeyMaxmemoryPolicy = registerOutput<String>('valkeyMaxmemoryPolicy');
+  }
+
+  /// Creates a typed reference to an existing [DatabaseValkeyConfig] resource.
+  DatabaseValkeyConfig.reference(String urn)
+    : super(
+        'digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     aclChannelsDefault = registerOutput<String>('aclChannelsDefault');
     clusterId = registerOutput<String>('clusterId');
     frequentSnapshots = registerOutput<bool>('frequentSnapshots');

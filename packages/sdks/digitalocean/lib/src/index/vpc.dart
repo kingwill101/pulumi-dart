@@ -69,7 +69,7 @@ import 'vpc_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -78,6 +78,9 @@ import 'vpc_state.dart';
 /// }
 ///
 /// resource "digitalocean_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-project-network"
 ///   region   = "nyc3"
 ///   ip_range = "10.10.10.0/24"
@@ -218,7 +221,7 @@ import 'vpc_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -227,10 +230,16 @@ import 'vpc_state.dart';
 /// }
 ///
 /// resource "digitalocean_vpc" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "example-project-network"
 ///   region = "nyc3"
 /// }
 /// resource "digitalocean_droplet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-01"
 ///   size     = "s-1vcpu-1gb"
 ///   image    = "ubuntu-18-04-x64"
@@ -331,7 +340,7 @@ class Vpc extends pulumi.CustomResource {
           'digitalocean:index/vpc:Vpc',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     createdAt = registerOutput<String>('createdAt');
     default_ = registerOutput<bool>('default');
@@ -347,11 +356,12 @@ class Vpc extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VpcState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Vpc._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -365,6 +375,24 @@ class Vpc extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    createdAt = registerOutput<String>('createdAt');
+    default_ = registerOutput<bool>('default');
+    description = registerOutput<String?>('description');
+    ipRange = registerOutput<String>('ipRange');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    vpcUrn = registerOutput<String>('vpcUrn');
+  }
+
+  /// Creates a typed reference to an existing [Vpc] resource.
+  Vpc.reference(String urn)
+    : super(
+        'digitalocean:index/vpc:Vpc',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     createdAt = registerOutput<String>('createdAt');
     default_ = registerOutput<bool>('default');
     description = registerOutput<String?>('description');

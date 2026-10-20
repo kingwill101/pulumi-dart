@@ -75,7 +75,7 @@ import 'volume_state.dart';
 ///
 ///     var foobarVolumeAttachment = new DigitalOcean.VolumeAttachment("foobar", new()
 ///     {
-///         DropletId = foobarDroplet.Id,
+///         DropletId = foobarDroplet.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///         VolumeId = foobar.Id,
 ///     });
 ///
@@ -124,7 +124,7 @@ import 'volume_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -133,6 +133,9 @@ import 'volume_state.dart';
 /// }
 ///
 /// resource "digitalocean_volume" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region                  = "nyc1"
 ///   name                    = "baz"
 ///   size                    = 100
@@ -140,12 +143,18 @@ import 'volume_state.dart';
 ///   description             = "an example volume"
 /// }
 /// resource "digitalocean_droplet" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name   = "baz"
 ///   size   = "s-1vcpu-1gb"
 ///   image  = "ubuntu-18-04-x64"
 ///   region = "nyc1"
 /// }
-/// resource "digitalocean_volumeattachment" "foobar" {
+/// resource "digitalocean_volume_attachment" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   droplet_id = digitalocean_droplet.foobar.id
 ///   volume_id  = digitalocean_volume.foobar.id
 /// }
@@ -306,7 +315,7 @@ import 'volume_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     digitalocean = {
 ///       source = "pulumi/digitalocean"
@@ -314,15 +323,18 @@ import 'volume_state.dart';
 ///   }
 /// }
 ///
-/// data "digitalocean_getvolumesnapshot" "foobar" {
+/// data "digitalocean_volume_snapshot" "foobar" {
 ///   name = "baz"
 /// }
 ///
 /// resource "digitalocean_volume" "foobar" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   region      = "lon1"
 ///   name        = "foo"
-///   size        = data.digitalocean_getvolumesnapshot.foobar.min_disk_size
-///   snapshot_id = data.digitalocean_getvolumesnapshot.foobar.id
+///   size        = data.digitalocean_volume_snapshot.foobar.min_disk_size
+///   snapshot_id = data.digitalocean_volume_snapshot.foobar.id
 /// }
 /// ```
 /// ```java
@@ -426,10 +438,10 @@ class Volume extends pulumi.CustomResource {
           'digitalocean:index/volume:Volume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.84.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
-    dropletIds = registerOutput<List<int>>('dropletIds');
+    dropletIds = registerOutput<List<int>>('dropletIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     filesystemLabel = registerOutput<String>('filesystemLabel');
     filesystemType = registerOutput<String>('filesystemType');
     initialFilesystemLabel = registerOutput<String?>('initialFilesystemLabel');
@@ -438,7 +450,7 @@ class Volume extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     size = registerOutput<int>('size');
     snapshotId = registerOutput<String?>('snapshotId');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     volumeUrn = registerOutput<String>('volumeUrn');
   }
 
@@ -447,11 +459,12 @@ class Volume extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     VolumeState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Volume._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -466,7 +479,7 @@ class Volume extends pulumi.CustomResource {
           options ?? pulumi.CustomResourceOptions(),
         ) {
     description = registerOutput<String?>('description');
-    dropletIds = registerOutput<List<int>>('dropletIds');
+    dropletIds = registerOutput<List<int>>('dropletIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
     filesystemLabel = registerOutput<String>('filesystemLabel');
     filesystemType = registerOutput<String>('filesystemType');
     initialFilesystemLabel = registerOutput<String?>('initialFilesystemLabel');
@@ -475,7 +488,30 @@ class Volume extends pulumi.CustomResource {
     region = registerOutput<String>('region');
     size = registerOutput<int>('size');
     snapshotId = registerOutput<String?>('snapshotId');
-    tags = registerOutput<List<String>?>('tags');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    volumeUrn = registerOutput<String>('volumeUrn');
+  }
+
+  /// Creates a typed reference to an existing [Volume] resource.
+  Volume.reference(String urn)
+    : super(
+        'digitalocean:index/volume:Volume',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    description = registerOutput<String?>('description');
+    dropletIds = registerOutput<List<int>>('dropletIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });
+    filesystemLabel = registerOutput<String>('filesystemLabel');
+    filesystemType = registerOutput<String>('filesystemType');
+    initialFilesystemLabel = registerOutput<String?>('initialFilesystemLabel');
+    initialFilesystemType = registerOutput<String?>('initialFilesystemType');
+    this.name = registerOutput<String>('name');
+    region = registerOutput<String>('region');
+    size = registerOutput<int>('size');
+    snapshotId = registerOutput<String?>('snapshotId');
+    tags = registerOutput<List<String>?>('tags', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     volumeUrn = registerOutput<String>('volumeUrn');
   }
 }
