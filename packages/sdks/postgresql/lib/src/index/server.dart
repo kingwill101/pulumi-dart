@@ -108,7 +108,7 @@ import 'server_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -117,10 +117,16 @@ import 'server_state.dart';
 /// }
 ///
 /// resource "postgresql_extension" "ext_postgres_fdw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "postgres_fdw"
 /// }
 /// resource "postgresql_server" "myserver_postgres" {
-///   depends_on  = [postgresql_extension.ext_postgres_fdw]
+///   depends_on = [postgresql_extension.ext_postgres_fdw]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   server_name = "myserver_postgres"
 ///   fdw_name    = "postgres_fdw"
 ///   options = {
@@ -276,7 +282,7 @@ import 'server_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -285,10 +291,16 @@ import 'server_state.dart';
 /// }
 ///
 /// resource "postgresql_extension" "ext_file_fdw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "file_fdw"
 /// }
 /// resource "postgresql_server" "myserver_file" {
-///   depends_on  = [postgresql_extension.ext_file_fdw]
+///   depends_on = [postgresql_extension.ext_file_fdw]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   server_name = "myserver_file"
 ///   fdw_name    = "file_fdw"
 /// }
@@ -382,11 +394,11 @@ class Server extends pulumi.CustomResource {
           'postgresql:index/server:Server',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.2').merge(options),
         ) {
     dropCascade = registerOutput<bool?>('dropCascade');
     fdwName = registerOutput<String>('fdwName');
-    this.options = registerOutput<Map<String, String>?>('options');
+    this.options = registerOutput<Map<String, String>?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     serverName = registerOutput<String>('serverName');
     serverOwner = registerOutput<String>('serverOwner');
     serverType = registerOutput<String?>('serverType');
@@ -398,11 +410,12 @@ class Server extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     ServerState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Server._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -418,7 +431,25 @@ class Server extends pulumi.CustomResource {
         ) {
     dropCascade = registerOutput<bool?>('dropCascade');
     fdwName = registerOutput<String>('fdwName');
-    this.options = registerOutput<Map<String, String>?>('options');
+    this.options = registerOutput<Map<String, String>?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    serverName = registerOutput<String>('serverName');
+    serverOwner = registerOutput<String>('serverOwner');
+    serverType = registerOutput<String?>('serverType');
+    serverVersion = registerOutput<String?>('serverVersion');
+  }
+
+  /// Creates a typed reference to an existing [Server] resource.
+  Server.reference(String urn)
+    : super(
+        'postgresql:index/server:Server',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    dropCascade = registerOutput<bool?>('dropCascade');
+    fdwName = registerOutput<String>('fdwName');
+    this.options = registerOutput<Map<String, String>?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     serverName = registerOutput<String>('serverName');
     serverOwner = registerOutput<String>('serverOwner');
     serverType = registerOutput<String?>('serverType');

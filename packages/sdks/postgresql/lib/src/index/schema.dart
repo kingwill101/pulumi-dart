@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'schema_args.dart';
+import 'schema_policy.dart';
 import 'schema_state.dart';
 
 /// The ``postgresql.Schema`` resource creates and manages [schema
@@ -172,7 +173,7 @@ import 'schema_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -181,15 +182,27 @@ import 'schema_state.dart';
 /// }
 ///
 /// resource "postgresql_role" "app_www" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "app_www"
 /// }
 /// resource "postgresql_role" "app_dba" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "app_dba"
 /// }
 /// resource "postgresql_role" "app_releng" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "app_releng"
 /// }
 /// resource "postgresql_schema" "my_schema" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "my_schema"
 ///   owner = "postgres"
 ///   policies {
@@ -394,7 +407,7 @@ import 'schema_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -403,9 +416,15 @@ import 'schema_state.dart';
 /// }
 ///
 /// resource "postgresql_schema" "public" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "public"
 /// }
 /// resource "postgresql_schema" "schema_foo" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "my_schema"
 ///   owner = "postgres"
 ///   policies {
@@ -492,7 +511,7 @@ class Schema extends pulumi.CustomResource {
   late final pulumi.Output<String> owner;
   /// Can be specified multiple times for each policy.  Each
   /// policy block supports fields documented below.
-  late final pulumi.Output<List<Map<String, dynamic>>> policies;
+  late final pulumi.Output<List<SchemaPolicy>> policies;
 
   /// Creates a new [Schema].
   /// [name] The Pulumi resource name.
@@ -506,14 +525,14 @@ class Schema extends pulumi.CustomResource {
           'postgresql:index/schema:Schema',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.2').merge(options),
         ) {
     database = registerOutput<String>('database');
     dropCascade = registerOutput<bool?>('dropCascade');
     ifNotExists = registerOutput<bool?>('ifNotExists');
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
-    policies = registerOutput<List<Map<String, dynamic>>>('policies');
+    policies = registerOutput<List<SchemaPolicy>>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SchemaPolicy>(guardedValue, (value) => SchemaPolicy.fromMap((value as Map).cast<String, dynamic>())); });
   }
 
   /// Gets an existing [Schema] resource's state with the given [name] and [id].
@@ -521,11 +540,12 @@ class Schema extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SchemaState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Schema._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -544,6 +564,23 @@ class Schema extends pulumi.CustomResource {
     ifNotExists = registerOutput<bool?>('ifNotExists');
     this.name = registerOutput<String>('name');
     owner = registerOutput<String>('owner');
-    policies = registerOutput<List<Map<String, dynamic>>>('policies');
+    policies = registerOutput<List<SchemaPolicy>>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SchemaPolicy>(guardedValue, (value) => SchemaPolicy.fromMap((value as Map).cast<String, dynamic>())); });
+  }
+
+  /// Creates a typed reference to an existing [Schema] resource.
+  Schema.reference(String urn)
+    : super(
+        'postgresql:index/schema:Schema',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    database = registerOutput<String>('database');
+    dropCascade = registerOutput<bool?>('dropCascade');
+    ifNotExists = registerOutput<bool?>('ifNotExists');
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<String>('owner');
+    policies = registerOutput<List<SchemaPolicy>>('policies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<SchemaPolicy>(guardedValue, (value) => SchemaPolicy.fromMap((value as Map).cast<String, dynamic>())); });
   }
 }

@@ -158,7 +158,7 @@ import 'user_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -167,10 +167,16 @@ import 'user_mapping_state.dart';
 /// }
 ///
 /// resource "postgresql_extension" "ext_postgres_fdw" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "postgres_fdw"
 /// }
 /// resource "postgresql_server" "myserver_postgres" {
-///   depends_on  = [postgresql_extension.ext_postgres_fdw]
+///   depends_on = [postgresql_extension.ext_postgres_fdw]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   server_name = "myserver_postgres"
 ///   fdw_name    = "postgres_fdw"
 ///   options = {
@@ -180,9 +186,15 @@ import 'user_mapping_state.dart';
 ///   }
 /// }
 /// resource "postgresql_role" "remote" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "remote"
 /// }
-/// resource "postgresql_usermapping" "remote" {
+/// resource "postgresql_user_mapping" "remote" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   server_name = postgresql_server.myserver_postgres.server_name
 ///   user_name   = postgresql_role.remote.name
 ///   options = {
@@ -311,9 +323,9 @@ class UserMapping extends pulumi.CustomResource {
           'postgresql:index/userMapping:UserMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.2').merge(options),
         ) {
-    this.options = registerOutput<Map<String, String>?>('options');
+    this.options = registerOutput<Map<String, String>?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     serverName = registerOutput<String>('serverName');
     userName = registerOutput<String>('userName');
   }
@@ -323,11 +335,12 @@ class UserMapping extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     UserMappingState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return UserMapping._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -341,7 +354,21 @@ class UserMapping extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    this.options = registerOutput<Map<String, String>?>('options');
+    this.options = registerOutput<Map<String, String>?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    serverName = registerOutput<String>('serverName');
+    userName = registerOutput<String>('userName');
+  }
+
+  /// Creates a typed reference to an existing [UserMapping] resource.
+  UserMapping.reference(String urn)
+    : super(
+        'postgresql:index/userMapping:UserMapping',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    this.options = registerOutput<Map<String, String>?>('options', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     serverName = registerOutput<String>('serverName');
     userName = registerOutput<String>('userName');
   }
