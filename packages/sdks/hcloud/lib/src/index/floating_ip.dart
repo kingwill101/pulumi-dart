@@ -51,7 +51,7 @@ import 'floating_ip_state.dart';
 ///     var master = new HCloud.FloatingIp("master", new()
 ///     {
 ///         Type = "ipv4",
-///         ServerId = node1.Id,
+///         ServerId = node1.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///     });
 ///
 /// });
@@ -60,6 +60,8 @@ import 'floating_ip_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -76,7 +78,7 @@ import 'floating_ip_state.dart';
 /// 		}
 /// 		_, err = hcloud.NewFloatingIp(ctx, "master", &hcloud.FloatingIpArgs{
 /// 			Type:     pulumi.String("ipv4"),
-/// 			ServerId: node1.ID(),
+/// 			ServerId: node1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -86,7 +88,7 @@ import 'floating_ip_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -95,11 +97,17 @@ import 'floating_ip_state.dart';
 /// }
 ///
 /// resource "hcloud_server" "node1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "node1"
 ///   image       = "debian-12"
 ///   server_type = "cx23"
 /// }
-/// resource "hcloud_floatingip" "master" {
+/// resource "hcloud_floating_ip" "master" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   type      = "ipv4"
 ///   server_id = hcloud_server.node1.id
 /// }
@@ -196,14 +204,14 @@ class FloatingIp extends pulumi.CustomResource {
           'hcloud:index/floatingIp:FloatingIp',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.43.2').merge(options),
         ) {
     deleteProtection = registerOutput<bool?>('deleteProtection');
     description = registerOutput<String?>('description');
     homeLocation = registerOutput<String>('homeLocation');
     ipAddress = registerOutput<String>('ipAddress');
     ipNetwork = registerOutput<String>('ipNetwork');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     serverId = registerOutput<int>('serverId');
     type = registerOutput<String>('type');
@@ -214,11 +222,12 @@ class FloatingIp extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FloatingIpState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FloatingIp._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -237,7 +246,27 @@ class FloatingIp extends pulumi.CustomResource {
     homeLocation = registerOutput<String>('homeLocation');
     ipAddress = registerOutput<String>('ipAddress');
     ipNetwork = registerOutput<String>('ipNetwork');
-    labels = registerOutput<Map<String, String>?>('labels');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    this.name = registerOutput<String>('name');
+    serverId = registerOutput<int>('serverId');
+    type = registerOutput<String>('type');
+  }
+
+  /// Creates a typed reference to an existing [FloatingIp] resource.
+  FloatingIp.reference(String urn)
+    : super(
+        'hcloud:index/floatingIp:FloatingIp',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    deleteProtection = registerOutput<bool?>('deleteProtection');
+    description = registerOutput<String?>('description');
+    homeLocation = registerOutput<String>('homeLocation');
+    ipAddress = registerOutput<String>('ipAddress');
+    ipNetwork = registerOutput<String>('ipNetwork');
+    labels = registerOutput<Map<String, String>?>('labels', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     this.name = registerOutput<String>('name');
     serverId = registerOutput<int>('serverId');
     type = registerOutput<String>('type');

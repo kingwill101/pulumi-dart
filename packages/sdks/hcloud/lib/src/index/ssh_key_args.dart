@@ -8,9 +8,9 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_ssh_key_ssh_key_args_doc}
 class SshKeyArgs {
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the SSH Key.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Public key of the SSH Key pair. If this is a file, it can be read using the `file` interpolation function.
   final pulumi.Input<String> publicKey;
 

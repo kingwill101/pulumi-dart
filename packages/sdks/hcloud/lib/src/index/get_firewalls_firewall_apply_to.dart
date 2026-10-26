@@ -24,7 +24,7 @@ class GetFirewallsFirewallApplyTo {
   factory GetFirewallsFirewallApplyTo.fromMap(Map<String, dynamic> map) {
     return GetFirewallsFirewallApplyTo(
       labelSelector: pulumi.Input.fromValue(map['labelSelector'] as String),
-      server: pulumi.Input.fromValue(map['server'] as int),
+      server: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['server'])),
     );
   }
 }

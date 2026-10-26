@@ -8,17 +8,17 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_floating_ip_floating_ip_args_doc}
 class FloatingIpArgs {
   /// Enable or disable delete protection. See "Delete Protection" in the Provider Docs for details.
-  final pulumi.Input<bool>? deleteProtection;
+  final pulumi.Input<bool?>? deleteProtection;
   /// Description of the Floating IP.
-  final pulumi.Input<String>? description;
+  final pulumi.Input<String?>? description;
   /// Name of home location (routing is optimized for that location). Optional if `serverId` argument is passed.
-  final pulumi.Input<String>? homeLocation;
+  final pulumi.Input<String?>? homeLocation;
   /// User-defined labels (key-value pairs) should be created with.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the Floating IP.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Server to assign the Floating IP to. Optional if `homeLocation` argument is passed.
-  final pulumi.Input<int>? serverId;
+  final pulumi.Input<int?>? serverId;
   /// Type of the Floating IP. `ipv4` `ipv6`
   final pulumi.Input<String> type;
 
@@ -59,7 +59,7 @@ class FloatingIpArgs {
       homeLocation: (() { final guardedValue = map['homeLocation']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      serverId: (() { final guardedValue = map['serverId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
     );
   }
