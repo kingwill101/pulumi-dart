@@ -140,7 +140,7 @@ import 'group_policy_exemption_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -148,26 +148,35 @@ import 'group_policy_exemption_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_policy_getpolicysetdefinition" "example" {
+/// data "azure_policy_policy_set_definition" "example" {
 ///   display_name = "Audit machines with insecure password security settings"
 /// }
 ///
 /// resource "azure_management_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Example MgmtGroup"
 /// }
-/// resource "azure_management_grouppolicyassignment" "example" {
+/// resource "azure_management_group_policy_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "assignment1"
 ///   management_group_id  = azure_management_group.example.id
-///   policy_definition_id = data.azure_policy_getpolicysetdefinition.example.id
+///   policy_definition_id = data.azure_policy_policy_set_definition.example.id
 ///   location             = "westus"
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_management_grouppolicyexemption" "example" {
+/// resource "azure_management_group_policy_exemption" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "exemption1"
 ///   management_group_id  = azure_management_group.example.id
-///   policy_assignment_id = azure_management_grouppolicyassignment.example.id
+///   policy_assignment_id = azure_management_group_policy_assignment.example.id
 ///   exemption_category   = "Mitigated"
 /// }
 /// ```
@@ -300,7 +309,7 @@ class GroupPolicyExemption extends pulumi.CustomResource {
           'azure:management/groupPolicyExemption:GroupPolicyExemption',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String?>('displayName');

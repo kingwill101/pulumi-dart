@@ -126,7 +126,7 @@ import 'subscription_template_deployment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -134,10 +134,30 @@ import 'subscription_template_deployment_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_subscriptiontemplatedeployment" "example" {
+/// resource "azure_core_subscription_template_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example-deployment"
 ///   location         = "West Europe"
-///   template_content = " {\n   \\\"$schema\\\": \\\"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\\\",\n   \\\"contentVersion\\\": \\\"1.0.0.0\\\",\n   \\\"parameters\\\": {},\n   \\\"variables\\\": {},\n   \\\"resources\\\": [\n     {\n       \\\"type\\\": \\\"Microsoft.Resources/resourceGroups\\\",\n       \\\"apiVersion\\\": \\\"2018-05-01\\\",\n       \\\"location\\\": \\\"West Europe\\\",\n       \\\"name\\\": \\\"some-resource-group\\\",\n       \\\"properties\\\": {}\n     }\n   ]\n }\n"
+///   template_content = <<TEMPLATE
+///  {
+///    \"$schema\": \"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#\",
+///    \"contentVersion\": \"1.0.0.0\",
+///    \"parameters\": {},
+///    \"variables\": {},
+///    \"resources\": [
+///      {
+///        \"type\": \"Microsoft.Resources/resourceGroups\",
+///        \"apiVersion\": \"2018-05-01\",
+///        \"location\": \"West Europe\",
+///        \"name\": \"some-resource-group\",
+///        \"properties\": {}
+///      }
+///    ]
+///  }
+/// TEMPLATE
+///
 /// }
 /// ```
 /// ```java
@@ -249,7 +269,7 @@ class SubscriptionTemplateDeployment extends pulumi.CustomResource {
           'azure:core/subscriptionTemplateDeployment:SubscriptionTemplateDeployment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     debugLevel = registerOutput<String?>('debugLevel');
     location = registerOutput<String>('location');

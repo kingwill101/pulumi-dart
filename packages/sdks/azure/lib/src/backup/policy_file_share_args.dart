@@ -92,7 +92,7 @@ class PolicyFileShareArgs {
       retentionMonthly: (() { final guardedValue = map['retentionMonthly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyFileShareRetentionMonthly.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       retentionWeekly: (() { final guardedValue = map['retentionWeekly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyFileShareRetentionWeekly.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       retentionYearly: (() { final guardedValue = map['retentionYearly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(PolicyFileShareRetentionYearly.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
-      snapshotRetentionInDays: (() { final guardedValue = map['snapshotRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      snapshotRetentionInDays: (() { final guardedValue = map['snapshotRetentionInDays']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       timezone: (() { final guardedValue = map['timezone']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

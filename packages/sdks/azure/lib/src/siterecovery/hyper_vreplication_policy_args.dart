@@ -44,11 +44,11 @@ class HyperVReplicationPolicyArgs {
 
   factory HyperVReplicationPolicyArgs.fromMap(Map<String, dynamic> map) {
     return HyperVReplicationPolicyArgs(
-      applicationConsistentSnapshotFrequencyInHours: pulumi.Input.fromValue((map['applicationConsistentSnapshotFrequencyInHours'] as num).toInt()),
+      applicationConsistentSnapshotFrequencyInHours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['applicationConsistentSnapshotFrequencyInHours'])),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      recoveryPointRetentionInHours: pulumi.Input.fromValue((map['recoveryPointRetentionInHours'] as num).toInt()),
+      recoveryPointRetentionInHours: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['recoveryPointRetentionInHours'])),
       recoveryVaultId: pulumi.Input.fromValue(map['recoveryVaultId'] as String),
-      replicationIntervalInSeconds: pulumi.Input.fromValue((map['replicationIntervalInSeconds'] as num).toInt()),
+      replicationIntervalInSeconds: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['replicationIntervalInSeconds'])),
     );
   }
 }

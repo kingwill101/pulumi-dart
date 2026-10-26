@@ -108,7 +108,7 @@ class ManagedClusterNodeType {
     return ManagedClusterNodeType(
       applicationPortRange: pulumi.Input.fromValue(map['applicationPortRange'] as String),
       capacities: (() { final guardedValue = map['capacities']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      dataDiskSizeGb: pulumi.Input.fromValue((map['dataDiskSizeGb'] as num).toInt()),
+      dataDiskSizeGb: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['dataDiskSizeGb'])),
       dataDiskType: (() { final guardedValue = map['dataDiskType']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       ephemeralPortRange: pulumi.Input.fromValue(map['ephemeralPortRange'] as String),
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
@@ -121,7 +121,7 @@ class ManagedClusterNodeType {
       vmImagePublisher: pulumi.Input.fromValue(map['vmImagePublisher'] as String),
       vmImageSku: pulumi.Input.fromValue(map['vmImageSku'] as String),
       vmImageVersion: pulumi.Input.fromValue(map['vmImageVersion'] as String),
-      vmInstanceCount: pulumi.Input.fromValue((map['vmInstanceCount'] as num).toInt()),
+      vmInstanceCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vmInstanceCount'])),
       vmSecrets: (() { final guardedValue = map['vmSecrets']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<ManagedClusterNodeTypeVmSecret>(guardedValue, (value) => ManagedClusterNodeTypeVmSecret.fromMap((value as Map).cast<String, dynamic>()))); })(),
       vmSize: pulumi.Input.fromValue(map['vmSize'] as String),
     );

@@ -318,7 +318,7 @@ import 'certificate_binding_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -329,58 +329,82 @@ import 'certificate_binding_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_dns_getzone" "example" {
+/// data "azure_dns_zone" "example" {
 ///   name                = "example.com"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "webapp"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appservice_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "appserviceplan"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     tier = "Premium"
 ///     size = "P1"
 ///   }
 /// }
-/// resource "azure_appservice_appservice" "example" {
+/// resource "azure_appservice_app_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "mywebapp"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   app_service_plan_id = azure_appservice_plan.example.id
 /// }
-/// resource "azure_dns_cnamerecord" "example" {
+/// resource "azure_dns_c_name_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "www"
-///   zone_name           = data.azure_dns_getzone.example.name
-///   resource_group_name = data.azure_dns_getzone.example.resource_group_name
+///   zone_name           = data.azure_dns_zone.example.name
+///   resource_group_name = data.azure_dns_zone.example.resource_group_name
 ///   ttl                 = 300
-///   record              = azure_appservice_appservice.example.default_site_hostname
+///   record              = azure_appservice_app_service.example.default_site_hostname
 /// }
-/// resource "azure_dns_txtrecord" "example" {
-///   name                ="asuid.${azure_dns_cnamerecord.example.name}"
-///   zone_name           = data.azure_dns_getzone.example.name
-///   resource_group_name = data.azure_dns_getzone.example.resource_group_name
+/// resource "azure_dns_txt_record" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name                ="asuid.${azure_dns_c_name_record.example.name}"
+///   zone_name           = data.azure_dns_zone.example.name
+///   resource_group_name = data.azure_dns_zone.example.resource_group_name
 ///   ttl                 = 300
 ///   records {
-///     value = azure_appservice_appservice.example.custom_domain_verification_id
+///     value = azure_appservice_app_service.example.custom_domain_verification_id
 ///   }
 /// }
-/// resource "azure_appservice_customhostnamebinding" "example" {
-///   depends_on          = [azure_dns_txtrecord.example]
-///   hostname            = trim(azure_dns_cnamerecord.example.fqdn, ".")
-///   app_service_name    = azure_appservice_appservice.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+/// resource "azure_appservice_custom_hostname_binding" "example" {
+///   depends_on = [azure_dns_txt_record.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   hostname            = trim(azure_dns_c_name_record.example.fqdn, ".")
+///   app_service_name    = azure_appservice_app_service.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_appservice_managedcertificate" "example" {
-///   custom_hostname_binding_id = azure_appservice_customhostnamebinding.example.id
+/// resource "azure_appservice_managed_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   custom_hostname_binding_id = azure_appservice_custom_hostname_binding.example.id
 /// }
-/// resource "azure_appservice_certificatebinding" "example" {
-///   hostname_binding_id = azure_appservice_customhostnamebinding.example.id
-///   certificate_id      = azure_appservice_managedcertificate.example.id
+/// resource "azure_appservice_certificate_binding" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   hostname_binding_id = azure_appservice_custom_hostname_binding.example.id
+///   certificate_id      = azure_appservice_managed_certificate.example.id
 ///   ssl_state           = "SniEnabled"
 /// }
 /// ```
@@ -618,7 +642,7 @@ class CertificateBinding extends pulumi.CustomResource {
           'azure:appservice/certificateBinding:CertificateBinding',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     appServiceName = registerOutput<String>('appServiceName');
     certificateId = registerOutput<String>('certificateId');

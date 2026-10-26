@@ -82,7 +82,7 @@ import 'get_topic_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -90,13 +90,13 @@ import 'get_topic_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_servicebus_getnamespace" "example" {
+/// data "azure_servicebus_namespace" "example" {
 ///   name                = "examplenamespace"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "location" {
-///   value = data.azure_servicebus_getnamespace.example.location
+///   value = data.azure_servicebus_namespace.example.location
 /// }
 /// ```
 /// ```java
@@ -240,7 +240,7 @@ pulumi.Output<GetNamespaceResult> getNamespaceOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -248,13 +248,13 @@ pulumi.Output<GetNamespaceResult> getNamespaceOutput(
 ///   }
 /// }
 ///
-/// data "azure_servicebus_getnamespaceauthorizationrule" "example" {
+/// data "azure_servicebus_namespace_authorization_rule" "example" {
 ///   name         = "examplerule"
 ///   namespace_id = "examplenamespace"
 /// }
 ///
 /// output "ruleId" {
-///   value = data.azure_servicebus_getnamespaceauthorizationrule.example.id
+///   value = data.azure_servicebus_namespace_authorization_rule.example.id
 /// }
 /// ```
 /// ```java
@@ -398,7 +398,7 @@ pulumi.Output<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -406,13 +406,13 @@ pulumi.Output<GetNamespaceAuthorizationRuleResult> getNamespaceAuthorizationRule
 ///   }
 /// }
 ///
-/// data "azure_servicebus_getnamespacedisasterrecoveryconfig" "example" {
+/// data "azure_servicebus_namespace_disaster_recovery_config" "example" {
 ///   name         = "existing"
 ///   namespace_id = "example-namespace-id"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_servicebus_getnamespacedisasterrecoveryconfig.example.id
+///   value = data.azure_servicebus_namespace_disaster_recovery_config.example.id
 /// }
 /// ```
 /// ```java
@@ -556,7 +556,7 @@ pulumi.Output<GetNamespaceDisasterRecoveryConfigResult> getNamespaceDisasterReco
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -564,13 +564,13 @@ pulumi.Output<GetNamespaceDisasterRecoveryConfigResult> getNamespaceDisasterReco
 ///   }
 /// }
 ///
-/// data "azure_servicebus_getqueue" "example" {
+/// data "azure_servicebus_queue" "example" {
 ///   name         = "existing"
 ///   namespace_id = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_servicebus_getqueue.example.id
+///   value = data.azure_servicebus_queue.example.id
 /// }
 /// ```
 /// ```java
@@ -722,7 +722,7 @@ pulumi.Output<GetQueueResult> getQueueOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -730,7 +730,7 @@ pulumi.Output<GetQueueResult> getQueueOutput(
 ///   }
 /// }
 ///
-/// data "azure_servicebus_getqueueauthorizationrule" "example" {
+/// data "azure_servicebus_queue_authorization_rule" "example" {
 ///   name                = "example-tfex_name"
 ///   resource_group_name = "example-resources"
 ///   queue_name          = "example-servicebus_queue"
@@ -738,7 +738,7 @@ pulumi.Output<GetQueueResult> getQueueOutput(
 /// }
 ///
 /// output "id" {
-///   value = data.azure_servicebus_getqueueauthorizationrule.example.id
+///   value = data.azure_servicebus_queue_authorization_rule.example.id
 /// }
 /// ```
 /// ```java
@@ -886,7 +886,7 @@ pulumi.Output<GetQueueAuthorizationRuleResult> getQueueAuthorizationRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -894,7 +894,7 @@ pulumi.Output<GetQueueAuthorizationRuleResult> getQueueAuthorizationRuleOutput(
 ///   }
 /// }
 ///
-/// data "azure_servicebus_getsubscription" "example" {
+/// data "azure_servicebus_subscription" "example" {
 ///   name     = "examplesubscription"
 ///   topic_id = "exampletopic"
 /// }
@@ -1044,7 +1044,7 @@ pulumi.Output<GetSubscriptionResult> getSubscriptionOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1052,13 +1052,13 @@ pulumi.Output<GetSubscriptionResult> getSubscriptionOutput(
 ///   }
 /// }
 ///
-/// data "azure_servicebus_gettopic" "example" {
+/// data "azure_servicebus_topic" "example" {
 ///   name         = "existing"
 ///   namespace_id = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_servicebus_gettopic.example.id
+///   value = data.azure_servicebus_topic.example.id
 /// }
 /// ```
 /// ```java
@@ -1210,7 +1210,7 @@ pulumi.Output<GetTopicResult> getTopicOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1218,7 +1218,7 @@ pulumi.Output<GetTopicResult> getTopicOutput(
 ///   }
 /// }
 ///
-/// data "azure_servicebus_gettopicauthorizationrule" "example" {
+/// data "azure_servicebus_topic_authorization_rule" "example" {
 ///   name                = "example-tfex_name"
 ///   resource_group_name = "example-resources"
 ///   namespace_name      = "example-namespace"
@@ -1257,7 +1257,7 @@ pulumi.Output<GetTopicResult> getTopicOutput(
 ///             .topicName("example-servicebus_topic")
 ///             .build());
 ///
-///         ctx.export("servicebusAuthorizationRuleId", exampleAzuremServicebusTopicAuthorizationRule.id());
+///         ctx.export("servicebusAuthorizationRuleId", exampleAzuremServicebusTopicAuthorizationRule.get("id"));
 ///     }
 /// }
 /// ```

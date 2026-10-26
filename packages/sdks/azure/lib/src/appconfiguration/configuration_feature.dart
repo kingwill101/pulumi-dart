@@ -157,7 +157,7 @@ import 'configuration_feature_timewindow_filter.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -165,25 +165,37 @@ import 'configuration_feature_timewindow_filter.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appconfiguration_configurationstore" "appconf" {
+/// resource "azure_appconfiguration_configuration_store" "appconf" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "appConf1"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// resource "azure_authorization_assignment" "appconf_dataowner" {
-///   scope                = azure_appconfiguration_configurationstore.appconf.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = azure_appconfiguration_configuration_store.appconf.id
 ///   role_definition_name = "App Configuration Data Owner"
-///   principal_id         = data.azure_core_getclientconfig.current.object_id
+///   principal_id         = data.azure_core_client_config.current.object_id
 /// }
-/// resource "azure_appconfiguration_configurationfeature" "test" {
-///   configuration_store_id = azure_appconfiguration_configurationstore.appconf.id
+/// resource "azure_appconfiguration_configuration_feature" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   configuration_store_id = azure_appconfiguration_configuration_store.appconf.id
 ///   description            = "test description"
 ///   name                   = "test-ackey"
 ///   label                  = "test-ackeylabel"
@@ -336,7 +348,7 @@ class ConfigurationFeature extends pulumi.CustomResource {
           'azure:appconfiguration/configurationFeature:ConfigurationFeature',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     configurationStoreId = registerOutput<String>('configurationStoreId');
     customFilters = registerOutput<List<ConfigurationFeatureCustomFilter>?>('customFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationFeatureCustomFilter>(guardedValue, (value) => ConfigurationFeatureCustomFilter.fromMap((value as Map).cast<String, dynamic>())); });

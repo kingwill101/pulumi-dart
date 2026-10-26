@@ -167,7 +167,7 @@ import 'share_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -175,14 +175,20 @@ import 'share_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_datashare_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-dsa"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
@@ -191,6 +197,9 @@ import 'share_state.dart';
 ///   }
 /// }
 /// resource "azure_datashare_share" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "example_dss"
 ///   account_id  = azure_datashare_account.example.id
 ///   kind        = "CopyBased"
@@ -335,7 +344,7 @@ class Share extends pulumi.CustomResource {
           'azure:datashare/share:Share',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accountId = registerOutput<String>('accountId');
     description = registerOutput<String?>('description');

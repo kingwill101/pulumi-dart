@@ -135,7 +135,7 @@ import 'postgresql_coordinator_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -143,11 +143,17 @@ import 'postgresql_coordinator_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "test" {
+/// resource "azure_core_resource_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_cosmosdb_postgresqlcluster" "example" {
+/// resource "azure_cosmosdb_postgresql_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "examplecluster"
 ///   resource_group_name             = exampleAzurermResourceGroup.name
 ///   location                        = exampleAzurermResourceGroup.location
@@ -158,9 +164,12 @@ import 'postgresql_coordinator_configuration_state.dart';
 ///   node_storage_quota_in_mb        = 131072
 ///   node_vcores                     = 2
 /// }
-/// resource "azure_cosmosdb_postgresqlcoordinatorconfiguration" "example" {
+/// resource "azure_cosmosdb_postgresql_coordinator_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "array_nulls"
-///   cluster_id = azure_cosmosdb_postgresqlcluster.example.id
+///   cluster_id = azure_cosmosdb_postgresql_cluster.example.id
 ///   value      = "on"
 /// }
 /// ```
@@ -196,8 +205,8 @@ import 'postgresql_coordinator_configuration_state.dart';
 ///
 ///         var example = new PostgresqlCluster("example", PostgresqlClusterArgs.builder()
 ///             .name("examplecluster")
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
-///             .location(exampleAzurermResourceGroup.location())
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
+///             .location(exampleAzurermResourceGroup.get("location"))
 ///             .administratorLoginPassword("H@Sh1CoR3!")
 ///             .coordinatorStorageQuotaInMb(131072)
 ///             .coordinatorVcoreCount(2)
@@ -278,7 +287,7 @@ class PostgresqlCoordinatorConfiguration extends pulumi.CustomResource {
           'azure:cosmosdb/postgresqlCoordinatorConfiguration:PostgresqlCoordinatorConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     clusterId = registerOutput<String>('clusterId');
     this.name = registerOutput<String>('name');

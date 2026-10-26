@@ -283,7 +283,7 @@ import 'gallery_application_version_target_region.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -291,44 +291,65 @@ import 'gallery_application_version_target_region.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_compute_sharedimagegallery" "example" {
+/// resource "azure_compute_shared_image_gallery" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplegallery"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_compute_galleryapplication" "example" {
+/// resource "azure_compute_gallery_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-app"
-///   gallery_id        = azure_compute_sharedimagegallery.example.id
-///   location          = azure_core_resourcegroup.example.location
+///   gallery_id        = azure_compute_shared_image_gallery.example.id
+///   location          = azure_core_resource_group.example.location
 ///   supported_os_type = "Linux"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorage"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-container"
 ///   storage_account_name  = azure_storage_account.example.name
 ///   container_access_type = "blob"
 /// }
 /// resource "azure_storage_blob" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "scripts"
 ///   storage_account_name   = azure_storage_account.example.name
 ///   storage_container_name = azure_storage_container.example.name
 ///   type                   = "Block"
 ///   source_content         = "[scripts file content]"
 /// }
-/// resource "azure_compute_galleryapplicationversion" "example" {
+/// resource "azure_compute_gallery_application_version" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "0.0.1"
-///   gallery_application_id = azure_compute_galleryapplication.example.id
-///   location               = azure_compute_galleryapplication.example.location
+///   gallery_application_id = azure_compute_gallery_application.example.id
+///   location               = azure_compute_gallery_application.example.location
 ///   manage_action = {
 ///     install = "[install command]"
 ///     remove  = "[remove command]"
@@ -337,7 +358,7 @@ import 'gallery_application_version_target_region.dart';
 ///     media_link = azure_storage_blob.example.id
 ///   }
 ///   target_regions {
-///     name                   = azure_compute_galleryapplication.example.location
+///     name                   = azure_compute_gallery_application.example.location
 ///     regional_replica_count = 1
 ///   }
 /// }
@@ -555,7 +576,7 @@ class GalleryApplicationVersion extends pulumi.CustomResource {
           'azure:compute/galleryApplicationVersion:GalleryApplicationVersion',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     configFile = registerOutput<String?>('configFile');
     enableHealthCheck = registerOutput<bool?>('enableHealthCheck');

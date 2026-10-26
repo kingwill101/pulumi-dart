@@ -153,7 +153,7 @@ class GetVolumeResult {
       serviceLevel: (() { final guardedValue = map['serviceLevel']; if (guardedValue == null) return null; return guardedValue as String; })(),
       smbAccessBasedEnumerationEnabled: (() { final guardedValue = map['smbAccessBasedEnumerationEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
       smbNonBrowsableEnabled: (() { final guardedValue = map['smbNonBrowsableEnabled']; if (guardedValue == null) return null; return guardedValue as bool; })(),
-      storageQuotaInGb: (() { final guardedValue = map['storageQuotaInGb']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      storageQuotaInGb: (() { final guardedValue = map['storageQuotaInGb']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       subnetId: (() { final guardedValue = map['subnetId']; if (guardedValue == null) return null; return guardedValue as String; })(),
       volumePath: (() { final guardedValue = map['volumePath']; if (guardedValue == null) return null; return guardedValue as String; })(),
       zone: (() { final guardedValue = map['zone']; if (guardedValue == null) return null; return guardedValue as String; })(),

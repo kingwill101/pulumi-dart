@@ -143,7 +143,7 @@ import 'nat_gateway_public_ip_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -151,26 +151,38 @@ import 'nat_gateway_public_ip_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-PIP"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_network_natgateway" "example" {
+/// resource "azure_network_nat_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-NatGateway"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Standard"
 /// }
-/// resource "azure_network_natgatewaypublicipassociation" "example" {
-///   nat_gateway_id       = azure_network_natgateway.example.id
-///   public_ip_address_id = azure_network_publicip.example.id
+/// resource "azure_network_nat_gateway_public_ip_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   nat_gateway_id       = azure_network_nat_gateway.example.id
+///   public_ip_address_id = azure_network_public_ip.example.id
 /// }
 /// ```
 /// ```java
@@ -405,7 +417,7 @@ import 'nat_gateway_public_ip_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -413,27 +425,39 @@ import 'nat_gateway_public_ip_association_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-pip-v6"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
 ///   sku                 = "StandardV2"
 ///   ip_version          = "IPv6"
 /// }
-/// resource "azure_network_natgateway" "example" {
+/// resource "azure_network_nat_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nat-gateway-v6"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "StandardV2"
 /// }
-/// resource "azure_network_natgatewaypublicipassociation" "example" {
-///   nat_gateway_id       = azure_network_natgateway.example.id
-///   public_ip_address_id = azure_network_publicip.example.id
+/// resource "azure_network_nat_gateway_public_ip_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   nat_gateway_id       = azure_network_nat_gateway.example.id
+///   public_ip_address_id = azure_network_public_ip.example.id
 /// }
 /// ```
 /// ```java
@@ -564,7 +588,7 @@ class NatGatewayPublicIpAssociation extends pulumi.CustomResource {
           'azure:network/natGatewayPublicIpAssociation:NatGatewayPublicIpAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     natGatewayId = registerOutput<String>('natGatewayId');
     publicIpAddressId = registerOutput<String>('publicIpAddressId');

@@ -147,7 +147,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -155,14 +155,20 @@ import 'job_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_streamanalytics_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                     = "example-job"
-///   resource_group_name                      = azure_core_resourcegroup.example.name
-///   location                                 = azure_core_resourcegroup.example.location
+///   resource_group_name                      = azure_core_resource_group.example.name
+///   location                                 = azure_core_resource_group.example.location
 ///   compatibility_level                      = "1.2"
 ///   data_locale                              = "en-GB"
 ///   events_late_arrival_max_delay_in_seconds = 60
@@ -174,7 +180,12 @@ import 'job_state.dart';
 ///   tags = {
 ///     "environment" = "Example"
 ///   }
-///   transformation_query = "    SELECT *\n    INTO [YourOutputAlias]\n    FROM [YourInputAlias]\n"
+///   transformation_query = <<QUERY
+///     SELECT *
+///     INTO [YourOutputAlias]
+///     FROM [YourInputAlias]
+/// QUERY
+///
 /// }
 /// ```
 /// ```java
@@ -331,7 +342,7 @@ class Job extends pulumi.CustomResource {
           'azure:streamanalytics/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     compatibilityLevel = registerOutput<String>('compatibilityLevel');
     contentStoragePolicy = registerOutput<String?>('contentStoragePolicy');

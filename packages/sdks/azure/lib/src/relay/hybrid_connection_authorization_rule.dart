@@ -176,7 +176,7 @@ import 'hybrid_connection_authorization_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -184,30 +184,42 @@ import 'hybrid_connection_authorization_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_relay_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-relay"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Standard"
 ///   tags = {
 ///     "source" = "terraform"
 ///   }
 /// }
-/// resource "azure_relay_hybridconnection" "example" {
+/// resource "azure_relay_hybrid_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "acctestrnhc-%d"
-///   resource_group_name           = azure_core_resourcegroup.example.name
+///   resource_group_name           = azure_core_resource_group.example.name
 ///   relay_namespace_name          = azure_relay_namespace.example.name
 ///   requires_client_authorization = false
 ///   user_metadata                 = "testmetadata"
 /// }
-/// resource "azure_relay_hybridconnectionauthorizationrule" "example" {
+/// resource "azure_relay_hybrid_connection_authorization_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example"
-///   resource_group_name    = azure_core_resourcegroup.example.name
-///   hybrid_connection_name = azure_relay_hybridconnection.example.name
+///   resource_group_name    = azure_core_resource_group.example.name
+///   hybrid_connection_name = azure_relay_hybrid_connection.example.name
 ///   namespace_name         = azure_relay_namespace.example.name
 ///   listen                 = true
 ///   send                   = true
@@ -365,7 +377,7 @@ class HybridConnectionAuthorizationRule extends pulumi.CustomResource {
           'azure:relay/hybridConnectionAuthorizationRule:HybridConnectionAuthorizationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['primaryConnectionString', 'primaryKey', 'secondaryConnectionString', 'secondaryKey'],
         ) {
     hybridConnectionName = registerOutput<String>('hybridConnectionName');

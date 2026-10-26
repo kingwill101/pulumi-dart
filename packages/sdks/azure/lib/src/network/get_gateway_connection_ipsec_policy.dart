@@ -71,8 +71,8 @@ class GetGatewayConnectionIpsecPolicy {
       ipsecEncryption: pulumi.Input.fromValue(map['ipsecEncryption'] as String),
       ipsecIntegrity: pulumi.Input.fromValue(map['ipsecIntegrity'] as String),
       pfsGroup: pulumi.Input.fromValue(map['pfsGroup'] as String),
-      saDatasize: pulumi.Input.fromValue((map['saDatasize'] as num).toInt()),
-      saLifetime: pulumi.Input.fromValue((map['saLifetime'] as num).toInt()),
+      saDatasize: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['saDatasize'])),
+      saLifetime: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['saLifetime'])),
     );
   }
 }

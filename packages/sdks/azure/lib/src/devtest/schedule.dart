@@ -115,7 +115,7 @@ import 'schedule_weekly_recurrence.dart';
 ///         },
 ///         TimeZoneId = "Pacific Standard Time",
 ///         TaskType = "LabVmsStartupTask",
-///         NotificationSettings = null,
+///         NotificationSettings = new() { },
 ///         Tags =
 ///         {
 ///             { "environment", "Production" },
@@ -178,7 +178,7 @@ import 'schedule_weekly_recurrence.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -186,19 +186,28 @@ import 'schedule_weekly_recurrence.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_devtest_lab" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "YourDevTestLab"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_devtest_schedule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "LabVmAutoStart"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   lab_name            = azure_devtest_lab.example.name
 ///   status              = "Enabled"
 ///   weekly_recurrence = {
@@ -361,7 +370,7 @@ class Schedule extends pulumi.CustomResource {
           'azure:devtest/schedule:Schedule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     dailyRecurrence = registerOutput<ScheduleDailyRecurrence?>('dailyRecurrence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleDailyRecurrence.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     hourlyRecurrence = registerOutput<ScheduleHourlyRecurrence?>('hourlyRecurrence', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduleHourlyRecurrence.fromMap((guardedValue as Map).cast<String, dynamic>()); });

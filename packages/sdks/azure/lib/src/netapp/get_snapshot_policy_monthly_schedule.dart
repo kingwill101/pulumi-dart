@@ -35,9 +35,9 @@ class GetSnapshotPolicyMonthlySchedule {
   factory GetSnapshotPolicyMonthlySchedule.fromMap(Map<String, dynamic> map) {
     return GetSnapshotPolicyMonthlySchedule(
       daysOfMonths: pulumi.Input.fromValue((map['daysOfMonths'] as List).cast<int>()),
-      hour: pulumi.Input.fromValue((map['hour'] as num).toInt()),
-      minute: pulumi.Input.fromValue((map['minute'] as num).toInt()),
-      snapshotsToKeep: pulumi.Input.fromValue((map['snapshotsToKeep'] as num).toInt()),
+      hour: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['hour'])),
+      minute: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minute'])),
+      snapshotsToKeep: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['snapshotsToKeep'])),
     );
   }
 }

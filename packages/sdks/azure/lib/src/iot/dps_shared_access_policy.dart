@@ -136,7 +136,7 @@ import 'dps_shared_access_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -144,23 +144,32 @@ import 'dps_shared_access_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_iot_iothubdps" "example" {
+/// resource "azure_iot_iot_hub_dps" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku = {
 ///     name     = "S1"
 ///     capacity = "1"
 ///   }
 /// }
-/// resource "azure_iot_dpssharedaccesspolicy" "example" {
+/// resource "azure_iot_dps_shared_access_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   iothub_dps_name     = azure_iot_iothubdps.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   iothub_dps_name     = azure_iot_iot_hub_dps.example.name
 ///   enrollment_write    = true
 ///   enrollment_read     = true
 /// }
@@ -306,7 +315,7 @@ class DpsSharedAccessPolicy extends pulumi.CustomResource {
           'azure:iot/dpsSharedAccessPolicy:DpsSharedAccessPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['primaryConnectionString', 'primaryKey', 'secondaryConnectionString', 'secondaryKey'],
         ) {
     enrollmentRead = registerOutput<bool?>('enrollmentRead');

@@ -541,7 +541,7 @@ import 'network_interface_application_gateway_backend_address_pool_association_s
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -549,38 +549,56 @@ import 'network_interface_application_gateway_backend_address_pool_association_s
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "frontend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "frontend"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.1.0/24"]
 /// }
 /// resource "azure_network_subnet" "backend" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "backend"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-pip"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
 /// }
-/// resource "azure_network_applicationgateway" "network" {
+/// resource "azure_network_application_gateway" "network" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-appgateway"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku = {
 ///     name     = "Standard_v2"
 ///     tier     = "Standard_v2"
@@ -596,7 +614,7 @@ import 'network_interface_application_gateway_backend_address_pool_association_s
 ///   }
 ///   frontend_ip_configurations {
 ///     name                 = local.frontendIpConfigurationName
-///     public_ip_address_id = azure_network_publicip.example.id
+///     public_ip_address_id = azure_network_public_ip.example.id
 ///   }
 ///   backend_address_pools {
 ///     name = local.backendAddressPoolName
@@ -623,38 +641,44 @@ import 'network_interface_application_gateway_backend_address_pool_association_s
 ///     backend_http_settings_name = local.httpSettingName
 ///   }
 /// }
-/// resource "azure_network_networkinterface" "example" {
+/// resource "azure_network_network_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nic"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ip_configurations {
 ///     name                          = "testconfiguration1"
 ///     subnet_id                     = azure_network_subnet.frontend.id
 ///     private_ip_address_allocation = "Dynamic"
 ///   }
 /// }
-/// resource "azure_network_networkinterfaceapplicationgatewaybackendaddresspoolassociation" "example" {
-///   network_interface_id    = azure_network_networkinterface.example.id
+/// resource "azure_network_network_interface_application_gateway_backend_address_pool_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   network_interface_id    = azure_network_network_interface.example.id
 ///   ip_configuration_name   = "testconfiguration1"
-///   backend_address_pool_id = azure_network_applicationgateway.network.backend_address_pools[0].id
+///   backend_address_pool_id = azure_network_application_gateway.network.backend_address_pools[0].id
 /// }
 /// locals {
-///   backendAddressPoolName ="${azure_network_virtualnetwork.example.name}-beap"
+///   backendAddressPoolName ="${azure_network_virtual_network.example.name}-beap"
 /// }
 /// locals {
-///   frontendPortName ="${azure_network_virtualnetwork.example.name}-feport"
+///   frontendPortName ="${azure_network_virtual_network.example.name}-feport"
 /// }
 /// locals {
-///   frontendIpConfigurationName ="${azure_network_virtualnetwork.example.name}-feip"
+///   frontendIpConfigurationName ="${azure_network_virtual_network.example.name}-feip"
 /// }
 /// locals {
-///   httpSettingName ="${azure_network_virtualnetwork.example.name}-be-htst"
+///   httpSettingName ="${azure_network_virtual_network.example.name}-be-htst"
 /// }
 /// locals {
-///   listenerName ="${azure_network_virtualnetwork.example.name}-httplstn"
+///   listenerName ="${azure_network_virtual_network.example.name}-httplstn"
 /// }
 /// locals {
-///   requestRoutingRuleName ="${azure_network_virtualnetwork.example.name}-rqrt"
+///   requestRoutingRuleName ="${azure_network_virtual_network.example.name}-rqrt"
 /// }
 /// ```
 /// ```java
@@ -805,7 +829,7 @@ import 'network_interface_application_gateway_backend_address_pool_association_s
 ///         var exampleNetworkInterfaceApplicationGatewayBackendAddressPoolAssociation = new NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation("exampleNetworkInterfaceApplicationGatewayBackendAddressPoolAssociation", NetworkInterfaceApplicationGatewayBackendAddressPoolAssociationArgs.builder()
 ///             .networkInterfaceId(exampleNetworkInterface.id())
 ///             .ipConfigurationName("testconfiguration1")
-///             .backendAddressPoolId(network.backendAddressPools().applyValue(_backendAddressPools -> _backendAddressPools[0].id()))
+///             .backendAddressPoolId(network.backendAddressPools().applyValue(_backendAddressPools -> _backendAddressPools.get(0).id()))
 ///             .build());
 ///
 ///     }
@@ -954,7 +978,7 @@ class NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation extends pu
           'azure:network/networkInterfaceApplicationGatewayBackendAddressPoolAssociation:NetworkInterfaceApplicationGatewayBackendAddressPoolAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backendAddressPoolId = registerOutput<String>('backendAddressPoolId');
     ipConfigurationName = registerOutput<String>('ipConfigurationName');

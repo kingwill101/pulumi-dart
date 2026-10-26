@@ -96,7 +96,7 @@ import 'get_lbrule_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -104,17 +104,17 @@ import 'get_lbrule_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_lb_getlb" "example" {
+/// data "azure_lb_l_b" "example" {
 ///   name                = "example-lb"
 ///   resource_group_name = "example-resources"
 /// }
-/// data "azure_lb_getbackendaddresspool" "exampleGetBackendAddressPool" {
+/// data "azure_lb_backend_address_pool" "exampleGetBackendAddressPool" {
 ///   name            = "first"
-///   loadbalancer_id = data.azure_lb_getlb.example.id
+///   loadbalancer_id = data.azure_lb_l_b.example.id
 /// }
 ///
 /// output "backendAddressPoolId" {
-///   value = data.azure_lb_getbackendaddresspool.exampleGetBackendAddressPool.id
+///   value = data.azure_lb_backend_address_pool.exampleGetBackendAddressPool.id
 /// }
 /// output "backendIpConfigurationIds" {
 ///   value = beap.backendIpConfigurations[*].id
@@ -153,7 +153,7 @@ import 'get_lbrule_result.dart';
 ///             .build());
 ///
 ///         ctx.export("backendAddressPoolId", exampleGetBackendAddressPool.id());
-///         ctx.export("backendIpConfigurationIds", beap.backendIpConfigurations().stream().map(element -> element.id()).collect(toList()));
+///         ctx.export("backendIpConfigurationIds", beap.get("backendIpConfigurations").stream().map(element -> element.get("id")).collect(toList()));
 ///     }
 /// }
 /// ```
@@ -257,7 +257,7 @@ pulumi.Output<GetBackendAddressPoolResult> getBackendAddressPoolOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -265,13 +265,13 @@ pulumi.Output<GetBackendAddressPoolResult> getBackendAddressPoolOutput(
 ///   }
 /// }
 ///
-/// data "azure_lb_getlb" "example" {
+/// data "azure_lb_l_b" "example" {
 ///   name                = "example-lb"
 ///   resource_group_name = "example-resources"
 /// }
 ///
 /// output "loadbalancerId" {
-///   value = data.azure_lb_getlb.example.id
+///   value = data.azure_lb_l_b.example.id
 /// }
 /// ```
 /// ```java
@@ -415,7 +415,7 @@ pulumi.Output<GetLBResult> getLBOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -423,13 +423,13 @@ pulumi.Output<GetLBResult> getLBOutput(
 ///   }
 /// }
 ///
-/// data "azure_lb_getlboutboundrule" "example" {
+/// data "azure_lb_l_b_outbound_rule" "example" {
 ///   name            = "existing_lb_outbound_rule"
 ///   loadbalancer_id = "existing_load_balancer_id"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_lb_getlboutboundrule.example.id
+///   value = data.azure_lb_l_b_outbound_rule.example.id
 /// }
 /// ```
 /// ```java
@@ -513,7 +513,7 @@ pulumi.Output<GetLBOutboundRuleResult> getLBOutboundRuleOutput(
 ///
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -521,18 +521,18 @@ pulumi.Output<GetLBOutboundRuleResult> getLBOutboundRuleOutput(
 ///   }
 /// }
 ///
-/// data "azure_lb_getlb" "example" {
+/// data "azure_lb_l_b" "example" {
 ///   name                = "example-lb"
 ///   resource_group_name = "example-resources"
 /// }
-/// data "azure_lb_getlbrule" "exampleGetLBRule" {
+/// data "azure_lb_l_b_rule" "exampleGetLBRule" {
 ///   name                = "first"
 ///   resource_group_name = "example-resources"
-///   loadbalancer_id     = data.azure_lb_getlb.example.id
+///   loadbalancer_id     = data.azure_lb_l_b.example.id
 /// }
 ///
 /// output "lbRuleId" {
-///   value = data.azure_lb_getlbrule.exampleGetLBRule.id
+///   value = data.azure_lb_l_b_rule.exampleGetLBRule.id
 /// }
 /// ```
 /// ```yaml

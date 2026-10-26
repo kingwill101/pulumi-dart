@@ -253,7 +253,7 @@ import 'resolver_inbound_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -261,26 +261,38 @@ import 'resolver_inbound_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
 /// resource "azure_privatedns_resolver" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   virtual_network_id  = azure_network_virtualnetwork.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   virtual_network_id  = azure_network_virtual_network.example.id
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "inbounddns"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.0.0/28"]
 ///   delegations {
 ///     name = "Microsoft.Network.dnsResolvers"
@@ -290,7 +302,10 @@ import 'resolver_inbound_endpoint_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_privatedns_resolverinboundendpoint" "example" {
+/// resource "azure_privatedns_resolver_inbound_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-drie"
 ///   private_dns_resolver_id = azure_privatedns_resolver.example.id
 ///   location                = azure_privatedns_resolver.example.location
@@ -474,7 +489,7 @@ class ResolverInboundEndpoint extends pulumi.CustomResource {
           'azure:privatedns/resolverInboundEndpoint:ResolverInboundEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     ipConfigurations = registerOutput<ResolverInboundEndpointIpConfigurations>('ipConfigurations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ResolverInboundEndpointIpConfigurations.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     location = registerOutput<String>('location');

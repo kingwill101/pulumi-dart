@@ -373,7 +373,7 @@ import 'endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -381,66 +381,90 @@ import 'endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "service" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                          = "service"
-///   resource_group_name                           = azure_core_resourcegroup.example.name
-///   virtual_network_name                          = azure_network_virtualnetwork.example.name
+///   resource_group_name                           = azure_core_resource_group.example.name
+///   virtual_network_name                          = azure_network_virtual_network.example.name
 ///   address_prefixes                              = ["10.0.1.0/24"]
 ///   enforce_private_link_service_network_policies = true
 /// }
 /// resource "azure_network_subnet" "endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                           = "endpoint"
-///   resource_group_name                            = azure_core_resourcegroup.example.name
-///   virtual_network_name                           = azure_network_virtualnetwork.example.name
+///   resource_group_name                            = azure_core_resource_group.example.name
+///   virtual_network_name                           = azure_network_virtual_network.example.name
 ///   address_prefixes                               = ["10.0.2.0/24"]
 ///   enforce_private_link_endpoint_network_policies = true
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-pip"
 ///   sku                 = "Standard"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
 /// }
-/// resource "azure_lb_loadbalancer" "example" {
+/// resource "azure_lb_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-lb"
 ///   sku                 = "Standard"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   frontend_ip_configurations {
-///     name                 = azure_network_publicip.example.name
-///     public_ip_address_id = azure_network_publicip.example.id
+///     name                 = azure_network_public_ip.example.name
+///     public_ip_address_id = azure_network_public_ip.example.id
 ///   }
 /// }
-/// resource "azure_privatedns_linkservice" "example" {
+/// resource "azure_privatedns_link_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-privatelink"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   nat_ip_configurations {
-///     name      = azure_network_publicip.example.name
+///     name      = azure_network_public_ip.example.name
 ///     primary   = true
 ///     subnet_id = azure_network_subnet.service.id
 ///   }
-///   load_balancer_frontend_ip_configuration_ids = [azure_lb_loadbalancer.example.frontend_ip_configurations[0].id]
+///   load_balancer_frontend_ip_configuration_ids = [azure_lb_load_balancer.example.frontend_ip_configurations[0].id]
 /// }
 /// resource "azure_privatelink_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-endpoint"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   subnet_id           = azure_network_subnet.endpoint.id
 ///   private_service_connection = {
 ///     name                           = "example-privateserviceconnection"
-///     private_connection_resource_id = azure_privatedns_linkservice.example.id
+///     private_connection_resource_id = azure_privatedns_link_service.example.id
 ///     is_manual_connection           = false
 ///   }
 /// }
@@ -537,7 +561,7 @@ import 'endpoint_state.dart';
 ///                 .primary(true)
 ///                 .subnetId(service.id())
 ///                 .build())
-///             .loadBalancerFrontendIpConfigurationIds(exampleLoadBalancer.frontendIpConfigurations().applyValue(_frontendIpConfigurations -> _frontendIpConfigurations[0].id()))
+///             .loadBalancerFrontendIpConfigurationIds(exampleLoadBalancer.frontendIpConfigurations().applyValue(_frontendIpConfigurations -> _frontendIpConfigurations.get(0).id()))
 ///             .build());
 ///
 ///         var exampleEndpoint = new Endpoint("exampleEndpoint", EndpointArgs.builder()
@@ -787,7 +811,7 @@ import 'endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -795,24 +819,27 @@ import 'endpoint_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getresourcegroup" "example" {
+/// data "azure_core_resource_group" "example" {
 ///   name = "example-resources"
 /// }
-/// data "azure_network_getvirtualnetwork" "vnet" {
+/// data "azure_network_virtual_network" "vnet" {
 ///   name                = "example-network"
-///   resource_group_name = data.azure_core_getresourcegroup.example.name
+///   resource_group_name = data.azure_core_resource_group.example.name
 /// }
-/// data "azure_network_getsubnet" "subnet" {
+/// data "azure_network_subnet" "subnet" {
 ///   name                 = "default"
-///   virtual_network_name = data.azure_network_getvirtualnetwork.vnet.name
-///   resource_group_name  = data.azure_core_getresourcegroup.example.name
+///   virtual_network_name = data.azure_network_virtual_network.vnet.name
+///   resource_group_name  = data.azure_core_resource_group.example.name
 /// }
 ///
 /// resource "azure_privatelink_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-endpoint"
-///   location            = data.azure_core_getresourcegroup.example.location
-///   resource_group_name = data.azure_core_getresourcegroup.example.name
-///   subnet_id           = data.azure_network_getsubnet.subnet.id
+///   location            = data.azure_core_resource_group.example.location
+///   resource_group_name = data.azure_core_resource_group.example.name
+///   subnet_id           = data.azure_network_subnet.subnet.id
 ///   private_service_connection = {
 ///     name                              = "example-privateserviceconnection"
 ///     private_connection_resource_alias = "example-privatelinkservice.d20286c8-4ea5-11eb-9584-8f53157226c6.centralus.azure.privatelinkservice"
@@ -1204,7 +1231,7 @@ import 'endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1212,33 +1239,48 @@ import 'endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "exampleaccount"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "virtnetname"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "subnetname"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
 /// resource "azure_privatelink_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-endpoint"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   subnet_id           = azure_network_subnet.example.id
 ///   private_service_connection = {
 ///     name                           = "example-privateserviceconnection"
@@ -1252,14 +1294,20 @@ import 'endpoint_state.dart';
 ///   }
 /// }
 /// resource "azure_privatedns_zone" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "privatelink.blob.core.windows.net"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_privatedns_zonevirtualnetworklink" "example" {
+/// resource "azure_privatedns_zone_virtual_network_link" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-link"
-///   resource_group_name   = azure_core_resourcegroup.example.name
+///   resource_group_name   = azure_core_resource_group.example.name
 ///   private_dns_zone_name = azure_privatedns_zone.example.name
-///   virtual_network_id    = azure_network_virtualnetwork.example.id
+///   virtual_network_id    = azure_network_virtual_network.example.id
 /// }
 /// ```
 /// ```java
@@ -1490,7 +1538,7 @@ class Endpoint extends pulumi.CustomResource {
           'azure:privatelink/endpoint:Endpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     customDnsConfigs = registerOutput<List<EndpointCustomDnsConfig>>('customDnsConfigs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<EndpointCustomDnsConfig>(guardedValue, (value) => EndpointCustomDnsConfig.fromMap((value as Map).cast<String, dynamic>())); });
     customNetworkInterfaceName = registerOutput<String?>('customNetworkInterfaceName');

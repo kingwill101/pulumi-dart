@@ -186,7 +186,7 @@ import 'function_javascript_uda_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -194,18 +194,36 @@ import 'function_javascript_uda_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getresourcegroup" "example" {
+/// data "azure_core_resource_group" "example" {
 ///   name = "example-resources"
 /// }
-/// data "azure_streamanalytics_getjob" "exampleGetJob" {
+/// data "azure_streamanalytics_job" "exampleGetJob" {
 ///   name                = "example-job"
-///   resource_group_name = data.azure_core_getresourcegroup.example.name
+///   resource_group_name = data.azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_streamanalytics_functionjavascriptuda" "example" {
+/// resource "azure_streamanalytics_function_javascript_uda" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example-javascript-function"
-///   stream_analytics_job_id = data.azure_streamanalytics_getjob.exampleGetJob.id
-///   script                  = "function main() {\n    this.init = function () {\n        this.state = 0;\n    }\n\n    this.accumulate = function (value, timestamp) {\n        this.state += value;\n    }\n\n    this.computeResult = function () {\n        return this.state;\n    }\n}\n"
+///   stream_analytics_job_id = data.azure_streamanalytics_job.exampleGetJob.id
+///   script                  = <<SCRIPT
+/// function main() {
+///     this.init = function () {
+///         this.state = 0;
+///     }
+///
+///     this.accumulate = function (value, timestamp) {
+///         this.state += value;
+///     }
+///
+///     this.computeResult = function () {
+///         return this.state;
+///     }
+/// }
+/// SCRIPT
+///
 ///   inputs {
 ///     type = "bigint"
 ///   }
@@ -358,7 +376,7 @@ class FunctionJavascriptUda extends pulumi.CustomResource {
           'azure:streamanalytics/functionJavascriptUda:FunctionJavascriptUda',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     inputs = registerOutput<List<FunctionJavascriptUdaInput>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionJavascriptUdaInput>(guardedValue, (value) => FunctionJavascriptUdaInput.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');

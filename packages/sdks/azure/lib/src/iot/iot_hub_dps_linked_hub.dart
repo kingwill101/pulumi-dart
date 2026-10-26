@@ -40,7 +40,7 @@ class IotHubDpsLinkedHub {
 
   factory IotHubDpsLinkedHub.fromMap(Map<String, dynamic> map) {
     return IotHubDpsLinkedHub(
-      allocationWeight: (() { final guardedValue = map['allocationWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      allocationWeight: (() { final guardedValue = map['allocationWeight']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       applyAllocationPolicy: (() { final guardedValue = map['applyAllocationPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       connectionString: pulumi.Input.fromValue(map['connectionString'] as String),
       hostname: (() { final guardedValue = map['hostname']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

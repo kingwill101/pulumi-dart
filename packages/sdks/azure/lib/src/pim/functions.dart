@@ -86,7 +86,7 @@ import 'get_role_management_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -94,16 +94,19 @@ import 'get_role_management_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_pim_getroleassignments" "example" {
-///   scope = azure_core_resourcegroup.example.id
+/// data "azure_pim_role_assignments" "example" {
+///   scope = azure_core_resource_group.example.id
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
 /// output "id" {
-///   value = data.azure_pim_getroleassignments.example.role_assignments
+///   value = data.azure_pim_role_assignments.example.role_assignments
 /// }
 /// ```
 /// ```java
@@ -290,7 +293,7 @@ pulumi.Output<GetRoleAssignmentsResult> getRoleAssignmentsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -298,14 +301,14 @@ pulumi.Output<GetRoleAssignmentsResult> getRoleAssignmentsOutput(
 ///   }
 /// }
 ///
-/// data "azure_core_getresourcegroup" "example" {
+/// data "azure_core_resource_group" "example" {
 ///   name = "example-rg"
 /// }
-/// data "azure_authorization_getroledefinition" "rgContributor" {
+/// data "azure_authorization_role_definition" "rgContributor" {
 ///   name  = "Contributor"
-///   scope = data.azure_core_getresourcegroup.example.id
+///   scope = data.azure_core_resource_group.example.id
 /// }
-/// data "azure_pim_getrolemanagementpolicy" "exampleGetRoleManagementPolicy" {
+/// data "azure_pim_role_management_policy" "exampleGetRoleManagementPolicy" {
 ///   scope              = test.id
 ///   role_definition_id = contributor.id
 /// }
@@ -345,8 +348,8 @@ pulumi.Output<GetRoleAssignmentsResult> getRoleAssignmentsOutput(
 ///             .build());
 ///
 ///         final var exampleGetRoleManagementPolicy = PimFunctions.getRoleManagementPolicy(GetRoleManagementPolicyArgs.builder()
-///             .scope(test.id())
-///             .roleDefinitionId(contributor.id())
+///             .scope(test.get("id"))
+///             .roleDefinitionId(contributor.get("id"))
 ///             .build());
 ///
 ///     }
@@ -467,7 +470,7 @@ pulumi.Output<GetRoleAssignmentsResult> getRoleAssignmentsOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -475,16 +478,16 @@ pulumi.Output<GetRoleAssignmentsResult> getRoleAssignmentsOutput(
 ///   }
 /// }
 ///
-/// data "azure_management_getgroup" "example" {
+/// data "azure_management_group" "example" {
 ///   name = "example-group"
 /// }
-/// data "azure_authorization_getroledefinition" "mgContributor" {
+/// data "azure_authorization_role_definition" "mgContributor" {
 ///   name  = "Contributor"
 ///   scope = exampleAzurermManagementGroup.id
 /// }
-/// data "azure_pim_getrolemanagementpolicy" "exampleGetRoleManagementPolicy" {
-///   scope              = data.azure_management_getgroup.example.id
-///   role_definition_id = data.azure_authorization_getroledefinition.mgContributor.id
+/// data "azure_pim_role_management_policy" "exampleGetRoleManagementPolicy" {
+///   scope              = data.azure_management_group.example.id
+///   role_definition_id = data.azure_authorization_role_definition.mgContributor.id
 /// }
 /// ```
 /// ```java
@@ -518,7 +521,7 @@ pulumi.Output<GetRoleAssignmentsResult> getRoleAssignmentsOutput(
 ///
 ///         final var mgContributor = AuthorizationFunctions.getRoleDefinition(GetRoleDefinitionArgs.builder()
 ///             .name("Contributor")
-///             .scope(exampleAzurermManagementGroup.id())
+///             .scope(exampleAzurermManagementGroup.get("id"))
 ///             .build());
 ///
 ///         final var exampleGetRoleManagementPolicy = PimFunctions.getRoleManagementPolicy(GetRoleManagementPolicyArgs.builder()

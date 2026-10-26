@@ -87,7 +87,7 @@ import 'suppression_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -95,15 +95,18 @@ import 'suppression_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
-/// data "azure_advisor_getrecommendations" "example" {
+/// data "azure_advisor_recommendations" "example" {
 /// }
 ///
 /// resource "azure_advisor_suppression" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "HardcodedSuppressionName"
 ///   recommendation_id = test.recommendations[0].recommendationName
-///   resource_id       ="/subscriptions/${data.azure_core_getclientconfig.current.subscription_id}"
+///   resource_id       ="/subscriptions/${data.azure_core_client_config.current.subscription_id}"
 ///   ttl               = "01:00:00:00"
 /// }
 /// ```
@@ -138,7 +141,7 @@ import 'suppression_state.dart';
 ///
 ///         var exampleSuppression = new Suppression("exampleSuppression", SuppressionArgs.builder()
 ///             .name("HardcodedSuppressionName")
-///             .recommendationId(test.recommendations()[0].recommendationName())
+///             .recommendationId(test.get("recommendations")[0].get("recommendationName"))
 ///             .resourceId(String.format("/subscriptions/%s", current.subscriptionId()))
 ///             .ttl("01:00:00:00")
 ///             .build());
@@ -206,7 +209,7 @@ class Suppression extends pulumi.CustomResource {
           'azure:advisor/suppression:Suppression',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     recommendationId = registerOutput<String>('recommendationId');

@@ -87,7 +87,7 @@ import 'local_rulestack_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -95,14 +95,20 @@ import 'local_rulestack_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rg-example"
 ///   location = "West Europe"
 /// }
-/// resource "azure_paloalto_localrulestack" "example" {
+/// resource "azure_paloalto_local_rulestack" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// ```
 /// ```java
@@ -207,7 +213,7 @@ class LocalRulestack extends pulumi.CustomResource {
           'azure:paloalto/localRulestack:LocalRulestack',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     antiSpywareProfile = registerOutput<String?>('antiSpywareProfile');
     antiVirusProfile = registerOutput<String?>('antiVirusProfile');

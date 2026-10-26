@@ -250,7 +250,7 @@ import 'api_diagnostic_state.dart';
 ///         ApiManagementName = exampleService.Name,
 ///         ApiName = exampleApi.Name,
 ///         ApiManagementLoggerId = exampleLogger.Id,
-///         SamplingPercentage = 5,
+///         SamplingPercentage = 5.0,
 ///         AlwaysLogErrors = true,
 ///         LogClientIp = true,
 ///         Verbosity = "verbose",
@@ -419,7 +419,7 @@ import 'api_diagnostic_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -427,27 +427,39 @@ import 'api_diagnostic_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appinsights_insights" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-appinsights"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_type    = "web"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "My Company"
 ///   publisher_email     = "company@mycompany.io"
 ///   sku_name            = "Developer_1"
 /// }
 /// resource "azure_apimanagement_api" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-api"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   api_management_name = azure_apimanagement_service.example.name
 ///   revision            = "1"
 ///   display_name        = "Example API"
@@ -459,16 +471,22 @@ import 'api_diagnostic_state.dart';
 ///   }
 /// }
 /// resource "azure_apimanagement_logger" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apimlogger"
 ///   api_management_name = azure_apimanagement_service.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_insights = {
 ///     instrumentation_key = azure_appinsights_insights.example.instrumentation_key
 ///   }
 /// }
-/// resource "azure_apimanagement_apidiagnostic" "example" {
+/// resource "azure_apimanagement_api_diagnostic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   identifier                = "applicationinsights"
-///   resource_group_name       = azure_core_resourcegroup.example.name
+///   resource_group_name       = azure_core_resource_group.example.name
 ///   api_management_name       = azure_apimanagement_service.example.name
 ///   api_name                  = azure_apimanagement_api.example.name
 ///   api_management_logger_id  = azure_apimanagement_logger.example.id
@@ -768,7 +786,7 @@ class ApiDiagnostic extends pulumi.CustomResource {
           'azure:apimanagement/apiDiagnostic:ApiDiagnostic',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     alwaysLogErrors = registerOutput<bool>('alwaysLogErrors');
     apiManagementLoggerId = registerOutput<String>('apiManagementLoggerId');

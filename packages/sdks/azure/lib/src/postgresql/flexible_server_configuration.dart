@@ -133,7 +133,7 @@ import 'flexible_server_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -141,23 +141,32 @@ import 'flexible_server_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_postgresql_flexibleserver" "example" {
+/// resource "azure_postgresql_flexible_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-psqlflexibleserver"
-///   resource_group_name    = azure_core_resourcegroup.example.name
-///   location               = azure_core_resourcegroup.example.location
+///   resource_group_name    = azure_core_resource_group.example.name
+///   location               = azure_core_resource_group.example.location
 ///   version                = "12"
 ///   administrator_login    = "psqladmin"
 ///   administrator_password = "H@Sh1CoR3!"
 ///   storage_mb             = 32768
 ///   sku_name               = "GP_Standard_D4s_v3"
 /// }
-/// resource "azure_postgresql_flexibleserverconfiguration" "example" {
+/// resource "azure_postgresql_flexible_server_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "backslash_quote"
-///   server_id = azure_postgresql_flexibleserver.example.id
+///   server_id = azure_postgresql_flexible_server.example.id
 ///   value     = "on"
 /// }
 /// ```
@@ -367,7 +376,7 @@ import 'flexible_server_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -375,23 +384,32 @@ import 'flexible_server_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_postgresql_flexibleserver" "example" {
+/// resource "azure_postgresql_flexible_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-psqlflexibleserver"
-///   resource_group_name    = azure_core_resourcegroup.example.name
-///   location               = azure_core_resourcegroup.example.location
+///   resource_group_name    = azure_core_resource_group.example.name
+///   location               = azure_core_resource_group.example.location
 ///   version                = "12"
 ///   administrator_login    = "psqladmin"
 ///   administrator_password = "H@Sh1CoR3!"
 ///   storage_mb             = 32768
 ///   sku_name               = "GP_Standard_D4s_v3"
 /// }
-/// resource "azure_postgresql_flexibleserverconfiguration" "example" {
+/// resource "azure_postgresql_flexible_server_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name      = "azure.extensions"
-///   server_id = azure_postgresql_flexibleserver.example.id
+///   server_id = azure_postgresql_flexible_server.example.id
 ///   value     = "CUBE,CITEXT,BTREE_GIST"
 /// }
 /// ```
@@ -510,7 +528,7 @@ class FlexibleServerConfiguration extends pulumi.CustomResource {
           'azure:postgresql/flexibleServerConfiguration:FlexibleServerConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     serverId = registerOutput<String>('serverId');

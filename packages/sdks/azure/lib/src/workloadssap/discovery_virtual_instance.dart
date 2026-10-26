@@ -128,7 +128,7 @@ import 'discovery_virtual_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -136,14 +136,20 @@ import 'discovery_virtual_instance_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-sapvis"
 ///   location = "West Europe"
 /// }
-/// resource "azure_workloadssap_discoveryvirtualinstance" "example" {
+/// resource "azure_workloadssap_discovery_virtual_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                              = "X01"
-///   resource_group_name               = azure_core_resourcegroup.example.name
-///   location                          = azure_core_resourcegroup.example.location
+///   resource_group_name               = azure_core_resource_group.example.name
+///   location                          = azure_core_resource_group.example.location
 ///   environment                       = "NonProd"
 ///   sap_product                       = "S4HANA"
 ///   central_server_virtual_machine_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/exampleRG/providers/Microsoft.Compute/virtualMachines/csvm1"
@@ -275,7 +281,7 @@ class DiscoveryVirtualInstance extends pulumi.CustomResource {
           'azure:workloadssap/discoveryVirtualInstance:DiscoveryVirtualInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     centralServerVirtualMachineId = registerOutput<String>('centralServerVirtualMachineId');
     environment = registerOutput<String>('environment');

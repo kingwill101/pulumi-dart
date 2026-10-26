@@ -38,7 +38,7 @@ class HciDeploymentSetting extends pulumi.CustomResource {
           'azure:stack/hciDeploymentSetting:HciDeploymentSetting',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     arcResourceIds = registerOutput<List<String>>('arcResourceIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     scaleUnits = registerOutput<List<HciDeploymentSettingScaleUnit>>('scaleUnits', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<HciDeploymentSettingScaleUnit>(guardedValue, (value) => HciDeploymentSettingScaleUnit.fromMap((value as Map).cast<String, dynamic>())); });

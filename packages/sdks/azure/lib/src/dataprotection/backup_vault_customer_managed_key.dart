@@ -415,7 +415,7 @@ import 'backup_vault_customer_managed_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -423,55 +423,70 @@ import 'backup_vault_customer_managed_key_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_dataprotection_backupvault" "example" {
+/// resource "azure_dataprotection_backup_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-backup-vault"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   datastore_type      = "VaultStore"
 ///   redundancy          = "LocallyRedundant"
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example-key-vault"
-///   location                    = azure_core_resourcegroup.example.location
-///   resource_group_name         = azure_core_resourcegroup.example.name
+///   location                    = azure_core_resource_group.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled  = false
 ///   enabled_for_disk_encryption = true
-///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                   = data.azure_core_client_config.current.tenant_id
 ///   soft_delete_retention_days  = 7
 ///   purge_protection_enabled    = true
 ///   sku_name                    = "standard"
 ///   access_policies {
-///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
-///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     tenant_id          = data.azure_core_client_config.current.tenant_id
+///     object_id          = data.azure_core_client_config.current.object_id
 ///     key_permissions    = ["Create", "Decrypt", "Encrypt", "Delete", "Get", "List", "Purge", "UnwrapKey", "WrapKey", "Verify", "GetRotationPolicy"]
 ///     secret_permissions = ["Set"]
 ///   }
 ///   access_policies {
-///     tenant_id          = azure_dataprotection_backupvault.example.identity.tenant_id
-///     object_id          = azure_dataprotection_backupvault.example.identity.principal_id
+///     tenant_id          = azure_dataprotection_backup_vault.example.identity.tenant_id
+///     object_id          = azure_dataprotection_backup_vault.example.identity.principal_id
 ///     key_permissions    = ["Create", "Decrypt", "Encrypt", "Delete", "Get", "List", "Purge", "UnwrapKey", "WrapKey", "Verify", "GetRotationPolicy"]
 ///     secret_permissions = ["Set"]
 ///   }
 /// }
 /// resource "azure_keyvault_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-key"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 /// }
-/// resource "azure_dataprotection_backupvaultcustomermanagedkey" "example" {
-///   data_protection_backup_vault_id = azure_dataprotection_backupvault.example.id
+/// resource "azure_dataprotection_backup_vault_customer_managed_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   data_protection_backup_vault_id = azure_dataprotection_backup_vault.example.id
 ///   key_vault_key_id                = azure_keyvault_key.example.id
 /// }
 /// ```
@@ -719,7 +734,7 @@ class BackupVaultCustomerManagedKey extends pulumi.CustomResource {
           'azure:dataprotection/backupVaultCustomerManagedKey:BackupVaultCustomerManagedKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     dataProtectionBackupVaultId = registerOutput<String>('dataProtectionBackupVaultId');
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');

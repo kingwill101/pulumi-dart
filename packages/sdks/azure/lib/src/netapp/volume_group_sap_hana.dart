@@ -567,7 +567,7 @@ import 'volume_group_sap_hana_volume.dart';
 ///                 ProximityPlacementGroupId = examplePlacementGroup.Id,
 ///                 VolumeSpecName = "data",
 ///                 StorageQuotaInGb = 1024,
-///                 ThroughputInMibps = 24,
+///                 ThroughputInMibps = 24.0,
 ///                 Protocols = "NFSv4.1",
 ///                 SecurityStyle = "unix",
 ///                 SnapshotDirectoryVisible = false,
@@ -599,7 +599,7 @@ import 'volume_group_sap_hana_volume.dart';
 ///                 ProximityPlacementGroupId = examplePlacementGroup.Id,
 ///                 VolumeSpecName = "log",
 ///                 StorageQuotaInGb = 1024,
-///                 ThroughputInMibps = 24,
+///                 ThroughputInMibps = 24.0,
 ///                 Protocols = "NFSv4.1",
 ///                 SecurityStyle = "unix",
 ///                 SnapshotDirectoryVisible = false,
@@ -631,7 +631,7 @@ import 'volume_group_sap_hana_volume.dart';
 ///                 ProximityPlacementGroupId = examplePlacementGroup.Id,
 ///                 VolumeSpecName = "shared",
 ///                 StorageQuotaInGb = 1024,
-///                 ThroughputInMibps = 24,
+///                 ThroughputInMibps = 24.0,
 ///                 Protocols = "NFSv4.1",
 ///                 SecurityStyle = "unix",
 ///                 SnapshotDirectoryVisible = false,
@@ -921,7 +921,7 @@ import 'volume_group_sap_hana_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -933,23 +933,35 @@ import 'volume_group_sap_hana_volume.dart';
 /// }
 ///
 /// resource "random_string" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   length  = 12
 ///   special = true
 /// }
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     ="${prefix}-resources"
 ///   location = location
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-vnet"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.88.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 ="${prefix}-delegated-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.88.2.0/24"]
 ///   delegations {
 ///     name = "testdelegation"
@@ -960,43 +972,58 @@ import 'volume_group_sap_hana_volume.dart';
 ///   }
 /// }
 /// resource "azure_network_subnet" "example1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 ="${prefix}-hosts-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.88.1.0/24"]
 /// }
-/// resource "azure_proximity_placementgroup" "example" {
+/// resource "azure_proximity_placement_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-ppg"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_compute_availabilityset" "example" {
+/// resource "azure_compute_availability_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         ="${prefix}-avset"
-///   location                     = azure_core_resourcegroup.example.location
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   proximity_placement_group_id = azure_proximity_placementgroup.example.id
+///   location                     = azure_core_resource_group.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   proximity_placement_group_id = azure_proximity_placement_group.example.id
 /// }
-/// resource "azure_network_networkinterface" "example" {
+/// resource "azure_network_network_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-nic"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   ip_configurations {
 ///     name                          = "internal"
 ///     subnet_id                     = azure_network_subnet.example1.id
 ///     private_ip_address_allocation = "Dynamic"
 ///   }
 /// }
-/// resource "azure_compute_linuxvirtualmachine" "example" {
+/// resource "azure_compute_linux_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            ="${prefix}-vm"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
+///   location                        = azure_core_resource_group.example.location
 ///   size                            = "Standard_M8ms"
 ///   admin_username                  = local.adminUsername
 ///   admin_password                  = local.adminPassword
 ///   disable_password_authentication = false
-///   proximity_placement_group_id    = azure_proximity_placementgroup.example.id
-///   availability_set_id             = azure_compute_availabilityset.example.id
-///   network_interface_ids           = [azure_network_networkinterface.example.id]
+///   proximity_placement_group_id    = azure_proximity_placement_group.example.id
+///   availability_set_id             = azure_compute_availability_set.example.id
+///   network_interface_ids           = [azure_network_network_interface.example.id]
 ///   source_image_reference = {
 ///     publisher = "Canonical"
 ///     offer     = "0001-com-ubuntu-server-jammy"
@@ -1009,25 +1036,34 @@ import 'volume_group_sap_hana_volume.dart';
 ///   }
 /// }
 /// resource "azure_netapp_account" "example" {
-///   depends_on          = [azure_network_subnet.example, azure_network_subnet.example1]
+///   depends_on = [azure_network_subnet.example, azure_network_subnet.example1]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-netapp-account"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_netapp_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-netapp-pool"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_netapp_account.example.name
 ///   service_level       = "Standard"
 ///   size_in_tb          = 8
 ///   qos_type            = "Manual"
 /// }
-/// resource "azure_netapp_volumegroupsaphana" "example" {
-///   depends_on             = [azure_compute_linuxvirtualmachine.example, azure_proximity_placementgroup.example]
+/// resource "azure_netapp_volume_group_sap_hana" "example" {
+///   depends_on = [azure_compute_linux_virtual_machine.example, azure_proximity_placement_group.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   ="${prefix}-netapp-volumegroup"
-///   location               = azure_core_resourcegroup.example.location
-///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resource_group.example.location
+///   resource_group_name    = azure_core_resource_group.example.name
 ///   account_name           = azure_netapp_account.example.name
 ///   group_description      = "Test volume group"
 ///   application_identifier = "TST"
@@ -1037,7 +1073,7 @@ import 'volume_group_sap_hana_volume.dart';
 ///     service_level                = "Standard"
 ///     capacity_pool_id             = azure_netapp_pool.example.id
 ///     subnet_id                    = azure_network_subnet.example.id
-///     proximity_placement_group_id = azure_proximity_placementgroup.example.id
+///     proximity_placement_group_id = azure_proximity_placement_group.example.id
 ///     volume_spec_name             = "data"
 ///     storage_quota_in_gb          = 1024
 ///     throughput_in_mibps          = 24
@@ -1063,7 +1099,7 @@ import 'volume_group_sap_hana_volume.dart';
 ///     service_level                = "Standard"
 ///     capacity_pool_id             = azure_netapp_pool.example.id
 ///     subnet_id                    = azure_network_subnet.example.id
-///     proximity_placement_group_id = azure_proximity_placementgroup.example.id
+///     proximity_placement_group_id = azure_proximity_placement_group.example.id
 ///     volume_spec_name             = "log"
 ///     storage_quota_in_gb          = 1024
 ///     throughput_in_mibps          = 24
@@ -1089,7 +1125,7 @@ import 'volume_group_sap_hana_volume.dart';
 ///     service_level                = "Standard"
 ///     capacity_pool_id             = azure_netapp_pool.example.id
 ///     subnet_id                    = azure_network_subnet.example.id
-///     proximity_placement_group_id = azure_proximity_placementgroup.example.id
+///     proximity_placement_group_id = azure_proximity_placement_group.example.id
 ///     volume_spec_name             = "shared"
 ///     storage_quota_in_gb          = 1024
 ///     throughput_in_mibps          = 24
@@ -1170,7 +1206,7 @@ import 'volume_group_sap_hana_volume.dart';
 ///
 ///         final var adminUsername = "exampleadmin";
 ///
-///         final var adminPassword = example.result();
+///         final var adminPassword = example.get("result");
 ///
 ///         var exampleResourceGroup = new ResourceGroup("exampleResourceGroup", ResourceGroupArgs.builder()
 ///             .name(String.format("%s-resources", prefix))
@@ -2182,7 +2218,7 @@ import 'volume_group_sap_hana_volume.dart';
 ///                 Zone = "1",
 ///                 VolumeSpecName = "data",
 ///                 StorageQuotaInGb = 1024,
-///                 ThroughputInMibps = 24,
+///                 ThroughputInMibps = 24.0,
 ///                 Protocols = "NFSv4.1",
 ///                 SecurityStyle = "unix",
 ///                 SnapshotDirectoryVisible = false,
@@ -2213,7 +2249,7 @@ import 'volume_group_sap_hana_volume.dart';
 ///                 Zone = "1",
 ///                 VolumeSpecName = "log",
 ///                 StorageQuotaInGb = 1024,
-///                 ThroughputInMibps = 24,
+///                 ThroughputInMibps = 24.0,
 ///                 Protocols = "NFSv4.1",
 ///                 SecurityStyle = "unix",
 ///                 SnapshotDirectoryVisible = false,
@@ -2244,7 +2280,7 @@ import 'volume_group_sap_hana_volume.dart';
 ///                 Zone = "1",
 ///                 VolumeSpecName = "shared",
 ///                 StorageQuotaInGb = 1024,
-///                 ThroughputInMibps = 24,
+///                 ThroughputInMibps = 24.0,
 ///                 Protocols = "NFSv4.1",
 ///                 SecurityStyle = "unix",
 ///                 SnapshotDirectoryVisible = false,
@@ -2549,7 +2585,7 @@ import 'volume_group_sap_hana_volume.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -2557,23 +2593,32 @@ import 'volume_group_sap_hana_volume.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     ="${prefix}-resources"
 ///   location = location
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-vnet"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.88.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example_delegated" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 ="${prefix}-delegated-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.88.1.0/24"]
 ///   delegations {
 ///     name = "netapp"
@@ -2584,25 +2629,34 @@ import 'volume_group_sap_hana_volume.dart';
 ///   }
 /// }
 /// resource "azure_network_subnet" "example_private_endpoint" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 ="${prefix}-pe-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.88.2.0/24"]
 /// }
 /// resource "azure_netapp_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-netapp-account"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            ="${prefix}kv"
-///   location                        = azure_core_resourcegroup.example.location
-///   resource_group_name             = azure_core_resourcegroup.example.name
+///   location                        = azure_core_resource_group.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled      = false
-///   tenant_id                       = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                       = data.azure_core_client_config.current.tenant_id
 ///   sku_name                        = "standard"
 ///   purge_protection_enabled        = true
 ///   soft_delete_retention_days      = 7
@@ -2610,8 +2664,8 @@ import 'volume_group_sap_hana_volume.dart';
 ///   enabled_for_deployment          = true
 ///   enabled_for_template_deployment = true
 ///   access_policies {
-///     tenant_id       = data.azure_core_getclientconfig.current.tenant_id
-///     object_id       = data.azure_core_getclientconfig.current.object_id
+///     tenant_id       = data.azure_core_client_config.current.tenant_id
+///     object_id       = data.azure_core_client_config.current.object_id
 ///     key_permissions = ["Get", "Create", "Delete", "WrapKey", "UnwrapKey", "GetRotationPolicy", "SetRotationPolicy"]
 ///   }
 ///   access_policies {
@@ -2621,43 +2675,58 @@ import 'volume_group_sap_hana_volume.dart';
 ///   }
 /// }
 /// resource "azure_keyvault_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         ="${prefix}-key"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 /// }
-/// resource "azure_netapp_accountencryption" "example" {
+/// resource "azure_netapp_account_encryption" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   netapp_account_id                     = azure_netapp_account.example.id
 ///   system_assigned_identity_principal_id = azure_netapp_account.example.identity.principal_id
 ///   encryption_key                        = azure_keyvault_key.example.versionless_id
 /// }
 /// resource "azure_privatelink_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-pe-kv"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   subnet_id           = azure_network_subnet.example_private_endpoint.id
 ///   private_service_connection = {
 ///     name                           ="${prefix}-pe-sc-kv"
-///     private_connection_resource_id = azure_keyvault_keyvault.example.id
+///     private_connection_resource_id = azure_keyvault_key_vault.example.id
 ///     is_manual_connection           = false
 ///     subresource_names              = ["Vault"]
 ///   }
 /// }
 /// resource "azure_netapp_pool" "example" {
-///   depends_on          = [azure_netapp_accountencryption.example]
+///   depends_on = [azure_netapp_account_encryption.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                ="${prefix}-netapp-pool"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_netapp_account.example.name
 ///   service_level       = "Standard"
 ///   size_in_tb          = 8
 ///   qos_type            = "Manual"
 /// }
-/// resource "azure_netapp_volumegroupsaphana" "example" {
+/// resource "azure_netapp_volume_group_sap_hana" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   ="${prefix}-netapp-volumegroup"
-///   location               = azure_core_resourcegroup.example.location
-///   resource_group_name    = azure_core_resourcegroup.example.name
+///   location               = azure_core_resource_group.example.location
+///   resource_group_name    = azure_core_resource_group.example.name
 ///   account_name           = azure_netapp_account.example.name
 ///   group_description      = "Test volume group with zone and CMK"
 ///   application_identifier = "TST"
@@ -3268,7 +3337,7 @@ class VolumeGroupSapHana extends pulumi.CustomResource {
           'azure:netapp/volumeGroupSapHana:VolumeGroupSapHana',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     applicationIdentifier = registerOutput<String>('applicationIdentifier');

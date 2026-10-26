@@ -119,7 +119,7 @@ import 'function_app_active_slot_state.dart';
 ///         Location = example.Location,
 ///         StorageAccountName = exampleAccount.Name,
 ///         ServicePlanId = exampleServicePlan.Id,
-///         SiteConfig = null,
+///         SiteConfig = new() { },
 ///     });
 ///
 ///     var exampleWindowsFunctionAppSlot = new Azure.AppService.WindowsFunctionAppSlot("example", new()
@@ -127,7 +127,7 @@ import 'function_app_active_slot_state.dart';
 ///         Name = "example-windows-function-app-slot",
 ///         FunctionAppId = exampleWindowsFunctionApp.Id,
 ///         StorageAccountName = exampleAccount.Name,
-///         SiteConfig = null,
+///         SiteConfig = new() { },
 ///     });
 ///
 ///     var exampleFunctionAppActiveSlot = new Azure.AppService.FunctionAppActiveSlot("example", new()
@@ -207,7 +207,7 @@ import 'function_app_active_slot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -215,40 +215,58 @@ import 'function_app_active_slot_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "windowsfunctionappsa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_appservice_serviceplan" "example" {
+/// resource "azure_appservice_service_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-app-service-plan"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   os_type             = "Windows"
 ///   sku_name            = "Y1"
 /// }
-/// resource "azure_appservice_windowsfunctionapp" "example" {
+/// resource "azure_appservice_windows_function_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-windows-function-app"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   location             = azure_core_resourcegroup.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
+///   location             = azure_core_resource_group.example.location
 ///   storage_account_name = azure_storage_account.example.name
-///   service_plan_id      = azure_appservice_serviceplan.example.id
+///   service_plan_id      = azure_appservice_service_plan.example.id
 ///   site_config          = {}
 /// }
-/// resource "azure_appservice_windowsfunctionappslot" "example" {
+/// resource "azure_appservice_windows_function_app_slot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-windows-function-app-slot"
-///   function_app_id      = azure_appservice_windowsfunctionapp.example.id
+///   function_app_id      = azure_appservice_windows_function_app.example.id
 ///   storage_account_name = azure_storage_account.example.name
 ///   site_config          = {}
 /// }
-/// resource "azure_appservice_functionappactiveslot" "example" {
-///   slot_id = azure_appservice_windowsfunctionappslot.example.id
+/// resource "azure_appservice_function_app_active_slot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   slot_id = azure_appservice_windows_function_app_slot.example.id
 /// }
 /// ```
 /// ```java
@@ -494,7 +512,7 @@ import 'function_app_active_slot_state.dart';
 ///         Location = example.Location,
 ///         ServicePlanId = exampleServicePlan.Id,
 ///         StorageAccountName = exampleAccount.Name,
-///         SiteConfig = null,
+///         SiteConfig = new() { },
 ///     });
 ///
 ///     var exampleLinuxFunctionAppSlot = new Azure.AppService.LinuxFunctionAppSlot("example", new()
@@ -502,7 +520,7 @@ import 'function_app_active_slot_state.dart';
 ///         Name = "example-linux-function-app-slot",
 ///         FunctionAppId = exampleLinuxFunctionApp.Name,
 ///         StorageAccountName = exampleAccount.Name,
-///         SiteConfig = null,
+///         SiteConfig = new() { },
 ///     });
 ///
 ///     var exampleFunctionAppActiveSlot = new Azure.AppService.FunctionAppActiveSlot("example", new()
@@ -582,7 +600,7 @@ import 'function_app_active_slot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -590,40 +608,58 @@ import 'function_app_active_slot_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "linuxfunctionappsa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_appservice_serviceplan" "example" {
+/// resource "azure_appservice_service_plan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-app-service-plan"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   os_type             = "Linux"
 ///   sku_name            = "Y1"
 /// }
-/// resource "azure_appservice_linuxfunctionapp" "example" {
+/// resource "azure_appservice_linux_function_app" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-linux-function-app"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   location             = azure_core_resourcegroup.example.location
-///   service_plan_id      = azure_appservice_serviceplan.example.id
+///   resource_group_name  = azure_core_resource_group.example.name
+///   location             = azure_core_resource_group.example.location
+///   service_plan_id      = azure_appservice_service_plan.example.id
 ///   storage_account_name = azure_storage_account.example.name
 ///   site_config          = {}
 /// }
-/// resource "azure_appservice_linuxfunctionappslot" "example" {
+/// resource "azure_appservice_linux_function_app_slot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-linux-function-app-slot"
-///   function_app_id      = azure_appservice_linuxfunctionapp.example.name
+///   function_app_id      = azure_appservice_linux_function_app.example.name
 ///   storage_account_name = azure_storage_account.example.name
 ///   site_config          = {}
 /// }
-/// resource "azure_appservice_functionappactiveslot" "example" {
-///   slot_id = azure_appservice_linuxfunctionappslot.example.id
+/// resource "azure_appservice_function_app_active_slot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   slot_id = azure_appservice_linux_function_app_slot.example.id
 /// }
 /// ```
 /// ```java
@@ -790,7 +826,7 @@ class FunctionAppActiveSlot extends pulumi.CustomResource {
           'azure:appservice/functionAppActiveSlot:FunctionAppActiveSlot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     lastSuccessfulSwap = registerOutput<String>('lastSuccessfulSwap');
     overwriteNetworkConfig = registerOutput<bool?>('overwriteNetworkConfig');

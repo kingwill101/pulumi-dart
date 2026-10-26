@@ -283,7 +283,7 @@ import 'api_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -291,48 +291,66 @@ import 'api_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tf-test"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appinsights_insights" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tf-test-appinsights"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_type    = "web"
 /// }
-/// resource "azure_appinsights_apikey" "read_telemetry" {
+/// resource "azure_appinsights_api_key" "read_telemetry" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "tf-test-appinsights-read-telemetry-api-key"
 ///   application_insights_id = azure_appinsights_insights.example.id
 ///   read_permissions        = ["aggregate", "api", "draft", "extendqueries", "search"]
 /// }
-/// resource "azure_appinsights_apikey" "write_annotations" {
+/// resource "azure_appinsights_api_key" "write_annotations" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "tf-test-appinsights-write-annotations-api-key"
 ///   application_insights_id = azure_appinsights_insights.example.id
 ///   write_permissions       = ["annotations"]
 /// }
-/// resource "azure_appinsights_apikey" "authenticate_sdk_control_channel" {
+/// resource "azure_appinsights_api_key" "authenticate_sdk_control_channel" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "tf-test-appinsights-authenticate-sdk-control-channel-api-key"
 ///   application_insights_id = azure_appinsights_insights.example.id
 ///   read_permissions        = ["agentconfig"]
 /// }
-/// resource "azure_appinsights_apikey" "full_permissions" {
+/// resource "azure_appinsights_api_key" "full_permissions" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "tf-test-appinsights-full-permissions-api-key"
 ///   application_insights_id = azure_appinsights_insights.example.id
 ///   read_permissions        = ["agentconfig", "aggregate", "api", "draft", "extendqueries", "search"]
 ///   write_permissions       = ["annotations"]
 /// }
 /// output "readTelemetryApiKey" {
-///   value = azure_appinsights_apikey.read_telemetry.api_key
+///   value = azure_appinsights_api_key.read_telemetry.api_key
 /// }
 /// output "writeAnnotationsApiKey" {
-///   value = azure_appinsights_apikey.write_annotations.api_key
+///   value = azure_appinsights_api_key.write_annotations.api_key
 /// }
 /// output "authenticateSdkControlChannel" {
-///   value = azure_appinsights_apikey.authenticate_sdk_control_channel.api_key
+///   value = azure_appinsights_api_key.authenticate_sdk_control_channel.api_key
 /// }
 /// output "fullPermissionsApiKey" {
-///   value = azure_appinsights_apikey.full_permissions.api_key
+///   value = azure_appinsights_api_key.full_permissions.api_key
 /// }
 /// ```
 /// ```java
@@ -523,7 +541,7 @@ class ApiKey extends pulumi.CustomResource {
           'azure:appinsights/apiKey:ApiKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['apiKey'],
         ) {
     apiKey = registerOutput<String>('apiKey', isSecret: true);

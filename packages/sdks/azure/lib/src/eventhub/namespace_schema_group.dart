@@ -117,7 +117,7 @@ import 'namespace_schema_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -125,19 +125,28 @@ import 'namespace_schema_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "exampleRG-ehn-schemaGroup"
 ///   location = "East US"
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "test" {
+/// resource "azure_eventhub_event_hub_namespace" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ehn-schemaGroup"
 ///   location            = testAzurermResourceGroup.location
 ///   resource_group_name = testAzurermResourceGroup.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_eventhub_namespaceschemagroup" "test" {
+/// resource "azure_eventhub_namespace_schema_group" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-schemaGroup"
-///   namespace_id         = azure_eventhub_eventhubnamespace.test.id
+///   namespace_id         = azure_eventhub_event_hub_namespace.test.id
 ///   schema_compatibility = "Forward"
 ///   schema_type          = "Avro"
 /// }
@@ -174,8 +183,8 @@ import 'namespace_schema_group_state.dart';
 ///
 ///         var test = new EventHubNamespace("test", EventHubNamespaceArgs.builder()
 ///             .name("example-ehn-schemaGroup")
-///             .location(testAzurermResourceGroup.location())
-///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .location(testAzurermResourceGroup.get("location"))
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
 ///             .sku("Standard")
 ///             .build());
 ///
@@ -252,7 +261,7 @@ class NamespaceSchemaGroup extends pulumi.CustomResource {
           'azure:eventhub/namespaceSchemaGroup:NamespaceSchemaGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     namespaceId = registerOutput<String>('namespaceId');

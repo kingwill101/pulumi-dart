@@ -145,7 +145,7 @@ import 'consumer_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -153,14 +153,20 @@ import 'consumer_group_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_iot_iothub" "example" {
+/// resource "azure_iot_io_t_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "test"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku = {
 ///     name     = "S1"
 ///     capacity = "1"
@@ -169,11 +175,14 @@ import 'consumer_group_state.dart';
 ///     "purpose" = "testing"
 ///   }
 /// }
-/// resource "azure_iot_consumergroup" "example" {
+/// resource "azure_iot_consumer_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "group"
-///   iothub_name            = azure_iot_iothub.example.name
+///   iothub_name            = azure_iot_io_t_hub.example.name
 ///   eventhub_endpoint_name = "events"
-///   resource_group_name    = azure_core_resourcegroup.example.name
+///   resource_group_name    = azure_core_resource_group.example.name
 /// }
 /// ```
 /// ```java
@@ -287,7 +296,7 @@ class ConsumerGroup extends pulumi.CustomResource {
           'azure:iot/consumerGroup:ConsumerGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     eventhubEndpointName = registerOutput<String>('eventhubEndpointName');
     iothubName = registerOutput<String>('iothubName');

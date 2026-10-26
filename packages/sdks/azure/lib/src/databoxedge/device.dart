@@ -92,7 +92,7 @@ import 'device_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -100,14 +100,20 @@ import 'device_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-databoxedge"
 ///   location = "West Europe"
 /// }
 /// resource "azure_databoxedge_device" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-device"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku_name            = "EdgeP_Base-Standard"
 /// }
 /// ```
@@ -207,7 +213,7 @@ class Device extends pulumi.CustomResource {
           'azure:databoxedge/device:Device',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     deviceProperties = registerOutput<List<DeviceDeviceProperty>>('deviceProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DeviceDeviceProperty>(guardedValue, (value) => DeviceDeviceProperty.fromMap((value as Map).cast<String, dynamic>())); });
     location = registerOutput<String>('location');

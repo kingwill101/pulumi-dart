@@ -485,7 +485,7 @@ import 'cosmosdb_data_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -493,30 +493,39 @@ import 'cosmosdb_data_connection_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
-/// data "azure_authorization_getroledefinition" "builtin" {
+/// data "azure_authorization_role_definition" "builtin" {
 ///   role_definition_id = "fbdf93bf-df7d-467e-a4d2-9458aa1360c8"
 /// }
-/// data "azure_cosmosdb_getsqlroledefinition" "example" {
+/// data "azure_cosmosdb_sql_role_definition" "example" {
 ///   role_definition_id  = "00000000-0000-0000-0000-000000000001"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_cosmosdb_account.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "exampleRG"
 ///   location = "West Europe"
 /// }
 /// resource "azure_authorization_assignment" "example" {
-///   scope                = azure_core_resourcegroup.example.id
-///   role_definition_name = data.azure_authorization_getroledefinition.builtin.name
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = azure_core_resource_group.example.id
+///   role_definition_name = data.azure_authorization_role_definition.builtin.name
 ///   principal_id         = azure_kusto_cluster.example.identity.principal_id
 /// }
 /// resource "azure_cosmosdb_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ca"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   offer_type          = "Standard"
 ///   kind                = "GlobalDocumentDB"
 ///   consistency_policy = {
@@ -525,34 +534,46 @@ import 'cosmosdb_data_connection_state.dart';
 ///     max_staleness_prefix    = 100
 ///   }
 ///   geo_locations {
-///     location          = azure_core_resourcegroup.example.location
+///     location          = azure_core_resource_group.example.location
 ///     failover_priority = 0
 ///   }
 /// }
-/// resource "azure_cosmosdb_sqldatabase" "example" {
+/// resource "azure_cosmosdb_sql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplecosmosdbsqldb"
 ///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
 ///   account_name        = azure_cosmosdb_account.example.name
 /// }
-/// resource "azure_cosmosdb_sqlcontainer" "example" {
+/// resource "azure_cosmosdb_sql_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplecosmosdbsqlcon"
 ///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
 ///   account_name        = azure_cosmosdb_account.example.name
-///   database_name       = azure_cosmosdb_sqldatabase.example.name
+///   database_name       = azure_cosmosdb_sql_database.example.name
 ///   partition_key_path  = "/part"
 ///   throughput          = 400
 /// }
-/// resource "azure_cosmosdb_sqlroleassignment" "example" {
-///   resource_group_name = azure_core_resourcegroup.example.name
+/// resource "azure_cosmosdb_sql_role_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_cosmosdb_account.example.name
-///   role_definition_id  = data.azure_cosmosdb_getsqlroledefinition.example.id
+///   role_definition_id  = data.azure_cosmosdb_sql_role_definition.example.id
 ///   principal_id        = azure_kusto_cluster.example.identity.principal_id
 ///   scope               = azure_cosmosdb_account.example.id
 /// }
 /// resource "azure_kusto_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplekc"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     name     = "Dev(No SLA)_Standard_D11_v2"
 ///     capacity = 1
@@ -562,20 +583,40 @@ import 'cosmosdb_data_connection_state.dart';
 ///   }
 /// }
 /// resource "azure_kusto_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplekd"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   cluster_name        = azure_kusto_cluster.example.name
 /// }
 /// resource "azure_kusto_script" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "create-table-script"
 ///   database_id    = azure_kusto_database.example.id
-///   script_content = ".create table TestTable(Id:string, Name:string, _ts:long, _timestamp:datetime)\n.create table TestTable ingestion json mapping \\\"TestMapping\\\"\n'['\n'    {\\\"column\\\":\\\"Id\\\",\\\"path\\\":\\\"$.id\\\"},'\n'    {\\\"column\\\":\\\"Name\\\",\\\"path\\\":\\\"$.name\\\"},'\n'    {\\\"column\\\":\\\"_ts\\\",\\\"path\\\":\\\"$._ts\\\"},'\n'    {\\\"column\\\":\\\"_timestamp\\\",\\\"path\\\":\\\"$._ts\\\", \\\"transform\\\":\\\"DateTimeFromUnixSeconds\\\"}'\n']'\n.alter table TestTable policy ingestionbatching \\\"{'MaximumBatchingTimeSpan': '0:0:10', 'MaximumNumberOfItems': 10000}\\\"\n"
+///   script_content = <<SCRIPT
+/// .create table TestTable(Id:string, Name:string, _ts:long, _timestamp:datetime)
+/// .create table TestTable ingestion json mapping \"TestMapping\"
+/// '['
+/// '    {\"column\":\"Id\",\"path\":\"$.id\"},'
+/// '    {\"column\":\"Name\",\"path\":\"$.name\"},'
+/// '    {\"column\":\"_ts\",\"path\":\"$._ts\"},'
+/// '    {\"column\":\"_timestamp\",\"path\":\"$._ts\", \"transform\":\"DateTimeFromUnixSeconds\"}'
+/// ']'
+/// .alter table TestTable policy ingestionbatching \"{'MaximumBatchingTimeSpan': '0:0:10', 'MaximumNumberOfItems': 10000}\"
+/// SCRIPT
+///
 /// }
-/// resource "azure_kusto_cosmosdbdataconnection" "example" {
+/// resource "azure_kusto_cosmosdb_data_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "examplekcdcd"
-///   location              = azure_core_resourcegroup.example.location
-///   cosmosdb_container_id = azure_cosmosdb_sqlcontainer.example.id
+///   location              = azure_core_resource_group.example.location
+///   cosmosdb_container_id = azure_cosmosdb_sql_container.example.id
 ///   kusto_database_id     = azure_kusto_database.example.id
 ///   managed_identity_id   = azure_kusto_cluster.example.id
 ///   table_name            = "TestTable"
@@ -913,7 +954,7 @@ class CosmosdbDataConnection extends pulumi.CustomResource {
           'azure:kusto/cosmosdbDataConnection:CosmosdbDataConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     cosmosdbContainerId = registerOutput<String>('cosmosdbContainerId');
     kustoDatabaseId = registerOutput<String>('kustoDatabaseId');

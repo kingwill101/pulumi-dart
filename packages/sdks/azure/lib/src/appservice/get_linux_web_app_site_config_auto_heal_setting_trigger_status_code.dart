@@ -45,12 +45,12 @@ class GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode {
 
   factory GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode.fromMap(Map<String, dynamic> map) {
     return GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode(
-      count: pulumi.Input.fromValue((map['count'] as num).toInt()),
+      count: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['count'])),
       interval: pulumi.Input.fromValue(map['interval'] as String),
       path: pulumi.Input.fromValue(map['path'] as String),
       statusCodeRange: pulumi.Input.fromValue(map['statusCodeRange'] as String),
-      subStatus: pulumi.Input.fromValue((map['subStatus'] as num).toInt()),
-      win32StatusCode: pulumi.Input.fromValue((map['win32StatusCode'] as num).toInt()),
+      subStatus: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['subStatus'])),
+      win32StatusCode: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['win32StatusCode'])),
     );
   }
 }

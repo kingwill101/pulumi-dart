@@ -18,7 +18,7 @@ import 'managed_hardware_security_module_role_assignment_state.dart';
 /// const example = new azure.keyvault.ManagedHardwareSecurityModuleRoleAssignment("example", {
 ///     name: "a9dbe818-56e7-5878-c0ce-a1477692c1d6",
 ///     managedHsmId: exampleAzurermKeyVaultManagedHardwareSecurityModule.id,
-///     scope: output(user.then(user => user.scope)).apply(x =>String(x)),
+///     scope: user.then(user => user.scope),
 ///     roleDefinitionId: user.then(user => user.resourceManagerId),
 ///     principalId: current.objectId,
 /// });
@@ -32,7 +32,7 @@ import 'managed_hardware_security_module_role_assignment_state.dart';
 /// example = azure.keyvault.ManagedHardwareSecurityModuleRoleAssignment("example",
 ///     name="a9dbe818-56e7-5878-c0ce-a1477692c1d6",
 ///     managed_hsm_id=example_azurerm_key_vault_managed_hardware_security_module["id"],
-///     scope=output(user.scope).apply(lambda x: str(x)),
+///     scope=user.scope,
 ///     role_definition_id=user.resource_manager_id,
 ///     principal_id=current["objectId"])
 /// ```
@@ -93,7 +93,7 @@ import 'managed_hardware_security_module_role_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -101,16 +101,19 @@ import 'managed_hardware_security_module_role_assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getmanagedhardwaresecuritymoduleroledefinition" "user" {
+/// data "azure_keyvault_managed_hardware_security_module_role_definition" "user" {
 ///   managed_hsm_id = exampleAzurermKeyVaultManagedHardwareSecurityModule.id
 ///   name           = "21dbd100-6940-42c2-9190-5d6cb909625b"
 /// }
 ///
-/// resource "azure_keyvault_managedhardwaresecuritymoduleroleassignment" "example" {
+/// resource "azure_keyvault_managed_hardware_security_module_role_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "a9dbe818-56e7-5878-c0ce-a1477692c1d6"
 ///   managed_hsm_id     = exampleAzurermKeyVaultManagedHardwareSecurityModule.id
-///   scope              = data.azure_keyvault_getmanagedhardwaresecuritymoduleroledefinition.user.scope
-///   role_definition_id = data.azure_keyvault_getmanagedhardwaresecuritymoduleroledefinition.user.resource_manager_id
+///   scope              = data.azure_keyvault_managed_hardware_security_module_role_definition.user.scope
+///   role_definition_id = data.azure_keyvault_managed_hardware_security_module_role_definition.user.resource_manager_id
 ///   principal_id       = current.objectId
 /// }
 /// ```
@@ -138,16 +141,16 @@ import 'managed_hardware_security_module_role_assignment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var user = KeyvaultFunctions.getManagedHardwareSecurityModuleRoleDefinition(GetManagedHardwareSecurityModuleRoleDefinitionArgs.builder()
-///             .managedHsmId(exampleAzurermKeyVaultManagedHardwareSecurityModule.id())
+///             .managedHsmId(exampleAzurermKeyVaultManagedHardwareSecurityModule.get("id"))
 ///             .name("21dbd100-6940-42c2-9190-5d6cb909625b")
 ///             .build());
 ///
 ///         var example = new ManagedHardwareSecurityModuleRoleAssignment("example", ManagedHardwareSecurityModuleRoleAssignmentArgs.builder()
 ///             .name("a9dbe818-56e7-5878-c0ce-a1477692c1d6")
-///             .managedHsmId(exampleAzurermKeyVaultManagedHardwareSecurityModule.id())
+///             .managedHsmId(exampleAzurermKeyVaultManagedHardwareSecurityModule.get("id"))
 ///             .scope(user.scope())
 ///             .roleDefinitionId(user.resourceManagerId())
-///             .principalId(current.objectId())
+///             .principalId(current.get("objectId"))
 ///             .build());
 ///
 ///     }
@@ -206,7 +209,7 @@ class ManagedHardwareSecurityModuleRoleAssignment extends pulumi.CustomResource 
           'azure:keyvault/managedHardwareSecurityModuleRoleAssignment:ManagedHardwareSecurityModuleRoleAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     managedHsmId = registerOutput<String>('managedHsmId');
     this.name = registerOutput<String>('name');

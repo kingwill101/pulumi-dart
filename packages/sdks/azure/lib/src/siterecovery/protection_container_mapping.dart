@@ -182,8 +182,8 @@ import 'protection_container_mapping_state.dart';
 ///         Name = "policy",
 ///         ResourceGroupName = secondary.Name,
 ///         RecoveryVaultName = vault.Name,
-///         RecoveryPointRetentionInMinutes = 24 * 60,
-///         ApplicationConsistentSnapshotFrequencyInMinutes = 4 * 60,
+///         RecoveryPointRetentionInMinutes = (int)(24 * 60),
+///         ApplicationConsistentSnapshotFrequencyInMinutes = (int)(4 * 60),
 ///     });
 ///
 ///     var container_mapping = new Azure.SiteRecovery.ProtectionContainerMapping("container-mapping", new()
@@ -297,7 +297,7 @@ import 'protection_container_mapping_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -305,59 +305,86 @@ import 'protection_container_mapping_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "primary" {
+/// resource "azure_core_resource_group" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-network-mapping-primary"
 ///   location = "West US"
 /// }
-/// resource "azure_core_resourcegroup" "secondary" {
+/// resource "azure_core_resource_group" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-network-mapping-secondary"
 ///   location = "East US"
 /// }
 /// resource "azure_recoveryservices_vault" "vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-recovery-vault"
-///   location            = azure_core_resourcegroup.secondary.location
-///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   location            = azure_core_resource_group.secondary.location
+///   resource_group_name = azure_core_resource_group.secondary.name
 ///   sku                 = "Standard"
 /// }
 /// resource "azure_siterecovery_fabric" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "primary-fabric"
-///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   resource_group_name = azure_core_resource_group.secondary.name
 ///   recovery_vault_name = azure_recoveryservices_vault.vault.name
-///   location            = azure_core_resourcegroup.primary.location
+///   location            = azure_core_resource_group.primary.location
 /// }
 /// resource "azure_siterecovery_fabric" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "secondary-fabric"
-///   resource_group_name = azure_core_resourcegroup.secondary.name
+///   resource_group_name = azure_core_resource_group.secondary.name
 ///   recovery_vault_name = azure_recoveryservices_vault.vault.name
-///   location            = azure_core_resourcegroup.secondary.location
+///   location            = azure_core_resource_group.secondary.location
 /// }
-/// resource "azure_siterecovery_protectioncontainer" "primary" {
+/// resource "azure_siterecovery_protection_container" "primary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "primary-protection-container"
-///   resource_group_name  = azure_core_resourcegroup.secondary.name
+///   resource_group_name  = azure_core_resource_group.secondary.name
 ///   recovery_vault_name  = azure_recoveryservices_vault.vault.name
 ///   recovery_fabric_name = azure_siterecovery_fabric.primary.name
 /// }
-/// resource "azure_siterecovery_protectioncontainer" "secondary" {
+/// resource "azure_siterecovery_protection_container" "secondary" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "secondary-protection-container"
-///   resource_group_name  = azure_core_resourcegroup.secondary.name
+///   resource_group_name  = azure_core_resource_group.secondary.name
 ///   recovery_vault_name  = azure_recoveryservices_vault.vault.name
 ///   recovery_fabric_name = azure_siterecovery_fabric.secondary.name
 /// }
-/// resource "azure_siterecovery_replicationpolicy" "policy" {
+/// resource "azure_siterecovery_replication_policy" "policy" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                                 = "policy"
-///   resource_group_name                                  = azure_core_resourcegroup.secondary.name
+///   resource_group_name                                  = azure_core_resource_group.secondary.name
 ///   recovery_vault_name                                  = azure_recoveryservices_vault.vault.name
 ///   recovery_point_retention_in_minutes                  = 24 * 60
 ///   application_consistent_snapshot_frequency_in_minutes = 4 * 60
 /// }
-/// resource "azure_siterecovery_protectioncontainermapping" "container-mapping" {
+/// resource "azure_siterecovery_protection_container_mapping" "container-mapping" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                      = "container-mapping"
-///   resource_group_name                       = azure_core_resourcegroup.secondary.name
+///   resource_group_name                       = azure_core_resource_group.secondary.name
 ///   recovery_vault_name                       = azure_recoveryservices_vault.vault.name
 ///   recovery_fabric_name                      = azure_siterecovery_fabric.primary.name
-///   recovery_source_protection_container_name = azure_siterecovery_protectioncontainer.primary.name
-///   recovery_target_protection_container_id   = azure_siterecovery_protectioncontainer.secondary.id
-///   recovery_replication_policy_id            = azure_siterecovery_replicationpolicy.policy.id
+///   recovery_source_protection_container_name = azure_siterecovery_protection_container.primary.name
+///   recovery_target_protection_container_id   = azure_siterecovery_protection_container.secondary.id
+///   recovery_replication_policy_id            = azure_siterecovery_replication_policy.policy.id
 /// }
 /// ```
 /// ```java
@@ -503,7 +530,7 @@ class ProtectionContainerMapping extends pulumi.CustomResource {
           'azure:siterecovery/protectionContainerMapping:ProtectionContainerMapping',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     automaticUpdate = registerOutput<ProtectionContainerMappingAutomaticUpdate>('automaticUpdate', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ProtectionContainerMappingAutomaticUpdate.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

@@ -92,7 +92,7 @@ import 'get_alert_rule_template_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -100,17 +100,17 @@ import 'get_alert_rule_template_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_operationalinsights_getanalyticsworkspace" "example" {
+/// data "azure_operationalinsights_analytics_workspace" "example" {
 ///   name                = "example"
 ///   resource_group_name = "example-resources"
 /// }
-/// data "azure_sentinel_getalertrule" "exampleGetAlertRule" {
+/// data "azure_sentinel_alert_rule" "exampleGetAlertRule" {
 ///   name                       = "existing"
-///   log_analytics_workspace_id = data.azure_operationalinsights_getanalyticsworkspace.example.id
+///   log_analytics_workspace_id = data.azure_operationalinsights_analytics_workspace.example.id
 /// }
 ///
 /// output "id" {
-///   value = data.azure_sentinel_getalertrule.exampleGetAlertRule.id
+///   value = data.azure_sentinel_alert_rule.exampleGetAlertRule.id
 /// }
 /// ```
 /// ```java
@@ -334,7 +334,7 @@ pulumi.Output<GetAlertRuleResult> getAlertRuleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -342,27 +342,36 @@ pulumi.Output<GetAlertRuleResult> getAlertRuleOutput(
 ///   }
 /// }
 ///
-/// data "azure_sentinel_getalertruleanomaly" "example" {
-///   log_analytics_workspace_id = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+/// data "azure_sentinel_alert_rule_anomaly" "example" {
+///   log_analytics_workspace_id = azure_sentinel_log_analytics_workspace_onboarding.example.workspace_id
 ///   display_name               = "Potential data staging"
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-law"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 /// }
-/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
-///   workspace_id                 = azure_operationalinsights_analyticsworkspace.example.id
+/// resource "azure_sentinel_log_analytics_workspace_onboarding" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workspace_id                 = azure_operationalinsights_analytics_workspace.example.id
 ///   customer_managed_key_enabled = false
 /// }
 /// output "id" {
-///   value = data.azure_sentinel_getalertruleanomaly.example.id
+///   value = data.azure_sentinel_alert_rule_anomaly.example.id
 /// }
 /// ```
 /// ```java
@@ -542,7 +551,7 @@ pulumi.Output<GetAlertRuleAnomalyResult> getAlertRuleAnomalyOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -550,13 +559,13 @@ pulumi.Output<GetAlertRuleAnomalyResult> getAlertRuleAnomalyOutput(
 ///   }
 /// }
 ///
-/// data "azure_sentinel_getalertruletemplate" "example" {
+/// data "azure_sentinel_alert_rule_template" "example" {
 ///   log_analytics_workspace_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mygroup1/providers/Microsoft.OperationalInsights/workspaces/workspace1"
 ///   display_name               = "Create incidents based on Azure Security Center for IoT alerts"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_sentinel_getalertruletemplate.example.id
+///   value = data.azure_sentinel_alert_rule_template.example.id
 /// }
 /// ```
 /// ```java

@@ -193,7 +193,7 @@ import 'virtual_network_peering_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -201,35 +201,50 @@ import 'virtual_network_peering_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "remote" {
+/// resource "azure_network_virtual_network" "remote" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "remote-vnet"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.0.1.0/24"]
-///   location            = azure_core_resourcegroup.example.location
+///   location            = azure_core_resource_group.example.location
 /// }
 /// resource "azure_databricks_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-workspace"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "standard"
 /// }
-/// resource "azure_databricks_virtualnetworkpeering" "example" {
+/// resource "azure_databricks_virtual_network_peering" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "databricks-vnet-peer"
-///   resource_group_name           = azure_core_resourcegroup.example.name
+///   resource_group_name           = azure_core_resource_group.example.name
 ///   workspace_id                  = azure_databricks_workspace.example.id
-///   remote_address_space_prefixes = azure_network_virtualnetwork.remote.address_spaces
-///   remote_virtual_network_id     = azure_network_virtualnetwork.remote.id
+///   remote_address_space_prefixes = azure_network_virtual_network.remote.address_spaces
+///   remote_virtual_network_id     = azure_network_virtual_network.remote.id
 ///   allow_virtual_network_access  = true
 /// }
-/// resource "azure_network_virtualnetworkpeering" "remote" {
+/// resource "azure_network_virtual_network_peering" "remote" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "peer-to-databricks"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   virtual_network_name         = azure_network_virtualnetwork.remote.name
-///   remote_virtual_network_id    = azure_databricks_virtualnetworkpeering.example.virtual_network_id
+///   resource_group_name          = azure_core_resource_group.example.name
+///   virtual_network_name         = azure_network_virtual_network.remote.name
+///   remote_virtual_network_id    = azure_databricks_virtual_network_peering.example.virtual_network_id
 ///   allow_virtual_network_access = true
 /// }
 /// ```
@@ -398,7 +413,7 @@ class VirtualNetworkPeering extends pulumi.CustomResource {
           'azure:databricks/virtualNetworkPeering:VirtualNetworkPeering',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     addressSpacePrefixes = registerOutput<List<String>>('addressSpacePrefixes', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     allowForwardedTraffic = registerOutput<bool?>('allowForwardedTraffic');

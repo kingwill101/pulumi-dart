@@ -20,7 +20,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///     algorithm: "RSA",
 ///     rsaBits: 4096,
 /// });
-/// const example = tls.PublicKey({
+/// const example = tls.publicKey({
 ///     privateKeyPem: examplePrivateKey.privateKeyPem,
 /// });
 /// const current = azure.core.getSubscription({});
@@ -1238,7 +1238,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1246,66 +1246,93 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///   }
 /// }
 ///
-/// data "tls_publickey" "example" {
-///   private_key_pem = tls_privatekey.example.privateKeyPem
+/// data "tls_public_key" "example" {
+///   private_key_pem = tls_private_key.example.privateKeyPem
 /// }
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
-/// resource "tls_privatekey" "example" {
+/// resource "tls_private_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   algorithm = "RSA"
 ///   rsa_bits  = 4096
 /// }
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-uai"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_authorization_assignment" "example" {
-///   scope                = data.azure_core_getsubscription.current.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = data.azure_core_subscription.current.id
 ///   role_definition_name = "Azure Center for SAP solutions service role"
-///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+///   principal_id         = azure_authorization_user_assigned_identity.example.principal_id
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_core_resourcegroup" "app" {
+/// resource "azure_core_resource_group" "app" {
 ///   depends_on = [azure_network_subnet.example]
-///   name       = "example-sapapp"
-///   location   = "West Europe"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "example-sapapp"
+///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_workloadssap_threetiervirtualinstance" "example" {
-///   depends_on                  = [azure_authorization_assignment.example]
+/// resource "azure_workloadssap_three_tier_virtual_instance" "example" {
+///   depends_on = [azure_authorization_assignment.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "X05"
-///   resource_group_name         = azure_core_resourcegroup.example.name
-///   location                    = azure_core_resourcegroup.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
+///   location                    = azure_core_resource_group.example.location
 ///   environment                 = "NonProd"
 ///   sap_product                 = "S4HANA"
 ///   managed_resource_group_name = "exampleManagedRG"
-///   app_location                = azure_core_resourcegroup.app.location
+///   app_location                = azure_core_resource_group.app.location
 ///   sap_fqdn                    = "sap.bpaas.com"
 ///   three_tier_configuration = {
-///     app_resource_group_name = azure_core_resourcegroup.app.name
+///     app_resource_group_name = azure_core_resource_group.app.name
 ///     secondary_ip_enabled    = true
 ///     application_server_configuration = {
 ///       instance_count = 1
@@ -1320,8 +1347,8 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///         }
 ///         os_profile = {
 ///           admin_username  = "testAdmin"
-///           ssh_private_key = tls_privatekey.example.privateKeyPem
-///           ssh_public_key  = data.tls_publickey.example.public_key_openssh
+///           ssh_private_key = tls_private_key.example.privateKeyPem
+///           ssh_public_key  = data.tls_public_key.example.public_key_openssh
 ///         }
 ///       }
 ///     }
@@ -1338,8 +1365,8 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///         }
 ///         os_profile = {
 ///           admin_username  = "testAdmin"
-///           ssh_private_key = tls_privatekey.example.privateKeyPem
-///           ssh_public_key  = data.tls_publickey.example.public_key_openssh
+///           ssh_private_key = tls_private_key.example.privateKeyPem
+///           ssh_public_key  = data.tls_public_key.example.public_key_openssh
 ///         }
 ///       }
 ///     }
@@ -1357,53 +1384,53 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///         }
 ///         os_profile = {
 ///           admin_username  = "testAdmin"
-///           ssh_private_key = tls_privatekey.example.privateKeyPem
-///           ssh_public_key  = data.tls_publickey.example.public_key_openssh
+///           ssh_private_key = tls_private_key.example.privateKeyPem
+///           ssh_public_key  = data.tls_public_key.example.public_key_openssh
 ///         }
 ///       }
 ///       disk_volume_configurations = [{
-///         "volumeName"    = "hana/data"
-///         "numberOfDisks" = 3
-///         "sizeInGb"      = 128
-///         "skuName"       = "Premium_LRS"
+///         volume_name     = "hana/data"
+///         number_of_disks = 3
+///         size_in_gb      = 128
+///         sku_name        = "Premium_LRS"
 ///         }, {
-///         "volumeName"    = "hana/log"
-///         "numberOfDisks" = 3
-///         "sizeInGb"      = 128
-///         "skuName"       = "Premium_LRS"
+///         volume_name     = "hana/log"
+///         number_of_disks = 3
+///         size_in_gb      = 128
+///         sku_name        = "Premium_LRS"
 ///         }, {
-///         "volumeName"    = "hana/shared"
-///         "numberOfDisks" = 1
-///         "sizeInGb"      = 256
-///         "skuName"       = "Premium_LRS"
+///         volume_name     = "hana/shared"
+///         number_of_disks = 1
+///         size_in_gb      = 256
+///         sku_name        = "Premium_LRS"
 ///         }, {
-///         "volumeName"    = "usr/sap"
-///         "numberOfDisks" = 1
-///         "sizeInGb"      = 128
-///         "skuName"       = "Premium_LRS"
+///         volume_name     = "usr/sap"
+///         number_of_disks = 1
+///         size_in_gb      = 128
+///         sku_name        = "Premium_LRS"
 ///         }, {
-///         "volumeName"    = "backup"
-///         "numberOfDisks" = 2
-///         "sizeInGb"      = 256
-///         "skuName"       = "StandardSSD_LRS"
+///         volume_name     = "backup"
+///         number_of_disks = 2
+///         size_in_gb      = 256
+///         sku_name        = "StandardSSD_LRS"
 ///         }, {
-///         "volumeName"    = "os"
-///         "numberOfDisks" = 1
-///         "sizeInGb"      = 64
-///         "skuName"       = "StandardSSD_LRS"
+///         volume_name     = "os"
+///         number_of_disks = 1
+///         size_in_gb      = 64
+///         sku_name        = "StandardSSD_LRS"
 ///       }]
 ///     }
 ///     resource_names = {
 ///       application_server = {
 ///         availability_set_name = "appAvSet"
 ///         virtual_machines = [{
-///           "hostName"              = "apphostName0"
-///           "osDiskName"            = "app0osdisk"
-///           "virtualMachineName"    = "appvm0"
-///           "networkInterfaceNames" = ["appnic0"]
-///           "dataDisks" = [{
-///             "volumeName" = "default"
-///             "names"      = ["app0disk0"]
+///           host_name               = "apphostName0"
+///           os_disk_name            = "app0osdisk"
+///           virtual_machine_name    = "appvm0"
+///           network_interface_names = ["appnic0"]
+///           data_disks = [{
+///             volume_name = "default"
+///             names       = ["app0disk0"]
 ///           }]
 ///         }]
 ///       }
@@ -1416,13 +1443,13 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///           health_probe_names              = ["ascsHealthProbe"]
 ///         }
 ///         virtual_machines = [{
-///           "hostName"              = "ascshostName"
-///           "osDiskName"            = "ascsosdisk"
-///           "virtualMachineName"    = "ascsvm"
-///           "networkInterfaceNames" = ["ascsnic"]
-///           "dataDisks" = [{
-///             "volumeName" = "default"
-///             "names"      = ["ascsdisk"]
+///           host_name               = "ascshostName"
+///           os_disk_name            = "ascsosdisk"
+///           virtual_machine_name    = "ascsvm"
+///           network_interface_names = ["ascsnic"]
+///           data_disks = [{
+///             volume_name = "default"
+///             names       = ["ascsdisk"]
 ///           }]
 ///         }]
 ///       }
@@ -1435,22 +1462,22 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///           health_probe_names              = ["dbHealthProbe"]
 ///         }
 ///         virtual_machines = [{
-///           "hostName"              = "dbprhost"
-///           "osDiskName"            = "dbprosdisk"
-///           "virtualMachineName"    = "dbvmpr"
-///           "networkInterfaceNames" = ["dbprnic"]
-///           "dataDisks" = [{
-///             "volumeName" = "hanaData"
-///             "names"      = ["hanadatapr0", "hanadatapr1"]
+///           host_name               = "dbprhost"
+///           os_disk_name            = "dbprosdisk"
+///           virtual_machine_name    = "dbvmpr"
+///           network_interface_names = ["dbprnic"]
+///           data_disks = [{
+///             volume_name = "hanaData"
+///             names       = ["hanadatapr0", "hanadatapr1"]
 ///             }, {
-///             "volumeName" = "hanaLog"
-///             "names"      = ["hanalogpr0", "hanalogpr1", "hanalogpr2"]
+///             volume_name = "hanaLog"
+///             names       = ["hanalogpr0", "hanalogpr1", "hanalogpr2"]
 ///             }, {
-///             "volumeName" = "usrSap"
-///             "names"      = ["usrsappr0"]
+///             volume_name = "usrSap"
+///             names       = ["usrsappr0"]
 ///             }, {
-///             "volumeName" = "hanaShared"
-///             "names"      = ["hanasharedpr0", "hanasharedpr1"]
+///             volume_name = "hanaShared"
+///             names       = ["hanasharedpr0", "hanasharedpr1"]
 ///           }]
 ///         }]
 ///       }
@@ -1460,13 +1487,13 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///       }
 ///     }
 ///     transport_create_and_mount = {
-///       resource_group_id    = azure_core_resourcegroup.app.id
+///       resource_group_id    = azure_core_resource_group.app.id
 ///       storage_account_name = "exampletranssa"
 ///     }
 ///   }
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 ///   tags = {
 ///     "Env" = "Test"
@@ -1546,7 +1573,7 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///             .rsaBits(4096)
 ///             .build());
 ///
-///         final var example = TlsFunctions.PublicKey(Map.of("privateKeyPem", examplePrivateKey.privateKeyPem()));
+///         final var example = TlsFunctions.PublicKey(Map.of("privateKeyPem", examplePrivateKey.get("privateKeyPem")));
 ///
 ///         final var current = CoreFunctions.getSubscription(GetSubscriptionArgs.builder()
 ///             .build());
@@ -1622,8 +1649,8 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///                             .build())
 ///                         .osProfile(ThreeTierVirtualInstanceThreeTierConfigurationApplicationServerConfigurationVirtualMachineConfigurationOsProfileArgs.builder()
 ///                             .adminUsername("testAdmin")
-///                             .sshPrivateKey(examplePrivateKey.privateKeyPem())
-///                             .sshPublicKey(example.publicKeyOpenssh())
+///                             .sshPrivateKey(examplePrivateKey.get("privateKeyPem"))
+///                             .sshPublicKey(example.get("publicKeyOpenssh"))
 ///                             .build())
 ///                         .build())
 ///                     .build())
@@ -1640,8 +1667,8 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///                             .build())
 ///                         .osProfile(ThreeTierVirtualInstanceThreeTierConfigurationCentralServerConfigurationVirtualMachineConfigurationOsProfileArgs.builder()
 ///                             .adminUsername("testAdmin")
-///                             .sshPrivateKey(examplePrivateKey.privateKeyPem())
-///                             .sshPublicKey(example.publicKeyOpenssh())
+///                             .sshPrivateKey(examplePrivateKey.get("privateKeyPem"))
+///                             .sshPublicKey(example.get("publicKeyOpenssh"))
 ///                             .build())
 ///                         .build())
 ///                     .build())
@@ -1659,8 +1686,8 @@ import 'three_tier_virtual_instance_three_tier_configuration.dart';
 ///                             .build())
 ///                         .osProfile(ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfigurationVirtualMachineConfigurationOsProfileArgs.builder()
 ///                             .adminUsername("testAdmin")
-///                             .sshPrivateKey(examplePrivateKey.privateKeyPem())
-///                             .sshPublicKey(example.publicKeyOpenssh())
+///                             .sshPrivateKey(examplePrivateKey.get("privateKeyPem"))
+///                             .sshPublicKey(example.get("publicKeyOpenssh"))
 ///                             .build())
 ///                         .build())
 ///                     .diskVolumeConfigurations(
@@ -2087,7 +2114,7 @@ class ThreeTierVirtualInstance extends pulumi.CustomResource {
           'azure:workloadssap/threeTierVirtualInstance:ThreeTierVirtualInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     appLocation = registerOutput<String>('appLocation');
     environment = registerOutput<String>('environment');

@@ -234,7 +234,7 @@ import 'sql_role_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -242,30 +242,39 @@ import 'sql_role_assignment_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_cosmosdb_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-cosmosdb"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   offer_type          = "Standard"
 ///   kind                = "GlobalDocumentDB"
 ///   consistency_policy = {
 ///     consistency_level = "Strong"
 ///   }
 ///   geo_locations {
-///     location          = azure_core_resourcegroup.example.location
+///     location          = azure_core_resource_group.example.location
 ///     failover_priority = 0
 ///   }
 /// }
-/// resource "azure_cosmosdb_sqlroledefinition" "example" {
+/// resource "azure_cosmosdb_sql_role_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplesqlroledef"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_cosmosdb_account.example.name
 ///   type                = "CustomRole"
 ///   assignable_scopes   = [azure_cosmosdb_account.example.id]
@@ -273,12 +282,15 @@ import 'sql_role_assignment_state.dart';
 ///     data_actions = ["Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/read"]
 ///   }
 /// }
-/// resource "azure_cosmosdb_sqlroleassignment" "example" {
+/// resource "azure_cosmosdb_sql_role_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "736180af-7fbc-4c7f-9004-22735173c1c3"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_cosmosdb_account.example.name
-///   role_definition_id  = azure_cosmosdb_sqlroledefinition.example.id
-///   principal_id        = data.azure_core_getclientconfig.current.object_id
+///   role_definition_id  = azure_cosmosdb_sql_role_definition.example.id
+///   principal_id        = data.azure_core_client_config.current.object_id
 ///   scope               = azure_cosmosdb_account.example.id
 /// }
 /// ```
@@ -450,7 +462,7 @@ class SqlRoleAssignment extends pulumi.CustomResource {
           'azure:cosmosdb/sqlRoleAssignment:SqlRoleAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     this.name = registerOutput<String>('name');

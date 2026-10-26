@@ -155,7 +155,7 @@ import 'group_policy_remediation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -163,27 +163,36 @@ import 'group_policy_remediation_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_policy_getpolicydefintion" "example" {
+/// data "azure_policy_policy_defintion" "example" {
 ///   display_name = "Allowed locations"
 /// }
 ///
 /// resource "azure_management_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Example Management Group"
 /// }
-/// resource "azure_management_grouppolicyassignment" "example" {
+/// resource "azure_management_group_policy_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "exampleAssignment"
 ///   management_group_id  = azure_management_group.example.id
-///   policy_definition_id = data.azure_policy_getpolicydefintion.example.id
+///   policy_definition_id = data.azure_policy_policy_defintion.example.id
 ///   parameters = jsonencode({
 ///     "listOfAllowedLocations" = {
 ///       "value" = ["East US"]
 ///     }
 ///   })
 /// }
-/// resource "azure_management_grouppolicyremediation" "example" {
+/// resource "azure_management_group_policy_remediation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
 ///   management_group_id  = azure_management_group.example.id
-///   policy_assignment_id = azure_management_grouppolicyassignment.example.id
+///   policy_assignment_id = azure_management_group_policy_assignment.example.id
 /// }
 /// ```
 /// ```java
@@ -322,7 +331,7 @@ class GroupPolicyRemediation extends pulumi.CustomResource {
           'azure:management/groupPolicyRemediation:GroupPolicyRemediation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     failurePercentage = registerOutput<double?>('failurePercentage');
     locationFilters = registerOutput<List<String>?>('locationFilters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

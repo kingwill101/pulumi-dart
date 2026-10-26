@@ -198,7 +198,7 @@ import 'backend_address_pool_address_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -206,37 +206,46 @@ import 'backend_address_pool_address_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_network_getvirtualnetwork" "example" {
+/// data "azure_network_virtual_network" "example" {
 ///   name                = "example-network"
 ///   resource_group_name = "example-resources"
 /// }
-/// data "azure_lb_getlb" "exampleGetLB" {
+/// data "azure_lb_l_b" "exampleGetLB" {
 ///   name                = "example-lb"
 ///   resource_group_name = "example-resources"
 /// }
-/// data "azure_lb_getbackendaddresspool" "exampleGetBackendAddressPool" {
+/// data "azure_lb_backend_address_pool" "exampleGetBackendAddressPool" {
 ///   name            = "first"
-///   loadbalancer_id = data.azure_lb_getlb.exampleGetLB.id
+///   loadbalancer_id = data.azure_lb_l_b.exampleGetLB.id
 /// }
-/// data "azure_lb_getbackendaddresspool" "backend-pool-cr" {
+/// data "azure_lb_backend_address_pool" "backend-pool-cr" {
 ///   name            = "globalLBBackendPool"
-///   loadbalancer_id = data.azure_lb_getlb.exampleGetLB.id
+///   loadbalancer_id = data.azure_lb_l_b.exampleGetLB.id
 /// }
 ///
-/// resource "azure_lb_backendaddresspooladdress" "example" {
+/// resource "azure_lb_backend_address_pool_address" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example"
-///   backend_address_pool_id = data.azure_lb_getbackendaddresspool.exampleGetBackendAddressPool.id
-///   virtual_network_id      = data.azure_network_getvirtualnetwork.example.id
+///   backend_address_pool_id = data.azure_lb_backend_address_pool.exampleGetBackendAddressPool.id
+///   virtual_network_id      = data.azure_network_virtual_network.example.id
 ///   ip_address              = "10.0.0.1"
 /// }
-/// resource "azure_lb_backendaddresspooladdress" "example-1" {
+/// resource "azure_lb_backend_address_pool_address" "example-1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                = "address1"
-///   backend_address_pool_id             = data.azure_lb_getbackendaddresspool.backend-pool-cr.id
+///   backend_address_pool_id             = data.azure_lb_backend_address_pool.backend-pool-cr.id
 ///   backend_address_ip_configuration_id = backend-lb-R1.frontendIpConfiguration[0].id
 /// }
-/// resource "azure_lb_backendaddresspooladdress" "example-2" {
+/// resource "azure_lb_backend_address_pool_address" "example-2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                = "address2"
-///   backend_address_pool_id             = data.azure_lb_getbackendaddresspool.backend-pool-cr.id
+///   backend_address_pool_id             = data.azure_lb_backend_address_pool.backend-pool-cr.id
 ///   backend_address_ip_configuration_id = backend-lb-R2.frontendIpConfiguration[0].id
 /// }
 /// ```
@@ -296,13 +305,13 @@ import 'backend_address_pool_address_state.dart';
 ///         var example_1 = new BackendAddressPoolAddress("example-1", BackendAddressPoolAddressArgs.builder()
 ///             .name("address1")
 ///             .backendAddressPoolId(backend_pool_cr.id())
-///             .backendAddressIpConfigurationId(backend_lb_R1.frontendIpConfiguration()[0].id())
+///             .backendAddressIpConfigurationId(backend_lb_R1.get("frontendIpConfiguration")[0].get("id"))
 ///             .build());
 ///
 ///         var example_2 = new BackendAddressPoolAddress("example-2", BackendAddressPoolAddressArgs.builder()
 ///             .name("address2")
 ///             .backendAddressPoolId(backend_pool_cr.id())
-///             .backendAddressIpConfigurationId(backend_lb_R2.frontendIpConfiguration()[0].id())
+///             .backendAddressIpConfigurationId(backend_lb_R2.get("frontendIpConfiguration")[0].get("id"))
 ///             .build());
 ///
 ///     }
@@ -400,7 +409,7 @@ class BackendAddressPoolAddress extends pulumi.CustomResource {
           'azure:lb/backendAddressPoolAddress:BackendAddressPoolAddress',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backendAddressIpConfigurationId = registerOutput<String?>('backendAddressIpConfigurationId');
     backendAddressPoolId = registerOutput<String>('backendAddressPoolId');

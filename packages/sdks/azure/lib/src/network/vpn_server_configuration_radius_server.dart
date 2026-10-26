@@ -31,7 +31,7 @@ class VpnServerConfigurationRadiusServer {
   factory VpnServerConfigurationRadiusServer.fromMap(Map<String, dynamic> map) {
     return VpnServerConfigurationRadiusServer(
       address: pulumi.Input.fromValue(map['address'] as String),
-      score: pulumi.Input.fromValue((map['score'] as num).toInt()),
+      score: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['score'])),
       secret: pulumi.Input.fromValue(map['secret'] as String),
     );
   }

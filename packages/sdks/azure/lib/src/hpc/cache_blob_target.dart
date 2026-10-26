@@ -43,7 +43,7 @@ class CacheBlobTarget extends pulumi.CustomResource {
           'azure:hpc/cacheBlobTarget:CacheBlobTarget',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accessPolicyName = registerOutput<String?>('accessPolicyName');
     cacheName = registerOutput<String>('cacheName');

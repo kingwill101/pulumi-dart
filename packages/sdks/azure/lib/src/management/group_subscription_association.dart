@@ -95,7 +95,7 @@ import 'group_subscription_association_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -103,16 +103,19 @@ import 'group_subscription_association_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_management_getgroup" "example" {
+/// data "azure_management_group" "example" {
 ///   name = "exampleManagementGroup"
 /// }
-/// data "azure_core_getsubscription" "exampleGetSubscription" {
+/// data "azure_core_subscription" "exampleGetSubscription" {
 ///   subscription_id = "12345678-1234-1234-1234-123456789012"
 /// }
 ///
-/// resource "azure_management_groupsubscriptionassociation" "example" {
-///   management_group_id = data.azure_management_getgroup.example.id
-///   subscription_id     = data.azure_core_getsubscription.exampleGetSubscription.id
+/// resource "azure_management_group_subscription_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   management_group_id = data.azure_management_group.example.id
+///   subscription_id     = data.azure_core_subscription.exampleGetSubscription.id
 /// }
 /// ```
 /// ```java
@@ -210,7 +213,7 @@ class GroupSubscriptionAssociation extends pulumi.CustomResource {
           'azure:management/groupSubscriptionAssociation:GroupSubscriptionAssociation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     managementGroupId = registerOutput<String>('managementGroupId');
     subscriptionId = registerOutput<String>('subscriptionId');

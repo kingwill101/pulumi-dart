@@ -50,13 +50,13 @@ class GetExpressRouteCircuitPeering {
 
   factory GetExpressRouteCircuitPeering.fromMap(Map<String, dynamic> map) {
     return GetExpressRouteCircuitPeering(
-      azureAsn: pulumi.Input.fromValue((map['azureAsn'] as num).toInt()),
-      peerAsn: pulumi.Input.fromValue((map['peerAsn'] as num).toInt()),
+      azureAsn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['azureAsn'])),
+      peerAsn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['peerAsn'])),
       peeringType: pulumi.Input.fromValue(map['peeringType'] as String),
       primaryPeerAddressPrefix: pulumi.Input.fromValue(map['primaryPeerAddressPrefix'] as String),
       secondaryPeerAddressPrefix: pulumi.Input.fromValue(map['secondaryPeerAddressPrefix'] as String),
       sharedKey: pulumi.Input.fromValue(map['sharedKey'] as String),
-      vlanId: pulumi.Input.fromValue((map['vlanId'] as num).toInt()),
+      vlanId: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['vlanId'])),
     );
   }
 }

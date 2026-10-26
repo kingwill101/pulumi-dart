@@ -135,7 +135,7 @@ import 'connection_classic_certificate_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -143,26 +143,35 @@ import 'connection_classic_certificate_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "example" {
+/// data "azure_core_client_config" "example" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "resourceGroup-example"
 ///   location = "West Europe"
 /// }
 /// resource "azure_automation_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "account-example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Basic"
 /// }
-/// resource "azure_automation_connectionclassiccertificate" "example" {
+/// resource "azure_automation_connection_classic_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "connection-example"
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   automation_account_name = azure_automation_account.example.name
 ///   certificate_asset_name  = "cert1"
 ///   subscription_name       = "subs1"
-///   subscription_id         = data.azure_core_getclientconfig.example.subscription_id
+///   subscription_id         = data.azure_core_client_config.example.subscription_id
 /// }
 /// ```
 /// ```java
@@ -293,7 +302,7 @@ class ConnectionClassicCertificate extends pulumi.CustomResource {
           'azure:automation/connectionClassicCertificate:ConnectionClassicCertificate',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     automationAccountName = registerOutput<String>('automationAccountName');
     certificateAssetName = registerOutput<String>('certificateAssetName');

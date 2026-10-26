@@ -191,7 +191,7 @@ import 'protected_vmstate.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -199,24 +199,33 @@ import 'protected_vmstate.dart';
 ///   }
 /// }
 ///
-/// data "azure_compute_getvirtualmachine" "example" {
+/// data "azure_compute_virtual_machine" "example" {
 ///   name                = "example-vm"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-recovery_vault"
 ///   location = "West Europe"
 /// }
 /// resource "azure_recoveryservices_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-recovery-vault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_backup_policyvm" "example" {
+/// resource "azure_backup_policy_v_m" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-recovery-vault-policy"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   recovery_vault_name = azure_recoveryservices_vault.example.name
 ///   backup = {
 ///     frequency = "Daily"
@@ -226,11 +235,14 @@ import 'protected_vmstate.dart';
 ///     count = 10
 ///   }
 /// }
-/// resource "azure_backup_protectedvm" "vm1" {
-///   resource_group_name = azure_core_resourcegroup.example.name
+/// resource "azure_backup_protected_v_m" "vm1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name = azure_core_resource_group.example.name
 ///   recovery_vault_name = azure_recoveryservices_vault.example.name
-///   source_vm_id        = data.azure_compute_getvirtualmachine.example.id
-///   backup_policy_id    = azure_backup_policyvm.example.id
+///   source_vm_id        = data.azure_compute_virtual_machine.example.id
+///   backup_policy_id    = azure_backup_policy_v_m.example.id
 /// }
 /// ```
 /// ```java
@@ -399,7 +411,7 @@ class ProtectedVM extends pulumi.CustomResource {
           'azure:backup/protectedVM:ProtectedVM',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backupPolicyId = registerOutput<String?>('backupPolicyId');
     excludeDiskLuns = registerOutput<List<int>?>('excludeDiskLuns', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<int>(); });

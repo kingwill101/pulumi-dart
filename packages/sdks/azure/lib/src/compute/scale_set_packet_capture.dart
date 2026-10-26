@@ -414,7 +414,7 @@ import 'scale_set_packet_capture_storage_location.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -422,31 +422,46 @@ import 'scale_set_packet_capture_storage_location.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networkwatcher" "example" {
+/// resource "azure_network_network_watcher" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nw"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vn"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "internal"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_compute_linuxvirtualmachinescaleset" "example" {
+/// resource "azure_compute_linux_virtual_machine_scale_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example-vmss"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
+///   location                        = azure_core_resource_group.example.location
 ///   sku                             = "Standard_D4_v5"
 ///   instances                       = 4
 ///   admin_username                  = "adminuser"
@@ -474,20 +489,26 @@ import 'scale_set_packet_capture_storage_location.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_compute_virtualmachinescalesetextension" "example" {
+/// resource "azure_compute_virtual_machine_scale_set_extension" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "network-watcher"
-///   virtual_machine_scale_set_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///   virtual_machine_scale_set_id = azure_compute_linux_virtual_machine_scale_set.example.id
 ///   publisher                    = "Microsoft.Azure.NetworkWatcher"
 ///   type                         = "NetworkWatcherAgentLinux"
 ///   type_handler_version         = "1.4"
 ///   auto_upgrade_minor_version   = true
 ///   automatic_upgrade_enabled    = true
 /// }
-/// resource "azure_compute_scalesetpacketcapture" "example" {
-///   depends_on                   = [azure_compute_virtualmachinescalesetextension.example]
+/// resource "azure_compute_scale_set_packet_capture" "example" {
+///   depends_on = [azure_compute_virtual_machine_scale_set_extension.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-pc"
-///   network_watcher_id           = azure_network_networkwatcher.example.id
-///   virtual_machine_scale_set_id = azure_compute_linuxvirtualmachinescaleset.example.id
+///   network_watcher_id           = azure_network_network_watcher.example.id
+///   virtual_machine_scale_set_id = azure_compute_linux_virtual_machine_scale_set.example.id
 ///   storage_location = {
 ///     file_path = "/var/captures/packet.cap"
 ///   }
@@ -762,7 +783,7 @@ class ScaleSetPacketCapture extends pulumi.CustomResource {
           'azure:compute/scaleSetPacketCapture:ScaleSetPacketCapture',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     filters = registerOutput<List<ScaleSetPacketCaptureFilter>?>('filters', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ScaleSetPacketCaptureFilter>(guardedValue, (value) => ScaleSetPacketCaptureFilter.fromMap((value as Map).cast<String, dynamic>())); });
     machineScope = registerOutput<ScaleSetPacketCaptureMachineScope?>('machineScope', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScaleSetPacketCaptureMachineScope.fromMap((guardedValue as Map).cast<String, dynamic>()); });

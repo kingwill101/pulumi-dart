@@ -115,7 +115,7 @@ import 'gallery_application_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -123,19 +123,28 @@ import 'gallery_application_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_compute_sharedimagegallery" "example" {
+/// resource "azure_compute_shared_image_gallery" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplegallery"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_compute_galleryapplication" "example" {
+/// resource "azure_compute_gallery_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-app"
-///   gallery_id        = azure_compute_sharedimagegallery.example.id
-///   location          = azure_core_resourcegroup.example.location
+///   gallery_id        = azure_compute_shared_image_gallery.example.id
+///   location          = azure_core_resource_group.example.location
 ///   supported_os_type = "Linux"
 /// }
 /// ```
@@ -258,7 +267,7 @@ class GalleryApplication extends pulumi.CustomResource {
           'azure:compute/galleryApplication:GalleryApplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     endOfLifeDate = registerOutput<String?>('endOfLifeDate');

@@ -215,7 +215,7 @@ import 'monitor_tag_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -223,14 +223,20 @@ import 'monitor_tag_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-datadog"
 ///   location = "West US 2"
 /// }
 /// resource "azure_datadog_monitor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-monitor"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   datadog_organization = {
 ///     api_key         = "XXXX"
 ///     application_key = "XXXX"
@@ -244,7 +250,10 @@ import 'monitor_tag_rule_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_datadog_monitortagrule" "example" {
+/// resource "azure_datadog_monitor_tag_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   datadog_monitor_id = azure_datadog_monitor.example.id
 ///   logs {
 ///     subscription_log_enabled = true
@@ -403,7 +412,7 @@ class MonitorTagRule extends pulumi.CustomResource {
           'azure:datadog/monitorTagRule:MonitorTagRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     datadogMonitorId = registerOutput<String>('datadogMonitorId');
     logs = registerOutput<List<MonitorTagRuleLog>?>('logs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<MonitorTagRuleLog>(guardedValue, (value) => MonitorTagRuleLog.fromMap((value as Map).cast<String, dynamic>())); });

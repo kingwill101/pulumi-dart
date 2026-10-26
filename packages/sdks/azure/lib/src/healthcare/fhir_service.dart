@@ -247,7 +247,7 @@ import 'fhir_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -255,19 +255,28 @@ import 'fhir_service_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
 /// resource "azure_healthcare_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_healthcare_fhirservice" "example" {
+/// resource "azure_healthcare_fhir_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfexfhir"
 ///   location            = "east us"
 ///   resource_group_name = "tfex-resource_group"
@@ -277,7 +286,7 @@ import 'fhir_service_state.dart';
 ///     authority = "https://login.microsoftonline.com/tenantId"
 ///     audience  = "https://tfexfhir.fhir.azurehealthcareapis.com"
 ///   }
-///   access_policy_object_ids = [data.azure_core_getclientconfig.current.object_id]
+///   access_policy_object_ids = [data.azure_core_client_config.current.object_id]
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
@@ -476,7 +485,7 @@ class FhirService extends pulumi.CustomResource {
           'azure:healthcare/fhirService:FhirService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accessPolicyObjectIds = registerOutput<List<String>?>('accessPolicyObjectIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     authentication = registerOutput<FhirServiceAuthentication>('authentication', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FhirServiceAuthentication.fromMap((guardedValue as Map).cast<String, dynamic>()); });

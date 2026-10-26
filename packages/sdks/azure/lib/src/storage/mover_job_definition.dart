@@ -299,7 +299,7 @@ import 'mover_job_definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -307,57 +307,84 @@ import 'mover_job_definition_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_mover" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ssm"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_storage_moveragent" "example" {
+/// resource "azure_storage_mover_agent" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-agent"
 ///   storage_mover_id         = azure_storage_mover.example.id
-///   arc_virtual_machine_id   ="${azure_core_resourcegroup.example.id}/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName"
+///   arc_virtual_machine_id   ="${azure_core_resource_group.example.id}/providers/Microsoft.HybridCompute/machines/examples-hybridComputeName"
 ///   arc_virtual_machine_uuid = "3bb2c024-eba9-4d18-9e7a-1d772fcc5fe9"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "examplesa"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
+///   location                        = azure_core_resource_group.example.location
 ///   account_tier                    = "Standard"
 ///   account_replication_type        = "LRS"
 ///   allow_nested_items_to_be_public = true
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "acccontainer"
 ///   storage_account_name  = azure_storage_account.example.name
 ///   container_access_type = "blob"
 /// }
-/// resource "azure_storage_movertargetendpoint" "example" {
+/// resource "azure_storage_mover_target_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-smte"
 ///   storage_mover_id       = azure_storage_mover.example.id
 ///   storage_account_id     = azure_storage_account.example.id
 ///   storage_container_name = azure_storage_container.example.name
 /// }
-/// resource "azure_storage_moversourceendpoint" "example" {
+/// resource "azure_storage_mover_source_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example-smse"
 ///   storage_mover_id = azure_storage_mover.example.id
 ///   host             = "192.168.0.1"
 /// }
-/// resource "azure_storage_moverproject" "example" {
+/// resource "azure_storage_mover_project" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example-sp"
 ///   storage_mover_id = azure_storage_mover.example.id
 /// }
-/// resource "azure_storage_moverjobdefinition" "example" {
+/// resource "azure_storage_mover_job_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-sjd"
-///   storage_mover_project_id = azure_storage_moverproject.example.id
-///   agent_name               = azure_storage_moveragent.example.name
+///   storage_mover_project_id = azure_storage_mover_project.example.id
+///   agent_name               = azure_storage_mover_agent.example.name
 ///   copy_mode                = "Additive"
-///   source_name              = azure_storage_moversourceendpoint.example.name
+///   source_name              = azure_storage_mover_source_endpoint.example.name
 ///   source_sub_path          = "/"
-///   target_name              = azure_storage_movertargetendpoint.example.name
+///   target_name              = azure_storage_mover_target_endpoint.example.name
 ///   target_sub_path          = "/"
 ///   description              = "Example Job Definition Description"
 /// }
@@ -587,7 +614,7 @@ class MoverJobDefinition extends pulumi.CustomResource {
           'azure:storage/moverJobDefinition:MoverJobDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     agentName = registerOutput<String?>('agentName');
     copyMode = registerOutput<String>('copyMode');

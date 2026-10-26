@@ -220,7 +220,7 @@ import 'routing_intent_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -228,36 +228,51 @@ import 'routing_intent_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualwan" "example" {
+/// resource "azure_network_virtual_wan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vwan"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_network_virtualhub" "example" {
+/// resource "azure_network_virtual_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vhub"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   virtual_wan_id      = azure_network_virtual_wan.example.id
 ///   address_prefix      = "10.0.1.0/24"
 /// }
 /// resource "azure_network_firewall" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-fw"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "AZFW_Hub"
 ///   sku_tier            = "Standard"
 ///   virtual_hub = {
-///     virtual_hub_id  = azure_network_virtualhub.example.id
+///     virtual_hub_id  = azure_network_virtual_hub.example.id
 ///     public_ip_count = 1
 ///   }
 /// }
-/// resource "azure_network_routingintent" "example" {
+/// resource "azure_network_routing_intent" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example-routingintent"
-///   virtual_hub_id = azure_network_virtualhub.example.id
+///   virtual_hub_id = azure_network_virtual_hub.example.id
 ///   routing_policies {
 ///     name         = "InternetTrafficPolicy"
 ///     destinations = ["Internet"]
@@ -423,7 +438,7 @@ class RoutingIntent extends pulumi.CustomResource {
           'azure:network/routingIntent:RoutingIntent',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     routingPolicies = registerOutput<List<RoutingIntentRoutingPolicy>>('routingPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<RoutingIntentRoutingPolicy>(guardedValue, (value) => RoutingIntentRoutingPolicy.fromMap((value as Map).cast<String, dynamic>())); });

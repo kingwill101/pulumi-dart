@@ -558,7 +558,7 @@ import 'backup_instance_postgresql_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -566,17 +566,23 @@ import 'backup_instance_postgresql_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
 /// resource "azure_postgresql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example"
-///   location                     = azure_core_resourcegroup.example.location
-///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resource_group.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
 ///   sku_name                     = "B_Gen5_2"
 ///   storage_mb                   = 5120
 ///   backup_retention_days        = 7
@@ -587,74 +593,98 @@ import 'backup_instance_postgresql_state.dart';
 ///   version                      = "9.5"
 ///   ssl_enforcement_enabled      = true
 /// }
-/// resource "azure_postgresql_firewallrule" "example" {
+/// resource "azure_postgresql_firewall_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "AllowAllWindowsAzureIps"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   server_name         = azure_postgresql_server.example.name
 ///   start_ip_address    = "0.0.0.0"
 ///   end_ip_address      = "0.0.0.0"
 /// }
 /// resource "azure_postgresql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   server_name         = azure_postgresql_server.example.name
 ///   charset             = "UTF8"
 ///   collation           = "English_United States.1252"
 /// }
-/// resource "azure_dataprotection_backupvault" "example" {
+/// resource "azure_dataprotection_backup_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   datastore_type      = "VaultStore"
 ///   redundancy          = "LocallyRedundant"
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "premium"
 ///   soft_delete_retention_days = 7
 ///   access_policies {
-///     tenant_id          = data.azure_core_getclientconfig.current.tenant_id
-///     object_id          = data.azure_core_getclientconfig.current.object_id
+///     tenant_id          = data.azure_core_client_config.current.tenant_id
+///     object_id          = data.azure_core_client_config.current.object_id
 ///     key_permissions    = ["Create", "Get"]
 ///     secret_permissions = ["Set", "Get", "Delete", "Purge", "Recover"]
 ///   }
 ///   access_policies {
-///     tenant_id          = azure_dataprotection_backupvault.example.identity.tenant_id
-///     object_id          = azure_dataprotection_backupvault.example.identity.principal_id
+///     tenant_id          = azure_dataprotection_backup_vault.example.identity.tenant_id
+///     object_id          = azure_dataprotection_backup_vault.example.identity.principal_id
 ///     key_permissions    = ["Create", "Get"]
 ///     secret_permissions = ["Set", "Get", "Delete", "Purge", "Recover"]
 ///   }
 /// }
 /// resource "azure_keyvault_secret" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example"
 ///   value        ="Server=${azure_postgresql_server.example.name}.postgres.database.azure.com;Database=${azure_postgresql_database.example.name};Port=5432;User Id=psqladmin@${azure_postgresql_server.example.name};Password=H@Sh1CoR3!;Ssl Mode=Require;"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 /// }
-/// resource "azure_dataprotection_backuppolicypostgresql" "example" {
+/// resource "azure_dataprotection_backup_policy_postgresql" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   vault_name                      = azure_dataprotection_backupvault.example.name
+///   resource_group_name             = azure_core_resource_group.example.name
+///   vault_name                      = azure_dataprotection_backup_vault.example.name
 ///   backup_repeating_time_intervals = ["R/2021-05-23T02:30:00+00:00/P1W"]
 ///   default_retention_duration      = "P4M"
 /// }
 /// resource "azure_authorization_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   scope                = azure_postgresql_server.example.id
 ///   role_definition_name = "Reader"
-///   principal_id         = azure_dataprotection_backupvault.example.identity.principal_id
+///   principal_id         = azure_dataprotection_backup_vault.example.identity.principal_id
 /// }
-/// resource "azure_dataprotection_backupinstancepostgresql" "example" {
+/// resource "azure_dataprotection_backup_instance_postgresql" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                    = "example"
-///   location                                = azure_core_resourcegroup.example.location
-///   vault_id                                = azure_dataprotection_backupvault.example.id
+///   location                                = azure_core_resource_group.example.location
+///   vault_id                                = azure_dataprotection_backup_vault.example.id
 ///   database_id                             = azure_postgresql_database.example.id
-///   backup_policy_id                        = azure_dataprotection_backuppolicypostgresql.example.id
+///   backup_policy_id                        = azure_dataprotection_backup_policy_postgresql.example.id
 ///   database_credential_key_vault_secret_id = azure_keyvault_secret.example.versionless_id
 /// }
 /// ```
@@ -992,7 +1022,7 @@ class BackupInstancePostgresql extends pulumi.CustomResource {
           'azure:dataprotection/backupInstancePostgresql:BackupInstancePostgresql',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     databaseCredentialKeyVaultSecretId = registerOutput<String?>('databaseCredentialKeyVaultSecretId');

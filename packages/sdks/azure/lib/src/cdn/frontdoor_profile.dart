@@ -171,7 +171,7 @@ import 'frontdoor_profile_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -179,23 +179,32 @@ import 'frontdoor_profile_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
-///   location            = azure_core_resourcegroup.example.location
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example-identity"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_cdn_frontdoorprofile" "example" {
+/// resource "azure_cdn_frontdoor_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-cdn-profile"
-///   resource_group_name      = azure_core_resourcegroup.example.name
+///   resource_group_name      = azure_core_resource_group.example.name
 ///   sku_name                 = "Premium_AzureFrontDoor"
 ///   response_timeout_seconds = 120
 ///   identity = {
 ///     type         = "SystemAssigned, UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 ///   log_scrubbing_rules {
 ///     match_variable = "RequestIPAddress"
@@ -340,7 +349,7 @@ class FrontdoorProfile extends pulumi.CustomResource {
           'azure:cdn/frontdoorProfile:FrontdoorProfile',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     identity = registerOutput<FrontdoorProfileIdentity?>('identity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return FrontdoorProfileIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     logScrubbingRules = registerOutput<List<FrontdoorProfileLogScrubbingRule>?>('logScrubbingRules', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FrontdoorProfileLogScrubbingRule>(guardedValue, (value) => FrontdoorProfileLogScrubbingRule.fromMap((value as Map).cast<String, dynamic>())); });

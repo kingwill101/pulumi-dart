@@ -151,7 +151,7 @@ import 'catalog_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -159,19 +159,28 @@ import 'catalog_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_devcenter_devcenter" "example" {
-///   location            = azure_core_resourcegroup.example.location
+/// resource "azure_devcenter_dev_center" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   identity = {
 ///     type = "SystemAssigned"
 ///   }
 /// }
 /// resource "azure_devcenter_catalog" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
 ///   resource_group_name = testAzurermResourceGroup.name
 ///   dev_center_id       = test.id
@@ -226,8 +235,8 @@ import 'catalog_state.dart';
 ///
 ///         var exampleCatalog = new Catalog("exampleCatalog", CatalogArgs.builder()
 ///             .name("example")
-///             .resourceGroupName(testAzurermResourceGroup.name())
-///             .devCenterId(test.id())
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
+///             .devCenterId(test.get("id"))
 ///             .catalogGithub(CatalogCatalogGithubArgs.builder()
 ///                 .branch("foo")
 ///                 .path("")
@@ -313,7 +322,7 @@ class Catalog extends pulumi.CustomResource {
           'azure:devcenter/catalog:Catalog',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     catalogAdogit = registerOutput<CatalogCatalogAdogit?>('catalogAdogit', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogCatalogAdogit.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     catalogGithub = registerOutput<CatalogCatalogGithub?>('catalogGithub', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CatalogCatalogGithub.fromMap((guardedValue as Map).cast<String, dynamic>()); });

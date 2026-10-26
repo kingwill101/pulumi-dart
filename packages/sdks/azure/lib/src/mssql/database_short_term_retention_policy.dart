@@ -25,8 +25,8 @@ class DatabaseShortTermRetentionPolicy {
 
   factory DatabaseShortTermRetentionPolicy.fromMap(Map<String, dynamic> map) {
     return DatabaseShortTermRetentionPolicy(
-      backupIntervalInHours: (() { final guardedValue = map['backupIntervalInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      retentionDays: pulumi.Input.fromValue((map['retentionDays'] as num).toInt()),
+      backupIntervalInHours: (() { final guardedValue = map['backupIntervalInHours']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      retentionDays: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retentionDays'])),
     );
   }
 }

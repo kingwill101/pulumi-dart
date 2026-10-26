@@ -123,7 +123,7 @@ import 'partner_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -131,12 +131,18 @@ import 'partner_configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_eventgrid_partnerconfiguration" "example" {
-///   resource_group_name                     = azure_core_resourcegroup.example.name
+/// resource "azure_eventgrid_partner_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name                     = azure_core_resource_group.example.name
 ///   default_maximum_expiration_time_in_days = 14
 ///   partner_authorizations {
 ///     partner_registration_id              = "804a11ca-ce9b-4158-8e94-3c8dc7a072ec"
@@ -249,7 +255,7 @@ class PartnerConfiguration extends pulumi.CustomResource {
           'azure:eventgrid/partnerConfiguration:PartnerConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     defaultMaximumExpirationTimeInDays = registerOutput<int?>('defaultMaximumExpirationTimeInDays');
     partnerAuthorizations = registerOutput<List<PartnerConfigurationPartnerAuthorization>?>('partnerAuthorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PartnerConfigurationPartnerAuthorization>(guardedValue, (value) => PartnerConfigurationPartnerAuthorization.fromMap((value as Map).cast<String, dynamic>())); });

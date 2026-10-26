@@ -298,7 +298,7 @@ import 'backup_policy_blob_storage_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -306,20 +306,29 @@ import 'backup_policy_blob_storage_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_dataprotection_backupvault" "example" {
+/// resource "azure_dataprotection_backup_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-backup-vault"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   datastore_type      = "VaultStore"
 ///   redundancy          = "LocallyRedundant"
 /// }
-/// resource "azure_dataprotection_backuppolicyblobstorage" "example" {
+/// resource "azure_dataprotection_backup_policy_blob_storage" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                   = "example-backup-policy"
-///   vault_id                               = azure_dataprotection_backupvault.example.id
+///   vault_id                               = azure_dataprotection_backup_vault.example.id
 ///   operational_default_retention_duration = "P30D"
 ///   vault_default_retention_duration       = "P7D"
 ///   retention_rules {
@@ -544,7 +553,7 @@ class BackupPolicyBlobStorage extends pulumi.CustomResource {
           'azure:dataprotection/backupPolicyBlobStorage:BackupPolicyBlobStorage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backupRepeatingTimeIntervals = registerOutput<List<String>?>('backupRepeatingTimeIntervals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     this.name = registerOutput<String>('name');

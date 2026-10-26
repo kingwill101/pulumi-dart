@@ -158,7 +158,7 @@ import 'automation_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -166,22 +166,34 @@ import 'automation_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "west europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-workspace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 /// }
-/// resource "azure_sentinel_loganalyticsworkspaceonboarding" "example" {
-///   workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+/// resource "azure_sentinel_log_analytics_workspace_onboarding" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   workspace_id = azure_operationalinsights_analytics_workspace.example.id
 /// }
-/// resource "azure_sentinel_automationrule" "example" {
+/// resource "azure_sentinel_automation_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "56094f72-ac3f-40e7-a0c0-47bd95f70336"
-///   log_analytics_workspace_id = azure_sentinel_loganalyticsworkspaceonboarding.example.workspace_id
+///   log_analytics_workspace_id = azure_sentinel_log_analytics_workspace_onboarding.example.workspace_id
 ///   display_name               = "automation_rule1"
 ///   order                      = 1
 ///   action_incidents {
@@ -336,7 +348,7 @@ class AutomationRule extends pulumi.CustomResource {
           'azure:sentinel/automationRule:AutomationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     actionIncidentTasks = registerOutput<List<AutomationRuleActionIncidentTask>?>('actionIncidentTasks', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleActionIncidentTask>(guardedValue, (value) => AutomationRuleActionIncidentTask.fromMap((value as Map).cast<String, dynamic>())); });
     actionIncidents = registerOutput<List<AutomationRuleActionIncident>?>('actionIncidents', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationRuleActionIncident>(guardedValue, (value) => AutomationRuleActionIncident.fromMap((value as Map).cast<String, dynamic>())); });

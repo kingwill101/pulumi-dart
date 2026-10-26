@@ -208,7 +208,7 @@ import 'gremlin_graph_unique_key.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -216,21 +216,27 @@ import 'gremlin_graph_unique_key.dart';
 ///   }
 /// }
 ///
-/// data "azure_cosmosdb_getaccount" "example" {
+/// data "azure_cosmosdb_account" "example" {
 ///   name                = "tfex-cosmosdb-account"
 ///   resource_group_name = "tfex-cosmosdb-account-rg"
 /// }
 ///
-/// resource "azure_cosmosdb_gremlindatabase" "example" {
+/// resource "azure_cosmosdb_gremlin_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-cosmos-gremlin-db"
-///   resource_group_name = data.azure_cosmosdb_getaccount.example.resource_group_name
-///   account_name        = data.azure_cosmosdb_getaccount.example.name
+///   resource_group_name = data.azure_cosmosdb_account.example.resource_group_name
+///   account_name        = data.azure_cosmosdb_account.example.name
 /// }
-/// resource "azure_cosmosdb_gremlingraph" "example" {
+/// resource "azure_cosmosdb_gremlin_graph" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-cosmos-gremlin-graph"
-///   resource_group_name = data.azure_cosmosdb_getaccount.example.resource_group_name
-///   account_name        = data.azure_cosmosdb_getaccount.example.name
-///   database_name       = azure_cosmosdb_gremlindatabase.example.name
+///   resource_group_name = data.azure_cosmosdb_account.example.resource_group_name
+///   account_name        = data.azure_cosmosdb_account.example.name
+///   database_name       = azure_cosmosdb_gremlin_database.example.name
 ///   partition_key_path  = "/Example"
 ///   throughput          = 400
 ///   index_policy = {
@@ -417,7 +423,7 @@ class GremlinGraph extends pulumi.CustomResource {
           'azure:cosmosdb/gremlinGraph:GremlinGraph',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     analyticalStorageTtl = registerOutput<int?>('analyticalStorageTtl');

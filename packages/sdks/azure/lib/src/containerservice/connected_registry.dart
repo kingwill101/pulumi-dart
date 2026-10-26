@@ -217,7 +217,7 @@ import 'connected_registry_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -225,33 +225,48 @@ import 'connected_registry_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_containerservice_registry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "exampleacr"
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   location              = azure_core_resourcegroup.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   location              = azure_core_resource_group.example.location
 ///   sku                   = "Premium"
 ///   data_endpoint_enabled = true
 /// }
-/// resource "azure_containerservice_registryscopemap" "example" {
+/// resource "azure_containerservice_registry_scope_map" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "examplescopemap"
 ///   container_registry_name = azure_containerservice_registry.example.name
 ///   resource_group_name     = azure_containerservice_registry.example.resource_group_name
 ///   actions                 = ["repositories/hello-world/content/delete", "repositories/hello-world/content/read", "repositories/hello-world/content/write", "repositories/hello-world/metadata/read", "repositories/hello-world/metadata/write", "gateway/examplecr/config/read", "gateway/examplecr/config/write", "gateway/examplecr/message/read", "gateway/examplecr/message/write"]
 /// }
-/// resource "azure_containerservice_registrytoken" "example" {
+/// resource "azure_containerservice_registry_token" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "exampletoken"
 ///   container_registry_name = azure_containerservice_registry.example.name
 ///   resource_group_name     = azure_containerservice_registry.example.resource_group_name
-///   scope_map_id            = azure_containerservice_registryscopemap.example.id
+///   scope_map_id            = azure_containerservice_registry_scope_map.example.id
 /// }
-/// resource "azure_containerservice_connectedregistry" "example" {
+/// resource "azure_containerservice_connected_registry" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "examplecr"
 ///   container_registry_id = azure_containerservice_registry.example.id
-///   sync_token_id         = azure_containerservice_registrytoken.example.id
+///   sync_token_id         = azure_containerservice_registry_token.example.id
 /// }
 /// ```
 /// ```java
@@ -433,7 +448,7 @@ class ConnectedRegistry extends pulumi.CustomResource {
           'azure:containerservice/connectedRegistry:ConnectedRegistry',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     auditLogEnabled = registerOutput<bool?>('auditLogEnabled');
     clientTokenIds = registerOutput<List<String>?>('clientTokenIds', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

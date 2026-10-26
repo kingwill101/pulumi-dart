@@ -134,7 +134,7 @@ import 'definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -142,23 +142,29 @@ import 'definition_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_managedapplication_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplemanagedapplicationdefinition"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   lock_level          = "ReadOnly"
 ///   package_file_uri    = "https://github.com/Azure/azure-managedapp-samples/raw/master/Managed Application Sample Packages/201-managed-storage-account/managedstorage.zip"
 ///   display_name        = "TestManagedApplicationDefinition"
 ///   description         = "Test Managed Application Definition"
 ///   authorizations {
-///     service_principal_id = data.azure_core_getclientconfig.current.object_id
+///     service_principal_id = data.azure_core_client_config.current.object_id
 ///     role_definition_id   = "a094b430-dad3-424d-ae58-13f72fd72591"
 ///   }
 /// }
@@ -295,7 +301,7 @@ class Definition extends pulumi.CustomResource {
           'azure:managedapplication/definition:Definition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     authorizations = registerOutput<List<DefinitionAuthorization>?>('authorizations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<DefinitionAuthorization>(guardedValue, (value) => DefinitionAuthorization.fromMap((value as Map).cast<String, dynamic>())); });
     createUiDefinition = registerOutput<String?>('createUiDefinition');

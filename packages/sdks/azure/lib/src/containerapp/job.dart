@@ -331,7 +331,7 @@ import 'job_template.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -339,27 +339,39 @@ import 'job_template.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-log-analytics-workspace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 ///   retention_in_days   = 30
 /// }
 /// resource "azure_containerapp_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-container-app-environment"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
+///   log_analytics_workspace_id = azure_operationalinsights_analytics_workspace.example.id
 /// }
 /// resource "azure_containerapp_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-container-app-job"
-///   location                     = azure_core_resourcegroup.example.location
-///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resource_group.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
 ///   container_app_environment_id = azure_containerapp_environment.example.id
 ///   replica_timeout_in_seconds   = 10
 ///   replica_retry_limit          = 10
@@ -369,31 +381,31 @@ import 'job_template.dart';
 ///   }
 ///   template = {
 ///     containers = [{
-///       "image" = "repo/testcontainerAppsJob0:v1"
-///       "name"  = "testcontainerappsjob0"
-///       "readinessProbes" = [{
-///         "transport" = "HTTP"
-///         "port"      = 5000
+///       image = "repo/testcontainerAppsJob0:v1"
+///       name  = "testcontainerappsjob0"
+///       readiness_probes = [{
+///         transport = "HTTP"
+///         port      = 5000
 ///       }]
-///       "livenessProbes" = [{
-///         "transport" = "HTTP"
-///         "port"      = 5000
-///         "path"      = "/health"
-///         "headers" = [{
-///           "name"  = "Cache-Control"
-///           "value" = "no-cache"
+///       liveness_probes = [{
+///         transport = "HTTP"
+///         port      = 5000
+///         path      = "/health"
+///         headers = [{
+///           name  = "Cache-Control"
+///           value = "no-cache"
 ///         }]
-///         "initialDelay"          = 5
-///         "intervalSeconds"       = 20
-///         "timeout"               = 2
-///         "failureCountThreshold" = 1
+///         initial_delay           = 5
+///         interval_seconds        = 20
+///         timeout                 = 2
+///         failure_count_threshold = 1
 ///       }]
-///       "startupProbes" = [{
-///         "transport" = "TCP"
-///         "port"      = 5000
+///       startup_probes = [{
+///         transport = "TCP"
+///         port      = 5000
 ///       }]
-///       "cpu"    = 0.5
-///       "memory" = "1Gi"
+///       cpu    = 0.5
+///       memory = "1Gi"
 ///     }]
 ///   }
 /// }
@@ -624,7 +636,7 @@ class Job extends pulumi.CustomResource {
           'azure:containerapp/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['secrets'],
         ) {
     containerAppEnvironmentId = registerOutput<String>('containerAppEnvironmentId');

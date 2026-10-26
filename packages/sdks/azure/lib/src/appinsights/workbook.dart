@@ -175,7 +175,7 @@ import 'workbook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -183,14 +183,20 @@ import 'workbook_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appinsights_workbook" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "85b3e8bb-fc93-40be-83f2-98f6bec18ba0"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   display_name        = "workbook1"
 ///   data_json = jsonencode({
 ///     "version" = "Notebook/1.0"
@@ -345,7 +351,7 @@ class Workbook extends pulumi.CustomResource {
           'azure:appinsights/workbook:Workbook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     category = registerOutput<String?>('category');
     dataJson = registerOutput<String>('dataJson');

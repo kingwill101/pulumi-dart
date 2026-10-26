@@ -93,7 +93,7 @@ import 'frontdoor_origin_state.dart';
 ///     {
 ///         Name = "example-origingroup",
 ///         CdnFrontdoorProfileId = exampleFrontdoorProfile.Id,
-///         LoadBalancing = null,
+///         LoadBalancing = new() { },
 ///     });
 ///
 ///     var exampleFrontdoorOrigin = new Azure.Cdn.FrontdoorOrigin("example", new()
@@ -166,7 +166,7 @@ import 'frontdoor_origin_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -174,23 +174,35 @@ import 'frontdoor_origin_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_cdn_frontdoorprofile" "example" {
+/// resource "azure_cdn_frontdoor_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-profile"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Premium_AzureFrontDoor"
 /// }
-/// resource "azure_cdn_frontdoororigingroup" "example" {
+/// resource "azure_cdn_frontdoor_origin_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-origingroup"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 ///   load_balancing           = {}
 /// }
-/// resource "azure_cdn_frontdoororigin" "example" {
+/// resource "azure_cdn_frontdoor_origin" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                           = "example-origin"
-///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoororigingroup.example.id
+///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoor_origin_group.example.id
 ///   enabled                        = true
 ///   certificate_name_check_enabled = false
 ///   host_name                      = "contoso.com"
@@ -441,7 +453,7 @@ import 'frontdoor_origin_state.dart';
 ///     {
 ///         Name = "example-origin-group",
 ///         CdnFrontdoorProfileId = exampleFrontdoorProfile.Id,
-///         LoadBalancing = null,
+///         LoadBalancing = new() { },
 ///     });
 ///
 ///     var exampleFrontdoorOrigin = new Azure.Cdn.FrontdoorOrigin("example", new()
@@ -541,7 +553,7 @@ import 'frontdoor_origin_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -549,14 +561,20 @@ import 'frontdoor_origin_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "examplestoracc"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
+///   location                        = azure_core_resource_group.example.location
 ///   account_tier                    = "Premium"
 ///   account_replication_type        = "LRS"
 ///   allow_nested_items_to_be_public = false
@@ -567,19 +585,28 @@ import 'frontdoor_origin_state.dart';
 ///     "environment" = "Example"
 ///   }
 /// }
-/// resource "azure_cdn_frontdoorprofile" "example" {
+/// resource "azure_cdn_frontdoor_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-profile"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Premium_AzureFrontDoor"
 /// }
-/// resource "azure_cdn_frontdoororigingroup" "example" {
+/// resource "azure_cdn_frontdoor_origin_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example-origin-group"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 ///   load_balancing           = {}
 /// }
-/// resource "azure_cdn_frontdoororigin" "example" {
+/// resource "azure_cdn_frontdoor_origin" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                           = "example-origin"
-///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoororigingroup.example.id
+///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoor_origin_group.example.id
 ///   enabled                        = true
 ///   certificate_name_check_enabled = true
 ///   host_name                      = azure_storage_account.example.primary_blob_host
@@ -1174,7 +1201,7 @@ import 'frontdoor_origin_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -1182,22 +1209,31 @@ import 'frontdoor_origin_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_cdn_frontdoorprofile" "example" {
-///   depends_on          = [azure_privatedns_linkservice.example]
+/// resource "azure_cdn_frontdoor_profile" "example" {
+///   depends_on = [azure_privatedns_link_service.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "profile-example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Premium_AzureFrontDoor"
 /// }
-/// resource "azure_cdn_frontdoororigin" "example" {
+/// resource "azure_cdn_frontdoor_origin" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                           = "origin-example"
-///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoororigingroup.example.id
+///   cdn_frontdoor_origin_group_id  = azure_cdn_frontdoor_origin_group.example.id
 ///   enabled                        = true
 ///   host_name                      = "example.com"
 ///   origin_host_header             = "example.com"
@@ -1206,55 +1242,73 @@ import 'frontdoor_origin_state.dart';
 ///   certificate_name_check_enabled = false
 ///   private_link = {
 ///     request_message        = "Request access for Private Link Origin CDN Frontdoor"
-///     location               = azure_core_resourcegroup.example.location
-///     private_link_target_id = azure_privatedns_linkservice.example.id
+///     location               = azure_core_resource_group.example.location
+///     private_link_target_id = azure_privatedns_link_service.example.id
 ///   }
 /// }
-/// resource "azure_cdn_frontdoororigingroup" "example" {
+/// resource "azure_cdn_frontdoor_origin_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "group-example"
-///   cdn_frontdoor_profile_id = azure_cdn_frontdoorprofile.example.id
+///   cdn_frontdoor_profile_id = azure_cdn_frontdoor_profile.example.id
 ///   load_balancing = {
 ///     additional_latency_in_milliseconds = 0
 ///     sample_size                        = 16
 ///     successful_samples_required        = 3
 ///   }
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "vn-example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   address_spaces      = ["10.5.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                          = "sn-example"
-///   resource_group_name                           = azure_core_resourcegroup.example.name
-///   virtual_network_name                          = azure_network_virtualnetwork.example.name
+///   resource_group_name                           = azure_core_resource_group.example.name
+///   virtual_network_name                          = azure_network_virtual_network.example.name
 ///   address_prefixes                              = ["10.5.1.0/24"]
 ///   private_link_service_network_policies_enabled = false
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "ip-example"
 ///   sku                 = "Standard"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
 /// }
-/// resource "azure_lb_loadbalancer" "example" {
+/// resource "azure_lb_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "lb-example"
 ///   sku                 = "Standard"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   frontend_ip_configurations {
-///     name                 = azure_network_publicip.example.name
-///     public_ip_address_id = azure_network_publicip.example.id
+///     name                 = azure_network_public_ip.example.name
+///     public_ip_address_id = azure_network_public_ip.example.id
 ///   }
 /// }
-/// resource "azure_privatedns_linkservice" "example" {
+/// resource "azure_privatedns_link_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                        = "pls-example"
-///   resource_group_name                         = azure_core_resourcegroup.example.name
-///   location                                    = azure_core_resourcegroup.example.location
-///   visibility_subscription_ids                 = [data.azure_core_getclientconfig.current.subscription_id]
-///   load_balancer_frontend_ip_configuration_ids = [azure_lb_loadbalancer.example.frontend_ip_configurations[0].id]
+///   resource_group_name                         = azure_core_resource_group.example.name
+///   location                                    = azure_core_resource_group.example.location
+///   visibility_subscription_ids                 = [data.azure_core_client_config.current.subscription_id]
+///   load_balancer_frontend_ip_configuration_ids = [azure_lb_load_balancer.example.frontend_ip_configurations[0].id]
 ///   nat_ip_configurations {
 ///     name                       = "primary"
 ///     private_ip_address         = "10.5.1.17"
@@ -1353,7 +1407,7 @@ import 'frontdoor_origin_state.dart';
 ///             .resourceGroupName(example.name())
 ///             .location(example.location())
 ///             .visibilitySubscriptionIds(current.subscriptionId())
-///             .loadBalancerFrontendIpConfigurationIds(exampleLoadBalancer.frontendIpConfigurations().applyValue(_frontendIpConfigurations -> _frontendIpConfigurations[0].id()))
+///             .loadBalancerFrontendIpConfigurationIds(exampleLoadBalancer.frontendIpConfigurations().applyValue(_frontendIpConfigurations -> _frontendIpConfigurations.get(0).id()))
 ///             .natIpConfigurations(LinkServiceNatIpConfigurationArgs.builder()
 ///                 .name("primary")
 ///                 .privateIpAddress("10.5.1.17")
@@ -1570,7 +1624,7 @@ class FrontdoorOrigin extends pulumi.CustomResource {
           'azure:cdn/frontdoorOrigin:FrontdoorOrigin',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     cdnFrontdoorOriginGroupId = registerOutput<String>('cdnFrontdoorOriginGroupId');
     certificateNameCheckEnabled = registerOutput<bool>('certificateNameCheckEnabled');

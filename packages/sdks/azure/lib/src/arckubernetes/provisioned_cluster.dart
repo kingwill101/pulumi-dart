@@ -169,7 +169,7 @@ import 'provisioned_cluster_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -180,26 +180,35 @@ import 'provisioned_cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azuread_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name     = "example-adg"
-///   owners           = [data.azure_core_getclientconfig.current.object_id]
+///   owners           = [data.azure_core_client_config.current.object_id]
 ///   security_enabled = true
 /// }
-/// resource "azure_arckubernetes_provisionedcluster" "example" {
+/// resource "azure_arckubernetes_provisioned_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-akpc"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   azure_active_directory = {
 ///     azure_rbac_enabled     = true
 ///     admin_group_object_ids = [azuread_group.example.id]
-///     tenant_id              = data.azure_core_getclientconfig.current.tenant_id
+///     tenant_id              = data.azure_core_client_config.current.tenant_id
 ///   }
 ///   identity = {
 ///     type = "SystemAssigned"
@@ -359,7 +368,7 @@ class ProvisionedCluster extends pulumi.CustomResource {
           'azure:arckubernetes/provisionedCluster:ProvisionedCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     agentVersion = registerOutput<String>('agentVersion');
     arcAgentAutoUpgradeEnabled = registerOutput<bool?>('arcAgentAutoUpgradeEnabled');

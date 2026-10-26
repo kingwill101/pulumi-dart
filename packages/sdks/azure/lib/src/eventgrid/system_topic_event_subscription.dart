@@ -212,7 +212,7 @@ import 'system_topic_event_subscription_webhook_endpoint.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -220,14 +220,20 @@ import 'system_topic_event_subscription_webhook_endpoint.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplestorageaccount"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 ///   tags = {
@@ -235,20 +241,29 @@ import 'system_topic_event_subscription_webhook_endpoint.dart';
 ///   }
 /// }
 /// resource "azure_storage_queue" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "examplestoragequeue"
 ///   storage_account_name = azure_storage_account.example.name
 /// }
-/// resource "azure_eventgrid_systemtopic" "example" {
+/// resource "azure_eventgrid_system_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-system-topic"
 ///   location            = "Global"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   source_resource_id  = azure_core_resourcegroup.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   source_resource_id  = azure_core_resource_group.example.id
 ///   topic_type          = "Microsoft.Resources.ResourceGroups"
 /// }
-/// resource "azure_eventgrid_systemtopiceventsubscription" "example" {
+/// resource "azure_eventgrid_system_topic_event_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-event-subscription"
-///   system_topic        = azure_eventgrid_systemtopic.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   system_topic        = azure_eventgrid_system_topic.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   storage_queue_endpoint = {
 ///     storage_account_id = azure_storage_account.example.id
 ///     queue_name         = azure_storage_queue.example.name
@@ -447,7 +462,7 @@ class SystemTopicEventSubscription extends pulumi.CustomResource {
           'azure:eventgrid/systemTopicEventSubscription:SystemTopicEventSubscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     advancedFilter = registerOutput<SystemTopicEventSubscriptionAdvancedFilter?>('advancedFilter', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return SystemTopicEventSubscriptionAdvancedFilter.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     advancedFilteringOnArraysEnabled = registerOutput<bool?>('advancedFilteringOnArraysEnabled');

@@ -72,7 +72,7 @@ import 'get_trigger_schedules_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -80,13 +80,13 @@ import 'get_trigger_schedules_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_datafactory_getfactory" "example" {
+/// data "azure_datafactory_factory" "example" {
 ///   name                = "existing-adf"
 ///   resource_group_name = "existing-rg"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_datafactory_getfactory.example.id
+///   value = data.azure_datafactory_factory.example.id
 /// }
 /// ```
 /// ```java
@@ -230,7 +230,7 @@ pulumi.Output<GetFactoryResult> getFactoryOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -238,13 +238,13 @@ pulumi.Output<GetFactoryResult> getFactoryOutput(
 ///   }
 /// }
 ///
-/// data "azure_datafactory_gettriggerschedule" "example" {
+/// data "azure_datafactory_trigger_schedule" "example" {
 ///   name            = "example_trigger"
 ///   data_factory_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.DataFactory/factories/datafactory1"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_datafactory_gettriggerschedule.example.id
+///   value = data.azure_datafactory_trigger_schedule.example.id
 /// }
 /// ```
 /// ```java
@@ -376,7 +376,7 @@ pulumi.Output<GetTriggerScheduleResult> getTriggerScheduleOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -384,12 +384,12 @@ pulumi.Output<GetTriggerScheduleResult> getTriggerScheduleOutput(
 ///   }
 /// }
 ///
-/// data "azure_datafactory_gettriggerschedules" "example" {
+/// data "azure_datafactory_trigger_schedules" "example" {
 ///   data_factory_id = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.DataFactory/factories/datafactory1"
 /// }
 ///
 /// output "items" {
-///   value = data.azure_datafactory_gettriggerschedules.example.items
+///   value = data.azure_datafactory_trigger_schedules.example.items
 /// }
 /// ```
 /// ```java

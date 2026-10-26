@@ -322,7 +322,7 @@ import 'snapshot_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -330,20 +330,29 @@ import 'snapshot_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-virtualnetwork"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 ///   delegations {
 ///     name = "netapp"
@@ -354,22 +363,31 @@ import 'snapshot_state.dart';
 ///   }
 /// }
 /// resource "azure_netapp_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-netappaccount"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_netapp_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-netapppool"
 ///   account_name        = azure_netapp_account.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   service_level       = "Premium"
 ///   size_in_tb          = "4"
 /// }
 /// resource "azure_netapp_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-netappvolume"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_netapp_account.example.name
 ///   pool_name           = azure_netapp_pool.example.name
 ///   volume_path         = "my-unique-file-path"
@@ -378,12 +396,15 @@ import 'snapshot_state.dart';
 ///   storage_quota_in_gb = "100"
 /// }
 /// resource "azure_netapp_snapshot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-netappsnapshot"
 ///   account_name        = azure_netapp_account.example.name
 ///   pool_name           = azure_netapp_pool.example.name
 ///   volume_name         = azure_netapp_volume.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// ```
 /// ```java
@@ -603,7 +624,7 @@ class Snapshot extends pulumi.CustomResource {
           'azure:netapp/snapshot:Snapshot',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     location = registerOutput<String>('location');

@@ -106,7 +106,7 @@ import 'service_trust_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -114,14 +114,17 @@ import 'service_trust_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_domainservices_getservice" "example" {
+/// data "azure_domainservices_service" "example" {
 ///   name                = "example-ds"
 ///   resource_group_name = "example-rg"
 /// }
 ///
-/// resource "azure_domainservices_servicetrust" "example" {
+/// resource "azure_domainservices_service_trust" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-trust"
-///   domain_service_id      = data.azure_domainservices_getservice.example.id
+///   domain_service_id      = data.azure_domainservices_service.example.id
 ///   trusted_domain_fqdn    = "example.com"
 ///   trusted_domain_dns_ips = ["10.1.0.3", "10.1.0.4"]
 ///   password               = "Password123"
@@ -229,7 +232,7 @@ class ServiceTrust extends pulumi.CustomResource {
           'azure:domainservices/serviceTrust:ServiceTrust',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     domainServiceId = registerOutput<String>('domainServiceId');

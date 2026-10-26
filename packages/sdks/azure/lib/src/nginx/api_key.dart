@@ -319,7 +319,7 @@ import 'api_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -327,30 +327,42 @@ import 'api_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   allocation_method   = "Static"
 ///   sku                 = "Standard"
 ///   tags = {
 ///     "environment" = "Production"
 ///   }
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 ///   delegations {
 ///     name = "delegation"
@@ -361,13 +373,16 @@ import 'api_key_state.dart';
 ///   }
 /// }
 /// resource "azure_nginx_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "example-nginx"
-///   resource_group_name       = azure_core_resourcegroup.example.name
+///   resource_group_name       = azure_core_resource_group.example.name
 ///   sku                       = "standardv3_Monthly"
-///   location                  = azure_core_resourcegroup.example.location
+///   location                  = azure_core_resource_group.example.location
 ///   automatic_upgrade_channel = "stable"
 ///   frontend_public = {
-///     ip_addresses = [azure_network_publicip.example.id]
+///     ip_addresses = [azure_network_public_ip.example.id]
 ///   }
 ///   network_interfaces {
 ///     subnet_id = azure_network_subnet.example.id
@@ -375,7 +390,10 @@ import 'api_key_state.dart';
 ///   capacity = 20
 ///   email    = "user@test.com"
 /// }
-/// resource "azure_nginx_apikey" "example" {
+/// resource "azure_nginx_api_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-api-key"
 ///   nginx_deployment_id = azure_nginx_deployment.example.id
 ///   secret_text         = "727c8642-6807-4254-9d02-ae93bfad21de"
@@ -585,7 +603,7 @@ class ApiKey extends pulumi.CustomResource {
           'azure:nginx/apiKey:ApiKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['secretText'],
         ) {
     endDateTime = registerOutput<String>('endDateTime');

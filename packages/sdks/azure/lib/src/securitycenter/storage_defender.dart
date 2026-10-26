@@ -109,7 +109,7 @@ import 'storage_defender_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -117,18 +117,27 @@ import 'storage_defender_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "westus2"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "exampleacc"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_securitycenter_storagedefender" "example" {
+/// resource "azure_securitycenter_storage_defender" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   storage_account_id = azure_storage_account.example.id
 /// }
 /// ```
@@ -241,7 +250,7 @@ class StorageDefender extends pulumi.CustomResource {
           'azure:securitycenter/storageDefender:StorageDefender',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     malwareScanningOnUploadCapGbPerMonth = registerOutput<int?>('malwareScanningOnUploadCapGbPerMonth');
     malwareScanningOnUploadEnabled = registerOutput<bool?>('malwareScanningOnUploadEnabled');

@@ -177,7 +177,7 @@ import 'job_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -185,18 +185,27 @@ import 'job_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "west europe"
 /// }
 /// resource "azure_batch_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleaccount"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// resource "azure_batch_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplepool"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_batch_account.example.name
 ///   node_agent_sku_id   = "batch.node.ubuntu 22.04"
 ///   vm_size             = "STANDARD_A1_V2"
@@ -211,6 +220,9 @@ import 'job_state.dart';
 ///   }
 /// }
 /// resource "azure_batch_job" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name          = "examplejob"
 ///   batch_pool_id = azure_batch_pool.example.id
 /// }
@@ -359,7 +371,7 @@ class Job extends pulumi.CustomResource {
           'azure:batch/job:Job',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     batchPoolId = registerOutput<String>('batchPoolId');
     commonEnvironmentProperties = registerOutput<Map<String, String>?>('commonEnvironmentProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });

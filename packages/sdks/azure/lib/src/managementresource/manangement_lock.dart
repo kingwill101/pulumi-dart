@@ -81,7 +81,7 @@ import 'manangement_lock_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -89,12 +89,15 @@ import 'manangement_lock_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
 ///
 /// resource "azure_management_lock" "subscription-level" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "subscription-level"
-///   scope      = data.azure_core_getsubscription.current.id
+///   scope      = data.azure_core_subscription.current.id
 ///   lock_level = "CanNotDelete"
 ///   notes      = "Items can't be deleted in this subscription!"
 /// }
@@ -240,7 +243,7 @@ import 'manangement_lock_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -248,13 +251,19 @@ import 'manangement_lock_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "locked-resource-group"
 ///   location = "West Europe"
 /// }
 /// resource "azure_management_lock" "resource-group-level" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "resource-group-level"
-///   scope      = azure_core_resourcegroup.example.id
+///   scope      = azure_core_resource_group.example.id
 ///   lock_level = "ReadOnly"
 ///   notes      = "This Resource Group is Read-Only"
 /// }
@@ -435,7 +444,7 @@ import 'manangement_lock_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -443,20 +452,29 @@ import 'manangement_lock_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "locked-resource-group"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "locked-publicip"
-///   location                = azure_core_resourcegroup.example.location
-///   resource_group_name     = azure_core_resourcegroup.example.name
+///   location                = azure_core_resource_group.example.location
+///   resource_group_name     = azure_core_resource_group.example.name
 ///   allocation_method       = "Static"
 ///   idle_timeout_in_minutes = 30
 /// }
 /// resource "azure_management_lock" "public-ip" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name       = "resource-ip"
-///   scope      = azure_network_publicip.example.id
+///   scope      = azure_network_public_ip.example.id
 ///   lock_level = "CanNotDelete"
 ///   notes      = "Locked because it's needed by a third-party"
 /// }
@@ -573,7 +591,7 @@ class ManangementLock extends pulumi.CustomResource {
           'azure:managementresource/manangementLock:ManangementLock',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     lockLevel = registerOutput<String>('lockLevel');
     this.name = registerOutput<String>('name');

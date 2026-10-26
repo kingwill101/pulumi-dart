@@ -30,7 +30,7 @@ class EventSubscriptionStorageQueueEndpoint {
 
   factory EventSubscriptionStorageQueueEndpoint.fromMap(Map<String, dynamic> map) {
     return EventSubscriptionStorageQueueEndpoint(
-      queueMessageTimeToLiveInSeconds: (() { final guardedValue = map['queueMessageTimeToLiveInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      queueMessageTimeToLiveInSeconds: (() { final guardedValue = map['queueMessageTimeToLiveInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       queueName: pulumi.Input.fromValue(map['queueName'] as String),
       storageAccountId: pulumi.Input.fromValue(map['storageAccountId'] as String),
     );

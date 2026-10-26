@@ -35,7 +35,7 @@ class GetAppTemplateAzureQueueScaleRule {
     return GetAppTemplateAzureQueueScaleRule(
       authentications: pulumi.Input.fromValue(pulumi.Input.decodeList<GetAppTemplateAzureQueueScaleRuleAuthentication>(map['authentications']!, (value) => GetAppTemplateAzureQueueScaleRuleAuthentication.fromMap((value as Map).cast<String, dynamic>()))),
       name: pulumi.Input.fromValue(map['name'] as String),
-      queueLength: pulumi.Input.fromValue((map['queueLength'] as num).toInt()),
+      queueLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['queueLength'])),
       queueName: pulumi.Input.fromValue(map['queueName'] as String),
     );
   }

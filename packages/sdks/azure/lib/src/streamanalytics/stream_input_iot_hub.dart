@@ -185,7 +185,7 @@ import 'stream_input_iot_hub_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -193,32 +193,41 @@ import 'stream_input_iot_hub_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_streamanalytics_getjob" "example" {
+/// data "azure_streamanalytics_job" "example" {
 ///   name                = "example-job"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_iot_iothub" "example" {
+/// resource "azure_iot_io_t_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-iothub"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku = {
 ///     name     = "S1"
 ///     capacity = "1"
 ///   }
 /// }
-/// resource "azure_streamanalytics_streaminputiothub" "example" {
+/// resource "azure_streamanalytics_stream_input_iot_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-iothub-input"
-///   stream_analytics_job_name    = data.azure_streamanalytics_getjob.example.name
-///   resource_group_name          = data.azure_streamanalytics_getjob.example.resource_group_name
+///   stream_analytics_job_name    = data.azure_streamanalytics_job.example.name
+///   resource_group_name          = data.azure_streamanalytics_job.example.resource_group_name
 ///   endpoint                     = "messages/events"
 ///   eventhub_consumer_group_name = "$Default"
-///   iothub_namespace             = azure_iot_iothub.example.name
-///   shared_access_policy_key     = azure_iot_iothub.example.shared_access_policies[0].primary_key
+///   iothub_namespace             = azure_iot_io_t_hub.example.name
+///   shared_access_policy_key     = azure_iot_io_t_hub.example.shared_access_policies[0].primary_key
 ///   shared_access_policy_name    = "iothubowner"
 ///   serialization = {
 ///     type     = "Json"
@@ -282,7 +291,7 @@ import 'stream_input_iot_hub_state.dart';
 ///             .endpoint("messages/events")
 ///             .eventhubConsumerGroupName("$Default")
 ///             .iothubNamespace(exampleIoTHub.name())
-///             .sharedAccessPolicyKey(exampleIoTHub.sharedAccessPolicies().applyValue(_sharedAccessPolicies -> _sharedAccessPolicies[0].primaryKey()))
+///             .sharedAccessPolicyKey(exampleIoTHub.sharedAccessPolicies().applyValue(_sharedAccessPolicies -> _sharedAccessPolicies.get(0).primaryKey()))
 ///             .sharedAccessPolicyName("iothubowner")
 ///             .serialization(StreamInputIotHubSerializationArgs.builder()
 ///                 .type("Json")
@@ -382,7 +391,7 @@ class StreamInputIotHub extends pulumi.CustomResource {
           'azure:streamanalytics/streamInputIotHub:StreamInputIotHub',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['sharedAccessPolicyKey'],
         ) {
     endpoint = registerOutput<String>('endpoint');

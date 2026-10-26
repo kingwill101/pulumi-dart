@@ -153,7 +153,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -161,23 +161,32 @@ import 'policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_devtest_lab" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-devtestlab"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   tags = {
 ///     "Sydney" = "Australia"
 ///   }
 /// }
 /// resource "azure_devtest_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "LabVmCount"
 ///   policy_set_name     = "default"
 ///   lab_name            = azure_devtest_lab.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   fact_data           = ""
 ///   threshold           = "999"
 ///   evaluator_type      = "MaxValuePolicy"
@@ -315,7 +324,7 @@ class Policy extends pulumi.CustomResource {
           'azure:devtest/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     evaluatorType = registerOutput<String>('evaluatorType');

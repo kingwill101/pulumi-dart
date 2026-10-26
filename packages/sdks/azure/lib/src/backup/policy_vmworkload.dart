@@ -234,7 +234,7 @@ import 'policy_vmworkload_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -242,20 +242,29 @@ import 'policy_vmworkload_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-bpvmw"
 ///   location = "West Europe"
 /// }
 /// resource "azure_recoveryservices_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-rsv"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 ///   soft_delete_enabled = false
 /// }
-/// resource "azure_backup_policyvmworkload" "example" {
+/// resource "azure_backup_policy_v_m_workload" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-bpvmw"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   recovery_vault_name = azure_recoveryservices_vault.example.name
 ///   workload_type       = "SQLDataBase"
 ///   settings = {
@@ -435,7 +444,7 @@ class PolicyVMWorkload extends pulumi.CustomResource {
           'azure:backup/policyVMWorkload:PolicyVMWorkload',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     protectionPolicies = registerOutput<List<PolicyVMWorkloadProtectionPolicy>>('protectionPolicies', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<PolicyVMWorkloadProtectionPolicy>(guardedValue, (value) => PolicyVMWorkloadProtectionPolicy.fromMap((value as Map).cast<String, dynamic>())); });

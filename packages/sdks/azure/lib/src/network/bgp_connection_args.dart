@@ -45,7 +45,7 @@ class BgpConnectionArgs {
   factory BgpConnectionArgs.fromMap(Map<String, dynamic> map) {
     return BgpConnectionArgs(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      peerAsn: pulumi.Input.fromValue((map['peerAsn'] as num).toInt()),
+      peerAsn: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['peerAsn'])),
       peerIp: pulumi.Input.fromValue(map['peerIp'] as String),
       virtualHubId: pulumi.Input.fromValue(map['virtualHubId'] as String),
       virtualNetworkConnectionId: (() { final guardedValue = map['virtualNetworkConnectionId']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

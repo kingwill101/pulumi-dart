@@ -112,7 +112,7 @@ import 'email_service_domain_verification_record.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -120,18 +120,27 @@ import 'email_service_domain_verification_record.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_communication_emailservice" "example" {
+/// resource "azure_communication_email_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-emailcommunicationservice"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   data_location       = "United States"
 /// }
-/// resource "azure_communication_emailservicedomain" "example" {
+/// resource "azure_communication_email_service_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "AzureManagedDomain"
-///   email_service_id  = azure_communication_emailservice.example.id
+///   email_service_id  = azure_communication_email_service.example.id
 ///   domain_management = "AzureManaged"
 /// }
 /// ```
@@ -248,7 +257,7 @@ class EmailServiceDomain extends pulumi.CustomResource {
           'azure:communication/emailServiceDomain:EmailServiceDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     domainManagement = registerOutput<String>('domainManagement');
     emailServiceId = registerOutput<String>('emailServiceId');

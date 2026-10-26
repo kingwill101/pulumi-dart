@@ -69,7 +69,7 @@ class GetNatGatewayResult {
   factory GetNatGatewayResult.fromMap(Map<String, dynamic> map) {
     return GetNatGatewayResult(
       id: (() { final guardedValue = map['id']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      idleTimeoutInMinutes: (() { final guardedValue = map['idleTimeoutInMinutes']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       location: (() { final guardedValue = map['location']; if (guardedValue == null) return null; return guardedValue as String; })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return guardedValue as String; })(),
       publicIpAddressIds: (() { final guardedValue = map['publicIpAddressIds']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),

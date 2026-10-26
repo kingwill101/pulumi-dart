@@ -181,7 +181,7 @@ import 'api_operation_tag_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -189,18 +189,21 @@ import 'api_operation_tag_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getapi" "example" {
+/// data "azure_apimanagement_api" "example" {
 ///   name                = "search-api"
 ///   api_management_name = "search-api-management"
 ///   resource_group_name = "search-service"
 ///   revision            = "2"
 /// }
 ///
-/// resource "azure_apimanagement_apioperation" "example" {
+/// resource "azure_apimanagement_api_operation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   operation_id        = "user-delete"
-///   api_name            = data.azure_apimanagement_getapi.example.name
-///   api_management_name = data.azure_apimanagement_getapi.example.api_management_name
-///   resource_group_name = data.azure_apimanagement_getapi.example.resource_group_name
+///   api_name            = data.azure_apimanagement_api.example.name
+///   api_management_name = data.azure_apimanagement_api.example.api_management_name
+///   resource_group_name = data.azure_apimanagement_api.example.resource_group_name
 ///   display_name        = "Delete User Operation"
 ///   method              = "DELETE"
 ///   url_template        = "/users/{id}/delete"
@@ -214,9 +217,12 @@ import 'api_operation_tag_state.dart';
 ///     status_code = 200
 ///   }
 /// }
-/// resource "azure_apimanagement_apioperationtag" "example" {
+/// resource "azure_apimanagement_api_operation_tag" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example-Tag"
-///   api_operation_id = azure_apimanagement_apioperation.example.id
+///   api_operation_id = azure_apimanagement_api_operation.example.id
 ///   display_name     = "example-Tag"
 /// }
 /// ```
@@ -355,7 +361,7 @@ class ApiOperationTag extends pulumi.CustomResource {
           'azure:apimanagement/apiOperationTag:ApiOperationTag',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiOperationId = registerOutput<String>('apiOperationId');
     displayName = registerOutput<String>('displayName');

@@ -291,7 +291,7 @@ import 'linked_service_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -299,27 +299,39 @@ import 'linked_service_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_kind             = "BlobStorage"
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
-/// resource "azure_storage_datalakegen2filesystem" "example" {
+/// resource "azure_storage_data_lake_gen2_filesystem" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example"
 ///   storage_account_id = azure_storage_account.example.id
 /// }
 /// resource "azure_synapse_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                 = "example"
-///   resource_group_name                  = azure_core_resourcegroup.example.name
-///   location                             = azure_core_resourcegroup.example.location
-///   storage_data_lake_gen2_filesystem_id = azure_storage_datalakegen2filesystem.example.id
+///   resource_group_name                  = azure_core_resource_group.example.name
+///   location                             = azure_core_resource_group.example.location
+///   storage_data_lake_gen2_filesystem_id = azure_storage_data_lake_gen2_filesystem.example.id
 ///   sql_administrator_login              = "sqladminuser"
 ///   sql_administrator_login_password     = "H@Sh1CoR3!"
 ///   managed_virtual_network_enabled      = true
@@ -327,28 +339,39 @@ import 'linked_service_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_synapse_firewallrule" "example" {
+/// resource "azure_synapse_firewall_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "allowAll"
 ///   synapse_workspace_id = azure_synapse_workspace.example.id
 ///   start_ip_address     = "0.0.0.0"
 ///   end_ip_address       = "255.255.255.255"
 /// }
-/// resource "azure_synapse_integrationruntimeazure" "example" {
+/// resource "azure_synapse_integration_runtime_azure" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
 ///   synapse_workspace_id = azure_synapse_workspace.example.id
-///   location             = azure_core_resourcegroup.example.location
+///   location             = azure_core_resource_group.example.location
 /// }
-/// resource "azure_synapse_linkedservice" "example" {
-///   depends_on           = [azure_synapse_firewallrule.example]
+/// resource "azure_synapse_linked_service" "example" {
+///   depends_on = [azure_synapse_firewall_rule.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example"
 ///   synapse_workspace_id = azure_synapse_workspace.example.id
 ///   type                 = "AzureBlobStorage"
-///   type_properties_json ="{
+///   type_properties_json = <<JSON
+/// {
 ///   \"connectionString\": \"${azure_storage_account.example.primary_connection_string}\"
 /// }
-/// "
+/// JSON
+///
 ///   integration_runtime = {
-///     name = azure_synapse_integrationruntimeazure.example.name
+///     name = azure_synapse_integration_runtime_azure.example.name
 ///   }
 /// }
 /// ```
@@ -569,7 +592,7 @@ class LinkedService extends pulumi.CustomResource {
           'azure:synapse/linkedService:LinkedService',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     additionalProperties = registerOutput<Map<String, String>?>('additionalProperties', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     annotations = registerOutput<List<String>?>('annotations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

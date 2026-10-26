@@ -147,7 +147,7 @@ import 'function_java_script_udfstate.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -155,19 +155,27 @@ import 'function_java_script_udfstate.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getresourcegroup" "example" {
+/// data "azure_core_resource_group" "example" {
 ///   name = "example-resources"
 /// }
-/// data "azure_streamanalytics_getjob" "exampleGetJob" {
+/// data "azure_streamanalytics_job" "exampleGetJob" {
 ///   name                = "example-job"
-///   resource_group_name = data.azure_core_getresourcegroup.example.name
+///   resource_group_name = data.azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_streamanalytics_functionjavascriptudf" "example" {
+/// resource "azure_streamanalytics_function_java_script_u_d_f" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "example-javascript-function"
-///   stream_analytics_job_name = data.azure_streamanalytics_getjob.exampleGetJob.name
-///   resource_group_name       = data.azure_streamanalytics_getjob.exampleGetJob.resource_group_name
-///   script                    = "function getRandomNumber(in) {\n  return in;\n}\n"
+///   stream_analytics_job_name = data.azure_streamanalytics_job.exampleGetJob.name
+///   resource_group_name       = data.azure_streamanalytics_job.exampleGetJob.resource_group_name
+///   script                    = <<SCRIPT
+/// function getRandomNumber(in) {
+///   return in;
+/// }
+/// SCRIPT
+///
 ///   inputs {
 ///     type = "bigint"
 ///   }
@@ -304,7 +312,7 @@ class FunctionJavaScriptUDF extends pulumi.CustomResource {
           'azure:streamanalytics/functionJavaScriptUDF:FunctionJavaScriptUDF',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     inputs = registerOutput<List<FunctionJavaScriptUDFInput>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<FunctionJavaScriptUDFInput>(guardedValue, (value) => FunctionJavaScriptUDFInput.fromMap((value as Map).cast<String, dynamic>())); });
     this.name = registerOutput<String>('name');

@@ -272,7 +272,7 @@ import 'object_replication_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -280,14 +280,20 @@ import 'object_replication_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "src" {
+/// resource "azure_core_resource_group" "src" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "srcResourceGroupName"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "src" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "srcstorageaccount"
-///   resource_group_name      = azure_core_resourcegroup.src.name
-///   location                 = azure_core_resourcegroup.src.location
+///   resource_group_name      = azure_core_resource_group.src.name
+///   location                 = azure_core_resource_group.src.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 ///   blob_properties = {
@@ -296,18 +302,27 @@ import 'object_replication_state.dart';
 ///   }
 /// }
 /// resource "azure_storage_container" "src" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "srcstrcontainer"
 ///   storage_account_name  = azure_storage_account.src.name
 ///   container_access_type = "private"
 /// }
-/// resource "azure_core_resourcegroup" "dst" {
+/// resource "azure_core_resource_group" "dst" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "dstResourceGroupName"
 ///   location = "East US"
 /// }
 /// resource "azure_storage_account" "dst" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "dststorageaccount"
-///   resource_group_name      = azure_core_resourcegroup.dst.name
-///   location                 = azure_core_resourcegroup.dst.location
+///   resource_group_name      = azure_core_resource_group.dst.name
+///   location                 = azure_core_resource_group.dst.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 ///   blob_properties = {
@@ -316,11 +331,17 @@ import 'object_replication_state.dart';
 ///   }
 /// }
 /// resource "azure_storage_container" "dst" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "dststrcontainer"
 ///   storage_account_name  = azure_storage_account.dst.name
 ///   container_access_type = "private"
 /// }
-/// resource "azure_storage_objectreplication" "example" {
+/// resource "azure_storage_object_replication" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   source_storage_account_id      = azure_storage_account.src.id
 ///   destination_storage_account_id = azure_storage_account.dst.id
 ///   rules {
@@ -517,7 +538,7 @@ class ObjectReplication extends pulumi.CustomResource {
           'azure:storage/objectReplication:ObjectReplication',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     destinationObjectReplicationId = registerOutput<String>('destinationObjectReplicationId');
     destinationStorageAccountId = registerOutput<String>('destinationStorageAccountId');

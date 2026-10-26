@@ -113,7 +113,7 @@ import 'output_powerbi_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -121,17 +121,20 @@ import 'output_powerbi_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getresourcegroup" "example" {
+/// data "azure_core_resource_group" "example" {
 ///   name = "example-resources"
 /// }
-/// data "azure_streamanalytics_getjob" "exampleGetJob" {
+/// data "azure_streamanalytics_job" "exampleGetJob" {
 ///   name                = "example-job"
-///   resource_group_name = data.azure_core_getresourcegroup.example.name
+///   resource_group_name = data.azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_streamanalytics_outputpowerbi" "example" {
+/// resource "azure_streamanalytics_output_powerbi" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "output-to-powerbi"
-///   stream_analytics_job_id = data.azure_streamanalytics_getjob.exampleGetJob.id
+///   stream_analytics_job_id = data.azure_streamanalytics_job.exampleGetJob.id
 ///   dataset                 = "example-dataset"
 ///   table                   = "example-table"
 ///   group_id                = "00000000-0000-0000-0000-000000000000"
@@ -255,7 +258,7 @@ class OutputPowerbi extends pulumi.CustomResource {
           'azure:streamanalytics/outputPowerbi:OutputPowerbi',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     dataset = registerOutput<String>('dataset');
     groupId = registerOutput<String>('groupId');

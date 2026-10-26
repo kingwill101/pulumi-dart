@@ -128,7 +128,7 @@ import 'vmware_replication_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -136,19 +136,28 @@ import 'vmware_replication_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "eastus"
 /// }
 /// resource "azure_recoveryservices_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                               = "example-vault"
-///   location                           = azure_core_resourcegroup.example.location
-///   resource_group_name                = azure_core_resourcegroup.example.name
+///   location                           = azure_core_resource_group.example.location
+///   resource_group_name                = azure_core_resource_group.example.name
 ///   sku                                = "Standard"
 ///   classic_vmware_replication_enabled = true
 ///   soft_delete_enabled                = false
 /// }
-/// resource "azure_siterecovery_vmwarereplicationpolicy" "example" {
+/// resource "azure_siterecovery_v_m_ware_replication_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                                 = "example-policy"
 ///   recovery_vault_id                                    = azure_recoveryservices_vault.example.id
 ///   recovery_point_retention_in_minutes                  = 1440
@@ -268,7 +277,7 @@ class VMWareReplicationPolicy extends pulumi.CustomResource {
           'azure:siterecovery/vMWareReplicationPolicy:VMWareReplicationPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applicationConsistentSnapshotFrequencyInMinutes = registerOutput<int>('applicationConsistentSnapshotFrequencyInMinutes');
     this.name = registerOutput<String>('name');

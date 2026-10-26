@@ -295,7 +295,7 @@ import 'automation_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -303,43 +303,58 @@ import 'automation_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "example" {
+/// resource "azure_eventhub_event_hub_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-namespace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 ///   capacity            = 2
 /// }
-/// resource "azure_eventhub_eventhub" "example" {
+/// resource "azure_eventhub_event_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "acceptanceTestEventHub"
-///   namespace_id      = azure_eventhub_eventhubnamespace.example.id
+///   namespace_id      = azure_eventhub_event_hub_namespace.example.id
 ///   partition_count   = 2
 ///   message_retention = 2
 /// }
-/// resource "azure_eventhub_authorizationrule" "example" {
+/// resource "azure_eventhub_authorization_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-rule"
-///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
-///   eventhub_name       = azure_eventhub_eventhub.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   namespace_name      = azure_eventhub_event_hub_namespace.example.name
+///   eventhub_name       = azure_eventhub_event_hub.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   listen              = true
 ///   send                = false
 ///   manage              = false
 /// }
 /// resource "azure_securitycenter_automation" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-automation"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   actions {
 ///     type              = "EventHub"
-///     resource_id       = azure_eventhub_eventhub.example.id
-///     connection_string = azure_eventhub_authorizationrule.example.primary_connection_string
+///     resource_id       = azure_eventhub_event_hub.example.id
+///     connection_string = azure_eventhub_authorization_rule.example.primary_connection_string
 ///   }
 ///   sources {
 ///     event_source = "Alerts"
@@ -352,7 +367,7 @@ import 'automation_state.dart';
 ///       }
 ///     }
 ///   }
-///   scopes = ["/subscriptions/${data.azure_core_getclientconfig.current.subscription_id}"]
+///   scopes = ["/subscriptions/${data.azure_core_client_config.current.subscription_id}"]
 /// }
 /// ```
 /// ```java
@@ -559,7 +574,7 @@ class Automation extends pulumi.CustomResource {
           'azure:securitycenter/automation:Automation',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     actions = registerOutput<List<AutomationAction>>('actions', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<AutomationAction>(guardedValue, (value) => AutomationAction.fromMap((value as Map).cast<String, dynamic>())); });
     description = registerOutput<String?>('description');

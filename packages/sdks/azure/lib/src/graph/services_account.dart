@@ -117,7 +117,7 @@ import 'services_account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -129,15 +129,24 @@ import 'services_account_state.dart';
 /// }
 ///
 /// resource "azuread_application" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "example-app"
 /// }
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_graph_servicesaccount" "example" {
+/// resource "azure_graph_services_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_id      = azuread_application.example.applicationId
 ///   tags = {
 ///     "environment" = "Production"
@@ -250,7 +259,7 @@ class ServicesAccount extends pulumi.CustomResource {
           'azure:graph/servicesAccount:ServicesAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applicationId = registerOutput<String>('applicationId');
     billingPlanId = registerOutput<String>('billingPlanId');

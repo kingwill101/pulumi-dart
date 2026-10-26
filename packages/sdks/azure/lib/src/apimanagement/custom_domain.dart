@@ -384,7 +384,7 @@ import 'custom_domain_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -392,26 +392,35 @@ import 'custom_domain_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getkeyvault" "example" {
+/// data "azure_keyvault_key_vault" "example" {
 ///   name                = "mykeyvault"
 ///   resource_group_name = "some-resource-group"
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "pub1"
 ///   publisher_email     = "pub1@email.com"
 ///   sku_name            = "Developer_1"
 /// }
 /// resource "azure_keyvault_certificate" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-certificate"
-///   key_vault_id = data.azure_keyvault_getkeyvault.example.id
+///   key_vault_id = data.azure_keyvault_key_vault.example.id
 ///   certificate_policy = {
 ///     issuer_parameters = {
 ///       name = "Self"
@@ -423,11 +432,11 @@ import 'custom_domain_state.dart';
 ///       reuse_key  = true
 ///     }
 ///     lifetime_actions = [{
-///       "action" = {
-///         "actionType" = "AutoRenew"
+///       action = {
+///         action_type = "AutoRenew"
 ///       }
-///       "trigger" = {
-///         "daysBeforeExpiry" = 30
+///       trigger = {
+///         days_before_expiry = 30
 ///       }
 ///     }]
 ///     secret_properties = {
@@ -443,7 +452,10 @@ import 'custom_domain_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_apimanagement_customdomain" "example" {
+/// resource "azure_apimanagement_custom_domain" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_management_id = azure_apimanagement_service.example.id
 ///   gateways {
 ///     host_name    = "api.example.com"
@@ -686,7 +698,7 @@ class CustomDomain extends pulumi.CustomResource {
           'azure:apimanagement/customDomain:CustomDomain',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     developerPortals = registerOutput<List<CustomDomainDeveloperPortal>?>('developerPortals', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<CustomDomainDeveloperPortal>(guardedValue, (value) => CustomDomainDeveloperPortal.fromMap((value as Map).cast<String, dynamic>())); });

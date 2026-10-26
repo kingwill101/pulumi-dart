@@ -368,18 +368,18 @@ import 'run_command_state.dart';
 ///     error_blob_uri=pulumi.Output.all(
 ///         id=example3.id,
 ///         example=example
-/// ).apply(lambda resolved_outputs: f"{resolved_outputs['id']}{example.sas}")
+/// ).apply(lambda resolved_outputs: f"{resolved_outputs['id']}{resolved_outputs['example'].sas}")
 /// ,
 ///     output_blob_uri=pulumi.Output.all(
 ///         id=example2.id,
 ///         example=example
-/// ).apply(lambda resolved_outputs: f"{resolved_outputs['id']}{example.sas}")
+/// ).apply(lambda resolved_outputs: f"{resolved_outputs['id']}{resolved_outputs['example'].sas}")
 /// ,
 ///     source={
 ///         "script_uri": pulumi.Output.all(
 ///             id=example1.id,
 ///             example=example
-/// ).apply(lambda resolved_outputs: f"{resolved_outputs['id']}{example.sas}")
+/// ).apply(lambda resolved_outputs: f"{resolved_outputs['id']}{resolved_outputs['example'].sas}")
 /// ,
 ///     },
 ///     parameters=[{
@@ -962,7 +962,7 @@ import 'run_command_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -970,7 +970,7 @@ import 'run_command_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_storage_getaccountsas" "example" {
+/// data "azure_storage_account_s_a_s" "example" {
 ///   connection_string = azure_storage_account.example.primary_connection_string
 ///   https_only        = true
 ///   signed_version    = "2019-10-10"
@@ -1001,46 +1001,64 @@ import 'run_command_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "internal"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_network_networkinterface" "example" {
+/// resource "azure_network_network_interface" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nic"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   ip_configurations {
 ///     name                          = "internal"
 ///     subnet_id                     = azure_network_subnet.example.id
 ///     private_ip_address_allocation = "Dynamic"
 ///   }
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-uai"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_compute_linuxvirtualmachine" "example" {
+/// resource "azure_compute_linux_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example-VM"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
+///   location                        = azure_core_resource_group.example.location
 ///   size                            = "Standard_B2s"
 ///   admin_username                  = "adminuser"
 ///   admin_password                  = "P@$$w0rd1234!"
 ///   disable_password_authentication = false
-///   network_interface_ids           = [azure_network_networkinterface.example.id]
+///   network_interface_ids           = [azure_network_network_interface.example.id]
 ///   os_disk = {
 ///     caching              = "ReadWrite"
 ///     storage_account_type = "Premium_LRS"
@@ -1053,27 +1071,39 @@ import 'run_command_state.dart';
 ///   }
 ///   identity = {
 ///     type         = "SystemAssigned, UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 /// }
 /// resource "azure_authorization_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   scope                = azure_storage_account.example.id
 ///   role_definition_name = "Storage Blob Data Contributor"
-///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+///   principal_id         = azure_authorization_user_assigned_identity.example.principal_id
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "exampleaccount"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-sc"
 ///   storage_account_name  = azure_storage_account.example.name
 ///   container_access_type = "blob"
 /// }
 /// resource "azure_storage_blob" "example1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "script1"
 ///   storage_account_name   = azure_storage_account.example.name
 ///   storage_container_name = azure_storage_container.example.name
@@ -1081,32 +1111,44 @@ import 'run_command_state.dart';
 ///   source_content         = "echo 'hello world'"
 /// }
 /// resource "azure_storage_blob" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "output"
 ///   storage_account_name   = azure_storage_account.example.name
 ///   storage_container_name = azure_storage_container.example.name
 ///   type                   = "Append"
 /// }
 /// resource "azure_storage_blob" "example3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "error"
 ///   storage_account_name   = azure_storage_account.example.name
 ///   storage_container_name = azure_storage_container.example.name
 ///   type                   = "Append"
 /// }
 /// # basic example
-/// resource "azure_compute_runcommand" "example" {
+/// resource "azure_compute_run_command" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-vmrc"
-///   location           = azure_core_resourcegroup.example.location
-///   virtual_machine_id = azure_compute_linuxvirtualmachine.example.id
+///   location           = azure_core_resource_group.example.location
+///   virtual_machine_id = azure_compute_linux_virtual_machine.example.id
 ///   source = {
 ///     script = "echo 'hello world'"
 ///   }
 /// }
 /// # authorize to storage blob using user assigned identity
-/// resource "azure_compute_runcommand" "example2" {
-///   depends_on         = [azure_authorization_assignment.example]
-///   location           = azure_core_resourcegroup.example.location
+/// resource "azure_compute_run_command" "example2" {
+///   depends_on = [azure_authorization_assignment.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location           = azure_core_resource_group.example.location
 ///   name               = "example2-vmrc"
-///   virtual_machine_id = azure_compute_linuxvirtualmachine.example.id
+///   virtual_machine_id = azure_compute_linux_virtual_machine.example.id
 ///   output_blob_uri    = azure_storage_blob.example2.id
 ///   error_blob_uri     = azure_storage_blob.example3.id
 ///   run_as_password    = "P@$$w0rd1234!"
@@ -1114,14 +1156,14 @@ import 'run_command_state.dart';
 ///   source = {
 ///     script_uri = azure_storage_blob.example1.id
 ///     script_uri_managed_identity = {
-///       client_id = azure_authorization_userassignedidentity.example.client_id
+///       client_id = azure_authorization_user_assigned_identity.example.client_id
 ///     }
 ///   }
 ///   error_blob_managed_identity = {
-///     client_id = azure_authorization_userassignedidentity.example.client_id
+///     client_id = azure_authorization_user_assigned_identity.example.client_id
 ///   }
 ///   output_blob_managed_identity = {
-///     client_id = azure_authorization_userassignedidentity.example.client_id
+///     client_id = azure_authorization_user_assigned_identity.example.client_id
 ///   }
 ///   parameters {
 ///     name  = "examplev1"
@@ -1137,16 +1179,19 @@ import 'run_command_state.dart';
 ///   }
 /// }
 /// # authorize to storage blob using SAS token
-/// resource "azure_compute_runcommand" "example3" {
-///   location           = azure_core_resourcegroup.example.location
+/// resource "azure_compute_run_command" "example3" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location           = azure_core_resource_group.example.location
 ///   name               = "example3-vmrc"
-///   virtual_machine_id = azure_compute_linuxvirtualmachine.example.id
+///   virtual_machine_id = azure_compute_linux_virtual_machine.example.id
 ///   run_as_password    = "P@$$w0rd1234!"
 ///   run_as_user        = "adminuser"
-///   error_blob_uri     ="${azure_storage_blob.example3.id}${data.azure_storage_getaccountsas.example.sas}"
-///   output_blob_uri    ="${azure_storage_blob.example2.id}${data.azure_storage_getaccountsas.example.sas}"
+///   error_blob_uri     ="${azure_storage_blob.example3.id}${data.azure_storage_account_s_a_s.example.sas}"
+///   output_blob_uri    ="${azure_storage_blob.example2.id}${data.azure_storage_account_s_a_s.example.sas}"
 ///   source = {
-///     script_uri ="${azure_storage_blob.example1.id}${data.azure_storage_getaccountsas.example.sas}"
+///     script_uri ="${azure_storage_blob.example1.id}${data.azure_storage_account_s_a_s.example.sas}"
 ///   }
 ///   parameters {
 ///     name  = "example-vm1"
@@ -1697,7 +1742,7 @@ class RunCommand extends pulumi.CustomResource {
           'azure:compute/runCommand:RunCommand',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['errorBlobManagedIdentity', 'outputBlobManagedIdentity', 'protectedParameters', 'runAsPassword'],
         ) {
     errorBlobManagedIdentity = registerOutput<RunCommandErrorBlobManagedIdentity?>('errorBlobManagedIdentity', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return RunCommandErrorBlobManagedIdentity.fromMap((guardedValue as Map).cast<String, dynamic>()); }, isSecret: true);

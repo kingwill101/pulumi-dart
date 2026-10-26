@@ -103,7 +103,7 @@ import 'hci_extension_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -111,11 +111,17 @@ import 'hci_extension_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-hci-ext"
 ///   location = "West Europe"
 /// }
-/// resource "azure_stack_hciextension" "example" {
+/// resource "azure_stack_hci_extension" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                               = "AzureMonitorWindowsAgent"
 ///   arc_setting_id                     = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example-hci/providers/Microsoft.AzureStackHCI/clusters/hci-cl/arcSettings/default"
 ///   publisher                          = "Microsoft.Azure.Monitor"
@@ -235,7 +241,7 @@ class HciExtension extends pulumi.CustomResource {
           'azure:stack/hciExtension:HciExtension',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['protectedSettings'],
         ) {
     arcSettingId = registerOutput<String>('arcSettingId');

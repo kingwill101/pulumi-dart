@@ -74,7 +74,7 @@ import 'get_enterprise_database_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -82,16 +82,16 @@ import 'get_enterprise_database_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_redis_getcache" "example" {
+/// data "azure_redis_cache" "example" {
 ///   name                = "myrediscache"
 ///   resource_group_name = "redis-cache"
 /// }
 ///
 /// output "primaryAccessKey" {
-///   value = data.azure_redis_getcache.example.primary_access_key
+///   value = data.azure_redis_cache.example.primary_access_key
 /// }
 /// output "hostname" {
-///   value = data.azure_redis_getcache.example.hostname
+///   value = data.azure_redis_cache.example.hostname
 /// }
 /// ```
 /// ```java
@@ -179,7 +179,7 @@ pulumi.Output<GetCacheResult> getCacheOutput(
 ///
 ///
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -187,17 +187,17 @@ pulumi.Output<GetCacheResult> getCacheOutput(
 ///   }
 /// }
 ///
-/// data "azure_redis_getenterprisedatabase" "example" {
+/// data "azure_redis_enterprise_database" "example" {
 ///   name                = "default"
 ///   resource_group_name = exampleAzurermResourceGroup.name
 ///   cluster_id          = exampleAzurermRedisEnterpriseCluster.id
 /// }
 ///
 /// output "redisEnterpriseDatabasePrimaryKey" {
-///   value = data.azure_redis_getenterprisedatabase.example.primary_access_key
+///   value = data.azure_redis_enterprise_database.example.primary_access_key
 /// }
 /// output "redisEnterpriseDatabaseSecondaryKey" {
-///   value = data.azure_redis_getenterprisedatabase.example.secondary_access_key
+///   value = data.azure_redis_enterprise_database.example.secondary_access_key
 /// }
 /// ```
 /// ```yaml

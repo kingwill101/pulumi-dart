@@ -100,7 +100,7 @@ import 'configuration_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -108,14 +108,20 @@ import 'configuration_store_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appconfiguration_configurationstore" "appconf" {
+/// resource "azure_appconfiguration_configuration_store" "appconf" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "appConf1"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// ```
 /// ```java
@@ -678,7 +684,7 @@ import 'configuration_store_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -686,55 +692,76 @@ import 'configuration_store_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-identity"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "exampleKVt123"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "standard"
 ///   soft_delete_retention_days = 7
 ///   purge_protection_enabled   = true
 /// }
-/// resource "azure_keyvault_accesspolicy" "server" {
-///   key_vault_id       = azure_keyvault_keyvault.example.id
-///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
-///   object_id          = azure_authorization_userassignedidentity.example.principal_id
+/// resource "azure_keyvault_access_policy" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id       = azure_keyvault_key_vault.example.id
+///   tenant_id          = data.azure_core_client_config.current.tenant_id
+///   object_id          = azure_authorization_user_assigned_identity.example.principal_id
 ///   key_permissions    = ["Get", "UnwrapKey", "WrapKey"]
 ///   secret_permissions = ["Get"]
 /// }
-/// resource "azure_keyvault_accesspolicy" "client" {
-///   key_vault_id       = azure_keyvault_keyvault.example.id
-///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
-///   object_id          = data.azure_core_getclientconfig.current.object_id
+/// resource "azure_keyvault_access_policy" "client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id       = azure_keyvault_key_vault.example.id
+///   tenant_id          = data.azure_core_client_config.current.tenant_id
+///   object_id          = data.azure_core_client_config.current.object_id
 ///   key_permissions    = ["Get", "Create", "Delete", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify", "GetRotationPolicy"]
 ///   secret_permissions = ["Get"]
 /// }
 /// resource "azure_keyvault_key" "example" {
-///   depends_on   = [azure_keyvault_accesspolicy.client, azure_keyvault_accesspolicy.server]
+///   depends_on = [azure_keyvault_access_policy.client, azure_keyvault_access_policy.server]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "exampleKVkey"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 /// }
-/// resource "azure_appconfiguration_configurationstore" "example" {
-///   depends_on                 = [azure_keyvault_accesspolicy.client, azure_keyvault_accesspolicy.server]
+/// resource "azure_appconfiguration_configuration_store" "example" {
+///   depends_on = [azure_keyvault_access_policy.client, azure_keyvault_access_policy.server]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "appConf2"
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   location                   = azure_core_resourcegroup.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
+///   location                   = azure_core_resource_group.example.location
 ///   sku                        = "standard"
 ///   local_auth_enabled         = true
 ///   public_network_access      = "Enabled"
@@ -742,11 +769,11 @@ import 'configuration_store_state.dart';
 ///   soft_delete_retention_days = 1
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 ///   encryption = {
 ///     key_vault_key_identifier = azure_keyvault_key.example.id
-///     identity_client_id       = azure_authorization_userassignedidentity.example.client_id
+///     identity_client_id       = azure_authorization_user_assigned_identity.example.client_id
 ///   }
 ///   replicas {
 ///     name     = "replica1"
@@ -1091,7 +1118,7 @@ class ConfigurationStore extends pulumi.CustomResource {
           'azure:appconfiguration/configurationStore:ConfigurationStore',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     dataPlaneProxyAuthenticationMode = registerOutput<String?>('dataPlaneProxyAuthenticationMode');
     dataPlaneProxyPrivateLinkDelegationEnabled = registerOutput<bool?>('dataPlaneProxyPrivateLinkDelegationEnabled');

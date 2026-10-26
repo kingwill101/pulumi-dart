@@ -359,7 +359,7 @@ import 'pool_window.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -367,21 +367,30 @@ import 'pool_window.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "testaccbatch"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "testaccsa"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_batch_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                = "testaccbatch"
-///   resource_group_name                 = azure_core_resourcegroup.example.name
-///   location                            = azure_core_resourcegroup.example.location
+///   resource_group_name                 = azure_core_resource_group.example.name
+///   location                            = azure_core_resource_group.example.location
 ///   pool_allocation_mode                = "BatchService"
 ///   storage_account_id                  = azure_storage_account.example.id
 ///   storage_account_authentication_mode = "StorageKeys"
@@ -390,15 +399,25 @@ import 'pool_window.dart';
 ///   }
 /// }
 /// resource "azure_batch_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "testaccpool"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   account_name        = azure_batch_account.example.name
 ///   display_name        = "Test Acc Pool Auto"
 ///   vm_size             = "STANDARD_A1_V2"
 ///   node_agent_sku_id   = "batch.node.ubuntu 20.04"
 ///   auto_scale = {
 ///     evaluation_interval = "PT15M"
-///     formula             = "      startingNumberOfVMs = 1;\n      maxNumberofVMs = 25;\n      pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);\n      pendingTaskSamples = pendingTaskSamplePercent < 70 ? startingNumberOfVMs : avg($PendingTasks.GetSample(180 *   TimeInterval_Second));\n      $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);\n"
+///     formula             = <<EOF
+///       startingNumberOfVMs = 1;
+///       maxNumberofVMs = 25;
+///       pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);
+///       pendingTaskSamples = pendingTaskSamplePercent < 70 ? startingNumberOfVMs : avg($PendingTasks.GetSample(180 *   TimeInterval_Second));
+///       $TargetDedicatedNodes=min(maxNumberofVMs, pendingTaskSamples);
+/// EOF
+///
 ///   }
 ///   storage_image_reference = {
 ///     publisher = "microsoft-azure-batch"
@@ -409,9 +428,9 @@ import 'pool_window.dart';
 ///   container_configuration = {
 ///     type = "DockerCompatible"
 ///     container_registries = [{
-///       "registryServer" = "docker.io"
-///       "userName"       = "login"
-///       "password"       = "apassword"
+///       registry_server = "docker.io"
+///       user_name       = "login"
+///       password        = "apassword"
 ///     }]
 ///   }
 ///   start_task = {
@@ -690,7 +709,7 @@ class Pool extends pulumi.CustomResource {
           'azure:batch/pool:Pool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     accountName = registerOutput<String>('accountName');
     autoScale = registerOutput<PoolAutoScale?>('autoScale', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return PoolAutoScale.fromMap((guardedValue as Map).cast<String, dynamic>()); });

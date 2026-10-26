@@ -138,7 +138,7 @@ import 'automanage_configuration_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -148,23 +148,33 @@ import 'automanage_configuration_assignment_state.dart';
 ///
 /// data "azure_arcmachine_get" "example" {
 ///   name                = var.arcMachineName
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_automanage_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-configuration"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_arcmachine_automanageconfigurationassignment" "example" {
+/// resource "azure_arcmachine_automanage_configuration_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   arc_machine_id   = data.azure_arcmachine_get.example.id
 ///   configuration_id = azure_automanage_configuration.example.id
 /// }
 /// variable "arcMachineName" {
+///   type        = any
 ///   description = "The name of the Arc Machine."
 /// }
 /// ```
@@ -196,7 +206,7 @@ import 'automanage_configuration_assignment_state.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         final var config = ctx.config();
-///         final var arcMachineName = config.require("arcMachineName");
+///         final var arcMachineName = config.requireObject("arcMachineName", com.pulumi.core.TypeShape.map(String.class, Object.class));
 ///         var exampleResourceGroup = new ResourceGroup("exampleResourceGroup", ResourceGroupArgs.builder()
 ///             .name("example-resources")
 ///             .location("West Europe")
@@ -289,7 +299,7 @@ class AutomanageConfigurationAssignment extends pulumi.CustomResource {
           'azure:arcmachine/automanageConfigurationAssignment:AutomanageConfigurationAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     arcMachineId = registerOutput<String>('arcMachineId');
     configurationId = registerOutput<String>('configurationId');

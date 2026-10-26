@@ -162,7 +162,7 @@ import 'api_connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -170,25 +170,34 @@ import 'api_connection_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_connections_getmanagedapi" "example" {
+/// data "azure_connections_managed_api" "example" {
 ///   name     = "servicebus"
-///   location = azure_core_resourcegroup.example.location
+///   location = azure_core_resource_group.example.location
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_servicebus_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-namespace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Basic"
 /// }
-/// resource "azure_connections_apiconnection" "example" {
+/// resource "azure_connections_api_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-connection"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   managed_api_id      = data.azure_connections_getmanagedapi.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   managed_api_id      = data.azure_connections_managed_api.example.id
 ///   display_name        = "Example 1"
 ///   parameter_values = {
 ///     "connectionString" = azure_servicebus_namespace.example.default_primary_connection_string
@@ -334,7 +343,7 @@ class ApiConnection extends pulumi.CustomResource {
           'azure:connections/apiConnection:ApiConnection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     displayName = registerOutput<String>('displayName');
     managedApiId = registerOutput<String>('managedApiId');

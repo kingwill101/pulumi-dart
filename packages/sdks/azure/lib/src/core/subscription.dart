@@ -96,7 +96,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -104,14 +104,17 @@ import 'subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_billing_getenrollmentaccountscope" "example" {
+/// data "azure_billing_enrollment_account_scope" "example" {
 ///   billing_account_name    = "1234567890"
 ///   enrollment_account_name = "0123456"
 /// }
 ///
 /// resource "azure_core_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subscription_name = "My Example EA Subscription"
-///   billing_scope_id  = data.azure_billing_getenrollmentaccountscope.example.id
+///   billing_scope_id  = data.azure_billing_enrollment_account_scope.example.id
 /// }
 /// ```
 /// ```java
@@ -250,7 +253,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -258,15 +261,18 @@ import 'subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_billing_getmcaaccountscope" "example" {
+/// data "azure_billing_mca_account_scope" "example" {
 ///   billing_account_name = "e879cf0f-2b4d-5431-109a-f72fc9868693:024cabf4-7321-4cf9-be59-df0c77ca51de_2019-05-31"
 ///   billing_profile_name = "PE2Q-NOIT-BG7-TGB"
 ///   invoice_section_name = "MTT4-OBS7-PJA-TGB"
 /// }
 ///
 /// resource "azure_core_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subscription_name = "My Example MCA Subscription"
-///   billing_scope_id  = data.azure_billing_getmcaaccountscope.example.id
+///   billing_scope_id  = data.azure_billing_mca_account_scope.example.id
 /// }
 /// ```
 /// ```java
@@ -403,7 +409,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -411,14 +417,17 @@ import 'subscription_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_billing_getmpaaccountscope" "example" {
+/// data "azure_billing_mpa_account_scope" "example" {
 ///   billing_account_name = "e879cf0f-2b4d-5431-109a-f72fc9868693:024cabf4-7321-4cf9-be59-df0c77ca51de_2019-05-31"
 ///   customer_name        = "2281f543-7321-4cf9-1e23-edb4Oc31a31c"
 /// }
 ///
 /// resource "azure_core_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subscription_name = "My Example MPA Subscription"
-///   billing_scope_id  = data.azure_billing_getmpaaccountscope.example.id
+///   billing_scope_id  = data.azure_billing_mpa_account_scope.example.id
 /// }
 /// ```
 /// ```java
@@ -537,7 +546,7 @@ import 'subscription_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -546,6 +555,9 @@ import 'subscription_state.dart';
 /// }
 ///
 /// resource "azure_core_subscription" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   alias             = "examplesub"
 ///   subscription_name = "My Example Subscription"
 ///   subscription_id   = "12345678-12234-5678-9012-123456789012"
@@ -640,7 +652,7 @@ class Subscription extends pulumi.CustomResource {
           'azure:core/subscription:Subscription',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     alias = registerOutput<String>('alias');
     billingScopeId = registerOutput<String?>('billingScopeId');

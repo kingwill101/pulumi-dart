@@ -128,7 +128,7 @@ import 'saved_search_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -136,20 +136,29 @@ import 'saved_search_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acctest-01"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "PerGB2018"
 ///   retention_in_days   = 30
 /// }
-/// resource "azure_loganalytics_savedsearch" "example" {
+/// resource "azure_loganalytics_saved_search" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "exampleSavedSearch"
-///   log_analytics_workspace_id = azure_operationalinsights_analyticsworkspace.example.id
+///   log_analytics_workspace_id = azure_operationalinsights_analytics_workspace.example.id
 ///   category                   = "exampleCategory"
 ///   display_name               = "exampleDisplayName"
 ///   query                      = "exampleQuery"
@@ -276,7 +285,7 @@ class SavedSearch extends pulumi.CustomResource {
           'azure:loganalytics/savedSearch:SavedSearch',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     category = registerOutput<String>('category');
     displayName = registerOutput<String>('displayName');

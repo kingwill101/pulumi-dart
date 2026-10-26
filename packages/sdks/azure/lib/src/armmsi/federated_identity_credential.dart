@@ -120,7 +120,7 @@ import 'federated_identity_credential_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -128,20 +128,29 @@ import 'federated_identity_credential_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
-///   location            = azure_core_resourcegroup.example.location
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_armmsi_federatedidentitycredential" "example" {
+/// resource "azure_armmsi_federated_identity_credential" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "example"
 ///   audience                  = "foo"
 ///   issuer                    = "https://foo"
-///   user_assigned_identity_id = azure_authorization_userassignedidentity.example.id
+///   user_assigned_identity_id = azure_authorization_user_assigned_identity.example.id
 ///   subject                   = "foo"
 /// }
 /// ```
@@ -258,7 +267,7 @@ class FederatedIdentityCredential extends pulumi.CustomResource {
           'azure:armmsi/federatedIdentityCredential:FederatedIdentityCredential',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     audience = registerOutput<String>('audience');
     issuer = registerOutput<String>('issuer');

@@ -326,7 +326,7 @@ import 'script_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -334,7 +334,7 @@ import 'script_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_storage_getaccountblobcontainersas" "example" {
+/// data "azure_storage_account_blob_container_s_a_s" "example" {
 ///   connection_string = azure_storage_account.example.primary_connection_string
 ///   container_name    = azure_storage_container.example.name
 ///   https_only        = true
@@ -350,38 +350,56 @@ import 'script_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
 /// resource "azure_kusto_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku = {
 ///     name     = "Dev(No SLA)_Standard_D11_v2"
 ///     capacity = 1
 ///   }
 /// }
 /// resource "azure_kusto_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   cluster_name        = azure_kusto_cluster.example.name
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "setup-files"
 ///   storage_account_name  = azure_storage_account.example.name
 ///   container_access_type = "private"
 /// }
 /// resource "azure_storage_blob" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "script.txt"
 ///   storage_account_name   = azure_storage_account.example.name
 ///   storage_container_name = azure_storage_container.example.name
@@ -389,10 +407,13 @@ import 'script_state.dart';
 ///   source_content         = ".create table MyTable (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)"
 /// }
 /// resource "azure_kusto_script" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                               = "example"
 ///   database_id                        = azure_kusto_database.example.id
 ///   url                                = azure_storage_blob.example.id
-///   sas_token                          = data.azure_storage_getaccountblobcontainersas.example.sas
+///   sas_token                          = data.azure_storage_account_blob_container_s_a_s.example.sas
 ///   continue_on_errors_enabled         = true
 ///   force_an_update_when_value_changed = "first"
 ///   script_level                       = "Database"
@@ -639,7 +660,7 @@ class Script extends pulumi.CustomResource {
           'azure:kusto/script:Script',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['sasToken', 'scriptContent'],
         ) {
     continueOnErrorsEnabled = registerOutput<bool?>('continueOnErrorsEnabled');

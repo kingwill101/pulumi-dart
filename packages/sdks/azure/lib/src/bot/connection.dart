@@ -143,7 +143,7 @@ import 'connection_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -151,25 +151,34 @@ import 'connection_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_bot_channelsregistration" "example" {
+/// resource "azure_bot_channels_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
 ///   location            = "global"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "F0"
-///   microsoft_app_id    = data.azure_core_getclientconfig.current.client_id
+///   microsoft_app_id    = data.azure_core_client_config.current.client_id
 /// }
 /// resource "azure_bot_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example"
-///   bot_name              = azure_bot_channelsregistration.example.name
-///   location              = azure_bot_channelsregistration.example.location
-///   resource_group_name   = azure_core_resourcegroup.example.name
+///   bot_name              = azure_bot_channels_registration.example.name
+///   location              = azure_bot_channels_registration.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
 ///   service_provider_name = "box"
 ///   client_id             = "exampleId"
 ///   client_secret         = "exampleSecret"
@@ -303,7 +312,7 @@ class Connection extends pulumi.CustomResource {
           'azure:bot/connection:Connection',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['clientSecret'],
         ) {
     botName = registerOutput<String>('botName');

@@ -142,7 +142,7 @@ import 'virtual_network_subnet.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -150,22 +150,31 @@ import 'virtual_network_subnet.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_devtest_lab" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-devtestlab"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   tags = {
 ///     "Sydney" = "Australia"
 ///   }
 /// }
-/// resource "azure_devtest_virtualnetwork" "example" {
+/// resource "azure_devtest_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network"
 ///   lab_name            = azure_devtest_lab.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   subnet = {
 ///     use_public_ip_address           = "Allow"
 ///     use_in_virtual_machine_creation = "Allow"
@@ -294,7 +303,7 @@ class VirtualNetwork extends pulumi.CustomResource {
           'azure:devtest/virtualNetwork:VirtualNetwork',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     labName = registerOutput<String>('labName');

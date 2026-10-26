@@ -30,9 +30,9 @@ class PolicyFileShareBackupHourly {
 
   factory PolicyFileShareBackupHourly.fromMap(Map<String, dynamic> map) {
     return PolicyFileShareBackupHourly(
-      interval: pulumi.Input.fromValue((map['interval'] as num).toInt()),
+      interval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interval'])),
       startTime: pulumi.Input.fromValue(map['startTime'] as String),
-      windowDuration: pulumi.Input.fromValue((map['windowDuration'] as num).toInt()),
+      windowDuration: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['windowDuration'])),
     );
   }
 }

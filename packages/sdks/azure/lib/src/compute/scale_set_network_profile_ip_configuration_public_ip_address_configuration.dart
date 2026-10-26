@@ -31,7 +31,7 @@ class ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration {
   factory ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration.fromMap(Map<String, dynamic> map) {
     return ScaleSetNetworkProfileIpConfigurationPublicIpAddressConfiguration(
       domainNameLabel: pulumi.Input.fromValue(map['domainNameLabel'] as String),
-      idleTimeout: pulumi.Input.fromValue((map['idleTimeout'] as num).toInt()),
+      idleTimeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['idleTimeout'])),
       name: pulumi.Input.fromValue(map['name'] as String),
     );
   }

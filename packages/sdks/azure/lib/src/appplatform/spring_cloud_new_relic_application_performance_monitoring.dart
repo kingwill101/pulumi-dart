@@ -148,7 +148,7 @@ import 'spring_cloud_new_relic_application_performance_monitoring_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -156,19 +156,28 @@ import 'spring_cloud_new_relic_application_performance_monitoring_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appplatform_springcloudservice" "example" {
+/// resource "azure_appplatform_spring_cloud_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "E0"
 /// }
-/// resource "azure_appplatform_springcloudnewrelicapplicationperformancemonitoring" "example" {
+/// resource "azure_appplatform_spring_cloud_new_relic_application_performance_monitoring" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                    = "example"
-///   spring_cloud_service_id = azure_appplatform_springcloudservice.example.id
+///   spring_cloud_service_id = azure_appplatform_spring_cloud_service.example.id
 ///   app_name                = "example-app-name"
 ///   license_key             = "example-license-key"
 ///   app_server_port         = 8080
@@ -315,7 +324,7 @@ class SpringCloudNewRelicApplicationPerformanceMonitoring extends pulumi.CustomR
           'azure:appplatform/springCloudNewRelicApplicationPerformanceMonitoring:SpringCloudNewRelicApplicationPerformanceMonitoring',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['licenseKey'],
         ) {
     agentEnabled = registerOutput<bool?>('agentEnabled');

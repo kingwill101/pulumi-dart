@@ -85,7 +85,7 @@ import 'ssh_public_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -96,7 +96,10 @@ import 'ssh_public_key_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_compute_sshpublickey" "example" {
+/// resource "azure_compute_ssh_public_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
 ///   resource_group_name = "example"
 ///   location            = "West Europe"
@@ -193,7 +196,7 @@ class SshPublicKey extends pulumi.CustomResource {
           'azure:compute/sshPublicKey:SshPublicKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     location = registerOutput<String>('location');
     this.name = registerOutput<String>('name');

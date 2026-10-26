@@ -338,7 +338,7 @@ import 'virtual_hub_route_table_route_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -346,63 +346,93 @@ import 'virtual_hub_route_table_route_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
 ///   address_spaces      = ["10.5.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_network_networksecuritygroup" "example" {
+/// resource "azure_network_network_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nsg"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "examplesubnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.5.1.0/24"]
 /// }
-/// resource "azure_network_subnetnetworksecuritygroupassociation" "example" {
+/// resource "azure_network_subnet_network_security_group_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id                 = azure_network_subnet.example.id
-///   network_security_group_id = azure_network_networksecuritygroup.example.id
+///   network_security_group_id = azure_network_network_security_group.example.id
 /// }
-/// resource "azure_network_virtualwan" "example" {
+/// resource "azure_network_virtual_wan" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vwan"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_network_virtualhub" "example" {
+/// resource "azure_network_virtual_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vhub"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
-///   virtual_wan_id      = azure_network_virtualwan.example.id
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
+///   virtual_wan_id      = azure_network_virtual_wan.example.id
 ///   address_prefix      = "10.0.2.0/24"
 /// }
-/// resource "azure_network_virtualhubconnection" "example" {
+/// resource "azure_network_virtual_hub_connection" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                      = "example-vhubconn"
-///   virtual_hub_id            = azure_network_virtualhub.example.id
-///   remote_virtual_network_id = azure_network_virtualnetwork.example.id
+///   virtual_hub_id            = azure_network_virtual_hub.example.id
+///   remote_virtual_network_id = azure_network_virtual_network.example.id
 ///   routing = {
-///     associated_route_table_id = azure_network_virtualhubroutetable.example.id
+///     associated_route_table_id = azure_network_virtual_hub_route_table.example.id
 ///   }
 /// }
-/// resource "azure_network_virtualhubroutetable" "example" {
+/// resource "azure_network_virtual_hub_route_table" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example-vhubroutetable"
-///   virtual_hub_id = azure_network_virtualhub.example.id
+///   virtual_hub_id = azure_network_virtual_hub.example.id
 ///   labels         = ["label1"]
 /// }
-/// resource "azure_network_virtualhubroutetableroute" "example" {
-///   route_table_id    = azure_network_virtualhubroutetable.example.id
+/// resource "azure_network_virtual_hub_route_table_route" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   route_table_id    = azure_network_virtual_hub_route_table.example.id
 ///   name              = "example-route"
 ///   destinations_type = "CIDR"
 ///   destinations      = ["10.0.0.0/16"]
 ///   next_hop_type     = "ResourceId"
-///   next_hop          = azure_network_virtualhubconnection.example.id
+///   next_hop          = azure_network_virtual_hub_connection.example.id
 /// }
 /// ```
 /// ```java
@@ -641,7 +671,7 @@ class VirtualHubRouteTableRouteNetwork extends pulumi.CustomResource {
           'azure:network/virtualHubRouteTableRoute:VirtualHubRouteTableRoute',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     destinations = registerOutput<List<String>>('destinations', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     destinationsType = registerOutput<String>('destinationsType');

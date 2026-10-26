@@ -104,7 +104,7 @@ import 'public_ip_prefix_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -112,14 +112,20 @@ import 'public_ip_prefix_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_publicipprefix" "example" {
+/// resource "azure_network_public_ip_prefix" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acceptanceTestPublicIpPrefix1"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   prefix_length       = 31
 ///   tags = {
 ///     "environment" = "Production"
@@ -243,7 +249,7 @@ class PublicIpPrefix extends pulumi.CustomResource {
           'azure:network/publicIpPrefix:PublicIpPrefix',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     customIpPrefixId = registerOutput<String?>('customIpPrefixId');
     ipPrefix = registerOutput<String>('ipPrefix');

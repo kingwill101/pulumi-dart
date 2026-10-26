@@ -258,7 +258,7 @@ import 'account_virtual_network_rule.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -269,15 +269,24 @@ import 'account_virtual_network_rule.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "rg" {
+/// resource "azure_core_resource_group" "rg" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "sample-rg"
 ///   location = "westus"
 /// }
 /// resource "random_integer" "ri" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   min = 10000
 ///   max = 99999
 /// }
 /// resource "azure_cosmosdb_account" "db" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       ="tfex-cosmos-db-${random_integer.ri.result}"
 ///   location                   = example.location
 ///   resource_group_name        = example.name
@@ -350,9 +359,9 @@ import 'account_virtual_network_rule.dart';
 ///             .build());
 ///
 ///         var db = new Account("db", AccountArgs.builder()
-///             .name(String.format("tfex-cosmos-db-%s", ri.result()))
-///             .location(example.location())
-///             .resourceGroupName(example.name())
+///             .name(String.format("tfex-cosmos-db-%s", ri.get("result")))
+///             .location(example.get("location"))
+///             .resourceGroupName(example.get("name"))
 ///             .offerType("Standard")
 ///             .kind("MongoDB")
 ///             .automaticFailoverEnabled(true)
@@ -628,7 +637,7 @@ import 'account_virtual_network_rule.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -639,16 +648,22 @@ import 'account_virtual_network_rule.dart';
 ///   }
 /// }
 ///
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   resource_group_name = exampleAzurermResourceGroup.name
 ///   location            = exampleAzurermResourceGroup.location
 ///   name                = "example-resource"
 /// }
 /// resource "azure_cosmosdb_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-resource"
 ///   location              = exampleAzurermResourceGroup.location
 ///   resource_group_name   = exampleAzurermResourceGroup.name
-///   default_identity_type = join("=", ["UserAssignedIdentity", azure_authorization_userassignedidentity.example.id])
+///   default_identity_type = join("=", ["UserAssignedIdentity", azure_authorization_user_assigned_identity.example.id])
 ///   offer_type            = "Standard"
 ///   kind                  = "MongoDB"
 ///   capabilities {
@@ -663,7 +678,7 @@ import 'account_virtual_network_rule.dart';
 ///   }
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 /// }
 /// ```
@@ -697,15 +712,15 @@ import 'account_virtual_network_rule.dart';
 ///
 ///     public static void stack(Context ctx) {
 ///         var example = new UserAssignedIdentity("example", UserAssignedIdentityArgs.builder()
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
-///             .location(exampleAzurermResourceGroup.location())
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
+///             .location(exampleAzurermResourceGroup.get("location"))
 ///             .name("example-resource")
 ///             .build());
 ///
 ///         var exampleAccount = new Account("exampleAccount", AccountArgs.builder()
 ///             .name("example-resource")
-///             .location(exampleAzurermResourceGroup.location())
-///             .resourceGroupName(exampleAzurermResourceGroup.name())
+///             .location(exampleAzurermResourceGroup.get("location"))
+///             .resourceGroupName(exampleAzurermResourceGroup.get("name"))
 ///             .defaultIdentityType(StdFunctions.join(JoinArgs.builder()
 ///                 .separator("=")
 ///                 .input(
@@ -880,7 +895,7 @@ class Account extends pulumi.CustomResource {
           'azure:cosmosdb/account:Account',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['primaryKey', 'primaryMongodbConnectionString', 'primaryReadonlyKey', 'primaryReadonlyMongodbConnectionString', 'primaryReadonlySqlConnectionString', 'primarySqlConnectionString', 'secondaryKey', 'secondaryMongodbConnectionString', 'secondaryReadonlyKey', 'secondaryReadonlyMongodbConnectionString', 'secondaryReadonlySqlConnectionString', 'secondarySqlConnectionString'],
         ) {
     accessKeyMetadataWritesEnabled = registerOutput<bool?>('accessKeyMetadataWritesEnabled');

@@ -899,7 +899,7 @@ import 'managed_instance_security_alert_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -907,16 +907,25 @@ import 'managed_instance_security_alert_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "database-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_networksecuritygroup" "example" {
+/// resource "azure_network_network_security_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "mi-security-group"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_network_networksecurityrule" "allow_management_inbound" {
+/// resource "azure_network_network_security_rule" "allow_management_inbound" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "allow_management_inbound"
 ///   priority                    = 106
 ///   direction                   = "Inbound"
@@ -926,10 +935,13 @@ import 'managed_instance_security_alert_policy_state.dart';
 ///   destination_port_ranges     = ["9000", "9003", "1438", "1440", "1452"]
 ///   source_address_prefix       = "*"
 ///   destination_address_prefix  = "*"
-///   resource_group_name         = azure_core_resourcegroup.example.name
-///   network_security_group_name = azure_network_networksecuritygroup.example.name
+///   resource_group_name         = azure_core_resource_group.example.name
+///   network_security_group_name = azure_network_network_security_group.example.name
 /// }
-/// resource "azure_network_networksecurityrule" "allow_misubnet_inbound" {
+/// resource "azure_network_network_security_rule" "allow_misubnet_inbound" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "allow_misubnet_inbound"
 ///   priority                    = 200
 ///   direction                   = "Inbound"
@@ -939,10 +951,13 @@ import 'managed_instance_security_alert_policy_state.dart';
 ///   destination_port_range      = "*"
 ///   source_address_prefix       = "10.0.0.0/24"
 ///   destination_address_prefix  = "*"
-///   resource_group_name         = azure_core_resourcegroup.example.name
-///   network_security_group_name = azure_network_networksecuritygroup.example.name
+///   resource_group_name         = azure_core_resource_group.example.name
+///   network_security_group_name = azure_network_network_security_group.example.name
 /// }
-/// resource "azure_network_networksecurityrule" "allow_health_probe_inbound" {
+/// resource "azure_network_network_security_rule" "allow_health_probe_inbound" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "allow_health_probe_inbound"
 ///   priority                    = 300
 ///   direction                   = "Inbound"
@@ -952,10 +967,13 @@ import 'managed_instance_security_alert_policy_state.dart';
 ///   destination_port_range      = "*"
 ///   source_address_prefix       = "AzureLoadBalancer"
 ///   destination_address_prefix  = "*"
-///   resource_group_name         = azure_core_resourcegroup.example.name
-///   network_security_group_name = azure_network_networksecuritygroup.example.name
+///   resource_group_name         = azure_core_resource_group.example.name
+///   network_security_group_name = azure_network_network_security_group.example.name
 /// }
-/// resource "azure_network_networksecurityrule" "allow_tds_inbound" {
+/// resource "azure_network_network_security_rule" "allow_tds_inbound" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "allow_tds_inbound"
 ///   priority                    = 1000
 ///   direction                   = "Inbound"
@@ -965,10 +983,13 @@ import 'managed_instance_security_alert_policy_state.dart';
 ///   destination_port_range      = "1433"
 ///   source_address_prefix       = "VirtualNetwork"
 ///   destination_address_prefix  = "*"
-///   resource_group_name         = azure_core_resourcegroup.example.name
-///   network_security_group_name = azure_network_networksecuritygroup.example.name
+///   resource_group_name         = azure_core_resource_group.example.name
+///   network_security_group_name = azure_network_network_security_group.example.name
 /// }
-/// resource "azure_network_networksecurityrule" "deny_all_inbound" {
+/// resource "azure_network_network_security_rule" "deny_all_inbound" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "deny_all_inbound"
 ///   priority                    = 4096
 ///   direction                   = "Inbound"
@@ -978,10 +999,13 @@ import 'managed_instance_security_alert_policy_state.dart';
 ///   destination_port_range      = "*"
 ///   source_address_prefix       = "*"
 ///   destination_address_prefix  = "*"
-///   resource_group_name         = azure_core_resourcegroup.example.name
-///   network_security_group_name = azure_network_networksecuritygroup.example.name
+///   resource_group_name         = azure_core_resource_group.example.name
+///   network_security_group_name = azure_network_network_security_group.example.name
 /// }
-/// resource "azure_network_networksecurityrule" "allow_management_outbound" {
+/// resource "azure_network_network_security_rule" "allow_management_outbound" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "allow_management_outbound"
 ///   priority                    = 102
 ///   direction                   = "Outbound"
@@ -991,10 +1015,13 @@ import 'managed_instance_security_alert_policy_state.dart';
 ///   destination_port_ranges     = ["80", "443", "12000"]
 ///   source_address_prefix       = "*"
 ///   destination_address_prefix  = "*"
-///   resource_group_name         = azure_core_resourcegroup.example.name
-///   network_security_group_name = azure_network_networksecuritygroup.example.name
+///   resource_group_name         = azure_core_resource_group.example.name
+///   network_security_group_name = azure_network_network_security_group.example.name
 /// }
-/// resource "azure_network_networksecurityrule" "allow_misubnet_outbound" {
+/// resource "azure_network_network_security_rule" "allow_misubnet_outbound" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "allow_misubnet_outbound"
 ///   priority                    = 200
 ///   direction                   = "Outbound"
@@ -1004,10 +1031,13 @@ import 'managed_instance_security_alert_policy_state.dart';
 ///   destination_port_range      = "*"
 ///   source_address_prefix       = "10.0.0.0/24"
 ///   destination_address_prefix  = "*"
-///   resource_group_name         = azure_core_resourcegroup.example.name
-///   network_security_group_name = azure_network_networksecuritygroup.example.name
+///   resource_group_name         = azure_core_resource_group.example.name
+///   network_security_group_name = azure_network_network_security_group.example.name
 /// }
-/// resource "azure_network_networksecurityrule" "deny_all_outbound" {
+/// resource "azure_network_network_security_rule" "deny_all_outbound" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "deny_all_outbound"
 ///   priority                    = 4096
 ///   direction                   = "Outbound"
@@ -1017,19 +1047,25 @@ import 'managed_instance_security_alert_policy_state.dart';
 ///   destination_port_range      = "*"
 ///   source_address_prefix       = "*"
 ///   destination_address_prefix  = "*"
-///   resource_group_name         = azure_core_resourcegroup.example.name
-///   network_security_group_name = azure_network_networksecuritygroup.example.name
+///   resource_group_name         = azure_core_resource_group.example.name
+///   network_security_group_name = azure_network_network_security_group.example.name
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "vnet-mi"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
+///   location            = azure_core_resource_group.example.location
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "subnet-mi"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.0.0/24"]
 ///   delegations {
 ///     name = "managedinstancedelegation"
@@ -1039,26 +1075,38 @@ import 'managed_instance_security_alert_policy_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_network_subnetnetworksecuritygroupassociation" "example" {
+/// resource "azure_network_subnet_network_security_group_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id                 = azure_network_subnet.example.id
-///   network_security_group_id = azure_network_networksecuritygroup.example.id
+///   network_security_group_id = azure_network_network_security_group.example.id
 /// }
-/// resource "azure_network_routetable" "example" {
-///   depends_on                    = [azure_network_subnet.example]
+/// resource "azure_network_route_table" "example" {
+///   depends_on = [azure_network_subnet.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                          = "routetable-mi"
-///   location                      = azure_core_resourcegroup.example.location
-///   resource_group_name           = azure_core_resourcegroup.example.name
+///   location                      = azure_core_resource_group.example.location
+///   resource_group_name           = azure_core_resource_group.example.name
 ///   disable_bgp_route_propagation = false
 /// }
-/// resource "azure_network_subnetroutetableassociation" "example" {
+/// resource "azure_network_subnet_route_table_association" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   subnet_id      = azure_network_subnet.example.id
-///   route_table_id = azure_network_routetable.example.id
+///   route_table_id = azure_network_route_table.example.id
 /// }
-/// resource "azure_mssql_managedinstance" "example" {
-///   depends_on                   = [azure_network_subnetnetworksecuritygroupassociation.example, azure_network_subnetroutetableassociation.example]
+/// resource "azure_mssql_managed_instance" "example" {
+///   depends_on = [azure_network_subnet_network_security_group_association.example, azure_network_subnet_route_table_association.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "managedsqlinstance"
-///   resource_group_name          = azure_core_resourcegroup.example.name
-///   location                     = azure_core_resourcegroup.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
+///   location                     = azure_core_resource_group.example.location
 ///   license_type                 = "BasePrice"
 ///   sku_name                     = "GP_Gen5"
 ///   storage_size_in_gb           = 32
@@ -1067,9 +1115,12 @@ import 'managed_instance_security_alert_policy_state.dart';
 ///   administrator_login          = "mradministrator"
 ///   administrator_login_password = "thisIsDog11"
 /// }
-/// resource "azure_mssql_managedinstancesecurityalertpolicy" "example" {
-///   resource_group_name        = azure_core_resourcegroup.example.name
-///   managed_instance_name      = azure_mssql_managedinstance.example.name
+/// resource "azure_mssql_managed_instance_security_alert_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name        = azure_core_resource_group.example.name
+///   managed_instance_name      = azure_mssql_managed_instance.example.name
 ///   enabled                    = true
 ///   storage_endpoint           = exampleAzurermStorageAccount.primaryBlobEndpoint
 ///   storage_account_access_key = exampleAzurermStorageAccount.primaryAccessKey
@@ -1314,8 +1365,8 @@ import 'managed_instance_security_alert_policy_state.dart';
 ///             .resourceGroupName(example.name())
 ///             .managedInstanceName(exampleManagedInstance.name())
 ///             .enabled(true)
-///             .storageEndpoint(exampleAzurermStorageAccount.primaryBlobEndpoint())
-///             .storageAccountAccessKey(exampleAzurermStorageAccount.primaryAccessKey())
+///             .storageEndpoint(exampleAzurermStorageAccount.get("primaryBlobEndpoint"))
+///             .storageAccountAccessKey(exampleAzurermStorageAccount.get("primaryAccessKey"))
 ///             .disabledAlerts(
 ///                 "Sql_Injection",
 ///                 "Data_Exfiltration")
@@ -1598,7 +1649,7 @@ class ManagedInstanceSecurityAlertPolicy extends pulumi.CustomResource {
           'azure:mssql/managedInstanceSecurityAlertPolicy:ManagedInstanceSecurityAlertPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['storageAccountAccessKey'],
         ) {
     disabledAlerts = registerOutput<List<String>?>('disabledAlerts', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

@@ -66,7 +66,7 @@ import 'get_group_template_deployment_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -74,12 +74,12 @@ import 'get_group_template_deployment_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_management_getgroup" "example" {
+/// data "azure_management_group" "example" {
 ///   name = "00000000-0000-0000-0000-000000000000"
 /// }
 ///
 /// output "displayName" {
-///   value = data.azure_management_getgroup.example.display_name
+///   value = data.azure_management_group.example.display_name
 /// }
 /// ```
 /// ```java
@@ -236,7 +236,7 @@ pulumi.Output<GetGroupResult> getGroupOutput(
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -247,16 +247,16 @@ pulumi.Output<GetGroupResult> getGroupOutput(
 ///   }
 /// }
 ///
-/// data "azure_management_getgrouptemplatedeployment" "example" {
+/// data "azure_management_group_template_deployment" "example" {
 ///   name                = "existing"
 ///   management_group_id = "00000000-0000-0000-000000000000"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_management_getgrouptemplatedeployment.example.id
+///   value = data.azure_management_group_template_deployment.example.id
 /// }
 /// output "exampleOutput" {
-///   value = jsondecode(data.azure_management_getgrouptemplatedeployment.example.output_content).example_output.value
+///   value = jsondecode(data.azure_management_group_template_deployment.example.output_content).example_output.value
 /// }
 /// ```
 /// ```java

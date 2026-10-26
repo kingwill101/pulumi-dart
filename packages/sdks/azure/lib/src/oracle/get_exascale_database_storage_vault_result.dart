@@ -90,7 +90,7 @@ class GetExascaleDatabaseStorageVaultResult {
 
   factory GetExascaleDatabaseStorageVaultResult.fromMap(Map<String, dynamic> map) {
     return GetExascaleDatabaseStorageVaultResult(
-      additionalFlashCachePercentage: (() { final guardedValue = map['additionalFlashCachePercentage']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      additionalFlashCachePercentage: (() { final guardedValue = map['additionalFlashCachePercentage']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       description: (() { final guardedValue = map['description']; if (guardedValue == null) return null; return guardedValue as String; })(),
       displayName: (() { final guardedValue = map['displayName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       highCapacityDatabaseStorages: (() { final guardedValue = map['highCapacityDatabaseStorages']; if (guardedValue == null) return null; return pulumi.Input.decodeList<GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage>(guardedValue, (value) => GetExascaleDatabaseStorageVaultHighCapacityDatabaseStorage.fromMap((value as Map).cast<String, dynamic>())); })(),
@@ -103,7 +103,7 @@ class GetExascaleDatabaseStorageVaultResult {
       ocid: (() { final guardedValue = map['ocid']; if (guardedValue == null) return null; return guardedValue as String; })(),
       resourceGroupName: (() { final guardedValue = map['resourceGroupName']; if (guardedValue == null) return null; return guardedValue as String; })(),
       timeZone: (() { final guardedValue = map['timeZone']; if (guardedValue == null) return null; return guardedValue as String; })(),
-      virtualMachineClusterCount: (() { final guardedValue = map['virtualMachineClusterCount']; if (guardedValue == null) return null; return (guardedValue as num).toInt(); })(),
+      virtualMachineClusterCount: (() { final guardedValue = map['virtualMachineClusterCount']; if (guardedValue == null) return null; return ((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue); })(),
       zones: (() { final guardedValue = map['zones']; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); })(),
     );
   }

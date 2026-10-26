@@ -229,7 +229,7 @@ import 'sync_cloud_endpoint_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -237,27 +237,42 @@ import 'sync_cloud_endpoint_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_storage_sync" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ss"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_storage_syncgroup" "example" {
+/// resource "azure_storage_sync_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example-ss-group"
 ///   storage_sync_id = azure_storage_sync.example.id
 /// }
 /// resource "azure_storage_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "example"
-///   resource_group_name      = azure_core_resourcegroup.example.name
-///   location                 = azure_core_resourcegroup.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
+///   location                 = azure_core_resource_group.example.location
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_share" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-share"
 ///   storage_account_name = azure_storage_account.example.name
 ///   quota                = 50
@@ -268,9 +283,12 @@ import 'sync_cloud_endpoint_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_storage_synccloudendpoint" "example" {
+/// resource "azure_storage_sync_cloud_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-ss-ce"
-///   storage_sync_group_id = azure_storage_syncgroup.example.id
+///   storage_sync_group_id = azure_storage_sync_group.example.id
 ///   file_share_name       = azure_storage_share.example.name
 ///   storage_account_id    = azure_storage_account.example.id
 /// }
@@ -443,7 +461,7 @@ class SyncCloudEndpoint extends pulumi.CustomResource {
           'azure:storage/syncCloudEndpoint:SyncCloudEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     fileShareName = registerOutput<String>('fileShareName');
     this.name = registerOutput<String>('name');

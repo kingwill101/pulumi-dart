@@ -196,7 +196,7 @@ import 'endpoint_servicebus_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -204,37 +204,55 @@ import 'endpoint_servicebus_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example_resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_digitaltwins_instance" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-DT"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
 /// resource "azure_servicebus_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleservicebusnamespace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
 /// resource "azure_servicebus_topic" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "exampleservicebustopic"
 ///   namespace_id = azure_servicebus_namespace.example.id
 /// }
-/// resource "azure_servicebus_topicauthorizationrule" "example" {
+/// resource "azure_servicebus_topic_authorization_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rule"
 ///   topic_id = azure_servicebus_topic.example.id
 ///   listen   = false
 ///   send     = true
 ///   manage   = false
 /// }
-/// resource "azure_digitaltwins_endpointservicebus" "example" {
+/// resource "azure_digitaltwins_endpoint_servicebus" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                   = "example-EndpointSB"
 ///   digital_twins_id                       = azure_digitaltwins_instance.example.id
-///   servicebus_primary_connection_string   = azure_servicebus_topicauthorizationrule.example.primary_connection_string
-///   servicebus_secondary_connection_string = azure_servicebus_topicauthorizationrule.example.secondary_connection_string
+///   servicebus_primary_connection_string   = azure_servicebus_topic_authorization_rule.example.primary_connection_string
+///   servicebus_secondary_connection_string = azure_servicebus_topic_authorization_rule.example.secondary_connection_string
 /// }
 /// ```
 /// ```java
@@ -395,7 +413,7 @@ class EndpointServicebus extends pulumi.CustomResource {
           'azure:digitaltwins/endpointServicebus:EndpointServicebus',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['deadLetterStorageSecret', 'servicebusPrimaryConnectionString', 'servicebusSecondaryConnectionString'],
         ) {
     deadLetterStorageSecret = registerOutput<String?>('deadLetterStorageSecret', isSecret: true);

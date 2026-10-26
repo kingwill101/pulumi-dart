@@ -167,7 +167,7 @@ import 'local_rulestack_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -175,18 +175,27 @@ import 'local_rulestack_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "rg-example"
 ///   location = "West Europe"
 /// }
-/// resource "azure_paloalto_localrulestack" "example" {
+/// resource "azure_paloalto_local_rulestack" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "lrs-example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 /// }
-/// resource "azure_paloalto_localrulestackrule" "example" {
+/// resource "azure_paloalto_local_rulestack_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-rule"
-///   rulestack_id = azure_paloalto_localrulestack.example.id
+///   rulestack_id = azure_paloalto_local_rulestack.example.id
 ///   priority     = 1000
 ///   action       = "Allow"
 ///   protocol     = "application-default"
@@ -359,7 +368,7 @@ class LocalRulestackRule extends pulumi.CustomResource {
           'azure:paloalto/localRulestackRule:LocalRulestackRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     action = registerOutput<String>('action');
     applications = registerOutput<List<String>>('applications', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });

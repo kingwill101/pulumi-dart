@@ -76,7 +76,7 @@ class PointToPointVpnGatewayArgs {
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       resourceGroupName: pulumi.Input.fromValue(map['resourceGroupName'] as String),
       routingPreferenceInternetEnabled: (() { final guardedValue = map['routingPreferenceInternetEnabled']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
-      scaleUnit: pulumi.Input.fromValue((map['scaleUnit'] as num).toInt()),
+      scaleUnit: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['scaleUnit'])),
       tags: (() { final guardedValue = map['tags']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       virtualHubId: pulumi.Input.fromValue(map['virtualHubId'] as String),
       vpnServerConfigurationId: pulumi.Input.fromValue(map['vpnServerConfigurationId'] as String),

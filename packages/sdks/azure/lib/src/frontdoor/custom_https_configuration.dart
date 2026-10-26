@@ -386,7 +386,7 @@ import 'custom_https_configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -394,18 +394,24 @@ import 'custom_https_configuration_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_keyvault_getkeyvault" "vault" {
+/// data "azure_keyvault_key_vault" "vault" {
 ///   name                = "example-vault"
 ///   resource_group_name = "example-vault-rg"
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "FrontDoorExampleResourceGroup"
 ///   location = "West Europe"
 /// }
 /// resource "azure_frontdoor_frontdoor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-FrontDoor"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   routing_rules {
 ///     name                = "exampleRoutingRule1"
 ///     accepted_protocols  = ["Http", "Https"]
@@ -442,17 +448,23 @@ import 'custom_https_configuration_state.dart';
 ///     host_name = "examplefd1.examplefd.net"
 ///   }
 /// }
-/// resource "azure_frontdoor_customhttpsconfiguration" "example_custom_https_0" {
+/// resource "azure_frontdoor_custom_https_configuration" "example_custom_https_0" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   frontend_endpoint_id              = azure_frontdoor_frontdoor.example.frontend_endpoints_map["exampleFrontendEndpoint1"]
 ///   custom_https_provisioning_enabled = false
 /// }
-/// resource "azure_frontdoor_customhttpsconfiguration" "example_custom_https_1" {
+/// resource "azure_frontdoor_custom_https_configuration" "example_custom_https_1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   frontend_endpoint_id              = azure_frontdoor_frontdoor.example.frontend_endpoints_map["exampleFrontendEndpoint2"]
 ///   custom_https_provisioning_enabled = true
 ///   custom_https_configuration = {
 ///     certificate_source                      = "AzureKeyVault"
 ///     azure_key_vault_certificate_secret_name = "examplefd1"
-///     azure_key_vault_certificate_vault_id    = data.azure_keyvault_getkeyvault.vault.id
+///     azure_key_vault_certificate_vault_id    = data.azure_keyvault_key_vault.vault.id
 ///   }
 /// }
 /// ```
@@ -545,12 +557,12 @@ import 'custom_https_configuration_state.dart';
 ///             .build());
 ///
 ///         var exampleCustomHttps0 = new CustomHttpsConfiguration("exampleCustomHttps0", CustomHttpsConfigurationArgs.builder()
-///             .frontendEndpointId(exampleFrontdoor.frontendEndpointsMap().applyValue(_frontendEndpointsMap -> _frontendEndpointsMap.exampleFrontendEndpoint1()))
+///             .frontendEndpointId(exampleFrontdoor.frontendEndpointsMap().applyValue(_frontendEndpointsMap -> _frontendEndpointsMap.get("exampleFrontendEndpoint1")))
 ///             .customHttpsProvisioningEnabled(false)
 ///             .build());
 ///
 ///         var exampleCustomHttps1 = new CustomHttpsConfiguration("exampleCustomHttps1", CustomHttpsConfigurationArgs.builder()
-///             .frontendEndpointId(exampleFrontdoor.frontendEndpointsMap().applyValue(_frontendEndpointsMap -> _frontendEndpointsMap.exampleFrontendEndpoint2()))
+///             .frontendEndpointId(exampleFrontdoor.frontendEndpointsMap().applyValue(_frontendEndpointsMap -> _frontendEndpointsMap.get("exampleFrontendEndpoint2")))
 ///             .customHttpsProvisioningEnabled(true)
 ///             .customHttpsConfiguration(CustomHttpsConfigurationCustomHttpsConfigurationArgs.builder()
 ///                 .certificateSource("AzureKeyVault")
@@ -658,7 +670,7 @@ class CustomHttpsConfiguration extends pulumi.CustomResource {
           'azure:frontdoor/customHttpsConfiguration:CustomHttpsConfiguration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     customHttpsConfiguration = registerOutput<CustomHttpsConfigurationCustomHttpsConfiguration?>('customHttpsConfiguration', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return CustomHttpsConfigurationCustomHttpsConfiguration.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     customHttpsProvisioningEnabled = registerOutput<bool>('customHttpsProvisioningEnabled');

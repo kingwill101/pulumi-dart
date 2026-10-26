@@ -168,7 +168,7 @@ import 'spring_cloud_application_insights_application_performance_monitoring_sta
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -176,25 +176,37 @@ import 'spring_cloud_application_insights_application_performance_monitoring_sta
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appinsights_insights" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_type    = "web"
 /// }
-/// resource "azure_appplatform_springcloudservice" "example" {
+/// resource "azure_appplatform_spring_cloud_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "E0"
 /// }
-/// resource "azure_appplatform_springcloudapplicationinsightsapplicationperformancemonitoring" "example" {
+/// resource "azure_appplatform_spring_cloud_application_insights_application_performance_monitoring" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example"
-///   spring_cloud_service_id      = azure_appplatform_springcloudservice.example.id
+///   spring_cloud_service_id      = azure_appplatform_spring_cloud_service.example.id
 ///   connection_string            = azure_appinsights_insights.example.instrumentation_key
 ///   globally_enabled             = true
 ///   role_name                    = "test-role"
@@ -345,7 +357,7 @@ class SpringCloudApplicationInsightsApplicationPerformanceMonitoring extends pul
           'azure:appplatform/springCloudApplicationInsightsApplicationPerformanceMonitoring:SpringCloudApplicationInsightsApplicationPerformanceMonitoring',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     connectionString = registerOutput<String?>('connectionString');
     globallyEnabled = registerOutput<bool?>('globallyEnabled');

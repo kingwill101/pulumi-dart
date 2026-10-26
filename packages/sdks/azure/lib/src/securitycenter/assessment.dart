@@ -352,7 +352,7 @@ import 'assessment_status.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -363,26 +363,38 @@ import 'assessment_status.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   address_spaces      = ["10.0.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "internal" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "internal"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_compute_linuxvirtualmachinescaleset" "example" {
+/// resource "azure_compute_linux_virtual_machine_scale_set" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vmss"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku                 = "Standard_F2"
 ///   instances           = 1
 ///   admin_username      = "adminuser"
@@ -410,14 +422,20 @@ import 'assessment_status.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_securitycenter_assessmentpolicy" "example" {
+/// resource "azure_securitycenter_assessment_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   display_name = "Test Display Name"
 ///   severity     = "Medium"
 ///   description  = "Test Description"
 /// }
 /// resource "azure_securitycenter_assessment" "example" {
-///   assessment_policy_id = azure_securitycenter_assessmentpolicy.example.id
-///   target_resource_id   = azure_compute_linuxvirtualmachinescaleset.example.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   assessment_policy_id = azure_securitycenter_assessment_policy.example.id
+///   target_resource_id   = azure_compute_linux_virtual_machine_scale_set.example.id
 ///   status = {
 ///     code = "Healthy"
 ///   }
@@ -636,7 +654,7 @@ class Assessment extends pulumi.CustomResource {
           'azure:securitycenter/assessment:Assessment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     additionalData = registerOutput<Map<String, String>?>('additionalData', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     assessmentPolicyId = registerOutput<String>('assessmentPolicyId');

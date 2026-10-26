@@ -311,7 +311,7 @@ import 'network_acl_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -319,34 +319,49 @@ import 'network_acl_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "terraform-webpubsub"
 ///   location = "east us"
 /// }
 /// resource "azure_webpubsub_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-webpubsub"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard_S1"
 ///   capacity            = 1
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   address_spaces      = ["10.5.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                                           = "example-subnet"
-///   resource_group_name                            = azure_core_resourcegroup.example.name
-///   virtual_network_name                           = azure_network_virtualnetwork.example.name
+///   resource_group_name                            = azure_core_resource_group.example.name
+///   virtual_network_name                           = azure_network_virtual_network.example.name
 ///   address_prefixes                               = ["10.5.2.0/24"]
 ///   enforce_private_link_endpoint_network_policies = true
 /// }
 /// resource "azure_privatelink_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-privateendpoint"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   subnet_id           = azure_network_subnet.example.id
 ///   private_service_connection = {
 ///     name                           = "psc-sig-test"
@@ -355,8 +370,11 @@ import 'network_acl_state.dart';
 ///     subresource_names              = ["webpubsub"]
 ///   }
 /// }
-/// resource "azure_webpubsub_networkacl" "example" {
-///   depends_on     = [azure_privatelink_endpoint.example]
+/// resource "azure_webpubsub_network_acl" "example" {
+///   depends_on = [azure_privatelink_endpoint.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   web_pubsub_id  = azure_webpubsub_service.example.id
 ///   default_action = "Allow"
 ///   public_network = {
@@ -568,7 +586,7 @@ class NetworkAcl extends pulumi.CustomResource {
           'azure:webpubsub/networkAcl:NetworkAcl',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     defaultAction = registerOutput<String?>('defaultAction');
     privateEndpoints = registerOutput<List<NetworkAclPrivateEndpoint>?>('privateEndpoints', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<NetworkAclPrivateEndpoint>(guardedValue, (value) => NetworkAclPrivateEndpoint.fromMap((value as Map).cast<String, dynamic>())); });

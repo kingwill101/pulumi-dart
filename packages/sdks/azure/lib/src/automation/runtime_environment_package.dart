@@ -147,7 +147,7 @@ import 'runtime_environment_package_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -155,26 +155,38 @@ import 'runtime_environment_package_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resource-group"
 ///   location = "westeurope"
 /// }
 /// resource "azure_automation_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-account"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku_name            = "Basic"
 /// }
-/// resource "azure_automation_runtimeenvironment" "example" {
+/// resource "azure_automation_runtime_environment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                  = "example-runtime-env"
 ///   automation_account_id = azure_automation_account.example.id
 ///   runtime_language      = "PowerShell"
 ///   runtime_version       = "7.2"
-///   location              = azure_core_resourcegroup.example.location
+///   location              = azure_core_resource_group.example.location
 /// }
-/// resource "azure_automation_runtimeenvironmentpackage" "example" {
+/// resource "azure_automation_runtime_environment_package" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                              = "example-package"
-///   automation_runtime_environment_id = azure_automation_runtimeenvironment.example.id
+///   automation_runtime_environment_id = azure_automation_runtime_environment.example.id
 ///   content_uri                       = "https://www.powershellgallery.com/api/v2/package/example-package/1.0.0"
 /// }
 /// ```
@@ -320,7 +332,7 @@ class RuntimeEnvironmentPackage extends pulumi.CustomResource {
           'azure:automation/runtimeEnvironmentPackage:RuntimeEnvironmentPackage',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     automationRuntimeEnvironmentId = registerOutput<String>('automationRuntimeEnvironmentId');
     contentUri = registerOutput<String>('contentUri');

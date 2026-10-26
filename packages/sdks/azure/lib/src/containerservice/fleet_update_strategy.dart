@@ -148,7 +148,7 @@ import 'fleet_update_strategy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -156,18 +156,27 @@ import 'fleet_update_strategy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "westeurope"
 /// }
-/// resource "azure_containerservice_kubernetesfleetmanager" "example" {
-///   location            = azure_core_resourcegroup.example.location
+/// resource "azure_containerservice_kubernetes_fleet_manager" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   location            = azure_core_resource_group.example.location
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_containerservice_fleetupdatestrategy" "example" {
+/// resource "azure_containerservice_fleet_update_strategy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "example"
-///   kubernetes_fleet_manager_id = azure_containerservice_kubernetesfleetmanager.example.id
+///   kubernetes_fleet_manager_id = azure_containerservice_kubernetes_fleet_manager.example.id
 ///   stages {
 ///     name = "example-stage-1"
 ///     groups {
@@ -292,7 +301,7 @@ class FleetUpdateStrategy extends pulumi.CustomResource {
           'azure:containerservice/fleetUpdateStrategy:FleetUpdateStrategy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     kubernetesFleetManagerId = registerOutput<String>('kubernetesFleetManagerId');
     this.name = registerOutput<String>('name');

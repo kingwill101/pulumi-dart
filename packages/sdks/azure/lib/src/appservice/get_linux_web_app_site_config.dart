@@ -201,7 +201,7 @@ class GetLinuxWebAppSiteConfig {
       defaultDocuments: pulumi.Input.fromValue((map['defaultDocuments'] as List).cast<String>()),
       detailedErrorLoggingEnabled: pulumi.Input.fromValue(map['detailedErrorLoggingEnabled'] as bool),
       ftpsState: pulumi.Input.fromValue(map['ftpsState'] as String),
-      healthCheckEvictionTimeInMin: pulumi.Input.fromValue((map['healthCheckEvictionTimeInMin'] as num).toInt()),
+      healthCheckEvictionTimeInMin: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['healthCheckEvictionTimeInMin'])),
       healthCheckPath: pulumi.Input.fromValue(map['healthCheckPath'] as String),
       http2Enabled: pulumi.Input.fromValue(map['http2Enabled'] as bool),
       ipRestrictionDefaultAction: pulumi.Input.fromValue(map['ipRestrictionDefaultAction'] as String),
@@ -222,7 +222,7 @@ class GetLinuxWebAppSiteConfig {
       use32BitWorker: pulumi.Input.fromValue(map['use32BitWorker'] as bool),
       vnetRouteAllEnabled: pulumi.Input.fromValue(map['vnetRouteAllEnabled'] as bool),
       websocketsEnabled: pulumi.Input.fromValue(map['websocketsEnabled'] as bool),
-      workerCount: pulumi.Input.fromValue((map['workerCount'] as num).toInt()),
+      workerCount: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['workerCount'])),
     );
   }
 }

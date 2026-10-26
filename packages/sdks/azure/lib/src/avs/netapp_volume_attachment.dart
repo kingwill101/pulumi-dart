@@ -638,7 +638,7 @@ import 'netapp_volume_attachment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -646,27 +646,39 @@ import 'netapp_volume_attachment_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_publicip" "test" {
+/// resource "azure_network_public_ip" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-public-ip"
 ///   location            = testAzurermResourceGroup.location
 ///   resource_group_name = testAzurermResourceGroup.name
 ///   allocation_method   = "Static"
 ///   sku                 = "Standard"
 /// }
-/// resource "azure_network_virtualnetwork" "test" {
+/// resource "azure_network_virtual_network" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-VirtualNetwork"
 ///   location            = testAzurermResourceGroup.location
 ///   resource_group_name = testAzurermResourceGroup.name
 ///   address_spaces      = ["10.88.0.0/16"]
 /// }
 /// resource "azure_network_subnet" "netappSubnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-Subnet"
 ///   resource_group_name  = testAzurermResourceGroup.name
-///   virtual_network_name = azure_network_virtualnetwork.test.name
+///   virtual_network_name = azure_network_virtual_network.test.name
 ///   address_prefixes     = ["10.88.2.0/24"]
 ///   delegations {
 ///     name = "testdelegation"
@@ -677,12 +689,18 @@ import 'netapp_volume_attachment_state.dart';
 ///   }
 /// }
 /// resource "azure_network_subnet" "gatewaySubnet" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "GatewaySubnet"
 ///   resource_group_name  = testAzurermResourceGroup.name
-///   virtual_network_name = azure_network_virtualnetwork.test.name
+///   virtual_network_name = azure_network_virtual_network.test.name
 ///   address_prefixes     = ["10.88.1.0/24"]
 /// }
-/// resource "azure_network_virtualnetworkgateway" "test" {
+/// resource "azure_network_virtual_network_gateway" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet-gateway"
 ///   location            = testAzurermResourceGroup.location
 ///   resource_group_name = testAzurermResourceGroup.name
@@ -690,16 +708,22 @@ import 'netapp_volume_attachment_state.dart';
 ///   sku                 = "Standard"
 ///   ip_configurations {
 ///     name                 = "vnetGatewayConfig"
-///     public_ip_address_id = azure_network_publicip.test.id
+///     public_ip_address_id = azure_network_public_ip.test.id
 ///     subnet_id            = azure_network_subnet.gatewaySubnet.id
 ///   }
 /// }
 /// resource "azure_netapp_account" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-NetAppAccount"
 ///   location            = testAzurermResourceGroup.location
 ///   resource_group_name = testAzurermResourceGroup.name
 /// }
 /// resource "azure_netapp_pool" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-NetAppPool"
 ///   location            = testAzurermResourceGroup.location
 ///   resource_group_name = testAzurermResourceGroup.name
@@ -708,6 +732,9 @@ import 'netapp_volume_attachment_state.dart';
 ///   size_in_tb          = 4
 /// }
 /// resource "azure_netapp_volume" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example-NetAppVolume"
 ///   location                        = testAzurermResourceGroup.location
 ///   resource_group_name             = testAzurermResourceGroup.name
@@ -728,7 +755,10 @@ import 'netapp_volume_attachment_state.dart';
 ///     root_access_enabled = true
 ///   }
 /// }
-/// resource "azure_avs_privatecloud" "test" {
+/// resource "azure_avs_private_cloud" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-PC"
 ///   resource_group_name = testAzurermResourceGroup.name
 ///   location            = testAzurermResourceGroup.location
@@ -739,26 +769,38 @@ import 'netapp_volume_attachment_state.dart';
 ///   network_subnet_cidr = "192.168.48.0/22"
 /// }
 /// resource "azure_avs_cluster" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name               = "example-vm-cluster"
-///   vmware_cloud_id    = azure_avs_privatecloud.test.id
+///   vmware_cloud_id    = azure_avs_private_cloud.test.id
 ///   cluster_node_count = 3
 ///   sku_name           = "av36"
 /// }
-/// resource "azure_avs_expressrouteauthorization" "test" {
+/// resource "azure_avs_express_route_authorization" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example-VmwareAuthorization"
-///   private_cloud_id = azure_avs_privatecloud.test.id
+///   private_cloud_id = azure_avs_private_cloud.test.id
 /// }
-/// resource "azure_network_virtualnetworkgatewayconnection" "test" {
+/// resource "azure_network_virtual_network_gateway_connection" "test" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-vnetgwconn"
 ///   location                   = testAzurermResourceGroup.location
 ///   resource_group_name        = testAzurermResourceGroup.name
 ///   type                       = "ExpressRoute"
-///   virtual_network_gateway_id = azure_network_virtualnetworkgateway.test.id
-///   express_route_circuit_id   = azure_avs_privatecloud.test.circuits[0].express_route_id
-///   authorization_key          = azure_avs_expressrouteauthorization.test.express_route_authorization_key
+///   virtual_network_gateway_id = azure_network_virtual_network_gateway.test.id
+///   express_route_circuit_id   = azure_avs_private_cloud.test.circuits[0].express_route_id
+///   authorization_key          = azure_avs_express_route_authorization.test.express_route_authorization_key
 /// }
-/// resource "azure_avs_netappvolumeattachment" "test" {
-///   depends_on        = [azure_network_virtualnetworkgatewayconnection.test]
+/// resource "azure_avs_netapp_volume_attachment" "test" {
+///   depends_on = [azure_network_virtual_network_gateway_connection.test]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name              = "example-vmwareattachment"
 ///   netapp_volume_id  = azure_netapp_volume.test.id
 ///   vmware_cluster_id = azure_avs_cluster.test.id
@@ -822,22 +864,22 @@ import 'netapp_volume_attachment_state.dart';
 ///
 ///         var test = new PublicIp("test", PublicIpArgs.builder()
 ///             .name("example-public-ip")
-///             .location(testAzurermResourceGroup.location())
-///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .location(testAzurermResourceGroup.get("location"))
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
 ///             .allocationMethod("Static")
 ///             .sku("Standard")
 ///             .build());
 ///
 ///         var testVirtualNetwork = new VirtualNetwork("testVirtualNetwork", VirtualNetworkArgs.builder()
 ///             .name("example-VirtualNetwork")
-///             .location(testAzurermResourceGroup.location())
-///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .location(testAzurermResourceGroup.get("location"))
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
 ///             .addressSpaces("10.88.0.0/16")
 ///             .build());
 ///
 ///         var netappSubnet = new Subnet("netappSubnet", SubnetArgs.builder()
 ///             .name("example-Subnet")
-///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
 ///             .virtualNetworkName(testVirtualNetwork.name())
 ///             .addressPrefixes("10.88.2.0/24")
 ///             .delegations(SubnetDelegationArgs.builder()
@@ -853,15 +895,15 @@ import 'netapp_volume_attachment_state.dart';
 ///
 ///         var gatewaySubnet = new Subnet("gatewaySubnet", SubnetArgs.builder()
 ///             .name("GatewaySubnet")
-///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
 ///             .virtualNetworkName(testVirtualNetwork.name())
 ///             .addressPrefixes("10.88.1.0/24")
 ///             .build());
 ///
 ///         var testVirtualNetworkGateway = new VirtualNetworkGateway("testVirtualNetworkGateway", VirtualNetworkGatewayArgs.builder()
 ///             .name("example-vnet-gateway")
-///             .location(testAzurermResourceGroup.location())
-///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .location(testAzurermResourceGroup.get("location"))
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
 ///             .type("ExpressRoute")
 ///             .sku("Standard")
 ///             .ipConfigurations(VirtualNetworkGatewayIpConfigurationArgs.builder()
@@ -873,14 +915,14 @@ import 'netapp_volume_attachment_state.dart';
 ///
 ///         var testAccount = new Account("testAccount", AccountArgs.builder()
 ///             .name("example-NetAppAccount")
-///             .location(testAzurermResourceGroup.location())
-///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .location(testAzurermResourceGroup.get("location"))
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
 ///             .build());
 ///
 ///         var testPool = new Pool("testPool", PoolArgs.builder()
 ///             .name("example-NetAppPool")
-///             .location(testAzurermResourceGroup.location())
-///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .location(testAzurermResourceGroup.get("location"))
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
 ///             .accountName(testAccount.name())
 ///             .serviceLevel("Standard")
 ///             .sizeInTb(4)
@@ -888,8 +930,8 @@ import 'netapp_volume_attachment_state.dart';
 ///
 ///         var testVolume = new Volume("testVolume", VolumeArgs.builder()
 ///             .name("example-NetAppVolume")
-///             .location(testAzurermResourceGroup.location())
-///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .location(testAzurermResourceGroup.get("location"))
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
 ///             .accountName(testAccount.name())
 ///             .poolName(testPool.name())
 ///             .volumePath("my-unique-file-path-%d")
@@ -910,8 +952,8 @@ import 'netapp_volume_attachment_state.dart';
 ///
 ///         var testPrivateCloud = new PrivateCloud("testPrivateCloud", PrivateCloudArgs.builder()
 ///             .name("example-PC")
-///             .resourceGroupName(testAzurermResourceGroup.name())
-///             .location(testAzurermResourceGroup.location())
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
+///             .location(testAzurermResourceGroup.get("location"))
 ///             .skuName("av36")
 ///             .managementCluster(PrivateCloudManagementClusterArgs.builder()
 ///                 .size(3)
@@ -933,11 +975,11 @@ import 'netapp_volume_attachment_state.dart';
 ///
 ///         var testVirtualNetworkGatewayConnection = new VirtualNetworkGatewayConnection("testVirtualNetworkGatewayConnection", VirtualNetworkGatewayConnectionArgs.builder()
 ///             .name("example-vnetgwconn")
-///             .location(testAzurermResourceGroup.location())
-///             .resourceGroupName(testAzurermResourceGroup.name())
+///             .location(testAzurermResourceGroup.get("location"))
+///             .resourceGroupName(testAzurermResourceGroup.get("name"))
 ///             .type("ExpressRoute")
 ///             .virtualNetworkGatewayId(testVirtualNetworkGateway.id())
-///             .expressRouteCircuitId(testPrivateCloud.circuits().applyValue(_circuits -> _circuits[0].expressRouteId()))
+///             .expressRouteCircuitId(testPrivateCloud.circuits().applyValue(_circuits -> _circuits.get(0).expressRouteId()))
 ///             .authorizationKey(testExpressRouteAuthorization.expressRouteAuthorizationKey())
 ///             .build());
 ///
@@ -1138,7 +1180,7 @@ class NetappVolumeAttachment extends pulumi.CustomResource {
           'azure:avs/netappVolumeAttachment:NetappVolumeAttachment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     this.name = registerOutput<String>('name');
     netappVolumeId = registerOutput<String>('netappVolumeId');

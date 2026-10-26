@@ -160,7 +160,7 @@ import 'channel_facebook_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -168,24 +168,33 @@ import 'channel_facebook_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_bot_channelsregistration" "example" {
+/// resource "azure_bot_channels_registration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-bcr"
 ///   location            = "global"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "F0"
-///   microsoft_app_id    = data.azure_core_getclientconfig.current.client_id
+///   microsoft_app_id    = data.azure_core_client_config.current.client_id
 /// }
-/// resource "azure_bot_channelfacebook" "example" {
-///   bot_name                    = azure_bot_channelsregistration.example.name
-///   location                    = azure_bot_channelsregistration.example.location
-///   resource_group_name         = azure_core_resourcegroup.example.name
+/// resource "azure_bot_channel_facebook" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   bot_name                    = azure_bot_channels_registration.example.name
+///   location                    = azure_bot_channels_registration.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
 ///   facebook_application_id     = "563490254873576"
 ///   facebook_application_secret = "8976d2536445ad5b976dee8437b9beb0"
 ///   pages {
@@ -320,7 +329,7 @@ class ChannelFacebook extends pulumi.CustomResource {
           'azure:bot/channelFacebook:ChannelFacebook',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['facebookApplicationSecret'],
         ) {
     botName = registerOutput<String>('botName');

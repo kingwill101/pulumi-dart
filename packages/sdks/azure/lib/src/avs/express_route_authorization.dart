@@ -140,7 +140,7 @@ import 'express_route_authorization_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -148,14 +148,20 @@ import 'express_route_authorization_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_avs_privatecloud" "example" {
+/// resource "azure_avs_private_cloud" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vmware-private-cloud"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku_name            = "av36"
 ///   management_cluster = {
 ///     size = 3
@@ -165,9 +171,12 @@ import 'express_route_authorization_state.dart';
 ///   nsxt_password               = "QazWsx13$Edc"
 ///   vcenter_password            = "WsxEdc23$Rfv"
 /// }
-/// resource "azure_avs_expressrouteauthorization" "example" {
+/// resource "azure_avs_express_route_authorization" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "example-authorization"
-///   private_cloud_id = azure_avs_privatecloud.example.id
+///   private_cloud_id = azure_avs_private_cloud.example.id
 /// }
 /// ```
 /// ```java
@@ -289,7 +298,7 @@ class ExpressRouteAuthorization extends pulumi.CustomResource {
           'azure:avs/expressRouteAuthorization:ExpressRouteAuthorization',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['expressRouteAuthorizationKey'],
         ) {
     expressRouteAuthorizationId = registerOutput<String>('expressRouteAuthorizationId');

@@ -44,7 +44,7 @@ class VolumeArgs {
     return VolumeArgs(
       createSource: (() { final guardedValue = map['createSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(VolumeCreateSource.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      sizeInGib: pulumi.Input.fromValue((map['sizeInGib'] as num).toInt()),
+      sizeInGib: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['sizeInGib'])),
       volumeGroupId: pulumi.Input.fromValue(map['volumeGroupId'] as String),
     );
   }

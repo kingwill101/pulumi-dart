@@ -259,7 +259,7 @@ import 'protected_file_share_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -267,36 +267,54 @@ import 'protected_file_share_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "tfex-recovery_vault"
 ///   location = "West Europe"
 /// }
 /// resource "azure_recoveryservices_vault" "vault" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-recovery-vault"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Standard"
 /// }
 /// resource "azure_storage_account" "sa" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                     = "examplesa"
-///   location                 = azure_core_resourcegroup.example.location
-///   resource_group_name      = azure_core_resourcegroup.example.name
+///   location                 = azure_core_resource_group.example.location
+///   resource_group_name      = azure_core_resource_group.example.name
 ///   account_tier             = "Standard"
 ///   account_replication_type = "LRS"
 /// }
 /// resource "azure_storage_share" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-share"
 ///   storage_account_name = azure_storage_account.sa.name
 ///   quota                = 1
 /// }
-/// resource "azure_backup_containerstorageaccount" "protection-container" {
-///   resource_group_name = azure_core_resourcegroup.example.name
+/// resource "azure_backup_container_storage_account" "protection-container" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name = azure_core_resource_group.example.name
 ///   recovery_vault_name = azure_recoveryservices_vault.vault.name
 ///   storage_account_id  = azure_storage_account.sa.id
 /// }
-/// resource "azure_backup_policyfileshare" "example" {
+/// resource "azure_backup_policy_file_share" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "tfex-recovery-vault-policy"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   recovery_vault_name = azure_recoveryservices_vault.vault.name
 ///   backup = {
 ///     frequency = "Daily"
@@ -306,12 +324,15 @@ import 'protected_file_share_state.dart';
 ///     count = 10
 ///   }
 /// }
-/// resource "azure_backup_protectedfileshare" "share1" {
-///   resource_group_name       = azure_core_resourcegroup.example.name
+/// resource "azure_backup_protected_file_share" "share1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name       = azure_core_resource_group.example.name
 ///   recovery_vault_name       = azure_recoveryservices_vault.vault.name
-///   source_storage_account_id = azure_backup_containerstorageaccount.protection-container.storage_account_id
+///   source_storage_account_id = azure_backup_container_storage_account.protection-container.storage_account_id
 ///   source_file_share_name    = azure_storage_share.example.name
-///   backup_policy_id          = azure_backup_policyfileshare.example.id
+///   backup_policy_id          = azure_backup_policy_file_share.example.id
 /// }
 /// ```
 /// ```java
@@ -498,7 +519,7 @@ class ProtectedFileShare extends pulumi.CustomResource {
           'azure:backup/protectedFileShare:ProtectedFileShare',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backupPolicyId = registerOutput<String>('backupPolicyId');
     recoveryVaultName = registerOutput<String>('recoveryVaultName');

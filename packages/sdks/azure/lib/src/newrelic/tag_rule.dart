@@ -211,7 +211,7 @@ import 'tag_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -219,14 +219,20 @@ import 'tag_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "East US"
 /// }
 /// resource "azure_newrelic_monitor" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nrm"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   plan = {
 ///     effective_date = "2023-06-06T00:00:00Z"
 ///   }
@@ -237,7 +243,10 @@ import 'tag_rule_state.dart';
 ///     phone_number = "+12313803556"
 ///   }
 /// }
-/// resource "azure_newrelic_tagrule" "example" {
+/// resource "azure_newrelic_tag_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   monitor_id                         = azure_newrelic_monitor.example.id
 ///   azure_active_directory_log_enabled = true
 ///   activity_log_enabled               = true
@@ -408,7 +417,7 @@ class TagRule extends pulumi.CustomResource {
           'azure:newrelic/tagRule:TagRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     activityLogEnabled = registerOutput<bool?>('activityLogEnabled');
     azureActiveDirectoryLogEnabled = registerOutput<bool?>('azureActiveDirectoryLogEnabled');

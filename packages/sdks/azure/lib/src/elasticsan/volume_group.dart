@@ -582,7 +582,7 @@ import 'volume_group_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -590,84 +590,114 @@ import 'volume_group_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_elasticsan_elasticsan" "example" {
+/// resource "azure_elasticsan_elastic_san" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "examplees-es"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   base_size_in_tib    = 1
 ///   sku = {
 ///     name = "Premium_LRS"
 ///   }
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-uai"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.1.0/24"]
 ///   service_endpoints    = ["Microsoft.Storage.Global"]
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "examplekv"
-///   location                    = azure_core_resourcegroup.example.location
-///   resource_group_name         = azure_core_resourcegroup.example.name
+///   location                    = azure_core_resource_group.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled  = false
 ///   enabled_for_disk_encryption = true
-///   tenant_id                   = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                   = data.azure_core_client_config.current.tenant_id
 ///   soft_delete_retention_days  = 7
 ///   purge_protection_enabled    = true
 ///   sku_name                    = "standard"
 /// }
-/// resource "azure_keyvault_accesspolicy" "userAssignedIdentity" {
-///   key_vault_id       = azure_keyvault_keyvault.example.id
-///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
-///   object_id          = azure_authorization_userassignedidentity.example.principal_id
+/// resource "azure_keyvault_access_policy" "userAssignedIdentity" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id       = azure_keyvault_key_vault.example.id
+///   tenant_id          = data.azure_core_client_config.current.tenant_id
+///   object_id          = azure_authorization_user_assigned_identity.example.principal_id
 ///   key_permissions    = ["Get", "UnwrapKey", "WrapKey"]
 ///   secret_permissions = ["Get"]
 /// }
-/// resource "azure_keyvault_accesspolicy" "client" {
-///   key_vault_id       = azure_keyvault_keyvault.example.id
-///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
-///   object_id          = data.azure_core_getclientconfig.current.object_id
+/// resource "azure_keyvault_access_policy" "client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id       = azure_keyvault_key_vault.example.id
+///   tenant_id          = data.azure_core_client_config.current.tenant_id
+///   object_id          = data.azure_core_client_config.current.object_id
 ///   key_permissions    = ["Get", "Create", "Delete", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify", "GetRotationPolicy"]
 ///   secret_permissions = ["Get"]
 /// }
 /// resource "azure_keyvault_key" "example" {
-///   depends_on   = [azure_keyvault_accesspolicy.userAssignedIdentity, azure_keyvault_accesspolicy.client]
+///   depends_on = [azure_keyvault_access_policy.userAssignedIdentity, azure_keyvault_access_policy.client]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example-kvk"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 /// }
-/// resource "azure_elasticsan_volumegroup" "example" {
+/// resource "azure_elasticsan_volume_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example-esvg"
-///   elastic_san_id  = azure_elasticsan_elasticsan.example.id
+///   elastic_san_id  = azure_elasticsan_elastic_san.example.id
 ///   encryption_type = "EncryptionAtRestWithCustomerManagedKey"
 ///   encryption = {
 ///     key_vault_key_id          = azure_keyvault_key.example.versionless_id
-///     user_assigned_identity_id = azure_authorization_userassignedidentity.example.id
+///     user_assigned_identity_id = azure_authorization_user_assigned_identity.example.id
 ///   }
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 ///   network_rules {
 ///     subnet_id = azure_network_subnet.example.id
@@ -1020,7 +1050,7 @@ class VolumeGroup extends pulumi.CustomResource {
           'azure:elasticsan/volumeGroup:VolumeGroup',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     elasticSanId = registerOutput<String>('elasticSanId');
     encryption = registerOutput<VolumeGroupEncryption?>('encryption', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeGroupEncryption.fromMap((guardedValue as Map).cast<String, dynamic>()); });

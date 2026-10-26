@@ -21,7 +21,7 @@ import 'single_node_virtual_instance_state.dart';
 ///     algorithm: "RSA",
 ///     rsaBits: 4096,
 /// });
-/// const example = tls.PublicKey({
+/// const example = tls.publicKey({
 ///     privateKeyPem: examplePrivateKey.privateKeyPem,
 /// });
 /// const exampleResourceGroup = new azure.core.ResourceGroup("example", {
@@ -638,7 +638,7 @@ import 'single_node_virtual_instance_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -646,59 +646,83 @@ import 'single_node_virtual_instance_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getsubscription" "current" {
+/// data "azure_core_subscription" "current" {
 /// }
-/// data "tls_publickey" "example" {
-///   private_key_pem = tls_privatekey.example.privateKeyPem
+/// data "tls_public_key" "example" {
+///   private_key_pem = tls_private_key.example.privateKeyPem
 /// }
 ///
-/// resource "tls_privatekey" "example" {
+/// resource "tls_private_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   algorithm = "RSA"
 ///   rsa_bits  = 4096
 /// }
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-uai"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_authorization_assignment" "example" {
-///   scope                = data.azure_core_getsubscription.current.id
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   scope                = data.azure_core_subscription.current.id
 ///   role_definition_name = "Azure Center for SAP solutions service role"
-///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+///   principal_id         = azure_authorization_user_assigned_identity.example.principal_id
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 /// }
-/// resource "azure_core_resourcegroup" "app" {
+/// resource "azure_core_resource_group" "app" {
 ///   depends_on = [azure_network_subnet.example]
-///   name       = "example-sapapp"
-///   location   = "West Europe"
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   name     = "example-sapapp"
+///   location = "West Europe"
 /// }
-/// resource "azure_workloadssap_singlenodevirtualinstance" "example" {
-///   depends_on                  = [azure_authorization_assignment.example]
+/// resource "azure_workloadssap_single_node_virtual_instance" "example" {
+///   depends_on = [azure_authorization_assignment.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                        = "X05"
-///   resource_group_name         = azure_core_resourcegroup.example.name
-///   location                    = azure_core_resourcegroup.example.location
+///   resource_group_name         = azure_core_resource_group.example.name
+///   location                    = azure_core_resource_group.example.location
 ///   environment                 = "NonProd"
 ///   sap_product                 = "S4HANA"
 ///   managed_resource_group_name = "managedTestRG"
-///   app_location                = azure_core_resourcegroup.app.location
+///   app_location                = azure_core_resource_group.app.location
 ///   sap_fqdn                    = "sap.bpaas.com"
 ///   single_server_configuration = {
-///     app_resource_group_name = azure_core_resourcegroup.app.name
+///     app_resource_group_name = azure_core_resource_group.app.name
 ///     subnet_id               = azure_network_subnet.example.id
 ///     database_type           = "HANA"
 ///     secondary_ip_enabled    = true
@@ -712,40 +736,40 @@ import 'single_node_virtual_instance_state.dart';
 ///       }
 ///       os_profile = {
 ///         admin_username  = "testAdmin"
-///         ssh_private_key = tls_privatekey.example.privateKeyPem
-///         ssh_public_key  = data.tls_publickey.example.public_key_openssh
+///         ssh_private_key = tls_private_key.example.privateKeyPem
+///         ssh_public_key  = data.tls_public_key.example.public_key_openssh
 ///       }
 ///     }
 ///     disk_volume_configurations = [{
-///       "volumeName"    = "hana/data"
-///       "numberOfDisks" = 3
-///       "sizeInGb"      = 128
-///       "skuName"       = "Premium_LRS"
+///       volume_name     = "hana/data"
+///       number_of_disks = 3
+///       size_in_gb      = 128
+///       sku_name        = "Premium_LRS"
 ///       }, {
-///       "volumeName"    = "hana/log"
-///       "numberOfDisks" = 3
-///       "sizeInGb"      = 128
-///       "skuName"       = "Premium_LRS"
+///       volume_name     = "hana/log"
+///       number_of_disks = 3
+///       size_in_gb      = 128
+///       sku_name        = "Premium_LRS"
 ///       }, {
-///       "volumeName"    = "hana/shared"
-///       "numberOfDisks" = 1
-///       "sizeInGb"      = 256
-///       "skuName"       = "Premium_LRS"
+///       volume_name     = "hana/shared"
+///       number_of_disks = 1
+///       size_in_gb      = 256
+///       sku_name        = "Premium_LRS"
 ///       }, {
-///       "volumeName"    = "usr/sap"
-///       "numberOfDisks" = 1
-///       "sizeInGb"      = 128
-///       "skuName"       = "Premium_LRS"
+///       volume_name     = "usr/sap"
+///       number_of_disks = 1
+///       size_in_gb      = 128
+///       sku_name        = "Premium_LRS"
 ///       }, {
-///       "volumeName"    = "backup"
-///       "numberOfDisks" = 2
-///       "sizeInGb"      = 256
-///       "skuName"       = "StandardSSD_LRS"
+///       volume_name     = "backup"
+///       number_of_disks = 2
+///       size_in_gb      = 256
+///       sku_name        = "StandardSSD_LRS"
 ///       }, {
-///       "volumeName"    = "os"
-///       "numberOfDisks" = 1
-///       "sizeInGb"      = 64
-///       "skuName"       = "StandardSSD_LRS"
+///       volume_name     = "os"
+///       number_of_disks = 1
+///       size_in_gb      = 64
+///       sku_name        = "StandardSSD_LRS"
 ///     }]
 ///     virtual_machine_resource_names = {
 ///       host_name               = "apphostName0"
@@ -753,14 +777,14 @@ import 'single_node_virtual_instance_state.dart';
 ///       virtual_machine_name    = "appvm0"
 ///       network_interface_names = ["appnic0"]
 ///       data_disks = [{
-///         "volumeName" = "default"
-///         "names"      = ["app0disk0"]
+///         volume_name = "default"
+///         names       = ["app0disk0"]
 ///       }]
 ///     }
 ///   }
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 /// }
 /// ```
@@ -817,7 +841,7 @@ import 'single_node_virtual_instance_state.dart';
 ///             .rsaBits(4096)
 ///             .build());
 ///
-///         final var example = TlsFunctions.PublicKey(Map.of("privateKeyPem", examplePrivateKey.privateKeyPem()));
+///         final var example = TlsFunctions.PublicKey(Map.of("privateKeyPem", examplePrivateKey.get("privateKeyPem")));
 ///
 ///         var exampleResourceGroup = new ResourceGroup("exampleResourceGroup", ResourceGroupArgs.builder()
 ///             .name("example-resources")
@@ -881,8 +905,8 @@ import 'single_node_virtual_instance_state.dart';
 ///                         .build())
 ///                     .osProfile(SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationOsProfileArgs.builder()
 ///                         .adminUsername("testAdmin")
-///                         .sshPrivateKey(examplePrivateKey.privateKeyPem())
-///                         .sshPublicKey(example.publicKeyOpenssh())
+///                         .sshPrivateKey(examplePrivateKey.get("privateKeyPem"))
+///                         .sshPublicKey(example.get("publicKeyOpenssh"))
 ///                         .build())
 ///                     .build())
 ///                 .diskVolumeConfigurations(
@@ -1133,7 +1157,7 @@ class SingleNodeVirtualInstance extends pulumi.CustomResource {
           'azure:workloadssap/singleNodeVirtualInstance:SingleNodeVirtualInstance',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     appLocation = registerOutput<String>('appLocation');
     environment = registerOutput<String>('environment');

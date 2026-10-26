@@ -181,7 +181,7 @@ import 'alert_rule_threat_intelligence_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -189,36 +189,48 @@ import 'alert_rule_threat_intelligence_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_sentinel_getalertruletemplate" "example" {
+/// data "azure_sentinel_alert_rule_template" "example" {
 ///   display_name               = "(Preview) Microsoft Defender Threat Intelligence Analytics"
-///   log_analytics_workspace_id = azure_operationalinsights_analyticssolution.example.workspace_resource_id
+///   log_analytics_workspace_id = azure_operationalinsights_analytics_solution.example.workspace_resource_id
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_operationalinsights_analyticsworkspace" "example" {
+/// resource "azure_operationalinsights_analytics_workspace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-workspace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "pergb2018"
 /// }
-/// resource "azure_operationalinsights_analyticssolution" "example" {
+/// resource "azure_operationalinsights_analytics_solution" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   solution_name         = "SecurityInsights"
-///   location              = azure_core_resourcegroup.example.location
-///   resource_group_name   = azure_core_resourcegroup.example.name
-///   workspace_resource_id = azure_operationalinsights_analyticsworkspace.example.id
-///   workspace_name        = azure_operationalinsights_analyticsworkspace.example.name
+///   location              = azure_core_resource_group.example.location
+///   resource_group_name   = azure_core_resource_group.example.name
+///   workspace_resource_id = azure_operationalinsights_analytics_workspace.example.id
+///   workspace_name        = azure_operationalinsights_analytics_workspace.example.name
 ///   plan = {
 ///     publisher = "Microsoft"
 ///     product   = "OMSGallery/SecurityInsights"
 ///   }
 /// }
-/// resource "azure_sentinel_alertrulethreatintelligence" "example" {
+/// resource "azure_sentinel_alert_rule_threat_intelligence" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "example-rule"
-///   log_analytics_workspace_id = azure_operationalinsights_analyticssolution.example.workspace_resource_id
-///   alert_rule_template_guid   = data.azure_sentinel_getalertruletemplate.example.name
+///   log_analytics_workspace_id = azure_operationalinsights_analytics_solution.example.workspace_resource_id
+///   alert_rule_template_guid   = data.azure_sentinel_alert_rule_template.example.name
 /// }
 /// ```
 /// ```java
@@ -370,7 +382,7 @@ class AlertRuleThreatIntelligence extends pulumi.CustomResource {
           'azure:sentinel/alertRuleThreatIntelligence:AlertRuleThreatIntelligence',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     alertRuleTemplateGuid = registerOutput<String>('alertRuleTemplateGuid');
     enabled = registerOutput<bool?>('enabled');

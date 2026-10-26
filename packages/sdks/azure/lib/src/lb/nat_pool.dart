@@ -186,7 +186,7 @@ import 'nat_pool_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -194,28 +194,40 @@ import 'nat_pool_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "LoadBalancerRG"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "PublicIPForLB"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
 /// }
-/// resource "azure_lb_loadbalancer" "example" {
+/// resource "azure_lb_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "TestLoadBalancer"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   frontend_ip_configurations {
 ///     name                 = "PublicIPAddress"
-///     public_ip_address_id = azure_network_publicip.example.id
+///     public_ip_address_id = azure_network_public_ip.example.id
 ///   }
 /// }
-/// resource "azure_lb_natpool" "example" {
-///   resource_group_name            = azure_core_resourcegroup.example.name
-///   loadbalancer_id                = azure_lb_loadbalancer.example.id
+/// resource "azure_lb_nat_pool" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   resource_group_name            = azure_core_resource_group.example.name
+///   loadbalancer_id                = azure_lb_load_balancer.example.id
 ///   name                           = "SampleApplicationPool"
 ///   protocol                       = "Tcp"
 ///   frontend_port_start            = 80
@@ -379,7 +391,7 @@ class NatPool extends pulumi.CustomResource {
           'azure:lb/natPool:NatPool',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backendPort = registerOutput<int>('backendPort');
     floatingIpEnabled = registerOutput<bool?>('floatingIpEnabled');

@@ -149,7 +149,7 @@ import 'policy_set_definition_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -157,15 +157,35 @@ import 'policy_set_definition_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_policy_policysetdefinition" "example" {
+/// resource "azure_policy_policy_set_definition" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "example"
 ///   policy_type  = "Custom"
 ///   display_name = "Example"
-///   parameters   = "    {\n        \\\"allowedLocations\\\": {\n            \\\"type\\\": \\\"Array\\\",\n            \\\"metadata\\\": {\n                \\\"description\\\": \\\"The list of allowed locations for resources.\\\",\n                \\\"displayName\\\": \\\"Allowed locations\\\",\n                \\\"strongType\\\": \\\"location\\\"\n            }\n        }\n    }\n"
+///   parameters   = <<PARAMETERS
+///     {
+///         \"allowedLocations\": {
+///             \"type\": \"Array\",
+///             \"metadata\": {
+///                 \"description\": \"The list of allowed locations for resources.\",
+///                 \"displayName\": \"Allowed locations\",
+///                 \"strongType\": \"location\"
+///             }
+///         }
+///     }
+/// PARAMETERS
+///
 ///   policy_definition_references {
 ///     version              = "1.0.*"
 ///     policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988"
-///     parameter_values     = "    {\n      \\\"listOfAllowedLocations\\\": {\\\"value\\\": \\\"[parameters('allowedLocations')]\\\"}\n    }\n"
+///     parameter_values     = <<VALUE
+///     {
+///       \"listOfAllowedLocations\": {\"value\": \"[parameters('allowedLocations')]\"}
+///     }
+/// VALUE
+///
 ///   }
 /// }
 /// ```
@@ -297,7 +317,7 @@ class PolicySetDefinition extends pulumi.CustomResource {
           'azure:policy/policySetDefinition:PolicySetDefinition',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     description = registerOutput<String?>('description');
     displayName = registerOutput<String>('displayName');

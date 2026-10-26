@@ -168,7 +168,7 @@ import 'policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -179,26 +179,38 @@ import 'policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_apimanagement_service" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apim"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   publisher_name      = "pub1"
 ///   publisher_email     = "pub1@email.com"
 ///   sku_name            = "Developer_1"
 /// }
-/// resource "azure_apimanagement_namedvalue" "example" {
+/// resource "azure_apimanagement_named_value" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-apimg"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   api_management_name = azure_apimanagement_service.example.name
 ///   display_name        = "ExampleProperty"
 ///   value               = "Example Value"
 /// }
 /// resource "azure_apimanagement_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   api_management_id = azure_apimanagement_service.example.id
 ///   xml_content       = file("example.xml")
 /// }
@@ -338,7 +350,7 @@ class Policy extends pulumi.CustomResource {
           'azure:apimanagement/policy:Policy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiManagementId = registerOutput<String>('apiManagementId');
     xmlContent = registerOutput<String>('xmlContent');

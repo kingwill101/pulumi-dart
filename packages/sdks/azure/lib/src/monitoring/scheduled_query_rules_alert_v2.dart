@@ -417,7 +417,7 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -425,42 +425,64 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_appinsights_insights" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ai"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   application_type    = "web"
 /// }
-/// resource "azure_monitoring_actiongroup" "example" {
+/// resource "azure_monitoring_action_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-mag"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   short_name          = "test mag"
 /// }
-/// resource "azure_authorization_userassignedidentity" "example" {
+/// resource "azure_authorization_user_assigned_identity" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-uai"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_authorization_assignment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   scope                = azure_appinsights_insights.example.id
 ///   role_definition_name = "Reader"
-///   principal_id         = azure_authorization_userassignedidentity.example.principal_id
+///   principal_id         = azure_authorization_user_assigned_identity.example.principal_id
 /// }
-/// resource "azure_monitoring_scheduledqueryrulesalertv2" "example" {
-///   depends_on           = [azure_authorization_assignment.example]
+/// resource "azure_monitoring_scheduled_query_rules_alert_v2" "example" {
+///   depends_on = [azure_authorization_assignment.example]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-msqrv2"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   location             = azure_core_resourcegroup.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
+///   location             = azure_core_resource_group.example.location
 ///   evaluation_frequency = "PT10M"
 ///   window_duration      = "PT10M"
 ///   scopes               = azure_appinsights_insights.example.id
 ///   severity             = 4
 ///   criterias {
-///     query                   = "requests\n  | summarize CountByCountry=count() by client_CountryOrRegion\n"
+///     query                   = <<-QUERY
+/// requests
+///   | summarize CountByCountry=count() by client_CountryOrRegion
+/// QUERY
+///
 ///     time_aggregation_method = "Maximum"
 ///     threshold               = 17.5
 ///     operator                = "LessThan"
@@ -484,7 +506,7 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 ///   query_time_range_override        = "PT1H"
 ///   skip_query_validation            = true
 ///   action = {
-///     action_groups = [azure_monitoring_actiongroup.example.id]
+///     action_groups = [azure_monitoring_action_group.example.id]
 ///     custom_properties = {
 ///       "key"  = "value"
 ///       "key2" = "value2"
@@ -493,7 +515,7 @@ import 'scheduled_query_rules_alert_v2_state.dart';
 ///   }
 ///   identity = {
 ///     type         = "UserAssigned"
-///     identity_ids = [azure_authorization_userassignedidentity.example.id]
+///     identity_ids = [azure_authorization_user_assigned_identity.example.id]
 ///   }
 ///   tags = {
 ///     "key"  = "value"
@@ -799,7 +821,7 @@ class ScheduledQueryRulesAlertV2 extends pulumi.CustomResource {
           'azure:monitoring/scheduledQueryRulesAlertV2:ScheduledQueryRulesAlertV2',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     action = registerOutput<ScheduledQueryRulesAlertV2Action?>('action', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return ScheduledQueryRulesAlertV2Action.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     autoMitigationEnabled = registerOutput<bool?>('autoMitigationEnabled');

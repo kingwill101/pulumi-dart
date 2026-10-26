@@ -68,7 +68,7 @@ import 'get_firewall_policy_result.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -76,13 +76,13 @@ import 'get_firewall_policy_result.dart';
 ///   }
 /// }
 ///
-/// data "azure_waf_getfirewallpolicy" "example" {
+/// data "azure_waf_firewall_policy" "example" {
 ///   resource_group_name = "existing"
 ///   name                = "existing"
 /// }
 ///
 /// output "id" {
-///   value = data.azure_waf_getfirewallpolicy.example.id
+///   value = data.azure_waf_firewall_policy.example.id
 /// }
 /// ```
 /// ```java

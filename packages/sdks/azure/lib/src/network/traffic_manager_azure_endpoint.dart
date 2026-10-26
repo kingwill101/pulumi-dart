@@ -216,7 +216,7 @@ import 'traffic_manager_azure_endpoint_subnet.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -224,20 +224,29 @@ import 'traffic_manager_azure_endpoint_subnet.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-public-ip"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   allocation_method   = "Static"
 ///   domain_name_label   = "example-public-ip"
 /// }
-/// resource "azure_network_trafficmanagerprofile" "example" {
+/// resource "azure_network_traffic_manager_profile" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-profile"
-///   resource_group_name    = azure_core_resourcegroup.example.name
+///   resource_group_name    = azure_core_resource_group.example.name
 ///   traffic_routing_method = "Weighted"
 ///   dns_config = {
 ///     relative_name = "example-profile"
@@ -255,12 +264,15 @@ import 'traffic_manager_azure_endpoint_subnet.dart';
 ///     "environment" = "Production"
 ///   }
 /// }
-/// resource "azure_network_trafficmanagerazureendpoint" "example" {
+/// resource "azure_network_traffic_manager_azure_endpoint" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-endpoint"
-///   profile_id           = azure_network_trafficmanagerprofile.example.id
+///   profile_id           = azure_network_traffic_manager_profile.example.id
 ///   always_serve_enabled = true
 ///   weight               = 100
-///   target_resource_id   = azure_network_publicip.example.id
+///   target_resource_id   = azure_network_public_ip.example.id
 /// }
 /// ```
 /// ```java
@@ -430,7 +442,7 @@ class TrafficManagerAzureEndpoint extends pulumi.CustomResource {
           'azure:network/trafficManagerAzureEndpoint:TrafficManagerAzureEndpoint',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     alwaysServeEnabled = registerOutput<bool?>('alwaysServeEnabled');
     customHeaders = registerOutput<List<TrafficManagerAzureEndpointCustomHeader>?>('customHeaders', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<TrafficManagerAzureEndpointCustomHeader>(guardedValue, (value) => TrafficManagerAzureEndpointCustomHeader.fromMap((value as Map).cast<String, dynamic>())); });

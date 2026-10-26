@@ -60,12 +60,12 @@ class SqlPoolWorkloadGroupArgs {
   factory SqlPoolWorkloadGroupArgs.fromMap(Map<String, dynamic> map) {
     return SqlPoolWorkloadGroupArgs(
       importance: (() { final guardedValue = map['importance']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      maxResourcePercent: pulumi.Input.fromValue((map['maxResourcePercent'] as num).toInt()),
+      maxResourcePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['maxResourcePercent'])),
       maxResourcePercentPerRequest: (() { final guardedValue = map['maxResourcePercentPerRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
-      minResourcePercent: pulumi.Input.fromValue((map['minResourcePercent'] as num).toInt()),
+      minResourcePercent: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['minResourcePercent'])),
       minResourcePercentPerRequest: (() { final guardedValue = map['minResourcePercentPerRequest']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toDouble()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      queryExecutionTimeoutInSeconds: (() { final guardedValue = map['queryExecutionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      queryExecutionTimeoutInSeconds: (() { final guardedValue = map['queryExecutionTimeoutInSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       sqlPoolId: pulumi.Input.fromValue(map['sqlPoolId'] as String),
     );
   }

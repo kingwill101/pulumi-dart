@@ -287,7 +287,7 @@ import 'endpoint_cosmosdb_account_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -295,14 +295,20 @@ import 'endpoint_cosmosdb_account_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_iot_iothub" "example" {
+/// resource "azure_iot_io_t_hub" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "exampleIothub"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   sku = {
 ///     name     = "B1"
 ///     capacity = "1"
@@ -312,37 +318,49 @@ import 'endpoint_cosmosdb_account_state.dart';
 ///   }
 /// }
 /// resource "azure_cosmosdb_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cosmosdb-account"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   offer_type          = "Standard"
 ///   kind                = "GlobalDocumentDB"
 ///   consistency_policy = {
 ///     consistency_level = "Strong"
 ///   }
 ///   geo_locations {
-///     location          = azure_core_resourcegroup.example.location
+///     location          = azure_core_resource_group.example.location
 ///     failover_priority = 0
 ///   }
 /// }
-/// resource "azure_cosmosdb_sqldatabase" "example" {
+/// resource "azure_cosmosdb_sql_database" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "cosmos-sql-db"
 ///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
 ///   account_name        = azure_cosmosdb_account.example.name
 /// }
-/// resource "azure_cosmosdb_sqlcontainer" "example" {
+/// resource "azure_cosmosdb_sql_container" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-container"
 ///   resource_group_name = azure_cosmosdb_account.example.resource_group_name
 ///   account_name        = azure_cosmosdb_account.example.name
-///   database_name       = azure_cosmosdb_sqldatabase.example.name
+///   database_name       = azure_cosmosdb_sql_database.example.name
 ///   partition_key_path  = "/definition/id"
 /// }
-/// resource "azure_iot_endpointcosmosdbaccount" "example" {
+/// resource "azure_iot_endpoint_cosmosdb_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   iothub_id           = azure_iot_iothub.example.id
-///   container_name      = azure_cosmosdb_sqlcontainer.example.name
-///   database_name       = azure_cosmosdb_sqldatabase.example.name
+///   resource_group_name = azure_core_resource_group.example.name
+///   iothub_id           = azure_iot_io_t_hub.example.id
+///   container_name      = azure_cosmosdb_sql_container.example.name
+///   database_name       = azure_cosmosdb_sql_database.example.name
 ///   endpoint_uri        = azure_cosmosdb_account.example.endpoint
 ///   primary_key         = azure_cosmosdb_account.example.primary_key
 ///   secondary_key       = azure_cosmosdb_account.example.secondary_key
@@ -560,7 +578,7 @@ class EndpointCosmosdbAccount extends pulumi.CustomResource {
           'azure:iot/endpointCosmosdbAccount:EndpointCosmosdbAccount',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['primaryKey', 'secondaryKey'],
         ) {
     authenticationType = registerOutput<String?>('authenticationType');

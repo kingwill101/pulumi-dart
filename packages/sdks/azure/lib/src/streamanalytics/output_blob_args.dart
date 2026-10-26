@@ -92,7 +92,7 @@ class OutputBlobArgs {
     return OutputBlobArgs(
       authenticationMode: (() { final guardedValue = map['authenticationMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       batchMaxWaitTime: (() { final guardedValue = map['batchMaxWaitTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      batchMinRows: (() { final guardedValue = map['batchMinRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      batchMinRows: (() { final guardedValue = map['batchMinRows']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       blobWriteMode: (() { final guardedValue = map['blobWriteMode']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       dateFormat: pulumi.Input.fromValue(map['dateFormat'] as String),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),

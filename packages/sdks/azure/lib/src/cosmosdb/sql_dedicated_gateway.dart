@@ -154,7 +154,7 @@ import 'sql_dedicated_gateway_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -162,25 +162,34 @@ import 'sql_dedicated_gateway_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resource-group"
 ///   location = "West Europe"
 /// }
 /// resource "azure_cosmosdb_account" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ca"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   offer_type          = "Standard"
 ///   kind                = "GlobalDocumentDB"
 ///   consistency_policy = {
 ///     consistency_level = "BoundedStaleness"
 ///   }
 ///   geo_locations {
-///     location          = azure_core_resourcegroup.example.location
+///     location          = azure_core_resource_group.example.location
 ///     failover_priority = 0
 ///   }
 /// }
-/// resource "azure_cosmosdb_sqldedicatedgateway" "example" {
+/// resource "azure_cosmosdb_sql_dedicated_gateway" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   cosmosdb_account_id = azure_cosmosdb_account.example.id
 ///   instance_count      = 1
 ///   instance_size       = "Cosmos.D4s"
@@ -307,7 +316,7 @@ class SqlDedicatedGateway extends pulumi.CustomResource {
           'azure:cosmosdb/sqlDedicatedGateway:SqlDedicatedGateway',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     cosmosdbAccountId = registerOutput<String>('cosmosdbAccountId');
     instanceCount = registerOutput<int>('instanceCount');

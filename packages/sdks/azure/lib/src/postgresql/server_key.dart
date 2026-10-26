@@ -427,7 +427,7 @@ import 'server_key_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -435,48 +435,66 @@ import 'server_key_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_core_getclientconfig" "current" {
+/// data "azure_core_client_config" "current" {
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_keyvault_keyvault" "example" {
+/// resource "azure_keyvault_key_vault" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                       = "examplekv"
-///   location                   = azure_core_resourcegroup.example.location
-///   resource_group_name        = azure_core_resourcegroup.example.name
+///   location                   = azure_core_resource_group.example.location
+///   resource_group_name        = azure_core_resource_group.example.name
 ///   rbac_authorization_enabled = false
-///   tenant_id                  = data.azure_core_getclientconfig.current.tenant_id
+///   tenant_id                  = data.azure_core_client_config.current.tenant_id
 ///   sku_name                   = "premium"
 ///   purge_protection_enabled   = true
 /// }
-/// resource "azure_keyvault_accesspolicy" "server" {
-///   key_vault_id       = azure_keyvault_keyvault.example.id
-///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
+/// resource "azure_keyvault_access_policy" "server" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id       = azure_keyvault_key_vault.example.id
+///   tenant_id          = data.azure_core_client_config.current.tenant_id
 ///   object_id          = azure_postgresql_server.example.identity.principal_id
 ///   key_permissions    = ["Get", "UnwrapKey", "WrapKey"]
 ///   secret_permissions = ["Get"]
 /// }
-/// resource "azure_keyvault_accesspolicy" "client" {
-///   key_vault_id       = azure_keyvault_keyvault.example.id
-///   tenant_id          = data.azure_core_getclientconfig.current.tenant_id
-///   object_id          = data.azure_core_getclientconfig.current.object_id
+/// resource "azure_keyvault_access_policy" "client" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   key_vault_id       = azure_keyvault_key_vault.example.id
+///   tenant_id          = data.azure_core_client_config.current.tenant_id
+///   object_id          = data.azure_core_client_config.current.object_id
 ///   key_permissions    = ["Get", "Create", "Delete", "List", "Restore", "Recover", "UnwrapKey", "WrapKey", "Purge", "Encrypt", "Decrypt", "Sign", "Verify", "GetRotationPolicy"]
 ///   secret_permissions = ["Get"]
 /// }
 /// resource "azure_keyvault_key" "example" {
-///   depends_on   = [azure_keyvault_accesspolicy.client, azure_keyvault_accesspolicy.server]
+///   depends_on = [azure_keyvault_access_policy.client, azure_keyvault_access_policy.server]
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name         = "tfex-key"
-///   key_vault_id = azure_keyvault_keyvault.example.id
+///   key_vault_id = azure_keyvault_key_vault.example.id
 ///   key_type     = "RSA"
 ///   key_size     = 2048
 ///   key_opts     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
 /// }
 /// resource "azure_postgresql_server" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                         = "example-postgre-server"
-///   location                     = azure_core_resourcegroup.example.location
-///   resource_group_name          = azure_core_resourcegroup.example.name
+///   location                     = azure_core_resource_group.example.location
+///   resource_group_name          = azure_core_resource_group.example.name
 ///   administrator_login          = "psqladmin"
 ///   administrator_login_password = "H@Sh1CoR3!"
 ///   sku_name                     = "GP_Gen5_2"
@@ -487,7 +505,10 @@ import 'server_key_state.dart';
 ///     type = "SystemAssigned"
 ///   }
 /// }
-/// resource "azure_postgresql_serverkey" "example" {
+/// resource "azure_postgresql_server_key" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   server_id        = azure_postgresql_server.example.id
 ///   key_vault_key_id = azure_keyvault_key.example.id
 /// }
@@ -750,7 +771,7 @@ class ServerKey extends pulumi.CustomResource {
           'azure:postgresql/serverKey:ServerKey',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     keyVaultKeyId = registerOutput<String>('keyVaultKeyId');
     serverId = registerOutput<String>('serverId');

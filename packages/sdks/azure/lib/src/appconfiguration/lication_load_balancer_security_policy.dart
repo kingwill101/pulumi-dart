@@ -188,7 +188,7 @@ import 'lication_load_balancer_security_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -196,23 +196,32 @@ import 'lication_load_balancer_security_policy_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_appconfiguration_licationloadbalancer" "example" {
+/// resource "azure_appconfiguration_lication_load_balancer" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-alb"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_waf_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-wafpolicy"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   managed_rules = {
 ///     managed_rule_sets = [{
-///       "type"    = "Microsoft_DefaultRuleSet"
-///       "version" = "2.1"
+///       type    = "Microsoft_DefaultRuleSet"
+///       version = "2.1"
 ///     }]
 ///   }
 ///   policy_settings = {
@@ -220,10 +229,13 @@ import 'lication_load_balancer_security_policy_state.dart';
 ///     mode    = "Detection"
 ///   }
 /// }
-/// resource "azure_appconfiguration_licationloadbalancersecuritypolicy" "example" {
+/// resource "azure_appconfiguration_lication_load_balancer_security_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                               = "example-albsp"
-///   application_load_balancer_id       = azure_appconfiguration_licationloadbalancer.example.id
-///   location                           = azure_core_resourcegroup.example.location
+///   application_load_balancer_id       = azure_appconfiguration_lication_load_balancer.example.id
+///   location                           = azure_core_resource_group.example.location
 ///   web_application_firewall_policy_id = azure_waf_policy.example.id
 /// }
 /// ```
@@ -371,7 +383,7 @@ class LicationLoadBalancerSecurityPolicy extends pulumi.CustomResource {
           'azure:appconfiguration/licationLoadBalancerSecurityPolicy:LicationLoadBalancerSecurityPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     applicationLoadBalancerId = registerOutput<String>('applicationLoadBalancerId');
     location = registerOutput<String>('location');

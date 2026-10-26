@@ -239,7 +239,7 @@ import 'linux_virtual_machine_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -250,37 +250,49 @@ import 'linux_virtual_machine_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
 /// resource "azure_devtest_lab" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-devtestlab"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   tags = {
 ///     "Sydney" = "Australia"
 ///   }
 /// }
-/// resource "azure_devtest_virtualnetwork" "example" {
+/// resource "azure_devtest_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-network"
 ///   lab_name            = azure_devtest_lab.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   subnet = {
 ///     use_public_ip_address           = "Allow"
 ///     use_in_virtual_machine_creation = "Allow"
 ///   }
 /// }
-/// resource "azure_devtest_linuxvirtualmachine" "example" {
+/// resource "azure_devtest_linux_virtual_machine" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "example-vm03"
 ///   lab_name               = azure_devtest_lab.example.name
-///   resource_group_name    = azure_core_resourcegroup.example.name
-///   location               = azure_core_resourcegroup.example.location
+///   resource_group_name    = azure_core_resource_group.example.name
+///   location               = azure_core_resource_group.example.location
 ///   size                   = "Standard_DS2"
 ///   username               = "exampleuser99"
 ///   ssh_key                = file("~/.ssh/id_rsa.pub")
-///   lab_virtual_network_id = azure_devtest_virtualnetwork.example.id
-///   lab_subnet_name        = azure_devtest_virtualnetwork.example.subnet.name
+///   lab_virtual_network_id = azure_devtest_virtual_network.example.id
+///   lab_subnet_name        = azure_devtest_virtual_network.example.subnet.name
 ///   storage_type           = "Premium"
 ///   notes                  = "Some notes about this Virtual Machine."
 ///   gallery_image_reference = {
@@ -495,7 +507,7 @@ class LinuxVirtualMachine extends pulumi.CustomResource {
           'azure:devtest/linuxVirtualMachine:LinuxVirtualMachine',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['password'],
         ) {
     allowClaim = registerOutput<bool?>('allowClaim');

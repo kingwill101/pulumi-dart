@@ -144,7 +144,7 @@ import 'event_hub_namespace_authorization_rule_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -152,24 +152,33 @@ import 'event_hub_namespace_authorization_rule_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "resourcegroup"
 ///   location = "West Europe"
 /// }
-/// resource "azure_eventhub_eventhubnamespace" "example" {
+/// resource "azure_eventhub_event_hub_namespace" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "acceptanceTestEventHubNamespace"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "Basic"
 ///   capacity            = 2
 ///   tags = {
 ///     "environment" = "Production"
 ///   }
 /// }
-/// resource "azure_eventhub_eventhubnamespaceauthorizationrule" "example" {
+/// resource "azure_eventhub_event_hub_namespace_authorization_rule" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "navi"
-///   namespace_name      = azure_eventhub_eventhubnamespace.example.name
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   namespace_name      = azure_eventhub_event_hub_namespace.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   listen              = true
 ///   send                = false
 ///   manage              = false
@@ -311,7 +320,7 @@ class EventHubNamespaceAuthorizationRule extends pulumi.CustomResource {
           'azure:eventhub/eventHubNamespaceAuthorizationRule:EventHubNamespaceAuthorizationRule',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
           additionalSecretOutputs: const ['primaryConnectionString', 'primaryConnectionStringAlias', 'primaryKey', 'secondaryConnectionString', 'secondaryConnectionStringAlias', 'secondaryKey'],
         ) {
     listen = registerOutput<bool?>('listen');

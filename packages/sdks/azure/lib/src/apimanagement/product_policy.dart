@@ -113,7 +113,7 @@ import 'product_policy_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -121,17 +121,27 @@ import 'product_policy_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_apimanagement_getproduct" "example" {
+/// data "azure_apimanagement_product" "example" {
 ///   product_id          = "my-product"
 ///   api_management_name = "example-apim"
 ///   resource_group_name = "search-service"
 /// }
 ///
-/// resource "azure_apimanagement_productpolicy" "example" {
-///   product_id          = data.azure_apimanagement_getproduct.example.product_id
-///   api_management_name = data.azure_apimanagement_getproduct.example.api_management_name
-///   resource_group_name = data.azure_apimanagement_getproduct.example.resource_group_name
-///   xml_content         = "<policies>\n  <inbound>\n    <find-and-replace from=\\\"xyz\\\" to=\\\"abc\\\" />\n  </inbound>\n</policies>\n"
+/// resource "azure_apimanagement_product_policy" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   product_id          = data.azure_apimanagement_product.example.product_id
+///   api_management_name = data.azure_apimanagement_product.example.api_management_name
+///   resource_group_name = data.azure_apimanagement_product.example.resource_group_name
+///   xml_content         = <<XML
+/// <policies>
+///   <inbound>
+///     <find-and-replace from=\"xyz\" to=\"abc\" />
+///   </inbound>
+/// </policies>
+/// XML
+///
 /// }
 /// ```
 /// ```java
@@ -243,7 +253,7 @@ class ProductPolicy extends pulumi.CustomResource {
           'azure:apimanagement/productPolicy:ProductPolicy',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     apiManagementName = registerOutput<String>('apiManagementName');
     productId = registerOutput<String>('productId');

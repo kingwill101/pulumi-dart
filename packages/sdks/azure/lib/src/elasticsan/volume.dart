@@ -156,7 +156,7 @@ import 'volume_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -164,26 +164,38 @@ import 'volume_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_elasticsan_elasticsan" "example" {
+/// resource "azure_elasticsan_elastic_san" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-es"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   base_size_in_tib    = 1
 ///   sku = {
 ///     name = "Premium_LRS"
 ///   }
 /// }
-/// resource "azure_elasticsan_volumegroup" "example" {
+/// resource "azure_elasticsan_volume_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example-esvg"
-///   elastic_san_id = azure_elasticsan_elasticsan.example.id
+///   elastic_san_id = azure_elasticsan_elastic_san.example.id
 /// }
 /// resource "azure_elasticsan_volume" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example-esv"
-///   volume_group_id = azure_elasticsan_volumegroup.example.id
+///   volume_group_id = azure_elasticsan_volume_group.example.id
 ///   size_in_gib     = 1
 /// }
 /// output "targetIqn" {
@@ -513,7 +525,7 @@ import 'volume_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -521,41 +533,59 @@ import 'volume_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_elasticsan_elasticsan" "example" {
+/// resource "azure_elasticsan_elastic_san" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-es"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   base_size_in_tib    = 1
 ///   sku = {
 ///     name = "Premium_LRS"
 ///   }
 /// }
-/// resource "azure_elasticsan_volumegroup" "example" {
+/// resource "azure_elasticsan_volume_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name           = "example-esvg"
-///   elastic_san_id = azure_elasticsan_elasticsan.example.id
+///   elastic_san_id = azure_elasticsan_elastic_san.example.id
 /// }
-/// resource "azure_compute_manageddisk" "example" {
+/// resource "azure_compute_managed_disk" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-disk"
-///   location             = azure_core_resourcegroup.example.location
-///   resource_group_name  = azure_core_resourcegroup.example.name
+///   location             = azure_core_resource_group.example.location
+///   resource_group_name  = azure_core_resource_group.example.name
 ///   create_option        = "Empty"
 ///   storage_account_type = "Standard_LRS"
 ///   disk_size_gb         = 2
 /// }
 /// resource "azure_compute_snapshot" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-ss"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   create_option       = "Copy"
-///   source_uri          = azure_compute_manageddisk.example.id
+///   source_uri          = azure_compute_managed_disk.example.id
 /// }
 /// resource "azure_elasticsan_volume" "example2" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name            = "example-esv2"
-///   volume_group_id = azure_elasticsan_volumegroup.example.id
+///   volume_group_id = azure_elasticsan_volume_group.example.id
 ///   size_in_gib     = 2
 ///   create_source = {
 ///     source_type = "DiskSnapshot"
@@ -746,7 +776,7 @@ class Volume extends pulumi.CustomResource {
           'azure:elasticsan/volume:Volume',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     createSource = registerOutput<VolumeCreateSource?>('createSource', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return VolumeCreateSource.fromMap((guardedValue as Map).cast<String, dynamic>()); });
     this.name = registerOutput<String>('name');

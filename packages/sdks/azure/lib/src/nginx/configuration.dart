@@ -450,7 +450,7 @@ import 'configuration_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -461,30 +461,42 @@ import 'configuration_state.dart';
 ///   }
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-rg"
 ///   location = "West Europe"
 /// }
-/// resource "azure_network_publicip" "example" {
+/// resource "azure_network_public_ip" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example"
-///   resource_group_name = azure_core_resourcegroup.example.name
-///   location            = azure_core_resourcegroup.example.location
+///   resource_group_name = azure_core_resource_group.example.name
+///   location            = azure_core_resource_group.example.location
 ///   allocation_method   = "Static"
 ///   sku                 = "Standard"
 ///   tags = {
 ///     "environment" = "Production"
 ///   }
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-vnet"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.2.0/24"]
 ///   delegations {
 ///     name = "delegation"
@@ -495,26 +507,56 @@ import 'configuration_state.dart';
 ///   }
 /// }
 /// resource "azure_nginx_deployment" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-nginx"
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   resource_group_name = azure_core_resource_group.example.name
 ///   sku                 = "publicpreview_Monthly_gmz7xq9ge3py"
-///   location            = azure_core_resourcegroup.example.location
+///   location            = azure_core_resource_group.example.location
 ///   frontend_public = {
-///     ip_addresses = [azure_network_publicip.example.id]
+///     ip_addresses = [azure_network_public_ip.example.id]
 ///   }
 ///   network_interfaces {
 ///     subnet_id = azure_network_subnet.example.id
 ///   }
 /// }
 /// resource "azure_nginx_configuration" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   nginx_deployment_id = azure_nginx_deployment.example.id
 ///   root_file           = "/etc/nginx/nginx.conf"
 ///   config_files {
-///     content      = base64encode("http {\n    server {\n        listen 80;\n        location / {\n            default_type text/html;\n            return 200 '<!doctype html><html lang=\\\"en\\\"><head></head><body>\n                <div>this one will be updated</div>\n                <div>at 10:38 am</div>\n            </body></html>';\n        }\n        include site/*.conf;\n    }\n}\n")
+///     content      = base64encode(<<-EOT
+/// http {
+///     server {
+///         listen 80;
+///         location / {
+///             default_type text/html;
+///             return 200 '<!doctype html><html lang=\"en\"><head></head><body>
+///                 <div>this one will be updated</div>
+///                 <div>at 10:38 am</div>
+///             </body></html>';
+///         }
+///         include site/*.conf;
+///     }
+/// }
+/// EOT
+/// )
 ///     virtual_path = "/etc/nginx/nginx.conf"
 ///   }
 ///   config_files {
-///     content      = base64encode("location /bbb {\n default_type text/html;\n return 200 '<!doctype html><html lang=\\\"en\\\"><head></head><body>\n  <div>this one will be updated</div>\n  <div>at 10:38 am</div>\n </body></html>';\n}\n")
+///     content      = base64encode(<<-EOT
+/// location /bbb {
+///  default_type text/html;
+///  return 200 '<!doctype html><html lang=\"en\"><head></head><body>
+///   <div>this one will be updated</div>
+///   <div>at 10:38 am</div>
+///  </body></html>';
+/// }
+/// EOT
+/// )
 ///     virtual_path = "/etc/nginx/site/b.conf"
 ///   }
 /// }
@@ -785,7 +827,7 @@ class Configuration extends pulumi.CustomResource {
           'azure:nginx/configuration:Configuration',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     configFiles = registerOutput<List<ConfigurationConfigFile>?>('configFiles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return pulumi.Input.decodeList<ConfigurationConfigFile>(guardedValue, (value) => ConfigurationConfigFile.fromMap((value as Map).cast<String, dynamic>())); });
     nginxDeploymentId = registerOutput<String>('nginxDeploymentId');

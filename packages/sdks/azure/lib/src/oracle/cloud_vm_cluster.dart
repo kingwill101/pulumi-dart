@@ -248,7 +248,7 @@ import 'cloud_vm_cluster_state.dart';
 /// });
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     azure = {
 ///       source = "pulumi/azure"
@@ -259,35 +259,47 @@ import 'cloud_vm_cluster_state.dart';
 ///   }
 /// }
 ///
-/// data "azure_oracle_getdbservers" "example" {
-///   resource_group_name               = azure_core_resourcegroup.example.name
-///   cloud_exadata_infrastructure_name = azure_oracle_exadatainfrastructure.example.name
+/// data "azure_oracle_db_servers" "example" {
+///   resource_group_name               = azure_core_resource_group.example.name
+///   cloud_exadata_infrastructure_name = azure_oracle_exadata_infrastructure.example.name
 /// }
 ///
-/// resource "azure_core_resourcegroup" "example" {
+/// resource "azure_core_resource_group" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "example-resources"
 ///   location = "West Europe"
 /// }
-/// resource "azure_oracle_exadatainfrastructure" "example" {
+/// resource "azure_oracle_exadata_infrastructure" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-exadata-infrastructure"
 ///   display_name        = "example-exadata-infrastructure"
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 ///   shape               = "Exadata.X9M"
 ///   storage_count       = "3"
 ///   compute_count       = "2"
 ///   zones               = ["3"]
 /// }
-/// resource "azure_network_virtualnetwork" "example" {
+/// resource "azure_network_virtual_network" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "example-virtual-network"
 ///   address_spaces      = ["10.0.0.0/16"]
-///   location            = azure_core_resourcegroup.example.location
-///   resource_group_name = azure_core_resourcegroup.example.name
+///   location            = azure_core_resource_group.example.location
+///   resource_group_name = azure_core_resource_group.example.name
 /// }
 /// resource "azure_network_subnet" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                 = "example-subnet"
-///   resource_group_name  = azure_core_resourcegroup.example.name
-///   virtual_network_name = azure_network_virtualnetwork.example.name
+///   resource_group_name  = azure_core_resource_group.example.name
+///   virtual_network_name = azure_network_virtual_network.example.name
 ///   address_prefixes     = ["10.0.1.0/24"]
 ///   delegations {
 ///     name = "delegation"
@@ -297,17 +309,20 @@ import 'cloud_vm_cluster_state.dart';
 ///     }
 ///   }
 /// }
-/// resource "azure_oracle_cloudvmcluster" "example" {
+/// resource "azure_oracle_cloud_vm_cluster" "example" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                            = "example-cloud-vm-cluster"
-///   resource_group_name             = azure_core_resourcegroup.example.name
-///   location                        = azure_core_resourcegroup.example.location
+///   resource_group_name             = azure_core_resource_group.example.name
+///   location                        = azure_core_resource_group.example.location
 ///   gi_version                      = "23.0.0.0"
-///   virtual_network_id              = azure_network_virtualnetwork.example.id
+///   virtual_network_id              = azure_network_virtual_network.example.id
 ///   license_model                   = "BringYourOwnLicense"
-///   db_servers                      = [for obj in data.azure_oracle_getdbservers.example.db_servers : obj.ocid]
+///   db_servers                      = [for obj in data.azure_oracle_db_servers.example.db_servers : obj.ocid]
 ///   ssh_public_keys                 = [file("~/.ssh/id_rsa.pub")]
 ///   display_name                    = "example-cloud-vm-cluster"
-///   cloud_exadata_infrastructure_id = azure_oracle_exadatainfrastructure.example.id
+///   cloud_exadata_infrastructure_id = azure_oracle_exadata_infrastructure.example.id
 ///   cpu_core_count                  = 2
 ///   hostname                        = "hostname"
 ///   subnet_id                       = azure_network_subnet.example.id
@@ -412,7 +427,7 @@ class CloudVmCluster extends pulumi.CustomResource {
           'azure:oracle/cloudVmCluster:CloudVmCluster',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          pulumi.CustomResourceOptions(version: '6.40.0').merge(options),
+          pulumi.CustomResourceOptions(version: '6.40.1').merge(options),
         ) {
     backupSubnetCidr = registerOutput<String?>('backupSubnetCidr');
     cloudExadataInfrastructureId = registerOutput<String>('cloudExadataInfrastructureId');

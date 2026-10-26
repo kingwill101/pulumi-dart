@@ -30,8 +30,8 @@ class WindowsVirtualMachineInboundNatRule {
 
   factory WindowsVirtualMachineInboundNatRule.fromMap(Map<String, dynamic> map) {
     return WindowsVirtualMachineInboundNatRule(
-      backendPort: pulumi.Input.fromValue((map['backendPort'] as num).toInt()),
-      frontendPort: (() { final guardedValue = map['frontendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      backendPort: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['backendPort'])),
+      frontendPort: (() { final guardedValue = map['frontendPort']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
     );
   }
