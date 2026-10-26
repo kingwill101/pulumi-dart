@@ -42,19 +42,19 @@ class GetNamespaceNetworkRuleSetResult {
   /// [trustedServiceAccessEnabled] Value that indicates whether Trusted Service Access is Enabled or not.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualNetworkRules] List VirtualNetwork Rules
-  GetNamespaceNetworkRuleSetResult({
+  const GetNamespaceNetworkRuleSetResult({
     this.azureApiVersion,
     this.defaultAction,
     this.id,
     this.ipRules,
     this.location,
     this.name,
-    String? publicNetworkAccess,
+    this.publicNetworkAccess,
     this.systemData,
     this.trustedServiceAccessEnabled,
     this.type,
     this.virtualNetworkRules,
-  }) : publicNetworkAccess = publicNetworkAccess ?? 'Enabled';
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{

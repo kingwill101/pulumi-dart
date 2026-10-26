@@ -342168,6 +342168,59 @@
                 "title"
             ]
         },
+        "azure-native:durabletask:PrivateEndpointConnectionResponse": {
+            "description": "The private endpoint connection resource.",
+            "properties": {
+                "groupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The group ids for the private endpoint resource."
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Fully qualified resource ID for the resource. E.g. \"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}\""
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the resource"
+                },
+                "privateEndpoint": {
+                    "type": "object",
+                    "$ref": "#/types/azure-native:durabletask:PrivateEndpointResponse",
+                    "description": "The private endpoint resource."
+                },
+                "privateLinkServiceConnectionState": {
+                    "type": "object",
+                    "$ref": "#/types/azure-native:durabletask:PrivateLinkServiceConnectionStateResponse",
+                    "description": "A collection of information about the state of the connection between service consumer and provider."
+                },
+                "provisioningState": {
+                    "type": "string",
+                    "description": "The provisioning state of the private endpoint connection resource."
+                },
+                "systemData": {
+                    "type": "object",
+                    "$ref": "#/types/azure-native:durabletask:SystemDataResponse",
+                    "description": "Azure Resource Manager metadata containing createdBy and modifiedBy information."
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the resource. E.g. \"Microsoft.Compute/virtualMachines\" or \"Microsoft.Storage/storageAccounts\""
+                }
+            },
+            "type": "object",
+            "required": [
+                "groupIds",
+                "id",
+                "name",
+                "privateLinkServiceConnectionState",
+                "provisioningState",
+                "systemData",
+                "type"
+            ]
+        },
         "azure-native:durabletask:PrivateEndpointResponse": {
             "description": "The private endpoint resource.",
             "properties": {
@@ -342238,6 +342291,22 @@
                 }
             },
             "type": "object"
+        },
+        "azure-native:durabletask:PublicNetworkAccess": {
+            "description": "Allow or disallow public network access to durable task scheduler",
+            "type": "string",
+            "enum": [
+                {
+                    "name": "Enabled",
+                    "description": "The public network access is enabled",
+                    "value": "Enabled"
+                },
+                {
+                    "name": "Disabled",
+                    "description": "The public network access is disabled",
+                    "value": "Disabled"
+                }
+            ]
         },
         "azure-native:durabletask:PurgeableOrchestrationState": {
             "description": "The orchestration state to which this policy applies. If omitted, the policy applies to all purgeable orchestration states.",
@@ -342351,6 +342420,17 @@
                     },
                     "description": "IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR"
                 },
+                "publicNetworkAccess": {
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "$ref": "#/types/azure-native:durabletask:PublicNetworkAccess"
+                        }
+                    ],
+                    "description": "Allow or disallow public network access to durable task scheduler"
+                },
                 "sku": {
                     "type": "object",
                     "$ref": "#/types/azure-native:durabletask:SchedulerSku",
@@ -342377,9 +342457,21 @@
                     },
                     "description": "IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR"
                 },
+                "privateEndpointConnections": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "$ref": "#/types/azure-native:durabletask:PrivateEndpointConnectionResponse"
+                    },
+                    "description": "The private endpoints exposed by this resource"
+                },
                 "provisioningState": {
                     "type": "string",
                     "description": "The status of the last operation"
+                },
+                "publicNetworkAccess": {
+                    "type": "string",
+                    "description": "Allow or disallow public network access to durable task scheduler"
                 },
                 "sku": {
                     "type": "object",
@@ -342391,6 +342483,7 @@
             "required": [
                 "endpoint",
                 "ipAllowlist",
+                "privateEndpointConnections",
                 "provisioningState",
                 "sku"
             ]
@@ -342403,13 +342496,36 @@
                     "description": "The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy"
                 },
                 "name": {
-                    "type": "string",
+                    "oneOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "$ref": "#/types/azure-native:durabletask:SchedulerSkuName"
+                        }
+                    ],
                     "description": "The name of the SKU"
                 }
             },
             "type": "object",
             "required": [
                 "name"
+            ]
+        },
+        "azure-native:durabletask:SchedulerSkuName": {
+            "description": "The name of the SKU",
+            "type": "string",
+            "enum": [
+                {
+                    "name": "Dedicated",
+                    "description": "Dedicated SKU",
+                    "value": "Dedicated"
+                },
+                {
+                    "name": "Consumption",
+                    "description": "Consumption SKU",
+                    "value": "Consumption"
+                }
             ]
         },
         "azure-native:durabletask:SchedulerSkuResponse": {
@@ -801737,7 +801853,7 @@
             ]
         },
         "azure-native:durabletask:RetentionPolicy": {
-            "description": "A retention policy resource belonging to the scheduler\n\nUses Azure REST API version 2025-04-01-preview.\n\nOther available API versions: 2025-11-01, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### RetentionPolicies_CreateOrReplace_MaximumSet\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureNative = Pulumi.AzureNative;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var retentionPolicy = new AzureNative.DurableTask.RetentionPolicy(\"retentionPolicy\", new()\n    {\n        Properties = new AzureNative.DurableTask.Inputs.RetentionPolicyPropertiesArgs\n        {\n            RetentionPolicies = new[]\n            {\n                new AzureNative.DurableTask.Inputs.RetentionPolicyDetailsArgs\n                {\n                    RetentionPeriodInDays = 30,\n                },\n                new AzureNative.DurableTask.Inputs.RetentionPolicyDetailsArgs\n                {\n                    OrchestrationState = AzureNative.DurableTask.PurgeableOrchestrationState.Failed,\n                    RetentionPeriodInDays = 10,\n                },\n            },\n        },\n        ResourceGroupName = \"rgdurabletask\",\n        SchedulerName = \"testscheduler\",\n    });\n\n});\n\n\n```\n\n```go\npackage main\n\nimport (\n\tdurabletask \"github.com/pulumi/pulumi-azure-native-sdk/durabletask/v3\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := durabletask.NewRetentionPolicy(ctx, \"retentionPolicy\", \u0026durabletask.RetentionPolicyArgs{\n\t\t\tProperties: \u0026durabletask.RetentionPolicyPropertiesArgs{\n\t\t\t\tRetentionPolicies: durabletask.RetentionPolicyDetailsArray{\n\t\t\t\t\t\u0026durabletask.RetentionPolicyDetailsArgs{\n\t\t\t\t\t\tRetentionPeriodInDays: pulumi.Int(30),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026durabletask.RetentionPolicyDetailsArgs{\n\t\t\t\t\t\tOrchestrationState:    pulumi.String(durabletask.PurgeableOrchestrationStateFailed),\n\t\t\t\t\t\tRetentionPeriodInDays: pulumi.Int(10),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tResourceGroupName: pulumi.String(\"rgdurabletask\"),\n\t\t\tSchedulerName:     pulumi.String(\"testscheduler\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n\n```\n\n```hcl\npulumi {\n  required_providers {\n    azure-native = {\n      source = \"pulumi/azure-native\"\n    }\n  }\n}\n\nresource \"azure-native_durabletask_retentionpolicy\" \"retentionPolicy\" {\n  properties = {\n    retention_policies = [{\n      \"retentionPeriodInDays\" = 30\n      }, {\n      \"orchestrationState\"    = \"Failed\"\n      \"retentionPeriodInDays\" = 10\n    }]\n  }\n  resource_group_name = \"rgdurabletask\"\n  scheduler_name      = \"testscheduler\"\n}\n\n```\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azurenative.durabletask.RetentionPolicy;\nimport com.pulumi.azurenative.durabletask.RetentionPolicyArgs;\nimport com.pulumi.azurenative.durabletask.inputs.RetentionPolicyPropertiesArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var retentionPolicy = new RetentionPolicy(\"retentionPolicy\", RetentionPolicyArgs.builder()\n            .properties(RetentionPolicyPropertiesArgs.builder()\n                .retentionPolicies(                \n                    RetentionPolicyDetailsArgs.builder()\n                        .retentionPeriodInDays(30)\n                        .build(),\n                    RetentionPolicyDetailsArgs.builder()\n                        .orchestrationState(\"Failed\")\n                        .retentionPeriodInDays(10)\n                        .build())\n                .build())\n            .resourceGroupName(\"rgdurabletask\")\n            .schedulerName(\"testscheduler\")\n            .build());\n\n    }\n}\n\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azure_native from \"@pulumi/azure-native\";\n\nconst retentionPolicy = new azure_native.durabletask.RetentionPolicy(\"retentionPolicy\", {\n    properties: {\n        retentionPolicies: [\n            {\n                retentionPeriodInDays: 30,\n            },\n            {\n                orchestrationState: azure_native.durabletask.PurgeableOrchestrationState.Failed,\n                retentionPeriodInDays: 10,\n            },\n        ],\n    },\n    resourceGroupName: \"rgdurabletask\",\n    schedulerName: \"testscheduler\",\n});\n\n```\n\n```python\nimport pulumi\nimport pulumi_azure_native as azure_native\n\nretention_policy = azure_native.durabletask.RetentionPolicy(\"retentionPolicy\",\n    properties={\n        \"retention_policies\": [\n            {\n                \"retention_period_in_days\": 30,\n            },\n            {\n                \"orchestration_state\": azure_native.durabletask.PurgeableOrchestrationState.FAILED,\n                \"retention_period_in_days\": 10,\n            },\n        ],\n    },\n    resource_group_name=\"rgdurabletask\",\n    scheduler_name=\"testscheduler\")\n\n```\n\n```yaml\nresources:\n  retentionPolicy:\n    type: azure-native:durabletask:RetentionPolicy\n    properties:\n      properties:\n        retentionPolicies:\n          - retentionPeriodInDays: 30\n          - orchestrationState: Failed\n            retentionPeriodInDays: 10\n      resourceGroupName: rgdurabletask\n      schedulerName: testscheduler\n\n```\n\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn existing resource can be imported using its type token, name, and identifier, e.g.\n\n```sh\n$ pulumi import azure-native:durabletask:RetentionPolicy default /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default \n```\n",
+            "description": "A retention policy resource belonging to the scheduler\n\nUses Azure REST API version 2026-02-01.\n\nOther available API versions: 2025-04-01-preview, 2025-11-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### RetentionPolicies_CreateOrReplace_MaximumSet\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureNative = Pulumi.AzureNative;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var retentionPolicy = new AzureNative.DurableTask.RetentionPolicy(\"retentionPolicy\", new()\n    {\n        Properties = new AzureNative.DurableTask.Inputs.RetentionPolicyPropertiesArgs\n        {\n            RetentionPolicies = new[]\n            {\n                new AzureNative.DurableTask.Inputs.RetentionPolicyDetailsArgs\n                {\n                    RetentionPeriodInDays = 30,\n                },\n                new AzureNative.DurableTask.Inputs.RetentionPolicyDetailsArgs\n                {\n                    OrchestrationState = AzureNative.DurableTask.PurgeableOrchestrationState.Failed,\n                    RetentionPeriodInDays = 10,\n                },\n            },\n        },\n        ResourceGroupName = \"rgdurabletask\",\n        SchedulerName = \"testscheduler\",\n    });\n\n});\n\n\n```\n\n```go\npackage main\n\nimport (\n\tdurabletask \"github.com/pulumi/pulumi-azure-native-sdk/durabletask/v3\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := durabletask.NewRetentionPolicy(ctx, \"retentionPolicy\", \u0026durabletask.RetentionPolicyArgs{\n\t\t\tProperties: \u0026durabletask.RetentionPolicyPropertiesArgs{\n\t\t\t\tRetentionPolicies: durabletask.RetentionPolicyDetailsArray{\n\t\t\t\t\t\u0026durabletask.RetentionPolicyDetailsArgs{\n\t\t\t\t\t\tRetentionPeriodInDays: pulumi.Int(30),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026durabletask.RetentionPolicyDetailsArgs{\n\t\t\t\t\t\tOrchestrationState:    pulumi.String(durabletask.PurgeableOrchestrationStateFailed),\n\t\t\t\t\t\tRetentionPeriodInDays: pulumi.Int(10),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tResourceGroupName: pulumi.String(\"rgdurabletask\"),\n\t\t\tSchedulerName:     pulumi.String(\"testscheduler\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n\n```\n\n```hcl\npulumi {\n  required_providers {\n    azure-native = {\n      source = \"pulumi/azure-native\"\n    }\n  }\n}\n\nresource \"azure-native_durabletask_retentionpolicy\" \"retentionPolicy\" {\n  properties = {\n    retention_policies = [{\n      \"retentionPeriodInDays\" = 30\n      }, {\n      \"orchestrationState\"    = \"Failed\"\n      \"retentionPeriodInDays\" = 10\n    }]\n  }\n  resource_group_name = \"rgdurabletask\"\n  scheduler_name      = \"testscheduler\"\n}\n\n```\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azurenative.durabletask.RetentionPolicy;\nimport com.pulumi.azurenative.durabletask.RetentionPolicyArgs;\nimport com.pulumi.azurenative.durabletask.inputs.RetentionPolicyPropertiesArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var retentionPolicy = new RetentionPolicy(\"retentionPolicy\", RetentionPolicyArgs.builder()\n            .properties(RetentionPolicyPropertiesArgs.builder()\n                .retentionPolicies(                \n                    RetentionPolicyDetailsArgs.builder()\n                        .retentionPeriodInDays(30)\n                        .build(),\n                    RetentionPolicyDetailsArgs.builder()\n                        .orchestrationState(\"Failed\")\n                        .retentionPeriodInDays(10)\n                        .build())\n                .build())\n            .resourceGroupName(\"rgdurabletask\")\n            .schedulerName(\"testscheduler\")\n            .build());\n\n    }\n}\n\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azure_native from \"@pulumi/azure-native\";\n\nconst retentionPolicy = new azure_native.durabletask.RetentionPolicy(\"retentionPolicy\", {\n    properties: {\n        retentionPolicies: [\n            {\n                retentionPeriodInDays: 30,\n            },\n            {\n                orchestrationState: azure_native.durabletask.PurgeableOrchestrationState.Failed,\n                retentionPeriodInDays: 10,\n            },\n        ],\n    },\n    resourceGroupName: \"rgdurabletask\",\n    schedulerName: \"testscheduler\",\n});\n\n```\n\n```python\nimport pulumi\nimport pulumi_azure_native as azure_native\n\nretention_policy = azure_native.durabletask.RetentionPolicy(\"retentionPolicy\",\n    properties={\n        \"retention_policies\": [\n            {\n                \"retention_period_in_days\": 30,\n            },\n            {\n                \"orchestration_state\": azure_native.durabletask.PurgeableOrchestrationState.FAILED,\n                \"retention_period_in_days\": 10,\n            },\n        ],\n    },\n    resource_group_name=\"rgdurabletask\",\n    scheduler_name=\"testscheduler\")\n\n```\n\n```yaml\nresources:\n  retentionPolicy:\n    type: azure-native:durabletask:RetentionPolicy\n    properties:\n      properties:\n        retentionPolicies:\n          - retentionPeriodInDays: 30\n          - orchestrationState: Failed\n            retentionPeriodInDays: 10\n      resourceGroupName: rgdurabletask\n      schedulerName: testscheduler\n\n```\n\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn existing resource can be imported using its type token, name, and identifier, e.g.\n\n```sh\n$ pulumi import azure-native:durabletask:RetentionPolicy default /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/retentionPolicies/default \n```\n",
             "properties": {
                 "azureApiVersion": {
                     "type": "string",
@@ -801807,7 +801923,7 @@
             ]
         },
         "azure-native:durabletask:Scheduler": {
-            "description": "A Durable Task Scheduler resource\n\nUses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-01-preview.\n\nOther available API versions: 2025-04-01-preview, 2025-11-01, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Schedulers_CreateOrUpdate\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureNative = Pulumi.AzureNative;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var scheduler = new AzureNative.DurableTask.Scheduler(\"scheduler\", new()\n    {\n        Location = \"northcentralus\",\n        Properties = new AzureNative.DurableTask.Inputs.SchedulerPropertiesArgs\n        {\n            IpAllowlist = new[]\n            {\n                \"10.0.0.0/8\",\n            },\n            Sku = new AzureNative.DurableTask.Inputs.SchedulerSkuArgs\n            {\n                Name = \"Dedicated\",\n            },\n        },\n        ResourceGroupName = \"rgopenapi\",\n        SchedulerName = \"testscheduler\",\n        Tags = \n        {\n            { \"key2138\", \"fjaeecgnvqd\" },\n            { \"key7131\", \"ryohwcoiccwsnewjigfmijz\" },\n        },\n    });\n\n});\n\n\n```\n\n```go\npackage main\n\nimport (\n\tdurabletask \"github.com/pulumi/pulumi-azure-native-sdk/durabletask/v3\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := durabletask.NewScheduler(ctx, \"scheduler\", \u0026durabletask.SchedulerArgs{\n\t\t\tLocation: pulumi.String(\"northcentralus\"),\n\t\t\tProperties: \u0026durabletask.SchedulerPropertiesArgs{\n\t\t\t\tIpAllowlist: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"10.0.0.0/8\"),\n\t\t\t\t},\n\t\t\t\tSku: \u0026durabletask.SchedulerSkuArgs{\n\t\t\t\t\tName: pulumi.String(\"Dedicated\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tResourceGroupName: pulumi.String(\"rgopenapi\"),\n\t\t\tSchedulerName:     pulumi.String(\"testscheduler\"),\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"key2138\": pulumi.String(\"fjaeecgnvqd\"),\n\t\t\t\t\"key7131\": pulumi.String(\"ryohwcoiccwsnewjigfmijz\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n\n```\n\n```hcl\npulumi {\n  required_providers {\n    azure-native = {\n      source = \"pulumi/azure-native\"\n    }\n  }\n}\n\nresource \"azure-native_durabletask_scheduler\" \"scheduler\" {\n  location = \"northcentralus\"\n  properties = {\n    ip_allowlist = [\"10.0.0.0/8\"]\n    sku = {\n      name = \"Dedicated\"\n    }\n  }\n  resource_group_name = \"rgopenapi\"\n  scheduler_name      = \"testscheduler\"\n  tags = {\n    \"key2138\" = \"fjaeecgnvqd\"\n    \"key7131\" = \"ryohwcoiccwsnewjigfmijz\"\n  }\n}\n\n```\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azurenative.durabletask.Scheduler;\nimport com.pulumi.azurenative.durabletask.SchedulerArgs;\nimport com.pulumi.azurenative.durabletask.inputs.SchedulerPropertiesArgs;\nimport com.pulumi.azurenative.durabletask.inputs.SchedulerSkuArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var scheduler = new Scheduler(\"scheduler\", SchedulerArgs.builder()\n            .location(\"northcentralus\")\n            .properties(SchedulerPropertiesArgs.builder()\n                .ipAllowlist(\"10.0.0.0/8\")\n                .sku(SchedulerSkuArgs.builder()\n                    .name(\"Dedicated\")\n                    .build())\n                .build())\n            .resourceGroupName(\"rgopenapi\")\n            .schedulerName(\"testscheduler\")\n            .tags(Map.ofEntries(\n                Map.entry(\"key2138\", \"fjaeecgnvqd\"),\n                Map.entry(\"key7131\", \"ryohwcoiccwsnewjigfmijz\")\n            ))\n            .build());\n\n    }\n}\n\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azure_native from \"@pulumi/azure-native\";\n\nconst scheduler = new azure_native.durabletask.Scheduler(\"scheduler\", {\n    location: \"northcentralus\",\n    properties: {\n        ipAllowlist: [\"10.0.0.0/8\"],\n        sku: {\n            name: \"Dedicated\",\n        },\n    },\n    resourceGroupName: \"rgopenapi\",\n    schedulerName: \"testscheduler\",\n    tags: {\n        key2138: \"fjaeecgnvqd\",\n        key7131: \"ryohwcoiccwsnewjigfmijz\",\n    },\n});\n\n```\n\n```python\nimport pulumi\nimport pulumi_azure_native as azure_native\n\nscheduler = azure_native.durabletask.Scheduler(\"scheduler\",\n    location=\"northcentralus\",\n    properties={\n        \"ip_allowlist\": [\"10.0.0.0/8\"],\n        \"sku\": {\n            \"name\": \"Dedicated\",\n        },\n    },\n    resource_group_name=\"rgopenapi\",\n    scheduler_name=\"testscheduler\",\n    tags={\n        \"key2138\": \"fjaeecgnvqd\",\n        \"key7131\": \"ryohwcoiccwsnewjigfmijz\",\n    })\n\n```\n\n```yaml\nresources:\n  scheduler:\n    type: azure-native:durabletask:Scheduler\n    properties:\n      location: northcentralus\n      properties:\n        ipAllowlist:\n          - 10.0.0.0/8\n        sku:\n          name: Dedicated\n      resourceGroupName: rgopenapi\n      schedulerName: testscheduler\n      tags:\n        key2138: fjaeecgnvqd\n        key7131: ryohwcoiccwsnewjigfmijz\n\n```\n\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn existing resource can be imported using its type token, name, and identifier, e.g.\n\n```sh\n$ pulumi import azure-native:durabletask:Scheduler fwxpolhofploqzwdooyg /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName} \n```\n",
+            "description": "A Durable Task Scheduler resource\n\nUses Azure REST API version 2026-02-01. In version 2.x of the Azure Native provider, it used API version 2024-10-01-preview.\n\nOther available API versions: 2024-10-01-preview, 2025-04-01-preview, 2025-11-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### Schedulers_CreateOrUpdate\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureNative = Pulumi.AzureNative;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var scheduler = new AzureNative.DurableTask.Scheduler(\"scheduler\", new()\n    {\n        Location = \"northcentralus\",\n        Properties = new AzureNative.DurableTask.Inputs.SchedulerPropertiesArgs\n        {\n            IpAllowlist = new[]\n            {\n                \"10.0.0.0/8\",\n            },\n            Sku = new AzureNative.DurableTask.Inputs.SchedulerSkuArgs\n            {\n                Name = AzureNative.DurableTask.SchedulerSkuName.Dedicated,\n            },\n        },\n        ResourceGroupName = \"rgopenapi\",\n        SchedulerName = \"testscheduler\",\n        Tags = \n        {\n            { \"department\", \"research\" },\n            { \"development\", \"true\" },\n        },\n    });\n\n});\n\n\n```\n\n```go\npackage main\n\nimport (\n\tdurabletask \"github.com/pulumi/pulumi-azure-native-sdk/durabletask/v3\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := durabletask.NewScheduler(ctx, \"scheduler\", \u0026durabletask.SchedulerArgs{\n\t\t\tLocation: pulumi.String(\"northcentralus\"),\n\t\t\tProperties: \u0026durabletask.SchedulerPropertiesArgs{\n\t\t\t\tIpAllowlist: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"10.0.0.0/8\"),\n\t\t\t\t},\n\t\t\t\tSku: \u0026durabletask.SchedulerSkuArgs{\n\t\t\t\t\tName: pulumi.String(durabletask.SchedulerSkuNameDedicated),\n\t\t\t\t},\n\t\t\t},\n\t\t\tResourceGroupName: pulumi.String(\"rgopenapi\"),\n\t\t\tSchedulerName:     pulumi.String(\"testscheduler\"),\n\t\t\tTags: pulumi.StringMap{\n\t\t\t\t\"department\":  pulumi.String(\"research\"),\n\t\t\t\t\"development\": pulumi.String(\"true\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n\n```\n\n```hcl\npulumi {\n  required_providers {\n    azure-native = {\n      source = \"pulumi/azure-native\"\n    }\n  }\n}\n\nresource \"azure-native_durabletask_scheduler\" \"scheduler\" {\n  location = \"northcentralus\"\n  properties = {\n    ip_allowlist = [\"10.0.0.0/8\"]\n    sku = {\n      name = \"Dedicated\"\n    }\n  }\n  resource_group_name = \"rgopenapi\"\n  scheduler_name      = \"testscheduler\"\n  tags = {\n    \"department\"  = \"research\"\n    \"development\" = \"true\"\n  }\n}\n\n```\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azurenative.durabletask.Scheduler;\nimport com.pulumi.azurenative.durabletask.SchedulerArgs;\nimport com.pulumi.azurenative.durabletask.inputs.SchedulerPropertiesArgs;\nimport com.pulumi.azurenative.durabletask.inputs.SchedulerSkuArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var scheduler = new Scheduler(\"scheduler\", SchedulerArgs.builder()\n            .location(\"northcentralus\")\n            .properties(SchedulerPropertiesArgs.builder()\n                .ipAllowlist(\"10.0.0.0/8\")\n                .sku(SchedulerSkuArgs.builder()\n                    .name(\"Dedicated\")\n                    .build())\n                .build())\n            .resourceGroupName(\"rgopenapi\")\n            .schedulerName(\"testscheduler\")\n            .tags(Map.ofEntries(\n                Map.entry(\"department\", \"research\"),\n                Map.entry(\"development\", \"true\")\n            ))\n            .build());\n\n    }\n}\n\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azure_native from \"@pulumi/azure-native\";\n\nconst scheduler = new azure_native.durabletask.Scheduler(\"scheduler\", {\n    location: \"northcentralus\",\n    properties: {\n        ipAllowlist: [\"10.0.0.0/8\"],\n        sku: {\n            name: azure_native.durabletask.SchedulerSkuName.Dedicated,\n        },\n    },\n    resourceGroupName: \"rgopenapi\",\n    schedulerName: \"testscheduler\",\n    tags: {\n        department: \"research\",\n        development: \"true\",\n    },\n});\n\n```\n\n```python\nimport pulumi\nimport pulumi_azure_native as azure_native\n\nscheduler = azure_native.durabletask.Scheduler(\"scheduler\",\n    location=\"northcentralus\",\n    properties={\n        \"ip_allowlist\": [\"10.0.0.0/8\"],\n        \"sku\": {\n            \"name\": azure_native.durabletask.SchedulerSkuName.DEDICATED,\n        },\n    },\n    resource_group_name=\"rgopenapi\",\n    scheduler_name=\"testscheduler\",\n    tags={\n        \"department\": \"research\",\n        \"development\": \"true\",\n    })\n\n```\n\n```yaml\nresources:\n  scheduler:\n    type: azure-native:durabletask:Scheduler\n    properties:\n      location: northcentralus\n      properties:\n        ipAllowlist:\n          - 10.0.0.0/8\n        sku:\n          name: Dedicated\n      resourceGroupName: rgopenapi\n      schedulerName: testscheduler\n      tags:\n        department: research\n        development: 'true'\n\n```\n\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn existing resource can be imported using its type token, name, and identifier, e.g.\n\n```sh\n$ pulumi import azure-native:durabletask:Scheduler testscheduler /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName} \n```\n",
             "properties": {
                 "azureApiVersion": {
                     "type": "string",
@@ -801991,7 +802107,7 @@
             ]
         },
         "azure-native:durabletask:TaskHub": {
-            "description": "A Task Hub resource belonging to the scheduler\n\nUses Azure REST API version 2024-10-01-preview. In version 2.x of the Azure Native provider, it used API version 2024-10-01-preview.\n\nOther available API versions: 2025-04-01-preview, 2025-11-01, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### TaskHubs_CreateOrUpdate\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureNative = Pulumi.AzureNative;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var taskHub = new AzureNative.DurableTask.TaskHub(\"taskHub\", new()\n    {\n        ResourceGroupName = \"rgopenapi\",\n        SchedulerName = \"testscheduler\",\n        TaskHubName = \"testtaskhub\",\n    });\n\n});\n\n\n```\n\n```go\npackage main\n\nimport (\n\tdurabletask \"github.com/pulumi/pulumi-azure-native-sdk/durabletask/v3\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := durabletask.NewTaskHub(ctx, \"taskHub\", \u0026durabletask.TaskHubArgs{\n\t\t\tResourceGroupName: pulumi.String(\"rgopenapi\"),\n\t\t\tSchedulerName:     pulumi.String(\"testscheduler\"),\n\t\t\tTaskHubName:       pulumi.String(\"testtaskhub\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n\n```\n\n```hcl\npulumi {\n  required_providers {\n    azure-native = {\n      source = \"pulumi/azure-native\"\n    }\n  }\n}\n\nresource \"azure-native_durabletask_taskhub\" \"taskHub\" {\n  resource_group_name = \"rgopenapi\"\n  scheduler_name      = \"testscheduler\"\n  task_hub_name       = \"testtaskhub\"\n}\n\n```\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azurenative.durabletask.TaskHub;\nimport com.pulumi.azurenative.durabletask.TaskHubArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var taskHub = new TaskHub(\"taskHub\", TaskHubArgs.builder()\n            .resourceGroupName(\"rgopenapi\")\n            .schedulerName(\"testscheduler\")\n            .taskHubName(\"testtaskhub\")\n            .build());\n\n    }\n}\n\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azure_native from \"@pulumi/azure-native\";\n\nconst taskHub = new azure_native.durabletask.TaskHub(\"taskHub\", {\n    resourceGroupName: \"rgopenapi\",\n    schedulerName: \"testscheduler\",\n    taskHubName: \"testtaskhub\",\n});\n\n```\n\n```python\nimport pulumi\nimport pulumi_azure_native as azure_native\n\ntask_hub = azure_native.durabletask.TaskHub(\"taskHub\",\n    resource_group_name=\"rgopenapi\",\n    scheduler_name=\"testscheduler\",\n    task_hub_name=\"testtaskhub\")\n\n```\n\n```yaml\nresources:\n  taskHub:\n    type: azure-native:durabletask:TaskHub\n    properties:\n      resourceGroupName: rgopenapi\n      schedulerName: testscheduler\n      taskHubName: testtaskhub\n\n```\n\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn existing resource can be imported using its type token, name, and identifier, e.g.\n\n```sh\n$ pulumi import azure-native:durabletask:TaskHub testtaskhub /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName} \n```\n",
+            "description": "A Task Hub resource belonging to the scheduler\n\nUses Azure REST API version 2026-02-01. In version 2.x of the Azure Native provider, it used API version 2024-10-01-preview.\n\nOther available API versions: 2024-10-01-preview, 2025-04-01-preview, 2025-11-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### TaskHubs_CreateOrUpdate\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing AzureNative = Pulumi.AzureNative;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var taskHub = new AzureNative.DurableTask.TaskHub(\"taskHub\", new()\n    {\n        ResourceGroupName = \"rgopenapi\",\n        SchedulerName = \"testscheduler\",\n        TaskHubName = \"testtaskhub\",\n    });\n\n});\n\n\n```\n\n```go\npackage main\n\nimport (\n\tdurabletask \"github.com/pulumi/pulumi-azure-native-sdk/durabletask/v3\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := durabletask.NewTaskHub(ctx, \"taskHub\", \u0026durabletask.TaskHubArgs{\n\t\t\tResourceGroupName: pulumi.String(\"rgopenapi\"),\n\t\t\tSchedulerName:     pulumi.String(\"testscheduler\"),\n\t\t\tTaskHubName:       pulumi.String(\"testtaskhub\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n\n```\n\n```hcl\npulumi {\n  required_providers {\n    azure-native = {\n      source = \"pulumi/azure-native\"\n    }\n  }\n}\n\nresource \"azure-native_durabletask_taskhub\" \"taskHub\" {\n  resource_group_name = \"rgopenapi\"\n  scheduler_name      = \"testscheduler\"\n  task_hub_name       = \"testtaskhub\"\n}\n\n```\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azurenative.durabletask.TaskHub;\nimport com.pulumi.azurenative.durabletask.TaskHubArgs;\nimport java.util.ArrayList;\nimport java.util.Arrays;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var taskHub = new TaskHub(\"taskHub\", TaskHubArgs.builder()\n            .resourceGroupName(\"rgopenapi\")\n            .schedulerName(\"testscheduler\")\n            .taskHubName(\"testtaskhub\")\n            .build());\n\n    }\n}\n\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azure_native from \"@pulumi/azure-native\";\n\nconst taskHub = new azure_native.durabletask.TaskHub(\"taskHub\", {\n    resourceGroupName: \"rgopenapi\",\n    schedulerName: \"testscheduler\",\n    taskHubName: \"testtaskhub\",\n});\n\n```\n\n```python\nimport pulumi\nimport pulumi_azure_native as azure_native\n\ntask_hub = azure_native.durabletask.TaskHub(\"taskHub\",\n    resource_group_name=\"rgopenapi\",\n    scheduler_name=\"testscheduler\",\n    task_hub_name=\"testtaskhub\")\n\n```\n\n```yaml\nresources:\n  taskHub:\n    type: azure-native:durabletask:TaskHub\n    properties:\n      resourceGroupName: rgopenapi\n      schedulerName: testscheduler\n      taskHubName: testtaskhub\n\n```\n\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn existing resource can be imported using its type token, name, and identifier, e.g.\n\n```sh\n$ pulumi import azure-native:durabletask:TaskHub testtaskhub /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DurableTask/schedulers/{schedulerName}/taskHubs/{taskHubName} \n```\n",
             "properties": {
                 "azureApiVersion": {
                     "type": "string",
@@ -869345,7 +869461,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of resource id's that this scheduled query rule is scoped to."
+                    "description": "The list of resource id's that this scheduled query rule is scoped to.",
+                    "willReplaceOnChanges": true
                 },
                 "severity": {
                     "type": "number",
@@ -967170,8 +967287,7 @@
                 },
                 "publicNetworkAccess": {
                     "type": "string",
-                    "description": "This determines if traffic is allowed over public network. By default it is enabled.",
-                    "default": "Enabled"
+                    "description": "This determines if traffic is allowed over public network. By default it is enabled."
                 },
                 "systemData": {
                     "type": "object",
@@ -967237,8 +967353,7 @@
                             "$ref": "#/types/azure-native:servicebus:PublicNetworkAccessFlag"
                         }
                     ],
-                    "description": "This determines if traffic is allowed over public network. By default it is enabled.",
-                    "default": "Enabled"
+                    "description": "This determines if traffic is allowed over public network. By default it is enabled."
                 },
                 "resourceGroupName": {
                     "type": "string",
@@ -1134330,7 +1134445,7 @@
             }
         },
         "azure-native:durabletask:getRetentionPolicy": {
-            "description": "Get a Retention Policy\n\nUses Azure REST API version 2025-04-01-preview.\n\nOther available API versions: 2025-11-01, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.",
+            "description": "Get a Retention Policy\n\nUses Azure REST API version 2026-02-01.\n\nOther available API versions: 2025-04-01-preview, 2025-11-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.",
             "inputs": {
                 "properties": {
                     "resourceGroupName": {
@@ -1134392,7 +1134507,7 @@
             }
         },
         "azure-native:durabletask:getScheduler": {
-            "description": "Get a Scheduler\n\nUses Azure REST API version 2024-10-01-preview.\n\nOther available API versions: 2025-04-01-preview, 2025-11-01, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.",
+            "description": "Get a Scheduler\n\nUses Azure REST API version 2026-02-01.\n\nOther available API versions: 2024-10-01-preview, 2025-04-01-preview, 2025-11-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.",
             "inputs": {
                 "properties": {
                     "resourceGroupName": {
@@ -1134552,7 +1134667,7 @@
             }
         },
         "azure-native:durabletask:getTaskHub": {
-            "description": "Get a Task Hub\n\nUses Azure REST API version 2024-10-01-preview.\n\nOther available API versions: 2025-04-01-preview, 2025-11-01, 2026-02-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.",
+            "description": "Get a Task Hub\n\nUses Azure REST API version 2026-02-01.\n\nOther available API versions: 2024-10-01-preview, 2025-04-01-preview, 2025-11-01, 2026-05-01-preview. These can be accessed by generating a local SDK package using the CLI command `pulumi package add azure-native durabletask [ApiVersion]`. See the [version guide](../../../version-guide/#accessing-any-api-version-via-local-packages) for details.",
             "inputs": {
                 "properties": {
                     "resourceGroupName": {
@@ -1235771,8 +1235886,7 @@
                     },
                     "publicNetworkAccess": {
                         "type": "string",
-                        "description": "This determines if traffic is allowed over public network. By default it is enabled.",
-                        "default": "Enabled"
+                        "description": "This determines if traffic is allowed over public network. By default it is enabled."
                     },
                     "systemData": {
                         "type": "object",
