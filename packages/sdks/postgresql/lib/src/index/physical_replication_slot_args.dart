@@ -8,7 +8,7 @@ import 'package:pulumi/pulumi.dart' as pulumi;
 /// {@macro pulumi_index_physical_replication_slot_physical_replication_slot_args_doc}
 class PhysicalReplicationSlotArgs {
   /// The name of the replication slot.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
 
   /// Creates a new [PhysicalReplicationSlotArgs].
   /// [name] The name of the replication slot.

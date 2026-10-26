@@ -3,11 +3,11 @@
 import 'package:pulumi_postgresql/index.dart' as module_index;
 import 'package:pulumi_postgresql/providers.dart' as module_providers;
 
-final index = const _IndexModuleNamespace();
-final providers = const _ProvidersModuleNamespace();
+final index = _IndexModuleNamespace();
+final providers = _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  const _IndexModuleNamespace();
+  _IndexModuleNamespace();
   final Database = module_index.Database.new;
   final DatabaseArgs = module_index.DatabaseArgs.new;
   final DatabaseState = module_index.DatabaseState.new;
@@ -92,12 +92,15 @@ class _IndexModuleNamespace {
   final UserMappingState = module_index.UserMappingState.new;
   final UserMappingStateArgs = module_index.UserMappingState.new;
   final getSchemas = module_index.getSchemas;
+  final getSchemasOutput = module_index.getSchemasOutput;
   final getSequences = module_index.getSequences;
+  final getSequencesOutput = module_index.getSequencesOutput;
   final getTables = module_index.getTables;
+  final getTablesOutput = module_index.getTablesOutput;
 }
 
 class _ProvidersModuleNamespace {
-  const _ProvidersModuleNamespace();
+  _ProvidersModuleNamespace();
   final Postgresql = module_providers.ProviderProvider.new;
   final PostgresqlArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;
@@ -107,4 +110,5 @@ class _ProvidersModuleNamespace {
   final TerraformConfigResult = module_providers.TerraformConfigResult.new;
   final TerraformConfigResultArgs = module_providers.TerraformConfigResult.new;
   final terraformConfig = module_providers.terraformConfig;
+  final terraformConfigOutput = module_providers.terraformConfigOutput;
 }

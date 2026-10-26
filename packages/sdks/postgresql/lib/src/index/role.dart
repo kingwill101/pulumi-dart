@@ -148,7 +148,7 @@ import 'role_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -157,11 +157,17 @@ import 'role_state.dart';
 /// }
 ///
 /// resource "postgresql_role" "my_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name     = "my_role"
 ///   login    = true
 ///   password = "mypass"
 /// }
 /// resource "postgresql_role" "my_replication_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name             = "replication_role"
 ///   replication      = true
 ///   login            = true
@@ -170,6 +176,9 @@ import 'role_state.dart';
 /// }
 /// # Example using write-only password (password not stored in state)
 /// resource "postgresql_role" "secure_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "secure_role"
 ///   login               = true
 ///   password_wo         = "secure_password_123"
@@ -337,7 +346,7 @@ import 'role_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -347,6 +356,9 @@ import 'role_state.dart';
 ///
 /// # Initial password setup
 /// resource "postgresql_role" "app_user" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                = "app_user"
 ///   login               = true
 ///   password_wo         = "initial_password_123"
@@ -453,7 +465,7 @@ import 'role_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -462,6 +474,9 @@ import 'role_state.dart';
 /// }
 ///
 /// resource "postgresql_role" "replication_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "replication_name"
 /// }
 /// ```
@@ -614,7 +629,8 @@ class Role extends pulumi.CustomResource {
           'postgresql:index/role:Role',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.2').merge(options),
+          additionalSecretOutputs: const ['password', 'passwordWo'],
         ) {
     assumeRole = registerOutput<String?>('assumeRole');
     bypassRowLevelSecurity = registerOutput<bool?>('bypassRowLevelSecurity');
@@ -627,12 +643,12 @@ class Role extends pulumi.CustomResource {
     inherit = registerOutput<bool?>('inherit');
     login = registerOutput<bool?>('login');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
-    passwordWo = registerOutput<String?>('passwordWo');
+    password = registerOutput<String?>('password', isSecret: true);
+    passwordWo = registerOutput<String?>('passwordWo', isSecret: true);
     passwordWoVersion = registerOutput<String?>('passwordWoVersion');
     replication = registerOutput<bool?>('replication');
-    roles = registerOutput<List<String>?>('roles');
-    searchPaths = registerOutput<List<String>?>('searchPaths');
+    roles = registerOutput<List<String>?>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    searchPaths = registerOutput<List<String>?>('searchPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     skipDropRole = registerOutput<bool?>('skipDropRole');
     skipReassignOwned = registerOutput<bool?>('skipReassignOwned');
     statementTimeout = registerOutput<int?>('statementTimeout');
@@ -645,11 +661,12 @@ class Role extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RoleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Role._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -674,12 +691,46 @@ class Role extends pulumi.CustomResource {
     inherit = registerOutput<bool?>('inherit');
     login = registerOutput<bool?>('login');
     this.name = registerOutput<String>('name');
-    password = registerOutput<String?>('password');
-    passwordWo = registerOutput<String?>('passwordWo');
+    password = registerOutput<String?>('password', isSecret: true);
+    passwordWo = registerOutput<String?>('passwordWo', isSecret: true);
     passwordWoVersion = registerOutput<String?>('passwordWoVersion');
     replication = registerOutput<bool?>('replication');
-    roles = registerOutput<List<String>?>('roles');
-    searchPaths = registerOutput<List<String>?>('searchPaths');
+    roles = registerOutput<List<String>?>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    searchPaths = registerOutput<List<String>?>('searchPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    skipDropRole = registerOutput<bool?>('skipDropRole');
+    skipReassignOwned = registerOutput<bool?>('skipReassignOwned');
+    statementTimeout = registerOutput<int?>('statementTimeout');
+    superuser = registerOutput<bool?>('superuser');
+    validUntil = registerOutput<String?>('validUntil');
+  }
+
+  /// Creates a typed reference to an existing [Role] resource.
+  Role.reference(String urn)
+    : super(
+        'postgresql:index/role:Role',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+          additionalSecretOutputs: const ['password', 'passwordWo'],
+        isResourceReference: true,
+      ) {
+    assumeRole = registerOutput<String?>('assumeRole');
+    bypassRowLevelSecurity = registerOutput<bool?>('bypassRowLevelSecurity');
+    connectionLimit = registerOutput<int?>('connectionLimit');
+    createDatabase = registerOutput<bool?>('createDatabase');
+    createRole = registerOutput<bool?>('createRole');
+    encrypted = registerOutput<String?>('encrypted');
+    encryptedPassword = registerOutput<bool?>('encryptedPassword');
+    idleInTransactionSessionTimeout = registerOutput<int?>('idleInTransactionSessionTimeout');
+    inherit = registerOutput<bool?>('inherit');
+    login = registerOutput<bool?>('login');
+    this.name = registerOutput<String>('name');
+    password = registerOutput<String?>('password', isSecret: true);
+    passwordWo = registerOutput<String?>('passwordWo', isSecret: true);
+    passwordWoVersion = registerOutput<String?>('passwordWoVersion');
+    replication = registerOutput<bool?>('replication');
+    roles = registerOutput<List<String>?>('roles', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    searchPaths = registerOutput<List<String>?>('searchPaths', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     skipDropRole = registerOutput<bool?>('skipDropRole');
     skipReassignOwned = registerOutput<bool?>('skipReassignOwned');
     statementTimeout = registerOutput<int?>('statementTimeout');

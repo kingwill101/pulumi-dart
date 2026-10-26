@@ -94,7 +94,7 @@ import 'security_label_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -103,10 +103,16 @@ import 'security_label_state.dart';
 /// }
 ///
 /// resource "postgresql_role" "my_role" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name  = "my_role"
 ///   login = true
 /// }
-/// resource "postgresql_securitylabel" "workload" {
+/// resource "postgresql_security_label" "workload" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   object_type    = "role"
 ///   object_name    = postgresql_role.my_role.name
 ///   label_provider = "pgaadauth"
@@ -194,7 +200,7 @@ class SecurityLabel extends pulumi.CustomResource {
           'postgresql:index/securityLabel:SecurityLabel',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.2').merge(options),
         ) {
     label = registerOutput<String>('label');
     labelProvider = registerOutput<String>('labelProvider');
@@ -207,11 +213,12 @@ class SecurityLabel extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     SecurityLabelState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return SecurityLabel._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -225,6 +232,21 @@ class SecurityLabel extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    label = registerOutput<String>('label');
+    labelProvider = registerOutput<String>('labelProvider');
+    objectName = registerOutput<String>('objectName');
+    objectType = registerOutput<String>('objectType');
+  }
+
+  /// Creates a typed reference to an existing [SecurityLabel] resource.
+  SecurityLabel.reference(String urn)
+    : super(
+        'postgresql:index/securityLabel:SecurityLabel',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     label = registerOutput<String>('label');
     labelProvider = registerOutput<String>('labelProvider');
     objectName = registerOutput<String>('objectName');

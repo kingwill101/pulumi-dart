@@ -85,7 +85,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -94,6 +94,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "postgresql_database" "my_db" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name                   = "my_db"
 ///   owner                  = "my_role"
 ///   template               = "template0"
@@ -207,7 +210,7 @@ import 'database_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     postgresql = {
 ///       source = "pulumi/postgresql"
@@ -216,6 +219,9 @@ import 'database_state.dart';
 /// }
 ///
 /// resource "postgresql_database" "db1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name = "testdb1"
 /// }
 /// ```
@@ -342,7 +348,7 @@ class Database extends pulumi.CustomResource {
           'postgresql:index/database:Database',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '3.18.2').merge(options),
         ) {
     allowConnections = registerOutput<bool?>('allowConnections');
     alterObjectOwnership = registerOutput<bool?>('alterObjectOwnership');
@@ -362,11 +368,12 @@ class Database extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     DatabaseState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return Database._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -380,6 +387,28 @@ class Database extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    allowConnections = registerOutput<bool?>('allowConnections');
+    alterObjectOwnership = registerOutput<bool?>('alterObjectOwnership');
+    connectionLimit = registerOutput<int?>('connectionLimit');
+    encoding = registerOutput<String>('encoding');
+    isTemplate = registerOutput<bool>('isTemplate');
+    lcCollate = registerOutput<String>('lcCollate');
+    lcCtype = registerOutput<String>('lcCtype');
+    this.name = registerOutput<String>('name');
+    owner = registerOutput<String>('owner');
+    tablespaceName = registerOutput<String>('tablespaceName');
+    template = registerOutput<String>('template');
+  }
+
+  /// Creates a typed reference to an existing [Database] resource.
+  Database.reference(String urn)
+    : super(
+        'postgresql:index/database:Database',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     allowConnections = registerOutput<bool?>('allowConnections');
     alterObjectOwnership = registerOutput<bool?>('alterObjectOwnership');
     connectionLimit = registerOutput<int?>('connectionLimit');

@@ -6,33 +6,33 @@ import 'function_arg.dart';
 /// Input properties used for looking up and filtering Function resources.
 class FunctionState {
   /// List of arguments for the function.
-  final pulumi.Input<List<FunctionArg>>? args;
+  final pulumi.Input<List<FunctionArg>?>? args;
   /// Function body.
   /// This should be the body content within the `AS $$` and the final `$$`. It will also accept the `AS $$` and `$$` if added.
-  final pulumi.Input<String>? body;
+  final pulumi.Input<String?>? body;
   /// The database where the function is located.
   /// If not specified, the function is created in the current database.
-  final pulumi.Input<String>? database;
+  final pulumi.Input<String?>? database;
   /// True to automatically drop objects that depend on the function (such as
   /// operators or triggers), and in turn all objects that depend on those objects. Default is false.
-  final pulumi.Input<bool>? dropCascade;
+  final pulumi.Input<bool?>? dropCascade;
   /// The function programming language. Can be one of internal, sql, c, plpgsql. Default is plpgsql.
-  final pulumi.Input<String>? language;
+  final pulumi.Input<String?>? language;
   /// The name of the function.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Indicates if the function is parallel safe. Can be one of UNSAFE, RESTRICTED, or SAFE. Default is UNSAFE.
-  final pulumi.Input<String>? parallel;
+  final pulumi.Input<String?>? parallel;
   /// Type that the function returns. It can be computed from the OUT arguments. Default is void.
-  final pulumi.Input<String>? returns;
+  final pulumi.Input<String?>? returns;
   /// The schema where the function is located.
   /// If not specified, the function is created in the current schema.
-  final pulumi.Input<String>? schema;
+  final pulumi.Input<String?>? schema;
   /// If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
-  final pulumi.Input<bool>? securityDefiner;
+  final pulumi.Input<bool?>? securityDefiner;
   /// If the function should always return NULL when any of the inputs is NULL. Default is false.
-  final pulumi.Input<bool>? strict;
+  final pulumi.Input<bool?>? strict;
   /// Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
-  final pulumi.Input<String>? volatility;
+  final pulumi.Input<String?>? volatility;
 
   /// Creates a new [FunctionState].
   /// [args] List of arguments for the function.
