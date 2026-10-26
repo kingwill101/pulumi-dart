@@ -66,8 +66,8 @@ import 'floating_ip_assignment_state.dart';
 ///
 ///     var main = new HCloud.FloatingIpAssignment("main", new()
 ///     {
-///         FloatingIpId = master.Id,
-///         ServerId = node1.Id,
+///         FloatingIpId = master.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
+///         ServerId = node1.Id.Apply(x => int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
 ///     });
 ///
 /// });
@@ -76,6 +76,8 @@ import 'floating_ip_assignment_state.dart';
 /// package main
 ///
 /// import (
+/// 	"strconv"
+///
 /// 	"github.com/pulumi/pulumi-hcloud/sdk/go/hcloud"
 /// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 /// )
@@ -99,8 +101,8 @@ import 'floating_ip_assignment_state.dart';
 /// 			return err
 /// 		}
 /// 		_, err = hcloud.NewFloatingIpAssignment(ctx, "main", &hcloud.FloatingIpAssignmentArgs{
-/// 			FloatingIpId: master.ID(),
-/// 			ServerId:     node1.ID(),
+/// 			FloatingIpId: master.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+/// 			ServerId:     node1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 /// 		})
 /// 		if err != nil {
 /// 			return err
@@ -110,7 +112,7 @@ import 'floating_ip_assignment_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     hcloud = {
 ///       source = "pulumi/hcloud"
@@ -118,17 +120,26 @@ import 'floating_ip_assignment_state.dart';
 ///   }
 /// }
 ///
-/// resource "hcloud_floatingipassignment" "main" {
-///   floating_ip_id = hcloud_floatingip.master.id
+/// resource "hcloud_floating_ip_assignment" "main" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   floating_ip_id = hcloud_floating_ip.master.id
 ///   server_id      = hcloud_server.node1.id
 /// }
 /// resource "hcloud_server" "node1" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   name        = "node1"
 ///   image       = "debian-12"
 ///   server_type = "cx23"
 ///   location    = "fsn1"
 /// }
-/// resource "hcloud_floatingip" "master" {
+/// resource "hcloud_floating_ip" "master" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   type          = "ipv4"
 ///   home_location = "nbg1"
 /// }
@@ -225,7 +236,7 @@ class FloatingIpAssignment extends pulumi.CustomResource {
           'hcloud:index/floatingIpAssignment:FloatingIpAssignment',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '1.43.2').merge(options),
         ) {
     floatingIpId = registerOutput<int>('floatingIpId');
     serverId = registerOutput<int>('serverId');
@@ -236,11 +247,12 @@ class FloatingIpAssignment extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     FloatingIpAssignmentState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return FloatingIpAssignment._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -254,6 +266,19 @@ class FloatingIpAssignment extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
+    floatingIpId = registerOutput<int>('floatingIpId');
+    serverId = registerOutput<int>('serverId');
+  }
+
+  /// Creates a typed reference to an existing [FloatingIpAssignment] resource.
+  FloatingIpAssignment.reference(String urn)
+    : super(
+        'hcloud:index/floatingIpAssignment:FloatingIpAssignment',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
     floatingIpId = registerOutput<int>('floatingIpId');
     serverId = registerOutput<int>('serverId');
   }

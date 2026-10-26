@@ -9,15 +9,15 @@ import 'zone_rrset_record.dart';
 /// {@macro pulumi_index_zone_rrset_zone_rrset_args_doc}
 class ZoneRrsetArgs {
   /// Whether change protection is enabled.
-  final pulumi.Input<bool>? changeProtection;
+  final pulumi.Input<bool?>? changeProtection;
   /// User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
-  final pulumi.Input<Map<String, String>>? labels;
+  final pulumi.Input<Map<String, String>?>? labels;
   /// Name of the Zone RRSet.
-  final pulumi.Input<String>? name;
+  final pulumi.Input<String?>? name;
   /// Records of the Zone RRSet.
   final pulumi.Input<List<ZoneRrsetRecord>> records;
   /// Time To Live (TTL) of the Zone RRSet.
-  final pulumi.Input<int>? ttl;
+  final pulumi.Input<int?>? ttl;
   /// Type of the Zone RRSet.
   final pulumi.Input<String> type;
   /// ID or Name of the parent Zone.
@@ -59,7 +59,7 @@ class ZoneRrsetArgs {
       labels: (() { final guardedValue = map['labels']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       records: pulumi.Input.fromValue(pulumi.Input.decodeList<ZoneRrsetRecord>(map['records']!, (value) => ZoneRrsetRecord.fromMap((value as Map).cast<String, dynamic>()))),
-      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as int); })(),
+      ttl: (() { final guardedValue = map['ttl']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       type: pulumi.Input.fromValue(map['type'] as String),
       zone: pulumi.Input.fromValue(map['zone'] as String),
     );

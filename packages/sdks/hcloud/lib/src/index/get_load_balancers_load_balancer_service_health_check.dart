@@ -41,11 +41,11 @@ class GetLoadBalancersLoadBalancerServiceHealthCheck {
   factory GetLoadBalancersLoadBalancerServiceHealthCheck.fromMap(Map<String, dynamic> map) {
     return GetLoadBalancersLoadBalancerServiceHealthCheck(
       https: pulumi.Input.fromValue(pulumi.Input.decodeList<GetLoadBalancersLoadBalancerServiceHealthCheckHttp>(map['https']!, (value) => GetLoadBalancersLoadBalancerServiceHealthCheckHttp.fromMap((value as Map).cast<String, dynamic>()))),
-      interval: pulumi.Input.fromValue(map['interval'] as int),
-      port: pulumi.Input.fromValue(map['port'] as int),
+      interval: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['interval'])),
+      port: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['port'])),
       protocol: pulumi.Input.fromValue(map['protocol'] as String),
-      retries: pulumi.Input.fromValue(map['retries'] as int),
-      timeout: pulumi.Input.fromValue(map['timeout'] as int),
+      retries: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['retries'])),
+      timeout: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['timeout'])),
     );
   }
 }
