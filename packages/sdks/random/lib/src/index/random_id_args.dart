@@ -10,9 +10,9 @@ class RandomIdArgs {
   /// The number of random bytes to produce. The minimum value is 1, which produces eight bits of randomness.
   final pulumi.Input<int> byteLength;
   /// Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
-  final pulumi.Input<Map<String, String>>? keepers;
+  final pulumi.Input<Map<String, String>?>? keepers;
   /// Arbitrary string to prefix the output value with. This string is supplied as-is, meaning it is not guaranteed to be URL-safe or base64 encoded.
-  final pulumi.Input<String>? prefix;
+  final pulumi.Input<String?>? prefix;
 
   /// Creates a new [RandomIdArgs].
   /// [byteLength] The number of random bytes to produce. The minimum value is 1, which produces eight bits of randomness.
@@ -34,7 +34,7 @@ class RandomIdArgs {
 
   factory RandomIdArgs.fromMap(Map<String, dynamic> map) {
     return RandomIdArgs(
-      byteLength: pulumi.Input.fromValue(map['byteLength'] as int),
+      byteLength: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['byteLength'])),
       keepers: (() { final guardedValue = map['keepers']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
       prefix: (() { final guardedValue = map['prefix']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );

@@ -100,7 +100,7 @@ import 'random_shuffle_state.dart';
 /// }
 /// ```
 /// ```hcl
-/// pulumi {
+/// terraform {
 ///   required_providers {
 ///     aws = {
 ///       source = "pulumi/aws"
@@ -111,12 +111,18 @@ import 'random_shuffle_state.dart';
 ///   }
 /// }
 ///
-/// resource "random_randomshuffle" "az" {
+/// resource "random_random_shuffle" "az" {
+///   lifecycle {
+///     create_before_destroy = true
+///   }
 ///   inputs       = ["us-west-1a", "us-west-1c", "us-west-1d", "us-west-1e"]
 ///   result_count = 2
 /// }
 /// resource "aws_elb" "example" {
-///   availability_zones = random_randomshuffle.az.results
+///   lifecycle {
+///     create_before_destroy = true
+///   }
+///   availability_zones = random_random_shuffle.az.results
 /// }
 /// ```
 /// ```java
@@ -198,12 +204,12 @@ class RandomShuffle extends pulumi.CustomResource {
           'random:index/randomShuffle:RandomShuffle',
           name,
           pulumi.Input.mapToInputs(args?.toMap() ?? const {}),
-          options ?? pulumi.CustomResourceOptions(),
+          pulumi.CustomResourceOptions(version: '4.21.4').merge(options),
         ) {
-    inputs = registerOutput<List<String>>('inputs');
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    inputs = registerOutput<List<String>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resultCount = registerOutput<int?>('resultCount');
-    results = registerOutput<List<String>>('results');
+    results = registerOutput<List<String>>('results', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     seed = registerOutput<String?>('seed');
   }
 
@@ -212,11 +218,12 @@ class RandomShuffle extends pulumi.CustomResource {
     String name,
     pulumi.Input<String> id, {
     RandomShuffleState? state,
+    pulumi.CustomResourceOptions? options,
   }) {
     return RandomShuffle._get(
       name,
       state: state?.toMap(),
-      options: pulumi.CustomResourceOptions(id: id),
+      options: pulumi.CustomResourceOptions(id: id).merge(options),
     );
   }
 
@@ -230,10 +237,26 @@ class RandomShuffle extends pulumi.CustomResource {
           pulumi.Input.mapToInputs(state ?? const <String, dynamic>{}),
           options ?? pulumi.CustomResourceOptions(),
         ) {
-    inputs = registerOutput<List<String>>('inputs');
-    keepers = registerOutput<Map<String, String>?>('keepers');
+    inputs = registerOutput<List<String>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
     resultCount = registerOutput<int?>('resultCount');
-    results = registerOutput<List<String>>('results');
+    results = registerOutput<List<String>>('results', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    seed = registerOutput<String?>('seed');
+  }
+
+  /// Creates a typed reference to an existing [RandomShuffle] resource.
+  RandomShuffle.reference(String urn)
+    : super(
+        'random:index/randomShuffle:RandomShuffle',
+        pulumi.parseUrn(urn).urnName,
+        const <String, pulumi.Input<dynamic>>{},
+        pulumi.CustomResourceOptions(urn: pulumi.input(urn)),
+        isResourceReference: true,
+      ) {
+    inputs = registerOutput<List<String>>('inputs', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
+    keepers = registerOutput<Map<String, String>?>('keepers', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as Map).cast<String, String>(); });
+    resultCount = registerOutput<int?>('resultCount');
+    results = registerOutput<List<String>>('results', decoder: (raw) { final guardedValue = raw; if (guardedValue == null) return null; return (guardedValue as List).cast<String>(); });
     seed = registerOutput<String?>('seed');
   }
 }
