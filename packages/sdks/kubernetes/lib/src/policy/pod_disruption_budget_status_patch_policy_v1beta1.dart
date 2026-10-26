@@ -46,12 +46,12 @@ class PodDisruptionBudgetStatusPatchPolicyV1beta1 {
 
   factory PodDisruptionBudgetStatusPatchPolicyV1beta1.fromMap(Map<String, dynamic> map) {
     return PodDisruptionBudgetStatusPatchPolicyV1beta1(
-      currentHealthy: (() { final guardedValue = map['currentHealthy']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      desiredHealthy: (() { final guardedValue = map['desiredHealthy']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      currentHealthy: (() { final guardedValue = map['currentHealthy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      desiredHealthy: (() { final guardedValue = map['desiredHealthy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       disruptedPods: (() { final guardedValue = map['disruptedPods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as Map).cast<String, String>()); })(),
-      disruptionsAllowed: (() { final guardedValue = map['disruptionsAllowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      expectedPods: (() { final guardedValue = map['expectedPods']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      disruptionsAllowed: (() { final guardedValue = map['disruptionsAllowed']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      expectedPods: (() { final guardedValue = map['expectedPods']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

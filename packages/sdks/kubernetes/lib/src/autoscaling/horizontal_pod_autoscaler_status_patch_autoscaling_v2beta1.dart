@@ -50,10 +50,10 @@ class HorizontalPodAutoscalerStatusPatchAutoscalingV2beta1 {
     return HorizontalPodAutoscalerStatusPatchAutoscalingV2beta1(
       conditions: (() { final guardedValue = map['conditions']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<HorizontalPodAutoscalerConditionPatchAutoscalingV2beta1>(guardedValue, (value) => HorizontalPodAutoscalerConditionPatchAutoscalingV2beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
       currentMetrics: (() { final guardedValue = map['currentMetrics']; if (guardedValue == null) return null; return pulumi.Input.fromValue(pulumi.Input.decodeList<MetricStatusPatchAutoscalingV2beta1>(guardedValue, (value) => MetricStatusPatchAutoscalingV2beta1.fromMap((value as Map).cast<String, dynamic>()))); })(),
-      currentReplicas: (() { final guardedValue = map['currentReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      desiredReplicas: (() { final guardedValue = map['desiredReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      currentReplicas: (() { final guardedValue = map['currentReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      desiredReplicas: (() { final guardedValue = map['desiredReplicas']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       lastScaleTime: (() { final guardedValue = map['lastScaleTime']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

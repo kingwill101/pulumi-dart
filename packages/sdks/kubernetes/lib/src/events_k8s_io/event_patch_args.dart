@@ -110,7 +110,7 @@ class EventPatchArgs {
     return EventPatchArgs(
       action: (() { final guardedValue = map['action']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       apiVersion: (() { final guardedValue = map['apiVersion']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      deprecatedCount: (() { final guardedValue = map['deprecatedCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      deprecatedCount: (() { final guardedValue = map['deprecatedCount']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       deprecatedFirstTimestamp: (() { final guardedValue = map['deprecatedFirstTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deprecatedLastTimestamp: (() { final guardedValue = map['deprecatedLastTimestamp']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       deprecatedSource: (() { final guardedValue = map['deprecatedSource']; if (guardedValue == null) return null; return pulumi.Input.fromValue(EventSourcePatch.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

@@ -27,7 +27,7 @@ class TokenRequestPatchStorageK8sIoV1beta1 {
   factory TokenRequestPatchStorageK8sIoV1beta1.fromMap(Map<String, dynamic> map) {
     return TokenRequestPatchStorageK8sIoV1beta1(
       audience: (() { final guardedValue = map['audience']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      expirationSeconds: (() { final guardedValue = map['expirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      expirationSeconds: (() { final guardedValue = map['expirationSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
     );
   }
 }

@@ -32,7 +32,7 @@ class ResourceMetricSourcePatchAutoscalingV2beta1 {
   factory ResourceMetricSourcePatchAutoscalingV2beta1.fromMap(Map<String, dynamic> map) {
     return ResourceMetricSourcePatchAutoscalingV2beta1(
       name: (() { final guardedValue = map['name']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      targetAverageUtilization: (() { final guardedValue = map['targetAverageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      targetAverageUtilization: (() { final guardedValue = map['targetAverageUtilization']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       targetAverageValue: (() { final guardedValue = map['targetAverageValue']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
     );
   }

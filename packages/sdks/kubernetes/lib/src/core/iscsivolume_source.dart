@@ -78,7 +78,7 @@ class ISCSIVolumeSource {
       initiatorName: (() { final guardedValue = map['initiatorName']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
       iqn: pulumi.Input.fromValue(map['iqn'] as String),
       iscsiInterface: (() { final guardedValue = map['iscsiInterface']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      lun: pulumi.Input.fromValue((map['lun'] as num).toInt()),
+      lun: pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(map['lun'])),
       portals: (() { final guardedValue = map['portals']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as List).cast<String>()); })(),
       readOnly: (() { final guardedValue = map['readOnly']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
       secretRef: (() { final guardedValue = map['secretRef']; if (guardedValue == null) return null; return pulumi.Input.fromValue(LocalObjectReference.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),

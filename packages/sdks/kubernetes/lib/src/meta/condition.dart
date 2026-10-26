@@ -48,7 +48,7 @@ class Condition {
     return Condition(
       lastTransitionTime: pulumi.Input.fromValue(map['lastTransitionTime'] as String),
       message: pulumi.Input.fromValue(map['message'] as String),
-      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      observedGeneration: (() { final guardedValue = map['observedGeneration']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       reason: pulumi.Input.fromValue(map['reason'] as String),
       status: pulumi.Input.fromValue(map['status'] as String),
       type: pulumi.Input.fromValue(map['type'] as String),

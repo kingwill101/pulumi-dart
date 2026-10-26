@@ -53,11 +53,11 @@ class CronJobSpecPatchBatchV2alpha1 {
   factory CronJobSpecPatchBatchV2alpha1.fromMap(Map<String, dynamic> map) {
     return CronJobSpecPatchBatchV2alpha1(
       concurrencyPolicy: (() { final guardedValue = map['concurrencyPolicy']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      failedJobsHistoryLimit: (() { final guardedValue = map['failedJobsHistoryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      failedJobsHistoryLimit: (() { final guardedValue = map['failedJobsHistoryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       jobTemplate: (() { final guardedValue = map['jobTemplate']; if (guardedValue == null) return null; return pulumi.Input.fromValue(JobTemplateSpecPatchBatchV2alpha1.fromMap((guardedValue as Map).cast<String, dynamic>())); })(),
       schedule: (() { final guardedValue = map['schedule']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as String); })(),
-      startingDeadlineSeconds: (() { final guardedValue = map['startingDeadlineSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
-      successfulJobsHistoryLimit: (() { final guardedValue = map['successfulJobsHistoryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue((guardedValue as num).toInt()); })(),
+      startingDeadlineSeconds: (() { final guardedValue = map['startingDeadlineSeconds']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
+      successfulJobsHistoryLimit: (() { final guardedValue = map['successfulJobsHistoryLimit']; if (guardedValue == null) return null; return pulumi.Input.fromValue(((value) { final number = value as num; final integer = number.toInt(); if (number != integer) { throw FormatException('Expected an integer, got $number.'); } return integer; })(guardedValue)); })(),
       suspend: (() { final guardedValue = map['suspend']; if (guardedValue == null) return null; return pulumi.Input.fromValue(guardedValue as bool); })(),
     );
   }
